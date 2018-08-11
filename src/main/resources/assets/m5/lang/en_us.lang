@@ -4,6 +4,7 @@ item.manganese_ingot.name=Manganese Ingot
 item.hepatizon_ingot.name=Hepatizon Ingot
 item.damascus_steal_ingot.name=Damascus Steal Ingot 
 item.meutoite_ingot.name=Meutoite Ingot
+item.angmallen_ingot.name=Angmallen Ingot
 item.carmot_ignot.name=Carmot Ingot
 item.astral_silver_ingot.name=Astral Silver Ingot
 item.prometheum_ingot.name=Prometheum Ingot
@@ -17,3 +18,8 @@ item.black_steel_ingot.name=Black Steel Ingot
 //item..name=
 //item..name=
 //item..name=
+
+//Creative Tabs
+itemGroup.m5.ingots = Metallurgy Ingots
+itemGroup.m5.ores = Metallurgy Ores
+

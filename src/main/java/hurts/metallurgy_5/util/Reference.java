@@ -1,5 +1,7 @@
 package hurts.metallurgy_5.util;
 
+import hurts.metallurgy_5.util.tab.TabIngot;
+
 public class Reference {
 	
 	public static final String MOD_ID = "m5";
