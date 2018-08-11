@@ -2,6 +2,7 @@ package hurts.metallurgy_5;
 
 import hurts.metallurgy_5.proxy.CommonProxy;
 import hurts.metallurgy_5.util.Reference;
+import hurts.metallurgy_5.util.tab.*;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -12,10 +13,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {
-	
-	
-	
 
+	//Creative Tabs
+	public static final TabIngot tabIngot = new TabIngot();
+	public static final TabOre tabOre = new TabOre();
+	
+	
 	@Instance
 	public static Main instance;
 	

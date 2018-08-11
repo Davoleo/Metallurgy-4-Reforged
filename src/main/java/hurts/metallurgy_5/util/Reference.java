@@ -10,7 +10,4 @@ public class Reference {
 	public static final String ACCEPTED_VERISON = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "hurts.metallurgy_5.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "hurts.metallurgy_5.proxy.CommonProxy";
-	
-	public static final TabIngot ingotTab = new TabIngot();
-	
 }
