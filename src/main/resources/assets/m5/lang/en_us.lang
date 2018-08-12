@@ -13,13 +13,39 @@ item.infuscolium_ingot.name=Infuscolium Ingot
 item.eximite_ingot.name=Eximite Ingot
 item.hepatizon_ingot.name=Hepatizon Ingot
 item.black_steel_ingot.name=Black Steel Ingot
+item.oureclase_ingot.name=Oureclase Ingot
+item.deep_iron_ingot.name=Deep iron Ore
+item.mithril_ingot.name=Mithril Ingot
+item.rubracacium_ingot.name=Rubracacium
+item.quicksilver_ingot.name=Quicksilver Ingot
+item.haderoth_ingot.name=Haderoth Ingot
+item.orichalcum_ingot.name=Orichalcum Ingot
+item.celenegil_ingot.name=Celenegil Ingot
+item.adamantine_ingot.name=Adamantine Ingot
+item.atlarus_ingot.name=Atlarus Ingot
+item.tartarite_ingot.name=Tartarite Ingot
+item.ignatius_ingot.name=Ignatius Ingot
+item.shadow_iron_ingot.name=Shadow Iron Ingot
+item.lemurite_ingot.name=Lemurite Ingot
+item.midasium_ingot.name=Midasium Ingot
+item.vyroxeres_ingot.name=Vyroxeres Ingot
+item.ceruclase_ingot.name=Ceruclase Ingot
+item.alduorite_ingot.name=Alduorite Ingot
+item.kalendrite_ingot.name=Kalendrite Ingot
+item.vulcanite_ingot.name=Vulcanite Ingot
+item.sanguinite_ingot.name=Sanguinite Ingot
+item.shadow_steel_ingot.name=Shadow Steel Ingot
+item.inolashite_ingot.name=Inolashite Ingot
+item.amordrine_ingot.name=Amordrine Ingot
+item.osmium_ingot.name=Osmium Ingot
+item.lutetium_ingot.name=Lutetium Ingot
 //item..name=
 //item..name=
-//item..name=
-//item..name=
-//item..name=
+
 
 //Creative Tabs
-itemGroup.m5.ingots = Metallurgy Ingots
-itemGroup.m5.ores = Metallurgy Ores
+itemGroup.m5.ingots=Metallurgy Ingots
+itemGroup.m5.ores=Metallurgy Ores
 
+//Blocks
+tile.manganese_block.name=Manganese Block

@@ -23,7 +23,7 @@ public class TabOre extends CreativeTabs {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public void displayItems(NonNullList<ItemStack> itemToShowOnTab)
+	public void displayItems(NonNullList<ItemStack> itemToShowOnTab) // Cicla oggetti della tab
 	{
 		for(Item item : Item.REGISTRY){
 			if (item != null){
