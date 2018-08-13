@@ -1,0 +1,37 @@
+package hurts.metallurgy_5.item;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+//import net.minecraftforge.fml.common.Mod;
+//import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import hurts.metallurgy_5.Metallurgy_5;;
+
+public class ItemBase extends Item{
+
+	protected String name;
+	
+	public ItemBase(String name) {
+		this.name = name;
+		setUnlocalizedName(name);
+		setRegistryName(name);
+
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+	}
+	
+	public void registerItemModel() {
+		Metallurgy_5.proxy.registerItemRenderer(this, 0, name);
+	}
+	
+	@Override
+	public ItemBase setCreativeTab(CreativeTabs tab) {
+		
+		super.setCreativeTab(tab);
+		
+		return this;
+	}
+	
+//	@Mod.EventHandler
+//	public void preInit(FMLPreInitializationEvent event) {
+//	}
+	
+}
