@@ -1,0 +1,5 @@
+{
+   "parent": "block/cube_all",
+   "textures": {
+       "all": "m5:blocks/manganese_block"
+   }
