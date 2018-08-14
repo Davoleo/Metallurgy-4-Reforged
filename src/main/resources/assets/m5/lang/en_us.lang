@@ -1,10 +1,10 @@
-	# Items
-	item.ingot_manganese.name=Manganese Ingot
-	
-	# Blocks
-	tile.charcoal_block.name=Block of Charcoal
-	
-	#Creative Tab
-	itemGroup.m5.ingots=Metallurgy Ingots
-	itemGroup.m5.blocks=Metallurgy Blocks
-	itemGroup.m5.ores=Metallurgy Ores
+#Items
+item.ingot_manganese.name=Manganese Ingot
+
+#Blocks
+tile.charcoal_block.name=Block of Charcoal
+
+#Creative Tab
+itemGroup.m5.ingots=Metallurgy Ingots
+itemGroup.m5.blocks=Metallurgy Blocks
+itemGroup.m5.ores=Metallurgy Ores
