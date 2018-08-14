@@ -3,6 +3,9 @@ package hurts.metallurgy_5;
 import hurts.metallurgy_5.block.ModBlocks;
 import hurts.metallurgy_5.item.ModItems;
 import hurts.metallurgy_5.proxy.CommonProxy;
+import hurts.metallurgy_5.proxy.util.tabs.TabBlock;
+import hurts.metallurgy_5.proxy.util.tabs.TabIngot;
+import hurts.metallurgy_5.proxy.util.tabs.TabOre;
 import net.minecraft.block.Block;
 //import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -32,6 +35,11 @@ public class Metallurgy_5 {
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(NAME + " is loading!");
 	}
+	
+	//CreativeTabs
+	public static final TabIngot tabIngot = new TabIngot();
+	public static final TabBlock tabBlock = new TabBlock();
+	public static final TabOre tabOre = new TabOre();
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {

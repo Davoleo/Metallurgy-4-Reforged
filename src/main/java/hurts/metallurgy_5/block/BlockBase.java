@@ -13,6 +13,7 @@ public class BlockBase extends Block {
 
 	public BlockBase(Material material, String name) {
 		super(material);
+		setCreativeTab(Metallurgy_5.tabBlock);
 		
 		this.name = name;
 		

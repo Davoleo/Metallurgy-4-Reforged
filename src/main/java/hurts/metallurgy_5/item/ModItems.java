@@ -1,15 +1,17 @@
 package hurts.metallurgy_5.item;
 
-//import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-//import net.minecraft.creativetab.CreativeTabs;
-//import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-//import net.minecraftforge.client.model.ModelLoader;
-//import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModItems {
 	
+	//ItemOre
+	public static ItemOre dustSulfur = new ItemOre ("dust_sulfur","dustSulfur");	 
+	public static ItemOre dustBitumen = new ItemOre ("dust_bitumen","dustBitumen");	 
+	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");	 
+	public static ItemOre dustPotash = new ItemOre ("dust_potash","dustPotash");	 
+	
+	//Ingot
 	public static ItemOre ingotManganese = new ItemOre ("ingot_manganese","ingotManganese");
 	public static ItemOre ingotAdamantine = new ItemOre ("ingot_adamantine","ingotAdamantine");
 	public static ItemOre ingotAlduorite = new ItemOre ("ingot_alduorite","ingotAlduorite");
@@ -18,7 +20,7 @@ public class ModItems {
 	public static ItemOre ingotAstralSilver = new ItemOre ("ingot_astral_silver","ingotAstralSilver");
 	public static ItemOre ingotAtlarus = new ItemOre ("ingot_atlarus","ingotAtlarus");
 	public static ItemOre ingotBlackSteel = new ItemOre ("ingot_black_steel","ingotBlackSteel");
-	public static ItemOre ingotCarmot = new ItemOre ("ingot_barmot","ingotCarmot");
+	public static ItemOre ingotCarmot = new ItemOre ("ingot_carmot","ingotCarmot");
 	public static ItemOre ingotCelenegil = new ItemOre ("ingot_celenegil","ingotCelenegil");
 	public static ItemOre ingotCeruclase = new ItemOre ("ingot_ceruclase","ingotCeruclase");
 	public static ItemOre ingotDamascusSteel = new ItemOre ("ingot_damascus_steel","ingotDamascusSteel");
@@ -47,11 +49,12 @@ public class ModItems {
 	public static ItemOre ingotShadowSteel = new ItemOre ("ingot_shadow_steel","ingotShadowSteel");
 	public static ItemOre ingotTartarite = new ItemOre ("ingot_tartarite","ingotTartarite");
 	public static ItemOre ingotVulcanite = new ItemOre ("ingot_vulcanite","ingotVulcanite");
-	public static ItemOre ingotVyroxeres = new ItemOre ("ingot_vyroxeres ","ingotVyroxeres ");
+	public static ItemOre ingotVyroxeres = new ItemOre ("ingot_vyroxeres","ingotVyroxeres ");
 	public static ItemOre ingotCopper = new ItemOre ("ingot_copper","ingotCopper");	
 	public static ItemOre ingotTin = new ItemOre ("ingot_tin","ingotTin");	
 	public static ItemOre ingotSteel = new ItemOre ("ingot_steel","ingotSteel");	
-	public static ItemOre ingotZinc = new ItemOre ("ingot_zinc ","ingotZinc ");	
+	public static ItemOre ingotZinc = new ItemOre ("ingot_zinc","ingotZinc ");	
+	public static ItemOre ingotPlatinum = new ItemOre ("ingot_platinum","ingotPlatinum");
 	
 //	public static ItemOre  = new ItemOre ("");		
 
@@ -97,7 +100,14 @@ public class ModItems {
 				ingotCopper,
 				ingotTin,
 				ingotSteel,
-				ingotZinc
+				ingotZinc,
+				ingotPlatinum,
+				
+//				ItemOre
+				dustSulfur,
+				dustBitumen,
+				oreslimeball,
+				dustPotash
 				
 				);
 		}
@@ -145,6 +155,11 @@ public class ModItems {
 		ingotTin.registerItemModel();
 		ingotSteel.registerItemModel();
 		ingotZinc.registerItemModel();
+		ingotPlatinum.registerItemModel();
+		dustSulfur.registerItemModel();
+		dustBitumen.registerItemModel();
+		oreslimeball.registerItemModel();
+		dustPotash.registerItemModel();
 		
 	}
 	

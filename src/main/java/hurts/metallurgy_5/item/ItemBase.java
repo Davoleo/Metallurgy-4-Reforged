@@ -15,7 +15,7 @@ public class ItemBase extends Item{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		setCreativeTab(Metallurgy_5.tabIngot);
 	}
 	
 	public void registerItemModel() {
