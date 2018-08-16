@@ -31,7 +31,7 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModBlocks.oreManganese.getDefaultState(),world, random, chunkX * 16, chunkY * 16, 25, 72, 4, 5);
 		generateOre(ModBlocks.oreOureclase.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 0, 47, 3, 4 );
 		generateOre(ModBlocks.oreInfuscolium.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 0, 65, 4, 5);
-		generateOre(ModBlocks.oreAdamantine.getDefaultState(), world, random, chunkX * 16, chunkY * 16,0 ,12 ,4 ,1);
+	    generateOre(ModBlocks.oreAdamantine.getDefaultState(), world, random, chunkX * 16, chunkY * 16,0 ,12 ,4 ,1);
 		generateOre(ModBlocks.oreRubracium.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 5, 30, 3, 2);
 		generateOre(ModBlocks.oreAtlarus.getDefaultState(), world, random, chunkX * 16, chunkY * 16,1 ,100 ,3 ,1 );
 		generateOre(ModBlocks.oreCarmot.getDefaultState(), world, random, chunkX * 16, chunkY * 16,0 ,100 ,2 ,3);
