@@ -1,4 +1,4 @@
-package hurts.metallurgy_5.proxy.util.tabs;
+package hurts.metallurgy_5.util.tabs;
 
 import hurts.metallurgy_5.Metallurgy_5;
 import hurts.metallurgy_5.block.ModBlocks;

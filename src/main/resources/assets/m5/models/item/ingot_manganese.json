@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "m5:items/ingot_manganese"
+       "layer0": "m5:items/manganese_ingot"
    }
 }

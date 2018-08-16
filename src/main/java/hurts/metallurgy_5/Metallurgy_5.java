@@ -3,11 +3,11 @@ package hurts.metallurgy_5;
 import hurts.metallurgy_5.block.ModBlocks;
 import hurts.metallurgy_5.item.ModItems;
 import hurts.metallurgy_5.proxy.CommonProxy;
-import hurts.metallurgy_5.proxy.util.tabs.TabBlock;
-import hurts.metallurgy_5.proxy.util.tabs.TabIngot;
-import hurts.metallurgy_5.proxy.util.tabs.TabOre;
+import hurts.metallurgy_5.util.tabs.TabBlock;
+import hurts.metallurgy_5.util.tabs.TabIngot;
+import hurts.metallurgy_5.util.tabs.TabOre;
+import hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
-//import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
@@ -34,6 +35,7 @@ public class Metallurgy_5 {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(NAME + " is loading!");
+		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 	}
 	
 	//CreativeTabs

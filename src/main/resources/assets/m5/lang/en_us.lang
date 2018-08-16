@@ -1,10 +1,119 @@
-	# Items
-	item.ingot_manganese.name=Manganese Ingot
-	
-	# Blocks
-	tile.charcoal_block.name=Block of Charcoal
-	
-	#Creative Tab
-	itemGroup.m5.ingots=Metallurgy Ingots
-	itemGroup.m5.blocks=Metallurgy Blocks
-	itemGroup.m5.ores=Metallurgy Ores
+# Items
+// Item
+item.tar.name=Tar
+
+//	Ingot
+item.ingot_manganese.name=Manganese Ingot
+item.ingot_lemurite.name=Lemurite Ingot
+item.ingot_astral_silver.name=Astral Silver Ingot
+item.ingot_carmot.name=Carmot Ingot
+item.ingot_platinum.name=Platinum Ingot
+item.ingot_vyroxeres.name=Vyroxeres Ingot
+item.ingot_zinc.name=Zinc Ingot
+item.ingot_adamantine.name=Adamantine Ingot
+item.ingot_rubracacium.name=Rubracacium Ingot
+item.ingot_midasium.name=Midasium Ingot
+item.ingot_ceruclase.name=Ceruclase Ingot
+item.ingot_deep_iron.name=Deep Iron Ingot
+item.ingot_vulcanite.name=Velcanite Ingot
+item.ingot_prometheum.name=Promethem Ingot
+item.ingot_amordrine.name=Amordrine Ingot
+item.ingot_haderoth.name=Haderoth Ingot
+item.ingot_hepatizon.name=Hepatizon Ingot
+item.ingot_eximite.name=Eximite Ingot
+item.ingot_tin.name=Tin Ingot
+item.ingot_atlarus.name=Atlarus Ingot
+item.ingot_oureclase.name=Oreclase Ingot
+item.ingot_meutoite.name=Meutoite Ingot
+item.ingot_kalendrite.name=Kalendrite Ingot
+item.ingot_tartarite.name=Tartarite Ingot
+item.ingot_sanguinite.name=Sanguinite Ingot
+item.ingot_ignatius.name=Ignatius Ingot
+item.ingot_desichalkos.name=Desichalkis Ingot
+item.ingot_damascus_steel.name=Damascus Steel Ingot
+item.ingot_shadow_steel.name=Shadow Steel Ingot
+item.ingot_orichalcum.name=Orichalcum Ingot
+item.ingot_steel.name=Steel Ingot
+item.ingot_celenegil.name=Celenegil Ingot
+item.ingot_inolashite.name=Inolashite Ingot
+item.ingot_mithril.name=Mithril Ingot
+item.ingot_black_steel.name=Black Steel Ingot
+item.ingot_quicksilver.name=Quicksilver Ingot
+item.ingot_shadow_iron.name=Shadow Iron Ingot
+item.ingot_alduorite.name=Alduorite Ingot
+item.ingot_copper.name=Copper Ingot
+item.ingot_angmallen.name=Angmallen Ingot
+
+//	Dust
+item.dust_sulfur.name= Sulfur
+item.dust_potash.name=Potash
+item.dust_bitumen.name=Bitumen
+
+
+# Blocks
+//Block
+tile.charcoal_block.name=Block of Charcoal
+tile.copper_block.name=Copper Block
+tile.bronze_block.name=Bronze Block
+tile.manganese_block.name=Manganese Block
+tile.tin_block.name=Tin Block
+tile.steel_block.name=Steel Block
+tile.hepatizon_block.name=Hepatizon Block
+tile.prometheum_block.name=Prometheum Block
+tile.angmallen_block.name=Angmallen Block
+tile.eximite_block.name=Eximite Block
+tile.meutoite_block.name=Meutoite Block
+tile.desichalkos_block.name=Desichalkos Block
+tile.black_steel_block.name=Black Steel Block
+tile.infuscolium_block.name=Infuscolium Block
+tile.carmot_block.name=Carmot Block
+tile.astral_silver_block.name=Astral Sivler Block
+tile.oureclase_block.name=Oureclase Block
+tile.deep_iron_block.name=Deep Iron Block
+tile.quicksilver_block.name=Quicksilver Block
+tile.oureclase_block.name=Oureclase Block
+tile.deep_iron_block.name=Deep Iron Block
+tile.quicksilver_block.name=Quicksilver Block
+tile.mithril_block.name=Mithril Block
+tile.haderoth_block.name=Haderoth Block
+tile.atlarus_block.name=Atlarus Block
+tile.adamantine_block.name=Adamantine Block
+tile.celenegil_block.name=Celenegil Block
+tile.tartarite_block.name=Tartarite Block
+tile.rubracium_block.name=Rubracium Block
+tile.midasium_block.name=Midasium Block
+tile.shadow_steel_block.name=Shadow Steel Block
+tile.lemurite_block.name=Lemurite Block
+tile.vyroxeres_block.name=Vyroxeres Block
+tile.kalendrite_block.name=Kalendrite Block
+tile.sanguinite_block.name=Sanguinite Block
+tile.alduorite_block.name=Alduorite Block
+tile.ignatius_block.name=Ignatius Block
+tile.shadow_iron_block.name=Shadow Iron Block
+tile.damascus_steel_block.name=Damascus Steel Block
+tile.orichalcum_block.name=Orichalcum Block
+tile.ceruclase_block.name=Ceruclase Block
+tile.vulcanite_block.name=Vulcanire Block
+tile.inolashite_block.name=Inolashite Block
+tile.amordrine_block.name=Amordrine Block
+tile.zinc_block.name=Zinc Block
+tile.silver_block.name=Silver Block
+tile.platinum_block.name=Platinum Block
+tile.brass_block.name=Brass Block
+tile.sulfur_block.name=Sulfur BLock
+
+//	Ore
+tile.tin_ore.name=Tin Ore
+tile.eximite_ore.name=Eximite Ore
+tile.copper_ore.name=Copper Ore
+tile.meutoite_ore.name=Meutoite Ore
+tile.manganese_ore.name=Manganese Ore
+tile.oureclase_ore.name=Oureclase Ore
+tile.prometheum_ore.name=Prometheum Ore
+tile.deep_iron_ore.name=Deep Iron Ore
+tile.infuscolium_ore.name=Infuscolium Ore
+
+# Creative Tab
+itemGroup.m5.ingots=Metallurgy Ingots
+itemGroup.m5.blocks=Metallurgy Blocks
+itemGroup.m5.ores=Metallurgy Ores
