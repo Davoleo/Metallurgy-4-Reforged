@@ -18,6 +18,15 @@ public class ModBlocks {
 	public static BlockOre oreDeepIron = new BlockOre("deep_iron_ore","oreDeepIron").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreInfuscolium = new BlockOre("infuscolium_ore","oreInfuscolium").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreOureclase = new BlockOre("oureclase_ore","oreOureclase").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreAstralSilver = new BlockOre("astral_silver_ore","oreAstralSilver").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreCarmot = new BlockOre("carmot_ore","oreCarmot").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreMithril = new BlockOre("mithril_ore","oreMithril").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreRubracium = new BlockOre("rubraccium_ore","oreRubracium").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreOrichalcum = new BlockOre("orichalcum_ore","oreOrichalcum").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreAdamantine = new BlockOre("adamantinte_ore","oreAdamantine").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreAtlarus = new BlockOre("atlarus_ore","oreAtlarus").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreZinc = new BlockOre("zinc_ore","oreZinc").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreSilver = new BlockOre("silver_ore","oreSilver").setCreativeTab(Metallurgy_5.tabOre);
 	
 //	Block
 //	public static BlockOre  = new BlockOre("","").setCreativeTab(Metallurgy_5.tabBlock);
@@ -80,6 +89,15 @@ public class ModBlocks {
 				oreDeepIron,
 				oreInfuscolium,
 				oreOureclase,
+				oreAstralSilver,
+				oreCarmot,
+				oreMithril,
+				oreRubracium,
+				oreOrichalcum,
+				oreAdamantine,
+				oreAtlarus,
+				oreZinc,
+				oreSilver,
 				
 //				Block
 				blockCopper,
@@ -148,6 +166,15 @@ public class ModBlocks {
 				oreDeepIron.createItemBlock(),
 				oreInfuscolium.createItemBlock(),
 				oreOureclase.createItemBlock(),
+				oreAstralSilver.createItemBlock(),
+				oreCarmot.createItemBlock(),
+				oreMithril.createItemBlock(),
+				oreRubracium.createItemBlock(),
+				oreOrichalcum.createItemBlock(),
+				oreAdamantine.createItemBlock(),
+				oreAtlarus.createItemBlock(),
+				oreZinc.createItemBlock(),
+				oreSilver.createItemBlock(),
 				
 //				Block
 				blockCopper.createItemBlock(),
@@ -211,6 +238,15 @@ public class ModBlocks {
 		oreDeepIron.registerItemModel(Item.getItemFromBlock(oreDeepIron));
 		oreInfuscolium.registerItemModel(Item.getItemFromBlock(oreInfuscolium));
 		oreOureclase.registerItemModel(Item.getItemFromBlock(oreOureclase));
+		oreAstralSilver.registerItemModel(Item.getItemFromBlock(oreAstralSilver));
+		oreCarmot.registerItemModel(Item.getItemFromBlock(oreCarmot));
+		oreMithril.registerItemModel(Item.getItemFromBlock(oreMithril));
+		oreRubracium.registerItemModel(Item.getItemFromBlock(oreRubracium));
+		oreOrichalcum.registerItemModel(Item.getItemFromBlock(oreOrichalcum));
+		oreAdamantine.registerItemModel(Item.getItemFromBlock(oreAdamantine));
+		oreAtlarus.registerItemModel(Item.getItemFromBlock(oreAtlarus));
+		oreZinc.registerItemModel(Item.getItemFromBlock(oreZinc));
+		oreSilver.registerItemModel(Item.getItemFromBlock(oreSilver));
 		
 //		Block
 		blockCopper.registerItemModel(Item.getItemFromBlock(blockCopper));
