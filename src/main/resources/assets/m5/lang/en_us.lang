@@ -71,6 +71,7 @@ tile.astral_silver_block.name=Astral Sivler Block
 tile.oureclase_block.name=Oureclase Block
 tile.deep_iron_block.name=Deep Iron Block
 tile.quicksilver_block.name=Quicksilver Block
+tile.oureclase_block.name=Oureclase Block
 tile.deep_iron_block.name=Deep Iron Block
 tile.quicksilver_block.name=Quicksilver Block
 tile.mithril_block.name=Mithril Block
@@ -111,16 +112,6 @@ tile.oureclase_ore.name=Oureclase Ore
 tile.prometheum_ore.name=Prometheum Ore
 tile.deep_iron_ore.name=Deep Iron Ore
 tile.infuscolium_ore.name=Infuscolium Ore
-tile.oureclase_ore.name=Oureclase Ore
-tile.astral_silver_ore.name=Astral Sivler Ore
-tile.carmot_ore.name=Carmot Ore
-tile.mithril_ore.name=Mithril Ore
-tile.rubracium_ore.name=Rubracium Ore
-tile.orichalcum_ore.name=Orichalcum Ore
-tile.adamantine_ore.name=Adamantine Ore
-tile.atlarus_ore.name=Atlarus Ore
-tile.zinc_ore.name=Zinc Ore
-tile.silver_ore=Silver Ore
 
 # Creative Tab
 itemGroup.m5.ingots=Metallurgy Ingots

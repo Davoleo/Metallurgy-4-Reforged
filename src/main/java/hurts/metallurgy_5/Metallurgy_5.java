@@ -1,6 +1,5 @@
 package hurts.metallurgy_5;
 
-import hurts.metallurgy_5.armor.ModArmor;
 import hurts.metallurgy_5.block.ModBlocks;
 import hurts.metallurgy_5.item.ModItems;
 import hurts.metallurgy_5.proxy.CommonProxy;
@@ -9,9 +8,7 @@ import hurts.metallurgy_5.util.tabs.TabIngot;
 import hurts.metallurgy_5.util.tabs.TabOre;
 import hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
@@ -29,8 +25,6 @@ public class Metallurgy_5 {
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 5";
 	public static final String VERSION = "1.0.0";
-	
-	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
@@ -66,7 +60,6 @@ public class Metallurgy_5 {
 		public static void registerItems(RegistryEvent.Register<Item> event) {
 			ModItems.register(event.getRegistry());
 			ModBlocks.registerItemBlocks(event.getRegistry());
-			ModArmor.register(event.getRegistry());
 		}
 	
 		@SubscribeEvent
@@ -78,8 +71,6 @@ public class Metallurgy_5 {
 		public static void registerModels(ModelRegistryEvent event) {
 			ModItems.registerModels();
 			ModBlocks.registerModels();
-			ModArmor.registerModels();
 		}
-		
 	}
 }
