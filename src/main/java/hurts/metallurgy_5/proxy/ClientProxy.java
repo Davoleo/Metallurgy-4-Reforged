@@ -10,9 +10,7 @@ public class ClientProxy extends CommonProxy{
     //Registrazione dei rendering degli oggetti
     @Override
     public void registerItemRenderer(Item item, int meta, String id){
-        
-    	ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":" + id, "inventory"));
-    
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":" + id, "inventory"));
     }
     
 }
