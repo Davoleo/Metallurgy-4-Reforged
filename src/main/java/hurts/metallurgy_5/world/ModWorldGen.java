@@ -23,7 +23,7 @@ public class ModWorldGen implements IWorldGenerator {
 	
 //	X : (Max 16), Z : (Max 16), MinY (Min 0), MaxY (Max 265), GrandezzaVena (Min 1), VenePerChunk (Min 1) 
 	private void generateOverworld(Random random, int chunkX, int chunkY, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider1) {
-//		generateOre(ModBlocks.getDefaultState(), world, random, chunkX * 16, chunkY * 16, , , , );
+//		(ModBlocks.getDefaultState(), world, random, chunkX * 16, chunkY * 16, , , , );
 		generateOre(ModBlocks.oreCopper.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 16, 80, 4 + random.nextInt(4), 8);
 		generateOre(ModBlocks.oreDeepIron.getDefaultState(), world, random, chunkX *16, chunkY * 16, 1, 15, 4, 5);
 		generateOre(ModBlocks.oreTin.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 16, 70, 6, 10);
@@ -40,6 +40,11 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModBlocks.oreOrichalcum.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 25, 60, 4, 2);
 		generateOre(ModBlocks.oreAstralSilver.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 10, 15, 3, 3);
 		generateOre(ModBlocks.oreSilver.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 1, 60,2 , 3);
+		generateOre(ModBlocks.orePlatinum.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 1, 30, 3 + random.nextInt(3), 3);
+		generateOre(ModBlocks.oreSulfur.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 1, 15, 6, 4);
+		generateOre(ModBlocks.orePhosphorite.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 1, 80, 4, 4);
+		generateOre(ModBlocks.oreBitumen.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 1, 10, 2 + random.nextInt(3), 4);
+		generateOre(ModBlocks.orePotash.getDefaultState(), world, random, chunkX * 16, chunkY * 16, 10, 65,2 + random.nextInt(3), 4);
 		
 	}
 	
