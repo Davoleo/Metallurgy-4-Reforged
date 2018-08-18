@@ -31,7 +31,8 @@ public class Metallurgy_5 {
 	public static final String VERSION = "1.0.0";
 	
 	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-
+	public static final ItemArmor.ArmorMaterial prometheumMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 15 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
+	
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
 

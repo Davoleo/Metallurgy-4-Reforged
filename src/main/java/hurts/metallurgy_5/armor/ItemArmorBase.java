@@ -8,6 +8,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.StringUtils;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -36,13 +38,30 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
 				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.astral_silver_boots){
 				player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 2));
-				}else {
-					
-					player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
-					
-				}
+		}else {
+			player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
 		}
-
-
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet 
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots){
+				player.addPotionEffect(new PotionEffect(MobEffects.POISON, 20, 2));
+		}
+		
+	}
+	
+	@SideOnly(Side.CLIENT)
+    public static String getPotionDurationString(PotionEffect effect, float durationFactor)
+    {
+        if (effect.getDuration()==20)
+        {
+            return "**:**";
+        }
+        else
+        {
+            int i = MathHelper.floor((float)effect.getDuration() * durationFactor);
+            return StringUtils.ticksToElapsedTime(i);
+        }
+    }
 	
 }
