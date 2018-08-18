@@ -7,15 +7,20 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModArmor {
 
-	public static ItemArmorBase astral_silver_helmet = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.HEAD, "astral_silver_helmet");
-	public static ItemArmorBase astral_silver_chest = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.CHEST, "astral_silver_chest");
-	public static ItemArmorBase astral_silver_legs = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.LEGS, "astral_silver_legs");
-	public static ItemArmorBase astral_silver_boots = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.FEET, "astral_silver_boots");
+	public static ItemArmorBase astral_silver_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.HEAD, "astral_silver_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase astral_silver_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.CHEST, "astral_silver_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase astral_silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.LEGS, "astral_silver_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase astral_silver_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.FEET, "astral_silver_boots").setCreativeTab(Metallurgy_5.tabArmor);
 	
-	public static ItemArmorBase prometheum_helmet = new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet");
-	public static ItemArmorBase prometheum_chest = new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.CHEST, "prometheum_helmet");
-	public static ItemArmorBase prometheum_legs = new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.LEGS, "prometheum_helmet");
-	public static ItemArmorBase prometheum_boots = new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.FEET, "prometheum_helmet");
+	public static ItemArmorBase prometheum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.CHEST, "prometheum_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.LEGS, "prometheum_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumMaterial, EntityEquipmentSlot.FEET, "prometheum_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	
+	public static ItemArmorBase mithril_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase mithril_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilMaterial,EntityEquipmentSlot.CHEST,"mithril_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilMaterial,EntityEquipmentSlot.LEGS,"mithril_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase mithril_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilMaterial,EntityEquipmentSlot.FEET,"mithril_boots").setCreativeTab(Metallurgy_5.tabArmor);
 	
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
@@ -27,7 +32,12 @@ public class ModArmor {
 				prometheum_helmet,
 				prometheum_chest,
 				prometheum_legs,
-				prometheum_boots
+				prometheum_boots,
+				
+				mithril_helmet,
+				mithril_chest,
+				mithril_legs,
+				mithril_boots
 		);
 	}
 	
@@ -41,6 +51,11 @@ public class ModArmor {
 		prometheum_chest.registerItemModel(prometheum_chest, 0);
 		prometheum_legs.registerItemModel(prometheum_legs, 0);
 		prometheum_boots.registerItemModel(prometheum_boots, 0);
+		
+		mithril_helmet.registerItemModel(mithril_helmet, 0);
+		mithril_chest.registerItemModel(mithril_chest, 0);
+		mithril_legs.registerItemModel(mithril_legs, 0);
+		mithril_boots.registerItemModel(mithril_boots, 0);
 		
 	}
 	

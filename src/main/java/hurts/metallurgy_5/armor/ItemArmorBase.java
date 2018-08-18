@@ -32,21 +32,30 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	}
 	
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
+	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {;
+//		ArmorEffect armorE = new ArmorEffect();
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.astral_silver_helmet 
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.astral_silver_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.astral_silver_boots){
-				player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 2));
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.astral_silver_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.astral_silver_boots){
+			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 2));
 		}else {
 			player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
 		}
+		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet 
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots){
-				player.addPotionEffect(new PotionEffect(MobEffects.POISON, 20, 2));
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots){
+			player.removePotionEffect(MobEffects.POISON);
 		}
+		
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet 
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
+				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 2));
+			}
 		
 	}
 	

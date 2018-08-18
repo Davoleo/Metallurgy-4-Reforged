@@ -4,6 +4,7 @@ import hurts.metallurgy_5.armor.ModArmor;
 import hurts.metallurgy_5.block.ModBlocks;
 import hurts.metallurgy_5.item.ModItems;
 import hurts.metallurgy_5.proxy.CommonProxy;
+import hurts.metallurgy_5.util.tabs.TabArmor;
 import hurts.metallurgy_5.util.tabs.TabBlock;
 import hurts.metallurgy_5.util.tabs.TabIngot;
 import hurts.metallurgy_5.util.tabs.TabOre;
@@ -29,9 +30,13 @@ public class Metallurgy_5 {
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 5";
 	public static final String VERSION = "1.0.0";
-	
+    	
+//	Armor
 	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-	public static final ItemArmor.ArmorMaterial prometheumMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 15 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
+	public static final ItemArmor.ArmorMaterial prometheumMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
+	public static final ItemArmor.ArmorMaterial mithrilMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 20, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	
+//	Tools
 	
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
@@ -49,6 +54,7 @@ public class Metallurgy_5 {
 	public static final TabIngot tabIngot = new TabIngot();
 	public static final TabBlock tabBlock = new TabBlock();
 	public static final TabOre tabOre = new TabOre();
+	public static final TabArmor tabArmor = new TabArmor();
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
