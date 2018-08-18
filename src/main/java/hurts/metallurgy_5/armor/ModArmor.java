@@ -23,12 +23,10 @@ public class ModArmor {
 	}
 	
 	public static void registerModels() {
-		astral_silver_helmet.registerItemModel(astral_silver_helmet);
-		astral_silver_chest.registerItemModel(astral_silver_chest);
-		astral_silver_legs.registerItemModel(astral_silver_legs);
-		astral_silver_boots.registerItemModel(astral_silver_boots);
+		astral_silver_helmet.registerItemModel(astral_silver_helmet, 0);
+		astral_silver_chest.registerItemModel (astral_silver_chest, 0);
+		astral_silver_legs.registerItemModel(astral_silver_legs, 0);
+		astral_silver_boots.registerItemModel(astral_silver_boots, 0);
 	}
-	
-//	ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + id, "inventory"));
 	
 }
