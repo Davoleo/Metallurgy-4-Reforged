@@ -1,6 +1,7 @@
 package hurts.metallurgy_5.armor;
 
 import hurts.metallurgy_5.Metallurgy_5;
+import hurts.metallurgy_5.util.EventHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -12,8 +13,10 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
@@ -32,8 +35,10 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	}
 	
 	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {;
-//		ArmorEffect armorE = new ArmorEffect();
+	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
+		
+		PlayerTickEvent event = new PlayerTickEvent(null, player);
+		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.astral_silver_helmet 
 			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.astral_silver_chest
 			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
@@ -54,11 +59,11 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
 				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
 				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
-				player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 30, 2));
+				EventHandler.checkEntity(event);
+			
 			}
-		
-	}
-	
+		}
+
 	@SideOnly(Side.CLIENT)
     public static String getPotionDurationString(PotionEffect effect, float durationFactor)
     {
