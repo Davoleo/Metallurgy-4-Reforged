@@ -3,51 +3,50 @@
 item.tar.name=Tar
 
 //	Ingot
-item.ingot_manganese.name=Manganese Ingot
-item.ingot_lemurite.name=Lemurite Ingot
-item.ingot_astral_silver.name=Astral Silver Ingot
-item.ingot_carmot.name=Carmot Ingot
-item.ingot_platinum.name=Platinum Ingot
-item.ingot_vyroxeres.name=Vyroxeres Ingot
-item.ingot_zinc.name=Zinc Ingot
 item.ingot_adamantine.name=Adamantine Ingot
-item.ingot_rubracacium.name=Rubracacium Ingot
-item.ingot_midasium.name=Midasium Ingot
-item.ingot_ceruclase.name=Ceruclase Ingot
-item.ingot_deep_iron.name=Deep Iron Ingot
-item.ingot_vulcanite.name=Velcanite Ingot
-item.ingot_prometheum.name=Promethem Ingot
+item.ingot_alduorite.name=Alduorite Ingot
 item.ingot_amordrine.name=Amordrine Ingot
+item.ingot_angmallen.name=Angmallen Ingot
+item.ingot_astral_silver.name=Astral Silver Ingot
+item.ingot_atlarus.name=Atlarus Ingot
+item.ingot_black_steel.name=Black Steel Ingot
+item.ingot_carmot.name=Carmot Ingot
+item.ingot_celenegil.name=Celenegil Ingot
+item.ingot_ceruclase.name=Ceruclase Ingot
+item.ingot_copper.name=Copper Ingot
+item.ingot_deep_iron.name=Deep Iron Ingot
+item.ingot_desichalkos.name=Desichalkos Ingot
+item.ingot_eximite.name=Eximite Ingot
 item.ingot_haderoth.name=Haderoth Ingot
 item.ingot_hepatizon.name=Hepatizon Ingot
-item.ingot_eximite.name=Eximite Ingot
-item.ingot_tin.name=Tin Ingot
-item.ingot_atlarus.name=Atlarus Ingot
-item.ingot_oureclase.name=Oreclase Ingot
-item.ingot_meutoite.name=Meutoite Ingot
-item.ingot_kalendrite.name=Kalendrite Ingot
-item.ingot_tartarite.name=Tartarite Ingot
-item.ingot_sanguinite.name=Sanguinite Ingot
 item.ingot_ignatius.name=Ignatius Ingot
-item.ingot_desichalkos.name=Desichalkis Ingot
-item.ingot_damascus_steel.name=Damascus Steel Ingot
-item.ingot_shadow_steel.name=Shadow Steel Ingot
-item.ingot_orichalcum.name=Orichalcum Ingot
-item.ingot_steel.name=Steel Ingot
-item.ingot_celenegil.name=Celenegil Ingot
 item.ingot_inolashite.name=Inolashite Ingot
+item.ingot_kalendrite.name=Kalendrite Ingot
+item.ingot_lemurite.name=Lemurite Ingot
+item.ingot_manganese.name=Manganese Ingot
+item.ingot_meutoite.name=Meutoite Ingot
+item.ingot_midasium.name=Midasium Ingot
 item.ingot_mithril.name=Mithril Ingot
-item.ingot_black_steel.name=Black Steel Ingot
+item.ingot_orichalcum.name=Orichalcum Ingot
+item.ingot_oureclase.name=Oureclase Ingot
+item.ingot_platinum.name=Platinum Ingot
+item.ingot_prometheum.name=Promethem Ingot
 item.ingot_quicksilver.name=Quicksilver Ingot
+item.ingot_rubracacium.name=Rubracacium Ingot
+item.ingot_sanguinite.name=Sanguinite Ingot
 item.ingot_shadow_iron.name=Shadow Iron Ingot
-item.ingot_alduorite.name=Alduorite Ingot
-item.ingot_copper.name=Copper Ingot
-item.ingot_angmallen.name=Angmallen Ingot
+item.ingot_shadow_steel.name=Shadow Steel Ingot
+item.ingot_steel.name=Steel Ingot
+item.ingot_tartarite.name=Tartarite Ingot
+item.ingot_tin.name=Tin Ingot
+item.ingot_vulcanite.name=Vulcanite Ingot
+item.ingot_vyroxeres.name=Vyroxeres Ingot
+item.ingot_zinc.name=Zinc Ingot
 
 //	Dust
-item.dust_sulfur.name= Sulfur
 item.dust_potash.name=Potash
 item.dust_bitumen.name=Bitumen
+item.dust_sulfur.name=Sulfur
 
 
 # Blocks
@@ -102,25 +101,24 @@ tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
 //	Ore
-tile.tin_ore.name=Tin Ore
-tile.eximite_ore.name=Eximite Ore
-tile.copper_ore.name=Copper Ore
-tile.meutoite_ore.name=Meutoite Ore
-tile.manganese_ore.name=Manganese Ore
-tile.oureclase_ore.name=Oureclase Ore
-tile.prometheum_ore.name=Prometheum Ore
-tile.deep_iron_ore.name=Deep Iron Ore
-tile.infuscolium_ore.name=Infuscolium Ore
-tile.oureclase_ore.name=Oureclase Ore
-tile.astral_silver_ore.name=Astral Sivler Ore
-tile.carmot_ore.name=Carmot Ore
-tile.mithril_ore.name=Mithril Ore
-tile.rubracium_ore.name=Rubracium Ore
-tile.orichalcum_ore.name=Orichalcum Ore
 tile.adamantine_ore.name=Adamantine Ore
+tile.astral_silver_ore.name=Astral Sivler Ore
 tile.atlarus_ore.name=Atlarus Ore
-tile.zinc_ore.name=Zinc Ore
+tile.copper_ore.name=Copper Ore
+tile.carmot_ore.name=Carmot Ore
+tile.deep_iron_ore.name=Deep Iron Ore
+tile.eximite_ore.name=Eximite Ore
+tile.infuscolium_ore.name=Infuscolium Ore
+tile.manganese_ore.name=Manganese Ore
+tile.meutoite_ore.name=Meutoite Ore
+tile.mithril_ore.name=Mithril Ore
+tile.oureclase_ore.name=Oureclase Ore
+tile.orichalcum_ore.name=Orichalcum Ore
+tile.prometheum_ore.name=Prometheum Ore
+tile.rubracium_ore.name=Rubracium Ore
 tile.silver_ore=Silver Ore
+tile.tin_ore.name=Tin Ore
+tile.zinc_ore.name=Zinc Ore
 
 # Creative Tab
 itemGroup.m5.ingots=Metallurgy Ingots
