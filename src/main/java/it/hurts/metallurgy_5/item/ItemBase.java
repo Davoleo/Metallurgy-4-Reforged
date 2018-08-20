@@ -1,10 +1,11 @@
-package hurts.metallurgy_5.item;
+package it.hurts.metallurgy_5.item;
 
+import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 //import net.minecraftforge.fml.common.Mod;
 //import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import hurts.metallurgy_5.Metallurgy_5;;
+;
 
 public class ItemBase extends Item{
 

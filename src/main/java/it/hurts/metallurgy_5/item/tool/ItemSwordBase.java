@@ -1,6 +1,6 @@
-package hurts.metallurgy_5.item.tool;
+package it.hurts.metallurgy_5.item.tool;
 
-import hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSword;

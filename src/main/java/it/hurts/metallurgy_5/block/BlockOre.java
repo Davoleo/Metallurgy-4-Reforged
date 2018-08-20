@@ -1,4 +1,4 @@
-package hurts.metallurgy_5.block;
+package it.hurts.metallurgy_5.block;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

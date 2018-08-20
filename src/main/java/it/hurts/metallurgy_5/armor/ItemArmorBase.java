@@ -1,7 +1,7 @@
-package hurts.metallurgy_5.armor;
+package it.hurts.metallurgy_5.armor;
 
-import hurts.metallurgy_5.Metallurgy_5;
-import hurts.metallurgy_5.util.EventHandler;
+import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.EventHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;

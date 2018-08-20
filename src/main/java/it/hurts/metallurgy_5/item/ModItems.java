@@ -1,4 +1,4 @@
-package hurts.metallurgy_5.item;
+package it.hurts.metallurgy_5.item;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;

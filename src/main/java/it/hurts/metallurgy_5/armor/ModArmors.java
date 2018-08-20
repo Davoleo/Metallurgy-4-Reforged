@@ -1,6 +1,6 @@
-package hurts.metallurgy_5.armor;
+package it.hurts.metallurgy_5.armor;
 
-import hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
