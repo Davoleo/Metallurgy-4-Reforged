@@ -4,10 +4,7 @@ import hurts.metallurgy_5.armor.ModArmor;
 import hurts.metallurgy_5.block.ModBlocks;
 import hurts.metallurgy_5.item.ModItems;
 import hurts.metallurgy_5.proxy.CommonProxy;
-import hurts.metallurgy_5.util.tabs.TabArmor;
-import hurts.metallurgy_5.util.tabs.TabBlock;
-import hurts.metallurgy_5.util.tabs.TabIngot;
-import hurts.metallurgy_5.util.tabs.TabOre;
+import hurts.metallurgy_5.util.tabs.*;
 import hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,6 +31,13 @@ public class Metallurgy_5 {
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 5";
 	public static final String VERSION = "1.0.0";
+
+	//CreativeTabs
+	public static final TabIngot tabIngot = new TabIngot();
+	public static final TabBlock tabBlock = new TabBlock();
+	public static final TabOre tabOre = new TabOre();
+	public static final TabArmor tabArmor = new TabArmor();
+	public static final TabTool tabTool = new TabTool();
     	
 //	Armor
 	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
@@ -55,24 +59,20 @@ public class Metallurgy_5 {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 	}
-	
-	//CreativeTabs
-	public static final TabIngot tabIngot = new TabIngot();
-	public static final TabBlock tabBlock = new TabBlock();
-	public static final TabOre tabOre = new TabOre();
-	public static final TabArmor tabArmor = new TabArmor();
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		
 	}
 
-	@SubscribeEvent
+
+	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event, LivingHurtEvent e, EntityPlayer player) {
-		
+
+		//TODO : Move method in another class
 		DamageSource source = e.getSource();
-		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet 
+
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet
 				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
 				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
 				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots) {
