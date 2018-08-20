@@ -39,7 +39,8 @@ public class Metallurgy_5 {
 	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial prometheumMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
 	public static final ItemArmor.ArmorMaterial mithrilMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 20, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-	public static final ItemArmor.ArmorMaterial carmotMaterial = EnumHelper.addArmorMaterial("CARMOT", MODID + ":carmot", 14, new int[]{3, 4, 5, 2}, 7, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ItemArmor.ArmorMaterial carmotMaterial = EnumHelper.addArmorMaterial("CARMOT", MODID + ":carmot", 17, new int[]{2, 4, 5, 2}, 7, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ItemArmor.ArmorMaterial adamantineMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 27, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
 	
 //	Tool
 	

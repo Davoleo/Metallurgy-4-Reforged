@@ -27,6 +27,11 @@ public class ModArmor {
 	public static ItemArmorBase carmot_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotMaterial,EntityEquipmentSlot.LEGS,"carmot_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase carmot_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotMaterial,EntityEquipmentSlot.FEET,"carmot_boots").setCreativeTab(Metallurgy_5.tabArmor);
 	
+	public static ItemArmorBase adamantine_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineMaterial,EntityEquipmentSlot.HEAD,"adamantine_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase adamantine_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineMaterial,EntityEquipmentSlot.CHEST,"adamantine_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase adamantine_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineMaterial,EntityEquipmentSlot.LEGS,"adamantine_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase adamantine_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineMaterial,EntityEquipmentSlot.FEET,"adamantine_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
 				astral_silver_helmet,
@@ -47,7 +52,12 @@ public class ModArmor {
 				carmot_helmet,
 				carmot_chest,
 				carmot_legs,
-				carmot_boots
+				carmot_boots,
+				
+				adamantine_helmet,
+				adamantine_chest,
+				adamantine_legs,
+				adamantine_boots
 		);
 	}
 	
@@ -72,6 +82,10 @@ public class ModArmor {
 		carmot_legs.registerItemModel(carmot_legs, 0);
 		carmot_boots.registerItemModel(carmot_boots, 0);
 		
+		adamantine_helmet.registerItemModel(adamantine_helmet,0);
+		adamantine_chest.registerItemModel(adamantine_chest, 0);
+		adamantine_legs.registerItemModel(adamantine_legs, 0);
+		adamantine_boots.registerItemModel(adamantine_boots, 0);
 	}
 	
 }

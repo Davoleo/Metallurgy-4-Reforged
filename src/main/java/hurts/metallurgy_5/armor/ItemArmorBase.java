@@ -9,8 +9,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.StringUtils;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -37,6 +35,8 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
 		
+		boolean b = true;
+		
 		PlayerTickEvent event = new PlayerTickEvent(null, player);
 		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.astral_silver_helmet 
@@ -56,13 +56,33 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		}
 		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet 
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
-				EventHandler.checkEntity(event);
-			
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
+			b=true;
+			}else{
+				b=false;
 			}
+		EventHandler.checkEntity(event, b);
+		
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.carmot_helmet 
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.carmot_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.carmot_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.carmot_boots) {
+			player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 20, 1));
+		}else {
+			player.removePotionEffect(MobEffects.HASTE);
 		}
+		
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.adamantine_helmet 
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.adamantine_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.adamantine_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.adamantine_boots) {
+				player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 1));
+			}else {
+				player.removePotionEffect(MobEffects.SATURATION);
+			}
+	}
 
 	@SideOnly(Side.CLIENT)
     public static String getPotionDurationString(PotionEffect effect, float durationFactor)
@@ -70,12 +90,10 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
         if (effect.getDuration()==20)
         {
             return "**:**";
+        }else {
+        	return "**:**";
         }
-        else
-        {
-            int i = MathHelper.floor((float)effect.getDuration() * durationFactor);
-            return StringUtils.ticksToElapsedTime(i);
-        }
+		
     }
 	
 }

@@ -1,5 +1,5 @@
 # Items
-// Item
+//  Item
 item.tar.name=Tar
 
 //	Ingot
@@ -16,6 +16,7 @@ item.ingot_ceruclase.name=Ceruclase Ingot
 item.ingot_copper.name=Copper Ingot
 item.ingot_deep_iron.name=Deep Iron Ingot
 item.ingot_desichalkos.name=Desichalkos Ingot
+item.ingot_damascus_steel.name=Damascus Steel Ingot
 item.ingot_eximite.name=Eximite Ingot
 item.ingot_haderoth.name=Haderoth Ingot
 item.ingot_hepatizon.name=Hepatizon Ingot
@@ -48,9 +49,35 @@ item.dust_potash.name=Potash
 item.dust_bitumen.name=Bitumen
 item.dust_sulfur.name=Sulfur
 
+//  Armor
+item.adamantine_helmet.name=Adamantine Helmet
+item.adamantine_chest.name=Adamantine Chest
+item.adamantine_legs.name=Adamantine Leggins
+item.adamantine_boots.name=Adamantine Boots
+
+item.astral_silver_helmet.name=Astral Silver Helmet
+item.astral_silver_chest.name=Astral Sivler Chestplate
+item.astral_silver_legs.name=Astral Silver Leggins
+item.astral_silver_boots.name=Astral Silver Boots
+
+item.carmot_helmet.name=Carmot Helmet
+item.carmot_chest.name=Carmot Chest
+item.carmot_legs.name=Carmot Leggins
+item.carmot_boots.name=Carmot Boots
+
+item.mithril_helmet.name=Mithril Helmet
+item.mithril_chest.name=Mithril Chestplate
+item.mithril_legs.name=Mithril Leggins
+item.mithril_boots.name=Mithril Boots
+
+
+item.prometheum_helmet.name=Prometheum Helmet
+item.prometheum_chest.name=Prometheum Chestplate
+item.prometheum_legs.name=Prometheum Leggins
+item.prometheum_boots.name=Prometheum Boots
 
 # Blocks
-//Block
+//  Block
 tile.charcoal_block.name=Block of Charcoal
 tile.copper_block.name=Copper Block
 tile.bronze_block.name=Bronze Block
@@ -104,6 +131,7 @@ tile.sulfur_block.name=Sulfur BLock
 tile.adamantine_ore.name=Adamantine Ore
 tile.astral_silver_ore.name=Astral Sivler Ore
 tile.atlarus_ore.name=Atlarus Ore
+tile.bitumen_ore.name=Bitumen Ore
 tile.copper_ore.name=Copper Ore
 tile.carmot_ore.name=Carmot Ore
 tile.deep_iron_ore.name=Deep Iron Ore
@@ -114,9 +142,13 @@ tile.meutoite_ore.name=Meutoite Ore
 tile.mithril_ore.name=Mithril Ore
 tile.oureclase_ore.name=Oureclase Ore
 tile.orichalcum_ore.name=Orichalcum Ore
+tile.platinum_ore.name=Platinum Ore
+tile.potash_ore.name=Potash Ore
+tile.phosphorite_ore.name=Phosphorite Ore
 tile.prometheum_ore.name=Prometheum Ore
 tile.rubracium_ore.name=Rubracium Ore
-tile.silver_ore=Silver Ore
+tile.silver_ore_name=Silver Ore
+tile.sulfur_ore.name=Sulfur Ore
 tile.tin_ore.name=Tin Ore
 tile.zinc_ore.name=Zinc Ore
 
@@ -124,3 +156,4 @@ tile.zinc_ore.name=Zinc Ore
 itemGroup.m5.ingots=Metallurgy Ingots
 itemGroup.m5.blocks=Metallurgy Blocks
 itemGroup.m5.ores=Metallurgy Ores
+itemGroup.m5.armor=Metallurgy Armor
