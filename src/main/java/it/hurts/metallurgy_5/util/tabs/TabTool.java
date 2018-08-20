@@ -1,6 +1,6 @@
-package hurts.metallurgy_5.util.tabs;
+package it.hurts.metallurgy_5.util.tabs;
 
-import hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

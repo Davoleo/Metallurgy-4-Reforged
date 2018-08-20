@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "m5:items/armor/prometheum_legs"
+		"layer0": "m5:items/armors/prometheum_legs"
 	}
 }

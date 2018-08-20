@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "m5:items/armor/adamantine_boots"
+		"layer0": "m5:items/armors/adamantine_boots"
 	}
 }
