@@ -1,7 +1,12 @@
 package hurts.metallurgy_5.item.tool;
 
 import hurts.metallurgy_5.Metallurgy_5;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /*************************************************
  * Author: Davoleo
@@ -24,9 +29,10 @@ public class ItemPickaxeBase extends ItemPickaxe {
         setCreativeTab(Metallurgy_5.tabTool);
     }
 
-    public void registerItemModel()
+    @SideOnly(Side.CLIENT)
+    public void registerItemModel(Item item, int meta)
     {
-        Metallurgy_5.proxy.registerItemRenderer(this, 0, name);
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":tool/pickaxe/" + name, "inventory"));
     }
 
 }

@@ -39,45 +39,45 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		
 		PlayerTickEvent event = new PlayerTickEvent(null, player);
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.astral_silver_helmet 
-			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.astral_silver_chest
-			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
-			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.astral_silver_boots){
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.astral_silver_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.astral_silver_boots){
 			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 2));
 		}else {
 			player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
 		}
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet 
-			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
-			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
-			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots){
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.prometheum_helmet
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.prometheum_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.prometheum_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.prometheum_boots){
 			player.removePotionEffect(MobEffects.POISON);
 		}
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet 
-			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
-			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
-			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.mithril_helmet
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.mithril_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.mithril_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.mithril_boots){
 			b=true;
 			}else{
 				b=false;
 			}
 		EventHandler.checkEntity(event, b);
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.carmot_helmet 
-			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.carmot_chest
-			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.carmot_legs
-			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.carmot_boots) {
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.carmot_helmet
+			&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.carmot_chest
+			&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.carmot_legs
+			&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.carmot_boots) {
 			player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 20, 1));
 		}else {
 			player.removePotionEffect(MobEffects.HASTE);
 		}
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.adamantine_helmet 
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.adamantine_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.adamantine_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.adamantine_boots) {
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.adamantine_helmet
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.adamantine_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.adamantine_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.adamantine_boots) {
 				player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 1));
 			}else {
 				player.removePotionEffect(MobEffects.SATURATION);

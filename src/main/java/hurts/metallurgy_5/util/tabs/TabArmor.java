@@ -1,7 +1,7 @@
 package hurts.metallurgy_5.util.tabs;
 
 import hurts.metallurgy_5.Metallurgy_5;
-import hurts.metallurgy_5.armor.ModArmor;
+import hurts.metallurgy_5.armor.ModArmors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -13,7 +13,7 @@ public class TabArmor extends CreativeTabs{
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ModArmor.mithril_helmet);
+		return new ItemStack(ModArmors.mithril_helmet);
 	}
 	
 }

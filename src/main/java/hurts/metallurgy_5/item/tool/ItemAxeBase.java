@@ -1,7 +1,12 @@
 package hurts.metallurgy_5.item.tool;
 
 import hurts.metallurgy_5.Metallurgy_5;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /*************************************************
  * Author: Davoleo
@@ -17,16 +22,17 @@ public class ItemAxeBase extends ItemAxe {
 
     public ItemAxeBase(ToolMaterial material, String name)
     {
-        super(material, material.getAttackDamage() + 2F, -3.1F);
+        super(material);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Metallurgy_5.tabTool);
         this.name = name;
     }
 
-    public void registerItemModel()
+    @SideOnly(Side.CLIENT)
+    public void registerItemModel(Item item, int meta)
     {
-        Metallurgy_5.proxy.registerItemRenderer(this, 0, name);
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":tool/axe/" + name, "inventory"));
     }
 
 }
