@@ -67,20 +67,8 @@ public class Metallurgy_5 {
 		
 	}
 
-	@SubscribeEvent
-	public void postInit(FMLPostInitializationEvent event, LivingHurtEvent e, EntityPlayer player) {
-		
-		DamageSource source = e.getSource();
-		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.prometheum_helmet 
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.prometheum_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.prometheum_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.prometheum_boots) {
-			if (source == DamageSource.MAGIC) {
-				player.removeActivePotionEffect(MobEffects.POISON);
-				player.setAbsorptionAmount(2);
-		}
-	}
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
 }
 	
 	@Mod.EventBusSubscriber

@@ -7,9 +7,10 @@ public class ModItems {
 	
 	//Other resources
 	public static ItemOre dustBitumen = new ItemOre ("dust_bitumen","dustBitumen");
-	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");	 
+	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");
+	public static ItemOre dustPhosphorus = new ItemOre("dust_phosphorus", "dustPhosphorus");
 	public static ItemOre dustPotash = new ItemOre ("dust_potash","dustPotash");
-	public static ItemOre dustSulfur = new ItemOre ("dust_sulfur","dustSulfur");	 
+	public static ItemOre dustSulfur = new ItemOre ("dust_sulfur","dustSulfur");
 		 
 	
 	//Ingot
@@ -108,6 +109,7 @@ public class ModItems {
 //				Other Resources
 				dustBitumen,
 				oreslimeball,
+				dustPhosphorus,
 				dustPotash,
 				dustSulfur
 				
@@ -161,6 +163,7 @@ public class ModItems {
 		
 		dustBitumen.registerItemModel();
 		oreslimeball.registerItemModel();
+		dustPhosphorus.registerItemModel();
 		dustPotash.registerItemModel();
 		dustSulfur.registerItemModel();
 
