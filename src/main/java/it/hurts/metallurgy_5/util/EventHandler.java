@@ -3,7 +3,6 @@ package it.hurts.metallurgy_5.util;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;

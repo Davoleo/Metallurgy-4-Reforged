@@ -9,7 +9,6 @@ public class CommonProxy {
         return I18n.format(unlocalized, args);
     }
 
-    //Vuoto perché dal lato server
     public void registerItemRenderer(Item item, int meta, String id){
     	
     }

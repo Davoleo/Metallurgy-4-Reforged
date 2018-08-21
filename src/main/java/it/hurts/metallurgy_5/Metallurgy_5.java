@@ -5,20 +5,16 @@ import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
-import hurts.metallurgy_5.util.tabs.*;
-import it.hurts.metallurgy_5.world.ModWorldGen;
 import it.hurts.metallurgy_5.util.tabs.*;
+import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.DamageSource;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,7 +22,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
@@ -51,7 +46,7 @@ public class Metallurgy_5 {
 
 
 //	Tool
-	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 3, 800, 8F, 10F, 4);
+	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 7, 1550, 8F, 8F, 22);
 	
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
@@ -72,10 +67,10 @@ public class Metallurgy_5 {
 
 
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event, LivingHurtEvent e, EntityPlayer player) {
+	public void postInit(FMLPostInitializationEvent event) {
 
 		//TODO : Move method in another class
-		DamageSource source = e.getSource();
+		/*DamageSource source = e.getSource();
 
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.prometheum_helmet
 				&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.prometheum_chest
@@ -85,7 +80,7 @@ public class Metallurgy_5 {
 				player.removeActivePotionEffect(MobEffects.POISON);
 				player.setAbsorptionAmount(2);
 		}
-	}
+	}*/
 }
 	
 	@Mod.EventBusSubscriber

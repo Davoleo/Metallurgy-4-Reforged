@@ -6,8 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientProxy extends CommonProxy{
-	//Implementato poiché client side
-    //Registrazione dei rendering degli oggetti
+
+    //TODO : ClassNotFoundException ClientProxy
+
     @Override
     public void registerItemRenderer(Item item, int meta, String id){
     	ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":" + id, "inventory"));
