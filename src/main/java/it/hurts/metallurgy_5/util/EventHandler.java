@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class EventHandler {
 
-	//TODO : Implement in the right way
 /*	@SubscribeEvent
 	public static void effetto(PotionEffect effect) {
 		effect.doesShowParticles();

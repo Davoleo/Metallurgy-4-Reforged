@@ -51,7 +51,7 @@ public class Metallurgy_5 {
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
 
-	@SidedProxy(serverSide = "CommonProxy", clientSide = "ClientProxy")
+	@SidedProxy(serverSide = "it.hurts.metallurgy_5.proxy.CommonProxy", clientSide = "it.hurts.metallurgy_5.proxy.ClientProxy")
 	public static CommonProxy proxy;
 	
 	@Mod.EventHandler

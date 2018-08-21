@@ -29,7 +29,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	
 	@SideOnly(Side.CLIENT)
 	public void registerItemModel(Item item, int meta) {
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armors/" + name, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + name, "inventory"));
 	}
 	
 	@Override

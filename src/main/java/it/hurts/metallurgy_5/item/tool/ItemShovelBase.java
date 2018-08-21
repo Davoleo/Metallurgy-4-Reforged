@@ -32,7 +32,7 @@ public class ItemShovelBase extends ItemSpade {
     @SideOnly(Side.CLIENT)
     public void registerItemModel(Item item, int meta)
     {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":tool/shovel/" + name, "inventory"));
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":tool/" + name, "inventory"));
     }
 
 }
