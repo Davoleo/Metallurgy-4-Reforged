@@ -1,8 +1,7 @@
-# Items
-//  Item
+#Items
 item.tar.name=Tar
 
-//	Ingot
+#Ingots
 item.ingot_adamantine.name=Adamantine Ingot
 item.ingot_alduorite.name=Alduorite Ingot
 item.ingot_amordrine.name=Amordrine Ingot
@@ -44,12 +43,12 @@ item.ingot_vulcanite.name=Vulcanite Ingot
 item.ingot_vyroxeres.name=Vyroxeres Ingot
 item.ingot_zinc.name=Zinc Ingot
 
-//	Dust
+#Dust
 item.dust_potash.name=Potash
 item.dust_bitumen.name=Bitumen
 item.dust_sulfur.name=Sulfur
 
-//  Armor
+#Armors
 item.adamantine_helmet.name=Adamantine Helmet
 item.adamantine_chest.name=Adamantine Chest
 item.adamantine_legs.name=Adamantine Leggins
@@ -87,7 +86,6 @@ item.rubracacium_legs.name=Rubracacium Legs
 item.rubracacium_boots.name=Rubracacium Boots
 
 # Blocks
-//  Block
 tile.charcoal_block.name=Block of Charcoal
 tile.copper_block.name=Copper Block
 tile.bronze_block.name=Bronze Block
@@ -137,7 +135,7 @@ tile.platinum_block.name=Platinum Block
 tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
-//	Ore
+#Ores
 tile.adamantine_ore.name=Adamantine Ore
 tile.astral_silver_ore.name=Astral Sivler Ore
 tile.atlarus_ore.name=Atlarus Ore
@@ -157,7 +155,7 @@ tile.potash_ore.name=Potash Ore
 tile.phosphorite_ore.name=Phosphorite Ore
 tile.prometheum_ore.name=Prometheum Ore
 tile.rubracium_ore.name=Rubracium Ore
-tile.silver_ore_name=Silver Ore
+tile.silver_ore.name=Silver Ore
 tile.sulfur_ore.name=Sulfur Ore
 tile.tin_ore.name=Tin Ore
 tile.zinc_ore.name=Zinc Ore
