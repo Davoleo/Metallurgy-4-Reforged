@@ -1,7 +1,7 @@
 package it.hurts.metallurgy_5.util.tabs;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.armor.ModArmors;
+import it.hurts.metallurgy_5.item.armor.ModArmors;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

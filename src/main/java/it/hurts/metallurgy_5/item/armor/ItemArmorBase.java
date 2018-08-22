@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.armor;
+package it.hurts.metallurgy_5.item.armor;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.util.EventHandler;

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures":{
-    "layer0":"m5:items/tools/adamantine_axe"
+    "layer0":"m5:items/tools/prometheum_hoe"
   }
 }

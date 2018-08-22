@@ -1,6 +1,6 @@
 package it.hurts.metallurgy_5;
 
-import it.hurts.metallurgy_5.armor.ModArmors;
+import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.tool.ModTools;
@@ -47,6 +47,10 @@ public class Metallurgy_5 {
 
 //	Tool
 	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 7, 1550, 8F, 8F, 22);
+	public static final ItemTool.ToolMaterial astralSilverToolMaterial = EnumHelper.addToolMaterial("ASTRAL_SILVER", 5, 35, 12F, 5F, 30);
+	public static final ItemTool.ToolMaterial carmotToolMaterial = EnumHelper.addToolMaterial("CARMOT", 5, 50, 10F, 5F, 40);
+	public static final ItemTool.ToolMaterial mithrilToolMaterial = EnumHelper.addToolMaterial("MITHRIL", 5, 1000, 8F, 7F, 18);
+	public static final ItemTool.ToolMaterial prometheumToolMaterial = EnumHelper.addToolMaterial("PROMETHEUM", 2, 200, 5F, 5F, 16);
 	
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
