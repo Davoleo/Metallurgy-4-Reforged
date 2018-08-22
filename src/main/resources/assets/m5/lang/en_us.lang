@@ -55,6 +55,11 @@ item.adamantine_chest.name=Adamantine Chest
 item.adamantine_legs.name=Adamantine Leggins
 item.adamantine_boots.name=Adamantine Boots
 
+item.atlarus_helmet.name=Atlarus Helmet
+item.atlarus_chest.name=Atlarus Chest
+item.atlarus_legs.name=Atlarus Legs
+item.atlarus_boots.name=Atlarus Boots
+
 item.astral_silver_helmet.name=Astral Silver Helmet
 item.astral_silver_chest.name=Astral Sivler Chestplate
 item.astral_silver_legs.name=Astral Silver Leggins
@@ -75,6 +80,11 @@ item.prometheum_helmet.name=Prometheum Helmet
 item.prometheum_chest.name=Prometheum Chestplate
 item.prometheum_legs.name=Prometheum Leggins
 item.prometheum_boots.name=Prometheum Boots
+
+item.rubracacium_helmet.name=Rubracacium Helmet
+item.rubracacium_chest.name=Rubracacium Chest
+item.rubracacium_legs.name=Rubracacium Legs
+item.rubracacium_boots.name=Rubracacium Boots
 
 # Blocks
 //  Block

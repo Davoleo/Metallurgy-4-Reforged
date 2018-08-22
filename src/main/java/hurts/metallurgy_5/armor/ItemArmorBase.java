@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,13 +39,14 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		boolean b = true;
 		
 		PlayerTickEvent event = new PlayerTickEvent(null, player);
+		LivingHurtEvent hurt = new LivingHurtEvent(player, null, 0); 
 		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.astral_silver_helmet 
 			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.astral_silver_chest
 			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.astral_silver_legs
 			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.astral_silver_boots){
 			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 2));
-		}else {
+		}else{
 			player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
 		}
 		
@@ -55,15 +57,12 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 			player.removePotionEffect(MobEffects.POISON);
 		}
 		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet 
-			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
-			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
-			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
-			b=true;
-			}else{
-				b=false;
-			}
-		EventHandler.checkEntity(event, b);
+//		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet 
+//			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
+//			&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
+//			&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
+//			
+//			}
 		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.carmot_helmet 
 			&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.carmot_chest
@@ -79,9 +78,24 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.adamantine_legs
 				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.adamantine_boots) {
 				player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 1));
-			}else {
+			}else{
 				player.removePotionEffect(MobEffects.SATURATION);
 			}
+		
+		if (player.inventory.armorItemInSlot(3).getItem() == ModArmor.atlarus_helmet 
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.atlarus_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.atlarus_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.atlarus_boots) {
+			player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 20, 1));
+		}else{
+			player.removePotionEffect(MobEffects.HASTE);
+		}
+		
+		if(player.inventory.armorItemInSlot(3).getItem() == ModArmor.rubracacium_helmet 
+				&&player.inventory.armorItemInSlot(2).getItem() == ModArmor.rubracacium_chest
+				&&player.inventory.armorItemInSlot(1).getItem() == ModArmor.rubracacium_legs
+				&&player.inventory.armorItemInSlot(0).getItem() == ModArmor.rubracacium_boots) {
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -90,7 +104,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
         if (effect.getDuration()==20)
         {
             return "**:**";
-        }else {
+        }else{
         	return "**:**";
         }
 		
