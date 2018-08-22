@@ -1,6 +1,6 @@
-package hurts.metallurgy_5.block;
+package it.hurts.metallurgy_5.block;
 
-import hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import java.util.Random;

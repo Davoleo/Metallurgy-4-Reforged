@@ -1,10 +1,9 @@
-<<<<<<< HEAD:src/main/java/hurts/metallurgy_5/util/EventHandler.java
-package hurts.metallurgy_5.util;
+package it.hurts.metallurgy_5.util;
 
 import java.util.List;
 
-import hurts.metallurgy_5.Metallurgy_5;
-import hurts.metallurgy_5.armor.ModArmor;
+import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.item.armor.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -19,13 +18,10 @@ public class EventHandler {
 		int radius=32, max=0;
 		boolean isArmored=false;
 
-		System.out.println("EventHandler");
-
-		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmor.mithril_helmet
-			&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmor.mithril_chest
-			&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmor.mithril_legs
-			&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmor.mithril_boots){
-				System.out.println("Entrato in IF");
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.mithril_helmet
+			&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.mithril_chest
+			&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.mithril_legs
+			&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.mithril_boots){
 				isArmored=true;
 		}
 
@@ -70,39 +66,3 @@ public class EventHandler {
 //		}
 //	 }
 }
-=======
-package it.hurts.metallurgy_5.util;
-
-import java.util.List;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-
-public class EventHandler {
-
-/*	@SubscribeEvent
-	public static void effetto(PotionEffect effect) {
-		effect.doesShowParticles();
-	}*/
-	
-	@SubscribeEvent
-	public static void checkEntity(PlayerTickEvent event, boolean b) {		
-		int radius=16;
-		
-		double xM = event.player.posX + radius, yM = event.player.posY + radius, zM = event.player.posZ + radius;
-		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius;
-		
-		List <Entity> list;
-		
-		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm));
-		Entity a[] = new Entity [list.size()];
-
-		for(int i=0; i<list.size();i++) {
-			list.toArray(a);
-			a[i].setGlowing(b);
-		}
-	}
-}
->>>>>>> dav-1.12.2:src/main/java/it/hurts/metallurgy_5/util/EventHandler.java
