@@ -30,6 +30,16 @@ public class ModBlocks {
 	public static BlockOre oreTin = new BlockOre("tin_ore","oreTin").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreZinc = new BlockOre("zinc_ore","oreZinc").setCreativeTab(Metallurgy_5.tabOre);
 	
+	public static BlockOre oreAlduorite = new BlockOre("alduorite_ore","oreAlduorite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreIgnatius = new BlockOre("ignatius_ore","oreIgnatius").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreKalendrite = new BlockOre("kalendrite_ore","oreKalendrite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreLemurite = new BlockOre("lemurite_ore","oreLemurite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreMidasium = new BlockOre("midasium_ore","oreMidasium").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreSanguinite = new BlockOre("sanguinite_ore","oreSanguinite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreShadowIron = new BlockOre("shadow_iron_ore","oreShadowIron").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreVulcanite = new BlockOre("vulcanite_ore","oreVulcanite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreVyroxeres = new BlockOre("vyroxeres_ore","oreVyroxeres").setCreativeTab(Metallurgy_5.tabOre);	
+	
 	public static BlockOre oreSulfur = new BlockOre("sulfur_ore","oreSulfur").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore","orePhosphorite").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreBitumen = new BlockOre("bitumen_ore","oreBitumen").setCreativeTab(Metallurgy_5.tabOre);
@@ -106,7 +116,17 @@ public class ModBlocks {
 				  oreSilver,
 				  oreTin,
 				  oreZinc,
-				
+				  
+				  oreAlduorite,
+				  oreIgnatius,
+				  oreKalendrite,
+				  oreLemurite,
+				  oreMidasium,
+				  oreSanguinite,
+				  oreShadowIron,
+				  oreVulcanite,
+				  oreVyroxeres,
+				  
 				  oreSulfur,
 				  orePhosphorite,
 				  oreBitumen,
@@ -187,6 +207,15 @@ public class ModBlocks {
 				  oreSilver.createItemBlock(),
 				  oreTin.createItemBlock(),
 				  oreZinc.createItemBlock(),
+				  
+				  oreAlduorite.createItemBlock(),
+				  oreKalendrite.createItemBlock(),
+				  oreLemurite.createItemBlock(),
+				  oreMidasium.createItemBlock(),
+				  oreSanguinite.createItemBlock(),
+				  oreShadowIron.createItemBlock(),
+				  oreVulcanite.createItemBlock(),
+				  oreVyroxeres.createItemBlock(),
 				
 				  oreSulfur.createItemBlock(),
 				  orePhosphorite.createItemBlock(),
@@ -265,6 +294,16 @@ public class ModBlocks {
 		  oreSilver.registerItemModel(Item.getItemFromBlock(oreSilver));
 		  oreTin.registerItemModel(Item.getItemFromBlock(oreTin));
 		  oreZinc.registerItemModel(Item.getItemFromBlock(oreZinc));
+		  
+		  oreAlduorite.registerItemModel(Item.getItemFromBlock(oreAlduorite));
+		  oreIgnatius.registerItemModel(Item.getItemFromBlock(oreIgnatius));
+		  oreKalendrite.registerItemModel(Item.getItemFromBlock(oreKalendrite));
+		  oreLemurite.registerItemModel(Item.getItemFromBlock(oreLemurite));
+		  oreMidasium.registerItemModel(Item.getItemFromBlock(oreMidasium));
+		  oreSanguinite.registerItemModel(Item.getItemFromBlock(oreSanguinite));
+		  oreShadowIron.registerItemModel(Item.getItemFromBlock(oreShadowIron));
+		  oreVulcanite.registerItemModel(Item.getItemFromBlock(oreVulcanite));
+		  oreVyroxeres.registerItemModel(Item.getItemFromBlock(oreVyroxeres));
 		
 		  oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
 		  orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));

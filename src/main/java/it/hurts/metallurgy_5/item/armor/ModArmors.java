@@ -32,6 +32,16 @@ public class ModArmors {
 	public static ItemArmorBase deep_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase deep_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
+	public static ItemArmorBase ignatius_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.HEAD, "ignatius_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase ignatius_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.CHEST, "ignatius_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase ignatius_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.LEGS, "ignatius_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase ignatius_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.FEET, "ignatius_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
+	public static ItemArmorBase kalendrite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMAterial, EntityEquipmentSlot.HEAD, "kalendrite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase kalendrite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMAterial, EntityEquipmentSlot.CHEST, "kalendrite_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase kalendrite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMAterial, EntityEquipmentSlot.LEGS, "kalendrite_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase kalendrite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMAterial, EntityEquipmentSlot.FEET, "kalendrite_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
 	public static ItemArmorBase mithril_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.CHEST,"mithril_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs").setCreativeTab(Metallurgy_5.tabArmor);
@@ -57,10 +67,10 @@ public class ModArmors {
 	public static ItemArmorBase orichalcum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase orichalcum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase rubracacium_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.rubracaciumArmorMaterial, EntityEquipmentSlot.HEAD , "rubracacium_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase rubracacium_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.rubracaciumArmorMaterial, EntityEquipmentSlot.CHEST , "rubracacium_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase rubracacium_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.rubracaciumArmorMaterial, EntityEquipmentSlot.LEGS , "rubracacium_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase rubracacium_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.rubracaciumArmorMaterial, EntityEquipmentSlot.FEET , "rubracacium_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase silver_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.HEAD, "silver_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase silver_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.CHEST, "silver_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase silver_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.FEET, "silver_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
@@ -89,6 +99,16 @@ public class ModArmors {
 				deep_iron_legs,
 				deep_iron_boots,
 
+				ignatius_helmet,
+				ignatius_chest,
+				ignatius_legs,
+				ignatius_boots,
+
+				kalendrite_helmet,
+				kalendrite_chest,
+				kalendrite_legs,
+				kalendrite_boots,
+
 				mithril_helmet,
 				mithril_chest,
 				mithril_legs,
@@ -114,10 +134,10 @@ public class ModArmors {
 				orichalcum_legs,
 				orichalcum_boots,
 
-				rubracacium_helmet,
-				rubracacium_chest,
-				rubracacium_legs,
-				rubracacium_boots
+				silver_helmet,
+				silver_chest,
+				silver_legs,
+				silver_boots
 		);
 	}
 
@@ -147,6 +167,16 @@ public class ModArmors {
 		deep_iron_legs.registerItemModel(deep_iron_legs, 0);
 		deep_iron_boots.registerItemModel(deep_iron_boots, 0);
 
+		ignatius_helmet.registerItemModel(ignatius_helmet, 0);
+		ignatius_chest.registerItemModel(ignatius_chest, 0);
+		ignatius_legs.registerItemModel(ignatius_legs, 0);
+		ignatius_boots.registerItemModel(ignatius_boots, 0);
+
+		kalendrite_helmet.registerItemModel(kalendrite_helmet, 0);
+		kalendrite_chest.registerItemModel(kalendrite_chest, 0);
+		kalendrite_legs.registerItemModel(kalendrite_legs, 0);
+		kalendrite_boots.registerItemModel(kalendrite_boots, 0);
+
 		mithril_helmet.registerItemModel(mithril_helmet, 0);
 		mithril_chest.registerItemModel(mithril_chest, 0);
 		mithril_legs.registerItemModel(mithril_legs, 0);
@@ -172,10 +202,10 @@ public class ModArmors {
 		orichalcum_legs.registerItemModel(orichalcum_legs, 0);
 		orichalcum_boots.registerItemModel(orichalcum_boots, 0);
 
-		rubracacium_helmet.registerItemModel(rubracacium_helmet,0);
-		rubracacium_chest.registerItemModel(rubracacium_chest,0);
-		rubracacium_legs.registerItemModel(rubracacium_legs,0);
-		rubracacium_boots.registerItemModel(rubracacium_boots,0);
+		silver_helmet.registerItemModel(silver_helmet, 0);
+		silver_chest.registerItemModel(silver_chest, 0);
+		silver_legs.registerItemModel(silver_legs, 0);
+		silver_boots.registerItemModel(silver_boots, 0);
 	}
 
 }
