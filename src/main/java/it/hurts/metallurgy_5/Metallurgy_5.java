@@ -39,13 +39,14 @@ public class Metallurgy_5 {
 
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
-	public static final ItemArmor.ArmorMaterial atlarusArmorMaterial = EnumHelper.addArmorMaterial("ATLARUS", MODID + ":atlarus", 35, new int[]{4, 3, 3, 4}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
 	public static final ItemArmor.ArmorMaterial astralSilverArmorMaterial = EnumHelper.addArmorMaterial("ASTRAL_SILVER", MODID + ":astral_silver", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ItemArmor.ArmorMaterial atlarusArmorMaterial = EnumHelper.addArmorMaterial("ATLARUS", MODID + ":atlarus", 35, new int[]{4, 3, 3, 4}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
 	public static final ItemArmor.ArmorMaterial carmotArmorMaterial = EnumHelper.addArmorMaterial("CARMOT", MODID + ":carmot", 28, new int[]{2, 4, 5, 2}, 7, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial deepIronArmorMaterial = EnumHelper.addArmorMaterial("DEEP_IRON", MODID + ":deep_iron", 38, new int[]{2, 4, 5, 2}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial ignatiusArmorMaterial = EnumHelper.addArmorMaterial("IGNATIUS", MODID + ":ignatius", 24, new int[]{2, 5, 6, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial kalendriteArmorMAterial = EnumHelper.addArmorMaterial("KALENDRITE", MODID + ":kalendrite", 40, new int[]{4, 5, 6, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON,3.0F);
 	public static final ItemArmor.ArmorMaterial mithrilArmorMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 21, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ItemArmor.ArmorMaterial orichalcumArmorMaterial = EnumHelper.addArmorMaterial("ORICHALCUM", MODID + ":mithril", 20, new int[]{2, 6, 7, 2}, 4, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.4F);
 	public static final ItemArmor.ArmorMaterial oureclaseArmorMaterial = EnumHelper.addArmorMaterial("OURECLASE", MODID + ":oureclase", 28, new int[]{3, 6, 5, 4}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.5F);
 	public static final ItemArmor.ArmorMaterial orichalcumArmorMaterial = EnumHelper.addArmorMaterial("ORICHALCUM", MODID + ":orichalcum", 20, new int[]{2, 6, 7, 2}, 4, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.4F);
 	public static final ItemArmor.ArmorMaterial prometheumArmorMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
@@ -55,8 +56,13 @@ public class Metallurgy_5 {
 //	Tool
 	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 7, 1550, 8F, 8F, 22);
 	public static final ItemTool.ToolMaterial astralSilverToolMaterial = EnumHelper.addToolMaterial("ASTRAL_SILVER", 5, 35, 12F, 5F, 30);
+	public static final ItemTool.ToolMaterial atlarusToolMaterial = EnumHelper.addToolMaterial("ATLARUS", 7, 1750, 9F, 8F, 22);
 	public static final ItemTool.ToolMaterial carmotToolMaterial = EnumHelper.addToolMaterial("CARMOT", 5, 50, 10F, 5F, 40);
+	public static final ItemTool.ToolMaterial deepIronToolMaterial = EnumHelper.addToolMaterial("DEEP_IRON", 3, 250, 6.5F, 6, 14);
 	public static final ItemTool.ToolMaterial mithrilToolMaterial = EnumHelper.addToolMaterial("MITHRIL", 5, 1000, 8F, 7F, 18);
+	public static final ItemTool.ToolMaterial orichalcumToolMaterial = EnumHelper.addToolMaterial("ORICHALCUM", 6, 1350, 9F, 7F, 20);
+	public static final ItemTool.ToolMaterial oureclaseToolMaterial = EnumHelper.addToolMaterial("OURECLASE", 4, 750, 9F, 6F, 18);
+	public static final ItemTool.ToolMaterial platinumToolMaterial = EnumHelper.addToolMaterial("PLATINUM", 3, 100, 14F, 5F, 50);
 	public static final ItemTool.ToolMaterial prometheumToolMaterial = EnumHelper.addToolMaterial("PROMETHEUM", 2, 200, 5F, 5F, 16);
 
 	@Mod.Instance(MODID)
