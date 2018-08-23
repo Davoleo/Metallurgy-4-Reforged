@@ -32,7 +32,7 @@ item.ingot_oureclase.name=Oureclase Ingot
 item.ingot_platinum.name=Platinum Ingot
 item.ingot_prometheum.name=Promethem Ingot
 item.ingot_quicksilver.name=Quicksilver Ingot
-item.ingot_rubracacium.name=Rubracacium Ingot
+item.ingot_rubracium.name=Rubracium Ingot
 item.ingot_sanguinite.name=Sanguinite Ingot
 item.ingot_shadow_iron.name=Shadow Iron Ingot
 item.ingot_shadow_steel.name=Shadow Steel Ingot
@@ -50,40 +50,34 @@ item.dust_sulfur.name=Sulfur
 
 #Armors
 item.adamantine_helmet.name=Adamantine Helmet
-item.adamantine_chest.name=Adamantine Chest
-item.adamantine_legs.name=Adamantine Leggins
+item.adamantine_chest.name=Adamantine Chestplate
+item.adamantine_legs.name=Adamantine Leggings
 item.adamantine_boots.name=Adamantine Boots
 
 item.atlarus_helmet.name=Atlarus Helmet
-item.atlarus_chest.name=Atlarus Chest
-item.atlarus_legs.name=Atlarus Legs
+item.atlarus_chest.name=Atlarus Chestplate
+item.atlarus_legs.name=Atlarus Leggings
 item.atlarus_boots.name=Atlarus Boots
 
 item.astral_silver_helmet.name=Astral Silver Helmet
 item.astral_silver_chest.name=Astral Sivler Chestplate
-item.astral_silver_legs.name=Astral Silver Leggins
+item.astral_silver_legs.name=Astral Silver Leggings
 item.astral_silver_boots.name=Astral Silver Boots
 
 item.carmot_helmet.name=Carmot Helmet
-item.carmot_chest.name=Carmot Chest
-item.carmot_legs.name=Carmot Leggins
+item.carmot_chest.name=Carmot Chestplate
+item.carmot_legs.name=Carmot Leggings
 item.carmot_boots.name=Carmot Boots
 
 item.mithril_helmet.name=Mithril Helmet
 item.mithril_chest.name=Mithril Chestplate
-item.mithril_legs.name=Mithril Leggins
+item.mithril_legs.name=Mithril Leggings
 item.mithril_boots.name=Mithril Boots
-
 
 item.prometheum_helmet.name=Prometheum Helmet
 item.prometheum_chest.name=Prometheum Chestplate
-item.prometheum_legs.name=Prometheum Leggins
+item.prometheum_legs.name=Prometheum Leggings
 item.prometheum_boots.name=Prometheum Boots
-
-item.rubracacium_helmet.name=Rubracacium Helmet
-item.rubracacium_chest.name=Rubracacium Chest
-item.rubracacium_legs.name=Rubracacium Legs
-item.rubracacium_boots.name=Rubracacium Boots
 
 # Blocks
 tile.charcoal_block.name=Block of Charcoal

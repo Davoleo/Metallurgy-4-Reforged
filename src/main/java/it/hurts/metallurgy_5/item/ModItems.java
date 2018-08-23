@@ -46,7 +46,7 @@ public class ModItems {
 	public static ItemOre ingotPlatinum = new ItemOre ("ingot_platinum","ingotPlatinum");
 	public static ItemOre ingotPrometheum = new ItemOre ("ingot_prometheum","ingotPrometheum");
 	public static ItemOre ingotQuickSilver = new ItemOre ("ingot_quicksilver","ingotQuickSilver");
-	public static ItemOre ingotRubracacium = new ItemOre ("ingot_rubracacium","ingotRubracacium");
+	public static ItemOre ingotRubracium = new ItemOre ("ingot_rubracium","ingotRubracium");
 	public static ItemOre ingotSanguinite = new ItemOre ("ingot_sanguinite","ingotSanguinite");
 	public static ItemOre ingotShadowIron = new ItemOre ("ingot_shadow_iron","ingotShadowIron");
 	public static ItemOre ingotShadowSteel = new ItemOre ("ingot_shadow_steel","ingotShadowSteel");
@@ -95,7 +95,7 @@ public class ModItems {
 				ingotPlatinum,
 				ingotPrometheum,
 				ingotQuickSilver,
-				ingotRubracacium,
+				ingotRubracium,
 				ingotSanguinite,
 				ingotShadowIron,
 				ingotShadowSteel,
@@ -150,7 +150,7 @@ public class ModItems {
 		ingotPlatinum.registerItemModel();
 		ingotPrometheum.registerItemModel();
 		ingotQuickSilver.registerItemModel();
-		ingotRubracacium.registerItemModel();
+		ingotRubracium.registerItemModel();
 		ingotSanguinite.registerItemModel();
 		ingotShadowIron.registerItemModel();
 		ingotShadowSteel.registerItemModel();

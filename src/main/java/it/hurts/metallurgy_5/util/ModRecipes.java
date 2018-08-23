@@ -17,6 +17,39 @@ public class ModRecipes {
 
     public static void init()
     {
+
+        // TODO : Finish oredict initialization
+        //Ore-dict
+        ModItems.ingotAdamantine.initOreDict();
+        ModItems.ingotAlduorite.initOreDict();
+        ModItems.ingotAstralSilver.initOreDict();
+        ModItems.ingotAtlarus.initOreDict();
+        ModItems.ingotCarmot.initOreDict();
+        ModItems.ingotCopper.initOreDict();
+        ModItems.ingotDeepIron.initOreDict();
+        ModItems.ingotEximite.initOreDict();
+        ModItems.ingotIgnatius.initOreDict();
+        ModItems.ingotInfuscolium.initOreDict();
+        ModItems.ingotKalendrite.initOreDict();
+        ModItems.ingotLemurite.initOreDict();
+        ModItems.ingotManganese.initOreDict();
+        ModItems.ingotMeutoite.initOreDict();
+        ModItems.ingotMidasium.initOreDict();
+        ModItems.ingotMithril.initOreDict();
+        ModItems.ingotOrichalcum.initOreDict();
+        ModItems.ingotOureclase.initOreDict();
+        ModItems.ingotPlatinum.initOreDict();
+        ModItems.ingotPrometheum.initOreDict();
+        ModItems.ingotRubracium.initOreDict();
+        ModItems.ingotSanguinite.initOreDict();
+        ModItems.ingotShadowIron.initOreDict();
+        ModItems.ingotSilver.initOreDict();
+        ModItems.ingotTin.initOreDict();
+        ModItems.ingotVulcanite.initOreDict();
+        ModItems.ingotVyroxeres.initOreDict();
+        ModItems.ingotZinc.initOreDict();
+
+
         //Furnace Recipes
         GameRegistry.addSmelting(ModBlocks.oreAdamantine, new ItemStack(ModItems.ingotAdamantine), 1f);
         GameRegistry.addSmelting(ModBlocks.oreAlduorite, new ItemStack(ModItems.ingotAlduorite), 1f);
@@ -38,7 +71,7 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.oreOureclase, new ItemStack(ModItems.ingotOureclase), 1f);
         GameRegistry.addSmelting(ModBlocks.orePlatinum, new ItemStack(ModItems.ingotPlatinum), 1f);
         GameRegistry.addSmelting(ModBlocks.orePrometheum, new ItemStack(ModItems.ingotPrometheum), 1f);
-        GameRegistry.addSmelting(ModBlocks.oreRubracium, new ItemStack(ModItems.ingotRubracacium), 1f);
+        GameRegistry.addSmelting(ModBlocks.oreRubracium, new ItemStack(ModItems.ingotRubracium), 1f);
         GameRegistry.addSmelting(ModBlocks.oreSanguinite, new ItemStack(ModItems.ingotSanguinite), 1f);
         GameRegistry.addSmelting(ModBlocks.oreShadowIron, new ItemStack(ModItems.ingotShadowIron), 1f);
         GameRegistry.addSmelting(ModBlocks.oreSilver, new ItemStack(ModItems.ingotSilver), 1f);
