@@ -46,7 +46,6 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.oreVulcanite, new ItemStack(ModItems.ingotVulcanite), 1f);
         GameRegistry.addSmelting(ModBlocks.oreVyroxeres, new ItemStack(ModItems.ingotVyroxeres), 1f);
         GameRegistry.addSmelting(ModBlocks.oreZinc, new ItemStack(ModItems.ingotZinc), 1f);
-
     }
 
 }
