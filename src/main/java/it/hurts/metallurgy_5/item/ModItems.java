@@ -50,6 +50,7 @@ public class ModItems {
 	public static ItemOre ingotSanguinite = new ItemOre ("ingot_sanguinite","ingotSanguinite");
 	public static ItemOre ingotShadowIron = new ItemOre ("ingot_shadow_iron","ingotShadowIron");
 	public static ItemOre ingotShadowSteel = new ItemOre ("ingot_shadow_steel","ingotShadowSteel");
+	public static ItemOre ingotSilver = new ItemOre("ingot_silver", "ingotSilver");
 	public static ItemOre ingotSteel = new ItemOre ("ingot_steel","ingotSteel");
 	public static ItemOre ingotTartarite = new ItemOre ("ingot_tartarite","ingotTartarite");
 	public static ItemOre ingotTin = new ItemOre ("ingot_tin","ingotTin");
@@ -98,6 +99,7 @@ public class ModItems {
 				ingotSanguinite,
 				ingotShadowIron,
 				ingotShadowSteel,
+				ingotSilver,
 				ingotSteel,
 				ingotTartarite,
 				ingotTin,
@@ -152,6 +154,7 @@ public class ModItems {
 		ingotSanguinite.registerItemModel();
 		ingotShadowIron.registerItemModel();
 		ingotShadowSteel.registerItemModel();
+		ingotSilver.registerItemModel();
 		ingotSteel.registerItemModel();
 		ingotTartarite.registerItemModel();
 		ingotTin.registerItemModel();

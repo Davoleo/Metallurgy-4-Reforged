@@ -5,6 +5,7 @@ import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
+import it.hurts.metallurgy_5.util.ModRecipes;
 import it.hurts.metallurgy_5.util.tabs.*;
 import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -80,7 +81,7 @@ public class Metallurgy_5 {
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		ModRecipes.init();
 	}
 
 
