@@ -5,6 +5,7 @@ import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
+import it.hurts.metallurgy_5.util.ModRecipes;
 import it.hurts.metallurgy_5.util.tabs.*;
 import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -62,7 +63,9 @@ public class Metallurgy_5 {
 	public static final ItemTool.ToolMaterial astralSilverToolMaterial = EnumHelper.addToolMaterial("ASTRAL_SILVER", 5, 35, 12F, 5F, 30);
 	public static final ItemTool.ToolMaterial atlarusToolMaterial = EnumHelper.addToolMaterial("ATLARUS", 7, 1750, 9F, 8F, 22);
 	public static final ItemTool.ToolMaterial carmotToolMaterial = EnumHelper.addToolMaterial("CARMOT", 5, 50, 10F, 5F, 40);
-	public static final ItemTool.ToolMaterial deepIronToolMaterial = EnumHelper.addToolMaterial("DEEP_IRON", 3, 250, 6.5F, 6, 14);
+	public static final ItemTool.ToolMaterial deepIronToolMaterial = EnumHelper.addToolMaterial("DEEP_IRON", 3, 250, 6.5F, 6F, 14);
+	public static final ItemTool.ToolMaterial ignatiusToolMaterial = EnumHelper.addToolMaterial("IGNATIUS", 2, 150, 5F, 6F, 15);
+	public static final ItemTool.ToolMaterial kalendriteToolMaterial = EnumHelper.addToolMaterial("KALENDRITE", 5, 1000, 7F, 7F, 20);
 	public static final ItemTool.ToolMaterial mithrilToolMaterial = EnumHelper.addToolMaterial("MITHRIL", 5, 1000, 8F, 7F, 18);
 	public static final ItemTool.ToolMaterial orichalcumToolMaterial = EnumHelper.addToolMaterial("ORICHALCUM", 6, 1350, 9F, 7F, 20);
 	public static final ItemTool.ToolMaterial oureclaseToolMaterial = EnumHelper.addToolMaterial("OURECLASE", 4, 750, 9F, 6F, 18);
@@ -83,7 +86,7 @@ public class Metallurgy_5 {
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		ModRecipes.init();
 	}
 
 
