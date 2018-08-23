@@ -45,24 +45,11 @@ public class EventHandler {
 	}
 
 //	@SubscribeEvent
-//	 public static void isPlayerAttacked(PlayerTickEvent event, boolean isArmorEquipped, LivingHurtEvent b) {
-//		float damage = 0 ;
-//		if(b.getEntity()==event.player) {
-//			damage = b.getAmount();
-//		}
-//
-//
-//		EntityLivingBase target = event.player.getAttackingEntity();
-//
-//		float playerHP = event.player.getHealth(),HP= playerHP-damage;
-//		System.out.println(playerHP+" "+HP);
-//
-//		if(target != null && isArmorEquipped && playerHP>HP) {
-//			System.out.println("entrato");
-//			event.player.getAttackingEntity().addPotionEffect(new PotionEffect(MobEffects.INSTANT_DAMAGE,20,0));
-//
-//			target=null;
-//			damage = 0;
-//		}
-//	 }
+//	 public static void isPlayerAttacked(PlayerTickEvent event) {		Instand Damage Rubracacium
+//		
+//		boolean isArmored = false;
+//		
+//		
+//		
+//	}
 }
