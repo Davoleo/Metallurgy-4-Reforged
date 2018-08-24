@@ -1,0 +1,11 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingrendients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockAdamantine"
+    }
+  ],
+  "result": "m5:adamantine_ingot",
+  "count": 9
+}

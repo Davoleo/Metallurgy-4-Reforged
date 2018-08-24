@@ -18,18 +18,29 @@ public class ModRecipes {
     public static void init()
     {
 
-        // TODO : Finish oredict initialization
+        // TODO : Finish ingot oredict initialization
         //Ore-dict
+        //Ingots
         ModItems.ingotAdamantine.initOreDict();
         ModItems.ingotAlduorite.initOreDict();
+        ModItems.ingotAmordrine.initOreDict();
+        ModItems.ingotAngmallen.initOreDict();
         ModItems.ingotAstralSilver.initOreDict();
         ModItems.ingotAtlarus.initOreDict();
+        ModItems.ingotBlackSteel.initOreDict();
         ModItems.ingotCarmot.initOreDict();
+        ModItems.ingotCelenegil.initOreDict();
+        ModItems.ingotCeruclase.initOreDict();
         ModItems.ingotCopper.initOreDict();
+        ModItems.ingotDamascusSteel.initOreDict();
         ModItems.ingotDeepIron.initOreDict();
+        ModItems.ingotDesichalkos.initOreDict();
         ModItems.ingotEximite.initOreDict();
+        ModItems.ingotHaderoth.initOreDict();
+        ModItems.ingotHepatizon.initOreDict();
         ModItems.ingotIgnatius.initOreDict();
         ModItems.ingotInfuscolium.initOreDict();
+        ModItems.ingotInolashite.initOreDict();
         ModItems.ingotKalendrite.initOreDict();
         ModItems.ingotLemurite.initOreDict();
         ModItems.ingotManganese.initOreDict();
@@ -40,14 +51,67 @@ public class ModRecipes {
         ModItems.ingotOureclase.initOreDict();
         ModItems.ingotPlatinum.initOreDict();
         ModItems.ingotPrometheum.initOreDict();
+        ModItems.ingotQuickSilver.initOreDict();
         ModItems.ingotRubracium.initOreDict();
         ModItems.ingotSanguinite.initOreDict();
         ModItems.ingotShadowIron.initOreDict();
+        ModItems.ingotShadowSteel.initOreDict();
         ModItems.ingotSilver.initOreDict();
+        ModItems.ingotSteel.initOreDict();
+        ModItems.ingotTartarite.initOreDict();
         ModItems.ingotTin.initOreDict();
         ModItems.ingotVulcanite.initOreDict();
         ModItems.ingotVyroxeres.initOreDict();
         ModItems.ingotZinc.initOreDict();
+
+        //Blocks
+        ModBlocks.blockAdamantine.initOreDict();
+        ModBlocks.blockAlduorite.initOreDict();
+        ModBlocks.blockAngmallen.initOreDict();
+        ModBlocks.blockAstralSilver.initOreDict();
+        ModBlocks.blockAtlarus.initOreDict();
+        ModBlocks.blockAmordrine.initOreDict();
+        ModBlocks.blockBlackSteel.initOreDict();
+        ModBlocks.blockBrass.initOreDict();
+        ModBlocks.blockBronze.initOreDict();
+        ModBlocks.blockCarmot.initOreDict();
+        ModBlocks.blockCelenegil.initOreDict();
+        ModBlocks.blockCeruclase.initOreDict();
+        ModBlocks.blockCharcoal.initOreDict();
+        ModBlocks.blockCopper.initOreDict();
+        ModBlocks.blockDamascusSteel.initOreDict();
+        ModBlocks.blockDeepIron.initOreDict();
+        ModBlocks.blockDesichalkos.initOreDict();
+        ModBlocks.blockEximite.initOreDict();
+        ModBlocks.blockHaderoth.initOreDict();
+        ModBlocks.blockHepatizon.initOreDict();
+        ModBlocks.blockIgnatius.initOreDict();
+        ModBlocks.blockInfuscolium.initOreDict();
+        ModBlocks.blockInolashite.initOreDict();
+        ModBlocks.blockKalendrite.initOreDict();
+        ModBlocks.blockLemurite.initOreDict();
+        ModBlocks.blockManganese.initOreDict();
+        ModBlocks.blockMeutoite.initOreDict();
+        ModBlocks.blockMidasium.initOreDict();
+        ModBlocks.blockMithril.initOreDict();
+        ModBlocks.blockOrichalcum.initOreDict();
+        ModBlocks.blockOureclase.initOreDict();
+        ModBlocks.blockPlatinum.initOreDict();
+        ModBlocks.blockPrometheum.initOreDict();
+        ModBlocks.blockQuickSilver.initOreDict();
+        ModBlocks.blockRubracium.initOreDict();
+        ModBlocks.blockSanguinite.initOreDict();
+        ModBlocks.blockShadowIron.initOreDict();
+        ModBlocks.blockShadowSteel.initOreDict();
+        ModBlocks.blockSilver.initOreDict();
+        ModBlocks.blockSteel.initOreDict();
+        ModBlocks.blockSulfur.initOreDict();
+        ModBlocks.blockTartarite.initOreDict();
+        ModBlocks.blockTin.initOreDict();
+        ModBlocks.blockVulcanite.initOreDict();
+        ModBlocks.blockVyroxeres.initOreDict();
+        ModBlocks.blockZinc.initOreDict();
+
 
 
         //Furnace Recipes
