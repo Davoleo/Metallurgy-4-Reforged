@@ -36,6 +36,7 @@ item.ingot_rubracium.name=Rubracium Ingot
 item.ingot_sanguinite.name=Sanguinite Ingot
 item.ingot_shadow_iron.name=Shadow Iron Ingot
 item.ingot_shadow_steel.name=Shadow Steel Ingot
+item.ingot_silver.name=Silver Ingot
 item.ingot_steel.name=Steel Ingot
 item.ingot_tartarite.name=Tartarite Ingot
 item.ingot_tin.name=Tin Ingot
@@ -69,15 +70,80 @@ item.carmot_chest.name=Carmot Chestplate
 item.carmot_legs.name=Carmot Leggings
 item.carmot_boots.name=Carmot Boots
 
+item.deep_iron_helmet.name=Deep Iron Helmet
+item.deep_iron_chest.name=Deep Iron Chestplate
+item.deep_iron_legs.name=Deep Iron Leggings
+item.deep_iron_boots.name=Deep Iron Boots
+
+item.eximite_helmet.name=Eximite Helmet
+item.eximite_chest.name=Eximite Chestplate
+item.eximite_legs.name=Eximite Leggings
+item.eximite_boots.name=Eximite Boots
+
+item.ignatius_helmet.name=Ignatius Helmet
+item.ignatius_chest.name=Ignatius Chestplate
+item.ignatius_legs.name=Ignatius Leggings
+item.ignatius_boots.name=Ignatius Boots
+
+item.kalendrite_helmet.name=Kalendrite Helmet
+item.kalendrite_chest.name=Kalendrite Chestplate
+item.kalendrite_legs.name=Kalendrite Leggings
+item.kalendrite_boots.name=Kalendrite Boots
+
+item.midasium_helmet.name=Midasium Helmet
+item.midasium_chest.name=Midasium Chestplate
+item.midasium_legs.name=Midasium Leggings
+item.midasium_boots.name=Midasium Boots
+
 item.mithril_helmet.name=Mithril Helmet
 item.mithril_chest.name=Mithril Chestplate
 item.mithril_legs.name=Mithril Leggings
 item.mithril_boots.name=Mithril Boots
 
+item.orichalcum_helmet.name=Orichalcum Helmet
+item.orichalcum_chest.name=Orichalcum Chestplate
+item.orichalcum_legs.name=Orichalcum Leggings
+item.orichalcum_boots.name=Orichalcum Boots
+
+item.oureclase_helmet.name=Oureclase Helmet
+item.oureclase_chest.name=Oureclase Chestplate
+item.oureclase_legs.name=Oureclase Leggings
+item.oureclase_boots.name=Oureclase Boots
+
+item.platinum_helmet.name=Platinum Helmet
+item.platinum_chest.name=Platinum Chestplate
+item.platinum_legs.name=Platinum Leggings
+item.platinum_boots.name=Platinum Boots
+
 item.prometheum_helmet.name=Prometheum Helmet
 item.prometheum_chest.name=Prometheum Chestplate
 item.prometheum_legs.name=Prometheum Leggings
 item.prometheum_boots.name=Prometheum Boots
+
+item.sanguinite_helmet.name=Sanguinite Helmet
+item.sanguinite_chest.name=Sanguinite Chestplate
+item.sanguinite_legs.name=Sanguinite Leggings
+item.sanguinite_boots.name=Sanguinite Boots
+
+item.shadow_iron_helmet.name=Shadow Iron Helmet
+item.shadow_iron_chest.name=Shadow Iron Chestplate
+item.shadow_iron_legs.name=Shadow Iron Leggings
+item.shadow_iron_boots.name=Shadow Iron Boots
+
+item.silver_helmet.name=Silver Helmet
+item.silver_chest.name=Silver Chestplate
+item.silver_legs.name=Silver Leggings
+item.silver_boots.name=Silver Boots
+
+item.vulcanite_helmet.name=Vulcanite Helmet
+item.vulcanite_chest.name=Vulcanite Chestplate
+item.vulcanite_legs.name=Vulcanite Leggings
+item.vulcanite_boots.name=Vulcanite Boots
+
+item.vyroxeres_helmet.name=Vyroxeres Helmet
+item.vyroxeres_chest.name=Vyroxeres Chest
+item.vyroxeres_legs.name=Vyroxeres Leggings
+item.vyroxeres_boots.name=Vyroxeres Boots
 
 # Blocks
 tile.charcoal_block.name=Block of Charcoal
@@ -131,15 +197,20 @@ tile.sulfur_block.name=Sulfur BLock
 
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
+tile.alduorite_ore.name=Alduorite Ore
 tile.astral_silver_ore.name=Astral Sivler Ore
 tile.atlarus_ore.name=Atlarus Ore
 tile.bitumen_ore.name=Bitumen Ore
-tile.copper_ore.name=Copper Ore
 tile.carmot_ore.name=Carmot Ore
+tile.ceruclase_ore.name=Ceruclase Ore
+tile.copper_ore.name=Copper Ore
 tile.deep_iron_ore.name=Deep Iron Ore
 tile.eximite_ore.name=Eximite Ore
 tile.infuscolium_ore.name=Infuscolium Ore
+tile.kalendrite_ore.name=Kalendrite Ore
+tile.lemurite_ore.name=Lemurite Ore
 tile.manganese_ore.name=Manganese Ore
+tile.midasium_ore.name=Midasium Ore
 tile.meutoite_ore.name=Meutoite Ore
 tile.mithril_ore.name=Mithril Ore
 tile.oureclase_ore.name=Oureclase Ore
@@ -149,9 +220,13 @@ tile.potash_ore.name=Potash Ore
 tile.phosphorite_ore.name=Phosphorite Ore
 tile.prometheum_ore.name=Prometheum Ore
 tile.rubracium_ore.name=Rubracium Ore
+tile.sanguinite_ore.name=Sanguinite Ore
+tile.shadow_iron_ore.name=Shadow Iron Ore
 tile.silver_ore.name=Silver Ore
 tile.sulfur_ore.name=Sulfur Ore
 tile.tin_ore.name=Tin Ore
+tile.vyroxeres_ore.name=Vyroxeres Ore
+tile.vulcanite_ore.name=Vulcanite Ore
 tile.zinc_ore.name=Zinc Ore
 
 # Creative Tab

@@ -32,6 +32,11 @@ public class ModArmors {
 	public static ItemArmorBase deep_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase deep_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
+	public static ItemArmorBase eximite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.HEAD , "eximite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase eximite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.CHEST , "eximite_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase eximite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.LEGS , "eximite_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase eximite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.FEET , "eximite_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
 	public static ItemArmorBase ignatius_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.HEAD, "ignatius_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase ignatius_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.CHEST, "ignatius_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase ignatius_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.LEGS, "ignatius_legs").setCreativeTab(Metallurgy_5.tabArmor);
@@ -123,6 +128,11 @@ public class ModArmors {
 				deep_iron_chest,
 				deep_iron_legs,
 				deep_iron_boots,
+
+				eximite_helmet,
+				eximite_chest,
+				eximite_legs,
+				eximite_boots,
 
 				ignatius_helmet,
 				ignatius_chest,
@@ -216,6 +226,11 @@ public class ModArmors {
 		deep_iron_chest.registerItemModel(deep_iron_chest, 0);
 		deep_iron_legs.registerItemModel(deep_iron_legs, 0);
 		deep_iron_boots.registerItemModel(deep_iron_boots, 0);
+
+		eximite_helmet.registerItemModel(eximite_helmet, 0);
+		eximite_chest.registerItemModel(eximite_chest, 0);
+		eximite_legs.registerItemModel(eximite_legs, 0);
+		eximite_boots.registerItemModel(eximite_boots, 0);
 
 		ignatius_helmet.registerItemModel(ignatius_helmet, 0);
 		ignatius_chest.registerItemModel(ignatius_chest, 0);

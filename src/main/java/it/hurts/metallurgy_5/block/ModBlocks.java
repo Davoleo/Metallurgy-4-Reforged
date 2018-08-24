@@ -31,6 +31,7 @@ public class ModBlocks {
 	public static BlockOre oreZinc = new BlockOre("zinc_ore","oreZinc").setCreativeTab(Metallurgy_5.tabOre);
 	
 	public static BlockOre oreAlduorite = new BlockOre("alduorite_ore","oreAlduorite").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreCeruclase = new BlockOre("ceruclase_ore", "oreCeruclase").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreIgnatius = new BlockOre("ignatius_ore","oreIgnatius").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreKalendrite = new BlockOre("kalendrite_ore","oreKalendrite").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreLemurite = new BlockOre("lemurite_ore","oreLemurite").setCreativeTab(Metallurgy_5.tabOre);
@@ -118,6 +119,7 @@ public class ModBlocks {
 				  oreZinc,
 				  
 				  oreAlduorite,
+				  oreCeruclase,
 				  oreIgnatius,
 				  oreKalendrite,
 				  oreLemurite,
@@ -209,6 +211,8 @@ public class ModBlocks {
 				  oreZinc.createItemBlock(),
 				  
 				  oreAlduorite.createItemBlock(),
+				  oreCeruclase.createItemBlock(),
+				  oreIgnatius.createItemBlock(),
 				  oreKalendrite.createItemBlock(),
 				  oreLemurite.createItemBlock(),
 				  oreMidasium.createItemBlock(),
@@ -296,6 +300,7 @@ public class ModBlocks {
 		  oreZinc.registerItemModel(Item.getItemFromBlock(oreZinc));
 		  
 		  oreAlduorite.registerItemModel(Item.getItemFromBlock(oreAlduorite));
+		  oreCeruclase.registerItemModel(Item.getItemFromBlock(oreCeruclase));
 		  oreIgnatius.registerItemModel(Item.getItemFromBlock(oreIgnatius));
 		  oreKalendrite.registerItemModel(Item.getItemFromBlock(oreKalendrite));
 		  oreLemurite.registerItemModel(Item.getItemFromBlock(oreLemurite));
