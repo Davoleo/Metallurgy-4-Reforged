@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotPlatinum"
+    }
+  },
+  "result":{
+    "item":"m5:Platinum_helmet"
+  }
+}

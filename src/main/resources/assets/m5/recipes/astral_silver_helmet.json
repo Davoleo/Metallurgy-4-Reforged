@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type": "forge:ore_dict",
+      "ore": "ingotAstralSilver"
+    }
+  },
+  "result":{
+    "item":"m5:astral_silver_helmet"
+  }
+}

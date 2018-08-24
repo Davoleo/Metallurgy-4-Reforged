@@ -1,0 +1,17 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "A A",
+    "AAA",
+    "AAA"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotPrometheum"
+    }
+  },
+  "result":{
+    "item":"m5:prometheum_chest"
+  }
+}

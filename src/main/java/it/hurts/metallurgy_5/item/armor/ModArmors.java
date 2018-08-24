@@ -57,16 +57,6 @@ public class ModArmors {
 	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.FEET,"mithril_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase platinum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase platinum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.LEGS,"platinum_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase platinum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.FEET,"platinum_boots").setCreativeTab(Metallurgy_5.tabArmor);
-
-	public static ItemArmorBase prometheum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase prometheum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.CHEST, "prometheum_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase prometheum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.LEGS, "prometheum_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase prometheum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.FEET, "prometheum_boots").setCreativeTab(Metallurgy_5.tabArmor);
-
 	public static ItemArmorBase oureclase_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.HEAD, "oureclase_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "oureclase_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "oureclase_legs").setCreativeTab(Metallurgy_5.tabArmor);
@@ -76,6 +66,16 @@ public class ModArmors {
 	public static ItemArmorBase orichalcum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "orichalcum_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase orichalcum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase orichalcum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
+	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase platinum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase platinum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.LEGS,"platinum_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase platinum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.FEET,"platinum_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
+	public static ItemArmorBase prometheum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.CHEST, "prometheum_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.LEGS, "prometheum_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase prometheum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.FEET, "prometheum_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static ItemArmorBase sanguinite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.HEAD, "sanguinite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase sanguinite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.CHEST, "sanguinite_chest").setCreativeTab(Metallurgy_5.tabArmor);
