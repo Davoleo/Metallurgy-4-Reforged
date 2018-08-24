@@ -13,50 +13,53 @@ public class ModItems {
 		 
 	
 	//Ingot
-	public static ItemOre ingotAdamantine = new ItemOre ("ingot_adamantine","ingotAdamantine");
-	public static ItemOre ingotAlduorite = new ItemOre ("ingot_alduorite","ingotAlduorite");
-	public static ItemOre ingotAmordrine = new ItemOre ("ingot_amordrine","ingotAmordrine");
-	public static ItemOre ingotAngmallen = new ItemOre ("ingot_angmallen","ingotAngmallen");
-	public static ItemOre ingotAstralSilver = new ItemOre ("ingot_astral_silver","ingotAstralSilver");
-	public static ItemOre ingotAtlarus = new ItemOre ("ingot_atlarus","ingotAtlarus");
-	public static ItemOre ingotBlackSteel = new ItemOre ("ingot_black_steel","ingotBlackSteel");
-	public static ItemOre ingotCarmot = new ItemOre ("ingot_carmot","ingotCarmot");
-	public static ItemOre ingotCelenegil = new ItemOre ("ingot_celenegil","ingotCelenegil");
-	public static ItemOre ingotCeruclase = new ItemOre ("ingot_ceruclase","ingotCeruclase");
-	public static ItemOre ingotCopper = new ItemOre ("ingot_copper","ingotCopper");	
-	public static ItemOre ingotDamascusSteel = new ItemOre ("ingot_damascus_steel","ingotDamascusSteel");
-	public static ItemOre ingotDeepIron = new ItemOre ("ingot_deep_iron","ingotDeepIron");
-	public static ItemOre ingotDesichalkos = new ItemOre ("ingot_desichalkos","ingotDesichalkos");
-	public static ItemOre ingotEximite = new ItemOre ("ingot_eximite","ingotEximite");
-	public static ItemOre ingotHaderoth = new ItemOre ("ingot_haderoth","ingotHaderoth");
-	public static ItemOre ingotHepatizon = new ItemOre ("ingot_hepatizon","ingotHepatizon");
-	public static ItemOre ingotIgnatius = new ItemOre ("ingot_ignatius","ingotIgnatius");
-	public static ItemOre ingotInfuscolium = new ItemOre ("ingot_infuscolium","ingotInfuscolium");
-	public static ItemOre ingotInolashite = new ItemOre ("ingot_inolashite","ingotInolashite");
-	public static ItemOre ingotKalendrite = new ItemOre ("ingot_kalendrite","ingotKalendrite");
-	public static ItemOre ingotLemurite = new ItemOre ("ingot_lemurite","ingotLemurite");
-//	public static ItemOre ingotLetutium = new ItemOre ("ingot_letutium","ingotLetutium");
-	public static ItemOre ingotManganese = new ItemOre ("ingot_manganese","ingotManganese");
-	public static ItemOre ingotMeutoite = new ItemOre ("ingot_meutoite","ingotMeutoite");
-	public static ItemOre ingotMidasium = new ItemOre ("ingot_midasium","ingotMidasium");
-	public static ItemOre ingotMithril = new ItemOre ("ingot_mithril","ingotMithril");
-	public static ItemOre ingotOrichalcum = new ItemOre ("ingot_orichalcum","ingotOrichalcum");
-//	public static ItemOre ingotOsmium = new ItemOre ("ingot_osmium","ingotOsmium");
-	public static ItemOre ingotOureclase = new ItemOre ("ingot_oureclase","ingotOureclase");
-	public static ItemOre ingotPlatinum = new ItemOre ("ingot_platinum","ingotPlatinum");
-	public static ItemOre ingotPrometheum = new ItemOre ("ingot_prometheum","ingotPrometheum");
-	public static ItemOre ingotQuickSilver = new ItemOre ("ingot_quicksilver","ingotQuickSilver");
-	public static ItemOre ingotRubracium = new ItemOre ("ingot_rubracium","ingotRubracium");
-	public static ItemOre ingotSanguinite = new ItemOre ("ingot_sanguinite","ingotSanguinite");
-	public static ItemOre ingotShadowIron = new ItemOre ("ingot_shadow_iron","ingotShadowIron");
-	public static ItemOre ingotShadowSteel = new ItemOre ("ingot_shadow_steel","ingotShadowSteel");
-	public static ItemOre ingotSilver = new ItemOre("ingot_silver", "ingotSilver");
-	public static ItemOre ingotSteel = new ItemOre ("ingot_steel","ingotSteel");
-	public static ItemOre ingotTartarite = new ItemOre ("ingot_tartarite","ingotTartarite");
-	public static ItemOre ingotTin = new ItemOre ("ingot_tin","ingotTin");
-	public static ItemOre ingotVulcanite = new ItemOre ("ingot_vulcanite","ingotVulcanite");
-	public static ItemOre ingotVyroxeres = new ItemOre ("ingot_vyroxeres","ingotVyroxeres");
-	public static ItemOre ingotZinc = new ItemOre ("ingot_zinc","ingotZinc");	
+	public static ItemOre ingotAdamantine = new ItemOre ("adamantine_ingot","ingotAdamantine");
+	public static ItemOre ingotAlduorite = new ItemOre ("alduorite_ingot","ingotAlduorite");
+	public static ItemOre ingotAmordrine = new ItemOre ("amordrine_ingot","ingotAmordrine");
+	public static ItemOre ingotAngmallen = new ItemOre ("angmallen_ingot","ingotAngmallen");
+	public static ItemOre ingotAstralSilver = new ItemOre ("astral_silver_ingot","ingotAstralSilver");
+	public static ItemOre ingotAtlarus = new ItemOre ("atlarus_ingot","ingotAtlarus");
+	public static ItemOre ingotBlackSteel = new ItemOre ("black_steel_ingot","ingotBlackSteel");
+	public static ItemOre ingotBrass = new ItemOre ("brass_ingot","ingotBrass");
+	public static ItemOre ingotBronze = new ItemOre ("bronze_ingot","ingotBronze");
+	public static ItemOre ingotCarmot = new ItemOre ("carmot_ingot","ingotCarmot");
+	public static ItemOre ingotCelenegil = new ItemOre ("celenegil_ingot","ingotCelenegil");
+	public static ItemOre ingotCeruclase = new ItemOre ("ceruclase_ingot","ingotCeruclase");
+	public static ItemOre ingotCopper = new ItemOre ("copper_ingot","ingotCopper");
+	public static ItemOre ingotDamascusSteel = new ItemOre ("damascus_steel_ingot","ingotDamascusSteel");
+	public static ItemOre ingotDeepIron = new ItemOre ("deep_iron_ingot","ingotDeepIron");
+	public static ItemOre ingotDesichalkos = new ItemOre ("desichalkos_ingot","ingotDesichalkos");
+	public static ItemOre ingotElectrum = new ItemOre ("electrum_ingot","ingotElectrum");
+	public static ItemOre ingotEximite = new ItemOre ("eximite_ingot","ingotEximite");
+	public static ItemOre ingotHaderoth = new ItemOre ("haderoth_ingot","ingotHaderoth");
+	public static ItemOre ingotHepatizon = new ItemOre ("hepatizon_ingot","ingotHepatizon");
+	public static ItemOre ingotIgnatius = new ItemOre ("ignatius_ingot","ingotIgnatius");
+	public static ItemOre ingotInfuscolium = new ItemOre ("infuscolium_ingot","ingotInfuscolium");
+	public static ItemOre ingotInolashite = new ItemOre ("inolashite_ingot","ingotInolashite");
+	public static ItemOre ingotKalendrite = new ItemOre ("kalendrite_ingot","ingotKalendrite");
+	public static ItemOre ingotLemurite = new ItemOre ("lemurite_ingot","ingotLemurite");
+//	public static ItemOre ingotLetutium = new ItemOre ("letutium_ingot","ingotLetutium");
+	public static ItemOre ingotManganese = new ItemOre ("manganese_ingot","ingotManganese");
+	public static ItemOre ingotMeutoite = new ItemOre ("meutoite_ingot","ingotMeutoite");
+	public static ItemOre ingotMidasium = new ItemOre ("midasium_ingot","ingotMidasium");
+	public static ItemOre ingotMithril = new ItemOre ("mithril_ingot","ingotMithril");
+	public static ItemOre ingotOrichalcum = new ItemOre ("orichalcum_ingot","ingotOrichalcum");
+//	public static ItemOre ingotOsmium = new ItemOre ("osmium_ingot","ingotOsmium");
+	public static ItemOre ingotOureclase = new ItemOre ("oureclase_ingot","ingotOureclase");
+	public static ItemOre ingotPlatinum = new ItemOre ("platinum_ingot","ingotPlatinum");
+	public static ItemOre ingotPrometheum = new ItemOre ("prometheum_ingot","ingotPrometheum");
+	public static ItemOre ingotQuickSilver = new ItemOre ("quicksilver_ingot","ingotQuickSilver");
+	public static ItemOre ingotRubracium = new ItemOre ("rubracium_ingot","ingotRubracium");
+	public static ItemOre ingotSanguinite = new ItemOre ("sanguinite_ingot","ingotSanguinite");
+	public static ItemOre ingotShadowIron = new ItemOre ("shadow_iron_ingot","ingotShadowIron");
+	public static ItemOre ingotShadowSteel = new ItemOre ("shadow_steel_ingot","ingotShadowSteel");
+	public static ItemOre ingotSilver = new ItemOre("silver_ingot", "ingotSilver");
+	public static ItemOre ingotSteel = new ItemOre ("steel_ingot","ingotSteel");
+	public static ItemOre ingotTartarite = new ItemOre ("tartarite_ingot","ingotTartarite");
+	public static ItemOre ingotTin = new ItemOre ("tin_ingot","ingotTin");
+	public static ItemOre ingotVulcanite = new ItemOre ("vulcanite_ingot","ingotVulcanite");
+	public static ItemOre ingotVyroxeres = new ItemOre ("vyroxeres_ingot","ingotVyroxeres");
+	public static ItemOre ingotZinc = new ItemOre ("zinc_ingot","ingotZinc ");	
 
 	
 //	public static ItemOre  = new ItemOre ("");		
@@ -70,6 +73,8 @@ public class ModItems {
 				ingotAstralSilver,
 				ingotAtlarus,
 				ingotBlackSteel,
+				ingotBrass,
+				ingotBronze,
 				ingotCarmot,
 				ingotCelenegil,
 				ingotCeruclase,
@@ -77,6 +82,7 @@ public class ModItems {
 				ingotDamascusSteel,
 				ingotDeepIron,
 				ingotDesichalkos,
+				ingotElectrum,
 				ingotEximite,
 				ingotHaderoth,
 				ingotHepatizon,
@@ -125,6 +131,8 @@ public class ModItems {
 		ingotAstralSilver.registerItemModel();
 		ingotAtlarus.registerItemModel();
 		ingotBlackSteel.registerItemModel();
+		ingotBrass.registerItemModel();
+		ingotBronze.registerItemModel();
 		ingotCarmot.registerItemModel();
 		ingotCelenegil.registerItemModel();
 		ingotCeruclase.registerItemModel();
@@ -132,6 +140,7 @@ public class ModItems {
 		ingotDamascusSteel.registerItemModel();
 		ingotDeepIron.registerItemModel();
 		ingotDesichalkos.registerItemModel();
+		ingotElectrum.registerItemModel();
 		ingotEximite.registerItemModel();
 		ingotHaderoth.registerItemModel();
 		ingotHepatizon.registerItemModel();
