@@ -7,10 +7,10 @@
   "key":{
     "A":{
       "type":"forge:ore_dict",
-      "ore": "ingotPrometheum"
+      "ore": "ingotOureclase"
     }
   },
   "result":{
-    "item":"m5:prometheum_boots"
+    "item":"m5:oureclase_boots"
   }
 }

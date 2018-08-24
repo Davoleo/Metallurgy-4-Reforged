@@ -6,14 +6,14 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModItems {
 	
 	//Other resources
-	public static ItemOre dustBitumen = new ItemOre ("dust_bitumen","dustBitumen");
+	public static ItemOre dustBitumen = new ItemOre ("bitumen_dust","dustBitumen");
 	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");	 
-	public static ItemOre dustPotash = new ItemOre ("dust_potash","dustPotash");
-	public static ItemOre dustSulfur = new ItemOre ("dust_sulfur","dustSulfur");	 
+	public static ItemOre dustPotash = new ItemOre ("potash_dust","dustPotash");
+	public static ItemOre dustSulfur = new ItemOre ("sulfur_dust","dustSulfur");
 		 
 	
 	//Ingot
-	public static ItemOre ingotAdamantine = new ItemOre ("ingot_adamantine","ingotAdamantine");
+	public static ItemOre ingotAdamantine = new ItemOre ("adamantine_ingot","ingotAdamantine");
 	public static ItemOre ingotAlduorite = new ItemOre ("ingot_alduorite","ingotAlduorite");
 	public static ItemOre ingotAmordrine = new ItemOre ("ingot_amordrine","ingotAmordrine");
 	public static ItemOre ingotAngmallen = new ItemOre ("ingot_angmallen","ingotAngmallen");
@@ -55,7 +55,7 @@ public class ModItems {
 	public static ItemOre ingotTartarite = new ItemOre ("ingot_tartarite","ingotTartarite");
 	public static ItemOre ingotTin = new ItemOre ("ingot_tin","ingotTin");
 	public static ItemOre ingotVulcanite = new ItemOre ("ingot_vulcanite","ingotVulcanite");
-	public static ItemOre ingotVyroxeres = new ItemOre ("ingot_vyroxeres","ingotVyroxeres ");
+	public static ItemOre ingotVyroxeres = new ItemOre ("ingot_vyroxeres","ingotVyroxeres");
 	public static ItemOre ingotZinc = new ItemOre ("ingot_zinc","ingotZinc ");	
 
 	

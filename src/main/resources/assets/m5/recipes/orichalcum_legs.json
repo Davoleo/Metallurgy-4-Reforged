@@ -8,10 +8,10 @@
   "key":{
     "A":{
       "type":"forge:ore_dict",
-      "ore": "ingotPrometheum"
+      "ore": "ingotOrichalcum"
     }
   },
   "result":{
-    "item":"m5:prometheum_legs"
+    "item":"m5:orichalcum_legs"
   }
 }
