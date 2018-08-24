@@ -11,5 +11,9 @@
       "ore": "ingotAdamantine"
     }
   },
-  "result": "m5:adamantine_block"
+  "result": {
+    "item": "m5:adamantine_block"
+  }
+
+
 }
