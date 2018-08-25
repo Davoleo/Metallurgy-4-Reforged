@@ -54,6 +54,7 @@ public class ModBlocks {
 	public static BlockOre blockAstralSilver = new BlockOre("astral_silver_block","blockAstralSilver").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockAtlarus = new BlockOre("atlarus_block","blockAtlarus").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockAmordrine = new BlockOre("amordrine_block","blockAmordrine").setCreativeTab(Metallurgy_5.tabBlock);
+	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockBlackSteel = new BlockOre("black_steel_block","blockBlackSteel").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockBrass = new BlockOre("brass_block","blockBrass").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockBronze = new BlockOre("bronze_block","blockBronze").setCreativeTab(Metallurgy_5.tabBlock);
@@ -65,6 +66,7 @@ public class ModBlocks {
 	public static BlockOre blockDamascusSteel= new BlockOre("damascus_steel_block","blockDamascusSteel").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockDeepIron = new BlockOre("deep_iron_block","blockDeepIron").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockDesichalkos = new BlockOre("desichalkos_block","blockDesichalkos").setCreativeTab(Metallurgy_5.tabBlock);
+	public static BlockOre blockElectrum = new BlockOre("electrum_block", "blockElectrum").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockEximite = new BlockOre("eximite_block","blockEximite").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockHaderoth = new BlockOre("haderoth_block","blockHaderoth").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockHepatizon = new BlockOre("hepatizon_block","blockHepatizon").setCreativeTab(Metallurgy_5.tabBlock);
@@ -142,6 +144,7 @@ public class ModBlocks {
 				 blockAtlarus,
 				 blockAmordrine,
 				 blockBlackSteel,
+				 blockBitumen,
 				 blockBrass,
 				 blockBronze,
 				 blockCarmot,
@@ -152,6 +155,7 @@ public class ModBlocks {
 				 blockDamascusSteel,
 				 blockDeepIron,
 				 blockDesichalkos,
+				 blockElectrum,
 				 blockEximite,
 				 blockHaderoth,
 				 blockHepatizon,
@@ -233,6 +237,7 @@ public class ModBlocks {
 				 blockAstralSilver.createItemBlock(),
 				 blockAtlarus.createItemBlock(),
 				 blockAmordrine.createItemBlock(),
+				 blockBitumen.createItemBlock(),
 				 blockBlackSteel.createItemBlock(),
 				 blockBrass.createItemBlock(),
 				 blockBronze.createItemBlock(),
@@ -244,6 +249,7 @@ public class ModBlocks {
 				 blockDamascusSteel.createItemBlock(),
 				 blockDeepIron.createItemBlock(),
 				 blockDesichalkos.createItemBlock(),
+				 blockElectrum.createItemBlock(),
 				 blockEximite.createItemBlock(),
 				 blockHaderoth.createItemBlock(),
 				 blockHepatizon.createItemBlock(),

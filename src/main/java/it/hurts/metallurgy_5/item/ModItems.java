@@ -20,6 +20,8 @@ public class ModItems {
 	public static ItemOre ingotAstralSilver = new ItemOre ("astral_silver_ingot","ingotAstralSilver");
 	public static ItemOre ingotAtlarus = new ItemOre ("atlarus_ingot","ingotAtlarus");
 	public static ItemOre ingotBlackSteel = new ItemOre ("black_steel_ingot","ingotBlackSteel");
+	public static ItemOre ingotBrass = new ItemOre ("brass_ingot","ingotBrass");
+	public static ItemOre ingotBronze = new ItemOre ("bronze_ingot","ingotBronze");
 	public static ItemOre ingotCarmot = new ItemOre ("carmot_ingot","ingotCarmot");
 	public static ItemOre ingotCelenegil = new ItemOre ("celenegil_ingot","ingotCelenegil");
 	public static ItemOre ingotCeruclase = new ItemOre ("ceruclase_ingot","ingotCeruclase");
@@ -27,6 +29,7 @@ public class ModItems {
 	public static ItemOre ingotDamascusSteel = new ItemOre ("damascus_steel_ingot","ingotDamascusSteel");
 	public static ItemOre ingotDeepIron = new ItemOre ("deep_iron_ingot","ingotDeepIron");
 	public static ItemOre ingotDesichalkos = new ItemOre ("desichalkos_ingot","ingotDesichalkos");
+	public static ItemOre ingotElectrum = new ItemOre ("electrum_ingot","ingotElectrum");
 	public static ItemOre ingotEximite = new ItemOre ("eximite_ingot","ingotEximite");
 	public static ItemOre ingotHaderoth = new ItemOre ("haderoth_ingot","ingotHaderoth");
 	public static ItemOre ingotHepatizon = new ItemOre ("hepatizon_ingot","ingotHepatizon");
@@ -56,7 +59,7 @@ public class ModItems {
 	public static ItemOre ingotTin = new ItemOre ("tin_ingot","ingotTin");
 	public static ItemOre ingotVulcanite = new ItemOre ("vulcanite_ingot","ingotVulcanite");
 	public static ItemOre ingotVyroxeres = new ItemOre ("vyroxeres_ingot","ingotVyroxeres");
-	public static ItemOre ingotZinc = new ItemOre ("zinc_ingot","ingotZinc ");
+	public static ItemOre ingotZinc = new ItemOre ("zinc_ingot","ingotZinc ");	
 
 	
 //	public static ItemOre  = new ItemOre ("");		
@@ -70,6 +73,8 @@ public class ModItems {
 				ingotAstralSilver,
 				ingotAtlarus,
 				ingotBlackSteel,
+				ingotBrass,
+				ingotBronze,
 				ingotCarmot,
 				ingotCelenegil,
 				ingotCeruclase,
@@ -77,6 +82,7 @@ public class ModItems {
 				ingotDamascusSteel,
 				ingotDeepIron,
 				ingotDesichalkos,
+				ingotElectrum,
 				ingotEximite,
 				ingotHaderoth,
 				ingotHepatizon,
@@ -125,6 +131,8 @@ public class ModItems {
 		ingotAstralSilver.registerItemModel();
 		ingotAtlarus.registerItemModel();
 		ingotBlackSteel.registerItemModel();
+		ingotBrass.registerItemModel();
+		ingotBronze.registerItemModel();
 		ingotCarmot.registerItemModel();
 		ingotCelenegil.registerItemModel();
 		ingotCeruclase.registerItemModel();
@@ -132,6 +140,7 @@ public class ModItems {
 		ingotDamascusSteel.registerItemModel();
 		ingotDeepIron.registerItemModel();
 		ingotDesichalkos.registerItemModel();
+		ingotElectrum.registerItemModel();
 		ingotEximite.registerItemModel();
 		ingotHaderoth.registerItemModel();
 		ingotHepatizon.registerItemModel();
