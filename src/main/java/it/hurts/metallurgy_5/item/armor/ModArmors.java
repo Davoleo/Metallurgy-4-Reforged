@@ -57,15 +57,15 @@ public class ModArmors {
 	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.FEET,"mithril_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
+	public static ItemArmorBase orichalcum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.HEAD, "orichalcum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase orichalcum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.CHEST, "orichalcum_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase orichalcum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase orichalcum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
 	public static ItemArmorBase oureclase_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.HEAD, "oureclase_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "oureclase_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "oureclase_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "oureclase_boots").setCreativeTab(Metallurgy_5.tabArmor);
-
-	public static ItemArmorBase orichalcum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.HEAD, "orichalcum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase orichalcum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "orichalcum_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase orichalcum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase orichalcum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase platinum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest").setCreativeTab(Metallurgy_5.tabArmor);
@@ -92,15 +92,15 @@ public class ModArmors {
 	public static ItemArmorBase silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase silver_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.FEET, "silver_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase vyroxeres_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.HEAD, "vyroxeres_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase vyroxeres_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.CHEST, "vyroxeres_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase vyroxeres_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.LEGS, "vyroxeres_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase vyroxeres_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.FEET, "vyroxeres_boots").setCreativeTab(Metallurgy_5.tabArmor);
-
 	public static ItemArmorBase vulcanite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.HEAD, "vulcanite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase vulcanite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.CHEST, "vulcanite_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase vulcanite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.LEGS, "vulcanite_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase vulcanite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.FEET, "vulcanite_boots").setCreativeTab(Metallurgy_5.tabArmor);
+
+	public static ItemArmorBase vyroxeres_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.HEAD, "vyroxeres_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase vyroxeres_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.CHEST, "vyroxeres_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase vyroxeres_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.LEGS, "vyroxeres_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase vyroxeres_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.FEET, "vyroxeres_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
