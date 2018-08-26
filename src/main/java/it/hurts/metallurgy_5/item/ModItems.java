@@ -87,6 +87,7 @@ public class ModItems {
 				ingotHaderoth,
 				ingotHepatizon,
 				ingotIgnatius,
+				ingotInfuscolium,
 				ingotInolashite,
 				ingotKalendrite,
 				ingotLemurite,
@@ -145,6 +146,7 @@ public class ModItems {
 		ingotHaderoth.registerItemModel();
 		ingotHepatizon.registerItemModel();
 		ingotIgnatius.registerItemModel();
+		ingotInfuscolium.registerItemModel();
 		ingotInolashite.registerItemModel();
 		ingotKalendrite.registerItemModel();
 		ingotLemurite.registerItemModel();
