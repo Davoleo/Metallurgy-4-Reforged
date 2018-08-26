@@ -1,60 +1,3 @@
-#Items
-item.tar.name=Tar
-item.bitumen_dust.name=Bitumen
-item.potash_dust.name=Potash
-
-
-#Ingots
-item.adamantine_ingot.name=Adamantine Ingot
-item.alduorite_ingot.name=Alduorite Ingot
-item.amordrine_ingot.name=Amordrine Ingot
-item.angmallen_ingot.name=Angmallen Ingot
-item.astral_silver_ingot.name=Astral Silver Ingot
-item.atlarus_ingot.name=Atlarus Ingot
-item.black_steel_ingot.name=Black Steel Ingot
-item.brass_ingot.name=Brass Ingot
-item.bronze_ingot.name=Bronze Ingot
-item.carmot_ingot.name=Carmot Ingot
-item.celenegil_ingot.name=Celenegil Ingot
-item.ceruclase_ingot.name=Ceruclase Ingot
-item.copper_ingot.name=Copper Ingot
-item.deep_iron_ingot.name=Deep Iron Ingot
-item.desichalkos_ingot.name=Desichalkos Ingot
-item.damascus_steel_ingot.name=Damascus Steel Ingot
-item.electrum_ingot.name=Electrum Ingot
-item.eximite_ingot.name=Eximite Ingot
-item.haderoth_ingot.name=Haderoth Ingot
-item.hepatizon_ingot.name=Hepatizon Ingot
-item.ignatius_ingot.name=Ignatius Ingot
-item.inolashite_ingot.name=Inolashite Ingot
-item.kalendrite_ingot.name=Kalendrite Ingot
-item.lemurite_ingot.name=Lemurite Ingot
-item.manganese_ingot.name=Manganese Ingot
-item.meutoite_ingot.name=Meutoite Ingot
-item.midasium_ingot.name=Midasium Ingot
-item.mithril_ingot.name=Mithril Ingot
-item.orichalcum_ingot.name=Orichalcum Ingot
-item.oureclase_ingot.name=Oureclase Ingot
-item.platinum_ingot.name=Platinum Ingot
-item.prometheum_ingot.name=Promethem Ingot
-item.quicksilver_ingot.name=Quicksilver Ingot
-item.rubracium_ingot.name=Rubracium Ingot
-item.sanguinite_ingot.name=Sanguinite Ingot
-item.shadow_iron_ingot.name=Shadow Iron Ingot
-item.shadow_steel_ingot.name=Shadow Steel Ingot
-item.silver_ingot.name=Silver Ingot
-item.steel_ingot.name=Steel Ingot
-item.tartarite_ingot.name=Tartarite Ingot
-item.tin_ingot.name=Tin Ingot
-item.vulcanite_ingot.name=Vulcanite Ingot
-item.vyroxeres_ingot.name=Vyroxeres Ingot
-item.zinc_ingot.name=Zinc Ingot
-
-#Dust
-item.dust_potash.name=Potash
-item.dust_bitumen.name=Bitumen
-item.dust_sulfur.name=Sulfur
-
 #Armors
 item.adamantine_helmet.name=Adamantine Helmet
 item.adamantine_chest.name=Adamantine Chestplate
@@ -173,8 +116,6 @@ tile.astral_silver_block.name=Astral Sivler Block
 tile.oureclase_block.name=Oureclase Block
 tile.deep_iron_block.name=Deep Iron Block
 tile.quicksilver_block.name=Quicksilver Block
-tile.deep_iron_block.name=Deep Iron Block
-tile.quicksilver_block.name=Quicksilver Block
 tile.mithril_block.name=Mithril Block
 tile.haderoth_block.name=Haderoth Block
 tile.atlarus_block.name=Atlarus Block
@@ -203,6 +144,66 @@ tile.platinum_block.name=Platinum Block
 tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
+# Creative Tab
+itemGroup.m5.ingots=Metallurgy Ingots
+itemGroup.m5.blocks=Metallurgy Blocks
+itemGroup.m5.ores=Metallurgy Ores
+itemGroup.m5.armors=Metallurgy Armor
+itemGroup.m5.tools=Metallurgy Tools
+
+#Dust
+item.sulfur_dust.name=Sulfur
+item.bitumen_dust.name=Bitumen
+item.potash_dust.name=Potash
+
+#Ingots
+item.adamantine_ingot.name=Adamantine Ingot
+item.alduorite_ingot.name=Alduorite Ingot
+item.amordrine_ingot.name=Amordrine Ingot
+item.angmallen_ingot.name=Angmallen Ingot
+item.astral_silver_ingot.name=Astral Silver Ingot
+item.atlarus_ingot.name=Atlarus Ingot
+item.black_steel_ingot.name=Black Steel Ingot
+item.brass_ingot.name=Brass Ingot
+item.bronze_ingot.name=Bronze Ingot
+item.carmot_ingot.name=Carmot Ingot
+item.celenegil_ingot.name=Celenegil Ingot
+item.ceruclase_ingot.name=Ceruclase Ingot
+item.copper_ingot.name=Copper Ingot
+item.deep_iron_ingot.name=Deep Iron Ingot
+item.desichalkos_ingot.name=Desichalkos Ingot
+item.damascus_steel_ingot.name=Damascus Steel Ingot
+item.electrum_ingot.name=Electrum Ingot
+item.eximite_ingot.name=Eximite Ingot
+item.haderoth_ingot.name=Haderoth Ingot
+item.hepatizon_ingot.name=Hepatizon Ingot
+item.ignatius_ingot.name=Ignatius Ingot
+item.inolashite_ingot.name=Inolashite Ingot
+item.kalendrite_ingot.name=Kalendrite Ingot
+item.lemurite_ingot.name=Lemurite Ingot
+item.manganese_ingot.name=Manganese Ingot
+item.meutoite_ingot.name=Meutoite Ingot
+item.midasium_ingot.name=Midasium Ingot
+item.mithril_ingot.name=Mithril Ingot
+item.orichalcum_ingot.name=Orichalcum Ingot
+item.oureclase_ingot.name=Oureclase Ingot
+item.platinum_ingot.name=Platinum Ingot
+item.prometheum_ingot.name=Promethem Ingot
+item.quicksilver_ingot.name=Quicksilver Ingot
+item.rubracium_ingot.name=Rubracium Ingot
+item.sanguinite_ingot.name=Sanguinite Ingot
+item.shadow_iron_ingot.name=Shadow Iron Ingot
+item.shadow_steel_ingot.name=Shadow Steel Ingot
+item.silver_ingot.name=Silver Ingot
+item.steel_ingot.name=Steel Ingot
+item.tartarite_ingot.name=Tartarite Ingot
+item.tin_ingot.name=Tin Ingot
+item.vulcanite_ingot.name=Vulcanite Ingot
+item.vyroxeres_ingot.name=Vyroxeres Ingot
+item.zinc_ingot.name=Zinc Ingot
+
+#Items
+item.tar.name=Tar
 
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
@@ -239,9 +240,117 @@ tile.vyroxeres_ore.name=Vyroxeres Ore
 tile.vulcanite_ore.name=Vulcanite Ore
 tile.zinc_ore.name=Zinc Ore
 
-# Creative Tab
-itemGroup.m5.ingots=Metallurgy Ingots
-itemGroup.m5.blocks=Metallurgy Blocks
-itemGroup.m5.ores=Metallurgy Ores
-itemGroup.m5.armors=Metallurgy Armor
-itemGroup.m5.tools=Metallurgy Tools
+#Tools
+item.adamantine_axe.name=Adamantine Axe
+item.adamantine_hoe.name=Adamantine Hoe
+item.adamantine_pickaxe.name=Adamantine Pickaxe
+item.adamantine_shovel.name=Adamantine Shovel
+item.adamantine_sword.name=Adamantine Sword
+
+item.astral_silver_axe.name=Astral Silver Axe
+item.astral_silver_hoe.name=Astral Silver Hoe
+item.astral_silver_pickaxe.name=Astral Silver Pickaxe
+item.astral_silver_shovel.name=Astral Silver Shovel
+item.astral_silver_sword.name=Astral Silver Sword
+
+item.atlarus_axe.name=Atlarus Axe
+item.atlarus_hoe.name=Atlarus Hoe
+item.atlarus_pickaxe.name=Atlarus Pickaxe
+item.atlarus_shovel.name=Atlarus Shovel
+item.atlarus_sword.name=Atlarus Sword
+
+item.carmot_axe.name=Carmot Axe
+item.carmot_hoe.name=Carmot Hoe
+item.carmot_pickaxe.name=Carmot Pickaxe
+item.carmot_shovel.name=Carmot Shovel
+item.carmot_sword.name=Carmot Sword
+
+item.deep_iron_axe.name=Deep Iron Axe
+item.deep_iron_hoe.name=Deep Iron Hoe
+item.deep_iron_pickaxe.name=Deep Iron Pickaxe
+item.deep_iron_shovel.name=Deep Iron Shovel
+item.deep_iron_sword.name=Deep Iron Sword
+
+item.eximite_axe.name=Eximite Axe
+item.eximite_hoe.name=Eximite Hoe
+item.eximite_pickaxe.name=Eximite Pickaxe
+item.eximite_shovel.name=Eximite Shovel
+item.eximite_sword.name=Eximite Sword
+
+item.ignatius_axe.name=Ignatius Axe
+item.ignatius_hoe.name=Ignatius Hoe
+item.ignatius_pickaxe.name=Ignatius Pickaxe
+item.ignatius_shovel.name=Ignatius Shovel
+item.ignatius_sword.name=Ignatius Sword
+
+item.kalendrite_axe.name=Kalendrite Axe
+item.kalendrite_hoe.name=Kalendrite Hoe
+item.kalendrite_pickaxe.name=Kalendrite Pickaxe
+item.kalendrite_shovel.name=Kalendrite Shovel
+item.kalendrite_sword.name=Kalendrite Sword
+
+item.midasium_axe.name=Midasium Axe
+item.midasium_hoe.name=Midasium Hoe
+item.midasium_pickaxe.name=Midasium Pickaxe
+item.midasium_shovel.name=Midasium Shovel
+item.midasium_sword.name=Midasium Sword
+
+item.mithril_axe.name=Mithril Axe
+item.mithril_hoe.name=Mithril Hoe
+item.mithril_pickaxe.name=Mithril Pickaxe
+item.mithril_shovel.name=Mithril Shovel
+item.mithril_sword.name=Mithril Sword
+
+item.orichalcum_axe.name=Orichalcum Axe
+item.orichalcum_hoe.name=Orichalcum Hoe
+item.orichalcum_pickaxe.name=Orichalcum Pickaxe
+item.orichalcum_shovel.name=Orichalcum Shovel
+item.orichalcum_sword.name=Orichalcum Sword
+
+item.oureclase_axe.name=Oureclase Axe
+item.oureclase_hoe.name=Oureclase Hoe
+item.oureclase_pickaxe.name=Oureclase Pickaxe
+item.oureclase_shovel.name=Oureclase Shovel
+item.oureclase_sword.name=Oureclase Sword
+
+item.platinum_axe.name=Platinum Axe
+item.platinum_hoe.name=Platinum Hoe
+item.platinum_pickaxe.name=Platinum Pickaxe
+item.platinum_shovel.name=Platinum Shovel
+item.platinum_sword.name=Platinum Sword
+
+item.prometheum_axe.name=Prometheum Axe
+item.prometheum_hoe.name=Prometheum Hoe
+item.prometheum_pickaxe.name=Prometheum Pickaxe
+item.prometheum_shovel.name=Prometheum Shovel
+item.prometheum_sword.name=Prometheum Sword
+
+item.sanguinite_axe.name=Sanguinite Axe
+item.sanguinite_hoe.name=Sanguinite Hoe
+item.sanguinite_pickaxe.name=Sanguinite Pickaxe
+item.sanguinite_shovel.name=Sanguinite Shovel
+item.sanguinite_sword.name=Sanguinite Sword
+
+item.shadow_iron_axe.name=Shadow Iron Axe
+item.shadow_iron_hoe.name=Shadow Iron Hoe
+item.shadow_iron_pickaxe.name=Shadow Iron Pickaxe
+item.shadow_iron_shovel.name=Shadow Iron Shovel
+item.shadow_iron_sword.name=Shadow Iron Sword
+
+item.silver_axe.name=Silver Axe
+item.silver_hoe.name=Silver Hoe
+item.silver_pickaxe.name=Silver Pickaxe
+item.silver_shovel.name=Silver Shovel
+item.silver_sword.name=Silver Sword
+
+item.vulcanite_axe.name=Vulcanite Axe
+item.vulcanite_hoe.name=Vulcanite Hoe
+item.vulcanite_pickaxe.name=Vulcanite Pickaxe
+item.vulcanite_shovel.name=Vulcanite Shovel
+item.vulcanite_sword.name=Vulcanite Sword
+
+item.vyroxeres_axe.name=Vyroxeres Axe
+item.vyroxeres_hoe.name=Vyroxeres Hoe
+item.vyroxeres_pickaxe.name=Vyroxeres Pickaxe
+item.vyroxeres_shovel.name=Vyroxeres Shovel
+item.vyroxeres_sword.name=Vyroxeres Sword
