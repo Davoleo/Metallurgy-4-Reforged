@@ -1,14 +1,13 @@
 package it.hurts.metallurgy_5;
 
-import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
+import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
-import it.hurts.metallurgy_5.oreGen.ModWorldGen;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
 import it.hurts.metallurgy_5.util.ModRecipes;
 import it.hurts.metallurgy_5.util.tabs.*;
-import it.hurts.metallurgy_5.world.WorldGen;
+import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -92,7 +91,6 @@ public class Metallurgy_5 {
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
-		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
 	}
 
 	@Mod.EventHandler
