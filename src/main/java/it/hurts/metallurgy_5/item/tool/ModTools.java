@@ -44,6 +44,12 @@ public class ModTools {
     public static ItemShovelBase deep_iron_shovel = new ItemShovelBase(Metallurgy_5.deepIronToolMaterial, "deep_iron_shovel");
     public static ItemSwordBase deep_iron_sword = new ItemSwordBase(Metallurgy_5.deepIronToolMaterial, "deep_iron_sword");
 
+    public static ItemAxeBase eximite_axe = new ItemAxeBase(Metallurgy_5.eximiteToolMaterial, "eximite_axe");
+    public static ItemHoeBase eximite_hoe = new ItemHoeBase(Metallurgy_5.eximiteToolMaterial, "eximite_hoe");
+    public static ItemPickaxeBase eximite_pickaxe = new ItemPickaxeBase(Metallurgy_5.eximiteToolMaterial, "eximite_pickaxe");
+    public static ItemShovelBase eximite_shovel = new ItemShovelBase(Metallurgy_5.eximiteToolMaterial, "eximite_shovel");
+    public static ItemSwordBase eximite_sword = new ItemSwordBase(Metallurgy_5.eximiteToolMaterial, "eximite_sword");
+
     public static ItemAxeBase ignatius_axe = new ItemAxeBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_axe");
     public static ItemHoeBase ignatius_hoe = new ItemHoeBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_hoe");
     public static ItemPickaxeBase ignatius_pickaxe = new ItemPickaxeBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_pickaxe");
@@ -55,6 +61,12 @@ public class ModTools {
     public static ItemPickaxeBase kalendrite_pickaxe = new ItemPickaxeBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_pickaxe");
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_shovel");
     public static ItemSwordBase kalendrite_sword = new ItemSwordBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_sword");
+
+    public static ItemAxeBase midasium_axe = new ItemAxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_axe");
+    public static ItemHoeBase midasium_hoe = new ItemHoeBase(Metallurgy_5.midasiumToolMaterial, "midasium_hoe");
+    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_pickaxe");
+    public static ItemShovelBase midasium_shovel = new ItemShovelBase(Metallurgy_5.midasiumToolMaterial, "midasium_shovel");
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword");
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(Metallurgy_5.mithrilToolMaterial, "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(Metallurgy_5.mithrilToolMaterial, "mithril_hoe");
@@ -85,6 +97,36 @@ public class ModTools {
     public static ItemPickaxeBase prometheum_pickaxe = new ItemPickaxeBase(Metallurgy_5.prometheumToolMaterial, "prometheum_pickaxe");
     public static ItemShovelBase prometheum_shovel = new ItemShovelBase(Metallurgy_5.prometheumToolMaterial, "prometheum_shovel");
     public static ItemSwordBase prometheum_sword = new ItemSwordBase(Metallurgy_5.prometheumToolMaterial, "prometheum_sword");
+
+    public static ItemAxeBase sanguinite_axe = new ItemAxeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_axe");
+    public static ItemHoeBase sanguinite_hoe = new ItemHoeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_hoe");
+    public static ItemPickaxeBase sanguinite_pickaxe = new ItemPickaxeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_pickaxe");
+    public static ItemShovelBase sanguinite_shovel = new ItemShovelBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_shovel");
+    public static ItemSwordBase sanguinite_sword = new ItemSwordBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_sword");
+
+    public static ItemAxeBase shadow_iron_axe = new ItemAxeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_axe");
+    public static ItemHoeBase shadow_iron_hoe = new ItemHoeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_hoe");
+    public static ItemPickaxeBase shadow_iron_pickaxe = new ItemPickaxeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_pickaxe");
+    public static ItemShovelBase shadow_iron_shovel = new ItemShovelBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_shovel");
+    public static ItemSwordBase shadow_iron_sword = new ItemSwordBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_sword");
+
+    public static ItemAxeBase silver_axe = new ItemAxeBase(Metallurgy_5.silverToolMaterial, "silver_axe");
+    public static ItemHoeBase silver_hoe = new ItemHoeBase(Metallurgy_5.silverToolMaterial, "silver_hoe");
+    public static ItemPickaxeBase silver_pickaxe = new ItemPickaxeBase(Metallurgy_5.silverToolMaterial, "silver_pickaxe");
+    public static ItemShovelBase silver_shovel = new ItemShovelBase(Metallurgy_5.silverToolMaterial, "silver_shovel");
+    public static ItemSwordBase silver_sword = new ItemSwordBase(Metallurgy_5.silverToolMaterial, "silver_sword");
+
+    public static ItemAxeBase vulcanite_axe = new ItemAxeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_axe");
+    public static ItemHoeBase vulcanite_hoe = new ItemHoeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_hoe");
+    public static ItemPickaxeBase vulcanite_pickaxe = new ItemPickaxeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_pickaxe");
+    public static ItemShovelBase vulcanite_shovel = new ItemShovelBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_shovel");
+    public static ItemSwordBase vulcanite_sword = new ItemSwordBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_sword");
+
+    public static ItemAxeBase vyroxeres_axe = new ItemAxeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_axe");
+    public static ItemHoeBase vyroxeres_hoe = new ItemHoeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_hoe");
+    public static ItemPickaxeBase vyroxeres_pickaxe = new ItemPickaxeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_pickaxe");
+    public static ItemShovelBase vyroxeres_shovel = new ItemShovelBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_shovel");
+    public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_sword");
 
 
     public static void register(IForgeRegistry<Item> registry)
@@ -120,6 +162,12 @@ public class ModTools {
                 deep_iron_shovel,
                 deep_iron_sword,
 
+                eximite_axe,
+                eximite_hoe,
+                eximite_pickaxe,
+                eximite_shovel,
+                eximite_sword,
+
                 ignatius_axe,
                 ignatius_hoe,
                 ignatius_pickaxe,
@@ -131,6 +179,12 @@ public class ModTools {
                 kalendrite_pickaxe,
                 kalendrite_shovel,
                 kalendrite_sword,
+
+                midasium_axe,
+                midasium_hoe,
+                midasium_pickaxe,
+                midasium_shovel,
+                midasium_sword,
 
                 mithril_axe,
                 mithril_hoe,
@@ -160,7 +214,37 @@ public class ModTools {
                 prometheum_hoe,
                 prometheum_pickaxe,
                 prometheum_shovel,
-                prometheum_sword
+                prometheum_sword,
+
+                sanguinite_axe,
+                sanguinite_hoe,
+                sanguinite_pickaxe,
+                sanguinite_shovel,
+                sanguinite_sword,
+
+                shadow_iron_axe,
+                shadow_iron_hoe,
+                shadow_iron_pickaxe,
+                shadow_iron_shovel,
+                shadow_iron_sword,
+
+                silver_axe,
+                silver_hoe,
+                silver_pickaxe,
+                silver_shovel,
+                silver_sword,
+
+                vulcanite_axe,
+                vulcanite_hoe,
+                vulcanite_pickaxe,
+                vulcanite_shovel,
+                vulcanite_sword,
+
+                vyroxeres_axe,
+                vyroxeres_hoe,
+                vyroxeres_pickaxe,
+                vyroxeres_shovel,
+                vyroxeres_sword
         );
     }
 
@@ -197,6 +281,12 @@ public class ModTools {
         deep_iron_shovel.registerItemModel(deep_iron_shovel, 0);
         deep_iron_sword.registerItemModel(deep_iron_sword, 0);
 
+        eximite_axe.registerItemModel(eximite_axe, 0);
+        eximite_hoe.registerItemModel(eximite_hoe, 0);
+        eximite_pickaxe.registerItemModel(eximite_pickaxe, 0);
+        eximite_shovel.registerItemModel(eximite_shovel, 0);
+        eximite_sword.registerItemModel(eximite_sword, 0);
+
         ignatius_axe.registerItemModel(ignatius_axe, 0);
         ignatius_hoe.registerItemModel(ignatius_hoe, 0);
         ignatius_pickaxe.registerItemModel(ignatius_pickaxe, 0);
@@ -208,6 +298,12 @@ public class ModTools {
         kalendrite_pickaxe.registerItemModel(kalendrite_pickaxe, 0);
         kalendrite_shovel.registerItemModel(kalendrite_shovel, 0);
         kalendrite_sword.registerItemModel(kalendrite_sword, 0);
+
+        midasium_axe.registerItemModel(midasium_axe, 0);
+        midasium_hoe.registerItemModel(midasium_hoe, 0);
+        midasium_pickaxe.registerItemModel(midasium_pickaxe, 0);
+        midasium_shovel.registerItemModel(midasium_shovel, 0);
+        midasium_sword.registerItemModel(midasium_sword, 0);
 
         mithril_axe.registerItemModel(mithril_axe, 0);
         mithril_hoe.registerItemModel(mithril_hoe, 0);
@@ -238,5 +334,35 @@ public class ModTools {
         prometheum_pickaxe.registerItemModel(prometheum_pickaxe, 0);
         prometheum_shovel.registerItemModel(prometheum_shovel, 0);
         prometheum_sword.registerItemModel(prometheum_sword, 0);
+
+        sanguinite_axe.registerItemModel(sanguinite_axe, 0);
+        sanguinite_hoe.registerItemModel(sanguinite_hoe, 0);
+        sanguinite_pickaxe.registerItemModel(sanguinite_pickaxe, 0);
+        sanguinite_shovel.registerItemModel(sanguinite_shovel, 0);
+        sanguinite_sword.registerItemModel(sanguinite_sword, 0);
+
+        shadow_iron_axe.registerItemModel(shadow_iron_axe, 0);
+        shadow_iron_hoe.registerItemModel(shadow_iron_hoe, 0);
+        shadow_iron_pickaxe.registerItemModel(shadow_iron_pickaxe, 0);
+        shadow_iron_shovel.registerItemModel(shadow_iron_shovel, 0);
+        shadow_iron_sword.registerItemModel(shadow_iron_sword, 0);
+
+        silver_axe.registerItemModel(silver_axe, 0);
+        silver_hoe.registerItemModel(silver_hoe, 0);
+        silver_pickaxe.registerItemModel(silver_pickaxe, 0);
+        silver_shovel.registerItemModel(silver_shovel, 0);
+        silver_sword.registerItemModel(silver_sword, 0);
+
+        vulcanite_axe.registerItemModel(vulcanite_axe, 0);
+        vulcanite_hoe.registerItemModel(vulcanite_hoe, 0);
+        vulcanite_pickaxe.registerItemModel(vulcanite_pickaxe, 0);
+        vulcanite_shovel.registerItemModel(vulcanite_shovel, 0);
+        vulcanite_sword.registerItemModel(vulcanite_sword, 0);
+
+        vyroxeres_axe.registerItemModel(vyroxeres_axe, 0);
+        vyroxeres_hoe.registerItemModel(vyroxeres_hoe, 0);
+        vyroxeres_pickaxe.registerItemModel(vyroxeres_pickaxe, 0);
+        vyroxeres_shovel.registerItemModel(vyroxeres_shovel, 0);
+        vyroxeres_sword.registerItemModel(vyroxeres_sword, 0);
     }
 }

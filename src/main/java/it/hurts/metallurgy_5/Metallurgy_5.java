@@ -51,13 +51,13 @@ public class Metallurgy_5 {
 	public static final ItemArmor.ArmorMaterial mithrilArmorMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 21, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial orichalcumArmorMaterial = EnumHelper.addArmorMaterial("ORICHALCUM", MODID + ":mithril", 20, new int[]{2, 6, 7, 2}, 4, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.4F);
 	public static final ItemArmor.ArmorMaterial oureclaseArmorMaterial = EnumHelper.addArmorMaterial("OURECLASE", MODID + ":oureclase", 28, new int[]{3, 6, 5, 4}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.5F);
-	public static final ItemArmor.ArmorMaterial prometheumArmorMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
 	public static final ItemArmor.ArmorMaterial platinumArmorMaterial = EnumHelper.addArmorMaterial("PLATINUM", MODID + ":platinum", 17, new int[]{3, 5, 6, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F);
+	public static final ItemArmor.ArmorMaterial prometheumArmorMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
 	public static final ItemArmor.ArmorMaterial sanguiniteArmorMaterial = EnumHelper.addArmorMaterial("SANGUINITE", MODID + ":sanguinite", 58, new int[]{4, 6, 7, 5}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F);
 	public static final ItemArmor.ArmorMaterial shadowIronArmorMaterial = EnumHelper.addArmorMaterial("SHADOW_IRON", MODID + ":shadow_iron", 32, new int[]{4, 5, 6, 3}, 3, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
 	public static final ItemArmor.ArmorMaterial silverArmorMaterial = EnumHelper.addArmorMaterial("SILVER", MODID + ":silver", 8, new int[]{2, 3, 4, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.1F);
-	public static final ItemArmor.ArmorMaterial vyroxeresArmorMaterial = EnumHelper.addArmorMaterial("VIROXERES", MODID + ":vyroxeres", 37, new int[]{4, 5, 6, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F);
 	public static final ItemArmor.ArmorMaterial vulcaniteArmorMaterial = EnumHelper.addArmorMaterial("VULCANITE", MODID + ":vulcanite", 55, new int[]{4, 6, 7, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
+	public static final ItemArmor.ArmorMaterial vyroxeresArmorMaterial = EnumHelper.addArmorMaterial("VIROXERES", MODID + ":vyroxeres", 37, new int[]{4, 5, 6, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F);
 	
 //	Tool
 	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 7, 1550, 8F, 8F, 22);
@@ -65,13 +65,21 @@ public class Metallurgy_5 {
 	public static final ItemTool.ToolMaterial atlarusToolMaterial = EnumHelper.addToolMaterial("ATLARUS", 7, 1750, 9F, 8F, 22);
 	public static final ItemTool.ToolMaterial carmotToolMaterial = EnumHelper.addToolMaterial("CARMOT", 5, 50, 10F, 5F, 40);
 	public static final ItemTool.ToolMaterial deepIronToolMaterial = EnumHelper.addToolMaterial("DEEP_IRON", 3, 250, 6.5F, 6F, 14);
+	public static final ItemTool.ToolMaterial eximiteToolMaterial = EnumHelper.addToolMaterial("EXIMITE", 7, 1000, 8F, 7F, 25);
 	public static final ItemTool.ToolMaterial ignatiusToolMaterial = EnumHelper.addToolMaterial("IGNATIUS", 2, 150, 5F, 6F, 15);
 	public static final ItemTool.ToolMaterial kalendriteToolMaterial = EnumHelper.addToolMaterial("KALENDRITE", 5, 1000, 7F, 7F, 20);
+	public static final ItemTool.ToolMaterial midasiumToolMaterial = EnumHelper.addToolMaterial("MIDASIUM", 3, 100, 9F, 7F,35);
 	public static final ItemTool.ToolMaterial mithrilToolMaterial = EnumHelper.addToolMaterial("MITHRIL", 5, 1000, 8F, 7F, 18);
 	public static final ItemTool.ToolMaterial orichalcumToolMaterial = EnumHelper.addToolMaterial("ORICHALCUM", 6, 1350, 9F, 7F, 20);
 	public static final ItemTool.ToolMaterial oureclaseToolMaterial = EnumHelper.addToolMaterial("OURECLASE", 4, 750, 9F, 6F, 18);
 	public static final ItemTool.ToolMaterial platinumToolMaterial = EnumHelper.addToolMaterial("PLATINUM", 3, 100, 14F, 5F, 50);
 	public static final ItemTool.ToolMaterial prometheumToolMaterial = EnumHelper.addToolMaterial("PROMETHEUM", 2, 200, 5F, 5F, 16);
+	public static final ItemTool.ToolMaterial sanguiniteToolMaterial = EnumHelper.addToolMaterial("SANGUINITE", 6, 1750, 11F, 8F, 25);
+	public static final ItemTool.ToolMaterial shadowIronToolMaterial = EnumHelper.addToolMaterial("SHADOW_IRON", 2, 300, 4F, 6F, 2);
+	public static final ItemTool.ToolMaterial silverToolMaterial = EnumHelper.addToolMaterial("SILVER", 1, 25, 13F, 5F, 20);
+	public static final ItemTool.ToolMaterial vulcaniteToolMaterial = EnumHelper.addToolMaterial("VULCANITE", 6, 1500, 8.5F, 7F, 20);
+	public static final ItemTool.ToolMaterial vyroxeresToolMaterial = EnumHelper.addToolMaterial("VYROXERES", 3, 300, 7F, 7F, 16);
+
 
 	@Mod.Instance(MODID)
 	public static Metallurgy_5 instance;
