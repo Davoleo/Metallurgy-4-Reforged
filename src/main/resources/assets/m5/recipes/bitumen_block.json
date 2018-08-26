@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "III",
+    "III",
+    "III"
+  ],
+  "key":{
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "dustBitumen"
+    }
+  },
+  "result": {
+    "item": "m5:bitumen_block"
+  }
+
+
+}

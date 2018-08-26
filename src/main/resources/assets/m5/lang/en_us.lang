@@ -1,5 +1,8 @@
 #Items
 item.tar.name=Tar
+item.bitumen_dust.name=Bitumen
+item.potash_dust.name=Potash
+
 
 #Ingots
 item.adamantine_ingot.name=Adamantine Ingot
@@ -9,6 +12,8 @@ item.angmallen_ingot.name=Angmallen Ingot
 item.astral_silver_ingot.name=Astral Silver Ingot
 item.atlarus_ingot.name=Atlarus Ingot
 item.black_steel_ingot.name=Black Steel Ingot
+item.brass_ingot.name=Brass Ingot
+item.bronze_ingot.name=Bronze Ingot
 item.carmot_ingot.name=Carmot Ingot
 item.celenegil_ingot.name=Celenegil Ingot
 item.ceruclase_ingot.name=Ceruclase Ingot
@@ -16,6 +21,7 @@ item.copper_ingot.name=Copper Ingot
 item.deep_iron_ingot.name=Deep Iron Ingot
 item.desichalkos_ingot.name=Desichalkos Ingot
 item.damascus_steel_ingot.name=Damascus Steel Ingot
+item.electrum_ingot.name=Electrum Ingot
 item.eximite_ingot.name=Eximite Ingot
 item.haderoth_ingot.name=Haderoth Ingot
 item.hepatizon_ingot.name=Hepatizon Ingot
@@ -147,6 +153,8 @@ item.vyroxeres_boots.name=Vyroxeres Boots
 
 # Blocks
 tile.charcoal_block.name=Block of Charcoal
+tile.bitumen_block.name=Bitumen Block
+tile.electrum_block.name=Electrum Block
 tile.copper_block.name=Copper Block
 tile.bronze_block.name=Bronze Block
 tile.manganese_block.name=Manganese Block
@@ -195,6 +203,7 @@ tile.platinum_block.name=Platinum Block
 tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
+
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
 tile.alduorite_ore.name=Alduorite Ore
@@ -206,6 +215,7 @@ tile.ceruclase_ore.name=Ceruclase Ore
 tile.copper_ore.name=Copper Ore
 tile.deep_iron_ore.name=Deep Iron Ore
 tile.eximite_ore.name=Eximite Ore
+tile.ignatius_ore.name=Ignatius Ore
 tile.infuscolium_ore.name=Infuscolium Ore
 tile.kalendrite_ore.name=Kalendrite Ore
 tile.lemurite_ore.name=Lemurite Ore
@@ -233,4 +243,5 @@ tile.zinc_ore.name=Zinc Ore
 itemGroup.m5.ingots=Metallurgy Ingots
 itemGroup.m5.blocks=Metallurgy Blocks
 itemGroup.m5.ores=Metallurgy Ores
-itemGroup.m5.armor=Metallurgy Armor
+itemGroup.m5.armors=Metallurgy Armor
+itemGroup.m5.tools=Metallurgy Tools

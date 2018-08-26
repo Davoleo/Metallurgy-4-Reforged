@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockBitumen"
+    }
+  ],
+  "result": {
+    "item": "m5:bitumen_dust",
+    "count": 9
+  }
+}

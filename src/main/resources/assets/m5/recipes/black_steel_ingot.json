@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockBlackSteel"
+    }
+  ],
+  "result": {
+    "item": "m5:black_steel_ingot",
+    "count": 9
+  }
+}

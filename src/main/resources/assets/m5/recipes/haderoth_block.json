@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "III",
+    "III",
+    "III"
+  ],
+  "key":{
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "ingotHaderoth"
+    }
+  },
+  "result": {
+    "item": "m5:haderoth_block"
+  }
+
+
+}
