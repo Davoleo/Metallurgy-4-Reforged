@@ -1,11 +1,19 @@
 package it.hurts.metallurgy_5.util;
 
 import java.util.List;
+import java.util.Random;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.item.tool.*;
 import it.hurts.metallurgy_5.item.armor.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -14,7 +22,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 public class EventHandler {
 
 	@SubscribeEvent
-	public static void checkEntity(PlayerTickEvent event) {
+	public static void glowingArmorEffect(PlayerTickEvent event) {
 		int radius=32, max=0;
 		boolean isArmored=false;
 
@@ -44,12 +52,33 @@ public class EventHandler {
 		}
 	}
 
-//	@SubscribeEvent
-//	 public static void isPlayerAttacked(PlayerTickEvent event) {		Instand Damage Rubracacium
-//		
-//		boolean isArmored = false;
-//		
-//		
-//		
-//	}
+@SubscribeEvent
+public static void setToolEffect(AttackEntityEvent event)
+{
+	boolean randomValue;
+	Random random = new Random();
+	randomValue = random.nextBoolean();
+
+	EntityPlayer player = event.getEntityPlayer();
+
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
+	{
+//		Deve avere il 25% di possibilità di essere attivato
+		Entity foe = event.getTarget();
+		EntityLivingBase foe2 = (EntityLivingBase)foe;
+		if(randomValue)
+			foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
+	}
+
+//	Possiblità del 50% di essere attivata
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
+
+		Entity foe = event.getTarget();
+
+
+		if(randomValue)
+			((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
+	}
+}
+
 }
