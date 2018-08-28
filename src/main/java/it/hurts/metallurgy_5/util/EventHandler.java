@@ -6,11 +6,16 @@ import java.util.Random;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.tool.*;
 import it.hurts.metallurgy_5.item.armor.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentLootBonus;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -61,20 +66,42 @@ public static void setToolEffect(AttackEntityEvent event)
 
 	EntityPlayer player = event.getEntityPlayer();
 
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
-	{
-//		Deve avere il 25% di possibilità di essere attivato
+// Probabilità del 50%
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))){
+
 		Entity foe = event.getTarget();
-		EntityLivingBase foe2 = (EntityLivingBase)foe;
 		if(randomValue)
-			foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
+			foe.setFire(4);
 	}
 
-//	Possiblità del 50% di essere attivata
+	//Auto-Enchantment
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
+
+		player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 2);
+	}
+
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
+	{
+//	25% di probabilità
+		Entity foe = event.getTarget();
+		EntityLivingBase foe2 = (EntityLivingBase)foe;
+		if(random.nextInt(4) == 3)
+			foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60));
+		    foe2.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120));
+	}
+
+	//33% di probabilità
+	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))){
+
+		Entity foe = event.getTarget();
+		if(random.nextInt(3) == 2)
+			foe.setFire(8);
+	}
+
+//	Probabilità del 50%
 	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
 
 		Entity foe = event.getTarget();
-
 
 		if(randomValue)
 			((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
