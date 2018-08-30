@@ -2,7 +2,7 @@
   "type": "forge:ore_shaped",
   "pattern": [
     " I ",
-    " I ",
+    " S ",
     " S "
   ],
   "key":{
@@ -11,10 +11,10 @@
     },
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "ore": "ingotVyroxeres"
     }
   },
   "result":{
-    "item":"m5:adamantine_sword"
+    "item":"m5:vyroxeres_shovel"
   }
 }

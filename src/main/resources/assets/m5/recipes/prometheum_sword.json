@@ -11,10 +11,10 @@
     },
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "ore": "ingotPrometheum"
     }
   },
   "result":{
-    "item":"m5:adamantine_sword"
+    "item":"m5:prometheum_sword"
   }
 }

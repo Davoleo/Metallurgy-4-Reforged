@@ -11,10 +11,10 @@
     },
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "ore": "ingotOureclase"
     }
   },
   "result":{
-    "item":"m5:adamantine_sword"
+    "item":"m5:oureclase_sword"
   }
 }
