@@ -51,7 +51,7 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModBlocks.oreMithril, world, random, chunkX, chunkY, 2, 5, 3, 32, 128, Blocks.STONE);
 		generateOre(ModBlocks.oreZinc, world, random, chunkX, chunkY, 4, 5, 4, 0, 128, Blocks.STONE);
 		generateOre(ModBlocks.oreOrichalcum, world, random, chunkX, chunkY, 2, 4, 10, 0, 128, Blocks.STONE);
-		generateOre(ModBlocks.oreAstralSilver, world, random, chunkX, chunkY, 2, 3, 8, 0, 64, Blocks.STONE);
+		generateOre(ModBlocks.oreAstralSilver, world, random, chunkX, chunkY, 3, 3, 8, 0, 64, Blocks.STONE);
 		generateOre(ModBlocks.oreSilver, world, random, chunkX, chunkY, 2, 3, 17, 0, 128, Blocks.STONE);
 		generateOre(ModBlocks.orePlatinum, world, random, chunkX, chunkY, 2, 3 +random.nextInt(3), 2, 0, 80, Blocks.STONE);
 		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkY, 4, 6, 18, 0, 15, Blocks.STONE);
@@ -80,7 +80,11 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 
 	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int minVeinSize, int maxVeinSize, int chance, int minY, int maxY, Block generateIn) {
-		int veinSize = minVeinSize + random.nextInt(maxVeinSize - minVeinSize);
+  	int veinSize;
+  	if(maxVeinSize != minVeinSize)
+		veinSize = minVeinSize + random.nextInt(Math.abs(maxVeinSize - minVeinSize));
+  	else
+  		veinSize = minVeinSize;
 		int heightRange = maxY - minY;
 		WorldGenMinable gen = new WorldGenMinable(block.getDefaultState(), veinSize, BlockMatcher.forBlock(generateIn));
 		for (int i = 0; i < chance; i++){
