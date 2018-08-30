@@ -149,9 +149,5 @@ public class Metallurgy_5 {
 			ModTools.registerModels();
 		}
 
-		static {
-            FluidRegistry.enableUniversalBucket();
-        }
-
 	}
 }
