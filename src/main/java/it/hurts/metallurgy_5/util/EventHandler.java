@@ -1,7 +1,15 @@
 package it.hurts.metallurgy_5.util;
 
 import java.util.List;
-import java.util.Random;
+
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.tool.*;
@@ -57,55 +65,50 @@ public class EventHandler {
 		}
 	}
 
-@SubscribeEvent
-public static void setToolEffect(AttackEntityEvent event)
-{
-	boolean randomValue;
-	Random random = new Random();
-	randomValue = random.nextBoolean();
-
-	EntityPlayer player = event.getEntityPlayer();
-
-// Probabilità del 50%
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))){
-
-		Entity foe = event.getTarget();
-		if(randomValue)
-			foe.setFire(4);
-	}
-
-	//Auto-Enchantment
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
-
-		player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 2);
-	}
-
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
+	@SubscribeEvent
+	public static void setToolEffect(AttackEntityEvent event)
 	{
-//	25% di probabilità
-		Entity foe = event.getTarget();
-		EntityLivingBase foe2 = (EntityLivingBase)foe;
-		if(random.nextInt(4) == 3)
-			foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60));
-		    foe2.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 120));
+
+		EntityPlayer player = event.getEntityPlayer();
+	
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
+		{
+//		Deve avere il 25% di possibilitï¿½ di essere attivato
+			Entity foe = event.getTarget();
+			EntityLivingBase foe2 = (EntityLivingBase)foe;
+			if(Math.random() <= 0.30)
+				foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
+		}
+	
+//	Possiblitï¿½ del 50% di essere attivata
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
+	
+			Entity foe = event.getTarget();
+	
+	
+			if(Math.random() <= 0.50)
+				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
+		}
+		
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
+			Entity foe = event.getTarget();
+			
+			if(Math.random() <= 0.35)
+				((EntityLivingBase) foe).setFire(5);
+		}
+		
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))) {
+			Entity foe = event.getTarget();
+			
+			if(Math.random() <= 0.35)
+				((EntityLivingBase) foe).setFire(5);
+		}
+		
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
+			
+			if(Math.random() <= 0.39)
+				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
+		}
 	}
-
-	//33% di probabilità
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))){
-
-		Entity foe = event.getTarget();
-		if(random.nextInt(3) == 2)
-			foe.setFire(8);
-	}
-
-//	Probabilità del 50%
-	if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
-
-		Entity foe = event.getTarget();
-
-		if(randomValue)
-			((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
-	}
-}
 
 }

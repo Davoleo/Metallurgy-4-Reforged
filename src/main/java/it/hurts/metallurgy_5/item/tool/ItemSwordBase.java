@@ -34,5 +34,4 @@ public class ItemSwordBase extends ItemSword {
     {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":tool/" + name, "inventory"));
     }
-
 }

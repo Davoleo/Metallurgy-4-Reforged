@@ -4,6 +4,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.oredict.OreDictionary;
 
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
+
 public class BlockOre extends BlockBase implements IBlockOreDict {
 
 	private String oreName;

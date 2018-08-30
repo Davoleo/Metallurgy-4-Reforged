@@ -7,6 +7,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
+
 public class BlockBase extends Block {
 
 	protected String name;

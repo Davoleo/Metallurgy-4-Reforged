@@ -13,6 +13,14 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
 
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 

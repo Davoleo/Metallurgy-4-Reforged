@@ -5,6 +5,15 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
+
 public class ModBlocks {
 
 //	Ore
@@ -100,6 +109,9 @@ public class ModBlocks {
 	public static BlockOre blockCharcoal = new BlockOre("charcoal_block","blockCharcoal").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockSulfur = new BlockOre("sulfur_block","blockSulfur").setCreativeTab(Metallurgy_5.tabBlock);
 	
+	
+//	Tile
+	
 	public static void register(IForgeRegistry<Block> registry) {
 		registry.registerAll(
 				//ores
@@ -188,6 +200,8 @@ public class ModBlocks {
 				 blockVulcanite,
 				 blockVyroxeres,
 				 blockZinc
+				 
+//				 Tile
 				
 		);
 		
@@ -282,6 +296,8 @@ public class ModBlocks {
 				 blockVulcanite.createItemBlock(),
 				 blockVyroxeres.createItemBlock(),
 				 blockZinc.createItemBlock()
+				 
+//				 Tile
 				
 		);
 	}

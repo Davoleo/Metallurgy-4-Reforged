@@ -354,3 +354,6 @@ item.vyroxeres_hoe.name=Vyroxeres Hoe
 item.vyroxeres_pickaxe.name=Vyroxeres Pickaxe
 item.vyroxeres_shovel.name=Vyroxeres Shovel
 item.vyroxeres_sword.name=Vyroxeres Sword
+
+#Tooltips
+item.metallurgy_5.ignatius_sword.description=§l§cFire Aspect

@@ -13,6 +13,15 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Random;
 
+/***************************
+*
+* Author : ItHurtsLikeHell
+* Project: Metallurgy-5
+* Date   : 28 ago 2018
+* Time   : 18:24:07
+*
+***************************/
+
 public class ModWorldGen implements IWorldGenerator {
 
   @Override
