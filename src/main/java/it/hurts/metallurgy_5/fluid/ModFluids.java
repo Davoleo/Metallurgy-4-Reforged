@@ -15,7 +15,7 @@ import net.minecraftforge.registries.IForgeRegistry;
  * Date: 28/08/2018
  * Hour: 17.24
  * Project: Metallurgy_5
- * Copyright - © - Davoleo - 2018
+ * Copyright - ï¿½ - Davoleo - 2018
  **************************************************/
 
 public class ModFluids {
