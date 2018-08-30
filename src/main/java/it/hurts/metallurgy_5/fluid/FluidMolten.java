@@ -22,6 +22,7 @@ protected float overlayAlpha = 0.2F;
 protected static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 protected static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
 protected static Material material = Material.LAVA;
+protected boolean bucketEnabled = false;
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
@@ -34,6 +35,12 @@ protected static Material material = Material.LAVA;
         setColor(mapColor);
     }
 
+    public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor, float overlayAlpha)
+    {
+        this(fluidName, still, flowing, mapColor);
+        setAlpha(overlayAlpha);
+    }
+
     public int getColor()
     {
         return mapColor;
@@ -42,6 +49,17 @@ protected static Material material = Material.LAVA;
     public FluidMolten setColor(int parColor)
     {
         mapColor = parColor;
+        return this;
+    }
+
+    public float getAlpha()
+    {
+        return overlayAlpha;
+    }
+
+    public FluidMolten setAlpha(float overlayAlpha)
+    {
+        this.overlayAlpha = overlayAlpha;
         return this;
     }
 
@@ -88,5 +106,16 @@ protected static Material material = Material.LAVA;
         if(block == null)
             return false;
         return block.getDefaultState().getMaterial() == getMaterial();
+    }
+
+    public FluidMolten setHasBucket(boolean bucketEnabled)
+    {
+        this.bucketEnabled = bucketEnabled;
+        return this;
+    }
+
+    public boolean isBucketEnabled()
+    {
+        return bucketEnabled;
     }
 }

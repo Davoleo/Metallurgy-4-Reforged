@@ -119,6 +119,10 @@ public class Metallurgy_5 {
 	public void postInit(FMLPostInitializationEvent event) {
 	}
 
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
+
 	@Mod.EventBusSubscriber
 	public static class RegsitrationHandler {
 
@@ -144,10 +148,6 @@ public class Metallurgy_5 {
 			ModArmors.registerModels();
 			ModTools.registerModels();
 		}
-
-		static {
-            FluidRegistry.enableUniversalBucket();
-        }
 
 	}
 }

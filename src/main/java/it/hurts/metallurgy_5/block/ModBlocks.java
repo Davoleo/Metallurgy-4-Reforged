@@ -204,17 +204,10 @@ public class ModBlocks {
 				 blockTin,
 				 blockVulcanite,
 				 blockVyroxeres,
-<<<<<<< Updated upstream
-				 blockZinc
-				 
-//				 Tile
-=======
 				 blockZinc,
 
 				//FluidBlocks
 				blockMoltenAdamantine
-
->>>>>>> Stashed changes
 				
 		);
 		
@@ -308,16 +301,11 @@ public class ModBlocks {
 				 blockTin.createItemBlock(),
 				 blockVulcanite.createItemBlock(),
 				 blockVyroxeres.createItemBlock(),
-<<<<<<< Updated upstream
-				 blockZinc.createItemBlock()
-				 
-//				 Tile
-=======
 				 blockZinc.createItemBlock(),
 
 				//FluidBlocks
 				blockMoltenAdamantine.createItemBlock()
->>>>>>> Stashed changes
+
 				
 		);
 	}

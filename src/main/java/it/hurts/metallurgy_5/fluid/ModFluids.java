@@ -22,15 +22,15 @@ public class ModFluids {
 
     public static final FluidMolten MOLTEN_ADAMANTINE = (FluidMolten) new FluidMolten(
             "molten_adamantine",
-            new ResourceLocation(Metallurgy_5.MODID, "fluids/molten_adamantine_still"),
-            new ResourceLocation(Metallurgy_5.MODID, "fluids/molten_adamantine_flow"),
-            0xa30000
+            new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_still"),
+            new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_flow"),
+            0xa3000000
     )
             .setMaterial(Material.IRON)
             .setDensity(800)
             .setGaseous(false)
             .setLuminosity(9)
-            .setViscosity(20000)
+            .setViscosity(1000)
             .setTemperature(4000);
 
 

@@ -109,6 +109,11 @@ public class EventHandler {
 			if(Math.random() <= 0.39)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
 		}
+
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
+
+			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
+		}
 	}
 
 }
