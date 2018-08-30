@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5;
 
 import it.hurts.metallurgy_5.block.ModBlocks;
+import it.hurts.metallurgy_5.fluid.ModFluids;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
@@ -16,6 +17,9 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -47,6 +51,7 @@ public class Metallurgy_5 {
 	public static final TabOre tabOre = new TabOre();
 	public static final TabArmor tabArmor = new TabArmor();
 	public static final TabTool tabTool = new TabTool();
+	public static final TabFluid tabFluid = new TabFluid();
 
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
@@ -101,6 +106,7 @@ public class Metallurgy_5 {
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
+		ModFluids.registerFluids();
 	}
 
 	@Mod.EventHandler
@@ -122,6 +128,8 @@ public class Metallurgy_5 {
 			ModBlocks.registerItemBlocks(event.getRegistry());
 			ModArmors.register(event.getRegistry());
 			ModTools.register(event.getRegistry());
+			ModFluids.registerFluids();
+			ModFluids.initBuckets();
 		}
 
 		@SubscribeEvent
@@ -136,6 +144,10 @@ public class Metallurgy_5 {
 			ModArmors.registerModels();
 			ModTools.registerModels();
 		}
+
+		static {
+            FluidRegistry.enableUniversalBucket();
+        }
 
 	}
 }
