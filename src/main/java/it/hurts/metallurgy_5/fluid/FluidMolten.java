@@ -2,10 +2,12 @@ package it.hurts.metallurgy_5.fluid;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 
 /*************************************************
  * Author: Davoleo
@@ -17,6 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class FluidMolten extends Fluid {
 
+protected Fluid fluid = this;
 protected static int mapColor = 0xFFFFFFFF;
 protected float overlayAlpha = 0.2F;
 protected static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
@@ -46,9 +49,9 @@ protected boolean bucketEnabled = false;
         return mapColor;
     }
 
-    public FluidMolten setColor(int parColor)
+    public FluidMolten setColor(int mapColor)
     {
-        mapColor = parColor;
+        this.mapColor = mapColor;
         return this;
     }
 
@@ -108,10 +111,14 @@ protected boolean bucketEnabled = false;
         return block.getDefaultState().getMaterial() == getMaterial();
     }
 
-    public FluidMolten setHasBucket(boolean bucketEnabled)
+    public FluidStack getFluidStack()
     {
-        this.bucketEnabled = bucketEnabled;
-        return this;
+        return new FluidStack(this, 1);
+    }
+
+    public ItemStack getBucket()
+    {
+        return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
     }
 
     public boolean isBucketEnabled()

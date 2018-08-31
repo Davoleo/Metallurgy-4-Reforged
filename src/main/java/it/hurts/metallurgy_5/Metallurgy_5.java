@@ -18,15 +18,12 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /***************************
@@ -102,11 +99,16 @@ public class Metallurgy_5 {
 	@SidedProxy(serverSide = "it.hurts.metallurgy_5.proxy.CommonProxy", clientSide = "it.hurts.metallurgy_5.proxy.ClientProxy")
 	public static CommonProxy proxy;
 
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		ModFluids.registerFluids();
+
 	}
 
 	@Mod.EventHandler
@@ -119,10 +121,6 @@ public class Metallurgy_5 {
 	public void postInit(FMLPostInitializationEvent event) {
 	}
 
-	static {
-		FluidRegistry.enableUniversalBucket();
-	}
-
 	@Mod.EventBusSubscriber
 	public static class RegsitrationHandler {
 
@@ -133,7 +131,6 @@ public class Metallurgy_5 {
 			ModArmors.register(event.getRegistry());
 			ModTools.register(event.getRegistry());
 			ModFluids.registerFluids();
-			ModFluids.initBuckets();
 		}
 
 		@SubscribeEvent

@@ -1,9 +1,12 @@
 package it.hurts.metallurgy_5.util.tabs;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.fluid.ModFluids;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 /*************************************************
  * Author: Davoleo
@@ -23,7 +26,7 @@ public class TabFluid extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModFluids.MOLTEN_ADAMANTINE.getBlock());
+        return ModFluids.MOLTEN_ADAMANTINE.getBucket();
     }
 
 }

@@ -3,12 +3,7 @@ package it.hurts.metallurgy_5.fluid;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 /*************************************************
  * Author: Davoleo
@@ -24,25 +19,21 @@ public class ModFluids {
             "molten_adamantine",
             new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_still"),
             new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_flow"),
-            0xa3000000
+            0xFFa30000
     )
             .setMaterial(Material.IRON)
             .setDensity(800)
             .setGaseous(false)
             .setLuminosity(9)
-            .setViscosity(1000)
+            .setViscosity(3000)
             .setTemperature(4000);
 
 
     public static void registerFluids()
     {
+        System.out.println(Metallurgy_5.NAME + "is registering Fluids and buckets!");
         FluidRegistry.registerFluid(MOLTEN_ADAMANTINE);
+        FluidRegistry.addBucketForFluid(MOLTEN_ADAMANTINE);
     }
-
-    public static void initBuckets()
-    {
-        FluidUtil.getFilledBucket(new FluidStack(ModFluids.MOLTEN_ADAMANTINE, 1));
-    }
-
 
 }
