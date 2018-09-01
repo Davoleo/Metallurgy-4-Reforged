@@ -1,7 +1,9 @@
 package it.hurts.metallurgy_5.block;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.fluid.ModFluids;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -104,6 +106,9 @@ public class ModBlocks {
 	public static BlockOre blockVyroxeres = new BlockOre("vyroxeres_block","blockVyroxeres").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockZinc = new BlockOre("zinc_block","blockZinc").setCreativeTab(Metallurgy_5.tabBlock);
 
+	//FluidBlocks
+	public static FluidBlockBase blockMoltenAdamantine = new FluidBlockBase(ModFluids.MOLTEN_ADAMANTINE, Material.LAVA, "molten_adamantine");
+
 	//Other Blocks
 	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockCharcoal = new BlockOre("charcoal_block","blockCharcoal").setCreativeTab(Metallurgy_5.tabBlock);
@@ -199,9 +204,10 @@ public class ModBlocks {
 				 blockTin,
 				 blockVulcanite,
 				 blockVyroxeres,
-				 blockZinc
-				 
-//				 Tile
+				 blockZinc,
+
+				//FluidBlocks
+				blockMoltenAdamantine
 				
 		);
 		
@@ -295,9 +301,11 @@ public class ModBlocks {
 				 blockTin.createItemBlock(),
 				 blockVulcanite.createItemBlock(),
 				 blockVyroxeres.createItemBlock(),
-				 blockZinc.createItemBlock()
-				 
-//				 Tile
+				 blockZinc.createItemBlock(),
+
+				//FluidBlocks
+				blockMoltenAdamantine.createItemBlock()
+
 				
 		);
 	}
@@ -387,6 +395,9 @@ public class ModBlocks {
 		 blockVulcanite.registerItemModel(Item.getItemFromBlock(blockVulcanite));
 		 blockVyroxeres.registerItemModel(Item.getItemFromBlock(blockVyroxeres));
 		 blockZinc.registerItemModel(Item.getItemFromBlock(blockZinc));
+
+		 //FluidBlocks
+		blockMoltenAdamantine.registerItemModel(Item.getItemFromBlock(blockMoltenAdamantine));
 	}
 	
 }

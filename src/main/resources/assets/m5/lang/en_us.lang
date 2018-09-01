@@ -150,11 +150,18 @@ itemGroup.m5.blocks=Metallurgy Blocks
 itemGroup.m5.ores=Metallurgy Ores
 itemGroup.m5.armors=Metallurgy Armor
 itemGroup.m5.tools=Metallurgy Tools
+itemGroup.m5.fluids=Metallurgy Fluids
 
 #Dust
 item.sulfur_dust.name=Sulfur
 item.bitumen_dust.name=Bitumen
 item.potash_dust.name=Potash
+
+#FluidBlocks
+tile.molten_adamantine.name=Molten Adamantine
+
+#Fluids
+fluid.molten_adamantine=Molten Adamantine
 
 #Ingots
 item.adamantine_ingot.name=Adamantine Ingot
