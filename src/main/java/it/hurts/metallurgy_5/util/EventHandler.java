@@ -14,25 +14,23 @@ import java.util.List;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.tool.*;
 import it.hurts.metallurgy_5.item.armor.*;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentLootBonus;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 @EventBusSubscriber(modid=Metallurgy_5.MODID)
 public class EventHandler {
+
 
 	@SubscribeEvent
 	public static void glowingArmorEffect(PlayerTickEvent event) {
@@ -68,11 +66,14 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void setToolEffect(AttackEntityEvent event)
 	{
-
 		EntityPlayer player = event.getEntityPlayer();
+		
+//		in caso, aumentare a looting 2
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){ 
+			 player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
+		}
 	
-		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
-		{
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))){
 //		Deve avere il 25% di possibilit� di essere attivato
 			Entity foe = event.getTarget();
 			EntityLivingBase foe2 = (EntityLivingBase)foe;
@@ -91,6 +92,7 @@ public class EventHandler {
 		}
 		
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
+			
 			Entity foe = event.getTarget();
 			
 			if(Math.random() <= 0.35)
@@ -98,6 +100,7 @@ public class EventHandler {
 		}
 		
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))) {
+			
 			Entity foe = event.getTarget();
 			
 			if(Math.random() <= 0.35)
@@ -109,6 +112,101 @@ public class EventHandler {
 			if(Math.random() <= 0.39)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
 		}
+		
+//		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+//			final float VITA_MAX_PLAYER = player.getMaxHealth();
+//			Entity foe = event.getTarget();
+//			float luck = player.getLuck();
+//			float vitaTarget;
+//			float steal;
+//			float vitaPlayer;
+//			
+//			switch((int)luck) {
+//				case 0 :
+//					if(Math.random() <= 0.25 && VITA_MAX_PLAYER!=player.getHealth()) {
+//						vitaPlayer=player.getHealth();
+//						vitaTarget = ((EntityLivingBase) foe).getHealth();
+//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*30)/100;
+//						player.setHealth(vitaPlayer+steal);
+//						System.out.println(steal);
+//						while(player.getHealth()<VITA_MAX_PLAYER && steal>0.5) {
+//							player.setHealth((float) (vitaPlayer+0.5));
+//							vitaPlayer=player.getHealth();
+//							steal=(float) (steal-0.5);
+//							System.out.println("0 do");
+//							System.out.println(steal);
+//						}
+//						System.out.println("0");
+//					}
+//					
+//				break;
+				
+//				case 1 :
+//					if(Math.random() <= 0.35 && VITA_MAX_PLAYER!=player.getHealth()) {
+//						vitaPlayer=player.getHealth();
+//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*40)/100;
+////						player.setHealth(vitaPlayer+steal);
+//						while(vitaPlayer<VITA_MAX_PLAYER && steal<0.5) {
+//							player.setHealth((float) (vitaPlayer+0.5));
+//							steal=(float) (steal-0.5);
+//							System.out.println("1 do");
+//						}	
+//
+//						System.out.println("1");
+//						
+//					}
+//				break;
+//				
+//				case 2 :
+//					if(Math.random() <= 0.45 && VITA_MAX_PLAYER!=player.getHealth()) {
+//						vitaPlayer=player.getHealth();
+//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*50)/100;
+////						player.setHealth(vitaPlayer+steal);
+//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
+//							player.setHealth((float) (vitaPlayer+0.5));
+//							steal=(float) (steal-0.5);
+//							System.out.println("2 do");
+//						}
+//						
+//						System.out.println("2");
+//						
+//					}
+//				break;
+//				
+//				case 3: 
+//					if(Math.random() <= 0.55 && VITA_MAX_PLAYER!=player.getHealth()) {
+//						vitaPlayer=player.getHealth();
+//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*60)/100;
+////						player.setHealth(vitaPlayer+steal);
+//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
+//							player.setHealth((float) (vitaPlayer+0.5));
+//							steal=(float) (steal-0.5);
+//							System.out.println("3 do");
+//						}
+//
+//						System.out.println("3");
+//						
+//					}
+//					break;
+//				
+//				default :
+//					if(Math.random() <= 0.25 && VITA_MAX_PLAYER!=player.getHealth()) {
+//						vitaPlayer=player.getHealth();
+//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*30)/100;
+////						player.setHealth(vitaPlayer+steal);
+//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
+//							player.setHealth((float) (vitaPlayer+0.5));
+//							steal=(float) (steal-0.5);
+//							System.out.println("4 do");
+//						}
+//						
+//						System.out.println("0");
+//						
+//					}
+					
+//				break;
+//			}
+//		}
 	}
 
 }
