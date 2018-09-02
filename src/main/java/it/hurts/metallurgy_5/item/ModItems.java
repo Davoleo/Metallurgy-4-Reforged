@@ -68,8 +68,7 @@ public class ModItems {
 	public static ItemOre ingotTin = new ItemOre ("tin_ingot","ingotTin");
 	public static ItemOre ingotVulcanite = new ItemOre ("vulcanite_ingot","ingotVulcanite");
 	public static ItemOre ingotVyroxeres = new ItemOre ("vyroxeres_ingot","ingotVyroxeres");
-	public static ItemOre ingotZinc = new ItemOre ("zinc_ingot","ingotZinc ");	
-
+	public static ItemOre ingotZinc = new ItemOre ("zinc_ingot","ingotZinc ");		
 	
 //	public static ItemOre  = new ItemOre ("");		
 

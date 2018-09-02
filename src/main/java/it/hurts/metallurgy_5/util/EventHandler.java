@@ -23,7 +23,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -113,100 +112,45 @@ public class EventHandler {
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
 		}
 		
-//		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
-//			final float VITA_MAX_PLAYER = player.getMaxHealth();
-//			Entity foe = event.getTarget();
-//			float luck = player.getLuck();
-//			float vitaTarget;
-//			float steal;
-//			float vitaPlayer;
-//			
-//			switch((int)luck) {
-//				case 0 :
-//					if(Math.random() <= 0.25 && VITA_MAX_PLAYER!=player.getHealth()) {
-//						vitaPlayer=player.getHealth();
-//						vitaTarget = ((EntityLivingBase) foe).getHealth();
-//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*30)/100;
-//						player.setHealth(vitaPlayer+steal);
-//						System.out.println(steal);
-//						while(player.getHealth()<VITA_MAX_PLAYER && steal>0.5) {
-//							player.setHealth((float) (vitaPlayer+0.5));
-//							vitaPlayer=player.getHealth();
-//							steal=(float) (steal-0.5);
-//							System.out.println("0 do");
-//							System.out.println(steal);
-//						}
-//						System.out.println("0");
-//					}
-//					
-//				break;
-				
-//				case 1 :
-//					if(Math.random() <= 0.35 && VITA_MAX_PLAYER!=player.getHealth()) {
-//						vitaPlayer=player.getHealth();
-//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*40)/100;
-////						player.setHealth(vitaPlayer+steal);
-//						while(vitaPlayer<VITA_MAX_PLAYER && steal<0.5) {
-//							player.setHealth((float) (vitaPlayer+0.5));
-//							steal=(float) (steal-0.5);
-//							System.out.println("1 do");
-//						}	
-//
-//						System.out.println("1");
-//						
-//					}
-//				break;
-//				
-//				case 2 :
-//					if(Math.random() <= 0.45 && VITA_MAX_PLAYER!=player.getHealth()) {
-//						vitaPlayer=player.getHealth();
-//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*50)/100;
-////						player.setHealth(vitaPlayer+steal);
-//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
-//							player.setHealth((float) (vitaPlayer+0.5));
-//							steal=(float) (steal-0.5);
-//							System.out.println("2 do");
-//						}
-//						
-//						System.out.println("2");
-//						
-//					}
-//				break;
-//				
-//				case 3: 
-//					if(Math.random() <= 0.55 && VITA_MAX_PLAYER!=player.getHealth()) {
-//						vitaPlayer=player.getHealth();
-//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*60)/100;
-////						player.setHealth(vitaPlayer+steal);
-//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
-//							player.setHealth((float) (vitaPlayer+0.5));
-//							steal=(float) (steal-0.5);
-//							System.out.println("3 do");
-//						}
-//
-//						System.out.println("3");
-//						
-//					}
-//					break;
-//				
-//				default :
-//					if(Math.random() <= 0.25 && VITA_MAX_PLAYER!=player.getHealth()) {
-//						vitaPlayer=player.getHealth();
-//						steal=((vitaTarget-((EntityLivingBase) foe).getHealth())*30)/100;
-////						player.setHealth(vitaPlayer+steal);
-//						while(vitaPlayer<VITA_MAX_PLAYER && steal>0.5) {
-//							player.setHealth((float) (vitaPlayer+0.5));
-//							steal=(float) (steal-0.5);
-//							System.out.println("4 do");
-//						}
-//						
-//						System.out.println("0");
-//						
-//					}
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+			final float VITA_MAX_PLAYER = player.getMaxHealth();
+			float luck = player.getLuck();
+			
+			switch((int)luck) {
+				case 0 :
+					if(Math.random() <= 0.10 && VITA_MAX_PLAYER!=player.getHealth()) {
+						
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 50, 2));
+						
+					}
 					
-//				break;
-//			}
-//		}
+				break;
+				
+				case 1 :
+					if(Math.random() <= 0.25 && VITA_MAX_PLAYER!=player.getHealth()) {
+				
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 75, 2));
+						player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 40, 0));
+						
+					}		
+				break;
+				
+				case 2 :
+					if(Math.random() <= 0.35 && VITA_MAX_PLAYER!=player.getHealth()) {
+						
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 3));
+						
+					}
+				break;
+				
+				case 3: 
+					if(Math.random() <= 0.45 && VITA_MAX_PLAYER!=player.getHealth()) {
+					
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 80, 3));
+						player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 60, 0));
+					}
+					break;
+			}
+		}
 	}
-
 }
