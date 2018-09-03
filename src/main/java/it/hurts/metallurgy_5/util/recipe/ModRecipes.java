@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.util;
+package it.hurts.metallurgy_5.util.recipe;
 
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;

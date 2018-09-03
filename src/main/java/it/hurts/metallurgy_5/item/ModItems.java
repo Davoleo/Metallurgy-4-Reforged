@@ -13,14 +13,15 @@ import net.minecraftforge.registries.IForgeRegistry;
 ***************************/
 
 public class ModItems {
-	
-	//Other resources
+
+	//Dust
+	public static ItemOre dustAdamantine = new ItemOre("adamantine_dust", "dustAdamantine");
+
 	public static ItemOre dustBitumen = new ItemOre ("bitumen_dust","dustBitumen");
 	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");	 
 	public static ItemOre dustPotash = new ItemOre ("potash_dust","dustPotash");
 	public static ItemOre dustSulfur = new ItemOre ("sulfur_dust","dustSulfur");
-		 
-	
+
 	//Ingot
 	public static ItemOre ingotAdamantine = new ItemOre ("adamantine_ingot","ingotAdamantine");
 	public static ItemOre ingotAlduorite = new ItemOre ("alduorite_ingot","ingotAlduorite");
@@ -75,6 +76,15 @@ public class ModItems {
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
+
+				//Dust
+				dustAdamantine,
+
+				dustBitumen,
+				oreslimeball,
+				dustPotash,
+				dustSulfur,
+
 				ingotAdamantine,
 				ingotAlduorite,
 				ingotAmordrine,
@@ -121,18 +131,20 @@ public class ModItems {
 				ingotTin,
 				ingotVulcanite,
 				ingotVyroxeres,
-				ingotZinc,
-
-//				Other Resources
-				dustBitumen,
-				oreslimeball,
-				dustPotash,
-				dustSulfur
+				ingotZinc
 				
 				);
 		}
 	
 	public static void registerModels() {
+
+		//Dust
+		dustAdamantine.registerItemModel();
+
+		dustBitumen.registerItemModel();
+		oreslimeball.registerItemModel();
+		dustPotash.registerItemModel();
+		dustSulfur.registerItemModel();
 
 		ingotAdamantine.registerItemModel();
 		ingotAlduorite.registerItemModel();
@@ -181,11 +193,6 @@ public class ModItems {
 		ingotVulcanite.registerItemModel();
 		ingotVyroxeres.registerItemModel();
 		ingotZinc.registerItemModel();
-		
-		dustBitumen.registerItemModel();
-		oreslimeball.registerItemModel();
-		dustPotash.registerItemModel();
-		dustSulfur.registerItemModel();
 
 		
 	}

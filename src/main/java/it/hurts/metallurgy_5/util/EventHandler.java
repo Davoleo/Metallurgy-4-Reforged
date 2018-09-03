@@ -1,35 +1,31 @@
 package it.hurts.metallurgy_5.util;
 
-import java.util.List;
-
-/***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
-***************************/
-
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.item.tool.*;
-import it.hurts.metallurgy_5.item.armor.*;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentLootBonus;
+import it.hurts.metallurgy_5.item.armor.ModArmors;
+import it.hurts.metallurgy_5.item.tool.ModTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+
+import java.util.List;
+
+/***************************
+ *
+ * Author : ItHurtsLikeHell
+ * Project: Metallurgy-5
+ * Date   : 28 ago 2018
+ * Time   : 18:24:07
+ *
+ ***************************/
 
 @EventBusSubscriber(modid=Metallurgy_5.MODID)
 public class EventHandler {

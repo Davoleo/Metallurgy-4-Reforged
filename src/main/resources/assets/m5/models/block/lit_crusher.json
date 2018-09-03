@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "m5:blocks/crusher_side",
+    "up": "m5:blocks/crusher_side",
+    "down": "m5:blocks/crusher_side",
+    "north": "m5:blocks/crusher_front_on",
+    "east": "m5:blocks/crusher_side",
+    "south": "m5:blocks/crusher_side",
+    "west": "m5:blocks/crusher_side"
+  }
+}

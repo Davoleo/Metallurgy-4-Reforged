@@ -4,6 +4,7 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.fluid.ModFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -113,6 +114,9 @@ public class ModBlocks {
 	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockCharcoal = new BlockOre("charcoal_block","blockCharcoal").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockSulfur = new BlockOre("sulfur_block","blockSulfur").setCreativeTab(Metallurgy_5.tabBlock);
+
+	//Tile Entities
+	public static BlockCrusher crusher = new BlockCrusher("crusher");
 	
 	
 //	Tile
@@ -207,7 +211,10 @@ public class ModBlocks {
 				 blockZinc,
 
 				//FluidBlocks
-				blockMoltenAdamantine
+				blockMoltenAdamantine,
+
+				//Tile Entities
+				crusher
 				
 		);
 		
@@ -304,7 +311,10 @@ public class ModBlocks {
 				 blockZinc.createItemBlock(),
 
 				//FluidBlocks
-				blockMoltenAdamantine.createItemBlock()
+				blockMoltenAdamantine.createItemBlock(),
+
+				//Tile Entities
+				crusher.createItemBlock()
 
 				
 		);
@@ -398,6 +408,9 @@ public class ModBlocks {
 
 		 //FluidBlocks
 		blockMoltenAdamantine.registerItemModel(Item.getItemFromBlock(blockMoltenAdamantine));
+
+		//Tile Entities
+		crusher.registerItemModel(Item.getItemFromBlock(crusher));
 	}
 	
 }

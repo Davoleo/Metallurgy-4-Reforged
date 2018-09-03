@@ -6,7 +6,8 @@ import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
-import it.hurts.metallurgy_5.util.ModRecipes;
+import it.hurts.metallurgy_5.gui.GuiHandler;
+import it.hurts.metallurgy_5.util.recipe.ModRecipes;
 import it.hurts.metallurgy_5.util.tabs.*;
 import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -24,6 +25,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /***************************
@@ -108,6 +110,7 @@ public class Metallurgy_5 {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		ModFluids.registerFluids();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 
 	}
 
