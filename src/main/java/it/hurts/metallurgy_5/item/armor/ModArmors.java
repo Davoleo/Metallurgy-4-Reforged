@@ -51,20 +51,20 @@ public class ModArmors {
 	public static ItemArmorBase brass_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.LEGS, "brass_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase brass_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.FEET, "brass_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase bronze_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.HEAD,"bonze_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase bronze_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.CHEST,"bonze_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase bronze_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.LEGS,"bonze_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase bronze_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bonze_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase bronze_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.HEAD,"bronze_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase bronze_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.CHEST,"bronze_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase bronze_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.LEGS,"bronze_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase bronze_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bornze_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static ItemArmorBase carmot_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.HEAD,"carmot_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase carmot_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.CHEST,"carmot_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase carmot_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.LEGS,"carmot_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase carmot_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.FEET,"carmot_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase celenegil_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.HEAD, "carmot_helmet").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase celenegil_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.CHEST, "carmot_chest").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase celenegil_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.LEGS, "carmot_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase celenegil_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.FEET, "carmot_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase celenegil_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.HEAD, "celenegil_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase celenegil_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.CHEST, "celenegil_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase celenegil_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.LEGS, "celenegil_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase celenegil_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.FEET, "celenegil_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static ItemArmorBase damascus_steel_helemt = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.HEAD, "damascus_steel_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase damascus_steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.CHEST, "damascus_steel_chest").setCreativeTab(Metallurgy_5.tabArmor);
@@ -100,6 +100,11 @@ public class ModArmors {
 	public static ItemArmorBase hepatizon_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.CHEST, "hepatizon_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase hepatizon_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.LEGS, "hepatizon_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase hepatizon_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.FEET, "hepatizon_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	
+	public static ItemArmorBase inolashite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.HEAD, "inolashite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase inolashite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.CHEST, "inolashite_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase inolashite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.LEGS, "inolashite_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase inolashite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.FEET, "inolashite_boots").setCreativeTab(Metallurgy_5.tabArmor);
 	
 	public static ItemArmorBase ignatius_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.HEAD, "ignatius_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase ignatius_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.CHEST, "ignatius_chest").setCreativeTab(Metallurgy_5.tabArmor);
@@ -151,6 +156,11 @@ public class ModArmors {
 	public static ItemArmorBase shadow_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_iron_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase shadow_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.FEET, "shadow_iron_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
+	public static ItemArmorBase shadow_steel_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.HEAD, "shadow_steel_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase shadow_steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_steel_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase shadow_steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_steel_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase shadow_steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.FEET, "shadow_steel_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	
 	public static ItemArmorBase silver_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.HEAD, "silver_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase silver_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.CHEST, "silver_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs").setCreativeTab(Metallurgy_5.tabArmor);
@@ -161,6 +171,11 @@ public class ModArmors {
 	public static ItemArmorBase steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.LEGS, "steel_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.FEET, "steel_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
+	public static ItemArmorBase tartarite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.HEAD, "tartarite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase tartarite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.CHEST, "tartarite_chest").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase tartarite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.LEGS, "tartarite_legs").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase tartarite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.FEET, "tartarite_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	
 	public static ItemArmorBase vulcanite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.HEAD, "vulcanite_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase vulcanite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.CHEST, "vulcanite_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase vulcanite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.LEGS, "vulcanite_legs").setCreativeTab(Metallurgy_5.tabArmor);
@@ -312,6 +327,11 @@ public class ModArmors {
 				electrum_chest,
 				electrum_legs,
 				electrum_boots,
+				
+				shadow_steel_helmet,
+				shadow_steel_chest,
+				shadow_steel_legs,
+				shadow_steel_boots,
 
 				steel_helmet,
 				steel_chest,
@@ -326,7 +346,17 @@ public class ModArmors {
 				hepatizon_helmet,
 				hepatizon_chest,
 				hepatizon_legs,
-				hepatizon_boots
+				hepatizon_boots,
+				
+				inolashite_helmet,
+				inolashite_chest,
+				inolashite_legs,
+				inolashite_boots,
+				
+				tartarite_helmet,
+				tartarite_chest,
+				tartarite_legs,
+				tartarite_boots
 		);
 	}
 
@@ -471,6 +501,11 @@ public class ModArmors {
 		electrum_legs.registerItemModel(electrum_legs , 0);
 		electrum_boots.registerItemModel(electrum_boots , 0);
 
+		shadow_steel_helmet.registerItemModel(shadow_steel_helmet, 0);
+		shadow_steel_chest.registerItemModel(shadow_steel_chest, 0);
+		shadow_steel_legs.registerItemModel(shadow_steel_legs, 0);
+		shadow_steel_boots.registerItemModel(shadow_steel_boots, 0);
+		
 		steel_helmet.registerItemModel(steel_helmet , 0);
 		steel_chest.registerItemModel(steel_chest , 0);
 		steel_legs.registerItemModel(steel_legs , 0);
@@ -485,6 +520,16 @@ public class ModArmors {
 		hepatizon_chest.registerItemModel(hepatizon_chest, 0);
 		hepatizon_legs.registerItemModel(hepatizon_legs, 0);
 		hepatizon_boots.registerItemModel(hepatizon_boots, 0);
+		
+		inolashite_helmet.registerItemModel(inolashite_helmet, 0);
+		inolashite_chest.registerItemModel(inolashite_chest, 0);
+		inolashite_legs.registerItemModel(inolashite_legs, 0);
+		inolashite_boots.registerItemModel(inolashite_boots, 0);
+		
+		tartarite_helmet.registerItemModel(tartarite_helmet, 0);
+		tartarite_chest.registerItemModel(tartarite_chest, 0);
+		tartarite_legs.registerItemModel(tartarite_legs, 0);
+		tartarite_boots.registerItemModel(tartarite_boots, 0);
 	}
 
 }
