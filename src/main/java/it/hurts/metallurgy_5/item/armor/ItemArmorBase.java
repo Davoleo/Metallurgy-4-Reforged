@@ -2,6 +2,7 @@ package it.hurts.metallurgy_5.item.armor;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -12,6 +13,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 /***************************
 *
@@ -25,6 +29,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
 	private String name;
+	private String tooltip;
+
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name) {
 		super(material, 0, slot);
@@ -32,7 +38,23 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		setUnlocalizedName(name);
 		this.name = name;
 	}
-	
+
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip) {
+		super(material, 0, slot);
+		setRegistryName(name);
+		setUnlocalizedName(name);
+		this.tooltip = tooltip;
+		this.name = name;
+
+	}
+
+
+	//TODO : Causes crash
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		//tooltip.add(this.tooltip);
+	}
+
 	@SideOnly(Side.CLIENT)
 	public void registerItemModel(Item item, int meta) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + name, "inventory"));

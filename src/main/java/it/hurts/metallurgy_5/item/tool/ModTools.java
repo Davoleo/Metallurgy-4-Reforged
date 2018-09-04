@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.Tooltips;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -54,19 +55,19 @@ public class ModTools {
     public static ItemHoeBase ignatius_hoe = new ItemHoeBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_hoe");
     public static ItemPickaxeBase ignatius_pickaxe = new ItemPickaxeBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_pickaxe");
     public static ItemShovelBase ignatius_shovel = new ItemShovelBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_shovel");
-    public static ItemSwordBase ignatius_sword = new ItemSwordBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_sword");
+    public static ItemSwordBase ignatius_sword = new ItemSwordBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_sword", Tooltips.IGNATIUS_SWORD_EFFECT);
 
     public static ItemAxeBase kalendrite_axe = new ItemAxeBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_axe");
     public static ItemHoeBase kalendrite_hoe = new ItemHoeBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_hoe");
     public static ItemPickaxeBase kalendrite_pickaxe = new ItemPickaxeBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_pickaxe");
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_shovel");
-    public static ItemSwordBase kalendrite_sword = new ItemSwordBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_sword");
+    public static ItemSwordBase kalendrite_sword = new ItemSwordBase(Metallurgy_5.kalendriteToolMaterial, "kalendrite_sword", Tooltips.KALENDRITE_SWORD_EFFECT);
 
     public static ItemAxeBase midasium_axe = new ItemAxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_axe");
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(Metallurgy_5.midasiumToolMaterial, "midasium_hoe");
     public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_pickaxe");
     public static ItemShovelBase midasium_shovel = new ItemShovelBase(Metallurgy_5.midasiumToolMaterial, "midasium_shovel");
-    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword");
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword", Tooltips.MIDASIUM_SWORD_EFFECT);
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(Metallurgy_5.mithrilToolMaterial, "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(Metallurgy_5.mithrilToolMaterial, "mithril_hoe");
@@ -102,13 +103,13 @@ public class ModTools {
     public static ItemHoeBase sanguinite_hoe = new ItemHoeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_hoe");
     public static ItemPickaxeBase sanguinite_pickaxe = new ItemPickaxeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_pickaxe");
     public static ItemShovelBase sanguinite_shovel = new ItemShovelBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_shovel");
-    public static ItemSwordBase sanguinite_sword = new ItemSwordBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_sword");
+    public static ItemSwordBase sanguinite_sword = new ItemSwordBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_sword", Tooltips.SANGUINITE_SWORD_EFFECT);
 
     public static ItemAxeBase shadow_iron_axe = new ItemAxeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_axe");
     public static ItemHoeBase shadow_iron_hoe = new ItemHoeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_hoe");
     public static ItemPickaxeBase shadow_iron_pickaxe = new ItemPickaxeBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_pickaxe");
     public static ItemShovelBase shadow_iron_shovel = new ItemShovelBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_shovel");
-    public static ItemSwordBase shadow_iron_sword = new ItemSwordBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_sword");
+    public static ItemSwordBase shadow_iron_sword = new ItemSwordBase(Metallurgy_5.shadowIronToolMaterial, "shadow_iron_sword", Tooltips.SHADOW_IRON_SWORD_EFFECT);
 
     public static ItemAxeBase silver_axe = new ItemAxeBase(Metallurgy_5.silverToolMaterial, "silver_axe");
     public static ItemHoeBase silver_hoe = new ItemHoeBase(Metallurgy_5.silverToolMaterial, "silver_hoe");
@@ -120,13 +121,13 @@ public class ModTools {
     public static ItemHoeBase vulcanite_hoe = new ItemHoeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_hoe");
     public static ItemPickaxeBase vulcanite_pickaxe = new ItemPickaxeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_pickaxe");
     public static ItemShovelBase vulcanite_shovel = new ItemShovelBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_shovel");
-    public static ItemSwordBase vulcanite_sword = new ItemSwordBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_sword");
+    public static ItemSwordBase vulcanite_sword = new ItemSwordBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_sword", Tooltips.VULCANITE_SWORD_EFFECT);
 
     public static ItemAxeBase vyroxeres_axe = new ItemAxeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_axe");
     public static ItemHoeBase vyroxeres_hoe = new ItemHoeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_hoe");
     public static ItemPickaxeBase vyroxeres_pickaxe = new ItemPickaxeBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_pickaxe");
     public static ItemShovelBase vyroxeres_shovel = new ItemShovelBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_shovel");
-    public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_sword");
+    public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(Metallurgy_5.vyroxeresToolMaterial, "vyroxeres_sword", Tooltips.VYROXERES_SWORD_EFFECT);
 
 
     public static void register(IForgeRegistry<Item> registry)
