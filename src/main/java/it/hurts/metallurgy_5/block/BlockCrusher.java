@@ -1,8 +1,8 @@
 package it.hurts.metallurgy_5.block;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import it.hurts.metallurgy_5.gui.GuiHandler;
+import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,20 +14,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-
-import java.util.Random;
 
 /*************************************************
  * Author: Davoleo
@@ -50,26 +43,27 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
     }
 
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
-        return null;
-        //return super.getItemDropped(state, rand, fortune);
-    }
-
-    @Override
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
-    {
-        return ItemStack.EMPTY;
-        //return super.getPickBlock(state, target, world, pos, player);
-    }
+//    TODO : Sostituiti con @breakBlock
+//    @Override
+//    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+//    {
+//        return null;
+//        //return super.getItemDropped(state, rand, fortune);
+//    }
+//
+//    @Override
+//    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+//    {
+//        return ItemStack.EMPTY;
+//        //return super.getPickBlock(state, target, world, pos, player);
+//    }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         if(!world.isRemote)
         {
-            player.openGui(Metallurgy_5.instance,GuiHandler.CRUSHER, world, pos.getX(), pos.getY(), pos.getZ());
+            player.openGui(Metallurgy_5.instance, GuiHandler.CRUSHER, world, pos.getX(), pos.getY(), pos.getZ());
         }
 
         return true;
@@ -105,8 +99,8 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         IBlockState state = worldIn.getBlockState(pos);
         TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-        //if(active) worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
-        //else worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
+        if(active) worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
+        else worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
 
         if(tileEntity != null)
         {
@@ -170,14 +164,14 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     {
         worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
     }
-
-    /*@Override
+    //TODO : Deprecated methods
+    @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.MODEL;
-    }*/
+    }
 
-    //TODO : 1.13 Rimuovere metodi
+
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {

@@ -9,7 +9,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -26,13 +25,13 @@ import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerCrusher extends Container {
 
-    private TileEntityCrusher crusher;
+    private final TileEntityCrusher crusher;
     private int crushTime, totalCrushTime, burnTime, currentBurnTime;
 
-    public ContainerCrusher(InventoryPlayer playerInv, final TileEntityCrusher crusher)
+    public ContainerCrusher(InventoryPlayer playerInv, TileEntityCrusher crusher)
     {
         this.crusher = crusher;
-        IItemHandler inventory = crusher.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
+        IItemHandler inventory = crusher.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 
         addSlotToContainer(new SlotItemHandler(inventory, 0, 26, 11));  //Input
         addSlotToContainer(new SlotItemHandler(inventory, 1, 7, 35));   //Fuel
@@ -88,46 +87,46 @@ public class ContainerCrusher extends Container {
     @Override
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return true;
+        return this.crusher.isUsableByPlayer(playerIn);
     }
 
 
-    //TODO : quick stack transfer
-    /*@Override
+    //TODO : Da fixare
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack stack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if(slot != null && slot.getHasStack())
         {
             ItemStack stack1 = slot.getStack();
             stack = stack1.copy();
 
-            if(index == 3)
+            if(index == 2)
             {
                 if(!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
                 slot.onSlotChange(stack1, stack);
             }
-            else if(index != 2 && index != 1 && index != 0)
+            else if(index != 1 && index != 0)
             {
-                Slot slot1 = (Slot)this.inventorySlots.get(index + 1);
+                Slot slot1 = this.inventorySlots.get(index + 1);
 
-                if(!BlockCrusherRecipes.getInstance().getCrushingResult(stack1, slot1.getStack()).isEmpty())
+                if(!BlockCrusherRecipes.getInstance().getCrushingResult(slot1.getStack()).isEmpty())
                 {
                     if(!this.mergeItemStack(stack1, 0, 2, false))
                     {
                         return ItemStack.EMPTY;
                     }
-                    else if(BlockCrusherRecipes.isItemFuel(stack1))
+                    else if(TileEntityCrusher.isItemFuel(stack1))
                     {
                         if(!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
                     }
-                    else if(TileEntitySinteringFurnace.isItemFuel(stack1))
+                    else if(TileEntityCrusher.isItemFuel(stack1))
                     {
                         if(!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
                     }
-                    else if(TileEntitySinteringFurnace.isItemFuel(stack1))
+                    else if(TileEntityCrusher.isItemFuel(stack1))
                     {
                         if(!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
                     }
@@ -159,5 +158,5 @@ public class ContainerCrusher extends Container {
         }
         return stack;
     }
-*/
+
 }

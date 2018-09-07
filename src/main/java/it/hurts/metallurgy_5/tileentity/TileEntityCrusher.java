@@ -50,7 +50,7 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
     {
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-        else return true;
+        else return false;
     }
 
     @Override
@@ -84,7 +84,10 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
         this.burnTime = compound.getInteger("burn_time");
         this.crushTime = compound.getInteger("crush_time");
         this.totalCrushTime = compound.getInteger("total_crush_time");
-        //this.currentBurnTime = getItemBurnTime((ItemStack)this.inventory.getStackInSlot(2))
+        this.currentBurnTime = getItemBurnTime(this.inventory.getStackInSlot(2));
+
+        if(compound.hasKey("CustomName", 8))
+            this.setCustomName(compound.getString("CustomName"));
 
     }
 
@@ -123,17 +126,17 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
             BlockCrusher.setState(true, world, pos);
         }
 
-        ItemStack[] inputs = new ItemStack[] {inventory.getStackInSlot(0)};
+        ItemStack input = inventory.getStackInSlot(0);
         ItemStack fuel = this.inventory.getStackInSlot(1);
 
         if(this.isBurning() || !fuel.isEmpty() && !this.inventory.getStackInSlot(0).isEmpty())
         {
-         if(this.isBurning() && this.canCrush())
+         if(!this.isBurning() && this.canCrush())
          {
              this.burnTime = getItemBurnTime(fuel);
              this.currentBurnTime = burnTime;
 
-             if(this.isBurning() && this.canCrush())
+             if(this.isBurning() && !fuel.isEmpty())
              {
                  Item item = fuel.getItem();
                  fuel.shrink(1);
@@ -148,14 +151,14 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
 
         }
 
-        if(this.isBurning() && this.canCrush() && burnTime > 0)
+        if(this.isBurning() && this.canCrush() && crushTime > 0)
         {
             crushTime++;
             if(crushTime == totalCrushTime)
             {
                 if(inventory.getStackInSlot(2).getCount() > 0)
                 {
-                    inventory.getStackInSlot(2).grow(1);
+                    inventory.getStackInSlot(2).grow(2);
                 }
                 else
                 {
@@ -167,16 +170,30 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
                 return;
             }
         }
+        else
+        {
+            if(this.canCrush() && this.isBurning())
+            {
+                ItemStack output = BlockCrusherRecipes.getInstance().getCrushingResult(input);
+                if(!output.isEmpty())
+                {
+                    crushing = output;
+                    crushTime++;
+                    input.shrink(1);
+                    inventory.setStackInSlot(0, input);
+                }
+            }
+        }
     }
 
 
-public boolean canCrush ()
+private boolean canCrush ()
 {
     if((this.inventory.getStackInSlot(0)).isEmpty())
         return false;
     else
     {
-        ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.getStackInSlot(2));
+        ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.getStackInSlot(0));
         if(result.isEmpty())
             return false;
         else
