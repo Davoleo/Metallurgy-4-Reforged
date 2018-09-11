@@ -4,7 +4,6 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.fluid.ModFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 

@@ -72,7 +72,7 @@ public class BlockCrusherRecipes {
         {
             if(this.compareItemStacks(stack, (ItemStack)entry.getKey()))
             {
-                return ((Float)entry.getValue()).floatValue();
+                return entry.getValue();
             }
 
         }

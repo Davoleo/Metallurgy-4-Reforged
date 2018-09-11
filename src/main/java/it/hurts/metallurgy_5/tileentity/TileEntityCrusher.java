@@ -70,10 +70,15 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
         this.customName = customName;
     }
 
-    @Override
-    public ITextComponent getDisplayName()
+    public String getName()
     {
-        return this.hasCustomName() ? new TextComponentString(this.customName) : new TextComponentTranslation("container.crusher");
+        return this.hasCustomName() ? this.customName : "container.crusher";
+    }
+
+    @Override
+    public ITextComponent getDisplayName() {
+        return this.hasCustomName() ? new TextComponentString(this.getName())
+                : new TextComponentTranslation(this.getName());
     }
 
     @Override
@@ -94,6 +99,10 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
+        if(inventory == null)
+        {
+            System.out.println("WARNING THE INVENTORY CANNOT BE SAVED TO NBT, WHAT'YA DID LITTLE BITCH!");
+        }
         super.writeToNBT(compound);
         compound.setInteger("burn_time", (short)this.burnTime);
         compound.setInteger("crush_time", (short)this.crushTime);
@@ -120,6 +129,7 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
 
     public void update()
     {
+        //Fuel Usage
         if(this.isBurning())
         {
             --this.burnTime;
@@ -167,7 +177,6 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
 
                 crushing = ItemStack.EMPTY;
                 crushTime = 0;
-                return;
             }
         }
         else
@@ -258,7 +267,7 @@ public static int getItemBurnTime(ItemStack fuel)
 
     public boolean isUsableByPlayer(EntityPlayer player)
     {
-        return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        return this.world.getTileEntity(this.pos)==this && player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
 public int getField(int id)
