@@ -17,7 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -31,16 +30,19 @@ import java.util.Random;
  **************************************************/
 
 //VOGLIO MORIRE EDITION
-
+@SuppressWarnings("unchecked")
 public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool BURNING = PropertyBool.create("burning");
+    private static boolean keepInventory;
+
 
     public BlockCrusher(String name){
         super(Material.IRON, name);
-        setSoundType(SoundType.METAL);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
+        setSoundType(SoundType.METAL);
+        setHarvestLevel("pickaxe", 1);
         setHardness(6F);
         setResistance(8F);
     }
@@ -52,17 +54,26 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return Item.getItemFromBlock(ModBlocks.crusher);
     }
 
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+   /* public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(ModBlocks.crusher);
-    }
+    }*/
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!world.isRemote)
+        if(world.isRemote)
         {
-            player.openGui(Metallurgy_5.instance, GuiHandler.CRUSHER, world, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        }
+        else
+        {
+            TileEntity te = world.getTileEntity(pos);
+
+            if(te instanceof TileEntityCrusher)
+            {
+                player.openGui(Metallurgy_5.instance, GuiHandler.CRUSHER, world, pos.getX(), pos.getY(), pos.getZ());
+            }
         }
 
         return true;
@@ -97,11 +108,14 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     {
         IBlockState state = worldIn.getBlockState(pos);
         TileEntity tileEntity = worldIn.getTileEntity(pos);
+        keepInventory = true;
 
         if(active)
             worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 3);
         else
             worldIn.setBlockState(pos, ModBlocks.crusher.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 3);
+
+        keepInventory = false;
 
         if(tileEntity != null)
         {
@@ -110,17 +124,21 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
+    //TODO : Cercare di capire perché non funziona sto metodo maledetto
+    /*
+        public void breakBlock(World world, BlockPos pos, IBlockState state)
+        {
+            if(!keepInventory)
+            {
+                TileEntity te = world.getTileEntity(pos);
 
-//        public void breakBlock(World world, BlockPos pos, IBlockState state)
-//        {
-//                TileEntity tileentity = world.getTileEntity(pos);
-//
-//                if (tileentity instanceof TileEntityCrusher)
-//                   InventoryHelper.dropInventoryItems(world, pos, tileentity);
-//
-//            super.breakBlock(world, pos, state);
-//        }
-
+                if (te instanceof TileEntityCrusher)
+                {
+                    InventoryHelper.dropInventoryItems(world, pos, (TileEntityCrusher)te);
+                }
+            }
+        }
+*/
 
 
     @Override
@@ -151,6 +169,16 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
         worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+
+        if (stack.hasDisplayName())
+        {
+            TileEntity te = worldIn.getTileEntity(pos);
+
+            if(te instanceof TileEntityCrusher)
+            {
+                ((TileEntityCrusher)te).setCustomName(stack.getDisplayName());
+            }
+        }
     }
 
     @Override
@@ -163,13 +191,13 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
     }
 
     @Override
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
     {
-        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
     }
 
     @Override
@@ -183,8 +211,10 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     public IBlockState getStateFromMeta(int meta)
         {
         EnumFacing facing = EnumFacing.getFront(meta);
+
         if(facing.getAxis() == EnumFacing.Axis.Y)
             facing = EnumFacing.NORTH;
+
         return this.getDefaultState().withProperty(FACING, facing);
     }
 

@@ -1,11 +1,12 @@
 package it.hurts.metallurgy_5.util.recipe;
 
-import java.util.Map;
-
 import com.google.common.collect.Maps;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.Map;
 
 /*************************************************
  * Author: Davoleo
@@ -22,7 +23,7 @@ public class BlockCrusherRecipes {
     //Nel caso si voglia utilizzare un metodo più automatico per le recipe degli ore
     //private static final int ORE_MULTIPLIER = 2;
 
-    private final Map<ItemStack, ItemStack> smeltingList = Maps.<ItemStack, ItemStack>newHashMap();
+    private final Map<ItemStack, ItemStack> crushingList = Maps.<ItemStack, ItemStack>newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
 
 
@@ -38,22 +39,37 @@ public class BlockCrusherRecipes {
 
     public void addCrushingRecipe(ItemStack input, ItemStack result, float experience)
     {
-        if(getCrushingResult(input) != ItemStack.EMPTY) return;
-        this.smeltingList.put(input, result);
-        this.experienceList.put(result, experience);
+        if(input.isEmpty() || result.isEmpty())
+             return;
+        for(ItemStack stack : crushingList.keySet())
+            if(input.isItemEqual(stack))
+                return;
+
+            this.crushingList.put(input.copy(), result);
+            this.experienceList.put(result.copy(), experience);
     }
 
     public ItemStack getCrushingResult(ItemStack input)
     {
-        for(Map.Entry<ItemStack, ItemStack> entry : this.smeltingList.entrySet())
+        for(Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
         {
-            if(this.compareItemStacks(input, (ItemStack)entry.getKey()))
-            {
-                        return (ItemStack)entry.getValue();
-            }
+         ItemStack in = entry.getKey();
+         if(in.isItemEqual(input) || (in.getItem() == input.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+             return entry.getValue();
         }
         return ItemStack.EMPTY;
 
+    }
+
+    public float getCrushingExperience(ItemStack stack)
+    {
+        for(Map.Entry<ItemStack, Float> entry : this.experienceList.entrySet())
+        {
+            ItemStack in = entry.getKey();
+            if(in.isItemEqual(stack) || (in.getItem() == stack.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+                return entry.getValue();
+        }
+        return 0.0F;
     }
 
     private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
@@ -61,22 +77,21 @@ public class BlockCrusherRecipes {
         return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
     }
 
-    public Map<ItemStack, ItemStack> getSmeltingList()
+    public ItemStack getCrushingList(ItemStack stack)
     {
-        return this.smeltingList;
-    }
-
-    public float getCrushingExperience(ItemStack stack)
-    {
-        for(Map.Entry<ItemStack, Float> entry : this.experienceList.entrySet())
+        for(Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
         {
-            if(this.compareItemStacks(stack, (ItemStack)entry.getKey()))
+            if(this.compareItemStacks(stack, entry.getKey()))
             {
                 return entry.getValue();
             }
-
         }
-        return 0.0F;
+        return ItemStack.EMPTY;
+    }
+
+    public Map<ItemStack, ItemStack> getCrushingList()
+    {
+        return this.crushingList;
     }
 
 }

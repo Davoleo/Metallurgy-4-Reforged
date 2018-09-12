@@ -30,6 +30,12 @@ public class GuiCrusher extends GuiContainer {
     }
 
     @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    {
+        this.renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         String name = this.crusher.getDisplayName().getUnformattedText();

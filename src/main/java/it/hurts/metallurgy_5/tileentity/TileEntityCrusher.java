@@ -1,17 +1,28 @@
 package it.hurts.metallurgy_5.tileentity;
 
 import it.hurts.metallurgy_5.block.BlockCrusher;
+import it.hurts.metallurgy_5.container.ContainerCrusher;
 import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.util.datafix.walkers.ItemStackDataLists;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -20,7 +31,6 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
@@ -35,9 +45,10 @@ import javax.annotation.Nullable;
 //VOGLIO MORIRE EDITION
 
 //ticking tile entity
-public class TileEntityCrusher extends TileEntity implements ITickable {
+public class TileEntityCrusher extends TileEntityLockable implements ITickable {
 
-    private ItemStackHandler inventory = new ItemStackHandler(3);
+    private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+
     private String customName;
     private ItemStack crushing = ItemStack.EMPTY;
 
@@ -60,6 +71,63 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
         return super.getCapability(capability, facing);
     }
 
+    public int getSizeInventory()
+    {
+        return this.inventory.size();
+    }
+
+    public boolean isEmpty()
+    {
+        for(ItemStack stack : this.inventory)
+        {
+            if(!stack.isEmpty())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public ItemStack getStackInSlot(int index)
+    {
+        return this.inventory.get(index);
+    }
+
+    public ItemStack decrStackSize(int index, int count)
+    {
+        return ItemStackHelper.getAndSplit(this.inventory, index, count);
+    }
+
+    public ItemStack removeStackFromSlot(int index)
+    {
+        return ItemStackHelper.getAndRemove(this.inventory, index);
+    }
+
+
+    public void setInventorySlotContents(int index, ItemStack stack)
+    {
+        ItemStack itemstack = this.inventory.get(index);
+        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+        this.inventory.set(index, stack);
+
+        if(stack.getCount() > this.getInventoryStackLimit())
+        {
+            stack.setCount(this.getInventoryStackLimit());
+        }
+
+        if(index == 0 && flag)
+        {
+            this.totalCrushTime = this.getCrushTime(stack);
+            this.crushTime = 0;
+            this.markDirty();
+        }
+    }
+
+    public String getName()
+    {
+        return this.hasCustomName() ? this.customName : "container.crusher";
+    }
+
     public boolean hasCustomName()
     {
         return this.customName != null && !this.customName.isEmpty();
@@ -70,9 +138,9 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
         this.customName = customName;
     }
 
-    public String getName()
+    public static void registerFixesFurnace(DataFixer fixer)
     {
-        return this.hasCustomName() ? this.customName : "container.crusher";
+        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, new String[] {"Items"}));
     }
 
     @Override
@@ -85,11 +153,12 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        ItemStackHelper.loadAllItems(compound,this.inventory);
         this.burnTime = compound.getInteger("burn_time");
         this.crushTime = compound.getInteger("crush_time");
         this.totalCrushTime = compound.getInteger("total_crush_time");
-        this.currentBurnTime = getItemBurnTime(this.inventory.getStackInSlot(2));
+        this.currentBurnTime = getItemBurnTime(this.inventory.get(1));
 
         if(compound.hasKey("CustomName", 8))
             this.setCustomName(compound.getString("CustomName"));
@@ -99,21 +168,22 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        if(inventory == null)
-        {
-            System.out.println("WARNING THE INVENTORY CANNOT BE SAVED TO NBT, WHAT'YA DID LITTLE BITCH!");
-        }
         super.writeToNBT(compound);
         compound.setInteger("burn_time", (short)this.burnTime);
         compound.setInteger("crush_time", (short)this.crushTime);
         compound.setInteger("total_crush_time", (short)this.totalCrushTime);
-        compound.setTag("inventory", inventory.serializeNBT());
+        ItemStackHelper.saveAllItems(compound, this.inventory);
 
         if(this.hasCustomName())
             compound.setString("custom_name", this.customName);
 
         return compound;
 
+    }
+
+    public int getInventoryStackLimit()
+    {
+        return 64;
     }
 
     public boolean isBurning()
@@ -129,93 +199,127 @@ public class TileEntityCrusher extends TileEntity implements ITickable {
 
     public void update()
     {
+        boolean flag = this.isBurning();
+        boolean flag1 = false;
+
         //Fuel Usage
-        if(this.isBurning())
+        if (this.isBurning())
         {
             --this.burnTime;
-            BlockCrusher.setState(true, world, pos);
         }
 
-        ItemStack input = inventory.getStackInSlot(0);
-        ItemStack fuel = this.inventory.getStackInSlot(1);
-
-        if(this.isBurning() || !fuel.isEmpty() && !this.inventory.getStackInSlot(0).isEmpty())
+        if (!this.world.isRemote)
         {
-         if(!this.isBurning() && this.canCrush())
-         {
-             this.burnTime = getItemBurnTime(fuel);
-             this.currentBurnTime = burnTime;
 
-             if(this.isBurning() && !fuel.isEmpty())
-             {
-                 Item item = fuel.getItem();
-                 fuel.shrink(1);
+            ItemStack input = inventory.get(0);
+            ItemStack fuel = this.inventory.get(1);
 
-                 if(fuel.isEmpty())
-                 {
-                     ItemStack item1 = item.getContainerItem(fuel);
-                     this.inventory.setStackInSlot(1, item1);
-                 }
-             }
-         }
-
-        }
-
-        if(this.isBurning() && this.canCrush() && crushTime > 0)
-        {
-            crushTime++;
-            if(crushTime == totalCrushTime)
+            if (this.isBurning() || !fuel.isEmpty() && !this.inventory.get(0).isEmpty())
             {
-                if(inventory.getStackInSlot(2).getCount() > 0)
+                if (!this.isBurning() && this.canCrush())
                 {
-                    inventory.getStackInSlot(2).grow(2);
-                }
-                else
-                {
-                    inventory.insertItem(2, crushing, false);
+                    this.burnTime = getItemBurnTime(fuel);
+                    this.currentBurnTime = burnTime;
+
+                    if (this.isBurning())
+                    {
+                        flag1 = true;
+
+                        if (!fuel.isEmpty())
+                        {
+                            Item item = fuel.getItem();
+                            fuel.shrink(1);
+
+                            if (fuel.isEmpty())
+                            {
+                                ItemStack item1 = item.getContainerItem(fuel);
+                                this.inventory.set(1, item1);
+                            }
+                        }
+                    }
+
                 }
 
-                crushing = ItemStack.EMPTY;
-                crushTime = 0;
+                if (this.isBurning() && this.canCrush())
+                {
+                    ++crushTime;
+
+                    if (crushTime == totalCrushTime)
+                    {
+                        crushTime = 0;
+                        totalCrushTime = this.getCrushTime(this.inventory.get(0));
+                        this.crushItem();
+                        flag1 = true;
+                    }
+                } else
+                {
+                    this.crushTime = 0;
+                }
+            } else if (!this.isBurning() && this.crushTime > 0)
+            {
+                this.crushTime = MathHelper.clamp(this.crushTime - 2, 0, this.totalCrushTime);
+            }
+
+            if (flag != this.isBurning())
+            {
+                flag1 = true;
+                BlockCrusher.setState(this.isBurning(), this.world, this.pos);
             }
         }
-        else
+
+        if (flag1)
         {
-            if(this.canCrush() && this.isBurning())
-            {
-                ItemStack output = BlockCrusherRecipes.getInstance().getCrushingResult(input);
-                if(!output.isEmpty())
-                {
-                    crushing = output;
-                    crushTime++;
-                    input.shrink(1);
-                    inventory.setStackInSlot(0, input);
-                }
-            }
+            this.markDirty();
         }
+
     }
 
 
 private boolean canCrush ()
 {
-    if((this.inventory.getStackInSlot(0)).isEmpty())
+    if((this.inventory.get(0)).isEmpty())
         return false;
     else
     {
-        ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.getStackInSlot(0));
+        ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
         if(result.isEmpty())
             return false;
         else
         {
-            ItemStack output = this.inventory.getStackInSlot(2);
+            ItemStack output = this.inventory.get(2);
+            int limit = output.getCount() + result.getCount();
+
             if(output.isEmpty())
                 return true;
-            if(!output.isItemEqual(result))
+            else if (!output.isItemEqual(result))
                 return false;
-            int limit = output.getCount() + result.getCount();
+            else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+                return true;
+            else
             return limit <= 64 && limit <= output.getMaxStackSize();
 
         }
+    }
+}
+
+public void crushItem()
+{
+    if (this.canCrush())
+    {
+        ItemStack input = this.inventory.get(0);
+        ItemStack recipeResult = BlockCrusherRecipes.getInstance().getCrushingResult(input);
+        ItemStack output = this.inventory.get(2);
+
+        if(output.isEmpty())
+            this.inventory.set(2, recipeResult.copy());
+        else if(output.getItem() == recipeResult.getItem())
+            output.grow(recipeResult.getCount());
+
+        if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
+            this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
+
+        input.shrink(1);
+
     }
 }
 
@@ -260,6 +364,11 @@ public static int getItemBurnTime(ItemStack fuel)
     }
 }
 
+public int getCrushTime(ItemStack stack)
+{
+    return 140;
+}
+
     public static boolean isItemFuel(ItemStack fuel)
     {
         return getItemBurnTime(fuel) > 0;
@@ -267,7 +376,39 @@ public static int getItemBurnTime(ItemStack fuel)
 
     public boolean isUsableByPlayer(EntityPlayer player)
     {
-        return this.world.getTileEntity(this.pos)==this && player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        if(this.world.getTileEntity(this.pos) != this)
+            return false;
+        else
+            return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+    }
+
+    public void openInventory(EntityPlayer player)
+    {}
+
+    public void closeInventory(EntityPlayer player)
+    {}
+
+    public boolean isItemValidForSlot(int index, ItemStack stack)
+    {
+        if(index == 2)
+            return false;
+        else if (index != 1)
+            return true;
+        else
+        {
+            ItemStack stack1 = this.inventory.get(1);
+            return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
+        }
+    }
+
+    public String getGuiID()
+    {
+        return "m5:crusher";
+    }
+
+    public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
+    {
+        return new ContainerCrusher(inventory, this);
     }
 
 public int getField(int id)
@@ -303,6 +444,16 @@ public void setField(int id, int value)
         case 3:
             this.totalCrushTime = value;
     }
+}
+
+public int getFieldCount()
+{
+    return 4;
+}
+
+public void clear()
+{
+    this.inventory.clear();
 }
 
 //provate pure a pensare di essere assolti, siete lo stesso coinvolti

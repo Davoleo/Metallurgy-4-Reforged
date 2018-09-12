@@ -5,15 +5,10 @@ import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 /*************************************************
  * Author: Davoleo
@@ -25,17 +20,15 @@ import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerCrusher extends Container {
 
-    private final TileEntityCrusher crusher;
+    private final IInventory crusher;
     private int crushTime, totalCrushTime, burnTime, currentBurnTime;
 
-    public ContainerCrusher(InventoryPlayer playerInv, TileEntityCrusher crusher)
+    public ContainerCrusher(InventoryPlayer playerInv, IInventory crusherInv)
     {
-        this.crusher = crusher;
-        IItemHandler inventory = crusher.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-
-        addSlotToContainer(new SlotItemHandler(inventory, 0, 26, 11));  //Input
-        addSlotToContainer(new SlotItemHandler(inventory, 1, 7, 35));   //Fuel
-        addSlotToContainer(new SlotItemHandler(inventory, 2, 81, 36)); //Result
+        this.crusher = crusherInv;
+        this.addSlotToContainer(new Slot(crusherInv, 0, 26, 11));  //Input
+        this.addSlotToContainer(new SlotFurnaceFuel(crusherInv, 1, 7, 35));   //Fuel
+        this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, crusherInv, 2, 81, 36)); //Result
 
         for(int y = 0; y < 3; y++)
         {
@@ -50,6 +43,12 @@ public class ContainerCrusher extends Container {
             this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
         }
 
+    }
+
+    public void addListener(IContainerListener listener)
+    {
+        super.addListener(listener);
+        listener.sendAllWindowProperties(this, this.crusher);
     }
 
     @Override
