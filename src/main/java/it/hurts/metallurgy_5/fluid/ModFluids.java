@@ -31,7 +31,6 @@ public class ModFluids {
 
     public static void registerFluids()
     {
-        System.out.println(Metallurgy_5.NAME + "is registering Fluids and buckets!");
         FluidRegistry.registerFluid(MOLTEN_ADAMANTINE);
         FluidRegistry.addBucketForFluid(MOLTEN_ADAMANTINE);
     }

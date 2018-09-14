@@ -55,7 +55,7 @@ public class ModArmors {
 	public static ItemArmorBase bronze_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.HEAD,"bronze_helmet").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase bronze_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.CHEST,"bronze_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase bronze_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.LEGS,"bronze_legs").setCreativeTab(Metallurgy_5.tabArmor);
-	public static ItemArmorBase bronze_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bornze_boots").setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase bronze_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bronze_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
 	public static ItemArmorBase carmot_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.HEAD,"carmot_helmet", Tooltips.CARMOT_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase carmot_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.CHEST,"carmot_chest", Tooltips.CARMOT_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);
