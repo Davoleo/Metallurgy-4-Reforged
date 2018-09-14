@@ -403,7 +403,7 @@ public int getCrushTime(ItemStack stack)
 
     public String getGuiID()
     {
-        return "m5:crusher";
+        return "minecraft:crusher";
     }
 
     public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
