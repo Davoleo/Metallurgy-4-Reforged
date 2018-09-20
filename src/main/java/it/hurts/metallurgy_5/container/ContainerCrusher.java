@@ -26,9 +26,9 @@ public class ContainerCrusher extends Container {
     public ContainerCrusher(InventoryPlayer playerInv, IInventory crusherInv)
     {
         this.crusher = crusherInv;
-        this.addSlotToContainer(new Slot(crusherInv, 0, 26, 11));  //Input
+        this.addSlotToContainer(new Slot(crusherInv, 0, 57, 35));  //Input
         this.addSlotToContainer(new SlotFurnaceFuel(crusherInv, 1, 7, 35));   //Fuel
-        this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, crusherInv, 2, 81, 36)); //Result
+        this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, crusherInv, 2, 120, 36)); //Result
 
         for(int y = 0; y < 3; y++)
         {

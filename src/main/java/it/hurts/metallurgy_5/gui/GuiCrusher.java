@@ -59,7 +59,8 @@ public class GuiCrusher extends GuiContainer {
         }
 
         int l = this.getCrushProgressScaled(24);
-        this.drawTexturedModalRect(this.guiLeft + 44, this.guiTop + 36, 176, 14, l + 1, 16);
+        //x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
+        this.drawTexturedModalRect(this.guiLeft + 83, this.guiTop + 36, 176, 14, l + 1, 16);
     }
 
     private int getBurnLeftScaled(int pixels)
