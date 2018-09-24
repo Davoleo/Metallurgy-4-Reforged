@@ -123,8 +123,6 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
-    //TODO : Cercare di capire perché non funziona sto metodo maledetto
-
         public void breakBlock(World world, BlockPos pos, IBlockState state)
         {
             if(!keepInventory)

@@ -116,7 +116,7 @@ public class ModBlocks {
 
 	//Tile Entities
 	public static BlockCrusher crusher = new BlockCrusher("crusher");
-	
+	public static BlockAlloyer alloyer = new BlockAlloyer("alloyer");
 	
 //	Tile
 	
