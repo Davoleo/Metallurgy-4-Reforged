@@ -72,7 +72,7 @@ public class EventHandler {
 //		Deve avere il 25% di possibilit� di essere attivato
 			Entity foe = event.getTarget();
 			EntityLivingBase foe2 = (EntityLivingBase)foe;
-			if(Math.random() <= 0.30)
+			if(Math.random()*100 <= 30)
 				foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 		}
 	
@@ -82,27 +82,27 @@ public class EventHandler {
 			Entity foe = event.getTarget();
 	
 	
-			if(Math.random() <= 0.50)
+			if(Math.random()*100 <= 50)
 				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
 		}
 		
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
 			Entity foe = event.getTarget();
 			
-			if(Math.random() <= 0.35)
+			if(Math.random()*100 <= 35)
 				((EntityLivingBase) foe).setFire(5);
 		}
 		
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))) {
 			Entity foe = event.getTarget();
 			
-			if(Math.random() <= 0.35)
+			if(Math.random()*100 <= 35)
 				((EntityLivingBase) foe).setFire(5);
 		}
 		
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
 			
-			if(Math.random() <= 0.39)
+			if(Math.random()*100 <= 39)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
 		}
 

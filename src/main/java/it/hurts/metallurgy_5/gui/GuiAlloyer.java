@@ -1,9 +1,8 @@
 package it.hurts.metallurgy_5.gui;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.container.ContainerCrusher;
+import it.hurts.metallurgy_5.container.ContainerAlloyer;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
-import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;

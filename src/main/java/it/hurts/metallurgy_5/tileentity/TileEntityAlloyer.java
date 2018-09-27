@@ -7,12 +7,14 @@ import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_5.block.BlockCrusher;
 import it.hurts.metallurgy_5.container.ContainerCrusher;
+import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
@@ -22,12 +24,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -136,7 +140,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     public static void registerFixesFurnace(DataFixer fixer) {
-    	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEnityFurnace.class, new String[] {"Items"}));
+    	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, new String[] {"Items"}));
     }
     
 //    In caso ci siano traduzioni(?)
@@ -272,7 +276,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     private boolean canLiquefy() {
-    	if((this.inventory.get(0).isEmpty())
+    	if((this.inventory.get(0).isEmpty()))
     			return false;
     	else {
     		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0));
@@ -299,7 +303,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public void alloyItem() {
     	if(this.canLiquefy()) {
     		ItemStack input = this.inventory.get(0);
-    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyerResult(input);
+    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(input);
     		ItemStack output = this.inventory.get(2);
     		
     		if(output.isEmpty())
@@ -393,7 +397,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     	return "minecraft:alloyer";
     }
     
-    public Containter createContainer(InventoryPlayer inventory, EntityPlayer player) {
+    public Container createContainer(InventoryPlayer inventory, EntityPlayer player) {
     	return new ContainerCrusher(inventory, this);
     }
     
