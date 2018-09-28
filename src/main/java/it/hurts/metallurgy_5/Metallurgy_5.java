@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5;
+ package it.hurts.metallurgy_5;
 
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.fluid.ModFluids;

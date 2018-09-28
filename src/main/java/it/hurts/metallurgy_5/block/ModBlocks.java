@@ -213,7 +213,8 @@ public class ModBlocks {
 				blockMoltenAdamantine,
 
 				//Tile Entities
-				crusher
+				crusher,
+				alloyer
 				
 		);
 		
@@ -313,7 +314,8 @@ public class ModBlocks {
 				blockMoltenAdamantine.createItemBlock(),
 
 				//Tile Entities
-				crusher.createItemBlock()
+				crusher.createItemBlock(),
+				alloyer.createItemBlock()
 
 				
 		);
@@ -410,6 +412,7 @@ public class ModBlocks {
 
 		//Tile Entities
 		crusher.registerItemModel(Item.getItemFromBlock(crusher));
+		alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
 	}
 	
 }

@@ -5,8 +5,8 @@ package it.hurts.metallurgy_5.tileentity;
 
 import javax.annotation.Nullable;
 
-import it.hurts.metallurgy_5.block.BlockCrusher;
-import it.hurts.metallurgy_5.container.ContainerCrusher;
+import it.hurts.metallurgy_5.block.BlockAlloyer;
+import it.hurts.metallurgy_5.container.ContainerAlloyer;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -53,7 +53,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
 
 //	Creiamo una lista di null (Inventario) di grandezza 3
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	
 	private String customName;   		//CustomName sarebbe la modifica del nome dell'oggetto in caso il player rinominasse il blocco
 	private ItemStack alloyer = ItemStack.EMPTY;  
@@ -91,7 +91,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     	return true;
     }
     
-//    Credo sia il fast push
+//    Crush getStackInSlot
     public ItemStack getStackInSlot(int index){
         return this.inventory.get(index);
     }
@@ -157,8 +157,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound,this.inventory);
         this.burnTime = compound.getInteger("burn_time");	//Otteniamo il tempo di cottura ricevuto dal Fuel
-        this.alloyingTime = compound.getInteger("crush_time");//Impostiamo quanto tempo ci vuole per ottenere un alloy
-        this.totalAlloyingTime = compound.getInteger("total_crush_time"); //Impostiamo quanto è il massimo tempo di cottura
+        this.alloyingTime = compound.getInteger("alloying_time");//Impostiamo quanto tempo ci vuole per ottenere un alloy
+        this.totalAlloyingTime = compound.getInteger("total_alloying_time"); //Impostiamo quanto è il massimo tempo di cottura
         this.currentBurnTime = getItemBurnTime(this.inventory.get(1)); //Impostiamo su tick, il tempo di cottura
 
 //        In caso ci sia un customName
@@ -265,7 +265,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
             if (flag != this.isBurning())
             {
                 flag1 = true;
-                BlockCrusher.setState(this.isBurning(), this.world, this.pos);
+                BlockAlloyer.setState(this.isBurning(), this.world, this.pos);
             }
         }
 
@@ -398,7 +398,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     public Container createContainer(InventoryPlayer inventory, EntityPlayer player) {
-    	return new ContainerCrusher(inventory, this);
+    	return new ContainerAlloyer(inventory, this);
     }
     
 //    Non ho capito un cazzo d'ora in poi

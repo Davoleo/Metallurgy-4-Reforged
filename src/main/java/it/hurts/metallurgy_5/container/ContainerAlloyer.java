@@ -3,8 +3,8 @@
  */
 package it.hurts.metallurgy_5.container;
 
-import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
-import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
+import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -32,27 +32,32 @@ public class ContainerAlloyer extends Container {
     
     public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv) {
     	this.alloyer = alloyerInv;
-        this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 35));  //Input
+        this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 35));	//Input
+        this.addSlotToContainer(new Slot(alloyerInv, 3, 100, 35));	//Input
         this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 1, 7, 35));   //Fuel
         this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, alloyerInv, 2, 120, 36)); //Result
         
+//        Collegamento all'inventario del player
         for(int y = 0; y < 3; y++){
             for(int x = 0; x < 9; x++){
                 this.addSlotToContainer(new Slot(playerInv, x + y*9 + 9, 8 + x*18, 84 + y*18));
             }
         }
 
+//        Collegamento all'inventario della hotbar
         for(int x = 0; x < 9; x++){
             this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
         }
         
     }
     
+//    Errore all'add Listener
     public void addListener(IContainerListener listener){
         super.addListener(listener);
         listener.sendAllWindowProperties(this, this.alloyer);
     }
     
+//    Da qui non so come gestirmi
     @Override
     public void detectAndSendChanges(){
         super.detectAndSendChanges();
@@ -105,12 +110,12 @@ public class ContainerAlloyer extends Container {
                 slot.onSlotChange(itemstack1, itemstack);
             }
             else if (index != 1 && index != 0){
-                if (!BlockCrusherRecipes.getInstance().getCrushingResult(itemstack1).isEmpty()){
+                if (!BlockAlloyerRecipes.getInstance().getAlloyingResult(itemstack1).isEmpty()){
                     if (!this.mergeItemStack(itemstack1, 0, 1, false)){
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (TileEntityCrusher.isItemFuel(itemstack1)){
+                else if (TileEntityAlloyer.isItemFuel(itemstack1)){
                     if (!this.mergeItemStack(itemstack1, 1, 2, false)){
                         return ItemStack.EMPTY;
                     }

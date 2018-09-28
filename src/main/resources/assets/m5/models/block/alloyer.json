@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "m5:blocks/alloyer_side",
+    "up": "m5:blocks/alloyer_side",
+    "down": "m5:blocks/alloyer_side",
+    "north": "m5:blocks/alloyer_front_off",
+    "east": "m5:blocks/alloyer_side",
+    "south": "m5:blocks/alloyer_side",
+    "west": "m5:blocks/alloyer_side"
+  }
+}
