@@ -1,8 +1,8 @@
-### This is Metallurgy 4 (reforged) an unofficial port of Metallurgy 4 by JeanGlassMaker & ShadowClaimer
+### This is Metallurgy 4: Reforged an unofficial port of Metallurgy 4 by JeanGlassMaker & ShadowClaimer
 
 This mod is a collaboration between: Me and ItHurtsLikeHell
 
-Metallurgy 4 (reforged) is a mod that implements a lot of different materials some realistic ones and some fantasy ones, and alloys too
+Metallurgy 4: Reforged is a mod that implements a lot of different materials some realistic ones and some fantasy ones, and alloys too
 It's a fully customizable mod, and it also has some special effects for armors and tools made with these materials
 Further integration with common mods (like Tinkers' Construct) is not currently avaliable but planned too
 
