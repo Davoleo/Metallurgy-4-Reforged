@@ -18,7 +18,6 @@ import net.minecraftforge.oredict.OreDictionary;
  * Time   : 20:48:50
  *
  * Adapted by Davoleo
- *
  ***************************/
 public class BlockAlloyerRecipes {
 
@@ -82,5 +81,4 @@ public class BlockAlloyerRecipes {
 		}
 		return 0F;
     }
-	
 }

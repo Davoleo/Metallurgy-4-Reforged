@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.hurts.metallurgy_5.block;
 
 import java.util.Random;
@@ -37,15 +34,16 @@ import net.minecraft.world.World;
  * Date   : 22 set 2018
  * Time   : 11:04:34
  *
+ * Reworked by Davoleo
  ***************************/
 public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
-//	Definiamo le proprietà della texture (Alloy acceso, alloy non acceso)
+    //Blockstates initialization
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool BURNING = PropertyBool.create("burning");
+
     private static boolean keepInventory;
-    
-//    Diamo Informazioni al blocco (durezza, materiale, tool di harvesting)
+
     public BlockAlloyer(String name){
         super(Material.IRON, name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
@@ -55,7 +53,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         setResistance(8F);
     }
 	
-//    Quando il blocco viene distrutto, restituisce lo stesso blocco
+    //Overrides the dropped item
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.alloyer);
@@ -65,7 +63,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return new ItemStack(ModBlocks.alloyer);
     }
     
-//    Controllo di quando viene piazzato il blocco
+    //When you right-click the block
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ){
         if(!world.isRemote){

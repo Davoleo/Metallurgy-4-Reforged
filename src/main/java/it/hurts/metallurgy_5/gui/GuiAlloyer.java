@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
  * Date   : 24 set 2018
  * Time   : 19:07:28
  *
+ * Reworked by Davoleo
  ***************************/
 public class GuiAlloyer extends GuiContainer{
 

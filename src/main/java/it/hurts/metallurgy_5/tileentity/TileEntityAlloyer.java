@@ -1,12 +1,11 @@
-/**
- * 
- */
 package it.hurts.metallurgy_5.tileentity;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Table;
 import it.hurts.metallurgy_5.block.BlockAlloyer;
 import it.hurts.metallurgy_5.container.ContainerAlloyer;
+import it.hurts.metallurgy_5.util.Utils;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -49,14 +49,15 @@ import net.minecraftforge.items.CapabilityItemHandler;
  * Date   : 22 set 2018
  * Time   : 11:04:58
  *
+ * Reworked by Davoleo
  ***************************/
 public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
 
-//	Creiamo una lista di null (Inventario) di grandezza 3
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
-	
-	private String customName;   		//CustomName sarebbe la modifica del nome dell'oggetto in caso il player rinominasse il blocco
-	private ItemStack alloyer = ItemStack.EMPTY;  
+
+	protected boolean hasBeenAlloying;
+
+	private String customName;
 	
 	private int burnTime;		
     private int currentBurnTime;
@@ -82,16 +83,15 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     	return this.inventory.size();
     	
     }
-    
-//    Controlliamo se l'inventario è vuoto
+
+    //Returns true if the inventory is empty
     public boolean isEmpty() {
     	for (ItemStack stack : this.inventory)
     		if(!stack.isEmpty())
     			return false;
     	return true;
     }
-    
-//    Crush getStackInSlot
+
     public ItemStack getStackInSlot(int index){
         return this.inventory.get(index);
     }
@@ -108,7 +108,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     
     public void setInventorySlotContents(int index, ItemStack stack){
         ItemStack itemstack = this.inventory.get(index);
-        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack); //non l'ho capito
+        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
 
         if(stack.getCount() > this.getInventoryStackLimit()) //Raccogliamo la quantità e controlliamo lo stack limit
@@ -116,25 +116,26 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
             stack.setCount(this.getInventoryStackLimit());
         }
 
-        if(index == 0 && flag)	//Non l'ho capito
+        //Gathers information about the item you put in
+        if(index == 0 || index == 1 && flag)
         {
-            this.totalAlloyingTime = this.getAlloyingTime(stack); //Impostiamo il tempo di cottura
+            this.totalAlloyingTime = this.getAlloyingTime(stack);
             this.alloyingTime = 0;
             this.markDirty();
         }
     }
     
-//  Controlla se ha un nome customizzato
+    //Returns the name of the Tile Entity
     public String getName() {
         return this.hasCustomName() ? this.customName : "container.alloyer";
     }
     
-//    non l'ho capito
+    //Returns true if the tile entity has a custom name
     public boolean hasCustomName(){	
         return this.customName != null && !this.customName.isEmpty();
     }
     
-//    Imposta il nome Personalizzato in caso ci sia
+    //customName setter
     public void setCustomName(String customName){
         this.customName = customName;
     }
@@ -142,32 +143,32 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public static void registerFixesFurnace(DataFixer fixer) {
     	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, new String[] {"Items"}));
     }
-    
-//    In caso ci siano traduzioni(?)
+
+    //If the name is not custom it trasnlates the name
+    //If it is, returns directly the name
     @Override
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName())
                 : new TextComponentTranslation(this.getName());
     }
     
-//    Metodo per leggere l'NBT
+    //Reads data from the NBT Tag
     @Override
     public void readFromNBT(NBTTagCompound compound){
-        super.readFromNBT(compound);	//Non ricordo cosa fosse il compound
+        super.readFromNBT(compound);
         this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound,this.inventory);
-        this.burnTime = compound.getInteger("burn_time");	//Otteniamo il tempo di cottura ricevuto dal Fuel
-        this.alloyingTime = compound.getInteger("alloying_time");//Impostiamo quanto tempo ci vuole per ottenere un alloy
-        this.totalAlloyingTime = compound.getInteger("total_alloying_time"); //Impostiamo quanto è il massimo tempo di cottura
-        this.currentBurnTime = getItemBurnTime(this.inventory.get(1)); //Impostiamo su tick, il tempo di cottura
+        this.burnTime = compound.getInteger("burn_time");
+        this.alloyingTime = compound.getInteger("alloying_time");
+        this.totalAlloyingTime = compound.getInteger("total_alloying_time");
+        this.currentBurnTime = getItemBurnTime(this.inventory.get(1));
 
-//        In caso ci sia un customName
         if(compound.hasKey("CustomName", 8)) 
             this.setCustomName(compound.getString("CustomName"));
 
     }
     
-//    Scriviamo l'NBT
+    //Writes data to the NBT Tag
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
@@ -183,143 +184,165 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         return compound;
 
     }
-    
-//    Non ha bisogno di spiegazioni
+
+    //Returns the Stack Limit as an int
     public int getInventoryStackLimit() {
     	return 64;
     }
-    
-//    I don't remember
+
+    //Returns true if the fuel is burning
     public boolean isBurning() {
     	return this.burnTime > 0;
     }
-    
-//    Imposta la freccetta della cottura
+
     @SideOnly(Side.CLIENT)
     public static boolean isBurning(TileEntityAlloyer te) {
     	return te.getField(0) > 0 ;
     }
     
     public void update() {
-    	boolean flag = this.isBurning();
-        boolean flag1 = false;
-
-        //Fuel Usage
-        if (this.isBurning())
         {
-            --this.burnTime;
-        }
+            boolean flag = this.isBurning();
+            boolean flag1 = false;
 
-        if (!this.world.isRemote)
-        {
-
-            ItemStack input = inventory.get(0);
-            ItemStack input1 = inventory.get(1);
-            ItemStack fuel = this.inventory.get(2);
-
-            if (this.isBurning() || !fuel.isEmpty() && !this.inventory.get(0).isEmpty() && !this.inventory.get(1).isEmpty())
+            if (this.isBurning())
             {
-                if (!this.isBurning() && this.canLiquefy())
+                --this.burnTime;
+            }
+
+            if (!this.world.isRemote)
+            {
+                ItemStack itemstack = this.inventory.get(2);
+
+                if (this.isBurning() || !itemstack.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty()))
                 {
-                    this.burnTime = getItemBurnTime(fuel);
-                    this.currentBurnTime = burnTime;
-
-                    if (this.isBurning())
+                    if (!this.isBurning() && this.canAlloy())
                     {
-                        flag1 = true;
+                        this.burnTime = getItemBurnTime(itemstack);
+                        this.currentBurnTime = this.burnTime;
 
-                        if (!fuel.isEmpty())
+                        if (this.isBurning())
                         {
-                            Item item = fuel.getItem();
-                            fuel.shrink(1);
+                            flag1 = true;
 
-                            if (fuel.isEmpty())
+                            if (!itemstack.isEmpty())
                             {
-                                ItemStack item1 = item.getContainerItem(fuel);
-                                this.inventory.set(1, item1);
+                                Item item = itemstack.getItem();
+                                itemstack.shrink(1);
+
+                                if (itemstack.isEmpty())
+                                {
+                                    ItemStack item1 = item.getContainerItem(itemstack);
+                                    this.inventory.set(2, item1);
+                                }
                             }
                         }
                     }
 
-                }
-
-                if (this.isBurning() && this.canLiquefy())
-                {
-                    ++alloyingTime;
-
-                    if (alloyingTime == totalAlloyingTime)
+                    if (this.isBurning() && this.canAlloy())
                     {
-                    	alloyingTime = 0;
-                        totalAlloyingTime = this.getAlloyingTime(this.inventory.get(0));
-                        this.alloyItem();
-                        flag1 = true;
+                        ++this.alloyingTime;
+
+                        if (this.alloyingTime == this.totalAlloyingTime)
+                        {
+                            this.alloyingTime = 0;
+                            this.totalAlloyingTime = this.getAlloyingTime(this.inventory.get(0));
+                            this.alloyItem();
+                            flag1 = true;
+                        }
+                    } else
+                    {
+                        this.alloyingTime = 0;
                     }
-                } else
+                } else if (!this.isBurning() && this.alloyingTime > 0)
                 {
-                    this.alloyingTime = 0;
+                    this.alloyingTime = MathHelper.clamp(this.alloyingTime - 2, 0, this.totalAlloyingTime);
                 }
-            } else if (!this.isBurning() && this.alloyingTime > 0)
-            {
-                this.alloyingTime = MathHelper.clamp(this.alloyingTime - 2, 0, this.totalAlloyingTime);
+
+                if (flag != this.isBurning())
+                {
+                    flag1 = true;
+                    BlockAlloyer.setState(this.isBurning(), this.world, this.pos);
+                }
             }
 
-            if (flag != this.isBurning())
+            if (flag1)
             {
-                flag1 = true;
-                BlockAlloyer.setState(this.isBurning(), this.world, this.pos);
+                this.markDirty();
             }
-        }
-
-        if (flag1)
-        {
-            this.markDirty();
         }
     }
-    
-    private boolean canLiquefy() {
-    	if((this.inventory.get(0).isEmpty())||(this.inventory.get(1).isEmpty()))
+
+    private boolean canAlloy() {
+    	if((this.inventory.get(0).isEmpty()) || (this.inventory.get(1).isEmpty()))
     			return false;
     	else {
     		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0), this.inventory.get(1));
-    		if(result.isEmpty())
-    			return false;
-    		else {
-    			ItemStack output = this.inventory.get(2);
-    			int limit = output.getCount() + result.getCount();
-    			
-    			if(output.isEmpty())
-    				return true;
-    			else 
-    				if(!output.isItemEqual(result))
-    					return false;
-    				else
-    					if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
-    						return true;
-    					else
-    						return limit <= 64 && limit <= output.getMaxStackSize();
+    		ItemStack resultInverted = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(1), this.inventory.get(0));
+
+    		if(!result.isEmpty())
+            {
+                ItemStack output = this.inventory.get(3);
+                int limit = output.getCount() + result.getCount();
+
+                if(output.isEmpty())
+                    return true;
+                else
+                if(!output.isItemEqual(result))
+                    return false;
+                else
+                if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+                    return true;
+                else
+                    return limit <= 64 && limit <= output.getMaxStackSize();
+            }
+    		else if (!resultInverted.isEmpty())
+            {
+                ItemStack output = this.inventory.get(3);
+                int limit = output.getCount() + resultInverted.getCount();
+
+                if(output.isEmpty())
+                    return true;
+                else
+                if(!output.isItemEqual(result))
+                    return false;
+                else
+                if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+                    return true;
+                else
+                    return limit <= 64 && limit <= output.getMaxStackSize();
+
+
     		}
+    		else return false;
     	}
     }
     
     public void alloyItem() {
-    	if(this.canLiquefy()) {
-    		ItemStack input = this.inventory.get(0);
-    		ItemStack input1 = this.inventory.get(1);
-    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(input, input1);
-    		ItemStack output = this.inventory.get(2);
-    		
-    		if(output.isEmpty())
-    			this.inventory.set(2, recipeResult.copy());
-    		else
-    			if(output.getItem() == recipeResult.getItem())
-    				output.grow(recipeResult.getCount());
-    		
-    		if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
-    			this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
-    		input.shrink(1);
+    	if(this.canAlloy()) {
+    	    ItemStack[] inputs = {this.inventory.get(0), this.inventory.get(1)};
+    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(inputs[0], inputs[1]);
+    		ItemStack recipeResultInverted = BlockAlloyerRecipes.getInstance().getAlloyingResult(inputs[1], inputs[0]);
+    		ItemStack output = this.inventory.get(3);
+
+    		if (recipeResult == ItemStack.EMPTY)
+            {
+                if (output.isEmpty())
+                    this.inventory.set(3, recipeResult.copy());
+                else if (output.getItem() == recipeResult.getItem())
+                    output.grow(recipeResult.getCount());
+            }
+            else
+                if (recipeResultInverted != ItemStack.EMPTY)
+                {
+                    if(output.isEmpty())
+                        this.inventory.set(3, recipeResultInverted.copy());
+                    else if (output.getItem() == recipeResultInverted.getItem())
+                        output.grow(recipeResult.getCount());
+                }
     	}
     }
-    
+
     public static int getItemBurnTime(ItemStack fuel)
     {
         if(fuel.isEmpty())
@@ -383,28 +406,29 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public void closeInventory(EntityPlayer player)
     {}
 
-//    Credo vada modificato
+
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        if(index == 2)
+        if(index == 3)
             return false;
-        else if (index != 1)
+        else if (index != 2)
             return true;
         else
         {
-            ItemStack stack1 = this.inventory.get(1);
+            ItemStack stack1 = this.inventory.get(2);
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
         }
     }
     
-    public String getGuiID() {
+    public String getGuiID()
+    {
     	return "minecraft:alloyer";
     }
     
-    public Container createContainer(InventoryPlayer inventory, EntityPlayer player) {
+    public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
+    {
     	return new ContainerAlloyer(inventory, this);
     }
-    
-//    Non ho capito un cazzo d'ora in poi
+
     public int getField(int id){
         switch (id){
             case 0:
