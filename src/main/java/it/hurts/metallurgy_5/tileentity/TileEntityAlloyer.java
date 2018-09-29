@@ -214,9 +214,10 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         {
 
             ItemStack input = inventory.get(0);
-            ItemStack fuel = this.inventory.get(1);
+            ItemStack input1 = inventory.get(1);
+            ItemStack fuel = this.inventory.get(2);
 
-            if (this.isBurning() || !fuel.isEmpty() && !this.inventory.get(0).isEmpty())
+            if (this.isBurning() || !fuel.isEmpty() && !this.inventory.get(0).isEmpty() && !this.inventory.get(1).isEmpty())
             {
                 if (!this.isBurning() && this.canLiquefy())
                 {
@@ -276,10 +277,10 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     private boolean canLiquefy() {
-    	if((this.inventory.get(0).isEmpty()))
+    	if((this.inventory.get(0).isEmpty())||(this.inventory.get(1).isEmpty()))
     			return false;
     	else {
-    		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0));
+    		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0), this.inventory.get(1));
     		if(result.isEmpty())
     			return false;
     		else {
@@ -303,7 +304,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public void alloyItem() {
     	if(this.canLiquefy()) {
     		ItemStack input = this.inventory.get(0);
-    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(input);
+    		ItemStack input1 = this.inventory.get(1);
+    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(input, input1);
     		ItemStack output = this.inventory.get(2);
     		
     		if(output.isEmpty())
@@ -381,6 +383,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public void closeInventory(EntityPlayer player)
     {}
 
+//    Credo vada modificato
     public boolean isItemValidForSlot(int index, ItemStack stack) {
         if(index == 2)
             return false;
