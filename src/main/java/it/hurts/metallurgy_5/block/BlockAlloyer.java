@@ -1,7 +1,5 @@
 package it.hurts.metallurgy_5.block;
 
-import java.util.Random;
-
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.gui.GuiHandler;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
@@ -18,14 +16,12 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 /***************************
  *
@@ -78,7 +74,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return true;
     }
     
-//    Come dice Davo, sistema la rotazione del blocco
+    //When the block is placed in the world
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state){
         if (!worldIn.isRemote){
@@ -101,7 +97,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         }
     }
     
-//    Non lo so
+    //Sets the state of the block
     public static void setState(boolean active, World worldIn, BlockPos pos){
         IBlockState state = worldIn.getBlockState(pos);
         TileEntity tileEntity = worldIn.getTileEntity(pos);

@@ -1,14 +1,12 @@
 package it.hurts.metallurgy_5.util.recipe;
 
-import java.util.Map;
-
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
-
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_5.item.ModItems;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.Map;
 
 /***************************
  *
@@ -70,6 +68,15 @@ public class BlockAlloyerRecipes {
 	public Table<ItemStack, ItemStack, ItemStack> getAlloyingListTable()
 	{
 		return this.alloyingList;
+	}
+
+	public ItemStack[] getAlloyingListArray()
+	{
+		for(Map.Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
+		{
+			return (ItemStack[]) entry.getValue().entrySet().toArray();
+		}
+		return new ItemStack[] {};
 	}
     
     public float getAlloyingExperience(ItemStack stack)

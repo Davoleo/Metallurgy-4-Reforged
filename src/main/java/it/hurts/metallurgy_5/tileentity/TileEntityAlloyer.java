@@ -1,11 +1,7 @@
 package it.hurts.metallurgy_5.tileentity;
 
-import javax.annotation.Nullable;
-
-import com.google.common.collect.Table;
 import it.hurts.metallurgy_5.block.BlockAlloyer;
 import it.hurts.metallurgy_5.container.ContainerAlloyer;
-import it.hurts.metallurgy_5.util.Utils;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -16,14 +12,8 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -41,6 +31,8 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+
+import javax.annotation.Nullable;
 
 /***************************
  *
@@ -325,7 +317,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     		ItemStack recipeResultInverted = BlockAlloyerRecipes.getInstance().getAlloyingResult(inputs[1], inputs[0]);
     		ItemStack output = this.inventory.get(3);
 
-    		if (recipeResult == ItemStack.EMPTY)
+    		if (recipeResult != ItemStack.EMPTY)
             {
                 if (output.isEmpty())
                     this.inventory.set(3, recipeResult.copy());
@@ -338,9 +330,17 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
                     if(output.isEmpty())
                         this.inventory.set(3, recipeResultInverted.copy());
                     else if (output.getItem() == recipeResultInverted.getItem())
-                        output.grow(recipeResult.getCount());
+                        output.grow(recipeResultInverted.getCount());
                 }
-    	}
+
+
+                ItemStack[] alloyingList;
+                alloyingList = BlockAlloyerRecipes.getInstance().getAlloyingListArray();
+
+            inputs[0].shrink(alloyingList[0].getCount());
+            inputs[1].shrink(alloyingList[1].getCount());
+
+        }
     }
 
     public static int getItemBurnTime(ItemStack fuel)
