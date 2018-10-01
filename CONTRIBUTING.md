@@ -1,6 +1,6 @@
 ## Guide on Pull Requests
 
-#### To contribute to *Metallurgy 4: Reforged* project
+### To contribute to *Metallurgy 4: Reforged* project
 
 *Steps:*
 1. Fork the repository
@@ -12,7 +12,7 @@
 
 ---
 
-##### Specific information about steps previously listed
+#### Specific information about steps previously listed
 
 
 ###### Forking the repository
