@@ -32,14 +32,14 @@ public class BlockAlloyerRecipes {
 
     private BlockAlloyerRecipes()
 	{
-		this.addAlloyingRecipe(new ItemStack(ModItems.ingotCopper, 3), new ItemStack(ModItems.ingotTin), new ItemStack(ModItems.ingotBronze, 4), 10F);
+		this.addAlloyRecipe(new ItemStack(ModItems.ingotCopper, 3), new ItemStack(ModItems.ingotTin), new ItemStack(ModItems.ingotBronze, 4), 10F);
 	}
 
-    public void addAlloyingRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
+    public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
     	
     	if(input1.isEmpty() || input2.isEmpty() || result.isEmpty())
             return;
-    	if(getAlloyingResult(input1, input2) != ItemStack.EMPTY)
+    	if(getAlloyResult(input1, input2) != ItemStack.EMPTY)
     		return;
 
         this.alloyingList.put(input1, input2, result);
@@ -47,21 +47,36 @@ public class BlockAlloyerRecipes {
         this.recipeQuants.put(result, new ItemStack[] {input1, input2});
 	}
     
-    public ItemStack getAlloyingResult(ItemStack input1, ItemStack input2)
+    public ItemStack getAlloyResult(ItemStack input1, ItemStack input2)
 	{
-        for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
-        {
-            if(this.compareItemStacks(input1, entry.getKey()))
+            for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
             {
-                for(Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
+                if (this.compareItemStacks(input1, entry.getKey()))
                 {
-                    if(this.compareItemStacks(input2, ent.getKey()))
+                    for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
+                    {
+                        if (this.compareItemStacks(input2, ent.getKey()))
+                        {
+                            return ent.getValue();
+                        }
+                    }
+                }
+            }
+
+            for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
+        {
+            if (this.compareItemStacks(input2, entry.getKey()))
+            {
+                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
+                {
+                    if (this.compareItemStacks(input1, ent.getKey()))
                     {
                         return ent.getValue();
                     }
                 }
             }
         }
+
         return ItemStack.EMPTY;
 	}
 
@@ -70,7 +85,7 @@ public class BlockAlloyerRecipes {
 		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
 	}
 
-	public Table<ItemStack, ItemStack, ItemStack> getAlloyingListTable()
+	public Table<ItemStack, ItemStack, ItemStack> getAlloyListTable()
 	{
 		return alloyingList;
 	}
@@ -80,7 +95,7 @@ public class BlockAlloyerRecipes {
         return experienceList;
     }
     
-    public float getAlloyingExperience(ItemStack stack)
+    public float getAlloyExperience(ItemStack stack)
 	{
 	    if(this.experienceList.containsKey(stack))
 	        return this.experienceList.get(stack).floatValue();

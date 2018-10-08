@@ -105,7 +105,7 @@ public class ContainerAlloyer extends Container {
             {
                 Slot slot1 = (Slot)this.inventorySlots.get(index + 1);
 
-                if(!BlockAlloyerRecipes.getInstance().getAlloyingResult(stack1, slot1.getStack()).isEmpty())
+                if(!BlockAlloyerRecipes.getInstance().getAlloyResult(stack1, slot1.getStack()).isEmpty())
                 {
                     if(!this.mergeItemStack(stack1, 0, 2, false))
                     {

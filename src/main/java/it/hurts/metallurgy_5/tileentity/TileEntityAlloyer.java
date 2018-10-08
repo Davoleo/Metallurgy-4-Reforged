@@ -266,7 +266,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
 
     private boolean canAlloy() {
 
-        ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0), this.inventory.get(1));
+        ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyResult(this.inventory.get(0), this.inventory.get(1));
 
         if(result.isEmpty() || this.inventory.get(0).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(0)) ||
                 this.inventory.get(1).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(1)))
@@ -291,7 +291,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     	    ItemStack input1 = this.inventory.get(0);
     	    ItemStack input2 = this.inventory.get(1);
 
-    	    ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(input1, input2);
+    	    ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyResult(input1, input2);
     	    ItemStack output = this.inventory.get(3);
 
     	    if(output.isEmpty())
