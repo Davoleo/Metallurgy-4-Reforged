@@ -27,7 +27,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -266,121 +265,97 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
 
     private boolean canAlloy() {
-    	if((this.inventory.get(0).isEmpty()) || (this.inventory.get(1).isEmpty()))
-    			return false;
-    	else {
-    		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0), this.inventory.get(1));
-    		ItemStack resultInverted = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(1), this.inventory.get(0));
 
-    		if(!result.isEmpty())
-            {
-                ItemStack output = this.inventory.get(3);
-                int limit = output.getCount() + result.getCount();
+        ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(this.inventory.get(0), this.inventory.get(1));
 
-                if(output.isEmpty())
-                    return true;
-                else
-                if(!output.isItemEqual(result))
-                    return false;
-                else
-                if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
-                    return true;
-                else
-                    return limit <= 64 && limit <= output.getMaxStackSize();
-            }
-    		else if (!resultInverted.isEmpty())
-            {
-                ItemStack output = this.inventory.get(3);
-                int limit = output.getCount() + resultInverted.getCount();
+        if(result.isEmpty() || this.inventory.get(0).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(0)) ||
+                this.inventory.get(1).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(1)))
+            return false;
+        else
+        {
+            ItemStack output = this.inventory.get(3);
+            if(output.isEmpty())
+                return true;
+            else if (!output.isItemEqual(result) || !ItemStack.areItemStackTagsEqual(output, result))
+                return false;
 
-                if(output.isEmpty())
-                    return true;
-                else
-                if(!output.isItemEqual(result))
-                    return false;
-                else
-                if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
-                    return true;
-                else
-                    return limit <= 64 && limit <= output.getMaxStackSize();
-
-
-    		}
-    		else return false;
-    	}
+            int res = output.getCount() + result.getCount();
+            return res <= getInventoryStackLimit() && res <= output.getMaxStackSize();
+        }
     }
     
     public void alloyItem() {
-    	if(this.canAlloy()) {
-    	    ItemStack[] inputs = {this.inventory.get(0), this.inventory.get(1)};
-    		ItemStack recipeResult = BlockAlloyerRecipes.getInstance().getAlloyingResult(inputs[0], inputs[1]);
-    		ItemStack recipeResultInverted = BlockAlloyerRecipes.getInstance().getAlloyingResult(inputs[1], inputs[0]);
-    		ItemStack output = this.inventory.get(3);
 
-    		if (recipeResult != ItemStack.EMPTY)
-            {
-                if (output.isEmpty())
-                    this.inventory.set(3, recipeResult.copy());
-                else if (output.getItem() == recipeResult.getItem())
-                    output.grow(recipeResult.getCount());
-            }
-            else
-                if (recipeResultInverted != ItemStack.EMPTY)
-                {
-                    if(output.isEmpty())
-                        this.inventory.set(3, recipeResultInverted.copy());
-                    else if (output.getItem() == recipeResultInverted.getItem())
-                        output.grow(recipeResultInverted.getCount());
-                }
+        if(this.canAlloy())
+    	{
+    	    ItemStack input1 = this.inventory.get(0);
+    	    ItemStack input2 = this.inventory.get(1);
 
+    	    ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyingResult(input1, input2);
+    	    ItemStack output = this.inventory.get(3);
 
-                ItemStack[] alloyingList;
-                alloyingList = BlockAlloyerRecipes.getInstance().getAlloyingListArray();
+    	    if(output.isEmpty())
+    	        this.inventory.set(3, result.copy());
+    	    else if (output.isItemEqual(result) && ItemStack.areItemStackTagsEqual(output, result))
+    	        output.grow(result.getCount());
 
-            inputs[0].shrink(alloyingList[0].getCount());
-            inputs[1].shrink(alloyingList[1].getCount());
-
+    	    input1.shrink(BlockAlloyerRecipes.getInstance().getItemQuantity(result, input1));
+    	    input2.shrink(BlockAlloyerRecipes.getInstance().getItemQuantity(result, input2));
         }
     }
 
-    public static int getItemBurnTime(ItemStack fuel)
+    public static int getItemBurnTime(ItemStack stack)
     {
-        if(fuel.isEmpty())
+        if (stack.isEmpty())
             return 0;
         else
         {
-            Item item = fuel.getItem();
+            int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(stack);
+            if (burnTime >= 0) return burnTime;
+            Item item = stack.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            if (item == Item.getItemFromBlock(Blocks.WOODEN_SLAB))
+                return 150;
+            else if (item == Item.getItemFromBlock(Blocks.WOOL))
+                return 100;
+            else if (item == Item.getItemFromBlock(Blocks.CARPET))
+                return 67;
+            else if (item == Item.getItemFromBlock(Blocks.LADDER))
+                return 300;
+            else if (item == Item.getItemFromBlock(Blocks.WOODEN_BUTTON))
+                return 100;
+            else if (Block.getBlockFromItem(item).getDefaultState().getMaterial() == Material.WOOD)
+                return 300;
+            else if (item == Item.getItemFromBlock(Blocks.COAL_BLOCK))
+                return 16000;
+            else if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
+                return 200;
+            else if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
+                return 200;
+            else if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
+                return 200;
+            else if (item == Items.STICK)
+                return 100;
+            else if (item != Items.BOW && item != Items.FISHING_ROD)
             {
-                Block block = Block.getBlockFromItem(item);
-
-                if(block == Blocks.WOODEN_SLAB)
-                    return 150;
-                if(block.getDefaultState().getMaterial() == Material.WOOD)
-                    return 300;
-                if(block == Blocks.COAL_BLOCK)
-                    return 16000;
-            }
-
-            if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
-                return 200;
-            if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
-                return 200;
-            if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
-                return 200;
-            if (item == Items.STICK)
-                return 100;
-            if (item == Items.COAL)
-                return  1600;
-            if (item == Items.LAVA_BUCKET)
-                return 20000;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING))
-                return 100;
-            if (item == Items.BLAZE_ROD)
-                return 2400;
-
-            return ForgeEventFactory.getItemBurnTime(fuel);
+                if (item == Items.SIGN)
+                    return 200;
+                else if (item == Items.COAL)
+                    return 1600;
+                else if (item == Items.LAVA_BUCKET)
+                    return 20000;
+                else if (item != Item.getItemFromBlock(Blocks.SAPLING) && item != Items.BOWL)
+                {
+                    if (item == Items.BLAZE_ROD)
+                        return 2400;
+                    else if (item instanceof ItemDoor && item != Items.IRON_DOOR)
+                        return 200;
+                    else
+                        return item instanceof ItemBoat ? 400 : 0;
+                } else
+                    return 100;
+            } else
+                return 300;
         }
     }
     

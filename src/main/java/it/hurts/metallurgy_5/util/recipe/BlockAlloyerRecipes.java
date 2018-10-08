@@ -7,6 +7,7 @@ import it.hurts.metallurgy_5.item.ModItems;
 import net.minecraft.item.ItemStack;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 /***************************
  *
@@ -20,9 +21,10 @@ import java.util.Map;
 public class BlockAlloyerRecipes {
 
 	private static final BlockAlloyerRecipes INSTANCE = new BlockAlloyerRecipes();
-	
 	private final Table<ItemStack, ItemStack, ItemStack> alloyingList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
-    private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
+
+	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
+	private final Map<ItemStack, ItemStack[]> recipeQuants = Maps.<ItemStack, ItemStack[]>newHashMap();
     
     public static BlockAlloyerRecipes getInstance() {
     	return INSTANCE;
@@ -40,25 +42,28 @@ public class BlockAlloyerRecipes {
     	if(getAlloyingResult(input1, input2) != ItemStack.EMPTY)
     		return;
 
-           this.alloyingList.put(input1.copy(), input2.copy(), result);
-           this.experienceList.put(result.copy(), experience);
-    	
-    }
+        this.alloyingList.put(input1, input2, result);
+        this.experienceList.put(result, Float.valueOf(experience));
+        this.recipeQuants.put(result, new ItemStack[] {input1, input2});
+	}
     
-    public ItemStack getAlloyingResult(ItemStack input1, ItemStack input2) {
-    	for(Map.Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
-    	{
-    		if(this.compareItemStacks(input1, entry.getKey()))
-			{
-				for(Map.Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
-				{
-					if(this.compareItemStacks(input2, ent.getKey()))
-						return ent.getValue();
-				}
-			}
-    	}
-    	return ItemStack.EMPTY;
-    }
+    public ItemStack getAlloyingResult(ItemStack input1, ItemStack input2)
+	{
+        for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
+        {
+            if(this.compareItemStacks(input1, entry.getKey()))
+            {
+                for(Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
+                {
+                    if(this.compareItemStacks(input2, ent.getKey()))
+                    {
+                        return ent.getValue();
+                    }
+                }
+            }
+        }
+        return ItemStack.EMPTY;
+	}
 
 	private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
 	{
@@ -67,25 +72,37 @@ public class BlockAlloyerRecipes {
 
 	public Table<ItemStack, ItemStack, ItemStack> getAlloyingListTable()
 	{
-		return this.alloyingList;
+		return alloyingList;
 	}
 
-	public ItemStack[] getAlloyingListArray()
-	{
-		for(Map.Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
-		{
-			return (ItemStack[]) entry.getValue().entrySet().toArray();
-		}
-		return new ItemStack[] {};
-	}
+	public Map<ItemStack, Float> getExperienceList()
+    {
+        return experienceList;
+    }
     
     public float getAlloyingExperience(ItemStack stack)
 	{
-		for(Map.Entry<ItemStack, Float> entry : this.experienceList.entrySet())
-		{
-			if(this.compareItemStacks(stack, entry.getKey()))
-				return entry.getValue();
-		}
-		return 0F;
+	    if(this.experienceList.containsKey(stack))
+	        return this.experienceList.get(stack).floatValue();
+	    return 0.0F;
     }
+
+    public int getItemQuantity(ItemStack result, ItemStack input)
+    {
+        if(this.recipeQuants.containsKey(result))
+        {
+            for(ItemStack stack : this.recipeQuants.get(result))
+            {
+                if(this.compareItemStacks(stack, input))
+                    return stack.getCount();
+            }
+        }
+        return 0;
+    }
+
+    public Map<ItemStack, ItemStack[]> getRecipeQuants()
+    {
+        return recipeQuants;
+    }
+
 }
