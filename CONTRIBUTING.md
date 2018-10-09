@@ -31,7 +31,7 @@ https://imgur.com/SBo05L9
 2. Clone the repository on your local machine and push features from a git client<br>
 I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 Tutorial: https://support.gitkraken.com<br>
-Download: https://www.gitkraken.com/download
+Download: https://www.gitkraken.com/invite/mVRqih9P
 
 ---
 ###### Creating the Pull request
