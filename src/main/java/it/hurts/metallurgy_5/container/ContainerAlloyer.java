@@ -25,8 +25,8 @@ public class ContainerAlloyer extends Container {
     
     public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv) {
     	this.alloyer = alloyerInv;
-        this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 35));	//Input
-        this.addSlotToContainer(new Slot(alloyerInv, 1, 100, 35));	//Input
+        this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 18));	//Input
+        this.addSlotToContainer(new Slot(alloyerInv, 1, 57, 52));	//Input
         this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 7, 35));   //Fuel
         this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, alloyerInv, 3, 120, 36)); //Result
         
