@@ -1,7 +1,6 @@
 package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.util.Tooltips;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -13,7 +12,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import javax.tools.Tool;
 import java.util.List;
 
 /*************************************************
@@ -27,7 +25,7 @@ import java.util.List;
 public class ItemSwordBase extends ItemSword {
 
     private String name;
-    private String tooltip;
+    private String tooltip = "";
 
     public ItemSwordBase(ToolMaterial material, String name)
     {
@@ -51,7 +49,7 @@ public class ItemSwordBase extends ItemSword {
     //TODO : Causes crash
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        //tooltip.add(this.tooltip);
+        tooltip.add(this.tooltip);
     }
 
 

@@ -29,7 +29,7 @@ import java.util.List;
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
 	private String name;
-	private String tooltip;
+	private String tooltip = "";
 
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name) {
@@ -52,7 +52,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	//TODO : Causes crash
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
-		//tooltip.add(this.tooltip);
+		tooltip.add(this.tooltip);
 	}
 
 	@SideOnly(Side.CLIENT)
