@@ -90,13 +90,6 @@ public class ContainerCrusher extends Container {
         return this.crusher.isUsableByPlayer(playerIn);
     }
 
-    //TODO : Implement Experience [Crusher]
-    /*@Override
-    public void onContainerClosed(EntityPlayer playerIn)
-    {
-        playerIn.addExperience(playerIn.get);
-    }*/
-
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
@@ -111,6 +104,7 @@ public class ContainerCrusher extends Container {
 
             if (index == 2)
             {
+                slot.onTake(playerIn, itemstack1); //XP
                 if (!this.mergeItemStack(itemstack1, 3, 39, true))
                 {
                     return ItemStack.EMPTY;

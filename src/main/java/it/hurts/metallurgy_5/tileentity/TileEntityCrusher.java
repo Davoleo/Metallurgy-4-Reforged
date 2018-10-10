@@ -57,8 +57,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     private int crushTime;
     private int totalCrushTime = 200;
 
-    //public float xp = 0;
-
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
     {
@@ -321,8 +319,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
                 this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
 
             input.shrink(1);
-
-             //+= BlockCrusherRecipes.getInstance().getCrushingExperience(recipeResult);
 
         }
     }

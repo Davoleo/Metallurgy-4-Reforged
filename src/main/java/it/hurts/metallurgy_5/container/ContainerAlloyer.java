@@ -75,8 +75,6 @@ public class ContainerAlloyer extends Container {
 
     }
 
-    //TODO : Implement Experience [Alloyer]
-
     @Override
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data){
@@ -100,9 +98,9 @@ public class ContainerAlloyer extends Container {
 
             if(index == 3)
             {
+                slot.onTake(playerIn, stack1); //XP
                 if(!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
                 slot.onSlotChange(stack1, stack);
-                //playerIn.addExperience();
             }
             else if(index != 2 && index != 1 && index != 0)
             {
