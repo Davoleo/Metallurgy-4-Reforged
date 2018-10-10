@@ -22,14 +22,14 @@ public class ContainerAlloyer extends Container {
 
     private final IInventory alloyer;
     private int alloyingTime, totalAlloyingTime, burnTime, currentBurnTime;
-    
+
     public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv) {
-    	this.alloyer = alloyerInv;
+        this.alloyer = alloyerInv;
         this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 18));	//Input
         this.addSlotToContainer(new Slot(alloyerInv, 1, 57, 52));	//Input
         this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 7, 35));   //Fuel
         this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, alloyerInv, 3, 120, 36)); //Result
-        
+
 //        Collegamento all'inventario del player
         for(int y = 0; y < 3; y++){
             for(int x = 0; x < 9; x++){
@@ -41,16 +41,16 @@ public class ContainerAlloyer extends Container {
         for(int x = 0; x < 9; x++){
             this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
         }
-        
+
     }
-    
-//    Errore all'add Listener
+
+    //    Errore all'add Listener
     public void addListener(IContainerListener listener){
         super.addListener(listener);
         listener.sendAllWindowProperties(this, this.alloyer);
     }
-    
-//    Da qui non so come gestirmi
+
+    //    Da qui non so come gestirmi
     @Override
     public void detectAndSendChanges(){
         super.detectAndSendChanges();
@@ -67,29 +67,31 @@ public class ContainerAlloyer extends Container {
             if(this.totalAlloyingTime != this.alloyer.getField(3))
                 listener.sendWindowProperty(this, 3, this.alloyer.getField(3));
         }
-        
+
         this.alloyingTime = this.alloyer.getField(2);
         this.burnTime = this.alloyer.getField(0);
         this.currentBurnTime = this.alloyer.getField(1);
         this.totalAlloyingTime = this.alloyer.getField(3);
-        
+
     }
-    
+
+    //TODO : Implement Experience [Alloyer]
+
     @Override
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data){
         this.alloyer.setField(id, data);
     }
-    
+
     @Override
     public boolean canInteractWith(EntityPlayer playerIn){
         return this.alloyer.isUsableByPlayer(playerIn);
     }
-    
+
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index){
         ItemStack stack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if(slot != null && slot.getHasStack())
         {
@@ -100,6 +102,7 @@ public class ContainerAlloyer extends Container {
             {
                 if(!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
                 slot.onSlotChange(stack1, stack);
+                //playerIn.addExperience();
             }
             else if(index != 2 && index != 1 && index != 0)
             {
@@ -151,5 +154,5 @@ public class ContainerAlloyer extends Container {
         }
         return stack;
     }
-    
+
 }

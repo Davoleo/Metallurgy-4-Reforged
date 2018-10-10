@@ -57,6 +57,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     private int crushTime;
     private int totalCrushTime = 200;
 
+    //public float xp = 0;
+
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
     {
@@ -275,99 +277,101 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     }
 
 
-private boolean canCrush ()
-{
-    if((this.inventory.get(0)).isEmpty())
-        return false;
-    else
+    private boolean canCrush ()
     {
-        ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
-        if(result.isEmpty())
+        if((this.inventory.get(0)).isEmpty())
             return false;
         else
         {
+            ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
+            if(result.isEmpty())
+                return false;
+            else
+            {
+                ItemStack output = this.inventory.get(2);
+                int limit = output.getCount() + result.getCount();
+
+                if(output.isEmpty())
+                    return true;
+                else if (!output.isItemEqual(result))
+                    return false;
+                else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+                    return true;
+                else
+                    return limit <= 64 && limit <= output.getMaxStackSize();
+
+            }
+        }
+    }
+
+    public void crushItem()
+    {
+        if (this.canCrush())
+        {
+            ItemStack input = this.inventory.get(0);
+            ItemStack recipeResult = BlockCrusherRecipes.getInstance().getCrushingResult(input);
             ItemStack output = this.inventory.get(2);
-            int limit = output.getCount() + result.getCount();
 
             if(output.isEmpty())
-                return true;
-            else if (!output.isItemEqual(result))
-                return false;
-            else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
-                return true;
-            else
-            return limit <= 64 && limit <= output.getMaxStackSize();
+                this.inventory.set(2, recipeResult.copy());
+            else if(output.getItem() == recipeResult.getItem())
+                output.grow(recipeResult.getCount());
+
+            if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
+                this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
+
+            input.shrink(1);
+
+             //+= BlockCrusherRecipes.getInstance().getCrushingExperience(recipeResult);
 
         }
     }
-}
 
-public void crushItem()
-{
-    if (this.canCrush())
+    public static int getItemBurnTime(ItemStack fuel)
     {
-        ItemStack input = this.inventory.get(0);
-        ItemStack recipeResult = BlockCrusherRecipes.getInstance().getCrushingResult(input);
-        ItemStack output = this.inventory.get(2);
-
-        if(output.isEmpty())
-            this.inventory.set(2, recipeResult.copy());
-        else if(output.getItem() == recipeResult.getItem())
-            output.grow(recipeResult.getCount());
-
-        if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
-            this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
-
-        input.shrink(1);
-
-    }
-}
-
-public static int getItemBurnTime(ItemStack fuel)
-{
-    if(fuel.isEmpty())
-        return 0;
-    else
-    {
-        Item item = fuel.getItem();
-
-        if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+        if(fuel.isEmpty())
+            return 0;
+        else
         {
-            Block block = Block.getBlockFromItem(item);
+            Item item = fuel.getItem();
 
-            if(block == Blocks.WOODEN_SLAB)
-                return 150;
-            if(block.getDefaultState().getMaterial() == Material.WOOD)
-                return 300;
-            if(block == Blocks.COAL_BLOCK)
-                return 16000;
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            {
+                Block block = Block.getBlockFromItem(item);
+
+                if(block == Blocks.WOODEN_SLAB)
+                    return 150;
+                if(block.getDefaultState().getMaterial() == Material.WOOD)
+                    return 300;
+                if(block == Blocks.COAL_BLOCK)
+                    return 16000;
+            }
+
+            if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
+                return 200;
+            if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
+                return 200;
+            if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
+                return 200;
+            if (item == Items.STICK)
+                return 100;
+            if (item == Items.COAL)
+                return  1600;
+            if (item == Items.LAVA_BUCKET)
+                return 20000;
+            if (item == Item.getItemFromBlock(Blocks.SAPLING))
+                return 100;
+            if (item == Items.BLAZE_ROD)
+                return 2400;
+
+            return ForgeEventFactory.getItemBurnTime(fuel);
         }
-
-        if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
-            return 200;
-        if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
-            return 200;
-        if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
-            return 200;
-        if (item == Items.STICK)
-            return 100;
-        if (item == Items.COAL)
-            return  1600;
-        if (item == Items.LAVA_BUCKET)
-            return 20000;
-        if (item == Item.getItemFromBlock(Blocks.SAPLING))
-            return 100;
-        if (item == Items.BLAZE_ROD)
-            return 2400;
-
-        return ForgeEventFactory.getItemBurnTime(fuel);
     }
-}
 
-public int getCrushTime(ItemStack stack)
-{
-    return 140;
-}
+    public int getCrushTime(ItemStack stack)
+    {
+        return 140;
+    }
 
     public static boolean isItemFuel(ItemStack fuel)
     {
@@ -411,50 +415,50 @@ public int getCrushTime(ItemStack stack)
         return new ContainerCrusher(inventory, this);
     }
 
-public int getField(int id)
-{
-    switch (id)
+    public int getField(int id)
     {
-        case 0:
-            return this.burnTime;
-        case 1:
-            return this.currentBurnTime;
-        case 2:
-            return this.crushTime;
-        case 3:
-            return this.totalCrushTime;
-        default:
-            return 0;
+        switch (id)
+        {
+            case 0:
+                return this.burnTime;
+            case 1:
+                return this.currentBurnTime;
+            case 2:
+                return this.crushTime;
+            case 3:
+                return this.totalCrushTime;
+            default:
+                return 0;
+        }
     }
-}
 
-public void setField(int id, int value)
-{
-    switch (id)
+    public void setField(int id, int value)
     {
-        case 0:
-            this.burnTime = value;
-            break;
-        case 1:
-            this.currentBurnTime = value;
-            break;
-        case 2:
-            this.crushTime = value;
-            break;
-        case 3:
-            this.totalCrushTime = value;
+        switch (id)
+        {
+            case 0:
+                this.burnTime = value;
+                break;
+            case 1:
+                this.currentBurnTime = value;
+                break;
+            case 2:
+                this.crushTime = value;
+                break;
+            case 3:
+                this.totalCrushTime = value;
+        }
     }
-}
 
-public int getFieldCount()
-{
-    return 4;
-}
+    public int getFieldCount()
+    {
+        return 4;
+    }
 
-public void clear()
-{
-    this.inventory.clear();
-}
+    public void clear()
+    {
+        this.inventory.clear();
+    }
 
 //provate pure a pensare di essere assolti, siete lo stesso coinvolti
 

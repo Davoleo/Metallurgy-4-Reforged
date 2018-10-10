@@ -23,6 +23,7 @@ public class ContainerCrusher extends Container {
     private final IInventory crusher;
     private int crushTime, totalCrushTime, burnTime, currentBurnTime;
 
+
     public ContainerCrusher(InventoryPlayer playerInv, IInventory crusherInv)
     {
         this.crusher = crusherInv;
@@ -89,12 +90,19 @@ public class ContainerCrusher extends Container {
         return this.crusher.isUsableByPlayer(playerIn);
     }
 
+    //TODO : Implement Experience [Crusher]
+    /*@Override
+    public void onContainerClosed(EntityPlayer playerIn)
+    {
+        playerIn.addExperience(playerIn.get);
+    }*/
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
+
 
         if (slot != null && slot.getHasStack())
         {
