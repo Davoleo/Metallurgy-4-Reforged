@@ -25,13 +25,24 @@ To contact us about the 2° step join this [discord server](https://discord.gg/y
 ###### Pushing your features to your fork
 There are 2 ways to do it:
 
-1. Add files directly from github (Beware to choose the right branch!!!)<br>
+1. Add files directly from github (Beware to choose the right branch! and directory! see below)<br>
 https://imgur.com/SBo05L9
 
-2. Clone the repository on your local machine and push features from a git client<br>
+2. Clone the repository on your local machine and push features from a git client [reccomended]<br>
 I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 Tutorial: https://support.gitkraken.com<br>
 Download: https://www.gitkraken.com/invite/mVRqih9P
+
+Please pay attention on where you upload your features<br>
+you should know how a mod is structured<br>
+Source code directory: src/main/java<br>
+Resources directory: src/main/resources<br><br>
+
+**Refer to the model/blockstate directory for texture organization and naming conventions** <br>
+Models directory: src/main/resources/assets/m5/models <br>
+Blockstates directory: src/main/resources/assets/m5/blockstates <br>
+
+If you plan on contribuing multiple times or continuously I suggest you the second method of committing features to your fork
 
 ---
 ###### Creating the Pull request
