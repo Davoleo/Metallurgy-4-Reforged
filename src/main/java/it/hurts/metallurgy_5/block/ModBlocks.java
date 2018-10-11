@@ -113,7 +113,10 @@ public class ModBlocks {
 	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockCharcoal = new BlockOre("charcoal_block","blockCharcoal").setCreativeTab(Metallurgy_5.tabBlock);
 	public static BlockOre blockSulfur = new BlockOre("sulfur_block","blockSulfur").setCreativeTab(Metallurgy_5.tabBlock);
-	
+
+	//Tile Entities
+	public static BlockCrusher crusher = new BlockCrusher("crusher");
+	public static BlockAlloyer alloyer = new BlockAlloyer("alloyer");
 	
 //	Tile
 	
@@ -207,7 +210,11 @@ public class ModBlocks {
 				 blockZinc,
 
 				//FluidBlocks
-				blockMoltenAdamantine
+				blockMoltenAdamantine,
+
+				//Tile Entities
+				crusher,
+				alloyer
 				
 		);
 		
@@ -304,7 +311,11 @@ public class ModBlocks {
 				 blockZinc.createItemBlock(),
 
 				//FluidBlocks
-				blockMoltenAdamantine.createItemBlock()
+				blockMoltenAdamantine.createItemBlock(),
+
+				//Tile Entities
+				crusher.createItemBlock(),
+				alloyer.createItemBlock()
 
 				
 		);
@@ -398,6 +409,10 @@ public class ModBlocks {
 
 		 //FluidBlocks
 		blockMoltenAdamantine.registerItemModel(Item.getItemFromBlock(blockMoltenAdamantine));
+
+		//Tile Entities
+		crusher.registerItemModel(Item.getItemFromBlock(crusher));
+		alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
 	}
 	
 }

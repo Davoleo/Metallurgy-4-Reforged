@@ -1,12 +1,15 @@
-package it.hurts.metallurgy_5;
+ package it.hurts.metallurgy_5;
 
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.fluid.ModFluids;
+import it.hurts.metallurgy_5.gui.GuiHandler;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.proxy.CommonProxy;
-import it.hurts.metallurgy_5.util.ModRecipes;
+import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
+import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
+import it.hurts.metallurgy_5.util.recipe.ModRecipes;
 import it.hurts.metallurgy_5.util.tabs.*;
 import it.hurts.metallurgy_5.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -14,6 +17,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,6 +28,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /***************************
@@ -123,7 +128,8 @@ public class Metallurgy_5 {
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		ModFluids.registerFluids();
-
+		TileEntityHandler.registerTileEntities();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 
 	@Mod.EventHandler

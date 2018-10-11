@@ -1,0 +1,75 @@
+package it.hurts.metallurgy_5.container.slot;
+
+import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
+
+/*************************************************
+ * Author: Davoleo
+ * Date: 10/10/2018
+ * Hour: 16.59
+ * Project: Metallurgy_5
+ * Copyright - © - Davoleo - 2018
+ **************************************************/
+
+public class SlotCrusherOutput extends Slot {
+
+    private final EntityPlayer player;
+
+
+    public SlotCrusherOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
+    {
+        super(inventory, index, xPos, yPos);
+        this.player = player;
+    }
+
+    @Override
+    public boolean isItemValid(ItemStack stack)
+    {
+        return false;
+    }
+
+    @Override
+    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
+    {
+        EntityPlayer player = thePlayer;
+
+        if (!player.world.isRemote)
+        {
+            int i = stack.getCount();
+            float f = BlockCrusherRecipes.getInstance().getCrushingExperience(stack);
+
+            if (f == 0.0F)
+            {
+                i = 0;
+            }
+            else if (f < 1.0F)
+            {
+                int j = MathHelper.floor((float)i * f);
+
+                if (j < MathHelper.ceil((float)i * f) && Math.random() < (double)((float)i * f - (float)j))
+                {
+                    ++j;
+                }
+
+                i = j;
+            }
+
+            while (i > 0)
+            {
+                int k = EntityXPOrb.getXPSplit(i);
+                i -= k;
+                player.world.spawnEntity(new EntityXPOrb(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, k));
+            }
+        }
+
+        onSlotChanged();
+        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerSmeltedEvent(player, stack);
+        return super.onTake(thePlayer, stack);
+    }
+
+}
