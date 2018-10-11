@@ -42,12 +42,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
+    //TODO : Fix the last textures
 
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 5";
 	public static final String VERSION = "0.0.1";
 
 	//CreativeTabs
+	//TODO : Tweak creative tabs icons
 	public static final TabIngot tabIngot = new TabIngot();
 	public static final TabBlock tabBlock = new TabBlock();
 	public static final TabOre tabOre = new TabOre();

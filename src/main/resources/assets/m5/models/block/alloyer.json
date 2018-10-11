@@ -1,12 +1,12 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "particle": "m5:blocks/alloyer_side",
-    "up": "m5:blocks/alloyer_side",
-    "down": "m5:blocks/alloyer_side",
+    "particle": "m5:blocks/alloyer_side2",
+    "up": "m5:blocks/alloyer_top",
+    "down": "m5:blocks/alloyer_bottom",
     "north": "m5:blocks/alloyer_front_off",
-    "east": "m5:blocks/alloyer_side",
-    "south": "m5:blocks/alloyer_side",
-    "west": "m5:blocks/alloyer_side"
+    "east": "m5:blocks/alloyer_side1",
+    "south": "m5:blocks/alloyer_side2",
+    "west": "m5:blocks/alloyer_side1"
   }
 }

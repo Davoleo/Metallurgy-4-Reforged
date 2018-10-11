@@ -49,7 +49,6 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	}
 
 
-	//TODO : Causes crash
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		tooltip.add(this.tooltip);

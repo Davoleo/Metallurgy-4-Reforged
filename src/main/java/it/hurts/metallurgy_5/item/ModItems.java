@@ -14,6 +14,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModItems {
 
+	//TODO : Dusts
+
 	//Dust
 	public static ItemOre dustAdamantine = new ItemOre("adamantine_dust", "dustAdamantine");
 

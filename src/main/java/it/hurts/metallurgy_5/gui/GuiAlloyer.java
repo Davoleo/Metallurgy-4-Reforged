@@ -19,6 +19,8 @@ import net.minecraft.util.ResourceLocation;
  ***************************/
 public class GuiAlloyer extends GuiContainer{
 
+    //TODO : Fucking fix this Davoleo
+
 //	Inizializziamo la locazione della texture
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Metallurgy_5.MODID + ":textures/gui/alloyer.png");
 //	Inizializziamo il player

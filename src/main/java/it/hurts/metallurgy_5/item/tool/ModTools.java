@@ -15,6 +15,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModTools {
 
+    //TODO : Tools [Alloys]
+
     public static ItemAxeBase adamantine_axe = new ItemAxeBase(Metallurgy_5.adamantineToolMaterial, "adamantine_axe");
     public static ItemHoeBase adamantine_hoe = new ItemHoeBase(Metallurgy_5.adamantineToolMaterial, "adamantine_hoe");
     public static ItemPickaxeBase adamantine_pickaxe = new ItemPickaxeBase(Metallurgy_5.adamantineToolMaterial, "adamantine_pickaxe");

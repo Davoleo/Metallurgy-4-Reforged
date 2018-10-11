@@ -2,7 +2,7 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
-			"all": "m5:blocks/shadow_stee_block"
+			"all": "m5:blocks/shadow_steel_block"
 		}
 	},
 	"variants": {

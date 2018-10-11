@@ -46,7 +46,6 @@ public class ItemSwordBase extends ItemSword {
         setCreativeTab(Metallurgy_5.tabTool);
     }
 
-    //TODO : Causes crash
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(this.tooltip);

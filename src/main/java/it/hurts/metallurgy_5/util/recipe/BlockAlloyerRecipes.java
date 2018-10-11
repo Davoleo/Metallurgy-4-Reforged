@@ -32,6 +32,7 @@ public class BlockAlloyerRecipes {
 
     private BlockAlloyerRecipes()
 	{
+	    //TODO : Fucking complete this Davoleo
 		this.addAlloyRecipe(new ItemStack(ModItems.ingotCopper, 3), new ItemStack(ModItems.ingotTin), new ItemStack(ModItems.ingotBronze, 4), 10F);
 	}
 

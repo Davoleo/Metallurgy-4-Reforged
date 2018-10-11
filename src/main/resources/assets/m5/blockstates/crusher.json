@@ -1,4 +1,7 @@
 {
+  //TODO : Fix Animation
+  //TODO : Overall texturing fixes
+
   "variants":
   {
     "burning=false,facing=north": { "model": "m5:crusher" },

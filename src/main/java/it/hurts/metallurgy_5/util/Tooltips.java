@@ -13,7 +13,7 @@ import java.util.List;
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-//TODO : Implement tooltips in base classes
+
 public class Tooltips {
 
     public static final String ADAMANTINE_ARMOR_EFFECT = Metallurgy_5.proxy.localize(TextFormatting.DARK_RED + "tooltip.m5.adamantine_armor_effect");

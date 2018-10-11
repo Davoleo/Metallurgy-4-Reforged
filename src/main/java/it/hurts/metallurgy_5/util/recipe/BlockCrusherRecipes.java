@@ -34,6 +34,7 @@ public class BlockCrusherRecipes {
 
     private BlockCrusherRecipes()
     {
+        //TODO : Fucking complete this Davoleo
         addCrushingRecipe(new ItemStack(ModBlocks.oreAdamantine), new ItemStack(ModItems.dustAdamantine, 2), 10F);
     }
 

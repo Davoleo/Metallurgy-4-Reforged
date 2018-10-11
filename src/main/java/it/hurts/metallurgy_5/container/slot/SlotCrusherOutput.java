@@ -18,6 +18,8 @@ import net.minecraft.util.math.MathHelper;
 
 public class SlotCrusherOutput extends Slot {
 
+    //TODO : Implement Crusher Slot
+
     private final EntityPlayer player;
 
 

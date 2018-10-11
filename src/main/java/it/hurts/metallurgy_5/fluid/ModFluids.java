@@ -15,6 +15,8 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class ModFluids {
 
+    //TODO : Implement all the molten metals
+
     public static final FluidMolten MOLTEN_ADAMANTINE = (FluidMolten) new FluidMolten(
             "molten_adamantine",
             new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_still"),

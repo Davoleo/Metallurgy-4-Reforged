@@ -2,7 +2,7 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
-			"all": "m5:blocksamordrine/_block"
+			"all": "m5:blocks/amordrine_block"
 		}
 	},
 	"variants": {
