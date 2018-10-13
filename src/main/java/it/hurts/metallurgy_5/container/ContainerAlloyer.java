@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_5.container;
 
+import it.hurts.metallurgy_5.container.slot.SlotAlloyerOutput;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +29,7 @@ public class ContainerAlloyer extends Container {
         this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 18));	//Input
         this.addSlotToContainer(new Slot(alloyerInv, 1, 57, 52));	//Input
         this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 7, 35));   //Fuel
-        this.addSlotToContainer(new SlotFurnaceOutput(playerInv.player, alloyerInv, 3, 120, 36)); //Result
+        this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 120, 36)); //Result
 
 //        Collegamento all'inventario del player
         for(int y = 0; y < 3; y++){
