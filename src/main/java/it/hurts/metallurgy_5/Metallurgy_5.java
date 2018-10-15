@@ -1,35 +1,33 @@
  package it.hurts.metallurgy_5;
 
-import it.hurts.metallurgy_5.block.ModBlocks;
-import it.hurts.metallurgy_5.fluid.ModFluids;
-import it.hurts.metallurgy_5.gui.GuiHandler;
-import it.hurts.metallurgy_5.item.ModItems;
-import it.hurts.metallurgy_5.item.armor.ModArmors;
-import it.hurts.metallurgy_5.item.tool.ModTools;
-import it.hurts.metallurgy_5.proxy.CommonProxy;
-import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
-import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
-import it.hurts.metallurgy_5.util.recipe.ModRecipes;
-import it.hurts.metallurgy_5.util.tabs.*;
-import it.hurts.metallurgy_5.world.ModWorldGen;
-import net.minecraft.block.Block;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemTool;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+ import it.hurts.metallurgy_5.block.ModBlocks;
+ import it.hurts.metallurgy_5.fluid.ModFluids;
+ import it.hurts.metallurgy_5.gui.GuiHandler;
+ import it.hurts.metallurgy_5.item.ModItems;
+ import it.hurts.metallurgy_5.item.armor.ModArmors;
+ import it.hurts.metallurgy_5.item.tool.ModTools;
+ import it.hurts.metallurgy_5.proxy.CommonProxy;
+ import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
+ import it.hurts.metallurgy_5.util.recipe.ModRecipes;
+ import it.hurts.metallurgy_5.util.tabs.*;
+ import it.hurts.metallurgy_5.world.ModWorldGen;
+ import net.minecraft.block.Block;
+ import net.minecraft.init.SoundEvents;
+ import net.minecraft.item.Item;
+ import net.minecraft.item.ItemArmor;
+ import net.minecraft.item.ItemTool;
+ import net.minecraftforge.client.event.ModelRegistryEvent;
+ import net.minecraftforge.common.util.EnumHelper;
+ import net.minecraftforge.event.RegistryEvent;
+ import net.minecraftforge.fluids.FluidRegistry;
+ import net.minecraftforge.fml.common.Mod;
+ import net.minecraftforge.fml.common.SidedProxy;
+ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+ import net.minecraftforge.fml.common.network.NetworkRegistry;
+ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /***************************
 *
@@ -75,8 +73,8 @@ public class Metallurgy_5 {
 	public static final ItemArmor.ArmorMaterial eximiteArmorMaterial = EnumHelper.addArmorMaterial("EXIMITE", MODID + ":eximite", 100, new int[]{4, 5, 6, 4}, 25, SoundEvents.ENTITY_ENDERDRAGON_GROWL, 5.0F);
 	public static final ItemArmor.ArmorMaterial haderothArmorMaterial = EnumHelper.addArmorMaterial("HADEROTH", MODID + "haderoth", 125, new int[]{4, 5, 7, 4}, 19, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 6F);
 	public static final ItemArmor.ArmorMaterial hepatizonArmorMaterial = EnumHelper.addArmorMaterial("HEPATIZON", MODID + ":hepatizon", 57, new int[]{3, 3, 4, 2}, 22, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2F);
-	public static final ItemArmor.ArmorMaterial inolashiteArmorMaterial = EnumHelper.addArmorMaterial("INOLASHITE", MODID + ":inolashite", 70, new int[]{3, 5, 7, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4F);
 	public static final ItemArmor.ArmorMaterial ignatiusArmorMaterial = EnumHelper.addArmorMaterial("IGNATIUS", MODID + ":ignatius", 24, new int[]{2, 5, 6, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+    public static final ItemArmor.ArmorMaterial inolashiteArmorMaterial = EnumHelper.addArmorMaterial("INOLASHITE", MODID + ":inolashite", 70, new int[]{3, 5, 7, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4F);
 	public static final ItemArmor.ArmorMaterial kalendriteArmorMaterial = EnumHelper.addArmorMaterial("KALENDRITE", MODID + ":kalendrite", 40, new int[]{4, 5, 6, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON,3.0F);
 	public static final ItemArmor.ArmorMaterial midasiumArmorMaterial = EnumHelper.addArmorMaterial("MIDASIUM", MODID +  ":midasium", 16, new int[]{3, 3, 5, 2}, 35, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
 	public static final ItemArmor.ArmorMaterial mithrilArmorMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 21, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
@@ -95,12 +93,24 @@ public class Metallurgy_5 {
 	
 //	Tool
 	public static final ItemTool.ToolMaterial adamantineToolMaterial = EnumHelper.addToolMaterial("ADAMANTINE", 7, 1550, 8F, 8F, 22);
+	public static final ItemTool.ToolMaterial amordrineToolMaterial = EnumHelper.addToolMaterial("AMORDRINE", 5, 500, 11F, 7F, 50);
+	public static final ItemTool.ToolMaterial angmallenToolMaterial = EnumHelper.addToolMaterial("ANGMALLEN", 3, 300, 7F, 6F, 30);
 	public static final ItemTool.ToolMaterial astralSilverToolMaterial = EnumHelper.addToolMaterial("ASTRAL_SILVER", 5, 35, 12F, 5F, 30);
 	public static final ItemTool.ToolMaterial atlarusToolMaterial = EnumHelper.addToolMaterial("ATLARUS", 7, 1750, 9F, 8F, 22);
+	public static final ItemTool.ToolMaterial blackSteelToolMaterial = EnumHelper.addToolMaterial("BLACK_STEEL", 3, 500, 6.5F, 6F, 17);
+	public static final ItemTool.ToolMaterial brassToolMaterial = EnumHelper.addToolMaterial("BRASS", 1, 15, 12F, 5F, 18);
+	public static final ItemTool.ToolMaterial bronzeToolMaterial = EnumHelper.addToolMaterial("BRONZE", 3, 200, 6.5F, 5F, 9);
 	public static final ItemTool.ToolMaterial carmotToolMaterial = EnumHelper.addToolMaterial("CARMOT", 5, 50, 10F, 5F, 40);
+	public static final ItemTool.ToolMaterial celenegilToolMaterial = EnumHelper.addToolMaterial("CELENEGIL", 6, 1600, 10F, 7F, 50);
+	public static final ItemTool.ToolMaterial damascusSteelToolMaterial = EnumHelper.addToolMaterial("DAMASCUS_STEEL", 3, 500, 6.5F, 6F, 15);
 	public static final ItemTool.ToolMaterial deepIronToolMaterial = EnumHelper.addToolMaterial("DEEP_IRON", 3, 250, 6.5F, 6F, 14);
+	public static final ItemTool.ToolMaterial desichalkosToolMaterial = EnumHelper.addToolMaterial("DESICHALKOS", 4, 1800, 8F, 8F, 30);
+	public static final ItemTool.ToolMaterial electrumToolMaterial = EnumHelper.addToolMaterial("ELECTRUM", 2, 100, 13F, 5F, 30);
 	public static final ItemTool.ToolMaterial eximiteToolMaterial = EnumHelper.addToolMaterial("EXIMITE", 7, 1000, 8F, 7F, 25);
+	public static final ItemTool.ToolMaterial haderothToolMaterial = EnumHelper.addToolMaterial("HADEROTH", 5, 1250, 11F, 7F, 19);
+	public static final ItemTool.ToolMaterial hepatizonToolMaterial = EnumHelper.addToolMaterial("HEPATIZON", 3, 300, 8F, 5F, 11);
 	public static final ItemTool.ToolMaterial ignatiusToolMaterial = EnumHelper.addToolMaterial("IGNATIUS", 2, 150, 5F, 6F, 15);
+    public static final ItemTool.ToolMaterial inolashiteToolMaterial = EnumHelper.addToolMaterial("INOLASHITE", 5, 900, 7F, 7F, 25);
 	public static final ItemTool.ToolMaterial kalendriteToolMaterial = EnumHelper.addToolMaterial("KALENDRITE", 5, 1000, 7F, 7F, 20);
 	public static final ItemTool.ToolMaterial midasiumToolMaterial = EnumHelper.addToolMaterial("MIDASIUM", 3, 100, 9F, 7F,35);
 	public static final ItemTool.ToolMaterial mithrilToolMaterial = EnumHelper.addToolMaterial("MITHRIL", 5, 1000, 8F, 7F, 18);
@@ -110,7 +120,10 @@ public class Metallurgy_5 {
 	public static final ItemTool.ToolMaterial prometheumToolMaterial = EnumHelper.addToolMaterial("PROMETHEUM", 2, 200, 5F, 5F, 16);
 	public static final ItemTool.ToolMaterial sanguiniteToolMaterial = EnumHelper.addToolMaterial("SANGUINITE", 6, 1750, 11F, 8F, 25);
 	public static final ItemTool.ToolMaterial shadowIronToolMaterial = EnumHelper.addToolMaterial("SHADOW_IRON", 2, 300, 4F, 6F, 2);
+	public static final ItemTool.ToolMaterial shadowSteelToolMaterial = EnumHelper.addToolMaterial("SHADOW_STEEL", 3,  400, 6F, 7F, 5);
 	public static final ItemTool.ToolMaterial silverToolMaterial = EnumHelper.addToolMaterial("SILVER", 1, 25, 13F, 5F, 20);
+	public static final ItemTool.ToolMaterial steelToolMaterial = EnumHelper.addToolMaterial("STEEL", 4, 750, 7.5F, 7F, 18);
+	public static final ItemTool.ToolMaterial tartariteToolMaterial = EnumHelper.addToolMaterial("TARTARITE", 8, 3000, 11F, 9F, 25);
 	public static final ItemTool.ToolMaterial vulcaniteToolMaterial = EnumHelper.addToolMaterial("VULCANITE", 6, 1500, 8.5F, 7F, 20);
 	public static final ItemTool.ToolMaterial vyroxeresToolMaterial = EnumHelper.addToolMaterial("VYROXERES", 3, 300, 7F, 7F, 16);
 
