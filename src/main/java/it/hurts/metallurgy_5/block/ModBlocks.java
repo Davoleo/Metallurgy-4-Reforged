@@ -115,8 +115,8 @@ public class ModBlocks {
 	public static BlockOre blockSulfur = new BlockOre("sulfur_block","blockSulfur").setCreativeTab(Metallurgy_5.tabBlock);
 
 	//Tile Entities
-	public static BlockCrusher crusher = new BlockCrusher("crusher");
-	public static BlockAlloyer alloyer = new BlockAlloyer("alloyer");
+	public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(Metallurgy_5.tabMachine);
+	public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(Metallurgy_5.tabMachine);
 	
 //	Tile
 	

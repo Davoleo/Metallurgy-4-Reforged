@@ -21,19 +21,16 @@ public class ItemBase extends Item{
 		this.name = name;
 		setUnlocalizedName(name);
 		setRegistryName(name);
-
-		setCreativeTab(Metallurgy_5.tabIngot);
 	}
 	
 	public void registerItemModel() {
 		Metallurgy_5.proxy.registerItemRenderer(this, 0, name);
 	}
-	
+
 	@Override
 	public ItemBase setCreativeTab(CreativeTabs tab) {
-		
+
 		super.setCreativeTab(tab);
-		
 		return this;
 	}
 	

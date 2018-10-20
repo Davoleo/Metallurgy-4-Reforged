@@ -48,12 +48,14 @@ public class Metallurgy_5 {
 
 	//CreativeTabs
 	//TODO : Tweak creative tabs icons
-	public static final TabIngot tabIngot = new TabIngot();
+    public static final TabArmor tabArmor = new TabArmor();
 	public static final TabBlock tabBlock = new TabBlock();
+	public static final TabDust tabDust = new TabDust();
+    public static final TabFluid tabFluid = new TabFluid();
+	public static final TabIngot tabIngot = new TabIngot();
+	public static final TabMachine tabMachine = new TabMachine();
 	public static final TabOre tabOre = new TabOre();
-	public static final TabArmor tabArmor = new TabArmor();
 	public static final TabTool tabTool = new TabTool();
-	public static final TabFluid tabFluid = new TabFluid();
 
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);

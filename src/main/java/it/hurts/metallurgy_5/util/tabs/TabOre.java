@@ -22,7 +22,7 @@ public class TabOre extends CreativeTabs{
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ModBlocks.oreCopper);
+		return new ItemStack(ModBlocks.oreOrichalcum);
 	}
 		
 }

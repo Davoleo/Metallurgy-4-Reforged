@@ -10,6 +10,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -192,6 +193,12 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
     @Override
     public int getMetaFromState(IBlockState state){
         return ((EnumFacing)state.getValue(FACING)).getIndex();
+    }
+
+    @Override
+    public BlockAlloyer setCreativeTab(CreativeTabs tab) {
+        super.setCreativeTab(tab);
+        return this;
     }
     
 }

@@ -22,7 +22,7 @@ public class TabBlock extends CreativeTabs{
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ModBlocks.blockCopper);
+		return new ItemStack(ModBlocks.blockDeepIron);
 	}
 	
 }

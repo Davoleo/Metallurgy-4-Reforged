@@ -145,12 +145,15 @@ tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
 # Creative Tab
-itemGroup.m5.ingots=Metallurgy Ingots
-itemGroup.m5.blocks=Metallurgy Blocks
-itemGroup.m5.ores=Metallurgy Ores
 itemGroup.m5.armors=Metallurgy Armor
-itemGroup.m5.tools=Metallurgy Tools
+itemGroup.m5.blocks=Metallurgy Blocks
+itemGroup.m5.dusts=Metallurgy Dusts
 itemGroup.m5.fluids=Metallurgy Fluids
+itemGroup.m5.ingots=Metallurgy Ingots
+itemGroup.m5.machines=Metallurgy Machines
+itemGroup.m5.ores=Metallurgy Ores
+itemGroup.m5.tools=Metallurgy Tools
+
 
 #Dust
 item.adamantine_dust.name=Adamantine Dust
