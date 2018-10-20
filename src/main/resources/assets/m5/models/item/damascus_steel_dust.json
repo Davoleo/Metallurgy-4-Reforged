@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures":{
+    "layer0": "m5:items/damascus_steel_dust"
+  }
+}

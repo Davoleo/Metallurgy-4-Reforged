@@ -153,9 +153,50 @@ itemGroup.m5.tools=Metallurgy Tools
 itemGroup.m5.fluids=Metallurgy Fluids
 
 #Dust
-item.sulfur_dust.name=Sulfur
-item.bitumen_dust.name=Bitumen
-item.potash_dust.name=Potash
+item.adamantine_dust.name=Adamantine Dust
+item.alduorite_dust.name=Alduorite Dust
+item.amordrine_dust.name=Amordrine Dust
+item.angmallen_dust.name=Angmallen Dust
+item.astral_silver_dust.name=Astral Silver Dust
+item.atlarus_dust.name=Atlarus Dust
+item.black_steel_dust.name=Black Steel Dust
+item.brass_dust.name=Brass Dust
+item.bronze_dust.name=Bronze Dust
+item.carmot_dust.name=Carmot Dust
+item.celenegil_dust.name=Celenegil Dust
+item.ceruclase_dust.name=Ceruclase Dust
+item.copper_dust.name=Copper Dust
+item.deep_iron_dust.name=Deep Iron Dust
+item.desichalkos_dust.name=Desichalkos Dust
+item.damascus_steel_dust.name=Damascus Steel Dust
+item.electrum_dust.name=Electrum Dust
+item.eximite_dust.name=Eximite Dust
+item.haderoth_dust.name=Haderoth Dust
+item.hepatizon_dust.name=Hepatizon Dust
+item.ignatius_dust.name=Ignatius Dust
+item.inolashite_dust.name=Inolashite Dust
+item.kalendrite_dust.name=Kalendrite Dust
+item.lemurite_dust.name=Lemurite Dust
+item.manganese_dust.name=Manganese Dust
+item.meutoite_dust.name=Meutoite Dust
+item.midasium_dust.name=Midasium Dust
+item.mithril_dust.name=Mithril Dust
+item.orichalcum_dust.name=Orichalcum Dust
+item.oureclase_dust.name=Oureclase Dust
+item.platinum_dust.name=Platinum Dust
+item.prometheum_dust.name=Promethem Dust
+item.quicksilver_dust.name=Quicksilver Dust
+item.rubracium_dust.name=Rubracium Dust
+item.sanguinite_dust.name=Sanguinite Dust
+item.shadow_iron_dust.name=Shadow Iron Dust
+item.shadow_steel_dust.name=Shadow Steel Dust
+item.silver_dust.name=Silver Dust
+item.steel_dust.name=Steel Dust
+item.tartarite_dust.name=Tartarite Dust
+item.tin_dust.name=Tin Dust
+item.vulcanite_dust.name=Vulcanite Dust
+item.vyroxeres_dust.name=Vyroxeres Dust
+item.zinc_dust.name=Zinc Dust
 
 #FluidBlocks
 tile.molten_adamantine.name=Molten Adamantine
@@ -211,6 +252,10 @@ item.zinc_ingot.name=Zinc Ingot
 
 #Items
 item.tar.name=Tar
+item.sulfur_dust.name=Sulfur
+item.bitumen_dust.name=Bitumen
+item.potash_dust.name=Potash
+
 
 #Ores
 tile.adamantine_ore.name=Adamantine Ore

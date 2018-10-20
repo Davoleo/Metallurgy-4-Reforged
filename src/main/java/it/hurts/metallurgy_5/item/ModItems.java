@@ -14,10 +14,54 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModItems {
 
-	//TODO : Dusts
-
 	//Dust
 	public static ItemOre dustAdamantine = new ItemOre("adamantine_dust", "dustAdamantine");
+	public static ItemOre dustAlduorite = new ItemOre ("alduorite_dust","dustAlduorite");
+	public static ItemOre dustAmordrine = new ItemOre ("amordrine_dust","dustAmordrine");
+	public static ItemOre dustAngmallen = new ItemOre ("angmallen_dust","dustAngmallen");
+	public static ItemOre dustAstralSilver = new ItemOre ("astral_silver_dust","dustAstralSilver");
+	public static ItemOre dustAtlarus = new ItemOre ("atlarus_dust","dustAtlarus");
+	public static ItemOre dustBlackSteel = new ItemOre ("black_steel_dust","dustBlackSteel");
+	public static ItemOre dustBrass = new ItemOre ("brass_dust","dustBrass");
+	public static ItemOre dustBronze = new ItemOre ("bronze_dust","dustBronze");
+	public static ItemOre dustCarmot = new ItemOre ("carmot_dust","dustCarmot");
+	public static ItemOre dustCelenegil = new ItemOre ("celenegil_dust","dustCelenegil");
+	public static ItemOre dustCeruclase = new ItemOre ("ceruclase_dust","dustCeruclase");
+	public static ItemOre dustCopper = new ItemOre ("copper_dust","dustCopper");
+	public static ItemOre dustDamascusSteel = new ItemOre ("damascus_steel_dust","dustDamascusSteel");
+	public static ItemOre dustDeepIron = new ItemOre ("deep_iron_dust","dustDeepIron");
+	public static ItemOre dustDesichalkos = new ItemOre ("desichalkos_dust","dustDesichalkos");
+	public static ItemOre dustElectrum = new ItemOre ("electrum_dust","dustElectrum");
+	public static ItemOre dustEximite = new ItemOre ("eximite_dust","dustEximite");
+	public static ItemOre dustHaderoth = new ItemOre ("haderoth_dust","dustHaderoth");
+	public static ItemOre dustHepatizon = new ItemOre ("hepatizon_dust","dustHepatizon");
+	public static ItemOre dustIgnatius = new ItemOre ("ignatius_dust","dustIgnatius");
+	public static ItemOre dustInfuscolium = new ItemOre ("infuscolium_dust","dustInfuscolium");
+	public static ItemOre dustInolashite = new ItemOre ("inolashite_dust","dustInolashite");
+	public static ItemOre dustKalendrite = new ItemOre ("kalendrite_dust","dustKalendrite");
+	public static ItemOre dustLemurite = new ItemOre ("lemurite_dust","dustLemurite");
+	//	public static ItemOre dustLetutium = new ItemOre ("letutium_dust","dustLetutium");
+	public static ItemOre dustManganese = new ItemOre ("manganese_dust","dustManganese");
+	public static ItemOre dustMeutoite = new ItemOre ("meutoite_dust","dustMeutoite");
+	public static ItemOre dustMidasium = new ItemOre ("midasium_dust","dustMidasium");
+	public static ItemOre dustMithril = new ItemOre ("mithril_dust","dustMithril");
+	public static ItemOre dustOrichalcum = new ItemOre ("orichalcum_dust","dustOrichalcum");
+	//	public static ItemOre dustOsmium = new ItemOre ("osmium_dust","dustOsmium");
+	public static ItemOre dustOureclase = new ItemOre ("oureclase_dust","dustOureclase");
+	public static ItemOre dustPlatinum = new ItemOre ("platinum_dust","dustPlatinum");
+	public static ItemOre dustPrometheum = new ItemOre ("prometheum_dust","dustPrometheum");
+	public static ItemOre dustQuickSilver = new ItemOre ("quicksilver_dust","dustQuickSilver");
+	public static ItemOre dustRubracium = new ItemOre ("rubracium_dust","dustRubracium");
+	public static ItemOre dustSanguinite = new ItemOre ("sanguinite_dust","dustSanguinite");
+	public static ItemOre dustShadowIron = new ItemOre ("shadow_iron_dust","dustShadowIron");
+	public static ItemOre dustShadowSteel = new ItemOre ("shadow_steel_dust","dustShadowSteel");
+	public static ItemOre dustSilver = new ItemOre("silver_dust", "dustSilver");
+	public static ItemOre dustSteel = new ItemOre ("steel_dust","dustSteel");
+	public static ItemOre dustTartarite = new ItemOre ("tartarite_dust","dustTartarite");
+	public static ItemOre dustTin = new ItemOre ("tin_dust","dustTin");
+	public static ItemOre dustVulcanite = new ItemOre ("vulcanite_dust","dustVulcanite");
+	public static ItemOre dustVyroxeres = new ItemOre ("vyroxeres_dust","dustVyroxeres");
+	public static ItemOre dustZinc = new ItemOre ("zinc_dust","dustZinc ");
 
 	public static ItemOre dustBitumen = new ItemOre ("bitumen_dust","dustBitumen");
 	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball");	 
@@ -81,6 +125,52 @@ public class ModItems {
 
 				//Dust
 				dustAdamantine,
+                dustAlduorite,
+                dustAmordrine,
+                dustAngmallen,
+                dustAstralSilver,
+                dustAtlarus,
+                dustBlackSteel,
+                dustBrass,
+                dustBronze,
+                dustCarmot,
+                dustCelenegil,
+                dustCeruclase,
+                dustCopper,
+                dustDamascusSteel,
+                dustDeepIron,
+                dustDesichalkos,
+                dustElectrum,
+                dustEximite,
+                dustHaderoth,
+                dustHepatizon,
+                dustIgnatius,
+                dustInfuscolium,
+                dustInolashite,
+                dustKalendrite,
+                dustLemurite,
+//				dustLetutium,
+                dustManganese,
+                dustMeutoite,
+                dustMidasium,
+                dustMithril,
+                dustOrichalcum,
+//				dustOsmium,
+                dustOureclase,
+                dustPlatinum,
+                dustPrometheum,
+                dustQuickSilver,
+                dustRubracium,
+                dustSanguinite,
+                dustShadowIron,
+                dustShadowSteel,
+                dustSilver,
+                dustSteel,
+                dustTartarite,
+                dustTin,
+                dustVulcanite,
+                dustVyroxeres,
+                dustZinc,
 
 				dustBitumen,
 				oreslimeball,
@@ -149,6 +239,52 @@ public class ModItems {
 
 		//Dust
 		dustAdamantine.registerItemModel();
+        dustAlduorite.registerItemModel();
+        dustAmordrine.registerItemModel();
+        dustAngmallen.registerItemModel();
+        dustAstralSilver.registerItemModel();
+        dustAtlarus.registerItemModel();
+        dustBlackSteel.registerItemModel();
+        dustBrass.registerItemModel();
+        dustBronze.registerItemModel();
+        dustCarmot.registerItemModel();
+        dustCelenegil.registerItemModel();
+        dustCeruclase.registerItemModel();
+        dustCopper.registerItemModel();
+        dustDamascusSteel.registerItemModel();
+        dustDeepIron.registerItemModel();
+        dustDesichalkos.registerItemModel();
+        dustElectrum.registerItemModel();
+        dustEximite.registerItemModel();
+        dustHaderoth.registerItemModel();
+        dustHepatizon.registerItemModel();
+        dustIgnatius.registerItemModel();
+        dustInfuscolium.registerItemModel();
+        dustInolashite.registerItemModel();
+        dustKalendrite.registerItemModel();
+        dustLemurite.registerItemModel();
+//		dustLetutium.registerItemModel();
+        dustManganese.registerItemModel();
+        dustMeutoite.registerItemModel();
+        dustMidasium.registerItemModel();
+        dustMithril.registerItemModel();
+        dustOrichalcum.registerItemModel();
+//		dustOsmium.registerItemModel();
+        dustOureclase.registerItemModel();
+        dustPlatinum.registerItemModel();
+        dustPrometheum.registerItemModel();
+        dustQuickSilver.registerItemModel();
+        dustRubracium.registerItemModel();
+        dustSanguinite.registerItemModel();
+        dustShadowIron.registerItemModel();
+        dustShadowSteel.registerItemModel();
+        dustSilver.registerItemModel();
+        dustSteel.registerItemModel();
+        dustTartarite.registerItemModel();
+        dustTin.registerItemModel();
+        dustVulcanite.registerItemModel();
+        dustVyroxeres.registerItemModel();
+        dustZinc.registerItemModel();
 
 		dustBitumen.registerItemModel();
 		oreslimeball.registerItemModel();
