@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.util.handler;
+package it.hurts.metallurgy_5.util;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
@@ -6,7 +6,6 @@ import it.hurts.metallurgy_5.item.tool.ModTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -101,6 +100,14 @@ public class EventHandler {
 		}else {
 			fire = false;
 		}
+		
+//		Angmallen Armor (Luck I for Vampirism)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.angmallen_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.angmallen_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.angmallen_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.angmallen_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0));
+		}
 	}	
 
 	@SubscribeEvent
@@ -194,10 +201,10 @@ public class EventHandler {
 //		Enchantment
 		
 //		Midasium Sword (Looting I)
-		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
-
-			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
-		}
+//		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
+//
+//			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
+//		}
 	}
 	
 	
