@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.util.handler;
+package it.hurts.metallurgy_5.util;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
@@ -92,6 +92,7 @@ public class EventHandler {
 				&&event.player.isInWater()){
 			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 2));
 		}
+		
 //		Vulcanite Armor (Fire Immunity)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.vulcanite_chest
@@ -100,6 +101,37 @@ public class EventHandler {
 			 fire = true;
 		}else {
 			fire = false;
+		}
+		
+//		Angmallen Armor (Luck I for Vampirism)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.angmallen_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.angmallen_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.angmallen_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.angmallen_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0));
+		}
+		
+//		Adamantine Armor (Strenght I)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.adamantine_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.adamantine_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.adamantine_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.adamantine_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0));
+		}
+		
+//		Astral Silver Armor (Jump Boost II)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.astral_silver_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.astral_silver_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 60, 1));
+		}
+		
+//		Platinum Armor (Night Vision, Needed Vanishing Curse)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.platinum_helmet){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 80, 0));
+//			if (new ItemStack(event.player.inventory.armorItemInSlot(3).getItem()).isItemEnchantable())		Non Funziona
+//				new ItemStack(event.player.inventory.armorItemInSlot(3).getItem()).addEnchantment(Enchantments.VANISHING_CURSE, 0);
 		}
 	}	
 
@@ -114,7 +146,7 @@ public class EventHandler {
 			Entity foe = event.getTarget();
 			EntityLivingBase foe2 = (EntityLivingBase)foe;
 			
-			if((int)Math.random()*100 <= 25)
+			if((int)(Math.random()*100) <= 25)
 				foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 		}
 	
@@ -122,7 +154,7 @@ public class EventHandler {
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
 			Entity foe = event.getTarget();
 	
-			if((int)Math.random()*100 <= 25)
+			if((int)(Math.random()*100) <= 25)
 				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
 		}
 		
@@ -130,7 +162,7 @@ public class EventHandler {
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
 			Entity foe = event.getTarget();
 			
-			if((int)Math.random()*100 <= 15)
+			if((int)(Math.random()*100) <= 15)
 				((EntityLivingBase) foe).setFire(5);
 		}
 		
@@ -138,14 +170,22 @@ public class EventHandler {
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))) {
 			Entity foe = event.getTarget();
 			
-			if((int)Math.random()*100 <= 30)
+			if((int)(Math.random()*100) <= 30)
 				((EntityLivingBase) foe).setFire(5);
+		}
+		
+//		Tartarite Sword (Withering II)
+		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))) {
+			Entity foe = event.getTarget();
+			
+			if((int)(Math.random()*100) <= 20)
+				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60,1));
 		}
 		
 //		kalendrite sword (Regeneration)
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
 			
-			if((int)Math.random()*100 <= 30)
+			if((int)(Math.random()*100) <= 30)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
 		}
 		
@@ -158,25 +198,25 @@ public class EventHandler {
 			switch(luck) {
 				
 				case 0 :{
-					if((int)Math.random()*100 <=15)
+					if((int)(Math.random()*100) <=15)
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 				}
 				break;
 				
 				case 1 :{
-					if((int)Math.random()*100 <=25)
+					if((int)(Math.random()*100) <=25)
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 4));
 				}
 				break;
 				
 				case 2 :{
-					if((int)Math.random()*100 <35)
+					if((int)(Math.random()*100) <35)
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 5));
 				}
 				break;
 				
 				case 3 : {
-					if((int)Math.random()*100 <50) {
+					if((int)(Math.random()*100) <50) {
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 5));
 						player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 60));
 					}
@@ -184,20 +224,19 @@ public class EventHandler {
 				break;
 				
 				default: {
-					if((int)Math.random()*100 <=15)
+					if((int)(Math.random()*100) <=15)
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 				}
 			}
 		}
 		
-		
 //		Enchantment
 		
 //		Midasium Sword (Looting I)
-		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
-
-			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
-		}
+//		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
+//
+//			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
+//		}
 	}
 	
 	
