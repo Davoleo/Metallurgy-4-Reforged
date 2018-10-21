@@ -3,6 +3,8 @@ package it.hurts.metallurgy_5.item.armor;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -30,25 +32,40 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
 	private String name;
 	private String tooltip = "";
+	private Enchantment enchantment = null;
+	private int enchantmentLevel = 0;
 
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name) {
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
+    {
 		super(material, 0, slot);
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		this.name = name;
 	}
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip) {
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
+    {
 		super(material, 0, slot);
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		this.tooltip = tooltip;
 		this.name = name;
-
 	}
 
+    public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
+    {
+        super(material, 0, slot);
+        setRegistryName(name);
+        setUnlocalizedName(name);
+        this.tooltip = tooltip;
+        this.name = name;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
 
+    }
+
+	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		tooltip.add(this.tooltip);
@@ -58,8 +75,16 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	public void registerItemModel(Item item, int meta) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + name, "inventory"));
 	}
-	
-	@Override
+
+    @Override
+    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
+    {
+        if (!stack.isItemEnchanted())
+            if(enchantment != null && enchantmentLevel > 0 && enchantmentLevel <= Short.MAX_VALUE)
+                stack.addEnchantment(enchantment, enchantmentLevel);
+    }
+
+    @Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
 		
 		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet

@@ -2,6 +2,7 @@ package it.hurts.metallurgy_5.item.armor;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.util.Tooltips;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -122,7 +123,8 @@ public class ModArmors {
 	public static ItemArmorBase midasium_legs = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.LEGS, "midasium_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase midasium_boots = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.FEET, "midasium_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase mithril_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet", Tooltips.MITHRIL_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);
+	//PRE-ENCHANTMENT EXAMPLE
+	public static ItemArmorBase mithril_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet", Tooltips.MITHRIL_ARMOR_EFFECT, Enchantments.THORNS, 2).setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.CHEST,"mithril_chest", Tooltips.MITHRIL_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs", Tooltips.MITHRIL_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase mithril_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.FEET,"mithril_boots", Tooltips.MITHRIL_ARMOR_EFFECT).setCreativeTab(Metallurgy_5.tabArmor);

@@ -21,8 +21,8 @@ public class ModFluids {
             "molten_adamantine",
             new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_still"),
             new ResourceLocation(Metallurgy_5.MODID, "blocks/molten_metal_flow"),
-            0xFFa30000
-    )
+            0xFFa30000)
+
             .setMaterial(Material.IRON)
             .setDensity(800)
             .setGaseous(false)
