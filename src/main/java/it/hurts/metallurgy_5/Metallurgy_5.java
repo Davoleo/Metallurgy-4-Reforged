@@ -40,7 +40,6 @@
 
 @Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
-    //TODO : Fix the last textures
 
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 5";

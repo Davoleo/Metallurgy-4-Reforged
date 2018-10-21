@@ -64,11 +64,11 @@ public class ModItems {
 	public static ItemOre dustVyroxeres = new ItemOre ("vyroxeres_dust","dustVyroxeres").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustZinc = new ItemOre ("zinc_dust","dustZinc ").setCreativeTab(Metallurgy_5.tabDust);
 
-	public static ItemOre dustBitumen = new ItemOre ("bitumen_dust","dustBitumen").setCreativeTab(Metallurgy_5.tabDust);
+	public static ItemOre dustBitumen = new ItemOre ("bitumen","dustBitumen").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball").setCreativeTab(Metallurgy_5.tabDust);
-	public static ItemOre dustPotash = new ItemOre ("potash_dust","dustPotash").setCreativeTab(Metallurgy_5.tabDust);
+	public static ItemOre dustPotash = new ItemOre ("potash","dustPotash").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustSulfur = new ItemOre ("sulfur_dust","dustSulfur").setCreativeTab(Metallurgy_5.tabDust);
-	public static ItemOre dustPhosphorus = new ItemOre("phosphorus_dust", "dustPhosphorus").setCreativeTab(Metallurgy_5.tabDust);
+	public static ItemOre dustPhosphorus = new ItemOre("phosphorus", "dustPhosphorus").setCreativeTab(Metallurgy_5.tabDust);
 	
 	//Ingot
 	public static ItemOre ingotAdamantine = new ItemOre ("adamantine_ingot","ingotAdamantine").setCreativeTab(Metallurgy_5.tabIngot);

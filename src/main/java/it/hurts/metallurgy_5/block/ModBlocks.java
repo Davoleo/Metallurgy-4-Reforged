@@ -366,6 +366,7 @@ public class ModBlocks {
 		 blockAstralSilver.registerItemModel(Item.getItemFromBlock(blockAstralSilver));
 		 blockAtlarus.registerItemModel(Item.getItemFromBlock(blockAtlarus));
 		 blockAmordrine.registerItemModel(Item.getItemFromBlock(blockAmordrine));
+		 blockBitumen.registerItemModel(Item.getItemFromBlock(blockBitumen));
 		 blockBlackSteel.registerItemModel(Item.getItemFromBlock(blockBlackSteel));
 		 blockBrass.registerItemModel(Item.getItemFromBlock(blockBrass));
 		 blockBronze.registerItemModel(Item.getItemFromBlock(blockBronze));
@@ -377,6 +378,7 @@ public class ModBlocks {
 		 blockDamascusSteel.registerItemModel(Item.getItemFromBlock(blockDamascusSteel));
 		 blockDeepIron.registerItemModel(Item.getItemFromBlock(blockDeepIron));
 		 blockDesichalkos.registerItemModel(Item.getItemFromBlock(blockDesichalkos));
+		 blockElectrum.registerItemModel(Item.getItemFromBlock(blockElectrum));
 		 blockEximite.registerItemModel(Item.getItemFromBlock(blockEximite));
 		 blockHaderoth.registerItemModel(Item.getItemFromBlock(blockHaderoth));
 		 blockHepatizon.registerItemModel(Item.getItemFromBlock(blockHepatizon));
