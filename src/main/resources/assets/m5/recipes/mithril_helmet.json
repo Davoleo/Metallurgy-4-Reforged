@@ -11,6 +11,7 @@
     }
   },
   "result":{
-    "item":"m5:mithril_helmet"
+    "item":"m5:mithril_helmet",
+    "nbt":"{ench:[{lvl:2s,id:7s}]}"
   }
 }

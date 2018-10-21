@@ -3,14 +3,15 @@ package it.hurts.metallurgy_5.item.armor;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -66,6 +67,16 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
     }
 
 	@Override
+    @SideOnly(Side.CLIENT)
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+    {
+		ItemStack enchantedArmor = new ItemStack(this);
+		if(enchantment != null)
+		    enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+		items.add(enchantedArmor);
+	}
+
+	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		tooltip.add(this.tooltip);
@@ -75,14 +86,6 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	public void registerItemModel(Item item, int meta) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + name, "inventory"));
 	}
-
-    @Override
-    public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
-    {
-        if (!stack.isItemEnchanted())
-            if(enchantment != null && enchantmentLevel > 0 && enchantmentLevel <= Short.MAX_VALUE)
-                stack.addEnchantment(enchantment, enchantmentLevel);
-    }
 
     @Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
