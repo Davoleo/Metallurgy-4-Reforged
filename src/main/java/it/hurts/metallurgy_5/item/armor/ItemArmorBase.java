@@ -66,14 +66,18 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
     }
 
+
+    //TODO : Fix Armor getting spammed to nearly every creative tab
 	@Override
     @SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-		ItemStack enchantedArmor = new ItemStack(this);
-		if(enchantment != null)
-		    enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
-		items.add(enchantedArmor);
+        if(enchantment != null)
+        {
+            ItemStack enchantedArmor = new ItemStack(this);
+            enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+            items.add(enchantedArmor);
+        }
 	}
 
 	@Override
