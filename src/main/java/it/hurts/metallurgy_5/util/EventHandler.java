@@ -6,7 +6,6 @@ import it.hurts.metallurgy_5.item.tool.ModTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -111,12 +110,28 @@ public class EventHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0));
 		}
 		
-//		Adamantine Armor (Strenght I)
+//		Kalendrite Armor (Strenght I)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.kalendrite_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.kalendrite_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.kalendrite_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.kalendrite_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0));
+		}
+		
+//		Amordrine Armor (Strenght II)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.amordrine_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.amordrine_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.amordrine_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.amordrine_boots){
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1));
+		}
+		
+//		Adamantine Armor (Saturation)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.adamantine_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.adamantine_chest
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.adamantine_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.adamantine_boots){
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0));
 		}
 		
 //		Astral Silver Armor (Jump Boost II)
@@ -130,9 +145,23 @@ public class EventHandler {
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.platinum_helmet){
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 80, 0));
-//			if (new ItemStack(event.player.inventory.armorItemInSlot(3).getItem()).isItemEnchantable())		Non Funziona
-//				new ItemStack(event.player.inventory.armorItemInSlot(3).getItem()).addEnchantment(Enchantments.VANISHING_CURSE, 0);
 		}
+		
+//		Carmot Armor (Haste I)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.carmot_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.carmot_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.carmot_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.carmot_boots) {
+			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0));
+			}
+		
+//		Prometheum Armor (No potion, need to implement a new Effect)
+		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.prometheum_helmet
+				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.prometheum_chest
+				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.prometheum_legs
+				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.prometheum_boots){
+			event.player.removePotionEffect(MobEffects.POISON);
+			}
 	}	
 
 	@SubscribeEvent
@@ -229,14 +258,6 @@ public class EventHandler {
 				}
 			}
 		}
-		
-//		Enchantment
-		
-//		Midasium Sword (Looting I)
-//		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword)) && !player.getHeldItemMainhand().isItemEnchanted()){
-//
-//			player.getHeldItemMainhand().addEnchantment(Enchantments.LOOTING, 1);
-//		}
 	}
 	
 	
