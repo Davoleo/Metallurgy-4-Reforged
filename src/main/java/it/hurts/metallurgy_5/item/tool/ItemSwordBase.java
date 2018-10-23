@@ -3,6 +3,7 @@ package it.hurts.metallurgy_5.item.tool;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -26,6 +27,10 @@ public class ItemSwordBase extends ItemSword {
 
     private String name;
     private String tooltip = "";
+    @SuppressWarnings("unused")
+	private Enchantment enchantment = null;
+	@SuppressWarnings("unused")
+	private int enchantmentLevel = 0;
 
     public ItemSwordBase(ToolMaterial material, String name)
     {
@@ -44,6 +49,17 @@ public class ItemSwordBase extends ItemSword {
         this.name = name;
         this.tooltip = tooltip;
         setCreativeTab(Metallurgy_5.tabTool);
+    }
+    
+    public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+    {
+        super(material);
+        setRegistryName(name);
+        setUnlocalizedName(name);
+        this.name = name;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+
     }
 
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)

@@ -2,6 +2,7 @@ package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.util.Tooltips;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -140,7 +141,7 @@ public class ModTools {
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(Metallurgy_5.midasiumToolMaterial, "midasium_hoe");
     public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_pickaxe");
     public static ItemShovelBase midasium_shovel = new ItemShovelBase(Metallurgy_5.midasiumToolMaterial, "midasium_shovel");
-    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword", Tooltips.MIDASIUM_SWORD_EFFECT);
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword", Enchantments.LOOTING, 1);
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(Metallurgy_5.mithrilToolMaterial, "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(Metallurgy_5.mithrilToolMaterial, "mithril_hoe");
