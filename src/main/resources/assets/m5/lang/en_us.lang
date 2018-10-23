@@ -4,6 +4,16 @@ item.adamantine_chest.name=Adamantine Chestplate
 item.adamantine_legs.name=Adamantine Leggings
 item.adamantine_boots.name=Adamantine Boots
 
+item.amordrine_helmet.name=Amordrine Helmet
+item.amordrine_chest.name=Amordrine Chestplate
+item.amordrine_legs.name=Amordrine Leggings
+item.amordrine_boots.name=Amordrine Boots
+
+item.angmallen_helmet.name=Angmallen Helmet
+item.angmallen_chest.name=Angmallen Chestplate
+item.angmallen_legs.name=Angmallen Leggings
+item.angmallen_boots.name=Angmallen Boots
+
 item.atlarus_helmet.name=Atlarus Helmet
 item.atlarus_chest.name=Atlarus Chestplate
 item.atlarus_legs.name=Atlarus Leggings
@@ -14,25 +24,75 @@ item.astral_silver_chest.name=Astral Sivler Chestplate
 item.astral_silver_legs.name=Astral Silver Leggings
 item.astral_silver_boots.name=Astral Silver Boots
 
+item.black_steel_helmet.name=Black Steel Helmet
+item.black_steel_chest.name=Black Steel Chestplate
+item.black_steel_legs.name=Black Steel Leggings
+item.black_steel_boots.name=Black Steel Boots
+
+item.brass_steel_helmet.name=Brasse Helmet
+item.brass_steel_chest.name=Brass Chestplate
+item.brass_steel_legs.name=Brass Leggings
+item.brass_steel_boots.name=Brass Boots
+
+item.bronze_steel_helmet.name=Bronze Steel Helmet
+item.bronze_steel_chest.name=Bronze Steel Chestplate
+item.bronze_steel_legs.name=Bronze Steel Leggings
+item.bronze_steel_boots.name=Bronze Steel Boots
+
 item.carmot_helmet.name=Carmot Helmet
 item.carmot_chest.name=Carmot Chestplate
 item.carmot_legs.name=Carmot Leggings
 item.carmot_boots.name=Carmot Boots
+
+item.celenegil_helmet.name=Celenegil Helmet
+item.celenegil_chest.name=Celenegil Chestplate
+item.celenegil_legs.name=Celenegil Leggings
+item.celenegil_boots.name=Celenegil Boots
+
+item.damascus_steel_helmet.name=Damascus Steel Helmet
+item.damascus_steel_chest.name=Damascus Steel Chestplate
+item.damascus_steel_legs.name=Damascus Steel Leggings
+item.damascus_steel_boots.name=Damascus Steel Boots
 
 item.deep_iron_helmet.name=Deep Iron Helmet
 item.deep_iron_chest.name=Deep Iron Chestplate
 item.deep_iron_legs.name=Deep Iron Leggings
 item.deep_iron_boots.name=Deep Iron Boots
 
+item.desichalkos_helmet.name=Desichalkos Helmet
+item.desichalkos_chest.name=Desichalkos Chestplate
+item.desichalkos_legs.name=Desichalkos Leggings
+item.desichalkos_boots.name=Desichalkos Boots
+
+item.electrum_helmet.name=Electrum Helmet
+item.electrum_chest.name=Electrum Chestplate
+item.electrum_legs.name=Electrum Leggings
+item.electrum_boots.name=Electrum Boots
+
 item.eximite_helmet.name=Eximite Helmet
 item.eximite_chest.name=Eximite Chestplate
 item.eximite_legs.name=Eximite Leggings
 item.eximite_boots.name=Eximite Boots
 
+item.haderoth_helmet.name=Haderoth Helmet
+item.haderoth_chest.name=Haderoth Chestplate
+item.haderoth_legs.name=Haderoth Leggings
+item.haderoth_boots.name=Haderoth Boots
+
+item.hepatizon_helmet.name=Hepatizon Helmet
+item.hepatizon_chest.name=Hepatizon Chestplate
+item.hepatizon_legs.name=Hepatizon Leggings
+item.hepatizon_boots.name=Hepatizon Boots
+
 item.ignatius_helmet.name=Ignatius Helmet
 item.ignatius_chest.name=Ignatius Chestplate
 item.ignatius_legs.name=Ignatius Leggings
 item.ignatius_boots.name=Ignatius Boots
+
+item.inolashite_helmet.name=Inolashite Helmet
+item.inolashite_chest.name=Inolashite Chestplate
+item.inolashite_legs.name=Inolashite Leggings
+item.inolashite_boots.name=Inolashite Boots
 
 item.kalendrite_helmet.name=Kalendrite Helmet
 item.kalendrite_chest.name=Kalendrite Chestplate
@@ -79,10 +139,25 @@ item.shadow_iron_chest.name=Shadow Iron Chestplate
 item.shadow_iron_legs.name=Shadow Iron Leggings
 item.shadow_iron_boots.name=Shadow Iron Boots
 
+item.shadow_steel_helmet.name=Shadow Iron Helmet
+item.shadow_steel_chest.name=Shadow Iron Chestplate
+item.shadow_steel_legs.name=Shadow Iron Leggings
+item.shadow_steel_boots.name=Shadow Iron Boots
+
 item.silver_helmet.name=Silver Helmet
 item.silver_chest.name=Silver Chestplate
 item.silver_legs.name=Silver Leggings
 item.silver_boots.name=Silver Boots
+
+item.steel_helmet.name=Steel Helmet
+item.steel_chest.name=Steel Chestplate
+item.steel_legs.name=Steel Leggings
+item.steel_boots.name=Steel Boots
+
+item.tartarite_helmet.name=Tartarite Helmet
+item.tartarite_chest.name=Tartarite Chestplate
+item.tartarite_legs.name=Tartarite Leggings
+item.tartarite_boots.name=Tartarite Boots
 
 item.vulcanite_helmet.name=Vulcanite Helmet
 item.vulcanite_chest.name=Vulcanite Chestplate
