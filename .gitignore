@@ -22,3 +22,6 @@ eclipse
 run
 
 classes/
+
+#exe
+*.exe
