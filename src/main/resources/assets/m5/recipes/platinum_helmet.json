@@ -11,6 +11,7 @@
     }
   },
   "result":{
-    "item":"m5:Platinum_helmet"
+    "item":"m5:Platinum_helmet",
+    "nbt":"{ench:[{lvl:1s,id:10s}]}"
   }
 }

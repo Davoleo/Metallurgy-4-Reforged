@@ -49,7 +49,8 @@ protected boolean bucketEnabled = false;
         return mapColor;
     }
 
-    public FluidMolten setColor(int mapColor)
+    @SuppressWarnings("static-access")
+	public FluidMolten setColor(int mapColor)
     {
         this.mapColor = mapColor;
         return this;

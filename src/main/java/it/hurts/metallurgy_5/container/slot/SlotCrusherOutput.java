@@ -18,7 +18,8 @@ import net.minecraft.util.math.MathHelper;
 
 public class SlotCrusherOutput extends Slot {
 
-    private final EntityPlayer player;
+    @SuppressWarnings("unused")
+	private final EntityPlayer player;
 
 
     public SlotCrusherOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)

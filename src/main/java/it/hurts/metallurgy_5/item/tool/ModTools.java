@@ -4,6 +4,7 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.util.Tooltips;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistry;
 
 /*************************************************

@@ -3,8 +3,6 @@ package it.hurts.metallurgy_5.util;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.util.text.TextFormatting;
 
-import java.util.List;
-
 /*************************************************
  * Author: Davoleo
  * Date: 04/09/2018

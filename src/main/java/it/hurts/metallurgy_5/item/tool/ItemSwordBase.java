@@ -3,10 +3,12 @@ package it.hurts.metallurgy_5.item.tool;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,9 +29,7 @@ public class ItemSwordBase extends ItemSword {
 
     private String name;
     private String tooltip = "";
-    @SuppressWarnings("unused")
 	private Enchantment enchantment = null;
-	@SuppressWarnings("unused")
 	private int enchantmentLevel = 0;
 
     public ItemSwordBase(ToolMaterial material, String name)
@@ -61,6 +61,19 @@ public class ItemSwordBase extends ItemSword {
         this.enchantmentLevel = enchantmentLevel;
 
     }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+    {
+    	
+        if(enchantment != null && tab.equals(Metallurgy_5.tabTool))
+        {
+        	ItemStack enchantedSword = new ItemStack(this);
+            enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+            items.add(enchantedSword);
+        }
+	}
 
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {

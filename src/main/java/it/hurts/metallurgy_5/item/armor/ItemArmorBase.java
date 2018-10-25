@@ -5,12 +5,9 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -66,14 +63,11 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
     }
 
-
-    //TODO : Fix Armor getting spammed to nearly every creative tab
 	@Override
     @SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        if(enchantment != null)
-        {
+        if(enchantment != null && tab.equals(Metallurgy_5.tabArmor)){
             ItemStack enchantedArmor = new ItemStack(this);
             enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
             items.add(enchantedArmor);
@@ -90,18 +84,4 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	public void registerItemModel(Item item, int meta) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy_5.MODID + ":armor/" + name, "inventory"));
 	}
-
-    @Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
-		
-		if (player.inventory.armorItemInSlot(3).getItem() == ModArmors.adamantine_helmet
-				&&player.inventory.armorItemInSlot(2).getItem() == ModArmors.adamantine_chest
-				&&player.inventory.armorItemInSlot(1).getItem() == ModArmors.adamantine_legs
-				&&player.inventory.armorItemInSlot(0).getItem() == ModArmors.adamantine_boots) {
-				player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 20, 1));
-			}else {
-				player.removePotionEffect(MobEffects.SATURATION);
-			}
-	}
-	
 }

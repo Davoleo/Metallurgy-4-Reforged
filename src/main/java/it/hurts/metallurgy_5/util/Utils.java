@@ -12,7 +12,7 @@ import net.minecraft.util.NonNullList;
  **************************************************/
 
 public class Utils {
-
+	
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
     {
         if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
@@ -22,5 +22,4 @@ public class Utils {
                 inventory.set(slot, ItemStack.EMPTY);
         }
     }
-
 }

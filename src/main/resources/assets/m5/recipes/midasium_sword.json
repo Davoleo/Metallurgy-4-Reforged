@@ -15,6 +15,7 @@
     }
   },
   "result":{
-    "item":"m5:midasium_sword"
+    "item":"m5:midasium_sword",
+    "nbt":"{ench:[{lvl:1s,id:21s}]}"
   }
 }
