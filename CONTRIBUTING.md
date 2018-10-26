@@ -33,16 +33,16 @@ I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 Tutorial: https://support.gitkraken.com<br>
 Download: https://www.gitkraken.com/invite/mVRqih9P
 
-Please pay attention on where you upload your features<br>
+If you plan on contribuing multiple times or continuously I suggest you the second method of committing features to your fork
+
+**Please pay attention on where you upload your features** <br>
 you should know how a mod is structured<br>
-Source code directory: src/main/java<br>
-Resources directory: src/main/resources<br><br>
+Source code directory: `src/main/java`<br>
+Resources directory: `src/main/resources`<br><br>
 
 **Refer to the model/blockstate directory for texture organization and naming conventions** <br>
-Models directory: src/main/resources/assets/m5/models <br>
-Blockstates directory: src/main/resources/assets/m5/blockstates <br>
-
-If you plan on contribuing multiple times or continuously I suggest you the second method of committing features to your fork
+Models directory: `src/main/resources/assets/m5/models` <br>
+Blockstates directory: `src/main/resources/assets/m5/blockstates` <br>
 
 ---
 ###### Creating the Pull request
