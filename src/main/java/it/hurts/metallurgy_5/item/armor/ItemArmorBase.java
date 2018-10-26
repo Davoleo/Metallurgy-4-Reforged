@@ -40,6 +40,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		this.name = name;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
@@ -49,17 +50,18 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		setUnlocalizedName(name);
 		this.tooltip = tooltip;
 		this.name = name;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
-    public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
+    public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
     {
         super(material, 0, slot);
         setRegistryName(name);
         setUnlocalizedName(name);
-        this.tooltip = tooltip;
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
+        setCreativeTab(Metallurgy_5.tabArmor);
 
     }
 
@@ -67,7 +69,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
     @SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        if(enchantment != null && tab.equals(Metallurgy_5.tabArmor)){
+        if(enchantment != null && (tab.equals(Metallurgy_5.tabArmor) || tab.equals(tab.SEARCH))){
             ItemStack enchantedArmor = new ItemStack(this);
             enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
             items.add(enchantedArmor);

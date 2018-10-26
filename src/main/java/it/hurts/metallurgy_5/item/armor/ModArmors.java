@@ -138,7 +138,7 @@ public class ModArmors {
 	public static ItemArmorBase oureclase_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "oureclase_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase oureclase_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "oureclase_boots").setCreativeTab(Metallurgy_5.tabArmor);
 
-	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet", "", Enchantments.BINDING_CURSE,1).setCreativeTab(Metallurgy_5.tabArmor);
+	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet", Enchantments.BINDING_CURSE,1).setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase platinum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase platinum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.LEGS,"platinum_legs").setCreativeTab(Metallurgy_5.tabArmor);
 	public static ItemArmorBase platinum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.FEET,"platinum_boots").setCreativeTab(Metallurgy_5.tabArmor);

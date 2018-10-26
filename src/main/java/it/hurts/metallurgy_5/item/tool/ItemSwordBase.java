@@ -59,7 +59,7 @@ public class ItemSwordBase extends ItemSword {
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-	setCreativeTab(Metallurgy_5.tabTool);
+        setCreativeTab(Metallurgy_5.tabTool);
 
     }
     
@@ -68,7 +68,7 @@ public class ItemSwordBase extends ItemSword {
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
     	
-        if(enchantment != null && tab.equals(Metallurgy_5.tabTool))
+        if(enchantment != null && (tab.equals(Metallurgy_5.tabTool) || tab.equals(tab.SEARCH)))
         {
         	ItemStack enchantedSword = new ItemStack(this);
             enchantedSword.addEnchantment(enchantment, enchantmentLevel);
