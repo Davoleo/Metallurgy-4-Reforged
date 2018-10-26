@@ -23,6 +23,8 @@ import java.util.List;
  * Hour: 11.25
  * Project: Metallurgy 5
  * Copyright - © - Davoleo - 2018
+ * 
+ * Reworked by ItHurtsLikeHell
  **************************************************/
 
 public class ItemSwordBase extends ItemSword {
@@ -60,7 +62,6 @@ public class ItemSwordBase extends ItemSword {
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
         setCreativeTab(Metallurgy_5.tabTool);
-
     }
     
     @Override

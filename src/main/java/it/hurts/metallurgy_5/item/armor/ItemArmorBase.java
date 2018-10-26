@@ -14,7 +14,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -41,6 +40,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		this.name = name;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
@@ -50,6 +50,7 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		setUnlocalizedName(name);
 		this.tooltip = tooltip;
 		this.name = name;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
@@ -60,12 +61,24 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		this.name = name;
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
+		setCreativeTab(Metallurgy_5.tabArmor);
 
+	}
+	
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
+		super(material, 0, slot);
+		setRegistryName(name);
+		setUnlocalizedName(name);
+		this.name = name;
+		this.tooltip = tooltip;
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
 	{
 		ItemStack enchantedArmor = new ItemStack(this);
 		if(enchantment != null && (tab.equals(Metallurgy_5.tabArmor) || tab.equals(tab.SEARCH)))
