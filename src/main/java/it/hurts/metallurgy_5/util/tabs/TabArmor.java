@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 public class TabArmor extends CreativeTabs{
 	
 	public TabArmor() {
-		super(Metallurgy_5.MODID+".armors");
+		super(Metallurgy_5.MODID +".armors");
 	}
 
 	@Override

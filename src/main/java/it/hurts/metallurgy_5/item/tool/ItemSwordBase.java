@@ -67,20 +67,22 @@ public class ItemSwordBase extends ItemSword {
     @SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-    	
+
         if(enchantment != null && (tab.equals(Metallurgy_5.tabTool) || tab.equals(tab.SEARCH)))
         {
-        	ItemStack enchantedSword = new ItemStack(this);
+            ItemStack enchantedSword = new ItemStack(this);
             enchantedSword.addEnchantment(enchantment, enchantmentLevel);
             items.add(enchantedSword);
         }
+
+
 	}
 
+	@Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(this.tooltip);
     }
-
 
     @SideOnly(Side.CLIENT)
     public void registerItemModel(Item item, int meta)
