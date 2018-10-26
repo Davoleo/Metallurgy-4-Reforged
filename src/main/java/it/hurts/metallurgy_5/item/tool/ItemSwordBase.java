@@ -59,6 +59,7 @@ public class ItemSwordBase extends ItemSword {
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
+	setCreativeTab(Metallurgy_5.tabTool);
 
     }
     
