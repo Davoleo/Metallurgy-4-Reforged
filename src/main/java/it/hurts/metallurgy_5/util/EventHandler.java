@@ -36,7 +36,7 @@ public class EventHandler {
 //	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
 	public static void glowingArmorEffect(PlayerTickEvent event) {
-		int radius=32, max=0;
+		int radius=32;
 		boolean isArmored=false;
 
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.mithril_helmet
@@ -53,7 +53,8 @@ public class EventHandler {
 		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm)); //Immetiamo in lista tutte le entitï¿½ comprese da il minimo e massimo di X Y Z
 		Entity a[] = new Entity [list.size()]; 	// Creiamo un array di entity grande quanto la lista
 
-		for(int i=0; i<list.size();i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
+		int max = 0;
+		for(int i = 0; i<list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
 			max=i;                   			//Inseriamo il valore di "I" a singola ripetizione in max
 			list.toArray(a);					// Inseriamo il contenuto della lista nell'array "a"
 			a[i].setGlowing(isArmored);			//Le entita'  di a che si trovano in posizione "i" riceveranno l'effetto glowing

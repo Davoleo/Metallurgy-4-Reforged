@@ -224,15 +224,7 @@ public class ModItems {
 				ingotTin,
 				ingotVulcanite,
 				ingotVyroxeres,
-				ingotZinc,
-
-//				Other Resources
-				dustBitumen,
-				oreslimeball,
-				dustPotash,
-				dustSulfur,
-				dustPhosphorus
-				
+				ingotZinc
 				);
 		}
 	
@@ -291,6 +283,7 @@ public class ModItems {
 		oreslimeball.registerItemModel();
 		dustPotash.registerItemModel();
 		dustSulfur.registerItemModel();
+		dustPhosphorus.registerItemModel();
 
 		ingotAdamantine.registerItemModel();
 		ingotAlduorite.registerItemModel();
@@ -339,14 +332,6 @@ public class ModItems {
 		ingotVulcanite.registerItemModel();
 		ingotVyroxeres.registerItemModel();
 		ingotZinc.registerItemModel();
-		
-		dustBitumen.registerItemModel();
-		oreslimeball.registerItemModel();
-		dustPotash.registerItemModel();
-		dustSulfur.registerItemModel();
-		dustPhosphorus.registerItemModel();
-
-		
 	}
 	
 	

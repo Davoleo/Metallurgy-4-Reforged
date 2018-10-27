@@ -56,16 +56,14 @@ public class ContainerAlloyer extends Container {
     public void detectAndSendChanges(){
         super.detectAndSendChanges();
 
-        for(int i=0; i< this.listeners.size(); ++i){
-            IContainerListener listener = this.listeners.get(i);
-
-            if(this.alloyingTime != this.alloyer.getField(2))
+        for (IContainerListener listener : this.listeners) {
+            if (this.alloyingTime != this.alloyer.getField(2))
                 listener.sendWindowProperty(this, 2, this.alloyer.getField(2));
-            if(this.burnTime != this.alloyer.getField(0))
+            if (this.burnTime != this.alloyer.getField(0))
                 listener.sendWindowProperty(this, 0, this.alloyer.getField(0));
-            if(this.currentBurnTime != this.alloyer.getField(1))
+            if (this.currentBurnTime != this.alloyer.getField(1))
                 listener.sendWindowProperty(this, 1, this.alloyer.getField(1));
-            if(this.totalAlloyingTime != this.alloyer.getField(3))
+            if (this.totalAlloyingTime != this.alloyer.getField(3))
                 listener.sendWindowProperty(this, 3, this.alloyer.getField(3));
         }
 

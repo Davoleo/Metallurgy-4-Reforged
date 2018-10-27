@@ -58,17 +58,14 @@ public class ContainerCrusher extends Container {
     {
         super.detectAndSendChanges();
 
-        for(int i=0; i< this.listeners.size(); ++i)
-        {
-            IContainerListener listener = this.listeners.get(i);
-
-            if(this.crushTime != this.crusher.getField(2))
+        for (IContainerListener listener : this.listeners) {
+            if (this.crushTime != this.crusher.getField(2))
                 listener.sendWindowProperty(this, 2, this.crusher.getField(2));
-            if(this.burnTime != this.crusher.getField(0))
+            if (this.burnTime != this.crusher.getField(0))
                 listener.sendWindowProperty(this, 0, this.crusher.getField(0));
-            if(this.currentBurnTime != this.crusher.getField(1))
+            if (this.currentBurnTime != this.crusher.getField(1))
                 listener.sendWindowProperty(this, 1, this.crusher.getField(1));
-            if(this.totalCrushTime != this.crusher.getField(3))
+            if (this.totalCrushTime != this.crusher.getField(3))
                 listener.sendWindowProperty(this, 3, this.crusher.getField(3));
         }
 
