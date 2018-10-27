@@ -29,15 +29,15 @@ item.black_steel_chest.name=Black Steel Chestplate
 item.black_steel_legs.name=Black Steel Leggings
 item.black_steel_boots.name=Black Steel Boots
 
-item.brass_steel_helmet.name=Brasse Helmet
-item.brass_steel_chest.name=Brass Chestplate
-item.brass_steel_legs.name=Brass Leggings
-item.brass_steel_boots.name=Brass Boots
+item.brass_helmet.name=Brass Helmet
+item.brass_chest.name=Brass Chestplate
+item.brass_legs.name=Brass Leggings
+item.brass_boots.name=Brass Boots
 
-item.bronze_steel_helmet.name=Bronze Steel Helmet
-item.bronze_steel_chest.name=Bronze Steel Chestplate
-item.bronze_steel_legs.name=Bronze Steel Leggings
-item.bronze_steel_boots.name=Bronze Steel Boots
+item.bronze_helmet.name=Bronze Steel Helmet
+item.bronze_chest.name=Bronze Steel Chestplate
+item.bronze_legs.name=Bronze Steel Leggings
+item.bronze_boots.name=Bronze Steel Boots
 
 item.carmot_helmet.name=Carmot Helmet
 item.carmot_chest.name=Carmot Chestplate
@@ -252,6 +252,7 @@ item.eximite_dust.name=Eximite Dust
 item.haderoth_dust.name=Haderoth Dust
 item.hepatizon_dust.name=Hepatizon Dust
 item.ignatius_dust.name=Ignatius Dust
+item.infuscolium_dust.name=Infuscolium Dust
 item.inolashite_dust.name=Inolashite Dust
 item.kalendrite_dust.name=Kalendrite Dust
 item.lemurite_dust.name=Lemurite Dust
@@ -304,6 +305,7 @@ item.eximite_ingot.name=Eximite Ingot
 item.haderoth_ingot.name=Haderoth Ingot
 item.hepatizon_ingot.name=Hepatizon Ingot
 item.ignatius_ingot.name=Ignatius Ingot
+tile.infuscolium_ingot.name=Infuscolium Ingot
 item.inolashite_ingot.name=Inolashite Ingot
 item.kalendrite_ingot.name=Kalendrite Ingot
 item.lemurite_ingot.name=Lemurite Ingot
@@ -331,9 +333,9 @@ item.zinc_ingot.name=Zinc Ingot
 #Items
 item.tar.name=Tar
 item.sulfur_dust.name=Sulfur
-item.bitumen_dust.name=Bitumen
-item.potash_dust.name=Potash
-
+item.bitumen.name=Bitumen
+item.potash.name=Potash
+item.phosphorus.name=Phosphorus
 
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
