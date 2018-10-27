@@ -68,14 +68,13 @@ public class ItemSwordBase extends ItemSword {
     @SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        if (getCreativeTab() != tab) return;
-        super.getSubItems(tab, items);
-
-        ItemStack enchantedSword = new ItemStack(this);
-        if(enchantment != null) {
-            enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+        if(this.isInCreativeTab(tab)) {
+            ItemStack enchantedSword = new ItemStack(this);
+            if(enchantment != null) {
+                enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+            }
+            items.add(enchantedSword);
         }
-        items.add(enchantedSword);
 	}
 
 	@Override

@@ -80,14 +80,13 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
 	{
-		if (getCreativeTab() != tab) return;
-		super.getSubItems(tab, items);
-
-		ItemStack enchantedArmor = new ItemStack(this);
-		if(enchantment != null) {
-			enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+		if(this.isInCreativeTab(tab)) {
+			ItemStack enchantedArmor = new ItemStack(this);
+			if(enchantment != null) {
+				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedArmor);
 		}
-		items.add(enchantedArmor);
 	}
 
 	@Override
