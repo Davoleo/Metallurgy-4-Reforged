@@ -177,6 +177,7 @@ public class ModItems {
 				oreslimeball,
 				dustPotash,
 				dustSulfur,
+                dustPhosphorus,
 
 				ingotAdamantine,
 				ingotAlduorite,
