@@ -466,6 +466,18 @@ item.adamantine_pickaxe.name=Adamantine Pickaxe
 item.adamantine_shovel.name=Adamantine Shovel
 item.adamantine_sword.name=Adamantine Sword
 
+item.amordrine_axe.name=Amordrine Axe
+item.amordrine_hoe.name=Amordrine Hoe
+item.amordrine_pickaxe.name=Amordrine Pickaxe
+item.amordrine_shovel.name=Amordrine Shovel
+item.amordrine_sword.name=Amordrine Sword
+
+item.angmallen_axe.name=Angmallen Axe
+item.angmallen_hoe.name=Angmallen Hoe
+item.angmallen_pickaxe.name=Angmallen Pickaxe
+item.angmallen_shovel.name=Angmallen Shovel
+item.angmallen_sword.name=Angmallen Sword
+
 item.astral_silver_axe.name=Astral Silver Axe
 item.astral_silver_hoe.name=Astral Silver Hoe
 item.astral_silver_pickaxe.name=Astral Silver Pickaxe
@@ -478,11 +490,41 @@ item.atlarus_pickaxe.name=Atlarus Pickaxe
 item.atlarus_shovel.name=Atlarus Shovel
 item.atlarus_sword.name=Atlarus Sword
 
+item.black_steel_axe.name=Black Steel Axe
+item.black_steel_hoe.name=Black Steel Hoe
+item.black_steel_pickaxe.name=Black Steel Pickaxe
+item.black_steel_shovel.name=Black Steel Shovel
+item.black_steel_sword.name=Black Steel Sword
+
+item.brass_axe.name=Brass Axe
+item.brass_hoe.name=Brass Hoe
+item.brass_pickaxe.name=Brass Pickaxe
+item.brass_shovel.name=Brass Shovel
+item.brass_sword.name=Brass Sword
+
+item.bronze_axe.name=Bronze Axe
+item.bronze_hoe.name=Bronze Hoe
+item.bronze_pickaxe.name=Bronze Pickaxe
+item.bronze_shovel.name=Bronze Shovel
+item.bronze_sword.name=Bronze Sword
+
 item.carmot_axe.name=Carmot Axe
 item.carmot_hoe.name=Carmot Hoe
 item.carmot_pickaxe.name=Carmot Pickaxe
 item.carmot_shovel.name=Carmot Shovel
 item.carmot_sword.name=Carmot Sword
+
+item.celenegil_axe.name=Celenegil Axe
+item.celenegil_hoe.name=Celenegil Hoe
+item.celenegil_pickaxe.name=Celenegil Pickaxe
+item.celenegil_shovel.name=Celenegil Shovel
+item.celenegil_sword.name=Celenegil Sword
+
+item.damascus_steel_axe.name=Damascus Steel Axe
+item.damascus_steel_hoe.name=Damascus Steel Hoe
+item.damascus_steel_pickaxe.name=Damascus Steel Pickaxe
+item.damascus_steel_shovel.name=Damascus Steel Shovel
+item.damascus_steel_sword.name=Damascus Steel Sword
 
 item.deep_iron_axe.name=Deep Iron Axe
 item.deep_iron_hoe.name=Deep Iron Hoe
@@ -490,17 +532,47 @@ item.deep_iron_pickaxe.name=Deep Iron Pickaxe
 item.deep_iron_shovel.name=Deep Iron Shovel
 item.deep_iron_sword.name=Deep Iron Sword
 
+item.desichalkos_axe.name=Desichalkos Axe
+item.desichalkos_hoe.name=Desichalkos Hoe
+item.desichalkos_pickaxe.name=Desichalkos Pickaxe
+item.desichalkos_shovel.name=Desichalkos Shovel
+item.desichalkos_sword.name=Desichalkos Sword
+
+item.electrum_axe.name=Electrum Axe
+item.electrum_hoe.name=Electrum Hoe
+item.electrum_pickaxe.name=Electrum Pickaxe
+item.electrum_shovel.name=Electrum Shovel
+item.electrum_sword.name=Electrum Sword
+
 item.eximite_axe.name=Eximite Axe
 item.eximite_hoe.name=Eximite Hoe
 item.eximite_pickaxe.name=Eximite Pickaxe
 item.eximite_shovel.name=Eximite Shovel
 item.eximite_sword.name=Eximite Sword
 
+item.haderoth_axe.name=Haderoth Axe
+item.haderoth_hoe.name=Haderoth Hoe
+item.haderoth_pickaxe.name=Haderoth Pickaxe
+item.haderoth_shovel.name=Haderoth Shovel
+item.haderoth_sword.name=Haderoth Sword
+
+item.hepatizon_axe.name=Hepatizon Axe
+item.hepatizon_hoe.name=Hepatizon Hoe
+item.hepatizon_pickaxe.name=Hepatizon Pickaxe
+item.hepatizon_shovel.name=Hepatizon Shovel
+item.hepatizon_sword.name=Hepatizon Sword
+
 item.ignatius_axe.name=Ignatius Axe
 item.ignatius_hoe.name=Ignatius Hoe
 item.ignatius_pickaxe.name=Ignatius Pickaxe
 item.ignatius_shovel.name=Ignatius Shovel
 item.ignatius_sword.name=Ignatius Sword
+
+item.inolashite_axe.name=Inolashite Axe
+item.inolashite_hoe.name=Inolashite Hoe
+item.inolashite_pickaxe.name=Inolashite Pickaxe
+item.inolashite_shovel.name=Inolashite Shovel
+item.inolashite_sword.name=Inolashite Sword
 
 item.kalendrite_axe.name=Kalendrite Axe
 item.kalendrite_hoe.name=Kalendrite Hoe
@@ -556,11 +628,29 @@ item.shadow_iron_pickaxe.name=Shadow Iron Pickaxe
 item.shadow_iron_shovel.name=Shadow Iron Shovel
 item.shadow_iron_sword.name=Shadow Iron Sword
 
+item.shadow_steel_axe.name=Shadow Steel Axe
+item.shadow_steel_hoe.name=Shadow Steel Hoe
+item.shadow_steel_pickaxe.name=Shadow Steel Pickaxe
+item.shadow_steel_shovel.name=Shadow Steel Shovel
+item.shadow_steel_sword.name=Shadow Steel Sword
+
 item.silver_axe.name=Silver Axe
 item.silver_hoe.name=Silver Hoe
 item.silver_pickaxe.name=Silver Pickaxe
 item.silver_shovel.name=Silver Shovel
 item.silver_sword.name=Silver Sword
+
+item.steel_axe.name=Steel Axe
+item.steel_hoe.name=Steel Hoe
+item.steel_pickaxe.name=Steel Pickaxe
+item.steel_shovel.name=Steel Shovel
+item.steel_sword.name=Steel Sword
+
+item.tartarite_axe.name=Tartarite Axe
+item.tartarite_hoe.name=Tartarite Hoe
+item.tartarite_pickaxe.name=Tartarite Pickaxe
+item.tartarite_shovel.name=Tartarite Shovel
+item.tartarite_sword.name=Tartarite Sword
 
 item.vulcanite_axe.name=Vulcanite Axe
 item.vulcanite_hoe.name=Vulcanite Hoe
