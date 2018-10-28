@@ -53,12 +53,13 @@ public class ItemSwordBase extends ItemSword {
         setCreativeTab(Metallurgy_5.tabTool);
     }
     
-    public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+    public ItemSwordBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
     {
         super(material);
         setRegistryName(name);
         setUnlocalizedName(name);
         this.name = name;
+        this.tooltip = tooltip;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
         setCreativeTab(Metallurgy_5.tabTool);

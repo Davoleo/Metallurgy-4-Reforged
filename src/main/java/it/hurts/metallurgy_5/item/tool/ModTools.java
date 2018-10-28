@@ -140,7 +140,7 @@ public class ModTools {
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(Metallurgy_5.midasiumToolMaterial, "midasium_hoe");
     public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(Metallurgy_5.midasiumToolMaterial, "midasium_pickaxe");
     public static ItemShovelBase midasium_shovel = new ItemShovelBase(Metallurgy_5.midasiumToolMaterial, "midasium_shovel");
-    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword", Enchantments.LOOTING, 1);
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(Metallurgy_5.midasiumToolMaterial, "midasium_sword", Tooltips.MIDASIUM_SWORD_EFFECT, Enchantments.LOOTING, 1);
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(Metallurgy_5.mithrilToolMaterial, "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(Metallurgy_5.mithrilToolMaterial, "mithril_hoe");
@@ -206,7 +206,7 @@ public class ModTools {
     public static ItemHoeBase tartarite_hoe = new ItemHoeBase(Metallurgy_5.tartariteToolMaterial, "tartarite_hoe");
     public static ItemPickaxeBase tartarite_pickaxe = new ItemPickaxeBase(Metallurgy_5.tartariteToolMaterial, "tartarite_pickaxe");
     public static ItemShovelBase tartarite_shovel = new ItemShovelBase(Metallurgy_5.tartariteToolMaterial, "tartarite_shovel");
-    public static ItemSwordBase tartarite_sword = new ItemSwordBase(Metallurgy_5.tartariteToolMaterial, "tartarite_sword");
+    public static ItemSwordBase tartarite_sword = new ItemSwordBase(Metallurgy_5.tartariteToolMaterial, "tartarite_sword", Tooltips.TARTARITE_SWORD_EFFECT);
 
     public static ItemAxeBase vulcanite_axe = new ItemAxeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_axe");
     public static ItemHoeBase vulcanite_hoe = new ItemHoeBase(Metallurgy_5.vulcaniteToolMaterial, "vulcanite_hoe");

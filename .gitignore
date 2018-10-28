@@ -10,7 +10,6 @@ bin
 out
 *.ipr
 *.iws
-*.iml
 .idea
 
 # gradle
@@ -21,6 +20,5 @@ build
 eclipse
 run
 *.exe
-*.bat
 
 classes/

@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.util;
+package it.hurts.metallurgy_5.util.handler;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
@@ -42,9 +42,8 @@ public class EventHandler {
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.mithril_helmet
 			&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.mithril_chest
 			&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.mithril_legs
-			&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.mithril_boots){
+			&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.mithril_boots)
 				isArmored=true;
-		}
 
 		double xM = event.player.posX + radius, yM = event.player.posY + radius, zM = event.player.posZ + radius; //Definiamo il Massimo di X Y Z
 		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius; //Definiamo il minimo di X Y Z
@@ -67,7 +66,7 @@ public class EventHandler {
 	}
 	
 	@SubscribeEvent
-	public static void armorEffectBase(PlayerTickEvent event) {
+	public static void onArmorTick(PlayerTickEvent event) {
 //		Astral Silver Armor (Jump Boost)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
@@ -166,7 +165,7 @@ public class EventHandler {
 	}	
 
 	@SubscribeEvent
-	public static void setToolEffect(AttackEntityEvent event){
+	public static void onAttack(AttackEntityEvent event){
 
 		EntityPlayer player = event.getEntityPlayer();
 	
@@ -266,7 +265,7 @@ public class EventHandler {
 	
 //	FireImmunity
 	@SubscribeEvent
-	public static void FireImmunity(LivingAttackEvent event) {
+	public static void cancelFireDamage(LivingAttackEvent event) {
 		if(event.getEntity() instanceof EntityPlayer) {
 			 if (event.getSource().equals (DamageSource.LAVA) 
 			 ||  event.getSource().equals (DamageSource.IN_FIRE) 
