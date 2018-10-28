@@ -124,7 +124,6 @@ public class ModTools {
     public static ItemShovelBase ignatius_shovel = new ItemShovelBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_shovel");
     public static ItemSwordBase ignatius_sword = new ItemSwordBase(Metallurgy_5.ignatiusToolMaterial, "ignatius_sword", Tooltips.IGNATIUS_SWORD_EFFECT);
 
-
     public static ItemAxeBase inolashite_axe = new ItemAxeBase(Metallurgy_5.inolashiteToolMaterial, "inolashite_axe");
     public static ItemHoeBase inolashite_hoe = new ItemHoeBase(Metallurgy_5.inolashiteToolMaterial, "inolashite_hoe");
     public static ItemPickaxeBase inolashite_pickaxe = new ItemPickaxeBase(Metallurgy_5.inolashiteToolMaterial, "inolashite_pickaxe");

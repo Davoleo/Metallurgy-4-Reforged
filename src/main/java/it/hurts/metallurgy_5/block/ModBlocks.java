@@ -108,6 +108,50 @@ public class ModBlocks {
 
 	//FluidBlocks
 	public static FluidBlockBase blockMoltenAdamantine = new FluidBlockBase(ModFluids.MOLTEN_ADAMANTINE, Material.LAVA, "molten_adamantine");
+    public static FluidBlockBase blockMoltenAlduorite = new FluidBlockBase(ModFluids.MOLTEN_ALDUORITE, Material.LAVA, "molten_alduorite");
+    public static FluidBlockBase blockMoltenAmordrine = new FluidBlockBase(ModFluids.MOLTEN_AMORDRINE, Material.LAVA, "molten_amordrine");
+    public static FluidBlockBase blockMoltenAngmallen = new FluidBlockBase(ModFluids.MOLTEN_ANGMALLEN, Material.LAVA, "molten_angmallen");
+    public static FluidBlockBase blockMoltenAstralSilver = new FluidBlockBase(ModFluids.MOLTEN_ASTRAL_SILVER, Material.LAVA, "molten_astral_silver");
+    public static FluidBlockBase blockMoltenAtlarus = new FluidBlockBase(ModFluids.MOLTEN_ATLARUS, Material.LAVA, "molten_atlarus");
+    public static FluidBlockBase blockMoltenBlackSteel = new FluidBlockBase(ModFluids.MOLTEN_BLACK_STEEL, Material.LAVA, "molten_black_steel");
+    public static FluidBlockBase blockMoltenBrass = new FluidBlockBase(ModFluids.MOLTEN_BRASS, Material.LAVA, "molten_brass");
+    public static FluidBlockBase blockMoltenBronze = new FluidBlockBase(ModFluids.MOLTEN_BRONZE, Material.LAVA, "molten_bronze");
+    public static FluidBlockBase blockMoltenCarmot = new FluidBlockBase(ModFluids.MOLTEN_CARMOT, Material.LAVA, "molten_carmot");
+    public static FluidBlockBase blockMoltenCelenegil = new FluidBlockBase(ModFluids.MOLTEN_CELENEGIL, Material.LAVA, "molten_celenegil");
+    public static FluidBlockBase blockMoltenCeruclase = new FluidBlockBase(ModFluids.MOLTEN_CERUCLASE, Material.LAVA, "molten_ceruclase");
+    public static FluidBlockBase blockMoltenCopper = new FluidBlockBase(ModFluids.MOLTEN_COPPER, Material.LAVA, "molten_copper");
+    public static FluidBlockBase blockMoltenDamascusSteel = new FluidBlockBase(ModFluids.MOLTEN_DAMASCUS_STEEL, Material.LAVA, "molten_damascus_steel");
+    public static FluidBlockBase blockMoltenDeepIron = new FluidBlockBase(ModFluids.MOLTEN_DEEP_IRON, Material.LAVA, "molten_deep_iron");
+    public static FluidBlockBase blockMoltenDesichalkos = new FluidBlockBase(ModFluids.MOLTEN_DESICHALKOS, Material.LAVA, "molten_desichalkos");
+    public static FluidBlockBase blockMoltenElectrum = new FluidBlockBase(ModFluids.MOLTEN_ELECTRUM, Material.LAVA, "molten_electrum");
+    public static FluidBlockBase blockMoltenEximite = new FluidBlockBase(ModFluids.MOLTEN_EXIMITE, Material.LAVA, "molten_eximite");
+    public static FluidBlockBase blockMoltenHaderoth = new FluidBlockBase(ModFluids.MOLTEN_HADEROTH, Material.LAVA, "molten_haderoth");
+    public static FluidBlockBase blockMoltenHepatizon = new FluidBlockBase(ModFluids.MOLTEN_HEPATIZON, Material.LAVA, "molten_hepatizon");
+    public static FluidBlockBase blockMoltenIgnatius = new FluidBlockBase(ModFluids.MOLTEN_IGNATIUS, Material.LAVA, "molten_ignatius");
+    public static FluidBlockBase blockMoltenInfuscolium = new FluidBlockBase(ModFluids.MOLTEN_INFUSCOLIUM, Material.LAVA, "molten_infuscolium");
+    public static FluidBlockBase blockMoltenInolashite = new FluidBlockBase(ModFluids.MOLTEN_INOLASHITE, Material.LAVA, "molten_inolashite");
+    public static FluidBlockBase blockMoltenKalendrite = new FluidBlockBase(ModFluids.MOLTEN_KALENDRITE, Material.LAVA, "molten_kalendrite");
+    public static FluidBlockBase blockMoltenLemurite = new FluidBlockBase(ModFluids.MOLTEN_LEMURITE, Material.LAVA, "molten_lemurite");
+    public static FluidBlockBase blockMoltenManganese = new FluidBlockBase(ModFluids.MOLTEN_MANGANESE, Material.LAVA, "molten_manganese");
+    public static FluidBlockBase blockMoltenMeutoite = new FluidBlockBase(ModFluids.MOLTEN_MEUTOITE, Material.LAVA, "molten_meutoite");
+    public static FluidBlockBase blockMoltenMidasium = new FluidBlockBase(ModFluids.MOLTEN_MIDASIUM, Material.LAVA, "molten_midasium");
+    public static FluidBlockBase blockMoltenMithril = new FluidBlockBase(ModFluids.MOLTEN_MITHRIL, Material.LAVA, "molten_mithril");
+    public static FluidBlockBase blockMoltenOrichalcum = new FluidBlockBase(ModFluids.MOLTEN_ORICHALCUM, Material.LAVA, "molten_orichalcum");
+    public static FluidBlockBase blockMoltenOureclase = new FluidBlockBase(ModFluids.MOLTEN_OURECLASE, Material.LAVA, "molten_oureclase");
+    public static FluidBlockBase blockMoltenPlatinum = new FluidBlockBase(ModFluids.MOLTEN_PLATINUM, Material.LAVA, "molten_platinum");
+    public static FluidBlockBase blockMoltenPrometheum = new FluidBlockBase(ModFluids.MOLTEN_PROMETHEUM, Material.LAVA, "molten_prometheum");
+    public static FluidBlockBase blockMoltenQuicksilver = new FluidBlockBase(ModFluids.MOLTEN_QUICKSILVER, Material.LAVA, "molten_quicksilver");
+    public static FluidBlockBase blockMoltenRubracium = new FluidBlockBase(ModFluids.MOLTEN_RUBRACIUM, Material.LAVA, "molten_rubracium");
+    public static FluidBlockBase blockMoltenSanguinite = new FluidBlockBase(ModFluids.MOLTEN_SANGUINITE, Material.LAVA, "molten_sanguinite");
+    public static FluidBlockBase blockMoltenShadowIron = new FluidBlockBase(ModFluids.MOLTEN_SHADOW_IRON, Material.LAVA, "molten_shadow_iron");
+    public static FluidBlockBase blockMoltenShadowSteel = new FluidBlockBase(ModFluids.MOLTEN_SHADOW_STEEL, Material.LAVA, "molten_shadow_steel");
+    public static FluidBlockBase blockMoltenSilver = new FluidBlockBase(ModFluids.MOLTEN_SILVER, Material.LAVA, "molten_silver");
+    public static FluidBlockBase blockMoltenSteel = new FluidBlockBase(ModFluids.MOLTEN_STEEL, Material.LAVA, "molten_steel");
+    public static FluidBlockBase blockMoltenTartarite = new FluidBlockBase(ModFluids.MOLTEN_TARTARITE, Material.LAVA, "molten_tartarite");
+    public static FluidBlockBase blockMoltenTin = new FluidBlockBase(ModFluids.MOLTEN_TIN, Material.LAVA, "molten_tin");
+    public static FluidBlockBase blockMoltenVulcanite = new FluidBlockBase(ModFluids.MOLTEN_VULCANITE, Material.LAVA, "molten_vulcanite");
+    public static FluidBlockBase blockMoltenVyroxeres = new FluidBlockBase(ModFluids.MOLTEN_VYROXERES, Material.LAVA, "molten_vyroxeres");
+    public static FluidBlockBase blockMoltenZinc = new FluidBlockBase(ModFluids.MOLTEN_ZINC, Material.LAVA, "molten_zinc");
 
 	//Other Blocks
 	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(Metallurgy_5.tabBlock);
@@ -211,6 +255,50 @@ public class ModBlocks {
 
 				//FluidBlocks
 				blockMoltenAdamantine,
+				blockMoltenAlduorite,
+				blockMoltenAmordrine,
+				blockMoltenAngmallen,
+				blockMoltenAstralSilver,
+				blockMoltenAtlarus,
+				blockMoltenBlackSteel,
+				blockMoltenBrass,
+				blockMoltenBronze,
+				blockMoltenCarmot,
+				blockMoltenCelenegil,
+				blockMoltenCeruclase,
+				blockMoltenCopper,
+				blockMoltenDamascusSteel,
+				blockMoltenDeepIron,
+				blockMoltenDesichalkos,
+				blockMoltenElectrum,
+				blockMoltenEximite,
+				blockMoltenHaderoth,
+				blockMoltenHepatizon,
+				blockMoltenIgnatius,
+				blockMoltenInfuscolium,
+				blockMoltenInolashite,
+				blockMoltenKalendrite,
+				blockMoltenLemurite,
+				blockMoltenManganese,
+				blockMoltenMeutoite,
+				blockMoltenMidasium,
+				blockMoltenMithril,
+				blockMoltenOrichalcum,
+				blockMoltenOureclase,
+				blockMoltenPlatinum,
+				blockMoltenPrometheum,
+				blockMoltenQuicksilver,
+				blockMoltenRubracium,
+				blockMoltenSanguinite,
+				blockMoltenShadowIron,
+				blockMoltenShadowSteel,
+				blockMoltenSilver,
+				blockMoltenSteel,
+				blockMoltenTartarite,
+				blockMoltenTin,
+				blockMoltenVulcanite,
+				blockMoltenVyroxeres,
+				blockMoltenZinc,
 
 				//Tile Entities
 				crusher,
@@ -312,6 +400,50 @@ public class ModBlocks {
 
 				//FluidBlocks
 				blockMoltenAdamantine.createItemBlock(),
+                blockMoltenAlduorite.createItemBlock(),
+                blockMoltenAmordrine.createItemBlock(),
+                blockMoltenAngmallen.createItemBlock(),
+                blockMoltenAstralSilver.createItemBlock(),
+                blockMoltenAtlarus.createItemBlock(),
+                blockMoltenBlackSteel.createItemBlock(),
+                blockMoltenBrass.createItemBlock(),
+                blockMoltenBronze.createItemBlock(),
+                blockMoltenCarmot.createItemBlock(),
+                blockMoltenCelenegil.createItemBlock(),
+                blockMoltenCeruclase.createItemBlock(),
+                blockMoltenCopper.createItemBlock(),
+                blockMoltenDamascusSteel.createItemBlock(),
+                blockMoltenDeepIron.createItemBlock(),
+                blockMoltenDesichalkos.createItemBlock(),
+                blockMoltenElectrum.createItemBlock(),
+                blockMoltenEximite.createItemBlock(),
+                blockMoltenHaderoth.createItemBlock(),
+                blockMoltenHepatizon.createItemBlock(),
+                blockMoltenIgnatius.createItemBlock(),
+                blockMoltenInfuscolium.createItemBlock(),
+                blockMoltenInolashite.createItemBlock(),
+                blockMoltenKalendrite.createItemBlock(),
+                blockMoltenLemurite.createItemBlock(),
+                blockMoltenManganese.createItemBlock(),
+                blockMoltenMeutoite.createItemBlock(),
+                blockMoltenMidasium.createItemBlock(),
+                blockMoltenMithril.createItemBlock(),
+                blockMoltenOrichalcum.createItemBlock(),
+                blockMoltenOureclase.createItemBlock(),
+                blockMoltenPlatinum.createItemBlock(),
+                blockMoltenPrometheum.createItemBlock(),
+                blockMoltenQuicksilver.createItemBlock(),
+                blockMoltenRubracium.createItemBlock(),
+                blockMoltenSanguinite.createItemBlock(),
+                blockMoltenShadowIron.createItemBlock(),
+                blockMoltenShadowSteel.createItemBlock(),
+                blockMoltenSilver.createItemBlock(),
+                blockMoltenSteel.createItemBlock(),
+                blockMoltenTartarite.createItemBlock(),
+                blockMoltenTin.createItemBlock(),
+                blockMoltenVulcanite.createItemBlock(),
+                blockMoltenVyroxeres.createItemBlock(),
+                blockMoltenZinc.createItemBlock(),
 
 				//Tile Entities
 				crusher.createItemBlock(),
@@ -411,6 +543,51 @@ public class ModBlocks {
 
 		 //FluidBlocks
 		blockMoltenAdamantine.registerItemModel(Item.getItemFromBlock(blockMoltenAdamantine));
+        blockMoltenAlduorite.registerItemModel(Item.getItemFromBlock(blockMoltenAlduorite));
+        blockMoltenAmordrine.registerItemModel(Item.getItemFromBlock(blockMoltenAmordrine));
+        blockMoltenAngmallen.registerItemModel(Item.getItemFromBlock(blockMoltenAngmallen));
+        blockMoltenAstralSilver.registerItemModel(Item.getItemFromBlock(blockMoltenAstralSilver));
+        blockMoltenAtlarus.registerItemModel(Item.getItemFromBlock(blockMoltenAtlarus));
+        blockMoltenBlackSteel.registerItemModel(Item.getItemFromBlock(blockMoltenBlackSteel));
+        blockMoltenBrass.registerItemModel(Item.getItemFromBlock(blockMoltenBrass));
+        blockMoltenBronze.registerItemModel(Item.getItemFromBlock(blockMoltenBronze));
+        blockMoltenCarmot.registerItemModel(Item.getItemFromBlock(blockMoltenCarmot));
+        blockMoltenCelenegil.registerItemModel(Item.getItemFromBlock(blockMoltenCelenegil));
+        blockMoltenCeruclase.registerItemModel(Item.getItemFromBlock(blockMoltenCeruclase));
+        blockMoltenCopper.registerItemModel(Item.getItemFromBlock(blockMoltenCopper));
+        blockMoltenDamascusSteel.registerItemModel(Item.getItemFromBlock(blockMoltenDamascusSteel));
+        blockMoltenDeepIron.registerItemModel(Item.getItemFromBlock(blockMoltenDeepIron));
+        blockMoltenDesichalkos.registerItemModel(Item.getItemFromBlock(blockMoltenDesichalkos));
+        blockMoltenElectrum.registerItemModel(Item.getItemFromBlock(blockMoltenElectrum));
+        blockMoltenEximite.registerItemModel(Item.getItemFromBlock(blockMoltenEximite));
+        blockMoltenHaderoth.registerItemModel(Item.getItemFromBlock(blockMoltenHaderoth));
+        blockMoltenHepatizon.registerItemModel(Item.getItemFromBlock(blockMoltenHepatizon));
+        blockMoltenIgnatius.registerItemModel(Item.getItemFromBlock(blockMoltenIgnatius));
+        blockMoltenInfuscolium.registerItemModel(Item.getItemFromBlock(blockMoltenInfuscolium));
+        blockMoltenInolashite.registerItemModel(Item.getItemFromBlock(blockMoltenInolashite));
+        blockMoltenKalendrite.registerItemModel(Item.getItemFromBlock(blockMoltenKalendrite));
+        blockMoltenLemurite.registerItemModel(Item.getItemFromBlock(blockMoltenLemurite));
+        blockMoltenManganese.registerItemModel(Item.getItemFromBlock(blockMoltenManganese));
+        blockMoltenMeutoite.registerItemModel(Item.getItemFromBlock(blockMoltenMeutoite));
+        blockMoltenMidasium.registerItemModel(Item.getItemFromBlock(blockMoltenMidasium));
+        blockMoltenMithril.registerItemModel(Item.getItemFromBlock(blockMoltenMithril));
+        blockMoltenOrichalcum.registerItemModel(Item.getItemFromBlock(blockMoltenOrichalcum));
+        blockMoltenOureclase.registerItemModel(Item.getItemFromBlock(blockMoltenOureclase));
+        blockMoltenPlatinum.registerItemModel(Item.getItemFromBlock(blockMoltenPlatinum));
+        blockMoltenPrometheum.registerItemModel(Item.getItemFromBlock(blockMoltenPrometheum));
+        blockMoltenQuicksilver.registerItemModel(Item.getItemFromBlock(blockMoltenQuicksilver));
+        blockMoltenRubracium.registerItemModel(Item.getItemFromBlock(blockMoltenRubracium));
+        blockMoltenSanguinite.registerItemModel(Item.getItemFromBlock(blockMoltenSanguinite));
+        blockMoltenShadowIron.registerItemModel(Item.getItemFromBlock(blockMoltenShadowIron));
+        blockMoltenShadowSteel.registerItemModel(Item.getItemFromBlock(blockMoltenShadowSteel));
+        blockMoltenSilver.registerItemModel(Item.getItemFromBlock(blockMoltenSilver));
+        blockMoltenSteel.registerItemModel(Item.getItemFromBlock(blockMoltenSteel));
+        blockMoltenTartarite.registerItemModel(Item.getItemFromBlock(blockMoltenTartarite));
+        blockMoltenTin.registerItemModel(Item.getItemFromBlock(blockMoltenTin));
+        blockMoltenVulcanite.registerItemModel(Item.getItemFromBlock(blockMoltenVulcanite));
+        blockMoltenVyroxeres.registerItemModel(Item.getItemFromBlock(blockMoltenVyroxeres));
+        blockMoltenZinc.registerItemModel(Item.getItemFromBlock(blockMoltenZinc));
+
 
 		//Tile Entities
 		crusher.registerItemModel(Item.getItemFromBlock(crusher));
