@@ -44,7 +44,7 @@ public class BlockAlloyerRecipes {
     		return;
 
         this.alloyingList.put(input1, input2, result);
-        this.experienceList.put(result, Float.valueOf(experience));
+        this.experienceList.put(result, experience);
         this.recipeQuants.put(result, new ItemStack[] {input1, input2});
 	}
     
@@ -99,7 +99,7 @@ public class BlockAlloyerRecipes {
     public float getAlloyExperience(ItemStack stack)
 	{
 	    if(this.experienceList.containsKey(stack))
-	        return this.experienceList.get(stack).floatValue();
+	        return this.experienceList.get(stack);
 	    return 0.0F;
     }
 

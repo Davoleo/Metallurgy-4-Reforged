@@ -133,7 +133,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     public static void registerFixesFurnace(DataFixer fixer) {
-    	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, new String[] {"Items"}));
+    	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
 
     //If the name is not custom it trasnlates the name

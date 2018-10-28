@@ -37,9 +37,7 @@ public class SlotCrusherOutput extends Slot {
     @Override
     public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
     {
-        EntityPlayer player = thePlayer;
-
-        if (!player.world.isRemote)
+        if (!thePlayer.world.isRemote)
         {
             int i = stack.getCount();
             float f = BlockCrusherRecipes.getInstance().getCrushingExperience(stack);
