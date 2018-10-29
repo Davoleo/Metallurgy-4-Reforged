@@ -117,6 +117,7 @@ public class ModRecipes {
 
 
         //Furnace Recipes
+        //Ore2Ingot
         GameRegistry.addSmelting(ModBlocks.oreAdamantine, new ItemStack(ModItems.ingotAdamantine), 1f);
         GameRegistry.addSmelting(ModBlocks.oreAlduorite, new ItemStack(ModItems.ingotAlduorite), 1f);
         GameRegistry.addSmelting(ModBlocks.oreAstralSilver, new ItemStack(ModItems.ingotAstralSilver), 1f);
@@ -145,6 +146,64 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.oreVulcanite, new ItemStack(ModItems.ingotVulcanite), 1f);
         GameRegistry.addSmelting(ModBlocks.oreVyroxeres, new ItemStack(ModItems.ingotVyroxeres), 1f);
         GameRegistry.addSmelting(ModBlocks.oreZinc, new ItemStack(ModItems.ingotZinc), 1f);
+
+        //Dust2Ingot
+        GameRegistry.addSmelting(ModItems.dustAdamantine, new ItemStack(ModItems.ingotAdamantine), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustAlduorite, new ItemStack(ModItems.ingotAlduorite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustAmordrine, new ItemStack(ModItems.ingotAmordrine), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustAngmallen, new ItemStack(ModItems.ingotAngmallen), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustAstralSilver, new ItemStack(ModItems.ingotAstralSilver), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustAtlarus, new ItemStack(ModItems.ingotAtlarus), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustBlackSteel, new ItemStack(ModItems.ingotBlackSteel), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustBrass, new ItemStack(ModItems.ingotBrass), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustBronze, new ItemStack(ModItems.ingotBronze), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustCarmot, new ItemStack(ModItems.ingotCarmot), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustCelenegil, new ItemStack(ModItems.ingotCelenegil), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustCeruclase, new ItemStack(ModItems.ingotCeruclase), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustCopper, new ItemStack(ModItems.ingotCopper), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustDamascusSteel, new ItemStack(ModItems.ingotDamascusSteel), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustDeepIron, new ItemStack(ModItems.ingotDeepIron), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustDesichalkos, new ItemStack(ModItems.ingotDesichalkos), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustElectrum, new ItemStack(ModItems.ingotElectrum), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustEximite, new ItemStack(ModItems.ingotEximite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustHaderoth, new ItemStack(ModItems.ingotHaderoth), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustHepatizon, new ItemStack(ModItems.ingotHepatizon), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustIgnatius, new ItemStack(ModItems.ingotIgnatius), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustInfuscolium, new ItemStack(ModItems.ingotInfuscolium), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustInolashite, new ItemStack(ModItems.ingotInolashite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustKalendrite, new ItemStack(ModItems.ingotKalendrite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustLemurite, new ItemStack(ModItems.ingotLemurite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustManganese, new ItemStack(ModItems.ingotManganese), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustMeutoite, new ItemStack(ModItems.ingotMeutoite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustMidasium, new ItemStack(ModItems.ingotMidasium), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustMithril, new ItemStack(ModItems.ingotMithril), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustOrichalcum, new ItemStack(ModItems.ingotOrichalcum), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustOureclase, new ItemStack(ModItems.ingotOureclase), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustPlatinum, new ItemStack(ModItems.ingotPlatinum), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustPrometheum, new ItemStack(ModItems.ingotPrometheum), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustQuickSilver, new ItemStack(ModItems.ingotQuickSilver), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustRubracium, new ItemStack(ModItems.ingotRubracium), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustSanguinite, new ItemStack(ModItems.ingotSanguinite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustShadowIron, new ItemStack(ModItems.ingotShadowIron), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustShadowSteel, new ItemStack(ModItems.ingotShadowSteel), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustSilver, new ItemStack(ModItems.ingotSilver), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustSteel, new ItemStack(ModItems.ingotSteel), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustTartarite, new ItemStack(ModItems.ingotTartarite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustTin, new ItemStack(ModItems.ingotTin), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustVulcanite, new ItemStack(ModItems.ingotVulcanite), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustVyroxeres, new ItemStack(ModItems.ingotVyroxeres), 0.25F);
+        GameRegistry.addSmelting(ModItems.dustZinc, new ItemStack(ModItems.ingotZinc), 0.25F);
+
+
+
+
+
+
+
+
+
+
+
         
     }
 

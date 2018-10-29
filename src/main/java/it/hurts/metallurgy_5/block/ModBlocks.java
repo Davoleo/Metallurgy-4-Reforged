@@ -30,8 +30,8 @@ public class ModBlocks {
 	public static BlockOre oreCopper = new BlockOre("copper_ore","oreCopper").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreDeepIron = new BlockOre("deep_iron_ore","oreDeepIron").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreEximite = new BlockOre("eximite_ore","oreEximite").setCreativeTab(Metallurgy_5.tabOre);
-	public static BlockOre oreInfuscolium = new BlockOre("infuscolium_ore","oreInfuscolium").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreIgnatius = new BlockOre("ignatius_ore","oreIgnatius").setCreativeTab(Metallurgy_5.tabOre);
+	public static BlockOre oreInfuscolium = new BlockOre("infuscolium_ore","oreInfuscolium").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreKalendrite = new BlockOre("kalendrite_ore","oreKalendrite").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreLemurite = new BlockOre("lemurite_ore","oreLemurite").setCreativeTab(Metallurgy_5.tabOre);
 	public static BlockOre oreManganese = new BlockOre("manganese_ore","oreManganese").setCreativeTab(Metallurgy_5.tabOre);
