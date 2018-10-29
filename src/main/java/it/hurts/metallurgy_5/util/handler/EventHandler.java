@@ -89,7 +89,7 @@ public class EventHandler {
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.deep_iron_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 2));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 3));
 		}
 		
 //		Vulcanite Armor (Fire Immunity)
@@ -215,7 +215,7 @@ public class EventHandler {
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
 			
 			if((int)(Math.random()*100) <= 30)
-				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100));
+				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 		}
 		
 //		TODO migliorare questo effetto

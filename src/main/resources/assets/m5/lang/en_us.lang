@@ -673,24 +673,25 @@ container.alloyer=Alloyer
 item.metallurgy_5.ignatius_sword.description=§l§cFire Aspect
 #WTF is this key?? ^
 #Armor Tooltips
-tooltip.m5.adamantine_armor_effect=Always well fed
-tooltip.m5.amordrine_armor_effect=Strengthens you
-tooltip.m5.angmallen_armor_effect=(WIP) Luck (WIP)
-tooltip.m5.astral_silver_armor_effect=Astral Jumps become possible
-tooltip.m5.carmot_armor_effect=(WIP) Haste (WIP)
-tooltip.m5.celenegil_armor_effect=Makes you more tough
-tooltip.m5.deep_iron_armor_effect=(WIP) Makes you swim faster (WIP)
-tooltip.m5.kalendrite_armor_effect=Strengthens you
-tooltip.m5.mithril_armor_effect=Plus-Ultra Instinct (Quirk Edition)
-tooltip.m5.platinum_armor_effect=Night Vision<NL>It's also really sticky
-tooltip.m5.prometheum_armor_effect=Poison Immunity
-tooltip.m5.vulcanite_armor_effect=Fire Immunity
+tooltip.m5.adamantine_armor_effect=§4Always well fed
+tooltip.m5.amordrine_armor_effect=§dStrengthens you
+tooltip.m5.angmallen_armor_effect=§e(WIP) Luck (WIP)
+tooltip.m5.astral_silver_armor_effect=§fAstral Jumps become possible
+tooltip.m5.carmot_armor_effect=§e(WIP) Haste (WIP)
+tooltip.m5.celenegil_armor_effect=§aMakes you more tough
+tooltip.m5.deep_iron_armor_effect=§1(WIP) Makes you swim faster (WIP)
+tooltip.m5.kalendrite_armor_effect=§dStrengthens you
+tooltip.m5.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
+tooltip.m5.platinum_armor_effect=§bNight Vision [It's also really sticky]
+tooltip.m5.prometheum_armor_effect=§2Poison Immunity
+tooltip.m5.vulcanite_armor_effect=§cFire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
-tooltip.m5.ignatius_sword_effect=Fire Aspect I
-tooltip.m5.kalendrite_sword_effect=Has the chance to regenerate your life
-tooltip.m5.sanguinite_sword_effect=Life Steal
-tooltip.m5.shadow_iron_sword_effect=Blinds the target<NL>Wraps your enemy into shadow!
-tooltip.m5.tartarite_sword_effect=Wither II
-tooltip.m5.vulcanite_sword_effect=Fire Aspect II
-tooltip.m5.vyroxeres_sword_effect=Poisons your target
+tooltip.m5.ignatius_sword_effect=§cFire Aspect I
+tooltip.m5.kalendrite_sword_effect=§dHas the chance to regenerate your life
+tooltip.m5.midasium_sword_effect=§6Golden Lucky Drops
+tooltip.m5.sanguinite_sword_effect=§4Life Steal
+tooltip.m5.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
+tooltip.m5.tartarite_sword_effect=§8Wither II
+tooltip.m5.vulcanite_sword_effect=§cFire Aspect II
+tooltip.m5.vyroxeres_sword_effect=§aPoisons your target
