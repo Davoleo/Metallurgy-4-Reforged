@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "TD"
+  ],
+  "key":{
+    "T":{
+      "type": "forge:ore_dict",
+      "ore": "dustAtlarus"
+    },
+    "D":{
+      "type": "forge:ore_dict",
+      "ore": "dustAdamantine"
+    }
+  },
+  "result": {
+    "item": "m5:tartarite_dust"
+  }
+}

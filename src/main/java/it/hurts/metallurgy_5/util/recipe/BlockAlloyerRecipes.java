@@ -4,6 +4,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_5.item.ModItems;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import java.util.Map;
@@ -32,8 +33,88 @@ public class BlockAlloyerRecipes {
 
     private BlockAlloyerRecipes()
 	{
-	    //TODO : Fucking complete this Davoleo
-		this.addAlloyRecipe(new ItemStack(ModItems.ingotCopper, 3), new ItemStack(ModItems.ingotTin), new ItemStack(ModItems.ingotBronze, 4), 10F);
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotCopper, 3),
+                new ItemStack(ModItems.ingotTin),
+                new ItemStack(ModItems.ingotBronze, 4), 1.75F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotShadowIron, 2),
+                new ItemStack(ModItems.ingotLemurite),
+                new ItemStack(ModItems.ingotShadowSteel, 3), 1.5F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotAlduorite),
+                new ItemStack(ModItems.ingotCeruclase),
+                new ItemStack(ModItems.ingotInolashite, 2), 1.25F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotCopper, 2),
+                new ItemStack(ModItems.ingotZinc),
+                new ItemStack(ModItems.ingotBrass, 4), 1.75F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotDeepIron, 3),
+                new ItemStack(ModItems.ingotInfuscolium),
+                new ItemStack(ModItems.ingotBlackSteel, 4), 1.75F);
+
+		this.addAlloyRecipe
+                (new ItemStack(Items.IRON_INGOT),
+                new ItemStack(ModItems.dustManganese, 3),
+                new ItemStack(ModItems.ingotSteel), 1.5F);
+
+		this.addAlloyRecipe
+                (new ItemStack(Items.IRON_INGOT),
+                new ItemStack(ModItems.ingotBronze, 2),
+                new ItemStack(ModItems.ingotDamascusSteel, 3), 1.5F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotSilver),
+                new ItemStack(Items.GOLD_INGOT),
+                new ItemStack(ModItems.ingotElectrum), 1.25F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotOrichalcum),
+                new ItemStack(ModItems.ingotPlatinum),
+                new ItemStack(ModItems.ingotCelenegil, 2), 1.25F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotKalendrite),
+                new ItemStack(ModItems.ingotPlatinum),
+                new ItemStack(ModItems.ingotAmordrine, 2), 1.25F);
+
+		this.addAlloyRecipe(
+		        new ItemStack(ModItems.ingotMithril),
+                new ItemStack(ModItems.ingotRubracium, 2),
+                new ItemStack(ModItems.ingotHaderoth, 3), 1.5F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotAdamantine),
+                new ItemStack(ModItems.ingotAtlarus),
+                new ItemStack(ModItems.ingotTartarite), 1.5F); //output decreased by one for balance sake
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotEximite),
+                new ItemStack(ModItems.ingotMeutoite),
+                new ItemStack(ModItems.ingotDesichalkos, 2), 1.25F);
+
+		this.addAlloyRecipe
+                (new ItemStack(Items.IRON_INGOT),
+                new ItemStack(Items.GOLD_INGOT),
+                new ItemStack(ModItems.ingotAngmallen, 2), 1.25F);
+
+		//Original Recipe: [Bronze + Gold] 1:1
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotInfuscolium),
+                new ItemStack(ModItems.ingotSteel),
+                new ItemStack(ModItems.ingotHepatizon, 2), 1.25F);
+
+		this.addAlloyRecipe
+                (new ItemStack(ModItems.ingotSilver),
+                new ItemStack(ModItems.ingotMithril),
+                new ItemStack(ModItems.ingotQuickSilver, 2), 1.25F);
+
+
 	}
 
     public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {

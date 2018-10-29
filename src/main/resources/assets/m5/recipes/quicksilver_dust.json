@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "MS"
+  ],
+  "key":{
+    "M":{
+      "type": "forge:ore_dict",
+      "ore": "dustMithril"
+    },
+    "S":{
+      "type": "forge:ore_dict",
+      "ore": "dustSilver"
+    }
+  },
+  "result": {
+    "item": "m5:quicksilver_dust",
+    "count": 2
+  }
+}

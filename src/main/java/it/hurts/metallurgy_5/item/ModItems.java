@@ -64,6 +64,9 @@ public class ModItems {
 	public static ItemOre dustVyroxeres = new ItemOre ("vyroxeres_dust","dustVyroxeres").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustZinc = new ItemOre ("zinc_dust","dustZinc ").setCreativeTab(Metallurgy_5.tabDust);
 
+	public static ItemOre dustGold = new ItemOre("gold_dust", "dustGold").setCreativeTab(Metallurgy_5.tabDust);
+	public static ItemOre dustIron = new ItemOre("iron_dust", "dustIron").setCreativeTab(Metallurgy_5.tabDust);
+
 	public static ItemOre dustBitumen = new ItemOre ("bitumen","dustBitumen").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustPotash = new ItemOre ("potash","dustPotash").setCreativeTab(Metallurgy_5.tabDust);
@@ -173,6 +176,9 @@ public class ModItems {
                 dustVyroxeres,
                 dustZinc,
 
+				dustGold,
+				dustIron,
+
 				dustBitumen,
 				oreslimeball,
 				dustPotash,
@@ -279,6 +285,9 @@ public class ModItems {
         dustVulcanite.registerItemModel();
         dustVyroxeres.registerItemModel();
         dustZinc.registerItemModel();
+
+        dustGold.registerItemModel();
+        dustIron.registerItemModel();
 
 		dustBitumen.registerItemModel();
 		oreslimeball.registerItemModel();

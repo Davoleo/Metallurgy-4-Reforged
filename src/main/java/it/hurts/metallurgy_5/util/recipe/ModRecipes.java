@@ -66,6 +66,55 @@ public class ModRecipes {
         ModItems.ingotVyroxeres.initOreDict();
         ModItems.ingotZinc.initOreDict();
 
+        //Dusts
+        ModItems.dustAdamantine.initOreDict();
+        ModItems.dustAlduorite.initOreDict();
+        ModItems.dustAmordrine.initOreDict();
+        ModItems.dustAngmallen.initOreDict();
+        ModItems.dustAstralSilver.initOreDict();
+        ModItems.dustAtlarus.initOreDict();
+        ModItems.dustBlackSteel.initOreDict();
+        ModItems.dustBrass.initOreDict();
+        ModItems.dustBronze.initOreDict();
+        ModItems.dustCarmot.initOreDict();
+        ModItems.dustCelenegil.initOreDict();
+        ModItems.dustCeruclase.initOreDict();
+        ModItems.dustCopper.initOreDict();
+        ModItems.dustDamascusSteel.initOreDict();
+        ModItems.dustDeepIron.initOreDict();
+        ModItems.dustDesichalkos.initOreDict();
+        ModItems.dustElectrum.initOreDict();
+        ModItems.dustEximite.initOreDict();
+        ModItems.dustGold.initOreDict();
+        ModItems.dustHaderoth.initOreDict();
+        ModItems.dustHepatizon.initOreDict();
+        ModItems.dustIgnatius.initOreDict();
+        ModItems.dustInfuscolium.initOreDict();
+        ModItems.dustInolashite.initOreDict();
+        ModItems.dustIron.initOreDict();
+        ModItems.dustKalendrite.initOreDict();
+        ModItems.dustLemurite.initOreDict();
+        ModItems.dustManganese.initOreDict();
+        ModItems.dustMeutoite.initOreDict();
+        ModItems.dustMidasium.initOreDict();
+        ModItems.dustMithril.initOreDict();
+        ModItems.dustOrichalcum.initOreDict();
+        ModItems.dustOureclase.initOreDict();
+        ModItems.dustPlatinum.initOreDict();
+        ModItems.dustPrometheum.initOreDict();
+        ModItems.dustQuickSilver.initOreDict();
+        ModItems.dustRubracium.initOreDict();
+        ModItems.dustSanguinite.initOreDict();
+        ModItems.dustShadowIron.initOreDict();
+        ModItems.dustShadowSteel.initOreDict();
+        ModItems.dustSilver.initOreDict();
+        ModItems.dustSteel.initOreDict();
+        ModItems.dustTartarite.initOreDict();
+        ModItems.dustTin.initOreDict();
+        ModItems.dustVulcanite.initOreDict();
+        ModItems.dustVyroxeres.initOreDict();
+        ModItems.dustZinc.initOreDict();
+
         //Blocks
         ModBlocks.blockAdamantine.initOreDict();
         ModBlocks.blockAlduorite.initOreDict();

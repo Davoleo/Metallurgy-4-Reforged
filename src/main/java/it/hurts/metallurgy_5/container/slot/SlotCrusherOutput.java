@@ -18,7 +18,6 @@ import net.minecraft.util.math.MathHelper;
 
 public class SlotCrusherOutput extends Slot {
 
-    @SuppressWarnings("unused")
 	private final EntityPlayer player;
 
 
