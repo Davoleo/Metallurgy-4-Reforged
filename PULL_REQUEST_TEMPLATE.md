@@ -3,9 +3,9 @@ Make sure you read https://github.com/Davoleo/Metallurgy-4-Reforged/blob/1.12.2/
 
 This is a: <!-- delete the one which isn't according to the PR's content -->
 * Code Pull request
-* Assets Pull request
+* Assets Pull request **[make sure your assets are respecting the art-style of the mod]**
 
-### Description of the pull request content:
+#### Description of the pull request content:
 
 
 
