@@ -1,6 +1,21 @@
+# Contributing to the "Metallurgy: Reforged" project
+
+##### Prequisites:
+1. _Git and Github Knoweledge (This guide **does not** explain how git works)_
+
+---
+## Guide on Issues
+- Check if there's another open issue about the same topic!
+- Be sure to be as specific as possible in describing the issue
+- Provide the most information you are able to (crash reports | logs | mod versions | forge version)
+- If possible post screenshots of the issue you're experiencing
+- ***[if your issue does not respect these contributing lines it will be likely closed as invalid]***
+
+---
 ## Guide on Pull Requests
 
-### To contribute to *Metallurgy 4: Reforged* project
+Before contributing actively to the repository think of what you are going to add and why it makes sense to add it!
+Tell us about it too
 
 *Steps:*
 1. Fork the repository
@@ -15,7 +30,7 @@
 #### Specific information about steps previously listed
 
 
-###### Forking the repository
+###### Fork the repository
 https://imgur.com/8PV2hlZ
 
 ---
@@ -23,17 +38,10 @@ To contact us about the 2° step join this [discord server](https://discord.gg/y
 
 ---
 ###### Pushing your features to your fork
-There are 2 ways to do it:
-
-1. Add files directly from github (Beware to choose the right branch! and directory! see below)<br>
-https://imgur.com/SBo05L9
-
-2. Clone the repository on your local machine and push features from a git client [reccomended]<br>
+Clone the repository on your local machine and push features from a git client [reccomended]<br>
 I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 Tutorial: https://support.gitkraken.com<br>
 Download: https://www.gitkraken.com/invite/mVRqih9P
-
-If you plan on contribuing multiple times or continuously I suggest you the second method of committing features to your fork
 
 **Please pay attention on where you upload your features** <br>
 you should know how a mod is structured<br>
@@ -47,6 +55,8 @@ Blockstates directory: `src/main/resources/assets/m5/blockstates` <br>
 ---
 ###### Creating the Pull request
 Things TO DO!<br>
+**BEFORE creating the pull request check if your changes break anything and if your PR has any bugs**<br>
+Tell us about the changes and how they are implemented in the pull request description<br>
 If you pushed commit to one branch you need to pull request to that same branch!<br>
 Compare across forks!<br>
 Check in the commit section below if the commits you are proposing are yours
