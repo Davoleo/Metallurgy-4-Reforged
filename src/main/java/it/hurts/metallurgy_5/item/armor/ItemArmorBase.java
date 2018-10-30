@@ -29,40 +29,24 @@ import java.util.List;
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
 	private String name;
-	private String tooltip = "";
-	private Enchantment enchantment = null;
-	private int enchantmentLevel = 0;
+	private String tooltip;
+	private Enchantment enchantment;
+	private int enchantmentLevel;
 
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
 	{
-		super(material, 0, slot);
-		setRegistryName(name);
-		setUnlocalizedName(name);
-		this.name = name;
-		setCreativeTab(Metallurgy_5.tabArmor);
+		this(material, slot, name, "", null, 0);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
 	{
-		super(material, 0, slot);
-		setRegistryName(name);
-		setUnlocalizedName(name);
-		this.tooltip = tooltip;
-		this.name = name;
-		setCreativeTab(Metallurgy_5.tabArmor);
+		this(material, slot, name, tooltip, null, 0);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
 	{
-		super(material, 0, slot);
-		setRegistryName(name);
-		setUnlocalizedName(name);
-		this.name = name;
-		this.enchantment = enchantment;
-		this.enchantmentLevel = enchantmentLevel;
-		setCreativeTab(Metallurgy_5.tabArmor);
-
+		this(material, slot, name, "", enchantment, enchantmentLevel);
 	}
 	
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){

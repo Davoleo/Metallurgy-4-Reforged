@@ -30,27 +30,18 @@ import java.util.List;
 public class ItemSwordBase extends ItemSword {
 
     private String name;
-    private String tooltip = "";
-	private Enchantment enchantment = null;
-	private int enchantmentLevel = 0;
+    private String tooltip;
+	private Enchantment enchantment;
+	private int enchantmentLevel;
 
     public ItemSwordBase(ToolMaterial material, String name)
     {
-        super(material);
-        setUnlocalizedName(name);
-        setRegistryName(name);
-        this.name = name;
-        setCreativeTab(Metallurgy_5.tabTool);
+        this(material, name, "", null, 0);
     }
 
     public ItemSwordBase(ToolMaterial material, String name,  String tooltip)
     {
-        super(material);
-        setUnlocalizedName(name);
-        setRegistryName(name);
-        this.name = name;
-        this.tooltip = tooltip;
-        setCreativeTab(Metallurgy_5.tabTool);
+       this(material, name, tooltip, null, 0);
     }
     
     public ItemSwordBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
