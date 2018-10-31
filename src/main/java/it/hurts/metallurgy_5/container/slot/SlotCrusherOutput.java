@@ -1,5 +1,7 @@
 package it.hurts.metallurgy_5.container.slot;
 
+import it.hurts.metallurgy_5.util.Utils;
+import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
 import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,6 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /*************************************************
  * Author: Davoleo
@@ -18,7 +21,8 @@ import net.minecraft.util.math.MathHelper;
 
 public class SlotCrusherOutput extends Slot {
 
-	private final EntityPlayer player;
+    @SuppressWarnings("unused")
+    private final EntityPlayer player;
 
 
     public SlotCrusherOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
@@ -34,40 +38,18 @@ public class SlotCrusherOutput extends Slot {
     }
 
     @Override
-    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
-    {
-        if (!thePlayer.world.isRemote)
-        {
-            int i = stack.getCount();
-            float f = BlockCrusherRecipes.getInstance().getCrushingExperience(stack);
-
-            if (f == 0.0F)
-            {
-                i = 0;
-            }
-            else if (f < 1.0F)
-            {
-                int j = MathHelper.floor((float)i * f);
-
-                if (j < MathHelper.ceil((float)i * f) && Math.random() < (double)((float)i * f - (float)j))
-                {
-                    ++j;
-                }
-
-                i = j;
-            }
-
-            while (i > 0)
-            {
-                int k = EntityXPOrb.getXPSplit(i);
-                i -= k;
-                player.world.spawnEntity(new EntityXPOrb(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, k));
-            }
-        }
-
-        onSlotChanged();
-        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerSmeltedEvent(player, stack);
+    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
+        onCrafting(stack);
         return super.onTake(thePlayer, stack);
     }
 
+    @Override
+    protected void onCrafting(ItemStack output) {
+        if (!player.world.isRemote) {
+            int i = output.getCount();
+            output.onCrafting(player.world, player, i);
+            Utils.giveExperience(player, i * BlockCrusherRecipes.getInstance().getCrushingExperience(output));
+        }
+        FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
+    }
 }

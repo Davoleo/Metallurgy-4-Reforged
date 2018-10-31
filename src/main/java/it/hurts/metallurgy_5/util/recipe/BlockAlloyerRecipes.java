@@ -4,8 +4,8 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_5.item.ModItems;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -21,138 +21,48 @@ import java.util.Map.Entry;
  ***************************/
 public class BlockAlloyerRecipes {
 
-	private static final BlockAlloyerRecipes INSTANCE = new BlockAlloyerRecipes();
-	private final Table<ItemStack, ItemStack, ItemStack> alloyingList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
+    private static final BlockAlloyerRecipes INSTANCE = new BlockAlloyerRecipes();
+    private final Table<ItemStack, ItemStack, ItemStack> alloyingList = HashBasedTable.create();
 
-	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
-	private final Map<ItemStack, ItemStack[]> recipeQuants = Maps.<ItemStack, ItemStack[]>newHashMap();
-    
+    private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
+    private final Map<ItemStack, ItemStack[]> recipeQuants = Maps.newHashMap();
+
     public static BlockAlloyerRecipes getInstance() {
-    	return INSTANCE;
+        return INSTANCE;
     }
 
-    private BlockAlloyerRecipes()
-	{
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotCopper, 3),
-                new ItemStack(ModItems.ingotTin),
-                new ItemStack(ModItems.ingotBronze, 4), 1.75F);
+    private BlockAlloyerRecipes() {
+        //TODO : Fucking complete this Davoleo
+        this.addAlloyRecipe(new ItemStack(ModItems.ingotCopper, 3), new ItemStack(ModItems.ingotTin), new ItemStack(ModItems.ingotBronze, 4), 10F);
+    }
 
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotShadowIron, 2),
-                new ItemStack(ModItems.ingotLemurite),
-                new ItemStack(ModItems.ingotShadowSteel, 3), 1.5F);
+    private void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
 
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotAlduorite),
-                new ItemStack(ModItems.ingotCeruclase),
-                new ItemStack(ModItems.ingotInolashite, 2), 1.25F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotCopper, 2),
-                new ItemStack(ModItems.ingotZinc),
-                new ItemStack(ModItems.ingotBrass, 4), 1.75F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotDeepIron, 3),
-                new ItemStack(ModItems.ingotInfuscolium),
-                new ItemStack(ModItems.ingotBlackSteel, 4), 1.75F);
-
-		this.addAlloyRecipe
-                (new ItemStack(Items.IRON_INGOT),
-                new ItemStack(ModItems.dustManganese, 3),
-                new ItemStack(ModItems.ingotSteel), 1.5F);
-
-		this.addAlloyRecipe
-                (new ItemStack(Items.IRON_INGOT),
-                new ItemStack(ModItems.ingotBronze, 2),
-                new ItemStack(ModItems.ingotDamascusSteel, 3), 1.5F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotSilver),
-                new ItemStack(Items.GOLD_INGOT),
-                new ItemStack(ModItems.ingotElectrum), 1.25F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotOrichalcum),
-                new ItemStack(ModItems.ingotPlatinum),
-                new ItemStack(ModItems.ingotCelenegil, 2), 1.25F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotKalendrite),
-                new ItemStack(ModItems.ingotPlatinum),
-                new ItemStack(ModItems.ingotAmordrine, 2), 1.25F);
-
-		this.addAlloyRecipe(
-		        new ItemStack(ModItems.ingotMithril),
-                new ItemStack(ModItems.ingotRubracium, 2),
-                new ItemStack(ModItems.ingotHaderoth, 3), 1.5F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotAdamantine),
-                new ItemStack(ModItems.ingotAtlarus),
-                new ItemStack(ModItems.ingotTartarite), 1.5F); //output decreased by one for balance sake
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotEximite),
-                new ItemStack(ModItems.ingotMeutoite),
-                new ItemStack(ModItems.ingotDesichalkos, 2), 1.25F);
-
-		this.addAlloyRecipe
-                (new ItemStack(Items.IRON_INGOT),
-                new ItemStack(Items.GOLD_INGOT),
-                new ItemStack(ModItems.ingotAngmallen, 2), 1.25F);
-
-		//Original Recipe: [Bronze + Gold] 1:1
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotInfuscolium),
-                new ItemStack(ModItems.ingotSteel),
-                new ItemStack(ModItems.ingotHepatizon, 2), 1.25F);
-
-		this.addAlloyRecipe
-                (new ItemStack(ModItems.ingotSilver),
-                new ItemStack(ModItems.ingotMithril),
-                new ItemStack(ModItems.ingotQuickSilver, 2), 1.25F);
-
-
-	}
-
-    public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
-    	
-    	if(input1.isEmpty() || input2.isEmpty() || result.isEmpty())
+        if (input1.isEmpty() || input2.isEmpty() || result.isEmpty())
             return;
-    	if(getAlloyResult(input1, input2) != ItemStack.EMPTY)
-    		return;
+        if (getAlloyResult(input1, input2) != ItemStack.EMPTY)
+            return;
 
         this.alloyingList.put(input1, input2, result);
         this.experienceList.put(result, experience);
-        this.recipeQuants.put(result, new ItemStack[] {input1, input2});
-	}
-    
-    public ItemStack getAlloyResult(ItemStack input1, ItemStack input2)
-	{
-            for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
-            {
-                if (this.compareItemStacks(input1, entry.getKey()))
-                {
-                    for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
-                    {
-                        if (this.compareItemStacks(input2, ent.getKey()))
-                        {
-                            return ent.getValue();
-                        }
+        this.recipeQuants.put(result, new ItemStack[]{input1, input2});
+    }
+
+    public ItemStack getAlloyResult(ItemStack input1, ItemStack input2) {
+        for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet()) {
+            if (this.compareItemStacks(input1, entry.getKey())) {
+                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) {
+                    if (this.compareItemStacks(input2, ent.getKey())) {
+                        return ent.getValue();
                     }
                 }
             }
+        }
 
-            for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet())
-        {
-            if (this.compareItemStacks(input2, entry.getKey()))
-            {
-                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet())
-                {
-                    if (this.compareItemStacks(input1, ent.getKey()))
-                    {
+        for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet()) {
+            if (this.compareItemStacks(input2, entry.getKey())) {
+                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) {
+                    if (this.compareItemStacks(input1, ent.getKey())) {
                         return ent.getValue();
                     }
                 }
@@ -160,28 +70,18 @@ public class BlockAlloyerRecipes {
         }
 
         return ItemStack.EMPTY;
-	}
-
-	private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
-	{
-		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
-	}
-
-	public Table<ItemStack, ItemStack, ItemStack> getAlloyListTable()
-	{
-		return alloyingList;
-	}
-
-	public Map<ItemStack, Float> getExperienceList()
-    {
-        return experienceList;
     }
-    
-    public float getAlloyExperience(ItemStack stack)
-	{
-	    if(this.experienceList.containsKey(stack))
-	        return this.experienceList.get(stack);
-	    return 0.0F;
+
+    private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {
+        return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
+    }
+
+    public float getAlloyExperience(ItemStack stack) {
+        for (ItemStack in : this.experienceList.keySet()) {
+            if (in.isItemEqual(stack) || (in.getItem() == stack.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+                return experienceList.get(in);
+        }
+        return 0.0F;
     }
 
     public int getItemQuantity(ItemStack result, ItemStack input)
@@ -196,10 +96,4 @@ public class BlockAlloyerRecipes {
         }
         return 0;
     }
-
-    public Map<ItemStack, ItemStack[]> getRecipeQuants()
-    {
-        return recipeQuants;
-    }
-
 }
