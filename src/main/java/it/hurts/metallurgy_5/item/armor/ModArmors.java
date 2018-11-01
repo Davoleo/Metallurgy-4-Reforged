@@ -76,7 +76,7 @@ public class ModArmors {
 	public static ItemArmorBase deep_iron_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.HEAD , "deep_iron_helmet", Tooltips.DEEP_IRON_ARMOR_EFFECT);
 	public static ItemArmorBase deep_iron_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.CHEST , "deep_iron_chest", Tooltips.DEEP_IRON_ARMOR_EFFECT);
 	public static ItemArmorBase deep_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs", Tooltips.DEEP_IRON_ARMOR_EFFECT);
-	public static ItemArmorBase deep_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots", Tooltips.DEEP_IRON_ARMOR_EFFECT);
+	public static ItemArmorBase deep_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots", Tooltips.DEEP_IRON_ARMOR_EFFECT, Enchantments.DEPTH_STRIDER, 3);
 
 	public static ItemArmorBase desichalkos_helmet =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.HEAD, "desichalkos_helmet");
 	public static ItemArmorBase desichalkos_chest =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.CHEST, "desichalkos_chest");

@@ -12,5 +12,6 @@
   },
   "result":{
     "item":"m5:deep_iron_boots"
+    "nbt":"{ench:[{lvl:3s,id:8s}]}"
   }
 }

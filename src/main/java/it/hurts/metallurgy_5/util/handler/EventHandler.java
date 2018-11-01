@@ -3,14 +3,19 @@ package it.hurts.metallurgy_5.util.handler;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -32,6 +37,7 @@ import java.util.List;
 public class EventHandler {
 	
 	private static boolean fire = false;
+	private final static double speed = 0.10000000149011612D;
 	
 //	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
@@ -89,8 +95,13 @@ public class EventHandler {
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.deep_iron_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 3));
-		}
+			noSwimming(event.player);
+			event.player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 60, 3));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 120, 1));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
+			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15);
+		}else
+			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(speed);
 		
 //		Vulcanite Armor (Fire Immunity)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
@@ -273,6 +284,31 @@ public class EventHandler {
 				 event.setCanceled(fire);
 		}
 		
+	}
+	
+	/*
+	 * Impossibilità del player di nuotare;
+	 * Impossibilità del player di rimanere a galla;
+	 * Alla pressione di *space* il player riceve una spinta verso l'alto o riceve *levitation*
+	 * La durata dell'effetto o l'altezza della spinta si calcola in base alla media delle profondità marittime e l'altezza del player
+	 * EntityLivingBase JUMP
+	 * EntityPlayer FALL
+	 */
+	public static void waterAssist(EntityLivingBase entity) {
+	}
+	
+//	Aumentare la velocità del player sott'acqua
+    public static void noSwimming(EntityPlayer player) {
+            World world = player.getEntityWorld();
+            BlockPos pos = player.getPosition().down(1);
+            IBlockState state = world.getBlockState(pos);
+            Block block = state.getBlock();
+            
+            if (world.isRemote)
+                if (!player.isCreative())
+                    if (player.isInWater())
+                    	if (block.isReplaceable(world, pos))
+                            player.motionY -= 0.07D;     	// -= 0.04D with no waterAssist
 	}
 	
 }
