@@ -26,7 +26,6 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
 
     public abstract Class<TE> getTileEntityClass();
 
-    @SuppressWarnings("unchecked")
 	public TE getTileEntity(IBlockAccess world, BlockPos pos)
     {
         return (TE)world.getTileEntity(pos);

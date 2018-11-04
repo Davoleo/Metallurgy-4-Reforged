@@ -20,8 +20,55 @@ public class ModRecipes {
     public static void init()
     {
 
-        // TODO : Finish ingot oredict initialization
         //Ore-dict
+        //Blocks
+        ModBlocks.blockAdamantine.initOreDict();
+        ModBlocks.blockAlduorite.initOreDict();
+        ModBlocks.blockAngmallen.initOreDict();
+        ModBlocks.blockAstralSilver.initOreDict();
+        ModBlocks.blockAtlarus.initOreDict();
+        ModBlocks.blockAmordrine.initOreDict();
+        ModBlocks.blockBlackSteel.initOreDict();
+        ModBlocks.blockBrass.initOreDict();
+        ModBlocks.blockBronze.initOreDict();
+        ModBlocks.blockCarmot.initOreDict();
+        ModBlocks.blockCelenegil.initOreDict();
+        ModBlocks.blockCeruclase.initOreDict();
+        ModBlocks.blockCharcoal.initOreDict();
+        ModBlocks.blockCopper.initOreDict();
+        ModBlocks.blockDamascusSteel.initOreDict();
+        ModBlocks.blockDeepIron.initOreDict();
+        ModBlocks.blockDesichalkos.initOreDict();
+        ModBlocks.blockEximite.initOreDict();
+        ModBlocks.blockHaderoth.initOreDict();
+        ModBlocks.blockHepatizon.initOreDict();
+        ModBlocks.blockIgnatius.initOreDict();
+        ModBlocks.blockInfuscolium.initOreDict();
+        ModBlocks.blockInolashite.initOreDict();
+        ModBlocks.blockKalendrite.initOreDict();
+        ModBlocks.blockLemurite.initOreDict();
+        ModBlocks.blockManganese.initOreDict();
+        ModBlocks.blockMeutoite.initOreDict();
+        ModBlocks.blockMidasium.initOreDict();
+        ModBlocks.blockMithril.initOreDict();
+        ModBlocks.blockOrichalcum.initOreDict();
+        ModBlocks.blockOureclase.initOreDict();
+        ModBlocks.blockPlatinum.initOreDict();
+        ModBlocks.blockPrometheum.initOreDict();
+        ModBlocks.blockQuickSilver.initOreDict();
+        ModBlocks.blockRubracium.initOreDict();
+        ModBlocks.blockSanguinite.initOreDict();
+        ModBlocks.blockShadowIron.initOreDict();
+        ModBlocks.blockShadowSteel.initOreDict();
+        ModBlocks.blockSilver.initOreDict();
+        ModBlocks.blockSteel.initOreDict();
+        ModBlocks.blockSulfur.initOreDict();
+        ModBlocks.blockTartarite.initOreDict();
+        ModBlocks.blockTin.initOreDict();
+        ModBlocks.blockVulcanite.initOreDict();
+        ModBlocks.blockVyroxeres.initOreDict();
+        ModBlocks.blockZinc.initOreDict();
+
         //Ingots
         ModItems.ingotAdamantine.initOreDict();
         ModItems.ingotAlduorite.initOreDict();
@@ -73,6 +120,7 @@ public class ModRecipes {
         ModItems.dustAngmallen.initOreDict();
         ModItems.dustAstralSilver.initOreDict();
         ModItems.dustAtlarus.initOreDict();
+        ModItems.dustBitumen.initOreDict();
         ModItems.dustBlackSteel.initOreDict();
         ModItems.dustBrass.initOreDict();
         ModItems.dustBronze.initOreDict();
@@ -100,7 +148,9 @@ public class ModRecipes {
         ModItems.dustMithril.initOreDict();
         ModItems.dustOrichalcum.initOreDict();
         ModItems.dustOureclase.initOreDict();
+        ModItems.dustPhosphorus.initOreDict();
         ModItems.dustPlatinum.initOreDict();
+        ModItems.dustPotash.initOreDict();
         ModItems.dustPrometheum.initOreDict();
         ModItems.dustQuickSilver.initOreDict();
         ModItems.dustRubracium.initOreDict();
@@ -109,59 +159,47 @@ public class ModRecipes {
         ModItems.dustShadowSteel.initOreDict();
         ModItems.dustSilver.initOreDict();
         ModItems.dustSteel.initOreDict();
+        ModItems.dustSulfur.initOreDict();
         ModItems.dustTartarite.initOreDict();
         ModItems.dustTin.initOreDict();
         ModItems.dustVulcanite.initOreDict();
         ModItems.dustVyroxeres.initOreDict();
         ModItems.dustZinc.initOreDict();
 
-        //Blocks
-        ModBlocks.blockAdamantine.initOreDict();
-        ModBlocks.blockAlduorite.initOreDict();
-        ModBlocks.blockAngmallen.initOreDict();
-        ModBlocks.blockAstralSilver.initOreDict();
-        ModBlocks.blockAtlarus.initOreDict();
-        ModBlocks.blockAmordrine.initOreDict();
-        ModBlocks.blockBlackSteel.initOreDict();
-        ModBlocks.blockBrass.initOreDict();
-        ModBlocks.blockBronze.initOreDict();
-        ModBlocks.blockCarmot.initOreDict();
-        ModBlocks.blockCelenegil.initOreDict();
-        ModBlocks.blockCeruclase.initOreDict();
-        ModBlocks.blockCharcoal.initOreDict();
-        ModBlocks.blockCopper.initOreDict();
-        ModBlocks.blockDamascusSteel.initOreDict();
-        ModBlocks.blockDeepIron.initOreDict();
-        ModBlocks.blockDesichalkos.initOreDict();
-        ModBlocks.blockEximite.initOreDict();
-        ModBlocks.blockHaderoth.initOreDict();
-        ModBlocks.blockHepatizon.initOreDict();
-        ModBlocks.blockIgnatius.initOreDict();
-        ModBlocks.blockInfuscolium.initOreDict();
-        ModBlocks.blockInolashite.initOreDict();
-        ModBlocks.blockKalendrite.initOreDict();
-        ModBlocks.blockLemurite.initOreDict();
-        ModBlocks.blockManganese.initOreDict();
-        ModBlocks.blockMeutoite.initOreDict();
-        ModBlocks.blockMidasium.initOreDict();
-        ModBlocks.blockMithril.initOreDict();
-        ModBlocks.blockOrichalcum.initOreDict();
-        ModBlocks.blockOureclase.initOreDict();
-        ModBlocks.blockPlatinum.initOreDict();
-        ModBlocks.blockPrometheum.initOreDict();
-        ModBlocks.blockQuickSilver.initOreDict();
-        ModBlocks.blockRubracium.initOreDict();
-        ModBlocks.blockSanguinite.initOreDict();
-        ModBlocks.blockShadowIron.initOreDict();
-        ModBlocks.blockShadowSteel.initOreDict();
-        ModBlocks.blockSilver.initOreDict();
-        ModBlocks.blockSteel.initOreDict();
-        ModBlocks.blockSulfur.initOreDict();
-        ModBlocks.blockTartarite.initOreDict();
-        ModBlocks.blockTin.initOreDict();
-        ModBlocks.blockVulcanite.initOreDict();
-        ModBlocks.blockVyroxeres.initOreDict();
-        ModBlocks.blockZinc.initOreDict();
+        ModBlocks.oreAdamantine.initOreDict();
+        ModBlocks.oreAlduorite.initOreDict();
+        ModBlocks.oreAstralSilver.initOreDict();
+        ModBlocks.oreAtlarus.initOreDict();
+        ModBlocks.oreBitumen.initOreDict();
+        ModBlocks.oreCarmot.initOreDict();
+        ModBlocks.oreCeruclase.initOreDict();
+        ModBlocks.oreCopper.initOreDict();
+        ModBlocks.oreDeepIron.initOreDict();
+        ModBlocks.oreEximite.initOreDict();
+        ModBlocks.oreIgnatius.initOreDict();
+        ModBlocks.oreInfuscolium.initOreDict();
+        ModBlocks.oreKalendrite.initOreDict();
+        ModBlocks.oreLemurite.initOreDict();
+        ModBlocks.oreManganese.initOreDict();
+        ModBlocks.oreMeutoite.initOreDict();
+        ModBlocks.oreMidasium.initOreDict();
+        ModBlocks.oreMithril.initOreDict();
+        ModBlocks.oreOrichalcum.initOreDict();
+        ModBlocks.oreOureclase.initOreDict();
+        ModBlocks.orePhosphorite.initOreDict();
+        ModBlocks.orePlatinum.initOreDict();
+        ModBlocks.orePhosphorite.initOreDict();
+        ModBlocks.orePotash.initOreDict();
+        ModBlocks.orePrometheum.initOreDict();
+        ModBlocks.oreRubracium.initOreDict();
+        ModBlocks.oreSanguinite.initOreDict();
+        ModBlocks.oreShadowIron.initOreDict();
+        ModBlocks.oreSilver.initOreDict();
+        ModBlocks.oreSulfur.initOreDict();
+        ModBlocks.oreTin.initOreDict();
+        ModBlocks.oreVulcanite.initOreDict();
+        ModBlocks.oreVyroxeres.initOreDict();
+        ModBlocks.oreZinc.initOreDict();
 
 
 

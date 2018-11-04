@@ -68,7 +68,7 @@ public class ModItems {
 	public static ItemOre dustIron = new ItemOre("iron_dust", "dustIron").setCreativeTab(Metallurgy_5.tabDust);
 
 	public static ItemOre dustBitumen = new ItemOre ("bitumen","dustBitumen").setCreativeTab(Metallurgy_5.tabDust);
-	public static ItemOre oreslimeball = new ItemOre ("tar","oreslimeball").setCreativeTab(Metallurgy_5.tabDust);
+	public static ItemOre tar = new ItemOre ("tar","oreslimeball").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustPotash = new ItemOre ("potash","dustPotash").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustSulfur = new ItemOre ("sulfur_dust","dustSulfur").setCreativeTab(Metallurgy_5.tabDust);
 	public static ItemOre dustPhosphorus = new ItemOre("phosphorus", "dustPhosphorus").setCreativeTab(Metallurgy_5.tabDust);
@@ -180,7 +180,7 @@ public class ModItems {
 				dustIron,
 
 				dustBitumen,
-				oreslimeball,
+				tar,
 				dustPotash,
 				dustSulfur,
                 dustPhosphorus,
@@ -290,7 +290,7 @@ public class ModItems {
         dustIron.registerItemModel();
 
 		dustBitumen.registerItemModel();
-		oreslimeball.registerItemModel();
+		tar.registerItemModel();
 		dustPotash.registerItemModel();
 		dustSulfur.registerItemModel();
 		dustPhosphorus.registerItemModel();
