@@ -15,8 +15,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecipes {
 
-    //TODO : Complete general recipes
-
     public static void init()
     {
 

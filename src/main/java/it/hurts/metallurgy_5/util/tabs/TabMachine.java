@@ -20,9 +20,10 @@ public class TabMachine extends CreativeTabs {
         super(Metallurgy_5.MODID + ".machines");
     }
 
+
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModBlocks.crusher);
+        return new ItemStack(ModBlocks.alloyer);
     }
 }

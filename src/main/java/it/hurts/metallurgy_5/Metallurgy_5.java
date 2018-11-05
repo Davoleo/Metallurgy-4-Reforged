@@ -7,6 +7,7 @@
  import it.hurts.metallurgy_5.item.armor.ModArmors;
  import it.hurts.metallurgy_5.item.tool.ModTools;
  import it.hurts.metallurgy_5.proxy.CommonProxy;
+ import it.hurts.metallurgy_5.util.handler.CommonTickHandler;
  import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_5.util.recipe.ModRecipes;
  import it.hurts.metallurgy_5.util.tabs.*;
@@ -42,11 +43,16 @@
 public class Metallurgy_5 {
 
 	public static final String MODID = "m5";
-	public static final String NAME = "Metallurgy 5";
+	public static final String NAME = "Metallurgy 4: Reforged";
 	public static final String VERSION = "0.0.1";
 
+	public static int ticker = 0;
+
+	public static final CommonTickHandler tickHandler = new CommonTickHandler();
+
 	//CreativeTabs
-	//TODO : Tweak creative tabs icons
+	//TODO : Fix Creative tab icon ticking
+	//TODO : Put all creative tabs in one class
     public static final TabArmor tabArmor = new TabArmor();
 	public static final TabBlock tabBlock = new TabBlock();
 	public static final TabDust tabDust = new TabDust();

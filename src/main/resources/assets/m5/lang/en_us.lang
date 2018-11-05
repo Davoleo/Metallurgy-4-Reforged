@@ -672,8 +672,6 @@ tile.crusher.name=Crusher
 tile.alloyer.name=Alloyer
 
 #Tooltips
-item.metallurgy_5.ignatius_sword.description=§l§cFire Aspect
-#WTF is this key?? ^
 #Armor Tooltips
 tooltip.m5.adamantine_armor_effect=§4Always well fed
 tooltip.m5.amordrine_armor_effect=§dStrengthens you
