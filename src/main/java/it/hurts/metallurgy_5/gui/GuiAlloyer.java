@@ -46,25 +46,28 @@ public class GuiAlloyer extends GuiContainer{
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
         String name = this.alloyer.getDisplayName().getUnformattedText();
-        this.fontRenderer.drawString(name, (this.xSize / 2 - this.fontRenderer.getStringWidth(name) / 2) + 3, 8, 4210752);
-        this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 122, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(name, 10, -22, 16769280);
     }
 	
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
-        this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+        this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
         if(TileEntityAlloyer.isBurning(alloyer))
         {
-            int k = this.getBurnLeftScaled(13);
-            this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 54 + 12 -k, 176, 12 - k, 14, k + 1);
+            int k = this.getBurnLeftScaled(17);
+            //~~~~~~~~~~~~~~~~~~
+            this.drawTexturedModalRect(this.guiLeft + 110, this.guiTop + 30 + 12 -k, 176, 61 + 12 - k, 17, k + 5);
         }
 
-        int l = this.getAlloyingProgressScaled(24);
-        //x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
-        this.drawTexturedModalRect(this.guiLeft + 83, this.guiTop + 36, 176, 14, l + 1, 16);
+        int l = this.getAlloyingProgressScaled(33);
+        if (l > 0)
+            drawTexturedModalRect( this.guiLeft + 40, this.guiTop + 66 - l, 176, 32 - l, 7, l);
+
+        int m = this.getAlloyingProgressScaled(50);
+            drawTexturedModalRect(this.guiLeft + 52, this.guiTop +1, 176, 34, 10, 1 + m);
     }
     
     private int getBurnLeftScaled(int pixels){

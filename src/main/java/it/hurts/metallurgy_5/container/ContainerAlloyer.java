@@ -26,10 +26,10 @@ public class ContainerAlloyer extends Container {
 
     public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv) {
         this.alloyer = alloyerInv;
-        this.addSlotToContainer(new Slot(alloyerInv, 0, 57, 18));    //Input
-        this.addSlotToContainer(new Slot(alloyerInv, 1, 57, 52));    //Input
-        this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 7, 35));   //Fuel
-        this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 120, 36)); //Result
+        this.addSlotToContainer(new Slot(alloyerInv, 0, 102, -8));    //Input
+        this.addSlotToContainer(new Slot(alloyerInv, 1, 123, -8));    //Input
+        this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 47));   //Fuel
+        this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 57, 42)); //Result
 
 //        Collegamento all'inventario del player
         for (int y = 0; y < 3; y++) {
