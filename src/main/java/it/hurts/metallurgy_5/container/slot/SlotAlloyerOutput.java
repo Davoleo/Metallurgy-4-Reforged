@@ -1,12 +1,12 @@
 package it.hurts.metallurgy_5.container.slot;
 
+import it.hurts.metallurgy_5.util.Utils;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /*************************************************
  * Author: Davoleo
@@ -18,8 +18,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class SlotAlloyerOutput extends Slot {
 
-    @SuppressWarnings("unused")
-	private final EntityPlayer player;
+    private final EntityPlayer player;
 
     public SlotAlloyerOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
     {
@@ -30,40 +29,20 @@ public class SlotAlloyerOutput extends Slot {
     @Override
     public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
     {
-        EntityPlayer player = thePlayer;
+        onCrafting(stack);
+        return super.onTake(thePlayer, stack);
+    }
 
+    @Override
+    protected void onCrafting(ItemStack output)
+    {
         if (!player.world.isRemote)
         {
-            int i = stack.getCount();
-            float f = BlockAlloyerRecipes.getInstance().getAlloyExperience(stack);
-
-            if (f == 0.0F)
-            {
-                i = 0;
-            }
-            else if (f < 1.0F)
-            {
-                int j = MathHelper.floor((float)i * f);
-
-                if (j < MathHelper.ceil((float)i * f) && Math.random() < (double)((float)i * f - (float)j))
-                {
-                    ++j;
-                }
-
-                i = j;
-            }
-
-            while (i > 0)
-            {
-                int k = EntityXPOrb.getXPSplit(i);
-                i -= k;
-                player.world.spawnEntity(new EntityXPOrb(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, k));
-            }
+            int i = output.getCount();
+            output.onCrafting(player.world, player, i);
+            Utils.giveExperience(player, i * BlockAlloyerRecipes.getInstance().getAlloyExperience(output));
         }
-
-        onSlotChanged();
-        net.minecraftforge.fml.common.FMLCommonHandler.instance().firePlayerSmeltedEvent(player, stack);
-        return super.onTake(thePlayer, stack);
+        FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
     }
 
     @Override

@@ -18,60 +18,59 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 /***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
-***************************/
+ *
+ * Author : ItHurtsLikeHell
+ * Project: Metallurgy-5
+ * Date   : 28 ago 2018
+ * Time   : 18:24:07
+ *
+ ***************************/
 
 public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 
 	private String name;
-	private String tooltip = "";
-	private Enchantment enchantment = null;
-	private int enchantmentLevel = 0;
+	private String tooltip;
+	private Enchantment enchantment;
+	private int enchantmentLevel;
 
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
-    {
-		super(material, 0, slot);
-		setRegistryName(name);
-		setUnlocalizedName(name);
-		this.name = name;
+	{
+		this(material, slot, name, "", null, 0);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
-    {
+	{
+		this(material, slot, name, tooltip, null, 0);
+	}
+
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
+	{
+		this(material, slot, name, "", enchantment, enchantmentLevel);
+	}
+	
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
 		super(material, 0, slot);
 		setRegistryName(name);
 		setUnlocalizedName(name);
-		this.tooltip = tooltip;
 		this.name = name;
+		this.tooltip = tooltip;
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+		setCreativeTab(Metallurgy_5.tabArmor);
 	}
 
-    public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
-    {
-        super(material, 0, slot);
-        setRegistryName(name);
-        setUnlocalizedName(name);
-        this.tooltip = tooltip;
-        this.name = name;
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-
-    }
-
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
-    {
-        if(enchantment != null && tab.equals(Metallurgy_5.tabArmor)){
-            ItemStack enchantedArmor = new ItemStack(this);
-            enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
-            items.add(enchantedArmor);
-        }
+	{
+		if(this.isInCreativeTab(tab)) {
+			ItemStack enchantedArmor = new ItemStack(this);
+			if(enchantment != null) {
+				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedArmor);
+		}
 	}
 
 	@Override

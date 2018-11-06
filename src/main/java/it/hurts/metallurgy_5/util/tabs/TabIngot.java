@@ -1,7 +1,6 @@
 package it.hurts.metallurgy_5.util.tabs;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.item.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,18 +8,17 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+
 /***************************
-*
-* Author : ItHurtsLikeHell
+* Authors : ItHurtsLikeHell & Davoleo
 * Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
 ***************************/
 
 public class TabIngot extends CreativeTabs{
 
-    //TODO : Fix Item icon display cycle
+    private int icon;
+    private ArrayList<ItemStack> iconList = new ArrayList<>();
 
 	public TabIngot() {
 		super(Metallurgy_5.MODID + ".ingots");
@@ -30,20 +28,27 @@ public class TabIngot extends CreativeTabs{
 	@Override
 	public void displayAllRelevantItems(NonNullList<ItemStack> list)
 	{
+	    int counter = 0;
+
         for (Item item : Item.REGISTRY) {
             if (item != null) {
-                if (item.getUnlocalizedName().contains("_ingot")) {
-                    item.getSubItems(CreativeTabs.SEARCH, list);    // CreativeTabs.SEARCH will find all items even if they belong to another tab
+               if (item.getUnlocalizedName().contains("_ingot")) {
+                   item.getSubItems(CreativeTabs.SEARCH, list);
+                   iconList.add(list.get(counter));
+                   counter++;
+               }   // CreativeTabs.SEARCH will find all items even if they belong to another tab
                     //   except if the item has no tab (item.getCreativeTab() == NULL)
-                }
             }
         }
 	}
 
-	@SideOnly(Side.CLIENT)
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModItems.ingotAdamantine);
+        icon = Metallurgy_5.ticker/20;
+
+        if(!iconList.isEmpty())
+            return new ItemStack(iconList.get(icon % iconList.size()).getItem());
+        return ItemStack.EMPTY;
     }
 }

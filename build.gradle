@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://files.minecraftforge.net/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -11,8 +11,8 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 // Non Modificare Sopra
 
-version = "1.0"
-group = "hurts.metallurgy_5"
+version = "0.0.1"
+group = "it.hurts.metallurgy_5"
 archivesBaseName = "Metallurgy_5"
 
 sourceCompatibility = targetCompatibility = '1.8'

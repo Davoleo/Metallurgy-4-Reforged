@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "OP"
+  ],
+  "key":{
+    "O":{
+      "type": "forge:ore_dict",
+      "ore": "dustOrichalcum"
+    },
+    "P":{
+      "type": "forge:ore_dict",
+      "ore": "dustPlatinum"
+    }
+  },
+  "result": {
+    "item": "m5:celenegil_dust",
+    "count": 2
+  }
+}

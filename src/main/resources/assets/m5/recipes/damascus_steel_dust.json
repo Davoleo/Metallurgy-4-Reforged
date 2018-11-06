@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "BI",
+    "B "
+  ],
+  "key":{
+    "B":{
+      "type": "forge:ore_dict",
+      "ore": "dustBronze"
+    },
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "dustIron"
+    }
+  },
+  "result": {
+    "item": "m5:damascus_steel_dust",
+    "count": 3
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "SL",
+    "SS"
+  ],
+  "key":{
+    "S":{
+      "type": "forge:ore_dict",
+      "ore": "dustShadowIron"
+    },
+    "L":{
+      "type": "forge:ore_dict",
+      "ore": "dustLemurite"
+    }
+  },
+  "result": {
+    "item": "m5:shadow_steel_dust",
+    "count": 4
+  }
+}

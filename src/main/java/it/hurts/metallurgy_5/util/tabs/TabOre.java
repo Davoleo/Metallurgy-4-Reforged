@@ -1,28 +1,53 @@
 package it.hurts.metallurgy_5.util.tabs;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
-import it.hurts.metallurgy_5.block.ModBlocks;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
 
 /***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
-***************************/
+ * Authors : ItHurtsLikeHell & Davoleo
+ * Project: Metallurgy-5
+ ***************************/
 	
 public class TabOre extends CreativeTabs{
+
+    private int icon;
+    private ArrayList<ItemStack> iconList = new ArrayList<>();
 
 	public TabOre() {
 		super(Metallurgy_5.MODID+".ores");
 	}
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void displayAllRelevantItems(NonNullList<ItemStack> list)
+    {
+        int counter = 0;
+
+        for (Item item : Item.REGISTRY) {
+            if (item != null) {
+                if (item.getUnlocalizedName().contains("_ore")) {
+                    item.getSubItems(CreativeTabs.SEARCH, list);
+                    iconList.add(list.get(counter));
+                    counter++;
+                }
+            }
+        }
+    }
+
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ModBlocks.oreOrichalcum);
+        icon = Metallurgy_5.ticker/20;
+
+        if(!iconList.isEmpty())
+            return new ItemStack(iconList.get(icon % iconList.size()).getItem());
+        return ItemStack.EMPTY;
 	}
 		
 }

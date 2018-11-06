@@ -7,6 +7,7 @@
  import it.hurts.metallurgy_5.item.armor.ModArmors;
  import it.hurts.metallurgy_5.item.tool.ModTools;
  import it.hurts.metallurgy_5.proxy.CommonProxy;
+ import it.hurts.metallurgy_5.util.handler.CommonTickHandler;
  import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_5.util.recipe.ModRecipes;
  import it.hurts.metallurgy_5.util.tabs.*;
@@ -42,11 +43,16 @@
 public class Metallurgy_5 {
 
 	public static final String MODID = "m5";
-	public static final String NAME = "Metallurgy 5";
+	public static final String NAME = "Metallurgy 4: Reforged";
 	public static final String VERSION = "0.0.1";
 
+	public static int ticker = 0;
+
+	public static final CommonTickHandler tickHandler = new CommonTickHandler();
+
 	//CreativeTabs
-	//TODO : Tweak creative tabs icons
+	//TODO : Fix Creative tab icon ticking
+	//TODO : Put all creative tabs in one class
     public static final TabArmor tabArmor = new TabArmor();
 	public static final TabBlock tabBlock = new TabBlock();
 	public static final TabDust tabDust = new TabDust();
@@ -66,7 +72,7 @@ public class Metallurgy_5 {
 	public static final ItemArmor.ArmorMaterial brassArmorMaterial = EnumHelper.addArmorMaterial("BRASS", MODID + ":brass", 15, new int[]{1, 2, 3, 2}, 18, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4F);
 	public static final ItemArmor.ArmorMaterial bronzeArmorMaterial = EnumHelper.addArmorMaterial("BRONZE", MODID + ":bronze", 25, new int[]{3, 3, 4, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2F);
 	public static final ItemArmor.ArmorMaterial carmotArmorMaterial = EnumHelper.addArmorMaterial("CARMOT", MODID + ":carmot", 28, new int[]{2, 4, 5, 2}, 7, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-	public static final ItemArmor.ArmorMaterial celenegilArmorMaterial = EnumHelper.addArmorMaterial("CELENEGIL", MODID + ":clenegil", 160, new int[]{4, 6, 7, 5}, 50, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0F);
+	public static final ItemArmor.ArmorMaterial celenegilArmorMaterial = EnumHelper.addArmorMaterial("CELENEGIL", MODID + ":celenegil", 160, new int[]{4, 6, 7, 5}, 50, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0F);
 	public static final ItemArmor.ArmorMaterial damascusSteelArmorMaterial = EnumHelper.addArmorMaterial("DAMASCUS_STEEL", MODID + ":damascus_steel", 50, new int[]{3, 5, 6, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3F);
 	public static final ItemArmor.ArmorMaterial deepIronArmorMaterial = EnumHelper.addArmorMaterial("DEEP_IRON", MODID + ":deep_iron", 38, new int[]{2, 4, 5, 2}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	public static final ItemArmor.ArmorMaterial desichalkosArmorMaterial = EnumHelper.addArmorMaterial("DESICHALKOS", MODID + ":desichalkos", 180, new int[]{4, 5, 7, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3F);
@@ -79,10 +85,10 @@ public class Metallurgy_5 {
 	public static final ItemArmor.ArmorMaterial kalendriteArmorMaterial = EnumHelper.addArmorMaterial("KALENDRITE", MODID + ":kalendrite", 40, new int[]{4, 5, 6, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON,3.0F);
 	public static final ItemArmor.ArmorMaterial midasiumArmorMaterial = EnumHelper.addArmorMaterial("MIDASIUM", MODID +  ":midasium", 16, new int[]{3, 3, 5, 2}, 35, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
 	public static final ItemArmor.ArmorMaterial mithrilArmorMaterial = EnumHelper.addArmorMaterial("MITHRIL", MODID + ":mithril", 21, new int[]{2, 4, 5, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
-	public static final ItemArmor.ArmorMaterial orichalcumArmorMaterial = EnumHelper.addArmorMaterial("ORICHALCUM", MODID + ":mithril", 20, new int[]{2, 6, 7, 2}, 4, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.4F);
+	public static final ItemArmor.ArmorMaterial orichalcumArmorMaterial = EnumHelper.addArmorMaterial("ORICHALCUM", MODID + ":orichalcum", 20, new int[]{2, 6, 7, 2}, 4, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.4F);
 	public static final ItemArmor.ArmorMaterial oureclaseArmorMaterial = EnumHelper.addArmorMaterial("OURECLASE", MODID + ":oureclase", 28, new int[]{3, 6, 5, 4}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.5F);
 	public static final ItemArmor.ArmorMaterial platinumArmorMaterial = EnumHelper.addArmorMaterial("PLATINUM", MODID + ":platinum", 17, new int[]{3, 5, 6, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F);
-	public static final ItemArmor.ArmorMaterial prometheumArmorMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometherum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
+	public static final ItemArmor.ArmorMaterial prometheumArmorMaterial = EnumHelper.addArmorMaterial("PROMETHEUM", MODID + ":prometheum", 30, new int[]{1, 2, 3, 2}, 11 ,SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.1F);
 	public static final ItemArmor.ArmorMaterial sanguiniteArmorMaterial = EnumHelper.addArmorMaterial("SANGUINITE", MODID + ":sanguinite", 175, new int[]{4, 6, 7, 5}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
 	public static final ItemArmor.ArmorMaterial shadowIronArmorMaterial = EnumHelper.addArmorMaterial("SHADOW_IRON", MODID + ":shadow_iron", 32, new int[]{4, 5, 6, 3}, 3, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 4.0F);
 	public static final ItemArmor.ArmorMaterial shadowSteelArmorMaterial = EnumHelper.addArmorMaterial("SHADOW_STEEL", MODID + ":shadow_steel", 40, new int[]{4, 5, 6, 3}, 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F);

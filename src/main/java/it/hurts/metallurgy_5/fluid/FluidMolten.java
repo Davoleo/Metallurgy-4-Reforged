@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.FluidUtil;
 public class FluidMolten extends Fluid {
 
 protected Fluid fluid = this;
-protected static int mapColor = 0xFFFFFFFF;
+protected int mapColor = 0xFFFFFFFF;
 protected float overlayAlpha = 0.2F;
 protected static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 protected static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
@@ -49,7 +49,6 @@ protected boolean bucketEnabled = false;
         return mapColor;
     }
 
-    @SuppressWarnings("static-access")
 	public FluidMolten setColor(int mapColor)
     {
         this.mapColor = mapColor;
