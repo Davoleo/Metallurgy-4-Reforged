@@ -47,9 +47,9 @@ public class TabArmor extends CreativeTabs{
 		return ItemStack.EMPTY;
 	}
 
-    @Override
+    /*@Override
     public boolean hasSearchBar()
     {
         return true;
-    }
+    }*/
 }

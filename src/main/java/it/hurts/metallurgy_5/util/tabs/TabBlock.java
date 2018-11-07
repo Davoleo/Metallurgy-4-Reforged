@@ -8,6 +8,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnegative;
 import java.util.ArrayList;
 
 /***************************
@@ -18,35 +19,30 @@ import java.util.ArrayList;
 public class TabBlock extends CreativeTabs{
 
     private int icon;
-    private ArrayList<ItemStack> iconList = new ArrayList<>();
+    private NonNullList<ItemStack> iconList;
 
 	public TabBlock() {
 		super(Metallurgy_5.MODID + ".blocks");
 	}
 
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void displayAllRelevantItems(NonNullList<ItemStack> list)
-    {
-        int counter = 0;
+    private NonNullList<ItemStack> icons(){
+        NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
             if (item != null) {
                 if (item.getUnlocalizedName().contains("_block")) {
-                    item.getSubItems(CreativeTabs.SEARCH, list);
-                    iconList.add(list.get(counter));
-                    counter++;
-                }   // CreativeTabs.SEARCH will find all items even if they belong to another tab
-                //   except if the item has no tab (item.getCreativeTab() == NULL)
+
+                    items.add(new ItemStack(item));
+                }
             }
         }
+        return items;
     }
-
 
     @Override
     public ItemStack getTabIconItem()
     {
+        iconList = this.icons();
         icon = Metallurgy_5.ticker/20;
 
         if(!iconList.isEmpty())
