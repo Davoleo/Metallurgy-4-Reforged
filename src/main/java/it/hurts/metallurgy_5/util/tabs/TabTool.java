@@ -53,4 +53,9 @@ public class TabTool extends CreativeTabs {
         return ItemStack.EMPTY;
     }
 
+    @Override
+    public boolean hasSearchBar()
+    {
+        return true;
+    }
 }

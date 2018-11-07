@@ -5,10 +5,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.ArrayList;
 
 /***************************
  * Authors : ItHurtsLikeHell & Davoleo
@@ -18,34 +14,32 @@ import java.util.ArrayList;
 public class TabArmor extends CreativeTabs{
 
 	private int icon;
-	private ArrayList<ItemStack> iconList = new ArrayList<>();
+	private NonNullList<ItemStack> iconList;
 
 	public TabArmor() {
 		super(Metallurgy_5.MODID +".armors");
 	}
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void displayAllRelevantItems(NonNullList<ItemStack> list)
-	{
-		int counter = 0;
+	private NonNullList<ItemStack> icons(){
+        NonNullList<ItemStack> items = NonNullList.create();
 
-		for (Item item : Item.REGISTRY) {
-			if (item != null) {
-				if (item.getUnlocalizedName().contains("_helmet")
+        for (Item item : Item.REGISTRY) {
+            if (item != null) {
+                if (item.getUnlocalizedName().contains("_helmet")
                         || item.getUnlocalizedName().contains("_chest")
                         || item.getUnlocalizedName().contains("_legs")
                         || item.getUnlocalizedName().contains("_boots")) {
-					item.getSubItems(CreativeTabs.SEARCH, list);
-					iconList.add(list.get(counter));
-					counter++;
-				}
-			}
-		}
-	}
+
+                    items.add(new ItemStack(item));
+                }
+            }
+        }
+        return items;
+    }
 
 	@Override
 	public ItemStack getTabIconItem() {
+	    iconList = icons();
 		icon = Metallurgy_5.ticker/20;
 
 		if(!iconList.isEmpty())
@@ -53,6 +47,9 @@ public class TabArmor extends CreativeTabs{
 		return ItemStack.EMPTY;
 	}
 
-
-	
+    @Override
+    public boolean hasSearchBar()
+    {
+        return true;
+    }
 }

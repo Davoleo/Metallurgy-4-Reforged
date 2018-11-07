@@ -28,8 +28,8 @@ public class ContainerAlloyer extends Container {
         this.alloyer = alloyerInv;
         this.addSlotToContainer(new Slot(alloyerInv, 0, 102, -8));    //Input
         this.addSlotToContainer(new Slot(alloyerInv, 1, 123, -8));    //Input
-        this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 47));   //Fuel
-        this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 57, 42)); //Result
+        this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 48));   //Fuel
+        this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 57, 42)); //Result 1
 
 //        Collegamento all'inventario del player
         for (int y = 0; y < 3; y++) {
@@ -85,6 +85,7 @@ public class ContainerAlloyer extends Container {
         return this.alloyer.isUsableByPlayer(playerIn);
     }
 
+    //TODO : Fix second input quick transfer
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack stack = ItemStack.EMPTY;

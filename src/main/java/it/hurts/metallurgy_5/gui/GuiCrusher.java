@@ -43,8 +43,7 @@ public class GuiCrusher extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         String name = this.crusher.getDisplayName().getUnformattedText();
-        this.fontRenderer.drawString(name, (this.xSize / 2 - this.fontRenderer.getStringWidth(name) / 2) + 3, 8, 4210752);
-        this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 122, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(name, 10, -22, 16747293);
     }
 
     @Override
@@ -52,17 +51,19 @@ public class GuiCrusher extends GuiContainer {
     {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
-        this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+        this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
         if(TileEntityCrusher.isBurning(crusher))
         {
-            int k = this.getBurnLeftScaled(13);
-            this.drawTexturedModalRect(this.guiLeft + 8, this.guiTop + 54 + 12 -k, 176, 12 - k, 14, k + 1);
+            int k = this.getBurnLeftScaled(17);
+            this.drawTexturedModalRect(this.guiLeft + 128, this.guiTop + 46 - k, 176, 77 - k, 17, k + 1);
         }
 
-        int l = this.getCrushProgressScaled(24);
-        //x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
-        this.drawTexturedModalRect(this.guiLeft + 82, this.guiTop + 33, 176, 14, l + 1, 20);
+        int l = this.getCrushProgressScaled(33);
+        if (l > 0) {
+            drawTexturedModalRect(this.guiLeft + 93, this.guiTop + 66 - l, 176, 32 - l, 7, l);
+            drawTexturedModalRect(this.guiLeft + 60, this.guiTop + 14, 177, 33, 21, 18);
+        }
     }
 
     private int getBurnLeftScaled(int pixels)
