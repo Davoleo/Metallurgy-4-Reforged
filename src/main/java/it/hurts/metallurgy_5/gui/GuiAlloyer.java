@@ -19,8 +19,6 @@ import net.minecraft.util.ResourceLocation;
  ***************************/
 public class GuiAlloyer extends GuiContainer{
 
-    //TODO : Fucking fix this Davoleo
-
 //	Inizializziamo la locazione della texture
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Metallurgy_5.MODID + ":textures/gui/alloyer.png");
 //	Inizializziamo il player
@@ -59,15 +57,16 @@ public class GuiAlloyer extends GuiContainer{
         {
             int k = this.getBurnLeftScaled(17);
             //~~~~~~~~~~~~~~~~~~
-            this.drawTexturedModalRect(this.guiLeft + 110, this.guiTop + 30 + 12 -k, 176, 61 + 12 - k, 17, k + 5);
+            this.drawTexturedModalRect(this.guiLeft + 110, this.guiTop + 30 + 16 -k, 176, 77 - k, 17, k + 2);
         }
 
         int l = this.getAlloyingProgressScaled(33);
         if (l > 0)
             drawTexturedModalRect( this.guiLeft + 40, this.guiTop + 66 - l, 176, 32 - l, 7, l);
 
-        int m = this.getAlloyingProgressScaled(50);
-            drawTexturedModalRect(this.guiLeft + 52, this.guiTop +1, 176, 34, 10, 1 + m);
+
+        int m = this.getAlloyingProgressScaled(70);
+            drawTexturedModalRect(this.guiLeft + 52, this.guiTop +1, 176, 81, 10, 1 + m);
     }
     
     private int getBurnLeftScaled(int pixels){

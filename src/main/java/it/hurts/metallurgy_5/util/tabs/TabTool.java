@@ -16,17 +16,15 @@ import java.util.ArrayList;
 public class TabTool extends CreativeTabs {
 
     private int icon;
-    private ArrayList<ItemStack> iconList = new ArrayList<>();
+    private NonNullList<ItemStack> iconList;
 
     public TabTool()
     {
         super(Metallurgy_5.MODID + ".tools");
     }
 
-    @Override
-    public void displayAllRelevantItems(NonNullList<ItemStack> list)
-    {
-        int counter = 0;
+    private NonNullList<ItemStack> icons(){
+        NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
             if (item != null) {
@@ -34,18 +32,18 @@ public class TabTool extends CreativeTabs {
                         item.getUnlocalizedName().contains("_hoe") ||
                         item.getUnlocalizedName().contains("_pickaxe") ||
                         item.getUnlocalizedName().contains("_shovel") ||
-                        item.getUnlocalizedName().contains("_sword") )
-                {
-                    item.getSubItems(CreativeTabs.SEARCH, list);
-                    iconList.add(list.get(counter));
-                    counter++;
+                        item.getUnlocalizedName().contains("_sword")) {
+
+                    items.add(new ItemStack(item));
                 }
             }
         }
+        return items;
     }
 
     @Override
     public ItemStack getTabIconItem() {
+        iconList = this.icons();
         icon = Metallurgy_5.ticker/20;
 
         if(!iconList.isEmpty())
@@ -53,4 +51,9 @@ public class TabTool extends CreativeTabs {
         return ItemStack.EMPTY;
     }
 
+  /*  @Override
+    public boolean hasSearchBar()
+    {
+        return true;
+    }*/
 }

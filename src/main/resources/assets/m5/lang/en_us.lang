@@ -668,8 +668,8 @@ item.vyroxeres_sword.name=Vyroxeres Sword
 #Tile Entities
 container.crusher=Crusher
 container.alloyer=Alloyer
-tile.crusher.name=Crusher
-tile.alloyer.name=Alloyer
+tile.crusher.name=§6Crusher
+tile.alloyer.name=§eAlloyer
 
 #Tooltips
 #Armor Tooltips

@@ -5,6 +5,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+/*************************************************
+ * Author: Davoleo
+ * Project: Metallurgy_5
+ * Copyright - © - Davoleo - 2018
+ **************************************************/
+
 public class CommonTickHandler {
 
     public CommonTickHandler()
