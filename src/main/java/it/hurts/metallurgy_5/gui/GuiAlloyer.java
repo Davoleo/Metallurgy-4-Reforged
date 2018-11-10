@@ -51,6 +51,7 @@ public class GuiAlloyer extends GuiContainer{
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
+	//x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
         this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
         if(TileEntityAlloyer.isBurning(alloyer))
