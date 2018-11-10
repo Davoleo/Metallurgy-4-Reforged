@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
  * Date: 03/09/2018
  * Hour: 22.21
  * Project: Metallurgy_5
- * Copyright - © - Davoleo - 2018
+ * Copyright - Â© - Davoleo - 2018
  **************************************************/
 
 public class GuiCrusher extends GuiContainer {
@@ -49,6 +49,7 @@ public class GuiCrusher extends GuiContainer {
     {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
+        //x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
         this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
         if(TileEntityCrusher.isBurning(crusher))
