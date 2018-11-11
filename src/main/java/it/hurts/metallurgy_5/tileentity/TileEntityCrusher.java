@@ -34,6 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /*************************************************
@@ -75,7 +76,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     protected IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.WEST);
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
         else return false;
@@ -84,7 +85,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 //  TODO Modificare in alloyer
     @SuppressWarnings("unchecked")
 	@Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
     	if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             if (facing == EnumFacing.DOWN)
@@ -96,11 +97,13 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         return super.getCapability(capability, facing);
     }
 
+    @Override
     public int getSizeInventory()
     {
         return this.inventory.size();
     }
 
+    @Override
     public boolean isEmpty()
     {
         for(ItemStack stack : this.inventory)
@@ -113,23 +116,29 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         return true;
     }
 
+    @Override
+    @Nonnull
     public ItemStack getStackInSlot(int index)
     {
         return this.inventory.get(index);
     }
 
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int index, int count)
     {
         return ItemStackHelper.getAndSplit(this.inventory, index, count);
     }
 
+    @Override
+    @Nonnull
     public ItemStack removeStackFromSlot(int index)
     {
         return ItemStackHelper.getAndRemove(this.inventory, index);
     }
 
-
-    public void setInventorySlotContents(int index, ItemStack stack)
+    @Override
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack)
     {
         ItemStack itemstack = this.inventory.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
@@ -148,11 +157,14 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
+    @Override
+    @Nonnull
     public String getName()
     {
         return this.hasCustomName() ? this.customName : "container.crusher";
     }
 
+    @Override
     public boolean hasCustomName()
     {
         return this.customName != null && !this.customName.isEmpty();
@@ -169,6 +181,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     }
 
     @Override
+    @Nonnull
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName())
                 : new TextComponentTranslation(this.getName());
@@ -191,6 +204,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     }
 
     @Override
+    @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
@@ -206,6 +220,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
     }
 
+    @Override
     public int getInventoryStackLimit()
     {
         return 64;
@@ -222,6 +237,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         return te.getField(0) > 0;
     }
 
+    @Override
     public void update()
     {
         boolean flag = this.isBurning();
@@ -265,10 +281,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
                 }
 
+                //IL PROBLEMA è QUI [#23]
                 if (this.isBurning() && this.canCrush())
                 {
                     ++crushTime;
 
+                    //Il PROBLEMA NON è DENTRO QUESTO IF
                     if (crushTime == totalCrushTime)
                     {
                         crushTime = 0;
@@ -278,10 +296,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
                     }
                 } else
                 {
+                    //When the crusher is burning in idle
                     this.crushTime = 0;
                 }
             } else if (!this.isBurning() && this.crushTime > 0)
             {
+                //When the fuel is not enough
                 this.crushTime = MathHelper.clamp(this.crushTime - 2, 0, this.totalCrushTime);
             }
 
@@ -299,6 +319,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
     }
 
+    //IL PROBLEMA è QUI [#23]
     private boolean canCrush ()
     {
         if((this.inventory.get(0)).isEmpty())
@@ -310,6 +331,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
                 return false;
             else
             {
+                //TODO optimize using a for loop (maybe...?)
                 ItemStack output = this.inventory.get(2);
                 ItemStack output1 = this.inventory.get(3);
                 ItemStack output2 = this.inventory.get(4);
@@ -319,12 +341,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
                 if(output.isEmpty() || output1.isEmpty() || output2.isEmpty())
                     return true;
-                else if (!output.isItemEqual(result))
+                else if (!output.isItemEqual(result) && !output1.isItemEqual(result) && !output2.isItemEqual(result))
                     return false;
-                else if (!output1.isItemEqual(result))
-                    return false;
-                else if (!output2.isItemEqual(result))
-                    return false;
+//                else if (!output1.isItemEqual(result))
+//                    return false;
+//                else if (!output2.isItemEqual(result))
+//                    return false;
                 else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
                     return true;
                 else if (limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
@@ -338,8 +360,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
-//  Metodo che controlla se è possibile avviare l'operazioen di "Crushing"
-    public void crushItem()
+//  Called the instant when the item is ready to get crushed and to output the result
+    private void crushItem()
     {
         if (this.canCrush())
         {
@@ -353,7 +375,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             int limit1 = output1.getCount() + recipeResult.getCount();
             int limit2 = output2.getCount() + recipeResult.getCount();
 
-//          TODO controllare se è possibile migliorare il controllo con Switch o Index
+            //TODO check if it's possible to improve this using switch or index
             if(output.isEmpty())
                 this.inventory.set(2, recipeResult.copy());
             else if(output.getItem() == recipeResult.getItem() && limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
@@ -428,7 +450,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         return getItemBurnTime(fuel) > 0;
     }
 
-    public boolean isUsableByPlayer(EntityPlayer player)
+    @Override
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
     {
         if(this.world.getTileEntity(this.pos) != this)
             return false;
@@ -436,13 +459,16 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
-    public void openInventory(EntityPlayer player)
+    @Override
+    public void openInventory(@Nonnull EntityPlayer player)
     {}
 
-    public void closeInventory(EntityPlayer player)
+    @Override
+    public void closeInventory(@Nonnull EntityPlayer player)
     {}
 
-    public boolean isItemValidForSlot(int index, ItemStack stack)
+    @Override
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
     {
         if(index == 2)
             return false;
@@ -455,22 +481,28 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
+    @Override
+    @Nonnull
     public String getGuiID()
     {
         return "minecraft:crusher";
     }
 
-    public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
+    @Override
+    @Nonnull
+    public Container createContainer(@Nonnull InventoryPlayer inventory, @Nonnull EntityPlayer player)
     {
         return new ContainerCrusher(inventory, this);
     }
 
     /*
      * serve per trasferire le informazioni di a che punto è il processo, quanto carburante ha, quanto tempo ha bisogno un processo
+     * private tile entity variables getter [process and combustion info]
      * getField(getFieldCount)
      * setField(getField, valore)
-     * 
      */
+
+    @Override
     public int getField(int id)
     {
         switch (id)
@@ -488,6 +520,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
+    @Override
     public void setField(int id, int value)
     {
         switch (id)
@@ -506,11 +539,13 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
+    @Override
     public int getFieldCount()
     {
         return 4;
     }
 
+    @Override
     public void clear()
     {
         this.inventory.clear();
@@ -518,17 +553,18 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 //  TODO Aggiungere all'alloyer
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) {
+    @Nonnull
+	public int[] getSlotsForFace(@Nonnull EnumFacing side) {
 		return side == EnumFacing.DOWN ? slotsBottom : (side == EnumFacing.UP ? slotsTop : slotsSides);
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+	public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
 		return isItemValidForSlot(index, itemStackIn);
 	}
 
 	@Override
-	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
 		return true;
 	}
 
