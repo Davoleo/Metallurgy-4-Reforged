@@ -1,6 +1,6 @@
 ### This is Metallurgy 4: Reforged an unofficial port of Metallurgy 4 by JeanGlassMaker & ShadowClaimer
 
-![Travis CI](https://travis-ci.org/Davoleo/Metallurgy-4-Reforged.svg?branch=1.12.2)
+[![Build Status](https://travis-ci.org/Davoleo/Metallurgy-4-Reforged.svg?branch=1.12.2)](https://travis-ci.org/Davoleo/Metallurgy-4-Reforged)
 
 This mod is a collaboration between: Me and ItHurtsLikeHell
 
