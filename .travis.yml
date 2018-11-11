@@ -6,7 +6,7 @@ install: "./gradlew setupCIWorkspace"
 
 #Build Mod
 script: 
-  - "./gradlew build"
+  - ./gradlew build
 
 #Binary upload [Inactive] & Webhook Report message
 after_success:
