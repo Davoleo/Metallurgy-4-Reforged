@@ -3,6 +3,7 @@ package it.hurts.metallurgy_5.util.recipe;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
+import com.google.common.collect.Table.Cell;
 import it.hurts.metallurgy_5.item.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -113,27 +114,26 @@ public class BlockAlloyerRecipes {
     }
 
     public ItemStack getAlloyResult(ItemStack input1, ItemStack input2) {
-        for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet()) {
-            if (this.compareItemStacks(input1, entry.getKey())) {
-                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) {
-                    if (this.compareItemStacks(input2, ent.getKey())) {
-                        return ent.getValue();
-                    }
-                }
+        for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
+            if(this.compareItemStacks(cell.getColumnKey(), input1) || this.compareItemStacks(cell.getRowKey(), input2)) {
+                return cell.getValue();
             }
-        }
 
-        for (Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.alloyingList.columnMap().entrySet()) {
-            if (this.compareItemStacks(input2, entry.getKey())) {
-                for (Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) {
-                    if (this.compareItemStacks(input1, ent.getKey())) {
-                        return ent.getValue();
-                    }
-                }
+            if(this.compareItemStacks(cell.getRowKey(), input1) || this.compareItemStacks(cell.getColumnKey(), input2)) {
+                return cell.getValue();
             }
         }
 
         return ItemStack.EMPTY;
+    }
+
+    public boolean isAlloyMetal(ItemStack input1) {
+        for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
+            if(this.compareItemStacks(cell.getColumnKey(), input1) || this.compareItemStacks(cell.getRowKey(), input1)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {

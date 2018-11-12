@@ -1,8 +1,11 @@
 package it.hurts.metallurgy_5.container;
 
+import it.hurts.metallurgy_5.block.BlockAlloyer;
 import it.hurts.metallurgy_5.container.slot.SlotAlloyerOutput;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
+import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -24,8 +27,12 @@ public class ContainerAlloyer extends Container {
     private final IInventory alloyer;
     private int alloyingTime, totalAlloyingTime, burnTime, currentBurnTime;
 
+    //Default values for player inventory, edit iStart only
+    public static final int iStart = 4, iEnd = iStart + 26, hStart = iEnd + 1, hEnd = hStart + 8;
+
     public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv) {
         this.alloyer = alloyerInv;
+//    	playerInventory, Invenotry, Index, X, Y
         this.addSlotToContainer(new Slot(alloyerInv, 0, 102, -8));    //Input
         this.addSlotToContainer(new Slot(alloyerInv, 1, 123, -8));    //Input
         this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 48));   //Fuel
@@ -42,7 +49,6 @@ public class ContainerAlloyer extends Container {
         for (int x = 0; x < 9; x++) {
             this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
         }
-
     }
 
     //    Errore all'add Listener
@@ -85,51 +91,64 @@ public class ContainerAlloyer extends Container {
         return this.alloyer.isUsableByPlayer(playerIn);
     }
 
-    //TODO : Fix second input quick transfer
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack stack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
+        ItemStack ret = slot.getStack();
 
         if (slot != null && slot.getHasStack()) {
-            ItemStack stack1 = slot.getStack();
-            stack = stack1.copy();
+            ItemStack itemstack = slot.getStack();
+            ret = itemstack.copy();
 
-            if (index == 3) {
-                slot.onTake(playerIn, stack1); //XP
-                if (!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
-                slot.onSlotChange(stack1, stack);
-            } else if (index != 2 && index != 1 && index != 0) {
-                Slot slot1 = (Slot) this.inventorySlots.get(index + 1);
-
-                if (!BlockAlloyerRecipes.getInstance().getAlloyResult(stack1, slot1.getStack()).isEmpty()) {
-                    if (!this.mergeItemStack(stack1, 0, 2, false)) {
-                        return ItemStack.EMPTY;
-                    } else if (TileEntityAlloyer.isItemFuel(stack1)) {
-                        if (!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
-                    } else if (TileEntityAlloyer.isItemFuel(stack1)) {
-                        if (!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
-                    } else if (TileEntityAlloyer.isItemFuel(stack1)) {
-                        if (!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
-                    } else if (index >= 4 && index < 31) {
-                        if (!this.mergeItemStack(stack1, 31, 40, false)) return ItemStack.EMPTY;
-                    } else if (index >= 31 && index < 40 && !this.mergeItemStack(stack1, 4, 31, false)) {
+            if (TileEntityAlloyer.SlotEnum.OUTPUT_SLOT.contains(index)) {
+                slot.onTake(playerIn, itemstack); //XP
+                if (!this.mergeItemStack(itemstack, iStart, hEnd + 1, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onSlotChange(itemstack, ret);
+            } else if (index >= iStart) {
+                //Check for valid alloy recipes
+                if (BlockAlloyerRecipes.getInstance().isAlloyMetal(itemstack)) {
+                    if (this.inventorySlots.get(1).getHasStack()) {
+                        if (!this.mergeItemStack(itemstack, 1, 2, false)) {
+                            if (!this.mergeItemStack(itemstack, 0, 1, false)) {
+                                return ItemStack.EMPTY;
+                            }
+                        }
+                        // if (this.inventorySlots.get(1).getHasStack())
+                    } else {
+                        if (!this.mergeItemStack(itemstack, 0, 1, false)) {
+                            if (!this.mergeItemStack(itemstack, 1, 2, false)) {
+                                return ItemStack.EMPTY;
+                            }
+                        }
+                    }
+                } else if (TileEntityAlloyer.isItemFuel(itemstack)) {
+                    if (!this.mergeItemStack(itemstack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
+                } else if (index >= iStart && index <= iEnd) {
+                    if (!this.mergeItemStack(itemstack, hStart, hEnd + 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (index >= hStart && index < hEnd + 1 && !this.mergeItemStack(itemstack, iStart, iEnd + 1, false)) {
+                    return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(stack1, 4, 40, false)) {
+            } else if (!this.mergeItemStack(itemstack, iStart, hEnd + 1, false)) {
                 return ItemStack.EMPTY;
             }
-            if (stack1.isEmpty()) {
+
+            if (itemstack.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
-
             }
-            if (stack1.getCount() == stack.getCount()) return ItemStack.EMPTY;
-            slot.onTake(playerIn, stack1);
-        }
-        return stack;
-    }
 
+            if (itemstack.getCount() == ret.getCount()) {
+                return ItemStack.EMPTY;
+            }
+            slot.onTake(playerIn, itemstack);
+        }
+        return ret;
+    }
 }

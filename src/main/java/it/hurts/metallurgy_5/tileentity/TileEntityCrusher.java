@@ -33,9 +33,14 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /*************************************************
  * Author: Davoleo
@@ -49,16 +54,29 @@ import javax.annotation.Nullable;
 
 //ticking tile entity
 public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory {
+    public enum SlotEnum {// 	enumerate the slots
+        INPUT_SLOT(0), OUTPUT_SLOT(2, 3, 4), FUEL_SLOT(1);
 
-//  TODO Aggiungere all'alloyer
-// 	enumerate the slots
-    public enum slotEnum{
-        INPUT_SLOT, OUTPUT_SLOT
+        private final int[] slots;
+        private Set<Integer> slotSet;
+
+        SlotEnum(int... slots) {
+            this.slots = slots;
+            slotSet = Arrays.stream(slots).boxed().collect(Collectors.toSet());
+        }
+
+        public int[] slots() {
+            return Arrays.copyOf(slots, slots.length);
+        }
+
+        public boolean contains(int i) {
+            return slotSet.contains(i);
+        }
     }
-    
-    protected static final int[] slotsTop = new int[] { slotEnum.INPUT_SLOT.ordinal() };
-    protected static final int[] slotsBottom = new int[] { slotEnum.OUTPUT_SLOT.ordinal() };
-    protected static final int[] slotsSides = new int[] {};
+
+    protected static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
+    protected static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
+    protected static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
 	
     private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
 
@@ -70,10 +88,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     private int crushTime;
     private int totalCrushTime = 200;
     
-//  TODO Aggiungere all'alloyer
-    protected IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.UP);
-    protected IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.DOWN);
-    protected IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.WEST);
+    protected IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+    protected IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
+    protected IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
@@ -82,7 +99,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         else return false;
     }
 
-//  TODO Modificare in alloyer
     @SuppressWarnings("unchecked")
 	@Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
@@ -470,14 +486,17 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     @Override
     public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
     {
-        if(index == 2)
+        if(SlotEnum.OUTPUT_SLOT.contains(index))
             return false;
-        else if (index != 1)
-            return true;
-        else
+        else if(SlotEnum.FUEL_SLOT.contains(index))
         {
             ItemStack stack1 = this.inventory.get(1);
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
+        }
+        else if(SlotEnum.INPUT_SLOT.contains(index)) {
+            return !BlockCrusherRecipes.getInstance().getCrushingResult(stack).isEmpty();
+        } else {
+            return false;
         }
     }
 
@@ -551,7 +570,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         this.inventory.clear();
     }
 
-//  TODO Aggiungere all'alloyer
 	@Override
     @Nonnull
 	public int[] getSlotsForFace(@Nonnull EnumFacing side) {

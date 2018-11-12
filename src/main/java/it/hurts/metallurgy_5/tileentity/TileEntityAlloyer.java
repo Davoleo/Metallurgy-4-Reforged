@@ -10,6 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.*;
@@ -30,8 +31,14 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /***************************
  *
@@ -42,11 +49,32 @@ import javax.annotation.Nullable;
  *
  * Reworked by Davoleo
  ***************************/
-public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
+public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory {
+    public enum SlotEnum {// 	enumerate the slots
+        INPUT_SLOT(0, 1), OUTPUT_SLOT(3), FUEL_SLOT(2);
+
+        private final int[] slots;
+        private Set<Integer> slotSet;
+
+        SlotEnum(int... slots) {
+            this.slots = slots;
+            slotSet = Arrays.stream(slots).boxed().collect(Collectors.toSet());
+        }
+
+        public int[] slots() {
+            return Arrays.copyOf(slots, slots.length);
+        }
+
+        public boolean contains(int i) {
+            return slotSet.contains(i);
+        }
+    }
+
+    protected static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
+    protected static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
+    protected static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
 
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
-
-	protected boolean hasBeenAlloying;
 
 	private String customName;
 	
@@ -54,19 +82,29 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     private int currentBurnTime;
     private int alloyingTime;		
     private int totalAlloyingTime = 200;
-    
+
+    protected IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+    protected IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
+    protected IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
         else return false;
     }
-    
+
     @SuppressWarnings("unchecked")
-	@Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.inventory;
+        if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+            if (facing == EnumFacing.DOWN)
+                return (T) handlerBottom;
+            else if (facing == EnumFacing.UP)
+                return (T) handlerTop;
+            else
+                return (T) handlerSide;
         return super.getCapability(capability, facing);
     }
     
@@ -383,15 +421,47 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     {}
 
 
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
-        if(index == 3)
+    @Override
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
+    {
+        if(SlotEnum.OUTPUT_SLOT.contains(index)) {
             return false;
-        else if (index != 2)
-            return true;
-        else
-        {
-            ItemStack stack1 = this.inventory.get(2);
+        } else if(SlotEnum.FUEL_SLOT.contains(index)) {
+            ItemStack stack1 = this.inventory.get(1);
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
+        } else if(SlotEnum.INPUT_SLOT.contains(index)) {
+            if (BlockAlloyerRecipes.getInstance().isAlloyMetal(stack)) {
+                if(inventory.get(0).isEmpty()) {
+                    ItemStack one = inventory.get(1);
+                    if(one.isEmpty()) {
+                        return true;
+                    } else {
+                        if(index == 1) {
+                            return one.isItemEqual(stack) || ItemStack.areItemsEqual(one, stack);
+                        } else {
+                            return !BlockAlloyerRecipes.getInstance().getAlloyResult(one, stack).isEmpty();
+                        }
+                    }
+                } else if(inventory.get(1).isEmpty()) {
+                    ItemStack zero = inventory.get(0);
+                    if(zero.isEmpty()) {
+                        return true;
+                    } else {
+                        if(index == 0) {
+                            return zero.isItemEqual(stack) || ItemStack.areItemsEqual(zero, stack);
+                        } else {
+                            return !BlockAlloyerRecipes.getInstance().getAlloyResult(zero, stack).isEmpty();
+                        }
+                    }
+                } else {
+                    ItemStack s = inventory.get(index);
+                    return s.isItemEqual(stack) || ItemStack.areItemsEqual(s, stack);
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
     
@@ -442,5 +512,21 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     
     public void clear(){
         this.inventory.clear();
+    }
+
+    @Override
+    @Nonnull
+    public int[] getSlotsForFace(@Nonnull EnumFacing side) {
+        return side == EnumFacing.DOWN ? slotsBottom : (side == EnumFacing.UP ? slotsTop : slotsSides);
+    }
+
+    @Override
+    public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
+        return isItemValidForSlot(index, itemStackIn);
+    }
+
+    @Override
+    public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
+        return true;
     }
 }
