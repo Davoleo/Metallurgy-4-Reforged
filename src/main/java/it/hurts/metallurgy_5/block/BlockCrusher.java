@@ -89,7 +89,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
             IBlockState south = worldIn.getBlockState(pos.south());
             IBlockState west = worldIn.getBlockState(pos.west());
             IBlockState east = worldIn.getBlockState(pos.east());
-            EnumFacing face = (EnumFacing)state.getValue(FACING);
+            EnumFacing face = state.getValue(FACING);
 
             if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
                 face = EnumFacing.SOUTH;
@@ -188,13 +188,13 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     @Override
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
     {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     @Override
@@ -218,7 +218,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Override

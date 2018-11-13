@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Map;
-import java.util.Map.Entry;
 
 /***************************
  *
@@ -115,11 +114,11 @@ public class BlockAlloyerRecipes {
 
     public ItemStack getAlloyResult(ItemStack input1, ItemStack input2) {
         for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
-            if(this.compareItemStacks(cell.getColumnKey(), input1) || this.compareItemStacks(cell.getRowKey(), input2)) {
+            if(this.compareItemStacks(cell.getColumnKey(), input1) && this.compareItemStacks(cell.getRowKey(), input2)) {
                 return cell.getValue();
             }
 
-            if(this.compareItemStacks(cell.getRowKey(), input1) || this.compareItemStacks(cell.getColumnKey(), input2)) {
+            if(this.compareItemStacks(cell.getRowKey(), input1) && this.compareItemStacks(cell.getColumnKey(), input2)) {
                 return cell.getValue();
             }
         }

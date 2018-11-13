@@ -70,11 +70,12 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         }
     }
 
-    protected static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
-    protected static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
-    protected static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
+    private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
+    private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
+    private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
+    private static final int ALLOYING_TIME = 140;
 
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+	private NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
 
 	private String customName;
 	
@@ -138,7 +139,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     
     public void setInventorySlotContents(int index, ItemStack stack){
         ItemStack itemstack = this.inventory.get(index);
-        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+        boolean flag = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
 
         if(stack.getCount() > this.getInventoryStackLimit()) //Raccogliamo la quantità e controlliamo lo stack limit
@@ -147,7 +148,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         }
 
         //Gathers information about the item you put in
-        if(index == 0 || index == 1 && flag)
+        if(SlotEnum.INPUT_SLOT.contains(index) && flag)
         {
             this.totalAlloyingTime = this.getAlloyingTime(stack);
             this.alloyingTime = 0;
@@ -186,7 +187,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     @Override
     public void readFromNBT(NBTTagCompound compound){
         super.readFromNBT(compound);
-        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound,this.inventory);
         this.burnTime = compound.getInteger("burn_time");
         this.alloyingTime = compound.getInteger("alloying_time");
@@ -399,7 +400,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     }
     
     public int getAlloyingTime(ItemStack stack) {
-    	return 140;
+    	return ALLOYING_TIME;
     }
     
     public static boolean isItemFuel(ItemStack fuel){
@@ -420,14 +421,14 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     public void closeInventory(EntityPlayer player)
     {}
 
-
+    //TODO: Fix bug with inserting 2 copper stacks
     @Override
     public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
     {
         if(SlotEnum.OUTPUT_SLOT.contains(index)) {
             return false;
         } else if(SlotEnum.FUEL_SLOT.contains(index)) {
-            ItemStack stack1 = this.inventory.get(1);
+            ItemStack stack1 = inventory.get(index);
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
         } else if(SlotEnum.INPUT_SLOT.contains(index)) {
             if (BlockAlloyerRecipes.getInstance().isAlloyMetal(stack)) {
@@ -455,7 +456,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
                     }
                 } else {
                     ItemStack s = inventory.get(index);
-                    return s.isItemEqual(stack) || ItemStack.areItemsEqual(s, stack);
+                    return (s.isItemEqual(stack) || ItemStack.areItemsEqual(s, stack)) && s.getMaxStackSize()  > s.getCount();
                 }
             } else {
                 return false;
@@ -527,6 +528,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
     @Override
     public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
-        return true;
+        return SlotEnum.OUTPUT_SLOT.contains(index);
     }
 }

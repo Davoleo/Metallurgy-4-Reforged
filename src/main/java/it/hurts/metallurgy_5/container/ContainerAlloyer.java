@@ -1,11 +1,8 @@
 package it.hurts.metallurgy_5.container;
 
-import it.hurts.metallurgy_5.block.BlockAlloyer;
 import it.hurts.metallurgy_5.container.slot.SlotAlloyerOutput;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
-import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import it.hurts.metallurgy_5.util.recipe.BlockAlloyerRecipes;
-import it.hurts.metallurgy_5.util.recipe.BlockCrusherRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -109,22 +106,29 @@ public class ContainerAlloyer extends Container {
             } else if (index >= iStart) {
                 //Check for valid alloy recipes
                 if (BlockAlloyerRecipes.getInstance().isAlloyMetal(itemstack)) {
-                    if (this.inventorySlots.get(1).getHasStack()) {
-                        if (!this.mergeItemStack(itemstack, 1, 2, false)) {
-                            if (!this.mergeItemStack(itemstack, 0, 1, false)) {
-                                return ItemStack.EMPTY;
+                    if(this.inventorySlots.get(0).getHasStack() == this.inventorySlots.get(1).getHasStack()) {
+                        if (!this.mergeItemStack(itemstack, 0, 2, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if(this.inventorySlots.get(0).getHasStack()) {
+                        if (!this.mergeItemStack(itemstack, 0, 1, false)) {
+                            if (!BlockAlloyerRecipes.getInstance().getAlloyResult(itemstack, this.inventorySlots.get(0).getStack()).isEmpty()) {
+                                if (!this.mergeItemStack(itemstack, 1, 2, false)) {
+                                    return ItemStack.EMPTY;
+                                }
                             }
                         }
-                        // if (this.inventorySlots.get(1).getHasStack())
-                    } else {
-                        if (!this.mergeItemStack(itemstack, 0, 1, false)) {
-                            if (!this.mergeItemStack(itemstack, 1, 2, false)) {
-                                return ItemStack.EMPTY;
+                    } else if(this.inventorySlots.get(1).getHasStack()) {
+                        if (!this.mergeItemStack(itemstack, 1, 2, false)) {
+                            if (!BlockAlloyerRecipes.getInstance().getAlloyResult(itemstack, this.inventorySlots.get(1).getStack()).isEmpty()) {
+                                if (!this.mergeItemStack(itemstack, 0, 1, false)) {
+                                    return ItemStack.EMPTY;
+                                }
                             }
                         }
                     }
                 } else if (TileEntityAlloyer.isItemFuel(itemstack)) {
-                    if (!this.mergeItemStack(itemstack, 2, 3, false)) {
+                    if (!this.mergeItemStack(itemstack, 1, 2, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (index >= iStart && index <= iEnd) {

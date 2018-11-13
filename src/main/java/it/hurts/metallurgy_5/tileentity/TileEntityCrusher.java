@@ -9,10 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.inventory.SlotFurnaceFuel;
+import net.minecraft.inventory.*;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -39,7 +36,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /*************************************************
@@ -74,11 +70,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
-    protected static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
-    protected static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
-    protected static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
+    private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
+    private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
+    private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
+    private static final int CRUSHING_TIME = 140;
 	
-    private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
 
     private String customName;
     private ItemStack crushing = ItemStack.EMPTY;
@@ -157,7 +154,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     public void setInventorySlotContents(int index, @Nonnull ItemStack stack)
     {
         ItemStack itemstack = this.inventory.get(index);
-        boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+        boolean flag = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
 
         if(stack.getCount() > this.getInventoryStackLimit())
@@ -165,9 +162,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             stack.setCount(this.getInventoryStackLimit());
         }
 
-        if(index == 0 && flag)
+        if(SlotEnum.INPUT_SLOT.contains(index) && flag)
         {
-            this.totalCrushTime = this.getCrushTime(stack);
+            this.totalCrushTime = this.getCrushingTime(stack);
             this.crushTime = 0;
             this.markDirty();
         }
@@ -207,7 +204,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound,this.inventory);
         this.burnTime = compound.getInteger("burn_time");
         this.crushTime = compound.getInteger("crush_time");
@@ -306,7 +303,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
                     if (crushTime == totalCrushTime)
                     {
                         crushTime = 0;
-                        totalCrushTime = this.getCrushTime(this.inventory.get(0));
+                        totalCrushTime = this.getCrushingTime(this.inventory.get(0));
                         this.crushItem();
                         flag1 = true;
                     }
@@ -407,7 +404,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             	else if(output2.getItem() == recipeResult.getItem() && limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
             		output2.grow(recipeResult.getCount());
 
-            if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
+            if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !this.inventory.get(1).isEmpty() && this.inventory.get(1).getItem() == Items.BUCKET)
                 this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
 
             input.shrink(1);
@@ -456,9 +453,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
-    public int getCrushTime(ItemStack stack)
+    public int getCrushingTime(ItemStack stack)
     {
-        return 140;
+        return CRUSHING_TIME;
     }
 
     public static boolean isItemFuel(ItemStack fuel)
@@ -490,7 +487,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             return false;
         else if(SlotEnum.FUEL_SLOT.contains(index))
         {
-            ItemStack stack1 = this.inventory.get(1);
+            ItemStack stack1 = inventory.get(index);
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
         }
         else if(SlotEnum.INPUT_SLOT.contains(index)) {
@@ -583,7 +580,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 	@Override
 	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
-		return true;
+		return SlotEnum.OUTPUT_SLOT.contains(index);
 	}
 
 //provate pure a pensare di essere assolti, siete lo stesso coinvolti

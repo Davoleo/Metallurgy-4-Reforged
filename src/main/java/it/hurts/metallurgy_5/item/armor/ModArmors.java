@@ -18,175 +18,175 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModArmors {
 
-	public static ItemArmorBase adamantine_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.HEAD,"adamantine_helmet", Tooltips.ADAMANTINE_ARMOR_EFFECT);
-	public static ItemArmorBase adamantine_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.CHEST,"adamantine_chest", Tooltips.ADAMANTINE_ARMOR_EFFECT);
-	public static ItemArmorBase adamantine_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.LEGS,"adamantine_legs", Tooltips.ADAMANTINE_ARMOR_EFFECT);
-	public static ItemArmorBase adamantine_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.FEET,"adamantine_boots", Tooltips.ADAMANTINE_ARMOR_EFFECT);
+	public static ItemArmorBase adamantine_helmet = new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.HEAD,"adamantine_helmet", Tooltips.ADAMANTINE_ARMOR_EFFECT);
+	public static ItemArmorBase adamantine_chest = new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.CHEST,"adamantine_chest", Tooltips.ADAMANTINE_ARMOR_EFFECT);
+	public static ItemArmorBase adamantine_legs = new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.LEGS,"adamantine_legs", Tooltips.ADAMANTINE_ARMOR_EFFECT);
+	public static ItemArmorBase adamantine_boots = new ItemArmorBase(Metallurgy_5.adamantineArmorMaterial,EntityEquipmentSlot.FEET,"adamantine_boots", Tooltips.ADAMANTINE_ARMOR_EFFECT);
 
-	public static ItemArmorBase amordrine_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.HEAD, "amordrine_helmet", Tooltips.AMORDRINE_ARMOR_MATERIAL);
-	public static ItemArmorBase amordrine_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.CHEST, "amordrine_chest", Tooltips.AMORDRINE_ARMOR_MATERIAL);
-	public static ItemArmorBase amordrine_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.LEGS, "amordrine_legs", Tooltips.AMORDRINE_ARMOR_MATERIAL);
-	public static ItemArmorBase amordrine_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.FEET, "amordrine_boots", Tooltips.AMORDRINE_ARMOR_MATERIAL);
+	public static ItemArmorBase amordrine_helmet = new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.HEAD, "amordrine_helmet", Tooltips.AMORDRINE_ARMOR_MATERIAL);
+	public static ItemArmorBase amordrine_chest = new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.CHEST, "amordrine_chest", Tooltips.AMORDRINE_ARMOR_MATERIAL);
+	public static ItemArmorBase amordrine_legs = new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.LEGS, "amordrine_legs", Tooltips.AMORDRINE_ARMOR_MATERIAL);
+	public static ItemArmorBase amordrine_boots = new ItemArmorBase(Metallurgy_5.amordrineArmorMaterial, EntityEquipmentSlot.FEET, "amordrine_boots", Tooltips.AMORDRINE_ARMOR_MATERIAL);
 
-	public static ItemArmorBase angmallen_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.HEAD, "angmallen_helmet", Tooltips.ANGMALLEN_ARMOR_EFFECT);
-	public static ItemArmorBase angmallen_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.CHEST, "angmallen_chest", Tooltips.ANGMALLEN_ARMOR_EFFECT);
-	public static ItemArmorBase angmallen_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.LEGS, "angmallen_legs", Tooltips.ANGMALLEN_ARMOR_EFFECT);
-	public static ItemArmorBase angmallen_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.FEET, "angmallen_boots", Tooltips.ANGMALLEN_ARMOR_EFFECT);
+	public static ItemArmorBase angmallen_helmet = new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.HEAD, "angmallen_helmet", Tooltips.ANGMALLEN_ARMOR_EFFECT);
+	public static ItemArmorBase angmallen_chest = new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.CHEST, "angmallen_chest", Tooltips.ANGMALLEN_ARMOR_EFFECT);
+	public static ItemArmorBase angmallen_legs = new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.LEGS, "angmallen_legs", Tooltips.ANGMALLEN_ARMOR_EFFECT);
+	public static ItemArmorBase angmallen_boots = new ItemArmorBase(Metallurgy_5.angmallenArmorMaterial, EntityEquipmentSlot.FEET, "angmallen_boots", Tooltips.ANGMALLEN_ARMOR_EFFECT);
 
-	public static ItemArmorBase astral_silver_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.HEAD, "astral_silver_helmet", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
-	public static ItemArmorBase astral_silver_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.CHEST, "astral_silver_chest", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
-	public static ItemArmorBase astral_silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.LEGS, "astral_silver_legs", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
-	public static ItemArmorBase astral_silver_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.FEET, "astral_silver_boots", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
+	public static ItemArmorBase astral_silver_helmet = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.HEAD, "astral_silver_helmet", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
+	public static ItemArmorBase astral_silver_chest = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.CHEST, "astral_silver_chest", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
+	public static ItemArmorBase astral_silver_legs = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.LEGS, "astral_silver_legs", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
+	public static ItemArmorBase astral_silver_boots = new ItemArmorBase(Metallurgy_5.astralSilverArmorMaterial, EntityEquipmentSlot.FEET, "astral_silver_boots", Tooltips.ASTRAL_SILVER_ARMOR_EFFECT);
 
-	public static ItemArmorBase atlarus_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.HEAD,"atlarus_helmet");
-	public static ItemArmorBase atlarus_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.CHEST,"atlarus_chest");
-	public static ItemArmorBase atlarus_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.LEGS,"atlarus_legs");
-	public static ItemArmorBase atlarus_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.FEET,"atlarus_boots");
+	public static ItemArmorBase atlarus_helmet = new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.HEAD,"atlarus_helmet");
+	public static ItemArmorBase atlarus_chest = new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.CHEST,"atlarus_chest");
+	public static ItemArmorBase atlarus_legs = new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.LEGS,"atlarus_legs");
+	public static ItemArmorBase atlarus_boots = new ItemArmorBase(Metallurgy_5.atlarusArmorMaterial,EntityEquipmentSlot.FEET,"atlarus_boots");
 
-	public static ItemArmorBase black_steel_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.HEAD, "black_steel_helmet");
-	public static ItemArmorBase black_steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.CHEST, "black_steel_chest");
-	public static ItemArmorBase black_steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.LEGS, "black_steel_legs");
-	public static ItemArmorBase black_steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.FEET, "black_steel_boots");
+	public static ItemArmorBase black_steel_helmet = new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.HEAD, "black_steel_helmet");
+	public static ItemArmorBase black_steel_chest = new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.CHEST, "black_steel_chest");
+	public static ItemArmorBase black_steel_legs = new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.LEGS, "black_steel_legs");
+	public static ItemArmorBase black_steel_boots = new ItemArmorBase(Metallurgy_5.blackSteelArmorMaterial, EntityEquipmentSlot.FEET, "black_steel_boots");
 
-	public static ItemArmorBase brass_helemt = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.HEAD, "brass_helmet");
-	public static ItemArmorBase brass_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.CHEST, "brass_chest");
-	public static ItemArmorBase brass_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.LEGS, "brass_legs");
-	public static ItemArmorBase brass_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.FEET, "brass_boots");
+	public static ItemArmorBase brass_helemt = new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.HEAD, "brass_helmet");
+	public static ItemArmorBase brass_chest = new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.CHEST, "brass_chest");
+	public static ItemArmorBase brass_legs = new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.LEGS, "brass_legs");
+	public static ItemArmorBase brass_boots = new ItemArmorBase(Metallurgy_5.brassArmorMaterial,EntityEquipmentSlot.FEET, "brass_boots");
 
-	public static ItemArmorBase bronze_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.HEAD,"bronze_helmet");
-	public static ItemArmorBase bronze_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.CHEST,"bronze_chest");
-	public static ItemArmorBase bronze_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.LEGS,"bronze_legs");
-	public static ItemArmorBase bronze_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bronze_boots");
+	public static ItemArmorBase bronze_helmet = new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.HEAD,"bronze_helmet");
+	public static ItemArmorBase bronze_chest = new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.CHEST,"bronze_chest");
+	public static ItemArmorBase bronze_legs = new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.LEGS,"bronze_legs");
+	public static ItemArmorBase bronze_boots = new ItemArmorBase(Metallurgy_5.bronzeArmorMaterial, EntityEquipmentSlot.FEET,"bronze_boots");
 
-	public static ItemArmorBase carmot_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.HEAD,"carmot_helmet", Tooltips.CARMOT_ARMOR_EFFECT);
-	public static ItemArmorBase carmot_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.CHEST,"carmot_chest", Tooltips.CARMOT_ARMOR_EFFECT);
-	public static ItemArmorBase carmot_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.LEGS,"carmot_legs", Tooltips.CARMOT_ARMOR_EFFECT);
-	public static ItemArmorBase carmot_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.FEET,"carmot_boots", Tooltips.CARMOT_ARMOR_EFFECT);
+	public static ItemArmorBase carmot_helmet = new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.HEAD,"carmot_helmet", Tooltips.CARMOT_ARMOR_EFFECT);
+	public static ItemArmorBase carmot_chest = new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.CHEST,"carmot_chest", Tooltips.CARMOT_ARMOR_EFFECT);
+	public static ItemArmorBase carmot_legs = new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.LEGS,"carmot_legs", Tooltips.CARMOT_ARMOR_EFFECT);
+	public static ItemArmorBase carmot_boots = new ItemArmorBase(Metallurgy_5.carmotArmorMaterial,EntityEquipmentSlot.FEET,"carmot_boots", Tooltips.CARMOT_ARMOR_EFFECT);
 
-	public static ItemArmorBase celenegil_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.HEAD, "celenegil_helmet", Tooltips.CELENEGIL_ARMOR_EFFECT);
-	public static ItemArmorBase celenegil_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.CHEST, "celenegil_chest", Tooltips.CELENEGIL_ARMOR_EFFECT);
-	public static ItemArmorBase celenegil_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.LEGS, "celenegil_legs", Tooltips.CELENEGIL_ARMOR_EFFECT);
-	public static ItemArmorBase celenegil_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.FEET, "celenegil_boots", Tooltips.CELENEGIL_ARMOR_EFFECT);
+	public static ItemArmorBase celenegil_helmet = new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.HEAD, "celenegil_helmet", Tooltips.CELENEGIL_ARMOR_EFFECT);
+	public static ItemArmorBase celenegil_chest = new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.CHEST, "celenegil_chest", Tooltips.CELENEGIL_ARMOR_EFFECT);
+	public static ItemArmorBase celenegil_legs = new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.LEGS, "celenegil_legs", Tooltips.CELENEGIL_ARMOR_EFFECT);
+	public static ItemArmorBase celenegil_boots = new ItemArmorBase(Metallurgy_5.celenegilArmorMaterial, EntityEquipmentSlot.FEET, "celenegil_boots", Tooltips.CELENEGIL_ARMOR_EFFECT);
 
-	public static ItemArmorBase damascus_steel_helemt = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.HEAD, "damascus_steel_helmet");
-	public static ItemArmorBase damascus_steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.CHEST, "damascus_steel_chest");
-	public static ItemArmorBase damascus_steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.LEGS, "damascus_steel_legs");
-	public static ItemArmorBase damascus_steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.FEET, "damascus_steel_boots");
+	public static ItemArmorBase damascus_steel_helemt = new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.HEAD, "damascus_steel_helmet");
+	public static ItemArmorBase damascus_steel_chest = new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.CHEST, "damascus_steel_chest");
+	public static ItemArmorBase damascus_steel_legs = new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.LEGS, "damascus_steel_legs");
+	public static ItemArmorBase damascus_steel_boots = new ItemArmorBase(Metallurgy_5.damascusSteelArmorMaterial, EntityEquipmentSlot.FEET, "damascus_steel_boots");
 
-	public static ItemArmorBase deep_iron_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.HEAD , "deep_iron_helmet", Tooltips.DEEP_IRON_ARMOR_EFFECT);
-	public static ItemArmorBase deep_iron_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.CHEST , "deep_iron_chest", Tooltips.DEEP_IRON_ARMOR_EFFECT);
-	public static ItemArmorBase deep_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs", Tooltips.DEEP_IRON_ARMOR_EFFECT);
-	public static ItemArmorBase deep_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots", Tooltips.DEEP_IRON_ARMOR_EFFECT, Enchantments.DEPTH_STRIDER, 3);
+	public static ItemArmorBase deep_iron_helmet = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.HEAD , "deep_iron_helmet", Tooltips.DEEP_IRON_ARMOR_EFFECT);
+	public static ItemArmorBase deep_iron_chest = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.CHEST , "deep_iron_chest", Tooltips.DEEP_IRON_ARMOR_EFFECT);
+	public static ItemArmorBase deep_iron_legs = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs", Tooltips.DEEP_IRON_ARMOR_EFFECT);
+	public static ItemArmorBase deep_iron_boots = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots", Tooltips.DEEP_IRON_ARMOR_EFFECT, Enchantments.DEPTH_STRIDER, 3);
 
-	public static ItemArmorBase desichalkos_helmet =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.HEAD, "desichalkos_helmet");
-	public static ItemArmorBase desichalkos_chest =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.CHEST, "desichalkos_chest");
-	public static ItemArmorBase desichalkos_legs =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.LEGS, "desichalkos_legs");
-	public static ItemArmorBase desichalkos_boots =  (ItemArmorBase) new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.FEET, "desichalkos_boots");
+	public static ItemArmorBase desichalkos_helmet = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.HEAD, "desichalkos_helmet");
+	public static ItemArmorBase desichalkos_chest = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.CHEST, "desichalkos_chest");
+	public static ItemArmorBase desichalkos_legs = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.LEGS, "desichalkos_legs");
+	public static ItemArmorBase desichalkos_boots = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.FEET, "desichalkos_boots");
 
-	public static ItemArmorBase electrum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.HEAD , "electrum_helmet");
-	public static ItemArmorBase electrum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.CHEST , "electrum_chest");
-	public static ItemArmorBase electrum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.LEGS , "electrum_legs");
-	public static ItemArmorBase electrum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.FEET , "electrum_boots");
+	public static ItemArmorBase electrum_helmet = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.HEAD , "electrum_helmet");
+	public static ItemArmorBase electrum_chest = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.CHEST , "electrum_chest");
+	public static ItemArmorBase electrum_legs = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.LEGS , "electrum_legs");
+	public static ItemArmorBase electrum_boots = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.FEET , "electrum_boots");
 
-	public static ItemArmorBase eximite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.HEAD , "eximite_helmet");
-	public static ItemArmorBase eximite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.CHEST , "eximite_chest");
-	public static ItemArmorBase eximite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.LEGS , "eximite_legs");
-	public static ItemArmorBase eximite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.FEET , "eximite_boots");
+	public static ItemArmorBase eximite_helmet = new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.HEAD , "eximite_helmet");
+	public static ItemArmorBase eximite_chest = new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.CHEST , "eximite_chest");
+	public static ItemArmorBase eximite_legs = new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.LEGS , "eximite_legs");
+	public static ItemArmorBase eximite_boots = new ItemArmorBase(Metallurgy_5.eximiteArmorMaterial, EntityEquipmentSlot.FEET , "eximite_boots");
 
-	public static ItemArmorBase haderoth_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.HEAD, "haderoth_helmet");
-	public static ItemArmorBase haderoth_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.CHEST, "haderoth_chest");
-	public static ItemArmorBase haderoth_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.LEGS, "haderoth_legs");
-	public static ItemArmorBase haderoth_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.FEET, "haderoth_boots");
+	public static ItemArmorBase haderoth_helmet = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.HEAD, "haderoth_helmet");
+	public static ItemArmorBase haderoth_chest = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.CHEST, "haderoth_chest");
+	public static ItemArmorBase haderoth_legs = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.LEGS, "haderoth_legs");
+	public static ItemArmorBase haderoth_boots = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.FEET, "haderoth_boots");
 	
-	public static ItemArmorBase hepatizon_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.HEAD, "hepatizon_helmet");
-	public static ItemArmorBase hepatizon_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.CHEST, "hepatizon_chest");
-	public static ItemArmorBase hepatizon_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.LEGS, "hepatizon_legs");
-	public static ItemArmorBase hepatizon_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.FEET, "hepatizon_boots");
+	public static ItemArmorBase hepatizon_helmet = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.HEAD, "hepatizon_helmet");
+	public static ItemArmorBase hepatizon_chest = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.CHEST, "hepatizon_chest");
+	public static ItemArmorBase hepatizon_legs = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.LEGS, "hepatizon_legs");
+	public static ItemArmorBase hepatizon_boots = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.FEET, "hepatizon_boots");
 	
-	public static ItemArmorBase inolashite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.HEAD, "inolashite_helmet");
-	public static ItemArmorBase inolashite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.CHEST, "inolashite_chest");
-	public static ItemArmorBase inolashite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.LEGS, "inolashite_legs");
-	public static ItemArmorBase inolashite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.FEET, "inolashite_boots");
+	public static ItemArmorBase inolashite_helmet = new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.HEAD, "inolashite_helmet");
+	public static ItemArmorBase inolashite_chest = new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.CHEST, "inolashite_chest");
+	public static ItemArmorBase inolashite_legs = new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.LEGS, "inolashite_legs");
+	public static ItemArmorBase inolashite_boots = new ItemArmorBase(Metallurgy_5.inolashiteArmorMaterial, EntityEquipmentSlot.FEET, "inolashite_boots");
 	
-	public static ItemArmorBase ignatius_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.HEAD, "ignatius_helmet");
-	public static ItemArmorBase ignatius_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.CHEST, "ignatius_chest");
-	public static ItemArmorBase ignatius_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.LEGS, "ignatius_legs");
-	public static ItemArmorBase ignatius_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.FEET, "ignatius_boots");
+	public static ItemArmorBase ignatius_helmet = new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.HEAD, "ignatius_helmet");
+	public static ItemArmorBase ignatius_chest = new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.CHEST, "ignatius_chest");
+	public static ItemArmorBase ignatius_legs = new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.LEGS, "ignatius_legs");
+	public static ItemArmorBase ignatius_boots = new ItemArmorBase(Metallurgy_5.ignatiusArmorMaterial, EntityEquipmentSlot.FEET, "ignatius_boots");
 
-	public static ItemArmorBase kalendrite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.HEAD, "kalendrite_helmet", Tooltips.KALENDRITE_ARMOR_EFFECT);
-	public static ItemArmorBase kalendrite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.CHEST, "kalendrite_chest", Tooltips.KALENDRITE_ARMOR_EFFECT);
-	public static ItemArmorBase kalendrite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.LEGS, "kalendrite_legs", Tooltips.KALENDRITE_ARMOR_EFFECT);
-	public static ItemArmorBase kalendrite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.FEET, "kalendrite_boots", Tooltips.KALENDRITE_ARMOR_EFFECT);
+	public static ItemArmorBase kalendrite_helmet = new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.HEAD, "kalendrite_helmet", Tooltips.KALENDRITE_ARMOR_EFFECT);
+	public static ItemArmorBase kalendrite_chest = new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.CHEST, "kalendrite_chest", Tooltips.KALENDRITE_ARMOR_EFFECT);
+	public static ItemArmorBase kalendrite_legs = new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.LEGS, "kalendrite_legs", Tooltips.KALENDRITE_ARMOR_EFFECT);
+	public static ItemArmorBase kalendrite_boots = new ItemArmorBase(Metallurgy_5.kalendriteArmorMaterial, EntityEquipmentSlot.FEET, "kalendrite_boots", Tooltips.KALENDRITE_ARMOR_EFFECT);
 
-	public static ItemArmorBase midasium_helmet = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.HEAD, "midasium_helmet");
-	public static ItemArmorBase midasium_chest = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.CHEST, "midasium_chest");
-	public static ItemArmorBase midasium_legs = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.LEGS, "midasium_legs");
-	public static ItemArmorBase midasium_boots = (ItemArmorBase) new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.FEET, "midasium_boots");
+	public static ItemArmorBase midasium_helmet = new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.HEAD, "midasium_helmet");
+	public static ItemArmorBase midasium_chest = new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.CHEST, "midasium_chest");
+	public static ItemArmorBase midasium_legs = new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.LEGS, "midasium_legs");
+	public static ItemArmorBase midasium_boots = new ItemArmorBase (Metallurgy_5.midasiumArmorMaterial, EntityEquipmentSlot.FEET, "midasium_boots");
 
-	public static ItemArmorBase mithril_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet", Tooltips.MITHRIL_ARMOR_EFFECT);
-	public static ItemArmorBase mithril_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.CHEST,"mithril_chest", Tooltips.MITHRIL_ARMOR_EFFECT);
-	public static ItemArmorBase mithril_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs", Tooltips.MITHRIL_ARMOR_EFFECT);
-	public static ItemArmorBase mithril_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.FEET,"mithril_boots", Tooltips.MITHRIL_ARMOR_EFFECT);
+	public static ItemArmorBase mithril_helmet = new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.HEAD,"mithril_helmet", Tooltips.MITHRIL_ARMOR_EFFECT);
+	public static ItemArmorBase mithril_chest = new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.CHEST,"mithril_chest", Tooltips.MITHRIL_ARMOR_EFFECT);
+	public static ItemArmorBase mithril_legs = new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.LEGS,"mithril_legs", Tooltips.MITHRIL_ARMOR_EFFECT);
+	public static ItemArmorBase mithril_boots = new ItemArmorBase(Metallurgy_5.mithrilArmorMaterial,EntityEquipmentSlot.FEET,"mithril_boots", Tooltips.MITHRIL_ARMOR_EFFECT);
 
-	public static ItemArmorBase orichalcum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.HEAD, "orichalcum_helmet");
-	public static ItemArmorBase orichalcum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.CHEST, "orichalcum_chest");
-	public static ItemArmorBase orichalcum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs");
-	public static ItemArmorBase orichalcum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots");
+	public static ItemArmorBase orichalcum_helmet = new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.HEAD, "orichalcum_helmet");
+	public static ItemArmorBase orichalcum_chest = new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.CHEST, "orichalcum_chest");
+	public static ItemArmorBase orichalcum_legs = new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.LEGS, "orichalcum_legs");
+	public static ItemArmorBase orichalcum_boots = new ItemArmorBase(Metallurgy_5.orichalcumArmorMaterial, EntityEquipmentSlot.FEET, "orichalcum_boots");
 
-	public static ItemArmorBase oureclase_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.HEAD, "oureclase_helmet");
-	public static ItemArmorBase oureclase_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "oureclase_chest");
-	public static ItemArmorBase oureclase_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "oureclase_legs");
-	public static ItemArmorBase oureclase_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "oureclase_boots");
+	public static ItemArmorBase oureclase_helmet = new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.HEAD, "oureclase_helmet");
+	public static ItemArmorBase oureclase_chest = new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.CHEST, "oureclase_chest");
+	public static ItemArmorBase oureclase_legs = new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.LEGS, "oureclase_legs");
+	public static ItemArmorBase oureclase_boots = new ItemArmorBase(Metallurgy_5.oureclaseArmorMaterial, EntityEquipmentSlot.FEET, "oureclase_boots");
 
-	public static ItemArmorBase platinum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet", Tooltips.PLATINUM_ARMOR_EFFECT, Enchantments.BINDING_CURSE,1);
-	public static ItemArmorBase platinum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest");
-	public static ItemArmorBase platinum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.LEGS,"platinum_legs");
-	public static ItemArmorBase platinum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.FEET,"platinum_boots");
+	public static ItemArmorBase platinum_helmet = new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.HEAD,"platinum_helmet", Tooltips.PLATINUM_ARMOR_EFFECT, Enchantments.BINDING_CURSE,1);
+	public static ItemArmorBase platinum_chest = new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.CHEST,"platinum_chest");
+	public static ItemArmorBase platinum_legs = new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.LEGS,"platinum_legs");
+	public static ItemArmorBase platinum_boots = new ItemArmorBase(Metallurgy_5.platinumArmorMaterial, EntityEquipmentSlot.FEET,"platinum_boots");
 
-	public static ItemArmorBase prometheum_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet", Tooltips.PROMETHEUM_ARMOR_EFFECT);
-	public static ItemArmorBase prometheum_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.CHEST, "prometheum_chest", Tooltips.PROMETHEUM_ARMOR_EFFECT);
-	public static ItemArmorBase prometheum_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.LEGS, "prometheum_legs", Tooltips.PROMETHEUM_ARMOR_EFFECT);
-	public static ItemArmorBase prometheum_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.FEET, "prometheum_boots", Tooltips.PROMETHEUM_ARMOR_EFFECT);
+	public static ItemArmorBase prometheum_helmet = new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.HEAD, "prometheum_helmet", Tooltips.PROMETHEUM_ARMOR_EFFECT);
+	public static ItemArmorBase prometheum_chest = new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.CHEST, "prometheum_chest", Tooltips.PROMETHEUM_ARMOR_EFFECT);
+	public static ItemArmorBase prometheum_legs = new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.LEGS, "prometheum_legs", Tooltips.PROMETHEUM_ARMOR_EFFECT);
+	public static ItemArmorBase prometheum_boots = new ItemArmorBase(Metallurgy_5.prometheumArmorMaterial, EntityEquipmentSlot.FEET, "prometheum_boots", Tooltips.PROMETHEUM_ARMOR_EFFECT);
 
-	public static ItemArmorBase sanguinite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.HEAD, "sanguinite_helmet");
-	public static ItemArmorBase sanguinite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.CHEST, "sanguinite_chest");
-	public static ItemArmorBase sanguinite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.LEGS, "sanguinite_legs");
-	public static ItemArmorBase sanguinite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.FEET, "sanguinite_boots");
+	public static ItemArmorBase sanguinite_helmet = new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.HEAD, "sanguinite_helmet");
+	public static ItemArmorBase sanguinite_chest = new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.CHEST, "sanguinite_chest");
+	public static ItemArmorBase sanguinite_legs = new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.LEGS, "sanguinite_legs");
+	public static ItemArmorBase sanguinite_boots = new ItemArmorBase(Metallurgy_5.sanguiniteArmorMaterial, EntityEquipmentSlot.FEET, "sanguinite_boots");
 
-	public static ItemArmorBase shadow_iron_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.HEAD, "shadow_iron_helmet");
-	public static ItemArmorBase shadow_iron_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_iron_chest");
-	public static ItemArmorBase shadow_iron_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_iron_legs");
-	public static ItemArmorBase shadow_iron_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.FEET, "shadow_iron_boots");
+	public static ItemArmorBase shadow_iron_helmet = new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.HEAD, "shadow_iron_helmet");
+	public static ItemArmorBase shadow_iron_chest = new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_iron_chest");
+	public static ItemArmorBase shadow_iron_legs = new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_iron_legs");
+	public static ItemArmorBase shadow_iron_boots = new ItemArmorBase(Metallurgy_5.shadowIronArmorMaterial, EntityEquipmentSlot.FEET, "shadow_iron_boots");
 
-	public static ItemArmorBase shadow_steel_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.HEAD, "shadow_steel_helmet");
-	public static ItemArmorBase shadow_steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_steel_chest");
-	public static ItemArmorBase shadow_steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_steel_legs");
-	public static ItemArmorBase shadow_steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.FEET, "shadow_steel_boots");
+	public static ItemArmorBase shadow_steel_helmet = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.HEAD, "shadow_steel_helmet");
+	public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_steel_chest");
+	public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_steel_legs");
+	public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.FEET, "shadow_steel_boots");
 	
-	public static ItemArmorBase silver_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.HEAD, "silver_helmet");
-	public static ItemArmorBase silver_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.CHEST, "silver_chest");
-	public static ItemArmorBase silver_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs");
-	public static ItemArmorBase silver_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.FEET, "silver_boots");
+	public static ItemArmorBase silver_helmet = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.HEAD, "silver_helmet");
+	public static ItemArmorBase silver_chest = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.CHEST, "silver_chest");
+	public static ItemArmorBase silver_legs = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs");
+	public static ItemArmorBase silver_boots = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.FEET, "silver_boots");
 
-	public static ItemArmorBase steel_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.HEAD, "steel_helmet");
-	public static ItemArmorBase steel_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.CHEST, "steel_chest");
-	public static ItemArmorBase steel_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.LEGS, "steel_legs");
-	public static ItemArmorBase steel_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.FEET, "steel_boots");
+	public static ItemArmorBase steel_helmet = new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.HEAD, "steel_helmet");
+	public static ItemArmorBase steel_chest = new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.CHEST, "steel_chest");
+	public static ItemArmorBase steel_legs = new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.LEGS, "steel_legs");
+	public static ItemArmorBase steel_boots = new ItemArmorBase(Metallurgy_5.steelArmorMaterial, EntityEquipmentSlot.FEET, "steel_boots");
 
-	public static ItemArmorBase tartarite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.HEAD, "tartarite_helmet");
-	public static ItemArmorBase tartarite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.CHEST, "tartarite_chest");
-	public static ItemArmorBase tartarite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.LEGS, "tartarite_legs");
-	public static ItemArmorBase tartarite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.FEET, "tartarite_boots");
+	public static ItemArmorBase tartarite_helmet = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.HEAD, "tartarite_helmet");
+	public static ItemArmorBase tartarite_chest = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.CHEST, "tartarite_chest");
+	public static ItemArmorBase tartarite_legs = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.LEGS, "tartarite_legs");
+	public static ItemArmorBase tartarite_boots = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.FEET, "tartarite_boots");
 	
-	public static ItemArmorBase vulcanite_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.HEAD, "vulcanite_helmet", Tooltips.VULCANITE_ARMOR_EFFECT);
-	public static ItemArmorBase vulcanite_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.CHEST, "vulcanite_chest", Tooltips.VULCANITE_ARMOR_EFFECT);
-	public static ItemArmorBase vulcanite_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.LEGS, "vulcanite_legs", Tooltips.VULCANITE_ARMOR_EFFECT);
-	public static ItemArmorBase vulcanite_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.FEET, "vulcanite_boots", Tooltips.VULCANITE_ARMOR_EFFECT);
+	public static ItemArmorBase vulcanite_helmet = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.HEAD, "vulcanite_helmet", Tooltips.VULCANITE_ARMOR_EFFECT);
+	public static ItemArmorBase vulcanite_chest = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.CHEST, "vulcanite_chest", Tooltips.VULCANITE_ARMOR_EFFECT);
+	public static ItemArmorBase vulcanite_legs = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.LEGS, "vulcanite_legs", Tooltips.VULCANITE_ARMOR_EFFECT);
+	public static ItemArmorBase vulcanite_boots = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.FEET, "vulcanite_boots", Tooltips.VULCANITE_ARMOR_EFFECT);
 
-	public static ItemArmorBase vyroxeres_helmet = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.HEAD, "vyroxeres_helmet");
-	public static ItemArmorBase vyroxeres_chest = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.CHEST, "vyroxeres_chest");
-	public static ItemArmorBase vyroxeres_legs = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.LEGS, "vyroxeres_legs");
-	public static ItemArmorBase vyroxeres_boots = (ItemArmorBase) new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.FEET, "vyroxeres_boots");
+	public static ItemArmorBase vyroxeres_helmet = new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.HEAD, "vyroxeres_helmet");
+	public static ItemArmorBase vyroxeres_chest = new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.CHEST, "vyroxeres_chest");
+	public static ItemArmorBase vyroxeres_legs = new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.LEGS, "vyroxeres_legs");
+	public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(Metallurgy_5.vyroxeresArmorMaterial, EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(
