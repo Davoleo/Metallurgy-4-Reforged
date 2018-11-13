@@ -55,7 +55,8 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.alloyer);
     }
-    
+
+    @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player){
         return new ItemStack(ModBlocks.alloyer);
     }

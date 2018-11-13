@@ -26,7 +26,6 @@ public class TabFluid extends CreativeTabs {
         for (Item item : Item.REGISTRY) {
             if (item != null) {
                 if (item.getUnlocalizedName().contains("molten_")) {
-
                     items.add(new ItemStack(item));
                 }
             }
