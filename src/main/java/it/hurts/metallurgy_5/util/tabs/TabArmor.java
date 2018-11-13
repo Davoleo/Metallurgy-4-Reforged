@@ -11,16 +11,16 @@ import net.minecraft.util.NonNullList;
  * Project: Metallurgy-5
  ***************************/
 
-public class TabArmor extends CreativeTabs{
+public class TabArmor extends CreativeTabs {
 
-	private int icon;
-	private NonNullList<ItemStack> iconList;
+    private int icon;
+    private NonNullList<ItemStack> iconList;
 
-	public TabArmor() {
-		super(Metallurgy_5.MODID +".armors");
-	}
+    public TabArmor() {
+        super(Metallurgy_5.MODID + ".armors");
+    }
 
-	private NonNullList<ItemStack> icons(){
+    private NonNullList<ItemStack> icons() {
         NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
@@ -37,15 +37,15 @@ public class TabArmor extends CreativeTabs{
         return items;
     }
 
-	@Override
-	public ItemStack getTabIconItem() {
-	    iconList = icons();
-		icon = Metallurgy_5.ticker/20;
+    @Override
+    public ItemStack getTabIconItem() {
+        iconList = icons();
+        icon = Metallurgy_5.ticker / 20;
 
-		if(!iconList.isEmpty())
-			return new ItemStack(iconList.get(icon % iconList.size()).getItem());
-		return ItemStack.EMPTY;
-	}
+        if (!iconList.isEmpty())
+            return new ItemStack(iconList.get(icon % iconList.size()).getItem());
+        return ItemStack.EMPTY;
+    }
 
     /*@Override
     public boolean hasSearchBar()

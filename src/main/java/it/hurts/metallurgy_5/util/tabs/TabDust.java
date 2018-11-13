@@ -16,12 +16,11 @@ public class TabDust extends CreativeTabs {
     private int icon;
     private NonNullList<ItemStack> iconList;
 
-    public TabDust()
-    {
+    public TabDust() {
         super(Metallurgy_5.MODID + ".dusts");
     }
 
-    private NonNullList<ItemStack> icons(){
+    private NonNullList<ItemStack> icons() {
         NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
@@ -36,12 +35,11 @@ public class TabDust extends CreativeTabs {
     }
 
     @Override
-    public ItemStack getTabIconItem()
-    {
+    public ItemStack getTabIconItem() {
         iconList = this.icons();
-        icon = Metallurgy_5.ticker/20;
+        icon = Metallurgy_5.ticker / 20;
 
-        if(!iconList.isEmpty())
+        if (!iconList.isEmpty())
             return new ItemStack(iconList.get(icon % iconList.size()).getItem());
         return ItemStack.EMPTY;
     }

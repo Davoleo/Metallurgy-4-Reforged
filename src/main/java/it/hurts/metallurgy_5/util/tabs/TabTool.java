@@ -16,12 +16,11 @@ public class TabTool extends CreativeTabs {
     private int icon;
     private NonNullList<ItemStack> iconList;
 
-    public TabTool()
-    {
+    public TabTool() {
         super(Metallurgy_5.MODID + ".tools");
     }
 
-    private NonNullList<ItemStack> icons(){
+    private NonNullList<ItemStack> icons() {
         NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
@@ -42,9 +41,9 @@ public class TabTool extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem() {
         iconList = this.icons();
-        icon = Metallurgy_5.ticker/20;
+        icon = Metallurgy_5.ticker / 20;
 
-        if(!iconList.isEmpty())
+        if (!iconList.isEmpty())
             return new ItemStack(iconList.get(icon % iconList.size()).getItem());
         return ItemStack.EMPTY;
     }

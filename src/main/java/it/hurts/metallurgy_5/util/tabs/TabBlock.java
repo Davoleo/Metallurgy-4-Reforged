@@ -11,16 +11,16 @@ import net.minecraft.util.NonNullList;
  * Project: Metallurgy-5
  ***************************/
 
-public class TabBlock extends CreativeTabs{
+public class TabBlock extends CreativeTabs {
 
     private int icon;
     private NonNullList<ItemStack> iconList;
 
-	public TabBlock() {
-		super(Metallurgy_5.MODID + ".blocks");
-	}
+    public TabBlock() {
+        super(Metallurgy_5.MODID + ".blocks");
+    }
 
-    private NonNullList<ItemStack> icons(){
+    private NonNullList<ItemStack> icons() {
         NonNullList<ItemStack> items = NonNullList.create();
 
         for (Item item : Item.REGISTRY) {
@@ -35,14 +35,13 @@ public class TabBlock extends CreativeTabs{
     }
 
     @Override
-    public ItemStack getTabIconItem()
-    {
+    public ItemStack getTabIconItem() {
         iconList = this.icons();
-        icon = Metallurgy_5.ticker/20;
+        icon = Metallurgy_5.ticker / 20;
 
-        if(!iconList.isEmpty())
+        if (!iconList.isEmpty())
             return new ItemStack(iconList.get(icon % iconList.size()).getItem());
         return ItemStack.EMPTY;
     }
-	
+
 }

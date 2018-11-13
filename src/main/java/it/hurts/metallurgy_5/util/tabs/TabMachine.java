@@ -15,15 +15,13 @@ import net.minecraft.item.ItemStack;
 
 public class TabMachine extends CreativeTabs {
 
-    public TabMachine()
-    {
+    public TabMachine() {
         super(Metallurgy_5.MODID + ".machines");
     }
 
 
     @Override
-    public ItemStack getTabIconItem()
-    {
+    public ItemStack getTabIconItem() {
         return new ItemStack(ModBlocks.alloyer);
     }
 }
