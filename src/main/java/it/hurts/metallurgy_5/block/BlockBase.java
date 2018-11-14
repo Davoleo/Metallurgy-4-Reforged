@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.block;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,7 +23,7 @@ public class BlockBase extends Block {
 
 	public BlockBase(Material material, String name) {
 		super(material);
-		setCreativeTab(Metallurgy_5.tabBlock);
+		setCreativeTab(MetallurgyTabs.tabBlock);
 		
 		this.name = name;
 		

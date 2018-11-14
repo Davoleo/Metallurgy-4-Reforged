@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSpade;
@@ -26,7 +27,8 @@ public class ItemShovelBase extends ItemSpade {
         setUnlocalizedName(name);
         setRegistryName(name);
         this.name = name;
-        setCreativeTab(Metallurgy_5.tabTool);
+        setCreativeTab(MetallurgyTabs.tabTool);
+        ModTools.toolList.add(this);
     }
 
     @SideOnly(Side.CLIENT)

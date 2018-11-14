@@ -10,7 +10,6 @@
  import it.hurts.metallurgy_5.util.handler.CommonTickHandler;
  import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_5.util.recipe.ModRecipes;
- import it.hurts.metallurgy_5.util.tabs.*;
  import it.hurts.metallurgy_5.world.ModWorldGen;
  import net.minecraft.block.Block;
  import net.minecraft.init.SoundEvents;
@@ -49,18 +48,6 @@ public class Metallurgy_5 {
 	public static int ticker = 0;
 
 	public static final CommonTickHandler tickHandler = new CommonTickHandler();
-
-	//CreativeTabs
-	//TODO : Fix Creative tab icon ticking
-	//TODO : Put all creative tabs in one class
-    public static final TabArmor tabArmor = new TabArmor();
-	public static final TabBlock tabBlock = new TabBlock();
-	public static final TabDust tabDust = new TabDust();
-    public static final TabFluid tabFluid = new TabFluid();
-	public static final TabIngot tabIngot = new TabIngot();
-	public static final TabMachine tabMachine = new TabMachine();
-	public static final TabOre tabOre = new TabOre();
-	public static final TabTool tabTool = new TabTool();
 
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);

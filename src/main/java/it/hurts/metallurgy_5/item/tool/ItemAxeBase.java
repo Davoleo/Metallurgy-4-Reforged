@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
@@ -25,8 +26,9 @@ public class ItemAxeBase extends ItemAxe {
         super(material, 3F, -1F);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setCreativeTab(Metallurgy_5.tabTool);
+        setCreativeTab(MetallurgyTabs.tabTool);
         this.name = name;
+        ModTools.toolList.add(this);
     }
 
     @SideOnly(Side.CLIENT)

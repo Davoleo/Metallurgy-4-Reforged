@@ -1,8 +1,9 @@
 package it.hurts.metallurgy_5.block;
 
-import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+
 import java.util.Random;
 
 /*************************************************
@@ -20,7 +21,7 @@ public class BlockMineral extends BlockOre{
     public BlockMineral(String name, String oreName, Item drop)
     {
         super(name, oreName);
-        setCreativeTab(Metallurgy_5.tabOre);
+        setCreativeTab(MetallurgyTabs.tabOre);
         item = drop;
     }
 

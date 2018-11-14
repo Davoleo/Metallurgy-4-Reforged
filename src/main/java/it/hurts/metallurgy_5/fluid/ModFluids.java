@@ -3,7 +3,11 @@ package it.hurts.metallurgy_5.fluid;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*************************************************
  * Author: Davoleo
@@ -14,6 +18,8 @@ import net.minecraftforge.fluids.FluidRegistry;
  **************************************************/
 
 public class ModFluids {
+
+    public static final List<Fluid> fluidList = new ArrayList<>();
 
     public static final FluidMolten MOLTEN_ADAMANTINE = (FluidMolten) new FluidMolten(
             "molten_adamantine",

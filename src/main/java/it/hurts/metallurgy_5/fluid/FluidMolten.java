@@ -30,12 +30,14 @@ protected boolean bucketEnabled = false;
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
         super(name, still, flowing);
+        ModFluids.fluidList.add(this);
     }
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor)
     {
         super(name, still, flowing);
         setColor(mapColor);
+        ModFluids.fluidList.add(this);
     }
 
     public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor, float overlayAlpha)

@@ -6,6 +6,9 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*************************************************
  * Author: Davoleo
  * Date: 20/08/2018
@@ -15,6 +18,8 @@ import net.minecraftforge.registries.IForgeRegistry;
  **************************************************/
 
 public class ModTools {
+
+    public static final List<Item> toolList = new ArrayList<>();
 
     public static ItemAxeBase adamantine_axe = new ItemAxeBase(Metallurgy_5.adamantineToolMaterial, "adamantine_axe");
     public static ItemHoeBase adamantine_hoe = new ItemHoeBase(Metallurgy_5.adamantineToolMaterial, "adamantine_hoe");

@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.item.tool;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -53,7 +54,8 @@ public class ItemSwordBase extends ItemSword {
         this.tooltip = tooltip;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(Metallurgy_5.tabTool);
+        setCreativeTab(MetallurgyTabs.tabTool);
+        ModTools.toolList.add(this);
     }
     
     @Override
