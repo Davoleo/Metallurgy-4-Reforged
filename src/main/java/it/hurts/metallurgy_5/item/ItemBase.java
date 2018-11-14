@@ -4,6 +4,8 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
+import javax.annotation.Nonnull;
+
 /***************************
 *
 * Author : ItHurtsLikeHell
@@ -17,18 +19,22 @@ public class ItemBase extends Item{
 
 	protected String name;
 	
-	public ItemBase(String name) {
+	public ItemBase(String name)
+    {
 		this.name = name;
 		setUnlocalizedName(name);
 		setRegistryName(name);
 	}
 	
-	public void registerItemModel() {
+	public void registerItemModel()
+    {
 		Metallurgy_5.proxy.registerItemRenderer(this, 0, name);
 	}
 
+	@Nonnull
 	@Override
-	public ItemBase setCreativeTab(CreativeTabs tab) {
+	public ItemBase setCreativeTab(@Nonnull CreativeTabs tab)
+    {
 		super.setCreativeTab(tab);
 		return this;
 	}

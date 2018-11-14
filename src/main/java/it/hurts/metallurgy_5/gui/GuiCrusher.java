@@ -44,6 +44,8 @@ public class GuiCrusher extends GuiContainer {
         this.fontRenderer.drawString(name, 10, -22, 16747293);
     }
 
+
+    //TODO : Change the crusher animation to the new one
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {

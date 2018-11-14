@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.block;
 
 import it.hurts.metallurgy_5.fluid.ModFluids;
+import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -51,10 +52,10 @@ public class ModBlocks {
 	public static BlockOre oreVyroxeres = new BlockOre("vyroxeres_ore","oreVyroxeres").setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreZinc = new BlockOre("zinc_ore","oreZinc").setCreativeTab(MetallurgyTabs.tabOre);
 	
-	public static BlockOre oreSulfur = new BlockOre("sulfur_ore","oreSulfur").setCreativeTab(MetallurgyTabs.tabOre);
-	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore","orePhosphorite").setCreativeTab(MetallurgyTabs.tabOre);
-	public static BlockOre oreBitumen = new BlockOre("bitumen_ore","oreBitumen").setCreativeTab(MetallurgyTabs.tabOre);
-	public static BlockOre orePotash = new BlockOre("potash_ore","orePotash").setCreativeTab(MetallurgyTabs.tabOre);
+	public static BlockOre oreSulfur = new BlockOre("sulfur_ore","oreSulfur", ModItems.dustSulfur).setCreativeTab(MetallurgyTabs.tabOre);
+	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore","orePhosphorite", ModItems.dustPhosphorus).setCreativeTab(MetallurgyTabs.tabOre);
+	public static BlockOre oreBitumen = new BlockOre("bitumen_ore","oreBitumen", ModItems.dustBitumen).setCreativeTab(MetallurgyTabs.tabOre);
+	public static BlockOre orePotash = new BlockOre("potash_ore","orePotash", ModItems.dustPotash).setCreativeTab(MetallurgyTabs.tabOre);
 	
 //	Block
 //	public static BlockOre  = new BlockOre("","").setCreativeTab(MetallurgyTabs.tabBlock);

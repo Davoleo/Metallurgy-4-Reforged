@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
 public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory {
 
 //  TODO Aggiungere all'alloyer
+//  TODO Annotations (@Davoleo)
 // 	enumerate the slots
     public enum slotEnum{
         INPUT_SLOT, OUTPUT_SLOT

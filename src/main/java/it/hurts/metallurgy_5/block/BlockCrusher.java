@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 /*************************************************
@@ -50,13 +51,16 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     }
 
 
+    @Nonnull
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(ModBlocks.crusher);
     }
 
-    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+    @Nonnull
+    @Override
+    public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(ModBlocks.crusher);
     }
@@ -89,7 +93,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
             IBlockState south = worldIn.getBlockState(pos.south());
             IBlockState west = worldIn.getBlockState(pos.west());
             IBlockState east = worldIn.getBlockState(pos.east());
-            EnumFacing face = (EnumFacing)state.getValue(FACING);
+            EnumFacing face = state.getValue(FACING);
 
             if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
                 face = EnumFacing.SOUTH;
@@ -124,7 +128,8 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
-        public void breakBlock(World world, BlockPos pos, IBlockState state)
+        @Override
+        public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
         {
             if(!keepInventory)
             {
@@ -151,13 +156,14 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     }
 
     @Override
-    public TileEntityCrusher createTileEntity(World world, IBlockState state)
+    public TileEntityCrusher createTileEntity(@Nonnull World world, @Nonnull IBlockState state)
     {
         return new TileEntityCrusher();
     }
 
+    @Nonnull
     @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
+    public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, @Nonnull EnumHand hand)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
@@ -178,32 +184,35 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
+    @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
         return EnumBlockRenderType.MODEL;
     }
 
-
+    @Nonnull
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot)
+    public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
+    @Nonnull
     @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
+    public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn)
     {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
+    @Nonnull
     @Override
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
-
+    @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)
         {
@@ -218,11 +227,12 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return (state.getValue(FACING)).getIndex();
     }
 
+    @Nonnull
     @Override
-    public BlockCrusher setCreativeTab(CreativeTabs tab) {
+    public BlockCrusher setCreativeTab(@Nonnull CreativeTabs tab) {
         super.setCreativeTab(tab);
         return this;
     }

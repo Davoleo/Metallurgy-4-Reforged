@@ -14,14 +14,10 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.datafix.FixTypes;
-import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -31,6 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /***************************
@@ -46,8 +43,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
 
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 
-	protected boolean hasBeenAlloying;
-
 	private String customName;
 	
 	private int burnTime;		
@@ -56,20 +51,20 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     private int totalAlloyingTime = 200;
     
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-        else return false;
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
     }
     
     @SuppressWarnings("unchecked")
 	@Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.inventory;
         return super.getCapability(capability, facing);
     }
-    
+
+    @Override
     public int getSizeInventory() {
     	
     	return this.inventory.size();
@@ -77,6 +72,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
 
     //Returns true if the inventory is empty
+    @Override
     public boolean isEmpty() {
     	for (ItemStack stack : this.inventory)
     		if(!stack.isEmpty())
@@ -84,21 +80,28 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     	return true;
     }
 
+    @Nonnull
+    @Override
     public ItemStack getStackInSlot(int index){
         return this.inventory.get(index);
     }
-    
+
+    @Nonnull
+    @Override
     public ItemStack decrStackSize(int index, int count){
     	
         return ItemStackHelper.getAndSplit(this.inventory, index, count);
     }
 
+    @Nonnull
+    @Override
     public ItemStack removeStackFromSlot(int index){
     	
         return ItemStackHelper.getAndRemove(this.inventory, index);
     }
-    
-    public void setInventorySlotContents(int index, ItemStack stack){
+
+    @Override
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack){
         ItemStack itemstack = this.inventory.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
@@ -118,11 +121,14 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     //Returns the name of the Tile Entity
+    @Override
+    @Nonnull
     public String getName() {
         return this.hasCustomName() ? this.customName : "container.alloyer";
     }
     
     //Returns true if the tile entity has a custom name
+    @Override
     public boolean hasCustomName(){	
         return this.customName != null && !this.customName.isEmpty();
     }
@@ -130,10 +136,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     //customName setter
     public void setCustomName(String customName){
         this.customName = customName;
-    }
-    
-    public static void registerFixesFurnace(DataFixer fixer) {
-    	fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
 
     //If the name is not custom it trasnlates the name
@@ -161,6 +163,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
     
     //Writes data to the NBT Tag
+    @Nonnull
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
@@ -178,6 +181,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     }
 
     //Returns the Stack Limit as an int
+    @Override
     public int getInventoryStackLimit() {
     	return 64;
     }
@@ -191,7 +195,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
     public static boolean isBurning(TileEntityAlloyer te) {
     	return te.getField(0) > 0 ;
     }
-    
+
+    @Override
     public void update() {
         {
             boolean flag = this.isBurning();
@@ -285,7 +290,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         }
     }
     
-    public void alloyItem() {
+    private void alloyItem() {
 
         if(this.canAlloy())
     	{
@@ -360,15 +365,16 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         }
     }
     
-    public int getAlloyingTime(ItemStack stack) {
+    public int getAlloyingTime(@SuppressWarnings("unused") ItemStack stack) {
     	return 140;
     }
     
     public static boolean isItemFuel(ItemStack fuel){
         return getItemBurnTime(fuel) > 0;
     }
-    
-    public boolean isUsableByPlayer(EntityPlayer player)
+
+    @Override
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
     {
         if(this.world.getTileEntity(this.pos) != this)
             return false;
@@ -376,14 +382,16 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
             return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
-    public void openInventory(EntityPlayer player)
+    @Override
+    public void openInventory(@Nonnull EntityPlayer player)
     {}
 
-    public void closeInventory(EntityPlayer player)
+    @Override
+    public void closeInventory(@Nonnull EntityPlayer player)
     {}
 
-
-    public boolean isItemValidForSlot(int index, ItemStack stack) {
+    @Override
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
         if(index == 3)
             return false;
         else if (index != 2)
@@ -394,17 +402,22 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
             return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
         }
     }
-    
+
+    @Nonnull
+    @Override
     public String getGuiID()
     {
     	return "minecraft:alloyer";
     }
-    
-    public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
+
+    @Nonnull
+    @Override
+    public Container createContainer(@Nonnull InventoryPlayer inventory, @Nonnull EntityPlayer player)
     {
     	return new ContainerAlloyer(inventory, this);
     }
 
+    @Override
     public int getField(int id){
         switch (id){
             case 0:
@@ -420,6 +433,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
     public void setField(int id, int value){
         switch (id){
             case 0:
@@ -436,10 +450,12 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
     public int getFieldCount(){
         return 4;
     }
-    
+
+    @Override
     public void clear(){
         this.inventory.clear();
     }

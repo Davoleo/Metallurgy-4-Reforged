@@ -45,7 +45,7 @@ public class Metallurgy_5 {
 	public static final String NAME = "Metallurgy 4: Reforged";
 	public static final String VERSION = "0.0.1";
 
-	public static int ticker = 0;
+	public static volatile int ticker = 0;
 
 	public static final CommonTickHandler tickHandler = new CommonTickHandler();
 

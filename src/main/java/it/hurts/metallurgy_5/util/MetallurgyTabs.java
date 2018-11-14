@@ -66,6 +66,9 @@ public class MetallurgyTabs extends CreativeTabs {
     {
         tick = Metallurgy_5.ticker/20;
 
+        System.out.println("tick: " + tick);
+        System.out.println("ticker: " + Metallurgy_5.ticker);
+
         switch (type)
         {
             case 0: return new ItemStack(ModArmors.armorList.get(tick % ModArmors.armorList.size()));

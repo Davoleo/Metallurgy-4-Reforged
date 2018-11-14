@@ -10,6 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 /***************************
  *
  * Author : ItHurtsLikeHell
@@ -81,11 +83,12 @@ public class ContainerAlloyer extends Container {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
         return this.alloyer.isUsableByPlayer(playerIn);
     }
 
     //TODO : Fix second input quick transfer
+    @Nonnull
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack stack = ItemStack.EMPTY;
@@ -100,7 +103,7 @@ public class ContainerAlloyer extends Container {
                 if (!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
                 slot.onSlotChange(stack1, stack);
             } else if (index != 2 && index != 1 && index != 0) {
-                Slot slot1 = (Slot) this.inventorySlots.get(index + 1);
+                Slot slot1 = this.inventorySlots.get(index + 1);
 
                 if (!BlockAlloyerRecipes.getInstance().getAlloyResult(stack1, slot1.getStack()).isEmpty()) {
                     if (!this.mergeItemStack(stack1, 0, 2, false)) {

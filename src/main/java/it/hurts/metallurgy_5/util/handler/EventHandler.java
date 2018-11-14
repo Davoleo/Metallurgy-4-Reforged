@@ -58,7 +58,7 @@ public class EventHandler {
 		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm)); //Immetiamo in lista tutte le entitï¿½ comprese da il minimo e massimo di X Y Z
 		Entity a[] = new Entity [list.size()]; 	// Creiamo un array di entity grande quanto la lista
 
-		int max = 0;
+		int max;
 		for(int i = 0; i<list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
 			max=i;                   			//Inseriamo il valore di "I" a singola ripetizione in max
 			list.toArray(a);					// Inseriamo il contenuto della lista nell'array "a"
@@ -203,7 +203,7 @@ public class EventHandler {
 			Entity foe = event.getTarget();
 			
 			if((int)(Math.random()*100) <= 15)
-				((EntityLivingBase) foe).setFire(5);
+				foe.setFire(5);
 		}
 		
 //		Vulcanite Sword (Fire Aspect)
@@ -211,7 +211,7 @@ public class EventHandler {
 			Entity foe = event.getTarget();
 			
 			if((int)(Math.random()*100) <= 30)
-				((EntityLivingBase) foe).setFire(5);
+				foe.setFire(5);
 		}
 		
 //		Tartarite Sword (Withering II)
@@ -298,7 +298,7 @@ public class EventHandler {
 	}
 	
 //	Aumentare la velocità del player sott'acqua
-    public static void noSwimming(EntityPlayer player) {
+    private static void noSwimming(EntityPlayer player) {
             World world = player.getEntityWorld();
             BlockPos pos = player.getPosition().down(1);
             IBlockState state = world.getBlockState(pos);
