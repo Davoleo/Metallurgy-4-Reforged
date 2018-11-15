@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.item.armor;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -57,12 +59,13 @@ public class ItemArmorBase extends net.minecraft.item.ItemArmor{
 		this.tooltip = tooltip;
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
-		setCreativeTab(Metallurgy_5.tabArmor);
+		setCreativeTab(MetallurgyTabs.tabArmor);
+		ModArmors.armorList.add(this);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
 	{
 		if(this.isInCreativeTab(tab)) {
 			ItemStack enchantedArmor = new ItemStack(this);

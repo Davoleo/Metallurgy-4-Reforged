@@ -1,9 +1,9 @@
 package it.hurts.metallurgy_5.util;
 
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.item.EntityXPOrb;
 
 /*************************************************
  * Author: Davoleo
@@ -15,6 +15,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 
 public class Utils {
 
+    @SuppressWarnings("unused")
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
     {
         if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())

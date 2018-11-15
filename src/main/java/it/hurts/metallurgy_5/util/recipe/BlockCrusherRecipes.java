@@ -137,8 +137,4 @@ public class BlockCrusherRecipes {
         }
         return 0.0F;
     }
-
-    private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {
-        return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
-    }
 }

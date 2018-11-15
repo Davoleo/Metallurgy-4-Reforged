@@ -26,6 +26,7 @@ public class CommonTickHandler {
             case START:
                 break;
             case END:
+                Metallurgy_5.ticker++;
                 break;
         }
     }
@@ -38,7 +39,7 @@ public class CommonTickHandler {
              case START:
                  break;
              case END:
-                 Metallurgy_5.ticker++;
+                 break;
          }
      }
 

@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_5.block;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -25,7 +26,7 @@ public class FluidBlockBase extends BlockFluidClassic {
         this.name = name;
         setRegistryName(name);
         setUnlocalizedName(name);
-        setCreativeTab(Metallurgy_5.tabFluid);
+        setCreativeTab(MetallurgyTabs.tabFluid);
     }
 
     public void registerItemModel(Item itemBlock)

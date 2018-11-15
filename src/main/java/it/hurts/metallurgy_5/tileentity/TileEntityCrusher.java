@@ -10,6 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.*;
@@ -31,7 +32,9 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /*************************************************
@@ -45,9 +48,20 @@ import javax.annotation.Nullable;
 //VOGLIO MORIRE EDITION
 
 //ticking tile entity
-public class TileEntityCrusher extends TileEntityLockable implements ITickable {
+public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory {
 
-    private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+//  TODO Aggiungere all'alloyer
+//  TODO Annotations (@Davoleo)
+// 	enumerate the slots
+    public enum slotEnum{
+        INPUT_SLOT, OUTPUT_SLOT
+    }
+    
+    protected static final int[] slotsTop = new int[] { slotEnum.INPUT_SLOT.ordinal() };
+    protected static final int[] slotsBottom = new int[] { slotEnum.OUTPUT_SLOT.ordinal() };
+    protected static final int[] slotsSides = new int[] {};
+	
+    private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(5, ItemStack.EMPTY);
 
     private String customName;
     private ItemStack crushing = ItemStack.EMPTY;
@@ -56,26 +70,41 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     private int currentBurnTime;
     private int crushTime;
     private int totalCrushTime = 200;
+    
+//  TODO Aggiungere all'alloyer
+    protected IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.UP);
+    protected IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.DOWN);
+    protected IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.WEST);
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
         else return false;
     }
 
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+//  TODO Modificare in alloyer
+    @SuppressWarnings("unchecked")
+	@Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.inventory;
+    	if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+            if (facing == EnumFacing.DOWN)
+                return (T) handlerBottom;
+            else if (facing == EnumFacing.UP)
+                return (T) handlerTop;
+            else
+                return (T) handlerSide;
         return super.getCapability(capability, facing);
     }
 
+    @Override
     public int getSizeInventory()
     {
         return this.inventory.size();
     }
 
+    @Override
     public boolean isEmpty()
     {
         for(ItemStack stack : this.inventory)
@@ -88,23 +117,29 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         return true;
     }
 
+    @Override
+    @Nonnull
     public ItemStack getStackInSlot(int index)
     {
         return this.inventory.get(index);
     }
 
+    @Override
+    @Nonnull
     public ItemStack decrStackSize(int index, int count)
     {
         return ItemStackHelper.getAndSplit(this.inventory, index, count);
     }
 
+    @Override
+    @Nonnull
     public ItemStack removeStackFromSlot(int index)
     {
         return ItemStackHelper.getAndRemove(this.inventory, index);
     }
 
-
-    public void setInventorySlotContents(int index, ItemStack stack)
+    @Override
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack)
     {
         ItemStack itemstack = this.inventory.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
@@ -123,11 +158,14 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
+    @Nonnull
     public String getName()
     {
         return this.hasCustomName() ? this.customName : "container.crusher";
     }
 
+    @Override
     public boolean hasCustomName()
     {
         return this.customName != null && !this.customName.isEmpty();
@@ -144,6 +182,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     }
 
     @Override
+    @Nonnull
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName())
                 : new TextComponentTranslation(this.getName());
@@ -166,6 +205,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
     }
 
     @Override
+    @Nonnull
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
@@ -181,6 +221,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
 
     }
 
+    @Override
     public int getInventoryStackLimit()
     {
         return 64;
@@ -197,6 +238,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         return te.getField(0) > 0;
     }
 
+    @Override
     public void update()
     {
         boolean flag = this.isBurning();
@@ -240,10 +282,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
 
                 }
 
+                //IL PROBLEMA è QUI [#23]
                 if (this.isBurning() && this.canCrush())
                 {
                     ++crushTime;
 
+                    //Il PROBLEMA NON è DENTRO QUESTO IF
                     if (crushTime == totalCrushTime)
                     {
                         crushTime = 0;
@@ -253,10 +297,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
                     }
                 } else
                 {
+                    //When the crusher is burning in idle
                     this.crushTime = 0;
                 }
             } else if (!this.isBurning() && this.crushTime > 0)
             {
+                //When the fuel is not enough
                 this.crushTime = MathHelper.clamp(this.crushTime - 2, 0, this.totalCrushTime);
             }
 
@@ -274,7 +320,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
 
     }
 
-
+    //IL PROBLEMA è QUI [#23]
     private boolean canCrush ()
     {
         if((this.inventory.get(0)).isEmpty())
@@ -286,14 +332,27 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
                 return false;
             else
             {
+                //TODO optimize using a for loop (maybe...?)
                 ItemStack output = this.inventory.get(2);
+                ItemStack output1 = this.inventory.get(3);
+                ItemStack output2 = this.inventory.get(4);
                 int limit = output.getCount() + result.getCount();
+                int limit1 = output1.getCount() + result.getCount();
+                int limit2 = output2.getCount() + result.getCount();
 
-                if(output.isEmpty())
+                if(output.isEmpty() || output1.isEmpty() || output2.isEmpty())
                     return true;
-                else if (!output.isItemEqual(result))
+                else if (!output.isItemEqual(result) && !output1.isItemEqual(result) && !output2.isItemEqual(result))
                     return false;
+//                else if (!output1.isItemEqual(result))
+//                    return false;
+//                else if (!output2.isItemEqual(result))
+//                    return false;
                 else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+                    return true;
+                else if (limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
+                    return true;
+                else if (limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
                     return true;
                 else
                     return limit <= 64 && limit <= output.getMaxStackSize();
@@ -302,18 +361,36 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         }
     }
 
-    public void crushItem()
+//  Called the instant when the item is ready to get crushed and to output the result
+    private void crushItem()
     {
         if (this.canCrush())
         {
             ItemStack input = this.inventory.get(0);
             ItemStack recipeResult = BlockCrusherRecipes.getInstance().getCrushingResult(input);
             ItemStack output = this.inventory.get(2);
+            ItemStack output1 = this.inventory.get(3);
+            ItemStack output2 = this.inventory.get(4);
+            
+            int limit = output.getCount() + recipeResult.getCount();
+            int limit1 = output1.getCount() + recipeResult.getCount();
+            int limit2 = output2.getCount() + recipeResult.getCount();
 
+            //TODO check if it's possible to improve this using switch or index
             if(output.isEmpty())
                 this.inventory.set(2, recipeResult.copy());
-            else if(output.getItem() == recipeResult.getItem())
+            else if(output.getItem() == recipeResult.getItem() && limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
                 output.grow(recipeResult.getCount());
+            
+            	else if(output1.isEmpty())
+            		this.inventory.set(3, recipeResult.copy() );
+            	else if(output1.getItem() == recipeResult.getItem() && limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
+            		output1.grow(recipeResult.getCount());
+            
+            	else if(output2.isEmpty())
+            		this.inventory.set(4, recipeResult.copy());
+            	else if(output2.getItem() == recipeResult.getItem() && limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
+            		output2.grow(recipeResult.getCount());
 
             if(input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !((ItemStack)this.inventory.get(1)).isEmpty() && ((ItemStack)this.inventory.get(1)).getItem() == Items.BUCKET)
                 this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
@@ -374,7 +451,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         return getItemBurnTime(fuel) > 0;
     }
 
-    public boolean isUsableByPlayer(EntityPlayer player)
+    @Override
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
     {
         if(this.world.getTileEntity(this.pos) != this)
             return false;
@@ -382,13 +460,16 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
             return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
-    public void openInventory(EntityPlayer player)
+    @Override
+    public void openInventory(@Nonnull EntityPlayer player)
     {}
 
-    public void closeInventory(EntityPlayer player)
+    @Override
+    public void closeInventory(@Nonnull EntityPlayer player)
     {}
 
-    public boolean isItemValidForSlot(int index, ItemStack stack)
+    @Override
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
     {
         if(index == 2)
             return false;
@@ -401,16 +482,28 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
+    @Nonnull
     public String getGuiID()
     {
         return "minecraft:crusher";
     }
 
-    public Container createContainer(InventoryPlayer inventory, EntityPlayer player)
+    @Override
+    @Nonnull
+    public Container createContainer(@Nonnull InventoryPlayer inventory, @Nonnull EntityPlayer player)
     {
         return new ContainerCrusher(inventory, this);
     }
 
+    /*
+     * serve per trasferire le informazioni di a che punto è il processo, quanto carburante ha, quanto tempo ha bisogno un processo
+     * private tile entity variables getter [process and combustion info]
+     * getField(getFieldCount)
+     * setField(getField, valore)
+     */
+
+    @Override
     public int getField(int id)
     {
         switch (id)
@@ -428,6 +521,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
     public void setField(int id, int value)
     {
         switch (id)
@@ -446,15 +540,34 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable {
         }
     }
 
+    @Override
     public int getFieldCount()
     {
         return 4;
     }
 
+    @Override
     public void clear()
     {
         this.inventory.clear();
     }
+
+//  TODO Aggiungere all'alloyer
+	@Override
+    @Nonnull
+	public int[] getSlotsForFace(@Nonnull EnumFacing side) {
+		return side == EnumFacing.DOWN ? slotsBottom : (side == EnumFacing.UP ? slotsTop : slotsSides);
+	}
+
+	@Override
+	public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
+		return isItemValidForSlot(index, itemStackIn);
+	}
+
+	@Override
+	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
+		return true;
+	}
 
 //provate pure a pensare di essere assolti, siete lo stesso coinvolti
 

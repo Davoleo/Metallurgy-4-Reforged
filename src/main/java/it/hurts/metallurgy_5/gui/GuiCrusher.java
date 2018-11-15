@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
  * Date: 03/09/2018
  * Hour: 22.21
  * Project: Metallurgy_5
- * Copyright - © - Davoleo - 2018
+ * Copyright - Â© - Davoleo - 2018
  **************************************************/
 
 public class GuiCrusher extends GuiContainer {
@@ -44,11 +44,14 @@ public class GuiCrusher extends GuiContainer {
         this.fontRenderer.drawString(name, 10, -22, 16747293);
     }
 
+
+    //TODO : Change the crusher animation to the new one
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
+        //x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
         this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
         if(TileEntityCrusher.isBurning(crusher))

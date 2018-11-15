@@ -2,7 +2,6 @@ package it.hurts.metallurgy_5.gui;
 
 import it.hurts.metallurgy_5.container.ContainerAlloyer;
 import it.hurts.metallurgy_5.container.ContainerCrusher;
-import it.hurts.metallurgy_5.gui.GuiCrusher;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import net.minecraft.entity.player.EntityPlayer;

@@ -20,24 +20,28 @@ import net.minecraftforge.fluids.FluidUtil;
 public class FluidMolten extends Fluid {
 
 protected Fluid fluid = this;
-protected int mapColor = 0xFFFFFFFF;
-protected float overlayAlpha = 0.2F;
-protected static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
-protected static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
 protected static Material material = Material.LAVA;
-protected boolean bucketEnabled = false;
+private int mapColor = 0xFFFFFFFF;
+private float overlayAlpha = 0.2F;
+private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
+private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
+private boolean bucketEnabled = false;
 
+@SuppressWarnings("unused")
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
         super(name, still, flowing);
+        ModFluids.fluidList.add(this);
     }
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor)
     {
         super(name, still, flowing);
         setColor(mapColor);
+        ModFluids.fluidList.add(this);
     }
 
+    @SuppressWarnings("unused")
     public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor, float overlayAlpha)
     {
         this(fluidName, still, flowing, mapColor);
@@ -55,6 +59,7 @@ protected boolean bucketEnabled = false;
         return this;
     }
 
+    @SuppressWarnings("unused")
     public float getAlpha()
     {
         return overlayAlpha;
@@ -121,6 +126,7 @@ protected boolean bucketEnabled = false;
         return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
     }
 
+    @SuppressWarnings("unused")
     public boolean isBucketEnabled()
     {
         return bucketEnabled;

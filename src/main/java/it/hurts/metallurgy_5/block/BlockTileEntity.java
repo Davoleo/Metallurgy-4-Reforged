@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /*************************************************
@@ -24,8 +25,10 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
         super(material, name);
     }
 
+    @SuppressWarnings("unused")
     public abstract Class<TE> getTileEntityClass();
 
+    @SuppressWarnings({"unchecked", "unused"})
 	public TE getTileEntity(IBlockAccess world, BlockPos pos)
     {
         return (TE)world.getTileEntity(pos);
@@ -39,6 +42,6 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
 
     @Nullable
     @Override
-    public abstract TE createTileEntity(World world, IBlockState state);
+    public abstract TE createTileEntity(@Nonnull World world, @Nonnull IBlockState state);
 
 }

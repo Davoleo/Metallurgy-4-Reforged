@@ -8,6 +8,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
+import javax.annotation.Nonnull;
+
 /*************************************************
  * Author: Davoleo
  * Date: 10/10/2018
@@ -32,8 +34,9 @@ public class SlotCrusherOutput extends Slot {
         return false;
     }
 
+    @Nonnull
     @Override
-    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
+    public ItemStack onTake(EntityPlayer thePlayer, @Nonnull ItemStack stack)
     {
         onCrafting(stack);
         return super.onTake(thePlayer, stack);

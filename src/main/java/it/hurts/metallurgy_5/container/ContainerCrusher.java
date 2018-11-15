@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 /*************************************************
  * Author: Davoleo
  * Date: 03/09/2018
@@ -24,14 +26,14 @@ public class ContainerCrusher extends Container {
     private final IInventory crusher;
     private int crushTime, totalCrushTime, burnTime, currentBurnTime;
 
-
     public ContainerCrusher(InventoryPlayer playerInv, IInventory crusherInv) {
         this.crusher = crusherInv;
+//    	playerInventory, Invenotry, Index, X, Y
         this.addSlotToContainer(new Slot(crusherInv, 0, 61, -4));  //Input
         this.addSlotToContainer(new SlotFurnaceFuel(crusherInv, 1, 129, 48));   //Fuel
-        this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 2, 67, 36)); //Result
-        //this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 4, 48, 42)); //Result 2
-        //this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 5, 29, 42)); //Result 3
+        this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 2, 67, 36)); //Result 1
+        this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 3, 48, 36)); //Result 2
+        this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 4, 29, 36)); //Result 3
 
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 9; x++) {
@@ -78,10 +80,11 @@ public class ContainerCrusher extends Container {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
+    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
         return this.crusher.isUsableByPlayer(playerIn);
     }
 
+    @Nonnull
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
