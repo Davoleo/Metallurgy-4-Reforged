@@ -43,6 +43,13 @@ I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 Tutorial: https://support.gitkraken.com<br>
 Download: https://www.gitkraken.com/invite/mVRqih9P
 
+If you want to contribute adding code comments or either you want to add comments to explain your features do it by adding line/block comments *above* the line you want to explain.<br>
+Example:
+```java
+//Example integer variable
+int exampleVar
+```
+
 **Please pay attention on where you upload your features** <br>
 you should know how a mod is structured<br>
 Source code directory: `src/main/java`<br>
