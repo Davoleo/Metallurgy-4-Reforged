@@ -128,7 +128,7 @@ public class ContainerAlloyer extends Container {
                         }
                     }
                 } else if (TileEntityAlloyer.isItemFuel(itemstack)) {
-                    if (!this.mergeItemStack(itemstack, 1, 2, false)) {
+                    if (!this.mergeItemStack(itemstack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (index >= iStart && index <= iEnd) {
