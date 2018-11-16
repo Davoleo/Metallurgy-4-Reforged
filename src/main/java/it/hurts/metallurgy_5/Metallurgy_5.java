@@ -49,7 +49,7 @@ public class Metallurgy_5 {
 
 	public static final CommonTickHandler tickHandler = new CommonTickHandler();
 
-//	Armor
+	//Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
 	public static final ItemArmor.ArmorMaterial amordrineArmorMaterial = EnumHelper.addArmorMaterial("AMORDRINE", MODID + ":amordrine", 50, new int[]{3, 4, 5, 3}, 50, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2F);
 	public static final ItemArmor.ArmorMaterial angmallenArmorMaterial = EnumHelper.addArmorMaterial("ANGMALLEN", MODID + ":angmallen", 30, new int[]{3, 5, 6, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0F);
