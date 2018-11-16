@@ -104,14 +104,10 @@ public class EventHandler {
 			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(speed);
 		
 //		Vulcanite Armor (Fire Immunity)
-		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
-				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.vulcanite_chest
-				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.vulcanite_legs
-				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.vulcanite_boots){
-			 fire = true;
-		}else {
-			fire = false;
-		}
+        fire = event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
+                && event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.vulcanite_chest
+                && event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.vulcanite_legs
+                && event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.vulcanite_boots;
 		
 //		Angmallen Armor (Luck I for Vampirism)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.angmallen_helmet

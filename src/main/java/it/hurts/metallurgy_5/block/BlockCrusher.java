@@ -227,7 +227,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return (state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Nonnull

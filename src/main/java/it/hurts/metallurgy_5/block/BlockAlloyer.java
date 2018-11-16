@@ -202,7 +202,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
     
     @Override
     public int getMetaFromState(IBlockState state){
-        return (state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Nonnull
