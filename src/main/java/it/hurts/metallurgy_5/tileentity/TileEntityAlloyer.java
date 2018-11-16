@@ -15,10 +15,14 @@ import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -64,10 +68,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
 
-    @SideOnly(Side.CLIENT)
-    public static boolean isBurning(TileEntityAlloyer te) {
-        return te.getField(0) > 0;
-    }
 
     public static int getItemBurnTime(ItemStack stack) {
         if (stack.isEmpty())
@@ -270,7 +270,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
     @SideOnly(Side.CLIENT)
     public static boolean isBurning(TileEntityAlloyer te) {
-    	return te.getField(0) > 0 ;
+        return te.getField(0) > 0;
     }
 
     @Override
