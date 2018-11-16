@@ -3,6 +3,8 @@ package it.hurts.metallurgy_5.util.recipe;
 import com.google.common.collect.Maps;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.ModItems;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -41,8 +43,10 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(ModBlocks.oreCopper), new ItemStack(ModItems.dustCopper, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreDeepIron), new ItemStack(ModItems.dustDeepIron, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreEximite), new ItemStack(ModItems.dustEximite, 2), 0.75F);
+        addCrushingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ModItems.dustGold, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreIgnatius), new ItemStack(ModItems.dustIgnatius, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreInfuscolium), new ItemStack(ModItems.dustInfuscolium, 2), 0.75F);
+        addCrushingRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(ModItems.dustIron, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreKalendrite), new ItemStack(ModItems.dustKalendrite, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreLemurite), new ItemStack(ModItems.dustLemurite, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreManganese), new ItemStack(ModItems.dustManganese, 2), 0.75F);
@@ -61,6 +65,12 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(ModBlocks.oreVulcanite), new ItemStack(ModItems.dustVulcanite, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreVyroxeres), new ItemStack(ModItems.dustVyroxeres, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreZinc), new ItemStack(ModItems.dustZinc, 2), 0.75F);
+
+        addCrushingRecipe(new ItemStack(ModBlocks.oreBitumen), new ItemStack(ModItems.dustBitumen, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePhosphorite), new ItemStack(ModItems.dustPhosphorus, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePotash), new ItemStack(ModItems.dustPotash, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.oreSulfur), new ItemStack(ModItems.dustSulfur, 4), 0.75F);
+
         //Ingot2Dust
         addCrushingRecipe(new ItemStack(ModItems.ingotAdamantine), new ItemStack(ModItems.dustAdamantine), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotAlduorite), new ItemStack(ModItems.dustAlduorite), 0.25F);
@@ -80,11 +90,13 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(ModItems.ingotDesichalkos), new ItemStack(ModItems.dustDesichalkos), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotElectrum), new ItemStack(ModItems.dustElectrum), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotEximite), new ItemStack(ModItems.dustEximite), 0.25F);
+        addCrushingRecipe(new ItemStack(Items.GOLD_INGOT), new ItemStack(ModItems.dustGold), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotHaderoth), new ItemStack(ModItems.dustHaderoth), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotHepatizon), new ItemStack(ModItems.dustHepatizon), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotIgnatius), new ItemStack(ModItems.dustIgnatius), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotInfuscolium), new ItemStack(ModItems.dustInfuscolium), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotInolashite), new ItemStack(ModItems.dustInolashite), 0.25F);
+        addCrushingRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.dustIron), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotKalendrite), new ItemStack(ModItems.dustKalendrite), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotLemurite), new ItemStack(ModItems.dustLemurite), 0.25F);
         addCrushingRecipe(new ItemStack(ModItems.ingotManganese), new ItemStack(ModItems.dustManganese), 0.25F);

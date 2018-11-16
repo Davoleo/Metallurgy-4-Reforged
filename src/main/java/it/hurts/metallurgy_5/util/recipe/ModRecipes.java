@@ -232,6 +232,12 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.oreVyroxeres, new ItemStack(ModItems.ingotVyroxeres), 1f);
         GameRegistry.addSmelting(ModBlocks.oreZinc, new ItemStack(ModItems.ingotZinc), 1f);
 
+        //Ore2Material
+        GameRegistry.addSmelting(ModBlocks.oreBitumen, new ItemStack(ModItems.dustBitumen), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.dustPhosphorus), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.dustPotash), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.dustSulfur), 0.5F);
+
         //Dust2Ingot
         GameRegistry.addSmelting(ModItems.dustAdamantine, new ItemStack(ModItems.ingotAdamantine), 0.25F);
         GameRegistry.addSmelting(ModItems.dustAlduorite, new ItemStack(ModItems.ingotAlduorite), 0.25F);
