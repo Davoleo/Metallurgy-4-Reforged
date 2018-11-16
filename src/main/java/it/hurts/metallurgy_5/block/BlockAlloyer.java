@@ -20,6 +20,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -101,7 +102,18 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
             worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
         }
     }
-    
+
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if (state.getValue(BURNING)){
+            return 8;
+        } else if (!state.getValue(BURNING)){
+            return 0;
+        } else
+            return 0;
+    }
+
     //Sets the state of the block
     public static void setState(boolean active, World worldIn, BlockPos pos){
         IBlockState state = worldIn.getBlockState(pos);
@@ -130,7 +142,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
             }
         }
     }
-    
+
     @Override
     public boolean hasTileEntity(IBlockState state){
         return true;
