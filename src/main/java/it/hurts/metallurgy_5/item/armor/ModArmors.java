@@ -83,10 +83,10 @@ public class ModArmors {
 	public static ItemArmorBase deep_iron_legs = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.LEGS , "deep_iron_legs", Tooltips.DEEP_IRON_ARMOR_EFFECT);
 	public static ItemArmorBase deep_iron_boots = new ItemArmorBase(Metallurgy_5.deepIronArmorMaterial, EntityEquipmentSlot.FEET , "deep_iron_boots", Tooltips.DEEP_IRON_ARMOR_EFFECT, Enchantments.DEPTH_STRIDER, 3);
 
-	public static ItemArmorBase desichalkos_helmet =  new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.HEAD, "desichalkos_helmet");
-	public static ItemArmorBase desichalkos_chest =  new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.CHEST, "desichalkos_chest");
-	public static ItemArmorBase desichalkos_legs =  new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.LEGS, "desichalkos_legs");
-	public static ItemArmorBase desichalkos_boots =  new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.FEET, "desichalkos_boots");
+	public static ItemArmorBase desichalkos_helmet = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.HEAD, "desichalkos_helmet");
+	public static ItemArmorBase desichalkos_chest = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.CHEST, "desichalkos_chest");
+	public static ItemArmorBase desichalkos_legs = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.LEGS, "desichalkos_legs");
+	public static ItemArmorBase desichalkos_boots = new ItemArmorBase(Metallurgy_5.desichalkosArmorMaterial, EntityEquipmentSlot.FEET, "desichalkos_boots");
 
 	public static ItemArmorBase electrum_helmet = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.HEAD , "electrum_helmet");
 	public static ItemArmorBase electrum_chest = new ItemArmorBase(Metallurgy_5.electrumArmorMaterial, EntityEquipmentSlot.CHEST , "electrum_chest");
@@ -102,7 +102,7 @@ public class ModArmors {
 	public static ItemArmorBase haderoth_chest = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.CHEST, "haderoth_chest");
 	public static ItemArmorBase haderoth_legs = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.LEGS, "haderoth_legs");
 	public static ItemArmorBase haderoth_boots = new ItemArmorBase(Metallurgy_5.haderothArmorMaterial, EntityEquipmentSlot.FEET, "haderoth_boots");
-	
+
 	public static ItemArmorBase hepatizon_helmet = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.HEAD, "hepatizon_helmet");
 	public static ItemArmorBase hepatizon_chest = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.CHEST, "hepatizon_chest");
 	public static ItemArmorBase hepatizon_legs = new ItemArmorBase(Metallurgy_5.hepatizonArmorMaterial, EntityEquipmentSlot.LEGS, "hepatizon_legs");
@@ -167,7 +167,7 @@ public class ModArmors {
 	public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.CHEST, "shadow_steel_chest");
 	public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.LEGS, "shadow_steel_legs");
 	public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(Metallurgy_5.shadowSteelArmorMaterial, EntityEquipmentSlot.FEET, "shadow_steel_boots");
-	
+
 	public static ItemArmorBase silver_helmet = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.HEAD, "silver_helmet");
 	public static ItemArmorBase silver_chest = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.CHEST, "silver_chest");
 	public static ItemArmorBase silver_legs = new ItemArmorBase(Metallurgy_5.silverArmorMaterial, EntityEquipmentSlot.LEGS, "silver_legs");
@@ -182,7 +182,7 @@ public class ModArmors {
 	public static ItemArmorBase tartarite_chest = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.CHEST, "tartarite_chest");
 	public static ItemArmorBase tartarite_legs = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.LEGS, "tartarite_legs");
 	public static ItemArmorBase tartarite_boots = new ItemArmorBase(Metallurgy_5.tartariteArmorMaterial, EntityEquipmentSlot.FEET, "tartarite_boots");
-	
+
 	public static ItemArmorBase vulcanite_helmet = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.HEAD, "vulcanite_helmet", Tooltips.VULCANITE_ARMOR_EFFECT);
 	public static ItemArmorBase vulcanite_chest = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.CHEST, "vulcanite_chest", Tooltips.VULCANITE_ARMOR_EFFECT);
 	public static ItemArmorBase vulcanite_legs = new ItemArmorBase(Metallurgy_5.vulcaniteArmorMaterial,EntityEquipmentSlot.LEGS, "vulcanite_legs", Tooltips.VULCANITE_ARMOR_EFFECT);

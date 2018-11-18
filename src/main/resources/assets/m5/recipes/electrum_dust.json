@@ -1,16 +1,16 @@
 {
   "type": "forge:ore_shaped",
   "pattern":[
-    "IG"
+    "SG"
   ],
   "key":{
     "G":{
       "type": "forge:ore_dict",
       "ore": "dustGold"
     },
-    "I":{
+    "S":{
       "type": "forge:ore_dict",
-      "ore": "dustIron"
+      "ore": "dustSilver"
     }
   },
   "result": {

@@ -20,6 +20,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -106,6 +107,16 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 
             worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
         }
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if (state.getValue(BURNING)){
+            return 8;
+        } else if (!state.getValue(BURNING)){
+            return 0;
+        } else
+            return 0;
     }
 
     public static void setState(boolean active, World worldIn, BlockPos pos)
@@ -227,7 +238,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return (state.getValue(FACING)).getIndex();
+        return state.getValue(FACING).getIndex();
     }
 
     @Nonnull

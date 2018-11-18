@@ -135,8 +135,9 @@ public class BlockCrusherRecipes {
     public ItemStack getCrushingResult(ItemStack input) {
         for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet()) {
             ItemStack in = entry.getKey();
-            if (in.isItemEqual(input) || (in.getItem() == input.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+            if (in.isItemEqual(input) || (in.getItem() == input.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE)) {
                 return entry.getValue();
+            }
         }
         return ItemStack.EMPTY;
 
