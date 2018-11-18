@@ -26,8 +26,35 @@ minecraft {
 	mappings = "snapshot_20171003"
 }
 
+repositories {
+
+// 	location of the maven that hosts JEI files
+	maven {
+		name = "Progwml6 maven"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
+  
+// location of a maven mirror for JEI files, as a fallback
+	maven {
+		name = "ModMaven"
+		url = "modmaven.k-4u.nl"
+	}
+	
+// 	Curseforge maven, in case some other maven goes offline
+//	(Copied) I Need to study this 'maven'
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+}
+
 dependencies {
-    
+
+//	Compile against the JEI API but do not include it at runtime
+	deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
+	
+// 	At runtime, use the full JEI jar
+	runtime "mezz.jei:jei_1.12.2:4.13.+"
 }
 
 processResources {
