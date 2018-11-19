@@ -21,7 +21,7 @@ import java.util.Random;
 public class BlockOre extends BlockBase implements IBlockOreDict {
 
 	private String oreName;
-	private Item drop;
+	private Item drop = null;
 	
 	public BlockOre(String name, String oreName) {
 		super(Material.ROCK, name);
@@ -32,10 +32,19 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
 		this.oreName = oreName;
 	}
 
-	public BlockOre(String name, String oreName, Item drop)
-    {
+	public BlockOre(String name, String oreName, Item drop){
         this(name, oreName);
         this.drop = drop;
+        setHardness(3f);
+		setResistance(5f);
+    }
+	
+//	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
+	public BlockOre(String name, String oreName, String toolClass, int harvestLevel){
+		super(Material.ROCK, name);
+        this.setHarvestLevel(toolClass, harvestLevel);
+        setHardness(3f);
+		setResistance(5f);
     }
 
     @Nonnull
@@ -53,9 +62,13 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
 
 	@Nonnull
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
-        return drop;
+    public Item getItemDropped(IBlockState state, Random rand, int fortune){
+		
+//		Check if the drop is an item, else return the same block
+        if(drop != null)
+        	return drop;
+        else
+        	return Item.getItemFromBlock(this);
     }
 
     @Override

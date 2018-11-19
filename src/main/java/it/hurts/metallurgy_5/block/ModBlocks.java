@@ -19,10 +19,17 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks {
 
-//	Ore
-//	public static BlockOre  = new BlockOre("","").setCreativeTab(MetallurgyTabs.tabOre);
+	private static String p = "pickaxe";
 	
-	public static BlockOre oreAdamantine = new BlockOre("adamantine_ore","oreAdamantine").setCreativeTab(MetallurgyTabs.tabOre);
+	@SuppressWarnings("unused")
+	private static String s = "shovel";
+	@SuppressWarnings("unused")
+	private static String a = "axe";
+	
+//	Blocks wich drops itself
+//	Block Ores
+//	TODO Append toolClass (in this case 'p') and harvesLevel (int) to ALL ores. Subsequently append it to Metal Blocks ("Successivamente aggiungilo ai blocchi metallici)
+	public static BlockOre oreAdamantine = new BlockOre("adamantine_ore","oreAdamantine", p, 7).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAlduorite = new BlockOre("alduorite_ore","oreAlduorite").setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAstralSilver = new BlockOre("astral_silver_ore","oreAstralSilver").setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAtlarus = new BlockOre("atlarus_ore","oreAtlarus").setCreativeTab(MetallurgyTabs.tabOre);
@@ -52,15 +59,13 @@ public class ModBlocks {
 	public static BlockOre oreVyroxeres = new BlockOre("vyroxeres_ore","oreVyroxeres").setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreZinc = new BlockOre("zinc_ore","oreZinc").setCreativeTab(MetallurgyTabs.tabOre);
 	
+//	ModBlocks with a custom ITEM drop
 	public static BlockOre oreSulfur = new BlockOre("sulfur_ore","oreSulfur", ModItems.dustSulfur).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore","orePhosphorite", ModItems.dustPhosphorus).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreBitumen = new BlockOre("bitumen_ore","oreBitumen", ModItems.dustBitumen).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre orePotash = new BlockOre("potash_ore","orePotash", ModItems.dustPotash).setCreativeTab(MetallurgyTabs.tabOre);
-	
-//	Block
-//	public static BlockOre  = new BlockOre("","").setCreativeTab(MetallurgyTabs.tabBlock);
 
-	//Metal Blocks
+//	Metal Blocks
 	public static BlockOre blockAdamantine = new BlockOre("adamantine_block","blockAdamantine").setCreativeTab(MetallurgyTabs.tabBlock);
 	public static BlockOre blockAlduorite = new BlockOre("alduorite_block","blockAlduorite").setCreativeTab(MetallurgyTabs.tabBlock);
 	public static BlockOre blockAngmallen = new BlockOre("angmallen_block","blockAngmallen").setCreativeTab(MetallurgyTabs.tabBlock);
@@ -107,7 +112,7 @@ public class ModBlocks {
 	public static BlockOre blockVyroxeres = new BlockOre("vyroxeres_block","blockVyroxeres").setCreativeTab(MetallurgyTabs.tabBlock);
 	public static BlockOre blockZinc = new BlockOre("zinc_block","blockZinc").setCreativeTab(MetallurgyTabs.tabBlock);
 
-	//FluidBlocks
+//	Fluid Blocks
 	public static FluidBlockBase blockMoltenAdamantine = new FluidBlockBase(ModFluids.MOLTEN_ADAMANTINE, Material.LAVA, "molten_adamantine");
     public static FluidBlockBase blockMoltenAlduorite = new FluidBlockBase(ModFluids.MOLTEN_ALDUORITE, Material.LAVA, "molten_alduorite");
     public static FluidBlockBase blockMoltenAmordrine = new FluidBlockBase(ModFluids.MOLTEN_AMORDRINE, Material.LAVA, "molten_amordrine");
@@ -154,107 +159,108 @@ public class ModBlocks {
     public static FluidBlockBase blockMoltenVyroxeres = new FluidBlockBase(ModFluids.MOLTEN_VYROXERES, Material.LAVA, "molten_vyroxeres");
     public static FluidBlockBase blockMoltenZinc = new FluidBlockBase(ModFluids.MOLTEN_ZINC, Material.LAVA, "molten_zinc");
 
-	//Other Blocks
+//  Various Blocks
 	public static BlockOre blockBitumen = new BlockOre("bitumen_block","blockBitumen").setCreativeTab(MetallurgyTabs.tabBlock);
 	public static BlockOre blockCharcoal = new BlockOre("charcoal_block","blockCharcoal").setCreativeTab(MetallurgyTabs.tabBlock);
 	public static BlockOre blockSulfur = new BlockOre("sulfur_block","blockSulfur").setCreativeTab(MetallurgyTabs.tabBlock);
 
-	//Tile Entities
+//	Tile Entities
 	public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabMachine);
 	public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabMachine);
 	
-//	Tile
-	
 	public static void register(IForgeRegistry<Block> registry) {
 		registry.registerAll(
-				//ores
-				  oreAdamantine,
-				  oreAstralSilver,
-				  oreAtlarus,
-				  oreCarmot,
-				  oreCopper,
-				  oreDeepIron,
-				  oreEximite,
-				  oreInfuscolium,
-				  oreManganese,
-				  oreMeutoite,	
-				  oreMithril,
-				  oreOrichalcum,
-				  oreOureclase,
-				  orePlatinum,
-				  orePrometheum,
-				  oreRubracium,
-				  oreSilver,
-				  oreTin,
-				  oreZinc,
-				  
-				  oreAlduorite,
-				  oreCeruclase,
-				  oreIgnatius,
-				  oreKalendrite,
-				  oreLemurite,
-				  oreMidasium,
-				  oreSanguinite,
-				  oreShadowIron,
-				  oreVulcanite,
-				  oreVyroxeres,
-				  
-				  oreSulfur,
-				  orePhosphorite,
-				  oreBitumen,
-				  orePotash,
 				
-//				Block
-				 blockAdamantine,
-				 blockAlduorite,
-				 blockAngmallen,
-				 blockAstralSilver,
-				 blockAtlarus,
-				 blockAmordrine,
-				 blockBlackSteel,
-				 blockBitumen,
-				 blockBrass,
-				 blockBronze,
-				 blockCarmot,
-				 blockCelenegil,
-				 blockCeruclase,
-				 blockCharcoal,
-				 blockCopper,
-				 blockDamascusSteel,
-				 blockDeepIron,
-				 blockDesichalkos,
-				 blockElectrum,
-				 blockEximite,
-				 blockHaderoth,
-				 blockHepatizon,
-				 blockIgnatius,
-				 blockInfuscolium,
-				 blockInolashite,
-				 blockKalendrite,
-				 blockLemurite,
-				 blockManganese,
-				 blockMeutoite,
-				 blockMidasium,
-				 blockMithril,
-				 blockOrichalcum,
-				 blockOureclase,
-				 blockPlatinum,
-				 blockPrometheum,
-				 blockQuickSilver,
-				 blockRubracium,
-				 blockSanguinite,
-				 blockShadowIron,
-				 blockShadowSteel,
-				 blockSilver,
-				 blockSteel,
-				 blockSulfur,
-				 blockTartarite,
-				 blockTin,
-				 blockVulcanite,
-				 blockVyroxeres,
-				 blockZinc,
+//				World Ores
+				oreAdamantine,
+				oreAstralSilver,
+				oreAtlarus,
+				oreCarmot,
+				oreCopper,
+				oreDeepIron,
+				oreEximite,
+				oreInfuscolium,
+				oreManganese,
+				oreMeutoite,	
+				oreMithril,
+				oreOrichalcum,
+				oreOureclase,
+				orePlatinum,
+				orePrometheum,
+				oreRubracium,
+				oreSilver,
+				oreTin,
+				oreZinc,
+				 
+//				Nether Ores
+				oreAlduorite,
+				oreCeruclase,
+				oreIgnatius,
+				oreKalendrite,
+				oreLemurite,
+				oreMidasium,
+				oreSanguinite,
+				oreShadowIron,
+				oreVulcanite,
+				oreVyroxeres,
+				 
+//				Block with Custom Item Drop
+				oreSulfur,
+				orePhosphorite,
+				oreBitumen,
+				orePotash,
+				
+//				Metal Blocks
+				blockAdamantine,
+				blockAlduorite,
+				blockAngmallen,
+				blockAstralSilver,
+				blockAtlarus,
+				blockAmordrine,
+				blockBlackSteel,
+				blockBitumen,
+				blockBrass,
+				blockBronze,
+				blockCarmot,
+				blockCelenegil,
+				blockCeruclase,
+				blockCharcoal,
+				blockCopper,
+				blockDamascusSteel,
+				blockDeepIron,
+				blockDesichalkos,
+				blockElectrum,
+				blockEximite,
+				blockHaderoth,
+				blockHepatizon,
+				blockIgnatius,
+				blockInfuscolium,
+				blockInolashite,
+				blockKalendrite,
+				blockLemurite,
+				blockManganese,
+				blockMeutoite,
+				blockMidasium,
+				blockMithril,
+				blockOrichalcum,
+				blockOureclase,
+				blockPlatinum,
+				blockPrometheum,
+				blockQuickSilver,
+				blockRubracium,
+				blockSanguinite,
+				blockShadowIron,
+				blockShadowSteel,
+				blockSilver,
+				blockSteel,
+				blockSulfur,
+				blockTartarite,
+				blockTin,
+				blockVulcanite,
+				blockVyroxeres,
+				blockZinc,
 
-				//FluidBlocks
+//				Fluid Blocks
 				blockMoltenAdamantine,
 				blockMoltenAlduorite,
 				blockMoltenAmordrine,
@@ -301,7 +307,7 @@ public class ModBlocks {
 				blockMoltenVyroxeres,
 				blockMoltenZinc,
 
-				//Tile Entities
+//				Tile Entities
 				crusher,
 				alloyer
 				
@@ -311,95 +317,97 @@ public class ModBlocks {
 
 	public static void registerItemBlocks(IForgeRegistry<Item> registry) {
 		registry.registerAll(
-//				.createItemBlock()
-//				Ore
-				  oreAdamantine.createItemBlock(),
-				  oreAstralSilver.createItemBlock(),
-				  oreAtlarus.createItemBlock(),
-				  oreCarmot.createItemBlock(),
-				  oreCopper.createItemBlock(),
-				  oreDeepIron.createItemBlock(),
-				  oreEximite.createItemBlock(),
-				  oreInfuscolium.createItemBlock(),
-				  oreManganese.createItemBlock(),
-				  oreMeutoite.createItemBlock(),
-				  oreMithril.createItemBlock(),
-				  oreOrichalcum.createItemBlock(),
-				  oreOureclase.createItemBlock(),
-				  orePlatinum.createItemBlock(),
-				  orePrometheum.createItemBlock(),
-				  oreRubracium.createItemBlock(),
-				  oreSilver.createItemBlock(),
-				  oreTin.createItemBlock(),
-				  oreZinc.createItemBlock(),
+				
+//				World Ore
+				oreAdamantine.createItemBlock(),
+				oreAstralSilver.createItemBlock(),
+				oreAtlarus.createItemBlock(),
+				oreCarmot.createItemBlock(),
+				oreCopper.createItemBlock(),
+				oreDeepIron.createItemBlock(),
+				oreEximite.createItemBlock(),
+				oreInfuscolium.createItemBlock(),
+				oreManganese.createItemBlock(),
+				oreMeutoite.createItemBlock(),
+				oreMithril.createItemBlock(),
+				oreOrichalcum.createItemBlock(),
+				oreOureclase.createItemBlock(),
+				orePlatinum.createItemBlock(),
+				orePrometheum.createItemBlock(),
+				oreRubracium.createItemBlock(),
+				oreSilver.createItemBlock(),
+				oreTin.createItemBlock(),
+				oreZinc.createItemBlock(),
 				  
-				  oreAlduorite.createItemBlock(),
-				  oreCeruclase.createItemBlock(),
-				  oreIgnatius.createItemBlock(),
-				  oreKalendrite.createItemBlock(),
-				  oreLemurite.createItemBlock(),
-				  oreMidasium.createItemBlock(),
-				  oreSanguinite.createItemBlock(),
-				  oreShadowIron.createItemBlock(),
-				  oreVulcanite.createItemBlock(),
-				  oreVyroxeres.createItemBlock(),
+//				Nether Ore
+				oreAlduorite.createItemBlock(),
+				oreCeruclase.createItemBlock(),
+				oreIgnatius.createItemBlock(),
+				oreKalendrite.createItemBlock(),
+				oreLemurite.createItemBlock(),
+				oreMidasium.createItemBlock(),
+				oreSanguinite.createItemBlock(),
+				oreShadowIron.createItemBlock(),
+				oreVulcanite.createItemBlock(),
+				oreVyroxeres.createItemBlock(),
 				
-				  oreSulfur.createItemBlock(),
-				  orePhosphorite.createItemBlock(),
-				  oreBitumen.createItemBlock(),
-				  orePotash.createItemBlock(),
+//				Block with Custom Item Drop
+				oreSulfur.createItemBlock(),
+				orePhosphorite.createItemBlock(),
+				oreBitumen.createItemBlock(),
+				orePotash.createItemBlock(),
 				
-//				Block
-				 blockAdamantine.createItemBlock(),
-				 blockAlduorite.createItemBlock(),
-				 blockAngmallen.createItemBlock(),
-				 blockAstralSilver.createItemBlock(),
-				 blockAtlarus.createItemBlock(),
-				 blockAmordrine.createItemBlock(),
-				 blockBitumen.createItemBlock(),
-				 blockBlackSteel.createItemBlock(),
-				 blockBrass.createItemBlock(),
-				 blockBronze.createItemBlock(),
-				 blockCarmot.createItemBlock(),
-				 blockCelenegil.createItemBlock(),
-				 blockCeruclase.createItemBlock(),
-				 blockCharcoal.createItemBlock(),
-				 blockCopper.createItemBlock(),
-				 blockDamascusSteel.createItemBlock(),
-				 blockDeepIron.createItemBlock(),
-				 blockDesichalkos.createItemBlock(),
-				 blockElectrum.createItemBlock(),
-				 blockEximite.createItemBlock(),
-				 blockHaderoth.createItemBlock(),
-				 blockHepatizon.createItemBlock(),
-				 blockIgnatius.createItemBlock(),
-				 blockInfuscolium.createItemBlock(),
-				 blockInolashite.createItemBlock(),
-				 blockKalendrite.createItemBlock(),
-				 blockLemurite.createItemBlock(),
-				 blockManganese.createItemBlock(),
-				 blockMeutoite.createItemBlock(),
-				 blockMidasium.createItemBlock(),
-				 blockMithril.createItemBlock(),
-				 blockOrichalcum.createItemBlock(),
-				 blockOureclase.createItemBlock(),
-				 blockPlatinum.createItemBlock(),
-				 blockPrometheum.createItemBlock(),
-				 blockQuickSilver.createItemBlock(),
-				 blockRubracium.createItemBlock(),
-				 blockSanguinite.createItemBlock(),
-				 blockShadowIron.createItemBlock(),
-				 blockShadowSteel.createItemBlock(),
-				 blockSilver.createItemBlock(),
-				 blockSteel.createItemBlock(),
-				 blockSulfur.createItemBlock(),
-				 blockTartarite.createItemBlock(),
-				 blockTin.createItemBlock(),
-				 blockVulcanite.createItemBlock(),
-				 blockVyroxeres.createItemBlock(),
-				 blockZinc.createItemBlock(),
+//				Metal Block
+				blockAdamantine.createItemBlock(),
+				blockAlduorite.createItemBlock(),
+				blockAngmallen.createItemBlock(),
+				blockAstralSilver.createItemBlock(),
+				blockAtlarus.createItemBlock(),
+				blockAmordrine.createItemBlock(),
+				blockBitumen.createItemBlock(),
+				blockBlackSteel.createItemBlock(),
+				blockBrass.createItemBlock(),
+				blockBronze.createItemBlock(),
+				blockCarmot.createItemBlock(),
+				blockCelenegil.createItemBlock(),
+				blockCeruclase.createItemBlock(),
+				blockCharcoal.createItemBlock(),
+				blockCopper.createItemBlock(),
+				blockDamascusSteel.createItemBlock(),
+				blockDeepIron.createItemBlock(),
+				blockDesichalkos.createItemBlock(),
+				blockElectrum.createItemBlock(),
+				blockEximite.createItemBlock(),
+				blockHaderoth.createItemBlock(),
+				blockHepatizon.createItemBlock(),
+				blockIgnatius.createItemBlock(),
+				blockInfuscolium.createItemBlock(),
+				blockInolashite.createItemBlock(),
+				blockKalendrite.createItemBlock(),
+				blockLemurite.createItemBlock(),
+				blockManganese.createItemBlock(),
+				blockMeutoite.createItemBlock(),
+				blockMidasium.createItemBlock(),
+				blockMithril.createItemBlock(),
+				blockOrichalcum.createItemBlock(),
+				blockOureclase.createItemBlock(),
+				blockPlatinum.createItemBlock(),
+				blockPrometheum.createItemBlock(),
+				blockQuickSilver.createItemBlock(),
+				blockRubracium.createItemBlock(),
+				blockSanguinite.createItemBlock(),
+				blockShadowIron.createItemBlock(),
+				blockShadowSteel.createItemBlock(),
+				blockSilver.createItemBlock(),
+				blockSteel.createItemBlock(),
+				blockSulfur.createItemBlock(),
+				blockTartarite.createItemBlock(),
+				blockTin.createItemBlock(),
+				blockVulcanite.createItemBlock(),
+				blockVyroxeres.createItemBlock(),
+				blockZinc.createItemBlock(),
 
-				//FluidBlocks
+//				Fluid Blocks
 				blockMoltenAdamantine.createItemBlock(),
                 blockMoltenAlduorite.createItemBlock(),
                 blockMoltenAmordrine.createItemBlock(),
@@ -446,7 +454,7 @@ public class ModBlocks {
                 blockMoltenVyroxeres.createItemBlock(),
                 blockMoltenZinc.createItemBlock(),
 
-				//Tile Entities
+//              Tile Entities
 				crusher.createItemBlock(),
 				alloyer.createItemBlock()
 
@@ -455,94 +463,96 @@ public class ModBlocks {
 	}
 
 	public static void registerModels() {
-//		Ore
-		  oreAdamantine.registerItemModel(Item.getItemFromBlock(oreAdamantine));
-		  oreAstralSilver.registerItemModel(Item.getItemFromBlock(oreAstralSilver));
-		  oreAtlarus.registerItemModel(Item.getItemFromBlock(oreAtlarus));
-		  oreCarmot.registerItemModel(Item.getItemFromBlock(oreCarmot));
-		  oreCopper.registerItemModel(Item.getItemFromBlock(oreCopper));
-		  oreDeepIron.registerItemModel(Item.getItemFromBlock(oreDeepIron));
-		  oreEximite.registerItemModel(Item.getItemFromBlock(oreEximite));
-		  oreInfuscolium.registerItemModel(Item.getItemFromBlock(oreInfuscolium));
-		  oreManganese.registerItemModel(Item.getItemFromBlock(oreManganese));
-		  oreMeutoite.registerItemModel(Item.getItemFromBlock(oreMeutoite));
-		  oreMithril.registerItemModel(Item.getItemFromBlock(oreMithril));
-		  oreOrichalcum.registerItemModel(Item.getItemFromBlock(oreOrichalcum));
-		  oreOureclase.registerItemModel(Item.getItemFromBlock(oreOureclase));
-		  orePlatinum.registerItemModel(Item.getItemFromBlock(orePlatinum));
-		  orePrometheum.registerItemModel(Item.getItemFromBlock(orePrometheum));
-		  oreRubracium.registerItemModel(Item.getItemFromBlock(oreRubracium));
-		  oreSilver.registerItemModel(Item.getItemFromBlock(oreSilver));
-		  oreTin.registerItemModel(Item.getItemFromBlock(oreTin));
-		  oreZinc.registerItemModel(Item.getItemFromBlock(oreZinc));
+//		World Ores
+		oreAdamantine.registerItemModel(Item.getItemFromBlock(oreAdamantine));
+		oreAstralSilver.registerItemModel(Item.getItemFromBlock(oreAstralSilver));
+		oreAtlarus.registerItemModel(Item.getItemFromBlock(oreAtlarus));
+		oreCarmot.registerItemModel(Item.getItemFromBlock(oreCarmot));
+		oreCopper.registerItemModel(Item.getItemFromBlock(oreCopper));
+		oreDeepIron.registerItemModel(Item.getItemFromBlock(oreDeepIron));
+		oreEximite.registerItemModel(Item.getItemFromBlock(oreEximite));
+		oreInfuscolium.registerItemModel(Item.getItemFromBlock(oreInfuscolium));
+		oreManganese.registerItemModel(Item.getItemFromBlock(oreManganese));
+		oreMeutoite.registerItemModel(Item.getItemFromBlock(oreMeutoite));
+		oreMithril.registerItemModel(Item.getItemFromBlock(oreMithril));
+		oreOrichalcum.registerItemModel(Item.getItemFromBlock(oreOrichalcum));
+		oreOureclase.registerItemModel(Item.getItemFromBlock(oreOureclase));
+		orePlatinum.registerItemModel(Item.getItemFromBlock(orePlatinum));
+		orePrometheum.registerItemModel(Item.getItemFromBlock(orePrometheum));
+		oreRubracium.registerItemModel(Item.getItemFromBlock(oreRubracium));
+		oreSilver.registerItemModel(Item.getItemFromBlock(oreSilver));
+		oreTin.registerItemModel(Item.getItemFromBlock(oreTin));
+		oreZinc.registerItemModel(Item.getItemFromBlock(oreZinc));
 		  
-		  oreAlduorite.registerItemModel(Item.getItemFromBlock(oreAlduorite));
-		  oreCeruclase.registerItemModel(Item.getItemFromBlock(oreCeruclase));
-		  oreIgnatius.registerItemModel(Item.getItemFromBlock(oreIgnatius));
-		  oreKalendrite.registerItemModel(Item.getItemFromBlock(oreKalendrite));
-		  oreLemurite.registerItemModel(Item.getItemFromBlock(oreLemurite));
-		  oreMidasium.registerItemModel(Item.getItemFromBlock(oreMidasium));
-		  oreSanguinite.registerItemModel(Item.getItemFromBlock(oreSanguinite));
-		  oreShadowIron.registerItemModel(Item.getItemFromBlock(oreShadowIron));
-		  oreVulcanite.registerItemModel(Item.getItemFromBlock(oreVulcanite));
-		  oreVyroxeres.registerItemModel(Item.getItemFromBlock(oreVyroxeres));
+//		Nether Ores
+		oreAlduorite.registerItemModel(Item.getItemFromBlock(oreAlduorite));
+		oreCeruclase.registerItemModel(Item.getItemFromBlock(oreCeruclase));
+		oreIgnatius.registerItemModel(Item.getItemFromBlock(oreIgnatius));
+		oreKalendrite.registerItemModel(Item.getItemFromBlock(oreKalendrite));
+		oreLemurite.registerItemModel(Item.getItemFromBlock(oreLemurite));
+		oreMidasium.registerItemModel(Item.getItemFromBlock(oreMidasium));
+		oreSanguinite.registerItemModel(Item.getItemFromBlock(oreSanguinite));
+		oreShadowIron.registerItemModel(Item.getItemFromBlock(oreShadowIron));
+		oreVulcanite.registerItemModel(Item.getItemFromBlock(oreVulcanite));
+		oreVyroxeres.registerItemModel(Item.getItemFromBlock(oreVyroxeres));
 		
-		  oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
-		  orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));
-		  oreBitumen.registerItemModel(Item.getItemFromBlock(oreBitumen));
-		  orePotash.registerItemModel(Item.getItemFromBlock(orePotash));
+//		Block with Custom Item Drop
+		oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
+		orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));
+		oreBitumen.registerItemModel(Item.getItemFromBlock(oreBitumen));
+		orePotash.registerItemModel(Item.getItemFromBlock(orePotash));
 		
-//		Block
-		 blockAdamantine.registerItemModel(Item.getItemFromBlock(blockAdamantine));
-		 blockAlduorite.registerItemModel(Item.getItemFromBlock(blockAlduorite));
-		 blockAngmallen.registerItemModel(Item.getItemFromBlock(blockAngmallen));
-		 blockAstralSilver.registerItemModel(Item.getItemFromBlock(blockAstralSilver));
-		 blockAtlarus.registerItemModel(Item.getItemFromBlock(blockAtlarus));
-		 blockAmordrine.registerItemModel(Item.getItemFromBlock(blockAmordrine));
-		 blockBitumen.registerItemModel(Item.getItemFromBlock(blockBitumen));
-		 blockBlackSteel.registerItemModel(Item.getItemFromBlock(blockBlackSteel));
-		 blockBrass.registerItemModel(Item.getItemFromBlock(blockBrass));
-		 blockBronze.registerItemModel(Item.getItemFromBlock(blockBronze));
-		 blockCarmot.registerItemModel(Item.getItemFromBlock(blockCarmot));
-		 blockCelenegil.registerItemModel(Item.getItemFromBlock(blockCelenegil));
-		 blockCeruclase.registerItemModel(Item.getItemFromBlock(blockCeruclase));
-		 blockCharcoal.registerItemModel(Item.getItemFromBlock(blockCharcoal));
-		 blockCopper.registerItemModel(Item.getItemFromBlock(blockCopper));
-		 blockDamascusSteel.registerItemModel(Item.getItemFromBlock(blockDamascusSteel));
-		 blockDeepIron.registerItemModel(Item.getItemFromBlock(blockDeepIron));
-		 blockDesichalkos.registerItemModel(Item.getItemFromBlock(blockDesichalkos));
-		 blockElectrum.registerItemModel(Item.getItemFromBlock(blockElectrum));
-		 blockEximite.registerItemModel(Item.getItemFromBlock(blockEximite));
-		 blockHaderoth.registerItemModel(Item.getItemFromBlock(blockHaderoth));
-		 blockHepatizon.registerItemModel(Item.getItemFromBlock(blockHepatizon));
-		 blockIgnatius.registerItemModel(Item.getItemFromBlock(blockIgnatius));
-		 blockInfuscolium.registerItemModel(Item.getItemFromBlock(blockInfuscolium));
-		 blockInolashite.registerItemModel(Item.getItemFromBlock(blockInolashite));
-		 blockKalendrite.registerItemModel(Item.getItemFromBlock(blockKalendrite));
-		 blockLemurite.registerItemModel(Item.getItemFromBlock(blockLemurite));
-		 blockManganese.registerItemModel(Item.getItemFromBlock(blockManganese));
-		 blockMeutoite.registerItemModel(Item.getItemFromBlock(blockMeutoite));
-		 blockMidasium.registerItemModel(Item.getItemFromBlock(blockMidasium));
-		 blockMithril.registerItemModel(Item.getItemFromBlock(blockMithril));
-		 blockOrichalcum.registerItemModel(Item.getItemFromBlock(blockOrichalcum));
-		 blockOureclase.registerItemModel(Item.getItemFromBlock(blockOureclase));
-		 blockPlatinum.registerItemModel(Item.getItemFromBlock(blockPlatinum));
-		 blockPrometheum.registerItemModel(Item.getItemFromBlock(blockPrometheum));
-		 blockQuickSilver.registerItemModel(Item.getItemFromBlock(blockQuickSilver));
-		 blockRubracium.registerItemModel(Item.getItemFromBlock(blockRubracium));
-		 blockSanguinite.registerItemModel(Item.getItemFromBlock(blockSanguinite));
-		 blockShadowIron.registerItemModel(Item.getItemFromBlock(blockShadowIron));
-		 blockShadowSteel.registerItemModel(Item.getItemFromBlock(blockShadowSteel));
-		 blockSilver.registerItemModel(Item.getItemFromBlock(blockSilver));
-		 blockSteel.registerItemModel(Item.getItemFromBlock(blockSteel));
-		 blockSulfur.registerItemModel(Item.getItemFromBlock(blockSulfur));
-		 blockTartarite.registerItemModel(Item.getItemFromBlock(blockTartarite));
-		 blockTin.registerItemModel(Item.getItemFromBlock(blockTin));
-		 blockVulcanite.registerItemModel(Item.getItemFromBlock(blockVulcanite));
-		 blockVyroxeres.registerItemModel(Item.getItemFromBlock(blockVyroxeres));
-		 blockZinc.registerItemModel(Item.getItemFromBlock(blockZinc));
+//		Metal Blocks
+		blockAdamantine.registerItemModel(Item.getItemFromBlock(blockAdamantine));
+		blockAlduorite.registerItemModel(Item.getItemFromBlock(blockAlduorite));
+		blockAngmallen.registerItemModel(Item.getItemFromBlock(blockAngmallen));
+		blockAstralSilver.registerItemModel(Item.getItemFromBlock(blockAstralSilver));
+		blockAtlarus.registerItemModel(Item.getItemFromBlock(blockAtlarus));
+		blockAmordrine.registerItemModel(Item.getItemFromBlock(blockAmordrine));
+		blockBitumen.registerItemModel(Item.getItemFromBlock(blockBitumen));
+		blockBlackSteel.registerItemModel(Item.getItemFromBlock(blockBlackSteel));
+		blockBrass.registerItemModel(Item.getItemFromBlock(blockBrass));
+		blockBronze.registerItemModel(Item.getItemFromBlock(blockBronze));
+		blockCarmot.registerItemModel(Item.getItemFromBlock(blockCarmot));
+		blockCelenegil.registerItemModel(Item.getItemFromBlock(blockCelenegil));
+		blockCeruclase.registerItemModel(Item.getItemFromBlock(blockCeruclase));
+		blockCharcoal.registerItemModel(Item.getItemFromBlock(blockCharcoal));
+		blockCopper.registerItemModel(Item.getItemFromBlock(blockCopper));
+		blockDamascusSteel.registerItemModel(Item.getItemFromBlock(blockDamascusSteel));
+		blockDeepIron.registerItemModel(Item.getItemFromBlock(blockDeepIron));
+		blockDesichalkos.registerItemModel(Item.getItemFromBlock(blockDesichalkos));
+		blockElectrum.registerItemModel(Item.getItemFromBlock(blockElectrum));
+		blockEximite.registerItemModel(Item.getItemFromBlock(blockEximite));
+		blockHaderoth.registerItemModel(Item.getItemFromBlock(blockHaderoth));
+		blockHepatizon.registerItemModel(Item.getItemFromBlock(blockHepatizon));
+		blockIgnatius.registerItemModel(Item.getItemFromBlock(blockIgnatius));
+		blockInfuscolium.registerItemModel(Item.getItemFromBlock(blockInfuscolium));
+		blockInolashite.registerItemModel(Item.getItemFromBlock(blockInolashite));
+		blockKalendrite.registerItemModel(Item.getItemFromBlock(blockKalendrite));
+		blockLemurite.registerItemModel(Item.getItemFromBlock(blockLemurite));
+		blockManganese.registerItemModel(Item.getItemFromBlock(blockManganese));
+		blockMeutoite.registerItemModel(Item.getItemFromBlock(blockMeutoite));
+		blockMidasium.registerItemModel(Item.getItemFromBlock(blockMidasium));
+		blockMithril.registerItemModel(Item.getItemFromBlock(blockMithril));
+		blockOrichalcum.registerItemModel(Item.getItemFromBlock(blockOrichalcum));
+		blockOureclase.registerItemModel(Item.getItemFromBlock(blockOureclase));
+		blockPlatinum.registerItemModel(Item.getItemFromBlock(blockPlatinum));
+		blockPrometheum.registerItemModel(Item.getItemFromBlock(blockPrometheum));
+		blockQuickSilver.registerItemModel(Item.getItemFromBlock(blockQuickSilver));
+		blockRubracium.registerItemModel(Item.getItemFromBlock(blockRubracium));
+		blockSanguinite.registerItemModel(Item.getItemFromBlock(blockSanguinite));
+		blockShadowIron.registerItemModel(Item.getItemFromBlock(blockShadowIron));
+		blockShadowSteel.registerItemModel(Item.getItemFromBlock(blockShadowSteel));
+		blockSilver.registerItemModel(Item.getItemFromBlock(blockSilver));
+		blockSteel.registerItemModel(Item.getItemFromBlock(blockSteel));
+		blockSulfur.registerItemModel(Item.getItemFromBlock(blockSulfur));
+		blockTartarite.registerItemModel(Item.getItemFromBlock(blockTartarite));
+		blockTin.registerItemModel(Item.getItemFromBlock(blockTin));
+		blockVulcanite.registerItemModel(Item.getItemFromBlock(blockVulcanite));
+		blockVyroxeres.registerItemModel(Item.getItemFromBlock(blockVyroxeres));
+		blockZinc.registerItemModel(Item.getItemFromBlock(blockZinc));
 
-		 //FluidBlocks
+//		Fluid Bocks
 		blockMoltenAdamantine.registerItemModel(Item.getItemFromBlock(blockMoltenAdamantine));
         blockMoltenAlduorite.registerItemModel(Item.getItemFromBlock(blockMoltenAlduorite));
         blockMoltenAmordrine.registerItemModel(Item.getItemFromBlock(blockMoltenAmordrine));
@@ -590,7 +600,7 @@ public class ModBlocks {
         blockMoltenZinc.registerItemModel(Item.getItemFromBlock(blockMoltenZinc));
 
 
-		//Tile Entities
+//		Tile Entities
 		crusher.registerItemModel(Item.getItemFromBlock(crusher));
 		alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
 	}
