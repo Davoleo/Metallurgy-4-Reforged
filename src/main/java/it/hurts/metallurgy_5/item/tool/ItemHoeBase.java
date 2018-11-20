@@ -24,7 +24,7 @@ public class ItemHoeBase extends ItemHoe {
     public ItemHoeBase(ToolMaterial material, String name)
     {
         super(material);
-        setUnlocalizedName(name)
+        setUnlocalizedName(name);
         setRegistryName(name);
         this.name = name;
         setCreativeTab(MetallurgyTabs.tabTool);
