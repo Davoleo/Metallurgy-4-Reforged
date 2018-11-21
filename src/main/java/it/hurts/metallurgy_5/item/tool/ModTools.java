@@ -81,6 +81,18 @@ public class ModTools {
     public static ItemShovelBase celenegil_shovel = new ItemShovelBase(Metallurgy_5.celenegilToolMaterial, "celenegil_shovel");
     public static ItemSwordBase celenegil_sword = new ItemSwordBase(Metallurgy_5.celenegilToolMaterial, "celenegil_sword");
 
+    public static ItemAxeBase ceruclase_axe = new ItemAxeBase(Metallurgy_5.ceruclaseToolMaterial, "ceruclase_axe");
+    public static ItemHoeBase ceruclase_hoe = new ItemHoeBase(Metallurgy_5.ceruclaseToolMaterial, "ceruclase_hoe");
+    public static ItemPickaxeBase ceruclase_pickaxe = new ItemPickaxeBase(Metallurgy_5.ceruclaseToolMaterial, "ceruclase_pickaxe");
+    public static ItemShovelBase ceruclase_shovel = new ItemShovelBase(Metallurgy_5.ceruclaseToolMaterial, "ceruclase_shovel");
+    public static ItemSwordBase ceruclase_sword = new ItemSwordBase(Metallurgy_5.ceruclaseToolMaterial, "ceruclase_sword");
+
+    public static ItemAxeBase copper_axe = new ItemAxeBase(Metallurgy_5.copperToolMaterial, "copper_axe");
+    public static ItemHoeBase copper_hoe = new ItemHoeBase(Metallurgy_5.copperToolMaterial, "copper_hoe");
+    public static ItemPickaxeBase copper_pickaxe = new ItemPickaxeBase(Metallurgy_5.copperToolMaterial, "copper_pickaxe");
+    public static ItemShovelBase copper_shovel = new ItemShovelBase(Metallurgy_5.copperToolMaterial, "copper_shovel");
+    public static ItemSwordBase copper_sword = new ItemSwordBase(Metallurgy_5.copperToolMaterial, "copper_sword");
+
     public static ItemAxeBase damascus_steel_axe = new ItemAxeBase(Metallurgy_5.damascusSteelToolMaterial, "damascus_steel_axe");
     public static ItemHoeBase damascus_steel_hoe = new ItemHoeBase(Metallurgy_5.damascusSteelToolMaterial, "damascus_steel_hoe");
     public static ItemPickaxeBase damascus_steel_pickaxe = new ItemPickaxeBase(Metallurgy_5.damascusSteelToolMaterial, "damascus_steel_pickaxe");
@@ -176,6 +188,12 @@ public class ModTools {
     public static ItemPickaxeBase prometheum_pickaxe = new ItemPickaxeBase(Metallurgy_5.prometheumToolMaterial, "prometheum_pickaxe");
     public static ItemShovelBase prometheum_shovel = new ItemShovelBase(Metallurgy_5.prometheumToolMaterial, "prometheum_shovel");
     public static ItemSwordBase prometheum_sword = new ItemSwordBase(Metallurgy_5.prometheumToolMaterial, "prometheum_sword");
+
+    public static ItemAxeBase quicksilver_axe = new ItemAxeBase(Metallurgy_5.quicksilverToolMaterial, "quicksilver_axe");
+    public static ItemHoeBase quicksilver_hoe = new ItemHoeBase(Metallurgy_5.quicksilverToolMaterial, "quicksilver_hoe");
+    public static ItemPickaxeBase quicksilver_pickaxe = new ItemPickaxeBase(Metallurgy_5.quicksilverToolMaterial, "quicksilver_pickaxe");
+    public static ItemShovelBase quicksilver_shovel = new ItemShovelBase(Metallurgy_5.quicksilverToolMaterial, "quicksilver_shovel");
+    public static ItemSwordBase quicksilver_sword = new ItemSwordBase(Metallurgy_5.quicksilverToolMaterial, "quicksilver_sword");
 
     public static ItemAxeBase sanguinite_axe = new ItemAxeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_axe");
     public static ItemHoeBase sanguinite_hoe = new ItemHoeBase(Metallurgy_5.sanguiniteToolMaterial, "sanguinite_hoe");
@@ -289,6 +307,18 @@ public class ModTools {
                 celenegil_shovel,
                 celenegil_sword,
 
+                ceruclase_axe,
+                ceruclase_hoe,
+                ceruclase_pickaxe,
+                ceruclase_shovel,
+                ceruclase_sword,
+
+                copper_axe,
+                copper_hoe,
+                copper_pickaxe,
+                copper_shovel,
+                copper_sword,
+
                 damascus_steel_axe,
                 damascus_steel_hoe,
                 damascus_steel_pickaxe,
@@ -384,6 +414,12 @@ public class ModTools {
                 prometheum_pickaxe,
                 prometheum_shovel,
                 prometheum_sword,
+
+                quicksilver_axe,
+                quicksilver_hoe,
+                quicksilver_pickaxe,
+                quicksilver_shovel,
+                quicksilver_sword,
 
                 sanguinite_axe,
                 sanguinite_hoe,
@@ -498,6 +534,18 @@ public class ModTools {
         celenegil_shovel.registerItemModel(celenegil_shovel, 0);
         celenegil_sword.registerItemModel(celenegil_sword, 0);
 
+        ceruclase_axe.registerItemModel(ceruclase_axe, 0);
+        ceruclase_hoe.registerItemModel(ceruclase_hoe, 0);
+        ceruclase_pickaxe.registerItemModel(ceruclase_pickaxe, 0);
+        ceruclase_shovel.registerItemModel(ceruclase_shovel, 0);
+        ceruclase_sword.registerItemModel(ceruclase_sword, 0);
+
+        copper_axe.registerItemModel(copper_axe, 0);
+        copper_hoe.registerItemModel(copper_hoe, 0);
+        copper_pickaxe.registerItemModel(copper_pickaxe, 0);
+        copper_shovel.registerItemModel(copper_shovel, 0);
+        copper_sword.registerItemModel(copper_sword, 0);
+
         damascus_steel_axe.registerItemModel(damascus_steel_axe, 0);
         damascus_steel_hoe.registerItemModel(damascus_steel_hoe, 0);
         damascus_steel_pickaxe.registerItemModel(damascus_steel_pickaxe, 0);
@@ -593,6 +641,12 @@ public class ModTools {
         prometheum_pickaxe.registerItemModel(prometheum_pickaxe, 0);
         prometheum_shovel.registerItemModel(prometheum_shovel, 0);
         prometheum_sword.registerItemModel(prometheum_sword, 0);
+
+        quicksilver_axe.registerItemModel(quicksilver_axe, 0);
+        quicksilver_hoe.registerItemModel(quicksilver_hoe, 0);
+        quicksilver_pickaxe.registerItemModel(quicksilver_pickaxe, 0);
+        quicksilver_shovel.registerItemModel(quicksilver_shovel, 0);
+        quicksilver_sword.registerItemModel(quicksilver_sword, 0);
 
         sanguinite_axe.registerItemModel(sanguinite_axe, 0);
         sanguinite_hoe.registerItemModel(sanguinite_hoe, 0);

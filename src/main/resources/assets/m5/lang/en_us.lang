@@ -523,6 +523,18 @@ item.celenegil_pickaxe.name=Celenegil Pickaxe
 item.celenegil_shovel.name=Celenegil Shovel
 item.celenegil_sword.name=Celenegil Sword
 
+item.ceruclase_axe.name=Ceruclase Axe
+item.ceruclase_hoe.name=Ceruclase Hoe
+item.ceruclase_pickaxe.name=Ceruclase Pickaxe
+item.ceruclase_shovel.name=Ceruclase Shovel
+item.ceruclase_sword.name=Ceruclase Sword
+
+item.copper_axe.name=Copper Axe
+item.copper_hoe.name=Copper Hoe
+item.copper_pickaxe.name=Copper Pickaxe
+item.copper_shovel.name=Copper Shovel
+item.copper_sword.name=Copper Sword
+
 item.damascus_steel_axe.name=Damascus Steel Axe
 item.damascus_steel_hoe.name=Damascus Steel Hoe
 item.damascus_steel_pickaxe.name=Damascus Steel Pickaxe
@@ -618,6 +630,12 @@ item.prometheum_hoe.name=Prometheum Hoe
 item.prometheum_pickaxe.name=Prometheum Pickaxe
 item.prometheum_shovel.name=Prometheum Shovel
 item.prometheum_sword.name=Prometheum Sword
+
+item.quicksilver_axe.name=Quicksilver Axe
+item.quicksilver_hoe.name=Quicksilver Hoe
+item.quicksilver_pickaxe.name=Quicksilver Pickaxe
+item.quicksilver_shovel.name=Quicksilver Shovel
+item.quicksilver_sword.name=Quicksilver Sword
 
 item.sanguinite_axe.name=Sanguinite Axe
 item.sanguinite_hoe.name=Sanguinite Hoe

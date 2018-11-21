@@ -286,11 +286,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
                 }
 
-                //IL PROBLEMA è QUI [#23]
                 if (this.isBurning() && this.canCrush()) {
                     ++crushTime;
 
-                    //Il PROBLEMA NON è DENTRO QUESTO IF
                     if (crushTime == totalCrushTime) {
                         crushTime = 0;
                         totalCrushTime = this.getCrushingTime(this.inventory.get(0));
