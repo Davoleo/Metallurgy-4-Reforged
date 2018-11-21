@@ -74,6 +74,9 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
     @Override
     public int quantityDropped(Random random)
     {
-        return 1 + random.nextInt(3);
+    	if(drop != null)
+    		return 1 + random.nextInt(4);
+    	else
+    		return 1;
     }
 }
