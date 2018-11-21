@@ -232,7 +232,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         this.burnTime = compound.getInteger("burn_time");
         this.alloyingTime = compound.getInteger("alloying_time");
         this.totalAlloyingTime = compound.getInteger("total_alloying_time");
-        this.currentBurnTime = getItemBurnTime(this.inventory.get(1));
+        this.currentBurnTime = compound.getInteger("current_burn_time");
 
         if(compound.hasKey("CustomName", 8)) 
             this.setCustomName(compound.getString("CustomName"));
@@ -247,6 +247,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         super.writeToNBT(compound); //Ripeto che non lo ricordo
         compound.setInteger("burn_time", (short)this.burnTime); //Impostiamo il BurnTime ma con meno bit possibili(lo compressiamo)
         compound.setInteger("alloying_time", (short)this.alloyingTime);//Impostiamo il AlloyingTime ma con meno bit possibili(lo compressiamo)
+        compound.setInteger("current_burn_time", (short)this.currentBurnTime);//Impostiamo il BurnTime ma con meno bit possibili(lo compressiamo)
         compound.setInteger("total_alloying_time", (short)this.totalAlloyingTime);//Impostiamo il AlloyingTime totale ma con meno bit possibili(lo compressiamo)
         ItemStackHelper.saveAllItems(compound, this.inventory);
 

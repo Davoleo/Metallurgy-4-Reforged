@@ -217,7 +217,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         this.burnTime = compound.getInteger("burn_time");
         this.crushTime = compound.getInteger("crush_time");
         this.totalCrushTime = compound.getInteger("total_crush_time");
-        this.currentBurnTime = getItemBurnTime(this.inventory.get(1));
+        this.currentBurnTime = compound.getInteger("current_burn_time");
 
         if (compound.hasKey("CustomName", 8))
             this.setCustomName(compound.getString("CustomName"));
@@ -229,6 +229,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("burn_time", (short) this.burnTime);
+        compound.setInteger("current_burn_time", (short) this.currentBurnTime);
         compound.setInteger("crush_time", (short) this.crushTime);
         compound.setInteger("total_crush_time", (short) this.totalCrushTime);
         ItemStackHelper.saveAllItems(compound, this.inventory);
