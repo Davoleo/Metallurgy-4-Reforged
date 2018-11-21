@@ -30,7 +30,7 @@
 *
 ***************************/
 
-@Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, acceptedMinecraftVersions = "[1.12]")
+@Mod(modid = Metallurgy_5.MODID, name = Metallurgy_5.NAME, version = Metallurgy_5.VERSION, dependencies = "required-after:forge@[11.16.0.2768,)", acceptedMinecraftVersions = "[1.12]")
 public class Metallurgy_5 {
 
 	public static final String MODID = "m5";
@@ -41,9 +41,9 @@ public class Metallurgy_5 {
 
 	public static final CommonTickHandler tickHandler = new CommonTickHandler();
 
-	//TODO : Logger and profiler
 	public static Logger logger;
 
+	//TODO : Move materials to another file
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
 	public static final ItemArmor.ArmorMaterial amordrineArmorMaterial = EnumHelper.addArmorMaterial("AMORDRINE", MODID + ":amordrine", 50, new int[]{3, 4, 5, 3}, 50, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2F);
@@ -132,6 +132,7 @@ public class Metallurgy_5 {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		logger = event.getModLog();
 		System.out.println(NAME + " is loading!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		ModFluids.registerFluids();
