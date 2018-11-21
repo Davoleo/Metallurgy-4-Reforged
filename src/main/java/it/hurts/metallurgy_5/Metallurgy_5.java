@@ -1,35 +1,27 @@
  package it.hurts.metallurgy_5;
 
- import it.hurts.metallurgy_5.block.ModBlocks;
  import it.hurts.metallurgy_5.fluid.ModFluids;
  import it.hurts.metallurgy_5.gui.GuiHandler;
- import it.hurts.metallurgy_5.item.ModItems;
- import it.hurts.metallurgy_5.item.armor.ModArmors;
- import it.hurts.metallurgy_5.item.tool.ModTools;
  import it.hurts.metallurgy_5.proxy.CommonProxy;
  import it.hurts.metallurgy_5.util.handler.CommonTickHandler;
  import it.hurts.metallurgy_5.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_5.util.recipe.ModRecipes;
  import it.hurts.metallurgy_5.world.ModWorldGen;
- import net.minecraft.block.Block;
  import net.minecraft.init.SoundEvents;
- import net.minecraft.item.Item;
  import net.minecraft.item.ItemArmor;
  import net.minecraft.item.ItemTool;
- import net.minecraftforge.client.event.ModelRegistryEvent;
  import net.minecraftforge.common.util.EnumHelper;
- import net.minecraftforge.event.RegistryEvent;
  import net.minecraftforge.fluids.FluidRegistry;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
  import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
- import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  import net.minecraftforge.fml.common.network.NetworkRegistry;
  import net.minecraftforge.fml.common.registry.GameRegistry;
+ import org.apache.logging.log4j.Logger;
 
-/***************************
+ /***************************
 *
 * Author : ItHurtsLikeHell
 * Project: Metallurgy-5
@@ -48,6 +40,8 @@ public class Metallurgy_5 {
 	public static volatile int ticker = 0;
 
 	public static final CommonTickHandler tickHandler = new CommonTickHandler();
+
+	public static Logger logger;
 
 //	Armor
 	public static final ItemArmor.ArmorMaterial adamantineArmorMaterial = EnumHelper.addArmorMaterial("ADAMANTINE", MODID + ":adamantine", 36, new int[]{3, 4, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.5F);
@@ -149,32 +143,5 @@ public class Metallurgy_5 {
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-	}
-
-	@Mod.EventBusSubscriber
-	public static class RegsitrationHandler {
-
-		@SubscribeEvent
-		public static void registerItems(RegistryEvent.Register<Item> event) {
-			ModItems.register(event.getRegistry());
-			ModBlocks.registerItemBlocks(event.getRegistry());
-			ModArmors.register(event.getRegistry());
-			ModTools.register(event.getRegistry());
-			ModFluids.registerFluids();
-		}
-
-		@SubscribeEvent
-		public static void registerBlocks(RegistryEvent.Register<Block> event) {
-			ModBlocks.register(event.getRegistry());
-		}
-
-		@SubscribeEvent
-		public static void registerModels(ModelRegistryEvent event) {
-			ModItems.registerModels();
-			ModBlocks.registerModels();
-			ModArmors.registerModels();
-			ModTools.registerModels();
-		}
-
 	}
 }

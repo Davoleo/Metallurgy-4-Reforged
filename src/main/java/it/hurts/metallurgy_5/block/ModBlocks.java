@@ -20,7 +20,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModBlocks {
 
 	private static String p = "pickaxe";
-	
 	@SuppressWarnings("unused")
 	private static String s = "shovel";
 	@SuppressWarnings("unused")
@@ -28,7 +27,7 @@ public class ModBlocks {
 	
 //	Blocks wich drops itself
 //	Block Ores
-//	TODO Append toolClass (in this case 'p') and harvesLevel (int) to ALL ores. Subsequently append it to Metal Blocks ("Successivamente aggiungilo ai blocchi metallici)
+//	TODO Append toolClass (in this case 'p') and harvesLevel (int) to ALL ores. Then append it to Metal Blocks ("Successivamente aggiungilo ai blocchi metallici)
 	public static BlockOre oreAdamantine = new BlockOre("adamantine_ore","oreAdamantine", p, 7).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAlduorite = new BlockOre("alduorite_ore","oreAlduorite").setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAstralSilver = new BlockOre("astral_silver_ore","oreAstralSilver").setCreativeTab(MetallurgyTabs.tabOre);
