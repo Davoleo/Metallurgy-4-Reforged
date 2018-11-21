@@ -32,11 +32,12 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
 		this.oreName = oreName;
 	}
 
-	public BlockOre(String name, String oreName, Item drop){
-        this(name, oreName);
+	public BlockOre(String name, String oreName, Item drop, String toolClass, int harvestLevel){
+		this(name, oreName);
         this.drop = drop;
         setHardness(3f);
 		setResistance(5f);
+		this.setHarvestLevel(toolClass, harvestLevel);
     }
 	
 //	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
