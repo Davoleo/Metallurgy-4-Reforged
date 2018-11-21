@@ -23,7 +23,7 @@ import javax.annotation.Nonnull;
 
 public class MetallurgyTabs extends CreativeTabs {
 
-    //TODO : Fix Creative tab icon ticking
+    //  TO.DO : Fix Creative tab icon ticking
 
     public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabMachine, tabOre, tabTool;
 

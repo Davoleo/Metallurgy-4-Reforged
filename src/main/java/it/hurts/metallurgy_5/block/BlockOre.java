@@ -21,34 +21,30 @@ import java.util.Random;
 public class BlockOre extends BlockBase implements IBlockOreDict {
 
 	private String oreName;
-	private Item drop = null;
+	private Item customDrop;
 	
 	public BlockOre(String name, String oreName) {
-		super(Material.ROCK, name);
-	
+		this(name, oreName, null,"p", 1);
 		setHardness(3f);
 		setResistance(5f);
-
-		this.oreName = oreName;
 	}
 
-	public BlockOre(String name, String oreName, Item drop, String toolClass, int harvestLevel){
-		this(name, oreName);
-        this.drop = drop;
-        setHardness(3f);
-		setResistance(5f);
-		this.setHarvestLevel(toolClass, harvestLevel);
-    }
-	
 //	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
 	public BlockOre(String name, String oreName, String toolClass, int harvestLevel){
-		super(Material.ROCK, name);
-        this.setHarvestLevel(toolClass, harvestLevel);
-        setHardness(3f);
-		setResistance(5f);
+		this(name, oreName, null, toolClass, harvestLevel);
     }
 
-    @Nonnull
+	public BlockOre(String name, String oreName, Item drop, String toolClass, int harvestLevel){
+		super(Material.ROCK, name);
+		this.oreName = oreName;
+		this.customDrop = drop;
+		setHardness(3f);
+		setResistance(5f);
+		this.setHarvestLevel(toolClass, harvestLevel);
+	}
+
+
+	@Nonnull
 	@Override
 	public BlockOre setCreativeTab(@Nonnull CreativeTabs tab) {
 		super.setCreativeTab(tab);
@@ -66,8 +62,8 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
     public Item getItemDropped(IBlockState state, Random rand, int fortune){
 		
 //		Check if the drop is an item, else return the same block
-        if(drop != null)
-        	return drop;
+        if(customDrop != null)
+        	return customDrop;
         else
         	return Item.getItemFromBlock(this);
     }
@@ -75,7 +71,7 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
     @Override
     public int quantityDropped(Random random)
     {
-    	if(drop != null)
+    	if(customDrop != null)
     		return 1 + random.nextInt(4);
     	else
     		return 1;

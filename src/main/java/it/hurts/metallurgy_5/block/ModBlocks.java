@@ -27,7 +27,6 @@ public class ModBlocks {
 	
 //	Blocks wich drops itself
 //	Block Ores
-//	TODO Append toolClass (in this case 'p') and harvesLevel (int) to ALL ores. Then append it to Metal Blocks ("Successivamente aggiungilo ai blocchi metallici)
 	public static BlockOre oreAdamantine = new BlockOre("adamantine_ore","oreAdamantine", p, 6).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAlduorite = new BlockOre("alduorite_ore","oreAlduorite", p, 3).setCreativeTab(MetallurgyTabs.tabOre);
 	public static BlockOre oreAstralSilver = new BlockOre("astral_silver_ore","oreAstralSilver", p, 4).setCreativeTab(MetallurgyTabs.tabOre);
@@ -65,51 +64,51 @@ public class ModBlocks {
 	public static BlockOre orePotash = new BlockOre("potash_ore","orePotash", ModItems.dustPotash, p, 2).setCreativeTab(MetallurgyTabs.tabOre);
 
 //	Metal Blocks
-	public static BlockOre blockAdamantine = new BlockOre("adamantine_block","blockAdamantine", p, 6).setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockAlduorite = new BlockOre("alduorite_block","blockAlduorite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockAngmallen = new BlockOre("angmallen_block","blockAngmallen").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockAstralSilver = new BlockOre("astral_silver_block","blockAstralSilver").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockAtlarus = new BlockOre("atlarus_block","blockAtlarus").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockAmordrine = new BlockOre("amordrine_block","blockAmordrine").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockBlackSteel = new BlockOre("black_steel_block","blockBlackSteel").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockBrass = new BlockOre("brass_block","blockBrass").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockBronze = new BlockOre("bronze_block","blockBronze").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockCarmot = new BlockOre("carmot_block","blockCarmot").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockCelenegil = new BlockOre("celenegil_block","blockCelenegil").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockCeruclase = new BlockOre("ceruclase_block","blockCeruclase").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockCopper = new BlockOre("copper_block","blockCopper").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockDamascusSteel= new BlockOre("damascus_steel_block","blockDamascusSteel").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockDeepIron = new BlockOre("deep_iron_block","blockDeepIron").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockDesichalkos = new BlockOre("desichalkos_block","blockDesichalkos").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockElectrum = new BlockOre("electrum_block", "blockElectrum").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockEximite = new BlockOre("eximite_block","blockEximite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockHaderoth = new BlockOre("haderoth_block","blockHaderoth").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockHepatizon = new BlockOre("hepatizon_block","blockHepatizon").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockIgnatius = new BlockOre("ignatius_block","blockIgnatius").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockInfuscolium = new BlockOre("infuscolium_block","blockInfuscolium").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockInolashite = new BlockOre("inolashite_block","blockInolashite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockKalendrite = new BlockOre("kalendrite_block","blockKalendrite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockLemurite = new BlockOre("lemurite_block","blockLemurite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockManganese = new BlockOre("manganese_block","blockManganese").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockMeutoite = new BlockOre("meutoite_block","blockMeutoite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockMidasium = new BlockOre("midasium_block","blockMidasium").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockMithril = new BlockOre("mithril_block","blockMithril").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockOrichalcum = new BlockOre("orichalcum_block","blockOrichalcum").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockOureclase = new BlockOre("oureclase_block","blockOureclase").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockPlatinum = new BlockOre("platinum_block","blockPlatinum").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockPrometheum = new BlockOre("prometheum_block","blockPrometheum").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockQuickSilver = new BlockOre("quicksilver_block","blockQuickSilver").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockRubracium = new BlockOre("rubracium_block","blockRubracium").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockSanguinite = new BlockOre("sanguinite_block","blockSanguinite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockShadowIron = new BlockOre("shadow_iron_block","blockShadowIron").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockShadowSteel = new BlockOre("shadow_steel_block","blockShadowSteel").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockSilver = new BlockOre("silver_block","blockSilver").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockSteel = new BlockOre("steel_block","blockSteel").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockTartarite = new BlockOre("tartarite_block","blockTartarite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockTin= new BlockOre("tin_block","blockTin").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockVulcanite = new BlockOre("vulcanite_block","blockVulcanite").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockVyroxeres = new BlockOre("vyroxeres_block","blockVyroxeres").setCreativeTab(MetallurgyTabs.tabBlock);
-	public static BlockOre blockZinc = new BlockOre("zinc_block","blockZinc").setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAdamantine = new BlockOre("adamantine_block","blockAdamantine", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAlduorite = new BlockOre("alduorite_block","blockAlduorite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAngmallen = new BlockOre("angmallen_block","blockAngmallen", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAstralSilver = new BlockOre("astral_silver_block","blockAstralSilver", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAtlarus = new BlockOre("atlarus_block","blockAtlarus", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockAmordrine = new BlockOre("amordrine_block","blockAmordrine", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockBlackSteel = new BlockOre("black_steel_block","blockBlackSteel", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockBrass = new BlockOre("brass_block","blockBrass", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockBronze = new BlockOre("bronze_block","blockBronze", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockCarmot = new BlockOre("carmot_block","blockCarmot", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockCelenegil = new BlockOre("celenegil_block","blockCelenegil", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockCeruclase = new BlockOre("ceruclase_block","blockCeruclase", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockCopper = new BlockOre("copper_block","blockCopper", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockDamascusSteel= new BlockOre("damascus_steel_block","blockDamascusSteel", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockDeepIron = new BlockOre("deep_iron_block","blockDeepIron", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockDesichalkos = new BlockOre("desichalkos_block","blockDesichalkos", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockElectrum = new BlockOre("electrum_block", "blockElectrum", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockEximite = new BlockOre("eximite_block","blockEximite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockHaderoth = new BlockOre("haderoth_block","blockHaderoth", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockHepatizon = new BlockOre("hepatizon_block","blockHepatizon", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockIgnatius = new BlockOre("ignatius_block","blockIgnatius", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockInfuscolium = new BlockOre("infuscolium_block","blockInfuscolium", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockInolashite = new BlockOre("inolashite_block","blockInolashite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockKalendrite = new BlockOre("kalendrite_block","blockKalendrite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockLemurite = new BlockOre("lemurite_block","blockLemurite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockManganese = new BlockOre("manganese_block","blockManganese", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockMeutoite = new BlockOre("meutoite_block","blockMeutoite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockMidasium = new BlockOre("midasium_block","blockMidasium", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockMithril = new BlockOre("mithril_block","blockMithril", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockOrichalcum = new BlockOre("orichalcum_block","blockOrichalcum", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockOureclase = new BlockOre("oureclase_block","blockOureclase", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockPlatinum = new BlockOre("platinum_block","blockPlatinum", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockPrometheum = new BlockOre("prometheum_block","blockPrometheum", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockQuickSilver = new BlockOre("quicksilver_block","blockQuickSilver", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockRubracium = new BlockOre("rubracium_block","blockRubracium", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockSanguinite = new BlockOre("sanguinite_block","blockSanguinite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockShadowIron = new BlockOre("shadow_iron_block","blockShadowIron", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockShadowSteel = new BlockOre("shadow_steel_block","blockShadowSteel", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockSilver = new BlockOre("silver_block","blockSilver", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockSteel = new BlockOre("steel_block","blockSteel", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockTartarite = new BlockOre("tartarite_block","blockTartarite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockTin= new BlockOre("tin_block","blockTin", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockVulcanite = new BlockOre("vulcanite_block","blockVulcanite", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockVyroxeres = new BlockOre("vyroxeres_block","blockVyroxeres", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
+	public static BlockOre blockZinc = new BlockOre("zinc_block","blockZinc", p, 2).setCreativeTab(MetallurgyTabs.tabBlock);
 
 //	Fluid Blocks
 	public static FluidBlockBase blockMoltenAdamantine = new FluidBlockBase(ModFluids.MOLTEN_ADAMANTINE, Material.LAVA, "molten_adamantine");
