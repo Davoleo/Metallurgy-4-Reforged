@@ -68,7 +68,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
 
-
     public static int getItemBurnTime(ItemStack stack) {
         if (stack.isEmpty())
             return 0;

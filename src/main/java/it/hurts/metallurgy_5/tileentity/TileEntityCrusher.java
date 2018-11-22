@@ -29,8 +29,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -70,11 +68,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
     public static void registerFixesFurnace(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static boolean isBurning(TileEntityCrusher te) {
-        return te.getField(0) > 0;
     }
 
     private static int getItemBurnTime(ItemStack fuel) {
@@ -246,7 +239,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         return 64;
     }
 
-    private boolean isBurning() {
+    public boolean isBurning() {
         return this.burnTime > 0;
     }
 
