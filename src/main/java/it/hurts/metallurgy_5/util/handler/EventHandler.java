@@ -175,7 +175,9 @@ public class EventHandler {
 	public static void onAttack(AttackEntityEvent event){
 
 		EntityPlayer player = event.getEntityPlayer();
-	
+		if(!player.world.isRemote)
+		{
+		
 //		Shadow Iron Sword (Blindness [cecità])
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
 		{
@@ -218,12 +220,14 @@ public class EventHandler {
 				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60,1));
 		}
 		
+		
 //		kalendrite sword (Regeneration)
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
 			
 			if((int)(Math.random()*100) <= 30)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 		}
+		
 		
 //		TODO migliorare questo effetto
 //		Sanguinite Sword (Vampirism)
@@ -264,6 +268,7 @@ public class EventHandler {
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 				}
 			}
+		}
 		}
 	}
 	
