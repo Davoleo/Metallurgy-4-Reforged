@@ -2,7 +2,6 @@ package it.hurts.metallurgy_5.util;
 
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.block.ModBlocks;
-import it.hurts.metallurgy_5.fluid.ModFluids;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
 import it.hurts.metallurgy_5.material.ModMetals;
@@ -71,9 +70,9 @@ public class MetallurgyTabs extends CreativeTabs {
         {
             case 0: return new ItemStack(ModArmors.adamantine_chest);
             //ModArmors.armorList.get(tick % ModArmors.armorList.size())
-            case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock);
+            case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
-            case 3: return new ItemStack(ModFluids.MOLTEN_ADAMANTINE.getBlock());
+            case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
             //ModFluids.fluidList.get(tick % ModFluids.fluidList.size()).getBlock()
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(ModBlocks.crusher);
