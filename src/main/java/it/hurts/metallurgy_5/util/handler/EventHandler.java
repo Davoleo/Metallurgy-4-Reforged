@@ -97,7 +97,7 @@ public class EventHandler {
 				&&event.player.isInWater()){
 			noSwimming(event.player);
 			event.player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 60, 3));
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 120, 1));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 1));
 			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
 			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15);
 		}else
@@ -151,7 +151,7 @@ public class EventHandler {
 		
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.platinum_helmet){
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 80, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0));
 		}
 		
 //		Carmot Armor (Haste I)
