@@ -38,7 +38,7 @@ public class ModRecipes {
         //Furnace Recipes
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
-                GameRegistry.addSmelting(m.getOre(), new ItemStack(m.getDust()), 1F);
+                GameRegistry.addSmelting(m.getOre(), new ItemStack(m.getIngot()), 1F);
             }
             GameRegistry.addSmelting(m.getDust(), new ItemStack(m.getIngot()), 0.6F);
         }

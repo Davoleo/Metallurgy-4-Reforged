@@ -27,10 +27,10 @@ public class MetalStats {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
         ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
         ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName).setCreativeTab(MetallurgyTabs.tabIngot);
-        BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName).setCreativeTab(MetallurgyTabs.tabBlock);
+        BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, "pickaxze", blockHarvest).setCreativeTab(MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
         if(oreHarvest >= 0) {
-            ore = new BlockOreDict(name + "_ore","ore" + oreDictName).setCreativeTab(MetallurgyTabs.tabOre);
+            ore = new BlockOreDict(name + "_ore","ore" + oreDictName, "pickaxe", oreHarvest).setCreativeTab(MetallurgyTabs.tabOre);
         }
 
         FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor));
