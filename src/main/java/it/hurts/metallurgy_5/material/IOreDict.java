@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_5.block;
+package it.hurts.metallurgy_5.material;
 
 /***************************
 *
@@ -9,8 +9,8 @@ package it.hurts.metallurgy_5.block;
 *
 ***************************/
 
-public interface IBlockOreDict {
-    
-    void initOreDict();
-    
+public interface IOreDict {
+
+	void initOreDict();
+	
 }

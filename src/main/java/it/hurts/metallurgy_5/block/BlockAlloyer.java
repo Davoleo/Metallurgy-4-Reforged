@@ -4,7 +4,6 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.gui.GuiHandler;
 import it.hurts.metallurgy_5.tileentity.TileEntityAlloyer;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
@@ -46,10 +45,6 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
     public BlockAlloyer(String name){
         super(Material.IRON, name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 1);
-        setHardness(6F);
-        setResistance(8F);
     }
 	
     //Overrides the dropped item

@@ -1,5 +1,11 @@
 package it.hurts.metallurgy_5.item;
 
+import it.hurts.metallurgy_5.material.IOreDict;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.oredict.OreDictionary;
+
+import javax.annotation.Nonnull;
+
 /***************************
 *
 * Author : ItHurtsLikeHell
@@ -9,8 +15,27 @@ package it.hurts.metallurgy_5.item;
 *
 ***************************/
 
-public interface ItemOreDict {
+public class ItemOreDict extends ItemBase implements IOreDict {
 
-	void initOreDict();
-	
+	private String oreName;
+
+	public ItemOreDict(String name, String oreName)
+	{
+		super(name);
+		this.oreName = oreName;
+	}
+
+	@Nonnull
+    @Override
+    public ItemOreDict setCreativeTab(@Nonnull CreativeTabs tab)
+	{
+        super.setCreativeTab(tab);
+        return this;
+    }
+
+    @Override
+	public void initOreDict()
+	{
+		OreDictionary.registerOre(oreName, this);
+	}
 }

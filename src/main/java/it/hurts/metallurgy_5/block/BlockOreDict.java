@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_5.block;
 
+import it.hurts.metallurgy_5.material.IOreDict;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,23 +19,23 @@ import java.util.Random;
 *
 ***************************/
 
-public class BlockOre extends BlockBase implements IBlockOreDict {
+public class BlockOreDict extends BlockBase implements IOreDict {
 
 	private String oreName;
 	private Item customDrop;
 	
-	public BlockOre(String name, String oreName) {
+	public BlockOreDict(String name, String oreName) {
 		this(name, oreName, null,"p", 1);
 		setHardness(3f);
 		setResistance(5f);
 	}
 
 //	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
-	public BlockOre(String name, String oreName, String toolClass, int harvestLevel){
+	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel){
 		this(name, oreName, null, toolClass, harvestLevel);
     }
 
-	public BlockOre(String name, String oreName, Item drop, String toolClass, int harvestLevel){
+	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel){
 		super(Material.ROCK, name);
 		this.oreName = oreName;
 		this.customDrop = drop;
@@ -46,7 +47,7 @@ public class BlockOre extends BlockBase implements IBlockOreDict {
 
 	@Nonnull
 	@Override
-	public BlockOre setCreativeTab(@Nonnull CreativeTabs tab) {
+	public BlockOreDict setCreativeTab(@Nonnull CreativeTabs tab) {
 		super.setCreativeTab(tab);
 		return this;
 	}

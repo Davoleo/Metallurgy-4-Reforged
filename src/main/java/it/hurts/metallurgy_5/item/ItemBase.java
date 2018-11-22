@@ -24,6 +24,7 @@ public class ItemBase extends Item{
 		this.name = name;
 		setUnlocalizedName(name);
 		setRegistryName(name);
+		ModItems.itemList.add(this);
 	}
 	
 	public void registerItemModel()

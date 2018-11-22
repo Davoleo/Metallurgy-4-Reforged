@@ -54,28 +54,30 @@ public class GuiAlloyer extends GuiContainer{
 	//x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
         this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
 
-        if(TileEntityAlloyer.isBurning(alloyer))
+        if(alloyer.isBurning())
         {
+            System.out.println(alloyer.getField(0) + " BURN");
             int k = this.getBurnLeftScaled(17);
             //~~~~~~~~~~~~~~~~~~
+            System.out.println(guiLeft + " " + guiTop);
             this.drawTexturedModalRect(this.guiLeft + 110, this.guiTop + 30 + 16 -k, 176, 77 - k, 17, k + 2);
         }
 
         int l = this.getAlloyingProgressScaled(33);
-        if (l > 0)
-            drawTexturedModalRect( this.guiLeft + 40, this.guiTop + 66 - l, 176, 32 - l, 7, l);
-
-
-        int m = this.getAlloyingProgressScaled(70);
+        if (l > 0) {
+            drawTexturedModalRect(this.guiLeft + 40, this.guiTop + 66 - l, 176, 32 - l, 7, l);
+            int m = this.getAlloyingProgressScaled(70);
             drawTexturedModalRect(this.guiLeft + 52, this.guiTop +1, 176, 81, 10, 1 + m);
+        }
+
+
+
     }
 
     //returns the burn animation parameter (scaled by the size of the animated texture)
     private int getBurnLeftScaled(int pixels){
         int i = this.alloyer.getField(1);
-        if(i == 0)
-            i = 200;
-        return this.alloyer.getField(0) * pixels / i;
+        return this.alloyer.getField(0) * pixels / Math.max(i, 200);
     }
 
     //returns the process animation parameter (scaled by the size of the animated texture)
