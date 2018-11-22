@@ -4,7 +4,6 @@ import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.gui.GuiHandler;
 import it.hurts.metallurgy_5.tileentity.TileEntityCrusher;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
@@ -45,10 +44,6 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     public BlockCrusher(String name){
         super(Material.IRON, name);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 1);
-        setHardness(6F);
-        setResistance(8F);
     }
 
 
@@ -69,8 +64,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!world.isRemote)
-        {
+        if(!world.isRemote) {
             TileEntity te = world.getTileEntity(pos);
 
             if(te instanceof TileEntityCrusher)
@@ -78,9 +72,6 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
                 player.openGui(Metallurgy_5.instance, GuiHandler.CRUSHER, world, pos.getX(), pos.getY(), pos.getZ());
             }
         }
-        else
-            return true;
-
         return true;
     }
 
@@ -139,19 +130,19 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
-        @Override
-        public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+    @Override
+    public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+    {
+        if(!keepInventory)
         {
-            if(!keepInventory)
-            {
-                TileEntity te = world.getTileEntity(pos);
+            TileEntity te = world.getTileEntity(pos);
 
-                if (te instanceof TileEntityCrusher)
-                {
-                    InventoryHelper.dropInventoryItems(world, pos, (TileEntityCrusher)te);
-                }
+            if (te instanceof TileEntityCrusher)
+            {
+                InventoryHelper.dropInventoryItems(world, pos, (TileEntityCrusher)te);
             }
         }
+    }
 
 
     @Override

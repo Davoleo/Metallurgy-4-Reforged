@@ -3,9 +3,9 @@ package it.hurts.metallurgy_5.util;
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.fluid.ModFluids;
-import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
+import it.hurts.metallurgy_5.material.ModMetals;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -72,12 +72,12 @@ public class MetallurgyTabs extends CreativeTabs {
         switch (type)
         {
             case 0: return new ItemStack(ModArmors.armorList.get(tick % ModArmors.armorList.size()));
-            case 1: return new ItemStack(ModBlocks.blockAdamantine);
-            case 2: return new ItemStack(ModItems.dustAdamantine);
+            case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
+            case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return new ItemStack(ModFluids.fluidList.get(tick % ModFluids.fluidList.size()).getBlock());
-            case 4: return new ItemStack(ModItems.ingotAdamantine);
+            case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(tick % 2 == 0 ? ModBlocks.alloyer : ModBlocks.crusher);
-            case 6: return new ItemStack(ModBlocks.oreAdamantine);
+            case 6: return new ItemStack(ModMetals.ADAMANTINE.getOre());
             case 7: return new ItemStack(ModTools.toolList.get(tick % ModTools.toolList.size()));
         }
         return ItemStack.EMPTY;

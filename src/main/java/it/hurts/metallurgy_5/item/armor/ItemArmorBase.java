@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
@@ -28,7 +29,7 @@ import java.util.List;
  *
  ***************************/
 
-public class ItemArmorBase extends net.minecraft.item.ItemArmor{
+public class ItemArmorBase extends ItemArmor {
 
 	private String name;
 	private String tooltip;

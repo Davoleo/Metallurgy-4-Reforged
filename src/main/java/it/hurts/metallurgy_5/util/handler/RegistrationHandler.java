@@ -1,10 +1,10 @@
 package it.hurts.metallurgy_5.util.handler;
 
 import it.hurts.metallurgy_5.block.ModBlocks;
-import it.hurts.metallurgy_5.fluid.ModFluids;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
 import it.hurts.metallurgy_5.item.tool.ModTools;
+import it.hurts.metallurgy_5.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -25,20 +25,22 @@ public class RegistrationHandler {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
+        ModMetals.registerItems(event.getRegistry());
         ModItems.register(event.getRegistry());
         ModBlocks.registerItemBlocks(event.getRegistry());
         ModArmors.register(event.getRegistry());
         ModTools.register(event.getRegistry());
-        ModFluids.registerFluids();
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        ModMetals.registerBlocks(event.getRegistry());
         ModBlocks.register(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
+        ModMetals.registerModels();
         ModItems.registerModels();
         ModBlocks.registerModels();
         ModArmors.registerModels();

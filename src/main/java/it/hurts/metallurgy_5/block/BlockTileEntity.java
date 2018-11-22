@@ -1,5 +1,7 @@
 package it.hurts.metallurgy_5.block;
 
+import it.hurts.metallurgy_5.util.MetallurgyTabs;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
@@ -23,6 +25,11 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
     public BlockTileEntity(Material material, String name)
     {
         super(material, name);
+        setCreativeTab(MetallurgyTabs.tabMachine);
+        setSoundType(SoundType.METAL);
+        setHarvestLevel("pickaxe", 1);
+        setHardness(6F);
+        setResistance(8F);
     }
 
     @SuppressWarnings("unused")
