@@ -40,7 +40,6 @@ public class MetallurgyTabs extends CreativeTabs {
     }
 
     private final int type;
-    private int tick;
 
     public MetallurgyTabs(int type, String name)
     {
@@ -64,21 +63,24 @@ public class MetallurgyTabs extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem()
     {
-        tick = Metallurgy_5.ticker/20;
 
-        System.out.println("tick: " + tick);
-        System.out.println("ticker: " + Metallurgy_5.ticker);
+        //System.out.println("tick: " + tick);
+        //System.out.println("ticker: " + Metallurgy_5.ticker);
 
         switch (type)
         {
-            case 0: return new ItemStack(ModArmors.armorList.get(tick % ModArmors.armorList.size()));
+            case 0: return new ItemStack(ModArmors.adamantine_chest);
+            //ModArmors.armorList.get(tick % ModArmors.armorList.size())
             case 1: return new ItemStack(ModBlocks.blockAdamantine);
             case 2: return new ItemStack(ModItems.dustAdamantine);
-            case 3: return new ItemStack(ModFluids.fluidList.get(tick % ModFluids.fluidList.size()).getBlock());
+            case 3: return new ItemStack(ModFluids.MOLTEN_ADAMANTINE.getBlock());
+            //ModFluids.fluidList.get(tick % ModFluids.fluidList.size()).getBlock()
             case 4: return new ItemStack(ModItems.ingotAdamantine);
-            case 5: return new ItemStack(tick % 2 == 0 ? ModBlocks.alloyer : ModBlocks.crusher);
+            case 5: return new ItemStack(ModBlocks.crusher);
+            //tick % 2 == 0 ? ModBlocks.alloyer : ModBlocks.crusher
             case 6: return new ItemStack(ModBlocks.oreAdamantine);
-            case 7: return new ItemStack(ModTools.toolList.get(tick % ModTools.toolList.size()));
+            case 7: return new ItemStack(ModTools.adamantine_axe);
+            //ModTools.toolList.get(tick % ModTools.toolList.size())
         }
         return ItemStack.EMPTY;
     }
