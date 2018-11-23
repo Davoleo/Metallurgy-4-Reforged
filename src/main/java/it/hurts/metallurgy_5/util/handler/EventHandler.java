@@ -101,10 +101,11 @@ public class EventHandler {
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.deep_iron_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
-			
+		
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1));
-			if(pl.onGround) {	//checks if the player is tourching ground
+			//checks if the player is tourching ground
+      if(pl.onGround) {	
 				//adds more motion in his movement 
 			  if(pl.motionX <= 3D)
 			    pl.motionX *= 1.1D;
@@ -176,7 +177,7 @@ public class EventHandler {
 		
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.platinum_helmet){
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 80, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0));
 		}
 		
 //		Carmot Armor (Haste I)

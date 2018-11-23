@@ -218,7 +218,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, Boolean.valueOf((meta & 4) != 0));
+        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, (meta & 4) != 0);
     }  
     
     protected static EnumFacing getFacing(int meta)
@@ -257,9 +257,9 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        i = i | getMetaForFacing((EnumFacing)state.getValue(FACING));
+        i = i | getMetaForFacing(state.getValue(FACING));
 
-        if (((Boolean)state.getValue(BURNING)).booleanValue())
+        if ((state.getValue(BURNING)))
         {
             i |= 4;
         }

@@ -49,6 +49,7 @@ import java.util.stream.Collectors;
  *
  * Reworked by Davoleo
  ***************************/
+
 public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory {
     private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
     private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();

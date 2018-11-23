@@ -1,0 +1,13 @@
+{
+	"variants":
+	{
+		"inventory": {"model": "m5:road_block"},
+		"facing=north": {"model": "m5:road_block"},
+		"facing=east": {"model": "m5:road_block", "y": 90},
+		"facing=south": {"model": "m5:road_block"},
+		"facing=west": {"model": "m5:road_block", "y": 90},
+		"facing=up": {"model": "m5:road_block"},
+		"facing=down": {"model": "m5:road_block"}
+	},
+	"_comment": "TODO: find a way to remove facing up and down blockstates"
+}

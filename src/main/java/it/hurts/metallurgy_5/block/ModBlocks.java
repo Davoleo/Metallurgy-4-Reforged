@@ -3,6 +3,7 @@ package it.hurts.metallurgy_5.block;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.util.MetallurgyTabs;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -40,17 +41,49 @@ public class ModBlocks {
     public static BlockOreDict blockCharcoal = new BlockOreDict("charcoal_block", "blockCharcoal").setCreativeTab(MetallurgyTabs.tabBlock);
     public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur").setCreativeTab(MetallurgyTabs.tabBlock);
 
+    //Road
+    //I know it's in the machine tab, don't bother me about it .-.
+    public static BlockOrientable blockRoad = new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabMachine);
+    public static BlockOrientable blockStripedRoad = new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabMachine);
+
     //	Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabMachine);
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabMachine);
 
     public static void register(IForgeRegistry<Block> registry) {
-        registry.registerAll(oreSulfur, orePhosphorite, oreBitumen, orePotash, blockBitumen, blockCharcoal, blockSulfur, crusher, alloyer);
+        registry.registerAll(
+                oreSulfur,
+                orePhosphorite,
+                oreBitumen,
+                orePotash,
+
+                blockBitumen,
+                blockCharcoal,
+                blockSulfur,
+
+                crusher,
+                alloyer,
+
+                blockRoad,
+                blockStripedRoad
+        );
     }
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
-        registry.registerAll(oreSulfur.createItemBlock(), orePhosphorite.createItemBlock(), oreBitumen.createItemBlock(), orePotash.createItemBlock(), blockBitumen.createItemBlock(),
-                blockCharcoal.createItemBlock(), blockSulfur.createItemBlock(), alloyer.createItemBlock(), crusher.createItemBlock());
+        registry.registerAll(oreSulfur.createItemBlock(),
+                orePhosphorite.createItemBlock(),
+                oreBitumen.createItemBlock(),
+                orePotash.createItemBlock(),
+
+                blockBitumen.createItemBlock(),
+                blockCharcoal.createItemBlock(),
+                blockSulfur.createItemBlock(),
+
+                alloyer.createItemBlock(),
+                crusher.createItemBlock(),
+
+                blockRoad.createItemBlock(),
+                blockStripedRoad.createItemBlock());
     }
 
     public static void registerModels() {
@@ -65,6 +98,9 @@ public class ModBlocks {
 
         crusher.registerItemModel(Item.getItemFromBlock(crusher));
         alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
+
+        blockRoad.registerItemModel(Item.getItemFromBlock(blockRoad));
+        blockStripedRoad.registerItemModel(Item.getItemFromBlock(blockStripedRoad));
     }
 
 }

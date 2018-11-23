@@ -62,24 +62,16 @@ public class MetallurgyTabs extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem()
     {
-
-        //System.out.println("tick: " + tick);
-        //System.out.println("ticker: " + Metallurgy_5.ticker);
-
         switch (type)
         {
             case 0: return new ItemStack(ModArmors.adamantine_chest);
-            //ModArmors.armorList.get(tick % ModArmors.armorList.size())
             case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
-            //ModFluids.fluidList.get(tick % ModFluids.fluidList.size()).getBlock()
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(ModBlocks.crusher);
-            //tick % 2 == 0 ? ModBlocks.alloyer : ModBlocks.crusher
             case 6: return new ItemStack(ModMetals.ADAMANTINE.getOre());
             case 7: return new ItemStack(ModTools.adamantine_axe);
-            //ModTools.toolList.get(tick % ModTools.toolList.size())
         }
         return ItemStack.EMPTY;
     }
