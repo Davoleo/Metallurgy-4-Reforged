@@ -17,7 +17,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -253,44 +252,53 @@ public class EventHandler {
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 		}
 		
-
-		}
-	}
-	
-//	Sanguinite Sword (Vampirism)
-	@SubscribeEvent
-	public static void entityHurtEvent(LivingHurtEvent event)
-	{
-
-		EntityLivingBase eventEntity = event.getEntityLiving();
-		//the entity that damaged the event entity
-		Entity source = event.getSource().getImmediateSource();
-		if(source instanceof EntityPlayer)
-		{
+		
+//		TODO migliorare questo effetto
+//		Sanguinite Sword (Vampirism)
+		if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
 			
-			//the player that damaged the event entity
-			EntityPlayer pl = (EntityPlayer) source;
+			int luck = (int) player.getLuck();
 			
-			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
-				{
-					//check if the player is missing hearts.
-					if(pl.getHealth() < pl.getMaxHealth())
-					{
-				     //the heal Amount that is the 10% of the damage
-			          float healAmount = event.getAmount() * 10F / 100F;
-			          if(pl.getHealth() + healAmount >= pl.getMaxHealth())
-			          	healAmount = 0;
-			          
-			          //set the player health
-			          pl.setHealth(pl.getHealth() + healAmount);
-			      }
+			switch(luck) {
+				
+				case 0 :{
+					if((int)(Math.random()*100) <=15)
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
+				}
+				break;
+				
+				case 1 :{
+					if((int)(Math.random()*100) <=25)
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 4));
+				}
+				break;
+				
+				case 2 :{
+					if((int)(Math.random()*100) <35)
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 5));
+				}
+				break;
+				
+				case 3 : {
+					if((int)(Math.random()*100) <50) {
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 5));
+						player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 60));
+					}
+				}
+				break;
+				
+				default: {
+					if((int)(Math.random()*100) <=15)
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
 				}
 			}
 		}
-	
+		}
 	}
 	
+	
 //	Effects	
+	
 //	FireImmunity
 	@SubscribeEvent
 	public static void cancelFireDamage(LivingAttackEvent event) {
