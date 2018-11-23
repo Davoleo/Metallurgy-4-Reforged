@@ -17,10 +17,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import scala.util.Random;
 
 import java.util.List;
 
@@ -62,7 +64,7 @@ public class EventHandler {
 		for(int i = 0; i<list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
 			max=i;                   			//Inseriamo il valore di "I" a singola ripetizione in max
 			list.toArray(a);					// Inseriamo il contenuto della lista nell'array "a"
-			a[i].setGlowing(isArmored);			//Le entita'  di a che si trovano in posizione "i" riceveranno l'effetto glowing
+			a[i].setGlowing(isArmored);			//Le entita'ï¿½ di a che si trovano in posizione "i" riceveranno l'effetto glowing
 			for(int k=0;k<=max;k++) {  			//per k=0 fino a che k non Ã¨ <= del massimo della n ripetizione
 				if(a[k].getDistance(event.player) > radius) { 	//controllo fra entitÃ  in posizione k e player
 					a[k].setGlowing(false); 					// Rimuoviamo l'effetto Glowing all'entitÃ  in posizione "k" di "a"
@@ -73,6 +75,10 @@ public class EventHandler {
 	
 	@SubscribeEvent
 	public static void onArmorTick(PlayerTickEvent event) {
+		
+		EntityPlayer pl = event.player; //The Player
+		
+		
 //		Astral Silver Armor (Jump Boost)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
@@ -89,19 +95,39 @@ public class EventHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3));
 		}
 		
-//		Deep Iron Armor (Swimming Speed)
+//		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.deep_iron_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.deep_iron_chest
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.deep_iron_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
-			noSwimming(event.player);
-			event.player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 60, 3));
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 1));
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
-			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15);
-		}else
-			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(speed);
+		
+			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3));
+			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1));
+			//checks if the player is tourching ground
+      if(pl.onGround) {	
+				//adds more motion in his movement 
+			  if(pl.motionX <= 3D)
+			    pl.motionX *= 1.1D;
+			  if(pl.motionZ <= 3D)
+			    pl.motionZ *= 1.1D;
+			}
+			else
+			{
+			    //stop player motion 
+				pl.motionX = 0D;
+				pl.motionZ = 0D;
+			}
+			
+			//The player can no longer swim upwards
+			pl.motionY = -0.3D;
+			
+			//when the player is in the water he can step one block height like a horse
+			if(pl.stepHeight != 1.0F)
+				pl.stepHeight = 1.0F;
+		}
+		else if(pl.stepHeight > 0.0F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+			pl.stepHeight = 0.0F;
 		
 //		Vulcanite Armor (Fire Immunity)
         fire = event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
@@ -178,7 +204,7 @@ public class EventHandler {
 		if(!player.world.isRemote)
 		{
 		
-//		Shadow Iron Sword (Blindness [cecità])
+//		Shadow Iron Sword (Blindness [cecitï¿½])
 		if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword)))
 		{
 			Entity foe = event.getTarget();
@@ -227,52 +253,45 @@ public class EventHandler {
 			if((int)(Math.random()*100) <= 30)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 		}
-		
-		
-//		TODO migliorare questo effetto
-//		Sanguinite Sword (Vampirism)
-		if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
-			
-			int luck = (int) player.getLuck();
-			
-			switch(luck) {
-				
-				case 0 :{
-					if((int)(Math.random()*100) <=15)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
-				}
-				break;
-				
-				case 1 :{
-					if((int)(Math.random()*100) <=25)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 4));
-				}
-				break;
-				
-				case 2 :{
-					if((int)(Math.random()*100) <35)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 5));
-				}
-				break;
-				
-				case 3 : {
-					if((int)(Math.random()*100) <50) {
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 5));
-						player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 60));
-					}
-				}
-				break;
-				
-				default: {
-					if((int)(Math.random()*100) <=15)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
-				}
-			}
-		}
 		}
 	}
 	
-	
+//	Sanguinite Sword (Vampirism)
+	@SubscribeEvent
+	public static void entityHurtEvent(LivingHurtEvent event)
+	{
+		EntityLivingBase eventEntity = event.getEntityLiving();
+		//the entity that damaged the event entity
+		Entity source = event.getSource().getImmediateSource();
+		if(source instanceof EntityPlayer)
+		{
+					
+			//the player that damaged the event entity
+			EntityPlayer pl = (EntityPlayer) source;
+					
+			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+				{		
+				//check if the player is missing hearts.
+			     if(pl.getHealth() < pl.getMaxHealth())
+			     {
+					    
+			      int luck_level = Math.round(pl.getLuck());
+			      //percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...) 
+				  int percentage = 15 + (luck_level * 5);
+				  if(new Random().nextInt(100) < percentage)
+				  {		
+					 //the heal Amount ,that is the 10% of the damage				  
+				     float healAmount = event.getAmount() * 10F / 100F;
+			         if(pl.getHealth() + healAmount >= pl.getMaxHealth())
+				     	healAmount = 0;      
+					  //set the player health   
+					   pl.setHealth(pl.getHealth() + healAmount);
+				    }
+				  }
+				}
+			}
+		}
+	}
 //	Effects	
 	
 //	FireImmunity
@@ -287,29 +306,6 @@ public class EventHandler {
 		
 	}
 	
-	/*
-	 * Impossibilità del player di nuotare;
-	 * Impossibilità del player di rimanere a galla;
-	 * Alla pressione di *space* il player riceve una spinta verso l'alto o riceve *levitation*
-	 * La durata dell'effetto o l'altezza della spinta si calcola in base alla media delle profondità marittime e l'altezza del player
-	 * EntityLivingBase JUMP
-	 * EntityPlayer FALL
-	 */
-	public static void waterAssist(EntityLivingBase entity) {
-	}
-	
-//	Aumentare la velocità del player sott'acqua
-    private static void noSwimming(EntityPlayer player) {
-            World world = player.getEntityWorld();
-            BlockPos pos = player.getPosition().down(1);
-            IBlockState state = world.getBlockState(pos);
-            Block block = state.getBlock();
-            
-            if (world.isRemote)
-                if (!player.isCreative())
-                    if (player.isInWater())
-                    	if (block.isReplaceable(world, pos))
-                            player.motionY -= 0.07D;     	// -= 0.04D with no waterAssist
-	}
+
 	
 }
