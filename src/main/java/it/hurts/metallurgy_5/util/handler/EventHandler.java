@@ -74,6 +74,10 @@ public class EventHandler {
 	
 	@SubscribeEvent
 	public static void onArmorTick(PlayerTickEvent event) {
+		
+		EntityPlayer pl = event.player; //The Player
+		
+		
 //		Astral Silver Armor (Jump Boost)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.astral_silver_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
@@ -90,19 +94,39 @@ public class EventHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3));
 		}
 		
-//		Deep Iron Armor (Swimming Speed)
+//		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.deep_iron_helmet
 				&&event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.deep_iron_chest
 				&&event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.deep_iron_legs
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
-			noSwimming(event.player);
-			event.player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 60, 3));
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 120, 1));
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
-			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.15);
-		}else
-			event.player.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(speed);
+			
+			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3));
+			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1));
+			pl.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
+			if(pl.onGround) {	//checks if the player is tourching ground
+				//adds more motion in his movement 
+			  if(pl.motionX <= 3D)
+			    pl.motionX *= 1.1D;
+			  if(pl.motionZ <= 3D)
+			    pl.motionZ *= 1.1D;
+			}
+			else
+			{
+			    //stop player motion 
+				pl.motionX = 0D;
+				pl.motionZ = 0D;
+			}
+			
+			//The player can no longer swim upwards
+			pl.motionY = -0.3D;
+			
+			//when the player is in the water he can step one block height like a horse
+			if(pl.stepHeight != 1.0F)
+				pl.stepHeight = 1.0F;
+		}
+		else if(pl.stepHeight > 0.0F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+			pl.stepHeight = 0.0F;
 		
 //		Vulcanite Armor (Fire Immunity)
         fire = event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.vulcanite_helmet
@@ -279,29 +303,6 @@ public class EventHandler {
 		
 	}
 	
-	/*
-	 * Impossibilit� del player di nuotare;
-	 * Impossibilit� del player di rimanere a galla;
-	 * Alla pressione di *space* il player riceve una spinta verso l'alto o riceve *levitation*
-	 * La durata dell'effetto o l'altezza della spinta si calcola in base alla media delle profondit� marittime e l'altezza del player
-	 * EntityLivingBase JUMP
-	 * EntityPlayer FALL
-	 */
-	public static void waterAssist(EntityLivingBase entity) {
-	}
-	
-//	Aumentare la velocit� del player sott'acqua
-    private static void noSwimming(EntityPlayer player) {
-            World world = player.getEntityWorld();
-            BlockPos pos = player.getPosition().down(1);
-            IBlockState state = world.getBlockState(pos);
-            Block block = state.getBlock();
-            
-            if (world.isRemote)
-                if (!player.isCreative())
-                    if (player.isInWater())
-                    	if (block.isReplaceable(world, pos))
-                            player.motionY -= 0.07D;     	// -= 0.04D with no waterAssist
-	}
+
 	
 }
