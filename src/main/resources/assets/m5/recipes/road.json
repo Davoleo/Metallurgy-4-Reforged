@@ -1,18 +1,18 @@
 {
   "type": "forge:ore_shaped",
   "pattern":[
-    "II",
-    "II"
+    "BBB",
+    "BBB",
+    "BBB"
   ],
-  "key":{
-    "I":{
+  "key": {
+    "B":{
       "type": "forge:ore_dict",
       "ore": "dustBitumen"
     }
   },
   "result": {
-    "item": "m5:bitumen_block"
-  }
-
-
+    "item": "m5:road_block",
+    "count": 8
+}
 }

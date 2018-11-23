@@ -56,7 +56,7 @@ public class GuiCrusher extends GuiContainer {
 
         if(crusher.isBurning())
         {
-            int k = this.getBurnLeftScaled(17);
+            int k = this.getBurnLeftScaled(16);
             this.drawTexturedModalRect(this.guiLeft + 128, this.guiTop + 46 - k, 176, 77 - k, 17, k + 1);
         }
 
@@ -67,12 +67,15 @@ public class GuiCrusher extends GuiContainer {
         }
     }
 
+
+    //parameter: texture height -1
     private int getBurnLeftScaled(int pixels)
     {
         int i = this.crusher.getField(1);
         return this.crusher.getField(0) * pixels / Math.max(i, 200);
     }
 
+    //Parameter: Texture height
     private int getCrushProgressScaled(int pixels)
     {
         int i = this.crusher.getField(2);

@@ -170,6 +170,8 @@ item.vyroxeres_legs.name=Vyroxeres Leggings
 item.vyroxeres_boots.name=Vyroxeres Boots
 
 # Blocks
+tile.road_block.name=Road
+tile.striped_road_block.name=Striped Road
 tile.charcoal_block.name=Block of Charcoal
 tile.bitumen_block.name=Bitumen Block
 tile.electrum_block.name=Electrum Block
