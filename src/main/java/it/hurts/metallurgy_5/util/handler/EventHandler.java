@@ -17,10 +17,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import scala.util.Random;
 
 import java.util.List;
 
@@ -251,52 +253,45 @@ public class EventHandler {
 			if((int)(Math.random()*100) <= 30)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 		}
-		
-		
-//		TODO migliorare questo effetto
-//		Sanguinite Sword (Vampirism)
-		if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
-			
-			int luck = (int) player.getLuck();
-			
-			switch(luck) {
-				
-				case 0 :{
-					if((int)(Math.random()*100) <=15)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
-				}
-				break;
-				
-				case 1 :{
-					if((int)(Math.random()*100) <=25)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 4));
-				}
-				break;
-				
-				case 2 :{
-					if((int)(Math.random()*100) <35)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 5));
-				}
-				break;
-				
-				case 3 : {
-					if((int)(Math.random()*100) <50) {
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 5));
-						player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 60));
-					}
-				}
-				break;
-				
-				default: {
-					if((int)(Math.random()*100) <=15)
-						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
-				}
-			}
-		}
 		}
 	}
 	
-	
+//	Sanguinite Sword (Vampirism)
+	@SubscribeEvent
+	public static void entityHurtEvent(LivingHurtEvent event)
+	{
+		EntityLivingBase eventEntity = event.getEntityLiving();
+		//the entity that damaged the event entity
+		Entity source = event.getSource().getImmediateSource();
+		if(source instanceof EntityPlayer)
+		{
+					
+			//the player that damaged the event entity
+			EntityPlayer pl = (EntityPlayer) source;
+					
+			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+				{		
+				//check if the player is missing hearts.
+			     if(pl.getHealth() < pl.getMaxHealth())
+			     {
+					    
+			      int luck_level = Math.round(pl.getLuck());
+			      //percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...) 
+				  int percentage = 15 + (luck_level * 5);
+				  if(new Random().nextInt(100) < percentage)
+				  {		
+					 //the heal Amount ,that is the 10% of the damage				  
+				     float healAmount = event.getAmount() * 10F / 100F;
+			         if(pl.getHealth() + healAmount >= pl.getMaxHealth())
+				     	healAmount = 0;      
+					  //set the player health   
+					   pl.setHealth(pl.getHealth() + healAmount);
+				    }
+				  }
+				}
+			}
+		}
+	}
 //	Effects	
 	
 //	FireImmunity
