@@ -47,6 +47,22 @@ public class BlockOrientable extends BlockBase {
         return new BlockStateContainer(this, FACING);
     }
 
+    protected static EnumFacing getFacing(int meta)
+    {
+        switch (meta & 3)
+        {
+            case 0:
+                return EnumFacing.NORTH;
+            case 1:
+                return EnumFacing.SOUTH;
+            case 2:
+                return EnumFacing.WEST;
+            case 3:
+            default:
+                return EnumFacing.EAST;
+        }
+    }
+
     private static int getMetaForFacing(EnumFacing facing)
     {
         switch (facing)
@@ -70,5 +86,12 @@ public class BlockOrientable extends BlockBase {
         i = i | getMetaForFacing(state.getValue(FACING));
 
         return i;
+    }
+
+    @Nonnull
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        return this.getDefaultState().withProperty(FACING, getFacing(meta));
     }
 }
