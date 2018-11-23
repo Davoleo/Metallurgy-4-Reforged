@@ -104,7 +104,6 @@ public class EventHandler {
 			
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1));
-			pl.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 3));
 			if(pl.onGround) {	//checks if the player is tourching ground
 				//adds more motion in his movement 
 			  if(pl.motionX <= 3D)
