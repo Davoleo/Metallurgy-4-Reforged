@@ -8,14 +8,17 @@ before_install: chmod +x gradlew
 install: ./gradlew setupCIWorkspace
 
 #Build Mod
-script: ./gradlew build
+script:
+- ./gradlew build
+- ./gradlew assemble
+- ./gradlew check
 
 #Binary upload & Webhook Report message
 after_success:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - ./send.sh success $WEBHOOK_URL
-- ./gradlew bintrayUpload
+
 after_failure:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/verbose/send.sh
 - chmod +x send.sh
