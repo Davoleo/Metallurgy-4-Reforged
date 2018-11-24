@@ -12,7 +12,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -37,7 +36,6 @@ import java.util.List;
 @EventBusSubscriber(modid=Metallurgy_5.MODID)
 public class EventHandler {
 
-	private static boolean fire = false;
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
 
@@ -127,9 +125,10 @@ public class EventHandler {
 		else if(pl.stepHeight > 0.0F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
 			pl.stepHeight = 0.0F;
 		
-//		Vulcanite Armor (Fire Immunity)
-		fire = isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots});
-
+//		Vulcanite Armor (Fire Immunity) //Removes Fire Render 
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}) && event.player.isBurning())
+			event.player.extinguish();
+ 
 //		Angmallen Armor (Luck I for Vampirism)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.angmallen_helmet,ModArmors.angmallen_chest,ModArmors.angmallen_legs,ModArmors.angmallen_boots}))
 			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0, false, false));
@@ -306,14 +305,15 @@ public class EventHandler {
 
 //	Effects
 
+
 //	FireImmunity
 		@SubscribeEvent
 		public static void cancelFireDamage (LivingAttackEvent event){
 		if (event.getEntity() instanceof EntityPlayer) {
-			if (event.getSource().equals(DamageSource.LAVA)
-					|| event.getSource().equals(DamageSource.IN_FIRE)
-					|| event.getSource().equals(DamageSource.ON_FIRE))
-				event.setCanceled(fire);
+			if(event.getSource().isFireDamage()) {
+             if(isPlayerWearingArmor((EntityPlayer) event.getEntity(), new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}))
+				 event.setCanceled(true);
+			}
 		}
 	}
 	
