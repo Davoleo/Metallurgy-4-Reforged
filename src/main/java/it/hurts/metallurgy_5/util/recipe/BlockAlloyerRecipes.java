@@ -33,6 +33,7 @@ public class BlockAlloyerRecipes {
     }
 
     private BlockAlloyerRecipes() {
+//    	( [Input 1, quantità], [Input 2, quantità], [Output, quantità, exp] ) 
         this.addAlloyRecipe
                 (new ItemStack(ModMetals.COPPER.getIngot(), 3),
                         new ItemStack(ModMetals.TIN.getIngot()),
@@ -89,7 +90,7 @@ public class BlockAlloyerRecipes {
                 (new ItemStack(Items.IRON_INGOT),
                         new ItemStack(Items.GOLD_INGOT),
                         new ItemStack(ModMetals.ANGMALLEN.getIngot(), 2), 1.25F);
-        //Original Recipe: [Bronze + Gold] 1:1
+//      Original Recipe: [Bronze + Gold] 1:1 = Hepatizon
         this.addAlloyRecipe
                 (new ItemStack(ModMetals.INFUSCOLIUM.getIngot()),
                         new ItemStack(ModMetals.STEEL.getIngot()),

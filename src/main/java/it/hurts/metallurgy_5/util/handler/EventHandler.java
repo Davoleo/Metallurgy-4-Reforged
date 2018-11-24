@@ -1,5 +1,7 @@
 package it.hurts.metallurgy_5.util.handler;
 
+import java.util.List;
+
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
@@ -21,8 +23,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import scala.util.Random;
 
-import java.util.List;
-
 /***************************
  *
  * Author : ItHurtsLikeHell
@@ -36,9 +36,10 @@ import java.util.List;
 public class EventHandler {
 
 	private static boolean fire = false;
-	private final static double speed = 0.10000000149011612D;
+//	Don't touch this
+//	private final static double speed = 0.10000000149011612D;
 
-	//	Mithril Armor (Ultra istinto)
+//	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
 	public static void glowingArmorEffect(PlayerTickEvent event)
 	{
@@ -51,25 +52,37 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.mithril_boots)
 			isArmored = true;
 
-		double xM = event.player.posX + radius, yM = event.player.posY + radius, zM = event.player.posZ + radius; //Definiamo il Massimo di X Y Z
-		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius; //Definiamo il minimo di X Y Z
-		List<Entity> list;                        //Creazione lista
+//		Definiamo un raggio massimo di azione
+		double xM = event.player.posX + radius, yM = event.player.posY + radius, zM = event.player.posZ + radius;
+		
+//		Definiamo un raggio minimo di azione
+		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius;
+		
+//		Creiamo una lista di entita'
+		List<Entity> list;
 
-		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm)); //Immetiamo in lista tutte le entitï¿½ comprese da il minimo e massimo di X Y Z
+//		Inseriamo nella lista tutte le entit� presenti nel ragglio minimo e nel raggio massimo
+		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm));
 
-		Entity entity[] = new Entity [list.size()]; 	// Creiamo un array di entity grande quanto la lista
+//		Creiamo un vector di entite' grande quanto la lista
+		Entity entity[] = new Entity [list.size()];
 
 		int max;
-		for(int i = 0; i < list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
+		
+//		Ciclo per scorrere il vector
+		for(int i = 0; i < list.size(); i++) {
 			max = i;          //Inseriamo il valore di "I" a singola ripetizione in max
 
-			list.toArray(entity);					// Inseriamo il contenuto della lista nell'array "a"
+//			Convertiamo la lista 'list' in un vector 'entity'
+			list.toArray(entity);
 
-			entity[i].setGlowing(isArmored);			//Le entita'ï¿½ di a che si trovano in posizione "i" riceveranno l'effetto glowing
+//			Impostiamo ad ogni entity di 'i' l'effetto 'Glowing'
+			entity[i].setGlowing(isArmored);
 
-			for(int k = 0;k <= max; k++) {  			//per k=0 fino a che k non Ã¨ <= del massimo della n ripetizione
-				if(entity[k].getDistance(event.player) > radius) 	//controllo fra entitÃ  in posizione k e player
-					entity[k].setGlowing(false); 					// Rimuoviamo l'effetto Glowing all'entitÃ  in posizione "k" di "a"
+//			Per ogni entity controlliamo se si trovano all'interno del raggio, altrimenti rimuoviamo l'effetto
+			for(int k = 0;k <= max; k++) {  			
+				if(entity[k].getDistance(event.player) > radius)
+					entity[k].setGlowing(false);
 			}
 		}
 	}
@@ -84,7 +97,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.astral_silver_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.astral_silver_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
 		}
 
 //		Celenegil Armor (Resistence)
@@ -92,7 +105,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.celenegil_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.celenegil_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.celenegil_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3, false, false));
 		}
 		
 //		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
@@ -102,8 +115,8 @@ public class EventHandler {
 				&&event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.deep_iron_boots
 				&&event.player.isInWater()){
 
-			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3));
-			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1));
+			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
+			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
 			//checks if the player is tourching ground
       if(pl.onGround) {
 				//adds more motion in his movement
@@ -140,7 +153,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.angmallen_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.angmallen_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.angmallen_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0, false, false));
 		}
 
 //		Kalendrite Armor (Strenght I)
@@ -148,7 +161,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.kalendrite_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.kalendrite_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.kalendrite_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false));
 		}
 
 //		Amordrine Armor (Strenght II)
@@ -156,7 +169,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.amordrine_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.amordrine_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.amordrine_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1, false, false));
 		}
 
 //		Adamantine Armor (Saturation)
@@ -164,7 +177,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.adamantine_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.adamantine_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.adamantine_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0, false, false));
 		}
 
 //		Astral Silver Armor (Jump Boost II)
@@ -172,12 +185,12 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.astral_silver_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.astral_silver_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.astral_silver_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 60, 1));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 60, 1, false, false));
 		}
 
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (event.player.inventory.armorItemInSlot(3).getItem() == ModArmors.platinum_helmet) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
 		}
 
 //		Carmot Armor (Haste I)
@@ -185,7 +198,7 @@ public class EventHandler {
 				&& event.player.inventory.armorItemInSlot(2).getItem() == ModArmors.carmot_chest
 				&& event.player.inventory.armorItemInSlot(1).getItem() == ModArmors.carmot_legs
 				&& event.player.inventory.armorItemInSlot(0).getItem() == ModArmors.carmot_boots) {
-			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
 		}
 
 //		Prometheum Armor (No potion, need to implement a new Effect)
@@ -196,7 +209,7 @@ public class EventHandler {
 			event.player.removePotionEffect(MobEffects.POISON);
 		}
 
-		//Road
+//		Speed effect of Road
 		if (event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
 		{
@@ -250,7 +263,7 @@ public class EventHandler {
 				Entity foe = event.getTarget();
 
 				if ((int) (Math.random() * 100) <= 20)
-					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
+					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));
 			}
 
 
@@ -258,7 +271,7 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
 
 				if ((int) (Math.random() * 100) <= 30)
-					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
 			}
 		}
 	}
@@ -280,23 +293,23 @@ public class EventHandler {
 
 			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
 				{
-				//check if the player is missing hearts.
-			     if(pl.getHealth() < pl.getMaxHealth())
-			     {
+					//check if the player is missing hearts.
+					if(pl.getHealth() < pl.getMaxHealth())
+					{
 
-			      int luck_level = Math.round(pl.getLuck());
-			      //percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...)
-				  int percentage = 15 + (luck_level * 5);
-				  if(new Random().nextInt(100) < percentage)
-				  {
-					 //the heal Amount ,that is the 10% of the damage
-				     float healAmount = event.getAmount() * 10F / 100F;
-			         if(pl.getHealth() + healAmount >= pl.getMaxHealth())
-				     	healAmount = 0;
-					  //set the player health
-					   pl.setHealth(pl.getHealth() + healAmount);
-				    }
-				  }
+						int luck_level = Math.round(pl.getLuck());
+						//percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...)
+						int percentage = 15 + (luck_level * 5);
+						if(new Random().nextInt(100) < percentage)
+						{
+							//the heal Amount ,that is the 10% of the damage
+							float healAmount = event.getAmount() * 10F / 100F;
+							if(pl.getHealth() + healAmount >= pl.getMaxHealth())
+								healAmount = 0;
+							//set the player health
+							pl.setHealth(pl.getHealth() + healAmount);
+						}
+					}
 				}
 			}
 		}
@@ -314,7 +327,6 @@ public class EventHandler {
 					|| event.getSource().equals(DamageSource.ON_FIRE))
 				event.setCanceled(fire);
 		}
-
 	}
 	
 
