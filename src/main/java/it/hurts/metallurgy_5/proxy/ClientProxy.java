@@ -17,11 +17,6 @@ import net.minecraftforge.client.model.ModelLoader;
 
 @SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy{
-
-	@Override
-	public String localize(String unlocalized, Object... args) {
-		return I18n.format(unlocalized, args);
-	}
 	
 	@Override
     public void registerItemRenderer(Item item, int meta, String id){
