@@ -15,10 +15,12 @@ script:
 #Artifacts Upload
 deploy:
   provider: bintray
-  file: "build.gradle"
+  file: "descriptor.json"
   user: "davoleo"
   key: $DEPLOY_KEY
   skip_cleanup: true
+  on:
+    branch: 1.12.2
 
 
 #Webhook Report message
