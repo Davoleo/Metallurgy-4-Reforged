@@ -1,17 +1,16 @@
 {
   "type":"forge:ore_shaped",
   "pattern":[
-    "AAA",
     "A A",
     "A A"
   ],
   "key":{
     "A":{
       "type":"forge:ore_dict",
-      "ore": "ingotQuickSilver"
+      "ore": "ingotTartarite"
     }
   },
   "result":{
-    "item":"m5:quicksilver_legs"
+    "item":"m5:tartarite_boots"
   }
 }

@@ -154,10 +154,10 @@ item.shadow_iron_chest.name=Shadow Iron Chestplate
 item.shadow_iron_legs.name=Shadow Iron Leggings
 item.shadow_iron_boots.name=Shadow Iron Boots
 
-item.shadow_steel_helmet.name=Shadow Iron Helmet
-item.shadow_steel_chest.name=Shadow Iron Chestplate
-item.shadow_steel_legs.name=Shadow Iron Leggings
-item.shadow_steel_boots.name=Shadow Iron Boots
+item.shadow_steel_helmet.name=Shadow Steel Helmet
+item.shadow_steel_chest.name=Shadow Steel Chestplate
+item.shadow_steel_legs.name=Shadow Steel Leggings
+item.shadow_steel_boots.name=Shadow Steel Boots
 
 item.silver_helmet.name=Silver Helmet
 item.silver_chest.name=Silver Chestplate

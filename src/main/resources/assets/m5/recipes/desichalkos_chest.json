@@ -5,13 +5,13 @@
     "AAA",
     "AAA"
   ],
-  "key":{
+  "key": {
     "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotQuickSilver"
+      "type": "forge:ore_dict",
+      "ore": "ingotDesichalkos"
     }
   },
   "result":{
-    "item":"m5:quicksilver_chest"
+    "item":"m5:desichalkos_chest"
   }
 }

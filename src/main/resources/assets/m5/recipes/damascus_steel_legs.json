@@ -7,11 +7,11 @@
   ],
   "key":{
     "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotQuickSilver"
+      "type": "forge:ore_dict",
+      "ore": "ingotDamascusSteel"
     }
   },
   "result":{
-    "item":"m5:quicksilver_legs"
+    "item":"m5:damascus_steel_legs"
   }
 }
