@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_5.util;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -39,5 +40,16 @@ public class Utils {
             intExp -= j;
             thePlayer.world.spawnEntity(new EntityXPOrb(thePlayer.world, thePlayer.posX, thePlayer.posY + 0.5D, thePlayer.posZ + 0.5D, j));
         }
+
+    }
+
+    public static String localize(String unlocalized)
+    {
+        return I18n.format(unlocalized);
+    }
+
+    public static String localize(String unlocalized, Object... format)
+    {
+        return I18n.format(unlocalized, format);
     }
 }
