@@ -1,10 +1,10 @@
 package it.hurts.metallurgy_5.util;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextComponentTranslation;
 
 /*************************************************
  * Author: Davoleo
@@ -45,11 +45,6 @@ public class Utils {
 
     public static String localize(String unlocalized)
     {
-        return I18n.format(unlocalized);
-    }
-
-    public static String localize(String unlocalized, Object... format)
-    {
-        return I18n.format(unlocalized, format);
+        return new TextComponentTranslation(unlocalized, new Object[0]).getFormattedText();
     }
 }
