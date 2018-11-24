@@ -71,7 +71,7 @@ public class MetallurgyTabs extends CreativeTabs {
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(ModBlocks.crusher);
             case 6: return new ItemStack(ModMetals.ADAMANTINE.getOre());
-            case 7: return new ItemStack(ModTools.adamantine_axe);
+            case 7: return new ItemStack(ModTools.adamantine_pickaxe);
         }
         return ItemStack.EMPTY;
     }

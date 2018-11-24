@@ -49,6 +49,16 @@ item.celenegil_chest.name=Celenegil Chestplate
 item.celenegil_legs.name=Celenegil Leggings
 item.celenegil_boots.name=Celenegil Boots
 
+item.ceruclase_helmet.name=Ceruclase Helmet
+item.ceruclase_chest.name=Ceruclase Chestplate
+item.ceruclase_legs.name=Ceruclase Leggings
+item.ceruclase_boots.name=Ceruclase Boots
+
+item.copper_helmet.name=Copper Helmet
+item.copper_chest.name=Copper Chestplate
+item.copper_legs.name=Copper Leggings
+item.copper_boots.name=Copper Boots
+
 item.damascus_steel_helmet.name=Damascus Steel Helmet
 item.damascus_steel_chest.name=Damascus Steel Chestplate
 item.damascus_steel_legs.name=Damascus Steel Leggings
@@ -128,6 +138,11 @@ item.prometheum_helmet.name=Prometheum Helmet
 item.prometheum_chest.name=Prometheum Chestplate
 item.prometheum_legs.name=Prometheum Leggings
 item.prometheum_boots.name=Prometheum Boots
+
+item.quicksilver_helmet.name=Quicksilver Helmet
+item.quicksilver_chest.name=Quicksilver Chestplate
+item.quicksilver_legs.name=Quicksilver Leggings
+item.quicksilver_boots.name=Quicksilver Boots
 
 item.sanguinite_helmet.name=Sanguinite Helmet
 item.sanguinite_chest.name=Sanguinite Chestplate
