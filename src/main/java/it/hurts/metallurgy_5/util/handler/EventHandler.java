@@ -55,18 +55,21 @@ public class EventHandler {
 		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius; //Definiamo il minimo di X Y Z
 		List<Entity> list;                        //Creazione lista
 
-		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player, new AxisAlignedBB(xM, yM, zM, xm, ym, zm)); //Immetiamo in lista tutte le entit� comprese da il minimo e massimo di X Y Z
-		Entity a[] = new Entity[list.size()];    // Creiamo un array di entity grande quanto la lista
+		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm)); //Immetiamo in lista tutte le entit� comprese da il minimo e massimo di X Y Z
+
+		Entity entity[] = new Entity [list.size()]; 	// Creiamo un array di entity grande quanto la lista
 
 		int max;
-		for(int i = 0; i<list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
-			max=i;                   			//Inseriamo il valore di "I" a singola ripetizione in max
-			list.toArray(a);					// Inseriamo il contenuto della lista nell'array "a"
-			a[i].setGlowing(isArmored);			//Le entita'� di a che si trovano in posizione "i" riceveranno l'effetto glowing
-			for(int k=0;k<=max;k++) {  			//per k=0 fino a che k non è <= del massimo della n ripetizione
-				if(a[k].getDistance(event.player) > radius) { 	//controllo fra entità in posizione k e player
-					a[k].setGlowing(false); 					// Rimuoviamo l'effetto Glowing all'entità in posizione "k" di "a"
-				}
+		for(int i = 0; i < list.size(); i++) {		// For con controllo se si indossa l'armatura e se i< della grandezza della lista
+			max = i;          //Inseriamo il valore di "I" a singola ripetizione in max
+
+			list.toArray(entity);					// Inseriamo il contenuto della lista nell'array "a"
+
+			entity[i].setGlowing(isArmored);			//Le entita'� di a che si trovano in posizione "i" riceveranno l'effetto glowing
+
+			for(int k = 0;k <= max; k++) {  			//per k=0 fino a che k non è <= del massimo della n ripetizione
+				if(entity[k].getDistance(event.player) > radius) 	//controllo fra entità in posizione k e player
+					entity[k].setGlowing(false); 					// Rimuoviamo l'effetto Glowing all'entità in posizione "k" di "a"
 			}
 		}
 	}
@@ -207,25 +210,82 @@ public class EventHandler {
 	{
 
 		EntityPlayer player = event.getEntityPlayer();
-		if (!player.world.isRemote) {
+		if(!player.world.isRemote){
 
-//		Shadow Iron Sword (Blindness [cecit�])
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))) {
+//			Shadow Iron Sword (Blindness [cecit�])
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))){
 				Entity foe = event.getTarget();
-				EntityLivingBase foe2 = (EntityLivingBase) foe;
+				EntityLivingBase foe2 = (EntityLivingBase)foe;
 
-				if ((int) (Math.random() * 100) <= 25)
+				if((int)(Math.random()*100) <= 25)
 					foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 			}
 
-//		Vyroxeres Sword (Potion)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))) {
+//			Vyroxeres Sword (Potion)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))){
 				Entity foe = event.getTarget();
 
-				if ((int) (Math.random() * 100) <= 25)
+				if((int)(Math.random()*100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
 			}
 
+//			Ignatius Sword (Fire Aspect)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
+				Entity foe = event.getTarget();
+
+				if((int)(Math.random()*100) <= 15)
+					foe.setFire(5);
+			}
+
+//			Vulcanite Sword (Fire Aspect)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))) {
+				Entity foe = event.getTarget();
+
+				if((int)(Math.random()*100) <= 30)
+					foe.setFire(5);
+			}
+
+//			Tartarite Sword (Withering II)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))) {
+				Entity foe = event.getTarget();
+
+				if((int)(Math.random()*100) <= 20)
+					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60,1));
+			}
+
+
+//			Kalendrite sword (Regeneration)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))) {
+
+				if((int)(Math.random()*100) <= 30)
+					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+			}
+
+
+//			TODO migliorare questo effetto
+//			Sanguinite Sword (Vampirism)
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+
+				int luck = (int) player.getLuck();
+
+				switch(luck) {
+
+					case 0 :{
+						if((int)(Math.random()*100) <= 15)
+							player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 4));
+					}
+					break;
+
+					case 1 :{
+						if((int)(Math.random()*100) <= 25)
+							player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 4));
+					}
+					break;
+	
+			if((int)(Math.random()*100) <= 25)
+				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
+		}
+		
 //		Ignatius Sword (Fire Aspect)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))) {
 				Entity foe = event.getTarget();
@@ -298,7 +358,7 @@ public class EventHandler {
 	}
 
 
-//	Effects	
+//	Effects
 
 //	FireImmunity
 		@SubscribeEvent

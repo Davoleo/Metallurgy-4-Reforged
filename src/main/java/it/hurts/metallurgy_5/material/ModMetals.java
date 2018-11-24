@@ -45,9 +45,11 @@ public class ModMetals {
     public static final Metal CELENEGIL = new MetalStats("celenegil", "Celenegil", 2,
             new ArmorStats(new int[]{4, 6, 7, 5}, 50, 160, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(50, 6, 1600, 14F, 7F), new FluidStats(0xFF86E51A), -1).createMetal();
-    public static final Metal CERUCLASE = new MetalStats("ceruclase", "Ceruclase", 2, null,
+    public static final Metal CERUCLASE = new MetalStats("ceruclase", "Ceruclase", 2, 
+    		new ArmorStats(new int[]{3, 6, 5, 4}, 50, 137, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 4, 500, 7, 7F), new FluidStats(0xFF4CA8E5), 3).createMetal();
-    public static final Metal COPPER = new MetalStats("copper", "Copper", 2, null,
+    public static final Metal COPPER = new MetalStats("copper", "Copper", 2, 
+    		new ArmorStats(new int[]{2, 3, 2, 1}, 50, 5, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(5, 2, 180, 5F, 5F), new FluidStats(0xFFE5770A), 1).createMetal();
     public static final Metal DAMASCUS_STEEL = new MetalStats("damascus_steel", "DamascusSteel", 2,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 50, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
@@ -101,7 +103,8 @@ public class ModMetals {
     public static final Metal PROMETHEUM = new MetalStats("prometheum", "Prometheum", 2,
             new ArmorStats(new int[]{1, 2, 3, 2}, 11, 30, 0.1F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(16, 2, 200, 4F, 5F), new FluidStats(0xFF377732), 1).createMetal();
-    public static final Metal QUICKSILVER = new MetalStats("quicksilver", "QuickSilver", 2, null,
+    public static final Metal QUICKSILVER = new MetalStats("quicksilver", "QuickSilver", 2, 
+    		new ArmorStats(new int[]{4, 7, 5, 4}, 50, 165, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 5, 1100, 14F, 7F), new FluidStats(0xFFA9DDDA), -1).createMetal();
     public static final Metal RUBRACIUM = new MetalStats("rubracium", "Rubracium", 2, null, null, new FluidStats(0xFF860303), 4).createMetal();
     public static final Metal SANGUINITE = new MetalStats("sanguinite", "Sanguinite", 2,
