@@ -23,8 +23,6 @@ public class ModRecipes {
 
     public static void init()
     {
-        //TODO: Fucking fix the recipes Davoleo
-
         //Ore-dict
         //Blocks
         for(BlockBase b: ModBlocks.blockList) {
