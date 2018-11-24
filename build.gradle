@@ -26,6 +26,10 @@ minecraft {
 	mappings = "snapshot_20171003"
 }
 
+repositories {
+    maven { url = "https://dl.bintray.com/davoleo/Forge-Modding" }
+}
+
 dependencies {
     
 }
