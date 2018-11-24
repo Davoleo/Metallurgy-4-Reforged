@@ -10,12 +10,12 @@ install: ./gradlew setupCIWorkspace
 #Build Mod
 script: ./gradlew build
 
-#Binary upload [Inactive] & Webhook Report message
+#Binary upload & Webhook Report message
 after_success:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - ./send.sh success $WEBHOOK_URL
-#-  ./gradlew bintrayUpload
+- ./gradlew bintrayUpload
 after_failure:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/verbose/send.sh
 - chmod +x send.sh
