@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "II ",
+    " S ",
+    " S "
+  ],
+  "key":{
+    "S":{
+      "item":"minecraft:stick"
+    },
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "ingotShadowSteel"
+    }
+  },
+  "result":{
+    "item":"m5:shadow_steel_hoe"
+  }
+}
