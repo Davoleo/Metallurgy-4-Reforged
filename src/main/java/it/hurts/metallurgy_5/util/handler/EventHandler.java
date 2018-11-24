@@ -1,9 +1,6 @@
 package it.hurts.metallurgy_5.util.handler;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_5.Metallurgy_5;
 import it.hurts.metallurgy_5.block.ModBlocks;
 import it.hurts.metallurgy_5.item.armor.ModArmors;
@@ -25,6 +22,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import scala.util.Random;
+
+import java.util.List;
 
 /***************************
  *
@@ -175,8 +174,11 @@ public class EventHandler {
 		if (event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
 		{
-		    event.player.motionX *= 1.2D;
-		    event.player.motionZ *= 1.2D;
+			if(event.player.onGround)
+			{
+				event.player.motionX *= 1.13D;
+				event.player.motionZ *= 1.13D;
+			}
 		}
 	}
 
