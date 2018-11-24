@@ -8,6 +8,7 @@ import it.hurts.metallurgy_5.item.ItemOreDict;
 import it.hurts.metallurgy_5.item.ModItems;
 import it.hurts.metallurgy_5.material.Metal;
 import it.hurts.metallurgy_5.material.ModMetals;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -42,6 +43,10 @@ public class ModRecipes {
             }
             GameRegistry.addSmelting(m.getDust(), new ItemStack(m.getIngot()), 0.6F);
         }
+
+        //Dust2Ingot
+        GameRegistry.addSmelting(ModItems.dustIron, new ItemStack(Items.IRON_INGOT), 0.6F);
+        GameRegistry.addSmelting(ModItems.dustGold, new ItemStack(Items.GOLD_INGOT), 0.6F);
 
         //Ore2Material
         GameRegistry.addSmelting(ModBlocks.oreBitumen, new ItemStack(ModItems.dustBitumen), 0.5F);
