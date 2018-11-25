@@ -122,8 +122,8 @@ public class EventHandler {
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
 		}
-		else if(pl.stepHeight > 0.0F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
-			pl.stepHeight = 0.0F;
+		else if(pl.stepHeight != 0.6F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+			pl.stepHeight = 0.6F;
 		
 //		Vulcanite Armor (Fire Immunity) //Removes Fire Render 
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}) && event.player.isBurning())
