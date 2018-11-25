@@ -147,13 +147,8 @@ public class EventHandler {
 //		Adamantine Armor (Saturation)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}))	
 			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0, false, false));
+			
 		
-
-//		Astral Silver Armor (Jump Boost II)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}))	
-			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 60, 1, false, false));
-						
-
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if(isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet))
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
