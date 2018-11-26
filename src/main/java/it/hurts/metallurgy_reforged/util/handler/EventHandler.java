@@ -13,7 +13,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -51,10 +50,8 @@ public class EventHandler {
 		
 		//Get Client Side Player
 		EntityPlayer pl = Minecraft.getMinecraft().player;
-		if(pl != null)
-		{
-		if(!ev.getEntity().equals(pl)) { //Check if The Rendered Entity isn't the player himself
-		
+		if(pl != null && !ev.getEntity().equals(pl)) //Check if player exists and the Rendered Entity isn't the player himself
+		{	 	
 		 if(isPlayerWearingArmor(pl, new Item[] {ModArmors.mithril_helmet,ModArmors.mithril_chest,ModArmors.mithril_legs,ModArmors.mithril_boots}) && ev.getEntity().getDistance(Minecraft.getMinecraft().player) < 30D && !ev.getEntity().isGlowing()) //checks if:  the player wears The Mithrill Armor, the rendered entity is not glowing and it's within 30 blocks from the player
 		 {
 			ev.getEntity().setGlowing(true);
@@ -63,7 +60,7 @@ public class EventHandler {
 		 {
 			ev.getEntity().setGlowing(false);
 		 }		
-		 }
+		 
 		}
 	}
 
