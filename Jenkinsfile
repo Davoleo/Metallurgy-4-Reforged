@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DISCORD_WEBHOOK = credentials('metallurgy-webhook')
+    }
     stages {
         stage('clean') {
             steps {
@@ -16,7 +19,7 @@ pipeline {
             steps {
                 bat 'gradlew assemble'
                 archiveArtifacts 'build/libs/*.jar'
-                %webhook%
+                $DISCORD_WEBHOOK
             }
         }
     }
