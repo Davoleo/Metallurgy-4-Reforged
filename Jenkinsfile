@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DISCORD_WEBHOOK = credentials('metallurgy-webhook')
+        DISCORD_WEBHOOK = credentials('metallurgy_webhook')
     }
     stages {
         stage('clean') {
