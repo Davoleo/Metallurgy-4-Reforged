@@ -5,6 +5,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,12 +15,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
 
 import java.util.List;
@@ -39,45 +43,27 @@ public class EventHandler {
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
 
-//	Mithril Armor (Ultra istinto)
+	//	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
-	public static void glowingArmorEffect(PlayerTickEvent event)
+	@SideOnly(Side.CLIENT)
+	public static void glowingArmorEffect(RenderLivingEvent.Pre<EntityLivingBase> ev)
 	{
-		int radius = 32;
-		boolean isArmored = isPlayerWearingArmor(event.player, new Item[] {ModArmors.mithril_helmet,ModArmors.mithril_chest,ModArmors.mithril_legs,ModArmors.mithril_boots});
-
-//		Definiamo un raggio massimo di azione
-		double xM = event.player.posX + radius, yM = event.player.posY + radius, zM = event.player.posZ + radius;
 		
-//		Definiamo un raggio minimo di azione
-		double xm = event.player.posX - radius, ym = event.player.posY - radius, zm = event.player.posZ - radius;
+		//Get Client Side Player
+		EntityPlayer pl = Minecraft.getMinecraft().player;
+		if(pl != null)
+		{
+		if(!ev.getEntity().equals(pl)) { //Check if The Rendered Entity isn't the player himself
 		
-//		Creiamo una lista di entita'
-		List<Entity> list;
-
-//		Inseriamo nella lista tutte le entit� presenti nel ragglio minimo e nel raggio massimo
-		list = event.player.getEntityWorld().getEntitiesWithinAABBExcludingEntity(event.player,new AxisAlignedBB(xM, yM, zM, xm, ym, zm));
-
-//		Creiamo un vector di entite' grande quanto la lista
-		Entity entity[] = new Entity [list.size()];
-
-		int max;
-		
-//		Ciclo per scorrere il vector
-		for(int i = 0; i < list.size(); i++) {
-			max = i;          //Inseriamo il valore di "I" a singola ripetizione in max
-
-//			Convertiamo la lista 'list' in un vector 'entity'
-			list.toArray(entity);
-
-//			Impostiamo ad ogni entity di 'i' l'effetto 'Glowing'
-			entity[i].setGlowing(isArmored);
-
-//			Per ogni entity controlliamo se si trovano all'interno del raggio, altrimenti rimuoviamo l'effetto
-			for(int k = 0;k <= max; k++) {  			
-				if(entity[k].getDistance(event.player) > radius)
-					entity[k].setGlowing(false);
-			}
+		 if(isPlayerWearingArmor(pl, new Item[] {ModArmors.mithril_helmet,ModArmors.mithril_chest,ModArmors.mithril_legs,ModArmors.mithril_boots}) && ev.getEntity().getDistance(Minecraft.getMinecraft().player) < 30D && !ev.getEntity().isGlowing()) //checks if:  the player wears The Mithrill Armor, the rendered entity is not glowing and it's within 30 blocks from the player
+		 {
+			ev.getEntity().setGlowing(true);
+		 } 
+		 else 
+		 {
+			ev.getEntity().setGlowing(false);
+		 }		
+		 }
 		}
 	}
 
