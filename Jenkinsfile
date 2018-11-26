@@ -1,14 +1,20 @@
 pipeline {
     agent any
     stages {
+        stage('clean') {
+            steps {
+                bat 'gradlew clean'
+            }
+        }
         stage('build') {
             steps {
-                sh "./gradlew build"
-                sh "./gradlew check"
+                bat 'gradlew build'
+                bat 'gradlew check'
             }
         }
         stage('deploy') {
             steps {
+                bat 'gradlew assemble'
                 archiveArtifacts '*.jar'
             }
         }
