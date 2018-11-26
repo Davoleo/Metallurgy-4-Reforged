@@ -12,17 +12,6 @@ script:
 - ./gradlew build
 - ./gradlew check
 
-#Artifacts Upload
-deploy:
-  provider: bintray
-  file: "descriptor.json"
-  user: "davoleo"
-  key: $DEPLOY_KEY
-  skip_cleanup: true
-  on:
-    branch: 1.12.2
-
-
 #Webhook Report message
 after_success:
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
