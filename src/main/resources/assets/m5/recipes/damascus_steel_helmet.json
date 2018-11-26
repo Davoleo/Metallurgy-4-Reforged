@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type": "forge:ore_dict",
+      "ore": "ingotDamascusSteel"
+    }
+  },
+  "result":{
+    "item":"m5:damascus_steel_helmet"
+  }
+}

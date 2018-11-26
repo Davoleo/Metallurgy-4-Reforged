@@ -49,6 +49,16 @@ item.celenegil_chest.name=Celenegil Chestplate
 item.celenegil_legs.name=Celenegil Leggings
 item.celenegil_boots.name=Celenegil Boots
 
+item.ceruclase_helmet.name=Ceruclase Helmet
+item.ceruclase_chest.name=Ceruclase Chestplate
+item.ceruclase_legs.name=Ceruclase Leggings
+item.ceruclase_boots.name=Ceruclase Boots
+
+item.copper_helmet.name=Copper Helmet
+item.copper_chest.name=Copper Chestplate
+item.copper_legs.name=Copper Leggings
+item.copper_boots.name=Copper Boots
+
 item.damascus_steel_helmet.name=Damascus Steel Helmet
 item.damascus_steel_chest.name=Damascus Steel Chestplate
 item.damascus_steel_legs.name=Damascus Steel Leggings
@@ -129,6 +139,11 @@ item.prometheum_chest.name=Prometheum Chestplate
 item.prometheum_legs.name=Prometheum Leggings
 item.prometheum_boots.name=Prometheum Boots
 
+item.quicksilver_helmet.name=Quicksilver Helmet
+item.quicksilver_chest.name=Quicksilver Chestplate
+item.quicksilver_legs.name=Quicksilver Leggings
+item.quicksilver_boots.name=Quicksilver Boots
+
 item.sanguinite_helmet.name=Sanguinite Helmet
 item.sanguinite_chest.name=Sanguinite Chestplate
 item.sanguinite_legs.name=Sanguinite Leggings
@@ -139,10 +154,10 @@ item.shadow_iron_chest.name=Shadow Iron Chestplate
 item.shadow_iron_legs.name=Shadow Iron Leggings
 item.shadow_iron_boots.name=Shadow Iron Boots
 
-item.shadow_steel_helmet.name=Shadow Iron Helmet
-item.shadow_steel_chest.name=Shadow Iron Chestplate
-item.shadow_steel_legs.name=Shadow Iron Leggings
-item.shadow_steel_boots.name=Shadow Iron Boots
+item.shadow_steel_helmet.name=Shadow Steel Helmet
+item.shadow_steel_chest.name=Shadow Steel Chestplate
+item.shadow_steel_legs.name=Shadow Steel Leggings
+item.shadow_steel_boots.name=Shadow Steel Boots
 
 item.silver_helmet.name=Silver Helmet
 item.silver_chest.name=Silver Chestplate
@@ -170,6 +185,8 @@ item.vyroxeres_legs.name=Vyroxeres Leggings
 item.vyroxeres_boots.name=Vyroxeres Boots
 
 # Blocks
+tile.road_block.name=Road
+tile.striped_road_block.name=Striped Road
 tile.charcoal_block.name=Block of Charcoal
 tile.bitumen_block.name=Bitumen Block
 tile.electrum_block.name=Electrum Block
@@ -523,6 +540,18 @@ item.celenegil_pickaxe.name=Celenegil Pickaxe
 item.celenegil_shovel.name=Celenegil Shovel
 item.celenegil_sword.name=Celenegil Sword
 
+item.ceruclase_axe.name=Ceruclase Axe
+item.ceruclase_hoe.name=Ceruclase Hoe
+item.ceruclase_pickaxe.name=Ceruclase Pickaxe
+item.ceruclase_shovel.name=Ceruclase Shovel
+item.ceruclase_sword.name=Ceruclase Sword
+
+item.copper_axe.name=Copper Axe
+item.copper_hoe.name=Copper Hoe
+item.copper_pickaxe.name=Copper Pickaxe
+item.copper_shovel.name=Copper Shovel
+item.copper_sword.name=Copper Sword
+
 item.damascus_steel_axe.name=Damascus Steel Axe
 item.damascus_steel_hoe.name=Damascus Steel Hoe
 item.damascus_steel_pickaxe.name=Damascus Steel Pickaxe
@@ -618,6 +647,12 @@ item.prometheum_hoe.name=Prometheum Hoe
 item.prometheum_pickaxe.name=Prometheum Pickaxe
 item.prometheum_shovel.name=Prometheum Shovel
 item.prometheum_sword.name=Prometheum Sword
+
+item.quicksilver_axe.name=Quicksilver Axe
+item.quicksilver_hoe.name=Quicksilver Hoe
+item.quicksilver_pickaxe.name=Quicksilver Pickaxe
+item.quicksilver_shovel.name=Quicksilver Shovel
+item.quicksilver_sword.name=Quicksilver Sword
 
 item.sanguinite_axe.name=Sanguinite Axe
 item.sanguinite_hoe.name=Sanguinite Hoe

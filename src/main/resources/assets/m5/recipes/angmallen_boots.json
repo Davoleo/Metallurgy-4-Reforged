@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "A A",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotAngmallen"
+    }
+  },
+  "result":{
+    "item":"m5:angmallen_boots"
+  }
+}

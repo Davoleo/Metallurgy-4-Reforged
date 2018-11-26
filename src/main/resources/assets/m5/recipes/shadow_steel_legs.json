@@ -1,0 +1,17 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type": "forge:ore_dict",
+      "ore": "ingotShadowSteel"
+    }
+  },
+  "result":{
+    "item":"m5:shadow_steel_legs"
+  }
+}

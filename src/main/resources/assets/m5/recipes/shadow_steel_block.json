@@ -8,11 +8,11 @@
   "key":{
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "ore": "ingotShadowSteel"
     }
   },
   "result": {
-    "item": "m5:adamantine_block"
+    "item": "m5:shadow_steel_block"
   }
 
 

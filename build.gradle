@@ -12,8 +12,8 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 // Non Modificare Sopra
 
 version = "0.0.1"
-group = "it.hurts.metallurgy_5"
-archivesBaseName = "Metallurgy_5"
+group = "it.hurts.metallurgy_reforged"
+archivesBaseName = "Metallurgy-4-Reforged"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
@@ -21,7 +21,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.4.2749"
+    version = "1.12.2-14.23.5.2775"
     runDir = "run"
 	mappings = "snapshot_20171003"
 }
