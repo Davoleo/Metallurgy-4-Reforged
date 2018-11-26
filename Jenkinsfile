@@ -15,7 +15,8 @@ pipeline {
         stage('deploy') {
             steps {
                 bat 'gradlew assemble'
-                archiveArtifacts '*.jar'
+                archiveArtifacts 'build/libs/*.jar'
+                %webhook%
             }
         }
     }
