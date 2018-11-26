@@ -15,14 +15,14 @@ public class ModMetals {
     public static List<Metal> metalList = new ArrayList<>();
 
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2,
-            new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
             new ToolStats(22, 7, 1550, 10F, 8F), new FluidStats(0xFFa30000), 6).createMetal();
     public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, null, null, new FluidStats(0xFF29AF9D), 3).createMetal();
     public static final Metal ANGMALLEN = new MetalStats("angmallen", "Angmallen", 2,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 30, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(30, 3, 300, 7F, 6F), new FluidStats(0xFFF1E472), -1).createMetal();
     public static final Metal ASTRAL_SILVER = new MetalStats("astral_silver", "AstralSilver", 2,
-            new ArmorStats(new int[]{2, 5, 6, 2}, 9, 15, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ArmorStats(new int[]{2, 5, 6, 2}, 9, 15, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC),
             new ToolStats(30, 5, 35, 12F, 5F), new FluidStats(0xFF70C4C4), 4).createMetal();
     public static final Metal ATLARUS = new MetalStats("atlarus", "Atlarus", 2,
             new ArmorStats(new int[]{4, 3, 3, 4}, 2, 35, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
@@ -86,10 +86,10 @@ public class ModMetals {
     public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, null, null, new FluidStats(0xFFFFAEDF), 4).createMetal();
     public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, null, null, new FluidStats(0xFF533468), 4).createMetal();
     public static final Metal MIDASIUM = new MetalStats("midasium", "Midasium", 2,
-            new ArmorStats(new int[]{3, 3, 5, 2}, 35, 16, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ArmorStats(new int[]{3, 3, 5, 2}, 35, 16, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_GOLD),
             new ToolStats(35, 4, 100, 10F, 7F), new FluidStats(0xFFE2AD00), 3).createMetal();
     public static final Metal MITHRIL = new MetalStats("mithril", "Mithril", 2,
-            new ArmorStats(new int[]{2, 4, 5, 3}, 20, 21, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ArmorStats(new int[]{2, 4, 5, 3}, 20, 21, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN),
             new ToolStats(18, 5, 1000, 9F, 7F), new FluidStats(0xFF6ACBC8), 4).createMetal();
     public static final Metal ORICHALCUM = new MetalStats("orichalcum", "Orichalcum", 2,
             new ArmorStats(new int[]{2, 6, 7, 2}, 4, 20, 1.4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
