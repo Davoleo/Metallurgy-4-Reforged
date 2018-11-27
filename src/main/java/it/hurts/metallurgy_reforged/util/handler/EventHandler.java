@@ -1,26 +1,23 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
+
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import net.minecraft.client.Minecraft;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.ContainerBeacon;
 import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -33,10 +30,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
 
-import java.awt.Container;
-import java.util.List;
-
-import javax.annotation.Nullable;
 
 /***************************
  *
@@ -52,9 +45,6 @@ public class EventHandler {
 
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
-	 private static final EntityEquipmentSlot[] VALID_EQUIPMENT_SLOTS = new EntityEquipmentSlot[] {EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
-	   
-	
 	//	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -79,13 +69,8 @@ public class EventHandler {
 
 	@SubscribeEvent
 	public static void onArmorTick(PlayerTickEvent event)
-	{
-        EntityPlayer pl = event.player; //The Player
-
-      
-     
-        
-        
+	{		
+        EntityPlayer pl = event.player; //The Player   
 //		Astral Silver Armor (Jump Boost)
         if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}))
     		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
@@ -98,22 +83,27 @@ public class EventHandler {
 //		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) && event.player.isInWater()){
 			
-			
-			//5 - 6 - 7 - 8
-			
-			if(!pl.isCreative()) {
-			 for(int i = 0;i < 4;i++)
-					pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i, true));			
-			}
-			else
-			{
-				ContainerPlayer cont = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-				  pl.inventoryContainer.inventorySlots.clear();
-				  pl.inventoryContainer.inventorySlots = cont.inventorySlots;
-			}			
+//			Slot index of Armor : 5 - 6 - 7 - 8	
+			 for(int i = 5;i < 9; i++)
+			 {
+				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof CustomSlot) && !pl.isCreative()) {
+//					 Inseriamo nello slot dell'inventario in posizione i un custom slot
+					 pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i - 5, true));
+					 
+				 }else {
+					 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+	    			 List<Slot> slots = c.inventorySlots;
+	    			 for(i = 5;i < 9; i++){
+		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					 }
+				 }
+					 
+			 }			
+//			Add effect to Player
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
-			//checks if the player is tourching ground
+			
+//		   Checks if the player is tourching ground
            if(pl.onGround) {
 				//adds more motion in his movement
 			  if(pl.motionX <= 3D)
@@ -123,15 +113,15 @@ public class EventHandler {
 			}
 			else
 			{
-			    //stop player motion
+//			    Stop player motion
 				pl.motionX = 0D;
 				pl.motionZ = 0D;
 			}
 
-			//The player can no longer swim upwards
+//			The player can no longer swim upwards
 			pl.motionY = -0.3D;
 
-			//when the player is in the water he can step one block height like a horse
+//			When the player is in the water he can step one block height like a horse
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
 		}
@@ -140,10 +130,18 @@ public class EventHandler {
 		  if(pl.stepHeight != 0.6F)
 			pl.stepHeight = 0.6F;
 		  	  
-		  ContainerPlayer cont = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+		    	 if(pl.inventoryContainer.inventorySlots.get(5) instanceof CustomSlot)
+		    	 { 
+//		    		 Insert in c the container "vanilla"
+		    		 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+	    			 List<Slot> slots = c.inventorySlots;
+		    		 for(int i = 5;i < 9; i++)
+					 {
+		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					 }
+		    	 }
+		    
 		  
-		  pl.inventoryContainer.inventorySlots.clear();
-		  pl.inventoryContainer.inventorySlots = cont.inventorySlots;
 		}
 		
 //		Vulcanite Armor (Fire Immunity) //Removes Fire Render 
@@ -196,10 +194,6 @@ public class EventHandler {
 			}
 		}
 	}
-
-	
-
-	
 	
 	//method to check if player wears the complete Armor.
 	public static boolean isPlayerWearingArmor(EntityPlayer pl,Item[] armor)
@@ -288,7 +282,6 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void entityHurtEvent(LivingHurtEvent event)
 	{
-		EntityLivingBase eventEntity = event.getEntityLiving();
 		//the entity that damaged the event entity
 		Entity source = event.getSource().getImmediateSource();
 		if(source instanceof EntityPlayer)

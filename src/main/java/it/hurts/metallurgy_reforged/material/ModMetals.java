@@ -13,6 +13,8 @@ import static it.hurts.metallurgy_reforged.material.MetalStats.FluidStats;
 
 public class ModMetals {
     public static List<Metal> metalList = new ArrayList<>();
+    
+//    MetalStats("name", "Name", harvestLevelOfMetalBlock, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
 
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2,
             new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
@@ -83,7 +85,7 @@ public class ModMetals {
             new ArmorStats(new int[]{4, 5, 6, 4}, 20, 40, 3.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 5, 1000, 8F, 7F), new FluidStats(0xFF9941DD), 4).createMetal();
     public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
-    public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, null, null, new FluidStats(0xFFFFAEDF), 4).createMetal();
+    public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
     public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, null, null, new FluidStats(0xFF533468), 4).createMetal();
     public static final Metal MIDASIUM = new MetalStats("midasium", "Midasium", 2,
             new ArmorStats(new int[]{3, 3, 5, 2}, 35, 16, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_GOLD),
