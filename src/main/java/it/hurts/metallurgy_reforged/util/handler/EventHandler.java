@@ -6,13 +6,21 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import net.minecraft.client.Minecraft;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.ContainerBeacon;
+import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -25,7 +33,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
 
+import java.awt.Container;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 /***************************
  *
@@ -41,7 +52,9 @@ public class EventHandler {
 
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
-
+	 private static final EntityEquipmentSlot[] VALID_EQUIPMENT_SLOTS = new EntityEquipmentSlot[] {EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
+	   
+	
 	//	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -69,6 +82,10 @@ public class EventHandler {
 	{
         EntityPlayer pl = event.player; //The Player
 
+      
+     
+        
+        
 //		Astral Silver Armor (Jump Boost)
         if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}))
     		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
@@ -81,6 +98,19 @@ public class EventHandler {
 //		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) && event.player.isInWater()){
 			
+			
+			//5 - 6 - 7 - 8
+			
+			if(!pl.isCreative()) {
+			 for(int i = 0;i < 4;i++)
+					pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i, true));			
+			}
+			else
+			{
+				ContainerPlayer cont = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+				  pl.inventoryContainer.inventorySlots.clear();
+				  pl.inventoryContainer.inventorySlots = cont.inventorySlots;
+			}			
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
 			//checks if the player is tourching ground
@@ -105,8 +135,16 @@ public class EventHandler {
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
 		}
-		else if(pl.stepHeight != 0.6F) //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+		else //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+		{
+		  if(pl.stepHeight != 0.6F)
 			pl.stepHeight = 0.6F;
+		  	  
+		  ContainerPlayer cont = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+		  
+		  pl.inventoryContainer.inventorySlots.clear();
+		  pl.inventoryContainer.inventorySlots = cont.inventorySlots;
+		}
 		
 //		Vulcanite Armor (Fire Immunity) //Removes Fire Render 
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}) && event.player.isBurning())
@@ -159,6 +197,9 @@ public class EventHandler {
 		}
 	}
 
+	
+
+	
 	
 	//method to check if player wears the complete Armor.
 	public static boolean isPlayerWearingArmor(EntityPlayer pl,Item[] armor)
