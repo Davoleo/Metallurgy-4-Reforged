@@ -1,9 +1,6 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
@@ -29,6 +26,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
+
+import java.util.List;
 
 
 /***************************
@@ -89,12 +88,12 @@ public class EventHandler {
 				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof CustomSlot) && !pl.isCreative()) {
 //					 Inseriamo nello slot dell'inventario in posizione i un custom slot
 					 pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i - 5, true));
-					 
+
 				 }else {
 					 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-	    			 List<Slot> slots = c.inventorySlots;
-	    			 for(i = 5;i < 9; i++){
-		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					 List<Slot> slots = c.inventorySlots;
+					 for (i = 5; i < 9; i++) {
+						 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
 					 }
 				 }
 					 
