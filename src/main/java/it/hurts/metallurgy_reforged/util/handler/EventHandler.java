@@ -90,12 +90,6 @@ public class EventHandler {
 //					 Inseriamo nello slot dell'inventario in posizione i un custom slot
 					 pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i - 5, true));
 					 
-				 }else {
-					 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-	    			 List<Slot> slots = c.inventorySlots;
-	    			 for(i = 5;i < 9; i++){
-		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-					 }
 				 }
 					 
 			 }			
