@@ -26,7 +26,7 @@
 *
 ***************************/
 
-@Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[11.16.0.2768,)", acceptedMinecraftVersions = "[1.12]")
+@Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
 
 	public static final String MODID = "m5";
