@@ -10,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Collection;
 import java.util.Map;
 
 /*************************************************
@@ -30,6 +31,7 @@ public class BlockCrusherRecipes {
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
+    private static Collection<ItemStack> recipeCollection;
 
     public static BlockCrusherRecipes getInstance() {
         return INSTANCE;
@@ -65,6 +67,8 @@ public class BlockCrusherRecipes {
 
         this.crushingList.put(input.copy(), result);
         this.experienceList.put(result.copy(), experience);
+
+        BlockCrusherRecipes.recipeCollection.add(result);
     }
 
     public ItemStack getCrushingResult(ItemStack input) {
@@ -84,5 +88,10 @@ public class BlockCrusherRecipes {
                 return experienceList.get(in);
         }
         return 0.0F;
+    }
+
+    public static Collection<ItemStack> getCollection()
+    {
+        return recipeCollection;
     }
 }

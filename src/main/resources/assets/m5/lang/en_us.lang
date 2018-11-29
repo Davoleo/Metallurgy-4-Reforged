@@ -444,6 +444,9 @@ item.bitumen.name=Bitumen
 item.potash.name=Potash
 item.phosphorus.name=Phosphorus
 
+#JEI
+gui.jei_compat.crusher.name=Crusher
+
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
 tile.alduorite_ore.name=Alduorite Ore

@@ -1,8 +1,9 @@
 package it.hurts.metallurgy_reforged.integration;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.integration.mods.jei.CategoryCrusher;
+import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCategory;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
+import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
@@ -19,7 +20,10 @@ import net.minecraft.item.Item;
 @JEIPlugin
 public class IntegrationJEI implements IModPlugin {
 
-    public static final String idCrusher = "metallurgy_reforged.crusher";
+    public static final String CRUSHER = "m5.crusher";
+    public static final String ALLOYER = "m5.alloyer";
+
+    public static IJeiHelpers jeiHelpers;
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry)
@@ -37,9 +41,7 @@ public class IntegrationJEI implements IModPlugin {
     {
         IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 
-        registry.addRecipeCategories(
-                new CategoryCrusher(guiHelper)
-        );
+        registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
     }
 
     @Override
@@ -51,11 +53,13 @@ public class IntegrationJEI implements IModPlugin {
     @Override
     public void register(IModRegistry registry)
     {
+        jeiHelpers = registry.getJeiHelpers();
+        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
+        registry.addRecipes(BlockCrusherRecipes.getCollection(), CRUSHER);
     }
 
-    @Override
-    public void onRuntimeAvailable(IJeiRuntime jeiRuntime)
+    private static void setupDrawables(IGuiHelper helper)
     {
 
     }
