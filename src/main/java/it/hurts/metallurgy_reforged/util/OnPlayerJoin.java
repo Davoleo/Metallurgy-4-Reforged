@@ -22,7 +22,7 @@ public class OnPlayerJoin {
 		}
 		EntityPlayer player = (EntityPlayer) event.getEntity();
 		if(!event.getEntity().world.isRemote) {
-			player.sendMessage(new TextComponentString("\u00A74\u00A7lMetallurgy 4 : Reforged "+"\nFurther integration with common mods (like Tinkers' Construct an JEI) is not currently available \u00A7lbut planned too."));
+			player.sendMessage(new TextComponentString("\u00A74\u00A7lMetallurgy 4 : Reforged "+"\nFurther integration with common mods (like Tinkers' Construct and JEI) is not currently available \u00A7lbut planned too."));
 			player.sendMessage(new TextComponentString("\nIf you want info / see Alloyer crafting, go to the github wiki (\u00A71\u00A7oDavoleo / Metallurgy-4-Reforged / wiki\u00A7r)"));
 		}
 	}
