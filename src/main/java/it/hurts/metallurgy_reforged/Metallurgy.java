@@ -4,10 +4,12 @@
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
- import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
+import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
- import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidRegistry;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -59,6 +61,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		ModRecipes.init();
+		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 	}
 
 
