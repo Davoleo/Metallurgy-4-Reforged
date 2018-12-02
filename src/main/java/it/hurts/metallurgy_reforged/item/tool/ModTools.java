@@ -165,17 +165,17 @@ public class ModTools {
     public static ItemShovelBase mithril_shovel = new ItemShovelBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_shovel");
     public static ItemSwordBase mithril_sword = new ItemSwordBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_sword");
 
-    public static ItemAxeBase orichalcum_axe = new ItemAxeBase(ModMetals.OURECLASE.getToolMaterial(), "orichalcum_axe");
-    public static ItemHoeBase orichalcum_hoe = new ItemHoeBase(ModMetals.OURECLASE.getToolMaterial(), "orichalcum_hoe");
-    public static ItemPickaxeBase orichalcum_pickaxe = new ItemPickaxeBase(ModMetals.OURECLASE.getToolMaterial(), "orichalcum_pickaxe");
-    public static ItemShovelBase orichalcum_shovel = new ItemShovelBase(ModMetals.OURECLASE.getToolMaterial(), "orichalcum_shovel");
-    public static ItemSwordBase orichalcum_sword = new ItemSwordBase(ModMetals.OURECLASE.getToolMaterial(), "orichalcum_sword");
+    public static ItemAxeBase orichalcum_axe = new ItemAxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_axe");
+    public static ItemHoeBase orichalcum_hoe = new ItemHoeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_hoe");
+    public static ItemPickaxeBase orichalcum_pickaxe = new ItemPickaxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_pickaxe");
+    public static ItemShovelBase orichalcum_shovel = new ItemShovelBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_shovel");
+    public static ItemSwordBase orichalcum_sword = new ItemSwordBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_sword");
 
-    public static ItemAxeBase oureclase_axe = new ItemAxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "oureclase_axe");
-    public static ItemHoeBase oureclase_hoe = new ItemHoeBase(ModMetals.ORICHALCUM.getToolMaterial(), "oureclase_hoe");
-    public static ItemPickaxeBase oureclase_pickaxe = new ItemPickaxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "oureclase_pickaxe");
-    public static ItemShovelBase oureclase_shovel = new ItemShovelBase(ModMetals.ORICHALCUM.getToolMaterial(), "oureclase_shovel");
-    public static ItemSwordBase oureclase_sword = new ItemSwordBase(ModMetals.ORICHALCUM.getToolMaterial(), "oureclase_sword");
+    public static ItemAxeBase oureclase_axe = new ItemAxeBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_axe");
+    public static ItemHoeBase oureclase_hoe = new ItemHoeBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_hoe");
+    public static ItemPickaxeBase oureclase_pickaxe = new ItemPickaxeBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_pickaxe");
+    public static ItemShovelBase oureclase_shovel = new ItemShovelBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_shovel");
+    public static ItemSwordBase oureclase_sword = new ItemSwordBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_sword");
 
     public static ItemAxeBase platinum_axe = new ItemAxeBase(ModMetals.PLATINUM.getToolMaterial(), "platinum_axe");
     public static ItemHoeBase platinum_hoe = new ItemHoeBase(ModMetals.PLATINUM.getToolMaterial(), "platinum_hoe");
