@@ -81,11 +81,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	@Override
 	public boolean canDropFromExplosion(Explosion explosionIn)
 	{
-		if(this.getUnlocalizedName().contains("_ore"))
-		{
-			return false;
-		}
-
-		return true;
+		return this.getUnlocalizedName().contains("_ore");
 	}
 }
