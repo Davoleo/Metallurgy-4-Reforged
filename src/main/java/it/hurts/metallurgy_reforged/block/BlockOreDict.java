@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.world.Explosion;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
@@ -25,22 +26,21 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	private Item customDrop;
 	
 	public BlockOreDict(String name, String oreName) {
-		this(name, oreName, null,"p", 1);
-		setHardness(3f);
-		setResistance(5f);
+		this(name, oreName, null,"p", 1, 5F);
+		setHardness(3F);
 	}
 
 //	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
-	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel){
-		this(name, oreName, null, toolClass, harvestLevel);
+	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance){
+		this(name, oreName, null, toolClass, harvestLevel, blastResistance);
     }
 
-	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel){
+	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel, float blastResistance){
 		super(Material.ROCK, name);
 		this.oreName = oreName;
 		this.customDrop = drop;
 		setHardness(3f);
-		setResistance(5f);
+		setResistance(blastResistance);
 		this.setHarvestLevel(toolClass, harvestLevel);
 	}
 
@@ -77,4 +77,15 @@ public class BlockOreDict extends BlockBase implements IOreDict {
     	else
     		return 1;
     }
+
+	@Override
+	public boolean canDropFromExplosion(Explosion explosionIn)
+	{
+		if(this.getUnlocalizedName().contains("_ore"))
+		{
+			return false;
+		}
+
+		return true;
+	}
 }
