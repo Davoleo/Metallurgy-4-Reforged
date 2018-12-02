@@ -1,13 +1,17 @@
 0.0.1 [First alpha]
-
 - Major features and content
 - Nearly every original feature and texture
 
 0.0.2
-
 - Some minor fixes
 - Fixed the "unable to climb certain blocks" bug
 - Deep Iron Effect rework
 - Fixed glowing effect
 - Tweaked sanguinite sword effect
 - Fixed manganese harvest level bug
+
+0.0.3
+- Fixed Astral Silver typo (#63)
+- Buffed ore blast resistance (#62)
+- Fixed Silver ore generation bug (#60)
+- Fixed Oureclase pickaxe harvest level (#59)
