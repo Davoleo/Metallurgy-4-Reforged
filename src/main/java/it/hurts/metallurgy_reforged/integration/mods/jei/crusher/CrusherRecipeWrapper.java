@@ -1,5 +1,7 @@
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
+import com.google.common.collect.Lists;
+import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -8,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /*************************************************
  * Author: Davoleo
@@ -19,8 +22,8 @@ import java.util.List;
 
 public class CrusherRecipeWrapper implements IRecipeWrapper {
 
-    private ItemStack input;
-    private ItemStack output;
+    private final ItemStack input;
+    private final ItemStack output;
 
     public CrusherRecipeWrapper(ItemStack output, ItemStack input)
     {
@@ -31,18 +34,22 @@ public class CrusherRecipeWrapper implements IRecipeWrapper {
     @Override
     public void getIngredients(@Nonnull IIngredients ingredients)
     {
+        List<ItemStack> input = Lists.newArrayList();
+        input.add(this.input);
         ingredients.setInput(ItemStack.class, input);
         ingredients.setOutput(ItemStack.class, output);
     }
 
-    public ItemStack getInput()
+    public static List<CrusherRecipeWrapper> getRecipeInputs()
     {
-        return input;
-    }
+        ArrayList<CrusherRecipeWrapper> recipes = new ArrayList<>();
 
-    public ItemStack getOutput()
-    {
-        return output;
+        for(Map.Entry<ItemStack, ItemStack> entry : BlockCrusherRecipes.getInstance().getRecipeMap().entrySet())
+        {
+            recipes.add(new CrusherRecipeWrapper(entry.getKey(), entry.getValue()));
+        }
+
+        return recipes;
     }
 
     public boolean inputIsNotFull()

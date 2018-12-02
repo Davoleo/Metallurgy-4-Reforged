@@ -1,13 +1,14 @@
 package it.hurts.metallurgy_reforged.integration;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.gui.GuiCrusher;
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCategory;
+import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
-import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
 import mezz.jei.api.*;
-import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /*************************************************
  * Author: Davoleo
@@ -22,8 +23,6 @@ public class IntegrationJEI implements IModPlugin {
 
     public static final String CRUSHER = "m5.crusher";
     public static final String ALLOYER = "m5.alloyer";
-
-    public static IJeiHelpers jeiHelpers;
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry)
@@ -44,23 +43,17 @@ public class IntegrationJEI implements IModPlugin {
         registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
     }
 
-    @Override
-    public void registerIngredients(IModIngredientRegistration registry)
-    {
-
-    }
 
     @Override
     public void register(IModRegistry registry)
     {
-        jeiHelpers = registry.getJeiHelpers();
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+        //registers the recipes through a list built by the method "getRecipeInputs"
+        registry.addRecipes(CrusherRecipeWrapper.getRecipeInputs(), CRUSHER);
 
-        registry.addRecipes(BlockCrusherRecipes.getCollection(), CRUSHER);
-    }
+        //sets the machine icon as the jei recipe icon
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.crusher), CRUSHER);
 
-    private static void setupDrawables(IGuiHelper helper)
-    {
-
+        //Maps the area you need to click in to view all the machine Recipes
+        registry.addRecipeClickArea(GuiCrusher.class, 93, 32, 7, 33, CRUSHER);
     }
 }
