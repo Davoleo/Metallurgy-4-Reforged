@@ -20,7 +20,7 @@ item.atlarus_legs.name=Atlarus Leggings
 item.atlarus_boots.name=Atlarus Boots
 
 item.astral_silver_helmet.name=Astral Silver Helmet
-item.astral_silver_chest.name=Astral Sivler Chestplate
+item.astral_silver_chest.name=Astral Silver Chestplate
 item.astral_silver_legs.name=Astral Silver Leggings
 item.astral_silver_boots.name=Astral Silver Boots
 
@@ -204,7 +204,7 @@ tile.desichalkos_block.name=Desichalkos Block
 tile.black_steel_block.name=Black Steel Block
 tile.infuscolium_block.name=Infuscolium Block
 tile.carmot_block.name=Carmot Block
-tile.astral_silver_block.name=Astral Sivler Block
+tile.astral_silver_block.name=Astral Silver Block
 tile.oureclase_block.name=Oureclase Block
 tile.deep_iron_block.name=Deep Iron Block
 tile.quicksilver_block.name=Quicksilver Block
@@ -447,7 +447,7 @@ item.phosphorus.name=Phosphorus
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
 tile.alduorite_ore.name=Alduorite Ore
-tile.astral_silver_ore.name=Astral Sivler Ore
+tile.astral_silver_ore.name=Astral Silver Ore
 tile.atlarus_ore.name=Atlarus Ore
 tile.bitumen_ore.name=Bitumen Ore
 tile.carmot_ore.name=Carmot Ore
