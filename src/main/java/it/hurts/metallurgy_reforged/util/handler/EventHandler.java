@@ -20,6 +20,7 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -267,6 +268,12 @@ public class EventHandler {
 	}
 
 
+	@SubscribeEvent
+	public static void onBreakBlock(PlayerEvent.BreakSpeed event)
+	{
+		if(event.getEntityPlayer().isInWater() && event.getEntityPlayer().getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe)))
+			event.setNewSpeed(6F);
+	}
 
 	
 	
