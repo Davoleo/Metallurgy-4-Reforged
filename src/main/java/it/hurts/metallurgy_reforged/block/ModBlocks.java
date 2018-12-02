@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,10 +32,10 @@ public class ModBlocks {
 //	Blocks wich drops itself
 
     //	ModBlocks with a custom ITEM drop
-    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", ModItems.dustSulfur, p, 2).setCreativeTab(MetallurgyTabs.tabOre);
-    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", ModItems.dustPhosphorus, p, 2).setCreativeTab(MetallurgyTabs.tabOre);
-    public static BlockOreDict oreBitumen = new BlockOreDict("bitumen_ore", "oreBitumen", ModItems.dustBitumen, p, 2).setCreativeTab(MetallurgyTabs.tabOre);
-    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", ModItems.dustPotash, p, 2).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", ModItems.dustSulfur, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", ModItems.dustPhosphorus, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict oreBitumen = new BlockOreDict("bitumen_ore", "oreBitumen", ModItems.dustBitumen, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", ModItems.dustPotash, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
 
     //  Various Blocks
     public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen").setCreativeTab(MetallurgyTabs.tabBlock);
