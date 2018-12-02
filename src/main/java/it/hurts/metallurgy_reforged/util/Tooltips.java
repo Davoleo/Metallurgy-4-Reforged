@@ -35,5 +35,8 @@ public class Tooltips {
     public static final String VULCANITE_SWORD_EFFECT = Utils.localize("tooltip.m5.vulcanite_sword_effect");
     public static final String VYROXERES_SWORD_EFFECT = Utils.localize("tooltip.m5.vyroxeres_sword_effect");
 
+    //Pickaxes
+    public static final String DEEP_IRON_PICKAXE_EFFECT = Utils.localize("tooltip.m5.deep_iron_pickaxe_effect");
+
 
 }

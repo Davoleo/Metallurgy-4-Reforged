@@ -95,7 +95,7 @@ public class ModTools {
 
     public static ItemAxeBase damascus_steel_axe = new ItemAxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_axe");
     public static ItemHoeBase damascus_steel_hoe = new ItemHoeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_hoe");
-    public static ItemPickaxeBase damascus_steel_pickaxe = new ItemPickaxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_pickaxe");
+    public static ItemPickaxeBase damascus_steel_pickaxe = new ItemPickaxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_pickaxe", Tooltips.DEEP_IRON_PICKAXE_EFFECT);
     public static ItemShovelBase damascus_steel_shovel = new ItemShovelBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_shovel");
     public static ItemSwordBase damascus_steel_sword = new ItemSwordBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_sword");
 
