@@ -1,14 +1,14 @@
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.integration.IntegrationJEI;
 import mezz.jei.api.IGuiHelper;
-import mezz.jei.api.gui.IDrawable;
-import mezz.jei.api.gui.IDrawableStatic;
-import mezz.jei.api.gui.IGuiItemStackGroup;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.*;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
@@ -24,28 +24,51 @@ import javax.annotation.Nullable;
 
 public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapper> {
 
-    private static final String UID = "m5:crusher";
+    //Slot IDs
+    private static final int INPUT_SLOT = 0;
+    private static final int OUTPUT_SLOT = 1;
 
+    //gui background
     private final IDrawableStatic background;
 
-    public CrusherRecipeCategory(IGuiHelper guiHelper)
+    //Animations
+    protected final IDrawableAnimated flame;
+    protected final IDrawableAnimated bar;
+
+    public CrusherRecipeCategory(IGuiHelper helper) {
+        ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/crusher.png");
+
+//      name = helper.createDrawable(guiLocation, xInitGui, yInitGUi, sizeX, sizeY);
+        background = helper.createDrawable(texture, 0, 0, 176, 108);
+
+//		Definiamo l'animazione della fiamma
+        IDrawableStatic flameDrawable = helper.createDrawable(texture, 176, 61, 17, 17);
+        flame = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
+
+//		Definiamo l'animazione della Process Bar
+        IDrawableStatic barDrawable = helper.createDrawable(texture, 176, 0, 7, 33);
+        bar = helper.createAnimatedDrawable(barDrawable, 140, IDrawableAnimated.StartDirection.BOTTOM, false);
+    }
+
+    @Override
+    public void drawExtras(Minecraft minecraft)
     {
-        ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/jei/recipeTemplateCrusher.png");
-        this.background = guiHelper.createDrawable(texture, 0, 0, 116, 54);
+        flame.draw(minecraft, 128, 61);
+        bar.draw(minecraft, 93, 65);
     }
 
     @Nonnull
     @Override
     public String getUid()
     {
-        return UID;
+        return IntegrationJEI.CRUSHER;
     }
 
     @Nonnull
     @Override
     public String getTitle()
     {
-        return Utils.localize("gui.jei_compat.crusher.name");
+        return new ItemStack(ModBlocks.crusher).getDisplayName();
     }
 
     @Nonnull
@@ -69,16 +92,16 @@ public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapp
         return null;
     }
 
+    @SuppressWarnings({"rawtypes", "deprecation"})
     @Override
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull CrusherRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
     {
-        IGuiItemStackGroup group = recipeLayout.getItemStacks();
-        group.init(0, true, 61, -4);
-        group.init(1, true, 129, 48);
-        group.init(2, false, 67, 36);
-        group.init(3, false, 48, 36);
-        group.init(4, false, 29, 36);
+        IGuiIngredientGroup group = recipeLayout.getItemStacks();
 
-        group.set(ingredients);
+        group.init(INPUT_SLOT, true, 60, 27);
+        group.init(OUTPUT_SLOT, false, 66, 66);
+
+        group.set(INPUT_SLOT, ingredients.getInputs(ItemStack.class).get(0));
+        group.set(OUTPUT_SLOT, ingredients.getOutputs(ItemStack.class).get(0));
     }
 }

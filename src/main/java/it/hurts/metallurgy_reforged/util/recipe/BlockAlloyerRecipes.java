@@ -159,4 +159,9 @@ public class BlockAlloyerRecipes {
         }
         return 0;
     }
+
+    public Table<ItemStack, ItemStack, ItemStack> getRecipeTable()
+    {
+        return alloyingList;
+    }
 }

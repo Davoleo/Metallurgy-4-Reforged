@@ -57,13 +57,6 @@ public class CrusherRecipeWrapper implements IRecipeWrapper {
         return input.getCount() < input.getMaxStackSize();
     }
 
-    @Nonnull
-    @Override
-    public List<String> getTooltipStrings(int mouseX, int mouseY)
-    {
-        return new ArrayList<>();
-    }
-
     @Override
     public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
     {
