@@ -37,7 +37,7 @@ public class ItemSwordBase extends ItemSword {
 
     public ItemSwordBase(ToolMaterial material, String name)
     {
-        this(material, name, "", null, 0);
+        this(material, name, null, null, 0);
     }
 
     public ItemSwordBase(ToolMaterial material, String name,  String tooltip)
@@ -74,7 +74,8 @@ public class ItemSwordBase extends ItemSword {
 	@Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        tooltip.add(this.tooltip);
+        if(this.tooltip != null)
+            tooltip.add(this.tooltip);
     }
 
     @SideOnly(Side.CLIENT)

@@ -3,11 +3,17 @@ package it.hurts.metallurgy_reforged.item.tool;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 /*************************************************
  * Author: Davoleo
@@ -20,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemShovelBase extends ItemSpade {
 
     private String name;
+    private String tooltip;
 
     public ItemShovelBase(ToolMaterial material, String name)
     {
@@ -29,6 +36,13 @@ public class ItemShovelBase extends ItemSpade {
         this.name = name;
         setCreativeTab(MetallurgyTabs.tabTool);
         ModTools.toolList.add(this);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        if(tooltip != null)
+            tooltip.add(this.tooltip);
     }
 
     @SideOnly(Side.CLIENT)

@@ -30,7 +30,7 @@ public class ItemPickaxeBase extends ItemPickaxe {
 
     public ItemPickaxeBase(ToolMaterial material, String name)
         {
-            this(material, name, "");
+            this(material, name, null);
         }
 
     public ItemPickaxeBase(ToolMaterial material, String name, String tooltip)
@@ -53,6 +53,7 @@ public class ItemPickaxeBase extends ItemPickaxe {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        tooltip.add(this.tooltip);
+        if(this.tooltip != null)
+            tooltip.add(this.tooltip);
     }
 }
