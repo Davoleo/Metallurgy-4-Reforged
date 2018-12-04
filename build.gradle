@@ -7,7 +7,16 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
+
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'idea'
+
 
 // Non Modificare Sopra
 
@@ -31,7 +40,7 @@ dependencies {
 }
 
 processResources {
-    
+
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
@@ -41,6 +50,66 @@ processResources {
     }
 
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude '**/*.info'
+
+        // Move access transformers to META-INF
+        rename '(.+_at.cfg)', 'META-INF/$1'
+    }
+
+    def fmlat = {
+        attributes 'FMLAT': 'metallurgy_at.cfg'
+    }
+
+    jar {
+        manifest fmlat
+        destinationDir = file (rootProject.getRootDir().getPath() + '/output')
+    }
+
+    task deobfJar(type: Jar) {
+        from sourceSets.main.output
+        classifier = 'deobf'
+        manifest fmlat
+        destinationDir = file (rootProject.getRootDir().getPath() + '/output')
+    }
+
+    task sourcesJar(type: Jar, dependsOn: 'sourceMainJava') {
+        from "build/sources/main"
+        from "build/resources/main"
+        classifier "sources"
+        destinationDir = file (rootProject.getRootDir().getPath() + '/output')
+    }
+
+    artifacts {
+        archives deobfJar, sourcesJar
+    }
+
+    publishing {
+        publications {
+            MyPublication(MavenPublication) {
+                groupId = project.group
+                artifactId = project.archivesBaseName
+                version = project.version
+                artifact deobfJar
+                artifact sourcesJar
+                artifact jar
+            }
+        }
+
+        bintray {
+            user = System.getenv('BINTRAY_USER')
+            key = System.getenv('BINTRAY_KEY')
+            publications = ['MyPublication']
+            publish = true
+            pkg {
+                repo = 'Forge-Modding'
+                name = 'Metallurgy-4-Reforged'
+                licenses = ['GPL-3.0']
+                vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+                version {
+                    name = project.version
+                    released = new Date()
+                }
+            }
+        }
     }
 }
