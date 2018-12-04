@@ -1,7 +1,6 @@
 package it.hurts.metallurgy_reforged.integration.mods.jei.alloyer;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
 import mezz.jei.api.ingredients.IIngredients;
@@ -12,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /*************************************************
  * Author: Davoleo
@@ -24,21 +22,22 @@ import java.util.Map;
 
 public class AlloyerRecipeWrapper implements IRecipeWrapper {
 
-    private final Map<ItemStack, ItemStack> inputs;
+    private final List<ItemStack> inputs;
     private final ItemStack output;
 
-    public AlloyerRecipeWrapper(Map<ItemStack, ItemStack> inputs, ItemStack output)
+    public AlloyerRecipeWrapper(List<ItemStack> inputs, ItemStack output)
     {
         this.inputs = inputs;
         this.output = output;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void getIngredients(@Nonnull IIngredients ingredients)
     {
-        List<Map<ItemStack, ItemStack>> inputs = Lists.newArrayList();
+        List<List<ItemStack>> inputs = Lists.newArrayList();
         inputs.add(this.inputs);
-        ingredients.setInput(Map.class, inputs);
+        ingredients.setInput(List.class, inputs);
         ingredients.setOutput(ItemStack.class, output);
     }
 
@@ -48,8 +47,9 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
 
         for(Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
         {
-            Map<ItemStack, ItemStack> inputs = Maps.newHashMap();
-            inputs.put(entry.getColumnKey(), entry.getRowKey());
+            List<ItemStack> inputs = Lists.newArrayList();
+            inputs.set(0, entry.getColumnKey());
+            inputs.set(1, entry.getRowKey());
             recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue()));
         }
 

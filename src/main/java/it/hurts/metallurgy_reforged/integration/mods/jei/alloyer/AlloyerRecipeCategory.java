@@ -104,7 +104,7 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
         group.init(OUTPUT_SLOT, false, 66, 66);
 
         group.set(INPUT_SLOT_1, ingredients.getInputs(ItemStack.class).get(0));
-        group.set(INPUT_SLOT_2, ingredients.getInputs(ItemStack.class).get(0));
+        group.set(INPUT_SLOT_2, ingredients.getInputs(ItemStack.class).get(2));
         group.set(OUTPUT_SLOT, ingredients.getOutputs(ItemStack.class).get(0));
     }
 }
