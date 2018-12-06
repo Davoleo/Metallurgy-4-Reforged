@@ -35,16 +35,21 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
     //Animations
     protected final IDrawableAnimated flame;
     protected final IDrawableAnimated bar;
+    protected final IDrawableAnimated moltenMetal;
 
     public AlloyerRecipeCategory(IGuiHelper guiHelper)
     {
         ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/alloyer.png");
 
-        background = guiHelper.createDrawable(texture, 0, 0, 116, 54);
+        background = guiHelper.createDrawable(texture, 0, 0, 176, 108);
 
         //Burning fuel animation
         IDrawableStatic flameDrawable = guiHelper.createDrawable(texture,176, 61, 17, 17);
         flame = guiHelper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
+
+        //Molten metal flow animation
+        IDrawableStatic moltenDrawable = guiHelper.createDrawable(texture, 176, 81, 10, 25);
+        moltenMetal = guiHelper.createAnimatedDrawable(moltenDrawable, 140, IDrawableAnimated.StartDirection.TOP, false);
 
         //Process animation
         IDrawableStatic barDrawable = guiHelper.createDrawable(texture, 176, 0, 7, 33);
@@ -54,8 +59,9 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
     @Override
     public void drawExtras(Minecraft minecraft)
     {
-        flame.draw(minecraft, 128, 61);
+        flame.draw(minecraft, 110, 61);
         bar.draw(minecraft, 40, 66);
+        moltenMetal.draw(minecraft, 52, 32);
     }
 
     @Nonnull
@@ -99,12 +105,12 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
     {
         IGuiIngredientGroup group = recipeLayout.getItemStacks();
 
-        group.init(INPUT_SLOT_1, true, 60, 27);
-        group.init(INPUT_SLOT_2, true, 70, 27);
-        group.init(OUTPUT_SLOT, false, 66, 66);
+        group.init(INPUT_SLOT_1, true, 101, 23);
+        group.init(INPUT_SLOT_2, true, 122, 23);
+        group.init(OUTPUT_SLOT, false, 56, 73);
 
         group.set(INPUT_SLOT_1, ingredients.getInputs(ItemStack.class).get(0));
-        group.set(INPUT_SLOT_2, ingredients.getInputs(ItemStack.class).get(2));
+        group.set(INPUT_SLOT_2, ingredients.getInputs(ItemStack.class).get(1));
         group.set(OUTPUT_SLOT, ingredients.getOutputs(ItemStack.class).get(0));
     }
 }

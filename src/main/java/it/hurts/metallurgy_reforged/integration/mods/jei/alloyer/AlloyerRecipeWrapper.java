@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -31,14 +32,11 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
         this.output = output;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void getIngredients(@Nonnull IIngredients ingredients)
     {
-        List<List<ItemStack>> inputs = Lists.newArrayList();
-        inputs.add(this.inputs);
-        ingredients.setInput(List.class, inputs);
-        ingredients.setOutput(ItemStack.class, output);
+        ingredients.setInputs(VanillaTypes.ITEM, inputs);
+        ingredients.setOutput(VanillaTypes.ITEM, output);
     }
 
     public static List<AlloyerRecipeWrapper> getRecipeInputs()
@@ -48,8 +46,8 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
         for(Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
         {
             List<ItemStack> inputs = Lists.newArrayList();
-            inputs.set(0, entry.getColumnKey());
-            inputs.set(1, entry.getRowKey());
+            inputs.add(entry.getColumnKey());
+            inputs.add(entry.getRowKey());
             recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue()));
         }
 
