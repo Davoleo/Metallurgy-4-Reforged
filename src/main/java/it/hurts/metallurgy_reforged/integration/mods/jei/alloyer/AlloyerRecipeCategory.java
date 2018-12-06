@@ -45,15 +45,15 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
 
         //Burning fuel animation
         IDrawableStatic flameDrawable = guiHelper.createDrawable(texture,176, 61, 17, 17);
-        flame = guiHelper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
+        flame = guiHelper.createAnimatedDrawable(flameDrawable, 200, IDrawableAnimated.StartDirection.TOP, true);
 
         //Molten metal flow animation
         IDrawableStatic moltenDrawable = guiHelper.createDrawable(texture, 176, 81, 10, 25);
-        moltenMetal = guiHelper.createAnimatedDrawable(moltenDrawable, 140, IDrawableAnimated.StartDirection.TOP, false);
+        moltenMetal = guiHelper.createAnimatedDrawable(moltenDrawable, 80, IDrawableAnimated.StartDirection.TOP, false);
 
         //Process animation
         IDrawableStatic barDrawable = guiHelper.createDrawable(texture, 176, 0, 7, 33);
-        bar = guiHelper.createAnimatedDrawable(barDrawable, 140, IDrawableAnimated.StartDirection.BOTTOM, false);
+        bar = guiHelper.createAnimatedDrawable(barDrawable, 80, IDrawableAnimated.StartDirection.BOTTOM, false);
     }
 
     @Override
