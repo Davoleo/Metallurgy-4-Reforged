@@ -30,7 +30,6 @@ public class BlockCrusherRecipes {
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
-
     public static BlockCrusherRecipes getInstance() {
         return INSTANCE;
     }
@@ -84,5 +83,10 @@ public class BlockCrusherRecipes {
                 return experienceList.get(in);
         }
         return 0.0F;
+    }
+
+    public Map<ItemStack, ItemStack> getRecipeMap()
+    {
+        return crushingList;
     }
 }

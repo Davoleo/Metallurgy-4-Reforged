@@ -56,10 +56,7 @@ public class GuiAlloyer extends GuiContainer{
 
         if(alloyer.isBurning())
         {
-            System.out.println(alloyer.getField(0) + " BURN");
             int k = this.getBurnLeftScaled(17);
-            //~~~~~~~~~~~~~~~~~~
-            System.out.println(guiLeft + " " + guiTop);
             this.drawTexturedModalRect(this.guiLeft + 110, this.guiTop + 30 + 16 -k, 176, 77 - k, 17, k + 2);
         }
 
