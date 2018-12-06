@@ -31,7 +31,7 @@ public class ItemAxeBase extends ItemAxe {
     public ItemAxeBase(ToolMaterial material, String name)
     {
         super(material, 3F, -1F);
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);
         this.name = name;

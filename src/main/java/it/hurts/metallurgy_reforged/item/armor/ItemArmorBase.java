@@ -55,7 +55,7 @@ public class ItemArmorBase extends ItemArmor {
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
 		super(material, 0, slot);
 		setRegistryName(name);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		this.name = name;
 		this.tooltip = tooltip;
 		this.enchantment = enchantment;

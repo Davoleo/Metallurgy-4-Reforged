@@ -36,7 +36,7 @@ public class ItemPickaxeBase extends ItemPickaxe {
     public ItemPickaxeBase(ToolMaterial material, String name, String tooltip)
         {
             super(material);
-            setUnlocalizedName(name);
+            setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
         this.tooltip = tooltip;

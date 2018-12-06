@@ -88,6 +88,7 @@ public class BlockOrientable extends BlockBase {
         return i;
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

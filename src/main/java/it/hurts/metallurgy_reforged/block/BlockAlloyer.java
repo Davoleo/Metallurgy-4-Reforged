@@ -172,18 +172,21 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state){
         return EnumBlockRenderType.MODEL;
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot){
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn){
@@ -196,14 +199,15 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, Boolean.valueOf((meta & 4) != 0));
+        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, (meta & 4) != 0);
     }  
     
-    protected static EnumFacing getFacing(int meta)
+    private static EnumFacing getFacing(int meta)
     {
         switch (meta & 3)
         {
@@ -219,7 +223,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         }
     }
 
-    protected static int getMetaForFacing(EnumFacing facing)
+    private static int getMetaForFacing(EnumFacing facing)
     {
         switch (facing)
         {
@@ -239,9 +243,9 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        i = i | getMetaForFacing((EnumFacing)state.getValue(FACING));
+        i = i | getMetaForFacing(state.getValue(FACING));
 
-        if (((Boolean)state.getValue(BURNING)).booleanValue())
+        if ((state.getValue(BURNING)))
         {
             i |= 4;
         }

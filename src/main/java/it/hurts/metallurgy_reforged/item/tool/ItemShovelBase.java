@@ -31,7 +31,7 @@ public class ItemShovelBase extends ItemSpade {
     public ItemShovelBase(ToolMaterial material, String name)
     {
         super(material);
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
         setCreativeTab(MetallurgyTabs.tabTool);

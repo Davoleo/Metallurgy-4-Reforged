@@ -25,7 +25,7 @@ public class FluidBlockBase extends BlockFluidClassic {
         super(fluid, material);
         this.name = name;
         setRegistryName(name);
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         setCreativeTab(MetallurgyTabs.tabFluid);
     }
 

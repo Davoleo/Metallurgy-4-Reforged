@@ -186,6 +186,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
@@ -193,6 +194,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return EnumBlockRenderType.MODEL;
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot)
@@ -200,6 +202,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn)
@@ -214,6 +217,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)
@@ -221,7 +225,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, (meta & 4) != 0);
     }  
     
-    protected static EnumFacing getFacing(int meta)
+    private static EnumFacing getFacing(int meta)
     {
         switch (meta & 3)
         {
@@ -237,7 +241,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
-    protected static int getMetaForFacing(EnumFacing facing)
+    private static int getMetaForFacing(EnumFacing facing)
     {
         switch (facing)
         {

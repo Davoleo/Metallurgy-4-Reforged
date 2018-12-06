@@ -49,7 +49,7 @@ public class ItemSwordBase extends ItemSword {
     {
         super(material);
         setRegistryName(name);
-        setUnlocalizedName(name);
+        setTranslationKey(name);
         this.name = name;
         this.tooltip = tooltip;
         this.enchantment = enchantment;

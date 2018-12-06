@@ -29,7 +29,7 @@ public class BlockBase extends Block {
 		this.name = name;
 
 		setCreativeTab(MetallurgyTabs.tabBlock);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(name);
 		ModBlocks.blockList.add(this);
 	}
