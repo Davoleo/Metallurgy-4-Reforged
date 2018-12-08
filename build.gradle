@@ -7,18 +7,9 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
-
-// ----------------------------------------------------------------------
-
-//
-//plugins {
-//    id "com.jfrog.bintray" version "1.7"
-//}
-
-//apply plugin: 'maven'
-//apply plugin: 'maven-publish'
 apply plugin: 'net.minecraftforge.gradle.forge'
-//apply plugin: 'idea'
+
+// Non Modificare Sopra
 
 version = "0.0.3"
 group = "it.hurts.metallurgy_reforged"
@@ -67,7 +58,7 @@ dependencies {
 }
 
 processResources {
-
+    
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
@@ -77,10 +68,6 @@ processResources {
     }
 
     from(sourceSets.main.resources.srcDirs) {
-        exclude '**/*.info'
-
-        // Move access transformers to META-INF
-        //rename '(.+_at.cfg)', 'META-INF/$1'
+        exclude 'mcmod.info'
     }
-    
 }
