@@ -11,7 +11,8 @@ import net.minecraftforge.common.config.Config;
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-@Config(modid = Metallurgy.MODID, name = "General Configuration")
+@Config.LangKey("config.metallurgy.category.general")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class ConfigGeneral {
 
     public static int test = 100;

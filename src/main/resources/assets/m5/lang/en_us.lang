@@ -236,6 +236,10 @@ tile.platinum_block.name=Platinum Block
 tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur BLock
 
+#Config
+config.metallurgy.category.general=General
+config.metallurgy.category.features=Features
+
 # Creative Tab
 itemGroup.m5.armors=Metallurgy Armor
 itemGroup.m5.blocks=Metallurgy Blocks
