@@ -38,10 +38,11 @@ public class ItemShovelBase extends ItemSpade {
         ModTools.toolList.add(this);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(tooltip != null)
+        if(this.tooltip != null)
             tooltip.add(this.tooltip);
     }
 
