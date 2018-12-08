@@ -71,6 +71,7 @@ public class ItemSwordBase extends ItemSword {
         }
 	}
 
+    @SideOnly(Side.CLIENT)
 	@Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {

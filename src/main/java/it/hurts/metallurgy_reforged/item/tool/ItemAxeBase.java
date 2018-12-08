@@ -38,6 +38,7 @@ public class ItemAxeBase extends ItemAxe {
         ModTools.toolList.add(this);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {

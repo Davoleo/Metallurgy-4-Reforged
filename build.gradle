@@ -51,10 +51,10 @@ repositories {
 dependencies {
 
 //	Compile against the JEI API but do not include it at runtime
-	deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
+    deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
 	
 // 	At runtime, use the full JEI jar
-	runtime "mezz.jei:jei_1.12.2:4.13.+"
+    runtime "mezz.jei:jei_1.12.2:4.13.+"
 }
 
 processResources {
