@@ -99,7 +99,7 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
         return null;
     }
 
-    @SuppressWarnings({"rawtypes", "deprecation"})
+    @SuppressWarnings({"rawtypes", "deprecation", "unchecked"})
     @Override
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull AlloyerRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
     {

@@ -92,7 +92,7 @@ public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapp
         return null;
     }
 
-    @SuppressWarnings({"rawtypes", "deprecation"})
+    @SuppressWarnings({"rawtypes", "deprecation", "unchecked"})
     @Override
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull CrusherRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
     {

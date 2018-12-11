@@ -4,9 +4,12 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,12 +24,16 @@ import java.util.List;
  * Hour: 13.16
  * Project: Metallurgy 5
  * Copyright - © - Davoleo - 2018
+ * 
+ * Reworked by ItHurtsLikeHell
  **************************************************/
 
 public class ItemAxeBase extends ItemAxe {
 
     private String name;
     private String tooltip;
+    private Enchantment enchantment;
+	private int enchantmentLevel;
 
     public ItemAxeBase(ToolMaterial material, String name)
     {
@@ -37,6 +44,30 @@ public class ItemAxeBase extends ItemAxe {
         this.name = name;
         ModTools.toolList.add(this);
     }
+    
+    public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
+        super(material, 3F, -1F);
+        setTranslationKey(name);
+        setRegistryName(name);
+        setCreativeTab(MetallurgyTabs.tabTool);
+        this.name = name;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+        ModTools.toolList.add(this);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+    {
+        if(this.isInCreativeTab(tab)) {
+            ItemStack enchantedAxe = new ItemStack(this);
+            if(enchantment != null) {
+                enchantedAxe.addEnchantment(enchantment, enchantmentLevel);
+            }
+            items.add(enchantedAxe);
+        }
+	}
 
     @SideOnly(Side.CLIENT)
     @Override

@@ -30,7 +30,8 @@ public class ConfigFeaturePanel {
     public static EffectConfigCategory effects = new EffectConfigCategory();
     private static class EffectConfigCategory
     {
-        public boolean exampleEffect;
+        @SuppressWarnings("unused")
+		public boolean exampleEffect;
     }
 
     public static ToolConfigCategory tools = new ToolConfigCategory();

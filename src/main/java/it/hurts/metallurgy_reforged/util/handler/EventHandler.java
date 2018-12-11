@@ -256,6 +256,14 @@ public class EventHandler {
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));
 			}
+			
+//			Mithril Sword (Give Glowing to entity Hitted)
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
+				Entity foe = event.getTarget();
+				
+				if ((int) (Math.random() * 100) <= 20)
+					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
+			}
 
 
 //			Kalendrite sword (Regeneration)

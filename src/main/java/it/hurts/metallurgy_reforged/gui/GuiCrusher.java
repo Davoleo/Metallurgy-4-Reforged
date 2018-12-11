@@ -19,7 +19,8 @@ import net.minecraft.util.ResourceLocation;
 public class GuiCrusher extends GuiContainer {
 
     private static final ResourceLocation TEXTURES = new ResourceLocation(Metallurgy.MODID + ":textures/gui/crusher.png");
-    private final InventoryPlayer player;
+    @SuppressWarnings("unused")
+	private final InventoryPlayer player;
     private final TileEntityCrusher crusher;
 
     public GuiCrusher(InventoryPlayer player, TileEntityCrusher crusher)
