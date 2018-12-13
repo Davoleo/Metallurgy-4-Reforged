@@ -15,6 +15,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -174,7 +175,15 @@ public class EventHandler {
 //		Prometheum Armor (No potion, need to implement a new Effect)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.prometheum_helmet,ModArmors.prometheum_chest,ModArmors.prometheum_legs,ModArmors.prometheum_boots}))	
 			event.player.removePotionEffect(MobEffects.POISON);
-	
+		
+//		Shadow Iron Armor (No Blindness)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_iron_helmet,ModArmors.shadow_iron_chest,ModArmors.shadow_iron_legs,ModArmors.shadow_iron_boots}))
+			event.player.removePotionEffect(MobEffects.BLINDNESS);
+		
+//		Ceruclase Armor (inflict Slowness on attackers when hit)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.ceruclase_helmet,ModArmors.ceruclase_chest,ModArmors.ceruclase_legs,ModArmors.ceruclase_boots})) {
+			DamageSource lastD = event.player.getLastDamageSource();
+		}
 
 //		Speed effect of Road
 		if (event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
@@ -271,6 +280,14 @@ public class EventHandler {
 
 				if ((int) (Math.random() * 100) <= 30)
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
+			}
+			
+//			Ceruclase Sword (Give slowness)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ceruclase_sword))) {
+				Entity foe = event.getTarget();
+				
+				if ((int) (Math.random() * 100) <= 25)
+					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 70, 1, false, false));
 			}
 		}
 	}
