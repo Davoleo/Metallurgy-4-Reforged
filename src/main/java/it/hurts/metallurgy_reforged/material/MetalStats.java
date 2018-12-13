@@ -17,6 +17,7 @@ public class MetalStats {
     private final String name, oreDictName;
     private final int blockHarvest;
     private final float blockBlastResistance;
+    public static float blockResistance;
     //int minVeinSize, int maxVeinSize, int chance, int minY, int maxY
     private final int oreHarvest;
 
@@ -54,6 +55,7 @@ public class MetalStats {
         this.oreDictName = oreDictName;
         this.blockHarvest = blockHarvest;
         this.blockBlastResistance = blastResistance;
+        this.blockResistance = blastResistance;
         this.armor = armor;
         this.tool = tool;
         this.fluid = fluid;
@@ -62,6 +64,10 @@ public class MetalStats {
 
     public String getName() {
         return name;
+    }
+    
+    public static float getBlockBlastResistance() {
+    	return blockResistance;
     }
 
     public String getOreDictName() {
