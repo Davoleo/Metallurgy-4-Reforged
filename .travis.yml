@@ -16,7 +16,6 @@ script:
 
 #Webhook Report message
 after_success:
-- ' [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew bintrayUpload; '
 - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - ./send.sh success $WEBHOOK_URL

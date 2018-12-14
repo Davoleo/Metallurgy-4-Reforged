@@ -21,7 +21,8 @@ public class GuiAlloyer extends GuiContainer{
 
     //GUI Texture location
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Metallurgy.MODID + ":textures/gui/alloyer.png");
-    private final InventoryPlayer player; //Player Inventory
+    @SuppressWarnings("unused")
+	private final InventoryPlayer player; //Player Inventory
     private final TileEntityAlloyer alloyer; //Tile Entity
     
     //Gui constructor

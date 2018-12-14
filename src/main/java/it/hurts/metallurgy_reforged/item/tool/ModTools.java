@@ -153,10 +153,10 @@ public class ModTools {
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_shovel");
     public static ItemSwordBase kalendrite_sword = new ItemSwordBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_sword", Tooltips.KALENDRITE_SWORD_EFFECT);
 
-    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe");
+    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe", Enchantments.FORTUNE, 1);
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_hoe");
-    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe");
-    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel");
+    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe", Enchantments.FORTUNE, 1);
+    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel", Enchantments.FORTUNE, 1);
     public static ItemSwordBase midasium_sword = new ItemSwordBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_sword", Tooltips.MIDASIUM_SWORD_EFFECT, Enchantments.LOOTING, 1);
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_axe");
