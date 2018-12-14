@@ -238,17 +238,18 @@ tile.sulfur_block.name=Sulfur BLock
 
 #Config
 config.metallurgy.category.general=General
-config.metallurgy.category.features=Features
+config.metallurgy.category.effects_control_panel=Effects ON/OFF
+config.metallurgy.category.effects_modifiers=Effects Buff/Nerf
 
 # Creative Tab
-itemGroup.m5.armors=Metallurgy Armor
-itemGroup.m5.blocks=Metallurgy Blocks
-itemGroup.m5.dusts=Metallurgy Dusts
-itemGroup.m5.fluids=Metallurgy Fluids
-itemGroup.m5.ingots=Metallurgy Ingots
-itemGroup.m5.machines=Metallurgy Machines
-itemGroup.m5.ores=Metallurgy Ores
-itemGroup.m5.tools=Metallurgy Tools
+itemGroup.metallurgy.armors=Metallurgy Armor
+itemGroup.metallurgy.blocks=Metallurgy Blocks
+itemGroup.metallurgy.dusts=Metallurgy Dusts
+itemGroup.metallurgy.fluids=Metallurgy Fluids
+itemGroup.metallurgy.ingots=Metallurgy Ingots
+itemGroup.metallurgy.machines=Metallurgy Machines
+itemGroup.metallurgy.ores=Metallurgy Ores
+itemGroup.metallurgy.tools=Metallurgy Tools
 
 
 #Dust
@@ -717,32 +718,32 @@ tile.alloyer.name=§eAlloyer
 
 #Tooltips
 #Armor Tooltips
-tooltip.m5.adamantine_armor_effect=§4Always well fed
-tooltip.m5.amordrine_armor_effect=§dStrengthens you
-tooltip.m5.angmallen_armor_effect=§e(WIP) Luck (WIP)
-tooltip.m5.astral_silver_armor_effect=§fAstral Jumps become possible
-tooltip.m5.carmot_armor_effect=§e(WIP) Haste (WIP)
-tooltip.m5.celenegil_armor_effect=§aMakes you more tough
-tooltip.m5.deep_iron_armor_effect=§1Makes you swim faster
-tooltip.m5.kalendrite_armor_effect=§dStrengthens you
-tooltip.m5.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
-tooltip.m5.platinum_armor_effect=§bNight Vision [It's also really sticky]
-tooltip.m5.prometheum_armor_effect=§2Poison Immunity
-tooltip.m5.vulcanite_armor_effect=§cFire Immunity
+tooltip.metallurgy.adamantine_armor_effect=§4Always well fed
+tooltip.metallurgy.amordrine_armor_effect=§dStrengthens you
+tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
+tooltip.metallurgy.astral_silver_armor_effect=§fAstral Jumps become possible
+tooltip.metallurgy.carmot_armor_effect=§e(WIP) Haste (WIP)
+tooltip.metallurgy.celenegil_armor_effect=§aMakes you more tough
+tooltip.metallurgy.deep_iron_armor_effect=§1Makes you swim faster
+tooltip.metallurgy.kalendrite_armor_effect=§dStrengthens you
+tooltip.metallurgy.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
+tooltip.metallurgy.platinum_armor_effect=§bNight Vision [It's also really sticky]
+tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
+tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
-tooltip.m5.ignatius_sword_effect=§cFire Aspect I
-tooltip.m5.kalendrite_sword_effect=§dHas the chance to regenerate your life
-tooltip.m5.midasium_sword_effect=§6Golden Lucky Drops
-tooltip.m5.sanguinite_sword_effect=§4Life Steal
-tooltip.m5.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
-tooltip.m5.tartarite_sword_effect=§8Wither II
-tooltip.m5.vulcanite_sword_effect=§cFire Aspect II
-tooltip.m5.vyroxeres_sword_effect=§aPoisons your target
+tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
+tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
+tooltip.metallurgy.midasium_sword_effect=§6Golden Lucky Drops
+tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
+tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
+tooltip.metallurgy.tartarite_sword_effect=§8Wither II
+tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
+tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
 
 #Pickaxes
-tooltip.m5.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 
 #Utils
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged

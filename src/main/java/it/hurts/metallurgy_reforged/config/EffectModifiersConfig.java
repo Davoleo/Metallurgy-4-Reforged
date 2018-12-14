@@ -5,17 +5,16 @@ import net.minecraftforge.common.config.Config;
 
 /*************************************************
  * Author: Davoleo
- * Date / Hour: 06/12/2018 / 21:30
- * Class: ConfigGeneral
+ * Date / Hour: 15/12/2018 / 00:22
+ * Class: EffectModifiersConfig
  * Project: Metallurgy 4 Reforged
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-@Config.LangKey("config.metallurgy.category.general")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
-public class ConfigGeneral {
+@Config.LangKey("config.metallurgy.category.effects_modifiers")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "Buff/Nerf")
+public class EffectModifiersConfig {
 
-    public static int test = 100;
-
+    public static int TEST = 100;
 
 }

@@ -31,6 +31,7 @@
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
 
+	@Deprecated
 	public static final String MODID = "m5";
 	public static final String NAME = "Metallurgy 4: Reforged";
 	public static final String VERSION = "0.0.3";
