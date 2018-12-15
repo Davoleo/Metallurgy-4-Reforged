@@ -15,3 +15,14 @@
 - Buffed ore blast resistance (#62)
 - Fixed Silver ore generation bug (#60)
 - Fixed Oureclase pickaxe harvest level (#59)
+
+0.0.4
+- BACKUP your world before loading it with this version
+- Changed ModID from “m5” to “metallurgy” (world-breaking change)
+- Added Deep Iron pickaxe effect
+- Fixed tooltips useless empty lines (#65)
+- Added Configuration files
+- Updated mappings to “stable_39”
+- Added JEI Integration for Metallurgy machines
+- Fixed ore generation cascading lag (#70)
+- Added config to enable/disable armor/tools effects
