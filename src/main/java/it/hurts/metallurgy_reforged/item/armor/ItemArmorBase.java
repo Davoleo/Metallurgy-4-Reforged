@@ -39,7 +39,7 @@ public class ItemArmorBase extends ItemArmor {
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
 	{
-		this(material, slot, name, "", null, 0);
+		this(material, slot, name, null, null, 0);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
@@ -49,7 +49,7 @@ public class ItemArmorBase extends ItemArmor {
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
 	{
-		this(material, slot, name, "", enchantment, enchantmentLevel);
+		this(material, slot, name, null, enchantment, enchantmentLevel);
 	}
 	
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
@@ -81,7 +81,8 @@ public class ItemArmorBase extends ItemArmor {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
-		tooltip.add(this.tooltip);
+		if(this.tooltip != null)
+			tooltip.add(this.tooltip);
 	}
 
 	@SideOnly(Side.CLIENT)
