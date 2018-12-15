@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures":{
+    "layer0":"metallurgy:items/tools/deep_iron_sword"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockSulfur"
+    }
+  ],
+  "result": {
+    "item": "metallurgy:sulfur_dust",
+    "count": 9
+  }
+}

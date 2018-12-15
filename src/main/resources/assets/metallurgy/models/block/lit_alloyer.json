@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "metallurgy:blocks/alloyer_top",
+    "up": "metallurgy:blocks/alloyer_top",
+    "down": "metallurgy:blocks/alloyer_bottom",
+    "north": "metallurgy:blocks/alloyer_front_on",
+    "east": "metallurgy:blocks/alloyer_side",
+    "south": "metallurgy:blocks/alloyer_back",
+    "west": "metallurgy:blocks/alloyer_side"
+  }
+}

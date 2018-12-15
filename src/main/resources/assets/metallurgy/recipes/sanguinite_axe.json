@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "II ",
+    "IS ",
+    " S "
+  ],
+  "key":{
+    "S":{
+      "item":"minecraft:stick"
+    },
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "ingotSanguinite"
+    }
+  },
+  "result":{
+    "item":"metallurgy:sanguinite_axe"
+  }
+}

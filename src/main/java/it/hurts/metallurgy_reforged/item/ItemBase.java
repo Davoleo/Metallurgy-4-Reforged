@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
 public class ItemBase extends Item{
 
 	protected String name;
-	
+
 	public ItemBase(String name)
     {
 		this.name = name;

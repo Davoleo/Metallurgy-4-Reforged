@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "metallurgy:blocks/crusher_top",
+    "up": "metallurgy:blocks/crusher_top",
+    "down": "metallurgy:blocks/crusher_bottom",
+    "north": "metallurgy:blocks/crusher_front_on",
+    "east": "metallurgy:blocks/crusher_side",
+    "south": "metallurgy:blocks/crusher_back",
+    "west": "metallurgy:blocks/crusher_side"
+  }
+}

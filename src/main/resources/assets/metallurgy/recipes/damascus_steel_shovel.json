@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " I ",
+    " S ",
+    " S "
+  ],
+  "key":{
+    "S":{
+      "item":"minecraft:stick"
+    },
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "ingotDamascusSteel"
+    }
+  },
+  "result":{
+    "item":"metallurgy:damascus_steel_shovel"
+  }
+}

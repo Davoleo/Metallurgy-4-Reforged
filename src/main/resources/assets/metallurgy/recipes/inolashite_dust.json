@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "AC"
+  ],
+  "key":{
+    "A":{
+      "type": "forge:ore_dict",
+      "ore": "dustAlduorite"
+    },
+    "C":{
+      "type": "forge:ore_dict",
+      "ore": "dustCeruclase"
+    }
+  },
+  "result": {
+    "item": "metallurgy:inolashite_dust",
+    "count": 2
+  }
+}

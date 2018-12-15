@@ -13,8 +13,10 @@ import net.minecraftforge.common.config.Config;
 
 @Config.LangKey("config.metallurgy.category.effects_modifiers")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "Buff/Nerf")
+@SuppressWarnings("unused")
 public class EffectModifiersConfig {
 
+    @Config.Ignore
     public static int TEST = 100;
 
 }

@@ -8,6 +8,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
+import java.util.Objects;
+
 /*************************************************
  * Author: Davoleo
  * Date: 30/08/2018
@@ -36,7 +38,7 @@ public class FluidBlockBase extends BlockFluidClassic {
 
     public Item createItemBlock()
     {
-        return new ItemBlock(this).setRegistryName(getRegistryName());
+        return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
     }
 
 }

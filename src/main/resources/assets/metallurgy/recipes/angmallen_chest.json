@@ -1,0 +1,17 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "A A",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A":{
+      "type": "forge:ore_dict",
+      "ore": "ingotAngmallen"
+    }
+  },
+  "result":{
+    "item":"metallurgy:angmallen_chest"
+  }
+}

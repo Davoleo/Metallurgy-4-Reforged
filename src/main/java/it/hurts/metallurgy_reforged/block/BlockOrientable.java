@@ -47,7 +47,8 @@ public class BlockOrientable extends BlockBase {
         return new BlockStateContainer(this, FACING);
     }
 
-    protected static EnumFacing getFacing(int meta)
+
+    private static EnumFacing getFacing(int meta)
     {
         switch (meta & 3)
         {
@@ -88,6 +89,7 @@ public class BlockOrientable extends BlockBase {
         return i;
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

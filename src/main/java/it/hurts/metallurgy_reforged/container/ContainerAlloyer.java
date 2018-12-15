@@ -96,7 +96,7 @@ public class ContainerAlloyer extends Container {
         Slot slot = this.inventorySlots.get(index);
         ItemStack ret = slot.getStack();
 
-        if (slot != null && slot.getHasStack()) {
+        if (/*slot != null &&*/ slot.getHasStack()) {
             ItemStack itemstack = slot.getStack();
             ret = itemstack.copy();
 
@@ -134,11 +134,11 @@ public class ContainerAlloyer extends Container {
                     if (!this.mergeItemStack(itemstack, 2, 3, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= iStart && index <= iEnd) {
+                } else if (/*index >= iStart && */index <= iEnd) {
                     if (!this.mergeItemStack(itemstack, hStart, hEnd + 1, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= hStart && index < hEnd + 1 && !this.mergeItemStack(itemstack, iStart, iEnd + 1, false)) {
+                } else if (/*index >= hStart &&*/ index < hEnd + 1 && !this.mergeItemStack(itemstack, iStart, iEnd + 1, false)) {
                     return ItemStack.EMPTY;
                 }
             } else if (!this.mergeItemStack(itemstack, iStart, hEnd + 1, false)) {

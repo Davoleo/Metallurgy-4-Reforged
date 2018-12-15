@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "A A",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotBlackSteel"
+    }
+  },
+  "result":{
+    "item":"metallurgy:black_steel_boots"
+  }
+}
