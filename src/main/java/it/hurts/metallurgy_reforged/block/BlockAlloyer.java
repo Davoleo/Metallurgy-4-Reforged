@@ -37,7 +37,7 @@ import java.util.Random;
 public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
     //Blockstates initialization
-	public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool BURNING = PropertyBool.create("burning");
 
     private static boolean keepInventory;
@@ -172,18 +172,21 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state){
         return EnumBlockRenderType.MODEL;
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot){
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn){
@@ -196,6 +199,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

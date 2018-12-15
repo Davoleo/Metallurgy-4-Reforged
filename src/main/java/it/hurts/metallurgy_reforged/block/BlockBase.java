@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
 
 /***************************
 *
@@ -39,7 +40,7 @@ public class BlockBase extends Block {
 	}
 
 	public Item createItemBlock() {
-		return new ItemBlock(this).setRegistryName(getRegistryName());
+		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
 
 	@Nonnull

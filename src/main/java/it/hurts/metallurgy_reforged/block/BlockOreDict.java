@@ -24,7 +24,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 
 	private String oreName;
 	private Item customDrop;
-	
+
 	public BlockOreDict(String name, String oreName) {
 		this(name, oreName, null,"p", 1, 5F);
 		setHardness(3F);

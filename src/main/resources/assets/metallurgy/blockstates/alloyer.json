@@ -1,0 +1,13 @@
+{
+  "variants":
+  {
+    "burning=false,facing=north": { "model": "metallurgy:alloyer" },
+    "burning=false,facing=east": { "model": "metallurgy:alloyer", "y": 90 },
+    "burning=false,facing=south": { "model": "metallurgy:alloyer", "y": 180 },
+    "burning=false,facing=west": { "model": "metallurgy:alloyer", "y": 270 },
+    "burning=true,facing=north": { "model": "metallurgy:lit_alloyer" },
+    "burning=true,facing=east": { "model": "metallurgy:lit_alloyer", "y": 90 },
+    "burning=true,facing=south": { "model": "metallurgy:lit_alloyer", "y": 180 },
+    "burning=true,facing=west": { "model": "metallurgy:lit_alloyer", "y":270  }
+  }
+}

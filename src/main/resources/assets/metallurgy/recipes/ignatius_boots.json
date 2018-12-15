@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "A A",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotIgnatius"
+    }
+  },
+  "result":{
+    "item":"metallurgy:ignatius_boots"
+  }
+}

@@ -25,8 +25,8 @@ import net.minecraft.item.ItemStack;
 @JEIPlugin
 public class IntegrationJEI implements IModPlugin {
 
-    public static final String CRUSHER = "m5.crusher";
-    public static final String ALLOYER = "m5.alloyer";
+    public static final String CRUSHER = "metallurgy.crusher";
+    public static final String ALLOYER = "metallurgy.alloyer";
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry)

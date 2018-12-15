@@ -1,0 +1,17 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotPlatinum"
+    }
+  },
+  "result":{
+    "item":"metallurgy:Platinum_helmet",
+    "nbt":"{ench:[{lvl:1s,id:10s}]}"
+  }
+}

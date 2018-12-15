@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "DI",
+    "DD"
+  ],
+  "key":{
+    "D":{
+      "type": "forge:ore_dict",
+      "ore": "dustDeepIron"
+    },
+    "I":{
+      "type": "forge:ore_dict",
+      "ore": "dustInfuscolium"
+    }
+  },
+  "result": {
+    "item": "metallurgy:black_steel_dust",
+    "count": 4
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern":[
+    "SG"
+  ],
+  "key":{
+    "G":{
+      "type": "forge:ore_dict",
+      "ore": "dustGold"
+    },
+    "S":{
+      "type": "forge:ore_dict",
+      "ore": "dustSilver"
+    }
+  },
+  "result": {
+    "item": "metallurgy:electrum_dust",
+    "count": 2
+  }
+}

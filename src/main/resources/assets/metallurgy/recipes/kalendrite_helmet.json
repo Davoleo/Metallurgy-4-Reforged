@@ -1,0 +1,16 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotKalendrite"
+    }
+  },
+  "result":{
+    "item":"metallurgy:kalendrite_helmet"
+  }
+}

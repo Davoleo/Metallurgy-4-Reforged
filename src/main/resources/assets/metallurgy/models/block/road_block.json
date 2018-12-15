@@ -1,0 +1,12 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "particle": "metallurgy:blocks/road",
+    "up": "metallurgy:blocks/road",
+    "down": "metallurgy:blocks/road",
+    "north": "metallurgy:blocks/road",
+    "east": "metallurgy:blocks/road",
+    "south": "metallurgy:blocks/road",
+    "west": "metallurgy:blocks/road"
+  }
+}
