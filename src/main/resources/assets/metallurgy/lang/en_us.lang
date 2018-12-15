@@ -724,18 +724,22 @@ tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fAstral Jumps become possible
 tooltip.metallurgy.carmot_armor_effect=§e(WIP) Haste (WIP)
 tooltip.metallurgy.celenegil_armor_effect=§aMakes you more tough
+tooltip.metallurgy.ceruclase_armor_effect=§3Slows your foes down
 tooltip.metallurgy.deep_iron_armor_effect=§1Makes you swim faster
 tooltip.metallurgy.kalendrite_armor_effect=§dStrengthens you
 tooltip.metallurgy.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
 tooltip.metallurgy.platinum_armor_effect=§bNight Vision [It's also really sticky]
 tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
+tooltip.metallurgy.shadow_iron_armor_effect=§8No way of getting blinded
 tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
+tooltip.metallurgy.ceruclase_sword_effect=§3Chance of slowing a foe down
 tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
 tooltip.metallurgy.midasium_sword_effect=§6Golden Lucky Drops
+tooltip.metallurgy.mithril_sword_effect=§bLights up your foes
 tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
 tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II

@@ -60,8 +60,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
     private NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
     private String customName;
-    @SuppressWarnings("unused")
-	private ItemStack crushing = ItemStack.EMPTY;
     private int burnTime;
     private int currentBurnTime;
     private int crushTime;

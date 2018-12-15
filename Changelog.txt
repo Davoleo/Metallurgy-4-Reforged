@@ -26,3 +26,8 @@
 - Added JEI Integration for Metallurgy machines
 - Fixed ore generation cascading lag (#70)
 - Added config to enable/disable armor/tools effects
+- Added fortune enchant to all Midasium Tools (except hoe)
+- Added "Glowing" effect to Mithril Sword
+- Added Shadow Iron Armor Effect (Blindness-proof)
+- Added Ceruclase Armor Effect (Inflicts Slowness on attackers when hit)
+- Added Ceruclase Sword (Gives slowness)

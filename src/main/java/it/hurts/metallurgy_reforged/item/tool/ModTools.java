@@ -85,7 +85,7 @@ public class ModTools {
     public static ItemHoeBase ceruclase_hoe = new ItemHoeBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_hoe");
     public static ItemPickaxeBase ceruclase_pickaxe = new ItemPickaxeBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_pickaxe");
     public static ItemShovelBase ceruclase_shovel = new ItemShovelBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_shovel");
-    public static ItemSwordBase ceruclase_sword = new ItemSwordBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_sword");
+    public static ItemSwordBase ceruclase_sword = new ItemSwordBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_sword", Tooltips.CERUCLASE_SWORD_EFFECT);
 
     public static ItemAxeBase copper_axe = new ItemAxeBase(ModMetals.COPPER.getToolMaterial(), "copper_axe");
     public static ItemHoeBase copper_hoe = new ItemHoeBase(ModMetals.COPPER.getToolMaterial(), "copper_hoe");
@@ -163,7 +163,7 @@ public class ModTools {
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_hoe");
     public static ItemPickaxeBase mithril_pickaxe = new ItemPickaxeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_pickaxe");
     public static ItemShovelBase mithril_shovel = new ItemShovelBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_shovel");
-    public static ItemSwordBase mithril_sword = new ItemSwordBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_sword");
+    public static ItemSwordBase mithril_sword = new ItemSwordBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_sword", Tooltips.MITHRIL_SWORD_EFFECT);
 
     public static ItemAxeBase orichalcum_axe = new ItemAxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_axe");
     public static ItemHoeBase orichalcum_hoe = new ItemHoeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_hoe");
