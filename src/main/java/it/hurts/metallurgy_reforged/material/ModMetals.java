@@ -16,11 +16,11 @@ public class ModMetals {
 
     //Disclaimer: These variables might need a balancement update
     //Davoleo isn't responsible for any blast resistance level complains
-    private static final float LOW_TIER_BLAST_RESISTANCE = 3F;
+    public static final float LOW_TIER_BLAST_RESISTANCE = 6F;
     public static final float MID_TIER_BLAST_RESISTANCE = 10F;                         //Cobblestone-like
-    private static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
-    private static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   //Obsidian-like
-    private static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           //Bedrock-like
+    public static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
+    public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   //Obsidian-like
+    public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           //Bedrock-like
     
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
 
@@ -61,7 +61,7 @@ public class ModMetals {
     public static final Metal COPPER = new MetalStats("copper", "Copper", 2, LOW_TIER_BLAST_RESISTANCE,
     		new ArmorStats(new int[]{2, 3, 2, 1}, 50, 5, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(5, 2, 180, 5F, 5F), new FluidStats(0xFFE5770A), 1).createMetal();
-    public static final Metal DAMASCUS_STEEL = new MetalStats("damascus_steel", "DamascusSteel", 2, UNBREAKABLE_TIER_BLAST_RESISTANCE,
+    public static final Metal DAMASCUS_STEEL = new MetalStats("damascus_steel", "DamascusSteel", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 50, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 4, 500, 6F, 6F), new FluidStats(0xFF75663D), -1).createMetal();
     public static final Metal DEEP_IRON = new MetalStats("deep_iron", "DeepIron", 2, MID_TIER_BLAST_RESISTANCE,

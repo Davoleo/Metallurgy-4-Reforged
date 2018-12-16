@@ -37,7 +37,7 @@ public class BlockCrusherRecipes {
     private BlockCrusherRecipes() {
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
-                addCrushingRecipe(new ItemStack(m.getOre(), 2), new ItemStack(m.getDust(), 2), 0.75F);
+                addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
             }
             addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
         }

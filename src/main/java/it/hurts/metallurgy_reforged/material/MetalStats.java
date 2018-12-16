@@ -27,7 +27,7 @@ public class MetalStats {
 
     public Metal createMetal() {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
-        ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
+    	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
         ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName).setCreativeTab(MetallurgyTabs.tabIngot);
         BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, "pickaxe", blockHarvest, blockBlastResistance).setCreativeTab(MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
@@ -35,9 +35,24 @@ public class MetalStats {
             ore = new BlockOreDict(name + "_ore","ore" + oreDictName, "pickaxe", oreHarvest, blockBlastResistance).setCreativeTab(MetallurgyTabs.tabOre);
         }
 
-        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor));
+        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor,getTemperature()));
 
         return new Metal(this, ingot, dust, ore, block, molten);
+    }
+    
+    private int getTemperature()
+    {
+        float output = 1000F;
+
+        if(blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE)
+        {
+            output = blockBlastResistance * 60f;
+        }
+        else if(blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE)
+        {
+            output = blockBlastResistance * 40F;
+        }
+        return Math.round(output);
     }
 
     /**
@@ -55,7 +70,6 @@ public class MetalStats {
         this.oreDictName = oreDictName;
         this.blockHarvest = blockHarvest;
         this.blockBlastResistance = blastResistance;
-        this.blockResistance = blastResistance;
         this.armor = armor;
         this.tool = tool;
         this.fluid = fluid;
