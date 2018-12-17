@@ -17,14 +17,14 @@ import java.util.Map;
  * Date: 03/09/2018
  * Hour: 19.30
  * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
+ * Copyright - Â© - Davoleo - 2018
  **************************************************/
 
 public class BlockCrusherRecipes {
 
     private static final BlockCrusherRecipes INSTANCE = new BlockCrusherRecipes();
 
-    //Nel caso si voglia utilizzare un metodo più automatico per le recipe degli ore
+    //Nel caso si voglia utilizzare un metodo piÃ¹ automatico per le recipe degli ore
     //private static final int ORE_MULTIPLIER = 2;
 
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
@@ -37,7 +37,8 @@ public class BlockCrusherRecipes {
     private BlockCrusherRecipes() {
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
-                addCrushingRecipe(new ItemStack(m.getOre(), 2), new ItemStack(m.getDust(), 2), 0.75F);
+                // 1 Ore = 2 Dust
+                addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
             }
             addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
         }
