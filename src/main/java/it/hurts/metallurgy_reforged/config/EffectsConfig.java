@@ -44,6 +44,8 @@ public class EffectsConfig {
     public static boolean vulcaniteSwordEffect = true;
     public static boolean vyroxeresSwordEffect = true;
 
+    private EffectsConfig(){}
+
     @SubscribeEvent
     static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent e)
     {
