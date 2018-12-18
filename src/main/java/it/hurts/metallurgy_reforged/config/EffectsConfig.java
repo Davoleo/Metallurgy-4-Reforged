@@ -2,6 +2,9 @@ package it.hurts.metallurgy_reforged.config;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /*************************************************
  * Author: Davoleo
@@ -40,5 +43,12 @@ public class EffectsConfig {
     public static boolean tartariteSwordEffect = true;
     public static boolean vulcaniteSwordEffect = true;
     public static boolean vyroxeresSwordEffect = true;
+
+    @SubscribeEvent
+    static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent e)
+    {
+        if(Metallurgy.MODID.equals(e.getModID()))
+            ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
+    }
 
 }
