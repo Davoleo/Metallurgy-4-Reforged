@@ -17,6 +17,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MovementInput;
+import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -25,6 +27,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,6 +47,8 @@ import java.util.List;
 
 @EventBusSubscriber(modid= Metallurgy.MODID)
 public class EventHandler {
+
+	private static MovementInput inputCheck;
 
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
@@ -187,13 +192,19 @@ public class EventHandler {
 		}
 
 //		Speed effect of Road
-		if (event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
+		if ((event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
+				&& event.phase == TickEvent.Phase.START && event.side.isClient() && event.player.onGround)
 		{
-			if(event.player.onGround)
+			if(inputCheck == null)
+				inputCheck = new MovementInputFromOptions(Minecraft.getMinecraft().gameSettings);
+
+			inputCheck.updatePlayerMoveState();
+
+			if((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
 			{
-				event.player.motionX *= 1.13D;
-				event.player.motionZ *= 1.13D;
+				event.player.motionX *= 1.20D;
+				event.player.motionZ *= 1.20D;
 			}
 		}
 	}
