@@ -1,13 +1,18 @@
-Make sure you read https://github.com/Davoleo/Metallurgy-4-Reforged/blob/1.12.2/CONTRIBUTING.md!! <br>
+Make sure you read and understood CONTRIBUTING LINES before creating the pull request!! <br>
 <!-- [Delete this! ^^^] -->
 
-This is a: <!-- delete the one which isn't according to the PR's content -->
-* Code Pull request
-* Assets Pull request <!-- make sure your assets are respecting the art-style of the mod!! -->
+<!-- delete the one which isn't according to the PR's content -->
+This is a:
+*   Code Pull request
+*   Assets Pull request 
 
-#### Description of the pull request content:
+<!-- If you're making an assets pull request make sure your assets are according with the art-style of the mod!!
+     for more information about the art-theme, ask Matpac, the artist of the mod, on our discord server linked in the README-->
+---
+#### Description of the pull request content
 
-
+---
+#### Reason why we should implement your feature into the mod
 
 
 <!-- Thanks for Contributing, We REALLY appreciate it! -->
