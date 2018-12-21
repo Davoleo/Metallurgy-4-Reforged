@@ -36,7 +36,7 @@ public class IntegrationTIC{
 			if (checkMaterial(metals)) {
 				Material m = TinkerRegistry.getMaterial(metals.getStats().getName());
 
-//				Aggiunge 
+//				Aggiunge un materiale identificativo per recipe (?)
 				m.setRepresentativeItem(metals.getStats().getOreDictName());
 				
 //				Chiamata al metodo per aggiungere i traits
@@ -57,6 +57,7 @@ public class IntegrationTIC{
 	
 	}
 	
+//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono già esistenti nella Tinker Base
 	private static boolean checkMaterial(Metal metal) {
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM;

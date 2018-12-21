@@ -30,11 +30,15 @@ import slimeknights.tconstruct.library.materials.Material;
 
 public class MetallurgyMaterials {
 	
+	
+	
 	public static void addMaterialStats(Metal metal,Material material)
 	{
 //		TODO Automatizzare
+//		Creare metodo di 'Overwriting Harvest Levels' ( https://github.com/SlimeKnights/TinkersConstruct/wiki/Overwriting-Harvest-Levels )
+//		In base al livello di minaggio, inseriamo una "scritta"
 		List<IMaterialStats> stats = Lists.newArrayList();
-			stats.add( new HeadMaterialStats(200, 6.00f, 2F, DIAMOND));
+			stats.add(new HeadMaterialStats(200, 6.00f, 2F, DIAMOND));
 			stats.add(new HandleMaterialStats(0.1f, 60));
 		    stats.add(new ExtraMaterialStats(50));
 	      

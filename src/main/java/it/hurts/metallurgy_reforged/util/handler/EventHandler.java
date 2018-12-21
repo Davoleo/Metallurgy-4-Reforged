@@ -15,7 +15,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -181,9 +180,9 @@ public class EventHandler {
 			event.player.removePotionEffect(MobEffects.BLINDNESS);
 		
 //		Ceruclase Armor (inflict Slowness on attackers when hit)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.ceruclase_helmet,ModArmors.ceruclase_chest,ModArmors.ceruclase_legs,ModArmors.ceruclase_boots})) {
-			DamageSource lastD = event.player.getLastDamageSource();
-		}
+//		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.ceruclase_helmet,ModArmors.ceruclase_chest,ModArmors.ceruclase_legs,ModArmors.ceruclase_boots})) {
+//			DamageSource lastD = event.player.getLastDamageSource();
+//		}
 
 //		Speed effect of Road
 		if (event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
