@@ -2,11 +2,11 @@
 
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
-import it.hurts.metallurgy_reforged.integration.IntegrationTIC;
-import it.hurts.metallurgy_reforged.material.ModMetals;
+ import it.hurts.metallurgy_reforged.integration.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
-import it.hurts.metallurgy_reforged.util.ModChecker;
-import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+ import it.hurts.metallurgy_reforged.util.ModChecker;
+ import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
  import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
  import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
  import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -38,7 +39,6 @@ public class Metallurgy {
 	public static final String VERSION = "0.0.3";
 
 	public static Logger logger;
-	public static ModChecker checker = new ModChecker();
 
 	@Mod.Instance(MODID)
 	public static Metallurgy instance;
@@ -59,7 +59,7 @@ public class Metallurgy {
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		TileEntityHandler.registerTileEntities();
 //		check if tinker is installed
-		if(ModChecker.thereisTick)
+		if(ModChecker.isTConLoaded)
 			IntegrationTIC.preInit();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
@@ -67,12 +67,20 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		ModRecipes.init();
-		IntegrationTIC.init();
+		if(ModChecker.isTConLoaded)
+			IntegrationTIC.init();
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 	}
 
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+	}
+
+	@Mod.EventHandler
+	 public void loadComplete(FMLLoadCompleteEvent event)
+	{
+		if (ModChecker.isTConLoaded)
+			IntegrationTIC.postInit();
 	}
 }
