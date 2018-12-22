@@ -2,11 +2,11 @@
   "forge_marker": 1,
   "defaults": {
     "textures": {
-      "particle": "blocks/haderoth_block",
+      "particle": "blocks/hepatizon_block",
       "all": "metallurgy:blocks/molten_metal_flow"
     },
     "model": "forge:fluid",
-    "custom": { "fluid": "molten_haderoth" },
+    "custom": { "fluid": "molten_hepatizon" },
     "uvlock": false
   },
   "variants": {
