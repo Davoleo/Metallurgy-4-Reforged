@@ -742,7 +742,7 @@ tooltip.m5.vulcanite_sword_effect=§cFire Aspect II
 tooltip.m5.vyroxeres_sword_effect=§aPoisons your target
 
 #Pickaxes
-tooltip.m5.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+tooltip.m5.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
 
 #Utils
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
