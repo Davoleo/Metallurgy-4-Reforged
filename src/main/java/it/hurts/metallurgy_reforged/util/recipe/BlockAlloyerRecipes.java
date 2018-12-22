@@ -27,6 +27,7 @@ public class BlockAlloyerRecipes {
 
     private final Map<ItemStack, Float> experienceList = new HashMap<>();
     private final Map<ItemStack, ItemStack[]> recipeQuants = new HashMap<>();
+    
 
     public static BlockAlloyerRecipes getInstance() {
         return INSTANCE;

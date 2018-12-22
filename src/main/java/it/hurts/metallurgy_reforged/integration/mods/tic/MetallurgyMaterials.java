@@ -1,7 +1,6 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
-import static slimeknights.tconstruct.library.utils.HarvestLevels.DIAMOND;
 import static slimeknights.tconstruct.tools.TinkerTraits.magnetic;
 import static slimeknights.tconstruct.tools.TinkerTraits.magnetic2;
 
@@ -32,18 +31,19 @@ public class MetallurgyMaterials {
 	
 	
 	
-	public static void addMaterialStats(Metal metal,Material material)
-	{
+	public static void addMaterialStats(Metal metal, Material material){
 //		TODO Automatizzare
 //		Creare metodo di 'Overwriting Harvest Levels' ( https://github.com/SlimeKnights/TinkersConstruct/wiki/Overwriting-Harvest-Levels )
 //		In base al livello di minaggio, inseriamo una "scritta"
 		List<IMaterialStats> stats = Lists.newArrayList();
-			stats.add(new HeadMaterialStats(200, 6.00f, 2F, DIAMOND));
+		
+		if(metal.getStats().getToolStats() != null) {
+//			System.out.println("QUI : " + metal.getStats().getName());
+//			System.out.println("QUI : " + metal.getStats().getToolStats().getHarvestLevel());
+			stats.add(new HeadMaterialStats(200, 6.00f, 2F, metal.getStats().getToolStats().getHarvestLevel()));
 			stats.add(new HandleMaterialStats(0.1f, 60));
 		    stats.add(new ExtraMaterialStats(50));
-	      
-		
-		
+		}
 		
 		for(IMaterialStats stat : stats)
 			TinkerRegistry.addMaterialStats(material, stat);

@@ -30,7 +30,6 @@ public class MaterialMetallurgy extends Material{
 	public String getLocalizedName() {
 		String name = metal.getStats().getName();
 		String[] str = name.split("_");
-		
 		String[] space = space(str.length);
 		name = "";
 		for(int i = 0; i < str.length; i++) {
