@@ -64,11 +64,8 @@ public class IntegrationTIC{
 			FluidStack output = getFluidFromIngot(entry.getValue());
 			FluidStack input1 = getFluidFromIngot(entry.getRowKey());
 			FluidStack input2 = getFluidFromIngot(entry.getColumnKey());
-			if(output != null && input1 != null && input2 != null)
-			{
-				if(output.getFluid() != TinkerFluids.bronze)
+			if(output != null && input1 != null && input2 != null && output.getFluid() != TinkerFluids.bronze && output.getFluid() != TinkerFluids.electrum)
 					TinkerRegistry.registerAlloy(output,input1,input2);
-			}
 
 		}
 		System.out.println("Tinker Smeltery Recipes for Metallurgy Loaded");
