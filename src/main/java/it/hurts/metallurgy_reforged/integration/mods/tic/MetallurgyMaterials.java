@@ -4,17 +4,12 @@ import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
 import static slimeknights.tconstruct.tools.TinkerTraits.magnetic;
 import static slimeknights.tconstruct.tools.TinkerTraits.magnetic2;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.material.ToolStats;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
-import slimeknights.tconstruct.library.materials.HandleMaterialStats;
-import slimeknights.tconstruct.library.materials.HeadMaterialStats;
-import slimeknights.tconstruct.library.materials.IMaterialStats;
+import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 
 /***************************
@@ -34,19 +29,26 @@ public class MetallurgyMaterials {
 	public static void addMaterialStats(Metal metal, Material material){
 //		TODO Automatizzare
 //		Creare metodo di 'Overwriting Harvest Levels' ( https://github.com/SlimeKnights/TinkersConstruct/wiki/Overwriting-Harvest-Levels )
-//		In base al livello di minaggio, inseriamo una "scritta"
-		List<IMaterialStats> stats = Lists.newArrayList();
+//		In base al livello di minaggio, inseriamo una "scritta"		
+		MetalStats metalS = metal.getStats();
 		
-		if(metal.getStats().getToolStats() != null) {
-//			System.out.println("QUI : " + metal.getStats().getName());
-//			System.out.println("QUI : " + metal.getStats().getToolStats().getHarvestLevel());
-			stats.add(new HeadMaterialStats(200, 6.00f, 2F, metal.getStats().getToolStats().getHarvestLevel()));
-			stats.add(new HandleMaterialStats(0.1f, 60));
-		    stats.add(new ExtraMaterialStats(50));
-		}
+		MetallurgyTinkerStats stats = TinkerMetals.getMetal(metal);
 		
-		for(IMaterialStats stat : stats)
-			TinkerRegistry.addMaterialStats(material, stat);
+		if(stats != null)
+		{
+			for(AbstractMaterialStats stat : stats.stats)
+					TinkerRegistry.addMaterialStats(material, stat);
+		}		
+		else if(metalS != null)
+		{
+			ToolStats TStats = metalS.getToolStats();
+			if(TStats != null)
+			{
+				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getHeadA(metal));
+				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getHandleA(metal));
+				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getExtraA(metal));			
+			}
+		}	
 	}
 	
 //	TODO add traits

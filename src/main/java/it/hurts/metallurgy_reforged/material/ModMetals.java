@@ -27,7 +27,7 @@ public class ModMetals {
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
             new ToolStats(22, 7, 1550, 10F, 8F), new FluidStats(0xFFa30000), 6).createMetal();
-    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF29AF9D), 3).createMetal();
+    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, null, new ToolStats(30, 3, -1, 7F, 6F), new FluidStats(0xFF29AF9D), 3).createMetal();
     public static final Metal ANGMALLEN = new MetalStats("angmallen", "Angmallen", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 30, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(30, 3, 300, 7F, 6F), new FluidStats(0xFFF1E472), -1).createMetal();
