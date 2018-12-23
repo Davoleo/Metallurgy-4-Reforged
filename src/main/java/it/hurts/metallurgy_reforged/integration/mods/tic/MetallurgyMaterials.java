@@ -26,10 +26,7 @@ public class MetallurgyMaterials {
 	
 	
 	
-	public static void addMaterialStats(Metal metal, Material material){
-//		TODO Automatizzare
-//		Creare metodo di 'Overwriting Harvest Levels' ( https://github.com/SlimeKnights/TinkersConstruct/wiki/Overwriting-Harvest-Levels )
-//		In base al livello di minaggio, inseriamo una "scritta"		
+	public static void addMaterialStats(Metal metal, Material material){	
 		MetalStats metalS = metal.getStats();
 		
 		MetallurgyTinkerStats stats = TinkerMetals.getMetal(metal);

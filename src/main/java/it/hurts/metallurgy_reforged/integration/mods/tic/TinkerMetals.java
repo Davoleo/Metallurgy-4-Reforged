@@ -35,10 +35,9 @@ public class TinkerMetals {
 	public static List<MetallurgyTinkerStats> metalStatsList = new ArrayList<>();
 
 //	 ++ Test ++
-	 public static MetallurgyTinkerStats ALDUORITE = new MetallurgyTinkerStats(ModMetals.ALDUORITE, new HeadMaterialStats(1, 1, 1, 1),new HandleMaterialStats(1, 1));
-	 public static MetallurgyTinkerStats ADAMANTINE = new MetallurgyTinkerStats(ModMetals.ADAMANTINE, new HandleMaterialStats(1, 1), MetallurgyTinkerStats.getHeadA(ModMetals.ADAMANTINE));
-	 
-	 public static MetallurgyTinkerStats ANGMALLEN = new MetallurgyTinkerStats(ModMetals.ANGMALLEN);
+//	 public static MetallurgyTinkerStats ALDUORITE = new MetallurgyTinkerStats(ModMetals.ALDUORITE, new HeadMaterialStats(1, 1, 1, 1),new HandleMaterialStats(1, 1));
+//	 public static MetallurgyTinkerStats ADAMANTINE = new MetallurgyTinkerStats(ModMetals.ADAMANTINE, new HandleMaterialStats(1, 1), MetallurgyTinkerStats.getHeadA(ModMetals.ADAMANTINE));
+//	 public static MetallurgyTinkerStats ANGMALLEN = new MetallurgyTinkerStats(ModMetals.ANGMALLEN);
 
 	 @Nullable
 	 public static MetallurgyTinkerStats getMetal(Metal metal)

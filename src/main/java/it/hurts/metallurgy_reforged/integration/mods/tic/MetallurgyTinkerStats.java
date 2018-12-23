@@ -27,14 +27,26 @@ public class MetallurgyTinkerStats {
 	
 	
 	public static HeadMaterialStats getHeadA(Metal metal){
-		return new HeadMaterialStats(metal.getToolMaterial().getMaxUses(), metal.getToolMaterial().getEfficiency(), metal.getToolMaterial().getAttackDamage(), metal.getToolMaterial().getHarvestLevel());
+		int durability = metal.getToolMaterial().getMaxUses();
+		float speed = metal.getToolMaterial().getEfficiency();
+		float attack = metal.getToolMaterial().getAttackDamage();
+		int harvestL = metal.getToolMaterial().getHarvestLevel();
+		
+//		Dovremmo modificare lo speed ?
+		return new HeadMaterialStats((int)durability / 8, speed, attack, harvestL);
 	}
 	
 	public static ExtraMaterialStats getExtraA(Metal metal){
-		return new ExtraMaterialStats(metal.getToolMaterial().getMaxUses() / 20);
+		int durability = metal.getToolMaterial().getMaxUses();
+		
+		return new ExtraMaterialStats((int) (durability / 12));
 	}
 	
 	public static HandleMaterialStats getHandleA(Metal metal){
-		return new HandleMaterialStats(0.1F,metal.getToolMaterial().getMaxUses());
+		int durability = metal.getToolMaterial().getMaxUses();
+		float multiplier = 0.07F;
+		float modifier = (float) (Math.sqrt(durability) * multiplier);
+		
+		return new HandleMaterialStats(modifier > 2 ? modifier * 0.5F : modifier, (int)durability / 5);
 	}
 }
