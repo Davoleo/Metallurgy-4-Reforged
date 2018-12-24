@@ -1,27 +1,39 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
+
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
+import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
+import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -32,8 +44,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
-
-import java.util.List;
 
 
 /***************************
@@ -380,5 +390,126 @@ public class EventHandler {
 	}
 	
 
+		 
+		  
+		//punch effect inolashite armor
+		@SubscribeEvent
+		public static void addPunchEffect(AttackEntityEvent event)
+		{	 
+			EntityPlayer pl = event.getEntityPlayer();
+			Entity entity = event.getTarget();
+			//checks if the players isn't holding an item and if he is wearing 
+			if(pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
+			{
+				//apply effect if the player has a minimum food level or if he is in creative
+				if(pl.isCreative() || pl.getFoodStats().getFoodLevel() >= 4D) {
+				
+				if(entity instanceof EntityLivingBase) {
+					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+					effect.setHitTicks(1);
+					effect.setNoClip(entity.noClip);
+					entity.noClip = true;
+					}
+				
+				float yaw = pl.getRotationYawHead();
+				float pitch = pl.rotationPitch;
+						
+				double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+				double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+				double f = MathHelper.sqrt(x * x + z * z);
+				double velocity = 8D;
+			    x = x / (double)f;
+			    z = z / (double)f;
+			    x = x * (double)velocity;
+			    z = z * (double)velocity;
+				entity.motionX = x;
+				entity.motionZ = z;
+				//remove food level
+				if(!pl.isCreative())
+				{
+				 pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 4);
+				 pl.getFoodStats().setFoodSaturationLevel(pl.getFoodStats().getSaturationLevel() - 4);
+				}
+				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);
+				
+				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
+				}
+			}		
+		}
+		
+		
+		//event tick entity
+		@SubscribeEvent
+		public static void applyPunchEffects(LivingUpdateEvent event)
+		{
+			EntityLivingBase entity = event.getEntityLiving();
+			IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+			
+			//check if entity has been punched
+			if(effect.getHitTicks() > 0)
+			{
+			   Random rand = new Random();		
+				
+				 for (int i = 0; i < 10; ++i)
+		          {
+		             entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
+		          }
+		
+				 AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.5D, 0D, 0.5D);
+				
+				if(!entity.isDead)
+				{
+					
+					//destroy blocks and damage the punched entity
+				for(double i = axisalignedbb.minX;i < axisalignedbb.maxX;i += 0.1D)
+				{
+					for(double j = axisalignedbb.minY;j < axisalignedbb.maxY;j += 0.1D)
+					{
+						for(double k = axisalignedbb.minZ;k < axisalignedbb.maxZ;k += 0.1D)
+						{
+							
+							BlockPos pos = new BlockPos(i, j, k);
+							if(!entity.world.isAirBlock(pos)) {
+								IBlockState state = entity.world.getBlockState(pos);
+								float hardness = state.getBlockHardness(entity.world, pos);
+								if(hardness >= 0)
+								{
+									
+									System.out.println(hardness);
+									if(!state.getMaterial().isLiquid()) {
+								  if(!entity.world.isRemote)
+							       entity.world.destroyBlock(pos, true);				     
+							       entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), hardness);								
+									}
+									}
+								else
+								{
+									entity.noClip = effect.hasNoClip();
+									
+								}
+							}
+						}	
+					}
+				}
+				}
+				
+
+				//adds the punch effect ticks 
+				effect.addHitTicks();
+			
+				double velocity = entity.getPositionVector().distanceTo(new Vec3d(entity.prevPosX,entity.posY,entity.prevPosZ));
+			  System.out.println(velocity);
+				
+			   //if the velocity of the punched entity is too low,it will lose the "effect"
+				if(effect.getHitTicks() > 5 && velocity <= 1D) {
+					effect.endEffect(entity);	
+				}
+				
+				//if the punch ticks is over 30 the entity will lose the "effect"
+				if(effect.getHitTicks() > 30) { 
+					effect.endEffect(entity);	
+				}
+			}
+		}
 	
 }
