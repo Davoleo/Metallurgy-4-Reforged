@@ -61,6 +61,5 @@ public class RegistrationHandler {
     {
     	 if(event.getObject() instanceof EntityLivingBase)
     	  event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
-    	 return;
     }
 }

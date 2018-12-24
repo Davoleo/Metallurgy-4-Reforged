@@ -399,11 +399,10 @@ public class EventHandler {
 			EntityPlayer pl = event.getEntityPlayer();
 			Entity entity = event.getTarget();
 			//checks if the players isn't holding an item and if he is wearing 
-			if(pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
-			{
-				//apply effect if the player has a minimum food level or if he is in creative
-				if(pl.isCreative() || pl.getFoodStats().getFoodLevel() >= 4D) {
-				
+			//apply effect if the player has a minimum food level or if he is in creative
+			
+			if(pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}) && (pl.isCreative() || pl.getFoodStats().getFoodLevel() >= 4D))
+			{		
 				if(entity instanceof EntityLivingBase) {
 					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 					effect.setHitTicks(1);
@@ -434,7 +433,6 @@ public class EventHandler {
 				
 				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
 				}
-			}		
 		}
 		
 		

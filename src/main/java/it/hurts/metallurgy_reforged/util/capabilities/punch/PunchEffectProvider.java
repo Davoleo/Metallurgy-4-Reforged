@@ -21,13 +21,13 @@ public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
-        return capability == PUNCH_EFFECT_CAP;
+        return capability.equals(PUNCH_EFFECT_CAP);
     }
 
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-        return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.<T> cast(this.instance) : null;
+        return capability.equals(PUNCH_EFFECT_CAP) ? PUNCH_EFFECT_CAP.<T> cast(this.instance) : null;
     }
 
     @Override
