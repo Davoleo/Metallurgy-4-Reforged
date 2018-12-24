@@ -36,7 +36,6 @@ public class PunchEffect implements IPunchEffect{
 	public void endEffect(EntityLivingBase entity) {
 		this.setHitTicks(0);
 		entity.noClip = this.noClip;
-		System.out.println("end");
 	}
 
 

@@ -473,7 +473,6 @@ public class EventHandler {
 								if(hardness >= 0)
 								{
 									
-									System.out.println(hardness);
 									if(!state.getMaterial().isLiquid()) {
 								  if(!entity.world.isRemote)
 							       entity.world.destroyBlock(pos, true);				     
@@ -496,8 +495,6 @@ public class EventHandler {
 				effect.addHitTicks();
 			
 				double velocity = entity.getPositionVector().distanceTo(new Vec3d(entity.prevPosX,entity.posY,entity.prevPosZ));
-			  System.out.println(velocity);
-				
 			   //if the velocity of the punched entity is too low,it will lose the "effect"
 				if(effect.getHitTicks() > 5 && velocity <= 1D) {
 					effect.endEffect(entity);	
