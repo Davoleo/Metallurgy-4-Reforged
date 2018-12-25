@@ -92,4 +92,10 @@ public class Metal {
     public FluidBlockBase getFluidBlock() {
         return fluidBlock;
     }
+
+    @Override
+    public String toString()
+    {
+        return stats.getName();
+    }
 }
