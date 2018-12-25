@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic;
+package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
@@ -13,16 +13,16 @@ import slimeknights.tconstruct.library.materials.Material;
 *
 ***************************/
 
-public class MaterialMetallurgy extends Material{
+public class TiCMaterial extends Material{
 
 	private final Metal metal;
 	
-	public MaterialMetallurgy(Metal metal) {
+	public TiCMaterial(Metal metal) {
 		super(metal.getStats().getName(), metal.getMolten().getColor(), false);
 		this.metal = metal;
 		this.setFluid(metal.getMolten());
 		this.setCastable(true);
-		MetallurgyMaterials.addMaterialStats(metal, this);
+		TiCMaterials.addMaterialStats(metal, this);
 		addCommonItems((metal.getStats().getOreDictName()));
 	}
 

@@ -2,7 +2,7 @@
 
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
- import it.hurts.metallurgy_reforged.integration.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
  import it.hurts.metallurgy_reforged.util.ModChecker;

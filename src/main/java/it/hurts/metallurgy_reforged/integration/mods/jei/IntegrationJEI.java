@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.integration;
+package it.hurts.metallurgy_reforged.integration.mods.jei;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.gui.GuiAlloyer;

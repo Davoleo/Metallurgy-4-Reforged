@@ -1,9 +1,9 @@
-package it.hurts.metallurgy_reforged.integration;
+package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 
 import com.google.common.collect.Table;
-import it.hurts.metallurgy_reforged.integration.mods.tic.MaterialMetallurgy;
-import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyMaterials;
+import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
+import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterials;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
@@ -29,7 +29,7 @@ public class IntegrationTIC{
 	public static void preInit() {
 		for (Metal metals : ModMetals.metalList) {
 			if (checkMaterial(metals)) {
-				MaterialMetallurgy material = new MaterialMetallurgy(metals);
+				TiCMaterial material = new TiCMaterial(metals);
 
 				TinkerRegistry.addMaterial(material);
 			}
@@ -46,7 +46,7 @@ public class IntegrationTIC{
 				m.setRepresentativeItem(metals.getStats().getOreDictName());
 				
 //				Chiamata al metodo per aggiungere i traits
-				MetallurgyMaterials.addTraits(metals, m);
+				TiCMaterials.addTraits(metals, m);
 				
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metals.getStats().getOreDictName());

@@ -2,7 +2,7 @@ package it.hurts.metallurgy_reforged.integration.mods.jei.alloyer;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.integration.IntegrationJEI;
+import it.hurts.metallurgy_reforged.integration.mods.jei.IntegrationJEI;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.*;
 import mezz.jei.api.ingredients.IIngredients;

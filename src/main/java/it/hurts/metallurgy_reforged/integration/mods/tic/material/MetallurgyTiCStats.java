@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic;
+package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
@@ -14,12 +14,12 @@ import slimeknights.tconstruct.library.materials.HeadMaterialStats;
  * Time   : 19:40:02
  *
  ***************************/
-public class MetallurgyTinkerStats {
+public class MetallurgyTiCStats {
 	public final Metal metal;
 	
 	public final AbstractMaterialStats[] stats;
 	
-	public MetallurgyTinkerStats(Metal metal,AbstractMaterialStats...abstractMaterialStats) {
+	public MetallurgyTiCStats(Metal metal, AbstractMaterialStats...abstractMaterialStats) {
 		this.metal = metal;
 		this.stats = abstractMaterialStats;
 		TinkerMetals.metalStatsList.add(this);

@@ -1,8 +1,4 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic;
-
-import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
-import static slimeknights.tconstruct.tools.TinkerTraits.magnetic;
-import static slimeknights.tconstruct.tools.TinkerTraits.magnetic2;
+package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
@@ -11,6 +7,10 @@ import it.hurts.metallurgy_reforged.material.ToolStats;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+
+import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
+import static slimeknights.tconstruct.tools.TinkerTraits.magnetic;
+import static slimeknights.tconstruct.tools.TinkerTraits.magnetic2;
 
 /***************************
 *
@@ -22,14 +22,14 @@ import slimeknights.tconstruct.library.materials.Material;
 *
 ***************************/
 
-public class MetallurgyMaterials {
+public class TiCMaterials {
 	
 	
 	
 	public static void addMaterialStats(Metal metal, Material material){	
 		MetalStats metalS = metal.getStats();
 		
-		MetallurgyTinkerStats stats = TinkerMetals.getMetal(metal);
+		MetallurgyTiCStats stats = TinkerMetals.getMetal(metal);
 		
 		if(stats != null)
 		{
@@ -41,9 +41,9 @@ public class MetallurgyMaterials {
 			ToolStats TStats = metalS.getToolStats();
 			if(TStats != null)
 			{
-				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getHeadA(metal));
-				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getHandleA(metal));
-				TinkerRegistry.addMaterialStats(material, MetallurgyTinkerStats.getExtraA(metal));			
+				TinkerRegistry.addMaterialStats(material, MetallurgyTiCStats.getHeadA(metal));
+				TinkerRegistry.addMaterialStats(material, MetallurgyTiCStats.getHandleA(metal));
+				TinkerRegistry.addMaterialStats(material, MetallurgyTiCStats.getExtraA(metal));
 			}
 		}	
 	}
