@@ -191,22 +191,11 @@ public class EventHandler {
 			DamageSource lastD = event.player.getLastDamageSource();
 		}
 
+		//TODO : Particle Effect
 		//Quicksilver Armor (Speed + particle effect)
 		if (isPlayerWearingArmor(event.player, new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots}))
 		{
-			event.player.spawnRunningParticles();
-
-
-			if(inputCheck == null)
-				inputCheck = new MovementInputFromOptions(Minecraft.getMinecraft().gameSettings);
-
-			inputCheck.updatePlayerMoveState();
-
-			if((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
-			{
-				//event.player.motionX *=
-				//event.player.motionZ *=
-			}
+			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 1, false, false));
 		}
 
 //		Speed effect of Road

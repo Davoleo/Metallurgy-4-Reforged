@@ -163,10 +163,10 @@ public class ModArmors {
     public static ItemArmorBase prometheum_legs = new ItemArmorBase(ModMetals.PROMETHEUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "prometheum_legs", Tooltips.PROMETHEUM_ARMOR_EFFECT);
     public static ItemArmorBase prometheum_boots = new ItemArmorBase(ModMetals.PROMETHEUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "prometheum_boots", Tooltips.PROMETHEUM_ARMOR_EFFECT);
 
-    public static ItemArmorBase quicksilver_helmet=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.HEAD, "quicksilver_helmet");
-    public static ItemArmorBase quicksilver_chest=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.CHEST, "quicksilver_chest");
-    public static ItemArmorBase quicksilver_legs=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.LEGS, "quicksilver_legs");
-    public static ItemArmorBase quicksilver_boots=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.FEET, "quicksilver_boots");
+    public static ItemArmorBase quicksilver_helmet=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.HEAD, "quicksilver_helmet", Tooltips.QUICKSILVER_ARMOR_EFFECT);
+    public static ItemArmorBase quicksilver_chest=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.CHEST, "quicksilver_chest", Tooltips.QUICKSILVER_ARMOR_EFFECT);
+    public static ItemArmorBase quicksilver_legs=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.LEGS, "quicksilver_legs", Tooltips.QUICKSILVER_ARMOR_EFFECT);
+    public static ItemArmorBase quicksilver_boots=new ItemArmorBase(ModMetals.QUICKSILVER.getArmorMaterial(),EntityEquipmentSlot.FEET, "quicksilver_boots", Tooltips.QUICKSILVER_ARMOR_EFFECT);
     
     public static ItemArmorBase sanguinite_helmet = new ItemArmorBase(ModMetals.SANGUINITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "sanguinite_helmet");
     public static ItemArmorBase sanguinite_chest = new ItemArmorBase(ModMetals.SANGUINITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "sanguinite_chest");
