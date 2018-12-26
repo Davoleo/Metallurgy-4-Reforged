@@ -9,6 +9,8 @@ import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
 import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
+ import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
+ import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
  import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
  import net.minecraftforge.common.MinecraftForge;
@@ -67,6 +69,7 @@ public class Metallurgy {
 	public void init(FMLInitializationEvent event) {
 		ModRecipes.init();
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
+		BlockCrusherRecipes.registerDefaultOreRecipes();
 	}
 
 
