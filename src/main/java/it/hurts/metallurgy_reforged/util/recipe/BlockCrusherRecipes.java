@@ -95,9 +95,9 @@ public class BlockCrusherRecipes {
 
     public static void registerDefaultOreRecipes() {
         for (String ore : OreDictionary.getOreNames()) {
-            add(ore, "ore", "dust", 2, .5f);
-            add(ore, "ore", "gem", 15, .5f);
-            add(ore, "ingot", "dust", 1, .1f);
+            add(ore, "ore", "dust", 2, 0.75f);
+            add(ore, "ore", "gem", 2, 0.5f);
+            add(ore, "ingot", "dust", 1, 0.1f);
         }
         //Removed the flower section
     }
