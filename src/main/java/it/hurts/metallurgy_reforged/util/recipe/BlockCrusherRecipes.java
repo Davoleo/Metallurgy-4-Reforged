@@ -2,14 +2,21 @@ package it.hurts.metallurgy_reforged.util.recipe;
 
 import com.google.common.collect.Maps;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.container.ContainerNull;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.List;
 import java.util.Map;
 
 /*************************************************
@@ -89,5 +96,42 @@ public class BlockCrusherRecipes {
     public Map<ItemStack, ItemStack> getRecipeMap()
     {
         return crushingList;
+    }
+
+    public static void registerDefaultOreRecipes() {
+        for (String ore : OreDictionary.getOreNames()) {
+            add(ore, "ore", "dust", 2, .5f);
+            add(ore, "ore", "gem", 15, .5f);
+            add(ore, "ingot", "dust", 1, .1f);
+        }
+        for (Item item : ForgeRegistries.ITEMS) {
+            //if (item.getRegistryName().getResourcePath().contains("flower")) {
+            for (int i = 0; i < 16; i++) {
+                ItemStack s = new ItemStack(item, 1, i);
+                InventoryCrafting ic = new InventoryCrafting(new ContainerNull(), 3, 3);
+                ic.setInventorySlotContents(0, s);
+                ItemStack result = ItemStack.EMPTY;
+                try {
+                    result = CraftingManager.findMatchingResult(ic,null);
+                } catch (Exception e) {
+                }
+                if (!result.isEmpty() && result.getCount() == 1) {
+                    BlockCrusherRecipes.getInstance().addCrushingRecipe(s, ItemHandlerHelper.copyStackWithSize(result, 3), .1f);
+                }
+                if (!item.getHasSubtypes())
+                    break;
+            }
+            //}
+        }
+    }
+
+    private static void add(String ore, String in, String out, int amount, float exp) {
+        if (ore.length() <= in.length())
+            return;
+        String mat = ore.substring(in.length());
+        List<ItemStack> outs = OreDictionary.getOres(out + mat);
+        if (ore.startsWith(in) && !outs.isEmpty())
+            for (ItemStack stack : OreDictionary.getOres(ore))
+                BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
     }
 }
