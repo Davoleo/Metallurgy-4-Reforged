@@ -1,6 +1,10 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
+import slimeknights.tconstruct.library.materials.HandleMaterialStats;
+import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -33,6 +37,13 @@ public class TinkerMetals {
 //	 ++ Test ++
 //	 public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE, new HeadMaterialStats(1, 1, 1, 1),new HandleMaterialStats(1, 1));
 //	 public static MetallurgyTiCStats ADAMANTINE = new MetallurgyTiCStats(ModMetals.ADAMANTINE, new HandleMaterialStats(1, 1), MetallurgyTiCStats.getHeadA(ModMetals.ADAMANTINE));
+	
+	public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE, new HeadMaterialStats(600, 14F, 14, 4), new HandleMaterialStats(0.55F, 215), new ExtraMaterialStats(40));
+	public static MetallurgyTiCStats INFUSCOLIUM = new MetallurgyTiCStats(ModMetals.INFUSCOLIUM, new HeadMaterialStats(450, 25F, 14, 3), new HandleMaterialStats(0.45F, 190), new ExtraMaterialStats(15));
+	public static MetallurgyTiCStats LEMURITE = new MetallurgyTiCStats(ModMetals.LEMURITE, new HeadMaterialStats(200, 10F, 8, 2), new HandleMaterialStats(0.90F, 150), new ExtraMaterialStats(30));
+	public static MetallurgyTiCStats MEUTOITE = new MetallurgyTiCStats(ModMetals.MEUTOITE, new HeadMaterialStats(550, 20F, 15, 5), new HandleMaterialStats(1.5F, 250), new ExtraMaterialStats(75));
+	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM, new HeadMaterialStats(620, 15F, 15, 5), new HandleMaterialStats(0.75F, 200), new ExtraMaterialStats(47));
+	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 10, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45));
 //	 public static MetallurgyTiCStats ANGMALLEN = new MetallurgyTiCStats(ModMetals.ANGMALLEN);
 
 	 @Nullable

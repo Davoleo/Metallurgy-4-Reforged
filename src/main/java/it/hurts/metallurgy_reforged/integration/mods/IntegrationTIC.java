@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic;
+package it.hurts.metallurgy_reforged.integration.mods;
 
 
 import com.google.common.collect.Table;
