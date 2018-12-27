@@ -31,6 +31,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -419,8 +420,11 @@ public class EventHandler {
 			//checks if the players isn't holding an item and if he is wearing 
 			//apply effect if the player has a minimum food level or if he is in creative
 			
-			if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}) && (pl.isCreative() || pl.getFoodStats().getFoodLevel() >= 4D))
+			if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
 			{		
+				
+				if(pl.getFoodStats().getFoodLevel() >= 4D || pl.isCreative()){
+				
 				if(entity instanceof EntityLivingBase) {
 					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 					effect.setHitTicks(1);
@@ -451,6 +455,11 @@ public class EventHandler {
 				
 				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
 				}
+				else
+				{
+				      pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	                 
+				}
+			}
 		}
 		
 		
