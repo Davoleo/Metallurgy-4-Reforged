@@ -33,7 +33,7 @@ public class ModMetals {
             new ToolStats(30, 3, 300, 7F, 6F), new FluidStats(0xFFF1E472), -1).createMetal();
     public static final Metal ASTRAL_SILVER = new MetalStats("astral_silver", "AstralSilver", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 5, 6, 2}, 9, 15, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC),
-            new ToolStats(30, 5, 35, 12F, 5F), new FluidStats(0xFF70C4C4), 4).createMetal();
+            new ToolStats(30, 5, 350, 12F, 5F), new FluidStats(0xFF70C4C4), 4).createMetal();
     public static final Metal ATLARUS = new MetalStats("atlarus", "Atlarus", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 3, 3, 4}, 2, 35, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(22, 7, 1750, 10F, 8F), new FluidStats(0xFFC0C601), 6).createMetal();
@@ -51,7 +51,7 @@ public class ModMetals {
             new ToolStats(9, 3, 250, 6F, 5F), new FluidStats(0xFFFFB301), -1).createMetal();
     public static final Metal CARMOT = new MetalStats("carmot", "Carmot", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 4, 5, 2}, 7, 28, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(40, 5, 50, 12F, 5F), new FluidStats(0xFFE5D868), 4).createMetal();
+            new ToolStats(40, 5, 500, 12F, 5F), new FluidStats(0xFFE5D868), 4).createMetal();
     public static final Metal CELENEGIL = new MetalStats("celenegil", "Celenegil", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 6, 7, 5}, 50, 160, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(50, 6, 1600, 14F, 7F), new FluidStats(0xFF86E51A), -1).createMetal();
@@ -72,7 +72,7 @@ public class ModMetals {
             new ToolStats(30, 4, 1800, 8F, 8F), new FluidStats(0xFF420098), -1).createMetal();
     public static final Metal ELECTRUM = new MetalStats("electrum", "Electrum", 2, LOW_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_IMPACT),
-            new ToolStats(30, 2, 50, 14F, 5F), new FluidStats(0xFFEFEF57), -1).createMetal();
+            new ToolStats(30, 2, 70, 14F, 5F), new FluidStats(0xFFEFEF57), -1).createMetal();
     public static final Metal EXIMITE = new MetalStats("eximite", "Eximite", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDERDRAGON_GROWL),
             new ToolStats(25, 7, 1000, 8F, 7F), new FluidStats(0xFF5E4191), 3).createMetal();
@@ -128,7 +128,7 @@ public class ModMetals {
             new ToolStats(5, 3, 400, 6F, 7F), new FluidStats(0xFF8E755D), -1).createMetal();
     public static final Metal SILVER = new MetalStats("silver", "Silver", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 3, 4, 2}, 20, 8, 2.1F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(20, 1, 25, 12F, 5F), new FluidStats(0xFFA7C3D5), 1).createMetal();
+            new ToolStats(20, 1, 25, 15F, 5F), new FluidStats(0xFFA7C3D5), 1).createMetal();
     public static final Metal STEEL = new MetalStats("steel", "Steel", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 40, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 4, 750, 8F, 7F), new FluidStats(0xFF757575), -1).createMetal();

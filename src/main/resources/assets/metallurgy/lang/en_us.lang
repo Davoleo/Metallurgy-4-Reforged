@@ -752,3 +752,6 @@ tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 
 #Utils
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
+
+#Effect
+effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!
