@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.util.FakePlayer;
 
 /*************************************************
  * Author: Davoleo
@@ -45,6 +46,10 @@ public class Utils {
 
     public static String localize(String unlocalized)
     {
-        return new TextComponentTranslation(unlocalized, new Object[0]).getFormattedText();
+        return new TextComponentTranslation(unlocalized).getFormattedText();
+    }
+
+    public static boolean isFakePlayer(EntityPlayer player) {
+        return player instanceof FakePlayer || (player != null);
     }
 }
