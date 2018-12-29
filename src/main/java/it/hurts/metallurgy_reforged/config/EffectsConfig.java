@@ -32,6 +32,7 @@ public class EffectsConfig {
     public static boolean platinumArmorEffect = true;
     public static boolean prometheumArmorEffect = true;
     public static boolean vulcaniteArmorEffect = true;
+    public static boolean inolashiteArmorEffect = true;
 
     //Pickaxes
     public static boolean deepIronPickaxeEffect = true;

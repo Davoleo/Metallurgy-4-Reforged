@@ -5,12 +5,17 @@
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
  import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
+import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
+import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
+import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
  import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
  import net.minecraftforge.common.MinecraftForge;
- import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fluids.FluidRegistry;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -57,6 +62,7 @@ public class Metallurgy {
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		TileEntityHandler.registerTileEntities();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 	}
 
 	@Mod.EventHandler
