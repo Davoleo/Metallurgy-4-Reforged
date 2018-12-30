@@ -15,6 +15,7 @@
     }
   },
   "result":{
-    "item":"metallurgy:midasium_axe"
+    "item":"metallurgy:midasium_axe",
+    "nbt":"{ench:[{lvl:1s,id:35s}]}"
   }
 }

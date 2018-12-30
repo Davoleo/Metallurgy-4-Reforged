@@ -1,8 +1,10 @@
 package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 
 import javax.annotation.Nonnull;
 
@@ -30,6 +32,11 @@ public class ItemBase extends Item{
 	public void registerItemModel()
     {
 		Metallurgy.proxy.registerItemRenderer(this, 0, name);
+	}
+
+	public void registerItemModel(Item item, int meta, String subdirectory)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdirectory + "/" + name, "inventory"));
 	}
 
 	@Nonnull

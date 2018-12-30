@@ -11,13 +11,14 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraftforge.common.util.FakePlayer;
 
 /*************************************************
  * Author: Davoleo
  * Date: 29/09/2018
  * Hour: 23.39
  * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
+ * Copyright - Â© - Davoleo - 2018
  **************************************************/
 
 public class Utils {
@@ -96,6 +97,10 @@ public class Utils {
     
     public static String localize(String unlocalized)
     {
-        return new TextComponentTranslation(unlocalized, new Object[0]).getFormattedText();
+        return new TextComponentTranslation(unlocalized).getFormattedText();
+    }
+
+    public static boolean isFakePlayer(EntityPlayer player) {
+        return player instanceof FakePlayer || (player != null);
     }
 }
