@@ -9,6 +9,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -44,12 +45,17 @@ public class ItemAxeBase extends ItemAxe {
         this.name = name;
         ModTools.toolList.add(this);
     }
+    public ItemAxeBase(ToolMaterial material, String name,  String tooltip)
+    {
+       this(material, name, tooltip, null, 0);
+    }
     
-    public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
+    public ItemAxeBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
         super(material, 3F, -1F);
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);
+        this.tooltip = tooltip;
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
