@@ -218,11 +218,15 @@ public class EventHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 1, false, false));
 		}
 
+
+		//removes the blindness effect when wearing shadow steel armor
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}) && pl.isPotionActive(MobEffects.BLINDNESS))
+	       pl.removeActivePotionEffect(MobEffects.BLINDNESS);
 		
 		
 		ItemStack stack =  pl.getHeldItemMainhand();
 		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-		if(stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
+		if(EffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
 		{
 		 
 			float percentage = Utils.getLightArmorPercentage(pl, 50F);
@@ -387,7 +391,7 @@ public class EventHandler {
 				&& EffectsConfig.deepIronPickaxeEffect)
 			event.setNewSpeed(6F);
 		//set tools break speed based on light except for hoe and sword
-				if(Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+				if(EffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
 					float percentage = Utils.getLightArmorPercentage(pl,100F);
 					float speed = event.getNewSpeed()  * percentage / 40F;
 					event.setNewSpeed(event.getOriginalSpeed() + speed);
@@ -434,7 +438,7 @@ public class EventHandler {
 		{
 			EntityPlayer pl = (EntityPlayer) event.getEntityLiving();
 			//check if player is wearing the shadow steel armor
-			if(isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
+			if(EffectsConfig.shadowSteelArmorEffect && isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
 			{
 				//get light percentage,maximum 30%
 				float percentage = Utils.getLightArmorPercentage(pl,40F);
