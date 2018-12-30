@@ -45,6 +45,19 @@ public class ItemSwordBase extends ItemSword {
        this(material, name, tooltip, null, 0);
     }
     
+    public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+    {
+        super(material);
+        setRegistryName(name);
+        setTranslationKey(name);
+        this.name = name;
+        this.tooltip = tooltip;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+        setCreativeTab(MetallurgyTabs.tabTool);
+        ModTools.toolList.add(this);
+    }
+    
     public ItemSwordBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
     {
         super(material);

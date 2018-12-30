@@ -51,6 +51,18 @@ public class ItemShovelBase extends ItemSpade {
        this(material, name, tooltip, null, 0);
     }
     
+    public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
+        super(material);
+        setTranslationKey(name);
+        setRegistryName(name);
+        this.tooltip = tooltip;
+        this.name = name;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+        setCreativeTab(MetallurgyTabs.tabTool);
+        ModTools.toolList.add(this);
+    }
+    
     public ItemShovelBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
         super(material);
         setTranslationKey(name);

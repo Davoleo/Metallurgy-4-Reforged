@@ -26,6 +26,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -40,6 +41,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -195,7 +197,7 @@ public class EventHandler {
 
 //		Carmot Armor (Haste I)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.carmot_helmet,ModArmors.carmot_chest,ModArmors.carmot_legs,ModArmors.carmot_boots}) && EffectsConfig.carmotArmorEffect)
-					event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
+			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
 		
 
 //		Prometheum Armor (No potion, need to implement a new Effect)
@@ -211,15 +213,9 @@ public class EventHandler {
 			DamageSource lastD = event.player.getLastDamageSource();
 		}
 
-		//TODO : Particle Effect
-		//Quicksilver Armor (Speed + particle effect)
-		if (isPlayerWearingArmor(event.player, new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots}))
-		{
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 1, false, false));
-		}
 
 
-		//removes the blindness effect when wearing shadow steel armor
+//		removes the blindness effect when wearing shadow steel armor
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}) && pl.isPotionActive(MobEffects.BLINDNESS))
 	       pl.removeActivePotionEffect(MobEffects.BLINDNESS);
 		
@@ -462,11 +458,20 @@ public class EventHandler {
 			}
 		}
 	}
-	
-
-		 
-		  
-		//punch effect inolashite armor
+ 
+//		Increase the velocity of item action
+		@SubscribeEvent
+	    public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
+	    	if(ev.getEntityLiving() instanceof EntityPlayer)
+	    		if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots})) {
+		    		if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
+			        	ev.setDuration(ev.getDuration() - 6);
+			        else
+			        	ev.setDuration(Math.round(ev.getDuration() / 2F));
+		    	}
+	    }
+		
+//		punch effect inolashite armor
 		@SubscribeEvent
 		public static void addPunchEffect(AttackEntityEvent event)
 		{	 
@@ -518,7 +523,7 @@ public class EventHandler {
 		}
 		
 		
-		//event tick entity
+//		event tick entity
 		@SubscribeEvent
 		public static void applyPunchEffects(LivingUpdateEvent event)
 		{

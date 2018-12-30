@@ -734,6 +734,7 @@ tooltip.metallurgy.quicksilver_armor_effect=§3Faster steps
 tooltip.metallurgy.shadow_iron_armor_effect=§8No way of getting blinded
 tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
 tooltip.metallurgy.shadow_steel_armor_effect=§8The Darkness will defend you from damage... for now.
+tooltip.metallurgy.quicksilver_armor_effect=§bYou will be really "quick"
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
