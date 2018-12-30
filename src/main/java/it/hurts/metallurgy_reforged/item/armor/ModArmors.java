@@ -103,7 +103,7 @@ public class ModArmors {
     public static ItemArmorBase electrum_legs = new ItemArmorBase(ModMetals.ELECTRUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "electrum_legs");
     public static ItemArmorBase electrum_boots = new ItemArmorBase(ModMetals.ELECTRUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "electrum_boots");
 
-    public static ItemArmorBase eximite_helmet = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "eximite_helmet");
+    public static ItemArmorBase eximite_helmet = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "eximite_helmet", Tooltips.EXIMITE_HELMET_EFFECT);
     public static ItemArmorBase eximite_chest = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "eximite_chest");
     public static ItemArmorBase eximite_legs = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "eximite_legs");
     public static ItemArmorBase eximite_boots = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "eximite_boots");

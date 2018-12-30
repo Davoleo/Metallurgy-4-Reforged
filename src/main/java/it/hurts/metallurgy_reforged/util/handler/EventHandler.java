@@ -41,6 +41,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -74,7 +75,7 @@ public class EventHandler {
 	
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
-	//	Mithril Armor (Ultra istinto)
+//	Mithril Armor (Ultra istinto)
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void glowingArmorEffect(RenderLivingEvent.Pre<EntityLivingBase> ev)
@@ -207,13 +208,6 @@ public class EventHandler {
 //		Shadow Iron Armor (No Blindness)
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_iron_helmet,ModArmors.shadow_iron_chest,ModArmors.shadow_iron_legs,ModArmors.shadow_iron_boots}))
 			event.player.removePotionEffect(MobEffects.BLINDNESS);
-		
-//		Ceruclase Armor (inflict Slowness on attackers when hit)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.ceruclase_helmet,ModArmors.ceruclase_chest,ModArmors.ceruclase_legs,ModArmors.ceruclase_boots})) {
-			DamageSource lastD = event.player.getLastDamageSource();
-		}
-
-
 
 //		removes the blindness effect when wearing shadow steel armor
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}) && pl.isPotionActive(MobEffects.BLINDNESS))
@@ -356,7 +350,6 @@ public class EventHandler {
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
 			}
 
-
 //			Kalendrite sword (Regeneration)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))
 					&& EffectsConfig.kalendriteSwordEffect) {
@@ -393,8 +386,24 @@ public class EventHandler {
 					event.setNewSpeed(event.getOriginalSpeed() + speed);
 				}
 	}
-
 	
+	@SubscribeEvent
+	public static void onEntityDeth(LivingDeathEvent event) {
+		Entity attacker = event.getSource().getImmediateSource();
+		if(attacker instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) attacker; 
+//			Celenegil Sword ( Give Speed and Strenght on entity kill )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true) {
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, false, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 1, false, false));
+			}
+			
+//			Orichalcum Sword ( Give Strenght on entity kill )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) && player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true)
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 1, false, false));
+		}
+	}
+
 	
 //	Sanguinite Sword (Vampirism)
 	@SubscribeEvent
@@ -445,153 +454,150 @@ public class EventHandler {
 	}
 
 
-//	Effects
-
-
 //	FireImmunity
-		@SubscribeEvent
-		public static void cancelFireDamage (LivingAttackEvent event){
+	@SubscribeEvent
+	public static void cancelFireDamage (LivingAttackEvent event){
 		if (event.getEntity() instanceof EntityPlayer) {
 			if(event.getSource().isFireDamage()) {
-             if(isPlayerWearingArmor((EntityPlayer) event.getEntity(), new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}))
-				 event.setCanceled(true);
+				if(isPlayerWearingArmor((EntityPlayer) event.getEntity(), new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}))
+					event.setCanceled(true);
 			}
 		}
 	}
  
-//		Increase the velocity of item action
-		@SubscribeEvent
-	    public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
-	    	if(ev.getEntityLiving() instanceof EntityPlayer)
-	    		if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots})) {
-		    		if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
-			        	ev.setDuration(ev.getDuration() - 6);
-			        else
-			        	ev.setDuration(Math.round(ev.getDuration() / 2F));
-		    	}
-	    }
+//	Increase the velocity of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
+	@SubscribeEvent
+	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
+		if(ev.getEntityLiving() instanceof EntityPlayer)
+			if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots})) {
+				if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
+					ev.setDuration(ev.getDuration() - 6);
+				else
+					ev.setDuration(Math.round(ev.getDuration() / 2F));
+			}
+	}
 		
-//		punch effect inolashite armor
-		@SubscribeEvent
-		public static void addPunchEffect(AttackEntityEvent event)
-		{	 
-			EntityPlayer pl = event.getEntityPlayer();
-			Entity entity = event.getTarget();
-			//checks if the players isn't holding an item and if he is wearing 
-			//apply effect if the player has a minimum food level or if he is in creative
-			
-			if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
-			{		
-				
-				if(pl.getFoodStats().getFoodLevel() >= 4D || pl.isCreative()){
-				
+//	Punch effect inolashite armor
+	@SubscribeEvent
+	public static void addPunchEffect(AttackEntityEvent event)
+	{	 
+		EntityPlayer pl = event.getEntityPlayer();
+		Entity entity = event.getTarget();
+		//checks if the players isn't holding an item and if he is wearing 
+		//apply effect if the player has a minimum food level or if he is in creative
+
+		if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
+		{		
+
+			if(pl.getFoodStats().getFoodLevel() >= 4D || pl.isCreative()){
+
 				if(entity instanceof EntityLivingBase) {
 					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 					effect.setHitTicks(1);
 					effect.setNoClip(entity.noClip);
 					entity.noClip = true;
-					}
-				
+				}
+
 				float yaw = pl.getRotationYawHead();
 				float pitch = pl.rotationPitch;
-						
+
 				double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 				double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 				double f = MathHelper.sqrt(x * x + z * z);
 				double velocity = 8D;
-			    x = x / (double)f;
-			    z = z / (double)f;
-			    x = x * (double)velocity;
-			    z = z * (double)velocity;
+				x = x / (double)f;
+				z = z / (double)f;
+				x = x * (double)velocity;
+				z = z * (double)velocity;
 				entity.motionX = x;
 				entity.motionZ = z;
 				//remove food level
 				if(!pl.isCreative())
 				{
-				 pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 4);
-				 pl.getFoodStats().setFoodSaturationLevel(pl.getFoodStats().getSaturationLevel() - 4);
+					pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 4);
+					pl.getFoodStats().setFoodSaturationLevel(pl.getFoodStats().getSaturationLevel() - 4);
 				}
 				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);
-				
+
 				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
-				}
-				else
-				{
-				      pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	                 
-				}
+			}
+			else
+			{
+				pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	                 
 			}
 		}
+	}
 		
 		
-//		event tick entity
-		@SubscribeEvent
-		public static void applyPunchEffects(LivingUpdateEvent event)
+//	Event tick entity
+	@SubscribeEvent
+	public static void applyPunchEffects(LivingUpdateEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
+		IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+
+//		check if entity has been punched
+		if(effect.getHitTicks() > 0)
 		{
-			EntityLivingBase entity = event.getEntityLiving();
-			IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-			
-			//check if entity has been punched
-			if(effect.getHitTicks() > 0)
+			Random rand = new Random();		
+
+			for (int i = 0; i < 10; ++i)
 			{
-			   Random rand = new Random();		
-				
-				 for (int i = 0; i < 10; ++i)
-		          {
-		             entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
-		          }
-		
-				 AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.5D, 0D, 0.5D);
-				
-				if(!entity.isDead)
-				{
-					
-					//destroy blocks and damage the punched entity
+				entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
+			}
+
+			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.5D, 0D, 0.5D);
+
+			if(!entity.isDead)
+			{
+
+//				destroy blocks and damage the punched entity
 				for(double i = axisalignedbb.minX;i < axisalignedbb.maxX;i += 0.1D)
 				{
 					for(double j = axisalignedbb.minY;j < axisalignedbb.maxY;j += 0.1D)
 					{
 						for(double k = axisalignedbb.minZ;k < axisalignedbb.maxZ;k += 0.1D)
 						{
-							
+
 							BlockPos pos = new BlockPos(i, j, k);
 							if(!entity.world.isAirBlock(pos)) {
 								IBlockState state = entity.world.getBlockState(pos);
 								float hardness = state.getBlockHardness(entity.world, pos);
 								if(hardness >= 0)
 								{
-									
+
 									if(!state.getMaterial().isLiquid()) {
-								  if(!entity.world.isRemote)
-							       entity.world.destroyBlock(pos, true);				     
-							       entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), hardness);								
+										if(!entity.world.isRemote)
+											entity.world.destroyBlock(pos, true);				     
+										entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), hardness);								
 									}
-									}
+								}
 								else
 								{
 									entity.noClip = effect.hasNoClip();
-									
+
 								}
 							}
 						}	
 					}
 				}
-				}
-				
+			}
 
-				//adds the punch effect ticks 
-				effect.addHitTicks();
-			
-				double velocity = entity.getPositionVector().distanceTo(new Vec3d(entity.prevPosX,entity.posY,entity.prevPosZ));
-			   //if the velocity of the punched entity is too low,it will lose the "effect"
-				if(effect.getHitTicks() > 5 && velocity <= 1D) {
-					effect.endEffect(entity);	
-				}
-				
-				//if the punch ticks is over 30 the entity will lose the "effect"
-				if(effect.getHitTicks() > 30) { 
-					effect.endEffect(entity);	
-				}
+
+//			adds the punch effect ticks 
+			effect.addHitTicks();
+
+			double velocity = entity.getPositionVector().distanceTo(new Vec3d(entity.prevPosX,entity.posY,entity.prevPosZ));
+//	if the velocity of the punched entity is too low,it will lose the "effect"
+			if(effect.getHitTicks() > 5 && velocity <= 1D) {
+				effect.endEffect(entity);	
+			}
+
+//	if the punch ticks is over 30 the entity will lose the "effect"
+			if(effect.getHitTicks() > 30) { 
+				effect.endEffect(entity);	
 			}
 		}
+	}
 	
 }
