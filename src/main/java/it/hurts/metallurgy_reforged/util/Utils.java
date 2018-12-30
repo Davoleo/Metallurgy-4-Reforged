@@ -1,7 +1,5 @@
 package it.hurts.metallurgy_reforged.util;
 
-import java.util.Set;
-
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.item.EntityXPOrb;
