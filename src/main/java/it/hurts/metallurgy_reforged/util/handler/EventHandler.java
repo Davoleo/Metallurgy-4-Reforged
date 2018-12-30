@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.google.common.collect.Lists;
 
@@ -9,12 +10,17 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.Utils;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -61,6 +67,9 @@ public class EventHandler {
 
 	private static MovementInput inputCheck;
 
+	//the speed sword modifier UUID
+	public static final UUID SHADOW_STEEL_ARMOR_MODIFIER_UUID =  UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
+	
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
 	//	Mithril Armor (Ultra istinto)
@@ -209,6 +218,43 @@ public class EventHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 60, 1, false, false));
 		}
 
+
+		//removes the blindness effect when wearing shadow steel armor
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}) && pl.isPotionActive(MobEffects.BLINDNESS))
+	       pl.removeActivePotionEffect(MobEffects.BLINDNESS);
+		
+		
+		ItemStack stack =  pl.getHeldItemMainhand();
+		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+		if(EffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
+		{
+		 
+			float percentage = Utils.getLightArmorPercentage(pl, 50F);
+			//calculate the Speed to add to the sword
+			double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
+	    	//the modifier UUID
+			AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID,"Shadow Steel Armor Modifier", added_speed, 0);
+            //checks if player has the modifier
+		    if(attackSpeedInstance.getModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID) == null)
+			{
+		    	//if not,add the modifier
+ 				attackSpeedInstance.applyModifier(shadow_steel_modifier);
+			}
+		    else if(attackSpeedInstance.getModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID) != null && attackSpeedInstance.getModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID).getAmount() != added_speed)
+		    {
+		    	//if  player has already the modifier and there is a light change,this method will update the speed attack
+		    	attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
+		    	attackSpeedInstance.applyModifier(shadow_steel_modifier);
+		    }
+		
+		}
+		else if(attackSpeedInstance.getModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID) != null)
+		{
+			//removes the modifier if player doesn't held the sword
+			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
+		}
+		 
+		
 //		Speed effect of Road
 		if ((event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
@@ -337,11 +383,19 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void onBreakBlock(PlayerEvent.BreakSpeed event)
 	{
-		if(event.getEntityPlayer().isInWater()
-				&& event.getEntityPlayer().getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
+		EntityPlayer pl = event.getEntityPlayer();
+		ItemStack mainHandStack = pl.getHeldItemMainhand();
+		
+		if(pl.isInWater()
+				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
 				&& EffectsConfig.deepIronPickaxeEffect)
-
 			event.setNewSpeed(6F);
+		//set tools break speed based on light except for hoe and sword
+				if(EffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+					float percentage = Utils.getLightArmorPercentage(pl,100F);
+					float speed = event.getNewSpeed()  * percentage / 40F;
+					event.setNewSpeed(event.getOriginalSpeed() + speed);
+				}
 	}
 
 	
@@ -378,6 +432,18 @@ public class EventHandler {
 						}
 					}
 				}
+			}
+		}
+		if(event.getEntityLiving() instanceof EntityPlayer)
+		{
+			EntityPlayer pl = (EntityPlayer) event.getEntityLiving();
+			//check if player is wearing the shadow steel armor
+			if(EffectsConfig.shadowSteelArmorEffect && isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
+			{
+				//get light percentage,maximum 30%
+				float percentage = Utils.getLightArmorPercentage(pl,40F);
+				float removedDamage = event.getAmount() * percentage / 100F;
+				event.setAmount(event.getAmount() - removedDamage);			
 			}
 		}
 	}

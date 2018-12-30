@@ -733,6 +733,7 @@ tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
 tooltip.metallurgy.quicksilver_armor_effect=§3Faster steps
 tooltip.metallurgy.shadow_iron_armor_effect=§8No way of getting blinded
 tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
+tooltip.metallurgy.shadow_steel_armor_effect=§8The Darkness will defend you from damage... for now.
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
@@ -746,9 +747,13 @@ tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your ene
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
+tooltip.metallurgy.shadow_steel_sword_effect=§8 The Attack Speed is directly proportional to Darkness... for now.
 
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+
+#Tools
+tooltip.metallurgy.shadow_steel_tool_effect=§8 The Mining Speed is directly proportional to Darkness... for now.
 
 #Utils
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
