@@ -178,10 +178,10 @@ public class ModArmors {
     public static ItemArmorBase shadow_iron_legs = new ItemArmorBase(ModMetals.SHADOW_IRON.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_iron_legs");
     public static ItemArmorBase shadow_iron_boots = new ItemArmorBase(ModMetals.SHADOW_IRON.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_iron_boots");
 
-    public static ItemArmorBase shadow_steel_helmet = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.HEAD, "shadow_steel_helmet", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.CHEST, "shadow_steel_chest", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_steel_legs", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_steel_boots", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_helmet = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.HEAD, "shadow_steel_helmet", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.CHEST, "shadow_steel_chest", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_steel_legs", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_steel_boots", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
 
     public static ItemArmorBase silver_helmet = new ItemArmorBase(ModMetals.SILVER.getArmorMaterial(), EntityEquipmentSlot.HEAD, "silver_helmet");
     public static ItemArmorBase silver_chest = new ItemArmorBase(ModMetals.SILVER.getArmorMaterial(), EntityEquipmentSlot.CHEST, "silver_chest");

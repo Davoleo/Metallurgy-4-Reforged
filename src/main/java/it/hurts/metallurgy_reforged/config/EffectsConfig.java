@@ -33,14 +33,9 @@ public class EffectsConfig {
     public static boolean prometheumArmorEffect = true;
     public static boolean vulcaniteArmorEffect = true;
     public static boolean inolashiteArmorEffect = true;
-    public static boolean shadowSteelArmorEffect = true;
 
     //Pickaxes
     public static boolean deepIronPickaxeEffect = true;
-
-    
-    //Tools 
-    public static boolean shadowSteelToolSpeedEffect = true;
 
     //Swords
     public static boolean ignatiusSwordEffect = true;
@@ -49,7 +44,6 @@ public class EffectsConfig {
     public static boolean tartariteSwordEffect = true;
     public static boolean vulcaniteSwordEffect = true;
     public static boolean vyroxeresSwordEffect = true;
-    public static boolean shadowSteelSwordEffect = true;
 
     private EffectsConfig(){}
 
