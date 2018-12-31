@@ -522,13 +522,14 @@ public class EventHandler {
 	{	 
 		EntityPlayer pl = event.getEntityPlayer();
 		Entity entity = event.getTarget();
-		//checks if the players isn't holding an item and if he is wearing 
-		//apply effect if the player has a minimum food level or if he is in creative
-
+		double hungerValue = 2;
+		
+//		checks if the players isn't holding an item and if he is wearing 
+//		apply effect if the player has a minimum food level or if he is in creative
 		if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
 		{		
 
-			if(pl.getFoodStats().getFoodLevel() >= 4D || pl.isCreative()){
+			if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
 
 				if(entity instanceof EntityLivingBase) {
 					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
@@ -550,14 +551,16 @@ public class EventHandler {
 				z = z * (double)velocity;
 				entity.motionX = x;
 				entity.motionZ = z;
-				//remove food level
+				
+//				remove food level
 				if(!pl.isCreative())
 				{
-					pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 2);
-					pl.getFoodStats().setFoodSaturationLevel(pl.getFoodStats().getSaturationLevel() - 4);
+					pl.getFoodStats().setFoodLevel((int) (pl.getFoodStats().getFoodLevel() - hungerValue));
+					pl.getFoodStats().setFoodSaturationLevel((float) (pl.getFoodStats().getSaturationLevel() - hungerValue));
 				}
 				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);
 
+//				Danno che riceverà l'entità
 				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
 			}
 			else
