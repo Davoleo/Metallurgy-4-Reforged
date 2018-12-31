@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.AIFindPlayerWithoutHelmet;
 import it.hurts.metallurgy_reforged.util.Utils;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
@@ -19,8 +21,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -29,6 +35,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -40,7 +47,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -297,11 +306,11 @@ public class EventHandler {
 		EntityPlayer player = event.getEntityPlayer();
 		if (!player.world.isRemote) {
 
+			Entity foe = event.getTarget();
 //			Shadow Iron Sword (Blindness)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))
 					&& EffectsConfig.shadowIronSwordEffect) {
 
-				Entity foe = event.getTarget();
 				EntityLivingBase foe2 = (EntityLivingBase) foe;
 
 				if ((int) (Math.random() * 100) <= 25)
@@ -312,7 +321,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))
 					&& EffectsConfig.vyroxeresSwordEffect)
 			{
-				Entity foe = event.getTarget();
 
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
@@ -322,7 +330,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))
 					&& EffectsConfig.ignatiusSwordEffect) {
 
-				Entity foe = event.getTarget();
 
 				if ((int) (Math.random() * 100) <= 15)
 					foe.setFire(5);
@@ -332,7 +339,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))
 					&& EffectsConfig.vulcaniteSwordEffect) {
 
-				Entity foe = event.getTarget();
 
 				if ((int) (Math.random() * 100) <= 30)
 					foe.setFire(5);
@@ -342,7 +348,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))
 					&& EffectsConfig.tartariteSwordEffect) {
 
-				Entity foe = event.getTarget();
 
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));
@@ -350,7 +355,7 @@ public class EventHandler {
 			
 //			Mithril Sword (Give Glowing to entity Hitted)
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
-				Entity foe = event.getTarget();
+		
 				
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
@@ -367,11 +372,10 @@ public class EventHandler {
 			
 //			Ceruclase Sword (Give slowness)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ceruclase_sword))) {
-				Entity foe = event.getTarget();
 				
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 70, 1, false, false));
-			}
+			}		
 		}
 	}
 
@@ -393,7 +397,38 @@ public class EventHandler {
 					event.setNewSpeed(event.getOriginalSpeed() + speed);
 				}
 	}
+	//replaces the enderman's AI
+		@SubscribeEvent 
+		public static void constructEntity(EntityEvent.EnteringChunk event)
+		{
+			
+			//check if spawned entity is an enderman
+			if(event.getEntity() instanceof EntityEnderman)
+			{
+				
+				EntityEnderman end = (EntityEnderman) event.getEntity();
+				EntityAIBase aifindPlayer = null;
+				int priority = 0;
+				Iterator<EntityAITaskEntry> entries = end.targetTasks.taskEntries.iterator();
+				while(entries.hasNext())
+				{
+					EntityAITaskEntry entry = entries.next();
+					if(entry.action instanceof EntityAINearestAttackableTarget)		
+						//checks if the AI Class is the AIFindPlayer Class(The Class Used to check if player is watching an enderman)
+						if(entry.action.getClass().getName().contains("EntityEnderman$AIFindPlayer"))
+						{
+							aifindPlayer =  entry.action;
+							priority = entry.priority;
+						}
 
+				}
+				//if the AI class isn't null it will replace the original AI with the AIFindPlayerWithoutHelmet( a new custom AI similar to the original one) 
+				if(aifindPlayer != null) {
+	                 end.targetTasks.removeTask(aifindPlayer);
+	                 end.targetTasks.addTask(priority, new AIFindPlayerWithoutHelmet(aifindPlayer));
+				}
+			}
+		}
 	
 	
 //	Sanguinite Sword (Vampirism)
