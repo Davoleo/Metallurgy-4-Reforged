@@ -243,9 +243,12 @@ public class EventHandler {
 			//removes the modifier if player doesn't held the sword
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
 		}
-		 
-		
-//		Speed effect of Road
+	}
+	
+//	Road Speed Effect
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void roadSpeed(PlayerTickEvent event) {
 		if ((event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
 				&& event.phase == TickEvent.Phase.START && event.side.isClient() && event.player.onGround)
@@ -257,8 +260,8 @@ public class EventHandler {
 
 			if((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
 			{
-				event.player.motionX *= 1.20D;
-				event.player.motionZ *= 1.20D;
+				event.player.motionX *= 1.80D;
+				event.player.motionZ *= 1.80D;
 			}
 		}
 	}
