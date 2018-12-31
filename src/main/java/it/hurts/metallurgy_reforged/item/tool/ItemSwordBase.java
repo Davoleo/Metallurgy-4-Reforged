@@ -51,7 +51,6 @@ public class ItemSwordBase extends ItemSword {
         setRegistryName(name);
         setTranslationKey(name);
         this.name = name;
-        this.tooltip = tooltip;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
         setCreativeTab(MetallurgyTabs.tabTool);

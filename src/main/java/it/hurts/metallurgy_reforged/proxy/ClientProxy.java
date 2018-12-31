@@ -14,7 +14,6 @@ import net.minecraftforge.client.model.ModelLoader;
 *
 ***************************/
 
-@SuppressWarnings("unused")
 public class ClientProxy extends CommonProxy{
 	
 	@Override
