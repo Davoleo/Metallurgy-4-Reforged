@@ -12,7 +12,6 @@ import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.AIFindPlayerWithoutHelmet;
 import it.hurts.metallurgy_reforged.util.Utils;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
@@ -288,7 +287,7 @@ public class EventHandler {
 		 return flag;
 		}
 		
-	//get Specific Armor Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
+//  get Specific Armor Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
 	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl,int index,Item armorEquip)
 	{			
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());	      
@@ -394,37 +393,37 @@ public class EventHandler {
 	}
   
 	//replaces the enderman's AI
-		@SubscribeEvent 
-		public static void constructEntity(EntityEvent.EnteringChunk event)
-		{
-			
-			//check if spawned entity is an enderman
-			if(event.getEntity() instanceof EntityEnderman)
-			{
-				
-				EntityEnderman end = (EntityEnderman) event.getEntity();
-				EntityAIBase aifindPlayer = null;
-				int priority = 0;
-				Iterator<EntityAITaskEntry> entries = end.targetTasks.taskEntries.iterator();
-				while(entries.hasNext())
-				{
-					EntityAITaskEntry entry = entries.next();
-					if(entry.action instanceof EntityAINearestAttackableTarget)		
-						//checks if the AI Class is the AIFindPlayer Class(The Class Used to check if player is watching an enderman)
-						if(entry.action.getClass().getName().contains("EntityEnderman$AIFindPlayer"))
-						{
-							aifindPlayer =  entry.action;
-							priority = entry.priority;
-						}
+	@SubscribeEvent 
+	public static void constructEntity(EntityEvent.EnteringChunk event)
+	{
 
-				}
-				//if the AI class isn't null it will replace the original AI with the AIFindPlayerWithoutHelmet( a new custom AI similar to the original one) 
-				if(aifindPlayer != null) {
-	                 end.targetTasks.removeTask(aifindPlayer);
-	                 end.targetTasks.addTask(priority, new AIFindPlayerWithoutHelmet(aifindPlayer));
-				}
+		//check if spawned entity is an enderman
+		if(event.getEntity() instanceof EntityEnderman)
+		{
+
+			EntityEnderman end = (EntityEnderman) event.getEntity();
+			EntityAIBase aifindPlayer = null;
+			int priority = 0;
+			Iterator<EntityAITaskEntry> entries = end.targetTasks.taskEntries.iterator();
+			while(entries.hasNext())
+			{
+				EntityAITaskEntry entry = entries.next();
+				if(entry.action instanceof EntityAINearestAttackableTarget)		
+					//checks if the AI Class is the AIFindPlayer Class(The Class Used to check if player is watching an enderman)
+					if(entry.action.getClass().getName().contains("EntityEnderman$AIFindPlayer"))
+					{
+						aifindPlayer =  entry.action;
+						priority = entry.priority;
+					}
+
+			}
+			//if the AI class isn't null it will replace the original AI with the AIFindPlayerWithoutHelmet( a new custom AI similar to the original one) 
+			if(aifindPlayer != null) {
+				end.targetTasks.removeTask(aifindPlayer);
+				end.targetTasks.addTask(priority, new AIFindPlayerWithoutHelmet(aifindPlayer));
 			}
 		}
+	}
 
 	
 	@SubscribeEvent
@@ -433,7 +432,7 @@ public class EventHandler {
 		if(attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker; 
 //			Celenegil Sword ( Give Speed and Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true) {
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && (player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true)) {
 				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, false, false));
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 1, false, false));
 			}
@@ -554,7 +553,7 @@ public class EventHandler {
 				//remove food level
 				if(!pl.isCreative())
 				{
-					pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 4);
+					pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - 2);
 					pl.getFoodStats().setFoodSaturationLevel(pl.getFoodStats().getSaturationLevel() - 4);
 				}
 				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);
