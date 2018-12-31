@@ -118,10 +118,10 @@ public class ModArmors {
     public static ItemArmorBase hepatizon_legs = new ItemArmorBase(ModMetals.HEPATIZON.getArmorMaterial(), EntityEquipmentSlot.LEGS, "hepatizon_legs");
     public static ItemArmorBase hepatizon_boots = new ItemArmorBase(ModMetals.HEPATIZON.getArmorMaterial(), EntityEquipmentSlot.FEET, "hepatizon_boots");
 
-    public static ItemArmorBase inolashite_helmet = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "inolashite_helmet");
-    public static ItemArmorBase inolashite_chest = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "inolashite_chest");
-    public static ItemArmorBase inolashite_legs = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "inolashite_legs");
-    public static ItemArmorBase inolashite_boots = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "inolashite_boots");
+    public static ItemArmorBase inolashite_helmet = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "inolashite_helmet", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_chest = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "inolashite_chest", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_legs = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "inolashite_legs", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_boots = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "inolashite_boots", Tooltips.INOLASHITE_ARMOR_EFFECT);
 
     public static ItemArmorBase ignatius_helmet = new ItemArmorBase(ModMetals.IGNATIUS.getArmorMaterial(), EntityEquipmentSlot.HEAD, "ignatius_helmet");
     public static ItemArmorBase ignatius_chest = new ItemArmorBase(ModMetals.IGNATIUS.getArmorMaterial(), EntityEquipmentSlot.CHEST, "ignatius_chest");

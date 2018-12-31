@@ -29,6 +29,7 @@ public class Tooltips {
     public static final String VULCANITE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.vulcanite_armor_effect");
     public static final String SHADOW_STEEL_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.shadow_steel_armor_effect");
     public static final String EXIMITE_HELMET_EFFECT = Utils.localize("tooltip.metallurgy.eximite_helmet_effect");
+    public static final String INOLASHITE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.inolashite_armor_effect");
 
     //Swords
     public static final String CERUCLASE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.ceruclase_sword_effect");
