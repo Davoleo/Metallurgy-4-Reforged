@@ -433,13 +433,13 @@ public class EventHandler {
 			EntityPlayer player = (EntityPlayer) attacker; 
 //			Celenegil Sword ( Give Speed and Strenght on entity kill )
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && (player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true)) {
-				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 1, false, false));
-				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 1, false, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0, false, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 			}
 			
 //			Orichalcum Sword ( Give Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) && player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true)
-				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 1, false, false));
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) && (player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true))
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 		}
 	}
 
