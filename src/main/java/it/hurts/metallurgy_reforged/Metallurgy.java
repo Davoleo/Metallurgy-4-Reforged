@@ -1,29 +1,28 @@
  package it.hurts.metallurgy_reforged;
 
- import it.hurts.metallurgy_reforged.fluid.ModFluids;
- import it.hurts.metallurgy_reforged.gui.GuiHandler;
- import it.hurts.metallurgy_reforged.material.ModMetals;
- import it.hurts.metallurgy_reforged.proxy.CommonProxy;
- import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
+import it.hurts.metallurgy_reforged.gui.GuiHandler;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
 import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
- import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
- import it.hurts.metallurgy_reforged.world.ModWorldGen;
- import net.minecraftforge.common.MinecraftForge;
+import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
+import it.hurts.metallurgy_reforged.world.ModWorldGen;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fluids.FluidRegistry;
- import net.minecraftforge.fml.common.Mod;
- import net.minecraftforge.fml.common.SidedProxy;
- import net.minecraftforge.fml.common.event.FMLInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
- import net.minecraftforge.fml.common.network.NetworkRegistry;
- import net.minecraftforge.fml.common.registry.GameRegistry;
- import org.apache.logging.log4j.Logger;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import org.apache.logging.log4j.Logger;
 
  /***************************
 *
@@ -39,7 +38,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "0.0.4";
+	public static final String VERSION = "0.0.5";
 
 	public static Logger logger;
 

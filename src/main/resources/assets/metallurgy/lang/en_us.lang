@@ -730,25 +730,34 @@ tooltip.metallurgy.kalendrite_armor_effect=§dStrengthens you
 tooltip.metallurgy.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
 tooltip.metallurgy.platinum_armor_effect=§bNight Vision [It's also really sticky]
 tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
-tooltip.metallurgy.quicksilver_armor_effect=§3Faster steps
 tooltip.metallurgy.shadow_iron_armor_effect=§8No way of getting blinded
 tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
+tooltip.metallurgy.shadow_steel_armor_effect=§8The Darkness will defend you from damage... for now
+tooltip.metallurgy.quicksilver_armor_effect=§bYou will be really "quick"
+tooltip.metallurgy.eximite_helmet_effect=§5Look how beautiful the endermans are up close
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
 tooltip.metallurgy.ceruclase_sword_effect=§3Chance of slowing a foe down
-tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
+tooltip.metallurgy.ignatius_sword_effect=§cFire Blade I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
 tooltip.metallurgy.midasium_sword_effect=§6Golden Lucky Drops
 tooltip.metallurgy.mithril_sword_effect=§bLights up your foes
 tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
 tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II
-tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
+tooltip.metallurgy.vulcanite_sword_effect=§cFire Blade II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
+tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness... for now
+tooltip.metallurgy.orichalcum_sword_effect=§2Death makes you stronger
+tooltip.metallurgy.celenegil_sword_effect=§aDeath makes you quicker and stronger
+tooltip.metallurgy.inolashite_armor_effect=§2One Punch Man Style
 
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+
+#Tools
+tooltip.metallurgy.shadow_steel_tool_effect=§8 The Mining Speed is directly proportional to Darkness... for now
 
 #Utils
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged

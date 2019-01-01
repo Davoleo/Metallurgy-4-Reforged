@@ -103,7 +103,7 @@ public class ModArmors {
     public static ItemArmorBase electrum_legs = new ItemArmorBase(ModMetals.ELECTRUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "electrum_legs");
     public static ItemArmorBase electrum_boots = new ItemArmorBase(ModMetals.ELECTRUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "electrum_boots");
 
-    public static ItemArmorBase eximite_helmet = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "eximite_helmet");
+    public static ItemArmorBase eximite_helmet = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "eximite_helmet", Tooltips.EXIMITE_HELMET_EFFECT);
     public static ItemArmorBase eximite_chest = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "eximite_chest");
     public static ItemArmorBase eximite_legs = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "eximite_legs");
     public static ItemArmorBase eximite_boots = new ItemArmorBase(ModMetals.EXIMITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "eximite_boots");
@@ -118,10 +118,10 @@ public class ModArmors {
     public static ItemArmorBase hepatizon_legs = new ItemArmorBase(ModMetals.HEPATIZON.getArmorMaterial(), EntityEquipmentSlot.LEGS, "hepatizon_legs");
     public static ItemArmorBase hepatizon_boots = new ItemArmorBase(ModMetals.HEPATIZON.getArmorMaterial(), EntityEquipmentSlot.FEET, "hepatizon_boots");
 
-    public static ItemArmorBase inolashite_helmet = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "inolashite_helmet");
-    public static ItemArmorBase inolashite_chest = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "inolashite_chest");
-    public static ItemArmorBase inolashite_legs = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "inolashite_legs");
-    public static ItemArmorBase inolashite_boots = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "inolashite_boots");
+    public static ItemArmorBase inolashite_helmet = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "inolashite_helmet", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_chest = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "inolashite_chest", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_legs = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "inolashite_legs", Tooltips.INOLASHITE_ARMOR_EFFECT);
+    public static ItemArmorBase inolashite_boots = new ItemArmorBase(ModMetals.INOLASHITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "inolashite_boots", Tooltips.INOLASHITE_ARMOR_EFFECT);
 
     public static ItemArmorBase ignatius_helmet = new ItemArmorBase(ModMetals.IGNATIUS.getArmorMaterial(), EntityEquipmentSlot.HEAD, "ignatius_helmet");
     public static ItemArmorBase ignatius_chest = new ItemArmorBase(ModMetals.IGNATIUS.getArmorMaterial(), EntityEquipmentSlot.CHEST, "ignatius_chest");
@@ -178,10 +178,10 @@ public class ModArmors {
     public static ItemArmorBase shadow_iron_legs = new ItemArmorBase(ModMetals.SHADOW_IRON.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_iron_legs");
     public static ItemArmorBase shadow_iron_boots = new ItemArmorBase(ModMetals.SHADOW_IRON.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_iron_boots");
 
-    public static ItemArmorBase shadow_steel_helmet = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.HEAD, "shadow_steel_helmet", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.CHEST, "shadow_steel_chest", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_steel_legs", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
-    public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_steel_boots", Tooltips.SHADOW_IRON_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_helmet = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.HEAD, "shadow_steel_helmet", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_chest = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.CHEST, "shadow_steel_chest", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_legs = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.LEGS, "shadow_steel_legs", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
+    public static ItemArmorBase shadow_steel_boots = new ItemArmorBase(ModMetals.SHADOW_STEEL.getArmorMaterial(), EntityEquipmentSlot.FEET, "shadow_steel_boots", Tooltips.SHADOW_STEEL_ARMOR_EFFECT);
 
     public static ItemArmorBase silver_helmet = new ItemArmorBase(ModMetals.SILVER.getArmorMaterial(), EntityEquipmentSlot.HEAD, "silver_helmet");
     public static ItemArmorBase silver_chest = new ItemArmorBase(ModMetals.SILVER.getArmorMaterial(), EntityEquipmentSlot.CHEST, "silver_chest");

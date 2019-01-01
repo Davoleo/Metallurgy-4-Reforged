@@ -172,21 +172,18 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state){
         return EnumBlockRenderType.MODEL;
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot){
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn){
@@ -199,7 +196,6 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

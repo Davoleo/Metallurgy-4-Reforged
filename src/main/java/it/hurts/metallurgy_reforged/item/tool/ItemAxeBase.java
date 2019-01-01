@@ -45,11 +45,28 @@ public class ItemAxeBase extends ItemAxe {
         ModTools.toolList.add(this);
     }
     
+    public ItemAxeBase(ToolMaterial material, String name,  String tooltip)
+    {
+       this(material, name, tooltip, null, 0);
+    }
+    
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material, 3F, -1F);
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);
+        this.name = name;
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+        ModTools.toolList.add(this);
+    }
+    
+    public ItemAxeBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
+        super(material, 3F, -1F);
+        setTranslationKey(name);
+        setRegistryName(name);
+        setCreativeTab(MetallurgyTabs.tabTool);
+        this.tooltip = tooltip;
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
