@@ -43,9 +43,8 @@ public class ModBlocks {
     public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur").setCreativeTab(MetallurgyTabs.tabBlock);
 
     //Road
-    //I know it's in the machine tab, don't bother me about it .-.
-    public static BlockOrientable blockRoad = new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial);
-    public static BlockOrientable blockStripedRoad = new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabSpecial);
+    public static BlockOrientable blockRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
+    public static BlockOrientable blockStripedRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
 
     //	Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
