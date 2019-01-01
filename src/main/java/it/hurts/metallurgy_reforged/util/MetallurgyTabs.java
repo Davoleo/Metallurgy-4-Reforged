@@ -24,7 +24,7 @@ public class MetallurgyTabs extends CreativeTabs {
 
     //  TO.DO : Fix Creative tab icon ticking
 
-    public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabMachine, tabOre, tabTool;
+    public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabSpecial, tabOre, tabTool;
     
     static
     {
@@ -33,7 +33,7 @@ public class MetallurgyTabs extends CreativeTabs {
         tabDust = new MetallurgyTabs(2, "dusts");
         tabFluid = new MetallurgyTabs(3, "fluids");
         tabIngot = new MetallurgyTabs(4, "ingots");
-        tabMachine = new MetallurgyTabs(5, "machines");
+        tabSpecial = new MetallurgyTabs(5, "special");
         tabOre = new MetallurgyTabs(6, "ores");
         tabTool = new MetallurgyTabs(7, "tools");
     }

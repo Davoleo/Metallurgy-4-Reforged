@@ -247,7 +247,7 @@ itemGroup.metallurgy.blocks=Metallurgy Blocks
 itemGroup.metallurgy.dusts=Metallurgy Dusts
 itemGroup.metallurgy.fluids=Metallurgy Fluids
 itemGroup.metallurgy.ingots=Metallurgy Ingots
-itemGroup.metallurgy.machines=Metallurgy Machines
+itemGroup.metallurgy.special=Metallurgy Special
 itemGroup.metallurgy.ores=Metallurgy Ores
 itemGroup.metallurgy.tools=Metallurgy Tools
 

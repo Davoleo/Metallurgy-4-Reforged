@@ -25,7 +25,7 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
     public BlockTileEntity(Material material, String name)
     {
         super(material, name);
-        setCreativeTab(MetallurgyTabs.tabMachine);
+        setCreativeTab(MetallurgyTabs.tabSpecial);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 1);
         setHardness(6F);

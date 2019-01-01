@@ -44,12 +44,12 @@ public class ModBlocks {
 
     //Road
     //I know it's in the machine tab, don't bother me about it .-.
-    public static BlockOrientable blockRoad = new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabMachine);
-    public static BlockOrientable blockStripedRoad = new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabMachine);
+    public static BlockOrientable blockRoad = new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial);
+    public static BlockOrientable blockStripedRoad = new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabSpecial);
 
     //	Tile Entities
-    public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabMachine);
-    public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabMachine);
+    public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
+    public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
 
     public static void register(IForgeRegistry<Block> registry) {
         registry.registerAll(
