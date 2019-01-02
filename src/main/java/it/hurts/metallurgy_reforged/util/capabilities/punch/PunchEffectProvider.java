@@ -6,6 +6,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
+import javax.annotation.Nonnull;
+
 /**
  * Mana provider
  *
@@ -16,29 +18,30 @@ public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
     @CapabilityInject(IPunchEffect.class)
     public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
 
-    private IPunchEffect instance = PUNCH_EFFECT_CAP.getDefaultInstance();
+    private IPunchEffect instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : null;
 
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
     {
         return capability.equals(PUNCH_EFFECT_CAP);
     }
 
     @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
     {
-        return capability.equals(PUNCH_EFFECT_CAP) ? PUNCH_EFFECT_CAP.<T> cast(this.instance) : null;
+        return capability.equals(PUNCH_EFFECT_CAP) ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
     }
 
     @Override
     public NBTBase serializeNBT()
     {
-        return PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null);
+        return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
     }
 
     @Override
     public void deserializeNBT(NBTBase nbt)
     {
-        PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
+        if(PUNCH_EFFECT_CAP != null)
+            PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
     }
 }
