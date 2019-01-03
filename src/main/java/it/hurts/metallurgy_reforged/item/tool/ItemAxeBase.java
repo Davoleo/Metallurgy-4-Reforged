@@ -37,7 +37,7 @@ public class ItemAxeBase extends ItemAxe {
 
     public ItemAxeBase(ToolMaterial material, String name)
     {
-        super(material, 3F, -1F);
+        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);
@@ -51,7 +51,7 @@ public class ItemAxeBase extends ItemAxe {
     }
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
-        super(material, 3F, -1F);
+        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);
@@ -62,7 +62,7 @@ public class ItemAxeBase extends ItemAxe {
     }
     
     public ItemAxeBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
-        super(material, 3F, -1F);
+        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
         setTranslationKey(name);
         setRegistryName(name);
         setCreativeTab(MetallurgyTabs.tabTool);

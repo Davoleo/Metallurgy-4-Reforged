@@ -17,9 +17,9 @@ public class ModMetals {
     //Disclaimer: These variables might need a balancement update
     //Davoleo isn't responsible for any blast resistance level complains
     private static final float LOW_TIER_BLAST_RESISTANCE = 3F;
-    public static final float MID_TIER_BLAST_RESISTANCE = 10F;                         //Cobblestone-like
+    public static final float MID_TIER_BLAST_RESISTANCE = 10F;
     private static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
-    private static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   //Obsidian-like
+    private static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;
     private static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           //Bedrock-like
     
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
