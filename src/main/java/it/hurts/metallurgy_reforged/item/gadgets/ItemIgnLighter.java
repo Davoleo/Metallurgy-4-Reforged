@@ -1,7 +1,6 @@
 package it.hurts.metallurgy_reforged.item.gadgets;
 
 import it.hurts.metallurgy_reforged.item.ItemBase;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -37,41 +36,16 @@ public class ItemIgnLighter extends ItemBase {
         pos = pos.offset(facing);
         ItemStack lighter = player.getHeldItem(hand);
 
-        if (!player.canPlayerEdit(pos, facing, lighter) || Utils.isFakePlayer(player))
+        if (!player.canPlayerEdit(pos, facing, lighter))
         {
             return EnumActionResult.FAIL;
         }
         else
         {
-            if(worldIn.isAirBlock(pos))
-            {
+            worldIn.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-                worldIn.playSound(player, pos, SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-
-                worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.north(), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.south(), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.west(), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.east(), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.add(-1, 0, -1), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.add(-1, 0, 1), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.add(1, 0, -1), Blocks.FIRE.getDefaultState(), 11);
-                worldIn.setBlockState(pos.add(1, 0, 1), Blocks.FIRE.getDefaultState(), 11);
-
-                //TODO : maybe automatize fire creation using a for loop
-                /*for(int i = 0; i < 3; i++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
-
-                        System.out.println("Z: " + pos.getZ());
-                    }
-
-                    System.out.println("X: " + pos.getX());
-                }*/
-
-            }
+            if ((int) (Math.random() * 100) <= 50)
+                createFire(worldIn, pos);
 
             lighter.damageItem(1, player);
             return EnumActionResult.SUCCESS;
@@ -81,6 +55,20 @@ public class ItemIgnLighter extends ItemBase {
     @Override
     public void registerItemModel()
     {
-        super.registerItemModel(this, 0, "gadget");
+        super.registerItemModel("gadget");
+    }
+
+    protected void createFire(World worldIn, BlockPos pos)
+    {
+        final BlockPos CENTER_POS = pos;
+
+        for (int x = -1; x <= 1; x++)
+            for (int z = -1; z <= 1; z++) {
+                pos = CENTER_POS;
+                pos = pos.add(x, 0, z);
+
+                if (worldIn.isAirBlock(pos) && !worldIn.isAirBlock(pos.down()))
+                    worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
+            }
     }
 }

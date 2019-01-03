@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.Objects;
 
 /*************************************************
  * Author: Leonardo
@@ -46,12 +47,6 @@ public class MetallurgyTabs extends CreativeTabs {
         this.type = type;
     }
 
-    /*public MetallurgyTabs(int type, int index, String name)
-    {
-        super(index, getUName(name));
-        this.type = type;
-    }*/
-
     private static String getUName(String name)
     {
         return Metallurgy.MODID + "." + name;
@@ -70,7 +65,7 @@ public class MetallurgyTabs extends CreativeTabs {
             case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(ModBlocks.crusher);
-            case 6: return new ItemStack(ModMetals.ADAMANTINE.getOre());
+            case 6: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
             case 7: return new ItemStack(ModTools.adamantine_pickaxe);
         }
         return ItemStack.EMPTY;

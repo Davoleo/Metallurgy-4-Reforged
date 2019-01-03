@@ -20,5 +20,10 @@ public class ClientProxy extends CommonProxy{
     public void registerItemRenderer(Item item, int meta, String id){
     	ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + id, "inventory"));
     }
-    
+
+    @Override
+    public void registerItemRenderer(Item item, int meta, String id, String subdirectory)
+    {
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdirectory + "/" + id, "inventory"));
+    }
 }

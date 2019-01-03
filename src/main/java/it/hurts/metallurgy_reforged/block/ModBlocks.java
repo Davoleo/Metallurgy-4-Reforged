@@ -29,15 +29,15 @@ public class ModBlocks {
     @SuppressWarnings("unused")
     private static String a = "axe";
 
-//	Blocks wich drops itself
+//	Blocks which drops themselves
 
-    //	ModBlocks with a custom ITEM drop
+    //Mod Blocks with a custom drop
     public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", ModItems.dustSulfur, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", ModItems.dustPhosphorus, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict oreBitumen = new BlockOreDict("bitumen_ore", "oreBitumen", ModItems.dustBitumen, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", ModItems.dustPotash, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
 
-    //  Various Blocks
+    //Other Blocks
     public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen").setCreativeTab(MetallurgyTabs.tabBlock);
     public static BlockOreDict blockCharcoal = new BlockOreDict("charcoal_block", "blockCharcoal").setCreativeTab(MetallurgyTabs.tabBlock);
     public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur").setCreativeTab(MetallurgyTabs.tabBlock);
@@ -46,7 +46,7 @@ public class ModBlocks {
     public static BlockOrientable blockRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
     public static BlockOrientable blockStripedRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
 
-    //	Tile Entities
+    //Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
 
