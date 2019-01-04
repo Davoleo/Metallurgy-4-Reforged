@@ -18,11 +18,11 @@
 
 0.0.4
 - BACKUP your world before loading it with this version
-- Changed ModID from ìm5î to ìmetallurgyî (world-breaking change)
+- Changed ModID from ‚Äúm5‚Äù to ‚Äúmetallurgy‚Äù (world-breaking change)
 - Added Deep Iron pickaxe effect
 - Fixed tooltips useless empty lines (#65)
 - Added Configuration files
-- Updated mappings to ìstable_39î
+- Updated mappings to ‚Äústable_39‚Äù
 - Added JEI Integration for Metallurgy machines
 - Fixed ore generation cascading lag (#70)
 - Added config to enable/disable armor/tools effects
@@ -31,3 +31,26 @@
 - Added Shadow Iron Armor Effect (Blindness-proof)
 - Added Ceruclase Armor Effect (Inflicts Slowness on attackers when hit)
 - Added Ceruclase Sword (Gives slowness)
+
+0.0.5
+- Fixed Molten Hepatizon color
+- Reworked road to avoid it being too slippery
+- Fixed 2 ore = 2 dust JEI Crusher Bug
+- Fixed Ore Generation Cascading Lag and Fixed End generation
+- Fixed Server Crash for Road Block
+- Fixed Crafting of enchanted Midasium tool
+- Increased Ore generation in Overworld and in the Nether
+- Increased durability of Carmot Tool
+- Crusher Improved ( Now you can crush ore of other Mod and Vanilla)
+- Fixed molten metal colors being too dark
+- Tool durability balancement
+
+- Added Eximite Helmet Effect ( The endermans don't get angry if you look at them If they are already angry, it does not work )
+- Added Inolashite Armor Effect ( One Punch Man Style [Hitting enemies by empty hand you will inflict 3 hearts by knocking them away and your food will drop by 1] )
+- Shadow Steel Armor Effect ( Grants blindness immunity, increased toughness based on light )
+- Quicksilver Armor Effect ( All your actions will be faster [ Bow attack speed, eating speed, drinking speed These are the ones we are aware of] )
+
+- Shadow Steel Sword Effect ( Increased attack speed based on light [ Darker is better ] )
+- Orichalcum Sword Effect ( Give Strenght I for 7 sec when you kill an enemy )
+- Celenegil Sword Effect ( Gives Speed I and Strenght I for 7 sec when you kill an enemy )
+- Shadow Steel Tools Effects ( Increased mining speed based on light [ Darker is better ] )
