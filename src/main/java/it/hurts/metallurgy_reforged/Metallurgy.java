@@ -3,8 +3,10 @@
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.proxy.CommonProxy;
 import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+import it.hurts.metallurgy_reforged.util.SubEvent;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
@@ -59,6 +61,7 @@ public class Metallurgy {
 		ModMetals.registerFluids();
 		ModFluids.registerFluids();
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
+		SubEvent.init();
 		TileEntityHandler.registerTileEntities();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
@@ -74,5 +77,6 @@ public class Metallurgy {
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		PacketManager.init();
 	}
 }

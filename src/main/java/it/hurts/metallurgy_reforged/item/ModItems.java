@@ -2,6 +2,7 @@ package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulLighter;
+import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -26,6 +27,8 @@ public class ModItems {
 
 	public static ItemIgnLighter flintAndIgnatius = new ItemIgnLighter("flint_and_ignatius");
 	public static ItemVulLighter flintAndVulcanite = new ItemVulLighter("flint_and_vulcanite");
+	
+	public static ItemGauntlet gauntlet = new ItemGauntlet("gauntlet");
 
 	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict tar = new ItemOreDict("tar","oreslimeball").setCreativeTab(MetallurgyTabs.tabDust);
@@ -36,7 +39,7 @@ public class ModItems {
 //	public static ItemOreDict  = new ItemOreDict ("");
 
 	public static void register(IForgeRegistry<Item> registry) {
-		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, dustPhosphorus, flintAndIgnatius, flintAndVulcanite);
+		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet);
 	}
 	
 	public static void registerModels() {
@@ -51,5 +54,7 @@ public class ModItems {
 		dustPotash.registerItemModel();
 		dustSulfur.registerItemModel();
 		dustPhosphorus.registerItemModel();
+		
+		gauntlet.registerItemModel();
 	}
 }

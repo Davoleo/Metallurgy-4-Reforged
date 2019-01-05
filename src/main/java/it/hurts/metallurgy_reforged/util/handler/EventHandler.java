@@ -13,9 +13,7 @@ import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
-import net.minecraft.block.state.IBlockState;
+import it.hurts.metallurgy_reforged.util.customSlot.ArmorCustomSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,28 +26,20 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -122,9 +112,9 @@ public class EventHandler {
 //			Slot index of Armor : 5 - 6 - 7 - 8	
 			 for(int i = 5;i < 9; i++)
 			 {
-				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof CustomSlot) && !pl.isCreative()) {
+				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
 //					 Inseriamo nello slot dell'inventario in posizione i un custom slot
-                     pl.inventoryContainer.inventorySlots.set(i, new CustomSlot(pl, i - 5, true));
+                     pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
                  }
 					 
 			 }			
@@ -159,7 +149,7 @@ public class EventHandler {
 		  if(pl.stepHeight != 0.6F)
 			pl.stepHeight = 0.6F;
 		  	  
-		    	 if(pl.inventoryContainer.inventorySlots.get(5) instanceof CustomSlot)
+		    	 if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
 		    	 { 
 //		    		 Insert in c the container "vanilla"
 		    		 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
@@ -514,131 +504,4 @@ public class EventHandler {
 					ev.setDuration(Math.round(ev.getDuration() / 2F));
 			}
 	}
-		
-//	Punch effect inolashite armor
-	@SubscribeEvent
-	public static void addPunchEffect(AttackEntityEvent event)
-	{	 
-		EntityPlayer pl = event.getEntityPlayer();
-		Entity entity = event.getTarget();
-		double hungerValue = 2;
-		
-//		checks if the players isn't holding an item and if he is wearing 
-//		apply effect if the player has a minimum food level or if he is in creative
-		if(EffectsConfig.inolashiteArmorEffect && pl.getHeldItemMainhand().isEmpty() && isPlayerWearingArmor(pl, new Item[] {ModArmors.inolashite_helmet,ModArmors.inolashite_chest,ModArmors.inolashite_legs,ModArmors.inolashite_boots}))
-		{		
-
-			if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
-
-				if(entity instanceof EntityLivingBase) {
-					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-					effect.setHitTicks(1);
-					effect.setNoClip(entity.noClip);
-					entity.noClip = true;
-				}
-
-				float yaw = pl.getRotationYawHead();
-				float pitch = pl.rotationPitch;
-
-				double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-				double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-				double f = MathHelper.sqrt(x * x + z * z);
-				double velocity = 8D;
-				x = x / (double)f;
-				z = z / (double)f;
-				x = x * (double)velocity;
-				z = z * (double)velocity;
-				entity.motionX = x;
-				entity.motionZ = z;
-				
-//				remove food level
-				if(!pl.isCreative())
-				{
-					pl.getFoodStats().setFoodLevel((int) (pl.getFoodStats().getFoodLevel() - hungerValue));
-					pl.getFoodStats().setFoodSaturationLevel((float) (pl.getFoodStats().getSaturationLevel() - hungerValue));
-				}
-				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);
-
-//				Danno che riceverà l'entità
-				entity.attackEntityFrom(DamageSource.causeMobDamage(pl), 6F);
-			}
-			else
-			{
-				pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	                 
-			}
-		}
-	}
-		
-		
-//	Event tick entity
-	@SubscribeEvent
-	public static void applyPunchEffects(LivingUpdateEvent event)
-	{
-		EntityLivingBase entity = event.getEntityLiving();
-		IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-
-//		check if entity has been punched
-		if(effect.getHitTicks() > 0)
-		{
-			Random rand = new Random();		
-
-			for (int i = 0; i < 10; ++i)
-			{
-				entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
-			}
-
-			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.5D, 0D, 0.5D);
-
-			if(!entity.isDead)
-			{
-
-//				destroy blocks and damage the punched entity
-				for(double i = axisalignedbb.minX;i < axisalignedbb.maxX;i += 0.1D)
-				{
-					for(double j = axisalignedbb.minY;j < axisalignedbb.maxY;j += 0.1D)
-					{
-						for(double k = axisalignedbb.minZ;k < axisalignedbb.maxZ;k += 0.1D)
-						{
-
-							BlockPos pos = new BlockPos(i, j, k);
-							if(!entity.world.isAirBlock(pos)) {
-								IBlockState state = entity.world.getBlockState(pos);
-								float hardness = state.getBlockHardness(entity.world, pos);
-								if(hardness >= 0)
-								{
-
-									if(!state.getMaterial().isLiquid()) {
-										if(!entity.world.isRemote)
-											entity.world.destroyBlock(pos, true);				     
-										entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), hardness);								
-									}
-								}
-								else
-								{
-									entity.noClip = effect.hasNoClip();
-
-								}
-							}
-						}	
-					}
-				}
-			}
-
-
-//			adds the punch effect ticks 
-			effect.addHitTicks();
-
-			double velocity = entity.getPositionVector().distanceTo(new Vec3d(entity.prevPosX,entity.posY,entity.prevPosZ));
-//	if the velocity of the punched entity is too low,it will lose the "effect"
-			if(effect.getHitTicks() > 5 && velocity <= 1D) {
-				effect.endEffect(entity);	
-			}
-
-//	if the punch ticks is over 30 the entity will lose the "effect"
-			if(effect.getHitTicks() > 30) { 
-				effect.endEffect(entity);	
-			}
-		}
-	}
-	
 }
