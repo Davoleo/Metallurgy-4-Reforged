@@ -5,6 +5,10 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
+import slimeknights.tconstruct.library.materials.Material;
+
+import static slimeknights.tconstruct.tools.TinkerTraits.*;
+import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -43,7 +47,7 @@ public class TinkerMetals {
 	public static MetallurgyTiCStats LEMURITE = new MetallurgyTiCStats(ModMetals.LEMURITE, new HeadMaterialStats(200, 10F, 8, 2), new HandleMaterialStats(0.90F, 150), new ExtraMaterialStats(30));
 	public static MetallurgyTiCStats MEUTOITE = new MetallurgyTiCStats(ModMetals.MEUTOITE, new HeadMaterialStats(550, 20F, 15, 5), new HandleMaterialStats(1.5F, 250), new ExtraMaterialStats(75));
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM, new HeadMaterialStats(620, 15F, 15, 5), new HandleMaterialStats(0.75F, 200), new ExtraMaterialStats(47));
-	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 10, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45));
+	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 10, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45)).setTraits(ModMetals.MIDASIUM, writable2, EXTRA);
 //	 public static MetallurgyTiCStats ANGMALLEN = new MetallurgyTiCStats(ModMetals.ANGMALLEN);
 
 	 @Nullable

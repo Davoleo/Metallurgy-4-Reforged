@@ -1,10 +1,13 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
+import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.traits.ITrait;
 
 /***************************
  *
@@ -48,5 +51,12 @@ public class MetallurgyTiCStats {
 		float modifier = (float) (Math.sqrt(durability) * multiplier);
 		
 		return new HandleMaterialStats(modifier > 2 ? modifier * 0.5F : modifier, (int)durability / 5);
+	}
+	
+	public static MetallurgyTiCStats setTraits(Metal identifier, ITrait materialTrait, String dependency) {
+//		material.addTrait(materialTrait, dependency);
+		TinkerRegistry.getMaterial(identifier.toString()).addTrait(materialTrait, dependency);
+		TinkerRegistry.getMaterial(identifier.toString()).addTrait(materialTrait);
+		System.out.println("LEGGI QUI IDIOTA " + identifier.toString());
 	}
 }
