@@ -3,13 +3,17 @@ package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 import java.util.List;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 
 import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
@@ -44,10 +48,31 @@ public class ItemGauntlet extends ItemBase{
 		this.setMaxStackSize(1);
 	}
 	
+	@Override
+    public void registerItemModel()
+    {
+        super.registerItemModel("gadget");
+    }
+	
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		List<Enchantment> list = Lists.newArrayList(e);
 		
 		return list.contains(enchantment);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+		{
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet modifier", (double)3D, 0));;
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double)30D, 0));
+
+		}
+
+		return multimap;
 	}
 	
 	@Override

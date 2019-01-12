@@ -28,7 +28,7 @@ public class ModItems {
 	public static ItemIgnLighter flintAndIgnatius = new ItemIgnLighter("flint_and_ignatius");
 	public static ItemVulLighter flintAndVulcanite = new ItemVulLighter("flint_and_vulcanite");
 	
-	public static ItemGauntlet gauntlet = new ItemGauntlet("gauntlet");
+	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
 
 	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict tar = new ItemOreDict("tar","oreslimeball").setCreativeTab(MetallurgyTabs.tabDust);

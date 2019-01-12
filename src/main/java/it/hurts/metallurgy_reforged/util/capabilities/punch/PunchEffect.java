@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -16,7 +17,8 @@ public class PunchEffect implements IPunchEffect{
 	private int delayFromHit = 0;
 	private boolean hasNoAI = true;
 	private UUID plUUID = null;
-	private Vec3d vec3dMotion = new Vec3d(0D,0D,0D);
+	private float rotYaw = 0F;
+	private float rotPitch = 0F;
 	
 	@Override
 	public void setHitTicks(int ticks) {
@@ -32,8 +34,6 @@ public class PunchEffect implements IPunchEffect{
 	public void addHitTicks() {
 		this.hit_ticks++;
 	}
-
-
 
 	@Override
 	public void endEffect(EntityLivingBase entity) {
@@ -78,14 +78,27 @@ public class PunchEffect implements IPunchEffect{
 		return this.plUUID != null ? world.getPlayerEntityByUUID(plUUID) : null;
 	}
 
-	@Override
-	public void setKnockbackMotionVec(Vec3d vec) {
-		this.vec3dMotion = vec;
-	}
+	//public void setKnockbackMotionVec(Vec3d vec) {
+	//	this.vec3dMotion = vec;
+	//}
 
 	@Override
 	public Vec3d getKnockbackMotionVec() {
-		return vec3dMotion;
+		float yaw = this.getRotYawPlayer();
+		float pitch = this.getRotPitchPlayer();
+
+		double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+		double y = -MathHelper.sin(pitch * 0.017453292F);		      
+		double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+		double f = MathHelper.sqrt(x * x + y * y + z * z);
+		double velocity = 2D;
+		x = x / (double)f;
+	    y = y / (double)f;
+		z = z / (double)f;
+		x = x * (double)velocity;
+		y = y * (double)velocity;
+		z = z * (double)velocity;
+		return new Vec3d(x, y, z);
 	}
 
 	@Override
@@ -96,6 +109,26 @@ public class PunchEffect implements IPunchEffect{
 	@Override
 	public void setNoAI(boolean ai) {
 		this.hasNoAI = ai;
+	}
+
+	@Override
+	public void setRotYawPlayer(float yaw) {
+		this.rotYaw = yaw;
+	}
+
+	@Override
+	public void setRotPitchPlayer(float pitch) {
+		this.rotPitch = pitch;
+	}
+
+	@Override
+	public float getRotYawPlayer() {
+		return this.rotYaw;
+	}
+
+	@Override
+	public float getRotPitchPlayer() {
+		return this.rotPitch;
 	}
 	
 }

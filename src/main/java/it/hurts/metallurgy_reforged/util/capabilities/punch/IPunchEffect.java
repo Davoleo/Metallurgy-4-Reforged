@@ -38,8 +38,15 @@ public interface IPunchEffect {
 	
 	public void addKnockbackTTicks();
 	
-	public void setKnockbackMotionVec(Vec3d vec);
+//	public void setKnockbackMotionVec(Vec3d vec);
 	
 	public Vec3d getKnockbackMotionVec();
+	
+	public void setRotYawPlayer(float yaw);
+	public void setRotPitchPlayer(float pitch);
+	
+	public float getRotYawPlayer();
+	public float getRotPitchPlayer();
+	
 	
 }

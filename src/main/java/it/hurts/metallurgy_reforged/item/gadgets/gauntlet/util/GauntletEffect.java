@@ -7,13 +7,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -32,40 +29,47 @@ public class GauntletEffect {
 //	Punch effect inolashite armor
 	@SubscribeEvent
 	public void addPunchEffect(AttackEntityEvent event)
-	{	 
-		double hungerValue = 0.5D;
+	{	
+		int hungerValue = 1;
 		EntityPlayer pl = event.getEntityPlayer();
 		Entity entity = event.getTarget();
 		if(entity instanceof EntityLivingBase)
 		{
 			EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
-		if(GauntletOperation.isWearingGauntlet(pl))
-		{
-			
-			IPunchEffect effect = entityLivingBase.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-			if(effect.getHitTicks() <= 0 || effect.getDelayHit() > 0) {
-				if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
-			  effect.setDelayHit(5);
-			  effect.setPunchingPlayer(pl);		
-			  
-			  if(entityLivingBase instanceof EntityLiving) {
-				  EntityLiving livingEntity = (EntityLiving) entityLivingBase;
-				  if(!livingEntity.isAIDisabled())
-				  {
-				  effect.setNoAI(livingEntity.isAIDisabled());
-				  livingEntity.setNoAI(true);
-				  }	
-			  }
-			  if(!pl.isCreative())
-				{
-					pl.getFoodStats().setFoodLevel((int) (pl.getFoodStats().getFoodLevel() - hungerValue));
-					pl.getFoodStats().setFoodSaturationLevel((float) (pl.getFoodStats().getSaturationLevel() - hungerValue));
-                }
-			}
-			else
-					pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	       
-			
-			}
+			if(GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
+			{
+
+				IPunchEffect effect = entityLivingBase.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+				if(effect.getHitTicks() <= 0 || effect.getDelayHit() > 0) {
+					if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
+						effect.setDelayHit(5);
+						effect.setPunchingPlayer(pl);		
+						effect.setRotPitchPlayer(pl.rotationPitch);
+						effect.setRotYawPlayer(pl.getRotationYawHead());
+
+						if(entityLivingBase instanceof EntityLiving) {
+							EntityLiving livingEntity = (EntityLiving) entityLivingBase;
+							if(!livingEntity.isAIDisabled())
+							{
+								effect.setNoAI(livingEntity.isAIDisabled());
+								livingEntity.setNoAI(true);
+							}	
+						}
+						if(!pl.isCreative())
+						{
+							pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - hungerValue);
+
+						}
+
+						Random rand = new Random();		
+
+						for (int i = 0; i < 20; ++i)
+							entity.world.spawnParticle(EnumParticleTypes.CRIT, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
+					}
+					else
+						pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	       
+
+				}
 			}
 		}
 	}
@@ -88,10 +92,10 @@ public class GauntletEffect {
 			entity.motionX = 0D;
 			entity.motionY = 0D;
 			entity.motionZ = 0D;
-			entity.hurtResistantTime = 5;
+			entity.hurtResistantTime = 10;
 			
 		}
-		else if(effect.getHitTicks() > 0)
+		else if(effect.getHitTicks() > 0 && entity.deathTime <= 0)
 		{
 			EntityPlayer pl = effect.getPunchingPlayer(entity.world);			
 			 if(entity instanceof EntityLiving)
@@ -112,10 +116,12 @@ public class GauntletEffect {
 			
 			Random rand = new Random();		
 			
+			if(effect.getHitTicks() > 10)
+			{	
 			for (int i = 0; i < 20; ++i)
 				entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 				
-			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D,effect.getHitTicks() > 10 ? 0.4D : 0D,0.4D);
+			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D,0.4D);
 			if(!entity.isDead)
 			{
 //				destroy blocks and damage the punched entity (the damage is based from block's hardness
@@ -136,13 +142,14 @@ public class GauntletEffect {
 										if(!entity.world.isRemote)
 											entity.world.destroyBlock(pos, true);				     
 										entity.hurtResistantTime = 0;
-										entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), hardness * 0.5F);								
+										entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), 0.5F);								
 									}
 								}
 							}
 						}	
 					}
 				}
+			}
 			}
 					
 //			adds the punch effect ticks 
@@ -154,29 +161,11 @@ public class GauntletEffect {
 		}
 	}
 	
-	private static void throwEntity(EntityPlayer pl, EntityLivingBase entity){
 //		checks if the players isn't holding an item and if he is wearing 
 //		apply effect if the player has a minimum food level or if he is in creative
-			
-				IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-				effect.setKnockbackTicks(1);
-				
-				float yaw = pl.getRotationYawHead();
-				float pitch = pl.rotationPitch;
-
-				double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-				double y = -MathHelper.sin(pitch * 0.017453292F);		      
-				double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-				double f = MathHelper.sqrt(x * x + y * y + z * z);
-				double velocity = 2D;
-				x = x / (double)f;
-			    y = y / (double)f;
-				z = z / (double)f;
-				x = x * (double)velocity;
-				y = y * (double)velocity;
-				z = z * (double)velocity;
-				effect.setKnockbackMotionVec(new Vec3d(x, y, z));
-				pl.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 1F, 1F);	
-	}
+		private static void throwEntity(EntityPlayer pl, EntityLivingBase entity){
+					IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+					effect.setKnockbackTicks(1);
+		}
 
 }
