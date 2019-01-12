@@ -2,15 +2,9 @@ package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
-import slimeknights.tconstruct.library.materials.Material;
-import slimeknights.tconstruct.library.traits.ITrait;
-
-import static slimeknights.tconstruct.tools.TinkerTraits.*;
-import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -61,11 +55,4 @@ public class TinkerMetals {
 		 }
 		 return null;
 	 }
-	 
-	 public static void setTraits(Metal identifier, ITrait materialTrait, String dependency) {
-//		 if(dependency != null)
-			TinkerRegistry.getMaterial(MIDASIUM.toString()).addTrait(writable2, EXTRA);
-			TinkerRegistry.getMaterial(MIDASIUM.toString()).addTrait(writable2);
-			System.out.println("LEGGI QUI IDIOTA " + identifier.toString());
-	}
 }

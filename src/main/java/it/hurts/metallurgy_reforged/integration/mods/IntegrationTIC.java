@@ -3,6 +3,7 @@ package it.hurts.metallurgy_reforged.integration.mods;
 
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.SetTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
@@ -13,10 +14,6 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-
-import static slimeknights.tconstruct.library.materials.MaterialTypes.EXTRA;
-import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
-import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
 /***************************
  *
@@ -49,7 +46,7 @@ public class IntegrationTIC{
 				m.setRepresentativeItem(metals.getStats().getOreDictName());
 				
 //				Chiamata al metodo per aggiungere i traits
-				addTraits(metals, m);
+				SetTrait.addTraits(metals, m);
 				
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metals.getStats().getOreDictName());
@@ -79,28 +76,6 @@ public class IntegrationTIC{
 		int c = item.getCount();
 		MeltingRecipe recipe = TinkerRegistry.getMelting(item);
 		return recipe != null ? new FluidStack(recipe.output.getFluid(),(c <= 0 ? 1 : c) * Material.VALUE_Ingot) : null;
-	}
-
-	public static void addTraits(Metal metal, Material material)
-	{
-		System.out.println(metal.toString());
-
-		if(metal == ModMetals.ASTRAL_SILVER) {
-			material.addTrait(magnetic2, HEAD);
-			material.addTrait(magnetic);
-		}
-
-		if (metal == ModMetals.SANGUINITE)
-		{
-			material.addTrait(sharp, HEAD);
-			material.addTrait(coldblooded, EXTRA);
-		}
-
-		if (metal == ModMetals.VYROXERES)
-		{
-
-			material.addTrait(poisonous);
-		}
 	}
 
 //	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono già esistenti nella Tinker Base
