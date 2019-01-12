@@ -2,10 +2,12 @@ package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.traits.ITrait;
 
 import static slimeknights.tconstruct.tools.TinkerTraits.*;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
@@ -47,9 +49,8 @@ public class TinkerMetals {
 	public static MetallurgyTiCStats LEMURITE = new MetallurgyTiCStats(ModMetals.LEMURITE, new HeadMaterialStats(200, 10F, 8, 2), new HandleMaterialStats(0.90F, 150), new ExtraMaterialStats(30));
 	public static MetallurgyTiCStats MEUTOITE = new MetallurgyTiCStats(ModMetals.MEUTOITE, new HeadMaterialStats(550, 20F, 15, 5), new HandleMaterialStats(1.5F, 250), new ExtraMaterialStats(75));
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM, new HeadMaterialStats(620, 15F, 15, 5), new HandleMaterialStats(0.75F, 200), new ExtraMaterialStats(47));
-	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 10, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45)).setTraits(ModMetals.MIDASIUM, writable2, EXTRA);
+	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 10, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45));
 //	 public static MetallurgyTiCStats ANGMALLEN = new MetallurgyTiCStats(ModMetals.ANGMALLEN);
-
 	 @Nullable
 	 public static MetallurgyTiCStats getMetal(Metal metal)
 	 {
@@ -60,4 +61,11 @@ public class TinkerMetals {
 		 }
 		 return null;
 	 }
+	 
+	 public static void setTraits(Metal identifier, ITrait materialTrait, String dependency) {
+//		 if(dependency != null)
+			TinkerRegistry.getMaterial(MIDASIUM.toString()).addTrait(writable2, EXTRA);
+			TinkerRegistry.getMaterial(MIDASIUM.toString()).addTrait(writable2);
+			System.out.println("LEGGI QUI IDIOTA " + identifier.toString());
+	}
 }

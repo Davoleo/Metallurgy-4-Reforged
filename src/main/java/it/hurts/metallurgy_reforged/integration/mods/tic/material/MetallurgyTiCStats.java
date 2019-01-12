@@ -53,10 +53,4 @@ public class MetallurgyTiCStats {
 		return new HandleMaterialStats(modifier > 2 ? modifier * 0.5F : modifier, (int)durability / 5);
 	}
 	
-	public static MetallurgyTiCStats setTraits(Metal identifier, ITrait materialTrait, String dependency) {
-//		material.addTrait(materialTrait, dependency);
-		TinkerRegistry.getMaterial(identifier.toString()).addTrait(materialTrait, dependency);
-		TinkerRegistry.getMaterial(identifier.toString()).addTrait(materialTrait);
-		System.out.println("LEGGI QUI IDIOTA " + identifier.toString());
-	}
 }
