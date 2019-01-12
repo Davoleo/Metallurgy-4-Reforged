@@ -1,7 +1,7 @@
 {
-	"credit": "Made with Blockbench, by matpac for m4r",
+	"credit": "Made with Blockbench, by matpac for M4R",
 	"textures": {
-		"2": "(INSERET_HERE_PATH_TO_TEXTURE)/rubracium_gauntlet"
+		"2": "metallurgy:models/armor/rubracium_gauntlet"
 	},
 	"elements": [
 		{
