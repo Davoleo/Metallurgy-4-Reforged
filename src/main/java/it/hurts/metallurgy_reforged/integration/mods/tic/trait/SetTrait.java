@@ -21,13 +21,50 @@ public class SetTrait {
 		switch(metal.getStats().getName()) {
 		
 			case "midasium" : {
+//				TODO magari aumentare il modifiers
 				material.addTrait(writable2, EXTRA);
 				material.addTrait(writable2);
 			}
 			break;
 			
 			case "vulcanite":{
-				material.addTrait(autosmelt);
+//				Add autosmelt to tool and Fire Aspect to Sword Head
+			}
+			break;
+			
+			case "eximite":{
+				material.addTrait(enderference, HEAD);
+				material.addTrait(enderference);
+			}
+			break;
+			
+			case "vyroxeres":{
+				material.addTrait(poisonous);
+			}
+			break;
+			
+			case "mithril":{
+//				TODO Glowing Modifiers
+			}
+			break;
+			
+			case "damascus_steel":{
+//				TODO Reinforced II
+			}
+			break;
+			
+			case "shadow_iron":{
+//				TODO Create Blindness Traits and add it
+			}
+			break;
+			
+			case "sanguinite":{
+//				TODO Create Vampirism effect and add it ( ModGlowing )
+			}
+			break;
+			
+			case "tartarite":{
+//				TODO Withering II
 			}
 			break;
 			
