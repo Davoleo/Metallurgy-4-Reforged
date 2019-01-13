@@ -1,14 +1,13 @@
 package it.hurts.metallurgy_reforged.util.capabilities.punch;
 
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.UUID;
 
 public class PunchEffect implements IPunchEffect{
 
@@ -92,12 +91,12 @@ public class PunchEffect implements IPunchEffect{
 		double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 		double f = MathHelper.sqrt(x * x + y * y + z * z);
 		double velocity = 2D;
-		x = x / (double)f;
-	    y = y / (double)f;
-		z = z / (double)f;
-		x = x * (double)velocity;
-		y = y * (double)velocity;
-		z = z * (double)velocity;
+		x = x / f;
+	    y = y / f;
+		z = z / f;
+		x = x * velocity;
+		y = y * velocity;
+		z = z * velocity;
 		return new Vec3d(x, y, z);
 	}
 

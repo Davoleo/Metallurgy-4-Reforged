@@ -39,7 +39,7 @@ public class GauntletEffect {
 			if(GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
 			{
 
-				IPunchEffect effect = entityLivingBase.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+				IPunchEffect effect = entityLivingBase.getCapability( PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 				if(effect.getHitTicks() <= 0 || effect.getDelayHit() > 0) {
 					if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
 						effect.setDelayHit(5);
@@ -67,7 +67,7 @@ public class GauntletEffect {
 							entity.world.spawnParticle(EnumParticleTypes.CRIT, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 					}
 					else
-						pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired", new Object[0]),true);	       
+						pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired"),true);
 
 				}
 			}

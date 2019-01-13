@@ -1,10 +1,7 @@
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-
 import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -18,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.WorldServer;
+
+import java.util.List;
 
 /***************************
  *
@@ -47,13 +46,14 @@ public class ItemGauntlet extends ItemBase{
 		this.setNoRepair();
 		this.setMaxStackSize(1);
 	}
-	
+
 	@Override
     public void registerItemModel()
     {
         super.registerItemModel("gadget");
     }
-	
+
+    @Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		List<Enchantment> list = Lists.newArrayList(e);
 		
@@ -74,7 +74,7 @@ public class ItemGauntlet extends ItemBase{
 
 		return multimap;
 	}
-	
+
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
 		

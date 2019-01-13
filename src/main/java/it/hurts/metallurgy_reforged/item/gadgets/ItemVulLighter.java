@@ -27,6 +27,7 @@ public class ItemVulLighter extends ItemIgnLighter {
     public ItemVulLighter(String name)
     {
         super(name);
+        setMaxDamage(500);
     }
 
     @Nonnull

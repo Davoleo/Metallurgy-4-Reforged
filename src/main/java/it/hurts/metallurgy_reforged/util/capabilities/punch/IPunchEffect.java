@@ -1,11 +1,11 @@
 package it.hurts.metallurgy_reforged.util.capabilities.punch;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public interface IPunchEffect {
 
@@ -13,40 +13,40 @@ public interface IPunchEffect {
 	
 	//set entity integer "hit_ticks" which indicates the knockback time of the mob 
 	
-	public void setPunchingPlayer(EntityPlayer pl);
+	void setPunchingPlayer(EntityPlayer pl);
 	@Nullable
-	public EntityPlayer getPunchingPlayer(World world);
+	EntityPlayer getPunchingPlayer(World world);
 	
-	public void setDelayHit(int delay);
-	public int getDelayHit();
+	void setDelayHit(int delay);
+	int getDelayHit();
 	
-	public void setHitTicks(int ticks);
+	void setHitTicks(int ticks);
 	
-	public int getHitTicks();
+	int getHitTicks();
 	
-	public void addHitTicks();
+	void addHitTicks();
 	
-	public boolean isAIDisabled();
+	boolean isAIDisabled();
 	
-	public void setNoAI(boolean ai);
+	void setNoAI(boolean ai);
 	
-	public void endEffect(EntityLivingBase entity);
+	void endEffect(EntityLivingBase entity);
 	
-	public void setKnockbackTicks(int ticks);
+	void setKnockbackTicks(int ticks);
 	
-	public int getKnockbackTicks();
+	int getKnockbackTicks();
 	
-	public void addKnockbackTTicks();
+	void addKnockbackTTicks();
 	
-//	public void setKnockbackMotionVec(Vec3d vec);
+// void setKnockbackMotionVec(Vec3d vec);
 	
-	public Vec3d getKnockbackMotionVec();
+	Vec3d getKnockbackMotionVec();
 	
-	public void setRotYawPlayer(float yaw);
-	public void setRotPitchPlayer(float pitch);
+	void setRotYawPlayer(float yaw);
+	void setRotPitchPlayer(float pitch);
 	
-	public float getRotYawPlayer();
-	public float getRotPitchPlayer();
+	float getRotYawPlayer();
+	float getRotPitchPlayer();
 	
 	
 }

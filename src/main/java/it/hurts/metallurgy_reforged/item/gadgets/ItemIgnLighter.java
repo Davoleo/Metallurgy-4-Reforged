@@ -27,6 +27,7 @@ public class ItemIgnLighter extends ItemBase {
     public ItemIgnLighter(String name)
     {
         super(name);
+        setMaxDamage(150);
     }
 
     @Nonnull
