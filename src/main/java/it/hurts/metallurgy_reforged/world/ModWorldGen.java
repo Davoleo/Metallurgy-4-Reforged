@@ -29,10 +29,10 @@ public class ModWorldGen implements IWorldGenerator {
 	private final Block DEFAULT_NETHER = Blocks.NETHERRACK;
 	private final Block DEFAULT_END = Blocks.END_STONE;
 	
-	private final int COMMON = 30;
-	private final int UNCOMMON = 20;
-	private final int RARE = 10;
-	private final int ULTRA_RARE = 5;
+	private final int COMMON = 15;
+	private final int UNCOMMON = 10;
+	private final int RARE = 5;
+	private final int ULTRA_RARE = 2;
 
   @Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -55,21 +55,21 @@ public class ModWorldGen implements IWorldGenerator {
 
 	//Overworld
 	private void generateOverworld(Random random, int chunkX, int chunkY, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider1) {
-		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkY, 7, COMMON, 35, 120, DEFAULT_WORLD);
+		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkY, 8, COMMON, 35, 120, DEFAULT_WORLD);
 		generateOre(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkY, 5, COMMON, 10, 30, DEFAULT_WORLD);
 		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkY, 10, COMMON, 25, 48, DEFAULT_WORLD);
 		generateOre(ModMetals.PROMETHEUM.getOre(), world, random, chunkX, chunkY, 6, COMMON, 0, 64, DEFAULT_WORLD);
 		generateOre(ModMetals.MANGANESE.getOre(),world, random, chunkX, chunkY, 9, COMMON, 0, 128, DEFAULT_WORLD);
 		generateOre(ModMetals.OURECLASE.getOre(), world, random, chunkX, chunkY, 5, UNCOMMON, 0, 128, DEFAULT_WORLD);
 		generateOre(ModMetals.INFUSCOLIUM.getOre(), world, random, chunkX, chunkY, 7, UNCOMMON, 10, 72, DEFAULT_WORLD);
-		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkY, 5, RARE, 0, 64, DEFAULT_WORLD);
+		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkY, 4, RARE, 0, 30, DEFAULT_WORLD);
 		generateOre(ModMetals.RUBRACIUM.getOre(), world, random, chunkX, chunkY, 6, UNCOMMON, 10, 40, DEFAULT_WORLD);
-		generateOre(ModMetals.ATLARUS.getOre(), world, random, chunkX, chunkY, 7, RARE, 0, 64,  DEFAULT_WORLD);
+		generateOre(ModMetals.ATLARUS.getOre(), world, random, chunkX, chunkY, 5, RARE, 0, 64,  DEFAULT_WORLD);
 		generateOre(ModMetals.CARMOT.getOre(), world, random, chunkX, chunkY, 6, UNCOMMON, 0, 64, DEFAULT_WORLD);
 		generateOre(ModMetals.MITHRIL.getOre(), world, random, chunkX, chunkY, 5, ULTRA_RARE, 32, 128, DEFAULT_WORLD);
 		generateOre(ModMetals.ZINC.getOre(), world, random, chunkX, chunkY, 8, COMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.ORICHALCUM.getOre(), world, random, chunkX, chunkY, 4, UNCOMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.ASTRAL_SILVER.getOre(), world, random, chunkX, chunkY, 6, RARE, 0, 64, DEFAULT_WORLD);
+		generateOre(ModMetals.ORICHALCUM.getOre(), world, random, chunkX, chunkY, 6, UNCOMMON, 0, 128, DEFAULT_WORLD);
+		generateOre(ModMetals.ASTRAL_SILVER.getOre(), world, random, chunkX, chunkY, 6, RARE, 24, 64, DEFAULT_WORLD);
 		generateOre(ModMetals.SILVER.getOre(), world, random, chunkX, chunkY, 8, UNCOMMON, 0, 128, DEFAULT_WORLD);
 		generateOre(ModMetals.PLATINUM.getOre(), world, random, chunkX, chunkY, 4, RARE, 0, 80, DEFAULT_WORLD);
 		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkY, 6, UNCOMMON, 0, 15, DEFAULT_WORLD);
@@ -80,7 +80,6 @@ public class ModWorldGen implements IWorldGenerator {
 
 	//Nether
 	private void generateNether(Random random, int chunkX, int chunkY, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
-//		I think we need to fix the min and max Y
 		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkY, 10, COMMON, 0, 255, DEFAULT_NETHER);
 		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkY, 6, COMMON, 0, 124, DEFAULT_NETHER);
 		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkY, 7, COMMON, 0, 100, DEFAULT_NETHER);
@@ -94,8 +93,8 @@ public class ModWorldGen implements IWorldGenerator {
 	}
 
 	private void generateEnd(Random random, int chunkX, int chunkY, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkY, 7, UNCOMMON, 0, 128, DEFAULT_END);
-		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkY, 7, UNCOMMON, 0, 128, DEFAULT_END);
+		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkY, 7, COMMON, 0, 128, DEFAULT_END);
+		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkY, 7, COMMON, 0, 128, DEFAULT_END);
 	}
 
 	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace) {
