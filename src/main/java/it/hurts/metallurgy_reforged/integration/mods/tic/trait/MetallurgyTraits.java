@@ -13,5 +13,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 public class MetallurgyTraits {
 
     public static final AbstractTrait exampleTrait = null; // = new MetallurgyTrait(optional parameters)
+    public static final AbstractTrait obscureTrait = new TraitObscure();
 
 }

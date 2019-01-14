@@ -1,10 +1,11 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
-import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
-import static slimeknights.tconstruct.tools.TinkerTraits.*;
-
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
+
+import static slimeknights.tconstruct.library.materials.MaterialTypes.EXTRA;
+import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
+import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
 /***************************
  *
@@ -49,11 +50,13 @@ public class SetTrait {
 			break;
 			
 			case "damascus_steel":{
+				material.addTrait(duritos);
 //				TODO Reinforced II
 			}
 			break;
 			
 			case "shadow_iron":{
+				material.addTrait(MetallurgyTraits.obscureTrait);
 //				TODO Create Blindness Traits and add it
 			}
 			break;
