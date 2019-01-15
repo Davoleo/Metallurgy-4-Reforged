@@ -2,6 +2,8 @@ package it.hurts.metallurgy_reforged.integration.mods;
 
 
 import com.google.common.collect.Table;
+
+import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.SetTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -33,7 +35,6 @@ public class IntegrationTIC{
 
 				TinkerRegistry.addMaterial(material);
 			}
-
 		}
 	}
 
@@ -69,6 +70,8 @@ public class IntegrationTIC{
 
 		}
 		System.out.println("Tinker Smeltery Recipes for Metallurgy Loaded");
+
+		MetallurgyTinkerFuels.init();
 	}
 
 	public static FluidStack getFluidFromIngot(ItemStack item)
