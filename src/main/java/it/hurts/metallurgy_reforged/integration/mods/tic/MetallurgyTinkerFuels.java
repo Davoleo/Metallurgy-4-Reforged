@@ -14,7 +14,8 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 public class MetallurgyTinkerFuels {
 	
 	public static void init() {
-		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModMetals.IGNATIUS.getMolten().getFluidStack(), 50), 100);
+		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModMetals.IGNATIUS.getMolten(), 50), 200);
+		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModMetals.VULCANITE.getMolten(), 50), 200);
 		
 	}
 

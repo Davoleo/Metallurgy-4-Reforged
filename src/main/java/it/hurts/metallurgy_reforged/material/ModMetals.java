@@ -84,7 +84,7 @@ public class ModMetals {
             new ToolStats(22, 3, 300, 8F, 5F), new FluidStats(0xFF755E86), -1).createMetal();
     public static final Metal IGNATIUS = new MetalStats("ignatius", "Ignatius", 2, LOW_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 5, 6, 2}, 15, 24, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(15, 2, 200, 4F, 6F), new FluidStats(0xFFFF9100), 1).createMetal();
+            new ToolStats(15, 2, 200, 4F, 6F), new FluidStats(0xFFFF9100, 2100), 1).createMetal();
     public static final Metal INFUSCOLIUM = new MetalStats("infuscolium", "Infuscolium", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF7F036E), 2).createMetal();
     public static final Metal INOLASHITE = new MetalStats("inolashite", "Inolashite", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 7, 4}, 25, 70, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
@@ -138,7 +138,7 @@ public class ModMetals {
     public static final Metal TIN = new MetalStats("tin", "Tin", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFD5D5D5), 1).createMetal();
     public static final Metal VULCANITE = new MetalStats("vulcanite", "Vulcanite", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 6, 7, 4}, 20, 150, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(20, 6, 1500, 10F, 7F), new FluidStats(0xFFFF8103), 5).createMetal();
+            new ToolStats(20, 6, 1500, 10F, 7F), new FluidStats(0xFFFF8103, 4200), 5).createMetal();
     public static final Metal VYROXERES = new MetalStats("vyroxeres", "Vyroxeres", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 6, 3}, 16, 37, 3.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(16, 4, 300, 7F, 7F), new FluidStats(0xFF2BFF00), 4).createMetal();
