@@ -34,7 +34,8 @@ public class ItemGauntlet extends ItemBase{
 			Enchantments.MENDING,
 			Enchantments.SMITE,
 			Enchantments.VANISHING_CURSE,
-			Enchantments.UNBREAKING
+			Enchantments.UNBREAKING,
+			Enchantments.SHARPNESS
 	};
 //	private final double attack_damage = 1.05;
 //	private final double attack_speed;
