@@ -125,9 +125,4 @@ private boolean bucketEnabled = false;
     {
         return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
     }
-
-    public boolean isBucketEnabled()
-    {
-        return bucketEnabled;
-    }
 }

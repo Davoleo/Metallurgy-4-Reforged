@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.fluid;
 
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,10 @@ public class ModFluids {
 
     public static void registerFluids()
     {
-
+        for (Fluid fluid : fluidList)
+        {
+            FluidRegistry.addBucketForFluid(fluid);
+        }
     }
 
 }
