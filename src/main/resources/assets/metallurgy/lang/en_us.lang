@@ -761,6 +761,10 @@ tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 tooltip.metallurgy.shadow_steel_tool_effect=§8 The Mining Speed is directly proportional to Darkness... for now
 
 #Utils
+util.world_join_message.1=§4§lMetallurgy 4: Reforged
+util.world_join_message.2=§6[Warning: this is an alpha version of the mod]
+util.world_join_message.3=§6Further integration with common mods (like Tinkers' Construct) is not currently available §lbut planned.
+util.world_join_message.4=For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
 
 #Effect
