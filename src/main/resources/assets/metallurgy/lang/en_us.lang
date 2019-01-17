@@ -720,45 +720,45 @@ tile.alloyer.name=§eAlloyer
 
 #Tooltips
 #Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Always well fed
-tooltip.metallurgy.amordrine_armor_effect=§dStrengthens you
+tooltip.metallurgy.adamantine_armor_effect=§4Saturation
+tooltip.metallurgy.amordrine_armor_effect=§dStrenght
 tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
-tooltip.metallurgy.astral_silver_armor_effect=§fAstral Jumps become possible
+tooltip.metallurgy.astral_silver_armor_effect=§fJump Boost
 tooltip.metallurgy.carmot_armor_effect=§e(WIP) Haste (WIP)
-tooltip.metallurgy.celenegil_armor_effect=§aMakes you more tough
-tooltip.metallurgy.ceruclase_armor_effect=§3Slows your foes down
-tooltip.metallurgy.deep_iron_armor_effect=§1Makes you swim faster
-tooltip.metallurgy.kalendrite_armor_effect=§dStrengthens you
-tooltip.metallurgy.mithril_armor_effect=§bPlus-Ultra Instinct (Quirk Edition)
-tooltip.metallurgy.platinum_armor_effect=§bNight Vision [It's also really sticky]
+tooltip.metallurgy.celenegil_armor_effect=§aResistance
+tooltip.metallurgy.ceruclase_armor_effect=§3Slows Attackers
+tooltip.metallurgy.deep_iron_armor_effect=§1Fast Swimming
+tooltip.metallurgy.kalendrite_armor_effect=§dStrenght
+tooltip.metallurgy.mithril_armor_effect=§bMakes Entities more visible
+tooltip.metallurgy.platinum_armor_effect=§bNight Vision
 tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
-tooltip.metallurgy.shadow_iron_armor_effect=§8No way of getting blinded
+tooltip.metallurgy.shadow_iron_armor_effect=§8No Blindness
 tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
-tooltip.metallurgy.shadow_steel_armor_effect=§8The Darkness will defend you from damage... for now
-tooltip.metallurgy.quicksilver_armor_effect=§bYou will be really "quick"
-tooltip.metallurgy.eximite_helmet_effect=§5Look how beautiful the endermans are up close
+tooltip.metallurgy.shadow_steel_armor_effect=§8Tougher when in the dark
+tooltip.metallurgy.quicksilver_armor_effect=§bSpeed
+tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
-tooltip.metallurgy.ceruclase_sword_effect=§3Chance of slowing a foe down
-tooltip.metallurgy.ignatius_sword_effect=§cFire Blade I
+tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
+tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
-tooltip.metallurgy.midasium_sword_effect=§6Golden Lucky Drops
-tooltip.metallurgy.mithril_sword_effect=§bLights up your foes
+tooltip.metallurgy.midasium_sword_effect=§6Looting
+tooltip.metallurgy.mithril_sword_effect=§bMakes the target glow
 tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
 tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cFire Blade II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
-tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness... for now
-tooltip.metallurgy.orichalcum_sword_effect=§2Death makes you stronger
-tooltip.metallurgy.celenegil_sword_effect=§aDeath makes you quicker and stronger
+tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness
+tooltip.metallurgy.orichalcum_sword_effect=§2Your kills make you feel Strong
+tooltip.metallurgy.celenegil_sword_effect=§aYour kills makes you feel Strong & Quick
 
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 
 #Tools
-tooltip.metallurgy.shadow_steel_tool_effect=§8 The Mining Speed is directly proportional to Darkness... for now
+tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
 
 #Utils
 util.world_join_message.1=§4§lMetallurgy 4: Reforged
