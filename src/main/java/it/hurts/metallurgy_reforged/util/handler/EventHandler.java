@@ -1,11 +1,6 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
@@ -50,6 +45,10 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 
 /***************************
@@ -493,11 +492,11 @@ public class EventHandler {
 		}
 	}
  
-//	Increase the velocity of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
+//	Increase the speed of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
 	@SubscribeEvent
 	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
 		if(ev.getEntityLiving() instanceof EntityPlayer)
-			if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots})) {
+			if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots}) && EffectsConfig.quicksilverArmorEffect) {
 				if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
 					ev.setDuration(ev.getDuration() - 6);
 				else

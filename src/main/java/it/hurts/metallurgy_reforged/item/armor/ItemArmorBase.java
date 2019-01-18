@@ -39,25 +39,15 @@ public class ItemArmorBase extends ItemArmor {
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
 	{
-		this(material, slot, name, null, null, 0);
-	}
-
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip)
-	{
-		this(material, slot, name, tooltip, null, 0);
+		this(material, slot, name, null, 0);
 	}
 
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
 	{
-		this(material, slot, name, null, enchantment, enchantmentLevel);
-	}
-	
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
 		super(material, 0, slot);
 		setRegistryName(name);
 		setTranslationKey(name);
 		this.name = name;
-		this.tooltip = tooltip;
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
 		setCreativeTab(MetallurgyTabs.tabArmor);
@@ -75,6 +65,13 @@ public class ItemArmorBase extends ItemArmor {
 			}
 			items.add(enchantedArmor);
 		}
+	}
+
+	public ItemArmorBase setTooltip(String tooltip)
+	{
+		if (ModArmors.isEffectActive(this))
+			this.tooltip = tooltip;
+		return this;
 	}
 
 	@SideOnly(Side.CLIENT)

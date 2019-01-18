@@ -26,12 +26,18 @@ public class EffectsConfig {
     public static boolean astralSilverArmorEffect = true;
     public static boolean carmotArmorEffect = true;
     public static boolean celenegilArmorEffect = true;
+    @Config.Ignore //FIXME Not Linked
+    public static boolean ceruclaseArmorEffect = true;
     public static boolean deepIronArmorEffect = true;
+    @Config.Ignore //FIXME Not Linked
+    public static boolean eximiteArmorEffect = true;
     public static boolean kaledriteArmorEffect = true;
     public static boolean mithrilArmorEffect = true;
     public static boolean platinumArmorEffect = true;
     public static boolean prometheumArmorEffect = true;
+    public static boolean quicksilverArmorEffect = true;
     public static boolean vulcaniteArmorEffect = true;
+    @Config.Ignore //FIXME Not Linked
     public static boolean inolashiteArmorEffect = true;
     public static boolean shadowSteelArmorEffect = true;
 
