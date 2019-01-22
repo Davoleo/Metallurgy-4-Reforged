@@ -728,31 +728,32 @@ tooltip.metallurgy.carmot_armor_effect=§e(WIP) Haste (WIP)
 tooltip.metallurgy.celenegil_armor_effect=§aResistance
 tooltip.metallurgy.ceruclase_armor_effect=§3Slows Attackers
 tooltip.metallurgy.deep_iron_armor_effect=§1Fast Swimming
+tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
 tooltip.metallurgy.kalendrite_armor_effect=§dStrenght
 tooltip.metallurgy.mithril_armor_effect=§bMakes Entities more visible
 tooltip.metallurgy.platinum_armor_effect=§bNight Vision
 tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
-tooltip.metallurgy.shadow_iron_armor_effect=§8No Blindness
-tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
-tooltip.metallurgy.shadow_steel_armor_effect=§8Tougher when in the dark
 tooltip.metallurgy.quicksilver_armor_effect=§bSpeed
-tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
+tooltip.metallurgy.shadow_iron_armor_effect=§8No Blindness
+tooltip.metallurgy.shadow_steel_armor_effect=§8Tougher when in the dark
+tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
+tooltip.metallurgy.celenegil_sword_effect=§aYour kills makes you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
+tooltip.metallurgy.desichalkos_sword_effect=§5Inflicts some random negative effect to the target
 tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
 tooltip.metallurgy.midasium_sword_effect=§6Looting
 tooltip.metallurgy.mithril_sword_effect=§bMakes the target glow
+tooltip.metallurgy.orichalcum_sword_effect=§2Your kills make you feel Strong
 tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
 tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
+tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cFire Blade II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
-tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness
-tooltip.metallurgy.orichalcum_sword_effect=§2Your kills make you feel Strong
-tooltip.metallurgy.celenegil_sword_effect=§aYour kills makes you feel Strong & Quick
 
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!

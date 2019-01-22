@@ -110,7 +110,7 @@ public class ModTools {
     public static ItemHoeBase desichalkos_hoe = new ItemHoeBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_hoe");
     public static ItemPickaxeBase desichalkos_pickaxe = new ItemPickaxeBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_pickaxe");
     public static ItemShovelBase desichalkos_shovel = new ItemShovelBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_shovel");
-    public static ItemSwordBase desichalkos_sword = new ItemSwordBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_sword");
+    public static ItemSwordBase desichalkos_sword = new ItemSwordBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_sword").setTooltip(Tooltips.CELENEGIL_SWORD_EFFECT);
 
     public static ItemAxeBase electrum_axe = new ItemAxeBase(ModMetals.ELECTRUM.getToolMaterial(), "electrum_axe");
     public static ItemHoeBase electrum_hoe = new ItemHoeBase(ModMetals.ELECTRUM.getToolMaterial(), "electrum_hoe");
