@@ -117,7 +117,7 @@ public class Utils {
         return player instanceof FakePlayer || (player != null);
     }
     
-    public static Potion getEffect() {
+    public static Potion getRandomEffect() {
     	return effect[(int)(Math.random() * Utils.getMaxIndexEffect())];
     }
     
