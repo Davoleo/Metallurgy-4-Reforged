@@ -26,6 +26,7 @@ import java.util.List;
 public class ItemHoeBase extends ItemHoe {
 
     private String name;
+    @SuppressWarnings("unused")
     private String tooltip;
 
     public ItemHoeBase(ToolMaterial material, String name)

@@ -15,6 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -37,17 +38,7 @@ public class ItemAxeBase extends ItemAxe {
 
     public ItemAxeBase(ToolMaterial material, String name)
     {
-        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(MetallurgyTabs.tabTool);
-        this.name = name;
-        ModTools.toolList.add(this);
-    }
-    
-    public ItemAxeBase(ToolMaterial material, String name,  String tooltip)
-    {
-       this(material, name, tooltip, null, 0);
+        this(material, name, null, -1);
     }
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
@@ -61,21 +52,9 @@ public class ItemAxeBase extends ItemAxe {
         ModTools.toolList.add(this);
     }
     
-    public ItemAxeBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
-        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
-        setTranslationKey(name);
-        setRegistryName(name);
-        setCreativeTab(MetallurgyTabs.tabTool);
-        this.tooltip = tooltip;
-        this.name = name;
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-        ModTools.toolList.add(this);
-    }
-    
     @Override
     @SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
     {
         if(this.isInCreativeTab(tab)) {
             ItemStack enchantedAxe = new ItemStack(this);
@@ -85,6 +64,13 @@ public class ItemAxeBase extends ItemAxe {
             items.add(enchantedAxe);
         }
 	}
+
+    public ItemAxeBase setTooltip(String tooltip)
+    {
+        if (ModTools.isAxeEffectActive(this))
+            this.tooltip = tooltip;
+        return this;
+    }
 
     @SideOnly(Side.CLIENT)
     @Override

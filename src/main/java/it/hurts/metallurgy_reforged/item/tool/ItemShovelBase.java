@@ -15,6 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -37,17 +38,7 @@ public class ItemShovelBase extends ItemSpade {
 
     public ItemShovelBase(ToolMaterial material, String name)
     {
-        super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
-        this.name = name;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
-    }
-    
-    public ItemShovelBase(ToolMaterial material, String name,  String tooltip)
-    {
-       this(material, name, tooltip, null, 0);
+        this(material, name, null, -1);
     }
     
     public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
@@ -61,21 +52,9 @@ public class ItemShovelBase extends ItemSpade {
         ModTools.toolList.add(this);
     }
     
-    public ItemShovelBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
-        super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
-        this.tooltip = tooltip;
-        this.name = name;
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
-    }
-    
     @Override
     @SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
     {
         if(this.isInCreativeTab(tab)) {
             ItemStack enchantedShowel = new ItemStack(this);
@@ -85,6 +64,13 @@ public class ItemShovelBase extends ItemSpade {
             items.add(enchantedShowel);
         }
 	}
+
+    public ItemShovelBase setTooltip(String tooltip)
+    {
+        if (ModTools.isShovelEffectActive(this))
+            this.tooltip = tooltip;
+        return this;
+    }
 
     @SideOnly(Side.CLIENT)
     @Override

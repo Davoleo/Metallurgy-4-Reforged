@@ -37,36 +37,14 @@ public class ItemPickaxeBase extends ItemPickaxe {
 
     public ItemPickaxeBase(ToolMaterial material, String name)
         {
-            this(material, name, null);
+            this(material, name, null, -1);
         }
-
-    public ItemPickaxeBase(ToolMaterial material, String name, String tooltip){
-        super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
-        this.name = name;
-        this.tooltip = tooltip;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
-    }
     
     public ItemPickaxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material);
         setTranslationKey(name);
         setRegistryName(name);
         this.name = name;
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
-    }
-    
-    public ItemPickaxeBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel){
-        super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
-        this.name = name;
-        this.tooltip = tooltip;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
         setCreativeTab(MetallurgyTabs.tabTool);
@@ -90,6 +68,13 @@ public class ItemPickaxeBase extends ItemPickaxe {
     public void registerItemModel(Item item, int meta)
     {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":tool/" + name, "inventory"));
+    }
+
+    public ItemPickaxeBase setTooltip(String tooltip)
+    {
+        if (ModTools.isPickaxeEffectActive(this))
+            this.tooltip = tooltip;
+        return this;
     }
 
     @SideOnly(Side.CLIENT)

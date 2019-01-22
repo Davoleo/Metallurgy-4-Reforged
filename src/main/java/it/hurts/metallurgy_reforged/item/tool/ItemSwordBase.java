@@ -15,6 +15,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -37,12 +38,7 @@ public class ItemSwordBase extends ItemSword {
 
     public ItemSwordBase(ToolMaterial material, String name)
     {
-        this(material, name, null, null, 0);
-    }
-
-    public ItemSwordBase(ToolMaterial material, String name,  String tooltip)
-    {
-       this(material, name, tooltip, null, 0);
+        this(material, name, null, -1);
     }
     
     public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
@@ -57,22 +53,9 @@ public class ItemSwordBase extends ItemSword {
         ModTools.toolList.add(this);
     }
     
-    public ItemSwordBase(ToolMaterial material, String name, String tooltip, Enchantment enchantment, int enchantmentLevel)
-    {
-        super(material);
-        setRegistryName(name);
-        setTranslationKey(name);
-        this.name = name;
-        this.tooltip = tooltip;
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
-    }
-    
     @Override
     @SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
     {
         if(this.isInCreativeTab(tab)) {
             ItemStack enchantedSword = new ItemStack(this);
@@ -82,6 +65,13 @@ public class ItemSwordBase extends ItemSword {
             items.add(enchantedSword);
         }
 	}
+
+    public ItemSwordBase setTooltip(String tooltip)
+    {
+        if (ModTools.isSwordEffectActive(this))
+            this.tooltip = tooltip;
+        return this;
+    }
 
     @SideOnly(Side.CLIENT)
 	@Override

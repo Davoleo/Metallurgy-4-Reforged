@@ -31,32 +31,31 @@ public class EffectsConfig {
     public static boolean deepIronArmorEffect = true;
     @Config.Ignore //FIXME Not Linked
     public static boolean eximiteArmorEffect = true;
+    @Config.Ignore //FIXME Not Linked
+    public static boolean inolashiteArmorEffect = true;
     public static boolean kaledriteArmorEffect = true;
     public static boolean mithrilArmorEffect = true;
     public static boolean platinumArmorEffect = true;
     public static boolean prometheumArmorEffect = true;
     public static boolean quicksilverArmorEffect = true;
-    public static boolean vulcaniteArmorEffect = true;
-    @Config.Ignore //FIXME Not Linked
-    public static boolean inolashiteArmorEffect = true;
     public static boolean shadowSteelArmorEffect = true;
+    public static boolean vulcaniteArmorEffect = true;
 
     //Pickaxes
     public static boolean deepIronPickaxeEffect = true;
 
-    
     //Tools 
     public static boolean shadowSteelToolSpeedEffect = true;
 
     //Swords
+    public static boolean desichalkosSwordEffect = true;
     public static boolean ignatiusSwordEffect = true;
     public static boolean kalendriteSwordEffect = true;
     public static boolean shadowIronSwordEffect = true;
+    public static boolean shadowSteelSwordEffect = true;
     public static boolean tartariteSwordEffect = true;
     public static boolean vulcaniteSwordEffect = true;
     public static boolean vyroxeresSwordEffect = true;
-    public static boolean shadowSteelSwordEffect = true;
-    public static boolean desichalkosSwordEffect = true;
 
     private EffectsConfig(){}
 
