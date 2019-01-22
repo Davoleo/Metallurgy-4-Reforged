@@ -56,6 +56,7 @@ public class EffectsConfig {
     public static boolean vulcaniteSwordEffect = true;
     public static boolean vyroxeresSwordEffect = true;
     public static boolean shadowSteelSwordEffect = true;
+    public static boolean desichalkosSwordEffect = true;
 
     private EffectsConfig(){}
 

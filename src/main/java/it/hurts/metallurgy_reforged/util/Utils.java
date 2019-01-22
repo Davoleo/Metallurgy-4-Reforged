@@ -4,9 +4,11 @@ import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -22,8 +24,19 @@ import net.minecraftforge.common.util.FakePlayer;
  **************************************************/
 
 public class Utils {
+	
+	private static Potion [] effect = {
+			MobEffects.BLINDNESS,
+			MobEffects.LEVITATION,
+			MobEffects.HUNGER,
+			MobEffects.INSTANT_DAMAGE,
+			MobEffects.NAUSEA,
+			MobEffects.NIGHT_VISION,
+			MobEffects.POISON,
+			MobEffects.SLOWNESS,
+			MobEffects.REGENERATION
+	};
 
-    @SuppressWarnings("unused")
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
     {
         if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
@@ -102,5 +115,13 @@ public class Utils {
 
     public static boolean isFakePlayer(EntityPlayer player) {
         return player instanceof FakePlayer || (player != null);
+    }
+    
+    public static Potion getEffect() {
+    	return effect[(int)(Math.random() * Utils.getMaxIndexEffect())];
+    }
+    
+    private static int getMaxIndexEffect() {
+    	return effect.length;
     }
 }

@@ -299,6 +299,15 @@ public class EventHandler {
 				if ((int) (Math.random() * 100) <= 25)
 					foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 			}
+			
+//			Desichalkos Sword ( Give Random Effect to entity )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.desichalkos_sword)) 
+					&& EffectsConfig.desichalkosSwordEffect){
+				
+				if ((int) (Math.random() * 100) <= 19) {
+					((EntityLivingBase)foe).addPotionEffect(new PotionEffect(Utils.getEffect(), 80, 0));
+				}
+					}
 
 //			Vyroxeres Sword (Potion)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))
