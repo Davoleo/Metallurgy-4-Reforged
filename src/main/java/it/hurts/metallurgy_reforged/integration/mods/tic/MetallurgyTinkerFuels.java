@@ -1,8 +1,5 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraftforge.fluids.FluidStack;
-import slimeknights.tconstruct.library.TinkerRegistry;
 /***************************
  *
  * Author : ItHurtsLikeHell
@@ -14,9 +11,6 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 public class MetallurgyTinkerFuels {
 	
 	public static void init() {
-		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModMetals.IGNATIUS.getMolten(), 50), 200);
-		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModMetals.VULCANITE.getMolten(), 50), 200);
-		
 	}
 
 }

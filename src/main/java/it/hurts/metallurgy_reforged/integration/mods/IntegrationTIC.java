@@ -4,14 +4,13 @@ package it.hurts.metallurgy_reforged.integration.mods;
 import com.google.common.collect.Table;
 
 import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
+import it.hurts.metallurgy_reforged.integration.mods.tic.SetTrait;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.SetTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
@@ -51,18 +50,7 @@ public class IntegrationTIC{
 				SetTrait.addTraits(metals, m);
 				
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
-				if(metals.equals(ModMetals.VULCANITE)){
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.VULCANITE.getIngot()), ModMetals.VULCANITE.getMolten(), 420));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.VULCANITE.getDust()), ModMetals.VULCANITE.getMolten(), 420));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.VULCANITE.getOre()), ModMetals.VULCANITE.getMolten(), 420));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.VULCANITE.getBlock()), ModMetals.VULCANITE.getMolten(), 420));
-				}else if(metals.equals(ModMetals.IGNATIUS)){
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.IGNATIUS.getIngot()), ModMetals.IGNATIUS.getMolten(), 330));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.IGNATIUS.getDust()), ModMetals.IGNATIUS.getMolten(), 330));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.IGNATIUS.getOre()), ModMetals.IGNATIUS.getMolten(), 337));
-					TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModMetals.IGNATIUS.getBlock()), ModMetals.IGNATIUS.getMolten(), 360));
-				}else
-					TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metals.getStats().getOreDictName());
+				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metals.getStats().getOreDictName());
 				
 //				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);

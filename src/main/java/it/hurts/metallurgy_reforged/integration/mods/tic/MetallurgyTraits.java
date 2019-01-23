@@ -1,5 +1,6 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
+package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitObscure;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 /*************************************************

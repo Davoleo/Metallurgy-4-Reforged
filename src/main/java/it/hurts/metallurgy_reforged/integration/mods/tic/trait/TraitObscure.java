@@ -32,7 +32,7 @@ public class TraitObscure extends AbstractTrait implements ITrait{
     @Override
     public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
     {
-        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 2, false, false));
+        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 2, false, true));
     }
 
     @Override

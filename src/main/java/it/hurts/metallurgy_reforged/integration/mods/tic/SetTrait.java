@@ -1,10 +1,10 @@
-package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
+package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.tools.TinkerTraits;
 
-import static slimeknights.tconstruct.library.materials.MaterialTypes.EXTRA;
-import static slimeknights.tconstruct.library.materials.MaterialTypes.HEAD;
+import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
 import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
 /***************************
@@ -20,22 +20,26 @@ public class SetTrait {
 	public static void addTraits(Metal metal, Material material){
 		
 		switch(metal.getStats().getName()) {
+//		TraitSuperheat = Incrementa il danno in caso il subente è incendiato
 		
 			case "midasium" : {
 //				TODO magari aumentare il modifiers
-				material.addTrait(writable2, EXTRA);
 				material.addTrait(writable2);
 			}
 			break;
 			
+			case "ignatius":{
+//				Autosmelt on pickaxe and Fire aspect on sword
+			}
+			break;
+			
 			case "vulcanite":{
-//				Add autosmelt to tool and Fire Aspect to Sword Head
+				material.addTrait(superheat, EXTRA);
 			}
 			break;
 			
 			case "eximite":{
 				material.addTrait(enderference, HEAD);
-				material.addTrait(enderference);
 			}
 			break;
 			
@@ -57,7 +61,6 @@ public class SetTrait {
 			
 			case "shadow_iron":{
 				material.addTrait(MetallurgyTraits.obscureTrait);
-//				TODO Create Blindness Traits and add it
 			}
 			break;
 			
@@ -68,6 +71,13 @@ public class SetTrait {
 			
 			case "tartarite":{
 //				TODO Withering II
+			}
+			break;
+			
+			case "alduorite":{
+//				Rompe più velocementi i blocchi di harvest level inferiore al proprio
+				material.addTrait(TinkerTraits.unnatural, EXTRA);
+				material.addTrait(TinkerTraits.unnatural, HEAD);
 			}
 			break;
 			

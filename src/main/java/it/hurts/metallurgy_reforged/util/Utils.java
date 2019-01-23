@@ -16,7 +16,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 public class Utils {
 
-    @SuppressWarnings("unused")
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
     {
         if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
