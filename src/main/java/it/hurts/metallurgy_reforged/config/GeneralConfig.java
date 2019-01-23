@@ -17,5 +17,8 @@ public class GeneralConfig {
 
     public static int test = 100;
 
+    @Config.Comment("When set to true it shows the alpha warning message when joining the world")
+    public static boolean alphaWarning = true;
+
 
 }

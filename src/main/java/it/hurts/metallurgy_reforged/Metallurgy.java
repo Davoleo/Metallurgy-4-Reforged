@@ -57,7 +57,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger =  event.getModLog();
-		System.out.println(NAME + " is loading!");
+		logger.info(NAME + " is loading!");
 		ModMetals.registerFluids();
 		ModFluids.registerFluids();
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
