@@ -67,7 +67,7 @@ public class EventHandler {
 
 	//the speed sword modifier UUID
 	public static final UUID SHADOW_STEEL_ARMOR_MODIFIER_UUID =  UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
-	
+
 //	Don't touch this
 //	private final static double speed = 0.10000000149011612D;
 //	Mithril Armor (Ultra istinto)
@@ -207,13 +207,13 @@ public class EventHandler {
 //		removes the blindness effect when wearing shadow steel armor
 		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}) && pl.isPotionActive(MobEffects.BLINDNESS))
 	       pl.removeActivePotionEffect(MobEffects.BLINDNESS);
-		
-		
+
+
 		ItemStack stack =  pl.getHeldItemMainhand();
 		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 		if(EffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
 		{
-		 
+
 			float percentage = Utils.getLightArmorPercentage(pl, 50F);
 			//calculate the Speed to add to the sword
 			double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
@@ -231,7 +231,7 @@ public class EventHandler {
 		    	attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
 		    	attackSpeedInstance.applyModifier(shadow_steel_modifier);
 		    }
-		
+
 		}
 		else if(attackSpeedInstance.getModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID) != null)
 		{
@@ -239,7 +239,7 @@ public class EventHandler {
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
 		}
 	}
-	
+
 //	Road Speed Effect
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -299,9 +299,9 @@ public class EventHandler {
 				if ((int) (Math.random() * 100) <= 25)
 					foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 			}
-			
+
 //			Desichalkos Sword ( Give Random Effect to entity )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.desichalkos_sword)) 
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.desichalkos_sword))
 					&& EffectsConfig.desichalkosSwordEffect){
 				((EntityLivingBase)foe).addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
 			}
@@ -344,7 +344,7 @@ public class EventHandler {
 			
 //			Mithril Sword (Give Glowing to entity Hitted)
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
-		
+
 				
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
@@ -363,7 +363,7 @@ public class EventHandler {
 				
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 70, 1, false, false));
-			}		
+			}
 		}
 	}
 
@@ -373,7 +373,7 @@ public class EventHandler {
 	{
 		EntityPlayer pl = event.getEntityPlayer();
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
-		
+
 		if(pl.isInWater()
 				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
 				&& EffectsConfig.deepIronPickaxeEffect)
@@ -385,9 +385,9 @@ public class EventHandler {
 					event.setNewSpeed(event.getOriginalSpeed() + speed);
 				}
 	}
-  
+
 	//replaces the enderman's AI
-	@SubscribeEvent 
+	@SubscribeEvent
 	public static void constructEntity(EntityEvent.EnteringChunk event)
 	{
 
@@ -402,7 +402,7 @@ public class EventHandler {
 			while(entries.hasNext())
 			{
 				EntityAITaskEntry entry = entries.next();
-				if(entry.action instanceof EntityAINearestAttackableTarget)		
+				if(entry.action instanceof EntityAINearestAttackableTarget)
 					//checks if the AI Class is the AIFindPlayer Class(The Class Used to check if player is watching an enderman)
 					if(entry.action.getClass().getName().contains("EntityEnderman$AIFindPlayer"))
 					{
@@ -411,7 +411,7 @@ public class EventHandler {
 					}
 
 			}
-			//if the AI class isn't null it will replace the original AI with the AIFindPlayerWithoutHelmet( a new custom AI similar to the original one) 
+			//if the AI class isn't null it will replace the original AI with the AIFindPlayerWithoutHelmet( a new custom AI similar to the original one)
 			if(aifindPlayer != null) {
 				end.targetTasks.removeTask(aifindPlayer);
 				end.targetTasks.addTask(priority, new AIFindPlayerWithoutHelmet(aifindPlayer));
@@ -419,25 +419,25 @@ public class EventHandler {
 		}
 	}
 
-	
+
 	@SubscribeEvent
 	public static void onEntityDeth(LivingDeathEvent event) {
 		Entity attacker = event.getSource().getImmediateSource();
 		if(attacker instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) attacker; 
+			EntityPlayer player = (EntityPlayer) attacker;
 //			Celenegil Sword ( Give Speed and Strenght on entity kill )
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && (player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true)) {
 				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0, false, false));
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 			}
-			
+
 //			Orichalcum Sword ( Give Strenght on entity kill )
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) && (player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true))
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 		}
 	}
 
-	
+
 //	Sanguinite Sword (Vampirism)
 	@SubscribeEvent
 	public static void entityHurtEvent(LivingHurtEvent event)
@@ -481,7 +481,7 @@ public class EventHandler {
 				//get light percentage,maximum 30%
 				float percentage = Utils.getLightArmorPercentage(pl,40F);
 				float removedDamage = event.getAmount() * percentage / 100F;
-				event.setAmount(event.getAmount() - removedDamage);			
+				event.setAmount(event.getAmount() - removedDamage);
 			}
 		}
 	}
@@ -497,7 +497,7 @@ public class EventHandler {
 			}
 		}
 	}
- 
+
 //	Increase the speed of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
 	@SubscribeEvent
 	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){

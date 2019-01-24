@@ -15,6 +15,8 @@ import net.minecraftforge.fluids.FluidUtil;
  * Hour: 17.25
  * Project: Metallurgy
  * Copyright - © - Davoleo - 2018
+ * 
+ * Adapted by PierKnight100
  **************************************************/
 
 public class FluidMolten extends Fluid {
@@ -27,24 +29,23 @@ private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
 private boolean bucketEnabled = false;
 
-@SuppressWarnings("unused")
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
         super(name, still, flowing);
         ModFluids.fluidList.add(this);
     }
 
-    public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor)
+    public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor,int temperature)
     {
         super(name, still, flowing);
         setColor(mapColor);
         ModFluids.fluidList.add(this);
+        this.setTemperature(temperature);
     }
 
-    @SuppressWarnings("unused")
-    public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor, float overlayAlpha)
+    public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor,int temperature, float overlayAlpha)
     {
-        this(fluidName, still, flowing, mapColor);
+        this(fluidName, still, flowing, mapColor,temperature);
         setAlpha(overlayAlpha);
     }
 
@@ -59,7 +60,6 @@ private boolean bucketEnabled = false;
         return this;
     }
 
-    @SuppressWarnings("unused")
     public float getAlpha()
     {
         return overlayAlpha;
@@ -124,11 +124,5 @@ private boolean bucketEnabled = false;
     public ItemStack getBucket()
     {
         return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
-    }
-
-    @SuppressWarnings("unused")
-    public boolean isBucketEnabled()
-    {
-        return bucketEnabled;
     }
 }

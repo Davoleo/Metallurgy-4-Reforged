@@ -1,30 +1,33 @@
  package it.hurts.metallurgy_reforged;
 
-import it.hurts.metallurgy_reforged.fluid.ModFluids;
-import it.hurts.metallurgy_reforged.gui.GuiHandler;
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.proxy.CommonProxy;
-import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
-import it.hurts.metallurgy_reforged.util.SubEvent;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
-import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
-import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
-import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
-import it.hurts.metallurgy_reforged.world.ModWorldGen;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.apache.logging.log4j.Logger;
+ import it.hurts.metallurgy_reforged.fluid.ModFluids;
+ import it.hurts.metallurgy_reforged.gui.GuiHandler;
+ import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.material.ModMetals;
+ import it.hurts.metallurgy_reforged.network.PacketManager;
+ import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+ import it.hurts.metallurgy_reforged.util.ModChecker;
+ import it.hurts.metallurgy_reforged.util.OnPlayerJoin;
+ import it.hurts.metallurgy_reforged.util.SubEvent;
+ import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
+ import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectCallable;
+ import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectStorage;
+ import it.hurts.metallurgy_reforged.util.handler.TileEntityHandler;
+ import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
+ import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
+ import it.hurts.metallurgy_reforged.world.ModWorldGen;
+ import net.minecraftforge.common.MinecraftForge;
+ import net.minecraftforge.common.capabilities.CapabilityManager;
+ import net.minecraftforge.fluids.FluidRegistry;
+ import net.minecraftforge.fml.common.Mod;
+ import net.minecraftforge.fml.common.SidedProxy;
+ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+ import net.minecraftforge.fml.common.network.NetworkRegistry;
+ import net.minecraftforge.fml.common.registry.GameRegistry;
+ import org.apache.logging.log4j.Logger;
 
  /***************************
 *
@@ -63,6 +66,9 @@ public class Metallurgy {
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
 		SubEvent.init();
 		TileEntityHandler.registerTileEntities();
+//		check if tinker is installed
+		if(ModChecker.isTConLoaded)
+			IntegrationTIC.preInit();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 	}
@@ -70,6 +76,8 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		ModRecipes.init();
+		if(ModChecker.isTConLoaded)
+			IntegrationTIC.init();
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		BlockCrusherRecipes.registerDefaultOreRecipes();
 	}
@@ -78,5 +86,12 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		PacketManager.init();
+	}
+
+	@Mod.EventHandler
+	 public void loadComplete(FMLLoadCompleteEvent event)
+	{
+		if (ModChecker.isTConLoaded)
+			IntegrationTIC.postInit();
 	}
 }

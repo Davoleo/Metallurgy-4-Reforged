@@ -17,6 +17,7 @@ public class MetalStats {
     private final String name, oreDictName;
     private final int blockHarvest;
     private final float blockBlastResistance;
+    public static float blockResistance;
     //int minVeinSize, int maxVeinSize, int chance, int minY, int maxY
     private final int oreHarvest;
 
@@ -26,7 +27,7 @@ public class MetalStats {
 
     public Metal createMetal() {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
-        ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
+    	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
         ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName).setCreativeTab(MetallurgyTabs.tabIngot);
         BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, "pickaxe", blockHarvest, blockBlastResistance).setCreativeTab(MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
@@ -34,9 +35,22 @@ public class MetalStats {
             ore = new BlockOreDict(name + "_ore","ore" + oreDictName, "pickaxe", oreHarvest, blockBlastResistance).setCreativeTab(MetallurgyTabs.tabOre);
         }
 
-        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor));
+        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature() ));
 
         return new Metal(this, ingot, dust, ore, block, molten);
+    }
+    
+    private int automaticTemperature(){
+        float output = 1000F;
+        if(blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE)
+        {
+            output = blockBlastResistance * 60f;
+        }
+        else if(blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE)
+        {
+            output = blockBlastResistance * 36F;
+        }
+        return Math.round(output);
     }
 
     /**
@@ -63,6 +77,10 @@ public class MetalStats {
     public String getName() {
         return name;
     }
+    
+    public static float getBlockBlastResistance() {
+    	return blockResistance;
+    }
 
     public String getOreDictName() {
         return oreDictName;
@@ -81,6 +99,7 @@ public class MetalStats {
         private final ResourceLocation flowing;
         private final int mapColor;
         private final Function<FluidMolten, FluidMolten> func;
+        private final int TEMPERATURE;
 
         private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
         private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
@@ -88,21 +107,25 @@ public class MetalStats {
                 .setDensity(800)
                 .setGaseous(false)
                 .setLuminosity(9)
-                .setViscosity(4000)
-                .setTemperature(4000);
+                .setViscosity(4000);
 
         public FluidStats(int mapColor) {
-            this(default_still, default_flowing, mapColor, default_function);
+            this(default_still, default_flowing, mapColor, 0, default_function);
+        }
+        
+        public FluidStats(int mapColor, int temperature) {
+            this(default_still, default_flowing, mapColor, temperature, default_function);
         }
 
         public FluidStats(int mapColor, Function<FluidMolten, FluidMolten> func) {
-            this(default_still, default_flowing, mapColor, func);
+            this(default_still, default_flowing, mapColor, 0,func);
         }
 
-        public FluidStats(ResourceLocation still, ResourceLocation flowing, int mapColor, Function<FluidMolten, FluidMolten> func) {
+        public FluidStats(ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature, Function<FluidMolten, FluidMolten> func) {
             this.still = still;
             this.flowing = flowing;
             this.mapColor = mapColor;
+            this.TEMPERATURE = temperature;
             this.func = func;
         }
     }

@@ -37,7 +37,6 @@ public class Metal {
         if (toolMat == null) {
             ToolStats tStats = stats.getToolStats();
             if(tStats == null) {
-                throw new UnsupportedOperationException("No Tool Stats Loaded");
             }
             this.toolMat = EnumHelper.addToolMaterial(stats.getName().toUpperCase(), tStats.getHarvestLevel(), tStats.getMaxUses(), tStats.getEfficiency(), tStats.getDamage(), tStats.getToolMagic());
         }
@@ -92,5 +91,11 @@ public class Metal {
     @Nonnull
     public FluidBlockBase getFluidBlock() {
         return fluidBlock;
+    }
+
+    @Override
+    public String toString()
+    {
+        return stats.getName();
     }
 }
