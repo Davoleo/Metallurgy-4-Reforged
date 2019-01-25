@@ -16,4 +16,4 @@ If you want to contribute to the mod be sure to read [Contributing Lines](https:
 This mod is in alpha development, there are still many missing features aswell as some major bugs maybe present.
 If you want more informationa about the development check github issues and commits, or ask on our discord server here below
 
-If you need support or you have questions just jump on my discord server and ask there: https://discord.gg/yDumVrs 
+If you need support or you have questions just jump on my [discord server](https://discord.gg/MFCdYDY) and ask there!
