@@ -344,8 +344,6 @@ public class EventHandler {
 			
 //			Mithril Sword (Give Glowing to entity Hitted)
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
-
-				
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
 			}
@@ -392,7 +390,7 @@ public class EventHandler {
 	{
 
 		//check if spawned entity is an enderman
-		if(event.getEntity() instanceof EntityEnderman)
+		if(event.getEntity() instanceof EntityEnderman && EffectsConfig.eximiteArmorEffect)
 		{
 
 			EntityEnderman end = (EntityEnderman) event.getEntity();
@@ -462,7 +460,7 @@ public class EventHandler {
 						if(new Random().nextInt(100) < percentage)
 						{
 							//the heal Amount ,that is the 10% of the damage
-							float healAmount = event.getAmount() * 10F / 100F;
+							float healAmount = event.getAmount() * 0.15F;
 							if(pl.getHealth() + healAmount >= pl.getMaxHealth())
 								healAmount = 0;
 							//set the player health

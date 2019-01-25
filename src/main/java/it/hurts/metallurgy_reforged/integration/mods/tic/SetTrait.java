@@ -35,7 +35,7 @@ public class SetTrait {
 			
 			case "vulcanite":{
 				material.addTrait(MetallurgyTraits.vulcanTrait1, HEAD);
-				material.addTrait(superheat, EXTRA);
+				material.addTrait(superheat, HANDLE);
 			}
 			break;
 			
@@ -66,12 +66,13 @@ public class SetTrait {
 			break;
 			
 			case "sanguinite":{
-//				TODO Create Vampirism effect and add it ( ModGlowing )
+				material.addTrait(MetallurgyTraits.lifeSteal, HEAD);
+				material.addTrait(MetallurgyTraits.lifeSteal, HANDLE);
 			}
 			break;
 			
 			case "tartarite":{
-//				TODO Withering II
+				material.addTrait(MetallurgyTraits.wither, HEAD);
 			}
 			break;
 			
@@ -79,6 +80,11 @@ public class SetTrait {
 //				Rompe più velocementi i blocchi di harvest level inferiore al proprio
 				material.addTrait(TinkerTraits.unnatural, EXTRA);
 				material.addTrait(TinkerTraits.unnatural, HEAD);
+			}
+			break;
+			
+			case "desichalkos":{
+				material.addTrait(MetallurgyTraits.kingDiceTrait, EXTRA);
 			}
 			break;
 			

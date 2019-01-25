@@ -37,6 +37,7 @@ public class TraitVulcan extends AbstractTraitLeveled implements ITrait{
 	
 	public TraitVulcan(int levels) {
 		super("vulcan_trait", String.valueOf(levels), 0xffffff, 2, levels);
+		
 		this.levels = levels;
 	}
 

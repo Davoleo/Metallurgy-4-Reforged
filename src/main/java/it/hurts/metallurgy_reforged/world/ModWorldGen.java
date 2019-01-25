@@ -98,7 +98,7 @@ public class ModWorldGen implements IWorldGenerator {
 	private void generateEnd(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
 		//if ()
-			generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
+		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
 	}
 
     private void generateInSpecificBiome(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, Biome... biomes) {

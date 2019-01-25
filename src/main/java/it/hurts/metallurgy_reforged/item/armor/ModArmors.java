@@ -249,10 +249,10 @@ public class ModArmors {
                     if (EffectsConfig.celenegilArmorEffect)
                         return true;
                     break;
-                case "metallurgy:ceruclase":
-                    if (EffectsConfig.ceruclaseArmorEffect)
-                        return true;
-                    break;
+//                case "metallurgy:ceruclase":
+//                    if (EffectsConfig.ceruclaseArmorEffect)
+//                        return true;
+//                    break;
                 case "metallurgy:deep_iron":
                     if (EffectsConfig.deepIronArmorEffect)
                         return true;

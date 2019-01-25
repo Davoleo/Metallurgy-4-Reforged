@@ -60,7 +60,4 @@ public class ArmorCustomSlot extends Slot{
 		return ItemArmor.EMPTY_SLOT_NAMES[3 - armorIndex];
 	}
 
-
-
-
 }

@@ -26,7 +26,7 @@ import scala.util.Random;
  *
  ***************************/
 public class GauntletEffect {
-//	Punch effect inolashite armor
+	
 	@SubscribeEvent
 	public void addPunchEffect(AttackEntityEvent event)
 	{	
@@ -79,8 +79,6 @@ public class GauntletEffect {
 	@SubscribeEvent
 	public void applyPunchThrowEffects(LivingUpdateEvent event)
 	{
-		
-			
 		
 		EntityLivingBase entity = event.getEntityLiving();
 		IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);

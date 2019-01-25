@@ -70,9 +70,7 @@ public class ItemGauntlet extends ItemBase{
 		{
 			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet modifier", (double)3D, 0));;
 			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double)30D, 0));
-
 		}
-
 		return multimap;
 	}
 
