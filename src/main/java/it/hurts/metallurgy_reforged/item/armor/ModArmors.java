@@ -222,71 +222,71 @@ public class ModArmors {
 
     protected static boolean isEffectActive(ItemArmorBase armor)
     {
-            String material = armor.getArmorMaterial().getName().toLowerCase();
+            String material = armor.getArmorMaterial().name().toLowerCase();
 
             switch (material)
             {
-                case "metallurgy:adamantine":
+                case "adamantine":
                     if (EffectsConfig.adamantineArmorEffect)
                         return true;
                     break;
-                case "metallurgy:amordrine":
+                case "amordrine":
                     if (EffectsConfig.amordrineArmorEffect)
                         return true;
                     break;
-                case "metallurgy:angmallen":
+                case "angmallen":
                     if (EffectsConfig.angmallenArmorEffect)
                         return true;
                     break;
-                case "metallurgy:astral_silver":
+                case "astral_silver":
                     if (EffectsConfig.astralSilverArmorEffect)
                         return true;
                     break;
-                case "metallurgy:carmot":
+                case "carmot":
                     if (EffectsConfig.carmotArmorEffect)
                         return true;
                     break;
-                case "metallurgy:celenegil":
+                case "celenegil":
                     if (EffectsConfig.celenegilArmorEffect)
                         return true;
                     break;
-//                case "metallurgy:ceruclase":
+//                case "ceruclase":
 //                    if (EffectsConfig.ceruclaseArmorEffect)
 //                        return true;
 //                    break;
-                case "metallurgy:deep_iron":
+                case "deep_iron":
                     if (EffectsConfig.deepIronArmorEffect)
                         return true;
                     break;
-                case "metallurgy:eximite":
+                case "eximite":
                     if (EffectsConfig.eximiteArmorEffect)
                         return true;
                     break;
-                case "metallurgy:kalendrite":
+                case "kalendrite":
                     if (EffectsConfig.kaledriteArmorEffect)
                         return true;
                     break;
-                case "metallurgy:mithril":
+                case "mithril":
                     if (EffectsConfig.mithrilArmorEffect)
                         return true;
                     break;
-                case "metallurgy:platinum":
+                case "platinum":
                     if (EffectsConfig.platinumArmorEffect)
                         return true;
                     break;
-                case "metallurgy:prometheum":
+                case "prometheum":
                     if (EffectsConfig.prometheumArmorEffect)
                         return true;
                     break;
-                case "metallurgy:quicksilver":
+                case "quicksilver":
                     if (EffectsConfig.quicksilverArmorEffect)
                         return true;
                     break;
-                case "metallurgy:shadow_steel":
+                case "shadow_steel":
                     if (EffectsConfig.shadowSteelArmorEffect)
                         return true;
                     break;
-                case "metallurgy:vulcanite":
+                case "vulcanite":
                     if (EffectsConfig.vulcaniteArmorEffect)
                         return true;
                     break;
