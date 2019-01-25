@@ -29,11 +29,12 @@ public class SetTrait {
 			break;
 			
 			case "ignatius":{
-//				Autosmelt on pickaxe and Fire aspect on sword
+				material.addTrait(MetallurgyTraits.vulcanTrait, HEAD);
 			}
 			break;
 			
 			case "vulcanite":{
+				material.addTrait(MetallurgyTraits.vulcanTrait1, HEAD);
 				material.addTrait(superheat, EXTRA);
 			}
 			break;

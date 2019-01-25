@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitObscure;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitVulcan;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 /*************************************************
@@ -15,5 +16,8 @@ public class MetallurgyTraits {
 
     public static final AbstractTrait exampleTrait = null; // = new MetallurgyTrait(optional parameters)
     public static final AbstractTrait obscureTrait = new TraitObscure();
+    public static final AbstractTrait vulcanTrait = new TraitVulcan(0);
+    public static final AbstractTrait vulcanTrait1 = new TraitVulcan(1);
+    public static final AbstractTrait vulcanTrait2 = new TraitVulcan(2);
 
 }

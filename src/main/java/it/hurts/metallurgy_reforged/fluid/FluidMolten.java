@@ -27,7 +27,6 @@ private int mapColor = 0xFFFFFFFF;
 private float overlayAlpha = 0.2F;
 private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
-private boolean bucketEnabled = false;
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
