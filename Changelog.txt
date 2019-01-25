@@ -54,3 +54,26 @@
 - Orichalcum Sword Effect ( Give Strenght I for 7 sec when you kill an enemy )
 - Celenegil Sword Effect ( Gives Speed I and Strenght I for 7 sec when you kill an enemy )
 - Shadow Steel Tools Effects ( Increased mining speed based on light [ Darker is better ] )
+
+0.0.6
+- Flint and Ignatius (3x3 area fire lighter)
+- Flint and Vulcanite (enhanced flint and ignatius)
+- Fixed road hardness
+- Renamed “Machines” creative tab to “Special” creative tab
+- Buffed axes damage
+- Nerfed swords damage
+- Added Rubracium Gauntlet (Punch Effect)
+- Added Biome Specific Ore Generation system
+- Added a config effect to suppress the alpha warning
+- Added French Localization
+- Added Desichalkos Sword effect (Random effect on the target)
+- Now tooltips get automatically hidden when an effect is disabled
+- Rephrased tooltips
+- Added Comments to effects config
+- Mod Integration: Tinkers’ Construct [Not Final - Could be edited]
+    - Added some Custom traits to TiC integration
+    - Obscure Trait
+    - Vulcan Trait [ 0 - 1 - 2 ]
+    - Wither Trait
+    - Life Steal Trait
+    - King Dice Trait
