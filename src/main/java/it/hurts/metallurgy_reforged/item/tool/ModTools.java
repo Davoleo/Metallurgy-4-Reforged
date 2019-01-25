@@ -3,7 +3,6 @@ package it.hurts.metallurgy_reforged.item.tool;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -154,11 +153,11 @@ public class ModTools {
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_shovel");
     public static ItemSwordBase kalendrite_sword = new ItemSwordBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_sword").setTooltip(Tooltips.KALENDRITE_SWORD_EFFECT);
 
-    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe", Enchantments.FORTUNE, 1);
+    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe");
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_hoe");
-    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe", Enchantments.FORTUNE, 1);
-    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel", Enchantments.FORTUNE, 1);
-    public static ItemSwordBase midasium_sword = new ItemSwordBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_sword", Enchantments.LOOTING, 1).setTooltip( Tooltips.MIDASIUM_SWORD_EFFECT);
+    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe");
+    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel");
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_sword");
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_hoe");

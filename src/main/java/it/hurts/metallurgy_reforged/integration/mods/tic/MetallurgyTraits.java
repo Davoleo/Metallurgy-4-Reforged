@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitDuplication;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitKingDice;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitLifeSteal;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitObscure;
@@ -22,8 +23,9 @@ public class MetallurgyTraits {
     public static final AbstractTrait vulcanTrait = new TraitVulcan(0);
     public static final AbstractTrait vulcanTrait1 = new TraitVulcan(1);
     public static final AbstractTrait vulcanTrait2 = new TraitVulcan(2);
-    public static final AbstractTrait wither = new TraitWither();
-    public static final AbstractTrait lifeSteal = new TraitLifeSteal();
+    public static final AbstractTrait witherTrait = new TraitWither();
+    public static final AbstractTrait lifeStealTrait = new TraitLifeSteal();
     public static final AbstractTrait kingDiceTrait = new TraitKingDice();
+    public static final AbstractTrait duplicaitonTrait = new TraitDuplication();
 
 }

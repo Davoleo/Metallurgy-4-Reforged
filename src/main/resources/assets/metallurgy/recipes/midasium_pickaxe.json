@@ -15,7 +15,6 @@
     }
   },
   "result":{
-    "item":"metallurgy:midasium_pickaxe",
-    "nbt":"{ench:[{lvl:1s,id:35s}]}"
+    "item":"metallurgy:midasium_pickaxe"
   }
 }

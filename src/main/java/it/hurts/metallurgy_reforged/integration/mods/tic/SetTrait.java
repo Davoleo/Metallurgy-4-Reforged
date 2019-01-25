@@ -25,6 +25,7 @@ public class SetTrait {
 			case "midasium" : {
 //				TODO magari aumentare il modifiers
 				material.addTrait(writable2);
+				material.addTrait(MetallurgyTraits.duplicaitonTrait);
 			}
 			break;
 			
@@ -66,13 +67,13 @@ public class SetTrait {
 			break;
 			
 			case "sanguinite":{
-				material.addTrait(MetallurgyTraits.lifeSteal, HEAD);
-				material.addTrait(MetallurgyTraits.lifeSteal, HANDLE);
+				material.addTrait(MetallurgyTraits.lifeStealTrait, HEAD);
+				material.addTrait(MetallurgyTraits.lifeStealTrait, HANDLE);
 			}
 			break;
 			
 			case "tartarite":{
-				material.addTrait(MetallurgyTraits.wither, HEAD);
+				material.addTrait(MetallurgyTraits.witherTrait, HEAD);
 			}
 			break;
 			
