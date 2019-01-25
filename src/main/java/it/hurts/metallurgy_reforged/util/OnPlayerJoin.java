@@ -32,6 +32,7 @@ public class OnPlayerJoin {
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.2")));
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
+			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.5")));
 			player.sendMessage(GITHUB_REPO);
 
 		}
