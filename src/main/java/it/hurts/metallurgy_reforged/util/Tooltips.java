@@ -21,7 +21,6 @@ public class Tooltips {
     public static final String CERUCLASE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.ceruclase_armor_effect");
     public static final String DEEP_IRON_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.deep_iron_armor_effect");
     public static final String EXIMITE_HELMET_EFFECT = Utils.localize("tooltip.metallurgy.eximite_helmet_effect");
-    public static final String INOLASHITE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.inolashite_armor_effect");
     public static final String KALENDRITE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.kalendrite_armor_effect");
     public static final String MITHRIL_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.mithril_armor_effect");
     public static final String PLATINUM_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.platinum_armor_effect");

@@ -234,7 +234,7 @@ tile.zinc_block.name=Zinc Block
 tile.silver_block.name=Silver Block
 tile.platinum_block.name=Platinum Block
 tile.brass_block.name=Brass Block
-tile.sulfur_block.name=Sulfur BLock
+tile.sulfur_block.name=Sulfur Block
 
 #Config
 config.metallurgy.category.general=General
@@ -300,6 +300,9 @@ item.tin_dust.name=Tin Dust
 item.vulcanite_dust.name=Vulcanite Dust
 item.vyroxeres_dust.name=Vyroxeres Dust
 item.zinc_dust.name=Zinc Dust
+
+#Effect
+effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!
 
 #FluidBlocks
 tile.molten_adamantine.name=Molten Adamantine
@@ -443,6 +446,9 @@ item.vyroxeres_ingot.name=Vyroxeres Ingot
 item.zinc_ingot.name=Zinc Ingot
 
 #Gadgets
+item.flint_and_ignatius.name=Flint and Ignatius
+item.flint_and_vulcanite.name=Flint and Vulcanite
+item.rubracium_gauntlet.name=Rubracium Gauntlet
 
 #Items
 item.tar.name=Tar
@@ -718,9 +724,24 @@ container.alloyer=Alloyer
 tile.crusher.name=§6Crusher
 tile.alloyer.name=§eAlloyer
 
+#Tinkers' Construct Traits
+modifier.obscure_trait.name=Obscure
+modifier.vulcan_trait.name=Volcanic
+modifier.duplication_trait.name=Duplication
+modifier.life_steal_trait.name=Life Steal
+modifier.wither_trait.name=Wither
+modifier.king_dice_trait.name=Random Effects
+
+modifier.obscure_trait.desc=
+modifier.vulcan_trait.desc=
+modifier.duplication_trait.desc=
+modifier.life_steal_trait.desc=
+modifier.wither_trait.desc=
+modifier.king_dice_trait.desc=
+
 #Tooltips
 #Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Saturation
+#tooltip.metallurgy.adamantine_armor_effect=§4Saturation
 tooltip.metallurgy.amordrine_armor_effect=§dStrenght
 tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fJump Boost
@@ -740,7 +761,7 @@ tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
-tooltip.metallurgy.celenegil_sword_effect=§aYour kills makes you feel Strong & Quick
+tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
 tooltip.metallurgy.desichalkos_sword_effect=§5Inflicts some random negative effect to the target
 tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
@@ -764,9 +785,6 @@ tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly prop
 #Utils
 util.world_join_message.1=§4§lMetallurgy 4: Reforged
 util.world_join_message.2=§6[Warning: this is an alpha version of the mod]
-util.world_join_message.3=§6Further integration with common mods (like Tinkers' Construct) is not currently available §lbut planned.
+util.world_join_message.3=§6Further integration with common mods is planned. Tinkers' Construct Integration is in a testing phase
 util.world_join_message.4=For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
-
-#Effect
-effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!

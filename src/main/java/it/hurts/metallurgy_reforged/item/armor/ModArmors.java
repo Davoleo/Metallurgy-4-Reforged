@@ -20,14 +20,15 @@ import java.util.List;
  *
  ***************************/
 
+@SuppressWarnings("unused")
 public class ModArmors {
 
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
 
-    public static ItemArmorBase adamantine_helmet = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "adamantine_helmet").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);
-    public static ItemArmorBase adamantine_chest = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "adamantine_chest").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);;
-    public static ItemArmorBase adamantine_legs = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "adamantine_legs").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);;
-    public static ItemArmorBase adamantine_boots = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.FEET, "adamantine_boots").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);;
+    public static ItemArmorBase adamantine_helmet = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "adamantine_helmet")/*.setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT)*/;
+    public static ItemArmorBase adamantine_chest = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "adamantine_chest")/*.setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT)*/;
+    public static ItemArmorBase adamantine_legs = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "adamantine_legs")/*.setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT)*/;
+    public static ItemArmorBase adamantine_boots = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.FEET, "adamantine_boots")/*.setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT)*/;
 
     public static ItemArmorBase amordrine_helmet = new ItemArmorBase(ModMetals.AMORDRINE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "amordrine_helmet").setTooltip(Tooltips.AMORDRINE_ARMOR_MATERIAL);
     public static ItemArmorBase amordrine_chest = new ItemArmorBase(ModMetals.AMORDRINE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "amordrine_chest").setTooltip(Tooltips.AMORDRINE_ARMOR_MATERIAL);

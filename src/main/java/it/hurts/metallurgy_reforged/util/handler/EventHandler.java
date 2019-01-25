@@ -1,12 +1,6 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
@@ -40,11 +34,7 @@ import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -55,6 +45,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 
 /***************************
@@ -188,8 +183,8 @@ public class EventHandler {
 		
 
 //		Adamantine Armor (Saturation)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0, false, false));
+//		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
+//			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0, false, false));
 			
 		
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)

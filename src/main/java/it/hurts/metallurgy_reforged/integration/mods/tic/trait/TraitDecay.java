@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
  * Class: TraitDecay
  * Project: Metallurgy 4 Reforged
  * Copyright - © - Davoleo - 2018
+ * This trait is empty and unused
  **************************************************/
 
 public class TraitDecay extends AbstractTrait implements ITrait {
