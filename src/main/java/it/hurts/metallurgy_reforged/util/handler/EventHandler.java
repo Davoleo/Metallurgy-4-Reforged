@@ -366,7 +366,6 @@ public class EventHandler {
 		}
 	}
 
-
 	@SubscribeEvent
 	public static void onBreakBlock(PlayerEvent.BreakSpeed event)
 	{
@@ -448,7 +447,7 @@ public class EventHandler {
         {
             EntityPlayer pl = (EntityPlayer) entity;
 
-            if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword))){
+            if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword))&& !(ev.getEntity() instanceof EntityPlayer)){
 	            ArrayList<EntityItem> drops = new ArrayList<>();
 	
 //            	Duplica il drop
