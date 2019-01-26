@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 // Non Modificare Sopra
 
-version = "0.0.6"
+version = "0.0.7"
 group = "it.hurts.metallurgy_reforged"
 archivesBaseName = "Metallurgy-4-Reforged"
 
@@ -80,8 +80,4 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-jar {
-    destinationDir = file 'output'
 }
