@@ -4,18 +4,13 @@ import java.util.ArrayList;
 
 import javax.annotation.Nullable;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 /***************************
@@ -26,7 +21,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
  * Time   : 18:51:03
  *
  ***************************/
-@EventBusSubscriber(modid=Metallurgy.MODID)
 public class TraitDuplication extends AbstractTrait implements ITrait{
 
 	public TraitDuplication() {
@@ -46,27 +40,16 @@ public class TraitDuplication extends AbstractTrait implements ITrait{
 		}
 	}
 	
-	@SubscribeEvent
-    public static void entityDeathDrop(LivingDropsEvent ev){
-
-        DamageSource source = ev.getSource();
-        Entity entity = source.getTrueSource();
-        
-        if(entity instanceof EntityPlayer)
-        {
-
-	            ArrayList<EntityItem> drops = new ArrayList<>();
-	
-//            	Duplica il drop
-	            if((int) (Math.random() * 100) <= 50) {
-			        for(EntityItem item : ev.getDrops()){
-			            EntityItem clone = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
-			            drops.add(clone);
-			        }
-		            ev.getDrops().addAll(drops);
-	            }
-        }
-    }
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt,boolean wasCritical, boolean wasHit) {
+		if(!(target instanceof EntityPlayer))
+			if(target.getHealth() <= 0.0F && (int) (Math.random() * 100) < 50){
+				for(EntityItem item : target.capturedDrops){
+					EntityItem clone = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
+					item.world.spawnEntity(clone);
+				}
+			}
+	}
 
 	@Override
 	public void register(String name, @Nullable String tooltip){

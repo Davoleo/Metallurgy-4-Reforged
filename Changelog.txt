@@ -65,13 +65,15 @@
 - Added Rubracium Gauntlet (Punch Effect)
 - Added Biome Specific Ore Generation system
 - Added a config effect to suppress the alpha warning
-- Added French Localization
+- Added French Localization [ Need to Update ]
 - Added Desichalkos Sword effect (Random effect on the target)
+- Removed Looting Enchantment/Added Midasium custom effect ( 50% chance to duplicate your loot [ 2 diamond - with Midasium pickaxe -> 4 diamond ] )
 - Now tooltips get automatically hidden when an effect is disabled
 - Rephrased tooltips
 - Added Comments to effects config
-- Mod Integration: Tinkers’ Construct [Not Final - Could be edited]
-    - Added some Custom traits to TiC integration
+- Fixed a server side crash
+- Mod Integration: Tinkers’ Construct [ Not Final - May be edited ]
+- Added some Custom traits to TiC integration
     - Obscure Trait
     - Vulcan Trait [ 0 - 1 - 2 ]
     - Wither Trait
