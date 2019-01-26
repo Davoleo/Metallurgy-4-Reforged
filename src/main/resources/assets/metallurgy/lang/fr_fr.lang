@@ -1,4 +1,7 @@
-﻿#Armors
+#############################
+#     Author: CooKiiES      #
+#############################
+#Armors
 item.adamantine_helmet.name=Casque en Adamantine
 item.adamantine_chest.name=Plastron en Adamantine
 item.adamantine_legs.name=Jambière en Adamantine
@@ -238,8 +241,8 @@ tile.sulfur_block.name=Bloc de Soufre
 
 #Config
 config.metallurgy.category.general=General
-config.metallurgy.category.effects_control_panel=Effects ON/OFF
-config.metallurgy.category.effects_modifiers=Effects Buff/Nerf
+config.metallurgy.category.effects_control_panel=Effets ACTIVÉ/DESACTIVÉ
+config.metallurgy.category.effects_modifiers=Effets Buff/Nerf
 
 # Creative Tab
 itemGroup.metallurgy.armors=Armures de Metallurgy
@@ -295,11 +298,14 @@ item.shadow_iron_dust.name=Poussière de Fer d'Ombre
 item.shadow_steel_dust.name=Poussière d'Acier d'Ombre 
 item.silver_dust.name=Poussière d'Argent 
 item.steel_dust.name=Poussière d'Acier 
-item.tartartarite_dust.name=Poussière de Tartarite 
+item.tartarite_dust.name=Poussière de Tartarite
 item.tin_dust.name=Poussière de Tin 
 item.vulcanite_dust.name=Poussière de Vulcanite 
 item.vyroxeres_dust.name=Poussière de Vyroxeres 
 item.zinc_dust.name=Poussière de Zinc 
+
+#Effect
+effect.metallurgy.punch_effect_tired=§4Vous êtes trop fatigué ! Mangez quelque chose !
 
 #FluidBlocks
 tile.molten_adamantine.name= Adamantine Fondu
@@ -443,6 +449,9 @@ item.vyroxeres_ingot.name=Lingot de Vyroxeres
 item.zinc_ingot.name=Lingot de Zinc 
 
 #Gadgets
+item.flint_and_ignatius.name=Silex et Ignatius
+item.flint_and_vulcanite.name=Silex et Vulcanite
+item.rubracium_gauntlet.name=Gant en Rubracium 
 
 #Items
 item.tar.name=Goudron
@@ -718,9 +727,24 @@ container.alloyer=Fusionneur
 tile.crusher.name=§6Broyeur
 tile.alloyer.name=§eFusionneur
 
+#Tinkers' Construct Traits
+modifier.obscure_trait.name=Obscur
+modifier.vulcan_trait.name=Volcanique
+modifier.duplication_trait.name=Reproduction
+modifier.life_steal_trait.name=Vol de Vie
+modifier.wither_trait.name=Wither
+modifier.king_dice_trait.name=Effets aléatoires
+
+modifier.obscure_trait.desc=
+modifier.vulcan_trait.desc=
+modifier.duplication_trait.desc=
+modifier.life_steal_trait.desc=
+modifier.wither_trait.desc=
+modifier.king_dice_trait.desc=
+
 #Tooltips
 #Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Saturation
+#tooltip.metallurgy.adamantine_armor_effect=§4Saturation
 tooltip.metallurgy.amordrine_armor_effect=§dForce
 tooltip.metallurgy.angmallen_armor_effect=§eChance
 tooltip.metallurgy.astral_silver_armor_effect=§fBonus de saut
@@ -765,7 +789,5 @@ util.world_join_message.1=§4§lMetallurgy 4: Reforged
 util.world_join_message.2=§6[Attention: c'est une version alpha du mod]
 util.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
 util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
+util.world_join_message.5=For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
-
-#Effect
-effect.metallurgy.punch_effect_tired=§4Vous êtes trop fatigué ! Mangez quelque chose !
