@@ -79,3 +79,8 @@
     - Wither Trait
     - Life Steal Trait
     - King Dice Trait
+    
+0.0.7
+- Fixed Tinkers’ Construct hard dependency
+- Fixed Midasium sword player inventory dupe
+- French localization update
