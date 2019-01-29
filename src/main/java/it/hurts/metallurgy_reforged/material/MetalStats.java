@@ -128,5 +128,6 @@ public class MetalStats {
             this.TEMPERATURE = temperature;
             this.func = func;
         }
+
     }
 }

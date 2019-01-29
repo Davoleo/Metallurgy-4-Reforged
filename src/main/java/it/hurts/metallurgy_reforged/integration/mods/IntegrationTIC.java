@@ -19,10 +19,9 @@ import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 /***************************
  *
  * Author : ItHurtsLikeHell
- * Helper : PierKnight100, Davoleo
- * Project: Metallurgy-5
- * Date   : 13 dic 2018
- * Time   : 18:33:14
+ * Project: Metallurgy-4-Reforged
+ * Date   : 29 gen 2019
+ * Time   : 22:13:12
  *
  ***************************/
 public class IntegrationTIC{
@@ -72,7 +71,7 @@ public class IntegrationTIC{
 
 		MetallurgyTinkerFuels.init();
 	}
-
+	
 	public static FluidStack getFluidFromIngot(ItemStack item)
 	{
 		int c = item.getCount();

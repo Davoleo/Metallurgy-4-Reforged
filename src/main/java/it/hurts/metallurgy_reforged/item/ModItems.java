@@ -22,39 +22,53 @@ import java.util.List;
 public class ModItems {
 	public static List<ItemBase> itemList = new ArrayList<>();
 
+//	Vanilla dust
 	public static ItemOreDict dustGold = new ItemOreDict("gold_dust", "dustGold").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron").setCreativeTab(MetallurgyTabs.tabDust);
-
-	public static ItemIgnLighter flintAndIgnatius = new ItemIgnLighter("flint_and_ignatius");
-	public static ItemVulLighter flintAndVulcanite = new ItemVulLighter("flint_and_vulcanite");
 	
-	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
-
+//	Metallurgy dust
 	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict tar = new ItemOreDict("tar","oreslimeball").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur").setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPhosphorus = new ItemOreDict("phosphorus", "dustPhosphorus").setCreativeTab(MetallurgyTabs.tabDust);
+  
+//	Lightner
+	public static ItemIgnLighter flintAndIgnatius = new ItemIgnLighter("flint_and_ignatius");
+	public static ItemVulLighter flintAndVulcanite = new ItemVulLighter("flint_and_vulcanite");
+	
+//	Modded Items
+	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
+
+	
 
 //	public static ItemOreDict  = new ItemOreDict ("");
 
 	public static void register(IForgeRegistry<Item> registry) {
-		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet);
+		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, 
+				dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet, dustThermite);
 	}
 	
 	public static void registerModels() {
+		
+//		Vanilla dust
 		dustGold.registerItemModel();
 		dustIron.registerItemModel();
 
-		flintAndIgnatius.registerItemModel();
-		flintAndVulcanite.registerItemModel();
-
+//		Metallurgy dust
 		dustBitumen.registerItemModel();
 		tar.registerItemModel();
 		dustPotash.registerItemModel();
 		dustSulfur.registerItemModel();
+		dustThermite.registerItemModel();
 		dustPhosphorus.registerItemModel();
 		
+//		Lightner
+		flintAndIgnatius.registerItemModel();
+		flintAndVulcanite.registerItemModel();
+		
+//		Modded Items
 		gauntlet.registerItemModel();
 	}
 }
