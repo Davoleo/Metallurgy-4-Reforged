@@ -11,6 +11,7 @@ import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -62,7 +63,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
-    	 if(event.getObject() instanceof EntityLivingBase)
+        if(event.getObject() instanceof EntityLivingBase && !(event.getObject() instanceof EntityPlayer))
     	  event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
     }
 }

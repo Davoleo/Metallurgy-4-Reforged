@@ -29,7 +29,7 @@ public class GauntletEffect {
 	
 	@SubscribeEvent
 	public void addPunchEffect(AttackEntityEvent event)
-	{	
+	{
 		int hungerValue = 1;
 		EntityPlayer pl = event.getEntityPlayer();
 		Entity entity = event.getTarget();
@@ -39,13 +39,15 @@ public class GauntletEffect {
 			if(GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
 			{
 
-				IPunchEffect effect = entityLivingBase.getCapability( PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-				if(effect.getHitTicks() <= 0 || effect.getDelayHit() > 0) {
-					if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
+				if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
+
+					IPunchEffect effect = entityLivingBase.getCapability( PunchEffectProvider.PUNCH_EFFECT_CAP, null);
+					if(effect != null && (effect.getHitTicks() <= 0 || effect.getDelayHit() > 0)) {
 						effect.setDelayHit(5);
-						effect.setPunchingPlayer(pl);		
+						effect.setPunchingPlayer(pl);
 						effect.setRotPitchPlayer(pl.rotationPitch);
 						effect.setRotYawPlayer(pl.getRotationYawHead());
+
 
 						if(entityLivingBase instanceof EntityLiving) {
 							EntityLiving livingEntity = (EntityLiving) entityLivingBase;
@@ -53,24 +55,25 @@ public class GauntletEffect {
 							{
 								effect.setNoAI(livingEntity.isAIDisabled());
 								livingEntity.setNoAI(true);
-							}	
+							}
 						}
-						if(!pl.isCreative())
-						{
-							pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - hungerValue);
-
-						}
-
-						Random rand = new Random();		
-
-						for (int i = 0; i < 20; ++i)
-							entity.world.spawnParticle(EnumParticleTypes.CRIT, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 					}
-					else
-						pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired"),true);
+					if(!pl.isCreative())
+					{
+						pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - hungerValue);
 
+					}
+
+					Random rand = new Random();
+
+					for (int i = 0; i < 20; ++i)
+						entity.world.spawnParticle(EnumParticleTypes.CRIT, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 				}
+				else
+					pl.sendStatusMessage(new TextComponentTranslation("effect.metallurgy.punch_effect_tired"),true);
+
 			}
+
 		}
 	}
 		
@@ -83,68 +86,65 @@ public class GauntletEffect {
 		EntityLivingBase entity = event.getEntityLiving();
 		IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 				
-		
-		if(effect.getDelayHit() > 0) {
-			effect.addHitTicks();
-			effect.setDelayHit(effect.getDelayHit() - 1);
-			entity.motionX = 0D;
-			entity.motionY = 0D;
-			entity.motionZ = 0D;
-			entity.hurtResistantTime = 10;
-			
-		}
-		else if(effect.getHitTicks() > 0 && entity.deathTime <= 0)
+		if (effect != null)
 		{
-			EntityPlayer pl = effect.getPunchingPlayer(entity.world);			
-			 if(entity instanceof EntityLiving)
-				  ((EntityLiving)entity).setNoAI(effect.isAIDisabled());
-		
-			if(pl != null)
-			throwEntity(pl, entity);		
-			 effect.setPunchingPlayer(null);
-	    }
-		
-//		check if entity has been punched
-		if(effect.getKnockbackTicks() > 0)
-		{
-			
-			entity.motionX = effect.getKnockbackMotionVec().x;
-			entity.motionY = effect.getKnockbackMotionVec().y;
-			entity.motionZ = effect.getKnockbackMotionVec().z;
-			
-			Random rand = new Random();		
-			
-			if(effect.getHitTicks() > 10)
-			{	
-			for (int i = 0; i < 20; ++i)
-				entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
-				
-			AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D,0.4D);
-			if(!entity.isDead)
-			{
-//				destroy blocks and damage the punched entity (the damage is based from block's hardness
-				for(double i = axisalignedbb.minX;i < axisalignedbb.maxX;i += 0.1D)
-				{
-					for(double j = axisalignedbb.minY;j < axisalignedbb.maxY;j += 0.1D)
-					{
-						for(double k = axisalignedbb.minZ;k < axisalignedbb.maxZ;k += 0.1D)
-						{
+			if(effect.getDelayHit() > 0) {
+				effect.addHitTicks();
+				effect.setDelayHit(effect.getDelayHit() - 1);
+				entity.motionX = 0D;
+				entity.motionY = 0D;
+				entity.motionZ = 0D;
+				entity.hurtResistantTime = 10;
 
-							BlockPos pos = new BlockPos(i, j, k);
-							if(!entity.world.isAirBlock(pos)) {
-								IBlockState state = entity.world.getBlockState(pos);
-								float hardness = state.getBlockHardness(entity.world, pos);
-								if(hardness >= 0)
-								{
-									if(!state.getMaterial().isLiquid()) {
-										if(!entity.world.isRemote)
-											entity.world.destroyBlock(pos, true);				     
-										entity.hurtResistantTime = 0;
-										entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), 0.5F);								
+			}
+			else if(effect.getHitTicks() > 0 && entity.deathTime <= 0)
+			{
+				EntityPlayer pl = effect.getPunchingPlayer(entity.world);
+				 if(entity instanceof EntityLiving)
+					  ((EntityLiving)entity).setNoAI(effect.isAIDisabled());
+
+				if(pl != null)
+				throwEntity(pl, entity);
+				 effect.setPunchingPlayer(null);
+			}
+
+	//		check if entity has been punched
+			if(effect.getKnockbackTicks() > 0)
+			{
+
+				entity.motionX = effect.getKnockbackMotionVec().x;
+				entity.motionY = effect.getKnockbackMotionVec().y;
+				entity.motionZ = effect.getKnockbackMotionVec().z;
+
+				Random rand = new Random();
+
+				if(effect.getHitTicks() > 10)
+				{
+				for (int i = 0; i < 20; ++i)
+					entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
+
+				AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D,0.4D);
+				if(!entity.isDead) {
+					//				destroy blocks and damage the punched entity (the damage is based from block's hardness
+					for (double i = axisalignedbb.minX; i < axisalignedbb.maxX; i += 0.1D) {
+						for (double j = axisalignedbb.minY; j < axisalignedbb.maxY; j += 0.1D) {
+							for (double k = axisalignedbb.minZ; k < axisalignedbb.maxZ; k += 0.1D) {
+
+								BlockPos pos = new BlockPos(i, j, k);
+								if (!entity.world.isAirBlock(pos)) {
+									IBlockState state = entity.world.getBlockState(pos);
+									float hardness = state.getBlockHardness(entity.world, pos);
+									if (hardness >= 0) {
+										if (!state.getMaterial().isLiquid()) {
+											if (!entity.world.isRemote)
+												entity.world.destroyBlock(pos, true);
+											entity.hurtResistantTime = 0;
+											entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), 0.5F);
+										}
 									}
 								}
 							}
-						}	
+						}
 					}
 				}
 			}
