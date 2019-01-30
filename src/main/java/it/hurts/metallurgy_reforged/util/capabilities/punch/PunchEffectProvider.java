@@ -18,7 +18,7 @@ public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
     @CapabilityInject(IPunchEffect.class)
     public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
 
-    private IPunchEffect instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : null;
+    private IPunchEffect instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : new PunchEffect(); //Oh well, it does work ¯\_(?)_/¯
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
