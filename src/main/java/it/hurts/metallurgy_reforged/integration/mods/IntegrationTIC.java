@@ -27,9 +27,9 @@ import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 public class IntegrationTIC{
 	
 	public static void preInit() {
-		for (Metal metals : ModMetals.metalList) {
-			if (checkMaterial(metals)) {
-				TiCMaterial material = new TiCMaterial(metals);
+		for (Metal metal : ModMetals.metalList) {
+			if (checkMaterial(metal)) {
+				TiCMaterial material = new TiCMaterial(metal);
 
 				TinkerRegistry.addMaterial(material);
 			}
@@ -37,18 +37,18 @@ public class IntegrationTIC{
 	}
 
 	public static void init() {
-		for (Metal metals : ModMetals.metalList) {
-			if (checkMaterial(metals)) {
-				Material m = TinkerRegistry.getMaterial(metals.getStats().getName());
+		for (Metal metal : ModMetals.metalList) {
+			if (checkMaterial(metal)) {
+				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
 
 //				Aggiunge un materiale identificativo per recipe (?)
-				m.setRepresentativeItem(metals.getStats().getOreDictName());
+				m.setRepresentativeItem(metal.getStats().getOreDictName());
 				
 //				Chiamata al metodo per aggiungere i traits
-				SetTrait.addTraits(metals, m);
+				SetTrait.addTraits(metal, m);
 				
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metals.getStats().getOreDictName());
+				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
 				
 //				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
@@ -83,6 +83,6 @@ public class IntegrationTIC{
 	private static boolean checkMaterial(Metal metal) {
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM
-				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
+				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS && TinkerRegistry.getMaterial(metal.toString()) == Material.UNKNOWN;
 	}
 }
