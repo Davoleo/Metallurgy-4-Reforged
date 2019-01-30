@@ -58,7 +58,7 @@ public class ModFluids {
 	}
 
 	//    Modello
-	public void registerFluidItemModels(){
+	public static void registerFluidItemModels(){
 		for(FluidMolten fluid : fluidToRegitry) {
 			fluid.getFluidBlock().registerItemModel(Item.getItemFromBlock(fluid.getFluidBlock()));
 		}

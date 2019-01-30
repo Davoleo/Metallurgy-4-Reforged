@@ -59,6 +59,7 @@ public class RegistrationHandler {
         ModBlocks.registerModels();
         ModArmors.registerModels();
         ModTools.registerModels();
+        ModFluids.registerFluidItemModels();
     }
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
