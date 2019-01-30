@@ -45,10 +45,12 @@ public class ItemIgnLighter extends ItemBase {
         {
             worldIn.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-            if ((int) (Math.random() * 100) <= 50)
-                createFire(worldIn, pos);
+            if (itemRand.nextBoolean())
+                createFire(worldIn, pos, player);
 
-            lighter.damageItem(1, player);
+            if (!player.isCreative())
+                lighter.damageItem(1, player);
+
             return EnumActionResult.SUCCESS;
         }
     }
@@ -59,16 +61,16 @@ public class ItemIgnLighter extends ItemBase {
         super.registerItemModel("gadget");
     }
 
-    protected void createFire(World worldIn, BlockPos pos)
+    protected void createFire(World worldIn, BlockPos pos, EntityPlayer player)
     {
-        final BlockPos CENTER_POS = pos;
+        final BlockPos START_POS = pos.offset(player.getHorizontalFacing());
 
         for (int x = -1; x <= 1; x++)
             for (int z = -1; z <= 1; z++) {
-                pos = CENTER_POS;
+                pos = START_POS;
                 pos = pos.add(x, 0, z);
 
-                if (worldIn.isAirBlock(pos) && !worldIn.isAirBlock(pos.down()))
+                if (worldIn.isAirBlock(pos) && !worldIn.isAirBlock(pos.down()) && !worldIn.isRemote)
                     worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
             }
     }

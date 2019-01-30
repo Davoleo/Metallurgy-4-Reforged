@@ -34,6 +34,7 @@ public class ItemVulLighter extends ItemIgnLighter {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
+        pos = pos.offset(facing);
         ItemStack lighter = player.getHeldItem(hand);
 
         if(!player.isSneaking())
@@ -45,9 +46,11 @@ public class ItemVulLighter extends ItemIgnLighter {
             {
                 worldIn.playSound(player, pos, SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.BLOCKS, 1.0F, 2F);
 
-                createFire(worldIn, pos);
+                createFire(worldIn, pos, player);
 
-                lighter.damageItem(1, player);
+                if (!player.isCreative())
+                    lighter.damageItem(1, player);
+
                 return EnumActionResult.SUCCESS;
             }
         else
@@ -60,7 +63,11 @@ public class ItemVulLighter extends ItemIgnLighter {
                 worldIn.playSound(player, targetPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
                 IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, targetPos, facing, hitX, hitY, hitZ, 0, player, hand);
                 worldIn.setBlockState(targetPos, state);
-                player.getCooldownTracker().setCooldown(this, 120/*0*/);
+
+                if (!player.isCreative())
+                    player.getCooldownTracker().setCooldown(this, 120/*0*/);
+                    lighter.damageItem(25, player);
+
                 return EnumActionResult.SUCCESS;
             }
 
