@@ -31,14 +31,14 @@ private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
         super(name, still, flowing);
-        ModFluids.fluidList.add(this);
+//        ModFluids.fluidList.add(this);
     }
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor,int temperature)
     {
         super(name, still, flowing);
         setColor(mapColor);
-        ModFluids.fluidList.add(this);
+//        ModFluids.fluidList.add(this);
         this.setTemperature(temperature);
     }
 

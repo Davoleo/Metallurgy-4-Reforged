@@ -2,6 +2,7 @@ package it.hurts.metallurgy_reforged.util.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
@@ -40,12 +41,14 @@ public class RegistrationHandler {
         ModBlocks.registerItemBlocks(event.getRegistry());
         ModArmors.register(event.getRegistry());
         ModTools.register(event.getRegistry());
+        ModFluids.registerFluidItemBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         ModMetals.registerBlocks(event.getRegistry());
         ModBlocks.register(event.getRegistry());
+        ModFluids.registerFluidBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
