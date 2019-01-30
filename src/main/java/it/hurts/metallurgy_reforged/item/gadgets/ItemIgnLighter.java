@@ -70,7 +70,7 @@ public class ItemIgnLighter extends ItemBase {
                 pos = START_POS;
                 pos = pos.add(x, 0, z);
 
-                if (worldIn.isAirBlock(pos) && !worldIn.isAirBlock(pos.down()) && !worldIn.isRemote)
+                if (worldIn.isAirBlock(pos) && Blocks.FIRE.canPlaceBlockAt(worldIn, pos) && !worldIn.isRemote)
                     worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
             }
     }
