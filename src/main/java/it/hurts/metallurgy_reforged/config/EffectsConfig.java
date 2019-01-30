@@ -79,11 +79,16 @@ public class EffectsConfig {
 
     private EffectsConfig(){}
 
-    @SubscribeEvent
-    static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent e)
-    {
-        if(Metallurgy.MODID.equals(e.getModID()))
-            ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
+    public static class ChangeListener {
+
+        @SubscribeEvent
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+            if(eventArgs.getModID().equals(Metallurgy.MODID)) {
+                ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
+            }
+        }
+
     }
+
 
 }

@@ -60,24 +60,35 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger =  event.getModLog();
-		logger.info(NAME + " is loading!");
+        logger.info(NAME + " is entering pre-initialization!");
 		ModMetals.registerFluids();
 		ModFluids.registerFluids();
+		logger.info("Fluid registration complete!");
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
+		logger.info("World generation successful!");
 		SubEvent.init();
 		TileEntityHandler.registerTileEntities();
+		logger.info("Tile Entities Registered!");
 //		check if tinker is installed
-		if(ModChecker.isTConLoaded)
-			IntegrationTIC.preInit();
+		if(ModChecker.isTConLoaded) {
+            IntegrationTIC.preInit();
+            logger.info("Tinkers integration has been pre-initialized");
+        }
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		logger.info(NAME + ": GUIs have been registered!");
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
+		logger.info(NAME + ": Punch effect capability Registered");
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+        logger.info(NAME + " is entering initialization!");
 		ModRecipes.init();
-		if(ModChecker.isTConLoaded)
-			IntegrationTIC.init();
+        logger.info("Recipes loaded!");
+		if(ModChecker.isTConLoaded) {
+            IntegrationTIC.init();
+            logger.info("Tinkers integration has been initialized");
+        }
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		BlockCrusherRecipes.registerDefaultOreRecipes();
 	}
@@ -85,7 +96,9 @@ public class Metallurgy {
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+        logger.info(NAME + " is entering post-initialization!");
 		PacketManager.init();
+		logger.info(NAME + "'s Network System Loaded");
 	}
 
 	@Mod.EventHandler
@@ -93,5 +106,6 @@ public class Metallurgy {
 	{
 		if (ModChecker.isTConLoaded)
 			IntegrationTIC.postInit();
+		logger.info(NAME + " has been completely loaded");
 	}
 }
