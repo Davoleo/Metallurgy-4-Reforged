@@ -1,5 +1,9 @@
 package it.hurts.metallurgy_reforged.fluid;
 
+import javax.annotation.Nonnull;
+
+import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.FluidBlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -27,18 +31,39 @@ private int mapColor = 0xFFFFFFFF;
 private float overlayAlpha = 0.2F;
 private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
+private static FluidBlockBase block;
+private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
+private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
+
+	public FluidMolten(String name, int mapColor, int Temperature, boolean isNew) {
+		super("molten_" + name, default_still, default_flowing);
+		setColor(mapColor);
+		this.setTemperature(temperature);
+		this.setMaterial(Material.IRON)
+		.setDensity(800)
+        .setGaseous(false)
+        .setLuminosity(9)
+        .setViscosity(4000);
+		if(isNew) {
+//			initFluidBlock(this);
+			System.out.println(this);
+			FluidMolten fm = this;
+			ModFluids.fluidToRegitry.add(fm);
+		}
+//		ModFluids.instance.fluidList.add(this);
+	}
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
     {
         super(name, still, flowing);
-//        ModFluids.fluidList.add(this);
+        ModFluids.fluidList.add(this);
     }
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor,int temperature)
     {
         super(name, still, flowing);
         setColor(mapColor);
-//        ModFluids.fluidList.add(this);
+        ModFluids.fluidList.add(this);
         this.setTemperature(temperature);
     }
 
@@ -123,5 +148,14 @@ private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
     public ItemStack getBucket()
     {
         return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
+    }
+    
+    public static void initFluidBlock(Fluid fluid) {
+    	block = new FluidBlockBase(fluid, Material.LAVA, fluid.getName());
+    }
+    
+    @Nonnull
+    public FluidBlockBase getFluidBlock() {
+        return block;
     }
 }
