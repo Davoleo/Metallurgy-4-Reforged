@@ -1,6 +1,12 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+
 import com.google.common.collect.Lists;
+
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
@@ -21,20 +27,32 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.SPacketSetExperience;
+import net.minecraft.network.play.server.SPacketSoundEffect;
+import net.minecraft.network.play.server.SPacketUpdateHealth;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.FoodStats;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -45,11 +63,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
 
 
 /***************************
@@ -97,6 +110,7 @@ public class EventHandler {
 	public static void onArmorTick(PlayerTickEvent event)
 	{		
         EntityPlayer pl = event.player; //The Player   
+        World world = pl.world;
 //		Astral Silver Armor (Jump Boost)
         if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}) && EffectsConfig.astralSilverArmorEffect)
     		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
@@ -183,9 +197,38 @@ public class EventHandler {
 		
 
 //		Adamantine Armor (Saturation)
-//		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
-//			event.player.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 60, 0, false, false));
-			
+		if(!world.isRemote && isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
+		{
+			FoodStats foodStat = pl.getFoodStats();
+			int amount = 2;						
+			//quantity experience to remove
+			float removeTot = (float)amount / (float)pl.xpBarCap();
+			//check if the player needs food ,if he has enough experience and if the tick is a multiple of 20 (which means that the effect will be applied every second)
+			if(pl instanceof EntityPlayerMP && pl.canEat(false) && (pl.experience >= removeTot || pl.experienceLevel > 0) && pl.ticksExisted % 20 == 0)
+			{
+				EntityPlayerMP mp = (EntityPlayerMP) pl;
+				Random rand = new Random();				
+				mp.experience -= removeTot;
+
+		        if(mp.experienceTotal - amount >= 0)
+		        	mp.experienceTotal -= amount;
+		        
+		        if(mp.experience < 0.0F)
+		        {
+		        	mp.experience = 1F - mp.experience;
+		        	mp.addExperienceLevel(-1);
+		        }
+	        
+		        //add Food Level
+			    foodStat.addStats(1, 0.5F);
+			    //update experience count on the client side
+			    mp.connection.sendPacket(new SPacketSetExperience(mp.experience, mp.experienceTotal, mp.experienceLevel));
+			    //play generic eat sound
+			    mp.connection.sendPacket(new SPacketSoundEffect(SoundEvents.ENTITY_GENERIC_EAT,SoundCategory.PLAYERS,mp.posX,mp.posY + mp.getEyeHeight(),mp.posZ, 0.3F, (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F));
+			          
+			}
+		}
+					
 		
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if(isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && EffectsConfig.platinumArmorEffect)

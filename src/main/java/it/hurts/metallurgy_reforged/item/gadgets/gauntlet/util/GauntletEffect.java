@@ -60,7 +60,7 @@ public class GauntletEffect {
 					}
 					if(!pl.isCreative())
 					{
-						pl.getFoodStats().setFoodLevel(pl.getFoodStats().getFoodLevel() - hungerValue);
+						pl.getFoodStats().addStats(-1, -0.5F);
 
 					}
 
@@ -148,7 +148,7 @@ public class GauntletEffect {
 					}
 				}
 			}
-			}
+			
 					
 //			adds the punch effect ticks 
 			effect.addKnockbackTTicks();			
@@ -156,6 +156,7 @@ public class GauntletEffect {
 			if(effect.getKnockbackTicks() > effect.getHitTicks() / 4) 
 				effect.endEffect(entity);			
 				
+		}
 		}
 	}
 	
