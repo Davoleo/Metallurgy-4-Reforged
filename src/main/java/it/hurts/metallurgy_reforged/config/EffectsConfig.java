@@ -20,7 +20,6 @@ public class EffectsConfig {
 
     //Armors
     @Config.Comment("Saturation Effect")
-    @Config.Ignore
     public static boolean adamantineArmorEffect = true;
     @Config.Comment("Strength II")
     public static boolean amordrineArmorEffect = true;

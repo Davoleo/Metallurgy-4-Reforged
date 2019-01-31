@@ -197,7 +197,7 @@ public class EventHandler {
 		
 
 //		Adamantine Armor (Saturation)
-		if(!world.isRemote && isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
+		if(EffectsConfig.adamantineArmorEffect && !world.isRemote && isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
 		{
 			FoodStats foodStat = pl.getFoodStats();
 			int amount = 2;						

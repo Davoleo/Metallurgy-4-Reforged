@@ -744,7 +744,7 @@ modifier.king_dice_trait.desc=
 
 #Tooltips
 #Armor Tooltips
-#tooltip.metallurgy.adamantine_armor_effect=§4Saturation
+tooltip.metallurgy.adamantine_armor_effect=§4Saturation
 tooltip.metallurgy.amordrine_armor_effect=§dForce
 tooltip.metallurgy.angmallen_armor_effect=§eChance
 tooltip.metallurgy.astral_silver_armor_effect=§fBonus de saut
