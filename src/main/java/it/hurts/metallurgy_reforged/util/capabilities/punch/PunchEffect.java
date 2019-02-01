@@ -90,7 +90,7 @@ public class PunchEffect implements IPunchEffect{
 		double y = -MathHelper.sin(pitch * 0.017453292F);		      
 		double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 		double f = MathHelper.sqrt(x * x + y * y + z * z);
-		double velocity = 2D;
+		double velocity = this.getHitTicks() > 10 ? 2D : 1D;
 		x = x / f;
 	    y = y / f;
 		z = z / f;

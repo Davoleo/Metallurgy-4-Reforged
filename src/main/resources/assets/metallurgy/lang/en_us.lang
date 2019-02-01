@@ -744,7 +744,7 @@ modifier.king_dice_trait.desc=
 
 #Tooltips
 #Armor Tooltips
-#tooltip.metallurgy.adamantine_armor_effect=§4Saturation
+tooltip.metallurgy.adamantine_armor_effect=§4Consumes experience to gain hunger bar points
 tooltip.metallurgy.amordrine_armor_effect=§dStrenght
 tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fJump Boost
