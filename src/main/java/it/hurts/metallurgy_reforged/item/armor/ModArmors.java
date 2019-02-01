@@ -155,7 +155,7 @@ public class ModArmors {
     public static ItemArmorBase oureclase_legs = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "oureclase_legs");
     public static ItemArmorBase oureclase_boots = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.FEET, "oureclase_boots");
 
-    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet", Enchantments.BINDING_CURSE, 1).setTooltip(Tooltips.PLATINUM_ARMOR_EFFECT);
+    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet", Enchantments.BINDING_CURSE, 1).setTooltip(Tooltips.PLATINUM_HELMET_EFFECT);
     public static ItemArmorBase platinum_chest = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "platinum_chest");
     public static ItemArmorBase platinum_legs = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "platinum_legs");
     public static ItemArmorBase platinum_boots = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "platinum_boots");

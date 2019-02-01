@@ -744,23 +744,23 @@ modifier.king_dice_trait.desc=
 
 #Tooltips
 #Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Consumes experience to gain hunger bar points
-tooltip.metallurgy.amordrine_armor_effect=§dStrenght
-tooltip.metallurgy.angmallen_armor_effect=§e(WIP) Luck (WIP)
-tooltip.metallurgy.astral_silver_armor_effect=§fJump Boost
-tooltip.metallurgy.carmot_armor_effect=§e(WIP) Haste (WIP)
-tooltip.metallurgy.celenegil_armor_effect=§aResistance
-tooltip.metallurgy.ceruclase_armor_effect=§3Slows Attackers
-tooltip.metallurgy.deep_iron_armor_effect=§1Fast Swimming
+tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set : Consumes experience to gain hunger points
+tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set : Strenght
+tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set : (WIP) Luck (WIP)
+tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set : Jump Boost
+tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set : (WIP) Haste (WIP)
+tooltip.metallurgy.celenegil_armor_effect=§aFull Armor Set : Resistance
+tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set : Slows Attackers
+tooltip.metallurgy.deep_iron_armor_effect=§1Full Armor Set : Fast Swimming
 tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
-tooltip.metallurgy.kalendrite_armor_effect=§dStrenght
-tooltip.metallurgy.mithril_armor_effect=§bMakes Entities more visible
-tooltip.metallurgy.platinum_armor_effect=§bNight Vision
-tooltip.metallurgy.prometheum_armor_effect=§2Poison Immunity
-tooltip.metallurgy.quicksilver_armor_effect=§bSpeed
-tooltip.metallurgy.shadow_iron_armor_effect=§8No Blindness
-tooltip.metallurgy.shadow_steel_armor_effect=§8Tougher when in the dark
-tooltip.metallurgy.vulcanite_armor_effect=§cFire Immunity
+tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set : Strenght
+tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set : Makes Entities more visible
+tooltip.metallurgy.platinum_helmet_effect=§bNight Vision
+tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set : Poison Immunity
+tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set : Speed
+tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set : No Blindness
+tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set : Tougher when in the dark
+tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set : Fire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
