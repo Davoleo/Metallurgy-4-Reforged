@@ -241,6 +241,10 @@ config.metallurgy.category.general=General
 config.metallurgy.category.effects_control_panel=Effects ON/OFF
 config.metallurgy.category.effects_modifiers=Effects Buff/Nerf
 
+#Effects
+metallurgy.on/off.adamantinearmoreffect=[LOCALIZED] Adamantine Armor Effect
+metallurgy.on/off.adamantinearmoreffect.comment=[LOCALIZED] Full Armor Effect: Hunger gets refilled by experience bit by bit
+
 # Creative Tab
 itemGroup.metallurgy.armors=Metallurgy Armor
 itemGroup.metallurgy.blocks=Metallurgy Blocks
@@ -347,7 +351,7 @@ tile.molten_shadow_steel.name=Molten Shadow Steel
 tile.molten_silver.name=Molten Silver
 tile.molten_steel.name=Molten Steel
 tile.molten_tartarite.name=Molten Tartarite
-fluid.thermite=Molten Thermite
+tile.molten_thermite.name=Molten Thermite
 tile.molten_tin.name=Molten Tin
 tile.molten_vulcanite.name=Molten Vulcanite
 tile.molten_vyroxeres.name=Molten Vyroxeres
@@ -744,23 +748,23 @@ modifier.king_dice_trait.desc=
 
 #Tooltips
 #Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set : Consumes experience to gain hunger points
-tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set : Strenght
-tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set : (WIP) Luck (WIP)
-tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set : Jump Boost
-tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set : (WIP) Haste (WIP)
-tooltip.metallurgy.celenegil_armor_effect=§aFull Armor Set : Resistance
-tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set : Slows Attackers
-tooltip.metallurgy.deep_iron_armor_effect=§1Full Armor Set : Fast Swimming
+tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set: Consumes experience to gain hunger points
+tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght
+tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set: (WIP) Luck (WIP)
+tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set: Jump Boost
+tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set: (WIP) Haste (WIP)
+tooltip.metallurgy.celenegil_armor_effect=§aFull Armor Set: Resistance
+tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set: Slows Attackers
+tooltip.metallurgy.deep_iron_armor_effect=§1Full Armor Set: Fast Swimming
 tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
-tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set : Strenght
-tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set : Makes Entities more visible
+tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set: Strenght
+tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set: Makes Entities more visible
 tooltip.metallurgy.platinum_helmet_effect=§bNight Vision
-tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set : Poison Immunity
-tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set : Speed
-tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set : No Blindness
-tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set : Tougher when in the dark
-tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set : Fire Immunity
+tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set: Poison Immunity
+tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Speed
+tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set: No Blindness
+tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in the dark
+tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords

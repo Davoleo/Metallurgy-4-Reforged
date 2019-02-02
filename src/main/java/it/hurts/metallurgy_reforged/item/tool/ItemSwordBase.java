@@ -68,8 +68,7 @@ public class ItemSwordBase extends ItemSword {
 
     public ItemSwordBase setTooltip(String tooltip)
     {
-        if (ModTools.isSwordEffectActive(this))
-            this.tooltip = tooltip;
+        this.tooltip = tooltip;
         return this;
     }
 
@@ -77,7 +76,7 @@ public class ItemSwordBase extends ItemSword {
 	@Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null)
+        if(this.tooltip != null && ModTools.isSwordEffectActive(this))
             tooltip.add(this.tooltip);
     }
 

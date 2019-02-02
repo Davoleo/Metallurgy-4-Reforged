@@ -69,8 +69,7 @@ public class ItemArmorBase extends ItemArmor {
 
 	public ItemArmorBase setTooltip(String tooltip)
 	{
-		if (ModArmors.isEffectActive(this))
-			this.tooltip = tooltip;
+		this.tooltip = tooltip;
 		return this;
 	}
 
@@ -78,7 +77,7 @@ public class ItemArmorBase extends ItemArmor {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
-		if(this.tooltip != null)
+		if(this.tooltip != null && ModArmors.isEffectActive(this))
 			tooltip.add(this.tooltip);
 	}
 

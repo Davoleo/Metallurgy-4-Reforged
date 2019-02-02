@@ -72,8 +72,7 @@ public class ItemPickaxeBase extends ItemPickaxe {
 
     public ItemPickaxeBase setTooltip(String tooltip)
     {
-        if (ModTools.isPickaxeEffectActive(this))
-            this.tooltip = tooltip;
+        this.tooltip = tooltip;
         return this;
     }
 
@@ -81,7 +80,8 @@ public class ItemPickaxeBase extends ItemPickaxe {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null)
+
+        if(this.tooltip != null && ModTools.isPickaxeEffectActive(this))
             tooltip.add(this.tooltip);
     }
 }

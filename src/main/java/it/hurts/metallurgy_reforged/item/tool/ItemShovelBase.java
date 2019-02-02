@@ -67,8 +67,7 @@ public class ItemShovelBase extends ItemSpade {
 
     public ItemShovelBase setTooltip(String tooltip)
     {
-        if (ModTools.isShovelEffectActive(this))
-            this.tooltip = tooltip;
+        this.tooltip = tooltip;
         return this;
     }
 
@@ -76,7 +75,7 @@ public class ItemShovelBase extends ItemSpade {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null)
+        if(this.tooltip != null && ModTools.isShovelEffectActive(this))
             tooltip.add(this.tooltip);
     }
 

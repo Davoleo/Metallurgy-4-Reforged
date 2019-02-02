@@ -67,8 +67,7 @@ public class ItemAxeBase extends ItemAxe {
 
     public ItemAxeBase setTooltip(String tooltip)
     {
-        if (ModTools.isAxeEffectActive(this))
-            this.tooltip = tooltip;
+        this.tooltip = tooltip;
         return this;
     }
 
@@ -76,7 +75,7 @@ public class ItemAxeBase extends ItemAxe {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null)
+        if(this.tooltip != null && ModTools.isAxeEffectActive(this))
             tooltip.add(this.tooltip);
     }
 
