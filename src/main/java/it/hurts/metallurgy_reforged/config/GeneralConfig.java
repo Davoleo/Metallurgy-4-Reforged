@@ -18,21 +18,24 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {
 
-    public static int test = 100;
+	public static int test = 100;
 
-    @Config.Name("Enable Alpha Warning Message")
-    @Config.Comment("When set to true it shows the alpha warning message when joining the world")
-    public static boolean alphaWarning = true;
+	@Config.Name("Enable Alpha Warning Message")
+	@Config.Comment("When set to true it shows the alpha warning message when joining the world")
+	public static boolean alphaWarning = true;
 
-    public static class ChangeListener {
+//  Sword
+	@Config.Name("Enable/Disable Adamantine Sword")
+	@Config.Comment("When set to false, it disable the Sword")
+	public static boolean adamantineSword = true;
 
-        @SubscribeEvent
-        public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-            if(eventArgs.getModID().equals(Metallurgy.MODID)) {
-                ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
-            }
-        }
+	public static class ChangeListener {
 
-    }
-
+		@SubscribeEvent
+		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+			if(eventArgs.getModID().equals(Metallurgy.MODID)) {
+				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
+			}
+		}
+	}
 }

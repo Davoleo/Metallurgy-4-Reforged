@@ -2,6 +2,8 @@ package it.hurts.metallurgy_reforged.integration.mods;
 
 
 import com.google.common.collect.Table;
+
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
 import it.hurts.metallurgy_reforged.integration.mods.tic.SetTrait;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
@@ -64,7 +66,7 @@ public class IntegrationTIC{
 					TinkerRegistry.registerAlloy(output,input1,input2);
 
 		}
-		System.out.println("Tinker Smeltery Recipes for Metallurgy Loaded");
+		Metallurgy.logger.info("Tinker Smeltery Recipes for Metallurgy Loaded");
 
 		MetallurgyTinkerFuels.init();
 	}
