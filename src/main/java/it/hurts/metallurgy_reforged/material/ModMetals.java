@@ -43,7 +43,7 @@ public class ModMetals {
             new ToolStats(50, 5, 500, 14F, 4F), new FluidStats(0xFFB981F1), -1).createMetal();
     public static final Metal BLACK_STEEL = new MetalStats("black_steel", "BlackSteel", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 17, 50, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(17, 3, 500, 8F, 3F), new FluidStats(0xFF010623), -1).createMetal();
+            new ToolStats(17, 3, 500, 8F, 3F), new FluidStats(0xFF24354B), -1).createMetal();
     public static final Metal BRASS = new MetalStats("brass", "Brass", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{1, 2, 3, 2}, 18, 15, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 1, 15, 10F, 2F), new FluidStats(0xFFEAAB00), -1).createMetal();
