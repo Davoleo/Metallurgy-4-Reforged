@@ -18,9 +18,9 @@ import static slimeknights.tconstruct.tools.TinkerTraits.*;
 public class SetTrait {
 
 	public static void addTraits(Metal metal, Material material){
-		
+
 		switch(metal.getStats().getName()) {
-//		TraitSuperheat = Incrementa il danno in caso il subente è incendiato
+//		TraitSuperheat = Increased damage to enemies that are on fire
 		
 			case "midasium" : {
 //				TODO magari aumentare il modifiers

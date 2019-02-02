@@ -28,7 +28,7 @@ public class IntegrationTIC{
 	
 	public static void preInit() {
 		for (Metal metal : ModMetals.metalList) {
-			if (checkMaterial(metal)) {
+			if (checkMaterial(metal) && checkDuplicateMaterial(metal)) {
 				TiCMaterial material = new TiCMaterial(metal);
 				
 				TinkerRegistry.addMaterial(material);
@@ -80,6 +80,11 @@ public class IntegrationTIC{
 	private static boolean checkMaterial(Metal metal) {
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM
-				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS && TinkerRegistry.getMaterial(metal.toString()) == Material.UNKNOWN;
+				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
+	}
+
+	private static boolean checkDuplicateMaterial(Metal metal)
+	{
+		return TinkerRegistry.getMaterial(metal.toString()).equals(Material.UNKNOWN);
 	}
 }
