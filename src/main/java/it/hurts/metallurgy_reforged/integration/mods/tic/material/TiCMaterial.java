@@ -22,6 +22,8 @@ public class TiCMaterial extends Material{
 		this.metal = metal;
 		this.setFluid(metal.getMolten());
 		this.setCastable(true);
+		this.addItem(metal.getIngot());
+		this.setRepresentativeItem(metal.getIngot());
 		TiCMaterials.addMaterialStats(metal, this);
 		addCommonItems((metal.getStats().getOreDictName()));
 	}

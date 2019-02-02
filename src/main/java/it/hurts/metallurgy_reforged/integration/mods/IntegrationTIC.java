@@ -30,7 +30,7 @@ public class IntegrationTIC{
 		for (Metal metal : ModMetals.metalList) {
 			if (checkMaterial(metal)) {
 				TiCMaterial material = new TiCMaterial(metal);
-
+				
 				TinkerRegistry.addMaterial(material);
 			}
 		}
@@ -40,9 +40,6 @@ public class IntegrationTIC{
 		for (Metal metal : ModMetals.metalList) {
 			if (checkMaterial(metal)) {
 				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
-
-//				Aggiunge un materiale identificativo per recipe (?)
-				m.setRepresentativeItem(metal.getStats().getOreDictName());
 				
 //				Chiamata al metodo per aggiungere i traits
 				SetTrait.addTraits(metal, m);
