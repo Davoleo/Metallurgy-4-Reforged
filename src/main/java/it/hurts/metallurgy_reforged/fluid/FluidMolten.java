@@ -46,7 +46,6 @@ private final static ResourceLocation default_flowing = new ResourceLocation(Met
         .setViscosity(4000);
 		if(isNew) {
 //			initFluidBlock(this);
-			System.out.println(this);
 			FluidMolten fm = this;
 			ModFluids.fluidToRegitry.add(fm);
 		}
