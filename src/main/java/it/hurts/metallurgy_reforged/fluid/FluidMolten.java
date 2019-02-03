@@ -35,15 +35,15 @@ private static FluidBlockBase block;
 private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
 private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
-	public FluidMolten(String name, int mapColor, int Temperature, boolean isNew) {
+	public FluidMolten(String name, int mapColor, int temperature, boolean isNew) {
 		super("molten_" + name, default_still, default_flowing);
-		setColor(mapColor);
-		this.setTemperature(temperature);
 		this.setMaterial(Material.IRON)
 		.setDensity(800)
         .setGaseous(false)
         .setLuminosity(9)
-        .setViscosity(4000);
+        .setViscosity(4000)
+        .setTemperature(temperature);
+		setColor(mapColor);
 		if(isNew) {
 //			initFluidBlock(this);
 			FluidMolten fm = this;
