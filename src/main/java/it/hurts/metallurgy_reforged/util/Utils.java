@@ -36,6 +36,46 @@ public class Utils {
 			MobEffects.SLOWNESS,
 			MobEffects.REGENERATION
 	};
+	
+	public static String[] materialName = {
+			"adamantine",
+			"amordrine",
+			"angmallen",
+			"astral_silver",
+			"atlarus",
+			"black_steel",
+			"brass",
+			"bronze",
+			"carmot",
+			"celenegil",
+			"ceruclase",
+			"copper",
+			"damascus_steel",
+			"deep_iron",
+			"desichalkos",
+			"electrum",
+			"eximite",
+			"haderoth",
+			"hepatizon",
+			"ignatius",
+			"inolashite",
+			"kalendrite",
+			"midasium",
+			"mithril",
+			"orichalcum",
+			"oureclase",
+			"platinum",
+			"prometheum",
+			"quicksilver",
+			"sanguinite",
+			"shadow_iron",
+			"shadow_steel",
+			"silver",
+			"steel",
+			"tartarite",
+			"vulcanite",
+			"vyroxeres"
+		};
 
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
     {

@@ -1,6 +1,7 @@
  package it.hurts.metallurgy_reforged;
 
- import it.hurts.metallurgy_reforged.fluid.ModFluids;
+ import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;

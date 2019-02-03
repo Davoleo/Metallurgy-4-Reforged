@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.item.Item;
@@ -8,6 +9,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /*************************************************
  * Author: Davoleo
@@ -246,229 +248,19 @@ public class ModTools {
 
     public static void register(IForgeRegistry<Item> registry)
     {
-        registry.registerAll(
-                adamantine_axe,
-                adamantine_hoe,
-                adamantine_pickaxe,
-                adamantine_shovel,
-                adamantine_sword,
-
-                amordrine_axe,
-                amordrine_hoe,
-                amordrine_pickaxe,
-                amordrine_shovel,
-                amordrine_sword,
-
-                angmallen_axe,
-                angmallen_hoe,
-                angmallen_pickaxe,
-                angmallen_shovel,
-                angmallen_sword,
-
-                astral_silver_axe,
-                astral_silver_hoe,
-                astral_silver_pickaxe,
-                astral_silver_shovel,
-                astral_silver_sword,
-
-                atlarus_axe,
-                atlarus_hoe,
-                atlarus_pickaxe,
-                atlarus_shovel,
-                atlarus_sword,
-
-                black_steel_axe,
-                black_steel_hoe,
-                black_steel_pickaxe,
-                black_steel_shovel,
-                black_steel_sword,
-
-                brass_axe,
-                brass_hoe,
-                brass_pickaxe,
-                brass_shovel,
-                brass_sword,
-
-                bronze_axe,
-                bronze_hoe,
-                bronze_pickaxe,
-                bronze_shovel,
-                bronze_sword,
-
-                carmot_axe,
-                carmot_hoe,
-                carmot_pickaxe,
-                carmot_shovel,
-                carmot_sword,
-
-                celenegil_axe,
-                celenegil_hoe,
-                celenegil_pickaxe,
-                celenegil_shovel,
-                celenegil_sword,
-
-                ceruclase_axe,
-                ceruclase_hoe,
-                ceruclase_pickaxe,
-                ceruclase_shovel,
-                ceruclase_sword,
-
-                copper_axe,
-                copper_hoe,
-                copper_pickaxe,
-                copper_shovel,
-                copper_sword,
-
-                damascus_steel_axe,
-                damascus_steel_hoe,
-                damascus_steel_pickaxe,
-                damascus_steel_shovel,
-                damascus_steel_sword,
-
-                deep_iron_axe,
-                deep_iron_hoe,
-                deep_iron_pickaxe,
-                deep_iron_shovel,
-                deep_iron_sword,
-
-                desichalkos_axe,
-                desichalkos_hoe,
-                desichalkos_pickaxe,
-                desichalkos_shovel,
-                desichalkos_sword,
-
-                electrum_axe,
-                electrum_hoe,
-                electrum_pickaxe,
-                electrum_shovel,
-                electrum_sword,
-
-                eximite_axe,
-                eximite_hoe,
-                eximite_pickaxe,
-                eximite_shovel,
-                eximite_sword,
-
-                haderoth_axe,
-                haderoth_hoe,
-                haderoth_pickaxe,
-                haderoth_shovel,
-                haderoth_sword,
-
-                hepatizon_axe,
-                hepatizon_hoe,
-                hepatizon_pickaxe,
-                hepatizon_shovel,
-                hepatizon_sword,
-
-                ignatius_axe,
-                ignatius_hoe,
-                ignatius_pickaxe,
-                ignatius_shovel,
-                ignatius_sword,
-
-                inolashite_axe,
-                inolashite_hoe,
-                inolashite_pickaxe,
-                inolashite_shovel,
-                inolashite_sword,
-
-                kalendrite_axe,
-                kalendrite_hoe,
-                kalendrite_pickaxe,
-                kalendrite_shovel,
-                kalendrite_sword,
-
-                midasium_axe,
-                midasium_hoe,
-                midasium_pickaxe,
-                midasium_shovel,
-                midasium_sword,
-
-                mithril_axe,
-                mithril_hoe,
-                mithril_pickaxe,
-                mithril_shovel,
-                mithril_sword,
-
-                orichalcum_axe,
-                orichalcum_hoe,
-                orichalcum_pickaxe,
-                orichalcum_shovel,
-                orichalcum_sword,
-
-                oureclase_axe,
-                oureclase_hoe,
-                oureclase_pickaxe,
-                oureclase_shovel,
-                oureclase_sword,
-
-                platinum_axe,
-                platinum_hoe,
-                platinum_pickaxe,
-                platinum_shovel,
-                platinum_sword,
-
-                prometheum_axe,
-                prometheum_hoe,
-                prometheum_pickaxe,
-                prometheum_shovel,
-                prometheum_sword,
-
-                quicksilver_axe,
-                quicksilver_hoe,
-                quicksilver_pickaxe,
-                quicksilver_shovel,
-                quicksilver_sword,
-
-                sanguinite_axe,
-                sanguinite_hoe,
-                sanguinite_pickaxe,
-                sanguinite_shovel,
-                sanguinite_sword,
-
-                shadow_iron_axe,
-                shadow_iron_hoe,
-                shadow_iron_pickaxe,
-                shadow_iron_shovel,
-                shadow_iron_sword,
-
-                shadow_steel_axe,
-                shadow_steel_hoe,
-                shadow_steel_pickaxe,
-                shadow_steel_shovel,
-                shadow_steel_sword,
-
-                silver_axe,
-                silver_hoe,
-                silver_pickaxe,
-                silver_shovel,
-                silver_sword,
-
-                steel_axe,
-                steel_hoe,
-                steel_pickaxe,
-                steel_shovel,
-                steel_sword,
-
-                tartarite_axe,
-                tartarite_hoe,
-                tartarite_pickaxe,
-                tartarite_shovel,
-                tartarite_sword,
-
-                vulcanite_axe,
-                vulcanite_hoe,
-                vulcanite_pickaxe,
-                vulcanite_shovel,
-                vulcanite_sword,
-
-                vyroxeres_axe,
-                vyroxeres_hoe,
-                vyroxeres_pickaxe,
-                vyroxeres_shovel,
-                vyroxeres_sword
-        );
+    	Object[] name;
+    	GeneralConfig.fillMap();
+    	for(Item item : toolList) {
+    		if(item instanceof ItemSwordBase)
+    			for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+    				name = m.keySet().toArray();
+    				for(Object n : name) {
+    					if(n.toString().equals((((ItemSwordBase) item).getToolMaterialName()).toLowerCase()) && m.get(n)[4]) {
+    						registry.register(item);
+    					}
+    				}
+    			}	
+    	}
     }
 
 
