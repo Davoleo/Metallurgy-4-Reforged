@@ -1,6 +1,15 @@
 package it.hurts.metallurgy_reforged.proxy;
 
+import java.io.File;
+
+import com.typesafe.config.Config;
+
+import it.hurts.metallurgy_reforged.config.GConfig;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /***************************
 *
@@ -10,8 +19,10 @@ import net.minecraft.item.Item;
 * Time   : 18:24:07
 *
 ***************************/
-
+@Mod.EventBusSubscriber
 public class CommonProxy {
+	
+	public static Configuration config;
 
     public void registerItemRenderer(Item item, int meta, String id){
     	
@@ -19,5 +30,16 @@ public class CommonProxy {
 
     public void registerItemRenderer(Item item, int meta, String id, String subdirectory){
 
+    }
+    
+    public void preInit(FMLPreInitializationEvent e) {
+        File directory = e.getModConfigurationDirectory();
+        config = new Configuration(new File(directory.getPath(), "gconfig.cfg"));
+        GConfig.readConfig();
+    }
+    
+    public void postInit(FMLPostInitializationEvent e) {
+        if (config.hasChanged())
+            config.save();
     }
 }

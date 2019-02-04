@@ -62,6 +62,7 @@ public class Metallurgy {
 	public void preInit(FMLPreInitializationEvent event) {
 		logger =  event.getModLog();
         logger.info(NAME + " is entering pre-initialization!");
+        proxy.preInit(event);
 		ModMetals.registerFluids();
 		ModFluids.registerFluids();
 		logger.info("Fluid registration complete!");
@@ -98,6 +99,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
         logger.info(NAME + " is entering post-initialization!");
+        proxy.postInit(event);
 		PacketManager.init();
 		logger.info(NAME + "'s Network System Loaded");
 	}

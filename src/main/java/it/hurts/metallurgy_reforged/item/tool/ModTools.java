@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.GConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
@@ -249,17 +250,16 @@ public class ModTools {
     public static void register(IForgeRegistry<Item> registry)
     {
     	Object[] name;
-    	GeneralConfig.fillMap();
     	for(Item item : toolList) {
-    		if(item instanceof ItemSwordBase)
-    			for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+    		if(item instanceof ItemSwordBase) {
+    			for(Map<String, boolean[]> m : GConfig.mapList) {
     				name = m.keySet().toArray();
     				for(Object n : name) {
-    					if(n.toString().equals((((ItemSwordBase) item).getToolMaterialName()).toLowerCase()) && m.get(n)[4]) {
-    						registry.register(item);
-    					}
+    					if(n.toString().equals(((ItemSwordBase) item).getToolMaterialName()) && m.get(n)[4])
+        					registry.register(item);
     				}
-    			}	
+    			}
+    		}
     	}
     }
 
