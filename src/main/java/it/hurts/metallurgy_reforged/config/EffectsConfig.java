@@ -16,8 +16,7 @@ import net.minecraftforge.common.config.Config;
 public class EffectsConfig {
 
     //Armors
-    @Config.Name("Adamantine Armor Effect")
-    @Config.Comment("Full Armor Effect: Hunger gets refilled by experience bit by bit")
+
     public static boolean adamantineArmorEffect = true;
     @Config.Name("Amordrine Armor Effect")
     @Config.Comment("Full Armor gives Strength II")

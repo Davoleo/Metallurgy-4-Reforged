@@ -81,3 +81,7 @@ processResources {
         exclude 'mcmod.info'
     }
 }
+
+jar {
+    destinationDir = file 'output'
+}

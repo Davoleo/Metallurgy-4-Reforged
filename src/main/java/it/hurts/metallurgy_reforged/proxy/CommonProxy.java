@@ -2,9 +2,7 @@ package it.hurts.metallurgy_reforged.proxy;
 
 import java.io.File;
 
-import com.typesafe.config.Config;
-
-import it.hurts.metallurgy_reforged.config.GConfig;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -34,8 +32,8 @@ public class CommonProxy {
     
     public void preInit(FMLPreInitializationEvent e) {
         File directory = e.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "gconfig.cfg"));
-        GConfig.readConfig();
+        config = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\general.cfg"));
+        GeneralConfig.readConfig(config);
     }
     
     public void postInit(FMLPostInitializationEvent e) {
