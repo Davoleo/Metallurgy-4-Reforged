@@ -57,8 +57,7 @@ public class MetallurgyTabs extends CreativeTabs {
     @Override
     public ItemStack createIcon()
     {
-        switch (type)
-        {
+        switch (type){
             case 0: return new ItemStack(ModArmors.adamantine_chest);
             case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());

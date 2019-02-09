@@ -14,7 +14,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 /*************************************************
  * Author: Davoleo
  * Date / Hour: 06/12/2018 / 21:30
@@ -198,7 +197,6 @@ public class GeneralConfig {
 	
 	public static void readConfig(Configuration cfg) {
         try {
-//        	cfg.load();
         	initGeneralConfig(cfg);
         } catch (Exception e1) {
             Metallurgy.logger.log(Level.ERROR, "Problem loading config file!", e1);
@@ -210,11 +208,10 @@ public class GeneralConfig {
     }
 	
 	private static void initGeneralConfig(Configuration cfg) {
-        // cfg.getBoolean() will get the value in the config if it is already specified there. If not it will create the value.
-//		String[] tool_name = { "axe", "hoe","pickaxe","shovel","sword" };
+//		Il for annidato andrà a controllare tutti il valore boolean di ogni materiale per un singolo tool ad ogni ripetizione
+		
 		for(int j = 0; j < 5; j++) {
 			for(int i = 0; i < allTools.length; i++) {
-				
 				allTools[i][j] = cfg.getBoolean(Utils.materialName[i], CATEGORY[j],  allTools[i][j], "Set to false to disable " + CATEGORY[j]);
 			}
 		}
@@ -222,6 +219,7 @@ public class GeneralConfig {
 		for(int i = 0; i < allTools.length; i++) {
 			Map<String,boolean[]> mappa = new HashMap<String,boolean[]>();
 			
+//			Il nome dei materiali è in UPPERCASE
 			mappa.put(Utils.materialName[i].toUpperCase(), allTools[i]);
 			mapList.add(mappa);
 		}
