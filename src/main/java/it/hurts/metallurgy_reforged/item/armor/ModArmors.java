@@ -215,7 +215,7 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
-    	if(ArmorConfig.disableAllArmor) {
+    	if(GeneralConfig.disableAllArmor) {
     		Object[] name;
         	for(Item armor : armorList)
         		for(Map<String, Boolean> m : ArmorConfig.mapList) {
@@ -229,7 +229,7 @@ public class ModArmors {
     }
 
     public static void registerModels() {
-    	if(ArmorConfig.disableAllArmor) {
+    	if(GeneralConfig.disableAllArmor) {
     		Object[] name;
         	for(Item armor : armorList) 
         		for(Map<String, Boolean> m : ArmorConfig.mapList) {

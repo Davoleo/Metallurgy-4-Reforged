@@ -3,7 +3,7 @@ package it.hurts.metallurgy_reforged.proxy;
 import java.io.File;
 
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.ToolConfig;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +23,7 @@ public class CommonProxy {
 	
 	public static Configuration config;
 	public static Configuration armorConfig;
+	public static Configuration toolConfig;
 
     public void registerItemRenderer(Item item, int meta, String id){
     	
@@ -34,16 +35,15 @@ public class CommonProxy {
     
     public void preInit(FMLPreInitializationEvent e) {
         File directory = e.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\general.cfg"));
-        GeneralConfig.readConfig(config);
         
         armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
         ArmorConfig.readConfig(armorConfig);
+        
+        toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
+        ToolConfig.readConfig(toolConfig);
     }
     
     public void postInit(FMLPostInitializationEvent e) {
-        if (config.hasChanged())
-            config.save();
         if(armorConfig.hasChanged())
         	armorConfig.save();
     }

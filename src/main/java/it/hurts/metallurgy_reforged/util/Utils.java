@@ -164,4 +164,25 @@ public class Utils {
     private static int getMaxIndexEffect() {
     	return effect.length;
     }
+    
+    public static String getName(String name) {
+		String[] str = name.split("_");
+		String[] space = space(str.length);
+		name = "";
+		for(int i = 0; i < str.length; i++) {
+			name = name + str[i].substring(0, 1).toUpperCase() + str[i].substring(1,str[i].length()) + space[i];
+		}
+		return name;
+	}
+	
+	private static String[] space(int len) {
+		String[] str = new String [len];
+		for(int i = 0; i < len; i++) {
+			if(i < len-1) {
+				str[i] = " ";
+			}else
+				str[i] = "";
+		}
+		return str;
+	}
 }

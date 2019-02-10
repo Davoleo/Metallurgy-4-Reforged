@@ -15,17 +15,11 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Config.LangKey("config.metallurgy.category.armor")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/armor")
 public class ArmorConfig {
 	
 	private static final String CATEGORY = "Armor";
 	@Config.Ignore
 	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
-	
-	@Config.Name("Enable/Disable all armor set")
-	@Config.Comment("When set to false it disable all armor set")
-	public static boolean disableAllArmor = true;
 	
 	@Config.Ignore
 	@Config.RequiresMcRestart
@@ -195,7 +189,7 @@ public class ArmorConfig {
 	private static void initArmorConfig(Configuration cfg) {
 			for(int i = 0; i < allArmor.length; i++) {
 				Map<String,Boolean> mappa = new HashMap<String,Boolean>();
-				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.materialName[i] + " Armor Set" );
+				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.materialName[i]) + " Armor Set" );
 				
 				mappa.put(Utils.materialName[i].toUpperCase(), allArmor[i]);
 				mapList.add(mappa);

@@ -2,6 +2,7 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.item.Item;
@@ -250,7 +251,7 @@ public class ModTools {
     	if(GeneralConfig.disableAllTool) {
     		Object[] name;
         	for(Item item : toolList) {
-        		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+        		for(Map<String, boolean[]> m : ToolConfig.mapList) {
         			name = m.keySet().toArray();
         			for(Object n : name) {
         				if(item instanceof ItemSwordBase) {
@@ -283,7 +284,7 @@ public class ModTools {
     	if(GeneralConfig.disableAllTool) {
     		Object[] name;
 	    	for(Item item : toolList) {
-	    		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+	    		for(Map<String, boolean[]> m : ToolConfig.mapList) {
 	    			name = m.keySet().toArray();
 	    			for(Object n : name) {
 	    				if(item instanceof ItemSwordBase) {
