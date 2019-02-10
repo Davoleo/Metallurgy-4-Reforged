@@ -1,6 +1,9 @@
 package it.hurts.metallurgy_reforged.item.armor;
 
+import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.item.tool.ItemSwordBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.init.Enchantments;
@@ -10,6 +13,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /***************************
  *
@@ -211,13 +215,35 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
-        registry.registerAll(armorList.toArray(new ItemArmorBase[0]));
+    	Object[] name;
+    	for(Item armor : armorList) {
+    		for(Map<String, Boolean> m : ArmorConfig.mapList) {
+    			name = m.keySet().toArray();
+    			for(Object n : name) {
+    				if(armor instanceof ItemArmorBase) {
+    					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue())){
+    						registry.register(armor);
+    					}
+    				}
+    			}
+    		}
+    	}
     }
 
     public static void registerModels() {
-        for (ItemArmorBase iab : armorList) {
-            iab.registerItemModel(iab, 0);
-        }
+    	Object[] name;
+    	for(Item armor : armorList) {
+    		for(Map<String, Boolean> m : ArmorConfig.mapList) {
+    			name = m.keySet().toArray();
+    			for(Object n : name) {
+    				if(armor instanceof ItemArmorBase) {
+    					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue())){
+    						((ItemArmorBase) armor).registerItemModel(armor, 0);
+    					}
+    				}
+    			}
+    		}
+    	}
     }
 
     protected static boolean isEffectActive(ItemArmorBase armor)
