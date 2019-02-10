@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
 import net.minecraft.block.state.IBlockState;
@@ -30,7 +31,6 @@ public class GauntletEffect {
 	@SubscribeEvent
 	public void addPunchEffect(AttackEntityEvent event)
 	{
-		int hungerValue = 1;
 		EntityPlayer pl = event.getEntityPlayer();
 		Entity entity = event.getTarget();
 		if(entity instanceof EntityLivingBase)
@@ -39,7 +39,7 @@ public class GauntletEffect {
 			if(GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
 			{
 
-				if(pl.getFoodStats().getFoodLevel() >= hungerValue || pl.isCreative()){
+				if(pl.getFoodStats().getFoodLevel() >= GeneralConfig.gauntletHungerModifier || pl.isCreative()){
 
 					IPunchEffect effect = entityLivingBase.getCapability( PunchEffectProvider.PUNCH_EFFECT_CAP, null);
 					if(effect != null && (effect.getHitTicks() <= 0 || effect.getDelayHit() > 0)) {
@@ -60,7 +60,7 @@ public class GauntletEffect {
 					}
 					if(!pl.isCreative())
 					{
-						pl.getFoodStats().addStats(-1, -0.5F);
+						pl.getFoodStats().addStats(-GeneralConfig.gauntletHungerModifier, (float)-(GeneralConfig.gauntletHungerModifier/2));
 
 					}
 
@@ -139,7 +139,8 @@ public class GauntletEffect {
 											if (!entity.world.isRemote)
 												entity.world.destroyBlock(pos, true);
 											entity.hurtResistantTime = 0;
-											entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), 0.5F);
+											if(GeneralConfig.gauntlerBlockDamageModifier != 0)
+												entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), (float) GeneralConfig.gauntlerBlockDamageModifier);
 										}
 									}
 								}

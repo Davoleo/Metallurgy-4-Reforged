@@ -2,6 +2,8 @@ package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -42,7 +44,7 @@ public class ItemGauntlet extends ItemBase{
 
 	public ItemGauntlet(String name) {
 		super(name);
-		this.setMaxDamage(1000);
+		this.setMaxDamage(GeneralConfig.gauntletMaxDamage);
 		this.setCreativeTab(MetallurgyTabs.tabSpecial);
 		this.setNoRepair();
 		this.setMaxStackSize(1);
@@ -68,8 +70,8 @@ public class ItemGauntlet extends ItemBase{
 
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
 		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet modifier", (double)3D, 0));;
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double)30D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet modifier", (double)GeneralConfig.gauntletAttackDamage, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", (double)GeneralConfig.gauntletAttackSpeed, 0));
 		}
 		return multimap;
 	}

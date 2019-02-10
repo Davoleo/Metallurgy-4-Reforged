@@ -55,13 +55,32 @@ public class GeneralConfig {
 	@Config.Comment("Don't change if you aren't a dev")
 	@Config.RequiresMcRestart
 	public static int ultraRareRarity = 2;
+	
+	@Config.Name("Set the Max Damage value of Gauntlet")
+	@Config.RequiresMcRestart
+	public static int gauntletMaxDamage = 750;
+	
+	@Config.Name("Set the gauntlet attack damage modifier")
+	public static double gauntletAttackDamage = 3D;
+	
+	@Config.Name("Set the gauntlet attack speed modifier")
+	@Config.Comment("We suggest to set the value to 16 else the process bar will be rendered")
+	@Config.RangeDouble(min = -3D, max = 16D)
+	public static double gauntletAttackSpeed = 16D;
+	
+	@Config.Name("Set the gauntlet hunger modifier [ 1 = 0.5 ]")
+	@Config.RangeInt(min = 0)
+	public static int gauntletHungerModifier = 1;
+	
+	@Config.Name("Sets the damage dealt to the target by being hit on the block")
+	@Config.RangeDouble(min = 0)
+	public static double gauntlerBlockDamageModifier = 0.5;
 
 	public static class ChangeListener {
 		@SubscribeEvent
 		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-			if(eventArgs.getModID().equals(Metallurgy.MODID)) {
+			if(eventArgs.getModID().equals(Metallurgy.MODID))
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
-			}
 		}
 	}
 }
