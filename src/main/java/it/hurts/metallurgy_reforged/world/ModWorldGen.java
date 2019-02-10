@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.world;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -31,10 +32,10 @@ public class ModWorldGen implements IWorldGenerator {
 	private final Block DEFAULT_NETHER = Blocks.NETHERRACK;
 	private final Block DEFAULT_END = Blocks.END_STONE;
 	
-	private final int COMMON = 15;
-	private final int UNCOMMON = 10;
-	private final int RARE = 5;
-	private final int ULTRA_RARE = 2;
+	private final int COMMON = GeneralConfig.commonRarity;
+	private final int UNCOMMON = GeneralConfig.uncommonRarity;
+	private final int RARE = GeneralConfig.rareRarity;
+	private final int ULTRA_RARE = GeneralConfig.ultraRareRarity;
 
   @Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -97,7 +98,6 @@ public class ModWorldGen implements IWorldGenerator {
 
 	private void generateEnd(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
-		//if ()
 		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
 	}
 

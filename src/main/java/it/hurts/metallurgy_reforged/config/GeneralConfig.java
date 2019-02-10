@@ -35,6 +35,26 @@ public class GeneralConfig {
 	@Config.Name("Road Speed")
 	@Config.Comment("Set the road speed")
 	public static double roadSpeed = 1.80D;
+	
+	@Config.Name("Set the value of common Rarity")
+	@Config.Comment("Don't change if you aren't a dev")
+	@Config.RequiresMcRestart
+	public static int commonRarity = 15;
+	
+	@Config.Name("Set the value of uncommon Rarity")
+	@Config.Comment("Don't change if you aren't a dev")
+	@Config.RequiresMcRestart
+	public static int uncommonRarity = 10;
+	
+	@Config.Name("Set the value of rare Rarity")
+	@Config.Comment("Don't change if you aren't a dev")
+	@Config.RequiresMcRestart
+	public static int rareRarity = 5;
+	
+	@Config.Name("Set the value of ultra rare Rarity")
+	@Config.Comment("Don't change if you aren't a dev")
+	@Config.RequiresMcRestart
+	public static int ultraRareRarity = 2;
 
 	public static class ChangeListener {
 		@SubscribeEvent
