@@ -247,65 +247,68 @@ public class ModTools {
 
 
     public static void register(IForgeRegistry<Item> registry){
-    	Object[] name;
-    	for(Item item : toolList) {
-    		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
-    			name = m.keySet().toArray();
-    			for(Object n : name) {
-    				if(item instanceof ItemSwordBase) {
-    					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
-    						registry.register(item);
-    					
-    				}
-    				else if(item instanceof ItemShovelBase) {
-    					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
-    						registry.register(item);
-    				}
-    				else if (item instanceof ItemPickaxeBase) {
-    					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
-    						registry.register(item);
-    				}
-    				else if (item instanceof ItemHoeBase) {
-    					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
-    						registry.register(item);
-    				}
-    				else if (item instanceof ItemAxeBase)
-    					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
-    						registry.register(item);
-    			}
-    		}
+    	if(GeneralConfig.disableAllTool) {
+    		Object[] name;
+        	for(Item item : toolList) {
+        		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+        			name = m.keySet().toArray();
+        			for(Object n : name) {
+        				if(item instanceof ItemSwordBase) {
+        					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
+        						registry.register(item);
+        				}
+        				else if(item instanceof ItemShovelBase) {
+        					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
+        						registry.register(item);
+        				}
+        				else if (item instanceof ItemPickaxeBase) {
+        					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
+        						registry.register(item);
+        				}
+        				else if (item instanceof ItemHoeBase) {
+        					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
+        						registry.register(item);
+        				}
+        				else if (item instanceof ItemAxeBase)
+        					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
+        						registry.register(item);
+        			}
+        		}
+        	}
     	}
     }
 
     public static void registerModels()
     {
-    	Object[] name;
-    	for(Item item : toolList) {
-    		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
-    			name = m.keySet().toArray();
-    			for(Object n : name) {
-    				if(item instanceof ItemSwordBase) {
-    					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
-    						((ItemSwordBase) item).registerItemModel(item, 0);
-    				}
-    				else if(item instanceof ItemShovelBase) {
-    					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
-    						((ItemShovelBase) item).registerItemModel(item, 0);
-    				}
-    				else if (item instanceof ItemPickaxeBase) {
-    					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
-    						((ItemPickaxeBase) item).registerItemModel(item, 0);
-    				}
-    				else if (item instanceof ItemHoeBase) {
-    					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
-    						((ItemHoeBase) item).registerItemModel(item, 0);
-    				}
-    				else if (item instanceof ItemAxeBase)
-    					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
-    						((ItemAxeBase) item).registerItemModel(item, 0);
-    			}
-    		}
-    	}
+    	if(GeneralConfig.disableAllTool) {
+    		Object[] name;
+	    	for(Item item : toolList) {
+	    		for(Map<String, boolean[]> m : GeneralConfig.mapList) {
+	    			name = m.keySet().toArray();
+	    			for(Object n : name) {
+	    				if(item instanceof ItemSwordBase) {
+	    					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
+	    						((ItemSwordBase) item).registerItemModel(item, 0);
+	    				}
+	    				else if(item instanceof ItemShovelBase) {
+	    					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
+	    						((ItemShovelBase) item).registerItemModel(item, 0);
+	    				}
+	    				else if (item instanceof ItemPickaxeBase) {
+	    					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
+	    						((ItemPickaxeBase) item).registerItemModel(item, 0);
+	    				}
+	    				else if (item instanceof ItemHoeBase) {
+	    					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
+	    						((ItemHoeBase) item).registerItemModel(item, 0);
+	    				}
+	    				else if (item instanceof ItemAxeBase)
+	    					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
+	    						((ItemAxeBase) item).registerItemModel(item, 0);
+	    			}
+	    		}
+	    	}
+    	}	
     }
 
     protected static boolean isAxeEffectActive(ItemAxeBase tool)

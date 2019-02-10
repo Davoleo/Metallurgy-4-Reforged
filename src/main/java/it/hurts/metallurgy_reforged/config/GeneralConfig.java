@@ -34,6 +34,10 @@ public class GeneralConfig {
 	@Config.Name("Enable Alpha Warning Message")
 	@Config.Comment("When set to true it shows the alpha warning message when joining the world")
 	public static boolean alphaWarning = true;
+	
+	@Config.Name("Enable/Disable all tools")
+	@Config.Comment("When set to false it disable all tool")
+	public static boolean disableAllTool = true;
 
 	@Config.Ignore
 	public static boolean[] adamantine = { true,true,true,true,true };

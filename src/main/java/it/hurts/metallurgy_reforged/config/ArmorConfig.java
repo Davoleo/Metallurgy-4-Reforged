@@ -19,12 +19,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/armor")
 public class ArmorConfig {
 	
-//	private static final String[] CATEGORY = { "helmet", "chest","legs","boots" };
 	private static final String CATEGORY = "Armor";
 	@Config.Ignore
 	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
 	
 	@Config.Ignore
+	@Config.RequiresMcRestart
 	public static boolean adamantine = true;
 	
 	@Config.Ignore
@@ -189,8 +189,6 @@ public class ArmorConfig {
     }
 	
 	private static void initArmorConfig(Configuration cfg) {
-//		Il for annidato andrà a controllare tutti il valore boolean di ogni materiale per un singolo tool ad ogni ripetizione
-		
 			for(int i = 0; i < allArmor.length; i++) {
 				Map<String,Boolean> mappa = new HashMap<String,Boolean>();
 				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.materialName[i] + " Armor Set" );
