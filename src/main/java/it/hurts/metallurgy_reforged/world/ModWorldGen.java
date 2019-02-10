@@ -18,12 +18,12 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import java.util.Random;
 
 /***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
+ *
+ * Author : ItHurtsLikeHell
+ * Project: Metallurgy-5
+ * Date   : 28 ago 2018
+ * Time   : 18:24:07
+ *
 ***************************/
 
 public class ModWorldGen implements IWorldGenerator {
@@ -58,50 +58,50 @@ public class ModWorldGen implements IWorldGenerator {
 
 	//Overworld
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider1) {
-		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, 8, COMMON, 35, 120, DEFAULT_WORLD);
+		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, 8, COMMON, 35, 120, DEFAULT_WORLD, (Biome) null);
 		//Generated in aquatic biomes only
-		generateInSpecificBiome(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkZ, 5, COMMON, 10, 30, DEFAULT_WORLD, Biomes.OCEAN, Biomes.DEEP_OCEAN, Biomes.BEACH, Biomes.COLD_BEACH, Biomes.FROZEN_OCEAN, Biomes.FROZEN_RIVER, Biomes.RIVER);
-		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 25, 48, DEFAULT_WORLD);
-		generateOre(ModMetals.PROMETHEUM.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 64, DEFAULT_WORLD);
-		generateOre(ModMetals.MANGANESE.getOre(),world, random, chunkX, chunkZ, 9, COMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.OURECLASE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.INFUSCOLIUM.getOre(), world, random, chunkX, chunkZ, 7, UNCOMMON, 10, 72, DEFAULT_WORLD);
-		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 30, DEFAULT_WORLD);
-		generateOre(ModMetals.RUBRACIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 10, 40, DEFAULT_WORLD);
-		generateOre(ModMetals.ATLARUS.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 64,  DEFAULT_WORLD);
-		generateOre(ModMetals.CARMOT.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 64, DEFAULT_WORLD);
-		generateOre(ModMetals.MITHRIL.getOre(), world, random, chunkX, chunkZ, 5, ULTRA_RARE, 32, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.ZINC.getOre(), world, random, chunkX, chunkZ, 8, COMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.ORICHALCUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.ASTRAL_SILVER.getOre(), world, random, chunkX, chunkZ, 6, RARE, 24, 64, DEFAULT_WORLD);
-		generateOre(ModMetals.SILVER.getOre(), world, random, chunkX, chunkZ, 8, UNCOMMON, 0, 128, DEFAULT_WORLD);
-		generateOre(ModMetals.PLATINUM.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 80, DEFAULT_WORLD);
-		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 15, DEFAULT_WORLD);
-		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 100, DEFAULT_WORLD);
-		generateOre(ModBlocks.oreBitumen, world, random, chunkX, chunkZ, 10, COMMON, 64, 128, DEFAULT_WORLD);
-		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ, 7, COMMON, 32, 72, DEFAULT_WORLD);
+		generateOre(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkZ, 5, COMMON, 10, 30, DEFAULT_WORLD, Biomes.OCEAN, Biomes.DEEP_OCEAN, Biomes.BEACH, Biomes.COLD_BEACH, Biomes.FROZEN_OCEAN, Biomes.FROZEN_RIVER, Biomes.RIVER);
+		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 25, 48, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.PROMETHEUM.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 64, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.MANGANESE.getOre(),world, random, chunkX, chunkZ, 9, COMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.OURECLASE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.INFUSCOLIUM.getOre(), world, random, chunkX, chunkZ, 7, UNCOMMON, 10, 72, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 30, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.RUBRACIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 10, 40, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ATLARUS.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 64,  DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.CARMOT.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 64, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.MITHRIL.getOre(), world, random, chunkX, chunkZ, 5, ULTRA_RARE, 32, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ZINC.getOre(), world, random, chunkX, chunkZ, 8, COMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ORICHALCUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ASTRAL_SILVER.getOre(), world, random, chunkX, chunkZ, 6, RARE, 24, 64, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.SILVER.getOre(), world, random, chunkX, chunkZ, 8, UNCOMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.PLATINUM.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 80, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 15, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 100, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModBlocks.oreBitumen, world, random, chunkX, chunkZ, 10, COMMON, 64, 128, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ, 7, COMMON, 32, 72, DEFAULT_WORLD, (Biome) null);
   }
 
 	//Nether
 	private void generateNether(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
-		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 0, 255, DEFAULT_NETHER);
-		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 124, DEFAULT_NETHER);
-		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 100, DEFAULT_NETHER);
-		generateOre(ModMetals.MIDASIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 256, DEFAULT_NETHER);
-		generateOre(ModMetals.VYROXERES.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 120, DEFAULT_NETHER);
-		generateOre(ModMetals.CERUCLASE.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 128, DEFAULT_NETHER);
-		generateOre(ModMetals.ALDUORITE.getOre(), world, random, chunkX, chunkZ, 4, UNCOMMON, 0, 128, DEFAULT_NETHER);
-		generateOre(ModMetals.KALENDRITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 27, 120, DEFAULT_NETHER);
-		generateOre(ModMetals.VULCANITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_NETHER);
-		generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 128, DEFAULT_NETHER);
+		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 0, 255, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 124, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 100, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.MIDASIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 256, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.VYROXERES.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 120, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.CERUCLASE.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 128, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.ALDUORITE.getOre(), world, random, chunkX, chunkZ, 4, UNCOMMON, 0, 128, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.KALENDRITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 27, 120, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.VULCANITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 128, DEFAULT_NETHER, (Biome) null);
 	}
 
 	private void generateEnd(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
-		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END);
+		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
+		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
 	}
 
-    private void generateInSpecificBiome(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, Biome... biomes) {
+    private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, Biome... biomes) {
 
         if (minY < 0 || maxY > 256 || minY > maxY)
             throw new IllegalArgumentException("Illegal Height Arguments for Biome Specific WorldGenerator");
@@ -115,30 +115,16 @@ public class ModWorldGen implements IWorldGenerator {
             y = minY + random.nextInt(heightdiff);
             z = chunkZ * 16 + random.nextInt(16);
 
-            BlockPos pos = new BlockPos(x, y, z);
+            if (biomes != null)
+            {
+				BlockPos pos = new BlockPos(x, y, z);
 
-            for(Biome biome : biomes)
-                if ( world.getBiome(pos).equals(biome))
-                    generator.generate(world, random, pos);
+				for (Biome biome : biomes)
+					if (world.getBiome(pos).equals(biome))
+						generator.generate(world, random, pos);
+			}
+            else
+				generator.generate(world, random, new BlockPos(x, y, z));
         }
     }
-
-	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace) {
-		
-		if (minY < 0 || maxY > 256 || minY > maxY)
-			throw new IllegalArgumentException("Illegal Height Arguments for General WorldGenerator");
-		
-		WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize, BlockMatcher.forBlock(blockToReplace));
-		int heightdiff = maxY - minY +1;
-		int x, y, z;
-		
-		for (int i = 0; i < rarity; i++){
-			x = chunkX * 16 +random.nextInt(16);
-			y = minY + random.nextInt(heightdiff);
-			z = chunkZ * 16 + random.nextInt(16);
-
-			generator.generate(world, random, new BlockPos(x, y, z));
-		}
-	}
-
 }

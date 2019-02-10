@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 import java.util.Objects;
 
 /*************************************************
- * Author: Leonardo
+ * Author: Davoleo
  * Date / Hour: 14/11/2018 / 21.11
  * Class: MetallurgyTabs
  * Project: Metallurgy
@@ -58,14 +58,14 @@ public class MetallurgyTabs extends CreativeTabs {
     public ItemStack createIcon()
     {
         switch (type){
-            case 0: return new ItemStack(ModArmors.adamantine_chest);
+            case 0: return ModArmors.isCreativeTabIconAvailable ? new ItemStack(ModArmors.adamantine_chest) : ItemStack.EMPTY;
             case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
             case 5: return new ItemStack(ModBlocks.crusher);
             case 6: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
-            case 7: return new ItemStack(ModTools.adamantine_pickaxe);
+            case 7: return ModTools.isCreativeTabIconAvailable ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
         }
         return ItemStack.EMPTY;
     }

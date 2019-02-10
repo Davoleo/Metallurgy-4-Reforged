@@ -218,6 +218,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     //If the name is not custom it trasnlates the name
     //If it is, returns directly the name
     @Override
+    @Nonnull
     public ITextComponent getDisplayName() {
         return this.hasCustomName() ? new TextComponentString(this.getName())
                 : new TextComponentTranslation(this.getName());
@@ -391,7 +392,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         return ALLOYING_TIME;
     }
 
-    public boolean isUsableByPlayer(EntityPlayer player) {
+    @Override
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
         if (this.world.getTileEntity(this.pos) != this)
             return false;
         else
