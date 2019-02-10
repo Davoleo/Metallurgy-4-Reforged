@@ -85,3 +85,7 @@ processResources {
 jar {
     destinationDir = file 'output'
 }
+
+clean {
+    delete 'output'
+}
