@@ -31,6 +31,10 @@ public class GeneralConfig {
 	@Config.Comment("When set to false it disable all armor set")
 	@Config.RequiresMcRestart
 	public static boolean disableAllArmor = true;
+	
+	@Config.Name("Road Speed")
+	@Config.Comment("Set the road speed")
+	public static double roadSpeed = 1.80D;
 
 	public static class ChangeListener {
 		@SubscribeEvent

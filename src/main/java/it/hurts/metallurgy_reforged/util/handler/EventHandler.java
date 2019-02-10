@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -298,8 +299,8 @@ public class EventHandler {
 
 			if((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
 			{
-				event.player.motionX *= 1.80D;
-				event.player.motionZ *= 1.80D;
+				event.player.motionX *= GeneralConfig.roadSpeed;
+				event.player.motionZ *= GeneralConfig.roadSpeed;
 			}
 		}
 	}
