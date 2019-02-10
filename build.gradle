@@ -89,3 +89,7 @@ jar {
 clean {
     delete 'output'
 }
+
+sourceJar {
+    destinationDir = file 'output'
+}

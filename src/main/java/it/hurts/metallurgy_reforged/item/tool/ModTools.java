@@ -1,8 +1,8 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
+import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.item.Item;
@@ -23,6 +23,8 @@ import java.util.Map;
 public class ModTools {
 
     public static final List<Item> toolList = new ArrayList<>();
+
+    public static boolean isCreativeTabIconAvailable = false;
 
     public static ItemAxeBase adamantine_axe = new ItemAxeBase(ModMetals.ADAMANTINE.getToolMaterial(), "adamantine_axe");
     public static ItemHoeBase adamantine_hoe = new ItemHoeBase(ModMetals.ADAMANTINE.getToolMaterial(), "adamantine_hoe");
@@ -248,7 +250,7 @@ public class ModTools {
 
 
     public static void register(IForgeRegistry<Item> registry){
-    	if(GeneralConfig.disableAllTool) {
+    	if(GeneralConfig.disableAllTools) {
     		Object[] name;
         	for(Item item : toolList) {
         		for(Map<String, boolean[]> m : ToolConfig.mapList) {
@@ -265,6 +267,8 @@ public class ModTools {
         				else if (item instanceof ItemPickaxeBase) {
         					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
         						registry.register(item);
+        					if (item.equals(adamantine_pickaxe))
+        					    isCreativeTabIconAvailable = true;
         				}
         				else if (item instanceof ItemHoeBase) {
         					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
@@ -281,7 +285,7 @@ public class ModTools {
 
     public static void registerModels()
     {
-    	if(GeneralConfig.disableAllTool) {
+    	if(GeneralConfig.disableAllTools) {
     		Object[] name;
 	    	for(Item item : toolList) {
 	    		for(Map<String, boolean[]> m : ToolConfig.mapList) {
@@ -319,7 +323,7 @@ public class ModTools {
         switch (material)
         {
             case "SHADOW_STEEL":
-                if (EffectsConfig.shadowSteelToolSpeedEffect)
+                if (ToolEffectsConfig.shadowSteelToolSpeedEffect)
                     return true;
                 break;
             default:
@@ -335,11 +339,11 @@ public class ModTools {
         switch (material)
         {
             case "DEEP_IRON":
-                if (EffectsConfig.deepIronPickaxeEffect)
+                if (ToolEffectsConfig.deepIronPickaxeEffect)
                     return true;
                 break;
             case "SHADOW_STEEL":
-                if (EffectsConfig.shadowSteelToolSpeedEffect)
+                if (ToolEffectsConfig.shadowSteelToolSpeedEffect)
                     return true;
                 break;
             default:
@@ -355,7 +359,7 @@ public class ModTools {
         switch (material)
         {
             case "SHADOW_STEEL":
-                if (EffectsConfig.shadowSteelToolSpeedEffect)
+                if (ToolEffectsConfig.shadowSteelToolSpeedEffect)
                     return true;
                 break;
             default:
@@ -371,35 +375,35 @@ public class ModTools {
         switch (material)
         {
             case "DESICHALKOS":
-                if (EffectsConfig.desichalkosSwordEffect)
+                if (ToolEffectsConfig.desichalkosSwordEffect)
                     return true;
                 break;
             case "IGNATIUS":
-                if (EffectsConfig.ignatiusSwordEffect)
+                if (ToolEffectsConfig.ignatiusSwordEffect)
                     return true;
                 break;
             case "KALENDRITE":
-                if (EffectsConfig.kalendriteSwordEffect)
+                if (ToolEffectsConfig.kalendriteSwordEffect)
                     return true;
                 break;
             case "SHADOW_IRON":
-                if (EffectsConfig.shadowIronSwordEffect)
+                if (ToolEffectsConfig.shadowIronSwordEffect)
                     return true;
                 break;
             case "SHADOW_STEEL":
-                if (EffectsConfig.shadowSteelSwordEffect)
+                if (ToolEffectsConfig.shadowSteelSwordEffect)
                     return true;
                 break;
             case "TARTARITE":
-                if (EffectsConfig.tartariteSwordEffect)
+                if (ToolEffectsConfig.tartariteSwordEffect)
                     return true;
                 break;
             case "VULCANITE":
-                if (EffectsConfig.vulcaniteSwordEffect)
+                if (ToolEffectsConfig.vulcaniteSwordEffect)
                     return true;
                 break;
             case "VYROXERES":
-                if (EffectsConfig.vyroxeresSwordEffect)
+                if (ToolEffectsConfig.vyroxeresSwordEffect)
                     return true;
                 break;
             default:

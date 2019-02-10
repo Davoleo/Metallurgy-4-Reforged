@@ -65,6 +65,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     private int crushTime;
     private int totalCrushTime = 200;
 
+
     public static void registerFixesFurnace(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
@@ -317,7 +318,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
             if (result.isEmpty())
                 return false;
             else {
-                //TODO optimize using a for loop (maybe...?)
                 ItemStack output = this.inventory.get(2);
                 ItemStack output1 = this.inventory.get(3);
                 ItemStack output2 = this.inventory.get(4);
@@ -383,7 +383,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
         }
     }
 
-    private int getCrushingTime(ItemStack stack) {
+    private int getCrushingTime(@SuppressWarnings("unused") ItemStack stack) {
         return CRUSHING_TIME;
     }
 

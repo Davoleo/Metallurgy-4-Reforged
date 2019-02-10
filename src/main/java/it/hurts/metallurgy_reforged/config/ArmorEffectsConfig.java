@@ -6,17 +6,18 @@ import net.minecraftforge.common.config.Config;
 /*************************************************
  * Author: Davoleo
  * Date / Hour: 08/12/2018 / 20:55
- * Class: EffectsConfig
+ * Class: ArmorEffectsConfig
  * Project: Metallurgy 4 Reforged
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-@Config.LangKey("config.metallurgy.category.effects_control_panel")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "ON/OFF")
-public class EffectsConfig {
+@Config.LangKey("config.metallurgy.category.armor_effects")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "Armor")
+public class ArmorEffectsConfig {
 
     //Armors
-
+    @Config.Name("Adamantine Armor Effect")
+    @Config.Comment("Consumes Experience to fill the hunger bar")
     public static boolean adamantineArmorEffect = true;
     @Config.Name("Amordrine Armor Effect")
     @Config.Comment("Full Armor gives Strength II")
@@ -51,7 +52,7 @@ public class EffectsConfig {
     @Config.Name("Prometheum Armor Effect")
     @Config.Comment("Removes poison effect whenever you get it")
     public static boolean prometheumArmorEffect = true;
-    @Config.Name("Quicksilver")
+    @Config.Name("Quicksilver Armor Effect")
     @Config.Comment("Movements speed up")
     public static boolean quicksilverArmorEffect = true;
     @Config.Name("Shadow Steel Armor Effect")
@@ -61,44 +62,6 @@ public class EffectsConfig {
     @Config.Comment("You can't take damage from fire")
     public static boolean vulcaniteArmorEffect = true;
 
-    //Swords
-
-    //Pickaxes
-    @Config.Name("Deep Iron Pickaxe Effect")
-    @Config.Comment("Underwater mining is not slowed down")
-    public static boolean deepIronPickaxeEffect = true;
-
-    //Tools
-    @Config.Name("Shadow Steel Tools Effect")
-    @Config.Comment("The tool speed is proportional to the darkness")
-    public static boolean shadowSteelToolSpeedEffect = true;
-
-    //Swords
-    @Config.Name("Desichalkos Sword Effect")
-    @Config.Comment("Gives some random effect to the target")
-    public static boolean desichalkosSwordEffect = true;
-    @Config.Name("Ignatius Sword Effect")
-    @Config.Comment("Fire aspect")
-    public static boolean ignatiusSwordEffect = true;
-    @Config.Name("Kalendrite Sword Effect")
-    @Config.Comment("Chance to regenerate your life on hit")
-    public static boolean kalendriteSwordEffect = true;
-    @Config.Name("Shadow Iron Sword Effect")
-    @Config.Comment("Chance to blind the target")
-    public static boolean shadowIronSwordEffect = true;
-    @Config.Name("Shadow Steel Sword Effect")
-    @Config.Comment("Speed and Damage is proportional to the darkness")
-    public static boolean shadowSteelSwordEffect = true;
-    @Config.Name("Tartarite Sword Effect")
-    @Config.Comment("Withers the target")
-    public static boolean tartariteSwordEffect = true;
-    @Config.Name("Vulcanite Sword Effect")
-    @Config.Comment("Fire Aspect")
-    public static boolean vulcaniteSwordEffect = true;
-    @Config.Name("Vyroxeres Sword Effect")
-    @Config.Comment("Poisons the target")
-    public static boolean vyroxeresSwordEffect = true;
-
-    private EffectsConfig(){}
+    private ArmorEffectsConfig(){}
 
 }

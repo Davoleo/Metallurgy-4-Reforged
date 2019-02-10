@@ -237,13 +237,11 @@ tile.brass_block.name=Brass Block
 tile.sulfur_block.name=Sulfur Block
 
 #Config
+config.metallurgy.category.armor_effects=Armor Effects
 config.metallurgy.category.general=General
-config.metallurgy.category.effects_control_panel=Effects ON/OFF
-config.metallurgy.category.effects_modifiers=Effects Buff/Nerf
+config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
+config.metallurgy.category.tool_effects=Tool Effects
 
-#Effects
-metallurgy.on/off.adamantinearmoreffect=[LOCALIZED] Adamantine Armor Effect
-metallurgy.on/off.adamantinearmoreffect.comment=[LOCALIZED] Full Armor Effect: Hunger gets refilled by experience bit by bit
 
 # Creative Tab
 itemGroup.metallurgy.armors=Metallurgy Armor

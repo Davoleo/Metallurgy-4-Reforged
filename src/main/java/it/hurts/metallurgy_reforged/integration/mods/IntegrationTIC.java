@@ -1,8 +1,6 @@
 package it.hurts.metallurgy_reforged.integration.mods;
 
-
 import com.google.common.collect.Table;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
 import it.hurts.metallurgy_reforged.integration.mods.tic.SetTrait;
@@ -30,7 +28,7 @@ public class IntegrationTIC{
 	
 	public static void preInit() {
 		for (Metal metal : ModMetals.metalList) {
-			if (checkMaterial(metal) && checkDuplicateMaterial(metal)) {
+			if (checkMaterial(metal) && checkMaterialPreInit(metal)) {
 				TiCMaterial material = new TiCMaterial(metal);
 				
 				TinkerRegistry.addMaterial(material);
@@ -45,7 +43,7 @@ public class IntegrationTIC{
 				
 //				Chiamata al metodo per aggiungere i traits
 				SetTrait.addTraits(metal, m);
-				
+
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
 				
@@ -85,7 +83,7 @@ public class IntegrationTIC{
 				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
 	}
 
-	private static boolean checkDuplicateMaterial(Metal metal)
+	private static boolean checkMaterialPreInit(Metal metal)
 	{
 		return TinkerRegistry.getMaterial(metal.toString()).equals(Material.UNKNOWN);
 	}

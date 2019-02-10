@@ -1,16 +1,11 @@
 package it.hurts.metallurgy_reforged.util.handler;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -39,20 +34,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSetExperience;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.FoodStats;
-import net.minecraft.util.MovementInput;
-import net.minecraft.util.MovementInputFromOptions;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -63,6 +50,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.util.Random;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 
 /***************************
@@ -94,7 +86,7 @@ public class EventHandler {
 		EntityPlayer pl = Minecraft.getMinecraft().player;
 		if(pl != null && !ev.getEntity().equals(pl)) //Check if player exists and the Rendered Entity isn't the player himself
 		{	 	
-		 if(isPlayerWearingArmor(pl, new Item[] {ModArmors.mithril_helmet,ModArmors.mithril_chest,ModArmors.mithril_legs,ModArmors.mithril_boots}) && ev.getEntity().getDistance(Minecraft.getMinecraft().player) < 30D && !ev.getEntity().isGlowing() && EffectsConfig.mithrilArmorEffect) //checks if:  the player wears The Mithrill Armor, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
+		 if(isPlayerWearingArmor(pl, new Item[] {ModArmors.mithril_helmet,ModArmors.mithril_chest,ModArmors.mithril_legs,ModArmors.mithril_boots}) && ev.getEntity().getDistance(Minecraft.getMinecraft().player) < 30D && !ev.getEntity().isGlowing() && ArmorEffectsConfig.mithrilArmorEffect) //checks if:  the player wears The Mithrill Armor, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
 		 {
 			ev.getEntity().setGlowing(true);
 		 } 
@@ -112,16 +104,16 @@ public class EventHandler {
         EntityPlayer pl = event.player; //The Player   
         World world = pl.world;
 //		Astral Silver Armor (Jump Boost)
-        if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}) && EffectsConfig.astralSilverArmorEffect)
+        if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.astral_silver_helmet,ModArmors.astral_silver_chest,ModArmors.astral_silver_legs,ModArmors.astral_silver_boots}) && ArmorEffectsConfig.astralSilverArmorEffect)
     		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
 		
 //		Celenegil Armor (Resistence)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.celenegil_helmet,ModArmors.celenegil_chest,ModArmors.celenegil_legs,ModArmors.celenegil_boots}) && EffectsConfig.celenegilArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.celenegil_helmet,ModArmors.celenegil_chest,ModArmors.celenegil_legs,ModArmors.celenegil_boots}) && ArmorEffectsConfig.celenegilArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3, false, false));
 		
 		
 //		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) && event.player.isInWater() && EffectsConfig.deepIronArmorEffect){
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) && event.player.isInWater() && ArmorEffectsConfig.deepIronArmorEffect){
 			
 //			Slot index of Armor : 5 - 6 - 7 - 8	
 			 for(int i = 5;i < 9; i++)
@@ -178,26 +170,26 @@ public class EventHandler {
 		}
 		
 //		Vulcanite Armor (Fire Immunity) //Removes Fire Render 
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}) && event.player.isBurning() && EffectsConfig.vulcaniteArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.vulcanite_helmet,ModArmors.vulcanite_chest,ModArmors.vulcanite_legs,ModArmors.vulcanite_boots}) && event.player.isBurning() && ArmorEffectsConfig.vulcaniteArmorEffect)
 			event.player.extinguish();
  
 //		Angmallen Armor (Luck I for Vampirism)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.angmallen_helmet,ModArmors.angmallen_chest,ModArmors.angmallen_legs,ModArmors.angmallen_boots}) && EffectsConfig.angmallenArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.angmallen_helmet,ModArmors.angmallen_chest,ModArmors.angmallen_legs,ModArmors.angmallen_boots}) && ArmorEffectsConfig.angmallenArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0, false, false));
 		
 
 //		Kalendrite Armor (Strenght I)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.kalendrite_helmet,ModArmors.kalendrite_chest,ModArmors.kalendrite_legs,ModArmors.kalendrite_boots}) && EffectsConfig.kaledriteArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.kalendrite_helmet,ModArmors.kalendrite_chest,ModArmors.kalendrite_legs,ModArmors.kalendrite_boots}) && ArmorEffectsConfig.kaledriteArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false));
 		
 
 //		Amordrine Armor (Strenght II)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.amordrine_helmet,ModArmors.amordrine_chest,ModArmors.amordrine_legs,ModArmors.amordrine_boots}) && EffectsConfig.amordrineArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.amordrine_helmet,ModArmors.amordrine_chest,ModArmors.amordrine_legs,ModArmors.amordrine_boots}) && ArmorEffectsConfig.amordrineArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1, false, false));
 		
 
 //		Adamantine Armor (Saturation)
-		if(EffectsConfig.adamantineArmorEffect && !world.isRemote && isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && EffectsConfig.adamantineArmorEffect)
+		if(ArmorEffectsConfig.adamantineArmorEffect && !world.isRemote && isPlayerWearingArmor(event.player, new Item[] {ModArmors.adamantine_helmet,ModArmors.adamantine_chest,ModArmors.adamantine_legs,ModArmors.adamantine_boots}) && ArmorEffectsConfig.adamantineArmorEffect)
 		{
 			FoodStats foodStat = pl.getFoodStats();
 			int amount = 2;						
@@ -231,17 +223,17 @@ public class EventHandler {
 					
 		
 //		Platinum Armor (Night Vision, Needed Vanishing Curse)
-		if(isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && EffectsConfig.platinumArmorEffect)
+		if(isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
 		
 
 //		Carmot Armor (Haste I)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.carmot_helmet,ModArmors.carmot_chest,ModArmors.carmot_legs,ModArmors.carmot_boots}) && EffectsConfig.carmotArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.carmot_helmet,ModArmors.carmot_chest,ModArmors.carmot_legs,ModArmors.carmot_boots}) && ArmorEffectsConfig.carmotArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
 		
 
 //		Prometheum Armor (No potion, need to implement a new Effect)
-		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.prometheum_helmet,ModArmors.prometheum_chest,ModArmors.prometheum_legs,ModArmors.prometheum_boots}) && EffectsConfig.prometheumArmorEffect)
+		if(isPlayerWearingArmor(event.player, new Item[] {ModArmors.prometheum_helmet,ModArmors.prometheum_chest,ModArmors.prometheum_legs,ModArmors.prometheum_boots}) && ArmorEffectsConfig.prometheumArmorEffect)
 			event.player.removePotionEffect(MobEffects.POISON);
 		
 //		Shadow Iron Armor (No Blindness)
@@ -255,7 +247,7 @@ public class EventHandler {
 
 		ItemStack stack =  pl.getHeldItemMainhand();
 		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-		if(EffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
+		if(ToolEffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword)))
 		{
 
 			float percentage = Utils.getLightArmorPercentage(pl, 50F);
@@ -336,7 +328,7 @@ public class EventHandler {
 			Entity foe = event.getTarget();
 //			Shadow Iron Sword (Blindness)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))
-					&& EffectsConfig.shadowIronSwordEffect) {
+					&& ToolEffectsConfig.shadowIronSwordEffect) {
 
 				EntityLivingBase foe2 = (EntityLivingBase) foe;
 
@@ -346,13 +338,13 @@ public class EventHandler {
 
 //			Desichalkos Sword ( Give Random Effect to entity )
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.desichalkos_sword))
-					&& EffectsConfig.desichalkosSwordEffect){
+					&& ToolEffectsConfig.desichalkosSwordEffect){
 				((EntityLivingBase)foe).addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
 			}
 
 //			Vyroxeres Sword (Potion)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))
-					&& EffectsConfig.vyroxeresSwordEffect)
+					&& ToolEffectsConfig.vyroxeresSwordEffect)
 			{
 
 				if ((int) (Math.random() * 100) <= 25)
@@ -361,7 +353,7 @@ public class EventHandler {
 
 //			Ignatius Sword (Fire Aspect)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))
-					&& EffectsConfig.ignatiusSwordEffect) {
+					&& ToolEffectsConfig.ignatiusSwordEffect) {
 
 
 				if ((int) (Math.random() * 100) <= 15)
@@ -370,7 +362,7 @@ public class EventHandler {
 
 //			Vulcanite Sword (Fire Aspect)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))
-					&& EffectsConfig.vulcaniteSwordEffect) {
+					&& ToolEffectsConfig.vulcaniteSwordEffect) {
 
 
 				if ((int) (Math.random() * 100) <= 30)
@@ -379,7 +371,7 @@ public class EventHandler {
 
 //			Tartarite Sword (Withering II)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))
-					&& EffectsConfig.tartariteSwordEffect) {
+					&& ToolEffectsConfig.tartariteSwordEffect) {
 
 
 				if ((int) (Math.random() * 100) <= 20)
@@ -394,7 +386,7 @@ public class EventHandler {
 
 //			Kalendrite sword (Regeneration)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))
-					&& EffectsConfig.kalendriteSwordEffect) {
+					&& ToolEffectsConfig.kalendriteSwordEffect) {
 
 				if ((int) (Math.random() * 100) <= 30)
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
@@ -417,10 +409,10 @@ public class EventHandler {
 
 		if(pl.isInWater()
 				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
-				&& EffectsConfig.deepIronPickaxeEffect)
+				&& ToolEffectsConfig.deepIronPickaxeEffect)
 			event.setNewSpeed(6F);
 		//set tools break speed based on light except for hoe and sword
-				if(EffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+				if(ToolEffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
 					float percentage = Utils.getLightArmorPercentage(pl,100F);
 					float speed = event.getNewSpeed()  * percentage / 40F;
 					event.setNewSpeed(event.getOriginalSpeed() + speed);
@@ -433,7 +425,7 @@ public class EventHandler {
 	{
 
 		//check if spawned entity is an enderman
-		if(event.getEntity() instanceof EntityEnderman && EffectsConfig.eximiteArmorEffect)
+		if(event.getEntity() instanceof EntityEnderman && ArmorEffectsConfig.eximiteArmorEffect)
 		{
 
 			EntityEnderman end = (EntityEnderman) event.getEntity();
@@ -565,7 +557,7 @@ public class EventHandler {
 		{
 			EntityPlayer pl = (EntityPlayer) event.getEntityLiving();
 			//check if player is wearing the shadow steel armor
-			if(EffectsConfig.shadowSteelArmorEffect && isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
+			if(ArmorEffectsConfig.shadowSteelArmorEffect && isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
 			{
 				//get light percentage,maximum 30%
 				float percentage = Utils.getLightArmorPercentage(pl,40F);
@@ -591,7 +583,7 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
 		if(ev.getEntityLiving() instanceof EntityPlayer)
-			if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots}) && EffectsConfig.quicksilverArmorEffect) {
+			if(isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), new Item[] {ModArmors.quicksilver_helmet, ModArmors.quicksilver_chest, ModArmors.quicksilver_legs, ModArmors.quicksilver_boots}) && ArmorEffectsConfig.quicksilverArmorEffect) {
 				if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
 					ev.setDuration(ev.getDuration() - 6);
 				else

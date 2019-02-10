@@ -1,9 +1,8 @@
 package it.hurts.metallurgy_reforged.item.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.item.tool.ItemSwordBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.init.Enchantments;
@@ -28,6 +27,8 @@ import java.util.Map;
 public class ModArmors {
 
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
+
+    public static boolean isCreativeTabIconAvailable = false;
 
     public static ItemArmorBase adamantine_helmet = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "adamantine_helmet").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);
     public static ItemArmorBase adamantine_chest = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "adamantine_chest").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);
@@ -215,21 +216,25 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
-    	if(GeneralConfig.disableAllArmor) {
+    	if(GeneralConfig.disableAllArmors) {
     		Object[] name;
         	for(Item armor : armorList)
         		for(Map<String, Boolean> m : ArmorConfig.mapList) {
         			name = m.keySet().toArray();
         			for(Object n : name)
-        				if(armor instanceof ItemArmorBase)
-        					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
-        						registry.register(armor);
+        				if(armor instanceof ItemArmorBase) {
+                            if ((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
+                                registry.register(armor);
+                            if (armor.equals(adamantine_chest))
+                                isCreativeTabIconAvailable = true;
+                        }
+
         		}
     	}
     }
 
     public static void registerModels() {
-    	if(GeneralConfig.disableAllArmor) {
+    	if(GeneralConfig.disableAllArmors) {
     		Object[] name;
         	for(Item armor : armorList) 
         		for(Map<String, Boolean> m : ArmorConfig.mapList) {
@@ -249,67 +254,67 @@ public class ModArmors {
             switch (material)
             {
                 case "adamantine":
-                    if (EffectsConfig.adamantineArmorEffect)
+                    if (ArmorEffectsConfig.adamantineArmorEffect)
                         return true;
                     break;
                 case "amordrine":
-                    if (EffectsConfig.amordrineArmorEffect)
+                    if (ArmorEffectsConfig.amordrineArmorEffect)
                         return true;
                     break;
                 case "angmallen":
-                    if (EffectsConfig.angmallenArmorEffect)
+                    if (ArmorEffectsConfig.angmallenArmorEffect)
                         return true;
                     break;
                 case "astral_silver":
-                    if (EffectsConfig.astralSilverArmorEffect)
+                    if (ArmorEffectsConfig.astralSilverArmorEffect)
                         return true;
                     break;
                 case "carmot":
-                    if (EffectsConfig.carmotArmorEffect)
+                    if (ArmorEffectsConfig.carmotArmorEffect)
                         return true;
                     break;
                 case "celenegil":
-                    if (EffectsConfig.celenegilArmorEffect)
+                    if (ArmorEffectsConfig.celenegilArmorEffect)
                         return true;
                     break;
 //                case "ceruclase":
-//                    if (EffectsConfig.ceruclaseArmorEffect)
+//                    if (ArmorEffectsConfig.ceruclaseArmorEffect)
 //                        return true;
 //                    break;
                 case "deep_iron":
-                    if (EffectsConfig.deepIronArmorEffect)
+                    if (ArmorEffectsConfig.deepIronArmorEffect)
                         return true;
                     break;
                 case "eximite":
-                    if (EffectsConfig.eximiteArmorEffect)
+                    if (ArmorEffectsConfig.eximiteArmorEffect)
                         return true;
                     break;
                 case "kalendrite":
-                    if (EffectsConfig.kaledriteArmorEffect)
+                    if (ArmorEffectsConfig.kaledriteArmorEffect)
                         return true;
                     break;
                 case "mithril":
-                    if (EffectsConfig.mithrilArmorEffect)
+                    if (ArmorEffectsConfig.mithrilArmorEffect)
                         return true;
                     break;
                 case "platinum":
-                    if (EffectsConfig.platinumArmorEffect)
+                    if (ArmorEffectsConfig.platinumArmorEffect)
                         return true;
                     break;
                 case "prometheum":
-                    if (EffectsConfig.prometheumArmorEffect)
+                    if (ArmorEffectsConfig.prometheumArmorEffect)
                         return true;
                     break;
                 case "quicksilver":
-                    if (EffectsConfig.quicksilverArmorEffect)
+                    if (ArmorEffectsConfig.quicksilverArmorEffect)
                         return true;
                     break;
                 case "shadow_steel":
-                    if (EffectsConfig.shadowSteelArmorEffect)
+                    if (ArmorEffectsConfig.shadowSteelArmorEffect)
                         return true;
                     break;
                 case "vulcanite":
-                    if (EffectsConfig.vulcaniteArmorEffect)
+                    if (ArmorEffectsConfig.vulcaniteArmorEffect)
                         return true;
                     break;
                 default:
