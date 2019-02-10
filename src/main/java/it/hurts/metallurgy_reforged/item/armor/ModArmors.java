@@ -215,34 +215,30 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
-    	Object[] name;
-    	for(Item armor : armorList) {
-    		for(Map<String, Boolean> m : ArmorConfig.mapList) {
-    			name = m.keySet().toArray();
-    			for(Object n : name) {
-    				if(armor instanceof ItemArmorBase) {
-    					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue())){
-    						registry.register(armor);
-    					}
-    				}
-    			}
-    		}
+    	if(ArmorConfig.disableAllArmor) {
+    		Object[] name;
+        	for(Item armor : armorList)
+        		for(Map<String, Boolean> m : ArmorConfig.mapList) {
+        			name = m.keySet().toArray();
+        			for(Object n : name)
+        				if(armor instanceof ItemArmorBase)
+        					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
+        						registry.register(armor);
+        		}
     	}
     }
 
     public static void registerModels() {
-    	Object[] name;
-    	for(Item armor : armorList) {
-    		for(Map<String, Boolean> m : ArmorConfig.mapList) {
-    			name = m.keySet().toArray();
-    			for(Object n : name) {
-    				if(armor instanceof ItemArmorBase) {
-    					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue())){
-    						((ItemArmorBase) armor).registerItemModel(armor, 0);
-    					}
-    				}
-    			}
-    		}
+    	if(ArmorConfig.disableAllArmor) {
+    		Object[] name;
+        	for(Item armor : armorList) 
+        		for(Map<String, Boolean> m : ArmorConfig.mapList) {
+        			name = m.keySet().toArray();
+        			for(Object n : name)
+        				if(armor instanceof ItemArmorBase)
+        					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
+        						((ItemArmorBase) armor).registerItemModel(armor, 0);
+        		}
     	}
     }
 

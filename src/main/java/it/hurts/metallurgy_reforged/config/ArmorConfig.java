@@ -23,6 +23,10 @@ public class ArmorConfig {
 	@Config.Ignore
 	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
 	
+	@Config.Name("Enable/Disable all armor set")
+	@Config.Comment("When set to false it disable all armor set")
+	public static boolean disableAllArmor = true;
+	
 	@Config.Ignore
 	@Config.RequiresMcRestart
 	public static boolean adamantine = true;
