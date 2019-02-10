@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Config;
  **************************************************/
 
 @Config.LangKey("config.metallurgy.category.tool_effects")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "Tools")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "tools")
 public class ToolEffectsConfig {
 
     //Pickaxes

@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Config;
  **************************************************/
 
 @Config.LangKey("config.metallurgy.category.armor_effects")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "Armor")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "armor")
 public class ArmorEffectsConfig {
 
     //Armors
