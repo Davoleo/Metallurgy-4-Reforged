@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Config;
  **************************************************/
 
 @Config.LangKey("config.metallurgy.category.rubracium_gauntlet")
-@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "Gauntlet")
+@Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "gauntlet")
 public class GauntletConfig {
 
     @Config.Name("Gauntlet Max Damage")

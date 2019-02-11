@@ -16,6 +16,7 @@
  import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
  import it.hurts.metallurgy_reforged.util.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
+ import it.hurts.metallurgy_reforged.world.WorldTickHandler;
  import net.minecraftforge.common.MinecraftForge;
  import net.minecraftforge.common.capabilities.CapabilityManager;
  import net.minecraftforge.fluids.FluidRegistry;
@@ -68,6 +69,8 @@ public class Metallurgy {
 		logger.info("Fluid registration complete!");
 		
 		GameRegistry.registerWorldGenerator(new ModWorldGen(),3);
+		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
 		logger.info("World generation successful!");
 		
 		SubEvent.init();

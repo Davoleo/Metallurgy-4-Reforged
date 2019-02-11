@@ -1,20 +1,28 @@
 package it.hurts.metallurgy_reforged.world;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.logging.log4j.Level;
 
+import java.util.ArrayDeque;
 import java.util.Random;
 
 /***************************
@@ -24,6 +32,7 @@ import java.util.Random;
  * Date   : 28 ago 2018
  * Time   : 18:24:07
  *
+ * Reworked by Davoleo
 ***************************/
 
 public class ModWorldGen implements IWorldGenerator {
@@ -37,28 +46,42 @@ public class ModWorldGen implements IWorldGenerator {
 	private final int RARE = GeneralConfig.rareRarity;
 	private final int ULTRA_RARE = GeneralConfig.ultraRareRarity;
 
+	public static final String RETROGEN_NAME = "MetallurgyOreGeneration";
+	public static ModWorldGen instance = new ModWorldGen();
+
   @Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-	  switch (world.provider.getDimension()){
-			case -1:
-				generateNether(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
-				break;
-
-			case 0:
-				generateOverworld(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
-				break;
-
-			case 1:
-				generateEnd(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
-				break;
-			default:
-				break;
-	  }
+      generateWorld(random, chunkX, chunkZ, world, true);
 	}
 
+	void generateWorld(Random random, int chunkX, int chunkZ, World world, boolean newGen)
+    {
+        if (!newGen && !OreGenerationConfig.retrogen)
+            return;
+        switch (world.provider.getDimension()){
+            case -1:
+                generateNether(random, chunkX, chunkZ, world);
+                break;
+
+            case 0:
+                generateOverworld(random, chunkX, chunkZ, world);
+                break;
+
+            case 1:
+                generateEnd(random, chunkX, chunkZ, world);
+                break;
+            default:
+                break;
+        }
+
+        if (!newGen) {
+            world.getChunk(chunkX, chunkZ).markDirty();
+        }
+    }
+
 	//Overworld
-	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider1) {
-		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, 8, COMMON, 35, 120, DEFAULT_WORLD, (Biome) null);
+	private void generateOverworld(Random random, int chunkX, int chunkZ, World world) {
+		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.copperVeinSize, COMMON, OreGenerationConfig.copperMinY, OreGenerationConfig.copperMaxY, DEFAULT_WORLD, (Biome) null);
 		//Generated in aquatic biomes only
 		generateOre(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkZ, 5, COMMON, 10, 30, DEFAULT_WORLD, Biomes.OCEAN, Biomes.DEEP_OCEAN, Biomes.BEACH, Biomes.COLD_BEACH, Biomes.FROZEN_OCEAN, Biomes.FROZEN_RIVER, Biomes.RIVER);
 		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 25, 48, DEFAULT_WORLD, (Biome) null);
@@ -83,7 +106,7 @@ public class ModWorldGen implements IWorldGenerator {
   }
 
 	//Nether
-	private void generateNether(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
+	private void generateNether(Random random, int chunkX, int chunkZ, World world){
 		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 0, 255, DEFAULT_NETHER, (Biome) null);
 		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 124, DEFAULT_NETHER, (Biome) null);
 		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 100, DEFAULT_NETHER, (Biome) null);
@@ -96,7 +119,7 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 128, DEFAULT_NETHER, (Biome) null);
 	}
 
-	private void generateEnd(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+	private void generateEnd(Random random, int chunkX, int chunkZ, World world) {
 		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
 		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
 	}
@@ -125,6 +148,57 @@ public class ModWorldGen implements IWorldGenerator {
 			}
             else
 				generator.generate(world, random, new BlockPos(x, y, z));
+        }
+    }
+
+    //Retrogen data save & load
+    @SubscribeEvent
+    public void onChunkSave(ChunkDataEvent.Save event)
+    {
+        NBTTagCompound genTag = event.getData().getCompoundTag(RETROGEN_NAME);
+        if (!genTag.hasKey("generated"))
+            genTag.setBoolean("generated", true);
+        event.getData().setTag(RETROGEN_NAME, genTag);
+    }
+
+    @SubscribeEvent
+    public void onChunkLoad(ChunkDataEvent.Load event)
+    {
+        int dimension = event.getWorld().provider.getDimension();
+
+        boolean regen = false;
+        NBTTagCompound tag = (NBTTagCompound) event.getData().getTag(RETROGEN_NAME);
+        ChunkPos coordinates = event.getChunk().getPos();
+
+        if (tag != null)
+        {
+            boolean generated = false;
+            if (generated)
+            {
+                if (OreGenerationConfig.verbose_retrogen)
+                {
+                    Metallurgy.logger.log(Level.DEBUG, "Queuing retrogen for chunk: " + coordinates.toString() + ".");
+                }
+                regen = true;
+            }
+        }
+        else
+            regen = OreGenerationConfig.retrogen;
+
+        if (regen)
+        {
+            ArrayDeque<ChunkPos> chunks = WorldTickHandler.chunksToGenerate.get(dimension);
+
+            if (chunks == null)
+            {
+                WorldTickHandler.chunksToGenerate.put(dimension, new ArrayDeque<>(128));
+                chunks = WorldTickHandler.chunksToGenerate.get(dimension);
+            }
+            if (chunks != null)
+            {
+                chunks.addLast(coordinates);
+                WorldTickHandler.chunksToGenerate.put(dimension, chunks);
+            }
         }
     }
 }
