@@ -4,6 +4,7 @@ import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util.GauntletEffect;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util.GauntletOperation;
+import it.hurts.metallurgy_reforged.util.handler.FuelHandler;
 import net.minecraftforge.common.MinecraftForge;
 
 /***************************
@@ -21,6 +22,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(new GauntletEffect());
 		MinecraftForge.EVENT_BUS.register(new GeneralConfig.ChangeListener());
 		MinecraftForge.EVENT_BUS.register(new ArmorConfig.ChangeListener());
+		MinecraftForge.EVENT_BUS.register(new FuelHandler());
 	}
 	
 }

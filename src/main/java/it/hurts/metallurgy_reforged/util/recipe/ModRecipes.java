@@ -11,6 +11,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 /*************************************************
  * Author: Davoleo
@@ -53,6 +54,9 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.dustPhosphorus), 0.5F);
         GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.dustPotash), 0.5F);
         GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.dustSulfur), 0.5F);
+
+        //Additional oreDict values
+        OreDictionary.registerOre("globTar", ModItems.tar);
     }
 
 }

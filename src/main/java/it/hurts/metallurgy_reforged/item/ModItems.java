@@ -28,7 +28,7 @@ public class ModItems {
 	
 //	Metallurgy dust
 	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict tar = new ItemOreDict("tar","oreslimeball").setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict tar = new ItemOreDict("tar","slimeball").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite").setCreativeTab(MetallurgyTabs.tabDust);
