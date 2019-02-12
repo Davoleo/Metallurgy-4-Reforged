@@ -36,26 +36,6 @@ public class GeneralConfig {
 	@Config.Comment("Sets the road speed")
 	@Config.RangeDouble(min = 1)
 	public static double roadSpeed = 1.50D;
-	
-	@Config.Name("Common Ore Rarity")
-	@Config.Comment("Set the value of common Rarity (Don't change if you aren't a dev)")
-	@Config.RequiresMcRestart
-	public static int commonRarity = 15;
-	
-	@Config.Name("Uncommon Ore Rarity")
-	@Config.Comment("Set the value of uncommon Rarity (Don't change if you aren't a dev)")
-	@Config.RequiresMcRestart
-	public static int uncommonRarity = 10;
-	
-	@Config.Name("Rare Ore Rarity")
-	@Config.Comment("Set the value of rare Rarity (Don't change if you aren't a dev)")
-	@Config.RequiresMcRestart
-	public static int rareRarity = 5;
-	
-	@Config.Name("Ultra Rare Ore Rarity")
-	@Config.Comment("Set the value of ultra rare Rarity (Don't change if you aren't a dev)")
-	@Config.RequiresMcRestart
-	public static int ultraRareRarity = 2;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {

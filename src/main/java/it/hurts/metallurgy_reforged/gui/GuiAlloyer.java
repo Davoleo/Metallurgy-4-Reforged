@@ -32,9 +32,12 @@ public class GuiAlloyer extends GuiContainer {
 	private final InventoryPlayer player; //Player Inventory
     private final TileEntityAlloyer alloyer; //Tile Entity
 
-    private int xSize = 175;
-    private int ySize = 196;
-    private Slot hoveredSlot;
+    @SuppressWarnings("unused")
+	private int xSize = 175;
+    @SuppressWarnings("unused")
+	private int ySize = 196;
+    @SuppressWarnings("unused")
+	private Slot hoveredSlot;
 
     private GuiContainerHelper guiCHelper;
 
@@ -63,8 +66,6 @@ public class GuiAlloyer extends GuiContainer {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.enableRescaleNormal();
         this.hoveredSlot = null;
-        int k = 240;
-        int l = 240;
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
@@ -154,7 +155,6 @@ public class GuiAlloyer extends GuiContainer {
 
         if (!itemstack.isEmpty())
         {
-            int j2 = 8;
             int k2 = guiCHelper.draggedStack.isEmpty() ? 8 : 16;
             String s = null;
 

@@ -2,7 +2,6 @@ package it.hurts.metallurgy_reforged.world;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.OreGenerationConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
@@ -41,10 +40,10 @@ public class ModWorldGen implements IWorldGenerator {
 	private final Block DEFAULT_NETHER = Blocks.NETHERRACK;
 	private final Block DEFAULT_END = Blocks.END_STONE;
 	
-	private final int COMMON = GeneralConfig.commonRarity;
-	private final int UNCOMMON = GeneralConfig.uncommonRarity;
-	private final int RARE = GeneralConfig.rareRarity;
-	private final int ULTRA_RARE = GeneralConfig.ultraRareRarity;
+	private final int COMMON = OreGenerationConfig.rarity.commonRarity;
+	private final int UNCOMMON = OreGenerationConfig.rarity.uncommonRarity;
+	private final int RARE = OreGenerationConfig.rarity.rareRarity;
+	private final int ULTRA_RARE = OreGenerationConfig.rarity.ultraRareRarity;
 
 	public static final String RETROGEN_NAME = "MetallurgyOreGeneration";
 	public static ModWorldGen instance = new ModWorldGen();
