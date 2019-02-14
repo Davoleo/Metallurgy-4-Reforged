@@ -1,6 +1,7 @@
  package it.hurts.metallurgy_reforged;
 
- import it.hurts.metallurgy_reforged.fluid.ModFluids;
+ import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -79,7 +80,7 @@ public class Metallurgy {
 		logger.info("Tile Entities Registered!");
 		
 //		check if tinker is installed
-		if(ModChecker.isTConLoaded) {
+		if(ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.preInit();
             logger.info("Tinkers integration has been pre-initialized");
         }
@@ -97,7 +98,7 @@ public class Metallurgy {
 		ModRecipes.init();
         logger.info("Recipes loaded!");
         
-		if(ModChecker.isTConLoaded) {
+		if(ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.init();
             logger.info("Tinkers integration has been initialized");
         }
@@ -119,7 +120,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	 public void loadComplete(FMLLoadCompleteEvent event)
 	{
-		if (ModChecker.isTConLoaded)
+		if (ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton)
 			IntegrationTIC.postInit();
 		
 		logger.info(NAME + " has been completely loaded");

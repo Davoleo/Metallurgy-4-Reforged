@@ -3,6 +3,14 @@ package it.hurts.metallurgy_reforged.world;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.OreGenerationConfig;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryAdamantine;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryCopper;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryDeepIron;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryInfuscolium;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryManganese;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryOureclase;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryPrometheum;
+import it.hurts.metallurgy_reforged.config.OreGenerationConfig.CategoryTin;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.pattern.BlockMatcher;
@@ -80,15 +88,15 @@ public class ModWorldGen implements IWorldGenerator {
 
 	//Overworld
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world) {
-		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.copperVeinSize, COMMON, OreGenerationConfig.copperMinY, OreGenerationConfig.copperMaxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.COPPER.getOre(), world, random, chunkX, chunkZ, CategoryCopper.veinSize, COMMON, CategoryCopper.minY, CategoryCopper.maxY, DEFAULT_WORLD, (Biome) null);
 		//Generated in aquatic biomes only
-		generateOre(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkZ, 5, COMMON, 10, 30, DEFAULT_WORLD, Biomes.OCEAN, Biomes.DEEP_OCEAN, Biomes.BEACH, Biomes.COLD_BEACH, Biomes.FROZEN_OCEAN, Biomes.FROZEN_RIVER, Biomes.RIVER);
-		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 25, 48, DEFAULT_WORLD, (Biome) null);
-		generateOre(ModMetals.PROMETHEUM.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 64, DEFAULT_WORLD, (Biome) null);
-		generateOre(ModMetals.MANGANESE.getOre(),world, random, chunkX, chunkZ, 9, COMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
-		generateOre(ModMetals.OURECLASE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_WORLD, (Biome) null);
-		generateOre(ModMetals.INFUSCOLIUM.getOre(), world, random, chunkX, chunkZ, 7, UNCOMMON, 10, 72, DEFAULT_WORLD, (Biome) null);
-		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 30, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.DEEP_IRON.getOre(), world, random, chunkX, chunkZ, CategoryDeepIron.veinSize, COMMON, CategoryDeepIron.minY, CategoryDeepIron.maxY, DEFAULT_WORLD, Biomes.OCEAN, Biomes.DEEP_OCEAN, Biomes.BEACH, Biomes.COLD_BEACH, Biomes.FROZEN_OCEAN, Biomes.FROZEN_RIVER, Biomes.RIVER);
+		generateOre(ModMetals.TIN.getOre(), world, random, chunkX, chunkZ, CategoryTin.veinSize, COMMON, CategoryTin.minY, CategoryTin.maxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.PROMETHEUM.getOre(), world, random, chunkX, chunkZ, CategoryPrometheum.veinSize, COMMON, CategoryPrometheum.minY, CategoryPrometheum.maxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.MANGANESE.getOre(),world, random, chunkX, chunkZ, CategoryManganese.veinSize, COMMON, CategoryManganese.minY, CategoryManganese.maxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.OURECLASE.getOre(), world, random, chunkX, chunkZ, CategoryOureclase.veinSize, UNCOMMON, CategoryOureclase.minY, CategoryOureclase.maxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.INFUSCOLIUM.getOre(), world, random, chunkX, chunkZ, CategoryInfuscolium.veinSize, UNCOMMON, CategoryInfuscolium.minY, CategoryInfuscolium.maxY, DEFAULT_WORLD, (Biome) null);
+		generateOre(ModMetals.ADAMANTINE.getOre(), world, random, chunkX, chunkZ, CategoryAdamantine.veinSize, RARE, CategoryAdamantine.minY, CategoryAdamantine.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModMetals.RUBRACIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 10, 40, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModMetals.ATLARUS.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 64,  DEFAULT_WORLD, (Biome) null);
 		generateOre(ModMetals.CARMOT.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 64, DEFAULT_WORLD, (Biome) null);
