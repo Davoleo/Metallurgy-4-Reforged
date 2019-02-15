@@ -48,7 +48,7 @@ public class ModWorldGen implements IWorldGenerator {
 	public static final String RETROGEN_NAME = "MetallurgyOreGeneration";
 	public static ModWorldGen instance = new ModWorldGen();
 
-  @Override
+	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
       generateWorld(random, chunkX, chunkZ, world, true);
 	}
@@ -138,16 +138,17 @@ public class ModWorldGen implements IWorldGenerator {
             y = minY + random.nextInt(heightdiff);
             z = chunkZ * 16 + random.nextInt(16);
 
-            if (biomes != null)
+            BlockPos pos = new BlockPos(x, y, z);
+            
+            if (biomes[0] != null)
             {
-				BlockPos pos = new BlockPos(x, y, z);
-
 				for (Biome biome : biomes)
 					if (world.getBiome(pos).equals(biome))
 						generator.generate(world, random, pos);
 			}
             else
-				generator.generate(world, random, new BlockPos(x, y, z));
+            	generator.generate(world, random, pos);
+				
         }
     }
 

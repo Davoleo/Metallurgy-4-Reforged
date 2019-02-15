@@ -20,7 +20,7 @@ import scala.util.Random;
 
 /***************************
  *
- * Author : ItHurtsLikeHell
+ * Author : ItHurtsLikeHell, PierKnight100
  * Project: Metallurgy-4-Reforged
  * Date   : 05 gen 2019
  * Time   : 13:56:46
@@ -124,7 +124,7 @@ public class GauntletEffect {
 					entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double)entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double)entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 
 				AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D,0.4D);
-				if(!entity.isDead) {
+				if(!entity.isDead && !GauntletConfig.disableBlockGriefing) {
 					//				destroy blocks and damage the punched entity (the damage is based from block's hardness
 					for (double i = axisalignedbb.minX; i < axisalignedbb.maxX; i += 0.1D) {
 						for (double j = axisalignedbb.minY; j < axisalignedbb.maxY; j += 0.1D) {

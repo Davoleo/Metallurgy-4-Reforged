@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /***************************
  *
- * Author : ItHurtsLikeHell
+ * Author : ItHurtsLikeHell, PierKnight100
  * Project: Metallurgy-4-Reforged
  * Date   : 05 gen 2019
  * Time   : 13:51:58

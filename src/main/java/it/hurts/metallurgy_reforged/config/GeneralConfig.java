@@ -39,7 +39,6 @@ public class GeneralConfig {
 	
 	@Config.Name("Disable the tinker integration")
 	@Config.Comment("Sets to true for disable")
-	@Config.RangeDouble(min = 1)
 	public static boolean tinkerIntegraton = false;
 
 	//Handles Config Synchronization

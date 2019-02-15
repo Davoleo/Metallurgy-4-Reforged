@@ -4,7 +4,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraftforge.common.config.Config;
 
 /*************************************************
- * Author: Davoleo
+ * Author: Davoleo, ItHurtsLikeHell
  * Date / Hour: 10/02/2019 / 16:48
  * Class: GauntletConfig
  * Project: Metallurgy 4 Reforged
@@ -38,4 +38,8 @@ public class GauntletConfig {
     @Config.Comment(value = "Sets the damage dealt to the target by being hit on the block")
     @Config.RangeDouble(min = 0)
     public static double gauntletBlockDamageModifier = 0.5;
+    
+    @Config.Name("Gauntlet disable block griefing")
+    @Config.Comment("Set to true for disable block griefing")
+    public static boolean disableBlockGriefing = false;
 }
