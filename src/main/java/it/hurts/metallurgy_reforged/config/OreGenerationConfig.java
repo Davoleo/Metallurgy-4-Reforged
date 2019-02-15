@@ -4,11 +4,10 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraftforge.common.config.Config;
 
 /*************************************************
- * Author: Davoleo
- * Date / Hour: 10/02/2019 / 18:30
- * Class: OreGenerationConfig
- * Project: Metallurgy 4 Reforged
- * Copyright - � - Davoleo - 2019
+ * Author : Davoleo
+ * Date : 13/02/2019
+ * Class : OreGenerationConfig
+ * Project : Metallurgy 4 Reforged
  **************************************************/
 
 @Config.LangKey("config.metallurgy.category.worldgen")
