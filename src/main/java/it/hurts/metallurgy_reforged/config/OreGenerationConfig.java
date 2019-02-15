@@ -11,12 +11,13 @@ import net.minecraftforge.common.config.Config;
  * Copyright - � - Davoleo - 2019
  **************************************************/
 
-
+@Config.LangKey("config.metallurgy.category.worldgen")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/worldgen", category = "ore_generation")
 public class OreGenerationConfig {
 	
 //	Subclass Category
-//	TODO Sort the category
+	public static SubCategoryRarity rarity = new SubCategoryRarity();
+	
 	public static CategoryAdamantine adamantine = new CategoryAdamantine();
 	public static CategoryAstralSilver astralSilver = new CategoryAstralSilver();
 	public static CategoryAtlarus atlarus = new CategoryAtlarus();
@@ -37,7 +38,20 @@ public class OreGenerationConfig {
 	public static CategorySulfur sulfur = new CategorySulfur();
 	public static CategoryTin tin = new CategoryTin();
 	public static CategoryZinc zinc = new CategoryZinc();
-	public static SubCategoryRarity rarity = new SubCategoryRarity();
+	
+	public static CategoryAlduorite alduorite = new CategoryAlduorite();
+	public static CategoryCeruclase cerucalse = new CategoryCeruclase();
+	public static CategoryIgnatius ignatius = new CategoryIgnatius();
+	public static CategoryKalendrite kalendrite = new CategoryKalendrite();
+	public static CategoryLemurite lemurite = new CategoryLemurite();
+	public static CategoryMidasium midasium = new CategoryMidasium();
+	public static CategorySanguinite sanguinite = new CategorySanguinite();
+	public static CategoryShadowIron shadowIron = new CategoryShadowIron();
+	public static CategoryVulcanite vulcanite = new CategoryVulcanite();
+	public static CategoryVyroxeres vyroxeres = new CategoryVyroxeres();
+	
+	public static CategoryEximite eximite = new CategoryEximite();
+	public static CategoryMeutoite meutoite = new CategoryMeutoite();
 	
     @Config.Name("Retrogen")
     @Config.Comment(value = "Enable/Disable Retrogen")
@@ -46,6 +60,174 @@ public class OreGenerationConfig {
     @Config.Name("Verbose Retrogen")
     @Config.Comment(value = "Enable/Disable verbose logging for retrogen")
     public static boolean verbose_retrogen = false;
+    
+    public static class CategoryMeutoite {
+    	@Config.Comment("Meutoite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Meutoite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Meutoite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 7;
+    }
+    
+    public static class CategoryEximite {
+    	@Config.Comment("Eximite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Eximite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Eximite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 7;
+    }
+    
+    public static class CategoryVyroxeres {
+    	@Config.Comment("Vyroxeres minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Vyroxeres maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 120;
+
+    	@Config.Comment("Vyroxeres indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 5;
+    }
+    
+    public static class CategoryVulcanite {
+    	@Config.Comment("Vulcanite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Vulcanite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Vulcanite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 5;
+    }
+    
+    public static class CategorySanguinite {
+    	@Config.Comment("Sanguinite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Sanguinite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Sanguinite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 4;
+    }
+    
+    public static class CategoryShadowIron {
+    	@Config.Comment("Shadow Iron minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 16;
+
+    	@Config.Comment("Shadow Iron maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 124;
+
+    	@Config.Comment("Shadow Iron indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 6;
+    }
+    
+    public static class CategoryMidasium {
+    	@Config.Comment("Midasium minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 32;
+
+    	@Config.Comment("Midasium maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 255;
+
+    	@Config.Comment("Midasium indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 6;
+    }
+    
+    public static class CategoryLemurite {
+    	@Config.Comment("Lemurite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Lemurite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 100;
+
+    	@Config.Comment("Lemurite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 7;
+    }
+    
+    public static class CategoryKalendrite {
+    	@Config.Comment("Kalendrite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 27;
+
+    	@Config.Comment("Kalendrite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 120;
+
+    	@Config.Comment("Kalendrite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 5;
+    }
+    
+    public static class CategoryIgnatius {
+    	@Config.Comment("Ignatius minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Ignatius maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 255;
+
+    	@Config.Comment("Ignatius indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 10;
+    }
+    
+    public static class CategoryCeruclase {
+    	@Config.Comment("Ceruclase minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Ceruclase maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Ceruclase indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 5;
+    }
+    
+    public static class CategoryAlduorite {
+    	@Config.Comment("Alduorite minimum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int minY = 0;
+
+    	@Config.Comment("Alduorite maximum Y level")
+    	@Config.RangeInt(min = 0, max = 255)
+    	public int maxY = 128;
+
+    	@Config.Comment("Alduorite indicative vein size")
+    	@Config.RangeInt(min = 1)
+    	public int veinSize = 4;
+    }
     
     public static class CategoryPotash {
     	@Config.Comment("Potash minimum Y level")

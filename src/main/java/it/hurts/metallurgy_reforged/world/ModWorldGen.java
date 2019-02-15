@@ -107,21 +107,21 @@ public class ModWorldGen implements IWorldGenerator {
 
 	//Nether
 	private void generateNether(Random random, int chunkX, int chunkZ, World world){
-		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, 10, COMMON, 0, 255, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, 6, COMMON, 0, 124, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 100, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.MIDASIUM.getOre(), world, random, chunkX, chunkZ, 6, UNCOMMON, 0, 256, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.VYROXERES.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 120, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.CERUCLASE.getOre(), world, random, chunkX, chunkZ, 5, RARE, 0, 128, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.ALDUORITE.getOre(), world, random, chunkX, chunkZ, 4, UNCOMMON, 0, 128, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.KALENDRITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 27, 120, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.VULCANITE.getOre(), world, random, chunkX, chunkZ, 5, UNCOMMON, 0, 128, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, 4, RARE, 0, 128, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.ignatius.veinSize, COMMON,  OreGenerationConfig.ignatius.minY,  OreGenerationConfig.ignatius.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.shadowIron.veinSize, COMMON, OreGenerationConfig.shadowIron.minY, OreGenerationConfig.shadowIron.minY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.lemurite.veinSize, COMMON, OreGenerationConfig.lemurite.minY, OreGenerationConfig.lemurite.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.MIDASIUM.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.midasium.veinSize, UNCOMMON, OreGenerationConfig.midasium.minY, OreGenerationConfig.midasium.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.VYROXERES.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.vyroxeres.veinSize, UNCOMMON, OreGenerationConfig.vyroxeres.minY, OreGenerationConfig.vyroxeres.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.CERUCLASE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.cerucalse.veinSize, RARE, OreGenerationConfig.cerucalse.minY, OreGenerationConfig.cerucalse.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.ALDUORITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.alduorite.veinSize, UNCOMMON, OreGenerationConfig.alduorite.minY, OreGenerationConfig.alduorite.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.KALENDRITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.kalendrite.veinSize, UNCOMMON, OreGenerationConfig.kalendrite.minY, OreGenerationConfig.kalendrite.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.VULCANITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.vulcanite.veinSize, UNCOMMON, OreGenerationConfig.vulcanite.minY, OreGenerationConfig.vulcanite.maxY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.sanguinite.veinSize, RARE, OreGenerationConfig.sanguinite.minY, OreGenerationConfig.sanguinite.maxY, DEFAULT_NETHER, (Biome) null);
 	}
 
 	private void generateEnd(Random random, int chunkX, int chunkZ, World world) {
-		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
-		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, 7, COMMON, 0, 128, DEFAULT_END, (Biome) null);
+		generateOre(ModMetals.EXIMITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.eximite.veinSize, COMMON, OreGenerationConfig.eximite.minY, OreGenerationConfig.eximite.maxY, DEFAULT_END, (Biome) null);
+		generateOre(ModMetals.MEUTOITE.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.meutoite.veinSize, COMMON, OreGenerationConfig.meutoite.minY, OreGenerationConfig.meutoite.maxY, DEFAULT_END, (Biome) null);
 	}
 
     private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, Biome... biomes) {
