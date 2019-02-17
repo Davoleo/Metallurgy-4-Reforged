@@ -80,7 +80,7 @@ public class Metallurgy {
 		logger.info("Tile Entities Registered!");
 		
 //		check if tinker is installed
-		if(ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton) {
+		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.preInit();
             logger.info("Tinkers integration has been pre-initialized");
         }
@@ -98,7 +98,7 @@ public class Metallurgy {
 		ModRecipes.init();
         logger.info("Recipes loaded!");
         
-		if(ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton) {
+		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.init();
             logger.info("Tinkers integration has been initialized");
         }
@@ -120,7 +120,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	 public void loadComplete(FMLLoadCompleteEvent event)
 	{
-		if (ModChecker.isTConLoaded && GeneralConfig.tinkerIntegraton)
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
 			IntegrationTIC.postInit();
 		
 		logger.info(NAME + " has been completely loaded");
