@@ -47,15 +47,15 @@ public class IntegrationTIC{
 //				Chiamata al metodo per aggiungere i traits
 				SetTrait.addTraits(metal, m);
 
-//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilità di fare il lingotto ed il blocco )
+//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilitï¿½ di fare il lingotto ed il blocco )
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
 				
 //				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
-			}
+				}
 	    }
 
-		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite,1000), ModFluids.THERMITE,650));
+		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite,1000), ModFluids.THERMITE,400));
 	}
 
 	public static void postInit() {
@@ -81,7 +81,7 @@ public class IntegrationTIC{
 		return recipe != null ? new FluidStack(recipe.output.getFluid(),(c <= 0 ? 1 : c) * Material.VALUE_Ingot) : null;
 	}
 
-//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono già esistenti nella Tinker Base
+//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono giï¿½ esistenti nella Tinker Base
 	private static boolean checkMaterial(Metal metal) {
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM

@@ -94,17 +94,18 @@
 - Fixed lighters offset, Client/Server Sync, Item Damage, Fire placement
 - Fixed Gauntlet crash with LemonLib (NPE) #100
 - Fixed Config GUI Client-Server Synchronization
+- Fixed gauntlet bypassing saturation
 - Edited Gauntlet durability
 - Added Retrogen
 - Fixed Ore Generation
 - Added Ore Generation config
-- Added Config to remove the generation of ore ( set the veinsize to 0 for removing the generation )
+- Added Config to remove ore generation (set the veinsize to 0 to remove the generation)
 - Added Gauntlet config
 - Added Config to remove all tool/sword and armor
 - Added Config to disable Tinker integration
 - Added a representative item to tinker materials (ingot)
 - Added Road Config
-- Lightened up molten black steel a bit
+- Rework of all molten metal colors
 - Implemented reworked textures
 - Balanced road speed (Once again)
 - Re-Organized Config files and categories
@@ -113,3 +114,4 @@
 - Updated localizations
 - Added tar as a fuel
 - Fixed tar Oredict entry
+- Added “full set” to tooltips
