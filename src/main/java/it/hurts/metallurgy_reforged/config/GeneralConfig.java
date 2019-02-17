@@ -20,7 +20,7 @@ public class GeneralConfig {
 	@Config.Name("Enable Alpha Warning Message")
 	@Config.Comment("When set to true it shows the alpha warning message when joining the world")
 	@Config.RequiresMcRestart
-	public static boolean alphaWarning = true;
+	public static boolean warning = true;
 
 	@Config.Name("Enable/Disable all tools")
 	@Config.Comment("When set to false it disables all tools")

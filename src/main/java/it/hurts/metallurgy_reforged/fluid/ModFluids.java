@@ -25,7 +25,7 @@ public class ModFluids {
 	public static final List<FluidMolten> fluidToRegitry = new ArrayList<>();
 
 //	TODO Sistemare il colore
-	public static final FluidMolten THERMITE = new FluidMolten("thermite", 0xFFa30000, 3200, true);
+	public static final FluidMolten THERMITE = new FluidMolten("thermite", 0xFFC44205, 3200, true);
 
 
 	public static void registerFluids(){

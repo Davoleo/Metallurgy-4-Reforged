@@ -2,14 +2,17 @@ package it.hurts.metallurgy_reforged.integration.mods;
 
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
 import it.hurts.metallurgy_reforged.integration.mods.tic.SetTrait;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
@@ -51,6 +54,8 @@ public class IntegrationTIC{
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
 			}
 	    }
+
+		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite,1000), ModFluids.THERMITE,650));
 	}
 
 	public static void postInit() {

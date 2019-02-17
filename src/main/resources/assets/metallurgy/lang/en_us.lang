@@ -790,8 +790,7 @@ tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly prop
 
 #Utils
 util.world_join_message.1=§4§lMetallurgy 4: Reforged
-util.world_join_message.2=§6[Warning: this is an alpha version of the mod]
-util.world_join_message.3=§6§oTinkers' Construct Integration is in a testing phase
-util.world_join_message.4=§6Further integration with common mods is planned.
-util.world_join_message.5=For more info, bug reports and suggestions here's the github repository link:
+util.world_join_message.2=§6[Warning: There might be bugs]
+util.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
+util.world_join_message.4=You can disable this message from the mod configuration
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged

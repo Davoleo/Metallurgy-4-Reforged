@@ -27,14 +27,12 @@ public class OnPlayerJoin {
 		EntityPlayer player = (EntityPlayer) event.getEntity();
 		GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText().substring(2, 50)));
 
-		if(!event.getEntity().world.isRemote && GeneralConfig.alphaWarning) {
+		if(!event.getEntity().world.isRemote && GeneralConfig.warning) {
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.2")));
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
-			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
-			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.5")));
 			player.sendMessage(GITHUB_REPO);
-
+			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
 		}
 	}
 }
