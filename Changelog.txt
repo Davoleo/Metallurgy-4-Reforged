@@ -84,3 +84,32 @@
 - Fixed Tinkers’ Construct hard dependency
 - Fixed Midasium sword player inventory dupe
 - French localization update
+
+0.1.0
+- Added Thermite dust
+- Added Molten Thermite as a Smeltery Fuel
+- Added some logging information on game startup
+- Added reworked adamantine armor effect
+- Fixed game crash when TCon Materials are already registered #98
+- Fixed lighters offset, Client/Server Sync, Item Damage, Fire placement
+- Fixed Gauntlet crash with LemonLib (NPE) #100
+- Fixed Config GUI Client-Server Synchronization
+- Edited Gauntlet durability
+- Added Retrogen
+- Fixed Ore Generation
+- Added Ore Generation config
+- Added Config to remove the generation of ore ( set the veinsize to 0 for removing the generation )
+- Added Gauntlet config
+- Added Config to remove all tool/sword and armor
+- Added Config to disable Tinker integration
+- Added a representative item to tinker materials (ingot)
+- Added Road Config
+- Lightened up molten black steel a bit
+- Implemented reworked textures
+- Balanced road speed (Once again)
+- Re-Organized Config files and categories
+- Rephrased some config names and comments
+- Creative tab icons become empty if the item is missing
+- Updated localizations
+- Added tar as a fuel
+- Fixed tar Oredict entry
