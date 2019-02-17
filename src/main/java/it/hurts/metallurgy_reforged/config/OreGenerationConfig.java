@@ -70,7 +70,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Meutoite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
     
@@ -84,7 +84,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Eximite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
     
@@ -98,7 +98,7 @@ public class OreGenerationConfig {
     	public int maxY = 120;
 
     	@Config.Comment("Vyroxeres indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
     
@@ -112,7 +112,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Vulcanite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
     
@@ -126,7 +126,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Sanguinite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 4;
     }
     
@@ -140,7 +140,7 @@ public class OreGenerationConfig {
     	public int maxY = 124;
 
     	@Config.Comment("Shadow Iron indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 6;
     }
     
@@ -154,7 +154,7 @@ public class OreGenerationConfig {
     	public int maxY = 255;
 
     	@Config.Comment("Midasium indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 6;
     }
     
@@ -168,7 +168,7 @@ public class OreGenerationConfig {
     	public int maxY = 100;
 
     	@Config.Comment("Lemurite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
     
@@ -182,7 +182,7 @@ public class OreGenerationConfig {
     	public int maxY = 120;
 
     	@Config.Comment("Kalendrite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
     
@@ -196,7 +196,7 @@ public class OreGenerationConfig {
     	public int maxY = 255;
 
     	@Config.Comment("Ignatius indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 10;
     }
     
@@ -210,7 +210,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Ceruclase indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
     
@@ -224,7 +224,7 @@ public class OreGenerationConfig {
     	public int maxY = 128;
 
     	@Config.Comment("Alduorite indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 4;
     }
     
@@ -238,7 +238,7 @@ public class OreGenerationConfig {
     	public int maxY = 72;
 
     	@Config.Comment("Potash indicative vein size")
-    	@Config.RangeInt(min = 1)
+    	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
     
@@ -252,7 +252,7 @@ public class OreGenerationConfig {
         public int maxY = 100;
 
         @Config.Comment("Phosphorite indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
     
@@ -266,7 +266,7 @@ public class OreGenerationConfig {
         public int maxY = 15;
 
         @Config.Comment("Sulfur indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -280,7 +280,7 @@ public class OreGenerationConfig {
         public int maxY = 80;
 
         @Config.Comment("Platinum indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 4;
     }
 
@@ -294,7 +294,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Silver indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 8;
     }
     
@@ -308,7 +308,7 @@ public class OreGenerationConfig {
         public int maxY = 64;
 
         @Config.Comment("Astral Silver indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -322,7 +322,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Orichalcum indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -336,7 +336,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Zinc indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 8;
     }
     
@@ -350,7 +350,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Mithril indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
     
@@ -364,7 +364,7 @@ public class OreGenerationConfig {
         public int maxY = 64;
 
         @Config.Comment("Carmot indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -378,7 +378,7 @@ public class OreGenerationConfig {
         public int maxY = 64;
 
         @Config.Comment("Atlarus indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
     
@@ -392,7 +392,7 @@ public class OreGenerationConfig {
         public int maxY = 30;
 
         @Config.Comment("Adamantine indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 4;
     }
     
@@ -406,7 +406,7 @@ public class OreGenerationConfig {
         public int maxY = 40;
 
         @Config.Comment("Rubracium indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -420,7 +420,7 @@ public class OreGenerationConfig {
         public int maxY = 72;
 
         @Config.Comment("Infuscolium indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 7;
     }
     
@@ -434,7 +434,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Ourseclase indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
     
@@ -448,7 +448,7 @@ public class OreGenerationConfig {
         public int maxY = 128;
 
         @Config.Comment("Manganese indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 9;
     }
     
@@ -462,7 +462,7 @@ public class OreGenerationConfig {
         public int maxY = 64;
 
         @Config.Comment("Prometheum indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
     
@@ -476,7 +476,7 @@ public class OreGenerationConfig {
         public int maxY = 48;
 
         @Config.Comment("Tin indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 10;
     }
     
@@ -490,7 +490,7 @@ public class OreGenerationConfig {
         public int maxY = 30;
 
         @Config.Comment("Deep Iron indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
     
@@ -504,7 +504,7 @@ public class OreGenerationConfig {
         public int maxY = 120;
 
         @Config.Comment("Copper indicative vein size")
-        @Config.RangeInt(min = 1)
+        @Config.RangeInt(min = 0)
         public int veinSize = 8;
     }
     

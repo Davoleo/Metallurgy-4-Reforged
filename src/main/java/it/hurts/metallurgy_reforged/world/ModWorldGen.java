@@ -129,27 +129,28 @@ public class ModWorldGen implements IWorldGenerator {
         if (minY < 0 || maxY > 256 || minY > maxY)
             throw new IllegalArgumentException("Illegal Height Arguments for Biome Specific WorldGenerator");
 
-        WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize, BlockMatcher.forBlock(blockToReplace));
-        int heightdiff = maxY - minY +1;
-        int x, y, z;
+        if(veinSize > 0) {
+        	 WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize, BlockMatcher.forBlock(blockToReplace));
+             int heightdiff = maxY - minY +1;
+             int x, y, z;
 
-        for (int i = 0; i < rarity; i++){
-            x = chunkX * 16 +random.nextInt(16);
-            y = minY + random.nextInt(heightdiff);
-            z = chunkZ * 16 + random.nextInt(16);
+             for (int i = 0; i < rarity; i++){
+                 x = chunkX * 16 +random.nextInt(16);
+                 y = minY + random.nextInt(heightdiff);
+                 z = chunkZ * 16 + random.nextInt(16);
 
-            BlockPos pos = new BlockPos(x, y, z);
-            
-            if (biomes[0] != null)
-            {
-				for (Biome biome : biomes)
-					if (world.getBiome(pos).equals(biome))
-						generator.generate(world, random, pos);
-			}
-            else
-            	generator.generate(world, random, pos);
-				
-        }
+                 BlockPos pos = new BlockPos(x, y, z);
+                 
+                 if (biomes[0] != null)
+                 {
+     				for (Biome biome : biomes)
+     					if (world.getBiome(pos).equals(biome))
+     						generator.generate(world, random, pos);
+     			}
+                 else
+                 	generator.generate(world, random, pos);
+             }
+        }		
     }
 
     //Retrogen data save & load
