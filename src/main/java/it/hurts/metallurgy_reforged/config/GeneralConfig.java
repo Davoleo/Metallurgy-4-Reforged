@@ -17,8 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {
 	
-	@Config.Name("Enable Alpha Warning Message")
-	@Config.Comment("When set to true it shows the alpha warning message when joining the world")
+	@Config.Name("Enable On World Join Message")
+	@Config.Comment("When set to true it shows the warning message when joining the world")
 	@Config.RequiresMcRestart
 	public static boolean warning = true;
 
