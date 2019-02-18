@@ -115,3 +115,7 @@
 - Added tar as a fuel
 - Fixed tar Oredict entry
 - Added “full set” to tooltips
+
+0.1.1
+- Fixed Alloyer crash when opening the GUI
+- Fixed wrong config name and comment for warning message
