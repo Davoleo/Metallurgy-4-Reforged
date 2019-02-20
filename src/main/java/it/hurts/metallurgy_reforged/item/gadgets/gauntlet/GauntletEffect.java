@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util;
+package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
@@ -134,14 +134,12 @@ public class GauntletEffect {
 								if (!entity.world.isAirBlock(pos)) {
 									IBlockState state = entity.world.getBlockState(pos);
 									float hardness = state.getBlockHardness(entity.world, pos);
-									if (hardness >= 0) {
-										if (!state.getMaterial().isLiquid()) {
+									if (hardness >= 0 && (!state.getMaterial().isLiquid())) {
 											if (!entity.world.isRemote)
 												entity.world.destroyBlock(pos, true);
 											entity.hurtResistantTime = 0;
 											if(GauntletConfig.gauntletBlockDamageModifier != 0)
 												entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), (float) GauntletConfig.gauntletBlockDamageModifier);
-										}
 									}
 								}
 							}

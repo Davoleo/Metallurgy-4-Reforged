@@ -89,14 +89,6 @@ public class ToolConfig {
 	public static boolean[] vulcanite = { true,true,true,true,true };
 
 	public static boolean[] vyroxeres = { true,true,true,true,true };
-	
-	public static void fillMap() {
-		Map<String,boolean[]> mappa = new HashMap<String,boolean[]>();
-		for(int i = 0; i < Utils.materialName.length; i++) {
-			mappa.put(Utils.materialName[i], (boolean[]) allTools[i]);
-			mapList.add(mappa);
-		}
-	}
 
 	public static boolean[][] allTools = {
 			adamantine,
@@ -137,6 +129,14 @@ public class ToolConfig {
 			vulcanite,
 			vyroxeres
 	};
+	
+	public static void fillMap() {
+		Map<String,boolean[]> mappa = new HashMap<String,boolean[]>();
+		for(int i = 0; i < Utils.materialName.length; i++) {
+			mappa.put(Utils.materialName[i], (boolean[]) allTools[i]);
+			mapList.add(mappa);
+		}
+	}
 	
 	public static void readConfig(Configuration cfg) {
         try {

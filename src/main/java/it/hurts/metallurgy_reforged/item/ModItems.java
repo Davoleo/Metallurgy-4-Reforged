@@ -1,7 +1,7 @@
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnLighter;
-import it.hurts.metallurgy_reforged.item.gadgets.ItemVulLighter;
+import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
+import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.item.Item;
@@ -35,8 +35,8 @@ public class ModItems {
 	public static ItemOreDict dustPhosphorus = new ItemOreDict("phosphorus", "dustPhosphorus").setCreativeTab(MetallurgyTabs.tabDust);
   
 //	Lightner
-	public static ItemIgnLighter flintAndIgnatius = new ItemIgnLighter("flint_and_ignatius");
-	public static ItemVulLighter flintAndVulcanite = new ItemVulLighter("flint_and_vulcanite");
+	public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");
+	public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
 	
 //	Modded Items
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");

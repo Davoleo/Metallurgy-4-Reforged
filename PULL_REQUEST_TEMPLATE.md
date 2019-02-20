@@ -13,6 +13,3 @@ This is a:
 
 ---
 #### Reason why we should implement your feature into the mod
-
-
-<!-- Thanks for Contributing, We REALLY appreciate it! -->

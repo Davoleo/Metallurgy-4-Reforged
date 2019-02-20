@@ -90,10 +90,8 @@ public class Utils {
     public static void giveExperience(EntityPlayer thePlayer, float experience) {
         int intExp = (int) experience;
         float fractional = experience - intExp;
-        if (fractional > 0.0F) {
-            if ((float) Math.random() < fractional) {
+        if (fractional > 0.0F && (float) Math.random() < fractional) {
                 intExp++;
-            }
         }
         while (intExp > 0) {
             int j = EntityXPOrb.getXPSplit(intExp);
@@ -170,7 +168,7 @@ public class Utils {
 		String[] space = space(str.length);
 		name = "";
 		for(int i = 0; i < str.length; i++) {
-			name = name + str[i].substring(0, 1).toUpperCase() + str[i].substring(1,str[i].length()) + space[i];
+			name = name + str[i].substring(0, 1).toUpperCase() + str[i].substring(1) + space[i];
 		}
 		return name;
 	}
