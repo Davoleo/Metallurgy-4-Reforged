@@ -22,11 +22,14 @@ public class FluidBlockBaseTar extends FluidBlockBase{
 	}
 	
 //	80% less then l'acqua
+	@Override
 	public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		super.onEntityCollision(worldIn, pos, state, entityIn);
 		entityIn.motionX *= 0.2D;
 		entityIn.motionY *= 0.2D;
 		entityIn.motionZ *= 0.2D;
 	}
+
+
 
 }
