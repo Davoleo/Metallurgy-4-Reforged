@@ -41,14 +41,14 @@ public class RegistrationHandler {
         ModBlocks.registerItemBlocks(event.getRegistry());
         ModArmors.register(event.getRegistry());
         ModTools.register(event.getRegistry());
-        ModFluids.registerFluidItemBlocks(event.getRegistry());
+        ModFluids.registerItem(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         ModMetals.registerBlocks(event.getRegistry());
         ModBlocks.register(event.getRegistry());
-        ModFluids.registerFluidBlocks(event.getRegistry());
+        ModFluids.registerBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
@@ -58,7 +58,7 @@ public class RegistrationHandler {
         ModBlocks.registerModels();
         ModArmors.registerModels();
         ModTools.registerModels();
-        ModFluids.registerFluidItemModels();
+        ModFluids.registerModels();
     }
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)

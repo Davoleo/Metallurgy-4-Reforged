@@ -31,25 +31,21 @@ private int mapColor = 0xFFFFFFFF;
 private float overlayAlpha = 0.2F;
 private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
-private static FluidBlockBase block;
+private FluidBlockBase block;
 private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
 private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
 	public FluidMolten(String name, int mapColor, int temperature, boolean isNew) {
-		super("molten_" + name, default_still, default_flowing);
+		super(name, default_still, default_flowing);
 		this.setMaterial(Material.IRON)
 		.setDensity(800)
         .setGaseous(false)
         .setLuminosity(9)
         .setViscosity(4000)
-        .setTemperature(temperature);
-		setColor(mapColor);
-		if(isNew) {
-//			initFluidBlock(this);
-			FluidMolten fm = this;
-			ModFluids.fluidToRegitry.add(fm);
-		}
-//		ModFluids.instance.fluidList.add(this);
+        .setTemperature(temperature)
+		.setColor(mapColor);
+		if(isNew) 
+			ModFluids.fluidToRegitry.add(this);
 	}
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
@@ -149,8 +145,8 @@ private final static ResourceLocation default_flowing = new ResourceLocation(Met
         return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
     }
     
-    public static void initFluidBlock(Fluid fluid) {
-    	block = new FluidBlockBase(fluid, Material.LAVA, fluid.getName());
+    public void initFluidBlock() {
+    	block = new FluidBlockBase(this, Material.LAVA, fluid.getName());
     }
     
     @Nonnull
