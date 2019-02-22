@@ -222,13 +222,11 @@ public class ModArmors {
         		for(Map<String, Boolean> m : ArmorConfig.mapList) {
         			name = m.keySet().toArray();
         			for(Object n : name)
-        				if(armor instanceof ItemArmorBase) {
-                            if ((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
-                                registry.register(armor);
+        				if(armor instanceof ItemArmorBase && ((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))) {
+                            registry.register(armor);
                             if (armor.equals(adamantine_chest))
                                 isCreativeTabIconAvailable = true;
                         }
-
         		}
     	}
     }

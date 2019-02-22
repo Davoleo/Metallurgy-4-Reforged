@@ -1,7 +1,7 @@
 # Contributing to the "Metallurgy 4 Reforged" project
 
-##### Prequisites:
-1.  _Git and Github Knoweledge (This guide **does not** explain how git works)_
+##### Prerequisites
+1.  _Git and Github Knowledge (This guide **does not** explain how git works)_
 
 ---
 ## Guide on Issues
@@ -12,7 +12,7 @@
 -   _**if your issue does not respect these contributing lines it will be likely closed as invalid**_
 
 ---
-##  Guide on Pull Requests
+## Guide on Pull Requests
 
 Before contributing actively to the repository think of what you are going to add and why it makes sense to add it!
 Tell us about it too
@@ -45,8 +45,10 @@ I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 If you want to contribute adding code comments or either you want to add comments to explain your features do it by adding line/block comments _above_ the line you want to explain.<br>
 Example:
 ```java
-//Example integer variable
-int exampleVar
+public class ExampleClass {
+    //Example integer variable
+    private int exampleVar;
+}
 ```
 
 **Please pay attention on where you upload your features** <br>

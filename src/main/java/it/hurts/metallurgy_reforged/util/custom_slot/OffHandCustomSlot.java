@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.util.customSlot;
+package it.hurts.metallurgy_reforged.util.custom_slot;
 
 import javax.annotation.Nullable;
 

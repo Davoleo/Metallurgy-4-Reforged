@@ -18,7 +18,7 @@ import java.util.Objects;
  * Date / Hour: 14/11/2018 / 21.11
  * Class: MetallurgyTabs
  * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
+ * Copyright - ï¿½ - Davoleo - 2018
  **************************************************/
 
 public class MetallurgyTabs extends CreativeTabs {
@@ -66,7 +66,7 @@ public class MetallurgyTabs extends CreativeTabs {
             case 5: return new ItemStack(ModBlocks.crusher);
             case 6: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
             case 7: return ModTools.isCreativeTabIconAvailable ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
+            default: return ItemStack.EMPTY;
         }
-        return ItemStack.EMPTY;
     }
 }

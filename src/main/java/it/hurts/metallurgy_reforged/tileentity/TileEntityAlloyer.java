@@ -128,11 +128,11 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
         return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             if (facing == EnumFacing.DOWN)
                 return (T) handlerBottom;
             else if (facing == EnumFacing.UP)
@@ -388,7 +388,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
         }
     }
 
-    private int getAlloyingTime(ItemStack stack) {
+    private int getAlloyingTime(@SuppressWarnings("unused") ItemStack stack) {
         return ALLOYING_TIME;
     }
 
@@ -495,6 +495,9 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
                 break;
             case 3:
                 this.totalAlloyingTime = value;
+                break;
+            default:
+                break;
         }
     }
 

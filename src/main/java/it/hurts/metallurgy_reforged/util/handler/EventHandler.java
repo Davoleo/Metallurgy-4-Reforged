@@ -10,7 +10,7 @@ import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.util.customSlot.ArmorCustomSlot;
+import it.hurts.metallurgy_reforged.util.custom_slot.ArmorCustomSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -355,7 +355,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))
 					&& ToolEffectsConfig.ignatiusSwordEffect) {
 
-
 				if ((int) (Math.random() * 100) <= 15)
 					foe.setFire(5);
 			}
@@ -364,7 +363,6 @@ public class EventHandler {
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))
 					&& ToolEffectsConfig.vulcaniteSwordEffect) {
 
-
 				if ((int) (Math.random() * 100) <= 30)
 					foe.setFire(5);
 			}
@@ -372,7 +370,6 @@ public class EventHandler {
 //			Tartarite Sword (Withering II)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))
 					&& ToolEffectsConfig.tartariteSwordEffect) {
-
 
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));

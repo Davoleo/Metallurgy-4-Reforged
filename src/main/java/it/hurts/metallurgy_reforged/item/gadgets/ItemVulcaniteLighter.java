@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.item.gadgets;
 
+import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -17,36 +18,37 @@ import javax.annotation.Nonnull;
 /*************************************************
  * Author: Davoleo
  * Date / Hour: 28/12/2018 / 21:58
- * Class: ItemVulLighter
+ * Class: ItemVulcaniteLighter
  * Project: Metallurgy 4 Reforged
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-public class ItemVulLighter extends ItemIgnLighter {
+public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 
-    public ItemVulLighter(String name)
+    public ItemVulcaniteLighter(String name)
     {
         super(name);
         setMaxDamage(500);
+        setCreativeTab(MetallurgyTabs.tabSpecial);
     }
 
     @Nonnull
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        pos = pos.offset(facing);
+        BlockPos blockPos = pos.offset(facing);
         ItemStack lighter = player.getHeldItem(hand);
 
         if(!player.isSneaking())
-            if (!player.canPlayerEdit(pos, facing, lighter))
+            if (!player.canPlayerEdit(blockPos, facing, lighter))
             {
                 return EnumActionResult.FAIL;
             }
             else
             {
-                worldIn.playSound(player, pos, SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.BLOCKS, 1.0F, 2F);
+                worldIn.playSound(player, blockPos, SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.BLOCKS, 1.0F, 2F);
 
-                createFire(worldIn, pos, player);
+                createFire(worldIn, blockPos, player);
 
                 if (!player.isCreative())
                     lighter.damageItem(1, player);
@@ -55,7 +57,7 @@ public class ItemVulLighter extends ItemIgnLighter {
             }
         else
         {
-            BlockPos targetPos = pos.offset(facing);
+            BlockPos targetPos = blockPos.offset(facing);
             ItemStack item = player.getHeldItem(hand);
 
             if (player.canPlayerEdit(targetPos, facing, item) && worldIn.mayPlace(Blocks.LAVA, targetPos, false, facing, player))

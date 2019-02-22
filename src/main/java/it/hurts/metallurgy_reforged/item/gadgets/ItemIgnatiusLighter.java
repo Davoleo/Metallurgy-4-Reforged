@@ -1,6 +1,7 @@
 package it.hurts.metallurgy_reforged.item.gadgets;
 
 import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -17,36 +18,37 @@ import javax.annotation.Nonnull;
 /*************************************************
  * Author: Davoleo
  * Date / Hour: 28/12/2018 / 20:11
- * Class: ItemIgnLighter
+ * Class: ItemIgnatiusLighter
  * Project: Metallurgy 4 Reforged
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
-public class ItemIgnLighter extends ItemBase {
+public class ItemIgnatiusLighter extends ItemBase {
 
-    public ItemIgnLighter(String name)
+    public ItemIgnatiusLighter(String name)
     {
         super(name);
         setMaxDamage(150);
+        setCreativeTab(MetallurgyTabs.tabSpecial);
     }
 
     @Nonnull
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        pos = pos.offset(facing);
+        BlockPos blockPos = pos.offset(facing);
         ItemStack lighter = player.getHeldItem(hand);
 
-        if (!player.canPlayerEdit(pos, facing, lighter))
+        if (!player.canPlayerEdit(blockPos, facing, lighter))
         {
             return EnumActionResult.FAIL;
         }
         else
         {
-            worldIn.playSound(player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+            worldIn.playSound(player, blockPos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
             if (itemRand.nextBoolean())
-                createFire(worldIn, pos, player);
+                createFire(worldIn, blockPos, player);
 
             if (!player.isCreative())
                 lighter.damageItem(1, player);
@@ -61,9 +63,10 @@ public class ItemIgnLighter extends ItemBase {
         super.registerItemModel("gadget");
     }
 
-    protected void createFire(World worldIn, BlockPos pos, EntityPlayer player)
+    void createFire(World worldIn, BlockPos initPos, EntityPlayer player)
     {
-        final BlockPos START_POS = pos.offset(player.getHorizontalFacing());
+        final BlockPos START_POS = initPos.offset(player.getHorizontalFacing());
+        BlockPos pos;
 
         for (int x = -1; x <= 1; x++)
             for (int z = -1; z <= 1; z++) {

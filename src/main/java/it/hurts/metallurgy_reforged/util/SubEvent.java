@@ -2,8 +2,8 @@ package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util.GauntletEffect;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.util.GauntletOperation;
+import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
+import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
 import it.hurts.metallurgy_reforged.util.handler.FuelHandler;
 import net.minecraftforge.common.MinecraftForge;
 
