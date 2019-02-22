@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.block;
+package it.hurts.metallurgy_reforged.block.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;

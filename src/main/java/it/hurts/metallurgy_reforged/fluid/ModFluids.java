@@ -24,7 +24,7 @@ public class ModFluids {
 	public static final List<FluidMolten> fluidToRegitry = new ArrayList<>();
 
 //	TODO Sistemare il colore, Rimuovere l'effetto di fuoco dal player, aumentare la lentezza del player.
-	public static final FluidMolten TAR = new FluidMolten("molten_tar", 0xFF100500, 1000, true);
+	public static final FluidMolten TAR = new FluidMoltenTar("molten_tar", 0xFF111419, 1000, true);
 	public static  final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200, true);
 	
 

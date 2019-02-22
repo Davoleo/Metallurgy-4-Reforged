@@ -2,7 +2,7 @@ package it.hurts.metallurgy_reforged.material;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
-import it.hurts.metallurgy_reforged.block.FluidBlockBase;
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import net.minecraft.block.material.Material;

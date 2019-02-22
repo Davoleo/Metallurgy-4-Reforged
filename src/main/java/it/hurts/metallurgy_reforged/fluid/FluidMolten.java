@@ -3,7 +3,7 @@ package it.hurts.metallurgy_reforged.fluid;
 import javax.annotation.Nonnull;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.FluidBlockBase;
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -31,7 +31,7 @@ private int mapColor = 0xFFFFFFFF;
 private float overlayAlpha = 0.2F;
 private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
-private FluidBlockBase block;
+protected FluidBlockBase block;
 private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
 private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
