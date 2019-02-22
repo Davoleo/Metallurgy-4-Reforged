@@ -70,7 +70,7 @@ public class ModMetals {
             new ToolStats(14, 3, 250, 6F, 3F), new FluidStats(0xFF555F67), 2).createMetal();
     public static final Metal DESICHALKOS = new MetalStats("desichalkos", "Desichalkos", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 7, 4}, 30, 180, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(30, 4, 1800, 8F, 5F), new FluidStats(0xFF420098), -1).createMetal();
+            new ToolStats(30, 4, 1800, 8F, 5F), new FluidStats(0xFF3B374F), -1).createMetal();
     public static final Metal ELECTRUM = new MetalStats("electrum", "Electrum", 2, LOW_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_IMPACT),
             new ToolStats(30, 2, 70, 14F, 2F), new FluidStats(0xFFEFEF57), -1).createMetal();

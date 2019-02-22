@@ -379,7 +379,7 @@ public class OreGenerationConfig {
 
         @Config.Comment("Atlarus indicative vein size (Set to 0 to disable of this ore)")
         @Config.RangeInt(min = 0)
-        public int veinSize = 5;
+        public int veinSize = 3;
     }
     
     public static class CategoryAdamantine{
@@ -393,7 +393,7 @@ public class OreGenerationConfig {
 
         @Config.Comment("Adamantine indicative vein size (Set to 0 to disable of this ore)")
         @Config.RangeInt(min = 0)
-        public int veinSize = 4;
+        public int veinSize = 3;
     }
     
     public static class CategoryRubracium {

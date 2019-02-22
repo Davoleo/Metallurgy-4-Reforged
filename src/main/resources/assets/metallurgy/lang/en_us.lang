@@ -349,6 +349,7 @@ tile.molten_shadow_iron.name=Molten Shadow Iron
 tile.molten_shadow_steel.name=Molten Shadow Steel
 tile.molten_silver.name=Molten Silver
 tile.molten_steel.name=Molten Steel
+tile.molten_tar.name=Molten Tar
 tile.molten_tartarite.name=Molten Tartarite
 tile.molten_thermite.name=Molten Thermite
 tile.molten_tin.name=Molten Tin
@@ -397,6 +398,7 @@ fluid.molten_shadow_iron=Molten Shadow Iron
 fluid.molten_shadow_steel=Molten Shadow Steel
 fluid.molten_silver=Molten Silver
 fluid.molten_steel=Molten Steel
+fluid.molten_tar=Molten Tar
 fluid.molten_tartarite=Molten Tartarite
 fluid.molten_thermite=Molten Thermite
 fluid.molten_tin=Molten Tin
@@ -736,14 +738,14 @@ modifier.vulcan_trait.name=Volcanic
 modifier.duplication_trait.name=Duplication
 modifier.life_steal_trait.name=Life Steal
 modifier.wither_trait.name=Wither
-modifier.king_dice_trait.name=Random Effects
+modifier.king_dice_trait.name=King Dice
 
-modifier.obscure_trait.desc=
-modifier.vulcan_trait.desc=
-modifier.duplication_trait.desc=
+modifier.obscure_trait.desc=Blinds your enemy
+modifier.vulcan_trait.desc=Sets your enemy on fire
+modifier.duplication_trait.desc=Duplicate the mob drops
 modifier.life_steal_trait.desc=
-modifier.wither_trait.desc=
-modifier.king_dice_trait.desc=
+modifier.wither_trait.desc=Applies wither effect on your enemy
+modifier.king_dice_trait.desc=Applies a random effect on your enemy
 
 #Tooltips
 #Armor Tooltips
