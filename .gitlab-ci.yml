@@ -15,6 +15,8 @@ cache:
 
 build:
   stage: build
+  install:
+    - ./gradlew setupCIWorkspace
   script:
     - ./gradlew build
   artifacts:
