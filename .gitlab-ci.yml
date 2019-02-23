@@ -7,21 +7,15 @@ stages:
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
 
 build:
   stage: build
-  install:
-    - ./gradlew setupCIWorkspace
   script:
+    - ./gradlew setupCIWorkspace
     - ./gradlew build
   artifacts:
     paths:
-      - build/libs/*.jar
+      - output/*.jar
     expire_in: 1 week
   only:
     - master
