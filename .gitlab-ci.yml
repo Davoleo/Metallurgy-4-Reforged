@@ -2,7 +2,6 @@ image: java:8-jdk
 
 stages:
   - build
-  - test
   - deploy
 
 before_script:
@@ -19,12 +18,6 @@ build:
     expire_in: 1 week
   only:
     - master
-
-
-test:
-  stage: test
-  script:
-    - ./gradlew check
 
 deploy:
   stage: deploy
