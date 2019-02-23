@@ -32,10 +32,9 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
         setResistance(8F);
     }
 
-    @SuppressWarnings("unused")
     public abstract Class<TE> getTileEntityClass();
 
-    @SuppressWarnings({"unchecked", "unused"})
+	@SuppressWarnings("unchecked")
 	public TE getTileEntity(IBlockAccess world, BlockPos pos)
     {
         return (TE)world.getTileEntity(pos);
