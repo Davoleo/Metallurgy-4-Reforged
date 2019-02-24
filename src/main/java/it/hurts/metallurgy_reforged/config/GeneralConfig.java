@@ -40,6 +40,11 @@ public class GeneralConfig {
 	@Config.Name("Disable the tinker integration")
 	@Config.Comment("Sets to true for disable")
 	public static boolean tinkerIntegraton = false;
+	
+	@Config.Name("The spawnrate percentance of tar lake in the overworld")
+	@Config.Comment("Sets to 0 to disable")
+	@Config.RangeInt(min = 0, max = 100)
+	public static int tarLakePercentance = 25;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {

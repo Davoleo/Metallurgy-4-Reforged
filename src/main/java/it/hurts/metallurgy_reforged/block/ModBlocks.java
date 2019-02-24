@@ -34,7 +34,7 @@ public class ModBlocks {
     //Mod Blocks with a custom drop
     public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", ModItems.dustSulfur, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", ModItems.dustPhosphorus, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
-    public static BlockOreDict oreBitumen = new BlockOreDict("bitumen_ore", "oreBitumen", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, ModItems.dustBitumen, ModItems.tar).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, ModItems.dustBitumen, ModItems.tar).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", ModItems.dustPotash, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
 
     //Other Blocks
@@ -54,7 +54,7 @@ public class ModBlocks {
         registry.registerAll(
                 oreSulfur,
                 orePhosphorite,
-                oreBitumen,
+                oreTar,
                 orePotash,
 
                 blockBitumen,
@@ -72,7 +72,7 @@ public class ModBlocks {
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
         registry.registerAll(oreSulfur.createItemBlock(),
                 orePhosphorite.createItemBlock(),
-                oreBitumen.createItemBlock(),
+                oreTar.createItemBlock(),
                 orePotash.createItemBlock(),
 
                 blockBitumen.createItemBlock(),
@@ -89,7 +89,7 @@ public class ModBlocks {
     public static void registerModels() {
         oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
         orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));
-        oreBitumen.registerItemModel(Item.getItemFromBlock(oreBitumen));
+        oreTar.registerItemModel(Item.getItemFromBlock(oreTar));
         orePotash.registerItemModel(Item.getItemFromBlock(orePotash));
 
         blockBitumen.registerItemModel(Item.getItemFromBlock(blockBitumen));

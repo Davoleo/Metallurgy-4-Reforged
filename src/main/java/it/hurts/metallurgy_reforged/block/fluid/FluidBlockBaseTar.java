@@ -58,7 +58,7 @@ public class FluidBlockBaseTar extends FluidBlockBase{
 			}while(index < 6 && count == 0);
 		
 			if(count == 0)
-				worldIn.setBlockState(pos, ModBlocks.oreBitumen.getDefaultState());
+				worldIn.setBlockState(pos, ModBlocks.oreTar.getDefaultState());
 		}
 
 	}

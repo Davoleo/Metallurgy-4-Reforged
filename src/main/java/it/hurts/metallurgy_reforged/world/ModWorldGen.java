@@ -1,5 +1,10 @@
 package it.hurts.metallurgy_reforged.world;
 
+import java.util.ArrayDeque;
+import java.util.Random;
+
+import org.apache.logging.log4j.Level;
+
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.OreGenerationConfig;
@@ -19,10 +24,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.logging.log4j.Level;
-
-import java.util.ArrayDeque;
-import java.util.Random;
 
 /***************************
  *
@@ -100,8 +101,6 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModMetals.PLATINUM.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.platinum.veinSize, RARE, OreGenerationConfig.platinum.minY, OreGenerationConfig.platinum.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ,  OreGenerationConfig.sulfur.veinSize, UNCOMMON, OreGenerationConfig.sulfur.minY, OreGenerationConfig.sulfur.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ, OreGenerationConfig.phosphorite.veinSize, UNCOMMON, OreGenerationConfig.phosphorite.minY, OreGenerationConfig.phosphorite.maxY, DEFAULT_WORLD, (Biome) null);
-//		Non modificato visto che nel prossimo aggiornamento aggiungeremo il liquido con la generazione del catrame
-		generateOre(ModBlocks.oreBitumen, world, random, chunkX, chunkZ, 10, COMMON, 64, 128, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ, OreGenerationConfig.potash.veinSize, COMMON, OreGenerationConfig.potash.minY, OreGenerationConfig.potash.maxY, DEFAULT_WORLD, (Biome) null);
   }
 
