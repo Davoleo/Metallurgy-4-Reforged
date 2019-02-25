@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.hurts.metallurgy_reforged.world;
 
 import java.util.Random;

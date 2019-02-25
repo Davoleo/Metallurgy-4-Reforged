@@ -2,6 +2,7 @@ image: java:8-jdk
 
 stages:
   - build
+  - test
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -14,9 +15,13 @@ build:
   artifacts:
     paths:
       - output/*.jar
-    expire_in: 1 week
   only:
     - master
-    
+
+test:
+  stage: test
+  script:
+    - ./gradlew check
+
 after_script:
   - echo "End CI"
