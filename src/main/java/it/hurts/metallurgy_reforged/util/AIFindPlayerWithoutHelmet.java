@@ -19,6 +19,7 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase{
 	
 	
 	//this method is identical to the original one but it checks if the player is wearing the eximite_helmet too
+	@Override
 	public boolean shouldExecute() {
 		boolean shouldExecute = findplayerClass.shouldExecute();
 		if(shouldExecute) {
@@ -30,18 +31,22 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase{
 	
 	
 	//this method is identical to the original one
+	@Override
 	public void resetTask() {
 		findplayerClass.resetTask();
 	}
 	//this method is identical to the original one
+	@Override
 	public void startExecuting() {
 		findplayerClass.startExecuting();
 	}
 	//this method is identical to the original one
+	@Override
 	public boolean shouldContinueExecuting() {
 		return findplayerClass.shouldContinueExecuting();
 	}
 	//this method is identical to the original one
+	@Override
 	public void updateTask() {
 		findplayerClass.updateTask();
 	}

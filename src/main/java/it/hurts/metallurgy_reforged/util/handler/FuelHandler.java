@@ -16,13 +16,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class FuelHandler {
 
     @SubscribeEvent
-    public static void regiterFuels(FurnaceFuelBurnTimeEvent event)
+    public void registerFuels(FurnaceFuelBurnTimeEvent event)
     {
         ItemStack item = event.getItemStack();
 
-        if (item.equals(new ItemStack(ModItems.tar)))
+        if (item.getItem().equals(ModItems.tar))
             event.setBurnTime(800);
-
     }
 
 }

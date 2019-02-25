@@ -9,6 +9,7 @@ import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.AIFindPlayerWithoutHelmet;
 import it.hurts.metallurgy_reforged.util.Utils;
 import it.hurts.metallurgy_reforged.util.custom_slot.ArmorCustomSlot;
 import net.minecraft.client.Minecraft;
