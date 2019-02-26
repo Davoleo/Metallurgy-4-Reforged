@@ -22,8 +22,11 @@ import java.util.Objects;
 
 public class BlockBase extends Block {
 
+	//Internal state / variables -------------------------------------------------
 	protected String name;
-	
+
+	//Constructor ----------------------------------------------------------------
+	//Creates an instance of a basic block setting the TranslationKey, the RegistryName, the CreativeTab, the Material and adding it to the list of Mod blocks
 	public BlockBase(Material material, String name) {
 		super(material);
 		
@@ -34,15 +37,22 @@ public class BlockBase extends Block {
 		setRegistryName(name);
 		ModBlocks.blockList.add(this);
 	}
-	
+
+	//Custom Methods -------------------------------------------------------------
+
+	//Registers the model of the item
 	public void registerItemModel(Item itemBlock) {
 		Metallurgy.proxy.registerItemRenderer(itemBlock, 0, name);
 	}
 
+	//Creates the inventory version of the block
 	public Item createItemBlock() {
 		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
 
+	//Overridden Methods -------------------------------------------------------------
+
+	//Overrides the creative tab
 	@Nonnull
 	@Override
 	public BlockBase setCreativeTab(@Nonnull CreativeTabs tab) {

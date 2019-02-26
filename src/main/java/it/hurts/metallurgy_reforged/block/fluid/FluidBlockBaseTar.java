@@ -11,6 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 
+import javax.annotation.Nonnull;
+
 /***************************
  * 
  * Author : ItHurtsLikeHell
@@ -25,7 +27,7 @@ public class FluidBlockBaseTar extends FluidBlockBase{
 		super(fluid, material, name);
 	}
 	
-//	80% less then l'acqua
+    //Slows the player movements when swimming in Tar (80% less speed than in water)
 	@Override
 	public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		super.onEntityCollision(worldIn, pos, state, entityIn);
@@ -34,19 +36,23 @@ public class FluidBlockBaseTar extends FluidBlockBase{
 		entityIn.motionZ *= 0.2D;
 	}
 
+	//Handles the solidification of Liquid Tar into a solid form
 	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
+	public void randomTick(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random random) {
 		super.randomTick(worldIn, pos, state, random);
+
 		int count = 0;
 		int index = 0;
 		EnumFacing e;
-		
+
+		/*
+		 * We save the block of position "pos" from the world
+		 * LEVEL is a variable located in BlockFluidClassic, it handles the height of the fluid (from 0 to 15)
+		 * 0 is the max height of the FluidBlock AKA the source block
+		 */
 		if(((FluidBlockBaseTar)state.getBlock()).isSourceBlock(worldIn, pos)) {
-		
+
 			do{
-//			Prendiamo dal mondo il blocco di posizione pos
-//			Level è una variabile presente nel BlockFluidClassic che va da 0 a 15 e controlla ( incrementandolo ) 
-//			quanto è basso il liquido ( 0 = sourceBlock )
 				e = EnumFacing.VALUES[index];
 	
 				IBlockState tarState = worldIn.getBlockState(pos.offset(e));

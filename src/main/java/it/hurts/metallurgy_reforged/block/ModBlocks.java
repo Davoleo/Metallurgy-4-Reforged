@@ -20,14 +20,20 @@ import java.util.List;
  *
  ***************************/
 
+//Class used as reference for all the manually registered blocks
 public class ModBlocks {
+
+    //Internal state / fields -------------------------------------------------
+
+    //The list of all the blocks of this mod
     public static List<BlockBase> blockList = new ArrayList<>();
 
-    private static String p = "pickaxe";
+    //Constants to declare the block harvest tool
+    private static final String p = "pickaxe";
     @SuppressWarnings("unused")
-    private static String s = "shovel";
+    private static final String s = "shovel";
     @SuppressWarnings("unused")
-    private static String a = "axe";
+    private static final String a = "axe";
 
 //	Blocks which drops themselves
 
@@ -50,6 +56,7 @@ public class ModBlocks {
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
 
+    //Registers the blocks in the Forge Registry
     public static void register(IForgeRegistry<Block> registry) {
         registry.registerAll(
                 oreSulfur,
@@ -69,6 +76,7 @@ public class ModBlocks {
         );
     }
 
+    //Registers the ItemBlocks in the Forge Registry
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
         registry.registerAll(oreSulfur.createItemBlock(),
                 orePhosphorite.createItemBlock(),
@@ -86,6 +94,7 @@ public class ModBlocks {
                 blockStripedRoad.createItemBlock());
     }
 
+    //Registers the models
     public static void registerModels() {
         oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
         orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));

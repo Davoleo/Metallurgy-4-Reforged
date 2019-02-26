@@ -23,22 +23,32 @@ import java.util.Random;
 *
 ***************************/
 
+//Sub-class of the basic block (it implements the OreDict Interface)
 public class BlockOreDict extends BlockBase implements IOreDict {
 
+	//Internal state / variables -------------------------------------------------
+
+	//OreDictionary entry value
 	private String oreName;
-	private List<Item> customDrop = new ArrayList<Item>();
+	//Optional custom drops for blocks
+	private List<Item> customDrop = new ArrayList<>();
 	private Item itemDrop;
 
+	//Constructors ---------------------------------------------------------------
+
+	//Pickaxe-Mineable Block with oredict value, harvest level of 1, and blast resistance of 5
 	public BlockOreDict(String name, String oreName) {
 		this(name, oreName, null,"p", 1, 5F);
 		setHardness(3F);
 	}
 
-//	toolClass is the classification of tool (Like showel, axe, pickaxe, hoe)
+	//OreDicted block with custom properties
 	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance){
 		this(name, oreName, null, toolClass, harvestLevel, blastResistance);
     }
 
+    //OreDicted block with custom properties and custom drops
+    //TODO Make them more efficient - @Davoleo
 	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel, float blastResistance){
 		super(Material.ROCK, name);
 		this.oreName = oreName;
@@ -47,7 +57,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		setResistance(blastResistance);
 		this.setHarvestLevel(toolClass, harvestLevel);
 	}
-	
+
 	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance, Item...drop){
 		super(Material.ROCK, name);
 		this.oreName = oreName;
@@ -58,7 +68,22 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		this.setHarvestLevel(toolClass, harvestLevel);
 	}
 
+	//Custom Methods -------------------------------------------------------------
 
+	//TODO Add a descriptive comment - @ItHurtsLikeHell
+	private boolean canDrop(Item item, int percentage, String name) {
+		if(item.getRegistryName().toString().equals("metallurgy:" + name))
+			if((int) (Math.random() * 100) < percentage)
+				return true;
+			else
+				return false;
+		else
+			return true;
+	}
+
+	//Overridden Methods -------------------------------------------------------------
+
+	//Overrides the creativeTab
 	@Nonnull
 	@Override
 	public BlockOreDict setCreativeTab(@Nonnull CreativeTabs tab) {
@@ -66,17 +91,19 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		return this;
 	}
 
+	//registers the oreDict Value in the Ore Dictionary (Implemented from the Interface)
 	@Override
 	public void initOreDict()
 	{
 		OreDictionary.registerOre(oreName, this);
 	}
 
+	//Returns the item that is dropped by the block
+	//Check if the drop is an item, otherwise return the same block
 	@Nonnull
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune){
-		
-//		Check if the drop is an item, else return the same block
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
         if(!customDrop.isEmpty())
         	if(customDrop.size() == 1) {
         		if(itemDrop != null)
@@ -95,16 +122,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
         	return Item.getItemFromBlock(this);
     }
 
-	private boolean canDrop(Item item, int percentance, String name) {
-		if(item.getRegistryName().toString().equals("metallurgy:" + name))
-			if((int) (Math.random() * 100) < percentance)
-				return true;
-			else
-				return false;
-		else
-			return true;
-	}
-	
+    //Overrides the quantity of the drop
     @Override
     public int quantityDropped(Random random)
     {
@@ -114,6 +132,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
     		return 1;
     }
 
+    //Returns true if the block can be drop from explosions
 	@Override
 	public boolean canDropFromExplosion(Explosion explosionIn)
 	{

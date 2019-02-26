@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Copyright - © - Davoleo - 2018
  **************************************************/
 
+//An abstract base class for TileBlocks | The generic parameter links the TileBlock Class with the TileEntity Class
 public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
+
+    //Constructor ----------------------------------------------------------------
 
     public BlockTileEntity(Material material, String name)
     {
@@ -32,20 +35,30 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
         setResistance(8F);
     }
 
+    //Custom Methods -------------------------------------------------------------
+
+    //abstract AKA unimplemented in the base class
+    //gets the linked TileEntity class
+    @SuppressWarnings("unused")
     public abstract Class<TE> getTileEntityClass();
 
-	@SuppressWarnings("unchecked")
+    //gets the Linked tileEntity
+	@SuppressWarnings({"unchecked", "unused"})
 	public TE getTileEntity(IBlockAccess world, BlockPos pos)
     {
         return (TE)world.getTileEntity(pos);
     }
 
+    //Overridden Methods -------------------------------------------------------------
+
+    //Returns true if the block is linked to a tile entity
     @Override
     public boolean hasTileEntity(IBlockState state)
     {
         return true;
     }
 
+    //creates a new instance of the linked Tile Entity
     @Nullable
     @Override
     public abstract TE createTileEntity(@Nonnull World world, @Nonnull IBlockState state);

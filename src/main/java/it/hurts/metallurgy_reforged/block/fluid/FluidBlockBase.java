@@ -22,6 +22,7 @@ public class FluidBlockBase extends BlockFluidClassic {
 
     private String name;
 
+    //Creates an instance of a FluidBlock
     public FluidBlockBase(Fluid fluid, Material material, String name)
     {
         super(fluid, material);
@@ -31,11 +32,13 @@ public class FluidBlockBase extends BlockFluidClassic {
         setCreativeTab(MetallurgyTabs.tabFluid);
     }
 
+    //Registers the model of the FluidBlock
     public void registerItemModel(Item itemBlock)
     {
         Metallurgy.proxy.registerItemRenderer(itemBlock, 0, name);
     }
 
+    //Creates the inventory version of the FluidBlock
     public Item createItemBlock()
     {
         return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
