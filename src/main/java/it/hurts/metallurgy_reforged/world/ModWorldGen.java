@@ -129,7 +129,7 @@ public class ModWorldGen implements IWorldGenerator {
             throw new IllegalArgumentException("Illegal Height Arguments for Biome Specific WorldGenerator");
 
         if(veinSize > 0) {
-        	 WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize < 3 ? 3:veinSize, BlockMatcher.forBlock(blockToReplace));
+        	 WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize < 3 && veinSize != 0 ? 3:veinSize, BlockMatcher.forBlock(blockToReplace));
              int heightdiff = maxY - minY +1;
              int x, y, z;
 
