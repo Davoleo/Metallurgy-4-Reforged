@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: ModRecipes
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util.recipe;
 
 import it.hurts.metallurgy_reforged.block.BlockBase;
@@ -12,14 +23,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-
-/*************************************************
- * Author: Davoleo
- * Date: 23/08/2018
- * Hour: 23.10
- * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class ModRecipes {
 

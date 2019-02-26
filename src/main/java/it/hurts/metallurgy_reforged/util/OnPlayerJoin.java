@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: OnPlayerJoin
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
@@ -7,14 +18,6 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-5
- * Date   : 30 nov 2018
- * Time   : 23:49:45
- *
- ***************************/
 public class OnPlayerJoin {
 
 	private final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localize("util.github_repo_url"));

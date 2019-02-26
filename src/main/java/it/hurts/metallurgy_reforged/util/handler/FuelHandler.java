@@ -1,17 +1,20 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: FuelHandler
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util.handler;
 
 import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 12/02/2019 / 21:53
- * Class: FuelHandler
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2019
- **************************************************/
 
 public class FuelHandler {
 

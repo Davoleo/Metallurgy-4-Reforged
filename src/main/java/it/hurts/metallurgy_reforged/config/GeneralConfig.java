@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: GeneralConfig
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.config;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -5,14 +16,6 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 06/12/2018 / 21:30
- * Class: GeneralConfig
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2018
- **************************************************/
-
 @Config.LangKey("config.metallurgy.category.general")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {

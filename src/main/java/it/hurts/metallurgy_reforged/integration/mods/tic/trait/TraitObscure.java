@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitObscure
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -13,14 +24,6 @@ import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 import javax.annotation.Nullable;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 14/01/2019 / 22:50
- * Class: TraitObscure
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class TraitObscure extends AbstractTrait implements ITrait{
 

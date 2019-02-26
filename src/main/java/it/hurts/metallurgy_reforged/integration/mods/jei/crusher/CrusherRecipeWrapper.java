@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: CrusherRecipeWrapper
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
 import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
@@ -11,14 +22,6 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 29/11/2018 / 23:05
- * Class: CrusherRecipeWrapper
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class CrusherRecipeWrapper implements IRecipeWrapper {
 

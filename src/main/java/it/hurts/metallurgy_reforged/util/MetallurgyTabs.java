@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: MetallurgyTabs
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -12,14 +23,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 14/11/2018 / 21.11
- * Class: MetallurgyTabs
- * Project: Metallurgy
- * Copyright - � - Davoleo - 2018
- **************************************************/
 
 public class MetallurgyTabs extends CreativeTabs {
 

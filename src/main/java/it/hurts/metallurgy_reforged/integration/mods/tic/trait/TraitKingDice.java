@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitKingDice
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
 import javax.annotation.Nullable;
@@ -12,14 +23,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 25 gen 2019
- * Time   : 16:19:39
- *
- ***************************/
 public class TraitKingDice extends AbstractTrait implements ITrait{
 
 	public TraitKingDice() {
@@ -33,7 +36,7 @@ public class TraitKingDice extends AbstractTrait implements ITrait{
 	
 	@Override
 	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
-//		TODO Aggiungere la possibilità di aggiungere al player effetti positivi, o negativi, randomicamente.
+//		TODO Aggiungere la possibilitï¿½ di aggiungere al player effetti positivi, o negativi, randomicamente.
 //		Si potrebbe eliminare questo metodo
 	}
 	

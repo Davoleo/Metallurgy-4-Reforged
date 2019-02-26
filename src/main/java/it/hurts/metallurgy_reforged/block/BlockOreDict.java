@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: BlockOreDict
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.material.IOreDict;
@@ -13,15 +24,6 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-/***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
-***************************/
 
 //Sub-class of the basic block (it implements the OreDict Interface)
 public class BlockOreDict extends BlockBase implements IOreDict {

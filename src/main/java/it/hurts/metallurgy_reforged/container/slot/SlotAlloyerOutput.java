@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: SlotAlloyerOutput
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.container.slot;
 
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -9,14 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import javax.annotation.Nonnull;
-
-/*************************************************
- * Author: Davoleo
- * Date: 10/10/2018
- * Hour: 17.29
- * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class SlotAlloyerOutput extends Slot {
 

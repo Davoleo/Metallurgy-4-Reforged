@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: BlockAlloyer
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -25,15 +36,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-5
- * Date   : 22 set 2018
- * Time   : 11:04:34
- *
- * Reworked by Davoleo
- ***************************/
 public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
     //Internal State and Variables -----------------------------------------------------

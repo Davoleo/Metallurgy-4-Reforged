@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: ItemGauntlet
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import com.google.common.collect.Lists;
@@ -18,15 +29,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.WorldServer;
 
 import java.util.List;
-
-/***************************
- *
- * Author : ItHurtsLikeHell, PierKnight100
- * Project: Metallurgy-4-Reforged
- * Date   : 04 gen 2019
- * Time   : 14:10:47
- *
- ***************************/
 
 public class ItemGauntlet extends ItemBase{
 	
@@ -112,7 +114,7 @@ public class ItemGauntlet extends ItemBase{
         }
     }
 	
-//	Questo metodo controlla se l'attacker è in creative, altrimenti danneggia l'oggetto di 1
+//	Questo metodo controlla se l'attacker ï¿½ in creative, altrimenti danneggia l'oggetto di 1
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		stack.damageItem(1, attacker);

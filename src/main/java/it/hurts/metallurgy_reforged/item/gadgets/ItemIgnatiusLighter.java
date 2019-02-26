@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: ItemIgnatiusLighter
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.item.gadgets;
 
 import it.hurts.metallurgy_reforged.item.ItemBase;
@@ -14,14 +25,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 28/12/2018 / 20:11
- * Class: ItemIgnatiusLighter
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class ItemIgnatiusLighter extends ItemBase {
 

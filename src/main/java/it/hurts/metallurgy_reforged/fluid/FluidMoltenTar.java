@@ -1,16 +1,19 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: FluidMoltenTar
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.fluid;
 
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBaseTar;
 import net.minecraft.block.material.Material;
 
-/***************************
- * 
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 22 feb 2019
- * Time   : 20:18:22
- * 
- ***************************/
 public class FluidMoltenTar extends FluidMolten{
 
 	public FluidMoltenTar(String name, int mapColor, int temperature, boolean isNew) {

@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: FluidBlockBaseTar
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.block.fluid;
 
 import java.util.Random;
@@ -13,14 +24,6 @@ import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 
-/***************************
- * 
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 22 feb 2019
- * Time   : 20:19:18
- * 
- ***************************/
 public class FluidBlockBaseTar extends FluidBlockBase{
 
 	public FluidBlockBaseTar(Fluid fluid, Material material, String name) {

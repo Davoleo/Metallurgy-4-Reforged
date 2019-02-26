@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitVulcan
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
 import java.util.ListIterator;
@@ -23,14 +34,6 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 25 gen 2019
- * Time   : 00:52:15
- *
- ***************************/
 public class TraitVulcan extends AbstractTraitLeveled implements ITrait{
 
 	private int levels;

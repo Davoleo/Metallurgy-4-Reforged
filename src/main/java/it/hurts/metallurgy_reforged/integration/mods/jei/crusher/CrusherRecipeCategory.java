@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: CrusherRecipeCategory
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -13,14 +24,6 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 26/11/2018 / 21:57
- * Class: CrusherRecipeCategory
- * Project: Metallurgy 4 Reforged
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapper> {
 

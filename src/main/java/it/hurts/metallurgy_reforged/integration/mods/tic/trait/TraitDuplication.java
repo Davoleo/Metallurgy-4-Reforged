@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitDuplication
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
 import java.util.ArrayList;
@@ -13,14 +24,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.world.BlockEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 25 gen 2019
- * Time   : 18:51:03
- *
- ***************************/
 public class TraitDuplication extends AbstractTrait implements ITrait{
 
 	public TraitDuplication() {

@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: SetTrait
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -7,14 +18,6 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
 import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-4-Reforged
- * Date   : 12 gen 2019
- * Time   : 17:12:09
- *
- ***************************/
 public class SetTrait {
 
 	public static void addTraits(Metal metal, Material material){
@@ -78,7 +81,7 @@ public class SetTrait {
 			break;
 			
 			case "alduorite":{
-//				Rompe più velocementi i blocchi di harvest level inferiore al proprio
+//				Rompe piï¿½ velocementi i blocchi di harvest level inferiore al proprio
 				material.addTrait(TinkerTraits.unnatural, EXTRA);
 				material.addTrait(TinkerTraits.unnatural, HEAD);
 			}

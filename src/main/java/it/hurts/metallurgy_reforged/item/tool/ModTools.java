@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: ModTools
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
@@ -11,14 +22,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-/*************************************************
- * Author: Davoleo
- * Date: 20/08/2018
- * Hour: 13.40
- * Project: Metallurgy 5
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 public class ModTools {
 

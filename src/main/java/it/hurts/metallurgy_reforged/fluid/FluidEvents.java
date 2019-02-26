@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: FluidEvents
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -14,13 +25,6 @@ import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-/*************************************************
- * Author: PierKnight
- * Date / Hour: 22/02/2019 / 21:48
- * Class: FluidEvents
- * Project: Metallurgy 4 Reforged
- **************************************************/
 
 public class FluidEvents {
 

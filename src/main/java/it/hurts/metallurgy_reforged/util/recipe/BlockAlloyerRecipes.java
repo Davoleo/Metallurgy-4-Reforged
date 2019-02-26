@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: BlockAlloyerRecipes
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util.recipe;
 
 import com.google.common.collect.HashBasedTable;
@@ -11,15 +22,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.HashMap;
 import java.util.Map;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-5
- * Date   : 27 set 2018
- * Time   : 20:48:50
- *
- * Adapted by Davoleo
- ***************************/
 public class BlockAlloyerRecipes {
 
     private static final BlockAlloyerRecipes INSTANCE = new BlockAlloyerRecipes();
@@ -34,7 +36,7 @@ public class BlockAlloyerRecipes {
     }
 
     private BlockAlloyerRecipes() {
-//    	( [Input 1, quantità], [Input 2, quantità], [Output, quantità, exp] ) 
+//    	( [Input 1, quantitï¿½], [Input 2, quantitï¿½], [Output, quantitï¿½, exp] ) 
         this.addAlloyRecipe
                 (new ItemStack(ModMetals.COPPER.getIngot(), 3),
                         new ItemStack(ModMetals.TIN.getIngot()),

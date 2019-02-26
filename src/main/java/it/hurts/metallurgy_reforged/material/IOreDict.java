@@ -1,13 +1,15 @@
-package it.hurts.metallurgy_reforged.material;
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: IOreDict
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
 
-/***************************
-*
-* Author : ItHurtsLikeHell
-* Project: Metallurgy-5
-* Date   : 28 ago 2018
-* Time   : 18:24:07
-*
-***************************/
+package it.hurts.metallurgy_reforged.material;
 
 public interface IOreDict {
 

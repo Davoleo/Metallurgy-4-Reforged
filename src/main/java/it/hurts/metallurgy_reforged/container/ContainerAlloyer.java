@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: ContainerAlloyer
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotAlloyerOutput;
@@ -12,15 +23,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
-/***************************
- *
- * Author : ItHurtsLikeHell
- * Project: Metallurgy-5
- * Date   : 24 set 2018
- * Time   : 19:12:47
- *
- * Reworked by Davoleo
- ***************************/
 public class ContainerAlloyer extends Container {
 
     private final IInventory alloyer;

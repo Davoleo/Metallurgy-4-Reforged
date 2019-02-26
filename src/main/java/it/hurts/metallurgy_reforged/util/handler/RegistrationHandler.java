@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: RegistrationHandler
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.util.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -19,14 +30,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-/*************************************************
- * Author: Davoleo
- * Date / Hour: 21/11/2018 / 01:39
- * Class: RegistrationHandler
- * Project: Metallurgy
- * Copyright - © - Davoleo - 2018
- **************************************************/
 
 @Mod.EventBusSubscriber
 public class RegistrationHandler {
