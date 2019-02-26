@@ -4,6 +4,7 @@ import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -27,7 +28,7 @@ public class ModItems {
 	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron").setCreativeTab(MetallurgyTabs.tabDust);
 	
 //	Metallurgy dust
-	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust).setTooltip(Tooltips.BITUMEN);
 	public static ItemOreDict tar = new ItemOreDict("tar","slimeball").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur").setCreativeTab(MetallurgyTabs.tabDust);

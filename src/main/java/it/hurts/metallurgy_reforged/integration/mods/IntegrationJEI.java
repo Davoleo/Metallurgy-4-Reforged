@@ -1,18 +1,27 @@
 package it.hurts.metallurgy_reforged.integration.mods;
 
+import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.fluid.FluidMoltenTar;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiAlloyer;
 import it.hurts.metallurgy_reforged.gui.GuiCrusher;
 import it.hurts.metallurgy_reforged.integration.mods.jei.alloyer.AlloyerRecipeCategory;
 import it.hurts.metallurgy_reforged.integration.mods.jei.alloyer.AlloyerRecipeWrapper;
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCategory;
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
+import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 /*************************************************
  * Author: Davoleo
@@ -53,5 +62,11 @@ public class IntegrationJEI implements IModPlugin {
         registry.addRecipeCatalyst(new ItemStack(ModBlocks.alloyer), ALLOYER);
 
         registry.addRecipeClickArea(GuiAlloyer.class, 40, 32, 7, 33, ALLOYER);
+
+        registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), ItemStack.class, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.tar), ItemStack.class, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.dustBitumen), ItemStack.class, "description.jei_compat.tar_processing");
+
+        //registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
     }
 }

@@ -30,6 +30,12 @@ public class Tooltips {
     public static final String SHADOW_STEEL_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.shadow_steel_armor_effect");
     public static final String VULCANITE_ARMOR_EFFECT = Utils.localize("tooltip.metallurgy.vulcanite_armor_effect");
 
+    //Other
+    public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");
+
+    //Pickaxes
+    public static final String DEEP_IRON_PICKAXE_EFFECT = Utils.localize("tooltip.metallurgy.deep_iron_pickaxe_effect");
+
     //Swords
     public static final String CELENEGIL_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.celenegil_sword_effect");
     public static final String CERUCLASE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.ceruclase_sword_effect");
@@ -45,9 +51,6 @@ public class Tooltips {
     public static final String TARTARITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.tartarite_sword_effect");
     public static final String VULCANITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.vulcanite_sword_effect");
     public static final String VYROXERES_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.vyroxeres_sword_effect");
-
-    //Pickaxes
-    public static final String DEEP_IRON_PICKAXE_EFFECT = Utils.localize("tooltip.metallurgy.deep_iron_pickaxe_effect");
 
     //Tools
     public static final String SHADOW_STEEL_TOOL_EFFECT = Utils.localize("tooltip.metallurgy.shadow_steel_tool_effect");

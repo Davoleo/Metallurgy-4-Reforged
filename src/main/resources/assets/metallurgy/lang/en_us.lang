@@ -349,7 +349,7 @@ tile.molten_shadow_iron.name=Molten Shadow Iron
 tile.molten_shadow_steel.name=Molten Shadow Steel
 tile.molten_silver.name=Molten Silver
 tile.molten_steel.name=Molten Steel
-tile.molten_tar.name=Molten Tar
+tile.molten_tar.name=Liquid Tar
 tile.molten_tartarite.name=Molten Tartarite
 tile.molten_thermite.name=Molten Thermite
 tile.molten_tin.name=Molten Tin
@@ -398,7 +398,7 @@ fluid.molten_shadow_iron=Molten Shadow Iron
 fluid.molten_shadow_steel=Molten Shadow Steel
 fluid.molten_silver=Molten Silver
 fluid.molten_steel=Molten Steel
-fluid.molten_tar=Molten Tar
+fluid.molten_tar=Liquid Tar
 fluid.molten_tartarite=Molten Tartarite
 fluid.molten_thermite=Molten Thermite
 fluid.molten_tin=Molten Tin
@@ -467,6 +467,7 @@ item.phosphorus.name=Phosphorus
 
 #JEI
 gui.jei_compat.crusher.name=Crusher
+description.jei_compat.tar_processing=Tar is generated in the world in a liquid form (Liquid Tar), however if it's kept away from the other tar fluid blocks it cools down becoming Tar Ore, that you can mine to get both the item form of Tar and occasionally Bitumen
 
 #Ores
 tile.adamantine_ore.name=Adamantine Ore
@@ -766,6 +767,9 @@ tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Speed
 tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set: No Blindness
 tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in the dark
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
+
+#Other Tooltips
+tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
