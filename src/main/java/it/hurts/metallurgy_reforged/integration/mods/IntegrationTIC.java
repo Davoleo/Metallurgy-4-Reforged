@@ -88,13 +88,13 @@ public class IntegrationTIC{
 	}
 
 //	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono gi� esistenti nella Tinker Base
-	private static boolean checkMaterial(Metal metal) {
+	public static boolean checkMaterial(Metal metal) {
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM
 				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
 	}
 
-	private static boolean checkMaterialPreInit(Metal metal)
+	public static boolean checkMaterialPreInit(Metal metal)
 	{
 		return TinkerRegistry.getMaterial(metal.toString()).equals(Material.UNKNOWN);
 	}

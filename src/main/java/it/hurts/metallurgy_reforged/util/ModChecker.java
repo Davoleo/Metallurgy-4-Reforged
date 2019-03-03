@@ -16,9 +16,11 @@ import net.minecraftforge.fml.common.Loader;
 public class ModChecker {
 
 	public static boolean isTConLoaded;
+	public static boolean isConarmLoaded;
 	
 	static{
 		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
+		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
 	}
 	
 }
