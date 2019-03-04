@@ -12,9 +12,10 @@
 package it.hurts.metallurgy_reforged;
 
  import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.fluid.ModFluids;
+ import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
+import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
+import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
@@ -85,6 +86,11 @@ public class Metallurgy {
 		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.preInit();
             logger.info("Tinkers integration has been pre-initialized");
+            
+            if(ModChecker.isConarmLoaded) {
+    			IntegrationCArmory.preInit();
+                logger.info("Conarm integration has been pre-initialized");
+            }
         }
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
