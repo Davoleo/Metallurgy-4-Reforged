@@ -20,17 +20,35 @@ import it.hurts.metallurgy_reforged.material.Metal;
 public class MetallurgyConArmorStats extends ArmorMaterials{
 	
 	public static TrimMaterialStats getTrimStats(Metal metal) {
-		return new TrimMaterialStats(metal.getStats().getArmorStats().getDurability() / 10);
+		float durability = metal.getStats().getArmorStats().getDurability();
+		
+		return new TrimMaterialStats(durability / 10);
 	}
 	
 //	TODO Modificare lo 0
 	public static CoreMaterialStats getCoreStats(Metal metal) {
-		return new CoreMaterialStats(metal.getStats().getArmorStats().getDurability(), 0);
+		float durability = metal.getStats().getArmorStats().getDurability();
+		float defensePoint = getDefensePoint(metal.getStats().getArmorStats().getDamageReduction());
+		
+		return new CoreMaterialStats(durability, defensePoint);
 	}
 	
-//	TODO Modificare lo 0
 	public static PlatesMaterialStats getPlatesStats(Metal metal) {
-		return new PlatesMaterialStats(0 ,metal.getStats().getArmorStats().getDurability(), metal.getStats().getArmorStats().getToughness());
+		float durability = metal.getStats().getArmorStats().getDurability();
+		float multiplier = 0.07F;
+		float modifier = (float) (Math.sqrt(durability) * multiplier);
+		float toughness = metal.getStats().getArmorStats().getToughness();
+		
+		return new PlatesMaterialStats(modifier, durability, toughness);
+	}
+	
+	private static int getDefensePoint(int[] defensePoint) {
+		int maxDefensePoint = 0;
+		
+		for(int i = 0; i < defensePoint.length; i++) {
+			maxDefensePoint += defensePoint[i];
+		}
+		return maxDefensePoint;
 	}
 	
 }
