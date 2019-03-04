@@ -86,11 +86,11 @@ public class Metallurgy {
 		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.preInit();
             logger.info("Tinkers integration has been pre-initialized");
-        }
-		
-		if(ModChecker.isConarmLoaded) {
-			IntegrationCArmory.preInit();
-            logger.info("Conarm integration has been pre-initialized");
+            
+            if(ModChecker.isConarmLoaded) {
+    			IntegrationCArmory.preInit();
+                logger.info("Conarm integration has been pre-initialized");
+            }
         }
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -110,11 +110,6 @@ public class Metallurgy {
             IntegrationTIC.init();
             logger.info("Tinkers integration has been initialized");
         }
-		
-//		if(ModChecker.isConarmLoaded) {
-//			IntegrationCArmory.init();
-//            logger.info("Conarm integration has been initialized");
-//        }
 		
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		BlockCrusherRecipes.registerDefaultOreRecipes();
