@@ -11,11 +11,12 @@
 
 package it.hurts.metallurgy_reforged.integration.mods;
 
+
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
-import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
+import it.hurts.metallurgy_reforged.integration.mods.conarm.SetArmorTraits;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -42,7 +43,15 @@ public class IntegrationCArmory {
 	}
 	
 	public static void init() {
-		
+		for (Metal metal : ModMetals.metalList) {
+			if (IntegrationTIC.checkMaterial(metal)) {
+				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
+				
+//				Chiamata al metodo per aggiungere i traits
+				SetArmorTraits.addArmorTrait(metal, m);
+			}
+		}
 	}
+
 	
 }

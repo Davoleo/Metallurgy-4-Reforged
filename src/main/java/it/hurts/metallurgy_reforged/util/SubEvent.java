@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
+import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitQuickly;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
 import it.hurts.metallurgy_reforged.util.handler.FuelHandler;
@@ -30,6 +31,10 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(new FuelHandler());
 		MinecraftForge.EVENT_BUS.register(new FluidEvents());
 		MinecraftForge.EVENT_BUS.register(new ModLakeWorldGen());
+
+		if(ModChecker.isConarmLoaded)
+			MinecraftForge.EVENT_BUS.register(new TraitQuickly());
+		
 	}
 	
 }

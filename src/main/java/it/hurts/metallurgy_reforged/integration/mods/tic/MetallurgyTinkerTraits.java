@@ -14,7 +14,7 @@ package it.hurts.metallurgy_reforged.integration.mods.tic;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class MetallurgyTraits {
+public class MetallurgyTinkerTraits {
 
     public static final AbstractTrait obscureTrait = new TraitObscure();
     public static final AbstractTrait vulcanTrait = new TraitVulcan(0);

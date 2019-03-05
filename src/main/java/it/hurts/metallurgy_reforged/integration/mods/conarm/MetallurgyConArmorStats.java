@@ -15,7 +15,16 @@ import c4.conarm.lib.materials.ArmorMaterials;
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
+import c4.conarm.lib.tinkering.TinkersArmor;
+import c4.conarm.lib.traits.IArmorTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.traits.ITrait;
+import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class MetallurgyConArmorStats extends ArmorMaterials{
 	
@@ -50,6 +59,32 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 			maxDefensePoint += defensePoint[i];
 		}
 		return maxDefensePoint;
+	}
+	
+	public static boolean isThatArmorTrait(EntityPlayer player, String traitToCheck) {
+		boolean flag = false;
+		
+		for(ItemStack stack : player.inventory.armorInventory){
+			
+			Item item = stack.getItem();
+			if(item instanceof TinkersArmor){
+				
+				NBTTagList list = TagUtil.getTraitsTagList(stack);
+				
+				for (int i = 0; i < list.tagCount(); i++) {
+					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
+					
+					if (trait != null && trait instanceof IArmorTrait) {
+						IArmorTrait armorTrait = (IArmorTrait) trait;
+						
+						if(armorTrait.getIdentifier().equals(traitToCheck))
+							flag = true;
+					}
+				}
+			}
+		}
+		
+		return flag;
 	}
 	
 }

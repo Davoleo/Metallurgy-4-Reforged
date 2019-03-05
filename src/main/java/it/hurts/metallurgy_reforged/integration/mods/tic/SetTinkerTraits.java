@@ -18,7 +18,7 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
 import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
-public class SetTrait {
+public class SetTinkerTraits {
 
 	public static void addTraits(Metal metal, Material material){
 
@@ -28,17 +28,17 @@ public class SetTrait {
 			case "midasium" : {
 //				TODO magari aumentare il modifiers
 				material.addTrait(writable2);
-				material.addTrait(MetallurgyTraits.duplicaitonTrait);
+				material.addTrait(MetallurgyTinkerTraits.duplicaitonTrait);
 			}
 			break;
 			
 			case "ignatius":{
-				material.addTrait(MetallurgyTraits.vulcanTrait, HEAD);
+				material.addTrait(MetallurgyTinkerTraits.vulcanTrait, HEAD);
 			}
 			break;
 			
 			case "vulcanite":{
-				material.addTrait(MetallurgyTraits.vulcanTrait1, HEAD);
+				material.addTrait(MetallurgyTinkerTraits.vulcanTrait1, HEAD);
 				material.addTrait(superheat, HANDLE);
 			}
 			break;
@@ -65,18 +65,18 @@ public class SetTrait {
 			break;
 			
 			case "shadow_iron":{
-				material.addTrait(MetallurgyTraits.obscureTrait);
+				material.addTrait(MetallurgyTinkerTraits.obscureTrait);
 			}
 			break;
 			
 			case "sanguinite":{
-				material.addTrait(MetallurgyTraits.lifeStealTrait, HEAD);
-				material.addTrait(MetallurgyTraits.lifeStealTrait, HANDLE);
+				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HEAD);
+				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HANDLE);
 			}
 			break;
 			
 			case "tartarite":{
-				material.addTrait(MetallurgyTraits.witherTrait, HEAD);
+				material.addTrait(MetallurgyTinkerTraits.witherTrait, HEAD);
 			}
 			break;
 			
@@ -88,7 +88,7 @@ public class SetTrait {
 			break;
 			
 			case "desichalkos":{
-				material.addTrait(MetallurgyTraits.kingDiceTrait, EXTRA);
+				material.addTrait(MetallurgyTinkerTraits.kingDiceTrait, EXTRA);
 			}
 			break;
 			
