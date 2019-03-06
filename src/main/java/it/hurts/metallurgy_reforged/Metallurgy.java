@@ -87,7 +87,7 @@ public class Metallurgy {
             IntegrationTIC.preInit();
             logger.info("Tinkers integration has been pre-initialized");
             
-            if(ModChecker.isConarmLoaded) {
+            if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
     			IntegrationCArmory.preInit();
                 logger.info("Conarm integration has been pre-initialized");
             }
@@ -111,7 +111,7 @@ public class Metallurgy {
             logger.info("Tinkers integration has been initialized");
         }
 		
-		if(ModChecker.isConarmLoaded) {
+		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
             IntegrationCArmory.init();
             logger.info("Conarm integration has been initialized");
         }
