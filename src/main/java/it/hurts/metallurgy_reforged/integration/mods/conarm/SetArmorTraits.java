@@ -18,7 +18,6 @@ public class SetArmorTraits {
 		
 			case "quicksilver" : {
 				material.addTrait(MetallurgyArmorTraits.quickly);
-				System.out.println("SONO ENTRATO");
 			}
 			break;
 			

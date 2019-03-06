@@ -63,9 +63,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 	
 	public static boolean isThatArmorTrait(EntityPlayer player, String traitToCheck) {
 		boolean flag = false;
-		
 		for(ItemStack stack : player.inventory.armorInventory){
-			
 			Item item = stack.getItem();
 			if(item instanceof TinkersArmor){
 				
@@ -77,7 +75,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 					if (trait != null && trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 						
-						if(armorTrait.getIdentifier().equals(traitToCheck))
+						if(armorTrait.getIdentifier().equals(traitToCheck + "_armor"))
 							flag = true;
 					}
 				}

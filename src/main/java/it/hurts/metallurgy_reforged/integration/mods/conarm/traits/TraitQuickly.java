@@ -28,7 +28,7 @@ public class TraitQuickly extends AbstractArmorTrait{
 //	Dare check per controllare se l'armatura è di quick ed creare un subevent controllando che la con sia loaddata
 
 	@SubscribeEvent
-	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
+	public void increaseVelocity(LivingEntityUseItemEvent.Start ev){
 		if(ev.getEntityLiving() instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) ev.getEntityLiving();
 			if(MetallurgyConArmorStats.isThatArmorTrait(player, "quickly")) {
