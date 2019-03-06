@@ -40,8 +40,12 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 
-		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.strongly);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.jumpMaster);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.resistance);
+		}
 		
 	}
 	

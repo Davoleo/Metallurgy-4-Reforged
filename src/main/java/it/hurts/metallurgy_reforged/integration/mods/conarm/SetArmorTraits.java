@@ -13,6 +13,21 @@ public class SetArmorTraits {
 			}
 			break;
 			
+			case "amordrine" : {
+				material.addTrait(MetallurgyArmorTraits.strongly);
+			}
+			break;
+			
+			case "astral_silver" : {
+				material.addTrait(MetallurgyArmorTraits.jumpMaster);
+			}
+			break;
+			
+			case "celenegil" : {
+				material.addTrait(MetallurgyArmorTraits.resistance);
+			}
+			break;
+			
 			default: {}
 			break;
 		}
