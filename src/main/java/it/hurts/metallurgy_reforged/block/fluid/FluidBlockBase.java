@@ -30,8 +30,8 @@ public class FluidBlockBase extends BlockFluidClassic {
     {
         super(fluid, material);
         this.name = name;
-        setRegistryName(name);
-        setTranslationKey(name);
+        setRegistryName(Metallurgy.MODID, name);
+        setTranslationKey(Metallurgy.MODID + "." + name);
         setCreativeTab(MetallurgyTabs.tabFluid);
     }
 

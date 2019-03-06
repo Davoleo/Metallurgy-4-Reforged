@@ -24,8 +24,8 @@ public class ItemBase extends Item{
 	public ItemBase(String name)
     {
 		this.name = name;
-		setTranslationKey(name);
-		setRegistryName(name);
+		setTranslationKey(Metallurgy.MODID + "." + name);
+		setRegistryName(Metallurgy.MODID, name);
 		ModItems.itemList.add(this);
 	}
 	
