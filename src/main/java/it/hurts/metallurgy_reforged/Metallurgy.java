@@ -109,11 +109,11 @@ public class Metallurgy {
 		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.init();
             logger.info("Tinkers integration has been initialized");
-        }
-		
-		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
-            IntegrationCArmory.init();
-            logger.info("Conarm integration has been initialized");
+            
+            if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
+                IntegrationCArmory.init();
+                logger.info("Conarm integration has been initialized");
+            }
         }
 		
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
@@ -124,8 +124,10 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
         logger.info(NAME + " is entering post-initialization!");
+        
         if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
 			IntegrationTIC.postInit();
+        
         proxy.postInit(event);
         
 		PacketManager.init();
