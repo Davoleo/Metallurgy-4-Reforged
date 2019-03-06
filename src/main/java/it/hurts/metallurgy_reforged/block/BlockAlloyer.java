@@ -236,6 +236,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
     //Overrides the Type of rendering the block has (MODEL means: mixed static-TESR)
     //Calling is deprecated / Overriding is fine
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state){
@@ -244,6 +245,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
     //Gets the state from how much the block is rotated
     //Calling is deprecated / Overriding is fine
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot){
@@ -252,6 +254,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
     //Gets the state from how much the block is mirrored
     //Calling is deprecated / Overriding is fine
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn){
