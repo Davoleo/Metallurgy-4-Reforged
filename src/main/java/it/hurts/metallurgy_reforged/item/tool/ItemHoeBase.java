@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
@@ -35,8 +36,8 @@ public class ItemHoeBase extends ItemHoe {
     public ItemHoeBase(ToolMaterial material, String name)
     {
         super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
+        setTranslationKey(Metallurgy.MODID + "." + name);
+        setRegistryName(Metallurgy.MODID, name);
         this.name = name;
         setCreativeTab(MetallurgyTabs.tabTool);
         ModTools.toolList.add(this);

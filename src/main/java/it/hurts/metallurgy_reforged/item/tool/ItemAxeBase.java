@@ -44,8 +44,8 @@ public class ItemAxeBase extends ItemAxe {
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
-        setTranslationKey(name);
-        setRegistryName(name);
+        setTranslationKey(Metallurgy.MODID + "." + name);
+        setRegistryName(Metallurgy.MODID, name);
         setCreativeTab(MetallurgyTabs.tabTool);
         this.name = name;
         this.enchantment = enchantment;
