@@ -36,7 +36,7 @@ public class BlockBase extends Block {
 
 		setCreativeTab(MetallurgyTabs.tabBlock);
 		setTranslationKey(name);
-		setRegistryName(name);
+		setRegistryName(Metallurgy.MODID, name);
 		ModBlocks.blockList.add(this);
 	}
 

@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -57,6 +58,7 @@ public class ModBlocks {
     //Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
+    public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod").setCreativeTab(MetallurgyTabs.tabSpecial);
 
     //Registers the blocks in the Forge Registry
     public static void register(IForgeRegistry<Block> registry) {
@@ -72,6 +74,7 @@ public class ModBlocks {
 
                 crusher,
                 alloyer,
+                lightningRod,
 
                 blockRoad,
                 blockStripedRoad
@@ -91,6 +94,7 @@ public class ModBlocks {
 
                 alloyer.createItemBlock(),
                 crusher.createItemBlock(),
+                lightningRod.createItemBlock(),
 
                 blockRoad.createItemBlock(),
                 blockStripedRoad.createItemBlock());
@@ -109,6 +113,7 @@ public class ModBlocks {
 
         crusher.registerItemModel(Item.getItemFromBlock(crusher));
         alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
+        lightningRod.registerItemModel(Item.getItemFromBlock(lightningRod));
 
         blockRoad.registerItemModel(Item.getItemFromBlock(blockRoad));
         blockStripedRoad.registerItemModel(Item.getItemFromBlock(blockStripedRoad));
