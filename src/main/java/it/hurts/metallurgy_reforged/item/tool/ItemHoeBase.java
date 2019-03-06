@@ -12,7 +12,6 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
@@ -30,7 +29,6 @@ import java.util.List;
 public class ItemHoeBase extends ItemHoe {
 
     private String name;
-    @SuppressWarnings("unused")
     private String tooltip;
 
     public ItemHoeBase(ToolMaterial material, String name)
