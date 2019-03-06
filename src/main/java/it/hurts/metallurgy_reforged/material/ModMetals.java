@@ -177,6 +177,7 @@ public class ModMetals {
         for (Metal m : metalList) {
             m.getDust().registerItemModel();
             m.getIngot().registerItemModel();
+            m.getNugget().registerItemModel();
             if (m.getOre() != null) {
                 m.getOre().registerItemModel(Item.getItemFromBlock(m.getOre()));
             }
@@ -194,6 +195,7 @@ public class ModMetals {
             registry.register(m.getFluidBlock().createItemBlock());
             registry.register(m.getDust());
             registry.register(m.getIngot());
+            registry.register(m.getNugget());
         }
     }
 }

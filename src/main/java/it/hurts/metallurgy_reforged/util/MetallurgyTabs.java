@@ -28,7 +28,7 @@ public class MetallurgyTabs extends CreativeTabs {
 
     //  TO.DO : Fix Creative tab icon ticking
 
-    public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabSpecial, tabOre, tabTool;
+    public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabNugget, tabSpecial, tabOre, tabTool;
     
     static
     {
@@ -37,9 +37,10 @@ public class MetallurgyTabs extends CreativeTabs {
         tabDust = new MetallurgyTabs(2, "dusts");
         tabFluid = new MetallurgyTabs(3, "fluids");
         tabIngot = new MetallurgyTabs(4, "ingots");
-        tabSpecial = new MetallurgyTabs(5, "special");
-        tabOre = new MetallurgyTabs(6, "ores");
-        tabTool = new MetallurgyTabs(7, "tools");
+        tabNugget = new MetallurgyTabs(5, "nuggets");
+        tabSpecial = new MetallurgyTabs(6, "special");
+        tabOre = new MetallurgyTabs(7, "ores");
+        tabTool = new MetallurgyTabs(8, "tools");
     }
 
     private final int type;
@@ -66,9 +67,10 @@ public class MetallurgyTabs extends CreativeTabs {
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
             case 4: return new ItemStack(ModMetals.ADAMANTINE.getIngot());
-            case 5: return new ItemStack(ModBlocks.crusher);
-            case 6: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
-            case 7: return ModTools.isCreativeTabIconAvailable ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
+            case 5: return new ItemStack(ModMetals.ADAMANTINE.getNugget());
+            case 6: return new ItemStack(ModBlocks.crusher);
+            case 7: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
+            case 8: return ModTools.isCreativeTabIconAvailable ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
             default: return ItemStack.EMPTY;
         }
     }

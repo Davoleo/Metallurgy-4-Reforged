@@ -40,6 +40,7 @@ public class MetalStats {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
     	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
         ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName).setCreativeTab(MetallurgyTabs.tabIngot);
+        ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName).setCreativeTab(MetallurgyTabs.tabNugget);
         BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, "pickaxe", blockHarvest, blockBlastResistance).setCreativeTab(MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
         if(oreHarvest >= 0) {
@@ -48,7 +49,7 @@ public class MetalStats {
 
         FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature() ));
 
-        return new Metal(this, ingot, dust, ore, block, molten);
+        return new Metal(this, ingot, dust, nugget, ore, block, molten);
     }
     
     private int automaticTemperature(){

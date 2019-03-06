@@ -27,17 +27,18 @@ import javax.annotation.Nullable;
 public class Metal {
     private final MetalStats stats;
 
-    private final ItemOreDict ingot, dust;
+    private final ItemOreDict ingot, dust, nugget;
     private final BlockOreDict ore, block;
     private final FluidMolten molten;
     private FluidBlockBase fluidBlock;
     private ItemTool.ToolMaterial toolMat;
     private ItemArmor.ArmorMaterial armorMat;
 
-    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, BlockOreDict ore, BlockOreDict block, FluidMolten molten) {
+    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten) {
         this.stats = stats;
         this.ingot = ingot;
         this.dust = dust;
+        this.nugget = nugget;
         this.ore = ore;
         this.block = block;
         this.molten = molten;
@@ -82,6 +83,11 @@ public class Metal {
     @Nonnull
     public ItemOreDict getDust() {
         return dust;
+    }
+
+    @Nonnull
+    public ItemOreDict getNugget() {
+        return nugget;
     }
 
     @Nullable
