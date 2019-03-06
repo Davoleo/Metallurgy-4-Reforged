@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
-import it.hurts.metallurgy_reforged.util.handler.EventHandler;
+import it.hurts.metallurgy_reforged.util.handler.event.EventUtils;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -35,7 +35,7 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase{
 		boolean shouldExecute = findplayerClass.shouldExecute();
 		if(shouldExecute) {
 			EntityPlayer pl = getPlayer();
-			shouldExecute = pl != null ? !EventHandler.isPlayerWearingSpecificArmorPiece(pl, 3, ModArmors.eximite_helmet) : false;
+			shouldExecute = pl != null ? !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModArmors.eximite_helmet) : false;
 		}
 		return shouldExecute;
 	}
