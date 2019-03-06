@@ -44,8 +44,8 @@ public class ItemShovelBase extends ItemSpade {
     
     public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material);
-        setTranslationKey(name);
-        setRegistryName(name);
+        setTranslationKey(Metallurgy.MODID + "." + name);
+        setRegistryName(Metallurgy.MODID, name);
         this.name = name;
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
