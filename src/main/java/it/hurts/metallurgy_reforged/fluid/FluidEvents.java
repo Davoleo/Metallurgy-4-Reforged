@@ -30,7 +30,7 @@ public class FluidEvents {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public void fogLiquid(RenderBlockOverlayEvent ev)
+    public static void fogLiquid(RenderBlockOverlayEvent ev)
     {
         if (ev.getPlayer().world.getBlockState(new BlockPos(ev.getPlayer().posX, ev.getPlayer().posY + ev.getPlayer().eyeHeight, ev.getPlayer().posZ)).getBlock() instanceof FluidBlockBaseTar) {
             renderTarOverlayTexture(ev.getPlayer());
@@ -38,7 +38,7 @@ public class FluidEvents {
         }
     }
     @SideOnly(Side.CLIENT)
-    private void renderTarOverlayTexture(EntityPlayer pl)
+    private static void renderTarOverlayTexture(EntityPlayer pl)
     {
         GlStateManager.pushMatrix();
         Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Metallurgy.MODID + ":textures/effects/fluid_tar.png"));

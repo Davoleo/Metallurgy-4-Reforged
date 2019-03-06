@@ -134,7 +134,7 @@ public class ArmorConfig {
 		public static class ChangeListener {
 
 			@SubscribeEvent
-			public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+			public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 				if(eventArgs.getModID().equals(Metallurgy.MODID)) {
 					ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 				}

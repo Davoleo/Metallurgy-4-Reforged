@@ -24,13 +24,13 @@ import net.minecraftforge.common.MinecraftForge;
 public class SubEvent {
 
 	public static void init() {
-		MinecraftForge.EVENT_BUS.register(new GauntletOperation());
-		MinecraftForge.EVENT_BUS.register(new GauntletEffect());
-		MinecraftForge.EVENT_BUS.register(new GeneralConfig.ChangeListener());
-		MinecraftForge.EVENT_BUS.register(new ArmorConfig.ChangeListener());
-		MinecraftForge.EVENT_BUS.register(new FuelHandler());
-		MinecraftForge.EVENT_BUS.register(new FluidEvents());
-		MinecraftForge.EVENT_BUS.register(new ModLakeWorldGen());
+		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
+		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
+		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
+		MinecraftForge.EVENT_BUS.register(ArmorConfig.ChangeListener.class);
+		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
+		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
+		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 
 		if(ModChecker.isConarmLoaded)
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);

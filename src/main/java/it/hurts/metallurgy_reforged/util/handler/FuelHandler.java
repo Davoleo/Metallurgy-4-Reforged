@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class FuelHandler {
 
     @SubscribeEvent
-    public void registerFuels(FurnaceFuelBurnTimeEvent event)
+    public static void registerFuels(FurnaceFuelBurnTimeEvent event)
     {
         ItemStack item = event.getItemStack();
 

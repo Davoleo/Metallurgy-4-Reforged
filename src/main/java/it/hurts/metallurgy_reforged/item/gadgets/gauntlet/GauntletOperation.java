@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class GauntletOperation {
 
 	@SubscribeEvent
-	public void setOffHnand(LivingEquipmentChangeEvent event) {
+	public static void setOffHnand(LivingEquipmentChangeEvent event) {
 		ItemStack newStack = event.getTo();
 		ItemStack offStack = event.getEntityLiving().getHeldItemOffhand();
 

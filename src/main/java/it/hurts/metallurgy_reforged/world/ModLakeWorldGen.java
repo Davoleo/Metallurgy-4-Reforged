@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModLakeWorldGen {
 	
 	@SubscribeEvent
-	public void populatesEvent(PopulateChunkEvent.Pre event) {
+	public static void populatesEvent(PopulateChunkEvent.Pre event) {
 		World world = event.getWorld();
 		Random rand = new Random();
 		

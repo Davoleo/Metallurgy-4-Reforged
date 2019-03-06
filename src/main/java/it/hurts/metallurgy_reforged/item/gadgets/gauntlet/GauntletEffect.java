@@ -32,7 +32,7 @@ import scala.util.Random;
 public class GauntletEffect {
 	
 	@SubscribeEvent
-	public void addPunchEffect(AttackEntityEvent event)
+	public static void addPunchEffect(AttackEntityEvent event)
 	{
 		EntityPlayer pl = event.getEntityPlayer();
 		Entity entity = event.getTarget();
@@ -83,7 +83,7 @@ public class GauntletEffect {
 		
 //	Event tick entity
 	@SubscribeEvent
-	public void applyPunchThrowEffects(LivingUpdateEvent event)
+	public static void applyPunchThrowEffects(LivingUpdateEvent event)
 	{
 		
 		EntityLivingBase entity = event.getEntityLiving();
