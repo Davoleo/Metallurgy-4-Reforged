@@ -243,6 +243,26 @@ config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
 config.metallurgy.category.tool_effects=Tool Effects
 config.metallurgy.category.worldgen=World Generation
 
+#Construct's Armory Traits
+modifier.cat_eyes_armor.name=Night Vision
+modifier.deeply_armor.name=Aquatic
+modifier.foodly_armor.name=Well Fed
+modifier.jump_master_armor.name=Jump Boost
+modifier.quickly_armor.name=Quick Shooting
+modifier.resistance_armor.name=Resistance IV
+modifier.strongly_0_armor.name=Strength I
+modifier.strongly_1_armor.name=Strength II
+modifier.volcano_armor.name=Volcanic
+
+modifier.cat_eyes_armor.desc=
+modifier.deeply_armor.desc=It makes it easier for you to do things underwater
+modifier.foodly_armor.desc=Replenishes your food bar whenever you have enough XP
+modifier.jump_master_armor.desc=Makes you jump higher
+modifier.quickly_armor.desc=Stretching a bow becomes faster
+modifier.resistance_armor.desc=
+modifier.strongly_0_armor.desc=
+modifier.strongly_1_armor.desc=
+modifier.volcano_armor.desc=It makes you immune to fire
 
 # Creative Tab
 itemGroup.metallurgy.armors=Metallurgy Armor
