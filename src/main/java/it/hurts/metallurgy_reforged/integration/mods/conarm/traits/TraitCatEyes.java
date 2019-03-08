@@ -8,20 +8,26 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitStrongly extends AbstractArmorTrait{
+public class TraitCatEyes extends AbstractArmorTrait{
 	
-	private int levels;
+	private boolean flag = false;
 
-	public TraitStrongly(int levels) {
-		super("strongly" + "_" + levels, TextFormatting.LIGHT_PURPLE);
-		
-		this.levels = levels;
+	public TraitCatEyes() {
+		super("cat_eyes", TextFormatting.GREEN);
 	}
-	
+
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "strongly"))
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, levels, false, false));
+		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "cat_eyes")) {
+			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
+			flag = true;
+		}
+		
+		if(flag && event.player.isPotionActive(MobEffects.NIGHT_VISION)) {
+			flag = false;
+			event.player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
+		}
+			
 	}
 
 }

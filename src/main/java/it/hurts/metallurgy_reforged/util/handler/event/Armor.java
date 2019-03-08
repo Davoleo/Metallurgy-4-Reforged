@@ -65,7 +65,8 @@ public class Armor {
 		
 		
 //		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
-		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) && event.player.isInWater() && ArmorEffectsConfig.deepIronArmorEffect){
+		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) 
+				&& event.player.isInWater() && ArmorEffectsConfig.deepIronArmorEffect){
 			
 //			Slot index of Armor : 5 - 6 - 7 - 8	
 			 for(int i = 5;i < 9; i++)

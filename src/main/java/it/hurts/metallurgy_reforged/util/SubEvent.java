@@ -42,11 +42,16 @@ public class SubEvent {
 
 		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
-			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.strongly);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyAmordrine);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyKalendrite);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.jumpMaster);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.resistance);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.deeply);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.volcano);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.foodly);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.catEyes);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.prometheum);
 		}
-		
 	}
 	
 }
