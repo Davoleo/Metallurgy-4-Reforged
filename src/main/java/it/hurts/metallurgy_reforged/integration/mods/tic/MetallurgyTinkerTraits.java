@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitFoodly;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 

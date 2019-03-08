@@ -18,12 +18,20 @@ import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTrait
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
 import it.hurts.metallurgy_reforged.util.handler.FuelHandler;
+import it.hurts.metallurgy_reforged.util.handler.event.Armor;
+import it.hurts.metallurgy_reforged.util.handler.event.Gagets;
+import it.hurts.metallurgy_reforged.util.handler.event.Pickaxe;
+import it.hurts.metallurgy_reforged.util.handler.event.Sword;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
 public class SubEvent {
 
 	public static void init() {
+		MinecraftForge.EVENT_BUS.register(Armor.class);
+		MinecraftForge.EVENT_BUS.register(Gagets.class);
+		MinecraftForge.EVENT_BUS.register(Sword.class);
+		MinecraftForge.EVENT_BUS.register(Pickaxe.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
@@ -32,9 +40,18 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 
-		if(ModChecker.isConarmLoaded)
+		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
-		
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyAmordrine);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyKalendrite);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.jumpMaster);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.resistance);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.deeply);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.volcano);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.foodly);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.catEyes);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.prometheum);
+		}
 	}
 	
 }

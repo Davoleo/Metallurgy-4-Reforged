@@ -44,6 +44,10 @@ public class GeneralConfig {
 	@Config.Comment("Sets to true for disable")
 	public static boolean tinkerIntegraton = false;
 	
+	@Config.Name("Disable the constructs' armory integration")
+	@Config.Comment("Sets to true for disable")
+	public static boolean armoryIntegraton = false;
+	
 	@Config.Name("The spawnrate percentage of tar lake in the overworld")
 	@Config.Comment("Sets to 0 to disable")
 	@Config.RangeInt(min = 0, max = 100)
