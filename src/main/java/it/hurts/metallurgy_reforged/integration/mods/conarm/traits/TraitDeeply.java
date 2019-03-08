@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitDeeply
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.conarm.traits;
 
 import java.util.List;
@@ -20,6 +31,10 @@ public class TraitDeeply extends AbstractArmorTrait{
 		super("deeply", TextFormatting.DARK_BLUE);
 	}
 
+	//FIXME THIS IS SO FUCKING BROKEN
+	//FIXME Armor gets stuck in the slot even out of the water
+	//FIXME Player movements are slippery (especially underwater)
+	//FIXME IT'S TOOoOoO OP
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
 		EntityPlayer pl = event.player;

@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitFoodly
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
@@ -23,7 +34,7 @@ public class TraitFoodly extends AbstractArmorTrait{
 	public void onArmorTick(PlayerTickEvent event){	
 		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "foodly")) {
 			FoodStats foodStat = event.player.getFoodStats();
-			int amount = 2;						
+			int amount = 4;
 			//quantity experience to remove
 			float removeTot = (float)amount / (float)event.player.xpBarCap();
 			//check if the player needs food ,if he has enough experience and if the tick is a multiple of 20 (which means that the effect will be applied every second)
@@ -48,8 +59,8 @@ public class TraitFoodly extends AbstractArmorTrait{
 				foodStat.addStats(1, 0.5F);
 				//update experience count on the client side
 				mp.connection.sendPacket(new SPacketSetExperience(mp.experience, mp.experienceTotal, mp.experienceLevel));
-				//play generic eat sound
-				mp.connection.sendPacket(new SPacketSoundEffect(SoundEvents.ENTITY_GENERIC_EAT,SoundCategory.PLAYERS,mp.posX,mp.posY + mp.getEyeHeight(),mp.posZ, 0.3F, (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F));
+				//play generic eat sound (pitched by Davoleo :DDD)
+				mp.connection.sendPacket(new SPacketSoundEffect(SoundEvents.ENTITY_GENERIC_EAT,SoundCategory.PLAYERS,mp.posX,mp.posY + mp.getEyeHeight(),mp.posZ, 0.3F, 1.5F));
 
 			}
 		}
