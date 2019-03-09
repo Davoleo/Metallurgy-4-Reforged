@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util.handler;
+package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;

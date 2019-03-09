@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util.capabilities.punch;
+package it.hurts.metallurgy_reforged.capabilities.punch;
 
 import java.util.concurrent.Callable;
 

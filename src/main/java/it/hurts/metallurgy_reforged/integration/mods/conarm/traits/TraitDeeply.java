@@ -15,7 +15,7 @@ import java.util.List;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
-import it.hurts.metallurgy_reforged.util.custom_slot.ArmorCustomSlot;
+import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.ContainerPlayer;
@@ -32,7 +32,7 @@ public class TraitDeeply extends AbstractArmorTrait{
 	}
 
 	//FIXME THIS IS SO FUCKING BROKEN
-	//FIXME Armor gets stuck in the slot even out of the water
+	//FIXME ArmorEffectHandler gets stuck in the slot even out of the water
 	//FIXME Player movements are slippery (especially underwater)
 	private boolean flag = false;
 	@SubscribeEvent

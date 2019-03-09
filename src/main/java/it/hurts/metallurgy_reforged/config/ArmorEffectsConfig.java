@@ -19,49 +19,49 @@ import net.minecraftforge.common.config.Config;
 public class ArmorEffectsConfig {
 
     //Armors
-    @Config.Name("Adamantine Armor Effect")
+    @Config.Name("Adamantine ArmorEffectHandler Effect")
     @Config.Comment("Consumes Experience to fill the hunger bar")
     public static boolean adamantineArmorEffect = true;
-    @Config.Name("Amordrine Armor Effect")
-    @Config.Comment("Full Armor gives Strength II")
+    @Config.Name("Amordrine ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Strength II")
     public static boolean amordrineArmorEffect = true;
-    @Config.Name("Angmallen Armor Effect")
-    @Config.Comment("Full Armor gives Luck")
+    @Config.Name("Angmallen ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Luck")
     public static boolean angmallenArmorEffect = true;
-    @Config.Name("Astral Silver Armor Effect")
-    @Config.Comment("Full Armor gives Jump Boost")
+    @Config.Name("Astral Silver ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Jump Boost")
     public static boolean astralSilverArmorEffect = true;
-    @Config.Name("Carmot Armor Effect")
-    @Config.Comment("Full Armor gives Haste")
+    @Config.Name("Carmot ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Haste")
     public static boolean carmotArmorEffect = true;
-    @Config.Name("Celenegil Armor Effect")
-    @Config.Comment("Full Armor gives Resistance II")
+    @Config.Name("Celenegil ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Resistance II")
     public static boolean celenegilArmorEffect = true;
-    @Config.Name("Deep Iron Armor Effect")
+    @Config.Name("Deep Iron ArmorEffectHandler Effect")
     @Config.Comment("You move faster underwater")
     public static boolean deepIronArmorEffect = true;
     @Config.Name("Eximite Helmet Effect")
     @Config.Comment("Endermen won't notice you when watch them")
     public static boolean eximiteArmorEffect = true;
-    @Config.Name("Kalendrite Armor Effect")
-    @Config.Comment("Full Armor gives Strength I")
+    @Config.Name("Kalendrite ArmorEffectHandler Effect")
+    @Config.Comment("Full ArmorEffectHandler gives Strength I")
     public static boolean kaledriteArmorEffect = true;
-    @Config.Name("Mithril Armor Effect")
+    @Config.Name("Mithril ArmorEffectHandler Effect")
     @Config.Comment("Makes Entities around you glow")
     public static boolean mithrilArmorEffect = true;
-    @Config.Name("Platinum Armor Effect")
+    @Config.Name("Platinum ArmorEffectHandler Effect")
     @Config.Comment("The helmet gives you night vision")
     public static boolean platinumArmorEffect = true;
-    @Config.Name("Prometheum Armor Effect")
+    @Config.Name("Prometheum ArmorEffectHandler Effect")
     @Config.Comment("Removes poison effect whenever you get it")
     public static boolean prometheumArmorEffect = true;
-    @Config.Name("Quicksilver Armor Effect")
+    @Config.Name("Quicksilver ArmorEffectHandler Effect")
     @Config.Comment("Movements speed up")
     public static boolean quicksilverArmorEffect = true;
-    @Config.Name("Shadow Steel Armor Effect")
+    @Config.Name("Shadow Steel ArmorEffectHandler Effect")
     @Config.Comment("Absorbed damage is proportional to the darkness")
     public static boolean shadowSteelArmorEffect = true;
-    @Config.Name("Vulcanite Armor Effect")
+    @Config.Name("Vulcanite ArmorEffectHandler Effect")
     @Config.Comment("You can't take damage from fire")
     public static boolean vulcaniteArmorEffect = true;
 

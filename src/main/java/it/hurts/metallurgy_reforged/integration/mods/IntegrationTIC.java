@@ -20,7 +20,7 @@ import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;

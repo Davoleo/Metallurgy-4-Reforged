@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class ToolConfig {
 	
-	private static final String[] CATEGORY = {"Axe","Hoe", "Pickaxe","Shovel","Sword"};
+	private static final String[] CATEGORY = {"Axe","Hoe", "PickaxeEffectHandler","Shovel","SwordEffectHandler"};
 
 	public static List<Map<String, boolean[]>> mapList = new ArrayList<Map<String, boolean[]>>();
 

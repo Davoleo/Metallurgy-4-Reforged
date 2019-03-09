@@ -17,21 +17,21 @@ import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
-import it.hurts.metallurgy_reforged.util.handler.FuelHandler;
-import it.hurts.metallurgy_reforged.util.handler.event.Armor;
-import it.hurts.metallurgy_reforged.util.handler.event.Gagets;
-import it.hurts.metallurgy_reforged.util.handler.event.Pickaxe;
-import it.hurts.metallurgy_reforged.util.handler.event.Sword;
+import it.hurts.metallurgy_reforged.handler.FuelHandler;
+import it.hurts.metallurgy_reforged.handler.ArmorEffectHandler;
+import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
+import it.hurts.metallurgy_reforged.handler.PickaxeEffectHandler;
+import it.hurts.metallurgy_reforged.handler.SwordEffectHandler;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
 public class SubEvent {
 
 	public static void init() {
-		MinecraftForge.EVENT_BUS.register(Armor.class);
-		MinecraftForge.EVENT_BUS.register(Gagets.class);
-		MinecraftForge.EVENT_BUS.register(Sword.class);
-		MinecraftForge.EVENT_BUS.register(Pickaxe.class);
+		MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
+		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
+		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
+		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);

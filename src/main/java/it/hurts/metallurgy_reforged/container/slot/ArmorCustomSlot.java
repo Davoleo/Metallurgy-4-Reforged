@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util.custom_slot;
+package it.hurts.metallurgy_reforged.container.slot;
 
 import javax.annotation.Nullable;
 

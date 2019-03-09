@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util.capabilities.punch;
+package it.hurts.metallurgy_reforged.capabilities.punch;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

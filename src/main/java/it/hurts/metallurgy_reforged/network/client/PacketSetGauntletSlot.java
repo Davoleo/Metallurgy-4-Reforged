@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.network.client;
 
 import io.netty.buffer.ByteBuf;
-import it.hurts.metallurgy_reforged.util.custom_slot.*;
+import it.hurts.metallurgy_reforged.container.slot.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.ContainerPlayer;

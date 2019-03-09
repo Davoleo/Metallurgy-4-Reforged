@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util.recipe;
+package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.common.collect.Maps;
 import it.hurts.metallurgy_reforged.block.ModBlocks;

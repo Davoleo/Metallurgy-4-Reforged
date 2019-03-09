@@ -12,8 +12,8 @@
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.util.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
+import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;

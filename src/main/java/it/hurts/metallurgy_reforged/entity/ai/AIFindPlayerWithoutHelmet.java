@@ -9,14 +9,14 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.util;
+package it.hurts.metallurgy_reforged.entity.ai;
 
 import java.lang.reflect.Field;
 
 import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
-import it.hurts.metallurgy_reforged.util.handler.event.EventUtils;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 

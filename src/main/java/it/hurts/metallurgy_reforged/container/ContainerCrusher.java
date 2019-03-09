@@ -14,7 +14,7 @@ package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotCrusherOutput;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
-import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;

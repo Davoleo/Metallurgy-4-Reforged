@@ -12,10 +12,9 @@
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
-import it.hurts.metallurgy_reforged.util.custom_slot.OffHandCustomSlot;
+import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;

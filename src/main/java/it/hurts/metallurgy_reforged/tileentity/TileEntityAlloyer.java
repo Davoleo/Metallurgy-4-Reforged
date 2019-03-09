@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
-import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;

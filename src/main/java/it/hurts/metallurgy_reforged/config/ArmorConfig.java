@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class ArmorConfig {
 	
-	private static final String CATEGORY = "Armor";
+	private static final String CATEGORY = "ArmorEffectHandler";
 	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
 
 	public static boolean adamantine = true;
@@ -123,7 +123,7 @@ public class ArmorConfig {
 	private static void initArmorConfig(Configuration cfg) {
 			for(int i = 0; i < allArmor.length; i++) {
 				Map<String,Boolean> mappa = new HashMap<String,Boolean>();
-				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.materialName[i]) + " Armor Set" );
+				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.materialName[i]) + " ArmorEffectHandler Set" );
 				
 				mappa.put(Utils.materialName[i].toUpperCase(), allArmor[i]);
 				mapList.add(mappa);

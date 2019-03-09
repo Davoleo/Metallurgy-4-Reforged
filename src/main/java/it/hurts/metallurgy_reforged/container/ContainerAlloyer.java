@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotAlloyerOutput;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
-import it.hurts.metallurgy_reforged.util.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;

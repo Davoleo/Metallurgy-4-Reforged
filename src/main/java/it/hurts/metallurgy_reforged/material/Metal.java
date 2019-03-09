@@ -59,7 +59,7 @@ public class Metal {
         if (armorMat == null) {
             ArmorStats aStats = stats.getArmorStats();
             if(aStats == null) {
-                throw new UnsupportedOperationException("No Armor Stats Loaded");
+                throw new UnsupportedOperationException("No ArmorEffectHandler Stats Loaded");
             }
             this.armorMat = EnumHelper.addArmorMaterial(stats.getName().toUpperCase(), Metallurgy.MODID + ":" + stats.getName(), aStats.getDurability(), aStats.getDamageReduction(), aStats.getArmorMagic(), aStats.getEquipSound(), aStats.getToughness());
         }

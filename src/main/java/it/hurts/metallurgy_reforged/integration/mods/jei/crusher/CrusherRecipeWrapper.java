@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
-import it.hurts.metallurgy_reforged.util.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
