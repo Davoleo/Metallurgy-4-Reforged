@@ -11,8 +11,12 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitFoodly;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitDuplication;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitKingDice;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitLifeSteal;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitObscure;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitVulcan;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitWither;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class MetallurgyTinkerTraits {

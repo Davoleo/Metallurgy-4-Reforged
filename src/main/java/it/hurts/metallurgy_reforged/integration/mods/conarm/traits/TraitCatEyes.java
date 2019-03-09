@@ -23,7 +23,7 @@ public class TraitCatEyes extends AbstractArmorTrait{
 			flag = true;
 		}
 		
-		if(flag && event.player.isPotionActive(MobEffects.NIGHT_VISION)) {
+		if(flag && event.player.isPotionActive(MobEffects.NIGHT_VISION) && !MetallurgyConArmorStats.isThatArmorTrait(event.player, "cat_eyes")) {
 			flag = false;
 			event.player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
 		}

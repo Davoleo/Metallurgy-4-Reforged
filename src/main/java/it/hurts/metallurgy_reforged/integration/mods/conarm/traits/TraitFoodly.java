@@ -22,7 +22,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import scala.util.Random;
 
 public class TraitFoodly extends AbstractArmorTrait{
 
@@ -42,8 +41,7 @@ public class TraitFoodly extends AbstractArmorTrait{
 					(event.player.experience >= removeTot || event.player.experienceLevel > 0) && 
 					event.player.ticksExisted % 20 == 0)
 			{
-				EntityPlayerMP mp = (EntityPlayerMP) event.player;
-				Random rand = new Random();				
+				EntityPlayerMP mp = (EntityPlayerMP) event.player;				
 				mp.experience -= removeTot;
 
 				if(mp.experienceTotal - amount >= 0)

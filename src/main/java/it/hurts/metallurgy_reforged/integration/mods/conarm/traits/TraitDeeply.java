@@ -34,11 +34,11 @@ public class TraitDeeply extends AbstractArmorTrait{
 	//FIXME THIS IS SO FUCKING BROKEN
 	//FIXME Armor gets stuck in the slot even out of the water
 	//FIXME Player movements are slippery (especially underwater)
-	//FIXME IT'S TOOoOoO OP
+	private boolean flag = false;
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
 		EntityPlayer pl = event.player;
-		if(MetallurgyConArmorStats.isThatArmorTrait(pl, "deeply")) {
+		if(MetallurgyConArmorStats.isThatArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative()) {
 			for(int i = 5;i < 9; i++)
 			 {
 				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
