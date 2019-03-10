@@ -62,7 +62,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	public BlockOreDict setDrops(Drop... drops)
 	{
 		this.customDrops = Arrays.asList(drops);
-		//this.dropsNumber = customDrops.size();
 		return this;
 	}
 
@@ -83,40 +82,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		OreDictionary.registerOre(oreName, this);
 	}
 
-	// FIXME: 10/03/2019 Funziona a cazzo
-	//Returns the item that is dropped by the block
-	//Check if the drop is customized, otherwise return the same block
-	/*@Nonnull
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-		if (customDrops == null)
-			return Item.getItemFromBlock(this);
-		else
-		{
-			if (dropsNumber == customDrops.size())
-			{
-				while (dropsNumber > 0) {
-					dropsNumber--;
-					//Temporary Printout
-					System.out.println(dropsNumber + " asakljdaksdjakdjsw");
-					getItemDropped(state, rand, fortune);
-				}
-			}
-			else
-			{
-				if (Math.random()  < customDrops.get(dropsNumber).getChance())
-				{
-					//Temporary Printout
-					System.out.println("sono entrato " + customDrops.get(dropsNumber).getItemStack().getDisplayName());
-					return customDrops.get(dropsNumber).getItemStack().getItem();
-				}
-			}
-		}
-		//Temporary Variable 
-		return new ItemStack(ModItems.dustThermite).getItem();
-    }*/
-
 	@Override
 	public void getDrops(@Nonnull NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune)
 	{
@@ -129,7 +94,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
 			}
 		}
-
 	}
 
     //Returns true if the block can be drop from explosions
