@@ -11,17 +11,20 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.data.Drop;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.IOreDict;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -33,48 +36,36 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	//OreDictionary entry value
 	private String oreName;
 	//Optional custom drops for blocks
-	private Item customDrop;
-	private List<Item> customDrops = new ArrayList<Item>();
-	
-	private int dropFlag = 0;
+	private List<Drop> customDrops;
+
+	private int dropsNumber = 0;
 
 	//Constructors ---------------------------------------------------------------
 
-	//Pickaxe-Mineable Block with oredict value, harvest level of 1, and blast resistance of 5
+	//PickaxeEffectHandler-Mineable Block with oredict value, harvest level of 1, and blast resistance of 5
 	public BlockOreDict(String name, String oreName) {
-		this(name, oreName, null,"p", 1, 5F);
+		this(name, oreName, "p", 1, 5F);
 		setHardness(3F);
 	}
 
-	//OreDicted block with custom properties
+    //OreDicted block with custom properties
 	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance){
-		this(name, oreName, null, toolClass, harvestLevel, blastResistance);
-    }
+		super(Material.ROCK, name);
+		this.oreName = oreName;
+		setHardness(3f);
+		setResistance(blastResistance);
+		this.setHarvestLevel(toolClass, harvestLevel);
+	}
 
-    //OreDicted block with custom properties and custom drops
-    //TODO Make them more efficient - @Davoleo
-	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel, float blastResistance){
-		super(Material.ROCK, name);
-		this.oreName = oreName;
-		this.customDrop = drop;
-		setHardness(3f);
-		setResistance(blastResistance);
-		this.setHarvestLevel(toolClass, harvestLevel);
+	//Custom Methods ------------------------------------------------------------
+
+	public BlockOreDict setDrops(Drop... drops)
+	{
+		this.customDrops = Arrays.asList(drops);
+		//this.dropsNumber = customDrops.size();
+		return this;
 	}
-	
-	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance, Item...drops){
-		super(Material.ROCK, name);
-		this.oreName = oreName;
-		setHardness(3f);
-		setResistance(blastResistance);
-		this.setHarvestLevel(toolClass, harvestLevel);
-		
-		for(Item i : drops) {
-			System.out.println("QUi entro " + i.getRegistryName());
-			customDrops.add(i);
-		}
-		
-	}
+
 	//Overridden Methods -------------------------------------------------------------
 
 	//Overrides the creativeTab
@@ -92,43 +83,56 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		OreDictionary.registerOre(oreName, this);
 	}
 
+	// FIXME: 10/03/2019 Funziona a cazzo
 	//Returns the item that is dropped by the block
-	//Check if the drop is an item, otherwise return the same block
+	//Check if the drop is customized, otherwise return the same block
 	@Nonnull
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune){
-		Item item;
-		if(customDrop != null)
-        	return customDrop;
-        else
-//        	Droppa solo il primo
-        	if(customDrops.size() > 0 && customDrops.get(0) != null) {
-        		if(dropFlag == 0) {
-        			item = customDrops.get(dropFlag);
-        			dropFlag = 1;	
-        			getItemDropped(state, rand, fortune);
-        			System.out.println("Dovrei essere entrato " + item.getRegistryName());
-        			return item;
-        		}else
-        			if(dropFlag == 1) {
-        				Item item1 = customDrops.get(dropFlag);
-        				System.out.println("Sono entratooo " + item1.getRegistryName());
-            			dropFlag = 0;
-            			return item1;
-        			}
-        			
-        	}
-		return Item.getItemFromBlock(this);
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		if (customDrops == null)
+			return Item.getItemFromBlock(this);
+		else
+		{
+			if (dropsNumber == customDrops.size())
+			{
+				while (dropsNumber > 0) {
+					dropsNumber--;
+					//Temporary Printout
+					System.out.println(dropsNumber + " asakljdaksdjakdjsw");
+					getItemDropped(state, rand, fortune);
+				}
+			}
+			else
+			{
+				if (Math.random()  < customDrops.get(dropsNumber).getChance())
+				{
+					//Temporary Printout
+					System.out.println("sono entrato " + customDrops.get(dropsNumber).getItemStack().getDisplayName());
+					return customDrops.get(dropsNumber).getItemStack().getItem();
+				}
+			}
+		}
+		//Temporary Variable 
+		return new ItemStack(ModItems.dustThermite).getItem();
     }
 
-    //Overrides the quantity of the drop
+	@Override
+	public void breakBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+	{
+		if (customDrops != null && dropsNumber == 0)
+			dropsNumber = customDrops.size();
+	}
+
+	//Overrides the quantity of the drop
     @Override
     public int quantityDropped(Random random)
     {
-    	if(customDrop != null)
-    		return 1 + random.nextInt(4);
-    	else
+    	if(customDrops == null)
     		return 1;
+    	else
+    		return random.nextInt(customDrops.get(dropsNumber > 0 ? dropsNumber - 1 : dropsNumber).getAmount()) + 1;
+
     }
 
     //Returns true if the block can be drop from explosions
