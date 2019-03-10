@@ -18,8 +18,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -37,8 +39,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	private String oreName;
 	//Optional custom drops for blocks
 	private List<Drop> customDrops;
-
-	private int dropsNumber = 0;
 
 	//Constructors ---------------------------------------------------------------
 
@@ -62,7 +62,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	public BlockOreDict setDrops(Drop... drops)
 	{
 		this.customDrops = Arrays.asList(drops);
-		//this.dropsNumber = customDrops.size();
 		return this;
 	}
 
@@ -83,57 +82,19 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		OreDictionary.registerOre(oreName, this);
 	}
 
-	// FIXME: 10/03/2019 Funziona a cazzo
-	//Returns the item that is dropped by the block
-	//Check if the drop is customized, otherwise return the same block
-	@Nonnull
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	@Override
+	public void getDrops(@Nonnull NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune)
 	{
 		if (customDrops == null)
-			return Item.getItemFromBlock(this);
+			drops.add(new ItemStack(this));
 		else
 		{
-			if (dropsNumber == customDrops.size())
-			{
-				while (dropsNumber > 0) {
-					dropsNumber--;
-					//Temporary Printout
-					System.out.println(dropsNumber + " asakljdaksdjakdjsw");
-					getItemDropped(state, rand, fortune);
-				}
-			}
-			else
-			{
-				if (Math.random()  < customDrops.get(dropsNumber).getChance())
-				{
-					//Temporary Printout
-					System.out.println("sono entrato " + customDrops.get(dropsNumber).getItemStack().getDisplayName());
-					return customDrops.get(dropsNumber).getItemStack().getItem();
-				}
+			for (Drop drop : customDrops) {
+				if (Math.random() <= drop.getChance())
+					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
 			}
 		}
-		//Temporary Variable 
-		return new ItemStack(ModItems.dustThermite).getItem();
-    }
-
-	@Override
-	public void breakBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
-	{
-		if (customDrops != null && dropsNumber == 0)
-			dropsNumber = customDrops.size();
 	}
-
-	//Overrides the quantity of the drop
-    @Override
-    public int quantityDropped(Random random)
-    {
-    	if(customDrops == null)
-    		return 1;
-    	else
-    		return random.nextInt(customDrops.get(dropsNumber > 0 ? dropsNumber - 1 : dropsNumber).getAmount()) + 1;
-
-    }
 
     //Returns true if the block can be drop from explosions
 	@Override
