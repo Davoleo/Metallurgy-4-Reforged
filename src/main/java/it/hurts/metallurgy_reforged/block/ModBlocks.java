@@ -42,7 +42,7 @@ public class ModBlocks {
     //Mod Blocks with a custom drop
     public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", ModItems.dustSulfur, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", ModItems.dustPhosphorus, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
-    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, ModItems.dustBitumen, ModItems.tar).setCreativeTab(MetallurgyTabs.tabOre);
+    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
     public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", ModItems.dustPotash, p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE).setCreativeTab(MetallurgyTabs.tabOre);
 
     //Other Blocks

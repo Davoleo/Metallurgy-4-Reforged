@@ -33,7 +33,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	//OreDictionary entry value
 	private String oreName;
 	//Optional custom drops for blocks
-	private List<Item> customDrop = new ArrayList<>();
+	private Item customDrop;
 	private Item itemDrop;
 
 	//Constructors ---------------------------------------------------------------
@@ -54,35 +54,11 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	public BlockOreDict(String name, String oreName, Item drop, String toolClass, int harvestLevel, float blastResistance){
 		super(Material.ROCK, name);
 		this.oreName = oreName;
-		this.customDrop.add(drop);
+		this.customDrop = drop;
 		setHardness(3f);
 		setResistance(blastResistance);
 		this.setHarvestLevel(toolClass, harvestLevel);
 	}
-
-	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance, Item...drop){
-		super(Material.ROCK, name);
-		this.oreName = oreName;
-		for(Item i : drop)
-			customDrop.add(i);
-		setHardness(3f);
-		setResistance(blastResistance);
-		this.setHarvestLevel(toolClass, harvestLevel);
-	}
-
-	//Custom Methods -------------------------------------------------------------
-
-	//TODO Add a descriptive comment - @ItHurtsLikeHell
-	private boolean canDrop(Item item, int percentage, String name) {
-		if(item.getRegistryName().toString().equals("metallurgy:" + name))
-			if((int) (Math.random() * 100) < percentage)
-				return true;
-			else
-				return false;
-		else
-			return true;
-	}
-
 	//Overridden Methods -------------------------------------------------------------
 
 	//Overrides the creativeTab
@@ -104,22 +80,9 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	//Check if the drop is an item, otherwise return the same block
 	@Nonnull
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-	{
-        if(!customDrop.isEmpty())
-        	if(customDrop.size() == 1) {
-        		if(itemDrop != null)
-        			customDrop.add(itemDrop);
-        		return customDrop.get(0);
-        	} else {
-        		if(canDrop(customDrop.get(0), 25, "bitumen")) {
-        			itemDrop = customDrop.get(0);
-            		customDrop.remove(0);
-            		getItemDropped(state, rand, fortune);
-            		return itemDrop;
-        		}else
-        			return customDrop.get(1);
-        	}
+    public Item getItemDropped(IBlockState state, Random rand, int fortune){
+		if(customDrop != null)
+        	return customDrop;
         else
         	return Item.getItemFromBlock(this);
     }
