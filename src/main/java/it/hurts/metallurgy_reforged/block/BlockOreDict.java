@@ -18,8 +18,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -37,8 +39,6 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	private String oreName;
 	//Optional custom drops for blocks
 	private List<Drop> customDrops;
-
-	private int dropsNumber = 0;
 
 	//Constructors ---------------------------------------------------------------
 
@@ -86,7 +86,7 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	// FIXME: 10/03/2019 Funziona a cazzo
 	//Returns the item that is dropped by the block
 	//Check if the drop is customized, otherwise return the same block
-	@Nonnull
+	/*@Nonnull
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
@@ -115,25 +115,22 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		}
 		//Temporary Variable 
 		return new ItemStack(ModItems.dustThermite).getItem();
-    }
+    }*/
 
 	@Override
-	public void breakBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+	public void getDrops(@Nonnull NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune)
 	{
-		if (customDrops != null && dropsNumber == 0)
-			dropsNumber = customDrops.size();
+		if (customDrops == null)
+			drops.add(new ItemStack(this));
+		else
+		{
+			for (Drop drop : customDrops) {
+				if (Math.random() <= drop.getChance())
+					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
+			}
+		}
+
 	}
-
-	//Overrides the quantity of the drop
-    @Override
-    public int quantityDropped(Random random)
-    {
-    	if(customDrops == null)
-    		return 1;
-    	else
-    		return random.nextInt(customDrops.get(dropsNumber > 0 ? dropsNumber - 1 : dropsNumber).getAmount()) + 1;
-
-    }
 
     //Returns true if the block can be drop from explosions
 	@Override

@@ -59,6 +59,6 @@ public class Drop {
 
     public int getRandomAmount()
     {
-        return new Random().nextInt(item.getCount());
+        return new Random().nextInt(item.getCount()) + 1;
     }
 }
