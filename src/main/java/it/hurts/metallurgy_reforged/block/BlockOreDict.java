@@ -34,7 +34,9 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	private String oreName;
 	//Optional custom drops for blocks
 	private Item customDrop;
-	private Item itemDrop;
+	private List<Item> customDrops = new ArrayList<Item>();
+	
+	private int dropFlag = 0;
 
 	//Constructors ---------------------------------------------------------------
 
@@ -59,6 +61,20 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 		setResistance(blastResistance);
 		this.setHarvestLevel(toolClass, harvestLevel);
 	}
+	
+	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance, Item...drops){
+		super(Material.ROCK, name);
+		this.oreName = oreName;
+		setHardness(3f);
+		setResistance(blastResistance);
+		this.setHarvestLevel(toolClass, harvestLevel);
+		
+		for(Item i : drops) {
+			System.out.println("QUi entro " + i.getRegistryName());
+			customDrops.add(i);
+		}
+		
+	}
 	//Overridden Methods -------------------------------------------------------------
 
 	//Overrides the creativeTab
@@ -81,10 +97,28 @@ public class BlockOreDict extends BlockBase implements IOreDict {
 	@Nonnull
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune){
+		Item item;
 		if(customDrop != null)
         	return customDrop;
         else
-        	return Item.getItemFromBlock(this);
+//        	Droppa solo il primo
+        	if(customDrops.size() > 0 && customDrops.get(0) != null) {
+        		if(dropFlag == 0) {
+        			item = customDrops.get(dropFlag);
+        			dropFlag = 1;	
+        			getItemDropped(state, rand, fortune);
+        			System.out.println("Dovrei essere entrato " + item.getRegistryName());
+        			return item;
+        		}else
+        			if(dropFlag == 1) {
+        				Item item1 = customDrops.get(dropFlag);
+        				System.out.println("Sono entratooo " + item1.getRegistryName());
+            			dropFlag = 0;
+            			return item1;
+        			}
+        			
+        	}
+		return Item.getItemFromBlock(this);
     }
 
     //Overrides the quantity of the drop
