@@ -79,33 +79,29 @@ public class ArmorEffectHandler {
 //		Deep Iron ArmorEffectHandler (Swimming Speed when the player is in water and on ground)
 		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.deep_iron_helmet,ModArmors.deep_iron_chest,ModArmors.deep_iron_legs,ModArmors.deep_iron_boots}) 
 				&& event.player.isInWater() && ArmorEffectsConfig.deepIronArmorEffect){
-			
+
 //			Slot index of ArmorEffectHandler : 5 - 6 - 7 - 8
-			 for(int i = 5;i < 9; i++)
-			 {
-				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
-//					 Inseriamo nello slot dell'inventario in posizione i un custom slot
-                     pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
-                 }
-					 
-			 }			
+			for(int i = 5;i < 9; i++)
+			{
+				if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
+//					Inseriamo nello slot dell'inventario in posizione i un custom slot
+					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
+				}
+
+			}			
 //			Add effect to Player
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
-			
-//		   Checks if the player is tourching ground
-           if(pl.onGround) {
-				//adds more motion in his movement
-			  if(pl.motionX <= 3D)
-			    pl.motionX *= 1.1D;
-			  if(pl.motionZ <= 3D)
-			    pl.motionZ *= 1.1D;
-			}
-			else
-			{
-//			    Stop player motion
-				pl.motionX = 0D;
-				pl.motionZ = 0D;
+
+			pl.addTag("deeply_iron_effect");
+
+//		 	Checks if the player is tourching ground
+			if(pl.onGround) {
+				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(8);
+			}else{
+//				Stop player motion
+				pl.motionX *= 0.5D;
+				pl.motionZ *= 0.5D;
 			}
 
 //			The player can no longer swim upwards
@@ -114,24 +110,33 @@ public class ArmorEffectHandler {
 //			When the player is in the water he can step one block height like a horse
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
-		}
-		else //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
-		{
-		  if(pl.stepHeight != 0.6F)
-			pl.stepHeight = 0.6F;
-		  	  
-		    	 if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
-		    	 { 
-//		    		 Insert in c the container "vanilla"
-		    		 ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-	    			 List<Slot> slots = c.inventorySlots;
-		    		 for(int i = 5;i < 9; i++)
-					 {
-		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-					 }
-		    	 }
-		    
-		  
+//		turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+		}else {
+			if(pl.stepHeight != 0.6F)
+				pl.stepHeight = 0.6F;
+
+			if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+			{ 
+				//		    		 Insert in c the container "vanilla"
+				ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+				List<Slot> slots = c.inventorySlots;
+				for(int i = 5;i < 9; i++)
+				{
+					pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+				}
+			}
+
+			if(pl.getTags().contains("deeply_iron_effect")) {
+				pl.removeTag("deeply_iron_effect");
+
+				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11)
+					pl.removePotionEffect(MobEffects.NIGHT_VISION);
+				if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= 11)
+					pl.removePotionEffect(MobEffects.WATER_BREATHING);
+				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1.0);
+			}
+
+
 		}
 		
 //		Vulcanite ArmorEffectHandler (Fire Immunity) //Removes Fire Render

@@ -100,7 +100,7 @@ public class ModArmors {
     public static ItemArmorBase deep_iron_helmet = new ItemArmorBase(ModMetals.DEEP_IRON.getArmorMaterial(), EntityEquipmentSlot.HEAD, "deep_iron_helmet").setTooltip(Tooltips.DEEP_IRON_ARMOR_EFFECT);
     public static ItemArmorBase deep_iron_chest = new ItemArmorBase(ModMetals.DEEP_IRON.getArmorMaterial(), EntityEquipmentSlot.CHEST, "deep_iron_chest").setTooltip(Tooltips.DEEP_IRON_ARMOR_EFFECT);
     public static ItemArmorBase deep_iron_legs = new ItemArmorBase(ModMetals.DEEP_IRON.getArmorMaterial(), EntityEquipmentSlot.LEGS, "deep_iron_legs").setTooltip(Tooltips.DEEP_IRON_ARMOR_EFFECT);
-    public static ItemArmorBase deep_iron_boots = new ItemArmorBase(ModMetals.DEEP_IRON.getArmorMaterial(), EntityEquipmentSlot.FEET, "deep_iron_boots", Enchantments.DEPTH_STRIDER, 3).setTooltip(Tooltips.DEEP_IRON_ARMOR_EFFECT);
+    public static ItemArmorBase deep_iron_boots = new ItemArmorBase(ModMetals.DEEP_IRON.getArmorMaterial(), EntityEquipmentSlot.FEET, "deep_iron_boots").setTooltip(Tooltips.DEEP_IRON_ARMOR_EFFECT);
 
     public static ItemArmorBase desichalkos_helmet = new ItemArmorBase(ModMetals.DESICHALKOS.getArmorMaterial(), EntityEquipmentSlot.HEAD, "desichalkos_helmet");
     public static ItemArmorBase desichalkos_chest = new ItemArmorBase(ModMetals.DESICHALKOS.getArmorMaterial(), EntityEquipmentSlot.CHEST, "desichalkos_chest");

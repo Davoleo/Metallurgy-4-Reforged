@@ -16,6 +16,7 @@ import java.util.List;
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
 import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.ContainerPlayer;
@@ -30,13 +31,9 @@ public class TraitDeeply extends AbstractArmorTrait{
 	public TraitDeeply() {
 		super("deeply", TextFormatting.DARK_BLUE);
 	}
-
-	//FIXME THIS IS SO FUCKING BROKEN
-	//FIXME ArmorEffectHandler gets stuck in the slot even out of the water
-	//FIXME Player movements are slippery (especially underwater)
-	private boolean flag = false;
+	
 	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event){	
+	public void onArmorTick(PlayerTickEvent event){
 		EntityPlayer pl = event.player;
 		if(MetallurgyConArmorStats.isThatArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative()) {
 			for(int i = 5;i < 9; i++)
@@ -48,22 +45,19 @@ public class TraitDeeply extends AbstractArmorTrait{
 					 
 			 }			
 //			Add effect to Player
+//			pl.setAir(275);
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
 			
+			pl.addTag("deeply_on");
+			
 //		   Checks if the player is tourching ground
           if(pl.onGround) {
-				//adds more motion in his movement
-			  if(pl.motionX <= 3D)
-			    pl.motionX *= 1.1D;
-			  if(pl.motionZ <= 3D)
-			    pl.motionZ *= 1.1D;
-			}
-			else
-			{
+			  pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(8);
+			}else{
 //			    Stop player motion
-				pl.motionX = 0D;
-				pl.motionZ = 0D;
+				pl.motionX *= 0.5D;
+				pl.motionZ *= 0.5D;
 			}
 
 //			The player can no longer swim upwards
@@ -72,9 +66,8 @@ public class TraitDeeply extends AbstractArmorTrait{
 //			When the player is in the water he can step one block height like a horse
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
-		}
-		else //turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
-		{
+			//turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
+		}else{
 		  if(pl.stepHeight != 0.6F)
 			pl.stepHeight = 0.6F;
 		  	  
@@ -88,8 +81,16 @@ public class TraitDeeply extends AbstractArmorTrait{
 		    			 pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
 					 }
 		    	 }
-		    
-		  
+		    	 
+		    	 if(pl.getTags().contains("deeply_on")) {
+		    		 pl.removeTag("deeply_on");
+		    		 
+		    		 if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11)
+		    			 pl.removePotionEffect(MobEffects.NIGHT_VISION);
+		    		 if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= 11)
+		    			 pl.removePotionEffect(MobEffects.WATER_BREATHING);
+		    		 pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1.0);
+		    	 }
 		}
 	}
 	
