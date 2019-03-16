@@ -2,7 +2,7 @@
 name: Bug report
 about: Create an issue to help us fix bugs in the mod
 title: ''
-labels: Needs Verification, bug
+labels: needs verification, bug
 assignees: ''
 
 ---
