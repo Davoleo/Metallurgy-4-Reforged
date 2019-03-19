@@ -44,7 +44,6 @@ public class Tooltips {
     public static final String DESICHALKOS_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.desichalkos_sword_effect");
     public static final String IGNATIUS_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.ignatius_sword_effect");
     public static final String KALENDRITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.kalendrite_sword_effect");
-    public static final String MIDASIUM_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.midasium_sword_effect");
     public static final String MITHRIL_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.mithril_sword_effect");
     public static final String ORICHALCUM_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.orichalcum_sword_effect");
     public static final String SANGUINITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.sanguinite_sword_effect");
@@ -53,6 +52,8 @@ public class Tooltips {
     public static final String TARTARITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.tartarite_sword_effect");
     public static final String VULCANITE_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.vulcanite_sword_effect");
     public static final String VYROXERES_SWORD_EFFECT = Utils.localize("tooltip.metallurgy.vyroxeres_sword_effect");
+    
+    public static final String MIDASIUM_TOOL_EFFECT = Utils.localize("tooltip.metallurgy.midasium_tool_effect");
 
     //Tools
     public static final String SHADOW_STEEL_TOOL_EFFECT = Utils.localize("tooltip.metallurgy.shadow_steel_tool_effect");

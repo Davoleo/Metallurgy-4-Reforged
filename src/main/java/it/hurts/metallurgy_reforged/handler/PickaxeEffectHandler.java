@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -49,7 +50,13 @@ public class PickaxeEffectHandler {
 		if(ev.getHarvester() instanceof EntityPlayer) {
             EntityPlayer pl = ev.getHarvester();
 		
-	            if(Utils.isItemStackASpecificToolMaterial(ModMetals.MIDASIUM, pl.getHeldItemMainhand())){
+	            if(Utils.isItemStackASpecificToolMaterial(ModMetals.MIDASIUM, pl.getHeldItemMainhand()) && (ev.getState().getBlock().toString().contains("_ore") 
+	    				|| ev.getState().getBlock().isWood(ev.getWorld(), ev.getPos()) 
+	    				|| ev.getState().getBlock().equals(Blocks.SAND)
+	    				|| ev.getState().getBlock().equals(Blocks.SOUL_SAND)
+	    				|| ev.getState().getBlock().equals(Blocks.DIRT)
+	    				|| ev.getState().getBlock().equals(Blocks.GRASS)
+	    				|| ev.getState().getBlock().equals(Blocks.GRAVEL)) /*&& ev.getState().getBlock().isToolEffective(pl.getHeldItemMainhand().getItem()., state)*/){
 		            ArrayList<ItemStack> drops = new ArrayList<>();
 		
 		            if((int) (Math.random() * 100) <= 50) {

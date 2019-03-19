@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.world.BlockEvent;
@@ -34,7 +35,15 @@ public class TraitDuplication extends AbstractTrait implements ITrait{
 	public void blockHarvestDrops(ItemStack tool, BlockEvent.HarvestDropsEvent event) {
 		ArrayList<ItemStack> drops = new ArrayList<>();
 
-		if((int) (Math.random() * 100) <= 50) {
+		if((int) (Math.random() * 100) <= 50 
+				&& (event.getState().getBlock().toString().contains("_ore") 
+				|| event.getState().getBlock().isWood(event.getWorld(), event.getPos()) 
+				|| event.getState().getBlock().equals(Blocks.SAND)
+				|| event.getState().getBlock().equals(Blocks.SOUL_SAND)
+				|| event.getState().getBlock().equals(Blocks.DIRT)
+				|| event.getState().getBlock().equals(Blocks.GRASS)
+				|| event.getState().getBlock().equals(Blocks.GRAVEL))) {
+			
 			for(ItemStack stack : event.getDrops())
 			{
 				drops.add(stack);
