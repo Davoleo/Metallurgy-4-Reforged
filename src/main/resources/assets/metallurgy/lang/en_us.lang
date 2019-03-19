@@ -275,7 +275,6 @@ itemGroup.metallurgy.special=Metallurgy Special
 itemGroup.metallurgy.ores=Metallurgy Ores
 itemGroup.metallurgy.tools=Metallurgy Tools
 
-
 #Dust
 item.metallurgy.adamantine_dust.name=Adamantine Dust
 item.metallurgy.alduorite_dust.name=Alduorite Dust
@@ -325,6 +324,56 @@ item.metallurgy.tin_dust.name=Tin Dust
 item.metallurgy.vulcanite_dust.name=Vulcanite Dust
 item.metallurgy.vyroxeres_dust.name=Vyroxeres Dust
 item.metallurgy.zinc_dust.name=Zinc Dust
+
+#Nugget
+item.metallurgy.adamantine_nugget.name=Adamantine Nugget
+item.metallurgy.alduorite_nugget.name=Alduorite Nugget
+item.metallurgy.amordrine_nugget.name=Amordrine Nugget
+item.metallurgy.angmallen_nugget.name=Angmallen Nugget
+item.metallurgy.astral_silver_nugget.name=Astral Silver Nugget
+item.metallurgy.atlarus_nugget.name=Atlarus Nugget
+item.metallurgy.black_steel_nugget.name=Black Steel Nugget
+item.metallurgy.brass_nugget.name=Brass Nugget
+item.metallurgy.bronze_nugget.name=Bronze Nugget
+item.metallurgy.carmot_nugget.name=Carmot Nugget
+item.metallurgy.celenegil_nugget.name=Celenegil Nugget
+item.metallurgy.ceruclase_nugget.name=Ceruclase Nugget
+item.metallurgy.copper_nugget.name=Copper Nugget
+item.metallurgy.deep_iron_nugget.name=Deep Iron Nugget
+item.metallurgy.desichalkos_nugget.name=Desichalkos Nugget
+item.metallurgy.damascus_steel_nugget.name=Damascus Steel Nugget
+item.metallurgy.electrum_nugget.name=Electrum Nugget
+item.metallurgy.eximite_nugget.name=Eximite Nugget
+item.metallurgy.gold_nugget.name=Gold Nugget
+item.metallurgy.haderoth_nugget.name=Haderoth Nugget
+item.metallurgy.hepatizon_nugget.name=Hepatizon Nugget
+item.metallurgy.ignatius_nugget.name=Ignatius Nugget
+item.metallurgy.infuscolium_nugget.name=Infuscolium Nugget
+item.metallurgy.inolashite_nugget.name=Inolashite Nugget
+item.metallurgy.iron_nugget.name=Iron Nugget
+item.metallurgy.kalendrite_nugget.name=Kalendrite Nugget
+item.metallurgy.lemurite_nugget.name=Lemurite Nugget
+item.metallurgy.manganese_nugget.name=Manganese Nugget
+item.metallurgy.meutoite_nugget.name=Meutoite Nugget
+item.metallurgy.midasium_nugget.name=Midasium Nugget
+item.metallurgy.mithril_nugget.name=Mithril Nugget
+item.metallurgy.orichalcum_nugget.name=Orichalcum Nugget
+item.metallurgy.oureclase_nugget.name=Oureclase Nugget
+item.metallurgy.platinum_nugget.name=Platinum Nugget
+item.metallurgy.prometheum_nugget.name=Prometheum Nugget
+item.metallurgy.quicksilver_nugget.name=Quicksilver Nugget
+item.metallurgy.rubracium_nugget.name=Rubracium Nugget
+item.metallurgy.sanguinite_nugget.name=Sanguinite Nugget
+item.metallurgy.shadow_iron_nugget.name=Shadow Iron Nugget
+item.metallurgy.shadow_steel_nugget.name=Shadow Steel Nugget
+item.metallurgy.silver_nugget.name=Silver Nugget
+item.metallurgy.steel_nugget.name=Steel Nugget
+item.metallurgy.tartarite_nugget.name=Tartarite Nugget
+item.metallurgy.thermite_nugget.name=Thermite Nugget
+item.metallurgy.tin_nugget.name=Tin Nugget
+item.metallurgy.vulcanite_nugget.name=Vulcanite Nugget
+item.metallurgy.vyroxeres_nugget.name=Vyroxeres Nugget
+item.metallurgy.zinc_nugget.name=Zinc Nugget
 
 #Effect
 effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!

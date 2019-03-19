@@ -101,7 +101,6 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 						i = 0;
 						while(i < maxLevel && !flag) {
-							System.out.println(traitToCheck + i + "_armor");
 							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
 								flag = true;
 							i++;
@@ -130,7 +129,6 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 						i = 0;
 						while(i < maxLevel && level < 0) {
-							System.out.println(traitToCheck + i + "_armor");
 							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
 								level = i;
 							i++;
