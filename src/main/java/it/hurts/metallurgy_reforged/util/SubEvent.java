@@ -51,6 +51,7 @@ public class SubEvent {
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.foodly);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.catEyes);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.prometheum);
+			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.blindness);
 		}
 	}
 	

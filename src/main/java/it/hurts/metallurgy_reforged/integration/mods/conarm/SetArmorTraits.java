@@ -59,6 +59,11 @@ public class SetArmorTraits {
 			}
 			break;
 			
+			case "shadow_steel" : {
+				material.addTrait(MetallurgyArmorTraits.blindness);
+			}
+			break;
+			
 			default: {}
 			break;
 		}

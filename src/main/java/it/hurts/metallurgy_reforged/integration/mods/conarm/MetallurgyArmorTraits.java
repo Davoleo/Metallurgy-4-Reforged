@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.integration.mods.conarm;
 
+import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitBlindness;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitCatEyes;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitDeeply;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitFoodly;
@@ -23,5 +24,6 @@ public class MetallurgyArmorTraits {
 	public static final AbstractTrait foodly = new TraitFoodly();
 	public static final AbstractTrait catEyes = new TraitCatEyes();
 	public static final AbstractTrait prometheum = new TraitPrometheum();
+	public static final AbstractTrait blindness = new TraitBlindness();
 	
 }
