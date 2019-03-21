@@ -191,7 +191,18 @@ public class ArmorEffectHandler {
 			}
 		}
 		
-		
+//		Krik effect
+		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots})){
+			int counter = 0;
+			for(int i = 9; i < 36; i++) {
+				KrickEffectHandler k = new KrickEffectHandler(event.player, i);
+				
+				if(k.getHasStack())
+					counter++;
+			}
+			
+			
+		}
 					
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
