@@ -190,6 +190,8 @@ public class ArmorEffectHandler {
 			          
 			}
 		}
+		
+		
 					
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)

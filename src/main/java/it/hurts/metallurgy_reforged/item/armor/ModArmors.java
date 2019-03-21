@@ -216,6 +216,11 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_chest = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.CHEST, "vyroxeres_chest");
     public static ItemArmorBase vyroxeres_legs = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.LEGS, "vyroxeres_legs");
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
+    
+    public static ItemArmorBase krik_helmet = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.HEAD, "krik_helmet");
+    public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest");
+    public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs");
+    public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
     	if(GeneralConfig.disableAllArmors) {

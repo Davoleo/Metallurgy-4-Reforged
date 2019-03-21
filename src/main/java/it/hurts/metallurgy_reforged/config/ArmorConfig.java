@@ -67,6 +67,7 @@ public class ArmorConfig {
 	public static boolean tartarite = true;
 	public static boolean vulcanite = true;
 	public static boolean vyroxeres = true;
+	public static boolean krik = true;
 
 	public static boolean[] allArmor = {
 			adamantine,
@@ -105,7 +106,8 @@ public class ArmorConfig {
 			steel,
 			tartarite,
 			vulcanite,
-			vyroxeres
+			vyroxeres,
+			krik
 	};
 
 	public static void readConfig(Configuration cfg) {

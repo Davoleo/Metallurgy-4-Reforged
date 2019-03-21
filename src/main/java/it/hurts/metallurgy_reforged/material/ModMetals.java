@@ -154,6 +154,9 @@ public class ModMetals {
     public static final Metal VYROXERES = new MetalStats("vyroxeres", "Vyroxeres", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 6, 3}, 16, 37, 3.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(16, 4, 300, 7F, 7F), new FluidStats(0xFF2BFF00), 4).createMetal();
+    public static final Metal KRIK = new MetalStats("krik", "Krik", 2, MID_TIER_BLAST_RESISTANCE, 
+    		new ArmorStats(new int[] {2, 4, 3, 1}, 17, 45, 14.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+    		new ToolStats(17, 4, 350, 5F, 7F), new FluidStats(0xFF2BFF00), -1).createMetal();
     public static final Metal ZINC = new MetalStats("zinc", "Zinc", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFFBFFDA), 1).createMetal();
 
     public static void registerFluids() {
