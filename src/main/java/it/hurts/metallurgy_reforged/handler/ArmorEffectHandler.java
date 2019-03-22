@@ -199,6 +199,24 @@ public class ArmorEffectHandler {
 				
 				if(k.getHasStack())
 					counter++;
+				
+			}
+			
+			if(counter == 0) {
+				if(event.player.posY < 255)
+					event.player.motionY = 0.1;
+				else
+					event.player.motionY = 0;
+			}else {
+				if(counter == 1) {
+					if(event.player.posY < 200)
+						event.player.motionY = 0.1;
+					else
+						if(event.player.posY > 201)
+							event.player.motionY = -0.2;
+						else
+							event.player.motionY = 0;
+				}
 			}
 			
 			
