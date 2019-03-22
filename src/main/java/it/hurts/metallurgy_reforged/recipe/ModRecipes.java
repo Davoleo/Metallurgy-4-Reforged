@@ -11,35 +11,18 @@
 
 package it.hurts.metallurgy_reforged.recipe;
 
-import it.hurts.metallurgy_reforged.block.BlockBase;
-import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.item.ItemBase;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class ModRecipes {
 
     public static void init()
     {
-        //Ore-dict
-        //Blocks
-        for(BlockBase b: ModBlocks.blockList) {
-            if(b instanceof BlockOreDict)
-                ((BlockOreDict) b).initOreDict();
-        }
-        //Items
-        for(ItemBase b: ModItems.itemList) {
-            if(b instanceof ItemOreDict)
-                ((ItemOreDict) b).initOreDict();
-        }
-
         //Furnace Recipes
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
@@ -57,9 +40,5 @@ public class ModRecipes {
         GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.dustPhosphorus), 0.5F);
         GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.dustPotash), 0.5F);
         GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.dustSulfur), 0.5F);
-
-        //Additional oreDict values
-        OreDictionary.registerOre("globTar", ModItems.tar);
     }
-
 }

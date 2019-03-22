@@ -45,6 +45,10 @@ public class RegistrationHandler {
         ModArmors.register(event.getRegistry());
         ModTools.register(event.getRegistry());
         ModFluids.registerItem(event.getRegistry());
+
+        //OreDict Registration
+        OreDictHandler.init();
+        Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
     }
 
     @SubscribeEvent
