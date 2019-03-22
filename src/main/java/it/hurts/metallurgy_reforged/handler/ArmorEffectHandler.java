@@ -34,6 +34,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
@@ -46,6 +47,7 @@ import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -93,7 +95,7 @@ public class ArmorEffectHandler {
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));
 			pl.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, 1, false, false));
 
-			pl.addTag("deeply_iron_effect");
+			pl.addTag("deep_iron_effect");
 
 //		 	Checks if the player is tourching ground
 			if(pl.onGround) {
@@ -126,8 +128,8 @@ public class ArmorEffectHandler {
 				}
 			}
 
-			if(pl.getTags().contains("deeply_iron_effect")) {
-				pl.removeTag("deeply_iron_effect");
+			if(pl.getTags().contains("deep_iron_effect")) {
+				pl.removeTag("deep_iron_effect");
 
 				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11)
 					pl.removePotionEffect(MobEffects.NIGHT_VISION);
@@ -201,25 +203,17 @@ public class ArmorEffectHandler {
 					counter++;
 				
 			}
-			
-			if(counter == 0) {
-				if(event.player.posY < 255)
-					event.player.motionY = 0.1;
+//			TODO remove hightground damage and add jump (when player is on the ground)
+			if(( event.player.posY < (255 - (counter * 9.4))))
+				event.player.motionY = 0.1;
+			else
+				if((event.player.posY > (255 - (counter * 9.4)) + 1) && !event.player.onGround)
+					event.player.motionY = -0.2;
 				else
-					event.player.motionY = 0;
-			}else {
-				if(counter == 1) {
-					if(event.player.posY < 200)
-						event.player.motionY = 0.1;
+					if(!event.player.onGround)
+						event.player.motionY = 0;
 					else
-						if(event.player.posY > 201)
-							event.player.motionY = -0.2;
-						else
-							event.player.motionY = 0;
-				}
-			}
-			
-			
+						event.player.motionY = -0.0784000015258789;
 		}
 					
 		
