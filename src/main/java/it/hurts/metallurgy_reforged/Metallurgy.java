@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
+import it.hurts.metallurgy_reforged.handler.OreDictHandler;
 import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
 import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -85,11 +86,11 @@ public class Metallurgy {
 //		check if tinker is installed
 		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.preInit();
-            logger.info("Tinkers integration has been pre-initialized");
+            logger.info("Tinkers' Construct integration has been pre-initialized");
             
             if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
     			IntegrationCArmory.preInit();
-                logger.info("Conarm integration has been pre-initialized");
+                logger.info("Construct's Armory integration has been pre-initialized");
             }
         }
 		
@@ -98,6 +99,7 @@ public class Metallurgy {
 		
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 		logger.info(NAME + ": Punch effect capability Registered");
+
 	}
 
 	@Mod.EventHandler
@@ -108,11 +110,11 @@ public class Metallurgy {
         
 		if(ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton) {
             IntegrationTIC.init();
-            logger.info("Tinkers integration has been initialized");
+            logger.info("Tinkers' Construct integration has been initialized");
             
             if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
                 IntegrationCArmory.init();
-                logger.info("Conarm integration has been initialized");
+                logger.info("Construct's Armory integration has been initialized");
             }
         }
 		
