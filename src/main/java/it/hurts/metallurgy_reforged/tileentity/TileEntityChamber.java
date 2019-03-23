@@ -1,12 +1,14 @@
 package it.hurts.metallurgy_reforged.tileentity;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
@@ -17,12 +19,15 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -31,6 +36,9 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.datafix.FixTypes;
 import net.minecraft.util.datafix.walkers.ItemStackDataLists;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -50,17 +58,21 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
     
     private String customName;
     
-    private static final int SUBLIMATION_TIME = 140;
-    private int burnTime;
-    private int currentBurnTime;
+    private static final int SUBLIMATION_TIME = 71940;
+    private int actionTime;
+    private int currentActionTime;
     private int sublimationTime;
     private int totalSublimationTime = 72000;
+    
+    @SuppressWarnings("rawtypes")
+	private List playerList;
+    private int totalEffectTime = 16 * (20 * 60);
     
     public static void registerFixesFurnace(DataFixer fixer) {
         fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
     }
     
-    private static int getItemBurnTime(ItemStack fuel) {
+    private static int getItemActionTime(ItemStack fuel) {
     	
         if (fuel.isEmpty())
             return 0;
@@ -71,12 +83,11 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
             	return 72000;
             else
             	return 0;
-
         }
     }
     
     public static boolean isItemFuel(ItemStack fuel) {
-        return getItemBurnTime(fuel) > 0;
+        return getItemActionTime(fuel) > 0;
     }
     
     @Override
@@ -167,10 +178,10 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
     }
 
     public boolean isActive() {
-        return this.burnTime > 0;
+        return this.actionTime > 0;
     }
     
-    private int getSublimationTime( ItemStack stack) {
+    private int getSublimationTime(ItemStack stack) {
         return SUBLIMATION_TIME;
     }
     
@@ -214,13 +225,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
     public int getField(int id) {
         switch (id) {
             case 0:
-                return this.burnTime;
+                return actionTime;
             case 1:
-                return this.currentBurnTime;
+                return currentActionTime;
             case 2:
-                return this.sublimationTime;
+                return sublimationTime;
             case 3:
-                return this.totalSublimationTime;
+                return totalSublimationTime;
             default:
                 return 0;
         }
@@ -230,16 +241,20 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
     public void setField(int id, int value) {
         switch (id) {
             case 0:
-                this.burnTime = value;
-                break;
+            	actionTime = value;
+            break;
+            
             case 1:
-                this.currentBurnTime = value;
-                break;
+                currentActionTime = value;
+            break;
+            
             case 2:
-                this.sublimationTime = value;
-                break;
+                sublimationTime = value;
+            break;
+            
             case 3:
-                this.totalSublimationTime = value;
+                totalSublimationTime = value;
+            break;
         }
     }
     
@@ -279,14 +294,112 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	public String getGuiID() {
 		return null;
 	}
+	
+	private boolean canSublime() {
+		ItemStack input = inventory.get(0);
+		Potion result = BlockSublimationRecipes.getInstance().getSublimationResult(input);
+		
+		BlockPos position = this.getPos();
+		double range = 16;
+		
+		if(input.isEmpty() || result == null) {
+			return false;
+		} else {
+			if(world.isAnyPlayerWithinRangeAt(position.getX(), position.getY(), position.getZ(), range))
+				return true;
+			return false;
+		}
+	}
+	
+	private boolean canAddEffects() {
+		BlockPos position = this.getPos();
+		double range = 16;
+		
+		AxisAlignedBB box = new AxisAlignedBB(position.getX() - range, position.getY() -range, position.getZ() -range, 
+				position.getX() + range, position.getY() + range, position.getZ() + range);
+	     
+	     
+        playerList = this.world.getEntitiesWithinAABB(EntityPlayer.class, box);
+        
+         if(!playerList.isEmpty())
+        	 return true;
+         else
+        	 return false;
+	}
+	
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		boolean active = this.isActive();
+		boolean flag = false;
+		
+		if(isActive())
+			--sublimationTime;
+		
+		if (!this.world.isRemote) {
+			ItemStack input = this.inventory.get(0);
+			ItemStack fuel = new ItemStack (ModMetals.VULCANITE.getBlock(), 3);
+			
+			if(isActive() || !input.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty())) {
+				if(!isActive() && canSublime()) {
+					 actionTime = getItemActionTime(fuel);
+	                    currentActionTime = actionTime;
+
+	                    if (isActive()) {
+	                        flag = true;
+
+	                        if (!fuel.isEmpty()) {
+	                            Item item = fuel.getItem();
+	                            fuel.shrink(1);
+
+	                            if (fuel.isEmpty()) {
+	                                ItemStack item1 = item.getContainerItem(fuel);
+	                                this.inventory.set(1, item1);
+	                            }
+	                        }
+	                    }
+	                    
+	                    if (isActive() && canSublime()) {
+	                        ++sublimationTime;
+
+	                        if (sublimationTime == totalSublimationTime) {
+	                        	sublimationTime = 0;
+	                            totalSublimationTime = getSublimationTime(this.inventory.get(0));
+	                            
+//	                            Va Modificato assolutamente
+	                            if(canAddEffects())
+		                            for(Object o : playerList) {
+		                            	EntityPlayer p = (EntityPlayer) o;
+		                            	
+		                            	p.addPotionEffect(new PotionEffect(BlockSublimationRecipes.getInstance().getSublimationResult(input), totalEffectTime, 0, false, false));
+		                            }
+	                            
+	                            if (canSublime())
+	                            	input.shrink(1);
+	                            
+	                            flag = true;
+	                        }
+	                    } else {
+	                    	sublimationTime = 0;
+	                    }
+				}else if (!isActive() && sublimationTime > 0) {
+					 sublimationTime = MathHelper.clamp(sublimationTime - 2, 0, totalSublimationTime);
+				}
+				
+				if (active != isActive()) {
+	                flag = true;
+	                BlockCrusher.setState(isActive(), this.world, this.pos);
+	            }
+			}
+			
+		}
+		
+		if (flag)
+            this.markDirty();
 		
 	}
 	
-	public enum SlotEnum {// 	enumerate the slots
+	public enum SlotEnum {
         INPUT_SLOT(0), FUEL_SLOT(1);
 
         private final int[] slots;
