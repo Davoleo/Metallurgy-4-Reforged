@@ -53,6 +53,7 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -203,19 +204,17 @@ public class ArmorEffectHandler {
 					counter++;
 				
 			}
-//			TODO remove hightground damage and add jump (when player is on the ground)
-			if(( event.player.posY < (255 - (counter * 9.4))))
+//			TODO add jump (when player is on the ground)
+			if(( event.player.posY < (255 - (counter * 10))))
 				event.player.motionY = 0.1;
 			else
-				if((event.player.posY > (255 - (counter * 9.4)) + 1) && !event.player.onGround)
+				if((event.player.posY > (255 - (counter * 10)) + 1))
 					event.player.motionY = -0.2;
 				else
 					if(!event.player.onGround)
 						event.player.motionY = 0;
-					else
-						event.player.motionY = -0.0784000015258789;
+			System.out.println(event.player.motionY);
 		}
-					
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
 		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect)
@@ -345,6 +344,18 @@ public class ArmorEffectHandler {
 									ModArmors.vulcanite_boots }))
 						event.setCanceled(true);
 				}
+			}
+		}
+		
+		@SubscribeEvent
+		public static void cancelPlayerFallDamage(LivingFallEvent event){
+			
+			if (event.getEntity() instanceof EntityPlayer){
+				EntityPlayer player = (EntityPlayer) event.getEntity();
+
+				if(EventUtils.isPlayerWearingArmor(player, 
+						new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
+					event.setCanceled(true); //Sets canceled for ALL players if only one player is wearing the item. See my point?
 			}
 		}
 
