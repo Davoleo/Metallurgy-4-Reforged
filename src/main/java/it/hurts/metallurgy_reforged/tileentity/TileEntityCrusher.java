@@ -57,12 +57,15 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
     private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
     private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
     private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
-    private static final int CRUSHING_TIME = 140;
+    
     private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
     private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
     private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
     private NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
+    
     private String customName;
+    
+    private static final int CRUSHING_TIME = 140;
     private int burnTime;
     private int currentBurnTime;
     private int crushTime;

@@ -67,6 +67,7 @@ public class ModBlocks {
     //Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
+    public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
     //Registers the blocks in the Forge Registry
     public static void register(IForgeRegistry<Block> registry) {
@@ -82,6 +83,7 @@ public class ModBlocks {
 
                 crusher,
                 alloyer,
+                chamber,
 
                 blockRoad,
                 blockStripedRoad
@@ -101,6 +103,7 @@ public class ModBlocks {
 
                 alloyer.createItemBlock(),
                 crusher.createItemBlock(),
+                chamber.createItemBlock(),
 
                 blockRoad.createItemBlock(),
                 blockStripedRoad.createItemBlock());
@@ -119,6 +122,7 @@ public class ModBlocks {
 
         crusher.registerItemModel(Item.getItemFromBlock(crusher));
         alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
+        chamber.registerItemModel(Item.getItemFromBlock(chamber));
 
         blockRoad.registerItemModel(Item.getItemFromBlock(blockRoad));
         blockStripedRoad.registerItemModel(Item.getItemFromBlock(blockStripedRoad));
