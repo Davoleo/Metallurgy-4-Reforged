@@ -11,18 +11,14 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
-
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
+import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
+import it.hurts.metallurgy_reforged.entity.ai.AIFindPlayerWithoutHelmet;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
-import it.hurts.metallurgy_reforged.entity.ai.AIFindPlayerWithoutHelmet;
-import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -34,7 +30,6 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
@@ -47,7 +42,6 @@ import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -58,7 +52,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.util.Random;
+import org.lwjgl.input.Keyboard;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 public class ArmorEffectHandler {
 	
@@ -197,24 +196,36 @@ public class ArmorEffectHandler {
 //		Krik effect
 		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots})){
 			int counter = 0;
-			for(int i = 9; i < 36; i++) {
-				KrickEffectHandler k = new KrickEffectHandler(event.player, i);
+			for(int i = 9; i < 36; i++)
+			{
+				KrikEffectHandler k = new KrikEffectHandler(event.player, i);
 				
 				if(k.getHasStack())
 					counter++;
-				
 			}
+
 //			TODO add jump (when player is on the ground)
+
+//			if (Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+//			{
+//				if (event.player.posY < (255 - (counter * 10)))
+//					event.player.motionY = 0.15;
+//				else
+//					event.player.motionY = -0.2;
+//			}
+
 			if(( event.player.posY < (255 - (counter * 10))))
-				event.player.motionY = 0.1;
+								event.player.motionY = 0.1;
 			else
 				if((event.player.posY > (255 - (counter * 10)) + 1))
 					event.player.motionY = -0.2;
 				else
 					if(!event.player.onGround)
 						event.player.motionY = 0;
-			System.out.println(event.player.motionY);
+		//	System.out.println(event.player.motionY);
 		}
+
+
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
 		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect)
@@ -346,17 +357,17 @@ public class ArmorEffectHandler {
 				}
 			}
 		}
-		
-		@SubscribeEvent
-		public static void cancelPlayerFallDamage(LivingFallEvent event){
-			
-			if (event.getEntity() instanceof EntityPlayer){
-				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-				if(EventUtils.isPlayerWearingArmor(player, 
-						new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
-					event.setCanceled(true); //Sets canceled for ALL players if only one player is wearing the item. See my point?
-			}
+	@SubscribeEvent
+	public static void cancelPlayerFallDamage(LivingFallEvent event){
+
+		if (event.getEntity() instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) event.getEntity();
+
+			if(EventUtils.isPlayerWearingArmor(player,
+					new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
+				event.setCanceled(true); //Sets canceled for ALL players if only one player is wearing the item. See my point?
 		}
+	}
 
 }
