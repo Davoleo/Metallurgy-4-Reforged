@@ -221,7 +221,6 @@ public class ArmorEffectHandler {
 				else
 					if(!event.player.onGround)
 						event.player.motionY = 0;
-		//	System.out.println(event.player.motionY);
 		}
 
 
@@ -372,7 +371,7 @@ public class ArmorEffectHandler {
 
 			if(EventUtils.isPlayerWearingArmor(player,
 					new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
-				event.setCanceled(true); //Sets canceled for ALL players if only one player is wearing the item. See my point?
+				event.setCanceled(true); //Nope, i'm sorry, next time test
 		}
 	}
 
