@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
-import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unused")
 public class ModArmors {
 
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
@@ -162,7 +160,7 @@ public class ModArmors {
     public static ItemArmorBase oureclase_legs = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "oureclase_legs");
     public static ItemArmorBase oureclase_boots = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.FEET, "oureclase_boots");
 
-    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet", Enchantments.BINDING_CURSE, 1).setTooltip(Tooltips.PLATINUM_HELMET_EFFECT);
+    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet").setTooltip(Tooltips.PLATINUM_HELMET_EFFECT);
     public static ItemArmorBase platinum_chest = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "platinum_chest");
     public static ItemArmorBase platinum_legs = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "platinum_legs");
     public static ItemArmorBase platinum_boots = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "platinum_boots");

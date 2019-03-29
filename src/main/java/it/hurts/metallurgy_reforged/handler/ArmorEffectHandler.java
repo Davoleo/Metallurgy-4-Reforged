@@ -52,7 +52,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 
 import java.util.Iterator;
 import java.util.List;
@@ -228,8 +227,15 @@ public class ArmorEffectHandler {
 
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
-		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect)
+		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect) {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
+			event.player.addTag("platinum_effect");
+		}else if(event.player.getTags().contains("platinum_effect")) {
+			event.player.removeTag("platinum_effect");
+			if(event.player.isPotionActive(MobEffects.NIGHT_VISION) && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11) {
+				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
+			}
+		}
 		
 
 //		Carmot ArmorEffectHandler (Haste I)
