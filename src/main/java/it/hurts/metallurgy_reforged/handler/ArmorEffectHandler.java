@@ -58,6 +58,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import org.lwjgl.input.Keyboard;
+
 public class ArmorEffectHandler {
 	
 //	The speed sword modifier UUID
@@ -202,25 +204,38 @@ public class ArmorEffectHandler {
 				if(k.getHasStack())
 					counter++;
 			}
-
-//			TODO add jump (when player is on the ground)
-
-//			if (Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-//			{
-//				if (event.player.posY < (255 - (counter * 10)))
-//					event.player.motionY = 0.15;
-//				else
-//					event.player.motionY = -0.2;
-//			}
-
+			
+//			We need to save the Y of player and check with the couter and Y + 1
+			
 			if(( event.player.posY < (255 - (counter * 10))))
-								event.player.motionY = 0.1;
+				event.player.motionY = 0.1;
 			else
-				if((event.player.posY > (255 - (counter * 10)) + 1))
-					event.player.motionY = -0.2;
-				else
-					if(!event.player.onGround)
+				if(!event.player.onGround) {
+					if((event.player.posY > (255 - (counter * 10)) + 1) && !event.player.onGround)
+							event.player.motionY = -0.2;
+					else
+						if((event.player.posY > (255 - (counter * 10)) + 1) && event.player.onGround)
+					System.out.println(255 - (counter * 10));
+				}
+				else if(!event.player.onGround ) {
+					for(int i = 5;i < 9; i++)
+					{
+						if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
+//							Inseriamo nello slot dell'inventario in posizione i un custom slot
+							pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
+						}
+					}
 						event.player.motionY = 0;
+				}else
+					if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+					{ 
+						ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+						List<Slot> slots = c.inventorySlots;
+						for(int i = 5;i < 9; i++)
+						{
+							pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+						}
+					}
 		}
 
 
