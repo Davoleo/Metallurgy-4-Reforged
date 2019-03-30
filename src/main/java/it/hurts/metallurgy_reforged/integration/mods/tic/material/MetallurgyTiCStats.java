@@ -36,13 +36,13 @@ public class MetallurgyTiCStats {
 		int harvestL = metal.getToolMaterial().getHarvestLevel();
 		
 //		Dovremmo modificare lo speed ?
-		return new HeadMaterialStats((int)durability / 8, speed, attack, harvestL);
+		return new HeadMaterialStats((int)(durability / 6.5), speed, attack, harvestL);
 	}
 	
 	public static ExtraMaterialStats getExtraA(Metal metal){
 		int durability = metal.getToolMaterial().getMaxUses();
 		
-		return new ExtraMaterialStats((int) (durability / 12));
+		return new ExtraMaterialStats((int) (durability / 5.5));
 	}
 	
 	public static HandleMaterialStats getHandleA(Metal metal){
@@ -50,6 +50,6 @@ public class MetallurgyTiCStats {
 		float multiplier = 0.07F;
 		float modifier = (float) (Math.sqrt(durability) * multiplier);
 		
-		return new HandleMaterialStats(modifier > 2 ? modifier * 0.5F : modifier, (int)durability / 5);
+		return new HandleMaterialStats(modifier > 2 ? modifier * 0.5F : modifier, (int)durability / 4);
 	}
 }
