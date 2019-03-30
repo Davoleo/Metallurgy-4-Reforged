@@ -210,35 +210,12 @@ public class ArmorEffectHandler {
 			if(( event.player.posY < (255 - (counter * 10))))
 				event.player.motionY = 0.1;
 			else
-				if(!event.player.onGround) {
-					if((event.player.posY > (255 - (counter * 10)) + 1) && !event.player.onGround)
-							event.player.motionY = -0.2;
-					else
-						if((event.player.posY > (255 - (counter * 10)) + 1) && event.player.onGround)
-					System.out.println(255 - (counter * 10));
-				}
-				else if(!event.player.onGround ) {
-					for(int i = 5;i < 9; i++)
-					{
-						if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
-//							Inseriamo nello slot dell'inventario in posizione i un custom slot
-							pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
-						}
-					}
+				if(!event.player.onGround && (event.player.posY > (255 - (counter * 10)) + 1) && (event.player.lastTickPosY > event.player.posY + 1))
+					event.player.motionY = -0.6;
+				else
+//					Fix This small jump in the air
+					if(!event.player.onGround && (event.player.posY == (255 - (counter * 10)) + 2))
 						event.player.motionY = 0;
-				}else
-					if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
-					{ 
-						ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-						List<Slot> slots = c.inventorySlots;
-						for(int i = 5;i < 9; i++)
-						{
-							pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-						}
-					}
-		}
-
-
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
 		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect) {
@@ -298,6 +275,7 @@ public class ArmorEffectHandler {
 		{
 			//removes the modifier if player doesn't held the sword
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
+		}
 		}
 	}
 	
