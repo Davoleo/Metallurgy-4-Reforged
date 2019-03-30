@@ -59,22 +59,13 @@ public class ModWorldGen implements IWorldGenerator {
     {
         if (!newGen && !OreGenerationConfig.retrogen)
             return;
-        switch (world.provider.getDimension()){
-            case -1:
-                generateNether(random, chunkX, chunkZ, world);
-                break;
-
-            case 0:
-                generateOverworld(random, chunkX, chunkZ, world);
-                break;
-
-            case 1:
-                generateEnd(random, chunkX, chunkZ, world);
-                break;
-            default:
-                break;
-        }
-
+        if(world.provider.isSurfaceWorld())
+        	 generateOverworld(random, chunkX, chunkZ, world);
+        else
+        	if(world.provider.isNether())
+        		generateNether(random, chunkX, chunkZ, world);
+        	else
+        		generateEnd(random, chunkX, chunkZ, world);
         if (!newGen) {
             world.getChunk(chunkX, chunkZ).markDirty();
         }
