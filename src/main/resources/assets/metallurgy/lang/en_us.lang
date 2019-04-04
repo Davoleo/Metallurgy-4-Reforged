@@ -810,7 +810,6 @@ modifier.duplication_trait.name=Duplication
 modifier.life_steal_trait.name=Life Steal
 modifier.wither_trait.name=Wither
 modifier.king_dice_trait.name=King Dice
-
 modifier.obscure_trait.desc=Blinds your enemy
 modifier.vulcan_trait.desc=Sets your enemy on fire
 modifier.duplication_trait.desc=Duplicate the mob drops
@@ -833,7 +832,7 @@ tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set: Strenght
 tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set: Makes Entities more visible
 tooltip.metallurgy.platinum_armor_effect=§bNight Vision
 tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set: Poison Immunity
-tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Faster Bow Tending
+tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Faster Action
 tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set: No Blindness
 tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in the dark
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
