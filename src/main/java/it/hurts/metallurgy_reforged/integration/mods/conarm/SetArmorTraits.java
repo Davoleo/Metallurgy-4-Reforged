@@ -1,6 +1,18 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: SetArmorTraits
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.conarm;
 
 import c4.conarm.lib.materials.ArmorMaterialType;
+import c4.conarm.lib.traits.AbstractArmorTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -10,27 +22,27 @@ public class SetArmorTraits {
 		switch(metal.getStats().getName()) {
 		
 			case "quicksilver" : {
-				material.addTrait(MetallurgyArmorTraits.quickly);
+				addToEveryPart(material, MetallurgyArmorTraits.quickly);
 			}
 			break;
 			
 			case "amordrine" : {
-				material.addTrait(MetallurgyArmorTraits.stronglyAmordrine);
+				addToEveryPart(material, MetallurgyArmorTraits.stronglyAmordrine);
 			}
 			break;
 			
 			case "kalendrite" : {
-				material.addTrait(MetallurgyArmorTraits.stronglyKalendrite);
+				addToEveryPart(material,  MetallurgyArmorTraits.stronglyKalendrite);
 			}
 			break;
 			
 			case "astral_silver" : {
-				material.addTrait(MetallurgyArmorTraits.jumpMaster);
+				addToEveryPart(material,  MetallurgyArmorTraits.jumpMaster);
 			}
 			break;
 			
 			case "celenegil" : {
-				material.addTrait(MetallurgyArmorTraits.resistance);
+				addToEveryPart(material, MetallurgyArmorTraits.resistance);
 			}
 			break;
 			
@@ -40,12 +52,12 @@ public class SetArmorTraits {
 			break;
 			
 			case "vulcanite" : {
-				material.addTrait(MetallurgyArmorTraits.volcano);
+				addToEveryPart(material, MetallurgyArmorTraits.volcano);
 			}
 			break;
 			
 			case "adamantine" : {
-				material.addTrait(MetallurgyArmorTraits.foodly);
+				addToEveryPart(material, MetallurgyArmorTraits.foodly);
 			}
 			break;
 			
@@ -60,13 +72,20 @@ public class SetArmorTraits {
 			break;
 			
 			case "shadow_steel" : {
-				material.addTrait(MetallurgyArmorTraits.blindness);
+				addToEveryPart(material, MetallurgyArmorTraits.blindness);
 			}
 			break;
 			
 			default: {}
 			break;
 		}
+	}
+
+	private static void addToEveryPart(Material material, AbstractArmorTrait trait)
+	{
+		material.addTrait(trait, ArmorMaterialType.CORE);
+		material.addTrait(trait, ArmorMaterialType.PLATES);
+		material.addTrait(trait, ArmorMaterialType.TRIM);
 	}
 	
 }
