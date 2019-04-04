@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.world;
 
 import java.util.Random;
 
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.WorldGenConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -30,7 +30,7 @@ public class ModLakeWorldGen {
 		World world = event.getWorld();
 		Random rand = new Random();
 		
-		if((rand.nextInt(100) + 1) < GeneralConfig.tarLakePercentage)
+		if((rand.nextInt(100) + 1) < WorldGenConfig.tarLakePercentage)
 			if (world.provider.getDimension() == 0) {
 				int x = event.getChunkX() * 16;
 				int z = event.getChunkZ() * 16;
