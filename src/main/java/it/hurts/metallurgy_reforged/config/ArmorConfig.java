@@ -68,6 +68,8 @@ public class ArmorConfig {
 	public static boolean vulcanite = true;
 	public static boolean vyroxeres = true;
 	public static boolean krik = true;
+	public static boolean lutetium = true;
+	public static boolean osmium = true;
 
 	public static boolean[] allArmor = {
 			adamantine,
@@ -107,7 +109,9 @@ public class ArmorConfig {
 			tartarite,
 			vulcanite,
 			vyroxeres,
-			krik
+			krik,
+			lutetium,
+			osmium
 	};
 
 	public static void readConfig(Configuration cfg) {

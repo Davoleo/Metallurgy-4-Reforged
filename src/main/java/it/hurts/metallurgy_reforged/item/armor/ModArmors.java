@@ -144,7 +144,12 @@ public class ModArmors {
     public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest");
     public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs");
     public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots");
-
+    
+    public static ItemArmorBase lutetium_helmet = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "lutetium_helmet");
+    public static ItemArmorBase lutetium_chest = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "lutetium_chest");
+    public static ItemArmorBase lutetium_legs = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "lutetium_legs");
+    public static ItemArmorBase lutetium_boots = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "lutetium_boots");
+    
     public static ItemArmorBase midasium_helmet = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "midasium_helmet");
     public static ItemArmorBase midasium_chest = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "midasium_chest");
     public static ItemArmorBase midasium_legs = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "midasium_legs");
@@ -160,6 +165,11 @@ public class ModArmors {
     public static ItemArmorBase orichalcum_legs = new ItemArmorBase(ModMetals.ORICHALCUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "orichalcum_legs");
     public static ItemArmorBase orichalcum_boots = new ItemArmorBase(ModMetals.ORICHALCUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "orichalcum_boots");
 
+    public static ItemArmorBase osmium_helmet = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "osmium_helmet");
+    public static ItemArmorBase osmium_chest = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "osmium_chest");
+    public static ItemArmorBase osmium_legs = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "osmium_legs");
+    public static ItemArmorBase osmium_boots = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "osmium_boots");
+    
     public static ItemArmorBase oureclase_helmet = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "oureclase_helmet");
     public static ItemArmorBase oureclase_chest = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "oureclase_chest");
     public static ItemArmorBase oureclase_legs = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "oureclase_legs");
