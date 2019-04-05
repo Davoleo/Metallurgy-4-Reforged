@@ -58,8 +58,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import org.lwjgl.input.Keyboard;
-
 public class ArmorEffectHandler {
 	
 //	The speed sword modifier UUID
@@ -207,15 +205,18 @@ public class ArmorEffectHandler {
 			
 //			We need to save the Y of player and check with the couter and Y + 1
 			
-			if(( event.player.posY < (255 - (counter * 10))))
+			if( event.player.lastTickPosY < 255 - (counter * 10)) {
 				event.player.motionY = 0.1;
+				System.out.println("Sali  " + (255 - (counter * 10)));
+				System.out.println(event.player.posY);
+			}
 			else
-				if(!event.player.onGround && (event.player.posY > (255 - (counter * 10)) + 1) && (event.player.lastTickPosY > event.player.posY + 1))
-					event.player.motionY = -0.6;
-				else
-//					Fix This small jump in the air
-					if(!event.player.onGround && (event.player.posY == (255 - (counter * 10)) + 2))
-						event.player.motionY = 0;
+				if(!event.player.onGround && event.player.lastTickPosY >= 255 - (counter * 10) - 1 && event.player.lastTickPosY < 255 - (counter * 10) + 1) {
+					System.out.println("Fermo  " + (255 - (counter * 10)));
+					event.player.motionY = 0;
+					System.out.println(event.player.posY);
+				}
+		}
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
 		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect) {
@@ -277,7 +278,7 @@ public class ArmorEffectHandler {
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
 		}
 		}
-	}
+
 	
 //	Increase the speed of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
 	@SubscribeEvent
