@@ -78,6 +78,9 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.116"
     
      deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
+     
+//	 Industrial Foregoing
+     deobfCompile "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
 }
 
 processResources {
