@@ -100,6 +100,8 @@ public class ToolConfig {
 	public static boolean[] vulcanite = { true,true,true,true,true };
 
 	public static boolean[] vyroxeres = { true,true,true,true,true };
+	
+	public static boolean[] krik = { true,true,true,true,true };
 
 	public static boolean[][] allTools = {
 			adamantine,
@@ -138,7 +140,8 @@ public class ToolConfig {
 			steel,
 			tartarite,
 			vulcanite,
-			vyroxeres
+			vyroxeres,
+			krik
 	};
 	
 	public static void fillMap() {
