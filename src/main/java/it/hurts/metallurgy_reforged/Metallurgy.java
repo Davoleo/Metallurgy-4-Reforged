@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
 import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
+import it.hurts.metallurgy_reforged.integration.mods.IntegrationIndustrialF;
 import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
@@ -92,7 +93,9 @@ public class Metallurgy {
                 logger.info("Construct's Armory integration has been pre-initialized");
             }
         }
-		
+
+		//IntegrationIndustrialF.preInit();
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		logger.info(NAME + ": GUIs have been registered!");
 		
