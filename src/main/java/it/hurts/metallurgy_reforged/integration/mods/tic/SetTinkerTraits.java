@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
 import static slimeknights.tconstruct.library.materials.MaterialTypes.*;
@@ -26,9 +27,8 @@ public class SetTinkerTraits {
 //		TraitSuperheat = Increased damage to enemies that are on fire
 		
 			case "midasium" : {
-//				TODO magari aumentare il modifiers
-				material.addTrait(writable2);
-				material.addTrait(MetallurgyTinkerTraits.duplicaitonTrait);
+				addToEveryPart(material, writable2);
+				addToEveryPart(material, MetallurgyTinkerTraits.duplicaitonTrait);
 			}
 			break;
 			
@@ -49,7 +49,7 @@ public class SetTinkerTraits {
 			break;
 			
 			case "vyroxeres":{
-				material.addTrait(poisonous);
+				addToEveryPart(material, poisonous);
 			}
 			break;
 			
@@ -59,13 +59,13 @@ public class SetTinkerTraits {
 			break;
 			
 			case "damascus_steel":{
-				material.addTrait(duritos);
+				addToEveryPart(material, duritos);
 //				TODO Reinforced II
 			}
 			break;
 			
 			case "shadow_iron":{
-				material.addTrait(MetallurgyTinkerTraits.obscureTrait);
+				addToEveryPart(material, MetallurgyTinkerTraits.obscureTrait);
 			}
 			break;
 			
@@ -95,5 +95,12 @@ public class SetTinkerTraits {
 			default:{}
 			break;	
 		}	
+	}
+
+	private static void addToEveryPart(Material material, AbstractTrait trait)
+	{
+		material.addTrait(trait, HEAD);
+		material.addTrait(trait, HANDLE);
+		material.addTrait(trait, EXTRA);
 	}
 }
