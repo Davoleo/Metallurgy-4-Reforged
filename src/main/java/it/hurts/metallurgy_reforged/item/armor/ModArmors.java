@@ -140,10 +140,10 @@ public class ModArmors {
     public static ItemArmorBase kalendrite_legs = new ItemArmorBase(ModMetals.KALENDRITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "kalendrite_legs").setTooltip(Tooltips.KALENDRITE_ARMOR_EFFECT);
     public static ItemArmorBase kalendrite_boots = new ItemArmorBase(ModMetals.KALENDRITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "kalendrite_boots").setTooltip(Tooltips.KALENDRITE_ARMOR_EFFECT);
 
-    public static ItemArmorBase krik_helmet = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.HEAD, "krik_helmet");
-    public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest");
-    public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs");
-    public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots");
+    public static ItemArmorBase krik_helmet = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.HEAD, "krik_helmet").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
     
     public static ItemArmorBase lutetium_helmet = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "lutetium_helmet");
     public static ItemArmorBase lutetium_chest = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "lutetium_chest");
