@@ -94,7 +94,7 @@ public class Metallurgy {
             }
         }
 
-		//IntegrationIndustrialF.preInit();
+		IntegrationIndustrialF.preInit();
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		logger.info(NAME + ": GUIs have been registered!");
