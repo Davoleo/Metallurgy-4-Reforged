@@ -20,7 +20,8 @@ public class OreGenerationConfig {
 	
 //	Subclass Category
 	public static SubCategoryRarity rarity = new SubCategoryRarity();
-	
+
+	//OverWorld ores
 	public static CategoryAdamantine adamantine = new CategoryAdamantine();
 	public static CategoryAstralSilver astralSilver = new CategoryAstralSilver();
 	public static CategoryAtlarus atlarus = new CategoryAtlarus();
@@ -28,10 +29,12 @@ public class OreGenerationConfig {
 	public static CategoryCopper copper = new CategoryCopper();
 	public static CategoryDeepIron deepIron = new CategoryDeepIron();
 	public static CategoryInfuscolium infuscolium = new CategoryInfuscolium();
+    public static CategoryLutetium lutetium = new CategoryLutetium();
 	public static CategoryManganese manganese = new CategoryManganese();
 	public static CategoryMithril mithril = new CategoryMithril();
 	public static CategoryOureclase oureclase = new CategoryOureclase();
-	public static CategoryOrichalcum orichalcum = new CategoryOrichalcum();
+    public static CategoryOrichalcum orichalcum = new CategoryOrichalcum();
+    public static CategoryOsmium osmium = new CategoryOsmium();
 	public static CategoryPhosphorite phosphorite = new CategoryPhosphorite();
 	public static CategoryPlatinum platinum = new CategoryPlatinum();
 	public static CategoryPotash potash = new CategoryPotash();
@@ -41,7 +44,8 @@ public class OreGenerationConfig {
 	public static CategorySulfur sulfur = new CategorySulfur();
 	public static CategoryTin tin = new CategoryTin();
 	public static CategoryZinc zinc = new CategoryZinc();
-	
+
+	//Nether ores
 	public static CategoryAlduorite alduorite = new CategoryAlduorite();
 	public static CategoryCeruclase cerucalse = new CategoryCeruclase();
 	public static CategoryIgnatius ignatius = new CategoryIgnatius();
@@ -52,7 +56,8 @@ public class OreGenerationConfig {
 	public static CategoryShadowIron shadowIron = new CategoryShadowIron();
 	public static CategoryVulcanite vulcanite = new CategoryVulcanite();
 	public static CategoryVyroxeres vyroxeres = new CategoryVyroxeres();
-	
+
+	//End ores
 	public static CategoryEximite eximite = new CategoryEximite();
 	public static CategoryMeutoite meutoite = new CategoryMeutoite();
 	
@@ -73,7 +78,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Meutoite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Meutoite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
@@ -87,7 +92,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Eximite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Eximite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
@@ -101,7 +106,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 120;
 
-    	@Config.Comment("Vyroxeres indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Vyroxeres indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
@@ -115,7 +120,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Vulcanite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Vulcanite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
@@ -129,7 +134,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Sanguinite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Sanguinite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 4;
     }
@@ -143,7 +148,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 124;
 
-    	@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 6;
     }
@@ -157,7 +162,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 255;
 
-    	@Config.Comment("Midasium indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Midasium indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 6;
     }
@@ -171,7 +176,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 100;
 
-    	@Config.Comment("Lemurite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Lemurite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
@@ -185,7 +190,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 120;
 
-    	@Config.Comment("Kalendrite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Kalendrite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
@@ -199,7 +204,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 255;
 
-    	@Config.Comment("Ignatius indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Ignatius indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 10;
     }
@@ -213,7 +218,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Ceruclase indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Ceruclase indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 5;
     }
@@ -227,7 +232,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 128;
 
-    	@Config.Comment("Alduorite indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Alduorite indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 4;
     }
@@ -241,7 +246,7 @@ public class OreGenerationConfig {
     	@Config.RangeInt(min = 0, max = 255)
     	public int maxY = 72;
 
-    	@Config.Comment("Potash indicative vein size (Set to 0 to disable of this ore)")
+    	@Config.Comment("Potash indicative vein size (Set to 0 to disable this ore)")
     	@Config.RangeInt(min = 0)
     	public int veinSize = 7;
     }
@@ -255,7 +260,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 100;
 
-        @Config.Comment("Phosphorite indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Phosphorite indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
@@ -269,7 +274,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 15;
 
-        @Config.Comment("Sulfur indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Sulfur indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -283,7 +288,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 80;
 
-        @Config.Comment("Platinum indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Platinum indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 4;
     }
@@ -297,7 +302,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Silver indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Silver indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 8;
     }
@@ -311,7 +316,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 64;
 
-        @Config.Comment("Astral Silver indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Astral Silver indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -325,7 +330,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Orichalcum indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Orichalcum indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -339,7 +344,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Zinc indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Zinc indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 8;
     }
@@ -353,7 +358,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Mithril indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Mithril indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
@@ -367,7 +372,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 64;
 
-        @Config.Comment("Carmot indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Carmot indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -381,7 +386,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 64;
 
-        @Config.Comment("Atlarus indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Atlarus indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 3;
     }
@@ -395,7 +400,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 30;
 
-        @Config.Comment("Adamantine indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Adamantine indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 3;
     }
@@ -409,7 +414,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 40;
 
-        @Config.Comment("Rubracium indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Rubracium indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -423,7 +428,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 72;
 
-        @Config.Comment("Infuscolium indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Infuscolium indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 7;
     }
@@ -437,7 +442,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Ourseclase indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Ourseclase indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
@@ -451,7 +456,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 0, max = 255)
         public int maxY = 128;
 
-        @Config.Comment("Manganese indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Manganese indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 9;
     }
@@ -465,7 +470,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 2, max = 255)
         public int maxY = 64;
 
-        @Config.Comment("Prometheum indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Prometheum indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
@@ -479,7 +484,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 2, max = 255)
         public int maxY = 48;
 
-        @Config.Comment("Tin indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Tin indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 10;
     }
@@ -493,7 +498,7 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 2, max = 255)
         public int maxY = 30;
 
-        @Config.Comment("Deep Iron indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Deep Iron indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 5;
     }
@@ -507,9 +512,37 @@ public class OreGenerationConfig {
         @Config.RangeInt(min = 2, max = 255)
         public int maxY = 120;
 
-        @Config.Comment("Copper indicative vein size (Set to 0 to disable of this ore)")
+        @Config.Comment("Copper indicative vein size (Set to 0 to disable this ore)")
         @Config.RangeInt(min = 0)
         public int veinSize = 8;
+    }
+
+    public static class CategoryLutetium{
+        @Config.Comment("Lutetium minimum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int minY = 20;
+
+        @Config.Comment("Lutetium maximum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int maxY = 50;
+
+        @Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
+        @Config.RangeInt(min = 0)
+        public int veinSize = 4;
+    }
+
+    public static class CategoryOsmium{
+        @Config.Comment("Osmium minimum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int minY = 10;
+
+        @Config.Comment("Osmium maximum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int maxY = 50;
+
+        @Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
+        @Config.RangeInt(min = 0)
+        public int veinSize = 6;
     }
     
     public static class SubCategoryRarity {
