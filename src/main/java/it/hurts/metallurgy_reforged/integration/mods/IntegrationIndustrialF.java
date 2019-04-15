@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 public class IntegrationIndustrialF {
 
     public static void preInit(){
-        LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "test_drill.json"));
+        LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "ore.json"));
     }
 
 }
