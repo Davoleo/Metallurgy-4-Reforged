@@ -33,14 +33,16 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
-		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
+		if(!ModChecker.isBWMLoaded)
+			MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(ArmorConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 
-		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton) {
+		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+		{
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyAmordrine);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyKalendrite);

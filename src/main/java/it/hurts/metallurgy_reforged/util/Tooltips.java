@@ -35,6 +35,7 @@ public class Tooltips {
 
     //Other
     public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");
+    public static final String GAUNTLET_EFFECT_DISABLED = Utils.localize("tooltip.metallurgy.gauntlet_effect_disabled");
 
     //Pickaxes
     public static final String DEEP_IRON_PICKAXE_EFFECT = Utils.localize("tooltip.metallurgy.deep_iron_pickaxe_effect");

@@ -883,6 +883,7 @@ tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
+tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords

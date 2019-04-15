@@ -17,10 +17,12 @@ public class ModChecker {
 
 	public static boolean isTConLoaded;
 	public static boolean isConarmLoaded;
+	public static boolean isBWMLoaded;
 	
 	static{
 		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
 		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
+		ModChecker.isBWMLoaded = Loader.isModLoaded("betterwithmods");
 	}
 	
 }
