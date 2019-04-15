@@ -71,6 +71,8 @@ public class ToolConfig {
 
 	public static boolean[] kalendrite = { true,true,true,true,true };
 
+	public static boolean[] krik = {true, true, true, true, true};
+
 	public static boolean[] midasium = { true,true,true,true,true };
 
 	public static boolean[] mithril = { true,true,true,true,true };
@@ -100,8 +102,6 @@ public class ToolConfig {
 	public static boolean[] vulcanite = { true,true,true,true,true };
 
 	public static boolean[] vyroxeres = { true,true,true,true,true };
-	
-	public static boolean[] krik = { true,true,true,true,true };
 
 	public static boolean[][] allTools = {
 			adamantine,
@@ -126,6 +126,7 @@ public class ToolConfig {
 			ignatius,
 			inolashite,
 			kalendrite,
+			krik,
 			midasium,
 			mithril,
 			orichalcum,
@@ -140,8 +141,7 @@ public class ToolConfig {
 			steel,
 			tartarite,
 			vulcanite,
-			vyroxeres,
-			krik
+			vyroxeres
 	};
 	
 	public static void fillMap() {

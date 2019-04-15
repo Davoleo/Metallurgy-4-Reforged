@@ -193,7 +193,7 @@ public class ArmorEffectHandler {
 		}
 		
 //		Krik effect
-		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots})){
+		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}) && ArmorEffectsConfig.krikArmorEffect){
 			int counter = 0;
 			for(int i = 9; i < 36; i++)
 			{

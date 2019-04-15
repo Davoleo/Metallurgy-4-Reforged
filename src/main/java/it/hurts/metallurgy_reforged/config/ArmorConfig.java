@@ -52,9 +52,12 @@ public class ArmorConfig {
 	public static boolean ignatius = true;
 	public static boolean inolashite = true;
 	public static boolean kalendrite = true;
+	public static boolean krik = true;
+	public static boolean lutetium = true;
 	public static boolean midasium = true;
 	public static boolean mithril = true;
 	public static boolean orichalcum = true;
+	public static boolean osmium = true;
 	public static boolean oureclase = true;
 	public static boolean platinum = true;
 	public static boolean prometheum = true;
@@ -67,9 +70,6 @@ public class ArmorConfig {
 	public static boolean tartarite = true;
 	public static boolean vulcanite = true;
 	public static boolean vyroxeres = true;
-	public static boolean krik = true;
-	public static boolean lutetium = true;
-	public static boolean osmium = true;
 
 	public static boolean[] allArmor = {
 			adamantine,
@@ -94,9 +94,12 @@ public class ArmorConfig {
 			ignatius,
 			inolashite,
 			kalendrite,
+			krik,
+			lutetium,
 			midasium,
 			mithril,
 			orichalcum,
+			osmium,
 			oureclase,
 			platinum,
 			prometheum,
@@ -108,10 +111,7 @@ public class ArmorConfig {
 			steel,
 			tartarite,
 			vulcanite,
-			vyroxeres,
-			krik,
-			lutetium,
-			osmium
+			vyroxeres
 	};
 
 	public static void readConfig(Configuration cfg) {
