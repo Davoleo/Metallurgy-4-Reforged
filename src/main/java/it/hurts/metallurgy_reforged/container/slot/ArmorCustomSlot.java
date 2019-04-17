@@ -53,12 +53,7 @@ public class ArmorCustomSlot extends Slot{
 	 * Return whether this slot's stack can be taken from this slot.
 	 */
 	public boolean canTakeStack(EntityPlayer playerIn){
-
-		if(!this.locked) {
-			ItemStack itemstack = this.getStack();
-			return !itemstack.isEmpty() && !playerIn.isCreative() && EnchantmentHelper.hasBindingCurse(itemstack) ? false : super.canTakeStack(playerIn);
-		}else
-			return false;
+		return false;
 	}
 
 	public ItemStack decrStackSize(int amount) {

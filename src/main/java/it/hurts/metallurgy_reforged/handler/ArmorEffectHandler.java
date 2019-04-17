@@ -106,35 +106,34 @@ public class ArmorEffectHandler {
 			}
 
 //			The player can no longer swim upwards
-			pl.motionY = -0.3D;
+			pl.motionY = -0.6D;
 
 //			When the player is in the water he can step one block height like a horse
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
 //		turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
 		}else {
-			if(pl.stepHeight != 0.6F)
-				pl.stepHeight = 0.6F;
-
-			if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
-			{ 
-				//		    		 Insert in c the container "vanilla"
-				ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-				List<Slot> slots = c.inventorySlots;
-				for(int i = 5;i < 9; i++)
-				{
-					pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-				}
-			}
-
 			if(pl.getTags().contains("deep_iron_effect")) {
 				pl.removeTag("deep_iron_effect");
+				if(pl.stepHeight != 0.6F)
+					pl.stepHeight = 0.6F;
 
-				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11)
+				if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+				{
+//		    		Insert in c the container "vanilla"
+					ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+					List<Slot> slots = c.inventorySlots;
+					for(int i = 5;i < 9; i++)
+					{
+						pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					}
+				}
+
+				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11*20))
 					pl.removePotionEffect(MobEffects.NIGHT_VISION);
-				if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= 11)
+				if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= (11*20))
 					pl.removePotionEffect(MobEffects.WATER_BREATHING);
-				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1.0);
+				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(EntityLivingBase.SWIM_SPEED.getDefaultValue());
 			}
 
 
@@ -195,27 +194,40 @@ public class ArmorEffectHandler {
 //		Krik effect
 		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}) && ArmorEffectsConfig.krikArmorEffect){
 			int counter = 0;
-			for(int i = 9; i < 36; i++)
-			{
+
+			for(int i = 5;i < 9; i++) {
+				if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
+//					Inseriamo nello slot dell'inventario in posizione i un custom slot
+					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
+				}
+			}
+
+			for(int i = 9; i < 36; i++) {
 				KrikEffectHandler k = new KrikEffectHandler(event.player, i);
-				
+
 				if(k.getHasStack())
 					counter++;
 			}
 			
 //			We need to save the Y of player and check with the couter and Y + 1
 			
-			if( event.player.lastTickPosY < 255 - (counter * 10)) {
+			if( event.player.lastTickPosY < 255 - (counter * 10))
 				event.player.motionY = 0.1;
-				System.out.println("Sali  " + (255 - (counter * 10)));
-				System.out.println(event.player.posY);
-			}
 			else
-				if(!event.player.onGround && event.player.lastTickPosY >= 255 - (counter * 10) - 1 && event.player.lastTickPosY < 255 - (counter * 10) + 1) {
-					System.out.println("Fermo  " + (255 - (counter * 10)));
+				if(!event.player.onGround && event.player.lastTickPosY >= 255 - (counter * 10) - 1 && event.player.lastTickPosY < 255 - (counter * 10) + 1)
 					event.player.motionY = 0;
-					System.out.println(event.player.posY);
+			if(pl.onGround){
+				if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+				{
+//		    		Insert in c the container "vanilla"
+					ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+					List<Slot> slots = c.inventorySlots;
+					for(int i = 5;i < 9; i++)
+					{
+						pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					}
 				}
+			}
 		}
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
@@ -224,7 +236,7 @@ public class ArmorEffectHandler {
 			event.player.addTag("platinum_effect");
 		}else if(event.player.getTags().contains("platinum_effect")) {
 			event.player.removeTag("platinum_effect");
-			if(event.player.isPotionActive(MobEffects.NIGHT_VISION) && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11) {
+			if(event.player.isPotionActive(MobEffects.NIGHT_VISION) && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11*20)) {
 				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
 			}
 		}
