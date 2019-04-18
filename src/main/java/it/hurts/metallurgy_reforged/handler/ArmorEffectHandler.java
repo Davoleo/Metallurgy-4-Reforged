@@ -48,6 +48,7 @@ import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -240,7 +241,6 @@ public class ArmorEffectHandler {
 				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
 			}
 		}
-		
 
 //		Carmot ArmorEffectHandler (Haste I)
 		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.carmot_helmet,ModArmors.carmot_chest,ModArmors.carmot_legs,ModArmors.carmot_boots}) && ArmorEffectsConfig.carmotArmorEffect)
@@ -378,6 +378,21 @@ public class ArmorEffectHandler {
 			if(EventUtils.isPlayerWearingArmor(player,
 					new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
 				event.setCanceled(true); //Nope, i'm sorry, next time test
+		}
+	}
+
+//	Potremmo incrementare la quantità di knockback da rimuovere in base a quanti pezzi di armatura indossa ( i.g. 1 pezzo '/0.5' 2 pezzi '/1.0' )
+	@SubscribeEvent
+	public static void reduceKnockback(LivingKnockBackEvent e){
+		if (e.getEntity() instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) e.getEntity();
+
+			if(EventUtils.isPlayerWearingArmor(player,
+					new Item[] {ModArmors.osmium_helmet,ModArmors.osmium_chest,ModArmors.osmium_legs,ModArmors.osmium_boots}))
+				e.setStrength((float)(e.getOriginalStrength() / 2.5));
+
+			System.out.println("Attuale" + e.getStrength());
+			System.out.println("Iniziale" + e.getOriginalStrength());
 		}
 	}
 
