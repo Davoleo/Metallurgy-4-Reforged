@@ -274,14 +274,14 @@ modifier.strongly_armor.name=Strength
 modifier.volcano_armor.name=Volcanic
 
 modifier.blindness_armor.desc=Makes you immune to blindness
-modifier.cat_eyes_armor.desc=
+modifier.cat_eyes_armor.desc=Allows you to see in the dark
 modifier.deeply_armor.desc=It makes it easier for you to do things underwater
-modifier.foodly_armor.desc=Replenishes your food bar whenever you have enough XP
-modifier.jump_master_armor.desc=Makes you jump higher
-modifier.prometheum_armor.desc=Makes you immune to poison damage
+modifier.foodly_armor.desc=Replenishes your food bar if you have enough experience.
+modifier.jump_master_armor.desc=Increases jump height
+modifier.prometheum_armor.desc=Grants immunity to poison.
 modifier.quickly_armor.desc=Stretching a bow becomes faster
-modifier.resistance_armor.desc=
-modifier.strongly_armor.desc=Makes the player stronger (can be level I or level II)
+modifier.resistance_armor.desc=Reduces incoming damage even further than you'd expect.
+modifier.strongly_armor.desc=Increases dealt damage (can be level I or level II)
 modifier.volcano_armor.desc=It makes you immune to fire
 
 # Creative Tab
@@ -848,17 +848,17 @@ tile.metallurgy.alloyer.name=§eAlloyer
 
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscure
-modifier.obscure_trait.desc=§rBlinds your enemy for some time
+modifier.obscure_trait.desc=Blinds your enemy for some time
 modifier.vulcan_trait.name=Volcanic
-modifier.vulcan_trait.desc=§rSets your enemy on fire for a certain amount of time (depending on the level of the trait)
+modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time (depending on the level of the trait)
 modifier.duplication_trait.name=Duplication
-modifier.duplication_trait.desc=§rHas a chance to duplicate drops
+modifier.duplication_trait.desc=Has a chance to duplicate drops
 modifier.life_steal_trait.name=Life Steal
-modifier.life_steal_trait.desc=§rHas a "luck" based chance to heal by 10% of the dealt damage
+modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 10% of the dealt damage
 modifier.wither_trait.name=Wither
-modifier.wither_trait.desc=§rApplies wither effect on your enemy
+modifier.wither_trait.desc=Applies wither effect on your enemy
 modifier.king_dice_trait.name=King Dice
-modifier.king_dice_trait.desc=§rApplies a random effect on your enemy
+modifier.king_dice_trait.desc=Applies a random effect on your enemy
 
 #Tooltips
 #Armor Tooltips
