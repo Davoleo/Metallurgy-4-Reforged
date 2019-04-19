@@ -119,3 +119,59 @@
 0.1.1
 - Fixed Alloyer crash when opening the GUI
 - Fixed wrong config name and comment for warning message
+
+0.2.0
+Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
+
+- Fixed Midasium Leggings & Brass Shovel Textures
+- Added Fluid Tar
+- Tar lakes world generation
+- Removed tinkers integration materials (lemurite, meutoite)
+- Removed tinkers integration head material (rubracium)
+- Added Fluid Tar Bucket
+- Reduced Atlarus and Adamantine vein size
+- Renamed “Random Effects” trait to “King Dice”
+- Added Custom fog for Fluid Tar
+- In-world solidification recipe (Fluid Tar -> Tar Ore)
+- Reworked custom drops system
+- Added Tar to furnace/machines fuels
+- Re-Balanced road recipes (to match the bitumen rework)
+- Added in-game tooltips & JEI information for tar crafting
+- Fixed some Typos
+- Edited many translation keys (Added the modid)
+- Implemented Nuggets + Nuggets Textures (by Matpac)
+- Added Nugget2Ingot Recipes and viceversa
+- Fixed Platinum Helmet effect tooltip locale key
+- Rephrased Quicksilver tooltip to adapt to the new Quicksilver effect
+- Partially fixed CRAZY midasium duplication effect
+- Lutetium & Osmium Armor & Effect (Knockback resistance)
+- Implemented the brand new Krik Armor
+- Added new special effect to Krik Armor ()
+- Removed curse of binding from Platinum Helmet
+- Re-Balanced Tinker tool stats
+- Fixed ores not being generated in Aroma1997 Dimension
+- Fixed Missing tinker tooltips
+- Rephrased Tinker tooltips descriptions
+- Fixed Traits being transposed from tiCon to conArm and viceversa
+- Rubracium Gauntlet effect now gets force-disabled when Better With Mods is loaded
+- Fixed a crash concerning conArm blindness and prometheum traits
+
+
+- Anticipated OreDict initialization (from preInit to “right after items are loaded”)
+	- This fixes some integration issues with mods like JAOPCA or Mekanism
+
+- Construct’s Armory Integration
+	- Armor parts
+	- Armor Traits
+		- “Quickly” Trait
+		- “Strongly” Trait
+		- “Resistance” Trait
+		- “Jump Master” Trait
+		- “Cat Eyes” Trait
+		- “Deeply” Trait
+		- “Foodly” Trait
+		- “Prometheum” Trait
+		- “Volcano” Trait
+		- “Strongly II” Trait
+		- “Blindness” Trait
+	- Config entry to disable Integration
