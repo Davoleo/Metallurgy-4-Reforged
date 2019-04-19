@@ -306,6 +306,10 @@ public class ModArmors {
                     if (ArmorEffectsConfig.kaledriteArmorEffect)
                         return true;
                     break;
+                case "krik":
+                    if (ArmorEffectsConfig.kaledriteArmorEffect)
+                        return true;
+                    break;
                 case "mithril":
                     if (ArmorEffectsConfig.mithrilArmorEffect)
                         return true;
