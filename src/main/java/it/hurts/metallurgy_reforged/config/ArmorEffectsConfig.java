@@ -49,9 +49,15 @@ public class ArmorEffectsConfig {
     @Config.Name("Krik Armor Effect")
     @Config.Comment("Full Armor makes you float around at a certain height that depends from how full the inventory is")
     public static boolean krikArmorEffect = true;
+    @Config.Name("Lutetium Armor Effect")
+    @Config.Comment("Knockback reduction depending on how much armor is worn (LV 2)")
+    public static boolean lutetiumArmorEffect = true;
     @Config.Name("Mithril Armor Effect")
     @Config.Comment("Makes Entities around you glow")
     public static boolean mithrilArmorEffect = true;
+    @Config.Name("Osmium Armor Effect")
+    @Config.Comment("Knockback reduction depending on how much armor is worn (LV 1)")
+    public static boolean osmiumArmorEffect = true;
     @Config.Name("Platinum Armor Effect")
     @Config.Comment("The helmet gives you night vision")
     public static boolean platinumArmorEffect = true;

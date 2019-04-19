@@ -63,9 +63,12 @@ public class Utils {
 			"ignatius",
 			"inolashite",
 			"kalendrite",
+			"krik",
+			"lutetium",
 			"midasium",
 			"mithril",
 			"orichalcum",
+			"osmium",
 			"oureclase",
 			"platinum",
 			"prometheum",
@@ -78,9 +81,6 @@ public class Utils {
 			"tartarite",
 			"vulcanite",
 			"vyroxeres",
-			"krik",
-			"osmium",
-			"lutetium"
 		};
 
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)

@@ -307,13 +307,19 @@ public class ModArmors {
                         return true;
                     break;
                 case "krik":
-                    if (ArmorEffectsConfig.kaledriteArmorEffect)
+                    if (ArmorEffectsConfig.krikArmorEffect)
                         return true;
                     break;
+                case "lutetium":
+                    if (ArmorEffectsConfig.lutetiumArmorEffect)
+                        return true;
                 case "mithril":
                     if (ArmorEffectsConfig.mithrilArmorEffect)
                         return true;
                     break;
+                case "osmium":
+                    if (ArmorEffectsConfig.osmiumArmorEffect)
+                        return true;
                 case "platinum":
                     if (ArmorEffectsConfig.platinumArmorEffect)
                         return true;

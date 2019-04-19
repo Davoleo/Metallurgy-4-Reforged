@@ -16,6 +16,7 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 @Config.LangKey("config.metallurgy.category.general")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {
@@ -47,6 +48,10 @@ public class GeneralConfig {
 	@Config.Name("Disable the constructs' armory integration")
 	@Config.Comment("Sets to true for disable")
 	public static boolean armoryIntegraton = false;
+
+	@Config.Name("Enable Duplication Trait")
+	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
+	public static boolean enableDuplicationTrait = true;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {

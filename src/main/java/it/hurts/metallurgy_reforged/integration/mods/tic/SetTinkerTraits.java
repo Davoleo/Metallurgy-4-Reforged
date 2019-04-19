@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
@@ -28,7 +29,9 @@ public class SetTinkerTraits {
 		
 			case "midasium" : {
 				addToEveryPart(material, writable2);
-				addToEveryPart(material, MetallurgyTinkerTraits.duplicaitonTrait);
+
+				if (GeneralConfig.enableDuplicationTrait)
+					addToEveryPart(material, MetallurgyTinkerTraits.duplicaitonTrait);
 			}
 			break;
 			
