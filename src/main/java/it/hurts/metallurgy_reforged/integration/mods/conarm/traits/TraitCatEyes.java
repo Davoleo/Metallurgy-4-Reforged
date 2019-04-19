@@ -1,3 +1,14 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TraitCatEyes
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.integration.mods.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
@@ -9,8 +20,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class TraitCatEyes extends AbstractArmorTrait{
-	
-	private boolean flag = false;
 
 	public TraitCatEyes() {
 		super("cat_eyes", TextFormatting.GREEN);
@@ -23,10 +32,9 @@ public class TraitCatEyes extends AbstractArmorTrait{
 			event.player.addTag("cat_eyes");
 		}
 		
-		if(flag && event.player.isPotionActive(MobEffects.NIGHT_VISION) && !MetallurgyConArmorStats.isThatArmorTrait(event.player, "cat_eyes")) {
-			if(event.player.getTags().contains("cat_eyes")) {
-				event.player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
-				event.player.removeTag("cat_eyes");
+		if(event.player.isPotionActive(MobEffects.NIGHT_VISION) && !MetallurgyConArmorStats.isThatArmorTrait(event.player, "cat_eyes")) {
+			if(event.player.getTags().contains("cat_eyes") && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11*20)) {
+				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
 			}
 		}
 			

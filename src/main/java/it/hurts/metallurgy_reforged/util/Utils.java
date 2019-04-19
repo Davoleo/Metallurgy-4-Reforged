@@ -78,7 +78,9 @@ public class Utils {
 			"tartarite",
 			"vulcanite",
 			"vyroxeres",
-			"krik"
+			"krik",
+			"osmium",
+			"lutetium"
 		};
 
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)

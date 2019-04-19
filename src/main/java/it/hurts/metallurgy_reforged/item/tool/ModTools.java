@@ -161,6 +161,12 @@ public class ModTools {
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_shovel");
     public static ItemSwordBase kalendrite_sword = new ItemSwordBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_sword").setTooltip(Tooltips.KALENDRITE_SWORD_EFFECT);
 
+    public static ItemAxeBase krik_axe = new ItemAxeBase(ModMetals.KRIK.getToolMaterial(), "krik_axe");
+    public static ItemHoeBase krik_hoe = new ItemHoeBase(ModMetals.KRIK.getToolMaterial(), "krik_hoe");
+    public static ItemPickaxeBase krik_pickaxe = new ItemPickaxeBase(ModMetals.KRIK.getToolMaterial(), "krik_pickaxe");
+    public static ItemShovelBase krik_shovel = new ItemShovelBase(ModMetals.KRIK.getToolMaterial(), "krik_shovel");
+    public static ItemSwordBase krik_sword = new ItemSwordBase(ModMetals.KRIK.getToolMaterial(), "krik_sword");
+
     public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_hoe");
     public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);

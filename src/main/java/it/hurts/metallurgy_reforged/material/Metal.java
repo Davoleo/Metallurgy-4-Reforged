@@ -49,6 +49,7 @@ public class Metal {
         if (toolMat == null) {
             ToolStats tStats = stats.getToolStats();
             if(tStats == null) {
+                throw new UnsupportedOperationException("No Tool Stats Loaded");
             }
             this.toolMat = EnumHelper.addToolMaterial(stats.getName().toUpperCase(), tStats.getHarvestLevel(), tStats.getMaxUses(), tStats.getEfficiency(), tStats.getDamage(), tStats.getToolMagic());
         }
@@ -59,7 +60,7 @@ public class Metal {
         if (armorMat == null) {
             ArmorStats aStats = stats.getArmorStats();
             if(aStats == null) {
-                throw new UnsupportedOperationException("No ArmorEffectHandler Stats Loaded");
+                throw new UnsupportedOperationException("No Armor Stats Loaded");
             }
             this.armorMat = EnumHelper.addArmorMaterial(stats.getName().toUpperCase(), Metallurgy.MODID + ":" + stats.getName(), aStats.getDurability(), aStats.getDamageReduction(), aStats.getArmorMagic(), aStats.getEquipSound(), aStats.getToughness());
         }

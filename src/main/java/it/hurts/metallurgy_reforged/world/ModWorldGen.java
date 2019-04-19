@@ -59,22 +59,13 @@ public class ModWorldGen implements IWorldGenerator {
     {
         if (!newGen && !OreGenerationConfig.retrogen)
             return;
-        switch (world.provider.getDimension()){
-            case -1:
-                generateNether(random, chunkX, chunkZ, world);
-                break;
-
-            case 0:
-                generateOverworld(random, chunkX, chunkZ, world);
-                break;
-
-            case 1:
-                generateEnd(random, chunkX, chunkZ, world);
-                break;
-            default:
-                break;
-        }
-
+        if(world.provider.isSurfaceWorld())
+        	 generateOverworld(random, chunkX, chunkZ, world);
+        else
+        	if(world.provider.isNether())
+        		generateNether(random, chunkX, chunkZ, world);
+        	else
+        		generateEnd(random, chunkX, chunkZ, world);
         if (!newGen) {
             world.getChunk(chunkX, chunkZ).markDirty();
         }
@@ -100,6 +91,8 @@ public class ModWorldGen implements IWorldGenerator {
 		generateOre(ModMetals.ASTRAL_SILVER.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.astralSilver.veinSize, RARE, OreGenerationConfig.astralSilver.minY, OreGenerationConfig.astralSilver.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModMetals.SILVER.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.silver.veinSize, UNCOMMON, OreGenerationConfig.silver.minY, OreGenerationConfig.silver.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModMetals.PLATINUM.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.platinum.veinSize, RARE, OreGenerationConfig.platinum.minY, OreGenerationConfig.platinum.maxY, DEFAULT_WORLD, (Biome) null);
+        generateOre(ModMetals.LUTETIUM.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.lutetium.veinSize, RARE, OreGenerationConfig.lutetium.minY, OreGenerationConfig.lutetium.maxY, DEFAULT_WORLD, (Biome) null);
+        generateOre(ModMetals.OSMIUM.getOre(), world, random, chunkX, chunkZ, OreGenerationConfig.osmium.veinSize, UNCOMMON, OreGenerationConfig.osmium.minY, OreGenerationConfig.osmium.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ,  OreGenerationConfig.sulfur.veinSize, UNCOMMON, OreGenerationConfig.sulfur.minY, OreGenerationConfig.sulfur.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ, OreGenerationConfig.phosphorite.veinSize, UNCOMMON, OreGenerationConfig.phosphorite.minY, OreGenerationConfig.phosphorite.maxY, DEFAULT_WORLD, (Biome) null);
 		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ, OreGenerationConfig.potash.veinSize, COMMON, OreGenerationConfig.potash.minY, OreGenerationConfig.potash.maxY, DEFAULT_WORLD, (Biome) null);

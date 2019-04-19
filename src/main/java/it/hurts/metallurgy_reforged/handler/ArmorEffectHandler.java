@@ -48,11 +48,11 @@ import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 
 import java.util.Iterator;
 import java.util.List;
@@ -107,35 +107,34 @@ public class ArmorEffectHandler {
 			}
 
 //			The player can no longer swim upwards
-			pl.motionY = -0.3D;
+			pl.motionY = -0.6D;
 
 //			When the player is in the water he can step one block height like a horse
 			if(pl.stepHeight != 1.0F)
 				pl.stepHeight = 1.0F;
 //		turns the stepHeight to normal if the player isn't wearing the deep iron armor or if he is not in water
 		}else {
-			if(pl.stepHeight != 0.6F)
-				pl.stepHeight = 0.6F;
-
-			if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
-			{ 
-				//		    		 Insert in c the container "vanilla"
-				ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-				List<Slot> slots = c.inventorySlots;
-				for(int i = 5;i < 9; i++)
-				{
-					pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-				}
-			}
-
 			if(pl.getTags().contains("deep_iron_effect")) {
 				pl.removeTag("deep_iron_effect");
+				if(pl.stepHeight != 0.6F)
+					pl.stepHeight = 0.6F;
 
-				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= 11)
+				if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+				{
+//		    		Insert in c the container "vanilla"
+					ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+					List<Slot> slots = c.inventorySlots;
+					for(int i = 5;i < 9; i++)
+					{
+						pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					}
+				}
+
+				if(pl.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11*20))
 					pl.removePotionEffect(MobEffects.NIGHT_VISION);
-				if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= 11)
+				if(pl.getActivePotionEffect(MobEffects.WATER_BREATHING).getDuration() <= (11*20))
 					pl.removePotionEffect(MobEffects.WATER_BREATHING);
-				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1.0);
+				pl.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(EntityLivingBase.SWIM_SPEED.getDefaultValue());
 			}
 
 
@@ -194,43 +193,54 @@ public class ArmorEffectHandler {
 		}
 		
 //		Krik effect
-		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots})){
+		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}) && ArmorEffectsConfig.krikArmorEffect){
 			int counter = 0;
-			for(int i = 9; i < 36; i++)
-			{
+
+			for(int i = 5;i < 9; i++) {
+				if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
+//					Inseriamo nello slot dell'inventario in posizione i un custom slot
+					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
+				}
+			}
+
+			for(int i = 9; i < 36; i++) {
 				KrikEffectHandler k = new KrikEffectHandler(event.player, i);
-				
+
 				if(k.getHasStack())
 					counter++;
 			}
-
-//			TODO add jump (when player is on the ground)
-
-//			if (Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-//			{
-//				if (event.player.posY < (255 - (counter * 10)))
-//					event.player.motionY = 0.15;
-//				else
-//					event.player.motionY = -0.2;
-//			}
-
-			if(( event.player.posY < (255 - (counter * 10))))
-								event.player.motionY = 0.1;
+			
+//			We need to save the Y of player and check with the couter and Y + 1
+			
+			if( event.player.lastTickPosY < 255 - (counter * 10))
+				event.player.motionY = 0.1;
 			else
-				if((event.player.posY > (255 - (counter * 10)) + 1))
-					event.player.motionY = -0.2;
-				else
-					if(!event.player.onGround)
-						event.player.motionY = 0;
-		//	System.out.println(event.player.motionY);
+				if(!event.player.onGround && event.player.lastTickPosY >= 255 - (counter * 10) - 1 && event.player.lastTickPosY < 255 - (counter * 10) + 1)
+					event.player.motionY = 0;
+			if(pl.onGround){
+				if(pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+				{
+//		    		Insert in c the container "vanilla"
+					ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+					List<Slot> slots = c.inventorySlots;
+					for(int i = 5;i < 9; i++)
+					{
+						pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+					}
+				}
+			}
 		}
-
-
 		
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
-		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect)
+		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3,ModArmors.platinum_helmet) && ArmorEffectsConfig.platinumArmorEffect) {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
-		
+			event.player.addTag("platinum_effect");
+		}else if(event.player.getTags().contains("platinum_effect")) {
+			event.player.removeTag("platinum_effect");
+			if(event.player.isPotionActive(MobEffects.NIGHT_VISION) && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11*20)) {
+				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
+			}
+		}
 
 //		Carmot ArmorEffectHandler (Haste I)
 		if(EventUtils.isPlayerWearingArmor(event.player, new Item[] {ModArmors.carmot_helmet,ModArmors.carmot_chest,ModArmors.carmot_legs,ModArmors.carmot_boots}) && ArmorEffectsConfig.carmotArmorEffect)
@@ -279,7 +289,8 @@ public class ArmorEffectHandler {
 			//removes the modifier if player doesn't held the sword
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_ARMOR_MODIFIER_UUID);
 		}
-	}
+		}
+
 	
 //	Increase the speed of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
 	@SubscribeEvent
@@ -366,7 +377,22 @@ public class ArmorEffectHandler {
 
 			if(EventUtils.isPlayerWearingArmor(player,
 					new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
-				event.setCanceled(true); //Sets canceled for ALL players if only one player is wearing the item. See my point?
+				event.setCanceled(true); //Nope, i'm sorry, next time test
+		}
+	}
+
+//	Potremmo incrementare la quantità di knockback da rimuovere in base a quanti pezzi di armatura indossa ( i.g. 1 pezzo '/0.5' 2 pezzi '/1.0' )
+	@SubscribeEvent
+	public static void reduceKnockback(LivingKnockBackEvent e){
+		if (e.getEntity() instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) e.getEntity();
+
+			if(EventUtils.isPlayerWearingArmor(player,
+					new Item[] {ModArmors.osmium_helmet,ModArmors.osmium_chest,ModArmors.osmium_legs,ModArmors.osmium_boots}))
+				e.setStrength((float)(e.getOriginalStrength() / 2.5));
+
+			System.out.println("Attuale" + e.getStrength());
+			System.out.println("Iniziale" + e.getOriginalStrength());
 		}
 	}
 
