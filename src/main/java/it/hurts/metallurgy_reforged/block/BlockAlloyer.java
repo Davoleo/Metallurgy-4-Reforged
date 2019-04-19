@@ -140,7 +140,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
         return true;
     }
-    
+
     //Called after the block is set in the Chunk data, but before the Tile Entity is set
     //Adjusts the rotation at which the block is placed, based on the blocks around the Alloyer and the angle of the player while placing the block
     @Override
