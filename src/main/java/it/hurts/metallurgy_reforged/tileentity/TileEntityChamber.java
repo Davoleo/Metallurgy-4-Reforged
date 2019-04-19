@@ -174,7 +174,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public void setField(int id, int value) 
 	{
-
+       //We don't need it (For now)
 	}
 
 	@Override

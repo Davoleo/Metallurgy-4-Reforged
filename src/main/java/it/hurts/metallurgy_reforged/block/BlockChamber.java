@@ -180,7 +180,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-
+      //The Block mustn't drop with this method
 	}
 
 	@SideOnly(Side.CLIENT)
