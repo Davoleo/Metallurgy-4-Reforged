@@ -30,7 +30,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -172,167 +171,168 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 					}
 				}
 			}			
+		}
+
+
+
+		super.breakBlock(world, pos, state);
 	}
 
-
-
-	super.breakBlock(world, pos, state);
-}
-
-public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
-{
-}
-
-@SideOnly(Side.CLIENT)
-public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
-{
-	TileEntity tileEntity = worldIn.getTileEntity(pos);
-	if(tileEntity instanceof TileEntityChamber)
+	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
 
-		TileEntityChamber chamber = (TileEntityChamber) tileEntity;
+	}
 
-		if(chamber.potionEffect != null && chamber.fuelTime > 0)
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+	{
+		TileEntity tileEntity = worldIn.getTileEntity(pos);
+		if(tileEntity instanceof TileEntityChamber)
 		{
-			for(EnumFacing facing : EnumFacing.HORIZONTALS)
+
+			TileEntityChamber chamber = (TileEntityChamber) tileEntity;
+
+			if(chamber.potionEffect != null && chamber.fuelTime > 0)
 			{
-				for(int i = 0;i < 15;i++)
+				for(EnumFacing facing : EnumFacing.HORIZONTALS)
 				{
-					double d0 = (double)((float)pos.getX() + 0.3F + rand.nextFloat() * 0.8F);
-					double d1 = (double)((float)pos.getY() + 0.1F + rand.nextFloat() * 0.3F);
-					double d2 = (double)((float)pos.getZ() + 0.3F + rand.nextFloat() * 0.8F);
+					for(int i = 0;i < 15;i++)
+					{
+						double d0 = (double)((float)pos.getX() + 0.3F + rand.nextFloat() * 0.8F);
+						double d1 = (double)((float)pos.getY() + 0.1F + rand.nextFloat() * 0.3F);
+						double d2 = (double)((float)pos.getZ() + 0.3F + rand.nextFloat() * 0.8F);
 
-					List<PotionEffect> effect = Lists.newArrayList();
-					effect.add(chamber.potionEffect);
+						List<PotionEffect> effect = Lists.newArrayList();
+						effect.add(chamber.potionEffect);
 
-					int c = PotionUtils.getPotionColorFromEffectList(effect);
+						int c = PotionUtils.getPotionColorFromEffectList(effect);
 
-					double c0 = (double)(c >> 16 & 255) / 255.0D;
-					double c1 = (double)(c >> 8 & 255) / 255.0D;
-					double c2 = (double)(c >> 0 & 255) / 255.0D;
+						double c0 = (double)(c >> 16 & 255) / 255.0D;
+						double c1 = (double)(c >> 8 & 255) / 255.0D;
+						double c2 = (double)(c >> 0 & 255) / 255.0D;
 
-					worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0,c1,c2);
+						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0,c1,c2);
+					}
 				}
 			}
 		}
+
+
 	}
 
-
-}
-
-//Gets the state from how much the block is rotated
-//Calling is deprecated / Overriding is fine
-@SuppressWarnings("deprecation")
-@Nonnull
-@Override
-public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot)
-{
-	return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
-}
-
-//Gets the state from how much the block is mirrored
-//Calling is deprecated / Overriding is fine
-@SuppressWarnings("deprecation")
-@Nonnull
-@Override
-public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn)
-{
-	return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
-}
-
-//Creates a new BlockStateContainer instance with the Properties of the block
-@Nonnull
-@Override
-protected BlockStateContainer createBlockState()
-{
-	return new BlockStateContainer(this, ACTIVE, FACING);
-}
-
-//TODO Remove for 1.13.2
-//Gets the state from the metadata value (will probably be gone for 1.13.2)
-@Nonnull
-@Override
-public IBlockState getStateFromMeta(int meta)
-{
-	return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(ACTIVE, (meta & 4) != 0);
-}
-
-//Gets the metadata value from the given blockState
-@Override
-public int getMetaFromState(IBlockState state)
-{
-	int i = 0;
-	i = i | getMetaForFacing(state.getValue(FACING));
-
-	if ((state.getValue(ACTIVE)))
+	//Gets the state from how much the block is rotated
+	//Calling is deprecated / Overriding is fine
+	@SuppressWarnings("deprecation")
+	@Nonnull
+	@Override
+	public IBlockState withRotation(@Nonnull IBlockState state, Rotation rot)
 	{
-		i |= 4;
+		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
-	return i;
-}
-
-private static EnumFacing getFacing(int meta)
-{
-	switch (meta & 3)
+	//Gets the state from how much the block is mirrored
+	//Calling is deprecated / Overriding is fine
+	@SuppressWarnings("deprecation")
+	@Nonnull
+	@Override
+	public IBlockState withMirror(@Nonnull IBlockState state, Mirror mirrorIn)
 	{
-	case 0:
-		return EnumFacing.NORTH;
-	case 1:
-		return EnumFacing.SOUTH;
-	case 2:
-		return EnumFacing.WEST;
-	case 3:
-	default:
-		return EnumFacing.EAST;
+		return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
 	}
-}
 
-//gets the metadata value for the facing
-private static int getMetaForFacing(EnumFacing facing)
-{
-	switch (facing)
+	//Creates a new BlockStateContainer instance with the Properties of the block
+	@Nonnull
+	@Override
+	protected BlockStateContainer createBlockState()
 	{
-	case NORTH:
-		return 0;
-	case SOUTH:
-		return 1;
-	case WEST:
-		return 2;
-	case EAST:
-	default:
-		return 3;
+		return new BlockStateContainer(this, ACTIVE, FACING);
 	}
-}
 
-@Nonnull
-@Override
-public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, @Nonnull EnumHand hand)
-{
-	return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-}
-
-@Override
-public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-{
-	if (!worldIn.isRemote)
+	//TODO Remove for 1.13.2
+	//Gets the state from the metadata value (will probably be gone for 1.13.2)
+	@Nonnull
+	@Override
+	public IBlockState getStateFromMeta(int meta)
 	{
-		IBlockState north = worldIn.getBlockState(pos.north());
-		IBlockState south = worldIn.getBlockState(pos.south());
-		IBlockState west = worldIn.getBlockState(pos.west());
-		IBlockState east = worldIn.getBlockState(pos.east());
-		EnumFacing face = state.getValue(FACING);
-
-		if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
-			face = EnumFacing.SOUTH;
-		else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
-			face = EnumFacing.NORTH;
-		else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
-			face = EnumFacing.EAST;
-		else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
-			face = EnumFacing.WEST;
-
-		worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
+		return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(ACTIVE, (meta & 4) != 0);
 	}
-}
+
+	//Gets the metadata value from the given blockState
+	@Override
+	public int getMetaFromState(IBlockState state)
+	{
+		int i = 0;
+		i = i | getMetaForFacing(state.getValue(FACING));
+
+		if ((state.getValue(ACTIVE)))
+		{
+			i |= 4;
+		}
+
+		return i;
+	}
+
+	private static EnumFacing getFacing(int meta)
+	{
+		switch (meta & 3)
+		{
+		case 0:
+			return EnumFacing.NORTH;
+		case 1:
+			return EnumFacing.SOUTH;
+		case 2:
+			return EnumFacing.WEST;
+		case 3:
+		default:
+			return EnumFacing.EAST;
+		}
+	}
+
+	//gets the metadata value for the facing
+	private static int getMetaForFacing(EnumFacing facing)
+	{
+		switch (facing)
+		{
+		case NORTH:
+			return 0;
+		case SOUTH:
+			return 1;
+		case WEST:
+			return 2;
+		case EAST:
+		default:
+			return 3;
+		}
+	}
+
+	@Nonnull
+	@Override
+	public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, @Nonnull EnumHand hand)
+	{
+		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+	}
+
+	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	{
+		if (!worldIn.isRemote)
+		{
+			IBlockState north = worldIn.getBlockState(pos.north());
+			IBlockState south = worldIn.getBlockState(pos.south());
+			IBlockState west = worldIn.getBlockState(pos.west());
+			IBlockState east = worldIn.getBlockState(pos.east());
+			EnumFacing face = state.getValue(FACING);
+
+			if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
+				face = EnumFacing.SOUTH;
+			else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
+				face = EnumFacing.NORTH;
+			else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
+				face = EnumFacing.EAST;
+			else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
+				face = EnumFacing.WEST;
+
+			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
+		}
+	}
 }

@@ -3,6 +3,8 @@ package it.hurts.metallurgy_reforged.tileentity;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.Lists;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -29,6 +31,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileEntityChamber extends TileEntityLockable implements ITickable, ISidedInventory{
 
@@ -39,6 +45,11 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	private static final int[] SLOTS_TOP = new int[] {METAL_SLOT};
 	private static final int[] SLOTS_BOTTOM = new int[] {FUEL_SLOT};
 	private static final int[] SLOTS_SIDES = new int[] {FUEL_SLOT};
+
+	private final IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+	private final IItemHandler handlerBottom = new SidedInvWrapper(this,EnumFacing.DOWN);
+	private final IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+
 
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 
@@ -153,8 +164,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 			return itemstack.getCount() < recipeAmount;
 		}
 	}
-
-
 
 	@Override
 	public int getField(int id) 
@@ -367,16 +376,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return oldState.getBlock() != newState.getBlock();
 	}
 
-	net.minecraftforge.items.IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.UP);
-	net.minecraftforge.items.IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.DOWN);
-	net.minecraftforge.items.IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.WEST);
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@javax.annotation.Nullable
-	public <T> T getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @javax.annotation.Nullable net.minecraft.util.EnumFacing facing)
+	@Nullable
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
 	{
-		if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
 				return (T) handlerBottom;
 			else if (facing == EnumFacing.UP)
