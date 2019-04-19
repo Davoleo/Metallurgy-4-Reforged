@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
+import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -23,5 +24,6 @@ public class TileEntityHandler {
     {
         GameRegistry.registerTileEntity(TileEntityCrusher.class, new ResourceLocation(Metallurgy.MODID + ":crusher"));
         GameRegistry.registerTileEntity(TileEntityAlloyer.class, new ResourceLocation(Metallurgy.MODID + ":alloyer"));
+        GameRegistry.registerTileEntity(TileEntityChamber.class, new ResourceLocation(Metallurgy.MODID + ":sublimation_chamber"));
     }
 }

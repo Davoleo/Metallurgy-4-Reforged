@@ -155,7 +155,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
             IBlockState west = worldIn.getBlockState(pos.west());
             IBlockState east = worldIn.getBlockState(pos.east());
             EnumFacing face = state.getValue(FACING);
-
+          
             if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
                 face = EnumFacing.SOUTH;
             else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())

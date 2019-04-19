@@ -1,11 +1,15 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"model": "metallurgy:sublimation_chamber",
-		"transform": "forge:default-block"
-	},
-	"variants": {
-		"normal": [{}],
-		"inventory": [{}]
-	}
+  "variants":
+  {
+   
+    "facing=north,lit=false": { "model": "metallurgy:sublimation_chamber" },
+    "facing=east,lit=false": { "model": "metallurgy:sublimation_chamber", "y": 90 },
+    "facing=south,lit=false": { "model": "metallurgy:sublimation_chamber", "y": 180 },
+    "facing=west,lit=false": { "model": "metallurgy:sublimation_chamber", "y": 270 },
+    "facing=north,lit=true": { "model": "metallurgy:lit_sublimation_chamber" },
+    "facing=east,lit=true": { "model": "metallurgy:lit_sublimation_chamber", "y": 90 },
+    "facing=south,lit=true": { "model": "metallurgy:lit_sublimation_chamber", "y": 180 },
+    "facing=west,lit=true": { "model": "metallurgy:lit_sublimation_chamber", "y":270  }
+    
+  }
 }

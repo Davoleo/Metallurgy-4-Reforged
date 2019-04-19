@@ -1,422 +1,406 @@
 package it.hurts.metallurgy_reforged.tileentity;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
 
-import it.hurts.metallurgy_reforged.block.BlockCrusher;
-import it.hurts.metallurgy_reforged.container.ContainerCrusher;
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockChamber;
 import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
-import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher.SlotEnum;
-import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.datafix.FixTypes;
-import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.minecraft.world.World;
 
 public class TileEntityChamber extends TileEntityLockable implements ITickable, ISidedInventory{
-	
-	private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
-    private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
-    
-    private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
-    private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
-    
-    private String customName;
-    
-    private static final int SUBLIMATION_TIME = 71940;
-    private int actionTime;
-    private int currentActionTime;
-    private int sublimationTime;
-    private int totalSublimationTime = 72000;
-    
-    @SuppressWarnings("rawtypes")
-	private List playerList;
-    private int totalEffectTime = 16 * (20 * 60);
-    
-    public static void registerFixesFurnace(DataFixer fixer) {
-        fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
-    }
-    
-    private static int getItemActionTime(ItemStack fuel) {
-    	
-        if (fuel.isEmpty())
-            return 0;
-        else {
-            Item item = fuel.getItem();
 
-            if (Block.getBlockFromItem(item) == ModMetals.VULCANITE.getBlock())
-            	return 72000;
-            else
-            	return 0;
-        }
-    }
-    
-    public static boolean isItemFuel(ItemStack fuel) {
-        return getItemActionTime(fuel) > 0;
-    }
-    
-    @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
-    }
-    
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            if (facing == EnumFacing.UP)
-                return (T) handlerTop;
-            else
-                return (T) handlerSide;
-        return super.getCapability(capability, facing);
-    }
-    
-    @Override
-    public int getSizeInventory() {
-        return this.inventory.size();
-    }
+	public static final int METAL_SLOT = 0;
+	public static final int FUEL_SLOT = 1;
 
-    @Override
-    public boolean isEmpty() {
-        for (ItemStack stack : this.inventory) {
-            if (!stack.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
-    @Override
-    @Nonnull
-    public ItemStack getStackInSlot(int index) {
-        return this.inventory.get(index);
-    }
+	private static final int[] SLOTS_TOP = new int[] {METAL_SLOT};
+	private static final int[] SLOTS_BOTTOM = new int[] {FUEL_SLOT};
+	private static final int[] SLOTS_SIDES = new int[] {FUEL_SLOT};
 
-    @Override
-    @Nonnull
-    public ItemStack decrStackSize(int index, int count) {
-        return ItemStackHelper.getAndSplit(this.inventory, index, count);
-    }
-    
-    @Override
-    @Nonnull
-    public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.inventory, index);
-    }
+	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 
-    @Override
-    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
-        ItemStack itemstack = this.inventory.get(index);
-        boolean flag = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
-        this.inventory.set(index, stack);
+	private String chamberCustomName;
 
-        if (stack.getCount() > this.getInventoryStackLimit()) {
-            stack.setCount(this.getInventoryStackLimit());
-        }
+	public int fuelTime = 0;
+	private int activeTime = 0;
+	public PotionEffect potionEffect = null;
 
-        if (SlotEnum.INPUT_SLOT.contains(index) && flag) {
-            this.totalSublimationTime = this.getSublimationTime(stack);
-            this.sublimationTime = 0;
-            this.markDirty();
-        }
-    }
-    
-    @Override
-    public boolean hasCustomName() {
-        return this.customName != null && !this.customName.isEmpty();
-    }
+	public List<UUID> affectedPlayers = Lists.newArrayList();
 
-    public void setCustomName(String customName) {
-        this.customName = customName;
-    }
-    
-    @Override
-    @Nonnull
-    public ITextComponent getDisplayName() {
-        return this.hasCustomName() ? new TextComponentString(this.getName())
-                : new TextComponentTranslation(this.getName());
-    }
-    
-    @Override
-    public int getInventoryStackLimit() {
-        return 1;
-    }
-
-    public boolean isActive() {
-        return this.actionTime > 0;
-    }
-    
-    private int getSublimationTime(ItemStack stack) {
-        return SUBLIMATION_TIME;
-    }
-    
-    @Override
-    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
-        if (this.world.getTileEntity(this.pos) != this)
-            return false;
-        else
-            return player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
-    }
-
-    @Override
-    public void openInventory(@Nonnull EntityPlayer player) {
-    }
-
-    @Override
-    public void closeInventory(@Nonnull EntityPlayer player) {
-    }
-
-//  TODO modificare
-    @Override
-    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
-    	if (SlotEnum.FUEL_SLOT.contains(index)) {
-            ItemStack stack1 = inventory.get(index);
-            
-            return isItemFuel(stack) && stack1.getItem() != Items.BUCKET;
-            
-        } else if (SlotEnum.INPUT_SLOT.contains(index))
-            return BlockSublimationRecipes.getInstance().isSublimationBlock(stack);
-           else
-            return false;
-    }
-    
-    @Override
-    @Nonnull
-    public Container createContainer(@Nonnull InventoryPlayer inventory, @Nonnull EntityPlayer player) {
-        return new ContainerCrusher(inventory, this);
-    }
-
-    @Override
-    public int getField(int id) {
-        switch (id) {
-            case 0:
-                return actionTime;
-            case 1:
-                return currentActionTime;
-            case 2:
-                return sublimationTime;
-            case 3:
-                return totalSublimationTime;
-            default:
-                return 0;
-        }
-    }
-    
-    @Override
-    public void setField(int id, int value) {
-        switch (id) {
-            case 0:
-            	actionTime = value;
-            break;
-            
-            case 1:
-                currentActionTime = value;
-            break;
-            
-            case 2:
-                sublimationTime = value;
-            break;
-            
-            case 3:
-                totalSublimationTime = value;
-            break;
-        }
-    }
-    
-    @Override
-    public int getFieldCount() {
-        return 4;
-    }
-
-    @Override
-    public void clear() {
-        this.inventory.clear();
-    }
-    
-    @Override
-    @Nonnull
-    public int[] getSlotsForFace(@Nonnull EnumFacing side) {
-        return side == EnumFacing.UP ? slotsTop : slotsSides;
-    }
-
-    @Override
-    public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction) {
-        return isItemValidForSlot(index, itemStackIn);
-    }
-
-    @Override
-    public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction) {
-        return false;
-    }
 
 	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getSizeInventory() 
+	{
+		return this.inventory.size();
 	}
 
 	@Override
-	public String getGuiID() {
-		return null;
+	public boolean isEmpty() 
+	{
+		return this.inventory.isEmpty();
 	}
-	
-	private boolean canSublime() {
-		ItemStack input = inventory.get(0);
-		Potion result = BlockSublimationRecipes.getInstance().getSublimationResult(input);
-		
-		BlockPos position = this.getPos();
-		double range = 16;
-		
-		if(input.isEmpty() || result == null) {
-			return false;
-		} else {
-			if(world.isAnyPlayerWithinRangeAt(position.getX(), position.getY(), position.getZ(), range))
-				return true;
+
+	@Override
+	public ItemStack getStackInSlot(int index) 
+	{
+		return this.inventory.get(index);
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count)
+	{
+		return ItemStackHelper.getAndSplit(this.inventory, index, count);
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) 
+	{
+		return ItemStackHelper.getAndRemove(this.inventory, index);
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) 
+	{
+
+		ItemStack itemstack = this.inventory.get(index);
+		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
+		this.inventory.set(index, stack);
+
+		if (stack.getCount() > this.getInventoryStackLimit())
+		{
+			stack.setCount(this.getInventoryStackLimit());
+		}
+
+		if (index == METAL_SLOT && !flag)
+			this.markDirty();
+	}
+
+	public void setPotionEffect(PotionEffect effect)
+	{
+		this.potionEffect = effect;
+		this.updateBlock();
+	}
+
+	public void updateBlock()
+	{
+		IBlockState state = world.getBlockState(pos);
+		world.notifyBlockUpdate(pos, state, state, 4);
+	}
+
+	@Override
+	public int getInventoryStackLimit() 
+	{
+		return 64;
+	}
+
+	@Override
+	public boolean isUsableByPlayer(EntityPlayer player) 
+	{
+		if (this.world.getTileEntity(this.pos) != this)
+		{
 			return false;
 		}
+		else
+		{
+			return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+		}
 	}
-	
-	private boolean canAddEffects() {
-		BlockPos position = this.getPos();
-		double range = 16;
-		
-		AxisAlignedBB box = new AxisAlignedBB(position.getX() - range, position.getY() -range, position.getZ() -range, 
-				position.getX() + range, position.getY() + range, position.getZ() + range);
-	     
-	     
-        playerList = this.world.getEntitiesWithinAABB(EntityPlayer.class, box);
-        
-         if(!playerList.isEmpty())
-        	 return true;
-         else
-        	 return false;
+
+	public void openInventory(EntityPlayer player) 
+	{
 	}
-	
+
+	public void closeInventory(EntityPlayer player)
+	{
+	}
 
 	@Override
-	public void update() {
-		boolean active = this.isActive();
-		boolean flag = false;
-		
-		if(isActive())
-			--sublimationTime;
-		
-		if (!this.world.isRemote) {
-			ItemStack input = this.inventory.get(0);
-			ItemStack fuel = new ItemStack (ModMetals.VULCANITE.getBlock(), 3);
-			
-			if(isActive() || !input.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty())) {
-				if(!isActive() && canSublime()) {
-					 actionTime = getItemActionTime(fuel);
-	                    currentActionTime = actionTime;
+	public boolean isItemValidForSlot(int index, ItemStack stack) 
+	{
+		if (index == FUEL_SLOT)
+		{
+			ItemStack itemstack = this.inventory.get(FUEL_SLOT);
+			return TileEntityFurnace.isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && itemstack.getItem() != Items.BUCKET;
+		}
+		else
+		{
+			ItemStack itemstack = this.inventory.get(METAL_SLOT);
+			BlockSublimationRecipes recipes = BlockSublimationRecipes.getInstance();		
+			int recipeAmount = recipes.getSublimationBlockAmount(stack);
+			return itemstack.getCount() < recipeAmount;
+		}
+	}
 
-	                    if (isActive()) {
-	                        flag = true;
 
-	                        if (!fuel.isEmpty()) {
-	                            Item item = fuel.getItem();
-	                            fuel.shrink(1);
 
-	                            if (fuel.isEmpty()) {
-	                                ItemStack item1 = item.getContainerItem(fuel);
-	                                this.inventory.set(1, item1);
-	                            }
-	                        }
-	                    }
-	                    
-	                    if (isActive() && canSublime()) {
-	                        ++sublimationTime;
+	@Override
+	public int getField(int id) 
+	{
+		return 0;
+	}
 
-	                        if (sublimationTime == totalSublimationTime) {
-	                        	sublimationTime = 0;
-	                            totalSublimationTime = getSublimationTime(this.inventory.get(0));
-	                            
-//	                            Va Modificato assolutamente
-	                            if(canAddEffects())
-		                            for(Object o : playerList) {
-		                            	EntityPlayer p = (EntityPlayer) o;
-		                            	
-		                            	p.addPotionEffect(new PotionEffect(BlockSublimationRecipes.getInstance().getSublimationResult(input), totalEffectTime, 0, false, false));
-		                            }
-	                            
-	                            if (canSublime())
-	                            	input.shrink(1);
-	                            
-	                            flag = true;
-	                        }
-	                    } else {
-	                    	sublimationTime = 0;
-	                    }
-				}else if (!isActive() && sublimationTime > 0) {
-					 sublimationTime = MathHelper.clamp(sublimationTime - 2, 0, totalSublimationTime);
+	@Override
+	public void setField(int id, int value) 
+	{
+
+	}
+
+	@Override
+	public int getFieldCount() 
+	{
+		return 0;
+	}
+
+	@Override
+	public void clear() 
+	{
+		this.inventory.clear();
+	}
+
+	@Override
+	public String getName() 
+	{
+		return this.hasCustomName() ? this.chamberCustomName : "container.chamber";
+	}
+
+	@Override
+	public boolean hasCustomName() 
+	{
+		return this.chamberCustomName != null && !this.chamberCustomName.isEmpty();
+	}
+
+	public void setChamberCustomName(String chamberCustomName)
+	{
+		this.chamberCustomName = chamberCustomName;
+	}
+
+	@Override
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) 
+	{
+		return null;
+	}
+
+	@Override
+	public String getGuiID()
+	{
+		return Metallurgy.MODID + ":chamber";
+	}
+
+	@Override
+	public int[] getSlotsForFace(EnumFacing side) 
+	{
+		if (side == EnumFacing.DOWN)
+		{
+			return SLOTS_BOTTOM;
+		}
+		else
+		{
+			return side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES;
+		}
+	}
+
+	@Override
+	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) 
+	{	
+		return this.isItemValidForSlot(index, itemStackIn);
+	}
+
+	@Override
+	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) 
+	{
+		return index == FUEL_SLOT;
+	}
+
+	@Override
+	public void update() 
+	{
+
+		ItemStack METAL_STACK = getStackInSlot(METAL_SLOT);
+		ItemStack FUEL_STACK = getStackInSlot(FUEL_SLOT);
+
+		PotionEffect potionEffect = this.potionEffect;
+		if(potionEffect == null)
+			potionEffect = BlockSublimationRecipes.getInstance().getSublimationResult(METAL_STACK);
+
+		if(this.fuelTime > 0)
+			this.fuelTime--;
+
+		int fuelValue = TileEntityFurnace.getItemBurnTime(FUEL_STACK);
+
+
+		if(this.fuelTime > 0)
+		{
+			if(potionEffect != null)
+			{
+				if(!this.isActive())
+				{
+					this.activeTime = 1;
+					this.setState(true);
+					this.setPotionEffect(potionEffect);
 				}
-				
-				if (active != isActive()) {
-	                flag = true;
-	                BlockCrusher.setState(isActive(), this.world, this.pos);
-	            }
+				else
+				{
+					if(this.activeTime < potionEffect.getDuration())
+					{
+						this.activeTime++;
+
+
+						int range = 6;
+
+						AxisAlignedBB axisAlignedBB = new AxisAlignedBB(pos,pos).grow(range);
+
+						List<EntityPlayer> entityPlayers = world.getEntitiesWithinAABB(EntityPlayer.class, axisAlignedBB);
+						for(EntityPlayer player : entityPlayers)
+						{	
+							if(!player.isPotionActive(potionEffect.getPotion())) 
+							{
+								player.addPotionEffect(new PotionEffect(potionEffect.getPotion(),potionEffect.getDuration() - this.activeTime));
+								UUID uuid = player.getUniqueID();
+								if(!this.affectedPlayers.contains(uuid))
+									this.affectedPlayers.add(uuid);
+							}
+						}
+
+					}
+					else
+					{
+						setInventorySlotContents(METAL_SLOT, ItemStack.EMPTY);
+						this.setPotionEffect(null);
+						this.setState(false);
+						this.activeTime = 0;
+					}
+				}
 			}
-			
 		}
-		
-		if (flag)
-            this.markDirty();
-		
+		else if(fuelValue > 0 && potionEffect != null)
+		{
+			FUEL_STACK.shrink(1);
+			this.fuelTime = fuelValue;
+		}	
 	}
-	
-	public enum SlotEnum {
-        INPUT_SLOT(0), FUEL_SLOT(1);
 
-        private final int[] slots;
-        private Set<Integer> slotSet;
 
-        SlotEnum(int... slots) {
-            this.slots = slots;
-            slotSet = Arrays.stream(slots).boxed().collect(Collectors.toSet());
-        }
 
-        public int[] slots() {
-            return Arrays.copyOf(slots, slots.length);
-        }
+	public boolean isActive()
+	{
+		return this.activeTime > 0;
+	}
 
-        public boolean contains(int i) {
-            return slotSet.contains(i);
-        }
-    }
+
+	public void setState(boolean active)
+	{
+		this.world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockChamber.ACTIVE, active));
+
+	}
+
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
+	{	
+
+		super.writeToNBT(compound);
+		this.writeChamberToNBT(compound);
+		return compound;
+	}
+
+	public void writeChamberToNBT(NBTTagCompound compound)
+	{
+		compound.setInteger("activeTime", this.activeTime);
+		compound.setInteger("fuelTime", this.fuelTime);
+		if(this.potionEffect != null)
+			this.potionEffect.writeCustomPotionEffectToNBT(compound);
+
+		ItemStackHelper.saveAllItems(compound, this.inventory);
+
+		if (this.hasCustomName())
+		{
+			compound.setString("CustomName", this.chamberCustomName);
+		}
+	}
+
+	public void readFromNBT(NBTTagCompound compound)
+	{
+		super.readFromNBT(compound);
+		this.readChamberFromNBT(compound);
+	}
+
+	public void readChamberFromNBT(NBTTagCompound compound)
+	{
+
+		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		ItemStackHelper.loadAllItems(compound, this.inventory);
+
+		this.fuelTime = compound.getInteger("fuelTime");
+		this.activeTime = compound.getInteger("activeTime");
+		this.potionEffect = PotionEffect.readCustomPotionEffectFromNBT(compound);
+
+		if (compound.hasKey("CustomName", 8))
+		{
+			this.chamberCustomName = compound.getString("CustomName");
+		}
+
+	}
+
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
+	{
+		return oldState.getBlock() != newState.getBlock();
+	}
+
+	net.minecraftforge.items.IItemHandler handlerTop = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.UP);
+	net.minecraftforge.items.IItemHandler handlerBottom = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.DOWN);
+	net.minecraftforge.items.IItemHandler handlerSide = new net.minecraftforge.items.wrapper.SidedInvWrapper(this, net.minecraft.util.EnumFacing.WEST);
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@javax.annotation.Nullable
+	public <T> T getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @javax.annotation.Nullable net.minecraft.util.EnumFacing facing)
+	{
+		if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			if (facing == EnumFacing.DOWN)
+				return (T) handlerBottom;
+			else if (facing == EnumFacing.UP)
+				return (T) handlerTop;
+			else
+				return (T) handlerSide;
+		return super.getCapability(capability, facing);
+	}
+
+	public SPacketUpdateTileEntity getUpdatePacket()
+	{
+		return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
+	}
+
+	public NBTTagCompound getUpdateTag() 
+	{
+		return this.writeToNBT(new NBTTagCompound());
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
+	{
+		NBTTagCompound tag = pkt.getNbtCompound();
+		readChamberFromNBT(tag);
+	}
 
 }
