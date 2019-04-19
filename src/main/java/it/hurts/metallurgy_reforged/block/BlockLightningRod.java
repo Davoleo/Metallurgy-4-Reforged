@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_reforged.tileentity.TileLightningRod;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -40,12 +41,12 @@ public class BlockLightningRod extends BlockTileEntity {
 
     //public static final ResourceLocation LIGHTNING_ROD = new ResourceLocation(Metallurgy.MODID, "lightning_rod");
 
-    public static PropertyBool ACTIVE = PropertyBool.create("active");
+    //public static PropertyBool ACTIVE = PropertyBool.create("active");
 
     public BlockLightningRod(String name)
     {
         super(Material.IRON, name);
-        setCreativeTab(MetallurgyTabs.tabSpecial);
+        //setCreativeTab(MetallurgyTabs.tabSpecial);
     }
 
     @Nullable
@@ -76,25 +77,19 @@ public class BlockLightningRod extends BlockTileEntity {
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
     }
 
-    @Nonnull
-    @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, ACTIVE);
-    }
+//    @Nonnull
+//    @Override
+//    protected BlockStateContainer createBlockState()
+//    {
+//        return new BlockStateContainer(this, ACTIVE);
+//    }
 
-    @Nonnull
-    @Override
-    public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
-    {
-        return this.getDefaultState().withProperty(ACTIVE, false);
-    }
-
-    @Override
-    public boolean hasTileEntity(IBlockState state)
-    {
-        return true;
-    }
+//    @Nonnull
+//    @Override
+//    public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
+//    {
+//        return this.getDefaultState().withProperty(ACTIVE, false);
+//    }
 
     @Nonnull
     @Override
@@ -103,15 +98,15 @@ public class BlockLightningRod extends BlockTileEntity {
         return new ItemStack(ModBlocks.lightningRod);
     }
 
-    @Nonnull
-    @Override
-    public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess worldIn, BlockPos pos)
-    {
-        TileEntity te = worldIn instanceof ChunkCache ? ((ChunkCache) worldIn).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : worldIn.getTileEntity(pos);
-        if (te instanceof TileLightningRod)
-            return state.withProperty(ACTIVE, ((TileLightningRod) te).isActive());
-        return super.getActualState(state, worldIn, pos);
-    }
+//    @Nonnull
+//    @Override
+//    public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess worldIn, BlockPos pos)
+//    {
+//        TileEntity te = worldIn instanceof ChunkCache ? ((ChunkCache) worldIn).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : worldIn.getTileEntity(pos);
+//        if (te instanceof TileLightningRod)
+//            return state.withProperty(ACTIVE, ((TileLightningRod) te).isActive());
+//        return super.getActualState(state, worldIn, pos);
+//    }
 
     @SuppressWarnings("deprecation")
     @Override
