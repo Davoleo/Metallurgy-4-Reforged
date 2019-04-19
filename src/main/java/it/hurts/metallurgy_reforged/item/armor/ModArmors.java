@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
-import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unused")
 public class ModArmors {
 
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
@@ -142,6 +140,16 @@ public class ModArmors {
     public static ItemArmorBase kalendrite_legs = new ItemArmorBase(ModMetals.KALENDRITE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "kalendrite_legs").setTooltip(Tooltips.KALENDRITE_ARMOR_EFFECT);
     public static ItemArmorBase kalendrite_boots = new ItemArmorBase(ModMetals.KALENDRITE.getArmorMaterial(), EntityEquipmentSlot.FEET, "kalendrite_boots").setTooltip(Tooltips.KALENDRITE_ARMOR_EFFECT);
 
+    public static ItemArmorBase krik_helmet = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.HEAD, "krik_helmet").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots").setTooltip(Tooltips.KRIK_ARMOR_EFFECT);
+    
+    public static ItemArmorBase lutetium_helmet = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "lutetium_helmet");
+    public static ItemArmorBase lutetium_chest = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "lutetium_chest");
+    public static ItemArmorBase lutetium_legs = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "lutetium_legs");
+    public static ItemArmorBase lutetium_boots = new ItemArmorBase(ModMetals.LUTETIUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "lutetium_boots");
+    
     public static ItemArmorBase midasium_helmet = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "midasium_helmet");
     public static ItemArmorBase midasium_chest = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "midasium_chest");
     public static ItemArmorBase midasium_legs = new ItemArmorBase(ModMetals.MIDASIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "midasium_legs");
@@ -157,12 +165,17 @@ public class ModArmors {
     public static ItemArmorBase orichalcum_legs = new ItemArmorBase(ModMetals.ORICHALCUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "orichalcum_legs");
     public static ItemArmorBase orichalcum_boots = new ItemArmorBase(ModMetals.ORICHALCUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "orichalcum_boots");
 
+    public static ItemArmorBase osmium_helmet = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "osmium_helmet");
+    public static ItemArmorBase osmium_chest = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "osmium_chest");
+    public static ItemArmorBase osmium_legs = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "osmium_legs");
+    public static ItemArmorBase osmium_boots = new ItemArmorBase(ModMetals.OSMIUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "osmium_boots");
+    
     public static ItemArmorBase oureclase_helmet = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "oureclase_helmet");
     public static ItemArmorBase oureclase_chest = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "oureclase_chest");
     public static ItemArmorBase oureclase_legs = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.LEGS, "oureclase_legs");
     public static ItemArmorBase oureclase_boots = new ItemArmorBase(ModMetals.OURECLASE.getArmorMaterial(), EntityEquipmentSlot.FEET, "oureclase_boots");
 
-    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet", Enchantments.BINDING_CURSE, 1).setTooltip(Tooltips.PLATINUM_HELMET_EFFECT);
+    public static ItemArmorBase platinum_helmet = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.HEAD, "platinum_helmet").setTooltip(Tooltips.PLATINUM_HELMET_EFFECT);
     public static ItemArmorBase platinum_chest = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.CHEST, "platinum_chest");
     public static ItemArmorBase platinum_legs = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.LEGS, "platinum_legs");
     public static ItemArmorBase platinum_boots = new ItemArmorBase(ModMetals.PLATINUM.getArmorMaterial(), EntityEquipmentSlot.FEET, "platinum_boots");
@@ -216,11 +229,6 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_chest = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.CHEST, "vyroxeres_chest");
     public static ItemArmorBase vyroxeres_legs = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.LEGS, "vyroxeres_legs");
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
-    
-    public static ItemArmorBase krik_helmet = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.HEAD, "krik_helmet");
-    public static ItemArmorBase krik_chest = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.CHEST, "krik_chest");
-    public static ItemArmorBase krik_legs = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.LEGS, "krik_legs");
-    public static ItemArmorBase krik_boots = new ItemArmorBase(ModMetals.KRIK.getArmorMaterial(), EntityEquipmentSlot.FEET, "krik_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
     	if(GeneralConfig.disableAllArmors) {

@@ -43,7 +43,7 @@ public class TinkerMetals {
 	public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE, new HeadMaterialStats(600, 14F, 5, 4), new HandleMaterialStats(0.55F, 215), new ExtraMaterialStats(40));
 	public static MetallurgyTiCStats INFUSCOLIUM = new MetallurgyTiCStats(ModMetals.INFUSCOLIUM, new HeadMaterialStats(180, 25F, 6, 3), new HandleMaterialStats(0.45F, 190), new ExtraMaterialStats(15));
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM, new HandleMaterialStats(0.75F, 300), new ExtraMaterialStats(47));
-	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(400, 10F, 4, 3), new HandleMaterialStats(0.80F, 255), new ExtraMaterialStats(45));
+	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM, new HeadMaterialStats(300, 10F, 4, 3), new HandleMaterialStats(0.60F, 200), new ExtraMaterialStats(30));
 //	 public static MetallurgyTiCStats ANGMALLEN = new MetallurgyTiCStats(ModMetals.ANGMALLEN);
 	
 	 @Nullable
