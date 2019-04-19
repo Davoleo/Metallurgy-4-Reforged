@@ -377,22 +377,28 @@ public class ArmorEffectHandler {
 
 			if(EventUtils.isPlayerWearingArmor(player,
 					new Item[] {ModArmors.krik_helmet,ModArmors.krik_chest,ModArmors.krik_legs,ModArmors.krik_boots}))
-				event.setCanceled(true); //Nope, i'm sorry, next time test
+				event.setCanceled(true);
 		}
 	}
 
-//	Potremmo incrementare la quantità di knockback da rimuovere in base a quanti pezzi di armatura indossa ( i.g. 1 pezzo '/0.5' 2 pezzi '/1.0' )
 	@SubscribeEvent
 	public static void reduceKnockback(LivingKnockBackEvent e){
 		if (e.getEntity() instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) e.getEntity();
 
-			if(EventUtils.isPlayerWearingArmor(player,
-					new Item[] {ModArmors.osmium_helmet,ModArmors.osmium_chest,ModArmors.osmium_legs,ModArmors.osmium_boots}))
-				e.setStrength((float)(e.getOriginalStrength() / 2.5));
+			int osmiumMultiplier = EventUtils.getArmorPiecesCount(player,
+			new Item[] {ModArmors.osmium_helmet,ModArmors.osmium_chest,ModArmors.osmium_legs,ModArmors.osmium_boots});
 
-			System.out.println("Attuale" + e.getStrength());
-			System.out.println("Iniziale" + e.getOriginalStrength());
+			int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player,
+			new Item[] {ModArmors.lutetium_helmet,ModArmors.lutetium_chest,ModArmors.lutetium_legs,ModArmors.lutetium_boots});
+
+			float strenght = e.getOriginalStrength();
+
+			float multiplier;
+
+			multiplier = (float) (((4 - osmiumMultiplier) * 0.17) + ((4 - lutetiumMultiplier) * 0.138));
+
+			e.setStrength(e.getOriginalStrength() * multiplier);
 		}
 	}
 
