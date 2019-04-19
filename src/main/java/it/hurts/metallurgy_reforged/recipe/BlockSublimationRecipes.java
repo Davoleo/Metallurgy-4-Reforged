@@ -26,6 +26,7 @@ public class BlockSublimationRecipes {
     	
     	this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(),4), new PotionEffect(MobEffects.SATURATION, 16000));
     	this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(),7), new PotionEffect(MobEffects.HASTE, 16000));
+    	this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(),7), new PotionEffect(MobEffects.FIRE_RESISTANCE, 12000));
     	
     }
     

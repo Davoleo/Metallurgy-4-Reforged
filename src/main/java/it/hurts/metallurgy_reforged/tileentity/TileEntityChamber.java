@@ -18,8 +18,10 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.potion.PotionEffect;
@@ -153,8 +155,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	{
 		if (index == FUEL_SLOT)
 		{
-			ItemStack itemstack = this.inventory.get(FUEL_SLOT);
-			return TileEntityFurnace.isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && itemstack.getItem() != Items.BUCKET;
+			return TileEntityFurnace.isItemFuel(stack);
 		}
 		else
 		{
@@ -174,7 +175,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public void setField(int id, int value) 
 	{
-       //We don't need it (For now)
+		//We don't need it (For now)
 	}
 
 	@Override
@@ -306,8 +307,16 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		}
 		else if(fuelValue > 0 && potionEffect != null)
 		{
+			Item item = FUEL_STACK.getItem();
+
 			FUEL_STACK.shrink(1);
 			this.fuelTime = fuelValue;
+
+			if (FUEL_STACK.isEmpty())
+			{
+				ItemStack item1 = item.getContainerItem(FUEL_STACK);
+				this.setInventorySlotContents(FUEL_SLOT, item1);
+			}
 		}	
 	}
 
@@ -330,6 +339,22 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 		super.writeToNBT(compound);
 		this.writeChamberToNBT(compound);
+
+		NBTTagList nbttaglist = new NBTTagList();
+
+		for (int i = 0; i < this.affectedPlayers.size(); ++i)
+		{       
+			NBTTagCompound nbttagcompound = new NBTTagCompound();
+			nbttagcompound.setUniqueId("playerUUID", this.affectedPlayers.get(i));
+			nbttaglist.appendTag(nbttagcompound);
+
+		}
+
+		if (!nbttaglist.isEmpty())
+		{
+			compound.setTag("affectedPlayers", nbttaglist);
+		}
+
 		return compound;
 	}
 
@@ -346,12 +371,21 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		{
 			compound.setString("CustomName", this.chamberCustomName);
 		}
+
 	}
 
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
 		this.readChamberFromNBT(compound);
+
+		NBTTagList nbttaglist = compound.getTagList("affectedPlayers", 10);
+
+		for (int i = 0; i < nbttaglist.tagCount(); ++i)
+		{
+			NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+			this.affectedPlayers.add(nbttagcompound.getUniqueId("playerUUID"));
+		}
 	}
 
 	public void readChamberFromNBT(NBTTagCompound compound)

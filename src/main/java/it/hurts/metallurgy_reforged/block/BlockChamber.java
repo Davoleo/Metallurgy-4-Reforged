@@ -130,8 +130,8 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 			{
 				TileEntityChamber chamber = (TileEntityChamber) te;
 				NBTTagCompound tag = stack.getTagCompound();
-
-				chamber.readChamberFromNBT(tag);
+				if(tag.hasKey("chamberTags"))
+					chamber.readChamberFromNBT(tag.getCompoundTag("chamberTags"));
 
 				if(chamber.potionEffect != null)
 					worldIn.setBlockState(pos, state.withProperty(ACTIVE, true));
@@ -152,7 +152,9 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
 			TileEntityChamber chamber = (TileEntityChamber) te;
 			NBTTagCompound tag = new NBTTagCompound();
-			chamber.writeChamberToNBT(tag);
+			NBTTagCompound chamberTags = new NBTTagCompound();
+			chamber.writeChamberToNBT(chamberTags);
+			tag.setTag("chamberTags", chamberTags);
 
 			itemStack.setTagCompound(tag);
 
@@ -180,7 +182,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-      //The Block mustn't drop with this method
+		//The Block mustn't drop with this method
 	}
 
 	@SideOnly(Side.CLIENT)
