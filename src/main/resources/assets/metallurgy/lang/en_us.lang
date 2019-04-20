@@ -273,16 +273,16 @@ modifier.resistance_armor.name=Resistance IV
 modifier.strongly_armor.name=Strength
 modifier.volcano_armor.name=Volcanic
 
-modifier.blindness_armor.desc=Makes you immune to blindness
-modifier.cat_eyes_armor.desc=Allows you to see in the dark
-modifier.deeply_armor.desc=It makes it easier for you to do things underwater
-modifier.foodly_armor.desc=Replenishes your food bar if you have enough experience.
-modifier.jump_master_armor.desc=Increases jump height
-modifier.prometheum_armor.desc=Grants immunity to poison.
-modifier.quickly_armor.desc=Stretching a bow becomes faster
-modifier.resistance_armor.desc=Reduces incoming damage even further than you'd expect.
-modifier.strongly_armor.desc=Increases dealt damage (can be level I or level II)
-modifier.volcano_armor.desc=It makes you immune to fire
+modifier.blindness_armor.desc=§oNo Blindness >:(§r\nMakes you immune to blindness
+modifier.cat_eyes_armor.desc=§oNo carrots required§r\nAllows you to see in the dark
+modifier.deeply_armor.desc=§oAqua-bound!§r\nIt makes it easier for you to do things underwater
+modifier.foodly_armor.desc=§oThe taste of hard work§r\nReplenishes your food bar if you have enough experience.
+modifier.jump_master_armor.desc=§oWheeee!§r\nIncreases jump height.
+modifier.prometheum_armor.desc=§oTastes like coconut... and metal§r\nGrants immunity to poison.
+modifier.quickly_armor.desc=§oBow Tender§r\nStretching a bow becomes faster
+modifier.resistance_armor.desc=§oHard as nails§r\nReduces incoming damage even further than you'd expect.
+modifier.strongly_armor.desc=§oI bet I could lift that§r\nIncreases damage dealt \n(can be level I or level II)
+modifier.volcano_armor.desc=§oFire-bound!§r\nIt makes you immune to fire
 
 # Creative Tab
 itemGroup.metallurgy.armors=Metallurgy Armor
