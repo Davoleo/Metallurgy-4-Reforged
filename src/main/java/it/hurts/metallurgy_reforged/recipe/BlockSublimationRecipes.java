@@ -11,12 +11,12 @@ import com.google.common.collect.Table.Cell;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 
 public class BlockSublimationRecipes {
 	
 	private static final BlockSublimationRecipes INSTANCE = new BlockSublimationRecipes();
-    private final Map<ItemStack, Potion> sublimationList = new HashMap<>();
+    private final Map<ItemStack, PotionEffect> sublimationList = new HashMap<>();
     
     public static BlockSublimationRecipes getInstance() {
         return INSTANCE;
@@ -24,13 +24,15 @@ public class BlockSublimationRecipes {
 
     private BlockSublimationRecipes() {
     	
-    	this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 3), MobEffects.SATURATION);
+    	this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(),4), new PotionEffect(MobEffects.SATURATION, 16000));
+    	this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(),7), new PotionEffect(MobEffects.HASTE, 16000));
+    	this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(),7), new PotionEffect(MobEffects.FIRE_RESISTANCE, 12000));
     	
     }
     
-    private void addSublimationRecipe(ItemStack input, Potion potion) {
+    private void addSublimationRecipe(ItemStack input, PotionEffect potion) {
 
-        if (input.isEmpty() || potion != null)
+        if (input.isEmpty() || potion == null)
             return;
         if (getSublimationResult(input) != null)
             return;
@@ -38,9 +40,9 @@ public class BlockSublimationRecipes {
         this.sublimationList.put(input, potion);
     }
     
-    public Potion getSublimationResult(ItemStack input) {
-        for(Entry<ItemStack, Potion> entry : this.sublimationList.entrySet()) {
-            if(this.compareItemStacks(entry.getKey(), input))
+    public PotionEffect getSublimationResult(ItemStack input) {
+        for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
+            if(this.compareItemStacks(entry.getKey(), input) && entry.getKey().getCount() == input.getCount())
                 return entry.getValue();
         }
         
@@ -48,15 +50,23 @@ public class BlockSublimationRecipes {
     }
     
     public boolean isSublimationBlock(ItemStack input) {
-    	for(Entry<ItemStack, Potion> entry : this.sublimationList.entrySet()) {
+    	for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
             if(this.compareItemStacks(entry.getKey(), input))
                 return true;
         }
     	
         return false;
     }
+    public int getSublimationBlockAmount(ItemStack input) {
+    	for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
+            if(this.compareItemStacks(entry.getKey(), input))
+                return entry.getKey().getCount();
+        }
+    	
+        return 0;
+    }
     
-    public Map<ItemStack, Potion> getRecipeTable()
+    public Map<ItemStack, PotionEffect> getRecipeTable()
     {
         return sublimationList;
     }

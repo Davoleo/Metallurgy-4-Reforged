@@ -22,6 +22,7 @@ import it.hurts.metallurgy_reforged.handler.ArmorEffectHandler;
 import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.handler.PickaxeEffectHandler;
 import it.hurts.metallurgy_reforged.handler.SwordEffectHandler;
+import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -40,6 +41,8 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
+		
+		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 
 		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
 		{
