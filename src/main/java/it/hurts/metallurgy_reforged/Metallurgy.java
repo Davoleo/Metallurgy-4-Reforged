@@ -94,7 +94,10 @@ public class Metallurgy {
             }
         }
 
-		IntegrationIndustrialF.preInit();
+		if(ModChecker.isForegoingLoaded && !GeneralConfig.inForegoingIntegraton){
+			IntegrationIndustrialF.preInit();
+			logger.info("Industrial Foregoing integration has been pre-initialized");
+		}
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		logger.info(NAME + ": GUIs have been registered!");

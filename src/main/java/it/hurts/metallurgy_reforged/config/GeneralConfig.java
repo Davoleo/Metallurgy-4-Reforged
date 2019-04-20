@@ -49,6 +49,10 @@ public class GeneralConfig {
 	@Config.Comment("Sets to true for disable")
 	public static boolean armoryIntegraton = false;
 
+	@Config.Name("Disable the Industrial Foregoing integration")
+	@Config.Comment("Sets to true for disable")
+	public static boolean inForegoingIntegraton = false;
+
 	@Config.Name("Enable Duplication Trait")
 	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
 	public static boolean enableDuplicationTrait = true;
