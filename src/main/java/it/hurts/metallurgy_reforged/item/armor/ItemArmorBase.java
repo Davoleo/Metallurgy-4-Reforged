@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item.armor;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -89,7 +90,7 @@ public class ItemArmorBase extends ItemArmor {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return Utils.equalsWildcard(getRepairStack(), repair) || super.getIsRepairable(toRepair, repair);
+		return (GeneralConfig.enableAnvilArmorRepair && Utils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)

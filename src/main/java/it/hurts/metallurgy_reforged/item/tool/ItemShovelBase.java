@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -76,7 +77,7 @@ public class ItemShovelBase extends ItemSpade {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return Utils.equalsWildcard(Utils.getToolRepairStack(this), repair) || super.getIsRepairable(toRepair, repair);
+        return (GeneralConfig.enableAnvilToolRepair && Utils.equalsWildcard(Utils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)

@@ -57,6 +57,14 @@ public class GeneralConfig {
 	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
 	public static boolean enableDuplicationTrait = true;
 
+	@Config.Name("Should Tools be repairable in the Anvil")
+	@Config.Comment("Set this to true to enable the possibility to repair tools in Vanilla Anvil")
+	public static boolean enableAnvilToolRepair = false;
+
+	@Config.Name("Should Armors be repairable in the Anvil")
+	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
+	public static boolean enableAnvilArmorRepair = false;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 		@SubscribeEvent

@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -55,7 +56,7 @@ public class ItemHoeBase extends ItemHoe {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return Utils.equalsWildcard(getRepairStack(), repair) || super.getIsRepairable(toRepair, repair);
+        return (GeneralConfig.enableAnvilToolRepair && Utils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)
