@@ -12,7 +12,9 @@
 package it.hurts.metallurgy_reforged.item.armor;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -73,6 +75,21 @@ public class ItemArmorBase extends ItemArmor {
 	{
 		this.tooltip = tooltip;
 		return this;
+	}
+
+	private ItemStack getRepairStack()
+	{
+		String material = this.getArmorMaterial().getName().toLowerCase();
+		Metal metal = Utils.getMetalFromString(material);
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else return ItemStack.EMPTY;
+	}
+
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+	{
+		return Utils.equalsWildcard(getRepairStack(), repair) || super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)

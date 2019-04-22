@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -25,6 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class Utils {
 	
@@ -168,7 +170,8 @@ public class Utils {
     private static int getMaxIndexEffect() {
     	return effect.length;
     }
-    
+
+    //TODO : @ItHurtsLikeHell Document this fucking method please
     public static String getName(String name) {
 		String[] str = name.split("_");
 		String[] space = space(str.length);
@@ -189,4 +192,37 @@ public class Utils {
 		}
 		return str;
 	}
+
+	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
+	{
+		if (wild.isEmpty() || check.isEmpty())
+		{
+			return check == wild;
+		}
+
+		return wild.getItem() == check.getItem()
+				&& (wild.getItemDamage() == OreDictionary.WILDCARD_VALUE
+				|| check.getItemDamage() == OreDictionary.WILDCARD_VALUE
+				|| wild.getItemDamage() == check
+				.getItemDamage());
+	}
+
+	public static Metal getMetalFromString(String string)
+	{
+		for (Metal metal : ModMetals.metalList)
+			if (string.contains(metal.toString()))
+				return metal;
+			return null;
+	}
+
+	public static ItemStack getToolRepairStack(ItemTool tool)
+	{
+		String material = tool.getToolMaterialName().toLowerCase();
+		Metal metal = Utils.getMetalFromString(material);
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else return ItemStack.EMPTY;
+	}
+
+
 }

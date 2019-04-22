@@ -71,6 +71,16 @@ public class Metal {
         fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
     }
 
+    public boolean hasToolSet()
+    {
+        return stats.getToolStats() != null;
+    }
+
+    public boolean hasArmorSet()
+    {
+        return stats.getArmorStats() != null;
+    }
+
     @Nonnull
     public MetalStats getStats() {
         return stats;

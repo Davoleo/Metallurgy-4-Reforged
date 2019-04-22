@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -70,6 +71,12 @@ public class ItemShovelBase extends ItemSpade {
     {
         this.tooltip = tooltip;
         return this;
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    {
+        return Utils.equalsWildcard(Utils.getToolRepairStack(this), repair) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)
