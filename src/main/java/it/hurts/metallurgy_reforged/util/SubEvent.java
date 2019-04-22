@@ -36,7 +36,6 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
-		MinecraftForge.EVENT_BUS.register(AnvilRepairHandler.class);
 
 		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
 		{

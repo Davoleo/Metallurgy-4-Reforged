@@ -25,7 +25,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class Utils {
@@ -157,10 +156,6 @@ public class Utils {
     public static String localize(String unlocalized)
     {
         return new TextComponentTranslation(unlocalized).getFormattedText();
-    }
-
-    public static boolean isFakePlayer(EntityPlayer player) {
-        return player instanceof FakePlayer || (player != null);
     }
     
     public static Potion getRandomEffect() {
