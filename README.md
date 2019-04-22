@@ -1,7 +1,7 @@
 ### This is Metallurgy 4: Reforged an unofficial port of Metallurgy 4 by JeanGlassMaker & ShadowClaimer
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4c6bd3c00ec4aff9113951ae80ab245)](https://app.codacy.com/app/Davoleo/Metallurgy-4-Reforged?utm_source=github.com&utm_medium=referral&utm_content=Davoleo/Metallurgy-4-Reforged&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.org/Davoleo/Metallurgy-4-Reforged.svg?branch=1.12.2)](https://travis-ci.org/Davoleo/Metallurgy-4-Reforged)
+[![Build Status](https://travis-ci.com/Davoleo/Metallurgy-4-Reforged.svg?branch=1.12.2)](https://travis-ci.com/Davoleo/Metallurgy-4-Reforged)
 [![Download Info](http://cf.way2muchnoise.eu/full_300890_downloads.svg)](https://minecraft.curseforge.com/projects/metallurgy-4-reforged)
 [![Discord Server](https://img.shields.io/discord/473145328439132160.svg?colorB=%237289da&label=discord)](https://discord.gg/MFCdYDY)
 
