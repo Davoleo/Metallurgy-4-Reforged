@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: OreGenerationConfig
+ * Class: WorldGenerationConfig
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -16,7 +16,7 @@ import net.minecraftforge.common.config.Config;
 
 @Config.LangKey("config.metallurgy.category.worldgen")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/worldgen", category = "ore_generation")
-public class OreGenerationConfig {
+public class WorldGenerationConfig {
 	
 //	Subclass Category
 	public static SubCategoryRarity rarity = new SubCategoryRarity();
@@ -60,7 +60,12 @@ public class OreGenerationConfig {
 	//End ores
 	public static CategoryEximite eximite = new CategoryEximite();
 	public static CategoryMeutoite meutoite = new CategoryMeutoite();
-	
+
+    @Config.Name("The spawnrate percentage of tar lake in the overworld")
+    @Config.Comment("Sets to 0 to disable")
+    @Config.RangeInt(min = 0, max = 100)
+    public static int tarLakePercentage = 20;
+
     @Config.Name("Retrogen")
     @Config.Comment(value = "Enable/Disable Retrogen")
     public static boolean retrogen = true;
