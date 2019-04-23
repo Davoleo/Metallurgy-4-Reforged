@@ -11,38 +11,38 @@
 
 package it.hurts.metallurgy_reforged;
 
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.fluid.ModFluids;
-import it.hurts.metallurgy_reforged.gui.GuiHandler;
-import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
-import it.hurts.metallurgy_reforged.integration.mods.IntegrationIndustrialF;
-import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.proxy.CommonProxy;
-import it.hurts.metallurgy_reforged.util.ModChecker;
-import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
-import it.hurts.metallurgy_reforged.util.SubEvent;
-import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
-import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
-import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
-import it.hurts.metallurgy_reforged.recipe.ModRecipes;
-import it.hurts.metallurgy_reforged.world.ModWorldGen;
-import it.hurts.metallurgy_reforged.world.WorldTickHandler;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import org.apache.logging.log4j.Logger;
+ import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
+ import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
+ import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
+ import it.hurts.metallurgy_reforged.config.GeneralConfig;
+ import it.hurts.metallurgy_reforged.fluid.ModFluids;
+ import it.hurts.metallurgy_reforged.gui.GuiHandler;
+ import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
+ import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
+ import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
+ import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
+ import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.material.ModMetals;
+ import it.hurts.metallurgy_reforged.network.PacketManager;
+ import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+ import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+ import it.hurts.metallurgy_reforged.recipe.ModRecipes;
+ import it.hurts.metallurgy_reforged.util.ModChecker;
+ import it.hurts.metallurgy_reforged.util.SubEvent;
+ import it.hurts.metallurgy_reforged.world.ModWorldGen;
+ import it.hurts.metallurgy_reforged.world.WorldTickHandler;
+ import net.minecraftforge.common.MinecraftForge;
+ import net.minecraftforge.common.capabilities.CapabilityManager;
+ import net.minecraftforge.fluids.FluidRegistry;
+ import net.minecraftforge.fml.common.Mod;
+ import net.minecraftforge.fml.common.SidedProxy;
+ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+ import net.minecraftforge.fml.common.network.NetworkRegistry;
+ import net.minecraftforge.fml.common.registry.GameRegistry;
+ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
@@ -94,8 +94,8 @@ public class Metallurgy {
             }
         }
 
-		if(ModChecker.isForegoingLoaded && !GeneralConfig.inForegoingIntegraton){
-			IntegrationIndustrialF.preInit();
+		if(ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegraton){
+			IntegrationIF.preInit();
 			logger.info("Industrial Foregoing integration has been pre-initialized");
 		}
 

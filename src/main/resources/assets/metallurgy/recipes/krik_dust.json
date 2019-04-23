@@ -3,15 +3,15 @@
   "ingredients": [
     {
       "type": "forge:ore_dict",
-      "ore": "dustIron"
+      "ore": "dustOsmium"
     },
     {
       "type": "forge:ore_dict",
-      "ore": "dustGold"
+      "ore": "dustLutetium"
     }
   ],
   "result": {
-    "item": "metallurgy:angmallen_dust",
+    "item": "metallurgy:krik_dust",
     "count": 2
   }
 }

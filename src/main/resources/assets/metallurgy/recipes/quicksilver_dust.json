@@ -1,18 +1,15 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "MS"
-  ],
-  "key":{
-    "M":{
-      "type": "forge:ore_dict",
-      "ore": "dustMithril"
-    },
-    "S":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
       "type": "forge:ore_dict",
       "ore": "dustSilver"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustMithril"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:quicksilver_dust",
     "count": 2

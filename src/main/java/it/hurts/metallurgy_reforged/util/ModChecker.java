@@ -18,13 +18,13 @@ public class ModChecker {
 	public static boolean isTConLoaded;
 	public static boolean isConarmLoaded;
 	public static boolean isBWMLoaded;
-	public static boolean isForegoingLoaded;
+	public static boolean isIFLoaded;
 	
 	static{
 		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
 		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
 		ModChecker.isBWMLoaded = Loader.isModLoaded("betterwithmods");
-		ModChecker.isForegoingLoaded = Loader.isModLoaded("industrialforegoing");
+		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
 	}
 	
 }

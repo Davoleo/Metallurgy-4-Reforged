@@ -1,19 +1,23 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "SL",
-    "SS"
-  ],
-  "key":{
-    "S":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustLemurite"
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustShadowIron"
     },
-    "L":{
+    {
       "type": "forge:ore_dict",
-      "ore": "dustLemurite"
+      "ore": "dustShadowIron"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustShadowIron"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:shadow_steel_dust",
     "count": 4

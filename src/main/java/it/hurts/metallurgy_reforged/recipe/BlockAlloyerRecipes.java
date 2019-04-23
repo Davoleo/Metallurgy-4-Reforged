@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.recipe;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.google.common.collect.Table.Cell;
-import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -51,7 +50,7 @@ public class BlockAlloyerRecipes {
                         new ItemStack(ModMetals.CERUCLASE.getIngot()),
                         new ItemStack(ModMetals.INOLASHITE.getIngot(), 2), 1.25F);
         this.addAlloyRecipe
-                (new ItemStack(ModMetals.COPPER.getIngot(), 2),
+                (new ItemStack(ModMetals.COPPER.getIngot(), 3),
                         new ItemStack(ModMetals.ZINC.getIngot()),
                         new ItemStack(ModMetals.BRASS.getIngot(), 4), 1.75F);
         this.addAlloyRecipe
@@ -69,7 +68,7 @@ public class BlockAlloyerRecipes {
         this.addAlloyRecipe
                 (new ItemStack(ModMetals.SILVER.getIngot()),
                         new ItemStack(Items.GOLD_INGOT),
-                        new ItemStack(ModMetals.ELECTRUM.getIngot()), 1.25F);
+                        new ItemStack(ModMetals.ELECTRUM.getIngot(), 2), 1.25F);
         this.addAlloyRecipe
                 (new ItemStack(ModMetals.ORICHALCUM.getIngot()),
                         new ItemStack(ModMetals.PLATINUM.getIngot()),
