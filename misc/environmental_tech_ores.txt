@@ -1,0 +1,43 @@
+Name            Lens Color          Weight
+
+Metallurgy Overworld Ores
+COPPER          Orange              TBD
+DEEP_IRON       Blue                TBD
+TIN             Light Gray          TBD
+PROMETHEUM      Green               TBD
+MANGANESE       Pink                TBD
+OURECLASE       Orange              TBD
+INFUSCOLIUM     Magenta             TBD
+ADAMANTINE      Red                 TBD
+RUBRACIUM       Red                 TBD
+ATLARUS         Yellow              TBD
+CARMOT          Yellow              TBD
+MITHRIL         Light Blue          TBD
+ZINC            White/Yellow        TBD
+ORICHALCUM      Light Green         TBD
+ASTRAL_SILVER   Light Blue          TBD
+SILVER          White               TBD
+PLATINUM        Cyan                TBD
+LUTETIUM        Green               TBD
+OSMIUM          Blue                TBD
+
+Metallurgy Utility Ores (Overworld only)
+Sulfur          Yellow              TBD
+Phosphorite     Red                 TBD
+Potash          Orange              TBD
+
+Metallurgy Nether Ores
+IGNATIUS        Orange              TBD
+SHADOW_IRON     Gray/Black          TBD
+LEMURITE        White               TBD
+MIDASIUM        Yellow              TBD
+VYROXERES       Light Green         TBD
+CERUCLASE       Cyan                TBD
+ALDUORITE       Light Blue          TBD
+KALENDRITE      Purple              TBD
+VULCANITE       Orange              TBD
+SANGUINITE      Red                 TBD
+
+Metallurgy End Ores
+EXIMITE         Purple              TBD
+MEUTOITE        Purple/Black        TBD
