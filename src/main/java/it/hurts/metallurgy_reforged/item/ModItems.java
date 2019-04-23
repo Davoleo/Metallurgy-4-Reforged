@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
+import it.hurts.metallurgy_reforged.item.gadgets.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -37,12 +38,11 @@ public class ModItems {
 	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPhosphorus = new ItemOreDict("phosphorus", "dustPhosphorus").setCreativeTab(MetallurgyTabs.tabDust);
   
-//	Lightner
+//	Gadgets
 	public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");
 	public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
-	
-//	Modded Items
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
+	public static ItemInvisibilityShield invisibilityShield = new ItemInvisibilityShield();
 
 	
 
@@ -50,7 +50,7 @@ public class ModItems {
 
 	public static void register(IForgeRegistry<Item> registry) {
 		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, 
-				dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet, dustThermite);
+				dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet, invisibilityShield, dustThermite);
 	}
 	
 	public static void registerModels() {
@@ -67,11 +67,10 @@ public class ModItems {
 		dustThermite.registerItemModel();
 		dustPhosphorus.registerItemModel();
 		
-//		Lightner
+		//Gadgets
 		flintAndIgnatius.registerItemModel();
 		flintAndVulcanite.registerItemModel();
-		
-//		Modded Items
 		gauntlet.registerItemModel();
+		invisibilityShield.registerItemModel();
 	}
 }

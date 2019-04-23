@@ -13,7 +13,10 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
@@ -48,4 +51,22 @@ public class GadgetsHandler {
 		}
 	}
 
+	@SubscribeEvent
+	public static void invisibilityEffect(PlayerTickEvent event)
+	{
+		for (EnumHand hand : EnumHand.values())
+		{
+			EntityPlayer player = event.player;
+
+			if (player.getHeldItem(hand).getItem() == ModItems.invisibilityShield)
+			{
+//
+//				player.setInvisible(true);
+//
+//				if (player.world.isRemote)
+//					for (int i = 0; i < 1000; i++)
+//						player.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX + Math.random(), player.posY + Math.random(), player.posX + Math.random());
+			}
+		}
+	}
 }
