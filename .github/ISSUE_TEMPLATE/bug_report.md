@@ -27,11 +27,11 @@ If applicable, add screenshots to help explain your problem.
 - Conflicting mod _(if regarding mod integration)_:
 - Other mods you think could cause issues:  
 
-**Crash Report** _if avaliable_ 
+**Crash Report** _(if avaliable)_ 
 **Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
 
-**Log** _if needed_
+**Log** _(if needed)_
 **Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
 
-**Additional context**
+**Additional context** _(if needed)_
 Add any other context about the problem here.

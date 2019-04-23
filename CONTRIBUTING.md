@@ -1,21 +1,21 @@
-# Contributing to the "Metallurgy 4 Reforged" project
+# Contributing to the "Metallurgy 4: Reforged" project
 
 ##### Prerequisites
 1.  _Git and Github Knowledge (This guide **does not** explain how git works)_
 
 ---
 ## Guide on Issues
--   Check if there's another open issue about the same topic!
--   Be sure to be as specific as possible in describing the issue
+-   Check if there's another open issue about the same topic (or else you'll be working for nothing cause we'll likely close your thread as duplicate)
+-   Be sure to be as specific as possible when describing the issue
 -   Provide the most information you are able to (crash reports | logs | mod versions | forge version)
 -   If possible post screenshots of the issue you're experiencing
--   _**if your issue does not respect these contributing lines it will be likely closed as invalid**_
+-   _if your issue does not respect these contributing lines it will be likely closed as invalid_
 
 ---
 ## Guide on Pull Requests
 
 Before contributing actively to the repository think of what you are going to add and why it makes sense to add it!
-Tell us about it too
+Tell us about it too!
 
 _Steps:_
 1. Fork the repository
@@ -42,12 +42,21 @@ I highly advise GitKraken as a git client (Easy to use and intuitive)<br>
 [Tutorial](https://support.gitkraken.com)<br>
 [Download](https://www.gitkraken.com/invite/mVRqih9P)
 
-If you want to contribute adding code comments or either you want to add comments to explain your features do it by adding line/block comments _above_ the line you want to explain.<br>
+If you want to contribute be sure to add Code Comments AND JavaDoc comments for methods<br>
 Example:
 ```java
 public class ExampleClass {
-    //Example integer variable
-    private int exampleVar;
+    //Example BlockPos variable
+    private BlockPos exampleVar;
+    
+    /**
+    * This method initializes all the BlockPos Variables
+    */
+    @Override
+    public static void initValues()
+    {
+        exampleVar.init();   
+    } 
 }
 ```
 
@@ -62,7 +71,7 @@ Blockstates directory: `src/main/resources/assets/m5/blockstates` <br>
 
 ---
 ###### Creating the Pull request
-Things TO DO!<br>
+Pull Request Check-in!<br>
 **BEFORE creating the pull request check if your changes break anything and if your PR has any bugs**<br>
 Tell us about the changes and how they are implemented in the pull request description<br>
 If you pushed commit to one branch you need to pull request to that same branch!<br>
@@ -70,7 +79,7 @@ Compare across forks!<br>
 Check in the commit section below if the commits you are proposing are yours
 
 Guide: <br>
-![Creating the Pull Request](https://media.giphy.com/media/1qi9hvxtxFA4uEWHcu/giphy.gif)
+![Creating the Pull Request](https://i.imgur.com/0IWdRnA.gif)
 
 ---
 ###### Pull request discussion
