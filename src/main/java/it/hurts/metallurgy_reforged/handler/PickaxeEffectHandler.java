@@ -35,13 +35,15 @@ public class PickaxeEffectHandler {
 		if(pl.isInWater()
 				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
 				&& ToolEffectsConfig.deepIronPickaxeEffect)
-			event.setNewSpeed(6F);
-//				set tools break speed based on light except for hoe and sword
-				if(ToolEffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
-					float percentage = Utils.getLightArmorPercentage(pl,100F);
-					float speed = event.getNewSpeed()  * percentage / 40F;
-					event.setNewSpeed(event.getOriginalSpeed() + speed);
-				}
+
+
+
+//		set tools break speed based on light except for hoe and sword
+		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+			float percentage = Utils.getLightArmorPercentage(pl,100F);
+			float speed = event.getNewSpeed()  * percentage / 40F;
+			event.setNewSpeed(event.getOriginalSpeed() + speed);
+		}
 	}
 	
 	@SubscribeEvent

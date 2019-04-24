@@ -11,12 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitDuplication;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitKingDice;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitLifeSteal;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitObscure;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitVulcan;
-import it.hurts.metallurgy_reforged.integration.mods.tic.trait.TraitWither;
+import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class MetallurgyTinkerTraits {
@@ -29,5 +24,6 @@ public class MetallurgyTinkerTraits {
     public static final AbstractTrait lifeStealTrait = new TraitLifeSteal();
     public static final AbstractTrait kingDiceTrait = new TraitKingDice();
     public static final AbstractTrait duplicaitonTrait = new TraitDuplication();
+    public static final AbstractTrait opistognathusTrait = new TraitOpistognathus();
 
 }

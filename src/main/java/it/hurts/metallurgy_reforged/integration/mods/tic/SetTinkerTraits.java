@@ -94,7 +94,12 @@ public class SetTinkerTraits {
 				material.addTrait(MetallurgyTinkerTraits.kingDiceTrait, EXTRA);
 			}
 			break;
-			
+
+			case "deep_iron" : {
+				material.addTrait(MetallurgyTinkerTraits.opistognathusTrait);
+			}
+			break;
+
 			default:{}
 			break;	
 		}	

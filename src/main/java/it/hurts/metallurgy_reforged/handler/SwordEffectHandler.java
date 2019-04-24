@@ -11,20 +11,17 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import java.util.ArrayList;
-
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -33,10 +30,17 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import scala.util.Random;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class SwordEffectHandler {
-	
+
+	//	The speed sword modifier UUID
+	public static final UUID SHADOW_STEEL_SWORD_MODIFIER_UUID =  UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
+
 	@SubscribeEvent
 	public static void onAttack(AttackEntityEvent event)
 	{
@@ -93,7 +97,7 @@ public class SwordEffectHandler {
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));
 			}
-			
+
 //			Mithril SwordEffectHandler (Give Glowing to entity Hitted)
 			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
 				if ((int) (Math.random() * 100) <= 20)
@@ -107,39 +111,39 @@ public class SwordEffectHandler {
 				if ((int) (Math.random() * 100) <= 30)
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
 			}
-			
+
 //			Ceruclase SwordEffectHandler (Give slowness)
 			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ceruclase_sword))) {
-				
+
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 70, 1, false, false));
 			}
 		}
 	}
-	
-	
+
+
 	@SubscribeEvent
 	public static void onEntityDeth(LivingDeathEvent event) {
 		Entity attacker = event.getSource().getImmediateSource();
 		if(attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker;
 //			Celenegil SwordEffectHandler ( Give Speed and Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) && 
-					(player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true && 
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) &&
+					(player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true &&
 							player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true)) {
-				
+
 				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0, false, false));
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 			}
 
 //			Orichalcum SwordEffectHandler ( Give Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) && 
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) &&
 					(player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true))
-				
+
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 		}
 	}
-	
+
 //	Midasium Effect
 	@SubscribeEvent
     public static void duplicationSwordEffect(LivingDropsEvent ev)
@@ -147,14 +151,14 @@ public class SwordEffectHandler {
 
         DamageSource source = ev.getSource();
         Entity entity = source.getTrueSource();
-        
+
         if(entity instanceof EntityPlayer)
         {
             EntityPlayer pl = (EntityPlayer) entity;
 
             if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword))&& !(ev.getEntity() instanceof EntityPlayer)){
 	            ArrayList<EntityItem> drops = new ArrayList<>();
-	
+
 //            	Duplica il drop
 	            if(!pl.isCreative()) {
 	            	 if((int) (Math.random() * 100) <= 50) {
@@ -174,7 +178,7 @@ public class SwordEffectHandler {
             }
         }
     }
-	
+
 //	Sanguinite SwordEffectHandler (Vampirism)
 	@SubscribeEvent
 	public static void entityHurtEvent(LivingHurtEvent event)
@@ -209,18 +213,34 @@ public class SwordEffectHandler {
 				}
 			}
 		}
-		if(event.getEntityLiving() instanceof EntityPlayer)
-		{
-			EntityPlayer pl = (EntityPlayer) event.getEntityLiving();
-			//check if player is wearing the shadow steel armor
-			if(ArmorEffectsConfig.shadowSteelArmorEffect && 
-					EventUtils.isPlayerWearingArmor(pl, new Item[] {ModArmors.shadow_steel_helmet,ModArmors.shadow_steel_chest,ModArmors.shadow_steel_legs,ModArmors.shadow_steel_boots}))
-			{
-				//get light percentage,maximum 30%
-				float percentage = Utils.getLightArmorPercentage(pl,40F);
-				float removedDamage = event.getAmount() * percentage / 100F;
-				event.setAmount(event.getAmount() - removedDamage);
+	}
+
+	@SubscribeEvent
+	public static void onSwordTick(TickEvent.PlayerTickEvent event) {
+		EntityPlayer pl = event.player;
+		ItemStack stack = pl.getHeldItemMainhand();
+		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+
+		if (ToolEffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword))) {
+
+			float percentage = Utils.getLightArmorPercentage(pl, 50F);
+			//calculate the Speed to add to the sword
+			double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
+			//the modifier UUID
+			AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID, "Shadow Steel SwordEffectHandler Modifier", added_speed, 0);
+			//checks if player has the modifier
+			if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) == null) {
+				//if not,add the modifier
+				attackSpeedInstance.applyModifier(shadow_steel_modifier);
+			} else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null && attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID).getAmount() != added_speed) {
+				//if  player has already the modifier and there is a light change,this method will update the speed attack
+				attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
+				attackSpeedInstance.applyModifier(shadow_steel_modifier);
 			}
+
+		} else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null) {
+			//removes the modifier if player doesn't held the sword
+			attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
 		}
 	}
 
