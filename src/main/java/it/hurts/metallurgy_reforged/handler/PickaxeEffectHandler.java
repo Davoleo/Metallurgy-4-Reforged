@@ -34,8 +34,9 @@ public class PickaxeEffectHandler {
 
 		if(pl.isInWater()
 				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
-				&& ToolEffectsConfig.deepIronPickaxeEffect)
-
+				&& ToolEffectsConfig.deepIronPickaxeEffect) {
+				event.setNewSpeed(event.getOriginalSpeed() * 3);
+		}
 
 
 //		set tools break speed based on light except for hoe and sword
@@ -58,7 +59,7 @@ public class PickaxeEffectHandler {
 	    				|| ev.getState().getBlock().equals(Blocks.SOUL_SAND)
 	    				|| ev.getState().getBlock().equals(Blocks.DIRT)
 	    				|| ev.getState().getBlock().equals(Blocks.GRASS)
-	    				|| ev.getState().getBlock().equals(Blocks.GRAVEL)) /*&& ev.getState().getBlock().isToolEffective(pl.getHeldItemMainhand().getItem()., state)*/){
+	    				|| ev.getState().getBlock().equals(Blocks.GRAVEL))){
 		            ArrayList<ItemStack> drops = new ArrayList<>();
 		
 		            if((int) (Math.random() * 100) <= 50) {

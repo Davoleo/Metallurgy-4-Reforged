@@ -84,7 +84,6 @@ public class SetTinkerTraits {
 			break;
 			
 			case "alduorite":{
-//				Rompe pi� velocementi i blocchi di harvest level inferiore al proprio
 				material.addTrait(TinkerTraits.unnatural, EXTRA);
 				material.addTrait(TinkerTraits.unnatural, HEAD);
 			}

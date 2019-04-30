@@ -29,6 +29,9 @@ public class ToolEffectsConfig {
     public static boolean shadowSteelToolSpeedEffect = true;
 
     //Swords
+    @Config.Name("Deep Iron Sword Effect")
+    @Config.Comment("Increase attack speed in water")
+    public static boolean deepIronSwordEffect = true;
     @Config.Name("Desichalkos Sword Effect")
     @Config.Comment("Gives some random effect to the target")
     public static boolean desichalkosSwordEffect = true;

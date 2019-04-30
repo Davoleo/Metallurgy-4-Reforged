@@ -849,6 +849,8 @@ tile.metallurgy.alloyer.name=§eAlloyer
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscure
 modifier.obscure_trait.desc=Blinds your enemy for some time
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
 modifier.vulcan_trait.name=Volcanic
 modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time (depending on the level of the trait)
 modifier.duplication_trait.name=Duplication
@@ -891,6 +893,7 @@ tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-di
 #Swords
 tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
+tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
 tooltip.metallurgy.desichalkos_sword_effect=§5Inflicts some random negative effect to the target
 tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life

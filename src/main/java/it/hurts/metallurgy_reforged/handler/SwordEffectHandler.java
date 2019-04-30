@@ -40,6 +40,7 @@ public class SwordEffectHandler {
 
 	//	The speed sword modifier UUID
 	public static final UUID SHADOW_STEEL_SWORD_MODIFIER_UUID =  UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
+	public static final UUID DEEP_IRON_SWORD_MODIFIER_UUID =  UUID.fromString("8dfd3581-6559-468f-a5a5-66c46ff7b70b");
 
 	@SubscribeEvent
 	public static void onAttack(AttackEntityEvent event)
@@ -241,6 +242,21 @@ public class SwordEffectHandler {
 		} else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null) {
 			//removes the modifier if player doesn't held the sword
 			attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
+		}
+
+		if (ToolEffectsConfig.deepIronSwordEffect) {
+			if (stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_sword))) {
+				AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
+				if (pl.isInWater() && attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) == null) {
+					attackSpeedInstance.applyModifier(deep_iron_trait_modifier);
+				} else {
+					if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null && !pl.isInWater())
+						attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
+				}
+			} else {
+				if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null)
+					attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
+			}
 		}
 	}
 

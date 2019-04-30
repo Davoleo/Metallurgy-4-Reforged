@@ -383,6 +383,10 @@ public class ModTools {
 
         switch (material)
         {
+            case "DEEP_IRON":
+                if(ToolEffectsConfig.deepIronSwordEffect)
+                    return true;
+                break;
             case "DESICHALKOS":
                 if (ToolEffectsConfig.desichalkosSwordEffect)
                     return true;
