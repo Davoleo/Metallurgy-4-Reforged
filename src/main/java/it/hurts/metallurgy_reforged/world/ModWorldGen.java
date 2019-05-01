@@ -100,7 +100,7 @@ public class ModWorldGen implements IWorldGenerator {
 	//Nether
 	private void generateNether(Random random, int chunkX, int chunkZ, World world){
 		generateOre(ModMetals.IGNATIUS.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.ignatius.veinSize, COMMON,  WorldGenerationConfig.ignatius.minY,  WorldGenerationConfig.ignatius.maxY, DEFAULT_NETHER, (Biome) null);
-		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.shadowIron.veinSize, COMMON, WorldGenerationConfig.shadowIron.minY, WorldGenerationConfig.shadowIron.minY, DEFAULT_NETHER, (Biome) null);
+		generateOre(ModMetals.SHADOW_IRON.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.shadowIron.veinSize, COMMON, WorldGenerationConfig.shadowIron.minY, WorldGenerationConfig.shadowIron.maxY, DEFAULT_NETHER, (Biome) null);
 		generateOre(ModMetals.LEMURITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.lemurite.veinSize, COMMON, WorldGenerationConfig.lemurite.minY, WorldGenerationConfig.lemurite.maxY, DEFAULT_NETHER, (Biome) null);
 		generateOre(ModMetals.MIDASIUM.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.midasium.veinSize, UNCOMMON, WorldGenerationConfig.midasium.minY, WorldGenerationConfig.midasium.maxY, DEFAULT_NETHER, (Biome) null);
 		generateOre(ModMetals.VYROXERES.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.vyroxeres.veinSize, UNCOMMON, WorldGenerationConfig.vyroxeres.minY, WorldGenerationConfig.vyroxeres.maxY, DEFAULT_NETHER, (Biome) null);

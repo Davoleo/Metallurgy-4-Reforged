@@ -88,7 +88,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 7;
     }
     
-    public static class CategoryEximite {
+    public static class CategoryEximite  {
+
     	@Config.Comment("Eximite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -102,7 +103,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 7;
     }
     
-    public static class CategoryVyroxeres {
+    public static class CategoryVyroxeres  {
+
     	@Config.Comment("Vyroxeres minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -116,7 +118,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 5;
     }
     
-    public static class CategoryVulcanite {
+    public static class CategoryVulcanite  {
+
     	@Config.Comment("Vulcanite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -130,7 +133,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 5;
     }
     
-    public static class CategorySanguinite {
+    public static class CategorySanguinite  {
+
     	@Config.Comment("Sanguinite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -144,7 +148,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 4;
     }
     
-    public static class CategoryShadowIron {
+    public static class CategoryShadowIron  {
+
     	@Config.Comment("Shadow Iron minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 16;
@@ -158,7 +163,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 6;
     }
     
-    public static class CategoryMidasium {
+    public static class CategoryMidasium  {
+
     	@Config.Comment("Midasium minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 32;
@@ -172,7 +178,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 6;
     }
     
-    public static class CategoryLemurite {
+    public static class CategoryLemurite  {
+
     	@Config.Comment("Lemurite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -186,7 +193,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 7;
     }
     
-    public static class CategoryKalendrite {
+    public static class CategoryKalendrite  {
+
     	@Config.Comment("Kalendrite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 27;
@@ -200,7 +208,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 5;
     }
     
-    public static class CategoryIgnatius {
+    public static class CategoryIgnatius  {
+
     	@Config.Comment("Ignatius minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -214,7 +223,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 10;
     }
     
-    public static class CategoryCeruclase {
+    public static class CategoryCeruclase  {
+
     	@Config.Comment("Ceruclase minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -228,7 +238,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 5;
     }
     
-    public static class CategoryAlduorite {
+    public static class CategoryAlduorite  {
+
     	@Config.Comment("Alduorite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 0;
@@ -242,7 +253,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 4;
     }
     
-    public static class CategoryPotash {
+    public static class CategoryPotash  {
+
     	@Config.Comment("Potash minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
     	public int minY = 32;
@@ -256,7 +268,8 @@ public class WorldGenerationConfig {
     	public int veinSize = 7;
     }
     
-    public static class CategoryPhosphorite {
+    public static class CategoryPhosphorite  {
+
     	@Config.Comment("Phosphorite minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -270,7 +283,8 @@ public class WorldGenerationConfig {
         public int veinSize = 5;
     }
     
-    public static class CategorySulfur {
+    public static class CategorySulfur  {
+
     	@Config.Comment("Sulfur minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -283,8 +297,39 @@ public class WorldGenerationConfig {
         @Config.RangeInt(min = 0)
         public int veinSize = 6;
     }
+
+    public static class CategoryOsmium {
+
+        @Config.Comment("Osmium minimum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int minY = 10;
+
+        @Config.Comment("Osmium maximum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int maxY = 50;
+
+        @Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
+        @Config.RangeInt(min = 0)
+        public int veinSize = 6;
+    }
+
+    public static class CategoryLutetium {
+
+        @Config.Comment("Lutetium minimum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int minY = 20;
+
+        @Config.Comment("Lutetium maximum Y level")
+        @Config.RangeInt(min = 2, max = 255)
+        public int maxY = 50;
+
+        @Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
+        @Config.RangeInt(min = 0)
+        public int veinSize = 4;
+    }
     
-    public static class CategoryPlatinum {
+    public static class CategoryPlatinum  {
+
     	@Config.Comment("Platinum minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -298,7 +343,8 @@ public class WorldGenerationConfig {
         public int veinSize = 4;
     }
 
-    public static class CategorySilver {
+    public static class CategorySilver  {
+
     	@Config.Comment("Silver minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -312,7 +358,8 @@ public class WorldGenerationConfig {
         public int veinSize = 8;
     }
     
-    public static class CategoryAstralSilver {
+    public static class CategoryAstralSilver  {
+
     	@Config.Comment("Astral Silver minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 24;
@@ -326,7 +373,8 @@ public class WorldGenerationConfig {
         public int veinSize = 6;
     }
     
-    public static class CategoryOrichalcum {
+    public static class CategoryOrichalcum  {
+
     	@Config.Comment("Orichalcum minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -340,7 +388,8 @@ public class WorldGenerationConfig {
         public int veinSize = 6;
     }
     
-    public static class CategoryZinc {
+    public static class CategoryZinc  {
+
     	@Config.Comment("Zinc minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -354,7 +403,8 @@ public class WorldGenerationConfig {
         public int veinSize = 8;
     }
     
-    public static class CategoryMithril {
+    public static class CategoryMithril  {
+
     	@Config.Comment("Mithril minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 32;
@@ -368,7 +418,8 @@ public class WorldGenerationConfig {
         public int veinSize = 5;
     }
     
-    public static class CategoryCarmot {
+    public static class CategoryCarmot  {
+
     	@Config.Comment("Carmot minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 32;
@@ -382,7 +433,8 @@ public class WorldGenerationConfig {
         public int veinSize = 6;
     }
     
-    public static class CategoryAtlarus {
+    public static class CategoryAtlarus  {
+
     	@Config.Comment("Atlarus minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -396,7 +448,8 @@ public class WorldGenerationConfig {
         public int veinSize = 3;
     }
     
-    public static class CategoryAdamantine{
+    public static class CategoryAdamantine {
+
     	@Config.Comment("Adamantine minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -410,7 +463,8 @@ public class WorldGenerationConfig {
         public int veinSize = 3;
     }
     
-    public static class CategoryRubracium {
+    public static class CategoryRubracium  {
+
     	@Config.Comment("Rubracium minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 10;
@@ -424,7 +478,8 @@ public class WorldGenerationConfig {
         public int veinSize = 6;
     }
     
-    public static class CategoryInfuscolium {
+    public static class CategoryInfuscolium  {
+
     	@Config.Comment("Infuscolium minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 10;
@@ -438,7 +493,8 @@ public class WorldGenerationConfig {
         public int veinSize = 7;
     }
     
-    public static class CategoryOureclase {
+    public static class CategoryOureclase  {
+
     	@Config.Comment("Ourseclase minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -452,7 +508,8 @@ public class WorldGenerationConfig {
         public int veinSize = 5;
     }
     
-    public static class CategoryManganese {
+    public static class CategoryManganese  {
+
     	@Config.Comment("Manganese minimum Y level")
     	@Config.RangeInt(min = 0, max = 255)
         public int minY = 0;
@@ -466,7 +523,8 @@ public class WorldGenerationConfig {
         public int veinSize = 9;
     }
     
-    public static class CategoryPrometheum {
+    public static class CategoryPrometheum  {
+
     	@Config.Comment("Prometheum minimum Y level")
     	@Config.RangeInt(min = 2, max = 255)
         public int minY = 0;
@@ -480,7 +538,8 @@ public class WorldGenerationConfig {
         public int veinSize = 6;
     }
     
-    public static class CategoryTin {
+    public static class CategoryTin  {
+
     	@Config.Comment("Tin minimum Y level")
     	@Config.RangeInt(min = 2, max = 255)
         public int minY = 25;
@@ -494,7 +553,8 @@ public class WorldGenerationConfig {
         public int veinSize = 10;
     }
     
-    public static class CategoryDeepIron{
+    public static class CategoryDeepIron {
+
     	@Config.Comment("Deep Iron minimum Y level")
     	@Config.RangeInt(min = 2, max = 255)
         public int minY = 10;
@@ -508,7 +568,8 @@ public class WorldGenerationConfig {
         public int veinSize = 5;
     }
     
-    public static class CategoryCopper{
+    public static class CategoryCopper {
+
     	@Config.Comment("Copper minimum Y level")
     	@Config.RangeInt(min = 2, max = 255)
         public int minY = 35;
@@ -522,36 +583,10 @@ public class WorldGenerationConfig {
         public int veinSize = 8;
     }
 
-    public static class CategoryLutetium{
-        @Config.Comment("Lutetium minimum Y level")
-        @Config.RangeInt(min = 2, max = 255)
-        public int minY = 20;
 
-        @Config.Comment("Lutetium maximum Y level")
-        @Config.RangeInt(min = 2, max = 255)
-        public int maxY = 50;
-
-        @Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
-        @Config.RangeInt(min = 0)
-        public int veinSize = 4;
-    }
-
-    public static class CategoryOsmium{
-        @Config.Comment("Osmium minimum Y level")
-        @Config.RangeInt(min = 2, max = 255)
-        public int minY = 10;
-
-        @Config.Comment("Osmium maximum Y level")
-        @Config.RangeInt(min = 2, max = 255)
-        public int maxY = 50;
-
-        @Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
-        @Config.RangeInt(min = 0)
-        public int veinSize = 6;
-    }
     
-    public static class SubCategoryRarity {
-//    	Le variabili devono essere non statiche
+    public static class SubCategoryRarity  {
+
     	@Config.Name("Common Ore Rarity")
     	@Config.Comment("Set the value of common Rarity (Don't change if you aren't a dev)")
     	@Config.RequiresMcRestart
