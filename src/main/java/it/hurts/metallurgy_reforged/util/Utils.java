@@ -29,7 +29,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class Utils {
 	
-	private static Potion [] effect = {
+	private static Potion [] randomEffectsList = {
 			MobEffects.BLINDNESS,
 			MobEffects.LEVITATION,
 			MobEffects.HUNGER,
@@ -41,7 +41,7 @@ public class Utils {
 			MobEffects.REGENERATION
 	};
 	
-	public static String[] materialName = {
+	public static String[] modMaterialNames = {
 			"adamantine",
 			"amordrine",
 			"angmallen",
@@ -159,11 +159,11 @@ public class Utils {
     }
     
     public static Potion getRandomEffect() {
-    	return effect[(int)(Math.random() * Utils.getMaxIndexEffect())];
+    	return randomEffectsList[(int)(Math.random() * Utils.getMaxIndexEffect())];
     }
     
     private static int getMaxIndexEffect() {
-    	return effect.length;
+    	return randomEffectsList.length;
     }
 
     //TODO : @ItHurtsLikeHell Document this fucking method please
@@ -176,7 +176,8 @@ public class Utils {
 		}
 		return name;
 	}
-	
+
+	//TODO : @ItHurtsLikeHell Document this fucking method please
 	private static String[] space(int len) {
 		String[] str = new String [len];
 		for(int i = 0; i < len; i++) {

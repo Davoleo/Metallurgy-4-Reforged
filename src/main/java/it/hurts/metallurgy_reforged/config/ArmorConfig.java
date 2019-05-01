@@ -129,9 +129,9 @@ public class ArmorConfig {
 	private static void initArmorConfig(Configuration cfg) {
 			for(int i = 0; i < allArmor.length; i++) {
 				Map<String,Boolean> mappa = new HashMap<String,Boolean>();
-				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.materialName[i]) + " ArmorEffectHandler Set" );
+				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " ArmorEffectHandler Set" );
 				
-				mappa.put(Utils.materialName[i].toUpperCase(), allArmor[i]);
+				mappa.put(Utils.modMaterialNames[i].toUpperCase(), allArmor[i]);
 				mapList.add(mappa);
 			}
 	}

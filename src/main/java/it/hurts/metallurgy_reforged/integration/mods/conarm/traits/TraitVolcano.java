@@ -25,7 +25,7 @@ public class TraitVolcano extends AbstractArmorTrait{
 	
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "volcano"))
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "volcano"))
 			event.player.extinguish();
 	}
 

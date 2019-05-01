@@ -27,7 +27,7 @@ public class TraitResistence extends AbstractArmorTrait{
 	
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "resistance"))
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "resistance"))
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3, false, false));
 	}
 

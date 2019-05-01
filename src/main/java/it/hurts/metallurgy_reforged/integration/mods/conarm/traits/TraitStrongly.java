@@ -27,7 +27,7 @@ public class TraitStrongly extends AbstractArmorTraitLeveled{
 	
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){
-		if(MetallurgyConArmorStats.isThatArmorTraitLeveled(event.player, "strongly", 2)) {
+		if(MetallurgyConArmorStats.isArmorTraitLeveled(event.player, "strongly", 2)) {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, MetallurgyConArmorStats.getLevelForEffect(event.player, "strongly", 2), false, false));
 		}
 	}

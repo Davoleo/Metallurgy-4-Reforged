@@ -146,8 +146,8 @@ public class ToolConfig {
 	
 	public static void fillMap() {
 		Map<String,boolean[]> mappa = new HashMap<String,boolean[]>();
-		for(int i = 0; i < Utils.materialName.length; i++) {
-			mappa.put(Utils.materialName[i], (boolean[]) allTools[i]);
+		for(int i = 0; i < Utils.modMaterialNames.length; i++) {
+			mappa.put(Utils.modMaterialNames[i], (boolean[]) allTools[i]);
 			mapList.add(mappa);
 		}
 	}
@@ -169,7 +169,7 @@ public class ToolConfig {
 		
 		for(int j = 0; j < 5; j++) {
 			for(int i = 0; i < allTools.length; i++) {
-				allTools[i][j] = cfg.getBoolean(Utils.materialName[i], CATEGORY[j],  allTools[i][j], "Set to false to disable " + CATEGORY[j]);
+				allTools[i][j] = cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY[j],  allTools[i][j], "Set to false to disable " + CATEGORY[j]);
 			}
 		}
 		
@@ -177,7 +177,7 @@ public class ToolConfig {
 			Map<String,boolean[]> mappa = new HashMap<String,boolean[]>();
 
 //			Il nome dei materiali è in UPPERCASE
-			mappa.put(Utils.materialName[i].toUpperCase(), allTools[i]);
+			mappa.put(Utils.modMaterialNames[i].toUpperCase(), allTools[i]);
 			mapList.add(mappa);
 		}
 	}

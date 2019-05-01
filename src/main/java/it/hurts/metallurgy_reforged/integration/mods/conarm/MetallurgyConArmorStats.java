@@ -17,6 +17,7 @@ import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.traits.IArmorTrait;
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -61,7 +62,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 		return maxDefensePoint;
 	}
 	
-	public static boolean isThatArmorTrait(EntityPlayer player, String traitToCheck) {
+	public static boolean isArmorTrait(EntityPlayer player, String traitToCheck) {
 		boolean flag = false;
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
@@ -81,22 +82,22 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 				}
 			}
 		}
-		
+
 		return flag;
 	}
-	
-	public static boolean isThatArmorTraitLeveled(EntityPlayer player, String traitToCheck, int maxLevel) {
+
+	public static boolean isArmorTraitLeveled(EntityPlayer player, String traitToCheck, int maxLevel) {
 		boolean flag = false;
-		
+
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
-			if(item instanceof TinkersArmor){
-				
+			if(item instanceof TinkersArmor && item.getRegistryName().toString().contains(Metallurgy.MODID)){
+
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
+
 				for (int i = 0; i < list.tagCount(); i++) {
 					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
-					
+
 					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 						i = 0;

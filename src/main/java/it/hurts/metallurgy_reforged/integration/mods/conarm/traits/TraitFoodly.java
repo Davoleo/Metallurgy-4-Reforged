@@ -31,7 +31,7 @@ public class TraitFoodly extends AbstractArmorTrait{
 	
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "foodly")) {
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "foodly")) {
 			FoodStats foodStat = event.player.getFoodStats();
 			int amount = 4;
 			//quantity experience to remove

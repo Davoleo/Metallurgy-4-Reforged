@@ -11,11 +11,9 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.conarm.traits;
 
-import java.util.List;
-
 import c4.conarm.lib.traits.AbstractArmorTrait;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
 import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
+import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -26,6 +24,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
+import java.util.List;
+
 public class TraitDeeply extends AbstractArmorTrait{
 
 	public TraitDeeply() {
@@ -35,7 +35,7 @@ public class TraitDeeply extends AbstractArmorTrait{
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){
 		EntityPlayer pl = event.player;
-		if(MetallurgyConArmorStats.isThatArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative()) {
+		if(MetallurgyConArmorStats.isArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative()) {
 			for(int i = 5;i < 9; i++)
 			 {
 				 if(!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
