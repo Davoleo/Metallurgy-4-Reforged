@@ -16,9 +16,11 @@ import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import c4.conarm.lib.tinkering.TinkersArmor;
+import c4.conarm.lib.traits.AbstractArmorTrait;
 import c4.conarm.lib.traits.IArmorTrait;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -91,7 +93,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
-			if(item instanceof TinkersArmor && item.getRegistryName().toString().contains(Metallurgy.MODID)){
+			if(item instanceof TinkersArmor){
 
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
 
@@ -100,11 +102,17 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 
 					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
-						i = 0;
-						while(i < maxLevel || !flag) {
-							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-								flag = true;
-							i++;
+
+						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait){
+							if(armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())){
+								i = 0;
+								while(i < maxLevel && !flag) {
+									System.out.println("Entro flag");
+									if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
+										flag = true;
+									i++;
+								}
+							}
 						}
 					}
 				}
@@ -128,11 +136,17 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 					
 					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
-						i = 0;
-						while(i < maxLevel || level < 0) {
-							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-								level = i;
-							i++;
+
+						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait) {
+							if (armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())) {
+								i = 0;
+								while (i < maxLevel && level < -1) {
+									System.out.println("Entro level");
+									if (armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
+										level = i;
+									i++;
+								}
+							}
 						}
 					}
 				}

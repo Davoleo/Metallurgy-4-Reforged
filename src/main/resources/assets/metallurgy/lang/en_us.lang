@@ -865,7 +865,7 @@ modifier.king_dice_trait.desc=Applies a random effect on your enemy
 #Tooltips
 #Armor Tooltips
 tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set: Consumes experience to gain hunger points
-tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght
+tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght II
 tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set: (WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set: Jump Boost
 tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set: (WIP) Haste (WIP)

@@ -36,5 +36,7 @@ public class MetallurgyArmorTraits {
 	public static final AbstractArmorTrait catEyes = new TraitCatEyes();
 	public static final AbstractArmorTrait prometheum = new TraitPrometheum();
 	public static final AbstractArmorTrait blindness = new TraitBlindness();
+
+	public static final AbstractArmorTrait[] metallurgyArmroTrait = {quickly, stronglyAmordrine, stronglyKalendrite, jumpMaster, resistance, deeply, volcano, foodly, prometheum, blindness};
 	
 }
