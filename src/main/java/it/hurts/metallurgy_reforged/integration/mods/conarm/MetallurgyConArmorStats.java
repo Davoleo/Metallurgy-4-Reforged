@@ -93,8 +93,8 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
-			if(item instanceof TinkersArmor){
 
+			if(item instanceof TinkersArmor){
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
 
 				for (int i = 0; i < list.tagCount(); i++) {
@@ -106,10 +106,11 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait){
 							if(armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())){
 								i = 0;
+
 								while(i < maxLevel && !flag) {
-									System.out.println("Entro flag");
 									if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
 										flag = true;
+
 									i++;
 								}
 							}
@@ -140,12 +141,13 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait) {
 							if (armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())) {
 								i = 0;
-								while (i < maxLevel && level < -1) {
+								while (i < maxLevel || level < -1) {
 									System.out.println("Entro level");
 									if (armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
 										level = i;
 									i++;
 								}
+								System.out.println(level);
 							}
 						}
 					}
