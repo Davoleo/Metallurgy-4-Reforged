@@ -18,9 +18,7 @@ import c4.conarm.lib.materials.TrimMaterialStats;
 import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import c4.conarm.lib.traits.IArmorTrait;
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -103,7 +101,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 
-						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait){
+						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmorTrait){
 							if(armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())){
 								i = 0;
 
@@ -138,7 +136,7 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 
-						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmroTrait) {
+						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmorTrait) {
 							if (armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())) {
 								i = 0;
 								while (i < maxLevel || level < -1) {

@@ -28,7 +28,7 @@ public class TraitJumpMaster extends AbstractArmorTrait{
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
 		 if(MetallurgyConArmorStats.isArmorTrait(event.player, "jump_master"))
-	    		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
+	    		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, 1, false, false));
 	}
 
 }
