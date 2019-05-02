@@ -142,12 +142,10 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 							if (armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())) {
 								i = 0;
 								while (i < maxLevel || level < -1) {
-									System.out.println("Entro level");
 									if (armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
 										level = i;
 									i++;
 								}
-								System.out.println(level);
 							}
 						}
 					}
