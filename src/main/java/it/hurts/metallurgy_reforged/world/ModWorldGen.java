@@ -171,7 +171,7 @@ public class ModWorldGen implements IWorldGenerator {
             {
                 if (WorldGenerationConfig.verbose_retrogen)
                 {
-                    Metallurgy.logger.log(Level.DEBUG, "Queuing retrogen for chunk: " + coordinates.toString() + ".");
+                    Metallurgy.logger.log(Level.INFO, "Queuing retrogen for chunk: " + coordinates.toString() + ".");
                 }
                 regen = true;
             }

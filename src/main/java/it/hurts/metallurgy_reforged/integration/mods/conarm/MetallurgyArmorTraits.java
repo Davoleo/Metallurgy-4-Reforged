@@ -12,16 +12,7 @@
 package it.hurts.metallurgy_reforged.integration.mods.conarm;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitBlindness;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitCatEyes;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitDeeply;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitFoodly;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitJumpMaster;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitPrometheum;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitQuickly;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitResistence;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitStrongly;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.TraitVolcano;
+import it.hurts.metallurgy_reforged.integration.mods.conarm.traits.*;
 
 public class MetallurgyArmorTraits {
 
@@ -37,6 +28,6 @@ public class MetallurgyArmorTraits {
 	public static final AbstractArmorTrait prometheum = new TraitPrometheum();
 	public static final AbstractArmorTrait blindness = new TraitBlindness();
 
-	public static final AbstractArmorTrait[] metallurgyArmroTrait = {quickly, stronglyAmordrine, stronglyKalendrite, jumpMaster, resistance, deeply, volcano, foodly, prometheum, blindness};
+	public static final AbstractArmorTrait[] metallurgyArmorTrait = {quickly, stronglyAmordrine, stronglyKalendrite, jumpMaster, resistance, deeply, volcano, foodly, prometheum, blindness};
 	
 }
