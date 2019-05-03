@@ -26,7 +26,7 @@ public class TraitPrometheum extends AbstractArmorTrait{
 
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isArmorTrait(event.player, "prometheum") && event.player.getActivePotionEffects().contains(MobEffects.POISON)) {
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "prometheum")) {
 			event.player.removePotionEffect(MobEffects.POISON);
 		}
 			
