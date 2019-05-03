@@ -264,11 +264,11 @@ config.metallurgy.category.worldgen=World Generation
 #Construct's Armory Traits
 modifier.blindness_armor.name=Clear Vision
 modifier.cat_eyes_armor.name=Night Vision
-modifier.deeply_armor.name=Aquatic
+modifier.deeply_armor.name=Diver
 modifier.foodly_armor.name=Well Fed
-modifier.jump_master_armor.name=Jump Boost
+modifier.jump_master_armor.name=Jump Master
 modifier.prometheum_armor.name=Poison Immunity
-modifier.quickly_armor.name=Quick Shooting
+modifier.quickly_armor.name=Quick Action
 modifier.resistance_armor.name=Resistance IV
 modifier.strongly_armor.name=Strength
 modifier.volcano_armor.name=Volcanic

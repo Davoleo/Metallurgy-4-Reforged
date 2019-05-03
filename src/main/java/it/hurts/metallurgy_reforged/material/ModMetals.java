@@ -106,11 +106,11 @@ public class ModMetals {
             new ArmorStats(new int[]{4, 5, 6, 4}, 20, 40, 3.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 5, 1000, 8F, 4F), new FluidStats(0xFF9941DD), 4).createMetal();
     public static final Metal KRIK = new MetalStats("krik", "Krik", 2, MID_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[] {2, 4, 3, 1}, 17, 45, 14.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ArmorStats(new int[] {2, 4, 3, 1}, 17, 45, 9.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(17, 4, 350, 5F, 7F), new FluidStats(0xFF415E26), -1).createMetal();
     public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
     public static final Metal LUTETIUM = new MetalStats("lutetium", "Lutetium", 2, HIGH_TIER_BLAST_RESISTANCE,
-    		new ArmorStats(new int[] {6, 7, 6, 5}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+    		new ArmorStats(new int[] {5, 6, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
     		null, new FluidStats(0xFF777221), 4).createMetal();
     public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
     public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF332E38), 4).createMetal();
@@ -125,10 +125,10 @@ public class ModMetals {
             new ToolStats(20, 6, 1350, 9F, 7F), new FluidStats(0xFF517441), 5).createMetal();
     public static final Metal OURECLASE = new MetalStats("oureclase", "Oureclase", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 6, 5, 4}, 2, 28, 1.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(18, 4, 750, 8F, 6F), new FluidStats(0xFFE08E02), 3).createMetal();
+            new ToolStats(18, 3, 750, 8F, 6F), new FluidStats(0xFFE08E02), 3).createMetal();
     public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
-    		new ArmorStats(new int[] {5, 6, 5, 4}, 17, 500, 5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-    		null, new FluidStats(0xFF555AB2), 4).createMetal();
+    		new ArmorStats(new int[] {4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+    		null, new FluidStats(0xFF555AB2), 2).createMetal();
     public static final Metal PLATINUM = new MetalStats("platinum", "Platinum", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 12, 17, 0.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(50, 3, 100, 16F, 5F), new FluidStats(0xFF7193D4), 2).createMetal();
