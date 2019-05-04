@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitVulcan
+ * Class: MetallurgyTraitVulcan
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -10,10 +10,6 @@
  */
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
-
-import java.util.ListIterator;
-
-import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
@@ -34,11 +30,14 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
-public class TraitVulcan extends AbstractTraitLeveled implements ITrait{
+import javax.annotation.Nullable;
+import java.util.ListIterator;
+
+public class MetallurgyTraitVulcan extends AbstractTraitLeveled implements IMetallurgyTrait {
 
 	private int levels;
 	
-	public TraitVulcan(int levels) {
+	public MetallurgyTraitVulcan(int levels) {
 		super("vulcan_trait", String.valueOf(levels), 0xffffff, 2, levels);
 		
 		this.levels = levels;

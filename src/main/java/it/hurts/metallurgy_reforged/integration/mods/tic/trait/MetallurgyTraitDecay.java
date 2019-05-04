@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitDecay
+ * Class: MetallurgyTraitDecay
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -17,9 +17,9 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 import javax.annotation.Nullable;
 
-public class TraitDecay extends AbstractTrait implements ITrait {
+public class MetallurgyTraitDecay extends AbstractTrait implements IMetallurgyTrait {
 
-    public TraitDecay()
+    public MetallurgyTraitDecay()
     {
         super("decay_trait", 0xFF575000);
         this.register("metallurgy.trait.decay", "metallurgy.trait.decay.tooltip");

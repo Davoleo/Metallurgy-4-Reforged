@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitKingDice
+ * Class: MetallurgyTraitKingDice
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -10,8 +10,6 @@
  */
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
-
-import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
@@ -23,9 +21,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class TraitKingDice extends AbstractTrait implements ITrait{
+import javax.annotation.Nullable;
 
-	public TraitKingDice() {
+public class MetallurgyTraitKingDice extends AbstractTrait implements IMetallurgyTrait {
+
+	public MetallurgyTraitKingDice() {
 		super("king_dice_trait", TextFormatting.WHITE);
 	}
 	

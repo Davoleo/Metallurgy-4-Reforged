@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitDuplication
+ * Class: MetallurgyTraitDuplication
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -10,10 +10,6 @@
  */
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
-
-import java.util.ArrayList;
-
-import javax.annotation.Nullable;
 
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,9 +21,12 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.world.BlockEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class TraitDuplication extends AbstractTrait implements ITrait{
+import javax.annotation.Nullable;
+import java.util.ArrayList;
 
-	public TraitDuplication() {
+public class MetallurgyTraitDuplication extends AbstractTrait implements IMetallurgyTrait {
+
+	public MetallurgyTraitDuplication() {
 		super("duplication_trait", TextFormatting.YELLOW);
 	}
 

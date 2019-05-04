@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitObscure
+ * Class: MetallurgyTraitObscure
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -25,9 +25,9 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 import javax.annotation.Nullable;
 
-public class TraitObscure extends AbstractTrait implements ITrait{
+public class MetallurgyTraitObscure extends AbstractTrait implements IMetallurgyTrait {
 
-    public TraitObscure()
+    public MetallurgyTraitObscure()
     {
         super("obscure_trait", TextFormatting.BLACK);
     }

@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: TraitLifeSteal
+ * Class: MetallurgyTraitLifeSteal
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -11,8 +11,6 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
-import javax.annotation.Nullable;
-
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,9 +19,11 @@ import net.minecraft.util.text.TextFormatting;
 import scala.util.Random;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
-public class TraitLifeSteal extends AbstractTrait implements ITrait{
+import javax.annotation.Nullable;
+
+public class MetallurgyTraitLifeSteal extends AbstractTrait implements IMetallurgyTrait {
 	
-	public TraitLifeSteal() {
+	public MetallurgyTraitLifeSteal() {
 		super("life_steal_trait", TextFormatting.LIGHT_PURPLE);
 	}
 
