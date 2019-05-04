@@ -16,14 +16,14 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 public class MetallurgyTinkerTraits {
 
-    public static final AbstractTrait obscureTrait = new TraitObscure();
-    public static final AbstractTrait vulcanTrait = new TraitVulcan(0);
-    public static final AbstractTrait vulcanTrait1 = new TraitVulcan(1);
-    public static final AbstractTrait vulcanTrait2 = new TraitVulcan(2);
-    public static final AbstractTrait witherTrait = new TraitWither();
-    public static final AbstractTrait lifeStealTrait = new TraitLifeSteal();
-    public static final AbstractTrait kingDiceTrait = new TraitKingDice();
-    public static final AbstractTrait duplicaitonTrait = new TraitDuplication();
-    public static final AbstractTrait opistognathusTrait = new TraitOpistognathus();
+    public static final AbstractTrait obscureTrait = new MetallurgyTraitObscure();
+    public static final AbstractTrait vulcanTrait = new MetallurgyTraitVulcan(0);
+    public static final AbstractTrait vulcanTrait1 = new MetallurgyTraitVulcan(1);
+    public static final AbstractTrait vulcanTrait2 = new MetallurgyTraitVulcan(2);
+    public static final AbstractTrait witherTrait = new MetallurgyTraitWither();
+    public static final AbstractTrait lifeStealTrait = new MetallurgyTraitLifeSteal();
+    public static final AbstractTrait kingDiceTrait = new MetallurgyTraitKingDice();
+    public static final AbstractTrait duplicaitonTrait = new MetallurgyTraitDuplication();
+    public static final AbstractTrait opistognathusTrait = new MetallurgyTraitOpistognathus();
 
 }

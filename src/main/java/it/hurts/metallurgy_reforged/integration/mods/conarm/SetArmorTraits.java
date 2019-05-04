@@ -47,7 +47,7 @@ public class SetArmorTraits {
 			break;
 			
 			case "deep_iron" : {
-				material.addTrait(MetallurgyArmorTraits.deeply);
+				addToEveryPart(material, MetallurgyArmorTraits.deeply);
 			}
 			break;
 			
