@@ -19,7 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitCatEyes extends AbstractArmorTrait{
+public class TraitCatEyes extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitCatEyes() {
 		super("cat_eyes", TextFormatting.GREEN);

@@ -26,7 +26,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 import java.util.List;
 
-public class TraitDeeply extends AbstractArmorTrait{
+public class TraitDeeply extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitDeeply() {
 		super("deeply", TextFormatting.DARK_BLUE);

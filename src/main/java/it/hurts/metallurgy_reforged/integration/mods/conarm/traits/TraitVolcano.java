@@ -17,7 +17,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitVolcano extends AbstractArmorTrait{
+public class TraitVolcano extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitVolcano() {
 		super("volcano", TextFormatting.RED);

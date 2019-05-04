@@ -23,7 +23,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitFoodly extends AbstractArmorTrait{
+public class TraitFoodly extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitFoodly() {
 		super("foodly", TextFormatting.DARK_RED);

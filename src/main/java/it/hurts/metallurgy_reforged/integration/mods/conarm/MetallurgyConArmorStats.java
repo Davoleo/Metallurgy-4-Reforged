@@ -16,7 +16,6 @@ import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import c4.conarm.lib.tinkering.TinkersArmor;
-import c4.conarm.lib.traits.AbstractArmorTrait;
 import c4.conarm.lib.traits.IArmorTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -84,74 +83,6 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 		}
 
 		return flag;
-	}
-
-	public static boolean isArmorTraitLeveled(EntityPlayer player, String traitToCheck, int maxLevel) {
-		boolean flag = false;
-
-		for(ItemStack stack : player.inventory.armorInventory){
-			Item item = stack.getItem();
-
-			if(item instanceof TinkersArmor){
-				NBTTagList list = TagUtil.getTraitsTagList(stack);
-
-				for (int i = 0; i < list.tagCount(); i++) {
-					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
-
-					if (trait instanceof IArmorTrait) {
-						IArmorTrait armorTrait = (IArmorTrait) trait;
-
-						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmorTrait){
-							if(armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())){
-								i = 0;
-
-								while(i < maxLevel && !flag) {
-									if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-										flag = true;
-
-									i++;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		return flag;
-	}
-	
-	public static int getLevelForEffect(EntityPlayer player, String traitToCheck, int maxLevel) {
-		int level = -1;
-		
-		for(ItemStack stack : player.inventory.armorInventory){
-			Item item = stack.getItem();
-			if(item instanceof TinkersArmor){
-				
-				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
-				for (int i = 0; i < list.tagCount(); i++) {
-					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
-					
-					if (trait instanceof IArmorTrait) {
-						IArmorTrait armorTrait = (IArmorTrait) trait;
-
-						for(AbstractArmorTrait aa : MetallurgyArmorTraits.metallurgyArmorTrait) {
-							if (armorTrait.getLocalizedName().equalsIgnoreCase(aa.getLocalizedName())) {
-								i = 0;
-								while (i < maxLevel || level < -1) {
-									if (armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-										level = i;
-									i++;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		return level;
 	}
 	
 }

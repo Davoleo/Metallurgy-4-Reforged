@@ -19,7 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class TraitQuickly extends AbstractArmorTrait{
+public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitQuickly() {
 		super("quickly", TextFormatting.DARK_AQUA);
