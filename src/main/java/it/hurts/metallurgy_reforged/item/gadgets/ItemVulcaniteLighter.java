@@ -70,7 +70,7 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
                 worldIn.setBlockState(targetPos, state);
 
                 if (!player.isCreative())
-                    player.getCooldownTracker().setCooldown(this, 120/*0*/);
+                    player.getCooldownTracker().setCooldown(this, 400);
                     lighter.damageItem(25, player);
 
                 return EnumActionResult.SUCCESS;

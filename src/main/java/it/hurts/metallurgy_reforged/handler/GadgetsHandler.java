@@ -15,11 +15,13 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -52,21 +54,21 @@ public class GadgetsHandler {
 	}
 
 	@SubscribeEvent
-	public static void invisibilityEffect(PlayerTickEvent event)
+	@SideOnly(Side.CLIENT)
+	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
 	{
-		for (EnumHand hand : EnumHand.values())
-		{
-			EntityPlayer player = event.player;
+		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			event.setCanceled(true);
+	}
 
-			if (player.getHeldItem(hand).getItem() == ModItems.invisibilityShield)
-			{
-//
-//				player.setInvisible(true);
-//
-//				if (player.world.isRemote)
-//					for (int i = 0; i < 1000; i++)
-//						player.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, player.posX + Math.random(), player.posY + Math.random(), player.posX + Math.random());
-			}
+	@SubscribeEvent
+	public static void disableAI(LivingEvent.LivingUpdateEvent event)
+	{
+		if (event.getEntityLiving() instanceof EntityLiving)
+		{
+			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
+			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+				entity.setAttackTarget(null);
 		}
 	}
 }

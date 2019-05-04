@@ -18,10 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -64,15 +61,43 @@ public class ItemInvisibilityShield extends ItemBase {
     @Override
     public int getMaxItemUseDuration(ItemStack stack)
     {
-        return 1200;
+        return 600;
     }
 
     @Nonnull
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
+        playerIn.setInvisible(true);
         playerIn.setActiveHand(handIn);
+        spawnParticles(worldIn, playerIn);
         return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+    }
+
+    @Override
+    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
+    {
+        terminateEffect(entityLiving, stack, 600 - timeLeft);
+    }
+
+    @Override
+    public void onUsingTick(ItemStack stack, EntityLivingBase player, int count)
+    {
+        if (count <= 1)
+            terminateEffect(player, stack, 600);
+    }
+
+    private void terminateEffect(EntityLivingBase player, ItemStack stack, int cooldown)
+    {
+        player.setInvisible(false);
+        ((EntityPlayer) player).getCooldownTracker().setCooldown(stack.getItem(), cooldown);
+        spawnParticles(player.world, player);
+    }
+
+    private void spawnParticles(World world, EntityLivingBase entity)
+    {
+        if (world.isRemote)
+            world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, entity.posX , entity.posY + 1, entity.posZ, 0, 0, 0, 0);
     }
 
     @Override
