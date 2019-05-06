@@ -83,6 +83,9 @@ dependencies {
      
 //	Industrial Foregoing
     deobfCompile "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
+	
+//	ProjectE
+	deobfCompile "projecte:ProjectE:1.12.2:PE1.4.1"
 }
 
 processResources {

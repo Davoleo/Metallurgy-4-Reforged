@@ -45,11 +45,15 @@ public class Metal {
         ModMetals.metalList.add(this);
     }
 
+    /**
+     * @return null if toolMaterial doesn't Exist else return tool material
+     */
     public ItemTool.ToolMaterial getToolMaterial() {
         if (toolMat == null) {
             ToolStats tStats = stats.getToolStats();
             if(tStats == null) {
-                throw new UnsupportedOperationException("No Tool Stats Loaded");
+                return null;
+//                throw new UnsupportedOperationException("No Tool Stats Loaded");
             }
             this.toolMat = EnumHelper.addToolMaterial(stats.getName().toUpperCase(), tStats.getHarvestLevel(), tStats.getMaxUses(), tStats.getEfficiency(), tStats.getDamage(), tStats.getToolMagic());
         }

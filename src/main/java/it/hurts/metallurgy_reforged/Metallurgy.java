@@ -21,6 +21,7 @@ package it.hurts.metallurgy_reforged;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
+ import it.hurts.metallurgy_reforged.integration.mods.IntegrationProjectE;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
@@ -122,7 +123,9 @@ public class Metallurgy {
                 logger.info("Construct's Armory integration has been initialized");
             }
         }
-		
+
+		IntegrationProjectE.init();
+
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		BlockCrusherRecipes.registerDefaultOreRecipes();
 	}
