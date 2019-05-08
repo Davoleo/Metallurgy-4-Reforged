@@ -11,12 +11,14 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -26,13 +28,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemInvisibilityShield extends ItemBase {
+public class ItemInvisibilityShield extends Item implements IHasModel {
 
     public ItemInvisibilityShield()
     {
-        super("invisibility_shield");
+        ItemUtils.initItem(this, "invisibility_shield", MetallurgyTabs.tabSpecial);
         setMaxStackSize(1);
-        setCreativeTab(MetallurgyTabs.tabSpecial);
         setMaxDamage(250);
 
         this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter()
@@ -44,6 +45,13 @@ public class ItemInvisibilityShield extends ItemBase {
             }
         });
 
+    }
+
+    @Nonnull
+    @Override
+    public String getCategory()
+    {
+        return "gadget";
     }
 
     @Override
@@ -98,12 +106,6 @@ public class ItemInvisibilityShield extends ItemBase {
     {
         if (world.isRemote)
             world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, entity.posX , entity.posY + 1, entity.posZ, 0, 0, 0, 0);
-    }
-
-    @Override
-    public void registerItemModel(String subdirectory)
-    {
-        super.registerItemModel("gadgets");
     }
 
     @Nonnull

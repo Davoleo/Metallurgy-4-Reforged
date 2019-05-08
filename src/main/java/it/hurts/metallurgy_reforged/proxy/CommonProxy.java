@@ -11,15 +11,14 @@
 
 package it.hurts.metallurgy_reforged.proxy;
 
-import java.io.File;
-
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import java.io.File;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -28,14 +27,6 @@ public class CommonProxy {
 	public static Configuration armorConfig;
 	public static Configuration toolConfig;
 
-    public void registerItemRenderer(Item item, int meta, String id){
-    	
-    }
-
-    public void registerItemRenderer(Item item, int meta, String id, String subdirectory){
-
-    }
-    
     public void preInit(FMLPreInitializationEvent e) {
         File directory = e.getModConfigurationDirectory();
         

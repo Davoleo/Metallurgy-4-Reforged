@@ -15,11 +15,9 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-import javax.annotation.Nonnull;
 import java.util.Objects;
 
 public class BlockBase extends Block {
@@ -51,15 +49,4 @@ public class BlockBase extends Block {
 	public Item createItemBlock() {
 		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
-
-	//Overridden Methods -------------------------------------------------------------
-
-	//Overrides the creative tab
-	@Nonnull
-	@Override
-	public BlockBase setCreativeTab(@Nonnull CreativeTabs tab) {
-		super.setCreativeTab(tab);
-		return this;
-	}
-	
 }

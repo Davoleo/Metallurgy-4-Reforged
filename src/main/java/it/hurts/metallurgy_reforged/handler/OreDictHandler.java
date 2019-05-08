@@ -14,9 +14,9 @@ package it.hurts.metallurgy_reforged.handler;
 import it.hurts.metallurgy_reforged.block.BlockBase;
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictHandler {
@@ -30,7 +30,7 @@ public class OreDictHandler {
                 ((BlockOreDict) b).initOreDict();
         }
         //Items
-        for(ItemBase b: ModItems.itemList) {
+        for(Item b: ModItems.itemList) {
             if(b instanceof ItemOreDict)
                 ((ItemOreDict) b).initOreDict();
 
