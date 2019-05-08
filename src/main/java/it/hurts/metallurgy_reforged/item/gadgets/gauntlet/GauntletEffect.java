@@ -11,9 +11,9 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
-import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -61,11 +61,13 @@ public class GauntletEffect {
 							}
 						}
 					}
-					if(!pl.isCreative())
+					if (!pl.isCreative())
 					{
-						pl.getFoodStats().addStats(-GauntletConfig.gauntletHungerModifier, (float)-(GauntletConfig.gauntletHungerModifier/2));
-
+						if (pl.getFoodStats().getSaturationLevel() <= (pl.getFoodStats().getFoodLevel() / 2F))
+							pl.getFoodStats().addStats(-GauntletConfig.gauntletHungerModifier, 0);
+						pl.getFoodStats().addStats(0, (float)-(GauntletConfig.gauntletHungerModifier/2));
 					}
+
 
 					Random rand = new Random();
 
