@@ -85,6 +85,11 @@ public class Metal {
         return stats.getArmorStats() != null;
     }
 
+    public boolean isAlloy()
+    {
+        return ore == null;
+    }
+
     @Nonnull
     public MetalStats getStats() {
         return stats;

@@ -125,6 +125,7 @@ public class Metallurgy {
         }
 
 		IntegrationProjectE.init();
+		logger.info("ProjectE's Integration has been initialized");
 
 		MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		BlockCrusherRecipes.registerDefaultOreRecipes();
