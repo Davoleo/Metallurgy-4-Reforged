@@ -61,11 +61,9 @@ public class GauntletEffect {
 							}
 						}
 					}
-					if (!pl.isCreative())
+					if (!pl.isCreative() && !pl.world.isRemote)
 					{
-						if (pl.getFoodStats().getSaturationLevel() <= (pl.getFoodStats().getFoodLevel() / 2F))
-							pl.getFoodStats().addStats(-GauntletConfig.gauntletHungerModifier, 0);
-						pl.getFoodStats().addStats(0, (float)-(GauntletConfig.gauntletHungerModifier/2));
+						pl.getFoodStats().addStats(-GauntletConfig.gauntletHungerModifier, (float)-(GauntletConfig.gauntletHungerModifier/2));
 					}
 
 

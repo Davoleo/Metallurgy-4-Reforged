@@ -30,14 +30,13 @@ public class IntegrationCArmory {
         Material.UNKNOWN.addStats(new PlatesMaterialStats(1, 0, 0));
 		
 		for (Metal metal : ModMetals.metalList) {
-			if ((IntegrationTIC.checkMaterial(metal) && !IntegrationTIC.checkMaterialPreInit(metal)) && metal.getStats().getArmorStats() != null) {
+			if (IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null) {
 				Material material = TinkerRegistry.getMaterial(metal.getStats().getName());
-				
-				TinkerRegistry.addMaterialStats(material, 
-						MetallurgyConArmorStats.getCoreStats(metal), 
+
+				TinkerRegistry.addMaterialStats(material,
+						MetallurgyConArmorStats.getCoreStats(metal),
 						MetallurgyConArmorStats.getPlatesStats(metal),
 						MetallurgyConArmorStats.getTrimStats(metal));
-				
 			}
 		}
 	}
@@ -52,6 +51,20 @@ public class IntegrationCArmory {
 			}
 		}
 	}
+
+//	public static boolean isArmorAlreadyRegistered(Material material)
+//	{
+//		for (ArmorCore core : ArmoryRegistry)
+//		{
+//			System.out.println("Core: " + core.getLocalizedName());
+//			System.out.println("Material " + material.getLocalizedName());
+//
+//			if (core.getArmorMaterial().getName().equals(material.getLocalizedName()))
+//				return true;
+//		}
+//
+//		return true;
+//	}
 
 	
 }
