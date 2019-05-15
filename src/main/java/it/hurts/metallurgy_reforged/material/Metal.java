@@ -45,15 +45,11 @@ public class Metal {
         ModMetals.metalList.add(this);
     }
 
-    /**
-     * @return null if toolMaterial doesn't Exist else return tool material
-     */
     public ItemTool.ToolMaterial getToolMaterial() {
         if (toolMat == null) {
             ToolStats tStats = stats.getToolStats();
             if(tStats == null) {
-                return null;
-//                throw new UnsupportedOperationException("No Tool Stats Loaded");
+                throw new UnsupportedOperationException("No Tool Stats Loaded");
             }
             this.toolMat = EnumHelper.addToolMaterial(stats.getName().toUpperCase(), tStats.getHarvestLevel(), tStats.getMaxUses(), tStats.getEfficiency(), tStats.getDamage(), tStats.getToolMagic());
         }
@@ -75,16 +71,25 @@ public class Metal {
         fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
     }
 
+    /**
+     * @return whether the metal has tools
+     */
     public boolean hasToolSet()
     {
         return stats.getToolStats() != null;
     }
 
+    /**
+     * @return whether the metal has armor
+     */
     public boolean hasArmorSet()
     {
         return stats.getArmorStats() != null;
     }
 
+    /**
+     * @return whether the metal is an alloy
+     */
     public boolean isAlloy()
     {
         return ore == null;

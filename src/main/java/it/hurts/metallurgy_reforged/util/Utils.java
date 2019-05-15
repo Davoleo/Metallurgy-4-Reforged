@@ -220,5 +220,20 @@ public class Utils {
 		else return ItemStack.EMPTY;
 	}
 
+	/**
+	 * Gets the corresponding metal when given a stack of the related ingot
+	 * @param ingot the ingot made of the metal you want to retrieve
+	 * @return the metal you want to retrieve
+	 */
+	public static Metal getMetalFromIngot(ItemStack ingot)
+	{
+		for (Metal metal : ModMetals.metalList)
+		{
+			if (metal.getIngot() == ingot.getItem())
+				return metal;
+		}
+		return null;
+	}
+
 
 }
