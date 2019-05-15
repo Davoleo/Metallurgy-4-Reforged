@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class ModTools {
 
     public static final List<Item> toolList = new ArrayList<>();
