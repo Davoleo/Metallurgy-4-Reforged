@@ -15,9 +15,11 @@ import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -70,58 +72,24 @@ public class ModBlocks {
 
     //Registers the blocks in the Forge Registry
     public static void register(IForgeRegistry<Block> registry) {
-        registry.registerAll(
-                oreSulfur,
-                orePhosphorite,
-                oreTar,
-                orePotash,
-
-                blockBitumen,
-                blockCharcoal,
-                blockSulfur,
-
-                crusher,
-                alloyer,
-
-                blockRoad,
-                blockStripedRoad
-        );
+        for (Block block : blockList)
+            registry.register(block);
     }
 
     //Registers the ItemBlocks in the Forge Registry
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
-        registry.registerAll(oreSulfur.createItemBlock(),
-                orePhosphorite.createItemBlock(),
-                oreTar.createItemBlock(),
-                orePotash.createItemBlock(),
-
-                blockBitumen.createItemBlock(),
-                blockCharcoal.createItemBlock(),
-                blockSulfur.createItemBlock(),
-
-                alloyer.createItemBlock(),
-                crusher.createItemBlock(),
-
-                blockRoad.createItemBlock(),
-                blockStripedRoad.createItemBlock());
+        for (Block block : blockList)
+        {
+            ItemBlock itemBlock = new ItemBlock(block);
+            itemBlock.setRegistryName(block.getRegistryName());
+            registry.register(itemBlock);
+        }
     }
 
     //Registers the models
     public static void registerModels() {
-        oreSulfur.registerItemModel(Item.getItemFromBlock(oreSulfur));
-        orePhosphorite.registerItemModel(Item.getItemFromBlock(orePhosphorite));
-        oreTar.registerItemModel(Item.getItemFromBlock(oreTar));
-        orePotash.registerItemModel(Item.getItemFromBlock(orePotash));
-
-        blockBitumen.registerItemModel(Item.getItemFromBlock(blockBitumen));
-        blockCharcoal.registerItemModel(Item.getItemFromBlock(blockCharcoal));
-        blockSulfur.registerItemModel(Item.getItemFromBlock(blockSulfur));
-
-        crusher.registerItemModel(Item.getItemFromBlock(crusher));
-        alloyer.registerItemModel(Item.getItemFromBlock(alloyer));
-
-        blockRoad.registerItemModel(Item.getItemFromBlock(blockRoad));
-        blockStripedRoad.registerItemModel(Item.getItemFromBlock(blockStripedRoad));
+        for (Block block : blockList)
+            Utils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
     }
 
 }

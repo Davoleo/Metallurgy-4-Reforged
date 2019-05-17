@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class ArmorConfig {
 	
-	private static final String CATEGORY = "ArmorEffectHandler";
+	private static final String CATEGORY = "Armor";
 	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
 
 	public static boolean adamantine = true;

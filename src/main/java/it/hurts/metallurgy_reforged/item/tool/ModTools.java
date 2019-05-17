@@ -11,17 +11,23 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.Tooltips;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ModTools {
 
@@ -257,72 +263,48 @@ public class ModTools {
     public static ItemShovelBase vyroxeres_shovel = new ItemShovelBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_shovel");
     public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_sword").setTooltip(Tooltips.VYROXERES_SWORD_EFFECT);
 
-
     public static void register(IForgeRegistry<Item> registry){
-    	if(GeneralConfig.disableAllTools) {
-    		Object[] name;
-        	for(Item item : toolList) {
-        		for(Map<String, boolean[]> m : ToolConfig.mapList) {
-        			name = m.keySet().toArray();
-        			for(Object n : name) {
-        				if(item instanceof ItemSwordBase) {
-        					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
-        						registry.register(item);
-        				}
-        				else if(item instanceof ItemShovelBase) {
-        					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
-        						registry.register(item);
-        				}
-        				else if (item instanceof ItemPickaxeBase) {
-        					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
-        						registry.register(item);
-        					if (item.equals(adamantine_pickaxe))
-        					    isCreativeTabIconAvailable = true;
-        				}
-        				else if (item instanceof ItemHoeBase) {
-        					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
-        						registry.register(item);
-        				}
-        				else if (item instanceof ItemAxeBase)
-        					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
-        						registry.register(item);
-        			}
-        		}
-        	}
-    	}
+
+        if (!GeneralConfig.disableAllTools) {
+
+            int c = 0;
+            for (int i = 0; i < ToolConfig.allTools.length; i++) {
+                String toolSet = Utils.modMaterialNames[i];
+
+                for (int j = 0; j < 5; j++) {
+
+                    System.out.println(toolList.get(i + j).getRegistryName() + "-" + toolSet + " boolean: " + ToolConfig.allTools[i][j]);
+
+                    if (ToolConfig.allTools[i][j])
+                        registry.register(toolList.get(c));
+
+                    c++;
+                }
+            }
+        }
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerModels()
     {
-    	if(GeneralConfig.disableAllTools) {
-    		Object[] name;
-	    	for(Item item : toolList) {
-	    		for(Map<String, boolean[]> m : ToolConfig.mapList) {
-	    			name = m.keySet().toArray();
-	    			for(Object n : name) {
-	    				if(item instanceof ItemSwordBase) {
-	    					if((n.toString().equals(((ItemSwordBase) item).getToolMaterialName())) && m.get(n)[4]) 
-	    						((ItemSwordBase) item).registerItemModel(item, 0);
-	    				}
-	    				else if(item instanceof ItemShovelBase) {
-	    					if((n.toString().equals(((ItemShovelBase) item).getToolMaterialName())) && m.get(n)[3])
-	    						((ItemShovelBase) item).registerItemModel(item, 0);
-	    				}
-	    				else if (item instanceof ItemPickaxeBase) {
-	    					if((n.toString().equals(((ItemPickaxeBase) item).getToolMaterialName())) && m.get(n)[2])
-	    						((ItemPickaxeBase) item).registerItemModel(item, 0);
-	    				}
-	    				else if (item instanceof ItemHoeBase) {
-	    					if ((n.toString().equals(((ItemHoeBase) item).getMaterialName())) && m.get(n)[1]) 
-	    						((ItemHoeBase) item).registerItemModel(item, 0);
-	    				}
-	    				else if (item instanceof ItemAxeBase)
-	    					if ((n.toString().equals(((ItemAxeBase) item).getToolMaterialName())) && m.get(n)[0])
-	    						((ItemAxeBase) item).registerItemModel(item, 0);
-	    			}
-	    		}
-	    	}
-    	}	
+        if (!GeneralConfig.disableAllTools)
+        {
+            int c = 0;
+
+            for (int i = 0; i < ToolConfig.allTools.length; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    IHasModel item = (IHasModel) toolList.get(c);
+
+                    if (ToolConfig.allTools[i][j])
+                        ModelLoader.setCustomModelResourceLocation((Item) item, 0, new ModelResourceLocation(Metallurgy.MODID + ":" + item.getCategory() + "/", "inventory"));
+
+                    c++;
+
+                }
+            }
+        }
     }
 
     protected static boolean isAxeEffectActive(ItemAxeBase tool)

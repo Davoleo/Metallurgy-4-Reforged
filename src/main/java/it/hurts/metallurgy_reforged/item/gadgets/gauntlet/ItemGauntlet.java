@@ -13,8 +13,9 @@ package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.util.Tooltips;
@@ -26,16 +27,19 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemGauntlet extends ItemBase{
+public class ItemGauntlet extends Item implements IHasModel {
 	
 	private Enchantment[] e = {
 			Enchantments.BANE_OF_ARTHROPODS,
@@ -49,26 +53,29 @@ public class ItemGauntlet extends ItemBase{
 //	private final double attack_speed;
 
 	public ItemGauntlet(String name) {
-		super(name);
+		this.setRegistryName(new ResourceLocation(Metallurgy.MODID, name));
+		this.setTranslationKey(Metallurgy.MODID + "." + name);
 		this.setMaxDamage(GauntletConfig.gauntletMaxDamage);
 		this.setCreativeTab(MetallurgyTabs.tabSpecial);
 		this.setNoRepair();
 		this.setMaxStackSize(1);
 	}
 
+	@Nonnull
 	@Override
-    public void registerItemModel()
-    {
-        super.registerItemModel("gadget");
-    }
+	public String getCategory()
+	{
+		return "gadget";
+	}
 
-    @Override
+	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		List<Enchantment> list = Lists.newArrayList(e);
 		
 		return list.contains(enchantment);
 	}
-	
+
+	@Nonnull
 	@SuppressWarnings("deprecation")
 	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
 	{

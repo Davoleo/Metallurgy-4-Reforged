@@ -15,10 +15,6 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-
-import java.util.Objects;
 
 public class BlockBase extends Block {
 
@@ -36,17 +32,5 @@ public class BlockBase extends Block {
 		setTranslationKey(Metallurgy.MODID + "." + name);
 		setRegistryName(Metallurgy.MODID, name);
 		ModBlocks.blockList.add(this);
-	}
-
-	//Custom Methods -------------------------------------------------------------
-
-	//Registers the model of the item
-	public void registerItemModel(Item itemBlock) {
-		Metallurgy.proxy.registerItemRenderer(itemBlock, 0, name);
-	}
-
-	//Creates the inventory version of the block
-	public Item createItemBlock() {
-		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
 }

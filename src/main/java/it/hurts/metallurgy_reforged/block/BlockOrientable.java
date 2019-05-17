@@ -38,9 +38,7 @@ public class BlockOrientable extends BlockBase {
     public BlockOrientable(Material material, String name, CreativeTabs tab)
     {
         super(material, name);
-
         setCreativeTab(tab);
-        ModBlocks.blockList.add(this);
     }
 
     //Custom Methods --------------------------------------------------------------------

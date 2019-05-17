@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets;
 
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +27,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
+public class ItemVulcaniteLighter extends ItemIgnatiusLighter implements IHasModel {
 
     public ItemVulcaniteLighter(String name)
     {
@@ -79,11 +80,5 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
             return EnumActionResult.FAIL;
 
         }
-    }
-
-    @Override
-    public void registerItemModel()
-    {
-        super.registerItemModel("gadget");
     }
 }

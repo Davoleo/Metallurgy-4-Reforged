@@ -11,11 +11,11 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import it.hurts.metallurgy_reforged.block.BlockBase;
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -25,7 +25,7 @@ public class OreDictHandler {
     {
         //Ore-dict
         //Blocks
-        for(BlockBase b: ModBlocks.blockList) {
+        for(Block b: ModBlocks.blockList) {
             if(b instanceof BlockOreDict)
                 ((BlockOreDict) b).initOreDict();
         }

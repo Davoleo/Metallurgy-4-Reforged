@@ -11,10 +11,10 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -185,14 +185,14 @@ public class ModMetals {
 
     public static void registerModels() {
         for (Metal m : metalList) {
-            m.getDust().registerItemModel();
-            m.getIngot().registerItemModel();
-            m.getNugget().registerItemModel();
+            Utils.registerCustomItemModel(m.getDust(), 0);
+            Utils.registerCustomItemModel(m.getIngot(), 0);
+            Utils.registerCustomItemModel(m.getNugget(), 0);
             if (m.getOre() != null) {
-                m.getOre().registerItemModel(Item.getItemFromBlock(m.getOre()));
+                Utils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
             }
-            m.getBlock().registerItemModel(Item.getItemFromBlock(m.getBlock()));
-            m.getFluidBlock().registerItemModel(Item.getItemFromBlock(m.getFluidBlock()));
+            Utils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
+            Utils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
         }
     }
 

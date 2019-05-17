@@ -13,25 +13,24 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemPickaxeBase extends ItemPickaxe {
+public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
 
     private String name;
     private String tooltip;
@@ -67,12 +66,6 @@ public class ItemPickaxeBase extends ItemPickaxe {
         }
 	}
 
-    @SideOnly(Side.CLIENT)
-    public void registerItemModel(Item item, int meta)
-    {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":tool/" + name, "inventory"));
-    }
-
     public ItemPickaxeBase setTooltip(String tooltip)
     {
         this.tooltip = tooltip;
@@ -92,6 +85,12 @@ public class ItemPickaxeBase extends ItemPickaxe {
 
         if(this.tooltip != null && ModTools.isPickaxeEffectActive(this))
             tooltip.add(this.tooltip);
+    }
 
+    @Nonnull
+    @Override
+    public String getCategory()
+    {
+        return "tool/pickaxe";
     }
 }

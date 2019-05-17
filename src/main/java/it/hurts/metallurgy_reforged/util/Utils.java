@@ -11,9 +11,11 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -25,6 +27,9 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class Utils {
@@ -85,14 +90,13 @@ public class Utils {
 		};
 
     public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
-    {
-        if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
-        {
-            inventory.get(slot).grow(amount);
-            if(inventory.get(slot).getCount() <= 0)
-                inventory.set(slot, ItemStack.EMPTY);
-        }
-    }
+	{
+		if (slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty()) {
+			inventory.get(slot).grow(amount);
+			if (inventory.get(slot).getCount() <= 0)
+				inventory.set(slot, ItemStack.EMPTY);
+		}
+	}
 
     public static void giveExperience(EntityPlayer thePlayer, float experience) {
         int intExp = (int) experience;
@@ -220,5 +224,17 @@ public class Utils {
 		else return ItemStack.EMPTY;
 	}
 
+	@SideOnly(Side.CLIENT)
+	public static void registerCustomItemModel(Item item, int meta)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID, "inventory"));
+	}
+
+
+	@SideOnly(Side.CLIENT)
+	public static void registerCustomItemModel(Item item, int meta, String subdir)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + "/", "inventory"));
+	}
 
 }

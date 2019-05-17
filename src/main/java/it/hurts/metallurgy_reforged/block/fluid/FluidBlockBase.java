@@ -13,11 +13,14 @@ package it.hurts.metallurgy_reforged.block.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Objects;
 
@@ -36,9 +39,10 @@ public class FluidBlockBase extends BlockFluidClassic {
     }
 
     //Registers the model of the FluidBlock
+    @SideOnly(Side.CLIENT)
     public void registerItemModel(Item itemBlock)
     {
-        Metallurgy.proxy.registerItemRenderer(itemBlock, 0, name);
+        Utils.registerCustomItemModel(itemBlock, 0);
     }
 
     //Creates the inventory version of the FluidBlock
