@@ -11,13 +11,16 @@
 
 package it.hurts.metallurgy_reforged.item;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Tooltips;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
@@ -71,6 +74,6 @@ public class ModItems {
 		flintAndIgnatius.registerItemModel();
 		flintAndVulcanite.registerItemModel();
 		gauntlet.registerItemModel();
-		invisibilityShield.registerItemModel();
+		ModelLoader.setCustomModelResourceLocation(invisibilityShield, 0, new ModelResourceLocation(Metallurgy.MODID + ":gadget/lemurite_shield", "inventory"));
 	}
 }
