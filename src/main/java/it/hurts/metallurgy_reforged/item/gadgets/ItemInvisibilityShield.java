@@ -15,9 +15,11 @@ import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.SPacketParticles;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,7 +32,7 @@ public class ItemInvisibilityShield extends ItemBase {
 
     public ItemInvisibilityShield()
     {
-        super("invisibility_shield");
+        super("lemurite_shield");
         setMaxStackSize(1);
         setCreativeTab(MetallurgyTabs.tabSpecial);
         setMaxDamage(250);
@@ -70,7 +72,7 @@ public class ItemInvisibilityShield extends ItemBase {
     {
         playerIn.setInvisible(true);
         playerIn.setActiveHand(handIn);
-        spawnParticles(worldIn, playerIn);
+        spawnParticles(playerIn);
         return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     }
 
@@ -91,19 +93,19 @@ public class ItemInvisibilityShield extends ItemBase {
     {
         player.setInvisible(false);
         ((EntityPlayer) player).getCooldownTracker().setCooldown(stack.getItem(), cooldown);
-        spawnParticles(player.world, player);
+        spawnParticles(player);
     }
 
-    private void spawnParticles(World world, EntityLivingBase entity)
+    private void spawnParticles(EntityLivingBase entity)
     {
-        if (world.isRemote)
-            world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, entity.posX , entity.posY + 1, entity.posZ, 0, 0, 0, 0);
+        if (entity instanceof EntityPlayerMP)
+            ((EntityPlayerMP) entity).connection.sendPacket(new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) entity.posX , (float) entity.posY + 1, (float) entity.posZ, 0, 0, 0, 0, 1, 0));
     }
 
     @Override
     public void registerItemModel(String subdirectory)
     {
-        super.registerItemModel("gadgets");
+        super.registerItemModel("gadget");
     }
 
     @Nonnull
