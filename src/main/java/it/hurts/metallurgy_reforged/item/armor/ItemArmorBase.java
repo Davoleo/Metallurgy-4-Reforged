@@ -14,19 +14,17 @@ package it.hurts.metallurgy_reforged.item.armor;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,7 +32,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemArmorBase extends ItemArmor {
+public class ItemArmorBase extends ItemArmor implements IHasModel {
 
 	private String name;
 	private String tooltip;
@@ -57,6 +55,13 @@ public class ItemArmorBase extends ItemArmor {
 		this.enchantmentLevel = enchantmentLevel;
 		setCreativeTab(MetallurgyTabs.tabArmor);
 		ModArmors.armorList.add(this);
+	}
+
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "armor";
 	}
 
 	@Override
@@ -88,7 +93,7 @@ public class ItemArmorBase extends ItemArmor {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
 	{
 		return (GeneralConfig.enableAnvilArmorRepair && Utils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
@@ -99,10 +104,5 @@ public class ItemArmorBase extends ItemArmor {
 	{
 		if(this.tooltip != null && ModArmors.isEffectActive(this))
 			tooltip.add(this.tooltip);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerItemModel(Item item, int meta) {
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":armor/" + name, "inventory"));
 	}
 }

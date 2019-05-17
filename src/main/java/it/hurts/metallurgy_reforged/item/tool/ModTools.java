@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
@@ -19,9 +18,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -32,8 +29,6 @@ import java.util.List;
 public class ModTools {
 
     public static final List<Item> toolList = new ArrayList<>();
-
-    public static boolean isCreativeTabIconAvailable = false;
 
     public static ItemAxeBase adamantine_axe = new ItemAxeBase(ModMetals.ADAMANTINE.getToolMaterial(), "adamantine_axe");
     public static ItemHoeBase adamantine_hoe = new ItemHoeBase(ModMetals.ADAMANTINE.getToolMaterial(), "adamantine_hoe");
@@ -273,8 +268,6 @@ public class ModTools {
 
                 for (int j = 0; j < 5; j++) {
 
-                    System.out.println(toolList.get(i + j).getRegistryName() + "-" + toolSet + " boolean: " + ToolConfig.allTools[i][j]);
-
                     if (ToolConfig.allTools[i][j])
                         registry.register(toolList.get(c));
 
@@ -298,7 +291,7 @@ public class ModTools {
                     IHasModel item = (IHasModel) toolList.get(c);
 
                     if (ToolConfig.allTools[i][j])
-                        ModelLoader.setCustomModelResourceLocation((Item) item, 0, new ModelResourceLocation(Metallurgy.MODID + ":" + item.getCategory() + "/", "inventory"));
+                        Utils.registerCustomItemModel((Item) item, 0, item.getCategory());
 
                     c++;
 

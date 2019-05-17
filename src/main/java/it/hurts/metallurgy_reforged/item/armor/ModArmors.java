@@ -16,19 +16,17 @@ import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Tooltips;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ModArmors {
 
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
-
-    public static boolean isCreativeTabIconAvailable = false;
 
     public static ItemArmorBase adamantine_helmet = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.HEAD, "adamantine_helmet").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);
     public static ItemArmorBase adamantine_chest = new ItemArmorBase(ModMetals.ADAMANTINE.getArmorMaterial(), EntityEquipmentSlot.CHEST, "adamantine_chest").setTooltip( Tooltips.ADAMANTINE_ARMOR_EFFECT);
@@ -231,33 +229,42 @@ public class ModArmors {
     public static ItemArmorBase vyroxeres_boots = new ItemArmorBase(ModMetals.VYROXERES.getArmorMaterial(), EntityEquipmentSlot.FEET, "vyroxeres_boots");
 
     public static void register(IForgeRegistry<Item> registry) {
-    	if(GeneralConfig.disableAllArmors) {
-    		Object[] name;
-        	for(Item armor : armorList)
-        		for(Map<String, Boolean> m : ArmorConfig.mapList) {
-        			name = m.keySet().toArray();
-        			for(Object n : name)
-        				if(armor instanceof ItemArmorBase && ((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))) {
-                            registry.register(armor);
-                            if (armor.equals(adamantine_chest))
-                                isCreativeTabIconAvailable = true;
-                        }
-        		}
-    	}
+
+        if (!GeneralConfig.disableAllArmors)
+        {
+            int c = 0;
+
+            for (int i = 0; i < ArmorConfig.allArmor.length; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (ArmorConfig.allArmor[i])
+                        registry.register(armorList.get(c));
+
+                    c++;
+                }
+            }
+        }
     }
 
     public static void registerModels() {
-    	if(GeneralConfig.disableAllArmors) {
-    		Object[] name;
-        	for(Item armor : armorList) 
-        		for(Map<String, Boolean> m : ArmorConfig.mapList) {
-        			name = m.keySet().toArray();
-        			for(Object n : name)
-        				if(armor instanceof ItemArmorBase)
-        					if((n.toString().equals(((ItemArmorBase) armor).getArmorMaterial().toString()) && m.get(n).booleanValue()))
-        						((ItemArmorBase) armor).registerItemModel(armor, 0);
-        		}
-    	}
+
+        if (!GeneralConfig.disableAllArmors)
+        {
+
+            int c = 0;
+
+            for (int i = 0; i < ArmorConfig.allArmor.length; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (ArmorConfig.allArmor[i])
+                        Utils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
+
+                    c++;
+                }
+            }
+        }
     }
 
     protected static boolean isEffectActive(ItemArmorBase armor)

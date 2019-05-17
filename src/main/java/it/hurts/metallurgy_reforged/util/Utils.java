@@ -227,14 +227,14 @@ public class Utils {
 	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID, "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
 
 	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta, String subdir)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + "/", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + "/" + item.getRegistryName().getPath(), "inventory"));
 	}
 
 }

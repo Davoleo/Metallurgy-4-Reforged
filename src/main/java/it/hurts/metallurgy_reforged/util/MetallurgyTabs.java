@@ -13,6 +13,8 @@ package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.config.ArmorConfig;
+import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -62,7 +64,7 @@ public class MetallurgyTabs extends CreativeTabs {
     public ItemStack createIcon()
     {
         switch (type){
-            case 0: return ModArmors.isCreativeTabIconAvailable ? new ItemStack(ModArmors.adamantine_chest) : ItemStack.EMPTY;
+            case 0: return ArmorConfig.allArmor[0] ? new ItemStack(ModArmors.adamantine_chest) : ItemStack.EMPTY;
             case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
@@ -70,7 +72,7 @@ public class MetallurgyTabs extends CreativeTabs {
             case 5: return new ItemStack(ModMetals.ADAMANTINE.getNugget());
             case 6: return new ItemStack(ModBlocks.crusher);
             case 7: return new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre()));
-            case 8: return ModTools.isCreativeTabIconAvailable ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
+            case 8: return ToolConfig.allTools[0][2] ? new ItemStack(ModTools.adamantine_pickaxe) : ItemStack.EMPTY;
             default: return ItemStack.EMPTY;
         }
     }
