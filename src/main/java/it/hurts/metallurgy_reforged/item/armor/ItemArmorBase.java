@@ -35,7 +35,7 @@ import java.util.List;
 public class ItemArmorBase extends ItemArmor implements IHasModel {
 
 	private String name;
-	private String tooltip;
+	private EnumArmorEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -77,10 +77,9 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		}
 	}
 
-	public ItemArmorBase setTooltip(String tooltip)
+	public void setEffect(EnumArmorEffects effect)
 	{
-		this.tooltip = tooltip;
-		return this;
+		this.effect = effect;
 	}
 
 	private ItemStack getRepairStack()
@@ -102,7 +101,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
-		if(this.tooltip != null && ModArmors.isEffectActive(this))
-			tooltip.add(this.tooltip);
+		if(this.effect != null && effect.isActive())
+			tooltip.add(this.effect.getLocalized());
 	}
 }

@@ -66,7 +66,7 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
         }
 	}
 
-    public ItemAxeBase setTooltip(String tooltip)
+    public ItemAxeBase setEffect(String tooltip)
     {
         this.tooltip = tooltip;
         return this;

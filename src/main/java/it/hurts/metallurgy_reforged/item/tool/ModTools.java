@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.Tooltips;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
@@ -88,13 +87,13 @@ public class ModTools {
     public static ItemHoeBase celenegil_hoe = new ItemHoeBase(ModMetals.CELENEGIL.getToolMaterial(), "celenegil_hoe");
     public static ItemPickaxeBase celenegil_pickaxe = new ItemPickaxeBase(ModMetals.CELENEGIL.getToolMaterial(), "celenegil_pickaxe");
     public static ItemShovelBase celenegil_shovel = new ItemShovelBase(ModMetals.CELENEGIL.getToolMaterial(), "celenegil_shovel");
-    public static ItemSwordBase celenegil_sword = new ItemSwordBase(ModMetals.CELENEGIL.getToolMaterial(), "celenegil_sword").setTooltip(Tooltips.CELENEGIL_SWORD_EFFECT);
+    public static ItemSwordBase celenegil_sword = new ItemSwordBase(ModMetals.CELENEGIL.getToolMaterial(), "celenegil_sword");
 
     public static ItemAxeBase ceruclase_axe = new ItemAxeBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_axe");
     public static ItemHoeBase ceruclase_hoe = new ItemHoeBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_hoe");
     public static ItemPickaxeBase ceruclase_pickaxe = new ItemPickaxeBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_pickaxe");
     public static ItemShovelBase ceruclase_shovel = new ItemShovelBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_shovel");
-    public static ItemSwordBase ceruclase_sword = new ItemSwordBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_sword").setTooltip(Tooltips.CERUCLASE_SWORD_EFFECT);
+    public static ItemSwordBase ceruclase_sword = new ItemSwordBase(ModMetals.CERUCLASE.getToolMaterial(), "ceruclase_sword");
 
     public static ItemAxeBase copper_axe = new ItemAxeBase(ModMetals.COPPER.getToolMaterial(), "copper_axe");
     public static ItemHoeBase copper_hoe = new ItemHoeBase(ModMetals.COPPER.getToolMaterial(), "copper_hoe");
@@ -104,7 +103,7 @@ public class ModTools {
 
     public static ItemAxeBase damascus_steel_axe = new ItemAxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_axe");
     public static ItemHoeBase damascus_steel_hoe = new ItemHoeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_hoe");
-    public static ItemPickaxeBase damascus_steel_pickaxe = new ItemPickaxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_pickaxe").setTooltip( Tooltips.DEEP_IRON_PICKAXE_EFFECT);
+    public static ItemPickaxeBase damascus_steel_pickaxe = new ItemPickaxeBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_pickaxe");
     public static ItemShovelBase damascus_steel_shovel = new ItemShovelBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_shovel");
     public static ItemSwordBase damascus_steel_sword = new ItemSwordBase(ModMetals.DAMASCUS_STEEL.getToolMaterial(), "damascus_steel_sword");
 
@@ -118,7 +117,7 @@ public class ModTools {
     public static ItemHoeBase desichalkos_hoe = new ItemHoeBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_hoe");
     public static ItemPickaxeBase desichalkos_pickaxe = new ItemPickaxeBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_pickaxe");
     public static ItemShovelBase desichalkos_shovel = new ItemShovelBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_shovel");
-    public static ItemSwordBase desichalkos_sword = new ItemSwordBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_sword").setTooltip(Tooltips.DESICHALKOS_SWORD_EFFECT);
+    public static ItemSwordBase desichalkos_sword = new ItemSwordBase(ModMetals.DESICHALKOS.getToolMaterial(), "desichalkos_sword");
 
     public static ItemAxeBase electrum_axe = new ItemAxeBase(ModMetals.ELECTRUM.getToolMaterial(), "electrum_axe");
     public static ItemHoeBase electrum_hoe = new ItemHoeBase(ModMetals.ELECTRUM.getToolMaterial(), "electrum_hoe");
@@ -148,7 +147,7 @@ public class ModTools {
     public static ItemHoeBase ignatius_hoe = new ItemHoeBase(ModMetals.IGNATIUS.getToolMaterial(), "ignatius_hoe");
     public static ItemPickaxeBase ignatius_pickaxe = new ItemPickaxeBase(ModMetals.IGNATIUS.getToolMaterial(), "ignatius_pickaxe");
     public static ItemShovelBase ignatius_shovel = new ItemShovelBase(ModMetals.IGNATIUS.getToolMaterial(), "ignatius_shovel");
-    public static ItemSwordBase ignatius_sword = new ItemSwordBase(ModMetals.IGNATIUS.getToolMaterial(), "ignatius_sword").setTooltip(Tooltips.IGNATIUS_SWORD_EFFECT);
+    public static ItemSwordBase ignatius_sword = new ItemSwordBase(ModMetals.IGNATIUS.getToolMaterial(), "ignatius_sword");
 
     public static ItemAxeBase inolashite_axe = new ItemAxeBase(ModMetals.INOLASHITE.getToolMaterial(), "inolashite_axe");
     public static ItemHoeBase inolashite_hoe = new ItemHoeBase(ModMetals.INOLASHITE.getToolMaterial(), "inolashite_hoe");
@@ -160,7 +159,7 @@ public class ModTools {
     public static ItemHoeBase kalendrite_hoe = new ItemHoeBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_hoe");
     public static ItemPickaxeBase kalendrite_pickaxe = new ItemPickaxeBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_pickaxe");
     public static ItemShovelBase kalendrite_shovel = new ItemShovelBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_shovel");
-    public static ItemSwordBase kalendrite_sword = new ItemSwordBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_sword").setTooltip(Tooltips.KALENDRITE_SWORD_EFFECT);
+    public static ItemSwordBase kalendrite_sword = new ItemSwordBase(ModMetals.KALENDRITE.getToolMaterial(), "kalendrite_sword");
 
     public static ItemAxeBase krik_axe = new ItemAxeBase(ModMetals.KRIK.getToolMaterial(), "krik_axe");
     public static ItemHoeBase krik_hoe = new ItemHoeBase(ModMetals.KRIK.getToolMaterial(), "krik_hoe");
@@ -168,23 +167,23 @@ public class ModTools {
     public static ItemShovelBase krik_shovel = new ItemShovelBase(ModMetals.KRIK.getToolMaterial(), "krik_shovel");
     public static ItemSwordBase krik_sword = new ItemSwordBase(ModMetals.KRIK.getToolMaterial(), "krik_sword");
 
-    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);
+    public static ItemAxeBase midasium_axe = new ItemAxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_axe");
     public static ItemHoeBase midasium_hoe = new ItemHoeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_hoe");
-    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);
-    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);
-    public static ItemSwordBase midasium_sword = new ItemSwordBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_sword").setTooltip(Tooltips.MIDASIUM_TOOL_EFFECT);
+    public static ItemPickaxeBase midasium_pickaxe = new ItemPickaxeBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_pickaxe");
+    public static ItemShovelBase midasium_shovel = new ItemShovelBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_shovel");
+    public static ItemSwordBase midasium_sword = new ItemSwordBase(ModMetals.MIDASIUM.getToolMaterial(), "midasium_sword");
 
     public static ItemAxeBase mithril_axe = new ItemAxeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_axe");
     public static ItemHoeBase mithril_hoe = new ItemHoeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_hoe");
     public static ItemPickaxeBase mithril_pickaxe = new ItemPickaxeBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_pickaxe");
     public static ItemShovelBase mithril_shovel = new ItemShovelBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_shovel");
-    public static ItemSwordBase mithril_sword = new ItemSwordBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_sword").setTooltip(Tooltips.MITHRIL_SWORD_EFFECT);
+    public static ItemSwordBase mithril_sword = new ItemSwordBase(ModMetals.MITHRIL.getToolMaterial(), "mithril_sword");
 
     public static ItemAxeBase orichalcum_axe = new ItemAxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_axe");
     public static ItemHoeBase orichalcum_hoe = new ItemHoeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_hoe");
     public static ItemPickaxeBase orichalcum_pickaxe = new ItemPickaxeBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_pickaxe");
     public static ItemShovelBase orichalcum_shovel = new ItemShovelBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_shovel");
-    public static ItemSwordBase orichalcum_sword = new ItemSwordBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_sword").setTooltip(Tooltips.ORICHALCUM_SWORD_EFFECT);
+    public static ItemSwordBase orichalcum_sword = new ItemSwordBase(ModMetals.ORICHALCUM.getToolMaterial(), "orichalcum_sword");
 
     public static ItemAxeBase oureclase_axe = new ItemAxeBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_axe");
     public static ItemHoeBase oureclase_hoe = new ItemHoeBase(ModMetals.OURECLASE.getToolMaterial(), "oureclase_hoe");
@@ -214,19 +213,19 @@ public class ModTools {
     public static ItemHoeBase sanguinite_hoe = new ItemHoeBase(ModMetals.SANGUINITE.getToolMaterial(), "sanguinite_hoe");
     public static ItemPickaxeBase sanguinite_pickaxe = new ItemPickaxeBase(ModMetals.SANGUINITE.getToolMaterial(), "sanguinite_pickaxe");
     public static ItemShovelBase sanguinite_shovel = new ItemShovelBase(ModMetals.SANGUINITE.getToolMaterial(), "sanguinite_shovel");
-    public static ItemSwordBase sanguinite_sword = new ItemSwordBase(ModMetals.SANGUINITE.getToolMaterial(), "sanguinite_sword").setTooltip(Tooltips.SANGUINITE_SWORD_EFFECT);
+    public static ItemSwordBase sanguinite_sword = new ItemSwordBase(ModMetals.SANGUINITE.getToolMaterial(), "sanguinite_sword");
 
     public static ItemAxeBase shadow_iron_axe = new ItemAxeBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_axe");
     public static ItemHoeBase shadow_iron_hoe = new ItemHoeBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_hoe");
     public static ItemPickaxeBase shadow_iron_pickaxe = new ItemPickaxeBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_pickaxe");
     public static ItemShovelBase shadow_iron_shovel = new ItemShovelBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_shovel");
-    public static ItemSwordBase shadow_iron_sword = new ItemSwordBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_sword").setTooltip(Tooltips.SHADOW_IRON_SWORD_EFFECT);
+    public static ItemSwordBase shadow_iron_sword = new ItemSwordBase(ModMetals.SHADOW_IRON.getToolMaterial(), "shadow_iron_sword");
 
-    public static ItemAxeBase shadow_steel_axe = new ItemAxeBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_axe").setTooltip(Tooltips.SHADOW_STEEL_TOOL_EFFECT);
+    public static ItemAxeBase shadow_steel_axe = new ItemAxeBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_axe");
     public static ItemHoeBase shadow_steel_hoe = new ItemHoeBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_hoe");
-    public static ItemPickaxeBase shadow_steel_pickaxe = new ItemPickaxeBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_pickaxe").setTooltip(Tooltips.SHADOW_STEEL_TOOL_EFFECT);
-    public static ItemShovelBase shadow_steel_shovel = new ItemShovelBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_shovel").setTooltip(Tooltips.SHADOW_STEEL_TOOL_EFFECT);
-    public static ItemSwordBase shadow_steel_sword = new ItemSwordBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_sword").setTooltip(Tooltips.SHADOW_STEEL_SWORD_EFFECT);
+    public static ItemPickaxeBase shadow_steel_pickaxe = new ItemPickaxeBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_pickaxe");
+    public static ItemShovelBase shadow_steel_shovel = new ItemShovelBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_shovel");
+    public static ItemSwordBase shadow_steel_sword = new ItemSwordBase(ModMetals.SHADOW_STEEL.getToolMaterial(), "shadow_steel_sword");
 
     public static ItemAxeBase silver_axe = new ItemAxeBase(ModMetals.SILVER.getToolMaterial(), "silver_axe");
     public static ItemHoeBase silver_hoe = new ItemHoeBase(ModMetals.SILVER.getToolMaterial(), "silver_hoe");
@@ -244,19 +243,19 @@ public class ModTools {
     public static ItemHoeBase tartarite_hoe = new ItemHoeBase(ModMetals.TARTARITE.getToolMaterial(), "tartarite_hoe");
     public static ItemPickaxeBase tartarite_pickaxe = new ItemPickaxeBase(ModMetals.TARTARITE.getToolMaterial(), "tartarite_pickaxe");
     public static ItemShovelBase tartarite_shovel = new ItemShovelBase(ModMetals.TARTARITE.getToolMaterial(), "tartarite_shovel");
-    public static ItemSwordBase tartarite_sword = new ItemSwordBase(ModMetals.TARTARITE.getToolMaterial(), "tartarite_sword").setTooltip(Tooltips.TARTARITE_SWORD_EFFECT);
+    public static ItemSwordBase tartarite_sword = new ItemSwordBase(ModMetals.TARTARITE.getToolMaterial(), "tartarite_sword");
 
     public static ItemAxeBase vulcanite_axe = new ItemAxeBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_axe");
     public static ItemHoeBase vulcanite_hoe = new ItemHoeBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_hoe");
     public static ItemPickaxeBase vulcanite_pickaxe = new ItemPickaxeBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_pickaxe");
     public static ItemShovelBase vulcanite_shovel = new ItemShovelBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_shovel");
-    public static ItemSwordBase vulcanite_sword = new ItemSwordBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_sword").setTooltip(Tooltips.VULCANITE_SWORD_EFFECT);
+    public static ItemSwordBase vulcanite_sword = new ItemSwordBase(ModMetals.VULCANITE.getToolMaterial(), "vulcanite_sword");
 
     public static ItemAxeBase vyroxeres_axe = new ItemAxeBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_axe");
     public static ItemHoeBase vyroxeres_hoe = new ItemHoeBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_hoe");
     public static ItemPickaxeBase vyroxeres_pickaxe = new ItemPickaxeBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_pickaxe");
     public static ItemShovelBase vyroxeres_shovel = new ItemShovelBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_shovel");
-    public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_sword").setTooltip(Tooltips.VYROXERES_SWORD_EFFECT);
+    public static ItemSwordBase vyroxeres_sword = new ItemSwordBase(ModMetals.VYROXERES.getToolMaterial(), "vyroxeres_sword");
 
     public static void register(IForgeRegistry<Item> registry){
 
@@ -264,12 +263,16 @@ public class ModTools {
 
             int c = 0;
             for (int i = 0; i < ToolConfig.allTools.length; i++) {
-                String toolSet = Utils.modMaterialNames[i];
 
                 for (int j = 0; j < 5; j++) {
 
                     if (ToolConfig.allTools[i][j])
+                    {
                         registry.register(toolList.get(c));
+
+                        EnumToolEffects effect = EnumToolEffects.getEffect(toolList.get(c));
+
+                    }
 
                     c++;
                 }

@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Strings;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -34,26 +35,19 @@ public class ModBlocks {
     //The list of all the blocks of this mod
     public static List<BlockBase> blockList = new ArrayList<>();
 
-    //Constants to declare the block harvest tool
-    private static final String p = "pickaxe";
-    @SuppressWarnings("unused")
-    private static final String s = "shovel";
-    @SuppressWarnings("unused")
-    private static final String a = "axe";
-
-//	Blocks which drops themselves
+    //Blocks which drops themselves
 
     //Mod Blocks with a custom drop
-    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
+    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", Strings.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
             .setCreativeTab(MetallurgyTabs.tabOre)
             .setDrops(new Drop(new ItemStack(ModItems.dustSulfur, 4), 1F));
-    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
+    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", Strings.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
             .setCreativeTab(MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.dustPhosphorus, 3, 1F));
-    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
+    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", Strings.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
             .setCreativeTab(MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.tar,2, 1F), new Drop(ModItems.dustBitumen, 2, 0.5F));
-    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", p, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
+    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", Strings.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
             .setCreativeTab(MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.dustPotash, 3, 1F));
 

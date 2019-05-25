@@ -18,7 +18,7 @@ import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.ModChecker;
-import it.hurts.metallurgy_reforged.util.Tooltips;
+import it.hurts.metallurgy_reforged.util.Strings;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -138,6 +138,6 @@ public class ItemGauntlet extends Item implements IHasModel {
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if (ModChecker.isBWMLoaded)
-			tooltip.add(Tooltips.GAUNTLET_EFFECT_DISABLED);
+			tooltip.add(Strings.GAUNTLET_EFFECT_DISABLED);
 	}
 }
