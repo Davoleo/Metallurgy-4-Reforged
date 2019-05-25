@@ -12,7 +12,6 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.util.Strings;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.Item;
 
@@ -65,26 +64,19 @@ public enum EnumToolEffects {
     {
         for (EnumToolEffects effect : EnumToolEffects.values())
         {
-            switch (effect.getCategory())
+            if (tool instanceof ItemPickaxeBase)
             {
-                case Strings.AXE:
-                    break;
-                case Strings.HOE:
-                    break;
-                case Strings.PICKAXE:
-                    ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
-                    System.out.println(pickaxe.getToolMaterialName());
-                    if (effect.name().contains(pickaxe.getToolMaterialName()))
-                        return effect;
-                    break;
-                case Strings.SHOVEL:
-                    break;
-                case Strings.SWORD:
-                    break;
-                case "tools":
-                    break;
-                default:
-                    return null;
+                ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
+                System.out.println(pickaxe.getToolMaterialName());
+                if (effect.name().contains(pickaxe.getToolMaterialName()))
+                    return effect;
+            }
+            else if (tool instanceof ItemSwordBase)
+            {
+                ItemSwordBase sword = (ItemSwordBase) tool;
+                System.out.println(sword.getToolMaterialName());
+                if (effect.name().contains(sword.getToolMaterialName()))
+                    return effect;
             }
         }
 

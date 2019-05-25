@@ -33,7 +33,7 @@ import java.util.List;
 public class ItemAxeBase extends ItemAxe implements IHasModel {
 
     private String name;
-    private String tooltip;
+    private EnumToolEffects effect;
     private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -66,9 +66,9 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
         }
 	}
 
-    public ItemAxeBase setEffect(String tooltip)
+    public ItemAxeBase setEffect(EnumToolEffects effect)
     {
-        this.tooltip = tooltip;
+        this.effect = effect;
         return this;
     }
 
@@ -82,8 +82,8 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null && ModTools.isAxeEffectActive(this))
-            tooltip.add(this.tooltip);
+        if(this.effect != null && effect.isActive())
+            tooltip.add(effect.getLocalized());
     }
 
     @Nonnull

@@ -33,7 +33,7 @@ import java.util.List;
 public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
 
     private String name;
-    private String tooltip;
+    private EnumToolEffects effect;
     private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -66,10 +66,9 @@ public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
         }
 	}
 
-    public ItemPickaxeBase setTooltip(String tooltip)
+    public void setEffect(EnumToolEffects effect)
     {
-        this.tooltip = tooltip;
-        return this;
+        this.effect = effect;
     }
 
     @Override
@@ -82,9 +81,8 @@ public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-
-        if(this.tooltip != null && ModTools.isPickaxeEffectActive(this))
-            tooltip.add(this.tooltip);
+        if(this.effect != null && effect.isActive())
+            tooltip.add(effect.getLocalized());
     }
 
     @Nonnull

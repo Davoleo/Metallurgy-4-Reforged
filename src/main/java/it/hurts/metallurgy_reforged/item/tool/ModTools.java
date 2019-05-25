@@ -268,10 +268,21 @@ public class ModTools {
 
                     if (ToolConfig.allTools[i][j])
                     {
-                        registry.register(toolList.get(c));
+                        Item tool = toolList.get(c);
+                        registry.register(tool);
 
-                        EnumToolEffects effect = EnumToolEffects.getEffect(toolList.get(c));
-
+                        EnumToolEffects effect = EnumToolEffects.getEffect(tool);
+                        if (effect != null)
+                        {
+                            if (tool instanceof ItemAxeBase)
+                                ((ItemAxeBase) tool).setEffect(effect);
+                            if (tool instanceof ItemPickaxeBase)
+                                ((ItemPickaxeBase) tool).setEffect(effect);
+                            if (tool instanceof ItemSwordBase)
+                                ((ItemSwordBase) tool).setEffect(effect);
+                            if (tool instanceof ItemShovelBase)
+                                ((ItemShovelBase) tool).setEffect(effect);
+                        }
                     }
 
                     c++;
