@@ -15,9 +15,15 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
+import it.hurts.metallurgy_reforged.item.tool.*;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.function.Function;
 
@@ -48,6 +54,32 @@ public class MetalStats {
         }
 
         FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature() ));
+
+        if (armor != null && tool != null)
+        {
+            ItemArmorBase[] armorPieces;
+            Item[] tools;
+
+            ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
+            ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_helmet");
+            ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_chest");
+            ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_legs");
+            ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_boots");
+
+            armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
+
+
+            Item.ToolMaterial toolMaterial = createToolMaterial();
+            ItemAxeBase axe = new ItemAxeBase(toolMaterial, name + "_axe");
+            ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
+            ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, name + "_pickaxe");
+            ItemShovelBase shovel = new ItemShovelBase(toolMaterial, name + "_shovel");
+            ItemSwordBase sword = new ItemSwordBase(toolMaterial, name + "_sword");
+
+            tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
+
+            return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
+        }
 
         return new Metal(this, ingot, dust, nugget, ore, block, molten);
     }
@@ -104,6 +136,22 @@ public class MetalStats {
 
     public ToolStats getToolStats() {
         return tool;
+    }
+
+    private ItemArmor.ArmorMaterial createArmorMaterial()
+    {
+        if(armor == null)
+            throw new UnsupportedOperationException("No Armor Stats Loaded");
+
+        return EnumHelper.addArmorMaterial(this.getName().toUpperCase(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getArmorMagic(), armor.getEquipSound(), armor.getToughness());
+    }
+
+    private Item.ToolMaterial createToolMaterial()
+    {
+        if (tool == null)
+            throw new UnsupportedOperationException("No Tool Stats Loaded");
+
+        return EnumHelper.addToolMaterial(this.getName().toUpperCase(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
     }
 
     public static class FluidStats {

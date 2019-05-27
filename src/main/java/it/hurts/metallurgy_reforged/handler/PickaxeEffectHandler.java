@@ -11,10 +11,7 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import java.util.ArrayList;
-
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +20,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.ArrayList;
 
 public class PickaxeEffectHandler {
 	
@@ -33,7 +32,7 @@ public class PickaxeEffectHandler {
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
 		if(pl.isInWater()
-				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
+				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(2)))
 				&& ToolEffectsConfig.deepIronPickaxeEffect) {
 				event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}
