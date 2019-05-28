@@ -122,7 +122,7 @@ public class ArmorConfig {
 	
 	private static void initArmorConfig(Configuration cfg) {
 			for(int i = 0; i < allArmor.length; i++)
-				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " ArmorEffectHandler Set" );
+				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " Armor Set" );
 	}
 
 

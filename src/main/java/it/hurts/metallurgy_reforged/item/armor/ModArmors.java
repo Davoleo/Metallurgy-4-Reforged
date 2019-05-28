@@ -227,6 +227,9 @@ public class ModArmors {
 
     public static void register(IForgeRegistry<Item> registry) {
 
+        for (ItemArmorBase armor : armorList)
+            System.out.println(armor.getArmorMaterial());
+
         if (!GeneralConfig.disableAllArmors)
         {
             int c = 0;

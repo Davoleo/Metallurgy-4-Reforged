@@ -55,20 +55,22 @@ public class MetalStats {
 
         FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature() ));
 
-        if (armor != null && tool != null)
-        {
-            ItemArmorBase[] armorPieces;
-            Item[] tools;
+        ItemArmorBase[] armorPieces = null;
+        Item[] tools = null;
 
+        if (armor != null)
+        {
             ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
             ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_helmet");
-            ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_chest");
-            ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_legs");
-            ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_boots");
+            ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, name + "_chest");
+            ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, name + "_legs");
+            ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, name + "_boots");
 
             armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
+        }
 
-
+        if (tool != null)
+        {
             Item.ToolMaterial toolMaterial = createToolMaterial();
             ItemAxeBase axe = new ItemAxeBase(toolMaterial, name + "_axe");
             ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
@@ -77,11 +79,9 @@ public class MetalStats {
             ItemSwordBase sword = new ItemSwordBase(toolMaterial, name + "_sword");
 
             tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
-
-            return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
         }
 
-        return new Metal(this, ingot, dust, nugget, ore, block, molten);
+        return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
     }
     
     private int automaticTemperature(){

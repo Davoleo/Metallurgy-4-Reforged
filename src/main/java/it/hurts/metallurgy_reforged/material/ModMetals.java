@@ -37,7 +37,7 @@ public class ModMetals {
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
     //damage_parameter = in-game_sword_damage - 3
 
-    //THESE LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
+    //THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
             new ToolStats(22, 7, 1550, 10F, 5F), new FluidStats(0xFFa30000), 6).createMetal();
@@ -112,7 +112,7 @@ public class ModMetals {
     public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
     public static final Metal LUTETIUM = new MetalStats("lutetium", "Lutetium", 2, HIGH_TIER_BLAST_RESISTANCE,
     		new ArmorStats(new int[] {5, 6, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-    		null, new FluidStats(0xFF777221), 4).createMetal();
+    		null, new FluidStats(0xFF777221), 4).createMetal();     ////TODO |||||||||||||||||||||
     public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
     public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF332E38), 4).createMetal();
     public static final Metal MIDASIUM = new MetalStats("midasium", "Midasium", 2, MID_TIER_BLAST_RESISTANCE,
@@ -126,7 +126,7 @@ public class ModMetals {
             new ToolStats(20, 6, 1350, 9F, 7F), new FluidStats(0xFF517441), 5).createMetal();
     public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[] {4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            null, new FluidStats(0xFF555AB2), 2).createMetal();
+            null, new FluidStats(0xFF555AB2), 2).createMetal();  ///TODO ||||||||||||||||||||||||
     public static final Metal OURECLASE = new MetalStats("oureclase", "Oureclase", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 6, 5, 4}, 2, 28, 1.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 3, 750, 8F, 6F), new FluidStats(0xFFE08E02), 3).createMetal();

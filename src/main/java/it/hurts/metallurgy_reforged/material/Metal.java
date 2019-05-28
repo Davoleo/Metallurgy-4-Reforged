@@ -33,8 +33,8 @@ public class Metal {
     private final BlockOreDict ore, block;
     private final FluidMolten molten;
 
-    private Item[] toolSet = null;
-    private ItemArmorBase[] armorSet = null;
+    private Item[] toolSet;
+    private ItemArmorBase[] armorSet;
 
     private FluidBlockBase fluidBlock;
     private ItemTool.ToolMaterial toolMat;
@@ -50,17 +50,6 @@ public class Metal {
         this.molten = molten;
         this.toolSet = toolSet;
         this.armorSet = armorSet;
-        ModMetals.metalList.add(this);
-    }
-
-    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten) {
-        this.stats = stats;
-        this.ingot = ingot;
-        this.dust = dust;
-        this.nugget = nugget;
-        this.ore = ore;
-        this.block = block;
-        this.molten = molten;
         ModMetals.metalList.add(this);
     }
 
