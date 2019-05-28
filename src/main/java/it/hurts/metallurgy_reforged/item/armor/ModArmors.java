@@ -233,9 +233,9 @@ public class ModArmors {
 
             for (int i = 0; i < ArmorConfig.allArmor.length; i++)
             {
-                for (int j = 0; j < 4; j++)
+                if (ArmorConfig.allArmor[i])
                 {
-                    if (ArmorConfig.allArmor[i])
+                    for (int j = 0; j < 4; j++)
                     {
                         ItemArmorBase armorPiece = armorList.get(c);
                         registry.register(armorPiece);
@@ -243,9 +243,9 @@ public class ModArmors {
                         EnumArmorEffects effect = EnumArmorEffects.getEffect(armorPiece);
                         if (effect != null)
                             armorPiece.setEffect(effect);
-                    }
 
-                    c++;
+                        c++;
+                    }
                 }
             }
         }
