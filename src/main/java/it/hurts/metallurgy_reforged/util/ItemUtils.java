@@ -61,7 +61,7 @@ public class ItemUtils {
 	{
 		if (wild.isEmpty() || check.isEmpty())
 		{
-			return check == wild;
+			return check.equals(wild);
 		}
 
 		return wild.getItem() == check.getItem()

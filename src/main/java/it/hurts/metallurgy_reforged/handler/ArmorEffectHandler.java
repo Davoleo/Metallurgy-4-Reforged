@@ -257,13 +257,13 @@ public class ArmorEffectHandler {
 //	Increase the speed of item action [ Aggiungere la possibilità di scelta della velocità della quicksilver ]
 	@SubscribeEvent
 	public static void increaseVelocity(LivingEntityUseItemEvent.Start ev){
-		if(ev.getEntityLiving() instanceof EntityPlayer)
-			if(EventUtils.isPlayerWearingArmor((EntityPlayer)ev.getEntityLiving(), ModMetals.QUICKSILVER.getArmorSet()) && ArmorEffectsConfig.quicksilverArmorEffect) {
-				if(ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
-					ev.setDuration(ev.getDuration() - 6);
-				else
-					ev.setDuration(Math.round(ev.getDuration() / 2F));
-			}
+		if (ev.getEntityLiving() instanceof EntityPlayer && EventUtils.isPlayerWearingArmor((EntityPlayer) ev.getEntityLiving(), ModMetals.QUICKSILVER.getArmorSet()) && ArmorEffectsConfig.quicksilverArmorEffect)
+		{
+			if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
+				ev.setDuration(ev.getDuration() - 6);
+			else
+				ev.setDuration(Math.round(ev.getDuration() / 2F));
+		}
 	}
 	
 //	Mithril ArmorEffectHandler (Ultra istinto)
@@ -320,13 +320,10 @@ public class ArmorEffectHandler {
 		
 //		FireImmunity
 		@SubscribeEvent
-		public static void cancelFireDamage(LivingAttackEvent event) {
-			if (event.getEntity() instanceof EntityPlayer) {
-				if (event.getSource().isFireDamage()) {
-					if (EventUtils.isPlayerWearingArmor((EntityPlayer) event.getEntity(), ModMetals.VULCANITE.getArmorSet()))
-						event.setCanceled(true);
-				}
-			}
+		public static void cancelFireDamage(LivingAttackEvent event)
+		{
+			if (event.getEntity() instanceof EntityPlayer && event.getSource().isFireDamage() && EventUtils.isPlayerWearingArmor((EntityPlayer) event.getEntity(), ModMetals.VULCANITE.getArmorSet()))
+				event.setCanceled(true);
 		}
 
 	@SubscribeEvent
