@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.material.IOreDict;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -46,38 +47,32 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	//Constructors ---------------------------------------------------------------
 
 	//PickaxeEffectHandler-Mineable Block with oredict value, harvest level of 1, and blast resistance of 5
-	public BlockOreDict(String name, String oreName) {
-		this(name, oreName, "p", 1, 5F);
+	public BlockOreDict(String name, String oreName, boolean addToList, CreativeTabs tab) {
+		this(name, oreName, addToList, "p", 1, 5F, tab);
 		setHardness(3F);
 	}
 
     //OreDicted block with custom properties
-	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance){
+	public BlockOreDict(String name, String oreName, boolean addToList, String toolClass, int harvestLevel, float blastResistance, CreativeTabs tab){
 		super(Material.ROCK);
-		BlockUtils.initBlock(this, name, null);
+		BlockUtils.initBlock(this, name, tab, addToList);
 		setHardness(3f);
 		setResistance(blastResistance);
 		setHarvestLevel(toolClass, harvestLevel);
+		if (name.contains("block"))
+			setSoundType(SoundType.METAL);
 		this.oreName = oreName;
 	}
 
 	//Custom Methods ------------------------------------------------------------
 
-	BlockOreDict setDrops(Drop... drops)
+	public BlockOreDict setDrops(Drop... drops)
 	{
 		this.customDrops = Arrays.asList(drops);
 		return this;
 	}
 
 	//Overridden Methods -------------------------------------------------------------
-
-	//Overrides the creativeTab
-	@Nonnull
-	@Override
-	public BlockOreDict setCreativeTab(@Nonnull CreativeTabs tab) {
-		super.setCreativeTab(tab);
-		return this;
-	}
 
 	@Nonnull
 	@Override

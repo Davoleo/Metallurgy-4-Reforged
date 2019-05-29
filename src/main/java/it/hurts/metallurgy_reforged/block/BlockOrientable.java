@@ -40,7 +40,7 @@ public class BlockOrientable extends Block {
     public BlockOrientable(Material material, String name, CreativeTabs tab)
     {
         super(material);
-        BlockUtils.initBlock(this, name, tab);
+        BlockUtils.initBlock(this, name, tab, true);
     }
 
     //Custom Methods --------------------------------------------------------------------

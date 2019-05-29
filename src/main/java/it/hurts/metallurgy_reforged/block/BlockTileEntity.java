@@ -33,7 +33,7 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
     public BlockTileEntity(Material material, String name)
     {
         super(material);
-        BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial);
+        BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, true);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 1);
         setHardness(6F);

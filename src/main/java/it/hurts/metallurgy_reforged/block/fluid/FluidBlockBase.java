@@ -26,13 +26,10 @@ import java.util.Objects;
 
 public class FluidBlockBase extends BlockFluidClassic {
 
-    private String name;
-
     //Creates an instance of a FluidBlock
     public FluidBlockBase(Fluid fluid, Material material, String name)
     {
         super(fluid, material);
-        this.name = name;
         setRegistryName(Metallurgy.MODID, name);
         setTranslationKey(Metallurgy.MODID + "." + name);
         setCreativeTab(MetallurgyTabs.tabFluid);

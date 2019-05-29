@@ -38,31 +38,27 @@ public class ModBlocks {
     //Blocks which drops themselves
 
     //Mod Blocks with a custom drop
-    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
-            .setCreativeTab(MetallurgyTabs.tabOre)
+    public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
             .setDrops(new Drop(new ItemStack(ModItems.dustSulfur, 4), 1F));
-    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
-            .setCreativeTab(MetallurgyTabs.tabOre)
+    public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.dustPhosphorus, 3, 1F));
-    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
-            .setCreativeTab(MetallurgyTabs.tabOre)
+    public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.tar,2, 1F), new Drop(ModItems.dustBitumen, 2, 0.5F));
-    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE)
-            .setCreativeTab(MetallurgyTabs.tabOre)
+    public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
             .setDrops(new Drop(ModItems.dustPotash, 3, 1F));
 
     //Other Blocks
-    public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen").setCreativeTab(MetallurgyTabs.tabBlock);
-    public static BlockOreDict blockCharcoal = new BlockOreDict("charcoal_block", "blockCharcoal").setCreativeTab(MetallurgyTabs.tabBlock);
-    public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur").setCreativeTab(MetallurgyTabs.tabBlock);
+    public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen", true, MetallurgyTabs.tabBlock);
+    public static BlockOreDict blockCharcoal = new BlockOreDict("charcoal_block", "blockCharcoal", true,  MetallurgyTabs.tabBlock);
+    public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur", true,  MetallurgyTabs.tabBlock);
 
     //Road
     public static BlockOrientable blockRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
     public static BlockOrientable blockStripedRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "striped_road_block", MetallurgyTabs.tabSpecial).setHardness(3F));
 
     //Tile Entities
-    public static BlockCrusher crusher = new BlockCrusher("crusher").setCreativeTab(MetallurgyTabs.tabSpecial);
-    public static BlockAlloyer alloyer = new BlockAlloyer("alloyer").setCreativeTab(MetallurgyTabs.tabSpecial);
+    public static BlockCrusher crusher = new BlockCrusher("crusher");
+    public static BlockAlloyer alloyer = new BlockAlloyer("alloyer");
 
     //Registers the blocks in the Forge Registry
     public static void register(IForgeRegistry<Block> registry) {
