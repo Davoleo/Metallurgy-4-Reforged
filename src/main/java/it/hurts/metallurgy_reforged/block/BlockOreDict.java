@@ -11,9 +11,9 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.material.IOreDict;
+import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -23,7 +23,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
@@ -55,8 +54,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
     //OreDicted block with custom properties
 	public BlockOreDict(String name, String oreName, String toolClass, int harvestLevel, float blastResistance){
 		super(Material.ROCK);
-		setRegistryName(new ResourceLocation(Metallurgy.MODID, name));
-		setTranslationKey(Metallurgy.MODID + "." + name);
+		BlockUtils.initBlock(this, name, null);
 		setHardness(3f);
 		setResistance(blastResistance);
 		setHarvestLevel(toolClass, harvestLevel);
@@ -65,7 +63,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 
 	//Custom Methods ------------------------------------------------------------
 
-	public BlockOreDict setDrops(Drop... drops)
+	BlockOreDict setDrops(Drop... drops)
 	{
 		this.customDrops = Arrays.asList(drops);
 		return this;
@@ -85,7 +83,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	@Override
 	public String getCategory()
 	{
-		return null;
+		return "";
 	}
 
 	//registers the oreDict Value in the Ore Dictionary (Implemented from the Interface)

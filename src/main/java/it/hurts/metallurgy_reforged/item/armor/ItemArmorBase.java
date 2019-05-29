@@ -11,10 +11,10 @@
 
 package it.hurts.metallurgy_reforged.item.armor;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
@@ -34,7 +34,6 @@ import java.util.List;
 
 public class ItemArmorBase extends ItemArmor implements IHasModel {
 
-	private String name;
 	private EnumArmorEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
@@ -48,13 +47,9 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
 	{
 		super(material, 0, slot);
-		setTranslationKey(Metallurgy.MODID + "." + name);
-		setRegistryName(Metallurgy.MODID, name);
-		this.name = name;
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
-		setCreativeTab(MetallurgyTabs.tabArmor);
-		ModArmors.armorList.add(this);
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabArmor, ModArmors.armorList);
 	}
 
 	@Nonnull
@@ -94,7 +89,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
 	{
-		return (GeneralConfig.enableAnvilArmorRepair && Utils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)

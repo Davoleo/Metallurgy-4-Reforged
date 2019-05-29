@@ -23,6 +23,7 @@ public class ModRecipes {
 
     public static void init()
     {
+
         //Furnace Recipes
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {

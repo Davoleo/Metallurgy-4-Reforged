@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets;
 
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -32,7 +33,7 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 
     public ItemInvisibilityShield()
     {
-        ItemUtils.initItem(this, "invisibility_shield", MetallurgyTabs.tabSpecial);
+        ItemUtils.initItem(this, "invisibility_shield", MetallurgyTabs.tabSpecial, ModItems.itemList);
         setMaxStackSize(1);
         setMaxDamage(250);
 

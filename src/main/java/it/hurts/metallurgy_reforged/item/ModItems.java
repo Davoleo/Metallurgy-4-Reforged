@@ -17,8 +17,8 @@ import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -59,7 +59,7 @@ public class ModItems {
 		for (Item item : itemList)
 		{
 			if (item instanceof IHasModel)
-				Utils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
+				ItemUtils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
 		}
 	}
 }

@@ -11,7 +11,9 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets;
 
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -31,8 +33,8 @@ public class ItemIgnatiusLighter extends Item implements IHasModel {
 
     public ItemIgnatiusLighter(String name)
     {
+        ItemUtils.initItem(this, name, MetallurgyTabs.tabSpecial, ModItems.itemList);
         setMaxDamage(150);
-        setCreativeTab(MetallurgyTabs.tabSpecial);
     }
 
     @Nonnull

@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.item.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -266,7 +266,7 @@ public class ModArmors {
                 for (int j = 0; j < 4; j++)
                 {
                     if (ArmorConfig.allArmor[i])
-                        Utils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
+                        ItemUtils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
 
                     c++;
                 }

@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -39,7 +40,7 @@ public class PickaxeEffectHandler {
 
 
 //		set tools break speed based on light except for hoe and sword
-		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && ItemUtils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
 			float percentage = Utils.getLightArmorPercentage(pl,100F);
 			float speed = event.getNewSpeed()  * percentage / 40F;
 			event.setNewSpeed(event.getOriginalSpeed() + speed);
@@ -52,7 +53,7 @@ public class PickaxeEffectHandler {
 		if(ev.getHarvester() instanceof EntityPlayer) {
             EntityPlayer pl = ev.getHarvester();
 		
-	            if(Utils.isItemStackASpecificToolMaterial(ModMetals.MIDASIUM, pl.getHeldItemMainhand()) && (ev.getState().getBlock().toString().contains("_ore") 
+	            if(ItemUtils.isItemStackASpecificToolMaterial(ModMetals.MIDASIUM, pl.getHeldItemMainhand()) && (ev.getState().getBlock().toString().contains("_ore")
 	    				|| ev.getState().getBlock().isWood(ev.getWorld(), ev.getPos()) 
 	    				|| ev.getState().getBlock().equals(Blocks.SAND)
 	    				|| ev.getState().getBlock().equals(Blocks.SOUL_SAND)

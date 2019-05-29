@@ -15,6 +15,8 @@ import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
@@ -33,9 +35,20 @@ public class OreDictHandler {
         for(Item b: ModItems.itemList) {
             if(b instanceof ItemOreDict)
                 ((ItemOreDict) b).initOreDict();
-
-            //Additional oreDict values
-            OreDictionary.registerOre("globTar", ModItems.tar);
         }
+
+        //Metals
+        for (Metal metal : ModMetals.metalList)
+        {
+            if (metal.getOre() != null)
+                metal.getOre().initOreDict();
+            metal.getBlock().initOreDict();
+            metal.getNugget().initOreDict();
+            metal.getDust().initOreDict();
+            metal.getIngot().initOreDict();
+        }
+
+        //Additional oreDict values
+        OreDictionary.registerOre("globTar", ModItems.tar);
     }
 }

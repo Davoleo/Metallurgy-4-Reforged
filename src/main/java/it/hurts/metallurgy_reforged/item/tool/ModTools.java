@@ -15,7 +15,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -304,7 +304,7 @@ public class ModTools {
                     IHasModel item = (IHasModel) toolList.get(c);
 
                     if (ToolConfig.allTools[i][j])
-                        Utils.registerCustomItemModel((Item) item, 0, item.getCategory());
+                        ItemUtils.registerCustomItemModel((Item) item, 0, item.getCategory());
 
                     c++;
 

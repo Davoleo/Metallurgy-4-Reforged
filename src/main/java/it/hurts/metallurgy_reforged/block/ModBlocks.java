@@ -15,8 +15,8 @@ import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -33,7 +33,7 @@ public class ModBlocks {
     //Internal state / fields -------------------------------------------------
 
     //The list of all the blocks of this mod
-    public static List<BlockBase> blockList = new ArrayList<>();
+    public static List<Block> blockList = new ArrayList<>();
 
     //Blocks which drops themselves
 
@@ -83,7 +83,7 @@ public class ModBlocks {
     //Registers the models
     public static void registerModels() {
         for (Block block : blockList)
-            Utils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
+            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
     }
 
 }

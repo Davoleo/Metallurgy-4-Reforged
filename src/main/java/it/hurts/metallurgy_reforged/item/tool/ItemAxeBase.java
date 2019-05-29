@@ -11,11 +11,10 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -32,7 +31,6 @@ import java.util.List;
 
 public class ItemAxeBase extends ItemAxe implements IHasModel {
 
-    private String name;
     private EnumToolEffects effect;
     private Enchantment enchantment;
 	private int enchantmentLevel;
@@ -44,13 +42,9 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
-        setTranslationKey(Metallurgy.MODID + "." + name);
-        setRegistryName(Metallurgy.MODID, name);
-        setCreativeTab(MetallurgyTabs.tabTool);
-        this.name = name;
+        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-        ModTools.toolList.add(this);
     }
     
     @Override
@@ -75,7 +69,7 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return (GeneralConfig.enableAnvilToolRepair && Utils.equalsWildcard(Utils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)

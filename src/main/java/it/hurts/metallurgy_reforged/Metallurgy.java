@@ -68,7 +68,7 @@ public class Metallurgy {
 		logger =  event.getModLog();
         logger.info(NAME + " is entering pre-initialization!");
         proxy.preInit(event);
-        
+
 		ModMetals.registerFluids();
 		ModFluids.registerFluids();
 		logger.info("Fluid registration complete!");

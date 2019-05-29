@@ -11,11 +11,10 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -32,7 +31,6 @@ import java.util.List;
 
 public class ItemShovelBase extends ItemSpade implements IHasModel {
 
-    private String name;
     private EnumToolEffects effect;
     private Enchantment enchantment;
 	private int enchantmentLevel;
@@ -44,13 +42,9 @@ public class ItemShovelBase extends ItemSpade implements IHasModel {
     
     public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material);
-        setTranslationKey(Metallurgy.MODID + "." + name);
-        setRegistryName(Metallurgy.MODID, name);
-        this.name = name;
+        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
     }
     
     @Override
@@ -74,7 +68,7 @@ public class ItemShovelBase extends ItemSpade implements IHasModel {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return (GeneralConfig.enableAnvilToolRepair && Utils.equalsWildcard(Utils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)

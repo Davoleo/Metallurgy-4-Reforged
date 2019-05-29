@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -33,7 +33,11 @@ public class ModMetals {
     public static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
     public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   	//Obsidian-like
     public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           	//Bedrock-like
-    
+
+    static {
+        System.out.println("ModMetal Has started loading ----------------------------------------------------------------");
+    }
+
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
     //damage_parameter = in-game_sword_damage - 3
 
@@ -112,7 +116,7 @@ public class ModMetals {
     public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
     public static final Metal LUTETIUM = new MetalStats("lutetium", "Lutetium", 2, HIGH_TIER_BLAST_RESISTANCE,
     		new ArmorStats(new int[] {5, 6, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-    		null, new FluidStats(0xFF777221), 4).createMetal();     ////TODO |||||||||||||||||||||
+    		null, new FluidStats(0xFF777221), 4).createMetal();
     public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
     public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF332E38), 4).createMetal();
     public static final Metal MIDASIUM = new MetalStats("midasium", "Midasium", 2, MID_TIER_BLAST_RESISTANCE,
@@ -126,7 +130,7 @@ public class ModMetals {
             new ToolStats(20, 6, 1350, 9F, 7F), new FluidStats(0xFF517441), 5).createMetal();
     public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[] {4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            null, new FluidStats(0xFF555AB2), 2).createMetal();  ///TODO ||||||||||||||||||||||||
+            null, new FluidStats(0xFF555AB2), 2).createMetal();
     public static final Metal OURECLASE = new MetalStats("oureclase", "Oureclase", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 6, 5, 4}, 2, 28, 1.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 3, 750, 8F, 6F), new FluidStats(0xFFE08E02), 3).createMetal();
@@ -186,14 +190,14 @@ public class ModMetals {
 
     public static void registerModels() {
         for (Metal m : metalList) {
-            Utils.registerCustomItemModel(m.getDust(), 0);
-            Utils.registerCustomItemModel(m.getIngot(), 0);
-            Utils.registerCustomItemModel(m.getNugget(), 0);
+            ItemUtils.registerCustomItemModel(m.getDust(), 0);
+            ItemUtils.registerCustomItemModel(m.getIngot(), 0);
+            ItemUtils.registerCustomItemModel(m.getNugget(), 0);
             if (m.getOre() != null) {
-                Utils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
+                ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
             }
-            Utils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
-            Utils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
+            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
+            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
         }
     }
 
