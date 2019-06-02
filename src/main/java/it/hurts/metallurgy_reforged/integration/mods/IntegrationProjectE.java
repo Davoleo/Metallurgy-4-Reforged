@@ -15,7 +15,7 @@ import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -64,7 +64,7 @@ public class IntegrationProjectE{
         else if (ingot.getItem().equals(Items.GOLD_INGOT))
             return 2048;
 
-        Metal metal = Utils.getMetalFromIngot(ingot);
+        Metal metal = ItemUtils.getMetalFromIngot(ingot);
 
         if (metal.hasToolSet())
             return getEMCbyHarvestLevel(metal.getToolMaterial().getHarvestLevel());

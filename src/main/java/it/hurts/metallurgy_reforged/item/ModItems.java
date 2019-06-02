@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
@@ -20,12 +19,9 @@ import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Tooltips;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;

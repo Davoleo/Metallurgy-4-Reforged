@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -106,4 +107,20 @@ public class ItemUtils {
 		{
 			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + "/" + item.getRegistryName().getPath(), "inventory"));
 		}
+
+	/**
+	 * @param ingot the ingot you want the metal of
+	 * @return The metal the parameter ingot is made of (null if metal doesn't exist)
+	 */
+	public static Metal getMetalFromIngot(ItemStack ingot)
+		{
+			for (Metal metal : ModMetals.metalList)
+			{
+				if (metal.getIngot() == ingot.getItem())
+					return metal;
+			}
+
+			return null;
+		}
+
 	}
