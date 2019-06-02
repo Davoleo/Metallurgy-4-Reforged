@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: ClientProxy
+ * Class: IHasModel
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,7 +9,19 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.proxy;
+package it.hurts.metallurgy_reforged.util;
 
-public class ClientProxy extends CommonProxy{
+import javax.annotation.Nonnull;
+
+/**
+ * When implemented will allow the item model to be loaded
+ */
+public interface IHasModel {
+
+    /**
+     * @return the model subdirectory (empty string means root models dir)
+     */
+    @Nonnull
+    String getCategory();
+
 }

@@ -11,10 +11,10 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -33,26 +33,31 @@ public class ModMetals {
     public static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
     public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   	//Obsidian-like
     public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           	//Bedrock-like
-    
+
+    static {
+        System.out.println("ModMetal Has started loading ----------------------------------------------------------------");
+    }
+
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
     //damage_parameter = in-game_sword_damage - 3
 
+    //THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
             new ToolStats(22, 7, 1550, 10F, 5F), new FluidStats(0xFFa30000), 6).createMetal();
-    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF29AF9D), 3).createMetal();
+    public static final Metal AMORDRINE = new MetalStats("amordrine", "Amordrine", 2, MID_TIER_BLAST_RESISTANCE,
+            new ArmorStats(new int[]{3, 4, 5, 3}, 50, 50, 2F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            new ToolStats(50, 5, 500, 14F, 4F), new FluidStats(0xFF9780CB), -1).createMetal();
     public static final Metal ANGMALLEN = new MetalStats("angmallen", "Angmallen", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 30, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(30, 3, 300, 7F, 3F), new FluidStats(0xFFC09844), -1).createMetal();
+    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF29AF9D), 3).createMetal();
     public static final Metal ASTRAL_SILVER = new MetalStats("astral_silver", "AstralSilver", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 5, 6, 2}, 9, 15, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC),
             new ToolStats(30, 5, 350, 12F, 2F), new FluidStats(0xFFBBD5CF), 4).createMetal();
     public static final Metal ATLARUS = new MetalStats("atlarus", "Atlarus", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 3, 3, 4}, 2, 35, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(22, 7, 1750, 10F, 5F), new FluidStats(0xFFDABC23), 6).createMetal();
-    public static final Metal AMORDRINE = new MetalStats("amordrine", "Amordrine", 2, MID_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[]{3, 4, 5, 3}, 50, 50, 2F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(50, 5, 500, 14F, 4F), new FluidStats(0xFF9780CB), -1).createMetal();
     public static final Metal BLACK_STEEL = new MetalStats("black_steel", "BlackSteel", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 17, 50, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(17, 3, 500, 8F, 3F), new FluidStats(0xFF343737), -1).createMetal();
@@ -123,12 +128,12 @@ public class ModMetals {
     public static final Metal ORICHALCUM = new MetalStats("orichalcum", "Orichalcum", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 6, 7, 2}, 4, 20, 1.4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 6, 1350, 9F, 7F), new FluidStats(0xFF517441), 5).createMetal();
+    public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
+            new ArmorStats(new int[] {4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+            null, new FluidStats(0xFF555AB2), 2).createMetal();
     public static final Metal OURECLASE = new MetalStats("oureclase", "Oureclase", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 6, 5, 4}, 2, 28, 1.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(18, 3, 750, 8F, 6F), new FluidStats(0xFFE08E02), 3).createMetal();
-    public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
-    		new ArmorStats(new int[] {4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-    		null, new FluidStats(0xFF555AB2), 2).createMetal();
     public static final Metal PLATINUM = new MetalStats("platinum", "Platinum", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 12, 17, 0.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(50, 3, 100, 16F, 5F), new FluidStats(0xFF7193D4), 2).createMetal();
@@ -185,14 +190,14 @@ public class ModMetals {
 
     public static void registerModels() {
         for (Metal m : metalList) {
-            m.getDust().registerItemModel();
-            m.getIngot().registerItemModel();
-            m.getNugget().registerItemModel();
+            ItemUtils.registerCustomItemModel(m.getDust(), 0);
+            ItemUtils.registerCustomItemModel(m.getIngot(), 0);
+            ItemUtils.registerCustomItemModel(m.getNugget(), 0);
             if (m.getOre() != null) {
-                m.getOre().registerItemModel(Item.getItemFromBlock(m.getOre()));
+                ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
             }
-            m.getBlock().registerItemModel(Item.getItemFromBlock(m.getBlock()));
-            m.getFluidBlock().registerItemModel(Item.getItemFromBlock(m.getFluidBlock()));
+            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
+            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
         }
     }
 

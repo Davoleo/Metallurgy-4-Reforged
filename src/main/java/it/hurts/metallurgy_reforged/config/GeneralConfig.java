@@ -26,15 +26,15 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean warning = true;
 
-	@Config.Name("Enable/Disable all tools")
-	@Config.Comment("When set to false all tool sets are disabled")
+	@Config.Name("Disable all tools")
+	@Config.Comment("When set to true all tool sets are disabled")
 	@Config.RequiresMcRestart
-	public static boolean disableAllTools = true;
+	public static boolean disableAllTools = false;
 	
-	@Config.Name("Enable/Disable all armor set")
-	@Config.Comment("When set to false all armor sets are disabled")
+	@Config.Name("Disable all armor set")
+	@Config.Comment("When set to true all armor sets are disabled")
 	@Config.RequiresMcRestart
-	public static boolean disableAllArmors = true;
+	public static boolean disableAllArmors = false;
 	
 	@Config.Name("Road Speed Multiplier")
 	@Config.Comment("Set the road speed multiplier")

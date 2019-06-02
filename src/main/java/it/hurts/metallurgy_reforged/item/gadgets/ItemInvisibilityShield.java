@@ -11,13 +11,16 @@
 
 package it.hurts.metallurgy_reforged.item.gadgets;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketParticles;
 import net.minecraft.util.*;
@@ -28,13 +31,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemInvisibilityShield extends ItemBase {
+public class ItemInvisibilityShield extends Item implements IHasModel {
 
     public ItemInvisibilityShield()
     {
-        super("lemurite_shield");
+        ItemUtils.initItem(this, "lemurite_shield", MetallurgyTabs.tabSpecial, ModItems.itemList);
         setMaxStackSize(1);
-        setCreativeTab(MetallurgyTabs.tabSpecial);
         setMaxDamage(250);
 
         this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter()
@@ -46,6 +48,13 @@ public class ItemInvisibilityShield extends ItemBase {
             }
         });
 
+    }
+
+    @Nonnull
+    @Override
+    public String getCategory()
+    {
+        return "gadget";
     }
 
     @Override
@@ -101,13 +110,6 @@ public class ItemInvisibilityShield extends ItemBase {
         if (entity instanceof EntityPlayerMP)
             ((EntityPlayerMP) entity).connection.sendPacket(new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) entity.posX , (float) entity.posY + 1, (float) entity.posZ, 0, 0, 0, 0, 1, 0));
     }
-
-    @Override
-    public void registerItemModel(String subdirectory)
-    {
-        super.registerItemModel("gadget");
-    }
-
     @Nonnull
     @Override
     public EnumAction getItemUseAction(ItemStack stack)

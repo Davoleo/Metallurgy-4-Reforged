@@ -11,10 +11,14 @@
 
 package it.hurts.metallurgy_reforged.item;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.IOreDict;
+import it.hurts.metallurgy_reforged.util.IHasModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -22,7 +26,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemOreDict extends ItemBase implements IOreDict {
+public class ItemOreDict extends Item implements IOreDict, IHasModel {
 
 	//Internal Variables ----------------------------------------------------
 	private String oreName;
@@ -31,18 +35,10 @@ public class ItemOreDict extends ItemBase implements IOreDict {
 	//Constructors
 	public ItemOreDict(String name, String oreName)
 	{
-		super(name);
+		setRegistryName(new ResourceLocation(Metallurgy.MODID, name));
+		setTranslationKey(Metallurgy.MODID + "." + name);
 		this.oreName = oreName;
 	}
-
-	//Overridden methods -----------------------------------------------------
-	@Nonnull
-    @Override
-    public ItemOreDict setCreativeTab(@Nonnull CreativeTabs tab)
-	{
-        super.setCreativeTab(tab);
-        return this;
-    }
 
     @Override
 	public void initOreDict()
@@ -62,6 +58,21 @@ public class ItemOreDict extends ItemBase implements IOreDict {
 	public ItemOreDict setTooltip(String tooltip)
 	{
 		this.tooltip = tooltip;
+		return this;
+	}
+
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "";
+	}
+
+	@Nonnull
+	@Override
+	public ItemOreDict setCreativeTab(@Nonnull CreativeTabs tab)
+	{
+		super.setCreativeTab(tab);
 		return this;
 	}
 }

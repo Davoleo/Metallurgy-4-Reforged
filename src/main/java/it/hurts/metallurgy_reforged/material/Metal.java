@@ -16,7 +16,9 @@ import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.util.EnumHelper;
@@ -30,11 +32,15 @@ public class Metal {
     private final ItemOreDict ingot, dust, nugget;
     private final BlockOreDict ore, block;
     private final FluidMolten molten;
+
+    private Item[] toolSet;
+    private ItemArmorBase[] armorSet;
+
     private FluidBlockBase fluidBlock;
     private ItemTool.ToolMaterial toolMat;
     private ItemArmor.ArmorMaterial armorMat;
 
-    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten) {
+    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
         this.stats = stats;
         this.ingot = ingot;
         this.dust = dust;
@@ -42,6 +48,8 @@ public class Metal {
         this.ore = ore;
         this.block = block;
         this.molten = molten;
+        this.toolSet = toolSet;
+        this.armorSet = armorSet;
         ModMetals.metalList.add(this);
     }
 
@@ -134,6 +142,44 @@ public class Metal {
     public FluidBlockBase getFluidBlock() {
         return fluidBlock;
     }
+
+    /**
+     * 0 = axe <br>
+     * 1 = hoe <br>
+     * 2 = pickaxe <br>
+     * 3 = shovel <br>
+     * 4 = sword <br>
+     * @param key the index of the tool in the toolSet Array
+     * @return one of the tools in the toolSet
+     */
+    public Item getTool(int key)
+    {
+        return toolSet[key];
+    }
+
+    /**
+     * 0 = helmet <br>
+     * 1 = chestPlate <br>
+     * 2 = leggings <br>
+     * 3 = boots <br>
+     * @param key the index of the armor Piece in the armorSet Array
+     * @return one of the armor pieces in the armorSet
+     */
+    public ItemArmorBase getArmor(int key)
+    {
+        return armorSet[key];
+    }
+
+    public Item[] getToolSet()
+    {
+        return toolSet;
+    }
+
+    public ItemArmorBase[] getArmorSet()
+    {
+        return armorSet;
+    }
+
 
     @Override
     public String toString()

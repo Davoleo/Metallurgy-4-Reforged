@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.item.tool.ModTools;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -50,8 +50,8 @@ public class SwordEffectHandler {
 		if (!player.world.isRemote) {
 
 			Entity foe = event.getTarget();
-//			Shadow Iron SwordEffectHandler (Blindness)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_iron_sword))
+//			Shadow Iron Sword (Blindness)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.SHADOW_IRON.getTool(4)))
 					&& ToolEffectsConfig.shadowIronSwordEffect) {
 
 				EntityLivingBase foe2 = (EntityLivingBase) foe;
@@ -60,14 +60,14 @@ public class SwordEffectHandler {
 					foe2.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100));
 			}
 
-//			Desichalkos SwordEffectHandler ( Give Random Effect to entity )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.desichalkos_sword))
+//			Desichalkos Sword ( Give Random Effect to entity )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.DESICHALKOS.getTool(4)))
 					&& ToolEffectsConfig.desichalkosSwordEffect){
 				((EntityLivingBase)foe).addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
 			}
 
-//			Vyroxeres SwordEffectHandler (Potion)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vyroxeres_sword))
+//			Vyroxeres Sword (Potion)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.VYROXERES.getTool(4)))
 					&& ToolEffectsConfig.vyroxeresSwordEffect)
 			{
 
@@ -75,46 +75,46 @@ public class SwordEffectHandler {
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
 			}
 
-//			Ignatius SwordEffectHandler (Fire Aspect)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ignatius_sword))
+//			Ignatius Sword (Fire Aspect)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.IGNATIUS.getTool(4)))
 					&& ToolEffectsConfig.ignatiusSwordEffect) {
 
 				if ((int) (Math.random() * 100) <= 15)
 					foe.setFire(5);
 			}
 
-//			Vulcanite SwordEffectHandler (Fire Aspect)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.vulcanite_sword))
+//			Vulcanite Sword (Fire Aspect)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.VULCANITE.getTool(4)))
 					&& ToolEffectsConfig.vulcaniteSwordEffect) {
 
 				if ((int) (Math.random() * 100) <= 30)
 					foe.setFire(5);
 			}
 
-//			Tartarite SwordEffectHandler (Withering II)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.tartarite_sword))
+//			Tartarite Sword (Withering II)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.TARTARITE.getTool(4)))
 					&& ToolEffectsConfig.tartariteSwordEffect) {
 
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1, false, false));
 			}
 
-//			Mithril SwordEffectHandler (Give Glowing to entity Hitted)
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.mithril_sword))) {
+//			Mithril Sword (Give Glowing to entity Hitted)
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.MITHRIL.getTool(4)))) {
 				if ((int) (Math.random() * 100) <= 20)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
 			}
 
 //			Kalendrite sword (Regeneration)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.kalendrite_sword))
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.KALENDRITE.getTool(4)))
 					&& ToolEffectsConfig.kalendriteSwordEffect) {
 
 				if ((int) (Math.random() * 100) <= 30)
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
 			}
 
-//			Ceruclase SwordEffectHandler (Give slowness)
-			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.ceruclase_sword))) {
+//			Ceruclase Sword (Give slowness)
+			if (player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.CERUCLASE.getTool(4)))) {
 
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 70, 1, false, false));
@@ -128,8 +128,8 @@ public class SwordEffectHandler {
 		Entity attacker = event.getSource().getImmediateSource();
 		if(attacker instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) attacker;
-//			Celenegil SwordEffectHandler ( Give Speed and Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.celenegil_sword)) &&
+//			Celenegil Sword ( Give Speed and Strenght on entity kill )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.CELENEGIL.getTool(4))) &&
 					(player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true &&
 							player.isPotionActive(MobEffects.SPEED) ? player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8:true)) {
 
@@ -137,8 +137,8 @@ public class SwordEffectHandler {
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 			}
 
-//			Orichalcum SwordEffectHandler ( Give Strenght on entity kill )
-			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.orichalcum_sword)) &&
+//			Orichalcum Sword ( Give Strenght on entity kill )
+			if(player.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.ORICHALCUM.getTool(4))) &&
 					(player.isPotionActive(MobEffects.STRENGTH) ? player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8:true))
 
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
@@ -157,7 +157,7 @@ public class SwordEffectHandler {
         {
             EntityPlayer pl = (EntityPlayer) entity;
 
-            if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.midasium_sword))&& !(ev.getEntity() instanceof EntityPlayer)){
+            if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.MIDASIUM.getTool(4)))&& !(ev.getEntity() instanceof EntityPlayer)){
 	            ArrayList<EntityItem> drops = new ArrayList<>();
 
 //            	Duplica il drop
@@ -180,7 +180,7 @@ public class SwordEffectHandler {
         }
     }
 
-//	Sanguinite SwordEffectHandler (Vampirism)
+//	Sanguinite Sword (Vampirism)
 	@SubscribeEvent
 	public static void entityHurtEvent(LivingHurtEvent event)
 	{
@@ -192,7 +192,7 @@ public class SwordEffectHandler {
 			//the player that damaged the event entity
 			EntityPlayer pl = (EntityPlayer) source;
 
-			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModTools.sanguinite_sword))) {
+			if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.SANGUINITE.getTool(4)))) {
 				{
 					//check if the player is missing hearts.
 					if(pl.getHealth() < pl.getMaxHealth())
@@ -222,13 +222,13 @@ public class SwordEffectHandler {
 		ItemStack stack = pl.getHeldItemMainhand();
 		IAttributeInstance attackSpeedInstance = pl.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 
-		if (ToolEffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.shadow_steel_sword))) {
+		if (ToolEffectsConfig.shadowSteelSwordEffect && stack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.SHADOW_STEEL.getTool(4)))) {
 
 			float percentage = Utils.getLightArmorPercentage(pl, 50F);
 			//calculate the Speed to add to the sword
 			double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
 			//the modifier UUID
-			AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID, "Shadow Steel SwordEffectHandler Modifier", added_speed, 0);
+			AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID, "Shadow Steel Sword Modifier", added_speed, 0);
 			//checks if player has the modifier
 			if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) == null) {
 				//if not,add the modifier
@@ -245,7 +245,7 @@ public class SwordEffectHandler {
 		}
 
 		if (ToolEffectsConfig.deepIronSwordEffect) {
-			if (stack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_sword))) {
+			if (stack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(4)))) {
 				AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
 				if (pl.isInWater() && attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) == null) {
 					attackSpeedInstance.applyModifier(deep_iron_trait_modifier);

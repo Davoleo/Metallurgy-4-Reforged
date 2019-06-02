@@ -11,7 +11,9 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -24,14 +26,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 //An abstract base class for TileBlocks | The generic parameter links the TileBlock Class with the TileEntity Class
-public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase {
+public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
 
     //Constructor ----------------------------------------------------------------
 
     public BlockTileEntity(Material material, String name)
     {
-        super(material, name);
-        setCreativeTab(MetallurgyTabs.tabSpecial);
+        super(material);
+        BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, true);
         setSoundType(SoundType.METAL);
         setHarvestLevel("pickaxe", 1);
         setHardness(6F);

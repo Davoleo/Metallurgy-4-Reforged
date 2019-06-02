@@ -16,10 +16,15 @@ import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
+import it.hurts.metallurgy_reforged.util.Constants;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Tooltips;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -27,14 +32,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
-	public static List<ItemBase> itemList = new ArrayList<>();
+	public static List<Item> itemList = new ArrayList<>();
 
 //	Vanilla dust
 	public static ItemOreDict dustGold = new ItemOreDict("gold_dust", "dustGold").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron").setCreativeTab(MetallurgyTabs.tabDust);
 	
 //	Metallurgy dust
-	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust).setTooltip(Tooltips.BITUMEN);
+	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
 	public static ItemOreDict tar = new ItemOreDict("tar","slimeball").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash").setCreativeTab(MetallurgyTabs.tabDust);
 	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur").setCreativeTab(MetallurgyTabs.tabDust);
@@ -47,33 +52,18 @@ public class ModItems {
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
 	public static ItemInvisibilityShield invisibilityShield = new ItemInvisibilityShield();
 
-	
-
-//	public static ItemOreDict  = new ItemOreDict ("");
-
 	public static void register(IForgeRegistry<Item> registry) {
-		registry.registerAll(dustGold, dustIron, dustBitumen, tar, dustPotash, dustSulfur, 
-				dustPhosphorus, flintAndIgnatius, flintAndVulcanite, gauntlet, invisibilityShield, dustThermite);
+		for (Item item : itemList)
+			registry.register(item);
 	}
-	
-	public static void registerModels() {
-		
-//		Vanilla dust
-		dustGold.registerItemModel();
-		dustIron.registerItemModel();
 
-//		Metallurgy dust
-		dustBitumen.registerItemModel();
-		tar.registerItemModel();
-		dustPotash.registerItemModel();
-		dustSulfur.registerItemModel();
-		dustThermite.registerItemModel();
-		dustPhosphorus.registerItemModel();
-		
-		//Gadgets
-		flintAndIgnatius.registerItemModel();
-		flintAndVulcanite.registerItemModel();
-		gauntlet.registerItemModel();
-		ModelLoader.setCustomModelResourceLocation(invisibilityShield, 0, new ModelResourceLocation(Metallurgy.MODID + ":gadget/lemurite_shield", "inventory"));
+	@SideOnly(Side.CLIENT)
+	public static void registerModels() {
+
+		for (Item item : itemList)
+		{
+			if (item instanceof IHasModel)
+				ItemUtils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
+		}
 	}
 }
