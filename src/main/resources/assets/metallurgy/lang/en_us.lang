@@ -570,6 +570,7 @@ item.metallurgy.sulfur_dust.name=Sulfur
 item.metallurgy.bitumen.name=Bitumen
 item.metallurgy.potash.name=Potash
 item.metallurgy.phosphorus.name=Phosphorus
+item.metallurgy.potash_fertilizer.name=Potash Fertilizer
 
 #JEI
 gui.jei_compat.crusher.name=Crusher
@@ -889,6 +890,7 @@ tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 #Other Tooltips
 tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
+tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords

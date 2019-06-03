@@ -38,8 +38,8 @@ public class ModRecipes {
 
         //Ore2Material
         GameRegistry.addSmelting(ModBlocks.oreTar, new ItemStack(ModItems.tar), 0.5F);
-        GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.dustPhosphorus), 0.5F);
-        GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.dustPotash), 0.5F);
-        GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.dustSulfur), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.phosphorus), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.potash), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.sulfur), 0.5F);
     }
 }

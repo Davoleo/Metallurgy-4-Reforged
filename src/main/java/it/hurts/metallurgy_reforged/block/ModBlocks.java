@@ -39,13 +39,13 @@ public class ModBlocks {
 
     //Mod Blocks with a custom drop
     public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
-            .setDrops(new Drop(new ItemStack(ModItems.dustSulfur, 4), 1F));
+            .setDrops(new Drop(new ItemStack(ModItems.sulfur, 4), 1F));
     public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
-            .setDrops(new Drop(ModItems.dustPhosphorus, 3, 1F));
+            .setDrops(new Drop(ModItems.phosphorus, 3, 1F));
     public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
-            .setDrops(new Drop(ModItems.tar,2, 1F), new Drop(ModItems.dustBitumen, 2, 0.5F));
+            .setDrops(new Drop(ModItems.tar,2, 1F), new Drop(ModItems.bitumen, 2, 0.5F));
     public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
-            .setDrops(new Drop(ModItems.dustPotash, 3, 1F));
+            .setDrops(new Drop(ModItems.potash, 3, 1F));
 
     //Other Blocks
     public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen", true, MetallurgyTabs.tabBlock);

@@ -61,7 +61,7 @@ public class IntegrationJEI implements IModPlugin {
 
         registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
         registry.addIngredientInfo(new ItemStack(ModItems.tar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
-        registry.addIngredientInfo(new ItemStack(ModItems.dustBitumen), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.bitumen), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
 
         //registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
     }
