@@ -562,7 +562,7 @@ item.metallurgy.zinc_ingot.name=Zinc Ingot
 item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
-item.metallurgy.invisibility_shield.name=Lemurite Shield
+item.metallurgy.lemurite_shield.name=Lemurite Shield
 
 #Items
 item.metallurgy.tar.name=Tar
