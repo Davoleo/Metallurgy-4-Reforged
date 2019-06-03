@@ -53,6 +53,10 @@ public class GeneralConfig {
 	@Config.Comment("Set to true to disable Industrial Foregoing Integration")
 	public static boolean inForegoingIntegraton = false;
 
+	@Config.Name("Disable ProjectE Integration")
+	@Config.Comment("Set to true to disable ProjectE Integration")
+	public static boolean projectEIntegration = false;
+
 	@Config.Name("Enable Duplication Trait")
 	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
 	public static boolean enableDuplicationTrait = true;
