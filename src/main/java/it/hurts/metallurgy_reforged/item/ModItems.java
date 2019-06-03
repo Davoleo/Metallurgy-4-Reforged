@@ -31,16 +31,16 @@ public class ModItems {
 	public static List<Item> itemList = new ArrayList<>();
 
 //	Vanilla dust
-	public static ItemOreDict dustGold = new ItemOreDict("gold_dust", "dustGold").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron").setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustGold = new ItemOreDict("gold_dust", "dustGold", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
 	
 //	Metallurgy dust
-	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen").setCreativeTab(MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
-	public static ItemOreDict tar = new ItemOreDict("tar","slimeball").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite").setCreativeTab(MetallurgyTabs.tabDust);
-	public static ItemOreDict dustPhosphorus = new ItemOreDict("phosphorus", "dustPhosphorus").setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustBitumen = new ItemOreDict("bitumen","dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
+	public static ItemOreDict tar = new ItemOreDict("tar","slimeball",  MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustPotash = new ItemOreDict("potash","dustPotash", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustSulfur = new ItemOreDict("sulfur_dust","dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
+	public static ItemOreDict dustPhosphorus = new ItemOreDict("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList).setCreativeTab(MetallurgyTabs.tabDust);
   
 //	Gadgets
 	public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");

@@ -11,14 +11,13 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.IOreDict;
 import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -33,10 +32,9 @@ public class ItemOreDict extends Item implements IOreDict, IHasModel {
 	private String tooltip;
 
 	//Constructors
-	public ItemOreDict(String name, String oreName)
+	public ItemOreDict(String name, String oreName, CreativeTabs tab, List list)
 	{
-		setRegistryName(new ResourceLocation(Metallurgy.MODID, name));
-		setTranslationKey(Metallurgy.MODID + "." + name);
+		ItemUtils.initItem(this, name, tab, list);
 		this.oreName = oreName;
 	}
 

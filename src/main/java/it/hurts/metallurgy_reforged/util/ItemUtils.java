@@ -35,7 +35,8 @@ public class ItemUtils {
         item.setTranslationKey(Metallurgy.MODID + "." + name);
         item.setRegistryName(Metallurgy.MODID, name);
         item.setCreativeTab(tab);
-        list.add(item);
+        if (list != null)
+        	list.add(item);
     }
 
     //method to check if stack is a specific tool Material
@@ -102,11 +103,11 @@ public class ItemUtils {
 		 return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase)armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
 	 }
 
-		@SideOnly(Side.CLIENT)
-		public static void registerCustomItemModel(Item item, int meta, String subdir)
-		{
-			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + "/" + item.getRegistryName().getPath(), "inventory"));
-		}
+	@SideOnly(Side.CLIENT)
+	public static void registerCustomItemModel(Item item, int meta, String subdir)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
+	}
 
 	/**
 	 * @param ingot the ingot you want the metal of

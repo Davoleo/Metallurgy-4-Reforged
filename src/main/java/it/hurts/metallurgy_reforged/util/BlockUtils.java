@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 
 public class BlockUtils {
 
@@ -24,7 +23,7 @@ public class BlockUtils {
         block.setRegistryName(Metallurgy.MODID, name);
         block.setTranslationKey(Metallurgy.MODID + "." + name);
         if (tab != null)
-            Item.getItemFromBlock(block).setCreativeTab(tab);
+            block.setCreativeTab(tab);
         if (addToList)
             ModBlocks.blockList.add(block);
     }

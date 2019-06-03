@@ -44,9 +44,9 @@ public class MetalStats {
 
     public Metal createMetal() {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
-    	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName).setCreativeTab(MetallurgyTabs.tabDust);
-        ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName).setCreativeTab(MetallurgyTabs.tabIngot);
-        ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName).setCreativeTab(MetallurgyTabs.tabNugget);
+    	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
+        ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
+        ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
         BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
         if(oreHarvest >= 0) {
