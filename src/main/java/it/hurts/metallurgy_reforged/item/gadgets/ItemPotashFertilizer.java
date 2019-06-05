@@ -56,7 +56,7 @@ public class ItemPotashFertilizer extends Item implements IHasModel {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-         if (ItemDye.applyBonemeal(player.getActiveItemStack(), worldIn, pos, player, hand))
+         if (ItemDye.applyBonemeal(player.getHeldItem(hand), worldIn, pos, player, hand))
          {
              if (worldIn.isRemote)
                  for (int i = 0; i < 50; i++)
