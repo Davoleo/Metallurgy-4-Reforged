@@ -117,9 +117,6 @@ public class GauntletEffect
             //		check if entity has been punched
             if(effect.getKnockbackTicks() > 0)
             {
-
-                if(entity.world.isRemote)
-                    System.out.println("wewoweweewew");
                 entity.motionX = effect.getKnockbackMotionVec().x;
                 entity.motionY = effect.getKnockbackMotionVec().y;
                 entity.motionZ = effect.getKnockbackMotionVec().z;
