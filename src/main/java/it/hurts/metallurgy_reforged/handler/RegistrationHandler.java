@@ -71,7 +71,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
-        if(event.getObject() instanceof EntityLivingBase && !(event.getObject() instanceof EntityPlayer) && !ModChecker.isBWMLoaded)
+        if(event.getObject() instanceof EntityLivingBase && !ModChecker.isBWMLoaded)
     	  event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
     }
 }
