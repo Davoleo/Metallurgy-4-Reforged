@@ -172,7 +172,7 @@ public class GauntletEffect
 
     //		checks if the players isn't holding an item and if he is wearing
     //		apply effect if the player has a minimum food level or if he is in creative
-    private static void throwEntity(EntityPlayer pl, EntityLivingBase entity)
+    private static void throwEntity(EntityLivingBase entity)
     {
         IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
         effect.setKnockbackTicks(1);
