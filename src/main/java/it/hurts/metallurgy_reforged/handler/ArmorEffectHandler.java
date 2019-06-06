@@ -27,6 +27,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.EnumAction;
 import net.minecraft.network.play.server.SPacketSetExperience;
@@ -224,7 +225,7 @@ public class ArmorEffectHandler {
 		}
 
 //		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
-		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmor(0)) && ArmorEffectsConfig.platinumArmorEffect) {
+		if(EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmor(EntityEquipmentSlot.HEAD)) && ArmorEffectsConfig.platinumArmorEffect) {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
 			event.player.addTag("platinum_effect");
 		}else if(event.player.getTags().contains("platinum_effect")) {

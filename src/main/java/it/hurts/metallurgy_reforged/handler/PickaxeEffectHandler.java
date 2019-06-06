@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -33,7 +34,7 @@ public class PickaxeEffectHandler {
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
 		if(pl.isInWater()
-				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(2)))
+				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE)))
 				&& ToolEffectsConfig.deepIronPickaxeEffect) {
 				event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}

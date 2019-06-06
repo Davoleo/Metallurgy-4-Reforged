@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
@@ -34,7 +35,7 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase{
 		boolean shouldExecute = findplayerClass.shouldExecute();
 		if(shouldExecute) {
 			EntityPlayer pl = getPlayer();
-			shouldExecute = pl != null ? !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModMetals.EXIMITE.getArmor(0)) : false;
+			shouldExecute = pl != null ? !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModMetals.EXIMITE.getArmor(EntityEquipmentSlot.HEAD)) : false;
 		}
 		return shouldExecute;
 	}

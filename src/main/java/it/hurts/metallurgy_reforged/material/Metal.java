@@ -17,7 +17,9 @@ import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
@@ -144,30 +146,21 @@ public class Metal {
     }
 
     /**
-     * 0 = axe <br>
-     * 1 = hoe <br>
-     * 2 = pickaxe <br>
-     * 3 = shovel <br>
-     * 4 = sword <br>
-     * @param key the index of the tool in the toolSet Array
+     * @param toolClass The kind of tool you want from a set of tools
      * @return one of the tools in the toolSet
      */
-    public Item getTool(int key)
+    public Item getTool(EnumTools toolClass)
     {
-        return toolSet[key];
+        return toolSet[toolClass.ordinal()];
     }
 
     /**
-     * 0 = helmet <br>
-     * 1 = chestPlate <br>
-     * 2 = leggings <br>
-     * 3 = boots <br>
-     * @param key the index of the armor Piece in the armorSet Array
+     * @param armorPiece The armor piece
      * @return one of the armor pieces in the armorSet
      */
-    public ItemArmorBase getArmor(int key)
+    public ItemArmorBase getArmor(EntityEquipmentSlot armorPiece)
     {
-        return armorSet[key];
+        return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
     }
 
     public Item[] getToolSet()
