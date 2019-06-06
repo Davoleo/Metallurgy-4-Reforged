@@ -110,7 +110,7 @@ public class GauntletEffect
                     ((EntityLiving) entity).setNoAI(effect.isAIDisabled());
 
                 if(pl != null)
-                    throwEntity(pl, entity);
+                    throwEntity(entity);
                 effect.setPunchingPlayer(null);
             }
 
