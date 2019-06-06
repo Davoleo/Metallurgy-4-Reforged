@@ -29,6 +29,7 @@ public class PunchEffect implements IPunchEffect{
 	private UUID plUUID = null;
 	private float rotYaw = 0F;
 	private float rotPitch = 0F;
+	private boolean isGauntletUserDead = false;
 	
 	@Override
 	public void setHitTicks(int ticks) {
@@ -140,5 +141,17 @@ public class PunchEffect implements IPunchEffect{
 	public float getRotPitchPlayer() {
 		return this.rotPitch;
 	}
-	
+
+	@Override
+	public boolean isGauntletUserDead()
+	{
+		return isGauntletUserDead;
+	}
+
+	@Override
+	public void setGauntletUserDead()
+	{
+          this.isGauntletUserDead = true;
+	}
+
 }

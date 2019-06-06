@@ -58,6 +58,7 @@ public interface IPunchEffect {
 	
 	float getRotYawPlayer();
 	float getRotPitchPlayer();
-	
-	
+
+	boolean isGauntletUserDead();
+	void setGauntletUserDead();
 }
