@@ -22,6 +22,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -42,24 +43,26 @@ public class MetalStats {
     private final ToolStats tool;
     private final FluidStats fluid;
 
+    private ItemTool.ToolMaterial toolMaterial;
+    private ItemArmor.ArmorMaterial armorMaterial;
+
     public Metal createMetal() {
         //name should be in format [allLowerCase], oreName should be in format [Normalcase]
-    	ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
-        ItemOreDict ingot = new ItemOreDict(name + "_ingot","ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
+        ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
+        ItemOreDict ingot = new ItemOreDict(name + "_ingot", "ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
         ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
-        BlockOreDict block = new BlockOreDict(name + "_block","block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
+        BlockOreDict block = new BlockOreDict(name + "_block", "block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
         BlockOreDict ore = null;
-        if(oreHarvest >= 0) {
-            ore = new BlockOreDict(name + "_ore","ore" + oreDictName, false, "pickaxe", oreHarvest, blockBlastResistance, MetallurgyTabs.tabOre);
+        if (oreHarvest >= 0) {
+            ore = new BlockOreDict(name + "_ore", "ore" + oreDictName, false, "pickaxe", oreHarvest, blockBlastResistance, MetallurgyTabs.tabOre);
         }
 
-        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature() ));
+        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature()));
 
         ItemArmorBase[] armorPieces = null;
         Item[] tools = null;
 
-        if (armor != null)
-        {
+        if (armor != null) {
             ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
             ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_helmet");
             ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, name + "_chest");
@@ -69,8 +72,7 @@ public class MetalStats {
             armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
         }
 
-        if (tool != null)
-        {
+        if (tool != null) {
             Item.ToolMaterial toolMaterial = createToolMaterial();
             ItemAxeBase axe = new ItemAxeBase(toolMaterial, name + "_axe");
             ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
@@ -83,29 +85,26 @@ public class MetalStats {
 
         return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
     }
-    
-    private int automaticTemperature(){
+
+    private int automaticTemperature() {
         float output = 1000F;
-        if(blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE)
-        {
+        if (blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE) {
             output = blockBlastResistance * 60f;
-        }
-        else if(blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE)
-        {
+        } else if (blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE) {
             output = blockBlastResistance * 36F;
         }
         return Math.round(output);
     }
 
     /**
-     * @param name name of the metal - all lowercase with underlines separating words (ex: dark_steel)
-     * @param oreDictName ore dict name of the metal - CamelCase with no underscores or spaces (DarkSteel)
-     * @param blockHarvest the harvest level of the metal block
+     * @param name            name of the metal - all lowercase with underlines separating words (ex: dark_steel)
+     * @param oreDictName     ore dict name of the metal - CamelCase with no underscores or spaces (DarkSteel)
+     * @param blockHarvest    the harvest level of the metal block
      * @param blastResistance the resistance to explosions of the metal block
-     * @param armor the ArmorStats instance representing this metal's stats, or null if there is no armor
-     * @param tool the ToolStats instance representing this metal's stats, or null if there are no tools
-     * @param fluid the ToolStats instance representing this metal's stats, or null if there are no tools
-     * @param oreHarvest the harvest level of the metal ore or -1 if no ore should be generated
+     * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
+     * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
+     * @param fluid           the ToolStats instance representing this metal's stats, or null if there are no tools
+     * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
      */
     public MetalStats(String name, String oreDictName, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, FluidStats fluid, int oreHarvest) {
         this.name = name;
@@ -121,10 +120,6 @@ public class MetalStats {
     public String getName() {
         return name;
     }
-    
-    public static float getBlockBlastResistance() {
-    	return blockResistance;
-    }
 
     public String getOreDictName() {
         return oreDictName;
@@ -138,20 +133,26 @@ public class MetalStats {
         return tool;
     }
 
-    private ItemArmor.ArmorMaterial createArmorMaterial()
-    {
-        if(armor == null)
-            throw new UnsupportedOperationException("No Armor Stats Loaded");
-
-        return EnumHelper.addArmorMaterial(this.getName().toUpperCase(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getArmorMagic(), armor.getEquipSound(), armor.getToughness());
+    public ItemTool.ToolMaterial getToolMaterial() {
+        return toolMaterial;
     }
 
-    private Item.ToolMaterial createToolMaterial()
-    {
+    public ItemArmor.ArmorMaterial getArmorMaterial() {
+        return armorMaterial;
+    }
+
+    private ItemArmor.ArmorMaterial createArmorMaterial() {
+        if (armor == null)
+            throw new UnsupportedOperationException("No Armor Stats Loaded");
+
+        return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getArmorMagic(), armor.getEquipSound(), armor.getToughness());
+    }
+
+    private Item.ToolMaterial createToolMaterial() {
         if (tool == null)
             throw new UnsupportedOperationException("No Tool Stats Loaded");
 
-        return EnumHelper.addToolMaterial(this.getName().toUpperCase(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
+        return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
     }
 
     public static class FluidStats {
@@ -172,13 +173,13 @@ public class MetalStats {
         public FluidStats(int mapColor) {
             this(default_still, default_flowing, mapColor, 0, default_function);
         }
-        
+
         public FluidStats(int mapColor, int temperature) {
             this(default_still, default_flowing, mapColor, temperature, default_function);
         }
 
         public FluidStats(int mapColor, Function<FluidMolten, FluidMolten> func) {
-            this(default_still, default_flowing, mapColor, 0,func);
+            this(default_still, default_flowing, mapColor, 0, func);
         }
 
         public FluidStats(ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature, Function<FluidMolten, FluidMolten> func) {

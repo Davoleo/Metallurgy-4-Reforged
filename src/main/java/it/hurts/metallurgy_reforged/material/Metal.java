@@ -39,8 +39,6 @@ public class Metal {
     private ItemArmorBase[] armorSet;
 
     private FluidBlockBase fluidBlock;
-    private ItemTool.ToolMaterial toolMat;
-    private ItemArmor.ArmorMaterial armorMat;
 
     public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
         this.stats = stats;
@@ -56,25 +54,11 @@ public class Metal {
     }
 
     public ItemTool.ToolMaterial getToolMaterial() {
-        if (toolMat == null) {
-            ToolStats tStats = stats.getToolStats();
-            if(tStats == null) {
-                throw new UnsupportedOperationException("No Tool Stats Loaded");
-            }
-            this.toolMat = EnumHelper.addToolMaterial(stats.getName().toUpperCase(), tStats.getHarvestLevel(), tStats.getMaxUses(), tStats.getEfficiency(), tStats.getDamage(), tStats.getToolMagic());
-        }
-        return toolMat;
+        return stats.getToolMaterial();
     }
 
     public ItemArmor.ArmorMaterial getArmorMaterial() {
-        if (armorMat == null) {
-            ArmorStats aStats = stats.getArmorStats();
-            if(aStats == null) {
-                throw new UnsupportedOperationException("No Armor Stats Loaded");
-            }
-            this.armorMat = EnumHelper.addArmorMaterial(stats.getName().toUpperCase(), Metallurgy.MODID + ":" + stats.getName(), aStats.getDurability(), aStats.getDamageReduction(), aStats.getArmorMagic(), aStats.getEquipSound(), aStats.getToughness());
-        }
-        return armorMat;
+        return stats.getArmorMaterial();
     }
 
     public void initFluidBlock() {
