@@ -67,14 +67,12 @@ public enum EnumToolEffects {
             if (tool instanceof ItemPickaxeBase)
             {
                 ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
-                System.out.println(pickaxe.getToolMaterialName());
                 if (effect.name().contains(pickaxe.getToolMaterialName()))
                     return effect;
             }
             else if (tool instanceof ItemSwordBase)
             {
                 ItemSwordBase sword = (ItemSwordBase) tool;
-                System.out.println(sword.getToolMaterialName());
                 if (effect.name().contains(sword.getToolMaterialName()))
                     return effect;
             }

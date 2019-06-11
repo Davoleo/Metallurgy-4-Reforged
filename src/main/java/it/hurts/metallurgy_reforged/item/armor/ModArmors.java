@@ -24,21 +24,20 @@ public class ModArmors {
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
 
     public static void register(IForgeRegistry<Item> registry) {
-        for (ItemArmorBase armor : armorList)
-            System.out.println(armor.getArmorMaterial().getName());
+        for (ItemArmorBase armor : armorList) {
+            if (!GeneralConfig.disableAllArmors) {
+                for (int i = 0, c = 0; i < ArmorConfig.allArmor.length; i++) {
+                    if (ArmorConfig.allArmor[i]) {
+                        for (int j = 0; j < 4; j++) {
+                            ItemArmorBase armorPiece = armorList.get(c);
+                            registry.register(armorPiece);
 
-        if (!GeneralConfig.disableAllArmors) {
-            for (int i = 0, c = 0; i < ArmorConfig.allArmor.length; i++) {
-                if (ArmorConfig.allArmor[i]) {
-                    for (int j = 0; j < 4; j++) {
-                        ItemArmorBase armorPiece = armorList.get(c);
-                        registry.register(armorPiece);
+                            EnumArmorEffects effect = EnumArmorEffects.getEffect(armorPiece);
+                            if (effect != null)
+                                armorPiece.setEffect(effect);
 
-                        EnumArmorEffects effect = EnumArmorEffects.getEffect(armorPiece);
-                        if (effect != null)
-                            armorPiece.setEffect(effect);
-
-                        c++;
+                            c++;
+                        }
                     }
                 }
             }
