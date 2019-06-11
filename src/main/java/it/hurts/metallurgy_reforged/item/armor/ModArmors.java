@@ -47,7 +47,8 @@ public class ModArmors {
 
     public static void registerModels() {
         if (!GeneralConfig.disableAllArmors) {
-            for (int i = 0; int c = 0; i < ArmorConfig.allArmor.length; i++) {
+            for (int i = 0, 
+                 c = 0; i < ArmorConfig.allArmor.length; i++) {
                 for (int j = 0; j < 4; j++) {
                     if (ArmorConfig.allArmor[i])
                         ItemUtils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
