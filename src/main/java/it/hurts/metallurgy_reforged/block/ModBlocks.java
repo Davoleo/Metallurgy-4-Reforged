@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Class used as reference for all the manually registered blocks
+@SuppressWarnings("unused")
 public class ModBlocks {
 
     //Internal state / fields -------------------------------------------------
@@ -51,6 +52,8 @@ public class ModBlocks {
     public static BlockOreDict blockBitumen = new BlockOreDict("bitumen_block", "blockBitumen", true, MetallurgyTabs.tabBlock);
     public static BlockOreDict blockCharcoal = new BlockOreDict("charcoal_block", "blockCharcoal", true,  MetallurgyTabs.tabBlock);
     public static BlockOreDict blockSulfur = new BlockOreDict("sulfur_block", "blockSulfur", true,  MetallurgyTabs.tabBlock);
+
+    public static BlockPhosphorusLamp blockPhosphorusLamp = new BlockPhosphorusLamp();
 
     //Road
     public static BlockOrientable blockRoad = ((BlockOrientable) new BlockOrientable(Material.ROCK, "road_block", MetallurgyTabs.tabSpecial).setHardness(3F));

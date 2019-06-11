@@ -15,6 +15,9 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockUtils {
 
@@ -28,4 +31,12 @@ public class BlockUtils {
             ModBlocks.blockList.add(block);
     }
 
+
+    public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
+    {
+        for (EnumFacing facing : EnumFacing.values())
+            if (world.isAirBlock(pos.offset(facing)))
+                return facing;
+            return null;
+    }
 }
