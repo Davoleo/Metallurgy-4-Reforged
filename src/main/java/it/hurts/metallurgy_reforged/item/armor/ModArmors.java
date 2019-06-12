@@ -24,7 +24,6 @@ public class ModArmors {
     public static final List<ItemArmorBase> armorList = new ArrayList<>();
 
     public static void register(IForgeRegistry<Item> registry) {
-        for (ItemArmorBase armor : armorList) {
             if (!GeneralConfig.disableAllArmors) {
                 for (int i = 0, c = 0; i < ArmorConfig.allArmor.length; i++) {
                     if (ArmorConfig.allArmor[i]) {
@@ -41,7 +40,7 @@ public class ModArmors {
                     }
                 }
             }
-        }
+
     }
 
     public static void registerModels() {
