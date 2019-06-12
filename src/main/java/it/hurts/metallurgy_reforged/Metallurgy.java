@@ -138,9 +138,7 @@ public class Metallurgy {
 	public void postInit(FMLPostInitializationEvent event) {
         logger.info(NAME + " is entering post-initialization!");
         
-        if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
-			IntegrationTIC.postInit();
-        
+
         proxy.postInit(event);
         
 		PacketManager.init();
@@ -151,5 +149,8 @@ public class Metallurgy {
 	 public void loadComplete(FMLLoadCompleteEvent event)
 	{
 		logger.info(NAME + " has been completely loaded");
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
+			IntegrationTIC.onLoadComplete();
+
 	}
 }
