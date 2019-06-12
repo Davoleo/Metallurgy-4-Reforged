@@ -31,34 +31,13 @@ public class MetallurgyTraitDuplication extends AbstractTrait implements IMetall
 	}
 
 	@Override
-	public void blockHarvestDrops(ItemStack tool, BlockEvent.HarvestDropsEvent event) {
-		ArrayList<ItemStack> drops = new ArrayList<>();
-
-		if((int) (Math.random() * 100) <= 50 
-				&& (event.getState().getBlock().toString().contains("_ore") 
-				|| event.getState().getBlock().isWood(event.getWorld(), event.getPos()) 
-				|| event.getState().getBlock().equals(Blocks.SAND)
-				|| event.getState().getBlock().equals(Blocks.SOUL_SAND)
-				|| event.getState().getBlock().equals(Blocks.DIRT)
-				|| event.getState().getBlock().equals(Blocks.GRASS)
-				|| event.getState().getBlock().equals(Blocks.GRAVEL))) {
-			
-			for(ItemStack stack : event.getDrops())
-			{
-				drops.add(stack);
-			}
-			event.getDrops().addAll(drops);
-		}
-	}
-	
-	@Override
 	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt,boolean wasCritical, boolean wasHit) {
 		if((!(target instanceof EntityPlayer)) && (target.getHealth() <= 0.0F && (int) (Math.random() * 100) < 50))
 			for(EntityItem item : target.capturedDrops){
 				EntityItem clone = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
 				item.world.spawnEntity(clone);
 			}
-		}
+	}
 
 	@Override
 	public void register(String name, @Nullable String tooltip){

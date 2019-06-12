@@ -42,7 +42,7 @@ public class IntegrationProjectE{
                 ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(m.getNugget()), emc / 9);
 
 
-//Special Alloy EMC Calculations
+//              Special Alloy EMC Calculations
                 if (m.isAlloy())
                 {
                     Table<ItemStack, ItemStack, ItemStack> recipes = BlockAlloyerRecipes.getInstance().getRecipeTable();
