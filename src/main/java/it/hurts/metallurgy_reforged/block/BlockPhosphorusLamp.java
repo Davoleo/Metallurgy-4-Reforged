@@ -105,7 +105,7 @@ public class BlockPhosphorusLamp extends BlockOrientable {
     public int getLightValue(IBlockState state, IBlockAccess blockAccess, BlockPos pos)
     {
         if (checkLightPollution(pos))
-            return 6;
+            return 8;
         else
             return 0;
     }
