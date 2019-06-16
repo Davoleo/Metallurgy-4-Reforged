@@ -11,8 +11,19 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import c4.conarm.lib.tinkering.TinkersArmor;
+import c4.conarm.lib.traits.IArmorTrait;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.EnumHand;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.tinkering.TinkersItem;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.traits.ITrait;
+import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class MetallurgyTinkerTraits {
 
@@ -25,5 +36,29 @@ public class MetallurgyTinkerTraits {
     public static final AbstractTrait kingDiceTrait = new MetallurgyTraitKingDice();
     public static final AbstractTrait duplicaitonTrait = new MetallurgyTraitDuplication();
     public static final AbstractTrait opistognathusTrait = new MetallurgyTraitOpistognathus();
+
+    public static boolean isMetallurgyTrait(EntityPlayer player, String traitToCheck) {
+        boolean flag = false;
+
+            Item item = player.getHeldItem(EnumHand.MAIN_HAND).getItem();
+
+            if(item instanceof TinkersItem){
+                NBTTagList list = TagUtil.getTraitsTagList(player.getHeldItem(EnumHand.MAIN_HAND));
+                System.out.println("Entro " + list.toString());
+
+                for (int i = 0; i < list.tagCount(); i++) {
+                    ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
+
+                    if (trait instanceof IMetallurgyTrait) {
+                        IMetallurgyTrait metallurgyTrait = (IMetallurgyTrait) trait;
+
+                        if(metallurgyTrait.getIdentifier().equals(traitToCheck + "_trait"))
+                            flag = true;
+                    }
+                }
+            }
+
+        return flag;
+    }
 
 }

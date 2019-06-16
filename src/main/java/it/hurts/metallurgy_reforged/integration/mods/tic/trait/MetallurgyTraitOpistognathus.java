@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
+import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerTraits;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -37,7 +38,8 @@ public class MetallurgyTraitOpistognathus extends AbstractTrait implements IMeta
 
     @Override
     public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
-        if(event.getEntity().isInWater())
+        if(event.getEntity().isInWater()
+                && MetallurgyTinkerTraits.isMetallurgyTrait(event.getEntityPlayer(), "opistognathus"))
             event.setNewSpeed(event.getOriginalSpeed() * 3);
     }
 
@@ -56,13 +58,17 @@ public class MetallurgyTraitOpistognathus extends AbstractTrait implements IMeta
            EntityPlayer player = (EntityPlayer) entity;
            instance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 
-           if(isSelected) {
+           if(isSelected && MetallurgyTinkerTraits.isMetallurgyTrait(player, "opistognathus")) {
                AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
+
                if (player.isInWater() && instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) == null) {
+
                    instance.applyModifier(deep_iron_trait_modifier);
+
                } else {
-                   if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null && !player.isInWater())
+                   if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null && !player.isInWater()){
                        instance.removeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID);
+                   }
                }
            }else{
                if(instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null)

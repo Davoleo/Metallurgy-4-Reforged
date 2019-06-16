@@ -11,9 +11,11 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.trait;
 
+import slimeknights.tconstruct.library.modifiers.IToolMod;
+
 import javax.annotation.Nullable;
 
-public interface IMetallurgyTrait {
+public interface IMetallurgyTrait extends IToolMod {
 
     void register(String name, @Nullable String tooltip);
 

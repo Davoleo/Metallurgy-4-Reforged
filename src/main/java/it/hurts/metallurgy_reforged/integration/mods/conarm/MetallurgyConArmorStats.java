@@ -66,9 +66,9 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
 			if(item instanceof TinkersArmor){
-				
+
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
+
 				for (int i = 0; i < list.tagCount(); i++) {
 					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
 					
