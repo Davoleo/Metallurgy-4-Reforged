@@ -17,12 +17,10 @@ import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.SetArmorTraits;
-import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterials;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 
 public class IntegrationCArmory
