@@ -1,9 +1,9 @@
 {
 	"__comment": "Designed by Matpac with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"cage": "blocks/lamp",
-		"light": "blocks/lamp_white",
-		"particle": "blocks/lamp"
+		"cage": "metallurgy:blocks/lamp",
+		"light": "metallurgy:blocks/lamp_white",
+		"particle": "metallurgy:blocks/lamp"
 	},
 	"elements": [ 	 
 		{
