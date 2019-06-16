@@ -16,12 +16,15 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -69,6 +72,28 @@ public class GadgetsHandler {
 			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
 			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
 				entity.setAttackTarget(null);
+		}
+	}
+
+	@SubscribeEvent
+	public static void denySpawn(LivingSpawnEvent.CheckSpawn event)
+	{
+		if (event.getEntity().isCreatureType(EnumCreatureType.MONSTER, false) )
+		{
+			for (int x = -8; x < 8; x++)
+			{
+				for (int y = -4; y < 4; y++)
+				{
+					for (int z = -8; z < 8; z++)
+					{
+						BlockPos pos = new BlockPos(event.getX() + x, event.getY() + y, event.getZ() + z);
+						if (event.getWorld().getBlockState(pos).getBlock() == ModBlocks.blockPhosphorusLamp)
+						{
+							event.setResult(Event.Result.DENY);
+						}
+					}
+				}
+			}
 		}
 	}
 }

@@ -563,7 +563,7 @@ item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
 item.metallurgy.lemurite_shield.name=Lemurite Shield
-tile.metallurgy.phosphorus_lamp.name=PHOSPHOSPHOPSHOPSHOPSHORUS LANTERN
+tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 #Items
 item.metallurgy.tar.name=Tar
@@ -892,6 +892,7 @@ tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
 tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
+tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
