@@ -1,88 +1,119 @@
 {
-	"credit": "Made with Blockbench by Matpac",
+	"__comment": "Designed by Matpac with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"cage": "metallurgy:blocks/lamp",
-		"light": "metallurgy:blocks/lamp_white",
-		"particle": "metallurgy:blocks/lamp"
+		"cage": "blocks/lamp",
+		"light": "blocks/lamp_white",
+		"particle": "blocks/lamp"
 	},
-	"elements": [
+	"elements": [ 	 
 		{
-			"name": "Box1",
-			"from": [6, 1.5, 6],
-			"to": [10, 6.5, 10],
+			"__comment": "Element",
+			"from": [ 6, 1.5, 6 ],
+			"to": [ 10, 6.5, 10 ],
 			"faces": {
-				"north": {"uv": [0, 0, 8, 10], "texture": "#light"},
-				"east": {"uv": [0, 0, 8, 10], "texture": "#light"},
-				"south": {"uv": [0, 0, 8, 10], "texture": "#light"},
-				"west": {"uv": [0, 0, 8, 10], "texture": "#light"},
-				"up": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#light"},
-				"down": {"uv": [8, 0, 16, 8], "rotation": 90, "texture": "#light"}
+				"down": { "uv": [ 8, 0, 16, 8 ], "texture": "#light", "rotation": 90 },
+				"up": { "uv": [ 8, 0, 16, 8 ], "texture": "#light", "rotation": 90 },
+				"north": { "uv": [ 0, 0, 8, 10 ], "texture": "#light" },
+				"south": { "uv": [ 0, 0, 8, 10 ], "texture": "#light" },
+				"west": { "uv": [ 0, 0, 8, 10 ], "texture": "#light" },
+				"east": { "uv": [ 0, 0, 8, 10 ], "texture": "#light" }
 			}
 		},
 		{
-			"name": "Box1",
-			"from": [5.5, 1.5, 5.5],
-			"to": [10.5, 6.5, 10.5],
+			"__comment": "Element",
+			"from": [ 5.5, 1.5, 5.5 ],
+			"to": [ 10.5, 6.5, 10.5 ],
 			"faces": {
-				"north": {"uv": [0, 11, 5, 16], "texture": "#cage"},
-				"east": {"uv": [0, 11, 5, 16], "texture": "#cage"},
-				"south": {"uv": [0, 11, 5, 16], "texture": "#cage"},
-				"west": {"uv": [0, 11, 5, 16], "texture": "#cage"},
-				"up": {"uv": [0, 0, 5, 5], "rotation": 90, "texture": "#cage"},
-				"down": {"uv": [0, 0, 5, 5], "rotation": 270, "texture": "#cage"}
+				"down": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 270 },
+				"up": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 90 },
+				"north": { "uv": [ 0, 11, 5, 16 ], "texture": "#cage" },
+				"south": { "uv": [ 0, 11, 5, 16 ], "texture": "#cage" },
+				"west": { "uv": [ 0, 11, 5, 16 ], "texture": "#cage" },
+				"east": { "uv": [ 0, 11, 5, 16 ], "texture": "#cage" }
 			}
 		},
 		{
-			"name": "Box1",
-			"from": [5, 6.5, 5],
-			"to": [11, 7.5, 11],
+			"__comment": "Element",
+			"from": [ 5, 6.5, 5 ],
+			"to": [ 11, 7.5, 11 ],
 			"faces": {
-				"north": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"east": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"south": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"west": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"up": {"uv": [0, 5, 6, 11], "rotation": 90, "texture": "#cage"},
-				"down": {"uv": [0, 5, 6, 11], "rotation": 270, "texture": "#cage"}
+				"down": { "uv": [ 0, 5, 6, 11 ], "texture": "#cage", "rotation": 270 },
+				"up": { "uv": [ 0, 5, 6, 11 ], "texture": "#cage", "rotation": 90 },
+				"north": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"south": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"west": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"east": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" }
 			}
 		},
 		{
-			"name": "Box1",
-			"from": [5, 0.5, 5],
-			"to": [11, 1.5, 11],
+			"__comment": "Element",
+			"from": [ 5, 0.5, 5 ],
+			"to": [ 11, 1.5, 11 ],
 			"faces": {
-				"north": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"east": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"south": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"west": {"uv": [5, 15, 11, 16], "texture": "#cage"},
-				"up": {"uv": [0, 5, 6, 11], "rotation": 90, "texture": "#cage"},
-				"down": {"uv": [0, 5, 6, 11], "rotation": 270, "texture": "#cage"}
+				"down": { "uv": [ 0, 5, 6, 11 ], "texture": "#cage", "rotation": 270 },
+				"up": { "uv": [ 0, 5, 6, 11 ], "texture": "#cage", "rotation": 90 },
+				"north": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"south": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"west": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" },
+				"east": { "uv": [ 5, 15, 11, 16 ], "texture": "#cage" }
 			}
 		},
 		{
-			"name": "Box1",
-			"from": [5.5, 7, 5.5],
-			"to": [10.5, 8, 10.5],
+			"__comment": "Element",
+			"from": [ 5.5, 7, 5.5 ],
+			"to": [ 10.5, 8, 10.5 ],
 			"faces": {
-				"north": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"east": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"south": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"west": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"up": {"uv": [0, 0, 5, 5], "rotation": 90, "texture": "#cage"},
-				"down": {"uv": [0, 0, 5, 5], "rotation": 270, "texture": "#cage"}
+				"down": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 270 },
+				"up": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 90 },
+				"north": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"south": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"west": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"east": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" }
 			}
 		},
 		{
-			"name": "Box1",
-			"from": [5.5, 0, 5.5],
-			"to": [10.5, 1, 10.5],
+			"__comment": "Element",
+			"from": [ 5.5, 0, 5.5 ],
+			"to": [ 10.5, 1, 10.5 ],
 			"faces": {
-				"north": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"east": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"south": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"west": {"uv": [11, 15, 16, 16], "texture": "#cage"},
-				"up": {"uv": [0, 0, 5, 5], "rotation": 90, "texture": "#cage"},
-				"down": {"uv": [0, 0, 5, 5], "rotation": 270, "texture": "#cage"}
+				"down": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 270 },
+				"up": { "uv": [ 0, 0, 5, 5 ], "texture": "#cage", "rotation": 90 },
+				"north": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"south": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"west": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" },
+				"east": { "uv": [ 11, 15, 16, 16 ], "texture": "#cage" }
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation":  [ 75, 45, 0 ],
+			"translation":  [ 0, 1.1086, 2.0869 ],
+			"scale":  [ 0.8, 0.8, 0.8 ]
+		},
+		"thirdperson_lefthand": {
+			"rotation":  [ 75, 45, 0 ],
+			"translation":  [ 0, 1.1086, 2.0869 ],
+			"scale":  [ 0.8, 0.8, 0.8 ]
+		},
+		"firstperson_righthand": {
+			"rotation":  [ 0, 45, 0 ],
+			"translation":  [ 0, 4.1739, 0 ],
+			"scale":  [ 0.8, 0.8, 0.8 ]
+		},
+		"firstperson_lefthand": {
+			"rotation":  [ 0, 45, 0 ],
+			"translation":  [ 0, 4.1739, 0 ],
+			"scale":  [ 0.8, 0.8, 0.8 ]
+		},
+		"gui": {
+			"rotation":  [ 30, 225, 0 ],
+			"translation":  [ 0, 3, 0 ],
+			"scale":  [ 1.2, 1.2, 1.2 ]
+		},
+		"ground": {
+			"translation":  [ 0, 3, 0 ],
+			"scale":  [ 0.8, 0.8, 0.8 ]
+		}
+	}
 }
