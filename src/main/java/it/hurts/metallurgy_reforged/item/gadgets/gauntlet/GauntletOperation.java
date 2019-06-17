@@ -54,14 +54,17 @@ public class GauntletOperation
 
                     ItemStack copy = newStack.copy();
                     player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
-                    player.inventory.offHandInventory.set(0, copy);
+
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
 
-                    boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet && newStack.getTagCompound() != offStackCopy.getTagCompound(): !offStackCopy.isEmpty();
+                    player.inventory.offHandInventory.set(0, copy);
 
+                    boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet && newStack.getTagCompound() != offStackCopy.getTagCompound() : !offStackCopy.isEmpty();
 
-                    if(flag && !player.inventory.addItemStackToInventory(offStackCopy))
+                    if(player.ticksExisted > 5 && flag && !player.inventory.addItemStackToInventory(offStackCopy))
                         player.dropItem(offStackCopy, false);
+
+
                 } else if(player.inventoryContainer.inventorySlots.get(45) instanceof OffHandCustomSlot)
                 {
                     ContainerPlayer c = new ContainerPlayer(player.inventory, !player.world.isRemote, player);
@@ -74,7 +77,6 @@ public class GauntletOperation
             }
         }
     }
-
 
 
     @SubscribeEvent
