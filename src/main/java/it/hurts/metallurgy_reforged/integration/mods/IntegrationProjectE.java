@@ -92,7 +92,7 @@ public class IntegrationProjectE{
 
             ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlock(), emcMap.get(m.toString()) * 9);
 
-            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlock(), emcMap.get(m.toString()) / 9);
+            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getNugget(), emcMap.get(m.toString()) / 9);
 
             if (m.isAlloy())
             {

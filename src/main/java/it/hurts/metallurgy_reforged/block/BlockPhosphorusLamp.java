@@ -53,13 +53,6 @@ public class BlockPhosphorusLamp extends BlockOrientable {
         return this.getDefaultState().withProperty(FACING, facing);
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        playerIn.sendStatusMessage(new TextComponentString(Integer.toString(getLightValue(state, worldIn, pos))), false);
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-    }
-
     @Nonnull
     @Override
     public BlockRenderLayer getRenderLayer()
