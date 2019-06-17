@@ -37,6 +37,7 @@ public class GauntletOperation
     public static void setOffHnand(LivingEquipmentChangeEvent event)
     {
         ItemStack newStack = event.getTo();
+        ItemStack oldStack = event.getFrom();
         ItemStack offStack = event.getEntityLiving().getHeldItemOffhand();
 
         Entity entity = event.getEntityLiving();
@@ -56,7 +57,10 @@ public class GauntletOperation
                     player.setHeldItem(EnumHand.OFF_HAND, copy);
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
 
-                    if(!offStackCopy.isEmpty() && !offStackCopy.isItemEqualIgnoreDurability(new ItemStack(ModItems.gauntlet)) && !player.inventory.addItemStackToInventory(offStackCopy))
+                    boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet : !offStackCopy.isEmpty();
+
+
+                    if(flag && !player.inventory.addItemStackToInventory(offStackCopy))
                         player.dropItem(offStackCopy, false);
                 } else if(player.inventoryContainer.inventorySlots.get(45) instanceof OffHandCustomSlot)
                 {
@@ -69,6 +73,7 @@ public class GauntletOperation
             }
         }
     }
+
 
 
     @SubscribeEvent
