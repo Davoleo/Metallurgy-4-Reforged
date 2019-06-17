@@ -21,6 +21,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.FoodStats;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -42,8 +43,10 @@ public class GauntletEffect
             EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
             if(entityLivingBase.hurtResistantTime <= 10 && GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
             {
+                FoodStats foodStats = pl.getFoodStats();
 
-                if(pl.getFoodStats().getFoodLevel() >= GauntletConfig.gauntletHungerModifier || pl.isCreative())
+
+                if(foodStats.getFoodLevel() >= GauntletConfig.gauntletHungerModifier || pl.isCreative())
                 {
 
                     IPunchEffect effect = entityLivingBase.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
@@ -67,7 +70,14 @@ public class GauntletEffect
                     }
                     if(!pl.isCreative() && !pl.world.isRemote)
                     {
-                        pl.getFoodStats().addStats(-GauntletConfig.gauntletHungerModifier, (float) -(GauntletConfig.gauntletHungerModifier / 2));
+                        if(foodStats.getSaturationLevel() > 0.0F)
+                        {
+                            int foodLevel = foodStats.getFoodLevel();
+                            foodStats.addStats(1, -GauntletConfig.gauntletHungerModifier);
+                            foodStats.setFoodLevel(foodLevel);
+                        }
+                        else
+                            foodStats.addStats(-GauntletConfig.gauntletHungerModifier, 0F);
                     }
 
 
