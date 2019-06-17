@@ -45,7 +45,7 @@ public class GauntletOperation
         if(entity instanceof EntityPlayerMP)
         {
             EntityPlayerMP player = (EntityPlayerMP) entity;
-            if(event.getSlot() == EntityEquipmentSlot.MAINHAND)
+            if(player.ticksExisted > 5 && event.getSlot() == EntityEquipmentSlot.MAINHAND)
             {
                 if(newStack.getItem() instanceof ItemGauntlet)
                 {
@@ -60,7 +60,6 @@ public class GauntletOperation
                     player.inventory.offHandInventory.set(0, copy);
 
                     boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet && newStack.getTagCompound() != offStackCopy.getTagCompound() : !offStackCopy.isEmpty();
-
 
                     if(player.ticksExisted > 5 && flag && !player.inventory.addItemStackToInventory(offStackCopy))
                         player.dropItem(offStackCopy, false);
