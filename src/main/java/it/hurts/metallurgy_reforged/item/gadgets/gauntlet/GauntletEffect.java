@@ -41,7 +41,7 @@ public class GauntletEffect
         if(entity instanceof EntityLivingBase)
         {
             EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
-            if(entityLivingBase.hurtResistantTime <= 10 && GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
+            if(GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
             {
                 FoodStats foodStats = pl.getFoodStats();
 
@@ -111,7 +111,7 @@ public class GauntletEffect
                 entity.motionX = 0D;
                 entity.motionY = 0D;
                 entity.motionZ = 0D;
-                entity.hurtResistantTime = 10;
+                entity.hurtResistantTime = 11;
 
             } else if(effect.getHitTicks() > 0 && entity.deathTime <= 0)
             {
