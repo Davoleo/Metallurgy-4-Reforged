@@ -889,7 +889,7 @@ tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in 
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 
 #Other Tooltips
-tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
+tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
 tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
