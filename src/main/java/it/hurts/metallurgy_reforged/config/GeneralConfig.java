@@ -53,8 +53,8 @@ public class GeneralConfig {
 	@Config.Comment("Set to true to disable Industrial Foregoing Integration")
 	public static boolean inForegoingIntegraton = false;
 
-	@Config.Name("Disable ProjectE Integration")
-	@Config.Comment("Set to true to disable ProjectE Integration")
+	@Config.Name("Disable Automatic EMC values")
+	@Config.Comment("Set to true to disable default EMC values")
 	public static boolean projectEIntegration = false;
 
 	@Config.Name("Enable Duplication Trait")
