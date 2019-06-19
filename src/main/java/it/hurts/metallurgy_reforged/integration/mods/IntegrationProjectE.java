@@ -80,29 +80,27 @@ public class IntegrationProjectE{
 
     public static void init()
     {
-        //Alloy MC calculations
         for (Metal m : ModMetals.metalList)
         {
-            //Debug Print
-            //System.out.println(m.toString() + " --- " + emcMap.keySet().contains(m.toString()));
-
-            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getIngot(), emcMap.get(m.toString()));
-
-            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getDust(), emcMap.get(m.toString()));
-
-            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlock(), emcMap.get(m.toString()) * 9);
-
-            ProjectEAPI.getEMCProxy().registerCustomEMC(m.getNugget(), emcMap.get(m.toString()) / 9);
-
-            if (m.isAlloy())
+            if (!m.isAlloy())
             {
-                Table<ItemStack, ItemStack, ItemStack> recipes = BlockAlloyerRecipes.getInstance().getRecipeTable();
+                //Debug Print
+                //System.out.println(m.toString() + " --- " + emcMap.keySet().contains(m.toString()));
 
-                for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : recipes.cellSet())
-                {
-                    if (entry.getValue().getItem().equals(m.getIngot()))
-                        ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(m.getIngot()), getAlloyIngredientsEMC(entry.getRowKey()) + getAlloyIngredientsEMC(entry.getColumnKey()));
-                }
+                ProjectEAPI.getEMCProxy().registerCustomEMC(m.getIngot(), emcMap.get(m.toString()));
+
+                ProjectEAPI.getEMCProxy().registerCustomEMC(m.getDust(), emcMap.get(m.toString()));
+
+                ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlock(), emcMap.get(m.toString()) * 9);
+
+                ProjectEAPI.getEMCProxy().registerCustomEMC(m.getNugget(), emcMap.get(m.toString()) / 9);
+            } else {
+                    //Alloy MC calculations
+                    Table<ItemStack, ItemStack, ItemStack> recipes = BlockAlloyerRecipes.getInstance().getRecipeTable();
+
+                    for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : recipes.cellSet())
+                        if (entry.getValue().getItem().equals(m.getIngot()))
+                            ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(m.getIngot()), getAlloyIngredientsEMC(entry.getRowKey()) + getAlloyIngredientsEMC(entry.getColumnKey()));
             }
         }
     }
