@@ -846,7 +846,7 @@ item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
 #Tile Entities
 container.crusher=Crusher
 container.alloyer=Alloyer
-tile.metallurgy.crusher.name=§6Crusher
+tile.metallurgy.crusher.name=§cCrusher
 tile.metallurgy.alloyer.name=§eAlloyer
 
 #Tinkers' Construct Traits
