@@ -45,7 +45,7 @@ public class GauntletOperation
         if(entity instanceof EntityPlayerMP)
         {
             EntityPlayerMP player = (EntityPlayerMP) entity;
-            if(event.getSlot() == EntityEquipmentSlot.MAINHAND)
+            if(player.ticksExisted > 5 && event.getSlot() == EntityEquipmentSlot.MAINHAND)
             {
                 if(newStack.getItem() instanceof ItemGauntlet)
                 {
@@ -54,26 +54,29 @@ public class GauntletOperation
 
                     ItemStack copy = newStack.copy();
                     player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
-                    player.setHeldItem(EnumHand.OFF_HAND, copy);
+
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
 
-                    boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet : !offStackCopy.isEmpty();
+                    player.inventory.offHandInventory.set(0, copy);
 
+                    boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet && newStack.getTagCompound() != offStackCopy.getTagCompound() : !offStackCopy.isEmpty();
 
-                    if(flag && !player.inventory.addItemStackToInventory(offStackCopy))
+                    if(player.ticksExisted > 5 && flag && !player.inventory.addItemStackToInventory(offStackCopy))
                         player.dropItem(offStackCopy, false);
+
+
                 } else if(player.inventoryContainer.inventorySlots.get(45) instanceof OffHandCustomSlot)
                 {
                     ContainerPlayer c = new ContainerPlayer(player.inventory, !player.world.isRemote, player);
                     player.inventoryContainer.inventorySlots.set(45, c.inventorySlots.get(45));
-                    player.setHeldItem(EnumHand.OFF_HAND, ItemStack.EMPTY);
+                    player.inventory.offHandInventory.set(0, ItemStack.EMPTY);
+
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(ItemStack.EMPTY, false), player);
 
                 }
             }
         }
     }
-
 
 
     @SubscribeEvent

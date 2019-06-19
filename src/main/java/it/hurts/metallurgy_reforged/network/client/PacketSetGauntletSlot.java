@@ -69,7 +69,8 @@ public class PacketSetGauntletSlot implements IMessage{
 			if (entityplayersp != null)
 			{
 //				Imposta lo stack al braccio sinistro
-				entityplayersp.setItemStackToSlot(EntityEquipmentSlot.OFFHAND,msg.gauntlet);
+				entityplayersp.inventory.offHandInventory.set(0, msg.gauntlet);
+
 				if(msg.put)
 //					Se msg (put) � true, imposta lo slot bloccato
 					entityplayersp.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(entityplayersp));
