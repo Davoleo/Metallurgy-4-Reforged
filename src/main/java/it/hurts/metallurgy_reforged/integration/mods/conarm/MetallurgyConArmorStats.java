@@ -54,25 +54,25 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 //	TODO Modify the maxDefensePoint?
 	private static int getDefensePoint(int[] defensePoint) {
 		int maxDefensePoint = 0;
-		
-		for(int i = 0; i < defensePoint.length; i++) {
-			maxDefensePoint += defensePoint[i];
+
+		for (int value : defensePoint) {
+			maxDefensePoint += value;
 		}
 		return maxDefensePoint;
 	}
 	
-	public static boolean isThatArmorTrait(EntityPlayer player, String traitToCheck) {
+	public static boolean isArmorTrait(EntityPlayer player, String traitToCheck) {
 		boolean flag = false;
 		for(ItemStack stack : player.inventory.armorInventory){
 			Item item = stack.getItem();
 			if(item instanceof TinkersArmor){
-				
+
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
+
 				for (int i = 0; i < list.tagCount(); i++) {
 					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
 					
-					if (trait != null && trait instanceof IArmorTrait) {
+					if (trait instanceof IArmorTrait) {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 						
 						if(armorTrait.getIdentifier().equals(traitToCheck + "_armor"))
@@ -81,64 +81,8 @@ public class MetallurgyConArmorStats extends ArmorMaterials{
 				}
 			}
 		}
-		
+
 		return flag;
-	}
-	
-	public static boolean isThatArmorTraitLeveled(EntityPlayer player, String traitToCheck, int maxLevel) {
-		boolean flag = false;
-		
-		for(ItemStack stack : player.inventory.armorInventory){
-			Item item = stack.getItem();
-			if(item instanceof TinkersArmor){
-				
-				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
-				for (int i = 0; i < list.tagCount(); i++) {
-					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
-					
-					if (trait != null && trait instanceof IArmorTrait) {
-						IArmorTrait armorTrait = (IArmorTrait) trait;
-						i = 0;
-						while(i < maxLevel && !flag) {
-							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-								flag = true;
-							i++;
-						}
-					}
-				}
-			}
-		}
-		
-		return flag;
-	}
-	
-	public static int getLevelForEffect(EntityPlayer player, String traitToCheck, int maxLevel) {
-		int level = -1;
-		
-		for(ItemStack stack : player.inventory.armorInventory){
-			Item item = stack.getItem();
-			if(item instanceof TinkersArmor){
-				
-				NBTTagList list = TagUtil.getTraitsTagList(stack);
-				
-				for (int i = 0; i < list.tagCount(); i++) {
-					ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
-					
-					if (trait != null && trait instanceof IArmorTrait) {
-						IArmorTrait armorTrait = (IArmorTrait) trait;
-						i = 0;
-						while(i < maxLevel && level < 0) {
-							if(armorTrait.getIdentifier().equals(traitToCheck + i + "_armor"))
-								level = i;
-							i++;
-						}
-					}
-				}
-			}
-		}
-		
-		return level;
 	}
 	
 }

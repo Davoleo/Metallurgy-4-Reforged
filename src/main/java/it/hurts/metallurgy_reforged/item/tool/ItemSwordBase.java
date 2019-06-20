@@ -11,18 +11,19 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,10 +31,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemSwordBase extends ItemSword {
+public class ItemSwordBase extends ItemSword implements IHasModel {
 
-    private String name;
-    private String tooltip;
+    private EnumToolEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -45,13 +45,9 @@ public class ItemSwordBase extends ItemSword {
     public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
     {
         super(material);
-        setTranslationKey(Metallurgy.MODID + "." + name);
-        setRegistryName(Metallurgy.MODID, name);
-        this.name = name;
+        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
     }
     
     @Override
@@ -67,23 +63,38 @@ public class ItemSwordBase extends ItemSword {
         }
 	}
 
-    public ItemSwordBase setTooltip(String tooltip)
+    public void setEffect(EnumToolEffects effect)
     {
-        this.tooltip = tooltip;
-        return this;
+        this.effect = effect;
+    }
+
+    private ItemStack getRepairStack()
+    {
+        String material = this.getToolMaterialName().toLowerCase();
+        Metal metal = Utils.getMetalFromString(material);
+        if (metal != null)
+            return new ItemStack(metal.getIngot());
+        else return ItemStack.EMPTY;
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    {
+        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)
 	@Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-        if(this.tooltip != null && ModTools.isSwordEffectActive(this))
-            tooltip.add(this.tooltip);
+        if(this.effect != null && effect.isActive())
+            tooltip.add(this.effect.getLocalized());
     }
 
-    @SideOnly(Side.CLIENT)
-    public void registerItemModel(Item item, int meta)
+    @Nonnull
+    @Override
+    public String getCategory()
     {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":tool/" + name, "inventory"));
+        return "tool/sword";
     }
 }

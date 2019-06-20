@@ -11,9 +11,7 @@
 
 package it.hurts.metallurgy_reforged.world;
 
-import java.util.Random;
-
-import it.hurts.metallurgy_reforged.config.WorldGenConfig;
+import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -23,6 +21,8 @@ import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Random;
+
 public class ModLakeWorldGen {
 	
 	@SubscribeEvent
@@ -30,7 +30,7 @@ public class ModLakeWorldGen {
 		World world = event.getWorld();
 		Random rand = new Random();
 		
-		if((rand.nextInt(100) + 1) < WorldGenConfig.tarLakePercentage)
+		if((rand.nextInt(100) + 1) < WorldGenerationConfig.tarLakePercentage)
 			if (world.provider.getDimension() == 0) {
 				int x = event.getChunkX() * 16;
 				int z = event.getChunkZ() * 16;

@@ -14,15 +14,10 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
+import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
 import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
-import it.hurts.metallurgy_reforged.handler.FuelHandler;
-import it.hurts.metallurgy_reforged.handler.ArmorEffectHandler;
-import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
-import it.hurts.metallurgy_reforged.handler.PickaxeEffectHandler;
-import it.hurts.metallurgy_reforged.handler.SwordEffectHandler;
-import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -41,7 +36,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
-		
+
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 
 		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)

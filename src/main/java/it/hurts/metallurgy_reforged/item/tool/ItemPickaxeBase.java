@@ -11,28 +11,27 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemPickaxeBase extends ItemPickaxe {
+public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
 
-    private String name;
-    private String tooltip;
+    private EnumToolEffects effect;
     private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -43,13 +42,9 @@ public class ItemPickaxeBase extends ItemPickaxe {
     
     public ItemPickaxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
         super(material);
-        setTranslationKey(Metallurgy.MODID + "." + name);
-        setRegistryName(Metallurgy.MODID, name);
-        this.name = name;
+        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
-        setCreativeTab(MetallurgyTabs.tabTool);
-        ModTools.toolList.add(this);
     }
     
     @Override
@@ -65,24 +60,29 @@ public class ItemPickaxeBase extends ItemPickaxe {
         }
 	}
 
-    @SideOnly(Side.CLIENT)
-    public void registerItemModel(Item item, int meta)
+    public void setEffect(EnumToolEffects effect)
     {
-        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":tool/" + name, "inventory"));
+        this.effect = effect;
     }
 
-    public ItemPickaxeBase setTooltip(String tooltip)
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        this.tooltip = tooltip;
-        return this;
+        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
+        if(this.effect != null && effect.isActive())
+            tooltip.add(effect.getLocalized());
+    }
 
-        if(this.tooltip != null && ModTools.isPickaxeEffectActive(this))
-            tooltip.add(this.tooltip);
+    @Nonnull
+    @Override
+    public String getCategory()
+    {
+        return "tool/pickaxe";
     }
 }

@@ -1,19 +1,19 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "RM",
-    "R "
-  ],
-  "key":{
-    "R":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustMithril"
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustRubracium"
     },
-    "M":{
+    {
       "type": "forge:ore_dict",
-      "ore": "dustMithril"
+      "ore": "dustRubracium"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:haderoth_dust",
     "count": 3

@@ -19,7 +19,7 @@ import net.minecraftforge.common.config.Config;
 public class ToolEffectsConfig {
 
     //Pickaxes
-    @Config.Name("Deep Iron PickaxeEffectHandler Effect")
+    @Config.Name("Deep Iron Pickaxe Effect")
     @Config.Comment("Underwater mining is not slowed down")
     public static boolean deepIronPickaxeEffect = true;
 
@@ -29,28 +29,31 @@ public class ToolEffectsConfig {
     public static boolean shadowSteelToolSpeedEffect = true;
 
     //Swords
-    @Config.Name("Desichalkos SwordEffectHandler Effect")
+    @Config.Name("Deep Iron Sword Effect")
+    @Config.Comment("Increase attack speed in water")
+    public static boolean deepIronSwordEffect = true;
+    @Config.Name("Desichalkos Sword Effect")
     @Config.Comment("Gives some random effect to the target")
     public static boolean desichalkosSwordEffect = true;
-    @Config.Name("Ignatius SwordEffectHandler Effect")
+    @Config.Name("Ignatius Sword Effect")
     @Config.Comment("Fire aspect")
     public static boolean ignatiusSwordEffect = true;
-    @Config.Name("Kalendrite SwordEffectHandler Effect")
+    @Config.Name("Kalendrite Sword Effect")
     @Config.Comment("Chance to regenerate your life on hit")
     public static boolean kalendriteSwordEffect = true;
-    @Config.Name("Shadow Iron SwordEffectHandler Effect")
+    @Config.Name("Shadow Iron Sword Effect")
     @Config.Comment("Chance to blind the target")
     public static boolean shadowIronSwordEffect = true;
-    @Config.Name("Shadow Steel SwordEffectHandler Effect")
+    @Config.Name("Shadow Steel Sword Effect")
     @Config.Comment("Speed and Damage is proportional to the darkness")
     public static boolean shadowSteelSwordEffect = true;
-    @Config.Name("Tartarite SwordEffectHandler Effect")
+    @Config.Name("Tartarite Sword Effect")
     @Config.Comment("Withers the target")
     public static boolean tartariteSwordEffect = true;
-    @Config.Name("Vulcanite SwordEffectHandler Effect")
+    @Config.Name("Vulcanite Sword Effect")
     @Config.Comment("Fire Aspect")
     public static boolean vulcaniteSwordEffect = true;
-    @Config.Name("Vyroxeres SwordEffectHandler Effect")
+    @Config.Name("Vyroxeres Sword Effect")
     @Config.Comment("Poisons the target")
     public static boolean vyroxeresSwordEffect = true;
 }

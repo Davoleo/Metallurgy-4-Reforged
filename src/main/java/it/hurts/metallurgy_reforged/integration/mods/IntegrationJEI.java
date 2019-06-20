@@ -23,6 +23,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
@@ -58,9 +59,9 @@ public class IntegrationJEI implements IModPlugin {
 
         registry.addRecipeClickArea(GuiAlloyer.class, 40, 32, 7, 33, ALLOYER);
 
-        registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), ItemStack.class, "description.jei_compat.tar_processing");
-        registry.addIngredientInfo(new ItemStack(ModItems.tar), ItemStack.class, "description.jei_compat.tar_processing");
-        registry.addIngredientInfo(new ItemStack(ModItems.dustBitumen), ItemStack.class, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.tar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.bitumen), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
 
         //registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
     }

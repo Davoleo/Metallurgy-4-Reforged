@@ -1,19 +1,19 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "BI",
-    "B "
-  ],
-  "key":{
-    "B":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustIron"
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustBronze"
     },
-    "I":{
+    {
       "type": "forge:ore_dict",
-      "ore": "dustIron"
+      "ore": "dustBronze"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:damascus_steel_dust",
     "count": 3

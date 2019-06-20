@@ -22,7 +22,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 // Non Modificare Sopra
 
-version = "0.2.0"
+version = "0.2.1"
 group = "it.hurts.metallurgy_reforged"
 archivesBaseName = "Metallurgy-4-Reforged"
 
@@ -66,6 +66,8 @@ repositories {
 }
 
 dependencies {
+//  Kotlin
+//    deobfProvided "shadowfacts-forgelin:Forgelin:1.8.2"
 
 //	Compile against the JEI API but do not include it at runtime
     deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
@@ -77,7 +79,13 @@ dependencies {
 	deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.43"
     deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.116"
     
-     deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
+    deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
+     
+//	Industrial Foregoing
+    deobfCompile "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
+	
+//	ProjectE
+	deobfCompile "projecte:ProjectE:1.12.2:PE1.4.1"
 }
 
 processResources {

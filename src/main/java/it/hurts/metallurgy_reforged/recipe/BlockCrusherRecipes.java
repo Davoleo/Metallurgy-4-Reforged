@@ -52,9 +52,10 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ModItems.dustGold, 2), 0.75F);
         addCrushingRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(ModItems.dustIron, 2), 0.75F);
         addCrushingRecipe(new ItemStack(ModBlocks.oreTar), new ItemStack(ModItems.tar, 4), 0.75F);
-        addCrushingRecipe(new ItemStack(ModBlocks.orePhosphorite), new ItemStack(ModItems.dustPhosphorus, 4), 0.75F);
-        addCrushingRecipe(new ItemStack(ModBlocks.orePotash), new ItemStack(ModItems.dustPotash, 4), 0.75F);
-        addCrushingRecipe(new ItemStack(ModBlocks.oreSulfur), new ItemStack(ModItems.dustSulfur, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePhosphorite), new ItemStack(ModItems.phosphorus, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePotash), new ItemStack(ModItems.potash, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.oreSulfur), new ItemStack(ModItems.sulfur, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModItems.potash), new ItemStack(ModItems.dustPotash), 1F);
 
         //Ingot2Dust
         addCrushingRecipe(new ItemStack(Items.GOLD_INGOT), new ItemStack(ModItems.dustGold), 0.0F);

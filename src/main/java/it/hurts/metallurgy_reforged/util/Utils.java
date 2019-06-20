@@ -11,24 +11,19 @@
 
 package it.hurts.metallurgy_reforged.util;
 
-import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
-import net.minecraftforge.common.util.FakePlayer;
 
 public class Utils {
 	
-	private static Potion [] effect = {
+	private static Potion [] randomEffectsList = {
 			MobEffects.BLINDNESS,
 			MobEffects.LEVITATION,
 			MobEffects.HUNGER,
@@ -40,7 +35,7 @@ public class Utils {
 			MobEffects.REGENERATION
 	};
 	
-	public static String[] materialName = {
+	public static String[] modMaterialNames = {
 			"adamantine",
 			"amordrine",
 			"angmallen",
@@ -63,9 +58,12 @@ public class Utils {
 			"ignatius",
 			"inolashite",
 			"kalendrite",
+			"krik",
+			"lutetium",
 			"midasium",
 			"mithril",
 			"orichalcum",
+			"osmium",
 			"oureclase",
 			"platinum",
 			"prometheum",
@@ -78,22 +76,9 @@ public class Utils {
 			"tartarite",
 			"vulcanite",
 			"vyroxeres",
-			"krik",
-			"osmium",
-			"lutetium"
 		};
 
-    public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
-    {
-        if(slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
-        {
-            inventory.get(slot).grow(amount);
-            if(inventory.get(slot).getCount() <= 0)
-                inventory.set(slot, ItemStack.EMPTY);
-        }
-    }
-
-    public static void giveExperience(EntityPlayer thePlayer, float experience) {
+	public static void giveExperience(EntityPlayer thePlayer, float experience) {
         int intExp = (int) experience;
         float fractional = experience - intExp;
         if (fractional > 0.0F && (float) Math.random() < fractional) {
@@ -125,50 +110,21 @@ public class Utils {
   		return maxPercent - (light * maxPercent / 14F);
   		
   	}
-  	
-  	 //check if itemstack is a specific armor material
-    public static boolean isItemStackSpecificArmorMaterial(Metal metal,ItemStack armor)
-    {
-    	return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase)armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
-    }
-    
-    //method to check if stack is a specific tool Material
-    public static boolean isItemStackASpecificToolMaterial(Metal metal,ItemStack toolStack,String... except)
-    {
-    	
-    	Item item = toolStack.getItem();
-    	if(!toolStack.isEmpty() && item instanceof ItemTool)
-    	{
-   		ItemTool tool = (ItemTool) toolStack.getItem();
-   		boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
-    	for(String type : except)
-    	{
-    		String toolName = metal.getStats().getName() + "_" + type;    		
-    		if(tool.getTranslationKey().equalsIgnoreCase(toolName))
-    		 valid = false;
-    	}
-    	  return valid;
-    	}   	
-    	return false;
-    }
-    
-    public static String localize(String unlocalized)
+
+	public static String localize(String unlocalized)
     {
         return new TextComponentTranslation(unlocalized).getFormattedText();
     }
-
-    public static boolean isFakePlayer(EntityPlayer player) {
-        return player instanceof FakePlayer || (player != null);
-    }
     
     public static Potion getRandomEffect() {
-    	return effect[(int)(Math.random() * Utils.getMaxIndexEffect())];
+    	return randomEffectsList[(int)(Math.random() * Utils.getMaxIndexEffect())];
     }
     
     private static int getMaxIndexEffect() {
-    	return effect.length;
+    	return randomEffectsList.length;
     }
-    
+
+    //TODO : @ItHurtsLikeHell Document this fucking method please
     public static String getName(String name) {
 		String[] str = name.split("_");
 		String[] space = space(str.length);
@@ -178,7 +134,8 @@ public class Utils {
 		}
 		return name;
 	}
-	
+
+	//TODO : @ItHurtsLikeHell Document this fucking method please
 	private static String[] space(int len) {
 		String[] str = new String [len];
 		for(int i = 0; i < len; i++) {
@@ -189,4 +146,14 @@ public class Utils {
 		}
 		return str;
 	}
+
+	public static Metal getMetalFromString(String string)
+	{
+		for (Metal metal : ModMetals.metalList)
+			if (string.contains(metal.toString()))
+				return metal;
+			return null;
+	}
+
+
 }

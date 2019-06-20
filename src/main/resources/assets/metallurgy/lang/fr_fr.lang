@@ -1,360 +1,466 @@
-#############################
-#     Author: CooKiiES      #
-#############################
-#Armors
-item.adamantine_helmet.name=Casque en Adamantine
-item.adamantine_chest.name=Plastron en Adamantine
-item.adamantine_legs.name=Jambière en Adamantine
-item.adamantine_boots.name=Bottes en Adamantine
+# ############################
+# Author: CooKiiES      #
+# ############################
+# Armors
+item.metallurgy.adamantine_helmet.name=Casque en Adamantine
+item.metallurgy.adamantine_chest.name=Plastron en Adamantine
+item.metallurgy.adamantine_legs.name=Jambière en Adamantine
+item.metallurgy.adamantine_boots.name=Bottes en Adamantine
 
-item.amordrine_helmet.name=Casque en Amordrine
-item.amordrine_chest.name=Plastron en Amordrine
-item.amordrine_legs.name=Jambière en Amordrine
-item.amordrine_boots.name=Bottes en Amordrine
+item.metallurgy.amordrine_helmet.name=Casque en Amordrine
+item.metallurgy.amordrine_chest.name=Plastron en Amordrine
+item.metallurgy.amordrine_legs.name=Jambière en Amordrine
+item.metallurgy.amordrine_boots.name=Bottes en Amordrine
 
-item.angmallen_helmet.name=Casque en Angmallen
-item.angmallen_chest.name=Plastron en Angmallen  
-item.angmallen_legs.name=Jambières en Angmallen  
-item.angmallen_boots.name=Bottes en Angmallen
+item.metallurgy.angmallen_helmet.name=Casque en Angmallen
+item.metallurgy.angmallen_chest.name=Plastron en Angmallen
+item.metallurgy.angmallen_legs.name=Jambières en Angmallen
+item.metallurgy.angmallen_boots.name=Bottes en Angmallen
 
-item.atlarus_helmet.name=Casque en Atlarus
-item.atlarus_chest.name=Plastron en Atlarus  
-item.atlarus_legs.name=Jambières en Atlarus  
-item.atlarus_boots.name=Bottes en Atlarus
+item.metallurgy.atlarus_helmet.name=Casque en Atlarus
+item.metallurgy.atlarus_chest.name=Plastron en Atlarus
+item.metallurgy.atlarus_legs.name=Jambières en Atlarus
+item.metallurgy.atlarus_boots.name=Bottes en Atlarus
 
-item.astral_silver_helmet.name=Casque en  Argent Astral
-item.astral_silver_chest.name=Plastron en  Argent Astral  
-item.astral_silver_legs.name=Jambières en  Argent Astral  
-item.astral_silver_boots.name=Bottes en  Argent Astral
+item.metallurgy.astral_silver_helmet.name=Casque en  Argent Astral
+item.metallurgy.astral_silver_chest.name=Plastron en  Argent Astral
+item.metallurgy.astral_silver_legs.name=Jambières en  Argent Astral
+item.metallurgy.astral_silver_boots.name=Bottes en  Argent Astral
 
-item.black_steel_helmet.name=Casque en Acier noir
-item.black_steel_chest.name=Plastron en Acier noir  
-item.black_steel_legs.name=Jambières en Acier noir  
-item.black_steel_boots.name=Bottes en Acier noir 
+item.metallurgy.black_steel_helmet.name=Casque en Acier noir
+item.metallurgy.black_steel_chest.name=Plastron en Acier noir
+item.metallurgy.black_steel_legs.name=Jambières en Acier noir
+item.metallurgy.black_steel_boots.name=Bottes en Acier noir
 
-item.brass_helmet.name=Casque en Laiton 
-item.brass_chest.name=Plastron en Laiton  
-item.brass_legs.name=Jambières en Laiton  
-item.brass_boots.name=Bottes en Laiton 
+item.metallurgy.brass_helmet.name=Casque en Laiton
+item.metallurgy.brass_chest.name=Plastron en Laiton
+item.metallurgy.brass_legs.name=Jambières en Laiton
+item.metallurgy.brass_boots.name=Bottes en Laiton
 
-item.bronze_helmet.name=Casque en Bronze 
-item.bronze_chest.name=Plastron en Bronze  
-item.bronze_legs.name=Jambières en Bronze  
-item.bronze_boots.name=Bottes en Bronze 
+item.metallurgy.bronze_helmet.name=Casque en Bronze
+item.metallurgy.bronze_chest.name=Plastron en Bronze
+item.metallurgy.bronze_legs.name=Jambières en Bronze
+item.metallurgy.bronze_boots.name=Bottes en Bronze
 
-item.carmot_helmet.name=Casque en Carmot
-item.carmot_chest.name=Plastron en Carmot  
-item.carmot_legs.name=Jambières en Carmot  
-item.carmot_boots.name=Bottes en Carmot
+item.metallurgy.carmot_helmet.name=Casque en Carmot
+item.metallurgy.carmot_chest.name=Plastron en Carmot
+item.metallurgy.carmot_legs.name=Jambières en Carmot
+item.metallurgy.carmot_boots.name=Bottes en Carmot
 
-item.celenegil_helmet.name=Casque en Celenegil
-item.celenegil_chest.name=Plastron en Celenegil  
-item.celenegil_legs.name=Jambières en Celenegil  
-item.celenegil_boots.name=Bottes en Celenegil
+item.metallurgy.celenegil_helmet.name=Casque en Celenegil
+item.metallurgy.celenegil_chest.name=Plastron en Celenegil
+item.metallurgy.celenegil_legs.name=Jambières en Celenegil
+item.metallurgy.celenegil_boots.name=Bottes en Celenegil
 
-item.ceruclase_helmet.name=Casque en Ceruclase
-item.ceruclase_chest.name=Plastron en Ceruclase 
-item.ceruclase_legs.name=Jambières en Ceruclase  
-item.ceruclase_boots.name=Bottes en Ceruclase
+item.metallurgy.ceruclase_helmet.name=Casque en Ceruclase
+item.metallurgy.ceruclase_chest.name=Plastron en Ceruclase
+item.metallurgy.ceruclase_legs.name=Jambières en Ceruclase
+item.metallurgy.ceruclase_boots.name=Bottes en Ceruclase
 
-item.copper_helmet.name=Casque en Cuivre  
-item.copper_chest.name=Plastron en Cuivre  
-item.copper_legs.name=Jambières en Cuivre  
-item.copper_boots.name=Bottes en Cuivre
+item.metallurgy.copper_helmet.name=Casque en Cuivre
+item.metallurgy.copper_chest.name=Plastron en Cuivre
+item.metallurgy.copper_legs.name=Jambières en Cuivre
+item.metallurgy.copper_boots.name=Bottes en Cuivre
 
-item.damascus_steel_helmet.name=Casque en Acier de Damas
-item.damascus_steel_chest.name=Plastron en Acier de Damas  
-item.damascus_steel_legs.name=Jambières en Acier de Damas  
-item.damascus_steel_boots.name=Bottes en Acier de Damas
+item.metallurgy.damascus_steel_helmet.name=Casque en Acier de Damas
+item.metallurgy.damascus_steel_chest.name=Plastron en Acier de Damas
+item.metallurgy.damascus_steel_legs.name=Jambières en Acier de Damas
+item.metallurgy.damascus_steel_boots.name=Bottes en Acier de Damas
 
-item.deep_iron_helmet.name=Casque en Fer Profond 
-item.deep_iron_chest.name=Plastron en Fer Profond  
-item.deep_iron_legs.name=Jambières en Fer Profond  
-item.deep_iron_boots.name=Bottes en Fer Profond 
+item.metallurgy.deep_iron_helmet.name=Casque en Fer Profond
+item.metallurgy.deep_iron_chest.name=Plastron en Fer Profond
+item.metallurgy.deep_iron_legs.name=Jambières en Fer Profond
+item.metallurgy.deep_iron_boots.name=Bottes en Fer Profond
 
-item.desichalkos_helmet.name=Casque en Desichalkos 
-item.desichalkos_chest.name=Plastron en Desichalkos  
-item.desichalkos_legs.name=Jambières en Desichalkos  
-item.desichalkos_boots.name=Bottes en Desichalkos
+item.metallurgy.desichalkos_helmet.name=Casque en Desichalkos
+item.metallurgy.desichalkos_chest.name=Plastron en Desichalkos
+item.metallurgy.desichalkos_legs.name=Jambières en Desichalkos
+item.metallurgy.desichalkos_boots.name=Bottes en Desichalkos
 
-item.electrum_helmet.name=Casque en Electrum 
-item.electrum_chest.name=Plastron en Electrum  
-item.electrum_legs.name=Jambières en Electrum  
-item.electrum_boots.name=Bottes en Electrum 
+item.metallurgy.electrum_helmet.name=Casque en Electrum
+item.metallurgy.electrum_chest.name=Plastron en Electrum
+item.metallurgy.electrum_legs.name=Jambières en Electrum
+item.metallurgy.electrum_boots.name=Bottes en Electrum
 
-item.eximite_helmet.name=Casque en Eximite 
-item.eximite_chest.name=Plastron en Eximite  
-item.eximite_legs.name=Jambières en Eximite  
-item.eximite_boots.name=Bottes en Eximite 
+item.metallurgy.eximite_helmet.name=Casque en Eximite
+item.metallurgy.eximite_chest.name=Plastron en Eximite
+item.metallurgy.eximite_legs.name=Jambières en Eximite
+item.metallurgy.eximite_boots.name=Bottes en Eximite
 
-item.haderoth_helmet.name=Casque en Haderoth 
-item.haderoth_chest.name=Plastron en Haderoth  
-item.haderoth_legs.name=Jambières en Haderoth  
-item.haderoth_boots.name=Bottes en Haderoth 
+item.metallurgy.haderoth_helmet.name=Casque en Haderoth
+item.metallurgy.haderoth_chest.name=Plastron en Haderoth
+item.metallurgy.haderoth_legs.name=Jambières en Haderoth
+item.metallurgy.haderoth_boots.name=Bottes en Haderoth
 
-item.hepatizon_helmet.name=Casque en Hepatizon 
-item.hepatizon_chest.name=Plastron en Hepatizon  
-item.hepatizon_legs.name=Jambières en Hepatizon  
-item.hepatizon_boots.name=Bottes en Hepatizon 
+item.metallurgy.hepatizon_helmet.name=Casque en Hepatizon
+item.metallurgy.hepatizon_chest.name=Plastron en Hepatizon
+item.metallurgy.hepatizon_legs.name=Jambières en Hepatizon
+item.metallurgy.hepatizon_boots.name=Bottes en Hepatizon
 
-item.ignatius_helmet.name=Casque en Ignatius 
-item.ignatius_chest.name=Plastron en Ignatius  
-item.ignatius_legs.name=Jambières en Ignatius  
-item.ignatius_boots.name=Bottes en Ignatius 
+item.metallurgy.ignatius_helmet.name=Casque en Ignatius
+item.metallurgy.ignatius_chest.name=Plastron en Ignatius
+item.metallurgy.ignatius_legs.name=Jambières en Ignatius
+item.metallurgy.ignatius_boots.name=Bottes en Ignatius
 
-item.inolashite_helmet.name=Casque en Inolashite 
-item.inolashite_chest.name=Plastron en Inolashite  
-item.inolashite_legs.name=Jambières en Inolashite  
-item.inolashite_boots.name=Bottes en Inolashite 
+item.metallurgy.inolashite_helmet.name=Casque en Inolashite
+item.metallurgy.inolashite_chest.name=Plastron en Inolashite
+item.metallurgy.inolashite_legs.name=Jambières en Inolashite
+item.metallurgy.inolashite_boots.name=Bottes en Inolashite
 
-item.kalendrite_helmet.name=Casque en Kalendrite 
-item.kalendrite_chest.name=Plastron en Kalendrite  
-item.kalendrite_legs.name=Jambières en Kalendrite  
-item.kalendrite_boots.name=Bottes en Kalendrite 
+item.metallurgy.kalendrite_helmet.name=Casque en Kalendrite
+item.metallurgy.kalendrite_chest.name=Plastron en Kalendrite
+item.metallurgy.kalendrite_legs.name=Jambières en Kalendrite
+item.metallurgy.kalendrite_boots.name=Bottes en Kalendrite
 
-item.midasium_helmet.name=Casque en Midasium 
-item.midasium_chest.name=Plastron en Midasium  
-item.midasium_legs.name=Jambières en Midasium  
-item.midasium_boots.name=Bottes en Midasium 
+item.metallurgy.krik_helmet.name=Krik Helmet
+item.metallurgy.krik_chest.name=Krik Chestplate
+item.metallurgy.krik_legs.name=Krik Leggings
+item.metallurgy.krik_boots.name=Krik Boots
 
-item.mithril_helmet.name=Casque en Mithril 
-item.mithril_chest.name=Plastron en Mithril  
-item.mithril_legs.name=Jambières en Mithril  
-item.mithril_boots.name=Bottes en Mithril 
+item.metallurgy.lutetium_helmet.name=Lutetium Helmet
+item.metallurgy.lutetium_chest.name=Lutetium Chestplate
+item.metallurgy.lutetium_legs.name=Lutetium Leggings
+item.metallurgy.lutetium_boots.name=Lutetium Boots
 
-item.orichalcum_helmet.name=Casque en Orichalcum 
-item.orichalcum_chest.name=Plastron en Orichalcum  
-item.orichalcum_legs.name=Jambières en Orichalcum  
-item.orichalcum_boots.name=Bottes en Orichalcum 
+item.metallurgy.midasium_helmet.name=Casque en Midasium
+item.metallurgy.midasium_chest.name=Plastron en Midasium
+item.metallurgy.midasium_legs.name=Jambières en Midasium
+item.metallurgy.midasium_boots.name=Bottes en Midasium
 
-item.oureclase_helmet.name=Casque en Oureclase 
-item.oureclase_chest.name=Plastron en Oureclase  
-item.oureclase_legs.name=Jambières en Oureclase  
-item.oureclase_boots.name=Bottes en Oureclase 
+item.metallurgy.mithril_helmet.name=Casque en Mithril
+item.metallurgy.mithril_chest.name=Plastron en Mithril
+item.metallurgy.mithril_legs.name=Jambières en Mithril
+item.metallurgy.mithril_boots.name=Bottes en Mithril
 
-item.platinum_helmet.name=Casque en Platine
-item.platinum_chest.name=Plastron en Platine 
-item.platinum_legs.name=Jambières en Platine 
-item.platinum_boots.name=Bottes en Platine
+item.metallurgy.orichalcum_helmet.name=Casque en Orichalcum
+item.metallurgy.orichalcum_chest.name=Plastron en Orichalcum
+item.metallurgy.orichalcum_legs.name=Jambières en Orichalcum
+item.metallurgy.orichalcum_boots.name=Bottes en Orichalcum
 
-item.prometheum_helmet.name=Casque en Prometheum 
-item.prometheum_chest.name=Plastron en Prometheum  
-item.prometheum_legs.name=Jambières en Prometheum  
-item.prometheum_boots.name=Bottes en Prometheum 
+item.metallurgy.osmium_helmet.name=Osmium Helmet
+item.metallurgy.osmium_chest.name=Osmium Chestplate
+item.metallurgy.osmium_legs.name=Osmium Leggings
+item.metallurgy.osmium_boots.name=Osmium Boots
 
-item.quicksilver_helmet.name=Casque en Mercure 
-item.quicksilver_chest.name=Plastron en Mercure  
-item.quicksilver_legs.name=Jambières en Mercure  
-item.quicksilver_boots.name=Bottes en Mercure 
+item.metallurgy.oureclase_helmet.name=Casque en Oureclase
+item.metallurgy.oureclase_chest.name=Plastron en Oureclase
+item.metallurgy.oureclase_legs.name=Jambières en Oureclase
+item.metallurgy.oureclase_boots.name=Bottes en Oureclase
 
-item.sanguinite_helmet.name=Casque en Sanguinite 
-item.sanguinite_chest.name=Plastron en Sanguinite  
-item.sanguinite_legs.name=Jambières en Sanguinite  
-item.sanguinite_boots.name=Bottes en Sanguinite 
+item.metallurgy.platinum_helmet.name=Casque en Platine
+item.metallurgy.platinum_chest.name=Plastron en Platine
+item.metallurgy.platinum_legs.name=Jambières en Platine
+item.metallurgy.platinum_boots.name=Bottes en Platine
 
-item.shadow_iron_helmet.name=Casque en Fer d'Ombre 
-item.shadow_iron_chest.name=Plastron en Fer d'Ombre  
-item.shadow_iron_legs.name=Jambières en Fer d'Ombre  
-item.shadow_iron_boots.name=Bottes en Fer d'Ombre 
+item.metallurgy.prometheum_helmet.name=Casque en Prometheum
+item.metallurgy.prometheum_chest.name=Plastron en Prometheum
+item.metallurgy.prometheum_legs.name=Jambières en Prometheum
+item.metallurgy.prometheum_boots.name=Bottes en Prometheum
 
-item.shadow_steel_helmet.name=Casque en Acier d'Ombre 
-item.shadow_steel_chest.name=Plastron en Acier d'Ombre  
-item.shadow_steel_legs.name=Jambières en Acier d'Ombre  
-item.shadow_steel_boots.name=Bottes en Acier d'Ombre 
+item.metallurgy.quicksilver_helmet.name=Casque en Mercure
+item.metallurgy.quicksilver_chest.name=Plastron en Mercure
+item.metallurgy.quicksilver_legs.name=Jambières en Mercure
+item.metallurgy.quicksilver_boots.name=Bottes en Mercure
 
-item.silver_helmet.name=Casque en Argent 
-item.silver_chest.name=Plastron en Argent  
-item.silver_legs.name=Jambières en Argent  
-item.silver_boots.name=Bottes en Argent 
+item.metallurgy.sanguinite_helmet.name=Casque en Sanguinite
+item.metallurgy.sanguinite_chest.name=Plastron en Sanguinite
+item.metallurgy.sanguinite_legs.name=Jambières en Sanguinite
+item.metallurgy.sanguinite_boots.name=Bottes en Sanguinite
 
-item.steel_helmet.name=Casque en Acier 
-item.steel_chest.name=Plastron en Acier  
-item.steel_legs.name=Jambières en Acier  
-item.steel_boots.name=Bottes en Acier 
+item.metallurgy.shadow_iron_helmet.name=Casque en Fer d'Ombre
+item.metallurgy.shadow_iron_chest.name=Plastron en Fer d'Ombre
+item.metallurgy.shadow_iron_legs.name=Jambières en Fer d'Ombre
+item.metallurgy.shadow_iron_boots.name=Bottes en Fer d'Ombre
 
-item.tartarite_helmet.name=Casque en Tartarite 
-item.tartarite_chest.name=Plastron en Tartarite  
-item.tartarite_legs.name=Jambières en Tartarite  
-item.tartarite_boots.name=Bottes en Tartarite 
+item.metallurgy.shadow_steel_helmet.name=Casque en Acier d'Ombre
+item.metallurgy.shadow_steel_chest.name=Plastron en Acier d'Ombre
+item.metallurgy.shadow_steel_legs.name=Jambières en Acier d'Ombre
+item.metallurgy.shadow_steel_boots.name=Bottes en Acier d'Ombre
 
-item.vulcanite_helmet.name=Casque en Vulcanite 
-item.vulcanite_chest.name=Plastron en Vulcanite  
-item.vulcanite_legs.name=Jambières en Vulcanite  
-item.vulcanite_boots.name=Bottes en Vulcanite 
+item.metallurgy.silver_helmet.name=Casque en Argent
+item.metallurgy.silver_chest.name=Plastron en Argent
+item.metallurgy.silver_legs.name=Jambières en Argent
+item.metallurgy.silver_boots.name=Bottes en Argent
 
-item.vyroxeres_helmet.name=Casque en Vyroxeres 
-item.vyroxeres_chest.name=Plastron en Vyroxeres 
-item.vyroxeres_legs.name=Jambières en Vyroxeres  
-item.vyroxeres_boots.name=Bottes en Vyroxeres  
+item.metallurgy.steel_helmet.name=Casque en Acier
+item.metallurgy.steel_chest.name=Plastron en Acier
+item.metallurgy.steel_legs.name=Jambières en Acier
+item.metallurgy.steel_boots.name=Bottes en Acier
+
+item.metallurgy.tartarite_helmet.name=Casque en Tartarite
+item.metallurgy.tartarite_chest.name=Plastron en Tartarite
+item.metallurgy.tartarite_legs.name=Jambières en Tartarite
+item.metallurgy.tartarite_boots.name=Bottes en Tartarite
+
+item.metallurgy.vulcanite_helmet.name=Casque en Vulcanite
+item.metallurgy.vulcanite_chest.name=Plastron en Vulcanite
+item.metallurgy.vulcanite_legs.name=Jambières en Vulcanite
+item.metallurgy.vulcanite_boots.name=Bottes en Vulcanite
+
+item.metallurgy.vyroxeres_helmet.name=Casque en Vyroxeres
+item.metallurgy.vyroxeres_chest.name=Plastron en Vyroxeres
+item.metallurgy.vyroxeres_legs.name=Jambières en Vyroxeres
+item.metallurgy.vyroxeres_boots.name=Bottes en Vyroxeres
 
 # Blocks
-tile.road_block.name=Route
-tile.striped_road_block.name=Route rayée
-tile.charcoal_block.name=Bloc de charbon
-tile.bitumen_block.name=Bloc de bitume
-tile.electrum_block.name=Bloc de Electrum
-tile.copper_block.name=Bloc de Cuivre
-tile.bronze_block.name=Bloc de Bronze
-tile.manganese_block.name=Bloc de Manganese
-tile.tin_block.name=Bloc de Tin 
-tile.steel_block.name=Bloc de Acier 
-tile.hepatizon_block.name=Bloc de Hepatizon 
-tile.prometheum_block.name=Bloc de Prometheum 
-tile.angmallen_block.name=Bloc de Angmallen 
-tile.eximite_block.name=Bloc de Eximite 
-tile.meutoite_block.name=Bloc de Meutoite 
-tile.desichalkos_block.name=Bloc de Desichalkos 
-tile.black_steel_block.name=Bloc de Acier noir 
-tile.infuscolium_block.name=Bloc de Infuscolium 
-tile.carmot_block.name=Bloc de Carmot 
-tile.astral_silver_block.name=Bloc de Argent Astral 
-tile.oureclase_block.name=Bloc de Oureclase 
-tile.deep_iron_block.name=Bloc de Fer Profond 
-tile.quicksilver_block.name=Bloc de Mercure 
-tile.mithril_block.name=Bloc de Mithril 
-tile.haderoth_block.name=Bloc de Haderoth 
-tile.atlarus_block.name=Bloc de Atlarus 
-tile.adamantine_block.name=Bloc de Adamantine 
-tile.celenegil_block.name=Bloc de Celenegil 
-tile.tartarite_block.name=Bloc de Tartarite 
-tile.rubracium_block.name=Bloc de Rubracium 
-tile.midasium_block.name=Bloc de Midasium 
-tile.shadow_steel_block.name=Bloc de Acier d'Ombre 
-tile.lemurite_block.name=Bloc de Lemurite 
-tile.vyroxeres_block.name=Bloc de Vyroxeres 
-tile.kalendrite_block.name=Bloc de Kalendrite 
-tile.sanguinite_block.name=Bloc de Sanguinite 
-tile.alduorite_block.name=Bloc de Alduorite 
-tile.ignatius_block.name=Bloc de Ignatius 
-tile.shadow_iron_block.name=Bloc de Fer d'Ombre 
-tile.damascus_steel_block.name=Bloc de Acier de Damas 
-tile.orichalcum_block.name=Bloc de Orichalcum 
-tile.ceruclase_block.name=Bloc de Ceruclase 
-tile.vulcanite_block.name=Bloc de Vulcanire
-tile.inolashite_block.name=Bloc de Inolashite
-tile.amordrine_block.name=Bloc de Amordrine
-tile.zinc_block.name=Bloc de Zinc
-tile.silver_block.name=Bloc de Argent
-tile.platinum_block.name=Bloc de Platine
-tile.brass_block.name=Bloc de Laiton
-tile.sulfur_block.name=Bloc de Soufre
+tile.metallurgy.road_block.name=Route
+tile.metallurgy.striped_road_block.name=Route rayée
+tile.metallurgy.charcoal_block.name=Bloc de charbon
+tile.metallurgy.bitumen_block.name=Bloc de bitume
+tile.metallurgy.electrum_block.name=Bloc de Electrum
+tile.metallurgy.copper_block.name=Bloc de Cuivre
+tile.metallurgy.bronze_block.name=Bloc de Bronze
+tile.metallurgy.manganese_block.name=Bloc de Manganese
+tile.metallurgy.tin_block.name=Bloc de Tin
+tile.metallurgy.steel_block.name=Bloc de Acier
+tile.metallurgy.hepatizon_block.name=Bloc de Hepatizon
+tile.metallurgy.prometheum_block.name=Bloc de Prometheum
+tile.metallurgy.angmallen_block.name=Bloc de Angmallen
+tile.metallurgy.eximite_block.name=Bloc de Eximite
+tile.metallurgy.meutoite_block.name=Bloc de Meutoite
+tile.metallurgy.desichalkos_block.name=Bloc de Desichalkos
+tile.metallurgy.black_steel_block.name=Bloc de Acier noir
+tile.metallurgy.infuscolium_block.name=Bloc de Infuscolium
+tile.metallurgy.carmot_block.name=Bloc de Carmot
+tile.metallurgy.astral_silver_block.name=Bloc de Argent Astral
+tile.metallurgy.oureclase_block.name=Bloc de Oureclase
+tile.metallurgy.deep_iron_block.name=Bloc de Fer Profond
+tile.metallurgy.quicksilver_block.name=Bloc de Mercure
+tile.metallurgy.mithril_block.name=Bloc de Mithril
+tile.metallurgy.haderoth_block.name=Bloc de Haderoth
+tile.metallurgy.atlarus_block.name=Bloc de Atlarus
+tile.metallurgy.adamantine_block.name=Bloc de Adamantine
+tile.metallurgy.celenegil_block.name=Bloc de Celenegil
+tile.metallurgy.tartarite_block.name=Bloc de Tartarite
+tile.metallurgy.rubracium_block.name=Bloc de Rubracium
+tile.metallurgy.midasium_block.name=Bloc de Midasium
+tile.metallurgy.shadow_steel_block.name=Bloc de Acier d'Ombre
+tile.metallurgy.lemurite_block.name=Bloc de Lemurite
+tile.metallurgy.vyroxeres_block.name=Bloc de Vyroxeres
+tile.metallurgy.kalendrite_block.name=Bloc de Kalendrite
+tile.metallurgy.krik_block.name=Krik Block
+tile.metallurgy.sanguinite_block.name=Bloc de Sanguinite
+tile.metallurgy.alduorite_block.name=Bloc de Alduorite
+tile.metallurgy.ignatius_block.name=Bloc de Ignatius
+tile.metallurgy.shadow_iron_block.name=Bloc de Fer d'Ombre
+tile.metallurgy.damascus_steel_block.name=Bloc de Acier de Damas
+tile.metallurgy.orichalcum_block.name=Bloc de Orichalcum
+tile.metallurgy.ceruclase_block.name=Bloc de Ceruclase
+tile.metallurgy.vulcanite_block.name=Bloc de Vulcanire
+tile.metallurgy.inolashite_block.name=Bloc de Inolashite
+tile.metallurgy.amordrine_block.name=Bloc de Amordrine
+tile.metallurgy.zinc_block.name=Bloc de Zinc
+tile.metallurgy.silver_block.name=Bloc de Argent
+tile.metallurgy.platinum_block.name=Bloc de Platine
+tile.metallurgy.brass_block.name=Bloc de Laiton
+tile.metallurgy.lutetium_block.name=Lutetium Block
+tile.metallurgy.osmium_block.name=Osmium Block
+tile.metallurgy.sulfur_block.name=Bloc de Soufre
 
-#Config
+# Config
+config.metallurgy.category.armor_effects=Armor Effects
+# Config
 config.metallurgy.category.general=General
-config.metallurgy.category.effects_control_panel=Effets ACTIVÉ/DESACTIVÉ
-config.metallurgy.category.effects_modifiers=Effets Buff/Nerf
+config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
+config.metallurgy.category.tool_effects=Tool Effects
+config.metallurgy.category.worldgen=World Generation
+
+# Construct's Armory Traits
+modifier.blindness_armor.name=Clear Vision
+modifier.cat_eyes_armor.name=Night Vision
+modifier.deeply_armor.name=Diver
+modifier.foodly_armor.name=Well Fed
+modifier.jump_master_armor.name=Jump Master
+modifier.prometheum_armor.name=Poison Immunity
+modifier.quickly_armor.name=Quick Action
+modifier.resistance_armor.name=Resistance IV
+modifier.strongly_armor.name=Strength
+modifier.volcano_armor.name=Volcanic
+
+modifier.blindness_armor.desc=§oNo Blindness >:(§r\nMakes you immune to blindness
+modifier.cat_eyes_armor.desc=§oNo carrots required§r\nAllows you to see in the dark
+modifier.deeply_armor.desc=§oAqua-bound!§r\nIt makes it easier for you to do things underwater
+modifier.foodly_armor.desc=§oThe taste of hard work§r\nReplenishes your food bar if you have enough experience.
+modifier.jump_master_armor.desc=§oWheeee!§r\nIncreases jump height.
+modifier.prometheum_armor.desc=§oTastes like coconut... and metal§r\nGrants immunity to poison.
+modifier.quickly_armor.desc=§oBow Tender§r\nStretching a bow becomes faster
+modifier.resistance_armor.desc=§oHard as nails§r\nReduces incoming damage even further than you'd expect.
+modifier.strongly_armor.desc=§oI bet I could lift that§r\nIncreases damage dealt \n(can be level I or level II)
+modifier.volcano_armor.desc=§oFire-bound!§r\nIt makes you immune to fire
 
 # Creative Tab
 itemGroup.metallurgy.armors=Armures de Metallurgy
 itemGroup.metallurgy.blocks=Blocs de Metallurgy
 itemGroup.metallurgy.dusts=Poussières de Metallurgy
 itemGroup.metallurgy.fluids=Fluides de Metallurgy
-itemGroup.metallurgy.ingots=Lingots de Metallurgy 
-itemGroup.metallurgy.special=Spéciaux de Metallurgy 
-itemGroup.metallurgy.ores=Minerais de Metallurgy 
+itemGroup.metallurgy.ingots=Lingots de Metallurgy
+itemGroup.metallurgy.nuggets=Metallurgy Nugets
+itemGroup.metallurgy.special=Spéciaux de Metallurgy
+itemGroup.metallurgy.ores=Minerais de Metallurgy
 itemGroup.metallurgy.tools=Outils de Metallurgy
 
+# Dust
+item.metallurgy.adamantine_dust.name=Poussière d'Adamantine
+item.metallurgy.alduorite_dust.name=Poussière d'Alduorite
+item.metallurgy.amordrine_dust.name=Poussière d'Amordrine
+item.metallurgy.angmallen_dust.name=Poussière d'Angmallen
+item.metallurgy.astral_silver_dust.name=Poussière d'Argent Astral
+item.metallurgy.atlarus_dust.name=Poussière d'Atlarus
+item.metallurgy.black_steel_dust.name=Poussière d'Acier noir
+item.metallurgy.brass_dust.name=Poussière de Laiton
+item.metallurgy.bronze_dust.name=Poussière de Bronze
+item.metallurgy.carmot_dust.name=Poussière de Carmot
+item.metallurgy.celenegil_dust.name=Poussière de Celenegil
+item.metallurgy.ceruclase_dust.name=Poussière de Ceruclase
+item.metallurgy.copper_dust.name=Poussière de Cuivre
+item.metallurgy.deep_iron_dust.name=Poussière de Fer Profond
+item.metallurgy.desichalkos_dust.name=Poussière de Desichalkos
+item.metallurgy.damascus_steel_dust.name=Poussière d'Acier de Damas
+item.metallurgy.electrum_dust.name=Poussière d'Electrum
+item.metallurgy.eximite_dust.name=Poussière d'Eximite
+item.metallurgy.gold_dust.name=Poussière d'Or
+item.metallurgy.haderoth_dust.name=Poussière d'Haderoth
+item.metallurgy.hepatizon_dust.name=Poussière d'Hepatizon
+item.metallurgy.ignatius_dust.name=Poussière d'Ignatius
+item.metallurgy.infuscolium_dust.name=Poussière d'Infuscolium
+item.metallurgy.inolashite_dust.name=Poussière d'Inolashite
+item.metallurgy.iron_dust.name=Poussière de Fer
+item.metallurgy.kalendrite_dust.name=Poussière de Kalendrite
+item.metallurgy.krik_dust.name=Krik Dust
+item.metallurgy.lemurite_dust.name=Poussière de Lemurite
+item.metallurgy.lutetium_dust.name=Lutetium Dust
+item.metallurgy.manganese_dust.name=Poussière de Manganese
+item.metallurgy.meutoite_dust.name=Poussière de Meutoite
+item.metallurgy.midasium_dust.name=Poussière de Midasium
+item.metallurgy.mithril_dust.name=Poussière de Mithril
+item.metallurgy.orichalcum_dust.name=Poussière de Orichalcum
+item.metallurgy.osmium_dust.name=Osmium Dust
+item.metallurgy.oureclase_dust.name=Poussière d'Oureclase
+item.metallurgy.platinum_dust.name=Poussière de PlatineDust
+item.metallurgy.prometheum_dust.name=Poussière de Promethem
+item.metallurgy.quicksilver_dust.name=Poussière de Mercure
+item.metallurgy.rubracium_dust.name=Poussière de Rubracium
+item.metallurgy.sanguinite_dust.name=Poussière de Sanguinite
+item.metallurgy.shadow_iron_dust.name=Poussière de Fer d'Ombre
+item.metallurgy.shadow_steel_dust.name=Poussière d'Acier d'Ombre
+item.metallurgy.silver_dust.name=Poussière d'Argent
+item.metallurgy.steel_dust.name=Poussière d'Acier
+item.metallurgy.tartarite_dust.name=Poussière de Tartarite
+item.metallurgy.thermite_dust.name=Thermite Dust
+item.metallurgy.tin_dust.name=Poussière de Tin
+item.metallurgy.vulcanite_dust.name=Poussière de Vulcanite
+item.metallurgy.vyroxeres_dust.name=Poussière de Vyroxeres
+item.metallurgy.zinc_dust.name=Poussière de Zinc
 
-#Dust
-item.adamantine_dust.name=Poussière d'Adamantine 
-item.alduorite_dust.name=Poussière d'Alduorite 
-item.amordrine_dust.name=Poussière d'Amordrine 
-item.angmallen_dust.name=Poussière d'Angmallen 
-item.astral_silver_dust.name=Poussière d'Argent Astral 
-item.atlarus_dust.name=Poussière d'Atlarus 
-item.black_steel_dust.name=Poussière d'Acier noir 
-item.brass_dust.name=Poussière de Laiton 
-item.bronze_dust.name=Poussière de Bronze 
-item.carmot_dust.name=Poussière de Carmot 
-item.celenegil_dust.name=Poussière de Celenegil 
-item.ceruclase_dust.name=Poussière de Ceruclase 
-item.copper_dust.name=Poussière de Cuivre 
-item.deep_iron_dust.name=Poussière de Fer Profond 
-item.desichalkos_dust.name=Poussière de Desichalkos 
-item.damascus_steel_dust.name=Poussière d'Acier de Damas 
-item.electrum_dust.name=Poussière d'Electrum 
-item.eximite_dust.name=Poussière d'Eximite 
-item.gold_dust.name=Poussière d'Or 
-item.haderoth_dust.name=Poussière d'Haderoth 
-item.hepatizon_dust.name=Poussière d'Hepatizon 
-item.ignatius_dust.name=Poussière d'Ignatius 
-item.infuscolium_dust.name=Poussière d'Infuscolium 
-item.inolashite_dust.name=Poussière d'Inolashite 
-item.iron_dust.name=Poussière de Fer 
-item.kalendrite_dust.name=Poussière de Kalendrite 
-item.lemurite_dust.name=Poussière de Lemurite 
-item.manganese_dust.name=Poussière de Manganese 
-item.meutoite_dust.name=Poussière de Meutoite 
-item.midasium_dust.name=Poussière de Midasium 
-item.mithril_dust.name=Poussière de Mithril 
-item.orichalcum_dust.name=Poussière de Orichalcum 
-item.oureclase_dust.name=Poussière d'Oureclase 
-item.platinum_dust.name=Poussière de PlatineDust
-item.prometheum_dust.name=Poussière de Promethem 
-item.quicksilver_dust.name=Poussière de Mercure 
-item.rubracium_dust.name=Poussière de Rubracium 
-item.sanguinite_dust.name=Poussière de Sanguinite 
-item.shadow_iron_dust.name=Poussière de Fer d'Ombre 
-item.shadow_steel_dust.name=Poussière d'Acier d'Ombre 
-item.silver_dust.name=Poussière d'Argent 
-item.steel_dust.name=Poussière d'Acier 
-item.tartarite_dust.name=Poussière de Tartarite
-item.tin_dust.name=Poussière de Tin 
-item.vulcanite_dust.name=Poussière de Vulcanite 
-item.vyroxeres_dust.name=Poussière de Vyroxeres 
-item.zinc_dust.name=Poussière de Zinc 
+# Nugget
+item.metallurgy.adamantine_nugget.name=Adamantine Nugget
+item.metallurgy.alduorite_nugget.name=Alduorite Nugget
+item.metallurgy.amordrine_nugget.name=Amordrine Nugget
+item.metallurgy.angmallen_nugget.name=Angmallen Nugget
+item.metallurgy.astral_silver_nugget.name=Astral Silver Nugget
+item.metallurgy.atlarus_nugget.name=Atlarus Nugget
+item.metallurgy.black_steel_nugget.name=Black Steel Nugget
+item.metallurgy.brass_nugget.name=Brass Nugget
+item.metallurgy.bronze_nugget.name=Bronze Nugget
+item.metallurgy.carmot_nugget.name=Carmot Nugget
+item.metallurgy.celenegil_nugget.name=Celenegil Nugget
+item.metallurgy.ceruclase_nugget.name=Ceruclase Nugget
+item.metallurgy.copper_nugget.name=Copper Nugget
+item.metallurgy.deep_iron_nugget.name=Deep Iron Nugget
+item.metallurgy.desichalkos_nugget.name=Desichalkos Nugget
+item.metallurgy.damascus_steel_nugget.name=Damascus Steel Nugget
+item.metallurgy.electrum_nugget.name=Electrum Nugget
+item.metallurgy.eximite_nugget.name=Eximite Nugget
+item.metallurgy.gold_nugget.name=Gold Nugget
+item.metallurgy.haderoth_nugget.name=Haderoth Nugget
+item.metallurgy.hepatizon_nugget.name=Hepatizon Nugget
+item.metallurgy.ignatius_nugget.name=Ignatius Nugget
+item.metallurgy.infuscolium_nugget.name=Infuscolium Nugget
+item.metallurgy.inolashite_nugget.name=Inolashite Nugget
+item.metallurgy.iron_nugget.name=Iron Nugget
+item.metallurgy.kalendrite_nugget.name=Kalendrite Nugget
+item.metallurgy.krik_nugget.name=Krik Nugget
+item.metallurgy.lemurite_nugget.name=Lemurite Nugget
+item.metallurgy.lutetium_nugget.name=Lutetium Nugget
+item.metallurgy.manganese_nugget.name=Manganese Nugget
+item.metallurgy.meutoite_nugget.name=Meutoite Nugget
+item.metallurgy.midasium_nugget.name=Midasium Nugget
+item.metallurgy.mithril_nugget.name=Mithril Nugget
+item.metallurgy.orichalcum_nugget.name=Orichalcum Nugget
+item.metallurgy.osmium_nugget.name=Osmium Nugget
+item.metallurgy.oureclase_nugget.name=Oureclase Nugget
+item.metallurgy.platinum_nugget.name=Platinum Nugget
+item.metallurgy.prometheum_nugget.name=Prometheum Nugget
+item.metallurgy.quicksilver_nugget.name=Quicksilver Nugget
+item.metallurgy.rubracium_nugget.name=Rubracium Nugget
+item.metallurgy.sanguinite_nugget.name=Sanguinite Nugget
+item.metallurgy.shadow_iron_nugget.name=Shadow Iron Nugget
+item.metallurgy.shadow_steel_nugget.name=Shadow Steel Nugget
+item.metallurgy.silver_nugget.name=Silver Nugget
+item.metallurgy.steel_nugget.name=Steel Nugget
+item.metallurgy.tartarite_nugget.name=Tartarite Nugget
+item.metallurgy.thermite_nugget.name=Thermite Nugget
+item.metallurgy.tin_nugget.name=Tin Nugget
+item.metallurgy.vulcanite_nugget.name=Vulcanite Nugget
+item.metallurgy.vyroxeres_nugget.name=Vyroxeres Nugget
+item.metallurgy.zinc_nugget.name=Zinc Nugget
 
-#Effect
+# Effect
 effect.metallurgy.punch_effect_tired=§4Vous êtes trop fatigué ! Mangez quelque chose !
 
-#FluidBlocks
-tile.molten_adamantine.name= Adamantine Fondu
-tile.molten_alduorite.name= Alduorite Fondu
-tile.molten_amordrine.name= Amordrine Fondu
-tile.molten_angmallen.name= Angmallen Fondu
-tile.molten_astral_silver.name=  Argent Astral Fondu
-tile.molten_atlarus.name= Atlarus Fondu
-tile.molten_black_steel.name= Acier noir Fondu
-tile.molten_brass.name= Laiton Fondu
-tile.molten_bronze.name= Bronze Fondu
-tile.molten_carmot.name= Carmot Fondu
-tile.molten_celenegil.name= Celenegil Fondu
-tile.molten_ceruclase.name= Ceruclase Fondu
-tile.molten_copper.name= Cuivre Fondu
-tile.molten_damascus_steel.name= Acier de Damas Fondu
-tile.molten_deep_iron.name= Fer Profond Fondu
-tile.molten_desichalkos.name= Desichalkos Fondu
-tile.molten_electrum.name= Electrum Fondu
-tile.molten_eximite.name= Eximite Fondu
-tile.molten_haderoth.name= Haderoth Fondu
-tile.molten_hepatizon.name= Hepatizon Fondu
-tile.molten_ignatius.name= Ignatius Fondu
-tile.molten_infuscolium.name= Infuscolium Fondu
-tile.molten_inolashite.name= Inolashite Fondu
-tile.molten_kalendrite.name= Kalendrite Fondu
-tile.molten_lemurite.name= Lemurite Fondu
-tile.molten_manganese.name= Manganese Fondu
-tile.molten_meutoite.name= Meutoite Fondu
-tile.molten_midasium.name= Midasium Fondu
-tile.molten_mithril.name= Mithril Fondu
-tile.molten_orichalcum.name= Orichalcum Fondu
-tile.molten_oureclase.name= Oureclase Fondu
-tile.molten_platinum.name= Platinum Fondu
-tile.molten_prometheum.name= Prometheum Fondu
-tile.molten_quicksilver.name= Mercure Fondu
-tile.molten_rubracium.name= Rubracium Fondu
-tile.molten_sanguinite.name= Sanguinite Fondu
-tile.molten_shadow_iron.name= Fer d'Ombre Fondu
-tile.molten_shadow_steel.name= Acier d'Ombre Fondu
-tile.molten_silver.name= Argent Fondu
-tile.molten_steel.name= Acier Fondu
-tile.molten_tartarite.name= Tartarite Fondu
-tile.molten_tin.name= Tin Fondu
-tile.molten_vulcanite.name= Vulcanite Fondu
-tile.molten_vyroxeres.name= Vyroxeres Fondu
-tile.molten_zinc.name= Zinc Fondu
+# FluidBlocks
+tile.metallurgy.molten_adamantine.name= Adamantine Fondu
+tile.metallurgy.molten_alduorite.name= Alduorite Fondu
+tile.metallurgy.molten_amordrine.name= Amordrine Fondu
+tile.metallurgy.molten_angmallen.name= Angmallen Fondu
+tile.metallurgy.molten_astral_silver.name=  Argent Astral Fondu
+tile.metallurgy.molten_atlarus.name= Atlarus Fondu
+tile.metallurgy.molten_black_steel.name= Acier noir Fondu
+tile.metallurgy.molten_brass.name= Laiton Fondu
+tile.metallurgy.molten_bronze.name= Bronze Fondu
+tile.metallurgy.molten_carmot.name= Carmot Fondu
+tile.metallurgy.molten_celenegil.name= Celenegil Fondu
+tile.metallurgy.molten_ceruclase.name= Ceruclase Fondu
+tile.metallurgy.molten_copper.name= Cuivre Fondu
+tile.metallurgy.molten_damascus_steel.name= Acier de Damas Fondu
+tile.metallurgy.molten_deep_iron.name= Fer Profond Fondu
+tile.metallurgy.molten_desichalkos.name= Desichalkos Fondu
+tile.metallurgy.molten_electrum.name= Electrum Fondu
+tile.metallurgy.molten_eximite.name= Eximite Fondu
+tile.metallurgy.molten_haderoth.name= Haderoth Fondu
+tile.metallurgy.molten_hepatizon.name= Hepatizon Fondu
+tile.metallurgy.molten_ignatius.name= Ignatius Fondu
+tile.metallurgy.molten_infuscolium.name= Infuscolium Fondu
+tile.metallurgy.molten_inolashite.name= Inolashite Fondu
+tile.metallurgy.molten_kalendrite.name= Kalendrite Fondu
+tile.metallurgy.molten_krik.name=Molten Krik
+tile.metallurgy.molten_lemurite.name= Lemurite Fondu
+tile.metallurgy.molten_lutetium.name=Molten Lutetium
+tile.metallurgy.molten_manganese.name= Manganese Fondu
+tile.metallurgy.molten_meutoite.name= Meutoite Fondu
+tile.metallurgy.molten_midasium.name= Midasium Fondu
+tile.metallurgy.molten_mithril.name= Mithril Fondu
+tile.metallurgy.molten_orichalcum.name= Orichalcum Fondu
+tile.metallurgy.molten_osmium.name=Molten Osmium
+tile.metallurgy.molten_oureclase.name= Oureclase Fondu
+tile.metallurgy.molten_platinum.name= Platinum Fondu
+tile.metallurgy.molten_prometheum.name= Prometheum Fondu
+tile.metallurgy.molten_quicksilver.name= Mercure Fondu
+tile.metallurgy.molten_rubracium.name= Rubracium Fondu
+tile.metallurgy.molten_sanguinite.name= Sanguinite Fondu
+tile.metallurgy.molten_shadow_iron.name= Fer d'Ombre Fondu
+tile.metallurgy.molten_shadow_steel.name= Acier d'Ombre Fondu
+tile.metallurgy.molten_silver.name= Argent Fondu
+tile.metallurgy.molten_steel.name= Acier Fondu
+tile.metallurgy.molten_tar.name=Liquid Tar
+tile.metallurgy.molten_tartarite.name= Tartarite Fondu
+tile.metallurgy.molten_thermite.name=Molten Thermite
+tile.metallurgy.molten_tin.name= Tin Fondu
+tile.metallurgy.molten_vulcanite.name= Vulcanite Fondu
+tile.metallurgy.molten_vyroxeres.name= Vyroxeres Fondu
+tile.metallurgy.molten_zinc.name= Zinc Fondu
 
-#Fluids
+# Fluids
 fluid.molten_adamantine= Adamantine Fondu
 fluid.molten_alduorite= Alduorite Fondu
 fluid.molten_amordrine= Amordrine Fondu
@@ -379,12 +485,15 @@ fluid.molten_ignatius= Ignatius Fondu
 fluid.molten_infuscolium= Infuscolium Fondu
 fluid.molten_inolashite= Inolashite Fondu
 fluid.molten_kalendrite= Kalendrite Fondu
+fluid.molten_krik=Molten Krik
 fluid.molten_lemurite= Lemurite Fondu
+fluid.molten_lutetium=Molten Lutetium
 fluid.molten_manganese= Manganese Fondu
 fluid.molten_meutoite= Meutoite Fondu
 fluid.molten_midasium= Midasium Fondu
 fluid.molten_mithril= Mithril Fondu
 fluid.molten_orichalcum= Orichalcum Fondu
+fluid.molten_osmium=Molten Osmium
 fluid.molten_oureclase= Oureclase Fondu
 fluid.molten_platinum= Platinum Fondu
 fluid.molten_prometheum= Prometheum Fondu
@@ -395,355 +504,371 @@ fluid.molten_shadow_iron= Fer d'Ombre Fondu
 fluid.molten_shadow_steel= Acier d'Ombre Fondu
 fluid.molten_silver= Argent Fondu
 fluid.molten_steel= Acier Fondu
+fluid.molten_tar=Liquid Tar
 fluid.molten_tartarite= Tartarite Fondu
+fluid.molten_thermite=Molten Thermite
 fluid.molten_tin= Tin Fondu
 fluid.molten_vulcanite= Vulcanite Fondu
 fluid.molten_vyroxeres= Vyroxeres Fondu
 fluid.molten_zinc= Zinc Fondu
 
-#Ingots
-item.adamantine_ingot.name=Lingot d'Adamantine 
-item.alduorite_ingot.name=Lingot d'Alduorite 
-item.amordrine_ingot.name=Lingot d'Amordrine 
-item.angmallen_ingot.name=Lingot d'Angmallen 
-item.astral_silver_ingot.name=Lingot d'Argent Astral 
-item.atlarus_ingot.name=Lingot d'Atlarus 
-item.black_steel_ingot.name=Lingot d'Acier noir 
-item.brass_ingot.name=Lingot de Laiton 
-item.bronze_ingot.name=Lingot de Bronze 
-item.carmot_ingot.name=Lingot de Carmot 
-item.celenegil_ingot.name=Lingot de Celenegil 
-item.ceruclase_ingot.name=Lingot de Ceruclase 
-item.copper_ingot.name=Lingot de Cuivre 
-item.deep_iron_ingot.name=Lingot de Fer Profond 
-item.desichalkos_ingot.name=Lingot de Desichalkos 
-item.damascus_steel_ingot.name=Lingot d'Acier de Damas 
-item.electrum_ingot.name=Lingot d'Electrum 
-item.eximite_ingot.name=Lingot d'Eximite 
-item.haderoth_ingot.name=Lingot d'Haderoth 
-item.hepatizon_ingot.name=Lingot d'Hepatizon 
-item.ignatius_ingot.name=Lingot d'Ignatius 
-item.infuscolium_ingot.name=Lingot d'Infuscolium 
-item.inolashite_ingot.name=Lingot d'Inolashite 
-item.kalendrite_ingot.name=Lingot de Kalendrite 
-item.lemurite_ingot.name=Lingot de Lemurite 
-item.manganese_ingot.name=Lingot de Manganese 
-item.meutoite_ingot.name=Lingot de Meutoite 
-item.midasium_ingot.name=Lingot de Midasium 
-item.mithril_ingot.name=Lingot de Mithril 
-item.orichalcum_ingot.name=Lingot d'Orichalcum 
-item.oureclase_ingot.name=Lingot d'Oureclase 
-item.platinum_ingot.name=Lingot de Platine
-item.prometheum_ingot.name=Lingot de Promethem 
-item.quicksilver_ingot.name=Lingot de Mercure 
-item.rubracium_ingot.name=Lingot de Rubracium 
-item.sanguinite_ingot.name=Lingot de Sanguinite 
-item.shadow_iron_ingot.name=Lingot de Fer d'Ombre 
-item.shadow_steel_ingot.name=Lingot d'Acier d'Ombre 
-item.silver_ingot.name=Lingot d'Argent 
-item.steel_ingot.name=Lingot d'Acier 
-item.tartarite_ingot.name=Lingot de Tartarite 
-item.tin_ingot.name=Lingot de Tin 
-item.vulcanite_ingot.name=Lingot de Vulcanite 
-item.vyroxeres_ingot.name=Lingot de Vyroxeres 
-item.zinc_ingot.name=Lingot de Zinc 
+# Ingots
+item.metallurgy.adamantine_ingot.name=Lingot d'Adamantine
+item.metallurgy.alduorite_ingot.name=Lingot d'Alduorite
+item.metallurgy.amordrine_ingot.name=Lingot d'Amordrine
+item.metallurgy.angmallen_ingot.name=Lingot d'Angmallen
+item.metallurgy.astral_silver_ingot.name=Lingot d'Argent Astral
+item.metallurgy.atlarus_ingot.name=Lingot d'Atlarus
+item.metallurgy.black_steel_ingot.name=Lingot d'Acier noir
+item.metallurgy.brass_ingot.name=Lingot de Laiton
+item.metallurgy.bronze_ingot.name=Lingot de Bronze
+item.metallurgy.carmot_ingot.name=Lingot de Carmot
+item.metallurgy.celenegil_ingot.name=Lingot de Celenegil
+item.metallurgy.ceruclase_ingot.name=Lingot de Ceruclase
+item.metallurgy.copper_ingot.name=Lingot de Cuivre
+item.metallurgy.deep_iron_ingot.name=Lingot de Fer Profond
+item.metallurgy.desichalkos_ingot.name=Lingot de Desichalkos
+item.metallurgy.damascus_steel_ingot.name=Lingot d'Acier de Damas
+item.metallurgy.electrum_ingot.name=Lingot d'Electrum
+item.metallurgy.eximite_ingot.name=Lingot d'Eximite
+item.metallurgy.haderoth_ingot.name=Lingot d'Haderoth
+item.metallurgy.hepatizon_ingot.name=Lingot d'Hepatizon
+item.metallurgy.ignatius_ingot.name=Lingot d'Ignatius
+item.metallurgy.infuscolium_ingot.name=Lingot d'Infuscolium
+item.metallurgy.inolashite_ingot.name=Lingot d'Inolashite
+item.metallurgy.kalendrite_ingot.name=Lingot de Kalendrite
+item.metallurgy.krik_ingot.name=Krik Ingot
+item.metallurgy.lemurite_ingot.name=Lingot de Lemurite
+item.metallurgy.lutetium_ingot.name=Lutetium Ingot
+item.metallurgy.manganese_ingot.name=Lingot de Manganese
+item.metallurgy.meutoite_ingot.name=Lingot de Meutoite
+item.metallurgy.midasium_ingot.name=Lingot de Midasium
+item.metallurgy.mithril_ingot.name=Lingot de Mithril
+item.metallurgy.orichalcum_ingot.name=Lingot d'Orichalcum
+item.metallurgy.osmium_ingot.name=Osmium Ingot
+item.metallurgy.oureclase_ingot.name=Lingot d'Oureclase
+item.metallurgy.platinum_ingot.name=Lingot de Platine
+item.metallurgy.prometheum_ingot.name=Lingot de Promethem
+item.metallurgy.quicksilver_ingot.name=Lingot de Mercure
+item.metallurgy.rubracium_ingot.name=Lingot de Rubracium
+item.metallurgy.sanguinite_ingot.name=Lingot de Sanguinite
+item.metallurgy.shadow_iron_ingot.name=Lingot de Fer d'Ombre
+item.metallurgy.shadow_steel_ingot.name=Lingot d'Acier d'Ombre
+item.metallurgy.silver_ingot.name=Lingot d'Argent
+item.metallurgy.steel_ingot.name=Lingot d'Acier
+item.metallurgy.tartarite_ingot.name=Lingot de Tartarite
+item.metallurgy.tin_ingot.name=Lingot de Tin
+item.metallurgy.vulcanite_ingot.name=Lingot de Vulcanite
+item.metallurgy.vyroxeres_ingot.name=Lingot de Vyroxeres
+item.metallurgy.zinc_ingot.name=Lingot de Zinc
 
-#Gadgets
-item.flint_and_ignatius.name=Silex et Ignatius
-item.flint_and_vulcanite.name=Silex et Vulcanite
-item.rubracium_gauntlet.name=Gant en Rubracium 
+# Gadgets
+item.metallurgy.flint_and_ignatius.name=Silex et Ignatius
+item.metallurgy.flint_and_vulcanite.name=Silex et Vulcanite
+item.metallurgy.rubracium_gauntlet.name=Gant en Rubracium
+item.metallurgy.invisibility_shield.name=Lemurite Shield
 
-#Items
-item.tar.name=Goudron
-item.sulfur_dust.name=Soufre
-item.bitumen.name=Bitume
-item.potash.name=Potasse
-item.phosphorus.name=Phosphore
+# Items
+item.metallurgy.tar.name=Goudron
+item.metallurgy.sulfur_dust.name=Soufre
+item.metallurgy.bitumen.name=Bitume
+item.metallurgy.potash.name=Potasse
+item.metallurgy.phosphorus.name=Phosphore
 
-#JEI
+# JEI
 gui.jei_compat.crusher.name=Broyeur
+description.jei_compat.tar_processing=Tar is generated in the world in a liquid form (Liquid Tar), however if it's kept away from the other tar fluid blocks it cools down becoming Tar Ore, that you can mine to get both the item form of Tar and occasionally Bitumen
 
-#Ores
-tile.adamantine_ore.name=Minerai d'Adamantine 
-tile.alduorite_ore.name=Minerai d'Alduorite 
-tile.astral_silver_ore.name=Minerai d'Argent Astral 
-tile.atlarus_ore.name=Minerai d'Atlarus 
-tile.bitumen_ore.name=Minerai de Bitume 
-tile.carmot_ore.name=Minerai de Carmot 
-tile.ceruclase_ore.name=Minerai de Ceruclase 
-tile.copper_ore.name=Minerai de Cuivre 
-tile.deep_iron_ore.name=Minerai de Fer Profond 
-tile.eximite_ore.name=Minerai d'Eximite 
-tile.ignatius_ore.name=Minerai d'Ignatius 
-tile.infuscolium_ore.name=Minerai d'Infuscolium 
-tile.kalendrite_ore.name=Minerai de Kalendrite 
-tile.lemurite_ore.name=Minerai de Lemurite 
-tile.manganese_ore.name=Minerai de Manganese 
-tile.midasium_ore.name=Minerai de Midasium 
-tile.meutoite_ore.name=Minerai de Meutoite 
-tile.mithril_ore.name=Minerai de Mithril 
-tile.oureclase_ore.name=Minerai d'Oureclase 
-tile.orichalcum_ore.name=Minerai d'Orichalcum 
-tile.platinum_ore.name=Minerai de Platine
-tile.potash_ore.name=Minerai de Potasse 
-tile.phosphorite_ore.name=Minerai de Phosphorite 
-tile.prometheum_ore.name=Minerai de Prometheum 
-tile.rubracium_ore.name=Minerai de Rubracium 
-tile.sanguinite_ore.name=Minerai de Sanguinite 
-tile.shadow_iron_ore.name=Minerai de Fer d'Ombre 
-tile.silver_ore.name=Minerai d'Argent 
-tile.sulfur_ore.name=Minerai de Soufre 
-tile.tin_ore.name=Minerai de Tin 
-tile.vyroxeres_ore.name=Minerai de Vyroxeres 
-tile.vulcanite_ore.name=Minerai de Vulcanite 
-tile.zinc_ore.name=Minerai de Zinc 
+# Ores
+tile.metallurgy.adamantine_ore.name=Minerai d'Adamantine
+tile.metallurgy.alduorite_ore.name=Minerai d'Alduorite
+tile.metallurgy.astral_silver_ore.name=Minerai d'Argent Astral
+tile.metallurgy.atlarus_ore.name=Minerai d'Atlarus
+tile.metallurgy.tar_ore.name=Tar Ore
+tile.metallurgy.carmot_ore.name=Minerai de Carmot
+tile.metallurgy.ceruclase_ore.name=Minerai de Ceruclase
+tile.metallurgy.copper_ore.name=Minerai de Cuivre
+tile.metallurgy.deep_iron_ore.name=Minerai de Fer Profond
+tile.metallurgy.eximite_ore.name=Minerai d'Eximite
+tile.metallurgy.ignatius_ore.name=Minerai d'Ignatius
+tile.metallurgy.infuscolium_ore.name=Minerai d'Infuscolium
+tile.metallurgy.kalendrite_ore.name=Minerai de Kalendrite
+tile.metallurgy.lemurite_ore.name=Minerai de Lemurite
+tile.metallurgy.lutetium_ore.name=Lutetium Ore
+tile.metallurgy.manganese_ore.name=Minerai de Manganese
+tile.metallurgy.midasium_ore.name=Minerai de Midasium
+tile.metallurgy.meutoite_ore.name=Minerai de Meutoite
+tile.metallurgy.mithril_ore.name=Minerai de Mithril
+tile.metallurgy.orichalcum_ore.name=Minerai d'Orichalcum
+tile.metallurgy.osmium_ore.name=Osmium Ore
+tile.metallurgy.oureclase_ore.name=Minerai d'Oureclase
+tile.metallurgy.platinum_ore.name=Minerai de Platine
+tile.metallurgy.potash_ore.name=Minerai de Potasse
+tile.metallurgy.phosphorite_ore.name=Minerai de Phosphorite
+tile.metallurgy.prometheum_ore.name=Minerai de Prometheum
+tile.metallurgy.rubracium_ore.name=Minerai de Rubracium
+tile.metallurgy.sanguinite_ore.name=Minerai de Sanguinite
+tile.metallurgy.shadow_iron_ore.name=Minerai de Fer d'Ombre
+tile.metallurgy.silver_ore.name=Minerai d'Argent
+tile.metallurgy.sulfur_ore.name=Minerai de Soufre
+tile.metallurgy.tin_ore.name=Minerai de Tin
+tile.metallurgy.vyroxeres_ore.name=Minerai de Vyroxeres
+tile.metallurgy.vulcanite_ore.name=Minerai de Vulcanite
+tile.metallurgy.zinc_ore.name=Minerai de Zinc
 
-#Tools
-item.adamantine_axe.name=Hache en Adamantine 
-item.adamantine_hoe.name=Houe en Adamantine 
-item.adamantine_pickaxe.name=Pioche en Adamantine 
-item.adamantine_shovel.name=Pelle en Adamantine 
-item.adamantine_sword.name=Epée en Adamantine 
+# Tools
+item.metallurgy.adamantine_axe.name=Hache en Adamantine
+item.metallurgy.adamantine_hoe.name=Houe en Adamantine
+item.metallurgy.adamantine_pickaxe.name=Pioche en Adamantine
+item.metallurgy.adamantine_shovel.name=Pelle en Adamantine
+item.metallurgy.adamantine_sword.name=Epée en Adamantine
 
-item.amordrine_axe.name=Hache en Amordrine 
-item.amordrine_hoe.name=Houe en Amordrine 
-item.amordrine_pickaxe.name=Pioche en Amordrine 
-item.amordrine_shovel.name=Pelle en Amordrine 
-item.amordrine_sword.name=Epée en Amordrine 
+item.metallurgy.amordrine_axe.name=Hache en Amordrine
+item.metallurgy.amordrine_hoe.name=Houe en Amordrine
+item.metallurgy.amordrine_pickaxe.name=Pioche en Amordrine
+item.metallurgy.amordrine_shovel.name=Pelle en Amordrine
+item.metallurgy.amordrine_sword.name=Epée en Amordrine
 
-item.angmallen_axe.name=Hache en Angmallen 
-item.angmallen_hoe.name=Houe en Angmallen 
-item.angmallen_pickaxe.name=Pioche en Angmallen 
-item.angmallen_shovel.name=Pelle en Angmallen 
-item.angmallen_sword.name=Epée en Angmallen 
+item.metallurgy.angmallen_axe.name=Hache en Angmallen
+item.metallurgy.angmallen_hoe.name=Houe en Angmallen
+item.metallurgy.angmallen_pickaxe.name=Pioche en Angmallen
+item.metallurgy.angmallen_shovel.name=Pelle en Angmallen
+item.metallurgy.angmallen_sword.name=Epée en Angmallen
 
-item.astral_silver_axe.name=Hache en Argent Astral 
-item.astral_silver_hoe.name=Houe en Argent Astral 
-item.astral_silver_pickaxe.name=Pioche en Argent Astral 
-item.astral_silver_shovel.name=Pelle en Argent Astral 
-item.astral_silver_sword.name=Epée en Argent Astral 
+item.metallurgy.astral_silver_axe.name=Hache en Argent Astral
+item.metallurgy.astral_silver_hoe.name=Houe en Argent Astral
+item.metallurgy.astral_silver_pickaxe.name=Pioche en Argent Astral
+item.metallurgy.astral_silver_shovel.name=Pelle en Argent Astral
+item.metallurgy.astral_silver_sword.name=Epée en Argent Astral
 
-item.atlarus_axe.name=Hache en Atlarus 
-item.atlarus_hoe.name=Houe en Atlarus 
-item.atlarus_pickaxe.name=Pioche en Atlarus 
-item.atlarus_shovel.name=Pelle en Atlarus 
-item.atlarus_sword.name=Epée en Atlarus 
+item.metallurgy.atlarus_axe.name=Hache en Atlarus
+item.metallurgy.atlarus_hoe.name=Houe en Atlarus
+item.metallurgy.atlarus_pickaxe.name=Pioche en Atlarus
+item.metallurgy.atlarus_shovel.name=Pelle en Atlarus
+item.metallurgy.atlarus_sword.name=Epée en Atlarus
 
-item.black_steel_axe.name=Hache en Acier noir 
-item.black_steel_hoe.name=Houe en Acier noir 
-item.black_steel_pickaxe.name=Pioche en Acier noir 
-item.black_steel_shovel.name=Pelle en Acier noir 
-item.black_steel_sword.name=Epée en Acier noir 
+item.metallurgy.black_steel_axe.name=Hache en Acier noir
+item.metallurgy.black_steel_hoe.name=Houe en Acier noir
+item.metallurgy.black_steel_pickaxe.name=Pioche en Acier noir
+item.metallurgy.black_steel_shovel.name=Pelle en Acier noir
+item.metallurgy.black_steel_sword.name=Epée en Acier noir
 
-item.brass_axe.name=Hache en Laiton 
-item.brass_hoe.name=Houe en Laiton 
-item.brass_pickaxe.name=Pioche en Laiton 
-item.brass_shovel.name=Pelle en Laiton 
-item.brass_sword.name=Epée en Laiton 
+item.metallurgy.brass_axe.name=Hache en Laiton
+item.metallurgy.brass_hoe.name=Houe en Laiton
+item.metallurgy.brass_pickaxe.name=Pioche en Laiton
+item.metallurgy.brass_shovel.name=Pelle en Laiton
+item.metallurgy.brass_sword.name=Epée en Laiton
 
-item.bronze_axe.name=Hache en Bronze 
-item.bronze_hoe.name=Houe en Bronze 
-item.bronze_pickaxe.name=Pioche en Bronze 
-item.bronze_shovel.name=Pelle en Bronze 
-item.bronze_sword.name=Epée en Bronze 
+item.metallurgy.bronze_axe.name=Hache en Bronze
+item.metallurgy.bronze_hoe.name=Houe en Bronze
+item.metallurgy.bronze_pickaxe.name=Pioche en Bronze
+item.metallurgy.bronze_shovel.name=Pelle en Bronze
+item.metallurgy.bronze_sword.name=Epée en Bronze
 
-item.carmot_axe.name=Hache en Carmot 
-item.carmot_hoe.name=Houe en Carmot 
-item.carmot_pickaxe.name=Pioche en Carmot 
-item.carmot_shovel.name=Pelle en Carmot 
-item.carmot_sword.name=Epée en Carmot 
+item.metallurgy.carmot_axe.name=Hache en Carmot
+item.metallurgy.carmot_hoe.name=Houe en Carmot
+item.metallurgy.carmot_pickaxe.name=Pioche en Carmot
+item.metallurgy.carmot_shovel.name=Pelle en Carmot
+item.metallurgy.carmot_sword.name=Epée en Carmot
 
-item.celenegil_axe.name=Hache en Celenegil 
-item.celenegil_hoe.name=Houe en Celenegil 
-item.celenegil_pickaxe.name=Pioche en Celenegil 
-item.celenegil_shovel.name=Pelle en Celenegil 
-item.celenegil_sword.name=Epée en Celenegil 
+item.metallurgy.celenegil_axe.name=Hache en Celenegil
+item.metallurgy.celenegil_hoe.name=Houe en Celenegil
+item.metallurgy.celenegil_pickaxe.name=Pioche en Celenegil
+item.metallurgy.celenegil_shovel.name=Pelle en Celenegil
+item.metallurgy.celenegil_sword.name=Epée en Celenegil
 
-item.ceruclase_axe.name=Hache en Ceruclase 
-item.ceruclase_hoe.name=Houe en Ceruclase 
-item.ceruclase_pickaxe.name=Pioche en Ceruclase 
-item.ceruclase_shovel.name=Pelle en Ceruclase 
-item.ceruclase_sword.name=Epée en Ceruclase 
+item.metallurgy.ceruclase_axe.name=Hache en Ceruclase
+item.metallurgy.ceruclase_hoe.name=Houe en Ceruclase
+item.metallurgy.ceruclase_pickaxe.name=Pioche en Ceruclase
+item.metallurgy.ceruclase_shovel.name=Pelle en Ceruclase
+item.metallurgy.ceruclase_sword.name=Epée en Ceruclase
 
-item.copper_axe.name=Hache en Cuivre 
-item.copper_hoe.name=Houe en Cuivre 
-item.copper_pickaxe.name=Pioche en Cuivre 
-item.copper_shovel.name=Pelle en Cuivre 
-item.copper_sword.name=Epée en Cuivre 
+item.metallurgy.copper_axe.name=Hache en Cuivre
+item.metallurgy.copper_hoe.name=Houe en Cuivre
+item.metallurgy.copper_pickaxe.name=Pioche en Cuivre
+item.metallurgy.copper_shovel.name=Pelle en Cuivre
+item.metallurgy.copper_sword.name=Epée en Cuivre
 
-item.damascus_steel_axe.name=Hache en Acier de Damas 
-item.damascus_steel_hoe.name=Houe en Acier de Damas 
-item.damascus_steel_pickaxe.name=Pioche en Acier de Damas 
-item.damascus_steel_shovel.name=Pelle en Acier de Damas 
-item.damascus_steel_sword.name=Epée en Acier de Damas 
+item.metallurgy.damascus_steel_axe.name=Hache en Acier de Damas
+item.metallurgy.damascus_steel_hoe.name=Houe en Acier de Damas
+item.metallurgy.damascus_steel_pickaxe.name=Pioche en Acier de Damas
+item.metallurgy.damascus_steel_shovel.name=Pelle en Acier de Damas
+item.metallurgy.damascus_steel_sword.name=Epée en Acier de Damas
 
-item.deep_iron_axe.name=Hache en Fer Profond 
-item.deep_iron_hoe.name=Houe en Fer Profond 
-item.deep_iron_pickaxe.name=Pioche en Fer Profond 
-item.deep_iron_shovel.name=Pelle en Fer Profond 
-item.deep_iron_sword.name=Epée en Fer Profond 
+item.metallurgy.deep_iron_axe.name=Hache en Fer Profond
+item.metallurgy.deep_iron_hoe.name=Houe en Fer Profond
+item.metallurgy.deep_iron_pickaxe.name=Pioche en Fer Profond
+item.metallurgy.deep_iron_shovel.name=Pelle en Fer Profond
+item.metallurgy.deep_iron_sword.name=Epée en Fer Profond
 
-item.desichalkos_axe.name=Hache en Desichalkos 
-item.desichalkos_hoe.name=Houe en Desichalkos 
-item.desichalkos_pickaxe.name=Pioche en Desichalkos 
-item.desichalkos_shovel.name=Pelle en Desichalkos 
-item.desichalkos_sword.name=Epée en Desichalkos 
+item.metallurgy.desichalkos_axe.name=Hache en Desichalkos
+item.metallurgy.desichalkos_hoe.name=Houe en Desichalkos
+item.metallurgy.desichalkos_pickaxe.name=Pioche en Desichalkos
+item.metallurgy.desichalkos_shovel.name=Pelle en Desichalkos
+item.metallurgy.desichalkos_sword.name=Epée en Desichalkos
 
-item.electrum_axe.name=Hache en Electrum 
-item.electrum_hoe.name=Houe en Electrum 
-item.electrum_pickaxe.name=Pioche en Electrum 
-item.electrum_shovel.name=Pelle en Electrum 
-item.electrum_sword.name=Epée en Electrum 
+item.metallurgy.electrum_axe.name=Hache en Electrum
+item.metallurgy.electrum_hoe.name=Houe en Electrum
+item.metallurgy.electrum_pickaxe.name=Pioche en Electrum
+item.metallurgy.electrum_shovel.name=Pelle en Electrum
+item.metallurgy.electrum_sword.name=Epée en Electrum
 
-item.eximite_axe.name=Hache en Eximite 
-item.eximite_hoe.name=Houe en Eximite 
-item.eximite_pickaxe.name=Pioche en Eximite 
-item.eximite_shovel.name=Pelle en Eximite 
-item.eximite_sword.name=Epée en Eximite 
+item.metallurgy.eximite_axe.name=Hache en Eximite
+item.metallurgy.eximite_hoe.name=Houe en Eximite
+item.metallurgy.eximite_pickaxe.name=Pioche en Eximite
+item.metallurgy.eximite_shovel.name=Pelle en Eximite
+item.metallurgy.eximite_sword.name=Epée en Eximite
 
-item.haderoth_axe.name=Hache en Haderoth 
-item.haderoth_hoe.name=Houe en Haderoth 
-item.haderoth_pickaxe.name=Pioche en Haderoth 
-item.haderoth_shovel.name=Pelle en Haderoth 
-item.haderoth_sword.name=Epée en Haderoth 
+item.metallurgy.haderoth_axe.name=Hache en Haderoth
+item.metallurgy.haderoth_hoe.name=Houe en Haderoth
+item.metallurgy.haderoth_pickaxe.name=Pioche en Haderoth
+item.metallurgy.haderoth_shovel.name=Pelle en Haderoth
+item.metallurgy.haderoth_sword.name=Epée en Haderoth
 
-item.hepatizon_axe.name=Hache en Hepatizon 
-item.hepatizon_hoe.name=Houe en Hepatizon 
-item.hepatizon_pickaxe.name=Pioche en Hepatizon 
-item.hepatizon_shovel.name=Pelle en Hepatizon 
-item.hepatizon_sword.name=Epée en Hepatizon 
+item.metallurgy.hepatizon_axe.name=Hache en Hepatizon
+item.metallurgy.hepatizon_hoe.name=Houe en Hepatizon
+item.metallurgy.hepatizon_pickaxe.name=Pioche en Hepatizon
+item.metallurgy.hepatizon_shovel.name=Pelle en Hepatizon
+item.metallurgy.hepatizon_sword.name=Epée en Hepatizon
 
-item.ignatius_axe.name=Hache en Ignatius 
-item.ignatius_hoe.name=Houe en Ignatius 
-item.ignatius_pickaxe.name=Pioche en Ignatius 
-item.ignatius_shovel.name=Pelle en Ignatius 
-item.ignatius_sword.name=Epée en Ignatius 
+item.metallurgy.ignatius_axe.name=Hache en Ignatius
+item.metallurgy.ignatius_hoe.name=Houe en Ignatius
+item.metallurgy.ignatius_pickaxe.name=Pioche en Ignatius
+item.metallurgy.ignatius_shovel.name=Pelle en Ignatius
+item.metallurgy.ignatius_sword.name=Epée en Ignatius
 
-item.inolashite_axe.name=Hache en Inolashite 
-item.inolashite_hoe.name=Houe en Inolashite 
-item.inolashite_pickaxe.name=Pioche en Inolashite 
-item.inolashite_shovel.name=Pelle en Inolashite 
-item.inolashite_sword.name=Epée en Inolashite 
+item.metallurgy.inolashite_axe.name=Hache en Inolashite
+item.metallurgy.inolashite_hoe.name=Houe en Inolashite
+item.metallurgy.inolashite_pickaxe.name=Pioche en Inolashite
+item.metallurgy.inolashite_shovel.name=Pelle en Inolashite
+item.metallurgy.inolashite_sword.name=Epée en Inolashite
 
-item.kalendrite_axe.name=Hache en Kalendrite 
-item.kalendrite_hoe.name=Houe en Kalendrite 
-item.kalendrite_pickaxe.name=Pioche en Kalendrite 
-item.kalendrite_shovel.name=Pelle en Kalendrite 
-item.kalendrite_sword.name=Epée en Kalendrite 
+item.metallurgy.kalendrite_axe.name=Hache en Kalendrite
+item.metallurgy.kalendrite_hoe.name=Houe en Kalendrite
+item.metallurgy.kalendrite_pickaxe.name=Pioche en Kalendrite
+item.metallurgy.kalendrite_shovel.name=Pelle en Kalendrite
+item.metallurgy.kalendrite_sword.name=Epée en Kalendrite
 
-item.midasium_axe.name=Hache en Midasium 
-item.midasium_hoe.name=Houe en Midasium 
-item.midasium_pickaxe.name=Pioche en Midasium 
-item.midasium_shovel.name=Pelle en Midasium 
-item.midasium_sword.name=Epée en Midasium 
+item.metallurgy.krik_axe.name=Krik Axe
+item.metallurgy.krik_hoe.name=Krik Hoe
+item.metallurgy.krik_pickaxe.name=Krik Pickaxe
+item.metallurgy.krik_shovel.name=Krik Shovel
+item.metallurgy.krik_sword.name=Krik Sword
 
-item.mithril_axe.name=Hache en Mithril 
-item.mithril_hoe.name=Houe en Mithril 
-item.mithril_pickaxe.name=Pioche en Mithril 
-item.mithril_shovel.name=Pelle en Mithril 
-item.mithril_sword.name=Epée en Mithril 
+item.metallurgy.midasium_axe.name=Hache en Midasium
+item.metallurgy.midasium_hoe.name=Houe en Midasium
+item.metallurgy.midasium_pickaxe.name=Pioche en Midasium
+item.metallurgy.midasium_shovel.name=Pelle en Midasium
+item.metallurgy.midasium_sword.name=Epée en Midasium
 
-item.orichalcum_axe.name=Hache en Orichalcum 
-item.orichalcum_hoe.name=Houe en Orichalcum 
-item.orichalcum_pickaxe.name=Pioche en Orichalcum 
-item.orichalcum_shovel.name=Pelle en Orichalcum 
-item.orichalcum_sword.name=Epée en Orichalcum 
+item.metallurgy.mithril_axe.name=Hache en Mithril
+item.metallurgy.mithril_hoe.name=Houe en Mithril
+item.metallurgy.mithril_pickaxe.name=Pioche en Mithril
+item.metallurgy.mithril_shovel.name=Pelle en Mithril
+item.metallurgy.mithril_sword.name=Epée en Mithril
 
-item.oureclase_axe.name=Hache en Oureclase 
-item.oureclase_hoe.name=Houe en Oureclase 
-item.oureclase_pickaxe.name=Pioche en Oureclase 
-item.oureclase_shovel.name=Pelle en Oureclase 
-item.oureclase_sword.name=Epée en Oureclase 
+item.metallurgy.orichalcum_axe.name=Hache en Orichalcum
+item.metallurgy.orichalcum_hoe.name=Houe en Orichalcum
+item.metallurgy.orichalcum_pickaxe.name=Pioche en Orichalcum
+item.metallurgy.orichalcum_shovel.name=Pelle en Orichalcum
+item.metallurgy.orichalcum_sword.name=Epée en Orichalcum
 
-item.platinum_axe.name=Hache en Platine
-item.platinum_hoe.name=Houe en Platine
-item.platinum_pickaxe.name=Pioche en Platine
-item.platinum_shovel.name=Pelle en Platine
-item.platinum_sword.name=Epée en Platine
+item.metallurgy.oureclase_axe.name=Hache en Oureclase
+item.metallurgy.oureclase_hoe.name=Houe en Oureclase
+item.metallurgy.oureclase_pickaxe.name=Pioche en Oureclase
+item.metallurgy.oureclase_shovel.name=Pelle en Oureclase
+item.metallurgy.oureclase_sword.name=Epée en Oureclase
 
-item.prometheum_axe.name=Hache en Prometheum 
-item.prometheum_hoe.name=Houe en Prometheum 
-item.prometheum_pickaxe.name=Pioche en Prometheum 
-item.prometheum_shovel.name=Pelle en Prometheum 
-item.prometheum_sword.name=Epée en Prometheum 
+item.metallurgy.platinum_axe.name=Hache en Platine
+item.metallurgy.platinum_hoe.name=Houe en Platine
+item.metallurgy.platinum_pickaxe.name=Pioche en Platine
+item.metallurgy.platinum_shovel.name=Pelle en Platine
+item.metallurgy.platinum_sword.name=Epée en Platine
 
-item.quicksilver_axe.name=Hache en Mercure 
-item.quicksilver_hoe.name=Houe en Mercure 
-item.quicksilver_pickaxe.name=Pioche en Mercure 
-item.quicksilver_shovel.name=Pelle en Mercure 
-item.quicksilver_sword.name=Epée en Mercure 
+item.metallurgy.prometheum_axe.name=Hache en Prometheum
+item.metallurgy.prometheum_hoe.name=Houe en Prometheum
+item.metallurgy.prometheum_pickaxe.name=Pioche en Prometheum
+item.metallurgy.prometheum_shovel.name=Pelle en Prometheum
+item.metallurgy.prometheum_sword.name=Epée en Prometheum
 
-item.sanguinite_axe.name=Hache en Sanguinite 
-item.sanguinite_hoe.name=Houe en Sanguinite 
-item.sanguinite_pickaxe.name=Pioche en Sanguinite 
-item.sanguinite_shovel.name=Pelle en Sanguinite 
-item.sanguinite_sword.name=Epée en Sanguinite 
+item.metallurgy.quicksilver_axe.name=Hache en Mercure
+item.metallurgy.quicksilver_hoe.name=Houe en Mercure
+item.metallurgy.quicksilver_pickaxe.name=Pioche en Mercure
+item.metallurgy.quicksilver_shovel.name=Pelle en Mercure
+item.metallurgy.quicksilver_sword.name=Epée en Mercure
 
-item.shadow_iron_axe.name=Hache en Fer d'Ombre 
-item.shadow_iron_hoe.name=Houe en Fer d'Ombre 
-item.shadow_iron_pickaxe.name=Pioche en Fer d'Ombre 
-item.shadow_iron_shovel.name=Pelle en Fer d'Ombre 
-item.shadow_iron_sword.name=Epée en Fer d'Ombre 
+item.metallurgy.sanguinite_axe.name=Hache en Sanguinite
+item.metallurgy.sanguinite_hoe.name=Houe en Sanguinite
+item.metallurgy.sanguinite_pickaxe.name=Pioche en Sanguinite
+item.metallurgy.sanguinite_shovel.name=Pelle en Sanguinite
+item.metallurgy.sanguinite_sword.name=Epée en Sanguinite
 
-item.shadow_steel_axe.name=Hache en Acier d'Ombre 
-item.shadow_steel_hoe.name=Houe en Acier d'Ombre 
-item.shadow_steel_pickaxe.name=Pioche en Acier d'Ombre 
-item.shadow_steel_shovel.name=Pelle en Acier d'Ombre 
-item.shadow_steel_sword.name=Epée en Acier d'Ombre 
+item.metallurgy.shadow_iron_axe.name=Hache en Fer d'Ombre
+item.metallurgy.shadow_iron_hoe.name=Houe en Fer d'Ombre
+item.metallurgy.shadow_iron_pickaxe.name=Pioche en Fer d'Ombre
+item.metallurgy.shadow_iron_shovel.name=Pelle en Fer d'Ombre
+item.metallurgy.shadow_iron_sword.name=Epée en Fer d'Ombre
 
-item.silver_axe.name=Hache en Argent 
-item.silver_hoe.name=Houe en Argent 
-item.silver_pickaxe.name=Pioche en Argent 
-item.silver_shovel.name=Pelle en Argent 
-item.silver_sword.name=Epée en Argent 
+item.metallurgy.shadow_steel_axe.name=Hache en Acier d'Ombre
+item.metallurgy.shadow_steel_hoe.name=Houe en Acier d'Ombre
+item.metallurgy.shadow_steel_pickaxe.name=Pioche en Acier d'Ombre
+item.metallurgy.shadow_steel_shovel.name=Pelle en Acier d'Ombre
+item.metallurgy.shadow_steel_sword.name=Epée en Acier d'Ombre
 
-item.steel_axe.name=Hache en Acier 
-item.steel_hoe.name=Houe en Acier 
-item.steel_pickaxe.name=Pioche en Acier 
-item.steel_shovel.name=Pelle en Acier 
-item.steel_sword.name=Epée en Acier 
+item.metallurgy.silver_axe.name=Hache en Argent
+item.metallurgy.silver_hoe.name=Houe en Argent
+item.metallurgy.silver_pickaxe.name=Pioche en Argent
+item.metallurgy.silver_shovel.name=Pelle en Argent
+item.metallurgy.silver_sword.name=Epée en Argent
 
-item.tartarite_axe.name=Hache en Tartarite 
-item.tartarite_hoe.name=Houe en Tartarite 
-item.tartarite_pickaxe.name=Pioche en Tartarite 
-item.tartarite_shovel.name=Pelle en Tartarite 
-item.tartarite_sword.name=Epée en Tartarite 
+item.metallurgy.steel_axe.name=Hache en Acier
+item.metallurgy.steel_hoe.name=Houe en Acier
+item.metallurgy.steel_pickaxe.name=Pioche en Acier
+item.metallurgy.steel_shovel.name=Pelle en Acier
+item.metallurgy.steel_sword.name=Epée en Acier
 
-item.vulcanite_axe.name=Hache en Vulcanite
-item.vulcanite_hoe.name=Houe en Vulcanite 
-item.vulcanite_pickaxe.name=Pioche en Vulcanite 
-item.vulcanite_shovel.name=Pelle en Vulcanite 
-item.vulcanite_sword.name=Epée en Vulcanite 
+item.metallurgy.tartarite_axe.name=Hache en Tartarite
+item.metallurgy.tartarite_hoe.name=Houe en Tartarite
+item.metallurgy.tartarite_pickaxe.name=Pioche en Tartarite
+item.metallurgy.tartarite_shovel.name=Pelle en Tartarite
+item.metallurgy.tartarite_sword.name=Epée en Tartarite
 
-item.vyroxeres_axe.name=Hache en Vyroxeres 
-item.vyroxeres_hoe.name=Houe en Vyroxeres 
-item.vyroxeres_pickaxe.name=Pioche en Vyroxeres 
-item.vyroxeres_shovel.name=Pelle en Vyroxeres 
-item.vyroxeres_sword.name=Epée en Vyroxeres 
+item.metallurgy.vulcanite_axe.name=Hache en Vulcanite
+item.metallurgy.vulcanite_hoe.name=Houe en Vulcanite
+item.metallurgy.vulcanite_pickaxe.name=Pioche en Vulcanite
+item.metallurgy.vulcanite_shovel.name=Pelle en Vulcanite
+item.metallurgy.vulcanite_sword.name=Epée en Vulcanite
 
-#Tile Entities
+item.metallurgy.vyroxeres_axe.name=Hache en Vyroxeres
+item.metallurgy.vyroxeres_hoe.name=Houe en Vyroxeres
+item.metallurgy.vyroxeres_pickaxe.name=Pioche en Vyroxeres
+item.metallurgy.vyroxeres_shovel.name=Pelle en Vyroxeres
+item.metallurgy.vyroxeres_sword.name=Epée en Vyroxeres
+
+# Tile Entities
 container.crusher=Broyeur
 container.alloyer=Fusionneur
-tile.crusher.name=§6Broyeur
-tile.alloyer.name=§eFusionneur
+tile.metallurgy.crusher.name=§6Broyeur
+tile.metallurgy.alloyer.name=§eFusionneur
 
-#Tinkers' Construct Traits
+# Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscur
-modifier.vulcan_trait.name=Volcanique
-modifier.duplication_trait.name=Reproduction
-modifier.life_steal_trait.name=Vol de Vie
-modifier.wither_trait.name=Wither
-modifier.king_dice_trait.name=Effets aléatoires
-
 modifier.obscure_trait.desc=
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
+modifier.vulcan_trait.name=Volcanique
 modifier.vulcan_trait.desc=
+modifier.duplication_trait.name=Reproduction
 modifier.duplication_trait.desc=
+modifier.life_steal_trait.name=Vol de Vie
 modifier.life_steal_trait.desc=
+modifier.wither_trait.name=Wither
 modifier.wither_trait.desc=
+modifier.king_dice_trait.name=Effets aléatoires
 modifier.king_dice_trait.desc=
 
-#Tooltips
-#Armor Tooltips
+# Tooltips
+# Armor Tooltips
 tooltip.metallurgy.adamantine_armor_effect=§4Saturation
 tooltip.metallurgy.amordrine_armor_effect=§dForce
 tooltip.metallurgy.angmallen_armor_effect=§eChance
@@ -754,7 +879,10 @@ tooltip.metallurgy.ceruclase_armor_effect=§3Ralentit les attaquants
 tooltip.metallurgy.deep_iron_armor_effect=§1Nage rapide
 tooltip.metallurgy.eximite_helmet_effect=§5Les Endermans ne vous remarquent pas
 tooltip.metallurgy.kalendrite_armor_effect=§dForce
+tooltip.metallurgy.krik_armor_effect=§2Full Armor Set: Weight controlled flight
+tooltip.metallurgy.lutetium_armor_effect=§6Knockback resistance II
 tooltip.metallurgy.mithril_armor_effect=§bRend les entités plus visible
+tooltip.metallurgy.osmium_armor_effect=§9Knockback resistance I
 tooltip.metallurgy.platinum_armor_effect=§bVision nocturne
 tooltip.metallurgy.prometheum_armor_effect=§2Immunité au poison
 tooltip.metallurgy.quicksilver_armor_effect=§bVitesse
@@ -762,14 +890,19 @@ tooltip.metallurgy.shadow_iron_armor_effect=§8Pas d'aveuglement
 tooltip.metallurgy.shadow_steel_armor_effect=§8Plus dur dans le noir
 tooltip.metallurgy.vulcanite_armor_effect=§cImmunité au feu
 
-#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
-#Swords
+# Other Tooltips
+tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
+tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
+
+# Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+# Swords
 tooltip.metallurgy.celenegil_sword_effect=§aVos victimes vous font sentir fort et rapide
 tooltip.metallurgy.ceruclase_sword_effect=§3Ralentit la cible
+tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
 tooltip.metallurgy.desichalkos_sword_effect=§5Inflige un effet négatif aléatoire à la cible
 tooltip.metallurgy.ignatius_sword_effect=§cAura de feu I
 tooltip.metallurgy.kalendrite_sword_effect=§dA la chance de régénérer votre vie
-tooltip.metallurgy.midasium_sword_effect=§6Butin
+tooltip.metallurgy.midasium_tool_effect=§6Duplication
 tooltip.metallurgy.mithril_sword_effect=§bFait briller la cible
 tooltip.metallurgy.orichalcum_sword_effect=§2Vos meurtres vous font sentir fort
 tooltip.metallurgy.sanguinite_sword_effect=§4Vol de vie
@@ -779,15 +912,15 @@ tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cLame de feu II
 tooltip.metallurgy.vyroxeres_sword_effect=§aEmpoisonne votre cible
 
-#Pickaxes
+# Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Minez plus rapidement sous l'eau!
 
-#Tools
+# Tools
 tooltip.metallurgy.shadow_steel_tool_effect=§8La vitesse de minage est directement proportionnelle à l'obscurité
-#Utils
+
+# Utils
 util.world_join_message.1=§4§lMetallurgy 4: Reforged
 util.world_join_message.2=§6[Attention: c'est une version alpha du mod]
 util.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
 util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
-util.world_join_message.5=For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged

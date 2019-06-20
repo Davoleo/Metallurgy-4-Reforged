@@ -11,13 +11,12 @@
 
 package it.hurts.metallurgy_reforged.util;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 public class EventUtils {
 	
@@ -40,6 +39,25 @@ public class EventUtils {
 	{			
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());	      
 	    return list.get(index).getItem().equals(armorEquip);
+	}
+
+	/**
+	 * @param pl EntityPlayer
+	 * @param armor An array with all armor pieces
+	 * @return 	The number of pieces of armor worn by the player
+	 */
+	public static int getArmorPiecesCount(EntityPlayer pl, Item[] armor){
+		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
+
+		int counter = 0;
+
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getItem().equals(armor[3 - i])){
+				counter++;
+			}
+		}
+
+		return counter;
 	}
 
 }

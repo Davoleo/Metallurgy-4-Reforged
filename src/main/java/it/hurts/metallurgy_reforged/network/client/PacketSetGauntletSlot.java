@@ -12,11 +12,10 @@
 package it.hurts.metallurgy_reforged.network.client;
 
 import io.netty.buffer.ByteBuf;
-import it.hurts.metallurgy_reforged.container.slot.*;
+import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -69,7 +68,8 @@ public class PacketSetGauntletSlot implements IMessage{
 			if (entityplayersp != null)
 			{
 //				Imposta lo stack al braccio sinistro
-				entityplayersp.setItemStackToSlot(EntityEquipmentSlot.OFFHAND,msg.gauntlet);
+				entityplayersp.inventory.offHandInventory.set(0, msg.gauntlet);
+
 				if(msg.put)
 //					Se msg (put) � true, imposta lo slot bloccato
 					entityplayersp.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(entityplayersp));

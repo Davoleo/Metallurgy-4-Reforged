@@ -1,18 +1,15 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "PK"
-  ],
-  "key":{
-    "P":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
       "type": "forge:ore_dict",
       "ore": "dustPlatinum"
     },
-    "K":{
+    {
       "type": "forge:ore_dict",
       "ore": "dustKalendrite"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:amordrine_dust",
     "count": 2

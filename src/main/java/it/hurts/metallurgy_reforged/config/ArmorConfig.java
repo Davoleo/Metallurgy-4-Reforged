@@ -20,15 +20,9 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.Level;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class ArmorConfig {
 	
-	private static final String CATEGORY = "ArmorEffectHandler";
-	public static List<Map<String, Boolean>> mapList = new ArrayList<Map<String, Boolean>>();
+	private static final String CATEGORY = "Armor";
 
 	public static boolean adamantine = true;
 	public static boolean amordrine = true;
@@ -127,24 +121,19 @@ public class ArmorConfig {
     }
 	
 	private static void initArmorConfig(Configuration cfg) {
-			for(int i = 0; i < allArmor.length; i++) {
-				Map<String,Boolean> mappa = new HashMap<String,Boolean>();
-				allArmor[i]= cfg.getBoolean(Utils.materialName[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.materialName[i]) + " ArmorEffectHandler Set" );
-				
-				mappa.put(Utils.materialName[i].toUpperCase(), allArmor[i]);
-				mapList.add(mappa);
-			}
+			for(int i = 0; i < allArmor.length; i++)
+				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " Armor Set" );
 	}
 
-		
-		public static class ChangeListener {
 
-			@SubscribeEvent
-			public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-				if(eventArgs.getModID().equals(Metallurgy.MODID)) {
-					ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
-				}
+	public static class ChangeListener {
+
+		@SubscribeEvent
+		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+			if(eventArgs.getModID().equals(Metallurgy.MODID)) {
+				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 			}
 		}
+	}
 		
 }

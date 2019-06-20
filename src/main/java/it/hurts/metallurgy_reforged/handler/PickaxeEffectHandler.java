@@ -11,17 +11,14 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import java.util.ArrayList;
-
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.item.tool.ModTools;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PickaxeEffectHandler {
@@ -33,42 +30,17 @@ public class PickaxeEffectHandler {
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
 		if(pl.isInWater()
-				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModTools.deep_iron_pickaxe))
-				&& ToolEffectsConfig.deepIronPickaxeEffect)
-			event.setNewSpeed(6F);
-//				set tools break speed based on light except for hoe and sword
-				if(ToolEffectsConfig.shadowSteelToolSpeedEffect && Utils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
-					float percentage = Utils.getLightArmorPercentage(pl,100F);
-					float speed = event.getNewSpeed()  * percentage / 40F;
-					event.setNewSpeed(event.getOriginalSpeed() + speed);
-				}
-	}
-	
-	@SubscribeEvent
-    public static void drop(BlockEvent.HarvestDropsEvent ev)
-    {
-		if(ev.getHarvester() instanceof EntityPlayer) {
-            EntityPlayer pl = ev.getHarvester();
-		
-	            if(Utils.isItemStackASpecificToolMaterial(ModMetals.MIDASIUM, pl.getHeldItemMainhand()) && (ev.getState().getBlock().toString().contains("_ore") 
-	    				|| ev.getState().getBlock().isWood(ev.getWorld(), ev.getPos()) 
-	    				|| ev.getState().getBlock().equals(Blocks.SAND)
-	    				|| ev.getState().getBlock().equals(Blocks.SOUL_SAND)
-	    				|| ev.getState().getBlock().equals(Blocks.DIRT)
-	    				|| ev.getState().getBlock().equals(Blocks.GRASS)
-	    				|| ev.getState().getBlock().equals(Blocks.GRAVEL)) /*&& ev.getState().getBlock().isToolEffective(pl.getHeldItemMainhand().getItem()., state)*/){
-		            ArrayList<ItemStack> drops = new ArrayList<>();
-		
-		            if((int) (Math.random() * 100) <= 50) {
-			            for(ItemStack stack : ev.getDrops())
-			            {
-			            	if(stack != null)
-			            		drops.add(stack);
-			            }
-			            ev.getDrops().addAll(drops);
-		            }
-	            }
+				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE)))
+				&& ToolEffectsConfig.deepIronPickaxeEffect) {
+				event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}
-    }
 
+
+//		set tools break speed based on light except for hoe and sword
+		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && ItemUtils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+			float percentage = Utils.getLightArmorPercentage(pl,100F);
+			float speed = event.getNewSpeed()  * percentage / 40F;
+			event.setNewSpeed(event.getOriginalSpeed() + speed);
+		}
+	}
 }

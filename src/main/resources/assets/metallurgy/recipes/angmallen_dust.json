@@ -1,18 +1,15 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "IG"
-  ],
-  "key":{
-    "I":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
       "type": "forge:ore_dict",
       "ore": "dustIron"
     },
-    "G":{
+    {
       "type": "forge:ore_dict",
       "ore": "dustGold"
     }
-  },
+  ],
   "result": {
     "item": "metallurgy:angmallen_dust",
     "count": 2

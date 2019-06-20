@@ -16,6 +16,7 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 @Config.LangKey("config.metallurgy.category.general")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {
@@ -25,28 +26,48 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean warning = true;
 
-	@Config.Name("Enable/Disable all tools")
-	@Config.Comment("When set to false it disables all tools")
+	@Config.Name("Disable all tools")
+	@Config.Comment("When set to true all tool sets are disabled")
 	@Config.RequiresMcRestart
-	public static boolean disableAllTools = true;
+	public static boolean disableAllTools = false;
 	
-	@Config.Name("Enable/Disable all armor set")
-	@Config.Comment("When set to false it disables all armor sets")
+	@Config.Name("Disable all armor set")
+	@Config.Comment("When set to true all armor sets are disabled")
 	@Config.RequiresMcRestart
-	public static boolean disableAllArmors = true;
+	public static boolean disableAllArmors = false;
 	
 	@Config.Name("Road Speed Multiplier")
-	@Config.Comment("Sets the road speed")
+	@Config.Comment("Set the road speed multiplier")
 	@Config.RangeDouble(min = 1)
 	public static double roadSpeed = 1.50D;
 	
-	@Config.Name("Disable the tinker integration")
-	@Config.Comment("Sets to true for disable")
+	@Config.Name("Disable tinker integration")
+	@Config.Comment("Set to true to disable Tinkers' Construct Integration")
 	public static boolean tinkerIntegraton = false;
 	
-	@Config.Name("Disable the constructs' armory integration")
-	@Config.Comment("Sets to true for disable")
+	@Config.Name("Disable ConArm Integration")
+	@Config.Comment("Set to true to disable Construct's Armory Integration")
 	public static boolean armoryIntegraton = false;
+
+	@Config.Name("Disable IF Integration")
+	@Config.Comment("Set to true to disable Industrial Foregoing Integration")
+	public static boolean inForegoingIntegraton = false;
+
+	@Config.Name("Disable Automatic EMC values")
+	@Config.Comment("Set to true to disable default EMC values")
+	public static boolean projectEIntegration = false;
+
+	@Config.Name("Enable Duplication Trait")
+	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
+	public static boolean enableDuplicationTrait = true;
+
+	@Config.Name("Should Tool be repairable in Anvil")
+	@Config.Comment("Set this to true to enable the possibility to repair tools in Vanilla Anvil")
+	public static boolean enableAnvilToolRepair = false;
+
+	@Config.Name("Should Armor be repairable in Anvil")
+	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
+	public static boolean enableAnvilArmorRepair = false;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {

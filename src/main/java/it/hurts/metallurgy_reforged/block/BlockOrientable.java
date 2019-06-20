@@ -11,6 +11,8 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.util.BlockUtils;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -25,7 +27,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 //A block that has an additional direction property
-public class BlockOrientable extends BlockBase {
+public class BlockOrientable extends Block {
 
     //Internal State and Variables -----------------------------------------------------
 
@@ -37,10 +39,8 @@ public class BlockOrientable extends BlockBase {
     //Creates a new Instance of an Orientable block
     public BlockOrientable(Material material, String name, CreativeTabs tab)
     {
-        super(material, name);
-
-        setCreativeTab(tab);
-        ModBlocks.blockList.add(this);
+        super(material);
+        BlockUtils.initBlock(this, name, tab, true);
     }
 
     //Custom Methods --------------------------------------------------------------------
@@ -107,8 +107,8 @@ public class BlockOrientable extends BlockBase {
         return i;
     }
 
-    //TODO Remove for 1.13.2
     //Gets the state from the metadata value (will probably be gone for 1.13.2)
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

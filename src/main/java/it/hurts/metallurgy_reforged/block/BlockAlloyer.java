@@ -268,8 +268,8 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
         return new BlockStateContainer(this, BURNING, FACING);
     }
 
-    //TODO Remove for 1.13.2
     //Gets the state from the metadata value (will probably be gone for 1.13.2)
+    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta)

@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
@@ -25,76 +26,82 @@ public class SetTinkerTraits {
 
 		switch(metal.getStats().getName()) {
 //		TraitSuperheat = Increased damage to enemies that are on fire
-		
+
 			case "midasium" : {
 				addToEveryPart(material, writable2);
-				addToEveryPart(material, MetallurgyTinkerTraits.duplicaitonTrait);
+
+				if (GeneralConfig.enableDuplicationTrait)
+					addToEveryPart(material, MetallurgyTinkerTraits.duplicaitonTrait);
 			}
 			break;
-			
-			case "ignatius":{
+
+			case "ignatius": {
 				material.addTrait(MetallurgyTinkerTraits.vulcanTrait, HEAD);
 			}
 			break;
-			
-			case "vulcanite":{
+
+			case "vulcanite": {
 				material.addTrait(MetallurgyTinkerTraits.vulcanTrait1, HEAD);
 				material.addTrait(superheat, HANDLE);
 			}
 			break;
-			
-			case "eximite":{
+
+			case "eximite": {
 				material.addTrait(enderference, HEAD);
 			}
 			break;
-			
-			case "vyroxeres":{
+
+			case "vyroxeres": {
 				addToEveryPart(material, poisonous);
 			}
 			break;
-			
-			case "mithril":{
+
+			case "mithril": {
 //				TODO Glowing Modifiers
 			}
 			break;
-			
-			case "damascus_steel":{
+
+			case "damascus_steel": {
 				addToEveryPart(material, duritos);
 //				TODO Reinforced II
 			}
 			break;
-			
-			case "shadow_iron":{
+
+			case "shadow_iron": {
 				addToEveryPart(material, MetallurgyTinkerTraits.obscureTrait);
 			}
 			break;
-			
-			case "sanguinite":{
+
+			case "sanguinite": {
 				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HEAD);
 				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HANDLE);
 			}
 			break;
-			
-			case "tartarite":{
+
+			case "tartarite": {
 				material.addTrait(MetallurgyTinkerTraits.witherTrait, HEAD);
 			}
 			break;
-			
-			case "alduorite":{
-//				Rompe pi� velocementi i blocchi di harvest level inferiore al proprio
+
+			case "alduorite": {
 				material.addTrait(TinkerTraits.unnatural, EXTRA);
 				material.addTrait(TinkerTraits.unnatural, HEAD);
 			}
 			break;
-			
-			case "desichalkos":{
+
+			case "desichalkos": {
 				material.addTrait(MetallurgyTinkerTraits.kingDiceTrait, EXTRA);
 			}
 			break;
-			
+
+			case "deep_iron" : {
+				addToEveryPart(material, MetallurgyTinkerTraits.opistognathusTrait);
+			}
+			break;
+
 			default:{}
-			break;	
-		}	
+			break;
+		}
 	}
 
 	private static void addToEveryPart(Material material, AbstractTrait trait)

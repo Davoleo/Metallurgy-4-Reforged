@@ -17,7 +17,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitVolcano extends AbstractArmorTrait{
+public class TraitVolcano extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitVolcano() {
 		super("volcano", TextFormatting.RED);
@@ -25,7 +25,7 @@ public class TraitVolcano extends AbstractArmorTrait{
 	
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "volcano"))
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "volcano"))
 			event.player.extinguish();
 	}
 

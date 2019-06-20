@@ -18,7 +18,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitPrometheum extends AbstractArmorTrait{
+public class TraitPrometheum extends AbstractArmorTrait implements IConarmMetallurgyTrait{
 
 	public TraitPrometheum() {
 		super("prometheum", TextFormatting.DARK_GREEN);
@@ -26,7 +26,7 @@ public class TraitPrometheum extends AbstractArmorTrait{
 
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event){	
-		if(MetallurgyConArmorStats.isThatArmorTrait(event.player, "prometheum") && event.player.getActivePotionEffects().contains(MobEffects.POISON)) {
+		if(MetallurgyConArmorStats.isArmorTrait(event.player, "prometheum")) {
 			event.player.removePotionEffect(MobEffects.POISON);
 		}
 			

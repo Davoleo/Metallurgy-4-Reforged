@@ -1,21 +1,24 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "MI",
-    "MM"
-  ],
-  "key":{
-    "M":{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustIron"
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustManganese"
     },
-    "I":{
+    {
       "type": "forge:ore_dict",
-      "ore": "dustIron"
+      "ore": "dustManganese"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustManganese"
     }
-  },
+  ],
   "result": {
-    "item": "metallurgy:steel_dust",
-    "count": 1
+    "item": "metallurgy:steel_dust"
   }
 }

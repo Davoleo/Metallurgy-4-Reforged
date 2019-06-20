@@ -264,25 +264,25 @@ config.metallurgy.category.worldgen=World Generation
 #Construct's Armory Traits
 modifier.blindness_armor.name=Clear Vision
 modifier.cat_eyes_armor.name=Night Vision
-modifier.deeply_armor.name=Aquatic
+modifier.deeply_armor.name=Diver
 modifier.foodly_armor.name=Well Fed
-modifier.jump_master_armor.name=Jump Boost
+modifier.jump_master_armor.name=Jump Master
 modifier.prometheum_armor.name=Poison Immunity
-modifier.quickly_armor.name=Quick Shooting
+modifier.quickly_armor.name=Quick Action
 modifier.resistance_armor.name=Resistance IV
 modifier.strongly_armor.name=Strength
 modifier.volcano_armor.name=Volcanic
 
-modifier.blindness_armor.desc=Makes you immune to blindness
-modifier.cat_eyes_armor.desc=Allows you to see in the dark
-modifier.deeply_armor.desc=It makes it easier for you to do things underwater
-modifier.foodly_armor.desc=Replenishes your food bar if you have enough experience.
-modifier.jump_master_armor.desc=Increases jump height
-modifier.prometheum_armor.desc=Grants immunity to poison.
-modifier.quickly_armor.desc=Stretching a bow becomes faster
-modifier.resistance_armor.desc=Reduces incoming damage even further than you'd expect.
-modifier.strongly_armor.desc=Increases dealt damage (can be level I or level II)
-modifier.volcano_armor.desc=It makes you immune to fire
+modifier.blindness_armor.desc=§oNo Blindness >:(§r\nMakes you immune to blindness
+modifier.cat_eyes_armor.desc=§oNo carrots required§r\nAllows you to see in the dark
+modifier.deeply_armor.desc=§oAqua-bound!§r\nIt makes it easier for you to do things underwater
+modifier.foodly_armor.desc=§oThe taste of hard work§r\nReplenishes your food bar if you have enough experience.
+modifier.jump_master_armor.desc=§oWheeee!§r\nIncreases jump height.
+modifier.prometheum_armor.desc=§oTastes like coconut... and metal§r\nGrants immunity to poison.
+modifier.quickly_armor.desc=§oBow Tender§r\nStretching a bow becomes faster
+modifier.resistance_armor.desc=§oHard as nails§r\nReduces incoming damage even further than you'd expect.
+modifier.strongly_armor.desc=§oI bet I could lift that§r\nIncreases damage dealt \n(can be level I or level II)
+modifier.volcano_armor.desc=§oFire-bound!§r\nIt makes you immune to fire
 
 # Creative Tab
 itemGroup.metallurgy.armors=Metallurgy Armor
@@ -562,6 +562,8 @@ item.metallurgy.zinc_ingot.name=Zinc Ingot
 item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
+item.metallurgy.lemurite_shield.name=Lemurite Shield
+tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 #Items
 item.metallurgy.tar.name=Tar
@@ -569,6 +571,7 @@ item.metallurgy.sulfur_dust.name=Sulfur
 item.metallurgy.bitumen.name=Bitumen
 item.metallurgy.potash.name=Potash
 item.metallurgy.phosphorus.name=Phosphorus
+item.metallurgy.potash_fertilizer.name=Potash Fertilizer
 
 #JEI
 gui.jei_compat.crusher.name=Crusher
@@ -843,12 +846,14 @@ item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
 #Tile Entities
 container.crusher=Crusher
 container.alloyer=Alloyer
-tile.metallurgy.crusher.name=§6Crusher
+tile.metallurgy.crusher.name=§cCrusher
 tile.metallurgy.alloyer.name=§eAlloyer
 
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscure
 modifier.obscure_trait.desc=Blinds your enemy for some time
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
 modifier.vulcan_trait.name=Volcanic
 modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time (depending on the level of the trait)
 modifier.duplication_trait.name=Duplication
@@ -863,7 +868,7 @@ modifier.king_dice_trait.desc=Applies a random effect on your enemy
 #Tooltips
 #Armor Tooltips
 tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set: Consumes experience to gain hunger points
-tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght
+tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght II
 tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set: (WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set: Jump Boost
 tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set: (WIP) Haste (WIP)
@@ -872,8 +877,10 @@ tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set: Slows Attackers
 tooltip.metallurgy.deep_iron_armor_effect=§1Full Armor Set: Fast Swimming
 tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
 tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set: Strenght
-tooltip.metallurgy.krik_armor_effect=§dFull Armor Set: Weight controlled flight
+tooltip.metallurgy.krik_armor_effect=§2Full Armor Set: Weight controlled flight
+tooltip.metallurgy.lutetium_armor_effect=§6Knockback resistance II
 tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set: Makes Entities more visible
+tooltip.metallurgy.osmium_armor_effect=§9Knockback resistance I
 tooltip.metallurgy.platinum_armor_effect=§bNight Vision
 tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set: Poison Immunity
 tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Faster Action
@@ -882,13 +889,16 @@ tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in 
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 
 #Other Tooltips
-tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
+tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
+tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
+tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Swords
 tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
+tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
 tooltip.metallurgy.desichalkos_sword_effect=§5Inflicts some random negative effect to the target
 tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
 tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
