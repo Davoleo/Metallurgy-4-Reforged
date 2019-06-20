@@ -11,13 +11,11 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -26,11 +24,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -108,31 +103,28 @@ public class BlockPhosphorusLamp extends BlockOrientable {
     @Override
     public int getLightValue(IBlockState state, IBlockAccess blockAccess, BlockPos pos)
     {
-        if (checkLightPollution(pos))
-            return 8;
-        else
-            return 0;
+        return 8;
     }
 
-    @SideOnly(Side.CLIENT)
-    private boolean checkLightPollution(BlockPos pos)
-    {
-        World world = Minecraft.getMinecraft().world;
-        boolean isDay = (world.getWorldTime() % 23300) <= 12800;
-        EnumFacing freeFace = BlockUtils.getFreeFacing(world, pos);
-        int skyLightPollution;
-        int blockLightPollution;
-        if (freeFace != null) {
-            skyLightPollution = world.getLightFor(EnumSkyBlock.SKY, pos.offset(freeFace));
-            blockLightPollution = world.getLightFor(EnumSkyBlock.BLOCK, pos.offset(freeFace));
-        }
-        else {
-            skyLightPollution = 0;
-            blockLightPollution = 0;
-        }
-        return  !isDay || skyLightPollution < 6 || blockLightPollution == 0;
-
-    }
+//    @SideOnly(Side.CLIENT)
+//    private boolean checkLightPollution(BlockPos pos)
+//    {
+//        World world = Minecraft.getMinecraft().world;
+//        boolean isDay = (world.getWorldTime() % 23300) <= 12800;
+//        EnumFacing freeFace = BlockUtils.getFreeFacing(world, pos);
+//        int skyLightPollution;
+//        int blockLightPollution;
+//        if (freeFace != null) {
+//            skyLightPollution = world.getLightFor(EnumSkyBlock.SKY, pos.offset(freeFace));
+//            blockLightPollution = world.getLightFor(EnumSkyBlock.BLOCK, pos.offset(freeFace));
+//        }
+//        else {
+//            skyLightPollution = 0;
+//            blockLightPollution = 0;
+//        }
+//        return  !isDay || skyLightPollution < 6 || blockLightPollution == 0;
+//
+//    }
 
     @Override
     public int getMetaFromState(IBlockState state)
