@@ -13,11 +13,13 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -39,13 +41,56 @@ public class BlockPhosphorusLamp extends BlockOrientable {
         setSoundType(SoundType.METAL);
         setHardness(4);
         setHarvestLevel("pickaxe", 1);
+        setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
     }
 
     @Nonnull
     @Override
     public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
     {
-        return this.getDefaultState().withProperty(FACING, facing);
+        if (this.canPlaceAt(world, pos, facing))
+        {
+            return this.getDefaultState().withProperty(FACING, facing);
+        }
+        else
+        {
+            return this.getDefaultState().withProperty(FACING, EnumFacing.UP);
+        }
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+        checkLampFall(worldIn, pos, state);
+    }
+
+    private boolean canPlaceAt(World worldIn, BlockPos pos, EnumFacing facing)
+    {
+        BlockPos blockpos = pos.offset(facing.getOpposite());
+        IBlockState blockstate = worldIn.getBlockState(blockpos);
+
+        return blockstate.isFullCube() && !worldIn.isAirBlock(blockpos);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    {
+        checkLampFall(worldIn, pos, state);
+    }
+
+    private void checkLampFall(World worldIn, BlockPos pos, IBlockState state)
+    {
+        if (!canPlaceAt(worldIn, pos, state.getValue(FACING)))
+        {
+            if (!worldIn.isRemote)
+            {
+                EntityFallingBlock fallingLamp = new EntityFallingBlock(worldIn, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, state.withProperty(FACING, EnumFacing.UP));
+                fallingLamp.fallTime = 1;
+                worldIn.spawnEntity(fallingLamp);
+                worldIn.setBlockToAir(pos);
+            }
+        }
     }
 
     @Nonnull
