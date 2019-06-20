@@ -11,7 +11,7 @@
     },
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotangmallen"
+      "ore": "ingotAngmallen"
     }
   },
   "result":{
