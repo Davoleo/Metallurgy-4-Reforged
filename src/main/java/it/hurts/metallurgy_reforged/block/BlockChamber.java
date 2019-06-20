@@ -1,13 +1,17 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: BlockChamber
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.block;
 
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
-import javax.annotation.Nonnull;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import net.minecraft.block.BlockHorizontal;
@@ -24,17 +28,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
@@ -53,15 +57,17 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 	}
 
 	@Override
-	public TileEntityChamber createTileEntity(World world, IBlockState state) {
+	public TileEntityChamber createTileEntity(@Nonnull World world, @Nonnull IBlockState state) {
 		return new TileEntityChamber();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean isFullCube(IBlockState state) {
 		return false;
@@ -84,7 +90,6 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
 			int currentMetalAmount = chamber.getStackInSlot(TileEntityChamber.METAL_SLOT).getCount();
 
-
 			ItemStack fuelStack = chamber.getStackInSlot(TileEntityChamber.FUEL_SLOT);
 			int currentFuelAmount = fuelStack.getCount();
 
@@ -99,7 +104,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 					copyStack.setCount(currentMetalAmount + copyStack.getCount());
 					chamber.setInventorySlotContents(TileEntityChamber.METAL_SLOT, copyStack);
 
-					worldIn.playSound((EntityPlayer)null, pos, SoundEvents.BLOCK_METAL_PLACE, SoundCategory.BLOCKS, 1F, 1F);
+					worldIn.playSound(null, pos, SoundEvents.BLOCK_METAL_PLACE, SoundCategory.BLOCKS, 1F, 1F);
 
 					return true;
 
@@ -180,9 +185,9 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 		super.breakBlock(world, pos, state);
 	}
 
-	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
+	public void dropBlockAsItemWithChance(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, float chance, int fortune)
 	{
-		//The Block mustn't drop with this method
+		//The Block shouldn't drop with this method
 	}
 
 	@SideOnly(Side.CLIENT)

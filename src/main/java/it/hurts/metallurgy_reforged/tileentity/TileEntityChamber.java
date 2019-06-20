@@ -1,14 +1,20 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: TileEntityChamber
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.tileentity;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.Lists;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockChamber;
+import it.hurts.metallurgy_reforged.container.ContainerNull;
 import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,11 +42,15 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
-public class TileEntityChamber extends TileEntityLockable implements ITickable, ISidedInventory{
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
+
+public class TileEntityChamber extends TileEntityLockable implements ITickable, ISidedInventory {
 
 	public static final int METAL_SLOT = 0;
 	public static final int FUEL_SLOT = 1;
-
 
 	private static final int[] SLOTS_TOP = new int[] {METAL_SLOT};
 	private static final int[] SLOTS_BOTTOM = new int[] {FUEL_SLOT};
@@ -49,7 +59,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	private final IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
 	private final IItemHandler handlerBottom = new SidedInvWrapper(this,EnumFacing.DOWN);
 	private final IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
-
 
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
 
@@ -60,7 +69,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	public PotionEffect potionEffect = null;
 
 	public List<UUID> affectedPlayers = Lists.newArrayList();
-
 
 	@Override
 	public int getSizeInventory() 
@@ -74,18 +82,21 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return this.inventory.isEmpty();
 	}
 
+	@Nonnull
 	@Override
 	public ItemStack getStackInSlot(int index) 
 	{
 		return this.inventory.get(index);
 	}
 
+	@Nonnull
 	@Override
 	public ItemStack decrStackSize(int index, int count)
 	{
 		return ItemStackHelper.getAndSplit(this.inventory, index, count);
 	}
 
+	@Nonnull
 	@Override
 	public ItemStack removeStackFromSlot(int index) 
 	{
@@ -95,7 +106,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) 
 	{
-
 		ItemStack itemstack = this.inventory.get(index);
 		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
 		this.inventory.set(index, stack);
@@ -128,28 +138,21 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	}
 
 	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) 
+	public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
 	{
-		if (this.world.getTileEntity(this.pos) != this)
-		{
-			return false;
-		}
-		else
-		{
-			return player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
-		}
+		return this.world.getTileEntity(this.pos) == this;
 	}
 
-	public void openInventory(EntityPlayer player) 
+	public void openInventory(@Nonnull EntityPlayer player)
 	{
 	}
 
-	public void closeInventory(EntityPlayer player)
+	public void closeInventory(@Nonnull EntityPlayer player)
 	{
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) 
+	public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
 	{
 		if (index == FUEL_SLOT)
 		{
@@ -188,6 +191,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		this.inventory.clear();
 	}
 
+	@Nonnull
 	@Override
 	public String getName() 
 	{
@@ -200,25 +204,28 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return this.chamberCustomName != null && !this.chamberCustomName.isEmpty();
 	}
 
-	public void setChamberCustomName(String chamberCustomName)
-	{
-		this.chamberCustomName = chamberCustomName;
-	}
+//	public void setChamberCustomName(String chamberCustomName)
+//	{
+//		this.chamberCustomName = chamberCustomName;
+//	}
 
+	@Nonnull
 	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) 
+	public Container createContainer(@Nonnull InventoryPlayer playerInventory, @Nonnull EntityPlayer playerIn)
 	{
-		return null;
+		return new ContainerNull();
 	}
 
+	@Nonnull
 	@Override
 	public String getGuiID()
 	{
 		return Metallurgy.MODID + ":chamber";
 	}
 
+	@Nonnull
 	@Override
-	public int[] getSlotsForFace(EnumFacing side) 
+	public int[] getSlotsForFace (@Nonnull EnumFacing side)
 	{
 		if (side == EnumFacing.DOWN)
 		{
@@ -231,13 +238,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	}
 
 	@Override
-	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) 
+	public boolean canInsertItem(int index, @Nonnull ItemStack itemStackIn, @Nonnull EnumFacing direction)
 	{	
 		return this.isItemValidForSlot(index, itemStackIn);
 	}
 
 	@Override
-	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) 
+	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction)
 	{
 		return index == FUEL_SLOT;
 	}
@@ -274,7 +281,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 					if(this.activeTime < potionEffect.getDuration())
 					{
 						this.activeTime++;
-
 
 						int range = 6;
 
@@ -332,6 +338,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 	}
 
+	@Nonnull
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
 	{	
 
@@ -345,7 +352,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 			NBTTagCompound nbttagcompound = new NBTTagCompound();
 			nbttagcompound.setUniqueId("playerUUID", this.affectedPlayers.get(i));
 			nbttaglist.appendTag(nbttagcompound);
-
 		}
 
 		if (!nbttaglist.isEmpty())
@@ -363,6 +369,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		if(this.potionEffect != null)
 			this.potionEffect.writeCustomPotionEffectToNBT(compound);
 
+		//WOW :D
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
 		if (this.hasCustomName())
@@ -388,7 +395,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 	public void readChamberFromNBT(NBTTagCompound compound)
 	{
-
 		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.inventory);
 
@@ -400,7 +406,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		{
 			this.chamberCustomName = compound.getString("CustomName");
 		}
-
 	}
 
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
@@ -412,7 +417,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@SuppressWarnings("unchecked")
 	@Override
 	@Nullable
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
 	{
 		if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			if (facing == EnumFacing.DOWN)
@@ -429,6 +434,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
 	}
 
+	@Nonnull
 	public NBTTagCompound getUpdateTag() 
 	{
 		return this.writeToNBT(new NBTTagCompound());

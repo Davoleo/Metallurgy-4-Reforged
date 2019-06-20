@@ -1,17 +1,24 @@
+/*
+ * -------------------------------------------------------------------------------------------------------
+ * Class: BlockSublimationRecipes
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: ItHurtsLikeHell & Davoleo
+ * Copyright (c) 2019.
+ * --------------------------------------------------------------------------------------------------------
+ */
+
 package it.hurts.metallurgy_reforged.recipe;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.google.common.collect.Table.Cell;
 
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class BlockSublimationRecipes {
 	
@@ -49,14 +56,14 @@ public class BlockSublimationRecipes {
         return null;
     }
     
-    public boolean isSublimationBlock(ItemStack input) {
-    	for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
-            if(this.compareItemStacks(entry.getKey(), input))
-                return true;
-        }
-    	
-        return false;
-    }
+//    public boolean isSublimationBlock(ItemStack input) {
+//    	for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
+//            if(this.compareItemStacks(entry.getKey(), input))
+//                return true;
+//        }
+//        return false;
+//    }
+
     public int getSublimationBlockAmount(ItemStack input) {
     	for(Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet()) {
             if(this.compareItemStacks(entry.getKey(), input))
@@ -66,10 +73,10 @@ public class BlockSublimationRecipes {
         return 0;
     }
     
-    public Map<ItemStack, PotionEffect> getRecipeTable()
-    {
-        return sublimationList;
-    }
+//    public Map<ItemStack, PotionEffect> getRecipeTable()
+//    {
+//        return sublimationList;
+//    }
     
     private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {
         return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
