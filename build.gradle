@@ -22,7 +22,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 // Non Modificare Sopra
 
-version = "0.2.0"
+version = "0.2.1"
 group = "it.hurts.metallurgy_reforged"
 archivesBaseName = "Metallurgy-4-Reforged"
 
