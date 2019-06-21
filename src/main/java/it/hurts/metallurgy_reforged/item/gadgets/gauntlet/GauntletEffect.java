@@ -45,8 +45,10 @@ public class GauntletEffect
             {
                 FoodStats foodStats = pl.getFoodStats();
 
+                int doubleFoodModifier = GauntletConfig.gauntletHungerModifier * 2;
 
-                if(foodStats.getFoodLevel() >= GauntletConfig.gauntletHungerModifier || pl.isCreative())
+
+                if(foodStats.getFoodLevel() >= doubleFoodModifier || pl.isCreative())
                 {
 
                     IPunchEffect effect = entityLivingBase.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
@@ -70,14 +72,24 @@ public class GauntletEffect
                     }
                     if(!pl.isCreative() && !pl.world.isRemote)
                     {
-                        if(foodStats.getSaturationLevel() > 0.0F)
+                        int foodDifference = doubleFoodModifier - Math.round(foodStats.getSaturationLevel());
+
+                        if(foodStats.getSaturationLevel() <= 0.0F)
+                        {
+                            foodStats.addStats(-doubleFoodModifier,0F);
+                        }
+                        else if(foodDifference > 0.0F)
+                        {
+
+                            foodStats.addStats(1, -foodStats.getSaturationLevel());
+                            foodStats.addStats(-foodDifference,0F);
+                        }
+                        else
                         {
                             int foodLevel = foodStats.getFoodLevel();
                             foodStats.addStats(1, -GauntletConfig.gauntletHungerModifier);
                             foodStats.setFoodLevel(foodLevel);
                         }
-                        else
-                            foodStats.addStats(-GauntletConfig.gauntletHungerModifier, 0F);
                     }
 
 

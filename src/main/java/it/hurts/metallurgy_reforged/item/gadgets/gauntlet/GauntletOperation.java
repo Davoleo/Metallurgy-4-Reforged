@@ -45,7 +45,7 @@ public class GauntletOperation
         if(entity instanceof EntityPlayerMP)
         {
             EntityPlayerMP player = (EntityPlayerMP) entity;
-            if(player.ticksExisted > 5 && event.getSlot() == EntityEquipmentSlot.MAINHAND)
+            if(event.getSlot() == EntityEquipmentSlot.MAINHAND)
             {
                 if(newStack.getItem() instanceof ItemGauntlet)
                 {
