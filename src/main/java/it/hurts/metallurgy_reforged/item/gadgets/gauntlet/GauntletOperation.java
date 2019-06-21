@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,9 +50,16 @@ public class GauntletOperation
                 if(newStack.getItem() instanceof ItemGauntlet)
                 {
 
+
                     ItemStack offStackCopy = offStack.copy();
 
                     ItemStack copy = newStack.copy();
+                    if(!newStack.getEnchantmentTagList().isEmpty())
+                    {
+                        copy.getTagCompound().removeTag("ench");
+                        copy.getTagCompound().setBoolean("hasEffect",true);
+                    }
+
                     player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
 
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
