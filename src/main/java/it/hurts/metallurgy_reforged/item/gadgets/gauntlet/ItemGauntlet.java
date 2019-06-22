@@ -63,6 +63,12 @@ public class ItemGauntlet extends Item implements IHasModel {
 	}
 
 	@Override
+	public boolean hasEffect(ItemStack stack)
+	{
+		return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
+	}
+
+	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
 		List<Enchantment> list = Lists.newArrayList(e);
 		

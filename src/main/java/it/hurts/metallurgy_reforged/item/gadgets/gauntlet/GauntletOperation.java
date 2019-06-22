@@ -13,10 +13,10 @@ package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
 
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
-import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +24,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
@@ -45,14 +44,21 @@ public class GauntletOperation
         if(entity instanceof EntityPlayerMP)
         {
             EntityPlayerMP player = (EntityPlayerMP) entity;
-            if(player.ticksExisted > 5 && event.getSlot() == EntityEquipmentSlot.MAINHAND)
+            if(event.getSlot() == EntityEquipmentSlot.MAINHAND)
             {
                 if(newStack.getItem() instanceof ItemGauntlet)
                 {
 
+
                     ItemStack offStackCopy = offStack.copy();
 
                     ItemStack copy = newStack.copy();
+                    if(!newStack.getEnchantmentTagList().isEmpty())
+                    {
+                        copy.getTagCompound().removeTag("ench");
+                        copy.getTagCompound().setBoolean("hasEffect",true);
+                    }
+
                     player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
 
                     PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
