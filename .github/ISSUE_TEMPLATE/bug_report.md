@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
 - Conflicting mod _(if regarding mod integration)_:
 - Other mods you think could cause issues:  
 
-**Crash Report** _(if avaliable)_ 
+**Crash Report and latest.log** _(if avaliable)_
 **Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
 
 **Log** _(if needed)_
