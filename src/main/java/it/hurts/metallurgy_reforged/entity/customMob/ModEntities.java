@@ -1,11 +1,9 @@
 package it.hurts.metallurgy_reforged.entity.customMob;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.entity.customMob.leprechaun.EntityLeprechaun;
 import it.hurts.metallurgy_reforged.entity.customMob.leprechaun.RenderLeprechaun;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;

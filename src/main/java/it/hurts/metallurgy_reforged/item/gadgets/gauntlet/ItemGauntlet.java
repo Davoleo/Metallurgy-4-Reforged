@@ -15,8 +15,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.util.*;
-import net.minecraft.client.util.ITooltipFlag;
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -28,11 +29,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemGauntlet extends Item implements IHasModel {
