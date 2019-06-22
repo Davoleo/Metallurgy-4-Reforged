@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.proxy;
 
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
+import it.hurts.metallurgy_reforged.entity.customMob.ModEntities;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -35,6 +36,8 @@ public class CommonProxy {
         
         toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
         ToolConfig.readConfig(toolConfig);
+
+        ModEntities.init();
     }
     
     public void postInit(FMLPostInitializationEvent e) {
