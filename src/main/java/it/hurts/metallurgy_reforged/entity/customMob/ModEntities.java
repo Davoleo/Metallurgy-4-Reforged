@@ -18,7 +18,7 @@ public class ModEntities {
         // Every entity in our mod has an ID (local to this mod)
         int id = 1;
 //        TODO IDK, help me.
-        EntityRegistry.registerModEntity(new ResourceLocation(), EntityLeprechaun.class, "Leprechaun", id++, Metallurgy.instance, 64, 3, true, 0x996600, 0x00ff00);
+       // EntityRegistry.registerModEntity(new ResourceLocation(), EntityLeprechaun.class, "Leprechaun", id++, Metallurgy.instance, 64, 3, true, 0x996600, 0x00ff00);
 
         // We want our mob to spawn in Plains and ice plains biomes. If you don't add this then it will not spawn automatically
         // but you can of course still make it spawn manually

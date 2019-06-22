@@ -29,8 +29,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
-		if(!ModChecker.isBWMLoaded)
-			MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
+		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(ArmorConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);

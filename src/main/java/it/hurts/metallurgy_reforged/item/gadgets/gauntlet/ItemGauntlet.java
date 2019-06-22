@@ -133,11 +133,4 @@ public class ItemGauntlet extends Item implements IHasModel {
 		return super.hitEntity(stack, target, attacker);
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-	{
-		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if (ModChecker.isBWMLoaded)
-			tooltip.add(Constants.GAUNTLET_EFFECT_DISABLED);
-	}
 }
