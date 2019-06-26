@@ -69,6 +69,10 @@ public class GeneralConfig {
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
 	public static boolean enableAnvilArmorRepair = false;
 
+	@Config.Name("Lantern entity collision")
+	@Config.Comment("Set this to false to disable entity collisions with lantern")
+	public static boolean enableLanternCollision = true;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 		@SubscribeEvent
