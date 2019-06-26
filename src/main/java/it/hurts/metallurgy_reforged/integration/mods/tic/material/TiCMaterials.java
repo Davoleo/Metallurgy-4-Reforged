@@ -37,7 +37,10 @@ public class TiCMaterials {
 			ToolStats TStats = metalS.getToolStats();
 			if(TStats != null)
 			{
-				registerStats(material, MetallurgyTiCStats.getHeadA(metal),MetallurgyTiCStats.getHandleA(metal),MetallurgyTiCStats.getExtraA(metal));
+				registerStats(material, MetallurgyTiCStats.getHeadA(metal),
+						MetallurgyTiCStats.getHandleA(metal),
+						MetallurgyTiCStats.getExtraA(metal),
+						MetallurgyTiCStats.getBowA(metal));
 			}
 		}	
 	}
