@@ -1,4 +1,5 @@
 #!/bin/bash
+# Coded by ItHurtsLikeHell & Davoleo
 
 for file in *_legs.png
 do
