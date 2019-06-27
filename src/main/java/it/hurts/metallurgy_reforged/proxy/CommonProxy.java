@@ -36,12 +36,10 @@ public class CommonProxy {
         
         toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
         ToolConfig.readConfig(toolConfig);
-
-        ModEntities.init();
     }
     
     public void postInit(FMLPostInitializationEvent e) {
-        if(armorConfig.hasChanged())
-        	armorConfig.save();
+//        if(armorConfig.hasChanged())
+//        	armorConfig.save();
     }
 }

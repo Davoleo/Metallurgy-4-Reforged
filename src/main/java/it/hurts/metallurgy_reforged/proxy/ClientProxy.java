@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.proxy;
 
 import it.hurts.metallurgy_reforged.entity.customMob.ModEntities;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy{

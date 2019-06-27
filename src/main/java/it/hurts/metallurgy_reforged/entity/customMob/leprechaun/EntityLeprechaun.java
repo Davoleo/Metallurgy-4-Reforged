@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public class EntityLeprechaun extends EntityMob {
 
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityLeprechaun.class, DataSerializers.BOOLEAN);
-    public static final ResourceLocation LOOT = new ResourceLocation(Metallurgy.MODID, "entities/leprechaun");
+    public static final ResourceLocation LOOT = new ResourceLocation(Metallurgy.MODID, "entity/leprechaun");
 
     public EntityLeprechaun(World worldIn) {
         super(worldIn);
@@ -38,18 +38,19 @@ public class EntityLeprechaun extends EntityMob {
         super.applyEntityAttributes();
         // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.13D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(2.50D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
     }
 
     public void setArmsRaised(boolean armsRaised) {
-        this.getDataManager().set(ARMS_RAISED, Boolean.valueOf(armsRaised));
+//        this.getDataManager().set(ARMS_RAISED, Boolean.valueOf(false));
     }
 
     @SideOnly(Side.CLIENT)
     public boolean isArmsRaised() {
-        return this.getDataManager().get(ARMS_RAISED).booleanValue();
+//        return this.getDataManager().get(ARMS_RAISED).booleanValue();
+        return false;
     }
 
     @Override

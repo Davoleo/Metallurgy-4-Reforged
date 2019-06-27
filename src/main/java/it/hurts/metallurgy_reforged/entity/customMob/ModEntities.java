@@ -18,11 +18,14 @@ public class ModEntities {
         // Every entity in our mod has an ID (local to this mod)
         int id = 1;
 //        TODO IDK, help me.
-        EntityRegistry.registerModEntity(new ResourceLocation(), EntityLeprechaun.class, "Leprechaun", id++, Metallurgy.instance, 64, 3, true, 0x996600, 0x00ff00);
+        EntityRegistry.registerModEntity(new ResourceLocation(Metallurgy.MODID,"leprechaun"),
+                EntityLeprechaun.class, "Leprechaun", id++, Metallurgy.instance, 64,
+                3, true, 0xffffff, 0xffffff);
 
         // We want our mob to spawn in Plains and ice plains biomes. If you don't add this then it will not spawn automatically
         // but you can of course still make it spawn manually
-        EntityRegistry.addSpawn(EntityLeprechaun.class, 100, 3, 5, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.ICE_PLAINS);
+        EntityRegistry.addSpawn(EntityLeprechaun.class, 100, 3, 5,
+                EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.ICE_PLAINS);
 
         // This is the loot table for our mob
         LootTableList.register(EntityLeprechaun.LOOT);

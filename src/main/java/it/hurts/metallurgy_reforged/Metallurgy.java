@@ -15,6 +15,7 @@ package it.hurts.metallurgy_reforged;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
  import it.hurts.metallurgy_reforged.config.GeneralConfig;
+ import it.hurts.metallurgy_reforged.entity.customMob.ModEntities;
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
@@ -105,6 +106,8 @@ public class Metallurgy {
 		
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 		logger.info(NAME + ": Punch effect capability Registered");
+
+		ModEntities.init();
 
 	}
 
