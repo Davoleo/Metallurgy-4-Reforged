@@ -588,23 +588,27 @@ public class WorldGenerationConfig {
     public static class SubCategoryRarity  {
 
     	@Config.Name("Common Ore Rarity")
-    	@Config.Comment("Set the value of common Rarity (Don't change if you aren't a dev)")
+    	@Config.Comment("Set the value of common Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
     	@Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
     	public int commonRarity = 10;
     	
 		@Config.Name("Uncommon Ore Rarity")
-    	@Config.Comment("Set the value of uncommon Rarity (Don't change if you aren't a dev)")
+    	@Config.Comment("Set the value of uncommon Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
     	@Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
     	public int uncommonRarity = 7;
     	
     	@Config.Name("Rare Ore Rarity")
-    	@Config.Comment("Set the value of rare Rarity (Don't change if you aren't a dev)")
+    	@Config.Comment("Set the value of rare Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
     	@Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
     	public int rareRarity = 3;
     	
     	@Config.Name("Ultra Rare Ore Rarity")
-    	@Config.Comment("Set the value of ultra rare Rarity (Don't change if you aren't a dev)")
+    	@Config.Comment("Set the value of ultra rare Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
     	@Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
     	public int ultraRareRarity = 1;
      }
 }
