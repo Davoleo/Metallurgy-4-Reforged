@@ -33,7 +33,7 @@ public class MetallurgyTiCStats {
 		int harvestL = metal.getToolMaterial().getHarvestLevel();
 		
 //		Dovremmo modificare lo speed ?
-		return new HeadMaterialStats((int)(durability / 6.5), speed, attack, harvestL);
+		return new HeadMaterialStats((int)(durability / 4), speed, attack, harvestL);
 	}
 	
 	public static ExtraMaterialStats getExtraA(Metal metal){
