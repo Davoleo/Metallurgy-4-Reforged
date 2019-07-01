@@ -218,6 +218,20 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+
     //Overrides the Type of rendering the block has (MODEL means: mixed static-TESR)
     //Calling is deprecated / Overriding is fine
     @SuppressWarnings("deprecation")
