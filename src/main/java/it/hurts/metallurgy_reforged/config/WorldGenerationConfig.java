@@ -61,10 +61,10 @@ public class WorldGenerationConfig {
 	public static CategoryEximite eximite = new CategoryEximite();
 	public static CategoryMeutoite meutoite = new CategoryMeutoite();
 
-    @Config.Name("The spawnrate percentage of tar lake in the overworld")
-    @Config.Comment("Sets to 0 to disable")
-    @Config.RangeInt(min = 0, max = 100)
-    public static int tarLakePercentage = 20;
+    @Config.Name("The spawnrate of tar lakes in the overworld")
+    @Config.Comment("Sets to 0 to disable tar lakes world generation")
+    @Config.RangeInt(min = 0, max = 500)
+    public static int tarLakePercentage = 250;
 
     @Config.Name("Retrogen")
     @Config.Comment(value = "Enable/Disable Retrogen")
