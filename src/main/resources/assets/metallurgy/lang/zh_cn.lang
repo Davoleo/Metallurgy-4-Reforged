@@ -1,202 +1,202 @@
 # 防具
 item.metallurgy.adamantine_helmet.name=精金头盔
-item.metallurgy.adamantine_chest.name=精金胸甲
-item.metallurgy.adamantine_legs.name=精金护腿
+item.metallurgy.adamantine_chestplate.name=精金胸甲
+item.metallurgy.adamantine_leggings.name=精金护腿
 item.metallurgy.adamantine_boots.name=精金靴子
 
 item.metallurgy.amordrine_helmet.name=爱摩得利安合金头盔
-item.metallurgy.amordrine_chest.name=爱摩得利安合金胸甲
-item.metallurgy.amordrine_legs.name=爱摩得利安合金护腿
+item.metallurgy.amordrine_chestplate.name=爱摩得利安合金胸甲
+item.metallurgy.amordrine_leggings.name=爱摩得利安合金护腿
 item.metallurgy.amordrine_boots.name=爱摩得利安合金靴子
 
 item.metallurgy.angmallen_helmet.name=安格麦金头盔
-item.metallurgy.angmallen_chest.name=安格麦金胸甲
-item.metallurgy.angmallen_legs.name=安格麦金护腿
+item.metallurgy.angmallen_chestplate.name=安格麦金胸甲
+item.metallurgy.angmallen_leggings.name=安格麦金护腿
 item.metallurgy.angmallen_boots.name=安格麦金靴子
 
 item.metallurgy.atlarus_helmet.name=阿塔洛斯杂金头盔
-item.metallurgy.atlarus_chest.name=阿塔洛斯杂金胸甲
-item.metallurgy.atlarus_legs.name=阿塔洛斯杂金护腿
+item.metallurgy.atlarus_chestplate.name=阿塔洛斯杂金胸甲
+item.metallurgy.atlarus_leggings.name=阿塔洛斯杂金护腿
 item.metallurgy.atlarus_boots.name=阿塔洛斯杂金靴子
 
 item.metallurgy.astral_silver_helmet.name=星芒银头盔
-item.metallurgy.astral_silver_chest.name=星芒银胸甲
-item.metallurgy.astral_silver_legs.name=星芒银护腿
+item.metallurgy.astral_silver_chestplate.name=星芒银胸甲
+item.metallurgy.astral_silver_leggings.name=星芒银护腿
 item.metallurgy.astral_silver_boots.name=星芒银靴子
 
 item.metallurgy.black_steel_helmet.name=黑钢头盔
-item.metallurgy.black_steel_chest.name=黑钢胸甲
-item.metallurgy.black_steel_legs.name=黑钢护腿
+item.metallurgy.black_steel_chestplate.name=黑钢胸甲
+item.metallurgy.black_steel_leggings.name=黑钢护腿
 item.metallurgy.black_steel_boots.name=黑钢靴子
 
 item.metallurgy.brass_helmet.name=黄铜头盔
-item.metallurgy.brass_chest.name=黄铜胸甲
-item.metallurgy.brass_legs.name=黄铜护腿
+item.metallurgy.brass_chestplate.name=黄铜胸甲
+item.metallurgy.brass_leggings.name=黄铜护腿
 item.metallurgy.brass_boots.name=黄铜靴子
 
 item.metallurgy.bronze_helmet.name=青铜头盔
-item.metallurgy.bronze_chest.name=青铜胸甲
-item.metallurgy.bronze_legs.name=青铜护腿
+item.metallurgy.bronze_chestplate.name=青铜胸甲
+item.metallurgy.bronze_leggings.name=青铜护腿
 item.metallurgy.bronze_boots.name=青铜靴子
 
 item.metallurgy.carmot_helmet.name=彗星银头盔
-item.metallurgy.carmot_chest.name=彗星银胸甲
-item.metallurgy.carmot_legs.name=彗星银护腿
+item.metallurgy.carmot_chestplate.name=彗星银胸甲
+item.metallurgy.carmot_leggings.name=彗星银护腿
 item.metallurgy.carmot_boots.name=彗星银靴子
 
 item.metallurgy.celenegil_helmet.name=伽利内根合金头盔
-item.metallurgy.celenegil_chest.name=伽利内根合金胸甲
-item.metallurgy.celenegil_legs.name=伽利内根合金护腿
+item.metallurgy.celenegil_chestplate.name=伽利内根合金胸甲
+item.metallurgy.celenegil_leggings.name=伽利内根合金护腿
 item.metallurgy.celenegil_boots.name=伽利内根合金靴子
 
 item.metallurgy.ceruclase_helmet.name=赛鲁克雷斯矿铁头盔
-item.metallurgy.ceruclase_chest.name=赛鲁克雷斯矿铁胸甲
-item.metallurgy.ceruclase_legs.name=赛鲁克雷斯矿铁护腿
+item.metallurgy.ceruclase_chestplate.name=赛鲁克雷斯矿铁胸甲
+item.metallurgy.ceruclase_leggings.name=赛鲁克雷斯矿铁护腿
 item.metallurgy.ceruclase_boots.name=赛鲁克雷斯矿铁靴子
 
 item.metallurgy.copper_helmet.name=铜头盔
-item.metallurgy.copper_chest.name=铜胸甲
-item.metallurgy.copper_legs.name=铜护腿
+item.metallurgy.copper_chestplate.name=铜胸甲
+item.metallurgy.copper_leggings.name=铜护腿
 item.metallurgy.copper_boots.name=铜靴子
 
 item.metallurgy.damascus_steel_helmet.name=大马士革钢头盔
-item.metallurgy.damascus_steel_chest.name=大马士革钢胸甲
-item.metallurgy.damascus_steel_legs.name=大马士革钢护腿
+item.metallurgy.damascus_steel_chestplate.name=大马士革钢胸甲
+item.metallurgy.damascus_steel_leggings.name=大马士革钢护腿
 item.metallurgy.damascus_steel_boots.name=大马士革钢靴子
 
 item.metallurgy.deep_iron_helmet.name=深铁头盔
-item.metallurgy.deep_iron_chest.name=深铁胸甲
-item.metallurgy.deep_iron_legs.name=深铁护腿
+item.metallurgy.deep_iron_chestplate.name=深铁胸甲
+item.metallurgy.deep_iron_leggings.name=深铁护腿
 item.metallurgy.deep_iron_boots.name=深铁靴子
 
 item.metallurgy.desichalkos_helmet.name=德西采寇石头盔
-item.metallurgy.desichalkos_chest.name=德西采寇石胸甲
-item.metallurgy.desichalkos_legs.name=德西采寇石护腿
+item.metallurgy.desichalkos_chestplate.name=德西采寇石胸甲
+item.metallurgy.desichalkos_leggings.name=德西采寇石护腿
 item.metallurgy.desichalkos_boots.name=德西采寇石靴子
 
 item.metallurgy.electrum_helmet.name=金银合金头盔
-item.metallurgy.electrum_chest.name=金银合金胸甲
-item.metallurgy.electrum_legs.name=金银合金护腿
+item.metallurgy.electrum_chestplate.name=金银合金胸甲
+item.metallurgy.electrum_leggings.name=金银合金护腿
 item.metallurgy.electrum_boots.name=金银合金靴子
 
 item.metallurgy.eximite_helmet.name=抹灭石头盔
-item.metallurgy.eximite_chest.name=抹灭石胸甲
-item.metallurgy.eximite_legs.name=抹灭石护腿
+item.metallurgy.eximite_chestplate.name=抹灭石胸甲
+item.metallurgy.eximite_leggings.name=抹灭石护腿
 item.metallurgy.eximite_boots.name=抹灭石靴子
 
 item.metallurgy.haderoth_helmet.name=海德洛斯合金头盔
-item.metallurgy.haderoth_chest.name=海德洛斯合金胸甲
-item.metallurgy.haderoth_legs.name=海德洛斯合金护腿
+item.metallurgy.haderoth_chestplate.name=海德洛斯合金胸甲
+item.metallurgy.haderoth_leggings.name=海德洛斯合金护腿
 item.metallurgy.haderoth_boots.name=海德洛斯合金靴子
 
 item.metallurgy.hepatizon_helmet.name=科林斯青铜头盔
-item.metallurgy.hepatizon_chest.name=科林斯青铜胸甲
-item.metallurgy.hepatizon_legs.name=科林斯青铜护腿
+item.metallurgy.hepatizon_chestplate.name=科林斯青铜胸甲
+item.metallurgy.hepatizon_leggings.name=科林斯青铜护腿
 item.metallurgy.hepatizon_boots.name=科林斯青铜靴子
 
 item.metallurgy.ignatius_helmet.name=焰金头盔
-item.metallurgy.ignatius_chest.name=焰金胸甲
-item.metallurgy.ignatius_legs.name=焰金护腿
+item.metallurgy.ignatius_chestplate.name=焰金胸甲
+item.metallurgy.ignatius_leggings.name=焰金护腿
 item.metallurgy.ignatius_boots.name=焰金靴子
 
 item.metallurgy.inolashite_helmet.name=爱钮尼沙合金头盔
-item.metallurgy.inolashite_chest.name=爱钮尼沙合金胸甲
-item.metallurgy.inolashite_legs.name=爱钮尼沙合金护腿
+item.metallurgy.inolashite_chestplate.name=爱钮尼沙合金胸甲
+item.metallurgy.inolashite_leggings.name=爱钮尼沙合金护腿
 item.metallurgy.inolashite_boots.name=爱钮尼沙合金靴子
 
 item.metallurgy.kalendrite_helmet.name=历铁头盔
-item.metallurgy.kalendrite_chest.name=历铁胸甲
-item.metallurgy.kalendrite_legs.name=历铁护腿
+item.metallurgy.kalendrite_chestplate.name=历铁胸甲
+item.metallurgy.kalendrite_leggings.name=历铁护腿
 item.metallurgy.kalendrite_boots.name=历铁靴子
 
 item.metallurgy.krik_helmet.name=罪祸哭石头盔
-item.metallurgy.krik_chest.name=罪祸哭石胸甲
-item.metallurgy.krik_legs.name=罪祸哭石护腿
+item.metallurgy.krik_chestplate.name=罪祸哭石胸甲
+item.metallurgy.krik_leggings.name=罪祸哭石护腿
 item.metallurgy.krik_boots.name=罪祸哭石靴子
 
 item.metallurgy.lutetium_helmet.name=Lutetium Helmet
-item.metallurgy.lutetium_chest.name=Lutetium Chestplate
-item.metallurgy.lutetium_legs.name=Lutetium Leggings
+item.metallurgy.lutetium_chestplate.name=Lutetium Chestplate
+item.metallurgy.lutetium_leggings.name=Lutetium Leggings
 item.metallurgy.lutetium_boots.name=Lutetium Boots
 
 item.metallurgy.midasium_helmet.name=米德西铁头盔
-item.metallurgy.midasium_chest.name=米德西铁胸甲
-item.metallurgy.midasium_legs.name=米德西铁护腿
+item.metallurgy.midasium_chestplate.name=米德西铁胸甲
+item.metallurgy.midasium_leggings.name=米德西铁护腿
 item.metallurgy.midasium_boots.name=米德西铁靴子
 
 item.metallurgy.mithril_helmet.name=秘银头盔
-item.metallurgy.mithril_chest.name=秘银胸甲
-item.metallurgy.mithril_legs.name=秘银护腿
+item.metallurgy.mithril_chestplate.name=秘银胸甲
+item.metallurgy.mithril_leggings.name=秘银护腿
 item.metallurgy.mithril_boots.name=秘银靴子
 
 item.metallurgy.orichalcum_helmet.name=星陨石头盔
-item.metallurgy.orichalcum_chest.name=星陨石胸甲
-item.metallurgy.orichalcum_legs.name=星陨石护腿
+item.metallurgy.orichalcum_chestplate.name=星陨石胸甲
+item.metallurgy.orichalcum_leggings.name=星陨石护腿
 item.metallurgy.orichalcum_boots.name=星陨石靴子
 
 item.metallurgy.osmium_helmet.name=Osmium Helmet
-item.metallurgy.osmium_chest.name=Osmium Chestplate
-item.metallurgy.osmium_legs.name=Osmium Leggings
+item.metallurgy.osmium_chestplate.name=Osmium Chestplate
+item.metallurgy.osmium_leggings.name=Osmium Leggings
 item.metallurgy.osmium_boots.name=Osmium Boots
 
 item.metallurgy.oureclase_helmet.name=奥鲁克雷斯矿铁头盔
-item.metallurgy.oureclase_chest.name=奥鲁克雷斯矿铁胸甲
-item.metallurgy.oureclase_legs.name=奥鲁克雷斯矿铁护腿
+item.metallurgy.oureclase_chestplate.name=奥鲁克雷斯矿铁胸甲
+item.metallurgy.oureclase_leggings.name=奥鲁克雷斯矿铁护腿
 item.metallurgy.oureclase_boots.name=奥鲁克雷斯矿铁靴子
 
 item.metallurgy.platinum_helmet.name=铂头盔
-item.metallurgy.platinum_chest.name=铂胸甲
-item.metallurgy.platinum_legs.name=铂护腿
+item.metallurgy.platinum_chestplate.name=铂胸甲
+item.metallurgy.platinum_leggings.name=铂护腿
 item.metallurgy.platinum_boots.name=铂靴子
 
 item.metallurgy.prometheum_helmet.name=鉕头盔
-item.metallurgy.prometheum_chest.name=鉕胸甲
-item.metallurgy.prometheum_legs.name=鉕护腿
+item.metallurgy.prometheum_chestplate.name=鉕胸甲
+item.metallurgy.prometheum_leggings.name=鉕护腿
 item.metallurgy.prometheum_boots.name=鉕靴子
 
 item.metallurgy.quicksilver_helmet.name=银钻头盔
-item.metallurgy.quicksilver_chest.name=银钻胸甲
-item.metallurgy.quicksilver_legs.name=银钻护腿
+item.metallurgy.quicksilver_chestplate.name=银钻胸甲
+item.metallurgy.quicksilver_leggings.name=银钻护腿
 item.metallurgy.quicksilver_boots.name=银钻靴子
 
 item.metallurgy.sanguinite_helmet.name=狱炎石头盔
-item.metallurgy.sanguinite_chest.name=狱炎石胸甲
-item.metallurgy.sanguinite_legs.name=狱炎石护腿
+item.metallurgy.sanguinite_chestplate.name=狱炎石胸甲
+item.metallurgy.sanguinite_leggings.name=狱炎石护腿
 item.metallurgy.sanguinite_boots.name=狱炎石靴子
 
 item.metallurgy.shadow_iron_helmet.name=暗铁头盔
-item.metallurgy.shadow_iron_chest.name=暗铁胸甲
-item.metallurgy.shadow_iron_legs.name=暗铁护腿
+item.metallurgy.shadow_iron_chestplate.name=暗铁胸甲
+item.metallurgy.shadow_iron_leggings.name=暗铁护腿
 item.metallurgy.shadow_iron_boots.name=暗铁靴子
 
 item.metallurgy.shadow_steel_helmet.name=暗钢头盔
-item.metallurgy.shadow_steel_chest.name=暗钢胸甲
-item.metallurgy.shadow_steel_legs.name=暗钢护腿
+item.metallurgy.shadow_steel_chestplate.name=暗钢胸甲
+item.metallurgy.shadow_steel_leggings.name=暗钢护腿
 item.metallurgy.shadow_steel_boots.name=暗钢靴子
 
 item.metallurgy.silver_helmet.name=银头盔
-item.metallurgy.silver_chest.name=银胸甲
-item.metallurgy.silver_legs.name=银护腿
+item.metallurgy.silver_chestplate.name=银胸甲
+item.metallurgy.silver_leggings.name=银护腿
 item.metallurgy.silver_boots.name=银靴子
 
 item.metallurgy.steel_helmet.name=钢头盔
-item.metallurgy.steel_chest.name=钢胸甲
-item.metallurgy.steel_legs.name=钢护腿
+item.metallurgy.steel_chestplate.name=钢胸甲
+item.metallurgy.steel_leggings.name=钢护腿
 item.metallurgy.steel_boots.name=钢靴子
 
 item.metallurgy.tartarite_helmet.name=酒石杂金头盔
-item.metallurgy.tartarite_chest.name=酒石杂金胸甲
-item.metallurgy.tartarite_legs.name=酒石杂金护腿
+item.metallurgy.tartarite_chestplate.name=酒石杂金胸甲
+item.metallurgy.tartarite_leggings.name=酒石杂金护腿
 item.metallurgy.tartarite_boots.name=酒石杂金靴子
 
 item.metallurgy.vulcanite_helmet.name=火山熔金头盔
-item.metallurgy.vulcanite_chest.name=火山熔金胸甲
-item.metallurgy.vulcanite_legs.name=火山熔金护腿
+item.metallurgy.vulcanite_chestplate.name=火山熔金胸甲
+item.metallurgy.vulcanite_leggings.name=火山熔金护腿
 item.metallurgy.vulcanite_boots.name=火山熔金靴子
 
 item.metallurgy.vyroxeres_helmet.name=千焦杂金头盔
-item.metallurgy.vyroxeres_chest.name=千焦杂金Chest
-item.metallurgy.vyroxeres_legs.name=千焦杂金护腿
+item.metallurgy.vyroxeres_chestplate.name=千焦杂金Chest
+item.metallurgy.vyroxeres_leggings.name=千焦杂金护腿
 item.metallurgy.vyroxeres_boots.name=千焦杂金靴子
 
 # 方塊
@@ -562,7 +562,7 @@ item.metallurgy.zinc_ingot.name=锌锭
 item.metallurgy.flint_and_ignatius.name=燧石与焰金
 item.metallurgy.flint_and_vulcanite.name=燧石与火山熔金
 item.metallurgy.rubracium_gauntlet.name=红宝碎石长手套
-item.metallurgy.invisibility_shield.name=Lemurite Shield
+item.metallurgy.lemurite_shield.name=Lemurite Shield
 
 # 物品
 item.metallurgy.tar.name=柏油

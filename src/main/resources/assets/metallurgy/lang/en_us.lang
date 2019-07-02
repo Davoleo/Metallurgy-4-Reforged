@@ -1,202 +1,202 @@
 #Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet
-item.metallurgy.adamantine_chest.name=Adamantine Chestplate
-item.metallurgy.adamantine_legs.name=Adamantine Leggings
+item.metallurgy.adamantine_chestplate.name=Adamantine Chestplate
+item.metallurgy.adamantine_leggings.name=Adamantine Leggings
 item.metallurgy.adamantine_boots.name=Adamantine Boots
 
 item.metallurgy.amordrine_helmet.name=Amordrine Helmet
-item.metallurgy.amordrine_chest.name=Amordrine Chestplate
-item.metallurgy.amordrine_legs.name=Amordrine Leggings
+item.metallurgy.amordrine_chestplate.name=Amordrine Chestplate
+item.metallurgy.amordrine_leggings.name=Amordrine Leggings
 item.metallurgy.amordrine_boots.name=Amordrine Boots
 
 item.metallurgy.angmallen_helmet.name=Angmallen Helmet
-item.metallurgy.angmallen_chest.name=Angmallen Chestplate
-item.metallurgy.angmallen_legs.name=Angmallen Leggings
+item.metallurgy.angmallen_chestplate.name=Angmallen Chestplate
+item.metallurgy.angmallen_leggings.name=Angmallen Leggings
 item.metallurgy.angmallen_boots.name=Angmallen Boots
 
 item.metallurgy.atlarus_helmet.name=Atlarus Helmet
-item.metallurgy.atlarus_chest.name=Atlarus Chestplate
-item.metallurgy.atlarus_legs.name=Atlarus Leggings
+item.metallurgy.atlarus_chestplate.name=Atlarus Chestplate
+item.metallurgy.atlarus_leggings.name=Atlarus Leggings
 item.metallurgy.atlarus_boots.name=Atlarus Boots
 
 item.metallurgy.astral_silver_helmet.name=Astral Silver Helmet
-item.metallurgy.astral_silver_chest.name=Astral Silver Chestplate
-item.metallurgy.astral_silver_legs.name=Astral Silver Leggings
+item.metallurgy.astral_silver_chestplate.name=Astral Silver Chestplate
+item.metallurgy.astral_silver_leggings.name=Astral Silver Leggings
 item.metallurgy.astral_silver_boots.name=Astral Silver Boots
 
 item.metallurgy.black_steel_helmet.name=Black Steel Helmet
-item.metallurgy.black_steel_chest.name=Black Steel Chestplate
-item.metallurgy.black_steel_legs.name=Black Steel Leggings
+item.metallurgy.black_steel_chestplate.name=Black Steel Chestplate
+item.metallurgy.black_steel_leggings.name=Black Steel Leggings
 item.metallurgy.black_steel_boots.name=Black Steel Boots
 
 item.metallurgy.brass_helmet.name=Brass Helmet
-item.metallurgy.brass_chest.name=Brass Chestplate
-item.metallurgy.brass_legs.name=Brass Leggings
+item.metallurgy.brass_chestplate.name=Brass Chestplate
+item.metallurgy.brass_leggings.name=Brass Leggings
 item.metallurgy.brass_boots.name=Brass Boots
 
 item.metallurgy.bronze_helmet.name=Bronze Helmet
-item.metallurgy.bronze_chest.name=Bronze Chestplate
-item.metallurgy.bronze_legs.name=Bronze Leggings
+item.metallurgy.bronze_chestplate.name=Bronze Chestplate
+item.metallurgy.bronze_leggings.name=Bronze Leggings
 item.metallurgy.bronze_boots.name=Bronze Boots
 
 item.metallurgy.carmot_helmet.name=Carmot Helmet
-item.metallurgy.carmot_chest.name=Carmot Chestplate
-item.metallurgy.carmot_legs.name=Carmot Leggings
+item.metallurgy.carmot_chestplate.name=Carmot Chestplate
+item.metallurgy.carmot_leggings.name=Carmot Leggings
 item.metallurgy.carmot_boots.name=Carmot Boots
 
 item.metallurgy.celenegil_helmet.name=Celenegil Helmet
-item.metallurgy.celenegil_chest.name=Celenegil Chestplate
-item.metallurgy.celenegil_legs.name=Celenegil Leggings
+item.metallurgy.celenegil_chestplate.name=Celenegil Chestplate
+item.metallurgy.celenegil_leggings.name=Celenegil Leggings
 item.metallurgy.celenegil_boots.name=Celenegil Boots
 
 item.metallurgy.ceruclase_helmet.name=Ceruclase Helmet
-item.metallurgy.ceruclase_chest.name=Ceruclase Chestplate
-item.metallurgy.ceruclase_legs.name=Ceruclase Leggings
+item.metallurgy.ceruclase_chestplate.name=Ceruclase Chestplate
+item.metallurgy.ceruclase_leggings.name=Ceruclase Leggings
 item.metallurgy.ceruclase_boots.name=Ceruclase Boots
 
 item.metallurgy.copper_helmet.name=Copper Helmet
-item.metallurgy.copper_chest.name=Copper Chestplate
-item.metallurgy.copper_legs.name=Copper Leggings
+item.metallurgy.copper_chestplate.name=Copper Chestplate
+item.metallurgy.copper_leggings.name=Copper Leggings
 item.metallurgy.copper_boots.name=Copper Boots
 
 item.metallurgy.damascus_steel_helmet.name=Damascus Steel Helmet
-item.metallurgy.damascus_steel_chest.name=Damascus Steel Chestplate
-item.metallurgy.damascus_steel_legs.name=Damascus Steel Leggings
+item.metallurgy.damascus_steel_chestplate.name=Damascus Steel Chestplate
+item.metallurgy.damascus_steel_leggings.name=Damascus Steel Leggings
 item.metallurgy.damascus_steel_boots.name=Damascus Steel Boots
 
 item.metallurgy.deep_iron_helmet.name=Deep Iron Helmet
-item.metallurgy.deep_iron_chest.name=Deep Iron Chestplate
-item.metallurgy.deep_iron_legs.name=Deep Iron Leggings
+item.metallurgy.deep_iron_chestplate.name=Deep Iron Chestplate
+item.metallurgy.deep_iron_leggings.name=Deep Iron Leggings
 item.metallurgy.deep_iron_boots.name=Deep Iron Boots
 
 item.metallurgy.desichalkos_helmet.name=Desichalkos Helmet
-item.metallurgy.desichalkos_chest.name=Desichalkos Chestplate
-item.metallurgy.desichalkos_legs.name=Desichalkos Leggings
+item.metallurgy.desichalkos_chestplate.name=Desichalkos Chestplate
+item.metallurgy.desichalkos_leggings.name=Desichalkos Leggings
 item.metallurgy.desichalkos_boots.name=Desichalkos Boots
 
 item.metallurgy.electrum_helmet.name=Electrum Helmet
-item.metallurgy.electrum_chest.name=Electrum Chestplate
-item.metallurgy.electrum_legs.name=Electrum Leggings
+item.metallurgy.electrum_chestplate.name=Electrum Chestplate
+item.metallurgy.electrum_leggings.name=Electrum Leggings
 item.metallurgy.electrum_boots.name=Electrum Boots
 
 item.metallurgy.eximite_helmet.name=Eximite Helmet
-item.metallurgy.eximite_chest.name=Eximite Chestplate
-item.metallurgy.eximite_legs.name=Eximite Leggings
+item.metallurgy.eximite_chestplate.name=Eximite Chestplate
+item.metallurgy.eximite_leggings.name=Eximite Leggings
 item.metallurgy.eximite_boots.name=Eximite Boots
 
 item.metallurgy.haderoth_helmet.name=Haderoth Helmet
-item.metallurgy.haderoth_chest.name=Haderoth Chestplate
-item.metallurgy.haderoth_legs.name=Haderoth Leggings
+item.metallurgy.haderoth_chestplate.name=Haderoth Chestplate
+item.metallurgy.haderoth_leggings.name=Haderoth Leggings
 item.metallurgy.haderoth_boots.name=Haderoth Boots
 
 item.metallurgy.hepatizon_helmet.name=Hepatizon Helmet
-item.metallurgy.hepatizon_chest.name=Hepatizon Chestplate
-item.metallurgy.hepatizon_legs.name=Hepatizon Leggings
+item.metallurgy.hepatizon_chestplate.name=Hepatizon Chestplate
+item.metallurgy.hepatizon_leggings.name=Hepatizon Leggings
 item.metallurgy.hepatizon_boots.name=Hepatizon Boots
 
 item.metallurgy.ignatius_helmet.name=Ignatius Helmet
-item.metallurgy.ignatius_chest.name=Ignatius Chestplate
-item.metallurgy.ignatius_legs.name=Ignatius Leggings
+item.metallurgy.ignatius_chestplate.name=Ignatius Chestplate
+item.metallurgy.ignatius_leggings.name=Ignatius Leggings
 item.metallurgy.ignatius_boots.name=Ignatius Boots
 
 item.metallurgy.inolashite_helmet.name=Inolashite Helmet
-item.metallurgy.inolashite_chest.name=Inolashite Chestplate
-item.metallurgy.inolashite_legs.name=Inolashite Leggings
+item.metallurgy.inolashite_chestplate.name=Inolashite Chestplate
+item.metallurgy.inolashite_leggings.name=Inolashite Leggings
 item.metallurgy.inolashite_boots.name=Inolashite Boots
 
 item.metallurgy.kalendrite_helmet.name=Kalendrite Helmet
-item.metallurgy.kalendrite_chest.name=Kalendrite Chestplate
-item.metallurgy.kalendrite_legs.name=Kalendrite Leggings
+item.metallurgy.kalendrite_chestplate.name=Kalendrite Chestplate
+item.metallurgy.kalendrite_leggings.name=Kalendrite Leggings
 item.metallurgy.kalendrite_boots.name=Kalendrite Boots
 
 item.metallurgy.krik_helmet.name=Krik Helmet
-item.metallurgy.krik_chest.name=Krik Chestplate
-item.metallurgy.krik_legs.name=Krik Leggings
+item.metallurgy.krik_chestplate.name=Krik Chestplate
+item.metallurgy.krik_leggings.name=Krik Leggings
 item.metallurgy.krik_boots.name=Krik Boots
 
 item.metallurgy.lutetium_helmet.name=Lutetium Helmet
-item.metallurgy.lutetium_chest.name=Lutetium Chestplate
-item.metallurgy.lutetium_legs.name=Lutetium Leggings
+item.metallurgy.lutetium_chestplate.name=Lutetium Chestplate
+item.metallurgy.lutetium_leggings.name=Lutetium Leggings
 item.metallurgy.lutetium_boots.name=Lutetium Boots
 
 item.metallurgy.midasium_helmet.name=Midasium Helmet
-item.metallurgy.midasium_chest.name=Midasium Chestplate
-item.metallurgy.midasium_legs.name=Midasium Leggings
+item.metallurgy.midasium_chestplate.name=Midasium Chestplate
+item.metallurgy.midasium_leggings.name=Midasium Leggings
 item.metallurgy.midasium_boots.name=Midasium Boots
 
 item.metallurgy.mithril_helmet.name=Mithril Helmet
-item.metallurgy.mithril_chest.name=Mithril Chestplate
-item.metallurgy.mithril_legs.name=Mithril Leggings
+item.metallurgy.mithril_chestplate.name=Mithril Chestplate
+item.metallurgy.mithril_leggings.name=Mithril Leggings
 item.metallurgy.mithril_boots.name=Mithril Boots
 
 item.metallurgy.orichalcum_helmet.name=Orichalcum Helmet
-item.metallurgy.orichalcum_chest.name=Orichalcum Chestplate
-item.metallurgy.orichalcum_legs.name=Orichalcum Leggings
+item.metallurgy.orichalcum_chestplate.name=Orichalcum Chestplate
+item.metallurgy.orichalcum_leggings.name=Orichalcum Leggings
 item.metallurgy.orichalcum_boots.name=Orichalcum Boots
 
 item.metallurgy.osmium_helmet.name=Osmium Helmet
-item.metallurgy.osmium_chest.name=Osmium Chestplate
-item.metallurgy.osmium_legs.name=Osmium Leggings
+item.metallurgy.osmium_chestplate.name=Osmium Chestplate
+item.metallurgy.osmium_leggings.name=Osmium Leggings
 item.metallurgy.osmium_boots.name=Osmium Boots
 
 item.metallurgy.oureclase_helmet.name=Oureclase Helmet
-item.metallurgy.oureclase_chest.name=Oureclase Chestplate
-item.metallurgy.oureclase_legs.name=Oureclase Leggings
+item.metallurgy.oureclase_chestplate.name=Oureclase Chestplate
+item.metallurgy.oureclase_leggings.name=Oureclase Leggings
 item.metallurgy.oureclase_boots.name=Oureclase Boots
 
 item.metallurgy.platinum_helmet.name=Platinum Helmet
-item.metallurgy.platinum_chest.name=Platinum Chestplate
-item.metallurgy.platinum_legs.name=Platinum Leggings
+item.metallurgy.platinum_chestplate.name=Platinum Chestplate
+item.metallurgy.platinum_leggings.name=Platinum Leggings
 item.metallurgy.platinum_boots.name=Platinum Boots
 
 item.metallurgy.prometheum_helmet.name=Prometheum Helmet
-item.metallurgy.prometheum_chest.name=Prometheum Chestplate
-item.metallurgy.prometheum_legs.name=Prometheum Leggings
+item.metallurgy.prometheum_chestplate.name=Prometheum Chestplate
+item.metallurgy.prometheum_leggings.name=Prometheum Leggings
 item.metallurgy.prometheum_boots.name=Prometheum Boots
 
 item.metallurgy.quicksilver_helmet.name=Quicksilver Helmet
-item.metallurgy.quicksilver_chest.name=Quicksilver Chestplate
-item.metallurgy.quicksilver_legs.name=Quicksilver Leggings
+item.metallurgy.quicksilver_chestplate.name=Quicksilver Chestplate
+item.metallurgy.quicksilver_leggings.name=Quicksilver Leggings
 item.metallurgy.quicksilver_boots.name=Quicksilver Boots
 
 item.metallurgy.sanguinite_helmet.name=Sanguinite Helmet
-item.metallurgy.sanguinite_chest.name=Sanguinite Chestplate
-item.metallurgy.sanguinite_legs.name=Sanguinite Leggings
+item.metallurgy.sanguinite_chestplate.name=Sanguinite Chestplate
+item.metallurgy.sanguinite_leggings.name=Sanguinite Leggings
 item.metallurgy.sanguinite_boots.name=Sanguinite Boots
 
 item.metallurgy.shadow_iron_helmet.name=Shadow Iron Helmet
-item.metallurgy.shadow_iron_chest.name=Shadow Iron Chestplate
-item.metallurgy.shadow_iron_legs.name=Shadow Iron Leggings
+item.metallurgy.shadow_iron_chestplate.name=Shadow Iron Chestplate
+item.metallurgy.shadow_iron_leggings.name=Shadow Iron Leggings
 item.metallurgy.shadow_iron_boots.name=Shadow Iron Boots
 
 item.metallurgy.shadow_steel_helmet.name=Shadow Steel Helmet
-item.metallurgy.shadow_steel_chest.name=Shadow Steel Chestplate
-item.metallurgy.shadow_steel_legs.name=Shadow Steel Leggings
+item.metallurgy.shadow_steel_chestplate.name=Shadow Steel Chestplate
+item.metallurgy.shadow_steel_leggings.name=Shadow Steel Leggings
 item.metallurgy.shadow_steel_boots.name=Shadow Steel Boots
 
 item.metallurgy.silver_helmet.name=Silver Helmet
-item.metallurgy.silver_chest.name=Silver Chestplate
-item.metallurgy.silver_legs.name=Silver Leggings
+item.metallurgy.silver_chestplate.name=Silver Chestplate
+item.metallurgy.silver_leggings.name=Silver Leggings
 item.metallurgy.silver_boots.name=Silver Boots
 
 item.metallurgy.steel_helmet.name=Steel Helmet
-item.metallurgy.steel_chest.name=Steel Chestplate
-item.metallurgy.steel_legs.name=Steel Leggings
+item.metallurgy.steel_chestplate.name=Steel Chestplate
+item.metallurgy.steel_leggings.name=Steel Leggings
 item.metallurgy.steel_boots.name=Steel Boots
 
 item.metallurgy.tartarite_helmet.name=Tartarite Helmet
-item.metallurgy.tartarite_chest.name=Tartarite Chestplate
-item.metallurgy.tartarite_legs.name=Tartarite Leggings
+item.metallurgy.tartarite_chestplate.name=Tartarite Chestplate
+item.metallurgy.tartarite_leggings.name=Tartarite Leggings
 item.metallurgy.tartarite_boots.name=Tartarite Boots
 
 item.metallurgy.vulcanite_helmet.name=Vulcanite Helmet
-item.metallurgy.vulcanite_chest.name=Vulcanite Chestplate
-item.metallurgy.vulcanite_legs.name=Vulcanite Leggings
+item.metallurgy.vulcanite_chestplate.name=Vulcanite Chestplate
+item.metallurgy.vulcanite_leggings.name=Vulcanite Leggings
 item.metallurgy.vulcanite_boots.name=Vulcanite Boots
 
 item.metallurgy.vyroxeres_helmet.name=Vyroxeres Helmet
-item.metallurgy.vyroxeres_chest.name=Vyroxeres Chest
-item.metallurgy.vyroxeres_legs.name=Vyroxeres Leggings
+item.metallurgy.vyroxeres_chestplate.name=Vyroxeres Chest
+item.metallurgy.vyroxeres_leggings.name=Vyroxeres Leggings
 item.metallurgy.vyroxeres_boots.name=Vyroxeres Boots
 
 # Blocks

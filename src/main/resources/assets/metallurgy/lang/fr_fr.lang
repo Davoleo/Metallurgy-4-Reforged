@@ -3,203 +3,203 @@
 # ############################
 # Armors
 item.metallurgy.adamantine_helmet.name=Casque en Adamantine
-item.metallurgy.adamantine_chest.name=Plastron en Adamantine
-item.metallurgy.adamantine_legs.name=Jambière en Adamantine
+item.metallurgy.adamantine_chestplate.name=Plastron en Adamantine
+item.metallurgy.adamantine_leggings.name=Jambière en Adamantine
 item.metallurgy.adamantine_boots.name=Bottes en Adamantine
 
 item.metallurgy.amordrine_helmet.name=Casque en Amordrine
-item.metallurgy.amordrine_chest.name=Plastron en Amordrine
-item.metallurgy.amordrine_legs.name=Jambière en Amordrine
+item.metallurgy.amordrine_chestplate.name=Plastron en Amordrine
+item.metallurgy.amordrine_leggings.name=Jambière en Amordrine
 item.metallurgy.amordrine_boots.name=Bottes en Amordrine
 
 item.metallurgy.angmallen_helmet.name=Casque en Angmallen
-item.metallurgy.angmallen_chest.name=Plastron en Angmallen
-item.metallurgy.angmallen_legs.name=Jambières en Angmallen
+item.metallurgy.angmallen_chestplate.name=Plastron en Angmallen
+item.metallurgy.angmallen_leggings.name=Jambières en Angmallen
 item.metallurgy.angmallen_boots.name=Bottes en Angmallen
 
 item.metallurgy.atlarus_helmet.name=Casque en Atlarus
-item.metallurgy.atlarus_chest.name=Plastron en Atlarus
-item.metallurgy.atlarus_legs.name=Jambières en Atlarus
+item.metallurgy.atlarus_chestplate.name=Plastron en Atlarus
+item.metallurgy.atlarus_leggings.name=Jambières en Atlarus
 item.metallurgy.atlarus_boots.name=Bottes en Atlarus
 
 item.metallurgy.astral_silver_helmet.name=Casque en  Argent Astral
-item.metallurgy.astral_silver_chest.name=Plastron en  Argent Astral
-item.metallurgy.astral_silver_legs.name=Jambières en  Argent Astral
+item.metallurgy.astral_silver_chestplate.name=Plastron en  Argent Astral
+item.metallurgy.astral_silver_leggings.name=Jambières en  Argent Astral
 item.metallurgy.astral_silver_boots.name=Bottes en  Argent Astral
 
 item.metallurgy.black_steel_helmet.name=Casque en Acier noir
-item.metallurgy.black_steel_chest.name=Plastron en Acier noir
-item.metallurgy.black_steel_legs.name=Jambières en Acier noir
+item.metallurgy.black_steel_chestplate.name=Plastron en Acier noir
+item.metallurgy.black_steel_leggings.name=Jambières en Acier noir
 item.metallurgy.black_steel_boots.name=Bottes en Acier noir
 
 item.metallurgy.brass_helmet.name=Casque en Laiton
-item.metallurgy.brass_chest.name=Plastron en Laiton
-item.metallurgy.brass_legs.name=Jambières en Laiton
+item.metallurgy.brass_chestplate.name=Plastron en Laiton
+item.metallurgy.brass_leggings.name=Jambières en Laiton
 item.metallurgy.brass_boots.name=Bottes en Laiton
 
 item.metallurgy.bronze_helmet.name=Casque en Bronze
-item.metallurgy.bronze_chest.name=Plastron en Bronze
-item.metallurgy.bronze_legs.name=Jambières en Bronze
+item.metallurgy.bronze_chestplate.name=Plastron en Bronze
+item.metallurgy.bronze_leggings.name=Jambières en Bronze
 item.metallurgy.bronze_boots.name=Bottes en Bronze
 
 item.metallurgy.carmot_helmet.name=Casque en Carmot
-item.metallurgy.carmot_chest.name=Plastron en Carmot
-item.metallurgy.carmot_legs.name=Jambières en Carmot
+item.metallurgy.carmot_chestplate.name=Plastron en Carmot
+item.metallurgy.carmot_leggings.name=Jambières en Carmot
 item.metallurgy.carmot_boots.name=Bottes en Carmot
 
 item.metallurgy.celenegil_helmet.name=Casque en Celenegil
-item.metallurgy.celenegil_chest.name=Plastron en Celenegil
-item.metallurgy.celenegil_legs.name=Jambières en Celenegil
+item.metallurgy.celenegil_chestplate.name=Plastron en Celenegil
+item.metallurgy.celenegil_leggings.name=Jambières en Celenegil
 item.metallurgy.celenegil_boots.name=Bottes en Celenegil
 
 item.metallurgy.ceruclase_helmet.name=Casque en Ceruclase
-item.metallurgy.ceruclase_chest.name=Plastron en Ceruclase
-item.metallurgy.ceruclase_legs.name=Jambières en Ceruclase
+item.metallurgy.ceruclase_chestplate.name=Plastron en Ceruclase
+item.metallurgy.ceruclase_leggings.name=Jambières en Ceruclase
 item.metallurgy.ceruclase_boots.name=Bottes en Ceruclase
 
 item.metallurgy.copper_helmet.name=Casque en Cuivre
-item.metallurgy.copper_chest.name=Plastron en Cuivre
-item.metallurgy.copper_legs.name=Jambières en Cuivre
+item.metallurgy.copper_chestplate.name=Plastron en Cuivre
+item.metallurgy.copper_leggings.name=Jambières en Cuivre
 item.metallurgy.copper_boots.name=Bottes en Cuivre
 
 item.metallurgy.damascus_steel_helmet.name=Casque en Acier de Damas
-item.metallurgy.damascus_steel_chest.name=Plastron en Acier de Damas
-item.metallurgy.damascus_steel_legs.name=Jambières en Acier de Damas
+item.metallurgy.damascus_steel_chestplate.name=Plastron en Acier de Damas
+item.metallurgy.damascus_steel_leggings.name=Jambières en Acier de Damas
 item.metallurgy.damascus_steel_boots.name=Bottes en Acier de Damas
 
 item.metallurgy.deep_iron_helmet.name=Casque en Fer Profond
-item.metallurgy.deep_iron_chest.name=Plastron en Fer Profond
-item.metallurgy.deep_iron_legs.name=Jambières en Fer Profond
+item.metallurgy.deep_iron_chestplate.name=Plastron en Fer Profond
+item.metallurgy.deep_iron_leggings.name=Jambières en Fer Profond
 item.metallurgy.deep_iron_boots.name=Bottes en Fer Profond
 
 item.metallurgy.desichalkos_helmet.name=Casque en Desichalkos
-item.metallurgy.desichalkos_chest.name=Plastron en Desichalkos
-item.metallurgy.desichalkos_legs.name=Jambières en Desichalkos
+item.metallurgy.desichalkos_chestplate.name=Plastron en Desichalkos
+item.metallurgy.desichalkos_leggings.name=Jambières en Desichalkos
 item.metallurgy.desichalkos_boots.name=Bottes en Desichalkos
 
 item.metallurgy.electrum_helmet.name=Casque en Electrum
-item.metallurgy.electrum_chest.name=Plastron en Electrum
-item.metallurgy.electrum_legs.name=Jambières en Electrum
+item.metallurgy.electrum_chestplate.name=Plastron en Electrum
+item.metallurgy.electrum_leggings.name=Jambières en Electrum
 item.metallurgy.electrum_boots.name=Bottes en Electrum
 
 item.metallurgy.eximite_helmet.name=Casque en Eximite
-item.metallurgy.eximite_chest.name=Plastron en Eximite
-item.metallurgy.eximite_legs.name=Jambières en Eximite
+item.metallurgy.eximite_chestplate.name=Plastron en Eximite
+item.metallurgy.eximite_leggings.name=Jambières en Eximite
 item.metallurgy.eximite_boots.name=Bottes en Eximite
 
 item.metallurgy.haderoth_helmet.name=Casque en Haderoth
-item.metallurgy.haderoth_chest.name=Plastron en Haderoth
-item.metallurgy.haderoth_legs.name=Jambières en Haderoth
+item.metallurgy.haderoth_chestplate.name=Plastron en Haderoth
+item.metallurgy.haderoth_leggings.name=Jambières en Haderoth
 item.metallurgy.haderoth_boots.name=Bottes en Haderoth
 
 item.metallurgy.hepatizon_helmet.name=Casque en Hepatizon
-item.metallurgy.hepatizon_chest.name=Plastron en Hepatizon
-item.metallurgy.hepatizon_legs.name=Jambières en Hepatizon
+item.metallurgy.hepatizon_chestplate.name=Plastron en Hepatizon
+item.metallurgy.hepatizon_leggings.name=Jambières en Hepatizon
 item.metallurgy.hepatizon_boots.name=Bottes en Hepatizon
 
 item.metallurgy.ignatius_helmet.name=Casque en Ignatius
-item.metallurgy.ignatius_chest.name=Plastron en Ignatius
-item.metallurgy.ignatius_legs.name=Jambières en Ignatius
+item.metallurgy.ignatius_chestplate.name=Plastron en Ignatius
+item.metallurgy.ignatius_leggings.name=Jambières en Ignatius
 item.metallurgy.ignatius_boots.name=Bottes en Ignatius
 
 item.metallurgy.inolashite_helmet.name=Casque en Inolashite
-item.metallurgy.inolashite_chest.name=Plastron en Inolashite
-item.metallurgy.inolashite_legs.name=Jambières en Inolashite
+item.metallurgy.inolashite_chestplate.name=Plastron en Inolashite
+item.metallurgy.inolashite_leggings.name=Jambières en Inolashite
 item.metallurgy.inolashite_boots.name=Bottes en Inolashite
 
 item.metallurgy.kalendrite_helmet.name=Casque en Kalendrite
-item.metallurgy.kalendrite_chest.name=Plastron en Kalendrite
-item.metallurgy.kalendrite_legs.name=Jambières en Kalendrite
+item.metallurgy.kalendrite_chestplate.name=Plastron en Kalendrite
+item.metallurgy.kalendrite_leggings.name=Jambières en Kalendrite
 item.metallurgy.kalendrite_boots.name=Bottes en Kalendrite
 
 item.metallurgy.krik_helmet.name=Krik Helmet
-item.metallurgy.krik_chest.name=Krik Chestplate
-item.metallurgy.krik_legs.name=Krik Leggings
+item.metallurgy.krik_chestplate.name=Krik Chestplate
+item.metallurgy.krik_leggings.name=Krik Leggings
 item.metallurgy.krik_boots.name=Krik Boots
 
 item.metallurgy.lutetium_helmet.name=Lutetium Helmet
-item.metallurgy.lutetium_chest.name=Lutetium Chestplate
-item.metallurgy.lutetium_legs.name=Lutetium Leggings
+item.metallurgy.lutetium_chestplate.name=Lutetium Chestplate
+item.metallurgy.lutetium_leggings.name=Lutetium Leggings
 item.metallurgy.lutetium_boots.name=Lutetium Boots
 
 item.metallurgy.midasium_helmet.name=Casque en Midasium
-item.metallurgy.midasium_chest.name=Plastron en Midasium
-item.metallurgy.midasium_legs.name=Jambières en Midasium
+item.metallurgy.midasium_chestplate.name=Plastron en Midasium
+item.metallurgy.midasium_leggings.name=Jambières en Midasium
 item.metallurgy.midasium_boots.name=Bottes en Midasium
 
 item.metallurgy.mithril_helmet.name=Casque en Mithril
-item.metallurgy.mithril_chest.name=Plastron en Mithril
-item.metallurgy.mithril_legs.name=Jambières en Mithril
+item.metallurgy.mithril_chestplate.name=Plastron en Mithril
+item.metallurgy.mithril_leggings.name=Jambières en Mithril
 item.metallurgy.mithril_boots.name=Bottes en Mithril
 
 item.metallurgy.orichalcum_helmet.name=Casque en Orichalcum
-item.metallurgy.orichalcum_chest.name=Plastron en Orichalcum
-item.metallurgy.orichalcum_legs.name=Jambières en Orichalcum
+item.metallurgy.orichalcum_chestplate.name=Plastron en Orichalcum
+item.metallurgy.orichalcum_leggings.name=Jambières en Orichalcum
 item.metallurgy.orichalcum_boots.name=Bottes en Orichalcum
 
 item.metallurgy.osmium_helmet.name=Osmium Helmet
-item.metallurgy.osmium_chest.name=Osmium Chestplate
-item.metallurgy.osmium_legs.name=Osmium Leggings
+item.metallurgy.osmium_chestplate.name=Osmium Chestplate
+item.metallurgy.osmium_leggings.name=Osmium Leggings
 item.metallurgy.osmium_boots.name=Osmium Boots
 
 item.metallurgy.oureclase_helmet.name=Casque en Oureclase
-item.metallurgy.oureclase_chest.name=Plastron en Oureclase
-item.metallurgy.oureclase_legs.name=Jambières en Oureclase
+item.metallurgy.oureclase_chestplate.name=Plastron en Oureclase
+item.metallurgy.oureclase_leggings.name=Jambières en Oureclase
 item.metallurgy.oureclase_boots.name=Bottes en Oureclase
 
 item.metallurgy.platinum_helmet.name=Casque en Platine
-item.metallurgy.platinum_chest.name=Plastron en Platine
-item.metallurgy.platinum_legs.name=Jambières en Platine
+item.metallurgy.platinum_chestplate.name=Plastron en Platine
+item.metallurgy.platinum_leggings.name=Jambières en Platine
 item.metallurgy.platinum_boots.name=Bottes en Platine
 
 item.metallurgy.prometheum_helmet.name=Casque en Prometheum
-item.metallurgy.prometheum_chest.name=Plastron en Prometheum
-item.metallurgy.prometheum_legs.name=Jambières en Prometheum
+item.metallurgy.prometheum_chestplate.name=Plastron en Prometheum
+item.metallurgy.prometheum_leggings.name=Jambières en Prometheum
 item.metallurgy.prometheum_boots.name=Bottes en Prometheum
 
 item.metallurgy.quicksilver_helmet.name=Casque en Mercure
-item.metallurgy.quicksilver_chest.name=Plastron en Mercure
-item.metallurgy.quicksilver_legs.name=Jambières en Mercure
+item.metallurgy.quicksilver_chestplate.name=Plastron en Mercure
+item.metallurgy.quicksilver_leggings.name=Jambières en Mercure
 item.metallurgy.quicksilver_boots.name=Bottes en Mercure
 
 item.metallurgy.sanguinite_helmet.name=Casque en Sanguinite
-item.metallurgy.sanguinite_chest.name=Plastron en Sanguinite
-item.metallurgy.sanguinite_legs.name=Jambières en Sanguinite
+item.metallurgy.sanguinite_chestplate.name=Plastron en Sanguinite
+item.metallurgy.sanguinite_leggings.name=Jambières en Sanguinite
 item.metallurgy.sanguinite_boots.name=Bottes en Sanguinite
 
 item.metallurgy.shadow_iron_helmet.name=Casque en Fer d'Ombre
-item.metallurgy.shadow_iron_chest.name=Plastron en Fer d'Ombre
-item.metallurgy.shadow_iron_legs.name=Jambières en Fer d'Ombre
+item.metallurgy.shadow_iron_chestplate.name=Plastron en Fer d'Ombre
+item.metallurgy.shadow_iron_leggings.name=Jambières en Fer d'Ombre
 item.metallurgy.shadow_iron_boots.name=Bottes en Fer d'Ombre
 
 item.metallurgy.shadow_steel_helmet.name=Casque en Acier d'Ombre
-item.metallurgy.shadow_steel_chest.name=Plastron en Acier d'Ombre
-item.metallurgy.shadow_steel_legs.name=Jambières en Acier d'Ombre
+item.metallurgy.shadow_steel_chestplate.name=Plastron en Acier d'Ombre
+item.metallurgy.shadow_steel_leggings.name=Jambières en Acier d'Ombre
 item.metallurgy.shadow_steel_boots.name=Bottes en Acier d'Ombre
 
 item.metallurgy.silver_helmet.name=Casque en Argent
-item.metallurgy.silver_chest.name=Plastron en Argent
-item.metallurgy.silver_legs.name=Jambières en Argent
+item.metallurgy.silver_chestplate.name=Plastron en Argent
+item.metallurgy.silver_leggings.name=Jambières en Argent
 item.metallurgy.silver_boots.name=Bottes en Argent
 
 item.metallurgy.steel_helmet.name=Casque en Acier
-item.metallurgy.steel_chest.name=Plastron en Acier
-item.metallurgy.steel_legs.name=Jambières en Acier
+item.metallurgy.steel_chestplate.name=Plastron en Acier
+item.metallurgy.steel_leggings.name=Jambières en Acier
 item.metallurgy.steel_boots.name=Bottes en Acier
 
 item.metallurgy.tartarite_helmet.name=Casque en Tartarite
-item.metallurgy.tartarite_chest.name=Plastron en Tartarite
-item.metallurgy.tartarite_legs.name=Jambières en Tartarite
+item.metallurgy.tartarite_chestplate.name=Plastron en Tartarite
+item.metallurgy.tartarite_leggings.name=Jambières en Tartarite
 item.metallurgy.tartarite_boots.name=Bottes en Tartarite
 
 item.metallurgy.vulcanite_helmet.name=Casque en Vulcanite
-item.metallurgy.vulcanite_chest.name=Plastron en Vulcanite
-item.metallurgy.vulcanite_legs.name=Jambières en Vulcanite
+item.metallurgy.vulcanite_chestplate.name=Plastron en Vulcanite
+item.metallurgy.vulcanite_leggings.name=Jambières en Vulcanite
 item.metallurgy.vulcanite_boots.name=Bottes en Vulcanite
 
 item.metallurgy.vyroxeres_helmet.name=Casque en Vyroxeres
-item.metallurgy.vyroxeres_chest.name=Plastron en Vyroxeres
-item.metallurgy.vyroxeres_legs.name=Jambières en Vyroxeres
+item.metallurgy.vyroxeres_chestplate.name=Plastron en Vyroxeres
+item.metallurgy.vyroxeres_leggings.name=Jambières en Vyroxeres
 item.metallurgy.vyroxeres_boots.name=Bottes en Vyroxeres
 
 # Blocks
@@ -566,7 +566,7 @@ item.metallurgy.zinc_ingot.name=Lingot de Zinc
 item.metallurgy.flint_and_ignatius.name=Silex et Ignatius
 item.metallurgy.flint_and_vulcanite.name=Silex et Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Gant en Rubracium
-item.metallurgy.invisibility_shield.name=Lemurite Shield
+item.metallurgy.lemurite_shield.name=Lemurite Shield
 
 # Items
 item.metallurgy.tar.name=Goudron
@@ -924,3 +924,8 @@ util.world_join_message.2=§6[Attention: c'est une version alpha du mod]
 util.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
 util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
+
+tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
+item.metallurgy.potash_fertilizer.name=Potash Fertilizer
+tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
+tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
