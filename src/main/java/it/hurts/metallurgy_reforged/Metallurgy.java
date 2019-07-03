@@ -38,7 +38,6 @@ package it.hurts.metallurgy_reforged;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
  import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
  import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -147,11 +146,6 @@ public class Metallurgy {
 			IntegrationTIC.onLoadComplete();
 		logger.info("Tinker's alloy recipes loaded");
 
-	}
-
-	@Mod.EventHandler
-	 public void loadComplete(FMLLoadCompleteEvent event)
-	{
 		logger.info(NAME + " has been completely loaded");
 	}
 }
