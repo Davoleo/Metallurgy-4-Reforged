@@ -143,7 +143,7 @@ public class Metallurgy {
 		logger.info(NAME + "'s Network System Loaded");
 
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
-			IntegrationTIC.onLoadComplete();
+			IntegrationTIC.postInit();
 		logger.info("Tinker's alloy recipes loaded");
 
 		logger.info(NAME + " has been completely loaded");

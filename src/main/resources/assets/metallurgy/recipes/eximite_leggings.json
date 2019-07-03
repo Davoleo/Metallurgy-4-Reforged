@@ -1,0 +1,17 @@
+{
+  "type":"forge:ore_shaped",
+  "pattern":[
+    "AAA",
+    "A A",
+    "A A"
+  ],
+  "key":{
+    "A":{
+      "type":"forge:ore_dict",
+      "ore": "ingotEximite"
+    }
+  },
+  "result":{
+    "item":"metallurgy:eximite_leggings"
+  }
+}

@@ -68,7 +68,7 @@ public class IntegrationTIC{
 		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
 	}
 
-	public static void onLoadComplete() {
+	public static void postInit() {
 		for(Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			FluidStack output = getFluidFromIngot(entry.getValue());
