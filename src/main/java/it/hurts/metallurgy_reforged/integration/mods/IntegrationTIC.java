@@ -31,6 +31,7 @@ import slimeknights.tconstruct.library.smeltery.BucketCastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.tools.TinkerMaterials;
 
 public class IntegrationTIC{
 	
@@ -53,11 +54,13 @@ public class IntegrationTIC{
 				SetTinkerTraits.addTraits(metal, m);
 
 //				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilit� di fare il lingotto ed il blocco )
+				if(m.getFluid() == null)
+					m.setFluid(metal.getMolten());
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
 				
 //				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
-				}
+			}
 	    }
 
 		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite,1000), ModFluids.THERMITE,400));

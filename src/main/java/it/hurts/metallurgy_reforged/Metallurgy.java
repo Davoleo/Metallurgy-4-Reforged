@@ -138,19 +138,20 @@ public class Metallurgy {
 	public void postInit(FMLPostInitializationEvent event) {
         logger.info(NAME + " is entering post-initialization!");
         
-
         proxy.postInit(event);
         
 		PacketManager.init();
 		logger.info(NAME + "'s Network System Loaded");
+
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
+			IntegrationTIC.onLoadComplete();
+		logger.info("Tinker's alloy recipes loaded");
+
 	}
 
 	@Mod.EventHandler
 	 public void loadComplete(FMLLoadCompleteEvent event)
 	{
 		logger.info(NAME + " has been completely loaded");
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
-			IntegrationTIC.onLoadComplete();
-
 	}
 }
