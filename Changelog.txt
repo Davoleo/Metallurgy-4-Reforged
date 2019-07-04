@@ -206,3 +206,22 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 - Tweak: Gauntlet now depletes saturation before depleting hunger points
 - Many others Gauntlet fixes
 - New reworked textures by Matpac! :D (hype)
+
+0.2.2
+- Fixed Deep Iron trait
+- Fixed Phosphorus Lantern server crash
+- Added entity collision Phosphorus Lantern config
+- Fixed Phosphorus Lantern placements
+- Fixed angmallen hoe and quicksilver tools recipes
+- Repaired Hunger Gauntlet System and fixed slot lock bug
+- Fix Null Pointer Exception in Gauntlet capability crash (fixes crash with BWM and LemonLib)
+- Change armor registry names to standard Vanilla notation (should fix issues with Material Changer)
+- Added Bow tinker parts
+- Modified Ore Rarity Config Comment
+- Increment tool head durability of Metallurgy Tinker Integration | Increased Ammo bolt/arrow
+- Decreased tool head durability of Metallurgy Tinker Integration
+- Increased tool extra durability and decreased tool handle durability of Platinum ( Metallurgy Tinker Integration )
+- Decreased drastically tar lakes spawnrate chance
+- Fixed crash with Lucraft
+- Added JEI description for thermite and lemurite shield
+
