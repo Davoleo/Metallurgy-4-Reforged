@@ -50,6 +50,12 @@ repositories {
 		name = "ModMaven"
 		url = "modmaven.k-4u.nl"
 	}
+    
+    //Jared's Maven Repository (CraftTweaker location)
+    maven {
+        name 'jared maven'
+        url "http://maven.blamejared.com/"
+    }
 	
 // 	location of a maven mirror for Tinker Construct
 //	maven {
@@ -58,7 +64,6 @@ repositories {
 //   }
 	
 // 	Curseforge maven, in case some other maven goes offline
-//	(Copied) I Need to study this 'maven'
     maven {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven/"
@@ -66,8 +71,12 @@ repositories {
 }
 
 dependencies {
-//  Kotlin
-//    deobfProvided "shadowfacts-forgelin:Forgelin:1.8.2"
+    
+    //deobfProvided: Direct Source Code
+    //runtime: only at runtime
+    //deobfCompile: Compiled De-obfuscated Source Code
+    //compile: Compiled Source Code
+    //compileOnly: NO runtime
 
 //	Compile against the JEI API but do not include it at runtime
     deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
@@ -82,10 +91,13 @@ dependencies {
     deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
      
 //	Industrial Foregoing
-    deobfCompile "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
+    compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
 	
 //	ProjectE
-	deobfCompile "projecte:ProjectE:1.12.2:PE1.4.1"
+	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
+    
+    //CraftTweaker
+    compile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494")
 }
 
 processResources {

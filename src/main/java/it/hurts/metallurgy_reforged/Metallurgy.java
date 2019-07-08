@@ -19,10 +19,7 @@ package it.hurts.metallurgy_reforged;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationProjectE;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.integration.mods.*;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
@@ -99,6 +96,12 @@ public class Metallurgy {
 			logger.info("Industrial Foregoing integration has been pre-initialized");
 		}
 
+		if (ModChecker.isCraftTweakerLoaded)
+		{
+			IntegrationCT.preInit();
+			logger.info("CraftTweaker Integration has been pre-initialized");
+		}
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		logger.info(NAME + ": GUIs have been registered!");
 		
@@ -123,7 +126,7 @@ public class Metallurgy {
             }
         }
 
-		if(ModChecker.isProjectE && !GeneralConfig.projectEIntegration){
+		if(ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration){
 			IntegrationProjectE.init();
 			logger.info("ProjectE's Integration has been initialized");
 		}

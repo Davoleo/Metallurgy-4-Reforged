@@ -29,9 +29,6 @@ public class BlockCrusherRecipes {
 
     private static final BlockCrusherRecipes INSTANCE = new BlockCrusherRecipes();
 
-    //Nel caso si voglia utilizzare un metodo più automatico per le recipe degli ore
-    //private static final int ORE_MULTIPLIER = 2;
-
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
@@ -42,7 +39,7 @@ public class BlockCrusherRecipes {
     private BlockCrusherRecipes() {
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
-                // 1 Ore = 2 Dust
+                // 1 Ore => 2 Dust
                 addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
             }
             addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
@@ -71,6 +68,15 @@ public class BlockCrusherRecipes {
 
         this.crushingList.put(input.copy(), result);
         this.experienceList.put(result.copy(), experience);
+    }
+
+    public void removeCrushingRecipe(ItemStack output)
+    {
+        for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
+        {
+            if (output == entry.getValue())
+                crushingList.remove(entry.getKey());
+        }
     }
 
     public ItemStack getCrushingResult(ItemStack input) {

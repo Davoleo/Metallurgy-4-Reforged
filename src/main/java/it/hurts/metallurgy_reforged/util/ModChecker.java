@@ -18,13 +18,15 @@ public class ModChecker {
 	public static boolean isTConLoaded;
 	public static boolean isConarmLoaded;
 	public static boolean isIFLoaded;
-	public static boolean isProjectE;
+	public static boolean isProjectELoaded;
+	public static boolean isCraftTweakerLoaded;
 	
 	static{
 		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
 		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
 		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
-		ModChecker.isProjectE = Loader.isModLoaded("projecte");
+		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
+		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
 	}
 	
 }
