@@ -12,8 +12,8 @@
 package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotAlloyerOutput;
-import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -92,72 +92,118 @@ public class ContainerAlloyer extends Container {
         return this.alloyer.isUsableByPlayer(playerIn);
     }
 
+
+    //-------------------- GENERAL SHIFT-CLICK METHODS --------------------
     @Nonnull
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        Slot slot = this.inventorySlots.get(index);
-        ItemStack ret = slot.getStack();
+    public ItemStack transferStackInSlot(EntityPlayer player, int index) {
+        //Final Instance of the clicked item -
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = inventorySlots.get(index);
 
-        if (/*slot != null &&*/ slot.getHasStack()) {
-            ItemStack itemstack = slot.getStack();
-            ret = itemstack.copy();
+        if (slot != null && slot.getHasStack()) {
+            ItemStack itemstack1 = slot.getStack();
 
-            if (TileEntityAlloyer.SlotEnum.OUTPUT_SLOT.contains(index)) {
-                slot.onTake(playerIn, itemstack); //XP
-                if (!this.mergeItemStack(itemstack, iStart, hEnd + 1, true)) {
+            itemstack = itemstack1.copy();
+
+            int containerSlots = inventorySlots.size() - player.inventory.mainInventory.size();
+
+            if (index < containerSlots) {
+                if (!this.mergeItemStack(itemstack1, containerSlots, inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
-                }
-                slot.onSlotChange(itemstack, ret);
-            } else if (index >= iStart) {
-                //Check for valid alloy recipes
-                if (BlockAlloyerRecipes.getInstance().isAlloyMetal(itemstack)) {
-                    if(this.inventorySlots.get(0).getHasStack() == this.inventorySlots.get(1).getHasStack()) {
-                        if (!this.mergeItemStack(itemstack, 0, 2, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if(this.inventorySlots.get(0).getHasStack()) {
-                        if (!this.mergeItemStack(itemstack, 0, 1, false)) {
-                            if (!BlockAlloyerRecipes.getInstance().getAlloyResult(itemstack, this.inventorySlots.get(0).getStack()).isEmpty()) {
-                                if (!this.mergeItemStack(itemstack, 1, 2, false)) {
-                                    return ItemStack.EMPTY;
-                                }
-                            }
-                        }
-                    } else if(this.inventorySlots.get(1).getHasStack()) {
-                        if (!this.mergeItemStack(itemstack, 1, 2, false)) {
-                            if (!BlockAlloyerRecipes.getInstance().getAlloyResult(itemstack, this.inventorySlots.get(1).getStack()).isEmpty()) {
-                                if (!this.mergeItemStack(itemstack, 0, 1, false)) {
-                                    return ItemStack.EMPTY;
-                                }
-                            }
-                        }
-                    }
-                } else if (TileEntityAlloyer.isItemFuel(itemstack)) {
-                    if (!this.mergeItemStack(itemstack, 2, 3, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (/*index >= iStart && */index <= iEnd) {
-                    if (!this.mergeItemStack(itemstack, hStart, hEnd + 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (/*index >= hStart &&*/ index < hEnd + 1 && !this.mergeItemStack(itemstack, iStart, iEnd + 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.mergeItemStack(itemstack, iStart, hEnd + 1, false)) {
+                } else
+                    Utils.giveExperience(player, itemstack.getCount() * BlockAlloyerRecipes.getInstance().getAlloyExperience(itemstack));
+
+            } else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false)) {
                 return ItemStack.EMPTY;
             }
 
-            if (itemstack.isEmpty()) {
+            if (itemstack1.getCount() == 0) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }
 
-            if (itemstack.getCount() == ret.getCount()) {
+            if (itemstack1.getCount() == itemstack.getCount()) {
                 return ItemStack.EMPTY;
             }
-            slot.onTake(playerIn, itemstack);
+
+            slot.onTake(player, itemstack1);
         }
-        return ret;
+
+        return itemstack;
     }
+
+    @Override
+    protected boolean mergeItemStack(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection) {
+        boolean flag = false;
+        int i = startIndex;
+
+        if (reverseDirection) {
+            i = endIndex - 1;
+        }
+
+        if (stack.isStackable()) {
+            while (stack.getCount() > 0 && (!reverseDirection && i < endIndex || reverseDirection && i >= startIndex)) {
+                Slot slot = this.inventorySlots.get(i);
+                ItemStack itemstack = slot.getStack();
+
+                if (slot.isItemValid(stack)) {
+                    if (!itemstack.isEmpty() && itemstack.getItem() == stack.getItem() && (!stack.getHasSubtypes() || stack.getMetadata() == itemstack.getMetadata()) && ItemStack.areItemStackTagsEqual(stack, itemstack)) {
+                        int j = itemstack.getCount() + stack.getCount();
+
+                        if (j <= stack.getMaxStackSize()) {
+                            stack.setCount(0);
+                            itemstack.setCount(j);
+                            slot.onSlotChanged();
+                            flag = true;
+                        } else if (itemstack.getCount() < stack.getMaxStackSize()) {
+                            stack.shrink(stack.getMaxStackSize() - itemstack.getCount());
+                            itemstack.setCount(stack.getMaxStackSize());
+                            slot.onSlotChanged();
+                            flag = true;
+                        }
+                    }
+                }
+
+                if (reverseDirection) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        if (stack.getCount() > 0) {
+            if (reverseDirection) {
+                i = endIndex - 1;
+            } else {
+                i = startIndex;
+            }
+
+            while (!reverseDirection && i < endIndex || reverseDirection && i >= startIndex) {
+                Slot slot1 = (Slot)this.inventorySlots.get(i);
+                ItemStack itemstack1 = slot1.getStack();
+
+                // Forge: Make sure to respect isItemValid in the slot.
+                if (itemstack1.isEmpty() && slot1.isItemValid(stack)) {
+                    slot1.putStack(stack.copy());
+                    slot1.onSlotChanged();
+                    stack.setCount(0);
+                    flag = true;
+                    break;
+                }
+
+                if (reverseDirection) {
+                    --i;
+                } else {
+                    ++i;
+                }
+            }
+        }
+
+        return flag;
+    }
+
+
 }
