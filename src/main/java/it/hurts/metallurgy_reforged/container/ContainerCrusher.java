@@ -115,7 +115,7 @@ public class ContainerCrusher extends Container {
                 return ItemStack.EMPTY;
             }
 
-            if (itemstack1.getCount() == 0) {
+            if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
