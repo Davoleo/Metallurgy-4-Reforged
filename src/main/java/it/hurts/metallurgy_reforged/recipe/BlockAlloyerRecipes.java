@@ -120,6 +120,26 @@ public class BlockAlloyerRecipes {
         this.recipeQuants.put(result, new ItemStack[]{input1, input2});
     }
 
+    //@SuppressWarnings("ConstantConditions")
+    public void removeAlloyRecipe(ItemStack output)
+    {
+        ItemStack firstInput = ItemStack.EMPTY;
+        ItemStack secondInput = ItemStack.EMPTY;
+
+        for (Table.Cell<ItemStack, ItemStack, ItemStack> recipe : getInstance().getRecipeTable().cellSet())
+        {
+            if (ItemStack.areItemStacksEqual(output, recipe.getValue()))
+            {
+                firstInput = recipe.getRowKey();
+                secondInput = recipe.getColumnKey();
+            }
+        }
+
+        if (!firstInput.isEmpty() && !secondInput.isEmpty())
+            getInstance().getRecipeTable().remove(firstInput, secondInput);
+    }
+
+    @SuppressWarnings("ConstantConditions")
     public ItemStack getAlloyResult(ItemStack input1, ItemStack input2) {
         for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
             if(this.compareItemStacks(cell.getColumnKey(), input1) && this.compareItemStacks(cell.getRowKey(), input2)) {
@@ -133,6 +153,7 @@ public class BlockAlloyerRecipes {
         return ItemStack.EMPTY;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public boolean isAlloyMetal(ItemStack input1) {
         for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
             if(this.compareItemStacks(cell.getColumnKey(), input1) || this.compareItemStacks(cell.getRowKey(), input1)) {

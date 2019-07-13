@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.crafttweaker;
 
-import com.google.common.collect.Table;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IIngredient;
@@ -87,14 +86,7 @@ public class CompatAlloyer {
         public void apply()
         {
             ItemStack outputStack = IntegrationCT.toStack(output);
-
-            for (Table.Cell<ItemStack, ItemStack, ItemStack> recipe : getInstance().getRecipeTable().cellSet())
-            {
-                if (recipe.getValue() == outputStack)
-                {
-                    getInstance().getRecipeTable().remove(recipe.getRowKey(), recipe.getColumnKey());
-                }
-            }
+            getInstance().removeAlloyRecipe(outputStack);
         }
 
         @Override

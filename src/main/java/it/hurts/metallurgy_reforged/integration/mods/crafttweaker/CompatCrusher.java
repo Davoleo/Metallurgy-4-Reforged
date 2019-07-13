@@ -20,8 +20,6 @@ import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.util.Map;
-
 import static it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes.getInstance;
 
 @ZenClass("mods.metallurgyreforged.Crusher")
@@ -79,13 +77,7 @@ public class CompatCrusher {
         @Override
         public void apply()
         {
-            for (Map.Entry<ItemStack, ItemStack> entry : getInstance().getRecipeMap().entrySet())
-            {
-                if (entry.getValue() == IntegrationCT.toStack(output))
-                {
-                    getInstance().getRecipeMap().remove(entry.getKey());
-                }
-            }
+            getInstance().removeCrushingRecipe(IntegrationCT.toStack(output));
         }
 
         @Override

@@ -34,10 +34,6 @@ public class ModMetals {
     public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   	//Obsidian-like
     public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           	//Bedrock-like
 
-    static {
-        System.out.println("ModMetal Has started loading ----------------------------------------------------------------");
-    }
-
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
     //damage_parameter = in-game_sword_damage - 3
 

@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -72,11 +73,18 @@ public class BlockCrusherRecipes {
 
     public void removeCrushingRecipe(ItemStack output)
     {
+        List<ItemStack> keysToRemove = new ArrayList<>();
+
         for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
         {
-            if (output == entry.getValue())
-                crushingList.remove(entry.getKey());
+            if (ItemStack.areItemStacksEqual(output, entry.getValue())) {
+                keysToRemove.add(entry.getKey());
+            }
         }
+
+        if (!keysToRemove.isEmpty())
+            for (ItemStack stack : keysToRemove)
+                crushingList.remove(stack);
     }
 
     public ItemStack getCrushingResult(ItemStack input) {
