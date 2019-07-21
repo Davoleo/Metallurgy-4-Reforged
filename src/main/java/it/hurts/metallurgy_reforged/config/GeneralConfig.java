@@ -81,4 +81,9 @@ public class GeneralConfig {
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 		}
 	}
+
+	@Config.Name("Power to the Axes")
+	@Config.Comment("Make axes more powerful than swords")
+	@Config.RequiresMcRestart
+	public static boolean powerAxes = false;
 }

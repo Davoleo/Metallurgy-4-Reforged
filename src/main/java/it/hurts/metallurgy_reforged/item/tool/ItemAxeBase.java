@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -41,7 +42,7 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     }
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
-        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
+        super(material, GeneralConfig.powerAxes == false ? material.getAttackDamage() + 2 : material.getAttackDamage() + 4, -2.5F -(material.getAttackDamage()/10));
         ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
