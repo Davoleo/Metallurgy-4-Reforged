@@ -83,7 +83,7 @@ public class GeneralConfig {
 	}
 
 	@Config.Name("Power to the Axes")
-	@Config.Comment("Make axes more powerful than swords")
+	@Config.Comment("Set it true to make axes more powerful than swords [ default : false ]")
 	@Config.RequiresMcRestart
 	public static boolean powerAxes = false;
 }
