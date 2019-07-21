@@ -44,7 +44,6 @@ public class MetallurgyTinkerTraits {
 
             if(item instanceof TinkersItem){
                 NBTTagList list = TagUtil.getTraitsTagList(player.getHeldItem(EnumHand.MAIN_HAND));
-                System.out.println("Entro " + list.toString());
 
                 for (int i = 0; i < list.tagCount(); i++) {
                     ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
