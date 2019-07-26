@@ -33,6 +33,8 @@ public class BlockCrusherRecipes {
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
+    private static List<ItemStack> stackBlacklist = new ArrayList<>();
+
     public static BlockCrusherRecipes getInstance() {
         return INSTANCE;
     }
@@ -60,7 +62,7 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.dustIron), 0.0F);
     }
 
-    private void addCrushingRecipe(ItemStack input, ItemStack result, float experience) {
+    public void addCrushingRecipe(ItemStack input, ItemStack result, float experience) {
         if (input.isEmpty() || result.isEmpty())
             return;
         for (ItemStack stack : crushingList.keySet())
@@ -77,14 +79,19 @@ public class BlockCrusherRecipes {
 
         for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
         {
-            if (ItemStack.areItemStacksEqual(output, entry.getValue())) {
+            if (output.getItem() == entry.getValue().getItem()) {
                 keysToRemove.add(entry.getKey());
             }
         }
 
         if (!keysToRemove.isEmpty())
             for (ItemStack stack : keysToRemove)
+            {
                 crushingList.remove(stack);
+                experienceList.remove(output);
+                stackBlacklist.add(stack);
+            }
+
     }
 
     public ItemStack getCrushingResult(ItemStack input) {
@@ -127,6 +134,7 @@ public class BlockCrusherRecipes {
         List<ItemStack> outs = OreDictionary.getOres(out + mat);
         if (ore.startsWith(in) && !outs.isEmpty())
             for (ItemStack stack : OreDictionary.getOres(ore))
-                BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
+                if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
+                    BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
     }
 }

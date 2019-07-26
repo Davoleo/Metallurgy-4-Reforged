@@ -31,15 +31,28 @@ public class CompatCrusher {
         CraftTweakerAPI.apply(new Add(input, output));
     }
 
+    @ZenMethod
+    public static void addRecipe(IIngredient input, IItemStack output, float xp)
+    {
+        CraftTweakerAPI.apply(new Add(input, output));
+    }
+
     private static class Add implements IAction {
 
         private IIngredient input;
         private IItemStack output;
+        private float xp;
 
         Add(IIngredient input, IItemStack output)
         {
+            this(input, output, 0F);
+        }
+
+        Add(IIngredient input, IItemStack output, float xp)
+        {
             this.input = input;
             this.output = output;
+            this.xp = xp;
         }
 
         @Override
@@ -49,7 +62,7 @@ public class CompatCrusher {
             ItemStack outputStack = IntegrationCT.toStack(output);
 
             for (ItemStack inputStack : inputStacks)
-                getInstance().getRecipeMap().put(inputStack, outputStack);
+                getInstance().addCrushingRecipe(inputStack, outputStack, xp);
         }
 
         @Override

@@ -108,7 +108,7 @@ public class BlockAlloyerRecipes {
                         new ItemStack(ModMetals.KRIK.getIngot(),  2), 1.25F);
     }
 
-    private void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
+    public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
 
         if (input1.isEmpty() || input2.isEmpty() || result.isEmpty())
             return;
@@ -120,7 +120,7 @@ public class BlockAlloyerRecipes {
         this.recipeQuants.put(result, new ItemStack[]{input1, input2});
     }
 
-    //@SuppressWarnings("ConstantConditions")
+    @SuppressWarnings("ConstantConditions")
     public void removeAlloyRecipe(ItemStack output)
     {
         ItemStack firstInput = ItemStack.EMPTY;
@@ -135,8 +135,11 @@ public class BlockAlloyerRecipes {
             }
         }
 
-        if (!firstInput.isEmpty() && !secondInput.isEmpty())
-            getInstance().getRecipeTable().remove(firstInput, secondInput);
+        if (!firstInput.isEmpty() && !secondInput.isEmpty()) {
+            alloyingList.remove(firstInput, secondInput);
+            experienceList.remove(output);
+            recipeQuants.remove(output);
+        }
     }
 
     @SuppressWarnings("ConstantConditions")

@@ -31,17 +31,30 @@ public class CompatAlloyer {
         CraftTweakerAPI.apply(new Add(input1, input2, output));
     }
 
+    @ZenMethod
+    public static void addRecipe(IIngredient input1, IIngredient input2, IItemStack output, float xp)
+    {
+        CraftTweakerAPI.apply(new Add(input1, input2, output));
+    }
+
     public static class Add implements IAction {
 
         private IIngredient input1;
         private IIngredient input2;
         private IItemStack output;
+        private float xp;
 
         Add(IIngredient input1, IIngredient input2, IItemStack output)
+        {
+            this(input1, input2, output, 0F);
+        }
+
+        Add(IIngredient input1, IIngredient input2, IItemStack output, float xp)
         {
             this.input1 = input1;
             this.input2 = input2;
             this.output = output;
+            this.xp = xp;
         }
 
         @Override
@@ -51,13 +64,9 @@ public class CompatAlloyer {
             ItemStack[] inputStacks2 = IntegrationCT.toStacks(input2.getItemArray());
             ItemStack outputStack = IntegrationCT.toStack(output);
 
-            for (ItemStack inputStack1 : inputStacks1)
-            {
-                for (ItemStack inputStack2 : inputStacks2)
-                {
-                    getInstance().getRecipeTable().put(inputStack1, inputStack2, outputStack);
-                }
-            }
+            for (ItemStack key1 : inputStacks1)
+                for (ItemStack key2 : inputStacks2)
+                    getInstance().addAlloyRecipe(key1, key2, outputStack, xp);
         }
 
         @Override
