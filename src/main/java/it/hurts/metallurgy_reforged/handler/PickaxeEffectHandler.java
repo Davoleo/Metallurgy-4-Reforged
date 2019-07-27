@@ -14,16 +14,11 @@ package it.hurts.metallurgy_reforged.handler;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.ArrayList;
 
 public class PickaxeEffectHandler {
 	
@@ -33,15 +28,13 @@ public class PickaxeEffectHandler {
 		EntityPlayer pl = event.getEntityPlayer();
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
-		if(pl.isInWater()
-				&& mainHandStack.isItemEqualIgnoreDurability(new ItemStack(ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE)))
-				&& ToolEffectsConfig.deepIronPickaxeEffect) {
-				event.setNewSpeed(event.getOriginalSpeed() * 3);
+		if(pl.isInWater() && mainHandStack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE) && ToolEffectsConfig.deepIronPickaxeEffect) {
+			event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}
 
 
 //		set tools break speed based on light except for hoe and sword
-		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && ItemUtils.isItemStackASpecificToolMaterial(ModMetals.SHADOW_STEEL, mainHandStack,"hoe","sword")) {
+		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && mainHandStack.getItem() == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE)) {
 			float percentage = Utils.getLightArmorPercentage(pl,100F);
 			float speed = event.getNewSpeed()  * percentage / 40F;
 			event.setNewSpeed(event.getOriginalSpeed() + speed);

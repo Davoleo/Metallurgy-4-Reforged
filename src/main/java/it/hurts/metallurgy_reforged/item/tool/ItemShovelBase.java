@@ -66,7 +66,7 @@ public class ItemShovelBase extends ItemSpade implements IHasModel {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
     {
         return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }

@@ -12,9 +12,28 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 public enum EnumTools {
-    AXE,
-    HOE,
-    PICKAXE,
-    SHOVEL,
-    SWORD;
+    AXE("axe", ItemAxeBase.class),
+    HOE("hoe", ItemHoeBase.class),
+    PICKAXE("pickaxe", ItemPickaxeBase.class),
+    SHOVEL("shovel", ItemShovelBase.class),
+    SWORD("sword", ItemSwordBase.class);
+
+    private String name;
+    private Class<?> toolClass;
+
+    EnumTools(String name, Class<?> toolClass)
+    {
+        this.name = name;
+        this.toolClass = toolClass;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public Class<?> getToolClass()
+    {
+        return toolClass;
+    }
 }

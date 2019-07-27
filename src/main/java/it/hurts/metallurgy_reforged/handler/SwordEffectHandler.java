@@ -147,7 +147,7 @@ public class SwordEffectHandler {
         {
             EntityPlayer pl = (EntityPlayer) entity;
 
-            if(pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.MIDASIUM.getTool(EnumTools.SWORD)))&& !(ev.getEntity() instanceof EntityPlayer)){
+            if(pl.getHeldItemMainhand().getItem() == ModMetals.MIDASIUM.getTool(EnumTools.SWORD) && !(ev.getEntity() instanceof EntityPlayer)){
 	            ArrayList<EntityItem> drops = new ArrayList<>();
 
 //            	Duplica il drop
