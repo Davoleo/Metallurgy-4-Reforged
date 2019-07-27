@@ -22,7 +22,7 @@ public enum EnumToolEffects {
 
     //Sword Effects
     CELENEGIL_SWORD_EFFECT("tooltip.metallurgy.celenegil_sword_effect", true, "sword"),
-    CERUCLASE_SWORD_EFFECT("tooltip.metallurgy.ceruclase_sword_effect", true, "sword"),
+    CERUCLASE_SWORD_EFFECT("tooltip.metallurgy.ceruclase_sword_effect", ToolEffectsConfig.ceruclaseSwordEffect, "sword"),
     DESICHALKOS_SWORD_EFFECT("tooltip.metallurgy.desichalkos_sword_effect", ToolEffectsConfig.desichalkosSwordEffect, "sword"),
     IGNATIUS_SWORD_EFFECT("tooltip.metallurgy.ignatius_sword_effect", ToolEffectsConfig.ignatiusSwordEffect, "sword"),
     KALENDRITE_SWORD_EFFECT("tooltip.metallurgy.kalendrite_sword_effect", ToolEffectsConfig.kalendriteSwordEffect, "sword"),
