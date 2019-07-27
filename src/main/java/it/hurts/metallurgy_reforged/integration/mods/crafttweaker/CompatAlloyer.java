@@ -34,7 +34,7 @@ public class CompatAlloyer {
     @ZenMethod
     public static void addRecipe(IIngredient input1, IIngredient input2, IItemStack output, float xp)
     {
-        CraftTweakerAPI.apply(new Add(input1, input2, output));
+        CraftTweakerAPI.apply(new Add(input1, input2, output, xp));
     }
 
     public static class Add implements IAction {

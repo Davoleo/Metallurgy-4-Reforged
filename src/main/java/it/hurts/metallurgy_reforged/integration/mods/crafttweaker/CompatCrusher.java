@@ -34,7 +34,7 @@ public class CompatCrusher {
     @ZenMethod
     public static void addRecipe(IIngredient input, IItemStack output, float xp)
     {
-        CraftTweakerAPI.apply(new Add(input, output));
+        CraftTweakerAPI.apply(new Add(input, output, xp));
     }
 
     private static class Add implements IAction {
