@@ -16,8 +16,8 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletOperation;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 

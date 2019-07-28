@@ -69,9 +69,10 @@ public class GeneralConfig {
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
 	public static boolean enableAnvilArmorRepair = false;
 
-	@Config.Name("Lantern entity collision")
-	@Config.Comment("Set this to false to disable entity collisions with lantern")
-	public static boolean enableLanternCollision = true;
+	@Config.Name("Power to the Axes")
+	@Config.Comment("Set it true to make axes more powerful than swords [ default : false ]")
+	@Config.RequiresMcRestart
+	public static boolean powerAxes = false;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {
@@ -81,9 +82,4 @@ public class GeneralConfig {
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 		}
 	}
-
-	@Config.Name("Power to the Axes")
-	@Config.Comment("Set it true to make axes more powerful than swords [ default : false ]")
-	@Config.RequiresMcRestart
-	public static boolean powerAxes = false;
 }

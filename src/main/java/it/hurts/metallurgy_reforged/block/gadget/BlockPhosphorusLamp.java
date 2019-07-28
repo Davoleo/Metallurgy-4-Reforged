@@ -9,9 +9,10 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.block;
+package it.hurts.metallurgy_reforged.block.gadget;
 
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.block.BlockOrientable;
+import it.hurts.metallurgy_reforged.config.PhosphorusLampConfig;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
@@ -19,7 +20,6 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.item.ItemStack;
@@ -58,6 +58,20 @@ public class BlockPhosphorusLamp extends BlockOrientable {
         {
             return this.getDefaultState().withProperty(FACING, EnumFacing.UP);
         }
+    }
+
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        //Vec3i#distance
+        PhosphorusLampSavedData.getInstance(worldIn).addLanternToList(pos);
+    }
+
+    @Override
+    public void breakBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+    {
+        PhosphorusLampSavedData.getInstance(worldIn).removeLanternFromList(pos);
+        super.breakBlock(worldIn, pos, state);
     }
 
     @Override
@@ -150,7 +164,7 @@ public class BlockPhosphorusLamp extends BlockOrientable {
     @Override
     public int getLightValue(IBlockState state, IBlockAccess blockAccess, BlockPos pos)
     {
-        return 8;
+        return PhosphorusLampConfig.lanternLightLevel;
     }
 
 //    @SideOnly(Side.CLIENT)
@@ -236,9 +250,10 @@ public class BlockPhosphorusLamp extends BlockOrientable {
     @Nullable
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos) {
-        if(!GeneralConfig.enableLanternCollision)
+        if (PhosphorusLampConfig.enableLanternCollision) {
+            return getBoundingBox(blockState, worldIn, pos);
+        } else {
             return null;
-        else
-            return super.getCollisionBoundingBox(blockState, worldIn, pos);
+        }
     }
 }

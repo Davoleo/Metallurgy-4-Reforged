@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.item.gadgets.gauntlet;
+package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
