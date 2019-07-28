@@ -55,7 +55,7 @@ public enum EnumArmorEffects {
     {
         for (EnumArmorEffects effect : EnumArmorEffects.values())
         {
-            if (effect.name().contains(armor.getArmorMaterial().name()))
+            if (effect.name().toLowerCase().contains(armor.getArmorMaterial().name()))
                 return effect;
         }
 
