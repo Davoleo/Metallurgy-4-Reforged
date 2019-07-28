@@ -33,6 +33,13 @@ public class PhosphorusLampSavedData extends WorldSavedData {
         super(DATA_NAME);
     }
 
+    //Used by Forge in MapStorage#getOrLoadData
+    @SuppressWarnings("unused")
+    public PhosphorusLampSavedData(String dataId)
+    {
+        super(dataId);
+    }
+
     @Override
     public void readFromNBT(@Nonnull NBTTagCompound nbt)
     {
