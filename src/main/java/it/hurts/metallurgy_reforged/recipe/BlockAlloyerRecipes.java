@@ -108,7 +108,7 @@ public class BlockAlloyerRecipes {
                         new ItemStack(ModMetals.KRIK.getIngot(),  2), 1.25F);
     }
 
-    private void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
+    public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
 
         if (input1.isEmpty() || input2.isEmpty() || result.isEmpty())
             return;
@@ -120,6 +120,29 @@ public class BlockAlloyerRecipes {
         this.recipeQuants.put(result, new ItemStack[]{input1, input2});
     }
 
+    @SuppressWarnings("ConstantConditions")
+    public void removeAlloyRecipe(ItemStack output)
+    {
+        ItemStack firstInput = ItemStack.EMPTY;
+        ItemStack secondInput = ItemStack.EMPTY;
+
+        for (Table.Cell<ItemStack, ItemStack, ItemStack> recipe : getInstance().getRecipeTable().cellSet())
+        {
+            if (ItemStack.areItemStacksEqual(output, recipe.getValue()))
+            {
+                firstInput = recipe.getRowKey();
+                secondInput = recipe.getColumnKey();
+            }
+        }
+
+        if (!firstInput.isEmpty() && !secondInput.isEmpty()) {
+            alloyingList.remove(firstInput, secondInput);
+            experienceList.remove(output);
+            recipeQuants.remove(output);
+        }
+    }
+
+    @SuppressWarnings("ConstantConditions")
     public ItemStack getAlloyResult(ItemStack input1, ItemStack input2) {
         for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
             if(this.compareItemStacks(cell.getColumnKey(), input1) && this.compareItemStacks(cell.getRowKey(), input2)) {
@@ -133,6 +156,7 @@ public class BlockAlloyerRecipes {
         return ItemStack.EMPTY;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public boolean isAlloyMetal(ItemStack input1) {
         for(Cell<ItemStack, ItemStack, ItemStack> cell : this.alloyingList.cellSet()) {
             if(this.compareItemStacks(cell.getColumnKey(), input1) || this.compareItemStacks(cell.getRowKey(), input1)) {

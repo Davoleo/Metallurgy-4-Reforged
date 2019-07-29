@@ -41,7 +41,7 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     }
     
     public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
-        super(material, material.getAttackDamage() + 2, -2.5F -(material.getAttackDamage()/10));
+        super(material, GeneralConfig.powerAxes == false ? material.getAttackDamage() + 2 : material.getAttackDamage() + 4, -2.5F -(material.getAttackDamage()/10));
         ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
         this.enchantment = enchantment;
         this.enchantmentLevel = enchantmentLevel;
@@ -67,7 +67,7 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
     {
         return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }

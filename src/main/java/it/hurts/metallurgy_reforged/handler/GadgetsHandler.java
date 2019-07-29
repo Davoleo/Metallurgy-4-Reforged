@@ -12,11 +12,11 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.block.gadget.PhosphorusLampSavedData;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
@@ -78,22 +78,13 @@ public class GadgetsHandler {
 	@SubscribeEvent
 	public static void denySpawn(LivingSpawnEvent.CheckSpawn event)
 	{
-		if (event.getEntity().isCreatureType(EnumCreatureType.MONSTER, false) )
+		PhosphorusLampSavedData dataManager = PhosphorusLampSavedData.getInstance(event.getWorld());
+
+		if (dataManager.isEntityInRange(event.getEntity().getPosition(), event.getWorld()))
 		{
-			for (int x = -8; x < 8; x++)
-			{
-				for (int y = -4; y < 4; y++)
-				{
-					for (int z = -8; z < 8; z++)
-					{
-						BlockPos pos = new BlockPos(event.getX() + x, event.getY() + y, event.getZ() + z);
-						if (event.getWorld().getBlockState(pos).getBlock() == ModBlocks.blockPhosphorusLamp)
-						{
-							event.setResult(Event.Result.DENY);
-						}
-					}
-				}
-			}
+			//Debug println
+			//System.out.println(event.getEntity().getName() + " SPAWN DENIED!");
+			event.setResult(Event.Result.DENY);
 		}
 	}
 }

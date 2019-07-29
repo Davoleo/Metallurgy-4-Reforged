@@ -11,11 +11,11 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.item.gadgets.ItemIgnatiusLighter;
-import it.hurts.metallurgy_reforged.item.gadgets.ItemInvisibilityShield;
-import it.hurts.metallurgy_reforged.item.gadgets.ItemPotashFertilizer;
-import it.hurts.metallurgy_reforged.item.gadgets.ItemVulcaniteLighter;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.ItemGauntlet;
+import it.hurts.metallurgy_reforged.item.gadget.ItemIgnatiusLighter;
+import it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield;
+import it.hurts.metallurgy_reforged.item.gadget.ItemPotashFertilizer;
+import it.hurts.metallurgy_reforged.item.gadget.ItemVulcaniteLighter;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;

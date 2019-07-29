@@ -23,6 +23,7 @@ public class Drop {
     private float chance;
 
     //constructors
+    @SuppressWarnings("unused")
     public Drop(ItemStack itemStack, int percentage)
     {
         this.item = itemStack;
@@ -52,6 +53,7 @@ public class Drop {
         return chance;
     }
 
+    @SuppressWarnings("unused")
     public int getAmount()
     {
         return item.getCount();

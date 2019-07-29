@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.integration.mods;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiAlloyer;
 import it.hurts.metallurgy_reforged.gui.GuiCrusher;
 import it.hurts.metallurgy_reforged.integration.mods.jei.alloyer.AlloyerRecipeCategory;
@@ -62,6 +63,9 @@ public class IntegrationJEI implements IModPlugin {
         registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
         registry.addIngredientInfo(new ItemStack(ModItems.tar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
         registry.addIngredientInfo(new ItemStack(ModItems.bitumen), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.invisibilityShield), VanillaTypes.ITEM, "description.jei_compat.invisibility_shield");
+        registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
+        registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
         //registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
     }

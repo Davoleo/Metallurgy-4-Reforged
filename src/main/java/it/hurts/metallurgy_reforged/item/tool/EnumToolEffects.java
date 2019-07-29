@@ -18,38 +18,35 @@ import net.minecraft.item.Item;
 public enum EnumToolEffects {
 
     //Pickaxe Effects
-    DEEP_IRON_PICKAXE_EFFECT("tooltip.metallurgy.deep_iron_pickaxe_effect", ToolEffectsConfig.deepIronPickaxeEffect, "pickaxe"),
+    DEEP_IRON_PICKAXE_EFFECT("tooltip.metallurgy.deep_iron_pickaxe_effect", ToolEffectsConfig.deepIronPickaxeEffect, EnumTools.PICKAXE),
+    SHADOW_STEEL_TOOL_EFFECT("tooltip.metallurgy.shadow_steel_tool_effect", ToolEffectsConfig.shadowSteelToolSpeedEffect, EnumTools.PICKAXE),
 
     //Sword Effects
-    CELENEGIL_SWORD_EFFECT("tooltip.metallurgy.celenegil_sword_effect", true, "sword"),
-    CERUCLASE_SWORD_EFFECT("tooltip.metallurgy.ceruclase_sword_effect", true, "sword"),
-    DESICHALKOS_SWORD_EFFECT("tooltip.metallurgy.desichalkos_sword_effect", ToolEffectsConfig.desichalkosSwordEffect, "sword"),
-    IGNATIUS_SWORD_EFFECT("tooltip.metallurgy.ignatius_sword_effect", ToolEffectsConfig.ignatiusSwordEffect, "sword"),
-    KALENDRITE_SWORD_EFFECT("tooltip.metallurgy.kalendrite_sword_effect", ToolEffectsConfig.kalendriteSwordEffect, "sword"),
-    MITHRIL_SWORD_EFFECT("tooltip.metallurgy.mithril_sword_effect", true, "sword"),
-    ORICHALCUM_SWORD_EFFECT("tooltip.metallurgy.orichalcum_sword_effect", true, "sword"),
-    SANGUINITE_SWORD_EFFECT("tooltip.metallurgy.sanguinite_sword_effect", true, "sword"),
-    SHADOW_IRON_SWORD_EFFECT("tooltip.metallurgy.shadow_iron_sword_effect", ToolEffectsConfig.shadowIronSwordEffect, "sword"),
-    SHADOW_STEEL_SWORD_EFFECT("tooltip.metallurgy.shadow_steel_sword_effect", ToolEffectsConfig.shadowSteelSwordEffect, "sword"),
-    TARTARITE_SWORD_EFFECT("tooltip.metallurgy.tartarite_sword_effect", ToolEffectsConfig.tartariteSwordEffect, "sword"),
-    VULCANITE_SWORD_EFFECT("tooltip.metallurgy.vulcanite_sword_effect", ToolEffectsConfig.vulcaniteSwordEffect, "sword"),
-    VYROXERES_SWORD_EFFECT("tooltip.metallurgy.vyroxeres_sword_effect", ToolEffectsConfig.vyroxeresSwordEffect, "sword"),
-
-    //Tool Effects
-    MIDASIUM_TOOL_EFFECT("tooltip.metallurgy.midasium_tool_effect", true, "tools"),
-    SHADOW_STEEL_TOOL_EFFECT("tooltip.metallurgy.shadow_steel_tool_effect", ToolEffectsConfig.shadowSteelToolSpeedEffect, "tools");
-
+    CELENEGIL_SWORD_EFFECT("tooltip.metallurgy.celenegil_sword_effect", true, EnumTools.SWORD),
+    CERUCLASE_SWORD_EFFECT("tooltip.metallurgy.ceruclase_sword_effect", ToolEffectsConfig.ceruclaseSwordEffect, EnumTools.SWORD),
+    DESICHALKOS_SWORD_EFFECT("tooltip.metallurgy.desichalkos_sword_effect", ToolEffectsConfig.desichalkosSwordEffect, EnumTools.SWORD),
+    IGNATIUS_SWORD_EFFECT("tooltip.metallurgy.ignatius_sword_effect", ToolEffectsConfig.ignatiusSwordEffect, EnumTools.SWORD),
+    KALENDRITE_SWORD_EFFECT("tooltip.metallurgy.kalendrite_sword_effect", ToolEffectsConfig.kalendriteSwordEffect, EnumTools.SWORD),
+    MIDASIUM_SWORD_EFFECT("tooltip.metallurgy.midasium_sword_effect", true, EnumTools.SWORD),
+    MITHRIL_SWORD_EFFECT("tooltip.metallurgy.mithril_sword_effect", true, EnumTools.SWORD),
+    ORICHALCUM_SWORD_EFFECT("tooltip.metallurgy.orichalcum_sword_effect", true, EnumTools.SWORD),
+    SANGUINITE_SWORD_EFFECT("tooltip.metallurgy.sanguinite_sword_effect", true, EnumTools.SWORD),
+    SHADOW_IRON_SWORD_EFFECT("tooltip.metallurgy.shadow_iron_sword_effect", ToolEffectsConfig.shadowIronSwordEffect, EnumTools.SWORD),
+    SHADOW_STEEL_SWORD_EFFECT("tooltip.metallurgy.shadow_steel_sword_effect", ToolEffectsConfig.shadowSteelSwordEffect, EnumTools.SWORD),
+    TARTARITE_SWORD_EFFECT("tooltip.metallurgy.tartarite_sword_effect", ToolEffectsConfig.tartariteSwordEffect, EnumTools.SWORD),
+    VULCANITE_SWORD_EFFECT("tooltip.metallurgy.vulcanite_sword_effect", ToolEffectsConfig.vulcaniteSwordEffect, EnumTools.SWORD),
+    VYROXERES_SWORD_EFFECT("tooltip.metallurgy.vyroxeres_sword_effect", ToolEffectsConfig.vyroxeresSwordEffect, EnumTools.SWORD);
 
     private String unlocalized;
     private boolean active;
-    private String category;
+    private EnumTools category;
 
     /**
      * @param unlocalized unlocalized effect tooltip String
      * @param active if the effect is active (config value)
-     * @param category tool class (can be 'axe', 'hoe', 'pickaxe', 'shovel', 'sword', 'tools')
+     * @param category tool class
      */
-    EnumToolEffects(String unlocalized, boolean active, String category)
+    EnumToolEffects(String unlocalized, boolean active, EnumTools category)
     {
         this.unlocalized = unlocalized;
         this.active = active;
@@ -64,16 +61,18 @@ public enum EnumToolEffects {
     {
         for (EnumToolEffects effect : EnumToolEffects.values())
         {
+
             if (tool instanceof ItemPickaxeBase)
             {
                 ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
-                if (effect.name().contains(pickaxe.getToolMaterialName()))
+
+                if (effect.name().toLowerCase().contains(pickaxe.getToolMaterialName()))
                     return effect;
             }
             else if (tool instanceof ItemSwordBase)
             {
                 ItemSwordBase sword = (ItemSwordBase) tool;
-                if (effect.name().contains(sword.getToolMaterialName()))
+                if (effect.name().toLowerCase().contains(sword.getToolMaterialName()))
                     return effect;
             }
         }
@@ -96,7 +95,7 @@ public enum EnumToolEffects {
         return active;
     }
 
-    public String getCategory()
+    public EnumTools getCategory()
     {
         return category;
     }

@@ -29,6 +29,9 @@ public class ToolEffectsConfig {
     public static boolean shadowSteelToolSpeedEffect = true;
 
     //Swords
+    @Config.Name("Ceruclase Sword Effect")
+    @Config.Comment("Has a Chance to slow down enemies on hit")
+    public static boolean ceruclaseSwordEffect = true;
     @Config.Name("Deep Iron Sword Effect")
     @Config.Comment("Increase attack speed in water")
     public static boolean deepIronSwordEffect = true;

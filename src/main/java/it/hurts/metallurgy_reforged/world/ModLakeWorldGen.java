@@ -30,21 +30,21 @@ public class ModLakeWorldGen {
 		World world = event.getWorld();
 		Random rand = new Random();
 		
-		if((rand.nextInt(100) + 1) < WorldGenerationConfig.tarLakePercentage)
-			if (world.provider.getDimension() == 0) {
+		if((rand.nextInt(500) + 1) <= WorldGenerationConfig.tarLakePercentage)
+			if (world.provider.getDimension() != 1 && world.provider.getDimension() != -1) {
 				int x = event.getChunkX() * 16;
 				int z = event.getChunkZ() * 16;
 
 				BlockPos blockpos = new BlockPos(x, 0, z);
 				IChunkGenerator cgen = world.provider.createChunkGenerator();
-				if(cgen instanceof ChunkGeneratorOverworld) {
+//				if(cgen instanceof ChunkGeneratorOverworld) {
 					if (net.minecraftforge.event.terraingen.TerrainGen.populate(cgen, world, rand, event.getChunkX(), event.getChunkZ(), false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)){
 						int i1 = rand.nextInt(16) + 8;
 						int j1 = rand.nextInt(256);
 						int k1 = rand.nextInt(16) + 8;
 						(new WorldGenLakes(ModFluids.TAR.getFluidBlock())).generate(world, rand, blockpos.add(i1, j1, k1));
 					}
-				}
+//				}
 			}
 	}
 

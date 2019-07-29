@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
 import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;

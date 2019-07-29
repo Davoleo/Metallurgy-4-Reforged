@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,11 +30,10 @@ public class BlockCrusherRecipes {
 
     private static final BlockCrusherRecipes INSTANCE = new BlockCrusherRecipes();
 
-    //Nel caso si voglia utilizzare un metodo più automatico per le recipe degli ore
-    //private static final int ORE_MULTIPLIER = 2;
-
     private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
     private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
+
+    private static List<ItemStack> stackBlacklist = new ArrayList<>();
 
     public static BlockCrusherRecipes getInstance() {
         return INSTANCE;
@@ -42,7 +42,7 @@ public class BlockCrusherRecipes {
     private BlockCrusherRecipes() {
         for(Metal m: ModMetals.metalList) {
             if(m.getOre() != null) {
-                // 1 Ore = 2 Dust
+                // 1 Ore => 2 Dust
                 addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
             }
             addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
@@ -62,7 +62,7 @@ public class BlockCrusherRecipes {
         addCrushingRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.dustIron), 0.0F);
     }
 
-    private void addCrushingRecipe(ItemStack input, ItemStack result, float experience) {
+    public void addCrushingRecipe(ItemStack input, ItemStack result, float experience) {
         if (input.isEmpty() || result.isEmpty())
             return;
         for (ItemStack stack : crushingList.keySet())
@@ -71,6 +71,27 @@ public class BlockCrusherRecipes {
 
         this.crushingList.put(input.copy(), result);
         this.experienceList.put(result.copy(), experience);
+    }
+
+    public void removeCrushingRecipe(ItemStack output)
+    {
+        List<ItemStack> keysToRemove = new ArrayList<>();
+
+        for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
+        {
+            if (output.getItem() == entry.getValue().getItem()) {
+                keysToRemove.add(entry.getKey());
+            }
+        }
+
+        if (!keysToRemove.isEmpty())
+            for (ItemStack stack : keysToRemove)
+            {
+                crushingList.remove(stack);
+                experienceList.remove(output);
+                stackBlacklist.add(stack);
+            }
+
     }
 
     public ItemStack getCrushingResult(ItemStack input) {
@@ -113,6 +134,7 @@ public class BlockCrusherRecipes {
         List<ItemStack> outs = OreDictionary.getOres(out + mat);
         if (ore.startsWith(in) && !outs.isEmpty())
             for (ItemStack stack : OreDictionary.getOres(ore))
-                BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
+                if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
+                    BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
     }
 }

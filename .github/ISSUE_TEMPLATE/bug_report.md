@@ -13,9 +13,6 @@ A clear and concise description of what the bug is.
 **To Reproduce**
 Steps to reproduce the behavior:
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
-
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
@@ -23,14 +20,14 @@ If applicable, add screenshots to help explain your problem.
 - Metallurgy 4: Reforged: 
 - Forge: 
 - Minecraft:
-- Modpack _(if avaliable)_:
+- Modpack _(if available)_:
 - Conflicting mod _(if regarding mod integration)_:
 - Other mods you think could cause issues:  
 
-**Crash Report** _(if avaliable)_ 
+**Crash Report** _(if available)_
 **Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
 
-**Log** _(if needed)_
+**Log** _(latest.log)_ 
 **Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
 
 **Additional context** _(if needed)_

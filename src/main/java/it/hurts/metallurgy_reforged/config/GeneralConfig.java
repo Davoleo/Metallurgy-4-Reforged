@@ -69,6 +69,11 @@ public class GeneralConfig {
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
 	public static boolean enableAnvilArmorRepair = false;
 
+	@Config.Name("Power to the Axes")
+	@Config.Comment("Set it true to make axes more powerful than swords [ default : false ]")
+	@Config.RequiresMcRestart
+	public static boolean powerAxes = false;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 		@SubscribeEvent

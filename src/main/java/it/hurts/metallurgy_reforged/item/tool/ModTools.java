@@ -23,7 +23,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class ModTools {
 
     public static final List<Item> toolList = new ArrayList<>();

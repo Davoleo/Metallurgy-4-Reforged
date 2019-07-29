@@ -16,8 +16,8 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletEffect;
-import it.hurts.metallurgy_reforged.item.gadgets.gauntlet.GauntletOperation;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletOperation;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -29,8 +29,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
-		if(!ModChecker.isBWMLoaded)
-			MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
+		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(ArmorConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);

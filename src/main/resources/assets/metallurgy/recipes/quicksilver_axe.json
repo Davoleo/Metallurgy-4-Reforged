@@ -11,7 +11,7 @@
     },
     "I":{
       "type": "forge:ore_dict",
-      "ore": "ingotQuicksilver"
+      "ore": "ingotQuickSilver"
     }
   },
   "result":{

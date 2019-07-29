@@ -19,10 +19,7 @@ package it.hurts.metallurgy_reforged;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationCArmory;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationProjectE;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.integration.mods.*;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
@@ -38,7 +35,6 @@ package it.hurts.metallurgy_reforged;
  import net.minecraftforge.fml.common.Mod;
  import net.minecraftforge.fml.common.SidedProxy;
  import net.minecraftforge.fml.common.event.FMLInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
  import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
  import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -50,7 +46,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "0.2.1";
+	public static final String VERSION = "0.2.2";
 
 	public static Logger logger;
 
@@ -100,6 +96,12 @@ public class Metallurgy {
 			logger.info("Industrial Foregoing integration has been pre-initialized");
 		}
 
+		if (ModChecker.isCraftTweakerLoaded)
+		{
+			IntegrationCT.preInit();
+			logger.info("CraftTweaker Integration has been pre-initialized");
+		}
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		logger.info(NAME + ": GUIs have been registered!");
 		
@@ -124,7 +126,7 @@ public class Metallurgy {
             }
         }
 
-		if(ModChecker.isProjectE && !GeneralConfig.projectEIntegration){
+		if(ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration){
 			IntegrationProjectE.init();
 			logger.info("ProjectE's Integration has been initialized");
 		}
@@ -138,19 +140,15 @@ public class Metallurgy {
 	public void postInit(FMLPostInitializationEvent event) {
         logger.info(NAME + " is entering post-initialization!");
         
-
         proxy.postInit(event);
         
 		PacketManager.init();
 		logger.info(NAME + "'s Network System Loaded");
-	}
 
-	@Mod.EventHandler
-	 public void loadComplete(FMLLoadCompleteEvent event)
-	{
-		logger.info(NAME + " has been completely loaded");
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
-			IntegrationTIC.onLoadComplete();
+			IntegrationTIC.postInit();
+		logger.info("Tinker's alloy recipes loaded");
 
+		logger.info(NAME + " has been completely loaded");
 	}
 }

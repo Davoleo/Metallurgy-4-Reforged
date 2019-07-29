@@ -78,7 +78,7 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
     {
         return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
     }

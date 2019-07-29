@@ -175,3 +175,53 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 		- “Strongly II” Trait
 		- “Blindness” Trait
 	- Config entry to disable Integration
+	
+0.2.1
+- Reworked codebase (optimizations and simplifications)
+- Added Taiwan and China localizations
+- Fixed crash when playing with BWM and HCChickens enabled
+- Rephrased and re-formatted trait descriptions
+- Fix rubracium gauntlets interfering with second skin layer
+- Industrial Foregoing Laser Drill Integration
+- Made tools repairable in the anvil (disabled by default in the mod config)
+- Fixed Game freeze when wearing certain Construct’s Armory armors
+- Converted blend recipes to shapeless from shaped
+- Lemurite Shield (Makes you invisible to other players and mobs)
+- Added deep iron trait for TiCon
+- Fixed Deep Iron Enchanting Bug
+- Fixed Shadow Iron max Y level
+- Decrease potion expiration delay
+- Increased retrogen debug level to INFO
+- Fixed Prometheum and Shadow Steel armor trait
+- ProjectE EMC Integration (default EMC values for materials)
+- Fixed a de-sync bug that allowed saturation to be higher than hunger points
+- Reworked road textures
+- Fix recipe registration
+- Potash Fertilizer
+- Fix Gauntlet duplication bug https://github.com/Davoleo/Metallurgy-4-Reforged/pull/163
+- Fix Material Changer compat bug https://github.com/Davoleo/Metallurgy-4-Reforged/pull/165
+- Phosphorus Lamp
+- Remove duplication effect from all tools except swords
+- Added null stats check (potentially fix all conarm related crashes)
+- Tweak: Gauntlet now depletes saturation before depleting hunger points
+- Many others Gauntlet fixes
+- New reworked textures by Matpac! :D (hype)
+
+0.2.2
+- Fixed Deep Iron trait
+- Fixed Phosphorus Lantern server crash
+- Added entity collision Phosphorus Lantern config
+- Fixed Phosphorus Lantern placements
+- Fixed angmallen hoe and quicksilver tools recipes
+- Repaired Hunger Gauntlet System and fixed slot lock bug
+- Fix Null Pointer Exception in Gauntlet capability crash (fixes crash with BWM and LemonLib)
+- Change armor registry names to standard Vanilla notation (should fix issues with Material Changer)
+- Added Bow tinker parts
+- Modified Ore Rarity Config Comment
+- Increment tool head durability of Metallurgy Tinker Integration | Increased Ammo bolt/arrow
+- Decreased tool head durability of Metallurgy Tinker Integration
+- Increased tool extra durability and decreased tool handle durability of Platinum ( Metallurgy Tinker Integration )
+- Decreased drastically tar lakes spawnrate chance
+- Fixed crash with Lucraft
+- Added JEI description for thermite and lemurite shield
+

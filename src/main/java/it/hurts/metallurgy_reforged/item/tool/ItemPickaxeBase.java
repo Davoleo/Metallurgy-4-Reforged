@@ -49,7 +49,7 @@ public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
     
     @Override
     @SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
     {
         if(this.isInCreativeTab(tab)) {
             ItemStack enchantedPA = new ItemStack(this);
@@ -66,7 +66,7 @@ public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
     {
         return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
     }

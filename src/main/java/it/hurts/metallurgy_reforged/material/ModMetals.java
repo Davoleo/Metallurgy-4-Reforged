@@ -34,10 +34,6 @@ public class ModMetals {
     public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                   	//Obsidian-like
     public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;           	//Bedrock-like
 
-    static {
-        System.out.println("ModMetal Has started loading ----------------------------------------------------------------");
-    }
-
 //    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
     //damage_parameter = in-game_sword_damage - 3
 
@@ -136,7 +132,7 @@ public class ModMetals {
             new ToolStats(18, 3, 750, 8F, 6F), new FluidStats(0xFFC05B4A), 3).createMetal();
     public static final Metal PLATINUM = new MetalStats("platinum", "Platinum", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 12, 17, 0.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(50, 3, 100, 16F, 5F), new FluidStats(0xFF7193D4), 2).createMetal();
+            new ToolStats(50, 3, 250, 16F, 5F), new FluidStats(0xFF7193D4), 2).createMetal();
     public static final Metal PROMETHEUM = new MetalStats("prometheum", "Prometheum", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{1, 2, 3, 2}, 11, 30, 0.1F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(16, 2, 200, 4F, 5F), new FluidStats(0xFF377732), 1).createMetal();
