@@ -63,7 +63,7 @@ public class ModBlocks {
     //Tile Entities
     public static BlockCrusher crusher = new BlockCrusher("crusher");
     public static BlockAlloyer alloyer = new BlockAlloyer("alloyer");
-    public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
+    //public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
     public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
     //Registers the blocks in the Forge Registry

@@ -11,16 +11,11 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_reforged.tileentity.TileLightningRod;
-import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -29,10 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.ChunkCache;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -95,7 +87,7 @@ public class BlockLightningRod extends BlockTileEntity {
     @Override
     public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(ModBlocks.lightningRod);
+        return ItemStack.EMPTY;
     }
 
 //    @Nonnull

@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench, by matpac for M4R",
 	"textures": {
 		"0": "metallurgy:blocks/sublimation_chamber_active",
-		"particle": "blocks/PNG's/sublimation_chamber"
+		"particle": "metallurgy:blocks/sublimation_chamber_active"
 	},
 	"elements": [
 		{
