@@ -145,10 +145,12 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 	public void openInventory(@Nonnull EntityPlayer player)
 	{
+		//No-Gui
 	}
 
 	public void closeInventory(@Nonnull EntityPlayer player)
 	{
+		//No-Gui
 	}
 
 	@Override
