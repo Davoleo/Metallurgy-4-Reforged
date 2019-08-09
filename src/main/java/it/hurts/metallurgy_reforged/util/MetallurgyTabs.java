@@ -39,7 +39,7 @@ public class MetallurgyTabs extends CreativeTabs {
         tabDust = new MetallurgyTabs(2, "dusts");
         tabFluid = new MetallurgyTabs(3, "fluids");
         tabIngot = new MetallurgyTabs(4, "ingots");
-        tabNugget = new MetallurgyTabs(5, "nuggetts");
+        tabNugget = new MetallurgyTabs(5, "nuggets");
         tabSpecial = new MetallurgyTabs(6, "special");
         tabOre = new MetallurgyTabs(7, "ores");
         tabTool = new MetallurgyTabs(8, "tools");
