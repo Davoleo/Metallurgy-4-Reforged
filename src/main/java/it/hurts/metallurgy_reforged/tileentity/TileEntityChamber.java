@@ -143,11 +143,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return this.world.getTileEntity(this.pos) == this;
 	}
 
+	@Override
 	public void openInventory(@Nonnull EntityPlayer player)
 	{
 		//No-Gui
 	}
 
+	@Override
 	public void closeInventory(@Nonnull EntityPlayer player)
 	{
 		//No-Gui
@@ -254,7 +256,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public void update() 
 	{
-
 		ItemStack METAL_STACK = getStackInSlot(METAL_SLOT);
 		ItemStack FUEL_STACK = getStackInSlot(FUEL_SLOT);
 
@@ -341,6 +342,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	}
 
 	@Nonnull
+	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
 	{	
 
@@ -375,12 +377,11 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
 		if (this.hasCustomName())
-		{
 			compound.setString("CustomName", this.chamberCustomName);
-		}
 
 	}
 
+	@Override
 	public void readFromNBT(NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
@@ -410,6 +411,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		}
 	}
 
+	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
 	{
 		return oldState.getBlock() != newState.getBlock();
@@ -431,11 +433,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return super.getCapability(capability, facing);
 	}
 
+	@Override
 	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
 	}
 
+	@Override
 	@Nonnull
 	public NBTTagCompound getUpdateTag() 
 	{

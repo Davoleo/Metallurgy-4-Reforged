@@ -139,7 +139,10 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 					chamber.readChamberFromNBT(tag.getCompoundTag("chamberTags"));
 
 				if(chamber.potionEffect != null)
+				{
+					System.out.println("POTION EFFECT " + chamber.potionEffect);
 					worldIn.setBlockState(pos, state.withProperty(ACTIVE, true));
+				}
 			}
 		}
 	}
