@@ -11,12 +11,9 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
-import c4.conarm.lib.tinkering.TinkersArmor;
-import c4.conarm.lib.traits.IArmorTrait;
 import it.hurts.metallurgy_reforged.integration.mods.tic.trait.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
 import slimeknights.tconstruct.library.TinkerRegistry;

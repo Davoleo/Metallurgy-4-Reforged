@@ -143,32 +143,6 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         return true;
     }
 
-    //Called after the block is set in the Chunk data, but before the Tile Entity is set
-    //Adjusts the rotation at which the block is placed, based on the blocks around the Crusher and the angle of the player while placing the block
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-    {
-        if (!worldIn.isRemote)
-        {
-            IBlockState north = worldIn.getBlockState(pos.north());
-            IBlockState south = worldIn.getBlockState(pos.south());
-            IBlockState west = worldIn.getBlockState(pos.west());
-            IBlockState east = worldIn.getBlockState(pos.east());
-            EnumFacing face = state.getValue(FACING);
-
-            if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
-                face = EnumFacing.SOUTH;
-            else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
-                face = EnumFacing.NORTH;
-            else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
-                face = EnumFacing.EAST;
-            else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
-                face = EnumFacing.WEST;
-
-            worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
-        }
-    }
-
     //Overrides the light level of this block
     //It returns 0 if the Crusher BURNING state is false, it returns 8 if the Crusher BURNING state is true
     @Override
@@ -244,6 +218,20 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+
     //Overrides the Type of rendering the block has (MODEL means: mixed static-TESR)
     //Calling is deprecated / Overriding is fine
     @SuppressWarnings("deprecation")
@@ -289,6 +277,32 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(BURNING, (meta & 4) != 0);
+    }
+
+    //Called after the block is set in the Chunk data, but before the Tile Entity is set
+    //Adjusts the rotation at which the block is placed, based on the blocks around the Crusher and the angle of the player while placing the block
+    @Override
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        if (!worldIn.isRemote)
+        {
+            IBlockState north = worldIn.getBlockState(pos.north());
+            IBlockState south = worldIn.getBlockState(pos.south());
+            IBlockState west = worldIn.getBlockState(pos.west());
+            IBlockState east = worldIn.getBlockState(pos.east());
+            EnumFacing face = state.getValue(BlockCrusher.FACING);
+
+            if (face == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock())
+                face = EnumFacing.SOUTH;
+            else if (face == EnumFacing.SOUTH && south.isFullBlock() && !north.isFullBlock())
+                face = EnumFacing.NORTH;
+            else if (face == EnumFacing.WEST && west.isFullBlock() && !east.isFullBlock())
+                face = EnumFacing.EAST;
+            else if (face == EnumFacing.EAST && east.isFullBlock() && !west.isFullBlock())
+                face = EnumFacing.WEST;
+
+            worldIn.setBlockState(pos, state.withProperty(BlockCrusher.FACING, face), 2);
+        }
     }
 
     //Gets the metadata value from the given blockState

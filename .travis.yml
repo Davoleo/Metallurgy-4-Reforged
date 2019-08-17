@@ -1,5 +1,6 @@
 language: java
 jdk: oraclejdk8
+dist: trusty
 
 #Gives some kind of permissions
 before_install:

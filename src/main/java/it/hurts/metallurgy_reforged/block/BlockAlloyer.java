@@ -140,7 +140,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
 
         return true;
     }
-    
+
     //Called after the block is set in the Chunk data, but before the Tile Entity is set
     //Adjusts the rotation at which the block is placed, based on the blocks around the Alloyer and the angle of the player while placing the block
     @Override
@@ -232,6 +232,20 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer>{
                 ((TileEntityAlloyer)te).setCustomName(stack.getDisplayName());
             }
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
     }
 
     //Overrides the Type of rendering the block has (MODEL means: mixed static-TESR)

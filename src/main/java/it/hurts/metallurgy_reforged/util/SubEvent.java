@@ -36,6 +36,8 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 
+		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
+
 		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
 		{
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);

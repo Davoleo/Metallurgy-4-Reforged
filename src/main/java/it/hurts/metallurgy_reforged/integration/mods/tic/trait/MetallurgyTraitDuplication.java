@@ -15,14 +15,11 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.event.world.BlockEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 
 public class MetallurgyTraitDuplication extends AbstractTrait implements IMetallurgyTrait {
 

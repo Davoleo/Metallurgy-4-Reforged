@@ -11,16 +11,12 @@
 
 package it.hurts.metallurgy_reforged.util;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
-import it.hurts.metallurgy_reforged.item.armor.ModArmors;
-import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 public class EventUtils {
 	

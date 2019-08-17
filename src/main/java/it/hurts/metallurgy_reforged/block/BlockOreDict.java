@@ -88,6 +88,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 		OreDictionary.registerOre(oreName, this);
 	}
 
+	
 	@Override
 	public void getDrops(@Nonnull NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune)
 	{

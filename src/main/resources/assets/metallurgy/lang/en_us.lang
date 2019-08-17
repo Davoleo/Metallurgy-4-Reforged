@@ -616,6 +616,29 @@ tile.metallurgy.vyroxeres_ore.name=Vyroxeres Ore
 tile.metallurgy.vulcanite_ore.name=Vulcanite Ore
 tile.metallurgy.zinc_ore.name=Zinc Ore
 
+#Tile Entities
+container.crusher=Crusher
+container.alloyer=Alloyer
+tile.metallurgy.crusher.name=§cCrusher
+tile.metallurgy.alloyer.name=§eAlloyer
+tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
+
+#Tinkers' Construct Traits
+modifier.obscure_trait.name=Obscure
+modifier.obscure_trait.desc=Blinds your enemy for some time
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
+modifier.vulcan_trait.name=Volcanic
+modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time (depending on the level of the trait)
+modifier.duplication_trait.name=Duplication
+modifier.duplication_trait.desc=Has a chance to duplicate drops
+modifier.life_steal_trait.name=Life Steal
+modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 10% of the dealt damage
+modifier.wither_trait.name=Wither
+modifier.wither_trait.desc=Applies wither effect on your enemy
+modifier.king_dice_trait.name=King Dice
+modifier.king_dice_trait.desc=Applies a random effect on your enemy
+
 #Tools
 item.metallurgy.adamantine_axe.name=Adamantine Axe
 item.metallurgy.adamantine_hoe.name=Adamantine Hoe
@@ -844,28 +867,6 @@ item.metallurgy.vyroxeres_hoe.name=Vyroxeres Hoe
 item.metallurgy.vyroxeres_pickaxe.name=Vyroxeres Pickaxe
 item.metallurgy.vyroxeres_shovel.name=Vyroxeres Shovel
 item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
-
-#Tile Entities
-container.crusher=Crusher
-container.alloyer=Alloyer
-tile.metallurgy.crusher.name=§cCrusher
-tile.metallurgy.alloyer.name=§eAlloyer
-
-#Tinkers' Construct Traits
-modifier.obscure_trait.name=Obscure
-modifier.obscure_trait.desc=Blinds your enemy for some time
-modifier.opistognathus_trait.name=Opistognathus
-modifier.opistognathus_trait.desc=Increase attack/mining speed in water
-modifier.vulcan_trait.name=Volcanic
-modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time (depending on the level of the trait)
-modifier.duplication_trait.name=Duplication
-modifier.duplication_trait.desc=Has a chance to duplicate drops
-modifier.life_steal_trait.name=Life Steal
-modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 10% of the dealt damage
-modifier.wither_trait.name=Wither
-modifier.wither_trait.desc=Applies wither effect on your enemy
-modifier.king_dice_trait.name=King Dice
-modifier.king_dice_trait.desc=Applies a random effect on your enemy
 
 #Tooltips
 #Armor Tooltips

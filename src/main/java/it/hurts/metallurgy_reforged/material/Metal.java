@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
@@ -23,7 +22,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
-import net.minecraftforge.common.util.EnumHelper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

@@ -369,6 +369,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
             return res <= getInventoryStackLimit() && res <= output.getMaxStackSize();
         }
     }
+    
     private void alloyItem() {
 
         if(this.canAlloy())
