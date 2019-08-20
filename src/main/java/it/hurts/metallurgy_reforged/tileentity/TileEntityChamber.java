@@ -37,6 +37,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -79,7 +80,10 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public boolean isEmpty() 
 	{
-		return this.inventory.isEmpty();
+		for (ItemStack stack : inventory)
+			if (!stack.isEmpty())
+				return false;
+		return true;
 	}
 
 	@Nonnull
@@ -324,7 +328,10 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 				ItemStack item1 = item.getContainerItem(FUEL_STACK);
 				this.setInventorySlotContents(FUEL_SLOT, item1);
 			}
-		}	
+		} else if (!affectedPlayers.isEmpty())
+		{
+			this.clearEffect();
+		}
 	}
 
 
@@ -338,7 +345,6 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	public void setState(boolean active)
 	{
 		this.world.setBlockState(pos, world.getBlockState(pos).withProperty(BlockChamber.ACTIVE, active));
-
 	}
 
 	@Nonnull
@@ -403,12 +409,32 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 		this.fuelTime = compound.getInteger("fuelTime");
 		this.activeTime = compound.getInteger("activeTime");
-		this.potionEffect = PotionEffect.readCustomPotionEffectFromNBT(compound);
+
+		this.potionEffect = null;
+		if (compound.hasKey("Id"))
+			this.potionEffect = PotionEffect.readCustomPotionEffectFromNBT(compound);
 
 		if (compound.hasKey("CustomName", 8))
 		{
 			this.chamberCustomName = compound.getString("CustomName");
 		}
+	}
+
+	public void clearEffect() {
+
+		if(!world.isRemote && this.potionEffect != null)
+		{
+			for(WorldServer worldServer : world.getMinecraftServer().worlds)
+			{
+				for(UUID uuid : this.affectedPlayers)
+				{
+					EntityPlayer player = worldServer.getPlayerEntityByUUID(uuid);
+					if(player != null)
+						player.removePotionEffect(this.potionEffect.getPotion());
+				}
+			}
+		}
+		affectedPlayers.clear();
 	}
 
 	@Override

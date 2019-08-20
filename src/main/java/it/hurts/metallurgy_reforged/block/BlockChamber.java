@@ -31,14 +31,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
@@ -139,10 +137,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 					chamber.readChamberFromNBT(tag.getCompoundTag("chamberTags"));
 
 				if(chamber.potionEffect != null)
-				{
-					System.out.println("POTION EFFECT " + chamber.potionEffect);
 					worldIn.setBlockState(pos, state.withProperty(ACTIVE, true));
-				}
 			}
 		}
 	}
@@ -159,31 +154,21 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 			ItemStack itemStack = new ItemStack(this);
 
 			TileEntityChamber chamber = (TileEntityChamber) te;
-			NBTTagCompound tag = new NBTTagCompound();
-			NBTTagCompound chamberTags = new NBTTagCompound();
-			chamber.writeChamberToNBT(chamberTags);
-			tag.setTag("chamberTags", chamberTags);
 
-			itemStack.setTagCompound(tag);
+			if (!chamber.isEmpty() || chamber.potionEffect != null)
+			{
+				NBTTagCompound tag = new NBTTagCompound();
+				NBTTagCompound chamberTags = new NBTTagCompound();
+				chamber.writeChamberToNBT(chamberTags);
+				tag.setTag("chamberTags", chamberTags);
+				itemStack.setTagCompound(tag);
+			}
 
 			spawnAsEntity(world, pos, itemStack);
 			world.updateComparatorOutputLevel(pos, state.getBlock());
 
-			if(!world.isRemote && chamber.potionEffect != null)
-			{
-				for(WorldServer worldServer : world.getMinecraftServer().worlds)	
-				{
-					for(UUID uuid : chamber.affectedPlayers)
-					{
-						EntityPlayer player = worldServer.getPlayerEntityByUUID(uuid);
-						if(player != null) 
-							player.removePotionEffect(chamber.potionEffect.getPotion());		
-					}
-				}
-			}			
+			chamber.clearEffect();
 		}
-
-
 
 		super.breakBlock(world, pos, state);
 	}
