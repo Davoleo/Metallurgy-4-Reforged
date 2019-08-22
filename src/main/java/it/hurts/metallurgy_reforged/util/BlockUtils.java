@@ -11,9 +11,13 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import java.util.Objects;
+
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 
 public class BlockUtils {
@@ -26,6 +30,10 @@ public class BlockUtils {
         //    block.setCreativeTab(tab);
         if (addToList)
             ModBlocks.blockList.add(block);
+    }
+    
+    public static Item getBlockItemForRegistration(Block block, ItemGroup group) {
+    	return new BlockItem(block, new Item.Properties().group(group)).setRegistryName(Objects.requireNonNull(block.getRegistryName()));
     }
 
 /*

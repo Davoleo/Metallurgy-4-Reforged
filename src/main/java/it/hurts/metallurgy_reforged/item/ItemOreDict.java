@@ -61,12 +61,4 @@ public class ItemOreDict extends Item implements IHasModel {
 	{
 		return "";
 	}
-
-//	@Nonnull
-//	@Override
-//	public ItemOreDict setCreativeTab(@Nonnull ItemGroup tab)
-//	{
-//		super.gr(tab);
-//		return this;
-//	}
 }

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ores/adamantine",
+    "#forge:ores/astral_silver",
+    "#forge:ores/atlarus",
+    "#forge:ores/carmot",
+    "#forge:ores/ceruclase",
+    "#forge:ores/deep_iron",
+    "#forge:ores/eximite",
+    "#forge:ores/ignatius",
+    "#forge:ores/lutetium",
+    "#forge:ores/midasium",
+    "#forge:ores/orichalcum",
+    "#forge:ores/osmium",
+    "#forge:ores/oureclase",
+    "#forge:ores/prometheum",
+    "#forge:ores/sanguinite",
+    "#forge:ores/vulcanite"
+  ]
+}

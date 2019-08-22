@@ -3,13 +3,11 @@ loaderVersion="[28,)"
 #issueTrackerURL="http://my.issue.tracker/"
 
 [[mods]]
-modId="metallurgy"
-version="${file.jarVersion}"
-displayName="Metallurgy 4: Reforged"
-displayURL="https://github.com/Davoleo/Metallurgy-4-Reforged"
-logoFile="assets/metallurgy/textures/logo.png"
-credits="Special thanks to the team and to project contributors [carbotaniuman, Matpac, PierKnight]"
-authors=["ItHurtsLikeHell","Davoleo"]
-description='''
-The Unofficial Port of Metallurgy 4
-'''
+	modId="metallurgy"
+	version="${file.jarVersion}"
+	displayName="Metallurgy 4: Reforged"
+	#displayURL="https://github.com/Davoleo/Metallurgy-4-Reforged"
+	#logoFile="assets/metallurgy/textures/logo.png"
+	credits="Special thanks to the team and to project contributors [carbotaniuman, Matpac, PierKnight]"
+	authors="ItHurtsLikeHell,Davoleo"
+	description='''The Unofficial Port of Metallurgy 4'''

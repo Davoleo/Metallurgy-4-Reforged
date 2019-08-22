@@ -48,7 +48,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	}
 
     //OreDicted block with custom properties
-	public BlockOreDict(String name, String oreName, boolean addToList, String toolClass, int harvestLevel, float blastResistance, ItemGroup tab){
+	public BlockOreDict(String name, String oreName, boolean addToList, String toolClass, int harvestLevel, float blastResistance, ItemGroup tab) {
 		//super(Material.ROCK);
 		super(Block.Properties.create(Material.ROCK)
 				.hardnessAndResistance(3f, blastResistance)
@@ -109,7 +109,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 		return this.getTranslationKey().contains("_ore");
 	}
 
-	public Item createItemBlock() {
-		return new BlockItem(this, new Item.Properties()).setRegistryName(Objects.requireNonNull(getRegistryName()));
+	public Item createItemBlock(ItemGroup group) {
+		return new BlockItem(this, new Item.Properties().group(group)).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
 }

@@ -35,6 +35,13 @@ public class RegistrationHandler {
 	
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
 
+	@SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+        ModMetals.registerBlocks(event.getRegistry());
+        ModBlocks.register(event.getRegistry());
+        //ModFluids.registerBlocks(event.getRegistry());
+    }
+	
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         ModMetals.registerItems(event.getRegistry());
@@ -42,18 +49,7 @@ public class RegistrationHandler {
         ModBlocks.registerItemBlocks(event.getRegistry());
         ModArmors.register(event.getRegistry());
         ModTools.register(event.getRegistry());
-        ModFluids.registerItem(event.getRegistry());
-
-        //OreDict Registration
-        //OreDictHandler.init();
-        Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
-    }
-
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        ModMetals.registerBlocks(event.getRegistry());
-        ModBlocks.register(event.getRegistry());
-        ModFluids.registerBlocks(event.getRegistry());
+        //ModFluids.registerItem(event.getRegistry());
     }
 
     @SubscribeEvent
@@ -63,7 +59,7 @@ public class RegistrationHandler {
         ModBlocks.registerModels();
         ModArmors.registerModels();
         ModTools.registerModels();
-        ModFluids.registerModels();
+        //ModFluids.registerModels();
     }
     
     @SubscribeEvent

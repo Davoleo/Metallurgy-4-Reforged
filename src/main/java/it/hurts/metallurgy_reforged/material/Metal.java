@@ -14,11 +14,10 @@ package it.hurts.metallurgy_reforged.material;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import it.hurts.metallurgy_reforged.block.BlockOreDict;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
@@ -27,8 +26,8 @@ import net.minecraft.item.Item;
 public class Metal {
     private final MetalStats stats;
 
-    private final ItemOreDict ingot, dust, nugget;
-    private final BlockOreDict ore, block;
+    private final Item ingot, dust, nugget;
+    private final Block ore, block;
     private final FluidMolten molten;
 
     private Item[] toolSet;
@@ -36,7 +35,7 @@ public class Metal {
 
     //private FluidBlockBase fluidBlock;
 
-    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
+    public Metal(MetalStats stats, Item ingot, Item dust, Item nugget, Block ore, Block block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
         this.stats = stats;
         this.ingot = ingot;
         this.dust = dust;
@@ -66,7 +65,7 @@ public class Metal {
      */
     public boolean hasToolSet()
     {
-        return stats.getToolStats() != null;
+        return getToolMaterial() != null;
     }
 
     /**
@@ -74,7 +73,7 @@ public class Metal {
      */
     public boolean hasArmorSet()
     {
-        return stats.getArmorStats() != null;
+        return getArmorMaterial() != null;
     }
 
     /**
@@ -91,27 +90,27 @@ public class Metal {
     }
 
     @Nonnull
-    public ItemOreDict getIngot() {
+    public Item getIngot() {
         return ingot;
     }
 
     @Nonnull
-    public ItemOreDict getDust() {
+    public Item getDust() {
         return dust;
     }
 
     @Nonnull
-    public ItemOreDict getNugget() {
+    public Item getNugget() {
         return nugget;
     }
 
     @Nullable
-    public BlockOreDict getOre() {
+    public Block getOre() {
         return ore;
     }
 
     @Nonnull
-    public BlockOreDict getBlock() {
+    public Block getBlock() {
         return block;
     }
 

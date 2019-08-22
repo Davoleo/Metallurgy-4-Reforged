@@ -16,10 +16,11 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -63,7 +64,7 @@ public class MetallurgyTabs extends ItemGroup {
     public ItemStack createIcon()
     {
         switch (type){
-            case 0: return ItemStack.EMPTY; //ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmor(EntityEquipmentSlot.CHEST)) : 
+            case 0: return ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmor(EquipmentSlotType.CHEST)) : ItemStack.EMPTY;
             case 1: return new ItemStack(ModMetals.ADAMANTINE.getBlock());
             case 2: return new ItemStack(ModMetals.ADAMANTINE.getDust());
             case 3: return ItemStack.EMPTY; //return new ItemStack(ModMetals.ADAMANTINE.getFluidBlock());
