@@ -11,9 +11,9 @@
 
 package it.hurts.metallurgy_reforged.capabilities.punch;
 
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
@@ -26,22 +26,22 @@ public class PunchEffectStorage implements IStorage<IPunchEffect>
 {
 
 	@Override
-	public NBTBase writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side) {
+	public INBT writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, Direction side) {
 		
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("ticks", instance.getHitTicks());
-		tag.setBoolean("hasAiDisabled", instance.isAIDisabled());
-		tag.setInteger("knockbackTicks", instance.getKnockbackTicks());
+		CompoundNBT tag = new CompoundNBT();
+		tag.putInt("ticks", instance.getHitTicks());
+		tag.putBoolean("hasAiDisabled", instance.isAIDisabled());
+		tag.putInt("knockbackTicks", instance.getKnockbackTicks());
 	    
 		return tag;
 	}
 
 	@Override
-	public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side, NBTBase nbt) {
-		NBTTagCompound tag = (NBTTagCompound) nbt;
-		instance.setHitTicks(tag.getInteger("ticks"));
+	public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, Direction side, INBT nbt) {
+		CompoundNBT tag = (CompoundNBT) nbt;
+		instance.setHitTicks(tag.getInt("ticks"));
 		instance.setNoAI(tag.getBoolean("hasAiDisabled"));
-		instance.setKnockbackTicks(tag.getInteger("knockbackTicks"));
+		instance.setKnockbackTicks(tag.getInt("knockbackTicks"));
 	}
 
 }

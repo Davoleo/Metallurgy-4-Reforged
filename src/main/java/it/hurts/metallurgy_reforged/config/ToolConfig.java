@@ -11,11 +11,6 @@
 
 package it.hurts.metallurgy_reforged.config;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraftforge.common.config.Configuration;
-import org.apache.logging.log4j.Level;
-
 public class ToolConfig {
 	
 	private static final String[] CATEGORY = {"Axe","Hoe", "Pickaxe","Shovel","Sword"};
@@ -136,31 +131,5 @@ public class ToolConfig {
 			vulcanite,
 			vyroxeres
 	};
-
-	public static void readConfig(Configuration cfg) {
-		try {
-			initToolConfig(cfg);
-		} catch (Exception e1) {
-			Metallurgy.logger.log(Level.ERROR, "Problem loading config file!", e1);
-		} finally {
-			if (cfg.hasChanged()) {
-				cfg.save();
-			}
-		}
-	}
-
-	private static void initToolConfig(Configuration cfg) {
-//		Il for annidato andrà a controllare tutti il valore boolean di ogni materiale per un singolo tool ad ogni ripetizione
-
-		for(int j = 0; j < 5; j++) {
-			for(int i = 0; i < allTools.length; i++) {
-
-				String category = CATEGORY[j];
-
-				allTools[i][j] = cfg.getBoolean(Utils.modMaterialNames[i], category,  allTools[i][j], "Set to false to disable " + category);
-			}
-		}
-
-	}
 
 }

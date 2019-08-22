@@ -14,6 +14,8 @@ package it.hurts.metallurgy_reforged.item.tool;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.Item;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.SwordItem;
 
 public enum EnumToolEffects {
 
@@ -62,18 +64,18 @@ public enum EnumToolEffects {
         for (EnumToolEffects effect : EnumToolEffects.values())
         {
 
-            if (tool instanceof ItemPickaxeBase)
+            if (tool instanceof PickaxeItem)
             {
-                ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
+            	PickaxeItem pickaxe = (PickaxeItem) tool;
 
-                if (effect.name().toLowerCase().contains(pickaxe.getToolMaterialName()))
-                    return effect;
+                //if (effect.name().toLowerCase().contains(pickaxe.getTier()))
+                //    return effect;
             }
-            else if (tool instanceof ItemSwordBase)
+            else if (tool instanceof SwordItem)
             {
-                ItemSwordBase sword = (ItemSwordBase) tool;
-                if (effect.name().toLowerCase().contains(sword.getToolMaterialName()))
-                    return effect;
+            	SwordItem sword = (SwordItem) tool;
+                //if (effect.name().toLowerCase().contains(sword.getTier()))
+                //    return effect;
             }
         }
 

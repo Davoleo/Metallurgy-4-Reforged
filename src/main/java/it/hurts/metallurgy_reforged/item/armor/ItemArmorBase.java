@@ -11,6 +11,11 @@
 
 package it.hurts.metallurgy_reforged.item.armor;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.IHasModel;
@@ -18,35 +23,35 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
-
-public class ItemArmorBase extends ItemArmor implements IHasModel {
+public class ItemArmorBase extends ArmorItem implements IHasModel {
 
 	private EnumArmorEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
+	public ItemArmorBase(IArmorMaterial material, EquipmentSlotType slot, String name)
 	{
 		this(material, slot, name, null, 0);
 	}
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
+	public ItemArmorBase(IArmorMaterial material, EquipmentSlotType slot, String name, Enchantment enchantment, int enchantmentLevel)
 	{
-		super(material, 0, slot);
+		super(material, slot, new Item.Properties().group(MetallurgyTabs.tabArmor));
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
 		ItemUtils.initItem(this, name, MetallurgyTabs.tabArmor, ModArmors.armorList);
@@ -59,11 +64,11 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		return "armor";
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	/*
+	@OnlyIn(Dist.CLIENT)
+	public void getSubItems(@Nonnull ItemGroup tab, @Nonnull NonNullList<ItemStack> items)
 	{
-		if(this.isInCreativeTab(tab)) {
+		if (this.isInGroup(tab)) {
 			ItemStack enchantedArmor = new ItemStack(this);
 			if(enchantment != null) {
 				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
@@ -71,6 +76,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 			items.add(enchantedArmor);
 		}
 	}
+	*/
 
 	public void setEffect(EnumArmorEffects effect)
 	{
@@ -89,14 +95,14 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
 	{
-		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+		return (GeneralConfig.enableAnvilArmorRepair && getRepairStack().isItemEqual(repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		if(this.effect != null && effect.isActive())
-			tooltip.add(this.effect.getLocalized());
+			tooltip.add(new StringTextComponent(this.effect.getLocalized()));
 	}
 }

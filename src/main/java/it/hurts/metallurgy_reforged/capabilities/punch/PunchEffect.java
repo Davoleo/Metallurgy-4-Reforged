@@ -11,14 +11,15 @@
 
 package it.hurts.metallurgy_reforged.capabilities.punch;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-import java.util.UUID;
 
 public class PunchEffect implements IPunchEffect{
 
@@ -47,7 +48,7 @@ public class PunchEffect implements IPunchEffect{
 	}
 
 	@Override
-	public void endEffect(EntityLivingBase entity) {
+	public void endEffect(LivingEntity entity) {
 		this.setKnockbackTicks(0);
 		this.setHitTicks(0);
 		entity.noClip = false;
@@ -79,14 +80,14 @@ public class PunchEffect implements IPunchEffect{
 	}
 
 	@Override
-	public void setPunchingPlayer(EntityPlayer pl) {
+	public void setPunchingPlayer(PlayerEntity pl) {
 		this.plUUID = pl == null ? null : pl.getUniqueID();	
 	}
 
 	@Override
 	@Nullable
-	public EntityPlayer getPunchingPlayer(World world) {
-		return this.plUUID != null ? world.getPlayerEntityByUUID(plUUID) : null;
+	public PlayerEntity getPunchingPlayer(World world) {
+		return this.plUUID != null ? world.getPlayerByUuid(plUUID) : null;
 	}
 
 	//public void setKnockbackMotionVec(Vec3d vec) {

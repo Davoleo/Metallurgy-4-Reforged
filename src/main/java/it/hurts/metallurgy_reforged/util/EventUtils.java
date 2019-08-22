@@ -11,17 +11,18 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import java.util.List;
+
 import com.google.common.collect.Lists;
-import net.minecraft.entity.player.EntityPlayer;
+
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import java.util.List;
 
 public class EventUtils {
 	
 //	method to check if player wears the complete ArmorEffectHandler.
-	public static boolean isPlayerWearingArmor(EntityPlayer pl,Item[] armor)
+	public static boolean isPlayerWearingArmor(PlayerEntity pl,Item[] armor)
 	{
 			
 		boolean flag = true;
@@ -35,7 +36,7 @@ public class EventUtils {
 		}
 		
 //  get Specific ArmorEffectHandler Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
-	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl,int index,Item armorEquip)
+	public static boolean isPlayerWearingSpecificArmorPiece(PlayerEntity pl,int index,Item armorEquip)
 	{			
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());	      
 	    return list.get(index).getItem().equals(armorEquip);
@@ -46,7 +47,7 @@ public class EventUtils {
 	 * @param armor An array with all armor pieces
 	 * @return 	The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityPlayer pl, Item[] armor){
+	public static int getArmorPiecesCount(PlayerEntity pl, Item[] armor){
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
 
 		int counter = 0;

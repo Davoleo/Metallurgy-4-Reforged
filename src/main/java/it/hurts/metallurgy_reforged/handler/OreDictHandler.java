@@ -19,10 +19,9 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictHandler {
-
+/*
     public static void init()
     {
         //Ore-dict
@@ -51,4 +50,5 @@ public class OreDictHandler {
         //Additional oreDict values
         OreDictionary.registerOre("globTar", ModItems.tar);
     }
+*/
 }

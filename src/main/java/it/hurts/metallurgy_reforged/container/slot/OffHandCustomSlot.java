@@ -13,26 +13,26 @@ package it.hurts.metallurgy_reforged.container.slot;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.Slot;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class OffHandCustomSlot extends Slot{
+public class OffHandCustomSlot extends Slot {
 
-	public EntityPlayer player;
+	public PlayerEntity player;
 	  
-	public OffHandCustomSlot(EntityPlayer pl) {
+	public OffHandCustomSlot(PlayerEntity pl) {
 		super(pl.inventory, 40, 77, 62);
 	}
 	
 	@Nullable
-    @SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
     public String getSlotTexture(){
         return "minecraft:items/empty_armor_slot_shield";
     }
 	
-	 public boolean canTakeStack(EntityPlayer playerIn){
+	 public boolean canTakeStack(PlayerEntity playerIn){
 		 return false;
 	}
 }

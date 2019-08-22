@@ -11,23 +11,28 @@
 
 package it.hurts.metallurgy_reforged.container;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ClickType;
-import net.minecraft.inventory.Container;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.ClickType;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
 public class ContainerNull extends Container {
 
-    @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn) {
+    protected ContainerNull(ContainerType<?> type, int id) {
+		super(type, id);
+	}
+
+	@Override
+    public boolean canInteractWith(@Nonnull PlayerEntity playerIn) {
         return true;
     }
 
     @Nonnull
     @Override
-    public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
+    public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, PlayerEntity player) {
         return null;
     }
 }

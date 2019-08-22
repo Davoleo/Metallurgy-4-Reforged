@@ -15,17 +15,17 @@ import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class PickaxeEffectHandler {
 	
 	@SubscribeEvent
 	public static void onBreakBlock(PlayerEvent.BreakSpeed event)
 	{
-		EntityPlayer pl = event.getEntityPlayer();
+		PlayerEntity pl = event.getPlayer();
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
 		if(pl.isInWater() && mainHandStack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE) && ToolEffectsConfig.deepIronPickaxeEffect) {

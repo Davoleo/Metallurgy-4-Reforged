@@ -11,8 +11,6 @@
 
 package it.hurts.metallurgy_reforged.util;
 
-import net.minecraftforge.fml.common.Loader;
-
 public class ModChecker {
 
 	public static boolean isTConLoaded;
@@ -22,11 +20,11 @@ public class ModChecker {
 	public static boolean isCraftTweakerLoaded;
 	
 	static{
-		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
-		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
-		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
-		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
-		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
+		//ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
+		//ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
+		//ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
+		//ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
+		//ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
 	}
 	
 }

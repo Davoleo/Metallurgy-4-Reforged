@@ -12,20 +12,19 @@
 package it.hurts.metallurgy_reforged.container.slot;
 
 import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.hooks.BasicEventHooks;
 
 import javax.annotation.Nonnull;
 
 public class SlotAlloyerOutput extends Slot {
 
-    private final EntityPlayer player;
+    private final PlayerEntity player;
 
-    public SlotAlloyerOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
+    public SlotAlloyerOutput(PlayerEntity player, IInventory inventory, int index, int xPos, int yPos)
     {
         super(inventory, index, xPos, yPos);
         this.player = player;
@@ -33,7 +32,7 @@ public class SlotAlloyerOutput extends Slot {
 
     @Nonnull
     @Override
-    public ItemStack onTake(EntityPlayer thePlayer, @Nonnull ItemStack stack)
+    public ItemStack onTake(PlayerEntity thePlayer, @Nonnull ItemStack stack)
     {
         onCrafting(stack);
         return super.onTake(thePlayer, stack);
@@ -46,9 +45,9 @@ public class SlotAlloyerOutput extends Slot {
         {
             int i = output.getCount();
             output.onCrafting(player.world, player, i);
-            Utils.giveExperience(player, i * BlockAlloyerRecipes.getInstance().getAlloyExperience(output));
+            //Utils.giveExperience(player, i * BlockAlloyerRecipes.getInstance().getAlloyExperience(output));
         }
-        FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
+        BasicEventHooks.firePlayerSmeltedEvent(this.player, output);
     }
 
     @Override

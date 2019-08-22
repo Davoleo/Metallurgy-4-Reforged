@@ -11,12 +11,12 @@
 
 package it.hurts.metallurgy_reforged.capabilities.punch;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import javax.annotation.Nullable;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public interface IPunchEffect {
 
@@ -24,9 +24,9 @@ public interface IPunchEffect {
 	
 	//set entity integer "hit_ticks" which indicates the knockback time of the mob 
 	
-	void setPunchingPlayer(EntityPlayer pl);
+	void setPunchingPlayer(PlayerEntity pl);
 	@Nullable
-	EntityPlayer getPunchingPlayer(World world);
+	PlayerEntity getPunchingPlayer(World world);
 	
 	void setDelayHit(int delay);
 	int getDelayHit();
@@ -41,7 +41,7 @@ public interface IPunchEffect {
 	
 	void setNoAI(boolean ai);
 	
-	void endEffect(EntityLivingBase entity);
+	void endEffect(LivingEntity entity);
 	
 	void setKnockbackTicks(int ticks);
 	

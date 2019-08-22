@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "metallurgy:blocks/atlarus_ore"
+  }
+}

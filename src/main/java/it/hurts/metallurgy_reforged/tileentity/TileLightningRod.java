@@ -12,8 +12,14 @@
 package it.hurts.metallurgy_reforged.tileentity;
 
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 
 public class TileLightningRod extends TileEntity /*implements ITickable*/ {
+
+	public TileLightningRod(TileEntityType<?> tileEntityTypeIn) {
+		super(tileEntityTypeIn);
+		// TODO Auto-generated constructor stub
+	}
 
 //    private int delay = 0;
 //    private boolean isActive;

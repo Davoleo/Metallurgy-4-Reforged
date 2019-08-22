@@ -15,26 +15,25 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.ToolItem;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.List;
 
 public class ItemUtils {
 
-    public static void initItem(Item item, String name, CreativeTabs tab, List list)
+    public static void initItem(Item item, String name, ItemGroup tab, List list)
     {
-        item.setTranslationKey(Metallurgy.MODID + "." + name);
+        //item.setTranslationKey(Metallurgy.MODID + "." + name);
         item.setRegistryName(Metallurgy.MODID, name);
-        item.setCreativeTab(tab);
+        //item.setCreativeTab(tab);
         if (list != null)
         	list.add(item);
     }
@@ -44,10 +43,10 @@ public class ItemUtils {
     {
 
     	Item item = toolStack.getItem();
-    	if(!toolStack.isEmpty() && item instanceof ItemTool)
+    	if(!toolStack.isEmpty() && item instanceof ToolItem)
     	{
-   		ItemTool tool = (ItemTool) toolStack.getItem();
-   		boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
+    		ToolItem tool = (ToolItem) toolStack.getItem();
+   		boolean valid = tool.getTier() == metal.getToolMaterial();
     	for(String type : except)
     	{
     		String toolName = metal.getStats().getName() + "_" + type;
@@ -59,33 +58,33 @@ public class ItemUtils {
     	return false;
     }
 
-	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
-	{
-		if (wild.isEmpty() || check.isEmpty())
-		{
-			return check.equals(wild);
-		}
+//	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
+//	{
+//		if (wild.isEmpty() || check.isEmpty())
+//		{
+//			return check.equals(wild);
+//		}
+//
+//		return wild.getItem() == check.getItem()
+//				&& (wild.getItemDamage() == OreDictionary.WILDCARD_VALUE
+//				|| check.getItemDamage() == OreDictionary.WILDCARD_VALUE
+//				|| wild.getItemDamage() == check
+//				.getItemDamage());
+//	}
 
-		return wild.getItem() == check.getItem()
-				&& (wild.getItemDamage() == OreDictionary.WILDCARD_VALUE
-				|| check.getItemDamage() == OreDictionary.WILDCARD_VALUE
-				|| wild.getItemDamage() == check
-				.getItemDamage());
-	}
-
-	public static ItemStack getToolRepairStack(ItemTool tool)
+	public static ItemStack getToolRepairStack(ToolItem tool)
 	{
-		String material = tool.getToolMaterialName().toLowerCase();
+		String material = tool.getTier().toString().toLowerCase();
 		Metal metal = Utils.getMetalFromString(material);
 		if (metal != null)
 			return new ItemStack(metal.getIngot());
 		else return ItemStack.EMPTY;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@OnlyIn(Dist.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		//ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 
 	public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
@@ -103,10 +102,10 @@ public class ItemUtils {
 		 return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase)armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
 	 }
 
-	@SideOnly(Side.CLIENT)
+	 @OnlyIn(Dist.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta, String subdir)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
+		//ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
 	}
 
 	/**

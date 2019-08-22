@@ -13,26 +13,26 @@ package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.potion.Potion;
+import net.minecraft.entity.item.ExperienceOrbEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.LightType;
 
 public class Utils {
 	
-	private static Potion [] randomEffectsList = {
-			MobEffects.BLINDNESS,
-			MobEffects.LEVITATION,
-			MobEffects.HUNGER,
-			MobEffects.INSTANT_DAMAGE,
-			MobEffects.NAUSEA,
-			MobEffects.NIGHT_VISION,
-			MobEffects.POISON,
-			MobEffects.SLOWNESS,
-			MobEffects.REGENERATION
+	private static Effect [] randomEffectsList = {
+			Effects.BLINDNESS,
+			Effects.LEVITATION,
+			Effects.HUNGER,
+			Effects.INSTANT_DAMAGE,
+			Effects.NAUSEA,
+			Effects.NIGHT_VISION,
+			Effects.POISON,
+			Effects.SLOWNESS,
+			Effects.REGENERATION
 	};
 	
 	public static String[] modMaterialNames = {
@@ -78,31 +78,31 @@ public class Utils {
 			"vyroxeres",
 		};
 
-	public static void giveExperience(EntityPlayer thePlayer, float experience) {
+	public static void giveExperience(PlayerEntity thePlayer, float experience) {
         int intExp = (int) experience;
         float fractional = experience - intExp;
         if (fractional > 0.0F && (float) Math.random() < fractional) {
                 intExp++;
         }
         while (intExp > 0) {
-            int j = EntityXPOrb.getXPSplit(intExp);
+            int j = ExperienceOrbEntity.getXPSplit(intExp);
             intExp -= j;
-            thePlayer.world.spawnEntity(new EntityXPOrb(thePlayer.world, thePlayer.posX, thePlayer.posY + 0.5D, thePlayer.posZ + 0.5D, j));
+            thePlayer.world.addEntity(new ExperienceOrbEntity(thePlayer.world, thePlayer.posX, thePlayer.posY + 0.5D, thePlayer.posZ + 0.5D, j));
         }
 
     }
 
   //maxPercent is the max percent that can reach when the player is in complete darkness
-  	public static float getLightArmorPercentage(EntityPlayer pl,float maxPercent)
+  	public static float getLightArmorPercentage(PlayerEntity pl,float maxPercent)
   	{
   		
   		BlockPos pos = new BlockPos(pl.posX, pl.posY, pl.posZ);
   		//check if it is day
-  		boolean isDay = (pl.world.getWorldTime() % 23300) <= 12800;
+  		boolean isDay = (pl.world.getDayTime() % 23300) <= 12800;
   		//get sky light level,if it is night the light will be 0
-       	float lightSky = Math.min(isDay ? pl.world.getLightFor(EnumSkyBlock.SKY, pos) : 0F,14F);
+       	float lightSky = Math.min(isDay ? pl.world.getLightFor(LightType.SKY, pos) : 0F,14F);
        	//get light emitted by a block(like a torch)
-       	float lightBlock = Math.min(pl.world.getLightFor(EnumSkyBlock.BLOCK, pos),14);  	 	
+       	float lightBlock = Math.min(pl.world.getLightFor(LightType.BLOCK, pos),14);  	 	
        	//get the light based on the lightSky and the lightBlock
   		float light = lightSky <= lightBlock ? lightBlock : lightSky;
        	
@@ -113,10 +113,10 @@ public class Utils {
 
 	public static String localize(String unlocalized)
     {
-        return new TextComponentTranslation(unlocalized).getFormattedText();
+        return new StringTextComponent(unlocalized).getFormattedText();
     }
     
-    public static Potion getRandomEffect() {
+    public static Effect getRandomEffect() {
     	return randomEffectsList[(int)(Math.random() * Utils.getMaxIndexEffect())];
     }
     

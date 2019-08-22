@@ -11,12 +11,12 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.Slot;
 
-public class KrikEffectHandler extends Slot{
+public class KrikEffectHandler extends Slot {
 
-	public KrikEffectHandler(EntityPlayer player, int index) {
+	public KrikEffectHandler(PlayerEntity player, int index) {
 		super(player.inventory, index, 0, 0);
 	}
 }

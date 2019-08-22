@@ -11,20 +11,18 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import it.hurts.metallurgy_reforged.block.BlockOreDict;
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
-import net.minecraft.block.material.Material;
-import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.IArmorMaterial;
+import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemTool;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class Metal {
     private final MetalStats stats;
@@ -36,7 +34,7 @@ public class Metal {
     private Item[] toolSet;
     private ItemArmorBase[] armorSet;
 
-    private FluidBlockBase fluidBlock;
+    //private FluidBlockBase fluidBlock;
 
     public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
         this.stats = stats;
@@ -51,17 +49,17 @@ public class Metal {
         ModMetals.metalList.add(this);
     }
 
-    public ItemTool.ToolMaterial getToolMaterial() {
+    public IItemTier getToolMaterial() {
         return stats.getToolMaterial();
     }
 
-    public ItemArmor.ArmorMaterial getArmorMaterial() {
+    public IArmorMaterial getArmorMaterial() {
         return stats.getArmorMaterial();
     }
 
-    public void initFluidBlock() {
-        fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
-    }
+//    public void initFluidBlock() {
+//        fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
+//    }
 
     /**
      * @return whether the metal has tools
@@ -122,10 +120,10 @@ public class Metal {
         return molten;
     }
 
-    @Nonnull
-    public FluidBlockBase getFluidBlock() {
-        return fluidBlock;
-    }
+//    @Nonnull
+//    public FluidBlockBase getFluidBlock() {
+//        return fluidBlock;
+//    }
 
     /**
      * @param toolClass The kind of tool you want from a set of tools
@@ -140,9 +138,9 @@ public class Metal {
      * @param armorPiece The armor piece
      * @return one of the armor pieces in the armorSet
      */
-    public ItemArmorBase getArmor(EntityEquipmentSlot armorPiece)
+    public ItemArmorBase getArmor(EquipmentSlotType armorPiece)
     {
-        return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
+        return armorPiece.getSlotType() == EquipmentSlotType.Group.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
     }
 
     public Item[] getToolSet()

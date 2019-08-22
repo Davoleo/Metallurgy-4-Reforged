@@ -11,34 +11,35 @@
 
 package it.hurts.metallurgy_reforged.proxy;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
-import it.hurts.metallurgy_reforged.config.ToolConfig;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig.Type;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-import java.io.File;
-
-@Mod.EventBusSubscriber
+//@Mod.EventBusSubscriber
 public class CommonProxy {
 	
-	public static Configuration config;
-	public static Configuration armorConfig;
-	public static Configuration toolConfig;
+//	public static Configuration config;
+//	public static Configuration armorConfig;
+//	public static Configuration toolConfig;
 
-    public void preInit(FMLPreInitializationEvent e) {
-        File directory = e.getModConfigurationDirectory();
-        
-        armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
-        ArmorConfig.readConfig(armorConfig);
-        
-        toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
-        ToolConfig.readConfig(toolConfig);
+    public void preInit(FMLCommonSetupEvent e) {
+    	
+    	//ModLoadingContext.get().registerConfig(Type.COMMON, new ForgeConfigSpec.Builder().build(), Metallurgy.MODID + "/tool.toml");
+    	
+//        File directory = e.getModConfigurationDirectory();
+//        
+//        armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
+//        ArmorConfig.readConfig(armorConfig);
+//        
+//        toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
+//        ToolConfig.readConfig(toolConfig);
     }
     
-    public void postInit(FMLPostInitializationEvent e) {
-        if(armorConfig.hasChanged())
-        	armorConfig.save();
+    public void postInit() {
+//        if(armorConfig.hasChanged())
+//        	armorConfig.save();
     }
 }

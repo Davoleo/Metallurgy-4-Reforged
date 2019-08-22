@@ -14,20 +14,18 @@ package it.hurts.metallurgy_reforged.container.slot;
 import javax.annotation.Nullable;
 
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ArmorCustomSlot extends Slot{
+public class ArmorCustomSlot extends Slot {
 
 	public final boolean locked;
 	private final int armorIndex;
-	public EntityPlayer player;
+	public PlayerEntity player;
 
-	public ArmorCustomSlot(EntityPlayer pl,int armorIndex,boolean locked) {
+	public ArmorCustomSlot(PlayerEntity pl,int armorIndex,boolean locked) {
 		super(pl.inventory, 36 + (3 - armorIndex), 8, 8 + armorIndex * 18);
 		this.locked = locked;
 		this.armorIndex = armorIndex;
@@ -52,7 +50,7 @@ public class ArmorCustomSlot extends Slot{
 	/**
 	 * Return whether this slot's stack can be taken from this slot.
 	 */
-	public boolean canTakeStack(EntityPlayer playerIn){
+	public boolean canTakeStack(PlayerEntity playerIn){
 		return false;
 	}
 
@@ -60,10 +58,10 @@ public class ArmorCustomSlot extends Slot{
 		return this.locked ? ItemStack.EMPTY : super.decrStackSize(amount);
 	}
 
-	@Nullable
-	@SideOnly(Side.CLIENT)
-	public String getSlotTexture(){
-		return ItemArmor.EMPTY_SLOT_NAMES[3 - armorIndex];
-	}
+//	@Nullable
+//	@SideOnly(Side.CLIENT)
+//	public String getSlotTexture(){
+//		return ArmorItem.EMPTY_SLOT_NAMES[3 - armorIndex];
+//	}
 
 }

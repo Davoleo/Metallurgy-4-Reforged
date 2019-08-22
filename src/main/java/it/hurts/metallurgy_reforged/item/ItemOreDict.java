@@ -11,44 +11,40 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.material.IOreDict;
-import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
+import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
 
-public class ItemOreDict extends Item implements IOreDict, IHasModel {
+import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.World;
+
+public class ItemOreDict extends Item implements IHasModel {
 
 	//Internal Variables ----------------------------------------------------
 	private String oreName;
 	private String tooltip;
 
 	//Constructors
-	public ItemOreDict(String name, String oreName, CreativeTabs tab, List list)
+	public ItemOreDict(String name, String oreName, ItemGroup tab, List list)
 	{
+		super(new Item.Properties().group(tab));
 		ItemUtils.initItem(this, name, tab, list);
 		this.oreName = oreName;
 	}
 
-    @Override
-	public void initOreDict()
-	{
-		OreDictionary.registerOre(oreName, this);
-	}
-
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		if (this.tooltip != null)
-			tooltip.add(this.tooltip);
+			tooltip.add(new StringTextComponent(this.tooltip));
 	}
 
 	//Setters & Getters -----------------------------------------------------
@@ -66,11 +62,11 @@ public class ItemOreDict extends Item implements IOreDict, IHasModel {
 		return "";
 	}
 
-	@Nonnull
-	@Override
-	public ItemOreDict setCreativeTab(@Nonnull CreativeTabs tab)
-	{
-		super.setCreativeTab(tab);
-		return this;
-	}
+//	@Nonnull
+//	@Override
+//	public ItemOreDict setCreativeTab(@Nonnull ItemGroup tab)
+//	{
+//		super.gr(tab);
+//		return this;
+//	}
 }

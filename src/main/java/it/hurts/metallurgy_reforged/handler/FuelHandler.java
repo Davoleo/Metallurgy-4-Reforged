@@ -9,26 +9,26 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.handler;
-
-import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.item.ModItems;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-public class FuelHandler {
-
-    @SubscribeEvent
-    public static void registerFuels(FurnaceFuelBurnTimeEvent event)
-    {
-        ItemStack item = event.getItemStack();
-
-        if (item.getItem().equals(ModItems.tar))
-            event.setBurnTime(800);
-        if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
-            event.setBurnTime(16000);
-    }
-
-}
+//package it.hurts.metallurgy_reforged.handler;
+//
+//import it.hurts.metallurgy_reforged.block.ModBlocks;
+//import it.hurts.metallurgy_reforged.item.ModItems;
+//import net.minecraft.item.Item;
+//import net.minecraft.item.ItemStack;
+//import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+//import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+//
+//public class FuelHandler {
+//
+//    @SubscribeEvent
+//    public static void registerFuels(FurnaceFuelBurnTimeEvent event)
+//    {
+//        ItemStack item = event.getItemStack();
+//
+//        if (item.getItem().equals(ModItems.tar))
+//            event.setBurnTime(800);
+//        if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
+//            event.setBurnTime(16000);
+//    }
+//
+//}

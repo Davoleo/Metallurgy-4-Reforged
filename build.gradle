@@ -2,12 +2,14 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "https://files.minecraftforge.net/maven" }
+		mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
 
 /*
  * -------------------------------------------------------------------------------------------------------
@@ -32,9 +34,41 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2814"
-    runDir = "run"
-	mappings = "stable_39"
+	mappings channel: 'snapshot', version: '20190719-1.14.3'
+	
+	runs {
+        client {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                examplemod {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            // Recommended logging level for the console
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                examplemod {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
 }
 
 repositories {
@@ -71,6 +105,7 @@ repositories {
 }
 
 dependencies {
+	minecraft 'net.minecraftforge:forge:1.14.4-28.0.45'
     
     //deobfProvided: Direct Source Code
     //runtime: only at runtime
@@ -79,42 +114,56 @@ dependencies {
     //compileOnly: NO runtime
 
 //	Compile against the JEI API but do not include it at runtime
-    deobfProvided "mezz.jei:jei_1.12.2:4.13.+:api"
+    compileOnly fg.deobf("mezz.jei:jei-1.14.4:6.0.0.10:api")
 	
 // 	At runtime, use the full JEI jar
-    runtime "mezz.jei:jei_1.12.2:4.13.+"
+    //runtime "mezz.jei:jei_1.12.2:4.13.+"
 	
 // 	Tinker Construct & Mantle
-	deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.43"
-    deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.116"
+	//deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.43"
+    //deobfCompile "slimeknights:TConstruct:1.12.2-2.12.0.116"
     
-    deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
+    //deobfCompile "constructs-armory:conarm:1.12.2:1.1.2"
      
 //	Industrial Foregoing
-    compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
+    //compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.11:235"
 	
 //	ProjectE
-	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
+	//compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
     
     //CraftTweaker
-    compile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494")
+    //compile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494")
 }
-
+/*
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "metallurgy",
+            "Specification-Vendor": ["ItHurtsLikeHell","Davoleo"],
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+            "Implementation-Vendor" :["ItHurtsLikeHell","Davoleo"],
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+*/
 processResources {
     
     inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    //inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        include 'META_INF/mods.toml'
+        expand 'version':project.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude 'META_INF/mods.toml'
     }
 }
-
+/*
 jar {
     destinationDir = file 'output'
 }
@@ -126,3 +175,4 @@ clean {
 sourceJar {
     destinationDir = file 'output'
 }
+*/

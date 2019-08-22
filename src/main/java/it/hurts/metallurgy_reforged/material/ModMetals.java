@@ -13,9 +13,9 @@ package it.hurts.metallurgy_reforged.material;
 
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
@@ -39,15 +39,13 @@ public class ModMetals {
 
     //THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
     public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, HIGH_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
-            new ToolStats(22, 7, 1550, 10F, 5F), new FluidStats(0xFFA31D1D), 6).createMetal();
+            ModArmorMaterial.ADAMANTINE, ModToolTier.ADAMANTINE, new FluidStats(0xFFA31D1D), 6).createMetal();
     public static final Metal AMORDRINE = new MetalStats("amordrine", "Amordrine", 2, MID_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[]{3, 4, 5, 3}, 50, 50, 2F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
-            new ToolStats(50, 5, 500, 14F, 4F), new FluidStats(0xFF9780CB), -1).createMetal();
+            ModArmorMaterial.AMORDRINE, ModToolTier.AMORDRINE, new FluidStats(0xFF9780CB), -1).createMetal();
     public static final Metal ANGMALLEN = new MetalStats("angmallen", "Angmallen", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 6, 3}, 18, 30, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(30, 3, 300, 7F, 3F), new FluidStats(0xFFC09844), -1).createMetal();
-    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF9294BE), 3).createMetal();
+    public static final Metal ALDUORITE = new MetalStats("alduorite", "Alduorite", 2, MID_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFF9294BE), 3).createMetal();
     public static final Metal ASTRAL_SILVER = new MetalStats("astral_silver", "AstralSilver", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 5, 6, 2}, 9, 15, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC),
             new ToolStats(30, 5, 350, 12F, 2F), new FluidStats(0xFFBBD5CF), 4).createMetal();
@@ -85,10 +83,10 @@ public class ModMetals {
             new ArmorStats(new int[]{4, 5, 7, 4}, 30, 180, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(30, 4, 1800, 8F, 5F), new FluidStats(0xFF685B9C), -1).createMetal();
     public static final Metal ELECTRUM = new MetalStats("electrum", "Electrum", 2, LOW_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_IMPACT),
+            new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT),
             new ToolStats(30, 2, 70, 14F, 2F), new FluidStats(0xFFEFEF57), -1).createMetal();
     public static final Metal EXIMITE = new MetalStats("eximite", "Eximite", 2, HIGH_TIER_BLAST_RESISTANCE,
-            new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDERDRAGON_GROWL),
+            new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDER_DRAGON_GROWL),
             new ToolStats(25, 7, 1000, 8F, 4F), new FluidStats(0xFF5E4191), 3).createMetal();
     public static final Metal HADEROTH = new MetalStats("haderoth", "Haderoth", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 7, 4}, 19, 125, 6F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
@@ -99,7 +97,7 @@ public class ModMetals {
     public static final Metal IGNATIUS = new MetalStats("ignatius", "Ignatius", 2, LOW_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{2, 5, 6, 2}, 15, 24, 0.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(15, 2, 200, 4F, 3F), new FluidStats(0xFFD05631, 2100), 1).createMetal();
-    public static final Metal INFUSCOLIUM = new MetalStats("infuscolium", "Infuscolium", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF6A3359), 2).createMetal();
+    public static final Metal INFUSCOLIUM = new MetalStats("infuscolium", "Infuscolium", 2, MID_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFF6A3359), 2).createMetal();
     public static final Metal INOLASHITE = new MetalStats("inolashite", "Inolashite", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 5, 7, 4}, 25, 70, 4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(25, 5, 900, 8F, 4F), new FluidStats(0xFF476267), -1).createMetal();
@@ -109,12 +107,12 @@ public class ModMetals {
     public static final Metal KRIK = new MetalStats("krik", "Krik", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[] {2, 4, 3, 1}, 17, 45, 9.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(17, 4, 350, 5F, 7F), new FluidStats(0xFF415E26), -1).createMetal();
-    public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
+    public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFFD0D0D0), 2).createMetal();
     public static final Metal LUTETIUM = new MetalStats("lutetium", "Lutetium", 2, HIGH_TIER_BLAST_RESISTANCE,
     		new ArmorStats(new int[] {5, 6, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
     		null, new FluidStats(0xFF777221), 4).createMetal();
-    public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
-    public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFF332E38), 4).createMetal();
+    public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFFFFAEDF), 3).createMetal();
+    public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFF332E38), 4).createMetal();
     public static final Metal MIDASIUM = new MetalStats("midasium", "Midasium", 2, MID_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{3, 3, 5, 2}, 35, 16, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_GOLD),
             new ToolStats(35, 4, 100, 10F, 7F), new FluidStats(0xFFD5862A), 3).createMetal();
@@ -139,7 +137,7 @@ public class ModMetals {
     public static final Metal QUICKSILVER = new MetalStats("quicksilver", "QuickSilver", 2, HIGH_TIER_BLAST_RESISTANCE,
     		new ArmorStats(new int[]{4, 7, 5, 4}, 50, 165, 0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 5, 1100, 14F, 7F), new FluidStats(0xFF72BF9F), -1).createMetal();
-    public static final Metal RUBRACIUM = new MetalStats("rubracium", "Rubracium", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFB83F56), 4).createMetal();
+    public static final Metal RUBRACIUM = new MetalStats("rubracium", "Rubracium", 2, MID_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFFB83F56), 4).createMetal();
     public static final Metal SANGUINITE = new MetalStats("sanguinite", "Sanguinite", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 6, 7, 5}, 25, 175, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(25, 7, 1750, 11F, 8F), new FluidStats(0xFF541D1D), 6).createMetal();
@@ -158,20 +156,22 @@ public class ModMetals {
     public static final Metal TARTARITE = new MetalStats("tartarite", "Tartarite", 2, EXTREME_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{5, 6, 7, 5}, 20, 300, 6.0F, SoundEvents.ENTITY_WITHER_SKELETON_AMBIENT),
             new ToolStats(25, 8, 3000, 14F, 9F), new FluidStats(0xFFCA8A32), -1).createMetal();
-    public static final Metal TIN = new MetalStats("tin", "Tin", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFA9A295), 1).createMetal();
+    public static final Metal TIN = new MetalStats("tin", "Tin", 2, LOW_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFFA9A295), 1).createMetal();
     public static final Metal VULCANITE = new MetalStats("vulcanite", "Vulcanite", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 6, 7, 4}, 20, 150, 4.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(20, 6, 1500, 10F, 7F), new FluidStats(0xFF641929, 4200), 5).createMetal();
     public static final Metal VYROXERES = new MetalStats("vyroxeres", "Vyroxeres", 2, HIGH_TIER_BLAST_RESISTANCE,
             new ArmorStats(new int[]{4, 5, 6, 3}, 16, 37, 3.0F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
             new ToolStats(16, 4, 300, 7F, 7F), new FluidStats(0xFF2BFF00), 4).createMetal();
-    public static final Metal ZINC = new MetalStats("zinc", "Zinc", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats(0xFFCACE84), 1).createMetal();
+    public static final Metal ZINC = new MetalStats("zinc", "Zinc", 2, MID_TIER_BLAST_RESISTANCE, (IArmorMaterial) null, null, new FluidStats(0xFFCACE84), 1).createMetal();
 
     public static void registerFluids() {
+    	/*
         for (Metal m : metalList) {
             FluidRegistry.registerFluid(m.getMolten());
             m.initFluidBlock();
         }
+        */
     }
 
     public static void registerBlocks(IForgeRegistry<Block> registry) {
@@ -180,7 +180,7 @@ public class ModMetals {
             if (m.getOre() != null) {
                 registry.register(m.getOre());
             }
-            registry.register(m.getFluidBlock());
+            //registry.register(m.getFluidBlock());
         }
     }
 
@@ -193,7 +193,7 @@ public class ModMetals {
                 ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
             }
             ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
-            ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
+            //ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
         }
     }
 
@@ -203,7 +203,7 @@ public class ModMetals {
             if (m.getOre() != null) {
                 registry.register(m.getOre().createItemBlock());
             }
-            registry.register(m.getFluidBlock().createItemBlock());
+            //registry.register(m.getFluidBlock().createItemBlock());
             registry.register(m.getDust());
             registry.register(m.getIngot());
             registry.register(m.getNugget());

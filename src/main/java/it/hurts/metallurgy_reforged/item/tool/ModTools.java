@@ -11,17 +11,17 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModTools {
 
@@ -61,7 +61,7 @@ public class ModTools {
         }
     }
 
-    @SideOnly(Side.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     public static void registerModels()
     {
         if (!GeneralConfig.disableAllTools)

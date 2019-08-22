@@ -11,20 +11,19 @@
 
 package it.hurts.metallurgy_reforged.capabilities.punch;
 
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-
-import javax.annotation.Nonnull;
+import net.minecraftforge.common.util.LazyOptional;
 
 /**
  * Mana provider
  *
  * This class is responsible for providing a capability.
  */
-public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
+public class PunchEffectProvider implements ICapabilitySerializable<INBT>
 {
     @CapabilityInject(IPunchEffect.class)
     public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
@@ -37,25 +36,19 @@ public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
     }
 
     @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
+    public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side)
     {
-        return capability.equals(PUNCH_EFFECT_CAP);
+        return PUNCH_EFFECT_CAP.orEmpty(capability, LazyOptional.of(() -> this.instance));
     }
 
     @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
-    {
-        return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
-    }
-
-    @Override
-    public NBTBase serializeNBT()
+    public INBT serializeNBT()
     {
         return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
     }
 
     @Override
-    public void deserializeNBT(NBTBase nbt)
+    public void deserializeNBT(INBT nbt)
     {
         if(PUNCH_EFFECT_CAP != null)
             PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);

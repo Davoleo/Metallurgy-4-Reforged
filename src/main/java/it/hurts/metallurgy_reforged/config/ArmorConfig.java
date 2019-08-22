@@ -11,15 +11,6 @@
 
 package it.hurts.metallurgy_reforged.config;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.ConfigManager;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.logging.log4j.Level;
-
 public class ArmorConfig {
 	
 	private static final String CATEGORY = "Armor";
@@ -108,32 +99,32 @@ public class ArmorConfig {
 			vyroxeres
 	};
 
-	public static void readConfig(Configuration cfg) {
-        try {
-        	initArmorConfig(cfg);
-        } catch (Exception e1) {
-            Metallurgy.logger.log(Level.ERROR, "Problem loading config file!", e1);
-        } finally {
-            if (cfg.hasChanged()) {
-                cfg.save();
-            }
-        }
-    }
-	
-	private static void initArmorConfig(Configuration cfg) {
-			for(int i = 0; i < allArmor.length; i++)
-				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " Armor Set" );
-	}
-
-
-	public static class ChangeListener {
-
-		@SubscribeEvent
-		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-			if(eventArgs.getModID().equals(Metallurgy.MODID)) {
-				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
-			}
-		}
-	}
+//	public static void readConfig(Configuration cfg) {
+//        try {
+//        	initArmorConfig(cfg);
+//        } catch (Exception e1) {
+//            Metallurgy.logger.log(Level.ERROR, "Problem loading config file!", e1);
+//        } finally {
+//            if (cfg.hasChanged()) {
+//                cfg.save();
+//            }
+//        }
+//    }
+//	
+//	private static void initArmorConfig(Configuration cfg) {
+//			for(int i = 0; i < allArmor.length; i++)
+//				allArmor[i]= cfg.getBoolean(Utils.modMaterialNames[i], CATEGORY, allArmor[i], "Set to false to disable " + Utils.getName(Utils.modMaterialNames[i]) + " Armor Set" );
+//	}
+//
+//
+//	public static class ChangeListener {
+//
+//		@SubscribeEvent
+//		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+//			if(eventArgs.getModID().equals(Metallurgy.MODID)) {
+//				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
+//			}
+//		}
+//	}
 		
 }

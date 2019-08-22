@@ -14,13 +14,13 @@ package it.hurts.metallurgy_reforged.block;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -32,12 +32,13 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
 
     public BlockTileEntity(Material material, String name)
     {
-        super(material);
+        super(Block.Properties.create(material)
+        		.hardnessAndResistance(6.0F, 8.0F)
+        		.harvestTool(ToolType.PICKAXE)
+        		.harvestLevel(1)
+        		.sound(SoundType.METAL));
+        
         BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, true);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 1);
-        setHardness(6F);
-        setResistance(8F);
     }
 
     //Custom Methods -------------------------------------------------------------
@@ -48,24 +49,23 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
     public abstract Class<TE> getTileEntityClass();
 
     //gets the Linked tileEntity
-	@SuppressWarnings({"unchecked", "unused"})
-	public TE getTileEntity(IBlockAccess world, BlockPos pos)
-    {
-        return (TE)world.getTileEntity(pos);
-    }
+//	@SuppressWarnings({"unchecked", "unused"})
+//	public TE getTileEntity(IBlockAccess world, BlockPos pos)
+//    {
+//        return (TE)world.getTileEntity(pos);
+//    }
 
     //Overridden Methods -------------------------------------------------------------
 
     //Returns true if the block is linked to a tile entity
     @Override
-    public boolean hasTileEntity(IBlockState state)
+    public boolean hasTileEntity(BlockState state)
     {
         return true;
     }
 
     //creates a new instance of the linked Tile Entity
     @Nullable
-    @Override
-    public abstract TE createTileEntity(@Nonnull World world, @Nonnull IBlockState state);
+    public abstract TE createTileEntity(@Nonnull World world, @Nonnull BlockState state);
 
 }

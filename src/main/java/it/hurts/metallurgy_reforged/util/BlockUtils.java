@@ -14,29 +14,27 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.item.ItemGroup;
 
 public class BlockUtils {
 
-    public static void initBlock(Block block, String name, CreativeTabs tab, boolean addToList)
+    public static void initBlock(Block block, String name, ItemGroup tab, boolean addToList)
     {
         block.setRegistryName(Metallurgy.MODID, name);
-        block.setTranslationKey(Metallurgy.MODID + "." + name);
-        if (tab != null)
-            block.setCreativeTab(tab);
+        //block.setTranslationKey(Metallurgy.MODID + "." + name);
+        //if (tab != null)
+        //    block.setCreativeTab(tab);
         if (addToList)
             ModBlocks.blockList.add(block);
     }
 
-
-    public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
+/*
+    public static Direction getFreeFacing(IBlockAccess world, BlockPos pos)
     {
-        for (EnumFacing facing : EnumFacing.values())
+        for (Direction facing : Direction.values())
             if (world.isAirBlock(pos.offset(facing)))
                 return facing;
             return null;
     }
+    */
 }

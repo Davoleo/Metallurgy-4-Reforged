@@ -31,6 +31,7 @@ public class ModFluids {
 
 
 	public static void registerFluids(){
+		/*
 		for(FluidMolten fluid : fluidToRegitry) {
 			FluidRegistry.registerFluid(fluid);
 			fluid.initFluidBlock();
@@ -41,6 +42,7 @@ public class ModFluids {
 		{
 			FluidRegistry.addBucketForFluid(fluid);
 		}
+		*/
 	}
 
 //	Fluidblocks Section
@@ -48,21 +50,21 @@ public class ModFluids {
 
 	public static void registerBlocks(IForgeRegistry<Block> registry){
 		for(FluidMolten fluid : fluidToRegitry) {
-			registry.register(fluid.getFluidBlock());
+			//registry.register(fluid.getFluidBlock());
 		}
 	}
 
 //  Item Inventario
 	public static void registerItem(IForgeRegistry<Item> registry){
 		for(FluidMolten fluid : fluidToRegitry) {
-			registry.register(fluid.getFluidBlock().createItemBlock());
+			//registry.register(fluid.getFluidBlock().createItemBlock());
 		}
 	}
 
 //  Modello
 	public static void registerModels(){
 		for(FluidMolten fluid : fluidToRegitry) {
-			fluid.getFluidBlock().registerItemModel(Item.getItemFromBlock(fluid.getFluidBlock()));
+			//fluid.getFluidBlock().registerItemModel(Item.getItemFromBlock(fluid.getFluidBlock()));
 		}
 	}
 }
