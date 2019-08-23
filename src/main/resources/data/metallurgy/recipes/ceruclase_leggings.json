@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotCeruclase"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/ceruclase"
     }
   },
-  "result":{
-    "item":"metallurgy:ceruclase_leggings"
+  "result": {
+    "item": "metallurgy:ceruclase_leggings"
   }
 }

@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotEximite"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/eximite"
     }
   },
-  "result":{
-    "item":"metallurgy:eximite_helmet"
+  "result": {
+    "item": "metallurgy:eximite_helmet"
   }
 }

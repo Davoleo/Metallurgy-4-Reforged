@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetAtlarus"
+  "key": {
+    "I": {
+      "tag": "forge:nuggets/atlarus"
     }
   },
   "result": {
     "item": "metallurgy:atlarus_ingot"
   }
-
-
 }

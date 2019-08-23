@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotBrass"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/brass"
     }
   },
-  "result":{
-    "item":"metallurgy:brass_boots"
+  "result": {
+    "item": "metallurgy:brass_boots"
   }
 }

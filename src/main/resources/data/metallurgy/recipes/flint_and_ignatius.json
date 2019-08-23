@@ -1,9 +1,8 @@
 {
-  "type": "forge:ore_shapeless",
-  "ingredients":[
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "ingotIgnatius"
+      "tag": "forge:ingots/ignatius"
     },
     {
       "item": "minecraft:flint"

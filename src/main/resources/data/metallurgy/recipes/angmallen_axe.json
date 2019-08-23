@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "II ",
     "IS ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAngmallen"
+    "I": {
+      "tag": "forge:ingots/angmallen"
     }
   },
-  "result":{
-    "item":"metallurgy:angmallen_axe"
+  "result": {
+    "item": "metallurgy:angmallen_axe"
   }
 }

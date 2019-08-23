@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAstralSilver"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/astral_silver"
     }
   },
-  "result":{
-    "item":"metallurgy:astral_silver_helmet"
+  "result": {
+    "item": "metallurgy:astral_silver_helmet"
   }
 }

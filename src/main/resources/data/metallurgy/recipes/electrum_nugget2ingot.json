@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetElectrum"
+  "key": {
+    "I": {
+      "tag": "forge:nuggets/electrum"
     }
   },
   "result": {
     "item": "metallurgy:electrum_ingot"
   }
-
-
 }

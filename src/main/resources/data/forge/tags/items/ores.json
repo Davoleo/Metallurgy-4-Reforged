@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:ores/adamantine",
+    "#forge:ores/alduorite",
     "#forge:ores/astral_silver",
     "#forge:ores/atlarus",
     "#forge:ores/carmot",
@@ -9,13 +10,23 @@
     "#forge:ores/deep_iron",
     "#forge:ores/eximite",
     "#forge:ores/ignatius",
+    "#forge:ores/infuscolium",
+    "#forge:ores/lemurite",
     "#forge:ores/lutetium",
+    "#forge:ores/manganese",
+    "#forge:ores/meutoite",
     "#forge:ores/midasium",
+    "#forge:ores/mithril",
     "#forge:ores/orichalcum",
     "#forge:ores/osmium",
     "#forge:ores/oureclase",
+    "#forge:ores/platinum",
     "#forge:ores/prometheum",
+    "#forge:ores/rubracium",
     "#forge:ores/sanguinite",
-    "#forge:ores/vulcanite"
+    "#forge:ores/shadow_iron",
+    "#forge:ores/tin",
+    "#forge:ores/vulcanite",
+    "#forge:ores/zinc"
   ]
 }

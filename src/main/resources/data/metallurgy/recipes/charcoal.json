@@ -1,14 +1,12 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "blockCharcoal"
+      "tag": "forge:storage_blocks/charcoal"
     }
   ],
   "result": {
-    "item": "minecraft:coal",
-    "data": 1,
+    "item": "minecraft:charcoal",
     "count": 9
   }
 }

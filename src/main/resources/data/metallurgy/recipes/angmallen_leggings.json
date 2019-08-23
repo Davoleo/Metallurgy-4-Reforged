@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAngmallen"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/angmallen"
     }
   },
-  "result":{
-    "item":"metallurgy:angmallen_leggings"
+  "result": {
+    "item": "metallurgy:angmallen_leggings"
   }
 }

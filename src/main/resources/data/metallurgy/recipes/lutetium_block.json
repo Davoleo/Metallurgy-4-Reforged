@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotLutetium"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/lutetium"
     }
   },
   "result": {
     "item": "metallurgy:lutetium_block"
   }
-
-
 }

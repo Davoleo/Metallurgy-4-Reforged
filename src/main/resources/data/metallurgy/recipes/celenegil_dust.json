@@ -1,13 +1,11 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustPlatinum"
+      "tag": "forge:dusts/platinum"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustOrichalcum"
+      "tag": "forge:dusts/orichalcum"
     }
   ],
   "result": {

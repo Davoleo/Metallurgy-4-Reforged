@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotKrik"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/krik"
     }
   },
-  "result":{
-    "item":"metallurgy:krik_boots"
+  "result": {
+    "item": "metallurgy:krik_boots"
   }
 }

@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotBrass"
+    "A": {
+      "tag": "forge:ingots/brass"
     }
   },
-  "result":{
-    "item":"metallurgy:brass_chestplate"
+  "result": {
+    "item": "metallurgy:brass_chestplate"
   }
 }

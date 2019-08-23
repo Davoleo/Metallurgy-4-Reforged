@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "II ",
     "IS ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotSilver"
+    "I": {
+      "tag": "forge:ingots/silver"
     }
   },
-  "result":{
-    "item":"metallurgy:silver_axe"
+  "result": {
+    "item": "metallurgy:silver_axe"
   }
 }

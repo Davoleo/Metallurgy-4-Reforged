@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAstralSilver"
+    "A": {
+      "tag": "forge:ingots/astral_silver"
     }
   },
-  "result":{
-    "item":"metallurgy:astral_silver_chestplate"
+  "result": {
+    "item": "metallurgy:astral_silver_chestplate"
   }
 }

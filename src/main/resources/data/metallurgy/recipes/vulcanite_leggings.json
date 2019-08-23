@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotVulcanite"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/vulcanite"
     }
   },
-  "result":{
-    "item":"metallurgy:vulcanite_leggings"
+  "result": {
+    "item": "metallurgy:vulcanite_leggings"
   }
 }

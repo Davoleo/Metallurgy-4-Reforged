@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAmordrine"
+    "A": {
+      "tag": "forge:ingots/amordrine"
     }
   },
-  "result":{
-    "item":"metallurgy:amordrine_chestplate"
+  "result": {
+    "item": "metallurgy:amordrine_chestplate"
   }
 }

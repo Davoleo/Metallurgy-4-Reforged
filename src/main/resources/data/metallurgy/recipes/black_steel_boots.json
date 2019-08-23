@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotBlackSteel"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/black_steel"
     }
   },
-  "result":{
-    "item":"metallurgy:black_steel_boots"
+  "result": {
+    "item": "metallurgy:black_steel_boots"
   }
 }

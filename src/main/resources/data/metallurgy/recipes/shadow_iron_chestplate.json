@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotShadowIron"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/shadow_iron"
     }
   },
-  "result":{
-    "item":"metallurgy:shadow_iron_chestplate"
+  "result": {
+    "item": "metallurgy:shadow_iron_chestplate"
   }
 }

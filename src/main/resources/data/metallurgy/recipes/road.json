@@ -1,18 +1,17 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "BBB",
     "BBB",
     "BBB"
   ],
   "key": {
-    "B":{
-      "type": "forge:ore_dict",
-      "ore": "dustBitumen"
+    "B": {
+      "tag": "forge:dusts/bitumen"
     }
   },
   "result": {
     "item": "metallurgy:road_block",
     "count": 32
-}
+  }
 }

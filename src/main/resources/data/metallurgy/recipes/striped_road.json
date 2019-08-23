@@ -1,22 +1,20 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "BWB",
     "BWB",
     "BWB"
   ],
   "key": {
-    "B":{
-      "type": "forge:ore_dict",
-      "ore": "dustBitumen"
+    "B": {
+      "tag": "forge:dusts/bitumen"
     },
-    "W":{
-      "type": "forge:ore_dict",
-      "ore": "dyeWhite"
+    "W": {
+      "tag": "forge:dyes/white"
     }
   },
   "result": {
     "item": "metallurgy:striped_road_block",
     "count": 16
-}
+  }
 }

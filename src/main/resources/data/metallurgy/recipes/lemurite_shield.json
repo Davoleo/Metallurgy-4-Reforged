@@ -1,5 +1,5 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "INI",
     "III",
@@ -7,12 +7,10 @@
   ],
   "key": {
     "I": {
-      "type": "forge:ore_dict",
-      "ore": "ingotLemurite"
+      "tag": "forge:ingots/lemurite"
     },
     "N": {
-      "type": "forge:ore_dict",
-      "ore": "nuggetLemurite"
+      "tag": "forge:nuggets/lemurite"
     }
   },
   "result": {

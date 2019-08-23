@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotHaderoth"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/haderoth"
     }
   },
-  "result":{
-    "item":"metallurgy:haderoth_leggings"
+  "result": {
+    "item": "metallurgy:haderoth_leggings"
   }
 }

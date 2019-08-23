@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotElectrum"
+    "A": {
+      "tag": "forge:ingots/electrum"
     }
   },
-  "result":{
-    "item":"metallurgy:electrum_chestplate"
+  "result": {
+    "item": "metallurgy:electrum_chestplate"
   }
 }

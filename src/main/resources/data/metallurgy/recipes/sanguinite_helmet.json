@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotSanguinite"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/sanguinite"
     }
   },
-  "result":{
-    "item":"metallurgy:sanguinite_helmet"
+  "result": {
+    "item": "metallurgy:sanguinite_helmet"
   }
 }

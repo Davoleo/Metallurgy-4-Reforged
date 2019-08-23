@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotEximite"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/eximite"
     }
   },
   "result": {
     "item": "metallurgy:eximite_block"
   }
-
-
 }

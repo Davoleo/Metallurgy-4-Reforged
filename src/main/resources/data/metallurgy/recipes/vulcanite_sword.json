@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     " I ",
     " I ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotVulcanite"
+    "I": {
+      "tag": "forge:ingots/vulcanite"
     }
   },
-  "result":{
-    "item":"metallurgy:vulcanite_sword"
+  "result": {
+    "item": "metallurgy:vulcanite_sword"
   }
 }

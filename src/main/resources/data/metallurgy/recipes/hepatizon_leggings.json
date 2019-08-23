@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotHepatizon"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/hepatizon"
     }
   },
-  "result":{
-    "item":"metallurgy:hepatizon_leggings"
+  "result": {
+    "item": "metallurgy:hepatizon_leggings"
   }
 }

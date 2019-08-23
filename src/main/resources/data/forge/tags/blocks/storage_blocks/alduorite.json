@@ -1,6 +1,6 @@
 {
-    "replace": false,
-    "values": [
-        "metallurgy:alduorite_block"
-    ]
+  "replace": false,
+  "values": [
+    "metallurgy:alduorite_block"
+  ]
 }

@@ -1,21 +1,17 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustZinc"
+      "tag": "forge:dusts/zinc"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustCopper"
+      "tag": "forge:dusts/copper"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustCopper"
+      "tag": "forge:dusts/copper"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustCopper"
+      "tag": "forge:dusts/copper"
     }
   ],
   "result": {

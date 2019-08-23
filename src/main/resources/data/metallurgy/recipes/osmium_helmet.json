@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotOsmium"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/osmium"
     }
   },
-  "result":{
-    "item":"metallurgy:osmium_helmet"
+  "result": {
+    "item": "metallurgy:osmium_helmet"
   }
 }

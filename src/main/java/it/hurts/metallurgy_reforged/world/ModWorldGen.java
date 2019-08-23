@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.world;
 
-import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
@@ -47,27 +46,6 @@ public class ModWorldGen {
             }
 		}
 	}
-	
-//	@Override
-//	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-//      generateWorld(random, chunkX, chunkZ, world, true);
-//	}
-//
-//	void generateWorld(Random random, int chunkX, int chunkZ, World world, boolean newGen)
-//    {
-//        if (!newGen && !WorldGenerationConfig.retrogen)
-//            return;
-//        if(world.provider.isSurfaceWorld())
-//        	 generateOverworld(random, chunkX, chunkZ, world);
-//        else
-//        	if(world.provider.isNether())
-//        		generateNether(random, chunkX, chunkZ, world);
-//        	else
-//        		generateEnd(random, chunkX, chunkZ, world);
-//        if (!newGen) {
-//            world.getChunk(chunkX, chunkZ).markDirty();
-//        }
-//    }
 
 	//Overworld
 	private static void generateOverworld(Biome biome) {

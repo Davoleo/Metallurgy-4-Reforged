@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotHaderoth"
+    "A": {
+      "tag": "forge:ingots/haderoth"
     }
   },
-  "result":{
-    "item":"metallurgy:haderoth_chestplate"
+  "result": {
+    "item": "metallurgy:haderoth_chestplate"
   }
 }

@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotDeepIron"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/deep_iron"
     }
   },
-  "result":{
-    "item":"metallurgy:deep_iron_chestplate"
+  "result": {
+    "item": "metallurgy:deep_iron_chestplate"
   }
 }

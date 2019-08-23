@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotMithril"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/mithril"
     }
   },
-  "result":{
-    "item":"metallurgy:mithril_boots"
+  "result": {
+    "item": "metallurgy:mithril_boots"
   }
 }

@@ -1,13 +1,11 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustAlduorite"
+      "tag": "forge:dusts/alduorite"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustCeruclase"
+      "tag": "forge:dusts/ceruclase"
     }
   ],
   "result": {

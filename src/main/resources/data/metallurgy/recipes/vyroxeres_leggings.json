@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotVyroxeres"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/vyroxeres"
     }
   },
-  "result":{
-    "item":"metallurgy:vyroxeres_leggings"
+  "result": {
+    "item": "metallurgy:vyroxeres_leggings"
   }
 }

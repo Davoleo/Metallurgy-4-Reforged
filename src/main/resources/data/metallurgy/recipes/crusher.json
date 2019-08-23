@@ -1,28 +1,25 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "OOO",
     "SCS",
     "SFS"
   ],
   "key": {
     "O": {
-      "type": "forge:ore_dict",
-      "ore": "ingotOureclase"
+      "tag": "forge:ingots/oureclase"
     },
     "S": {
-      "type": "forge:ore_dict",
-      "ore": "ingotSilver"
+      "tag": "forge:ingots/silver"
     },
     "C": {
-      "type": "forge:ore_dict",
-      "ore": "blockCopper"
+      "tag": "forge:storage_blocks/copper"
     },
     "F": {
       "item": "minecraft:furnace"
     }
   },
-  "result":{
+  "result": {
     "item": "metallurgy:crusher"
   }
 }

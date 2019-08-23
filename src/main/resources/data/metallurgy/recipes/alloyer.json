@@ -1,28 +1,25 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "SCS",
     "SFS"
   ],
   "key": {
     "A": {
-      "type": "forge:ore_dict",
-      "ore": "ingotAtlarus"
+      "tag": "forge:ingots/atlarus"
     },
     "S": {
-      "type": "forge:ore_dict",
-      "ore": "ingotSteel"
+      "tag": "forge:ingots/steel"
     },
     "C": {
-      "type": "forge:ore_dict",
-      "ore": "blockCopper"
+      "tag": "forge:storage_blocks/copper"
     },
     "F": {
       "item": "minecraft:furnace"
     }
   },
-  "result":{
+  "result": {
     "item": "metallurgy:alloyer"
   }
 }

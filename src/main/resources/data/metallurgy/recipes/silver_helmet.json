@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotSilver"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/silver"
     }
   },
-  "result":{
-    "item":"metallurgy:silver_helmet"
+  "result": {
+    "item": "metallurgy:silver_helmet"
   }
 }

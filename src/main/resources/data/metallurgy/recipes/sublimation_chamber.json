@@ -1,14 +1,13 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "ITI",
     "BCB",
     "SFS"
   ],
   "key": {
     "I": {
-      "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "tag": "forge:ingots/adamantine"
     },
     "T": {
       "item": "minecraft:iron_trapdoor"
@@ -20,15 +19,13 @@
       "item": "minecraft:furnace"
     },
     "S": {
-      "type": "forge:ore_dict",
-      "ore": "blockSteel"
+      "tag": "forge:storage_blocks/steel"
     },
     "B": {
-      "type": "forge:ore_dict",
-      "ore": "blockAdamantine"
+      "tag": "forge:storage_blocks/adamantine"
     }
   },
-  "result":{
+  "result": {
     "item": "metallurgy:sublimation_chamber"
   }
 }

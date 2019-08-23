@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotAdamantine"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/adamantine"
     }
   },
-  "result":{
-    "item":"metallurgy:adamantine_boots"
+  "result": {
+    "item": "metallurgy:adamantine_boots"
   }
 }

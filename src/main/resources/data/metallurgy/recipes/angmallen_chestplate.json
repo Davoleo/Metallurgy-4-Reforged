@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAngmallen"
+    "A": {
+      "tag": "forge:ingots/angmallen"
     }
   },
-  "result":{
-    "item":"metallurgy:angmallen_chestplate"
+  "result": {
+    "item": "metallurgy:angmallen_chestplate"
   }
 }

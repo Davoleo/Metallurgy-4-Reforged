@@ -1,20 +1,18 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "LIB",
     "  B",
     "LIB"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotRubracium"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/rubracium"
     },
     "B": {
-      "type": "forge:ore_dict",
-      "ore": "blockRubracium"
+      "tag": "forge:storage_blocks/rubracium"
     },
-    "L":{
+    "L": {
       "item": "minecraft:leather"
     }
   },

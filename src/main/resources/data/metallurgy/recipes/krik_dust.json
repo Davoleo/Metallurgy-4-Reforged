@@ -1,13 +1,11 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustOsmium"
+      "tag": "forge:dusts/osmium"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustLutetium"
+      "tag": "forge:dusts/lutetium"
     }
   ],
   "result": {

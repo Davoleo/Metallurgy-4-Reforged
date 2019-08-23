@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:nuggets/adamantine",
+    "#forge:nuggets/alduorite",
     "#forge:nuggets/amordrine",
     "#forge:nuggets/angmallen",
     "#forge:nuggets/astral_silver",
@@ -21,10 +22,14 @@
     "#forge:nuggets/haderoth",
     "#forge:nuggets/hepatizon",
     "#forge:nuggets/ignatius",
+    "#forge:nuggets/infuscolium",
     "#forge:nuggets/inolashite",
     "#forge:nuggets/kalendrite",
     "#forge:nuggets/krik",
+    "#forge:nuggets/lemurite",
     "#forge:nuggets/lutetium",
+    "#forge:nuggets/manganese",
+    "#forge:nuggets/meutoite",
     "#forge:nuggets/midasium",
     "#forge:nuggets/mithril",
     "#forge:nuggets/orichalcum",
@@ -33,13 +38,16 @@
     "#forge:nuggets/platinum",
     "#forge:nuggets/prometheum",
     "#forge:nuggets/quicksilver",
+    "#forge:nuggets/rubracium",
     "#forge:nuggets/sanguinite",
     "#forge:nuggets/shadow_iron",
     "#forge:nuggets/shadow_steel",
     "#forge:nuggets/silver",
     "#forge:nuggets/steel",
     "#forge:nuggets/tartarite",
+    "#forge:nuggets/tin",
     "#forge:nuggets/vulcanite",
-    "#forge:nuggets/vyroxeres"
+    "#forge:nuggets/vyroxeres",
+    "#forge:nuggets/zinc"
   ]
 }

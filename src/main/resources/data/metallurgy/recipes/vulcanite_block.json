@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotVulcanite"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/vulcanite"
     }
   },
   "result": {
     "item": "metallurgy:vulcanite_block"
   }
-
-
 }

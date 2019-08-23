@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "II ",
     " S ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotMithril"
+    "I": {
+      "tag": "forge:ingots/mithril"
     }
   },
-  "result":{
-    "item":"metallurgy:mithril_hoe"
+  "result": {
+    "item": "metallurgy:mithril_hoe"
   }
 }

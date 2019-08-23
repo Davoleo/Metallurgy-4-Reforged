@@ -1,9 +1,8 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "blockQuickSilver"
+      "tag": "forge:storage_blocks/quicksilver"
     }
   ],
   "result": {

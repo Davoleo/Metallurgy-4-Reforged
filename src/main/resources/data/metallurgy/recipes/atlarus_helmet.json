@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAtlarus"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/atlarus"
     }
   },
-  "result":{
-    "item":"metallurgy:atlarus_helmet"
+  "result": {
+    "item": "metallurgy:atlarus_helmet"
   }
 }

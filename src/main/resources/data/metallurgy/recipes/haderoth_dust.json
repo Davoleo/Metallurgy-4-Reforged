@@ -1,17 +1,14 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustMithril"
+      "tag": "forge:dusts/mithril"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustRubracium"
+      "tag": "forge:dusts/rubracium"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustRubracium"
+      "tag": "forge:dusts/rubracium"
     }
   ],
   "result": {

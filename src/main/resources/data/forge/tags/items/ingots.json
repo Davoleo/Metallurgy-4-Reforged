@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:ingots/adamantine",
+    "#forge:ingots/alduorite",
     "#forge:ingots/amordrine",
     "#forge:ingots/angmallen",
     "#forge:ingots/astral_silver",
@@ -21,10 +22,14 @@
     "#forge:ingots/haderoth",
     "#forge:ingots/hepatizon",
     "#forge:ingots/ignatius",
+    "#forge:ingots/infuscolium",
     "#forge:ingots/inolashite",
     "#forge:ingots/kalendrite",
     "#forge:ingots/krik",
+    "#forge:ingots/lemurite",
     "#forge:ingots/lutetium",
+    "#forge:ingots/manganese",
+    "#forge:ingots/meutoite",
     "#forge:ingots/midasium",
     "#forge:ingots/mithril",
     "#forge:ingots/orichalcum",
@@ -33,13 +38,16 @@
     "#forge:ingots/platinum",
     "#forge:ingots/prometheum",
     "#forge:ingots/quicksilver",
+    "#forge:ingots/rubracium",
     "#forge:ingots/sanguinite",
     "#forge:ingots/shadow_iron",
     "#forge:ingots/shadow_steel",
     "#forge:ingots/silver",
     "#forge:ingots/steel",
     "#forge:ingots/tartarite",
+    "#forge:ingots/tin",
     "#forge:ingots/vulcanite",
-    "#forge:ingots/vyroxeres"
+    "#forge:ingots/vyroxeres",
+    "#forge:ingots/zinc"
   ]
 }

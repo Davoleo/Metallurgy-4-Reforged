@@ -30,10 +30,10 @@ public class ModItems {
 	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron", MetallurgyTabs.tabDust, ModItems.itemList);
 	
 //	Metallurgy dusts
-	//public static ItemOreDict bitumen = new ItemOreDict("bitumen","dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList).setTooltip(Constants.BITUMEN);
+	public static ItemOreDict bitumen = new ItemOreDict("bitumen", "dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList);
 	//public static ItemOreDict tar = new ItemOreDict("tar","slimeball",  MetallurgyTabs.tabDust, ModItems.itemList);
-	//public static ItemOreDict potash = new ItemOreDict("potash","dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
-	//public static ItemOreDict sulfur = new ItemOreDict("sulfur_dust","dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemOreDict potash = new ItemOreDict("potash", "dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemOreDict sulfur = new ItemOreDict("sulfur_dust", "dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
 	//public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList);
 	//public static ItemOreDict phosphorus = new ItemOreDict("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList);
 

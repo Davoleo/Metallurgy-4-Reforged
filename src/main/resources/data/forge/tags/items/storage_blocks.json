@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#forge:storage_blocks/adamantine",
+    "#forge:storage_blocks/alduorite",
     "#forge:storage_blocks/amordrine",
     "#forge:storage_blocks/angmallen",
     "#forge:storage_blocks/astral_silver",
@@ -21,10 +22,14 @@
     "#forge:storage_blocks/haderoth",
     "#forge:storage_blocks/hepatizon",
     "#forge:storage_blocks/ignatius",
+    "#forge:storage_blocks/infuscolium",
     "#forge:storage_blocks/inolashite",
     "#forge:storage_blocks/kalendrite",
     "#forge:storage_blocks/krik",
+    "#forge:storage_blocks/lemurite",
     "#forge:storage_blocks/lutetium",
+    "#forge:storage_blocks/manganese",
+    "#forge:storage_blocks/meutoite",
     "#forge:storage_blocks/midasium",
     "#forge:storage_blocks/mithril",
     "#forge:storage_blocks/orichalcum",
@@ -33,13 +38,19 @@
     "#forge:storage_blocks/platinum",
     "#forge:storage_blocks/prometheum",
     "#forge:storage_blocks/quicksilver",
+    "#forge:storage_blocks/rubracium",
     "#forge:storage_blocks/sanguinite",
     "#forge:storage_blocks/shadow_iron",
     "#forge:storage_blocks/shadow_steel",
     "#forge:storage_blocks/silver",
     "#forge:storage_blocks/steel",
     "#forge:storage_blocks/tartarite",
+    "#forge:storage_blocks/tin",
     "#forge:storage_blocks/vulcanite",
-    "#forge:storage_blocks/vyroxeres"
+    "#forge:storage_blocks/vyroxeres",
+    "#forge:storage_blocks/zinc",
+    "#forge:storage_blocks/bitumen",
+    "#forge:storage_blocks/charcoal",
+    "#forge:storage_blocks/sulfur"
   ]
 }

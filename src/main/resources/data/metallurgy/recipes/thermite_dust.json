@@ -1,17 +1,14 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "forge:ore_dict",
-      "ore": "dustPotash"
+      "tag": "forge:dusts/potash"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustIron"
+      "tag": "forge:dusts/iron"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "dustSulfur"
+      "tag": "forge:dusts/sulfur"
     }
   ],
   "result": {

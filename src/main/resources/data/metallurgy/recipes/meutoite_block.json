@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotMeutoite"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/meutoite"
     }
   },
   "result": {
     "item": "metallurgy:meutoite_block"
   }
-
-
 }

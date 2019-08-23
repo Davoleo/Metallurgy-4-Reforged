@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetAngmallen"
+  "key": {
+    "I": {
+      "tag": "forge:nuggets/angmallen"
     }
   },
   "result": {
     "item": "metallurgy:angmallen_ingot"
   }
-
-
 }

@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotMidasium"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/midasium"
     }
   },
-  "result":{
-    "item":"metallurgy:midasium_helmet"
+  "result": {
+    "item": "metallurgy:midasium_helmet"
   }
 }

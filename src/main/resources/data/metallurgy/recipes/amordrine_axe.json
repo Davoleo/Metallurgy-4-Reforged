@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "II ",
     "IS ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotAmordrine"
+    "I": {
+      "tag": "forge:ingots/amordrine"
     }
   },
-  "result":{
-    "item":"metallurgy:amordrine_axe"
+  "result": {
+    "item": "metallurgy:amordrine_axe"
   }
 }

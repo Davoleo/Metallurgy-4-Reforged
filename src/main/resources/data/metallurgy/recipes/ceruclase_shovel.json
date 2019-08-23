@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     " I ",
     " S ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotCeruclase"
+    "I": {
+      "tag": "forge:ingots/ceruclase"
     }
   },
-  "result":{
-    "item":"metallurgy:ceruclase_shovel"
+  "result": {
+    "item": "metallurgy:ceruclase_shovel"
   }
 }

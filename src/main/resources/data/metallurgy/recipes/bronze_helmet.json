@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotBronze"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/bronze"
     }
   },
-  "result":{
-    "item":"metallurgy:bronze_helmet"
+  "result": {
+    "item": "metallurgy:bronze_helmet"
   }
 }

@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotInolashite"
+    "A": {
+      "tag": "forge:ingots/inolashite"
     }
   },
-  "result":{
-    "item":"metallurgy:inolashite_chestplate"
+  "result": {
+    "item": "metallurgy:inolashite_chestplate"
   }
 }

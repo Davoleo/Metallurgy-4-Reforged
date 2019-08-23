@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotPrometheum"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/prometheum"
     }
   },
-  "result":{
-    "item":"metallurgy:prometheum_helmet"
+  "result": {
+    "item": "metallurgy:prometheum_helmet"
   }
 }

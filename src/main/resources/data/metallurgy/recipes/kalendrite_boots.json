@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotKalendrite"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/kalendrite"
     }
   },
-  "result":{
-    "item":"metallurgy:kalendrite_boots"
+  "result": {
+    "item": "metallurgy:kalendrite_boots"
   }
 }

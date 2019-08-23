@@ -1,17 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "AAA",
     "AAA"
   ],
   "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotSteel"
+    "A": {
+      "tag": "forge:ingots/steel"
     }
   },
-  "result":{
-    "item":"metallurgy:steel_chestplate"
+  "result": {
+    "item": "metallurgy:steel_chestplate"
   }
 }

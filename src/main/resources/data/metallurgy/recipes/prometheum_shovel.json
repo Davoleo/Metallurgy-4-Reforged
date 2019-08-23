@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     " I ",
     " S ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotPrometheum"
+    "I": {
+      "tag": "forge:ingots/prometheum"
     }
   },
-  "result":{
-    "item":"metallurgy:prometheum_shovel"
+  "result": {
+    "item": "metallurgy:prometheum_shovel"
   }
 }

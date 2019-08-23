@@ -1,18 +1,15 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "II",
     "II"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "dustBitumen"
+  "key": {
+    "I": {
+      "tag": "forge:dusts/bitumen"
     }
   },
   "result": {
     "item": "metallurgy:bitumen_block"
   }
-
-
 }

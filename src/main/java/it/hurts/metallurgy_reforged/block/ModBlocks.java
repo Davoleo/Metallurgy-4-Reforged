@@ -75,9 +75,7 @@ public class ModBlocks {
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
         for (Block block : blockList)
         {
-            BlockItem itemBlock = new BlockItem(block, new Item.Properties());
-            itemBlock.setRegistryName(block.getRegistryName());
-            registry.register(itemBlock);
+            registry.register(new BlockItem(block, new Item.Properties().group(MetallurgyTabs.tabBlock)).setRegistryName(block.getRegistryName()));
         }
     }
 

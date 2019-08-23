@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotCarmot"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/carmot"
     }
   },
-  "result":{
-    "item":"metallurgy:carmot_boots"
+  "result": {
+    "item": "metallurgy:carmot_boots"
   }
 }

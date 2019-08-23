@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "A A",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotOrichalcum"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/orichalcum"
     }
   },
-  "result":{
-    "item":"metallurgy:orichalcum_boots"
+  "result": {
+    "item": "metallurgy:orichalcum_boots"
   }
 }

@@ -1,16 +1,15 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "AAA",
     "A A"
   ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotCopper"
+  "key": {
+    "A": {
+      "tag": "forge:ingots/copper"
     }
   },
-  "result":{
-    "item":"metallurgy:copper_helmet"
+  "result": {
+    "item": "metallurgy:copper_helmet"
   }
 }

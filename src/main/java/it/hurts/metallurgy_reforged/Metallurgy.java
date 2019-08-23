@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 
 import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+import it.hurts.metallurgy_reforged.world.ModWorldGen;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -55,7 +56,7 @@ public class Metallurgy {
 		//ModFluids.registerFluids();
 		logger.info("Fluid registration complete!");
 		
-		//ModWorldGen.addGenFeatures();
+		ModWorldGen.addGenFeatures();
 		//MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
 		//MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
 		logger.info("World generation successful!");

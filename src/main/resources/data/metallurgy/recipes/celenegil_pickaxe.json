@@ -1,20 +1,19 @@
 {
-  "type": "forge:ore_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
     " S ",
     " S "
   ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
     },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotCelenegil"
+    "I": {
+      "tag": "forge:ingots/celenegil"
     }
   },
-  "result":{
-    "item":"metallurgy:celenegil_pickaxe"
+  "result": {
+    "item": "metallurgy:celenegil_pickaxe"
   }
 }

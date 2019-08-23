@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotDamascusSteel"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/damascus_steel"
     }
   },
   "result": {
     "item": "metallurgy:damascus_steel_block"
   }
-
-
 }

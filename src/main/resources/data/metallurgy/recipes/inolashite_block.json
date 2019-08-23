@@ -1,19 +1,16 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotInolashite"
+  "key": {
+    "I": {
+      "tag": "forge:ingots/inolashite"
     }
   },
   "result": {
     "item": "metallurgy:inolashite_block"
   }
-
-
 }

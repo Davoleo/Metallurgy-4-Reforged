@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":[
+  "pattern": [
     "III",
     "III",
     "III"
   ],
-  "key":{
-    "I":{
+  "key": {
+    "I": {
       "tag": "forge:ingots/adamantine"
     }
   },
