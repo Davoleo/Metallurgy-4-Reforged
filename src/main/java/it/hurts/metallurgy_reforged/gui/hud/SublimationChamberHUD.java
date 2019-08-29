@@ -11,13 +11,17 @@
 
 package it.hurts.metallurgy_reforged.gui.hud;
 
-import it.hurts.metallurgy_reforged.block.BlockChamber;
 import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -50,23 +54,32 @@ public class SublimationChamberHUD {
             RenderHelper.disableStandardItemLighting();
         }
 
-        if (state.getValue(BlockChamber.ACTIVE))
+        if (te.potionEffect != null)
         {
             minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " seconds", x, y - 40, 0xFFFFFF);
 
             PotionEffect effect = recipes.get(metal);
-            //effect.getPotion().getStatusIconIndex()       (?)
-            // TODO: 29/08/2019 render potion effect icon
-            //minecraft.fontRenderer.drawStringWithShadow(effect.getEffectName(), x + 40, y + 20, effect.getPotion().getLiquidColor());
+            int effectIndex = effect.getPotion().getStatusIconIndex();
+
+            GlStateManager.pushMatrix();
+
+            minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);
+            drawTexturedModalRect(x + 40, y, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
+
+            GlStateManager.popMatrix();
         }
+    }
 
-
-
-
-
-
-
-
+    public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height)
+    {
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferbuilder = tessellator.getBuffer();
+        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+        bufferbuilder.pos((x), (y + height), 1D).tex(((float)(textureX) * 0.00390625F), ((float)(textureY + height) * 0.00390625F)).endVertex();
+        bufferbuilder.pos((x + width), (y + height), 1D).tex(((float)(textureX + width) * 0.00390625F), ((float)(textureY + height) * 0.00390625F)).endVertex();
+        bufferbuilder.pos((x + width), (y), 1D).tex(((float)(textureX + width) * 0.00390625F), ((float)(textureY) * 0.00390625F)).endVertex();
+        bufferbuilder.pos((x), (y), 1D).tex(((float)(textureX) * 0.00390625F), ((float)(textureY) * 0.00390625F)).endVertex();
+        tessellator.draw();
     }
 
 }
