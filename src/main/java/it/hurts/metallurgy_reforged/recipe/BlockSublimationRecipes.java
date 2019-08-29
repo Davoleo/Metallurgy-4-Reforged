@@ -75,10 +75,9 @@ public class BlockSublimationRecipes {
         return 0;
     }
     
-//    public Map<ItemStack, PotionEffect> getRecipeTable()
-//    {
-//        return sublimationList;
-//    }
+    public Map<ItemStack, PotionEffect> recipesMap() {
+        return this.sublimationList;
+    }
     
     private boolean compareItemStacks(ItemStack stack1, ItemStack stack2) {
         return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());

@@ -22,16 +22,13 @@ import java.util.List;
 public class ModFluids {
 
 	public static final List<FluidMolten> fluidList = new ArrayList<>();
-	public static final List<FluidMolten> fluidToRegitry = new ArrayList<>();
+	public static final List<FluidMolten> extraFluids = new ArrayList<>();
 
-//	TODO Sistemare il colore, Rimuovere l'effetto di fuoco dal player, aumentare la lentezza del player.
 	public static final FluidMolten TAR = new FluidMoltenTar("molten_tar", 0xFF111419, 1000, true);
 	public static  final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200, true);
-	
-
 
 	public static void registerFluids(){
-		for(FluidMolten fluid : fluidToRegitry) {
+		for(FluidMolten fluid : extraFluids) {
 			FluidRegistry.registerFluid(fluid);
 			fluid.initFluidBlock();
 			FluidRegistry.addBucketForFluid(fluid);
@@ -43,25 +40,24 @@ public class ModFluids {
 		}
 	}
 
-//	Fluidblocks Section
-//	Il FluidBlock deve essere inizializzato all'interno di 'registerFluidBlocks' e definito fuori i metodi
-
+//	FluidBlocks Section
+	//Registers the Block
 	public static void registerBlocks(IForgeRegistry<Block> registry){
-		for(FluidMolten fluid : fluidToRegitry) {
+		for(FluidMolten fluid : extraFluids) {
 			registry.register(fluid.getFluidBlock());
 		}
 	}
 
-//  Item Inventario
+//  Registers the item
 	public static void registerItem(IForgeRegistry<Item> registry){
-		for(FluidMolten fluid : fluidToRegitry) {
+		for(FluidMolten fluid : extraFluids) {
 			registry.register(fluid.getFluidBlock().createItemBlock());
 		}
 	}
 
-//  Modello
+//  Registers the Item Model
 	public static void registerModels(){
-		for(FluidMolten fluid : fluidToRegitry) {
+		for(FluidMolten fluid : extraFluids) {
 			fluid.getFluidBlock().registerItemModel(Item.getItemFromBlock(fluid.getFluidBlock()));
 		}
 	}

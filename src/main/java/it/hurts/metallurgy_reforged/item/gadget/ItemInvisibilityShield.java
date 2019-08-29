@@ -100,9 +100,9 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 
     private void terminateEffect(EntityLivingBase player, ItemStack stack, int cooldown)
     {
+        spawnParticles(player);
         player.setInvisible(false);
         ((EntityPlayer) player).getCooldownTracker().setCooldown(stack.getItem(), cooldown);
-        spawnParticles(player);
     }
 
     private void spawnParticles(EntityLivingBase entity)

@@ -11,8 +11,6 @@
 
 package it.hurts.metallurgy_reforged.fluid;
 
-import javax.annotation.Nonnull;
-
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import net.minecraft.block.material.Material;
@@ -23,6 +21,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
+
+import javax.annotation.Nonnull;
 
 public class FluidMolten extends Fluid {
 
@@ -46,7 +46,7 @@ private final static ResourceLocation default_flowing = new ResourceLocation(Met
         .setTemperature(temperature)
 		.setColor(mapColor);
 		if(isNew) 
-			ModFluids.fluidToRegitry.add(this);
+			ModFluids.extraFluids.add(this);
 	}
 
     public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)

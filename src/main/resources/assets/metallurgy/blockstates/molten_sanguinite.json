@@ -6,7 +6,7 @@
       "all": "metallurgy:blocks/molten_metal_flow"
     },
     "model": "forge:fluid",
-    "custom": { "fluid": "molten_sanguinite" },
+    "custom": { "fluid": "sanguinite" },
     "uvlock": false
   },
   "variants": {

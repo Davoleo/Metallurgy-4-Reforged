@@ -6,7 +6,7 @@
       "all": "metallurgy:blocks/molten_metal_flow"
     },
     "model": "forge:fluid",
-    "custom": { "fluid": "molten_deep_iron" },
+    "custom": { "fluid": "deep_iron" },
     "uvlock": false
   },
   "variants": {

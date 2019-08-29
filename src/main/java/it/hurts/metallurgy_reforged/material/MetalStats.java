@@ -57,7 +57,7 @@ public class MetalStats {
             ore = new BlockOreDict(name + "_ore", "ore" + oreDictName, false, "pickaxe", oreHarvest, blockBlastResistance, MetallurgyTabs.tabOre);
         }
 
-        FluidMolten molten = fluid.func.apply(new FluidMolten("molten_" + name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature()));
+        FluidMolten molten = fluid.func.apply(new FluidMolten(name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature()));
 
         ItemArmorBase[] armorPieces = null;
         Item[] tools = null;

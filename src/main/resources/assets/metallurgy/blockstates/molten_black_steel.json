@@ -6,7 +6,7 @@
       "all": "metallurgy:blocks/molten_metal_flow"
     },
     "model": "forge:fluid",
-    "custom": { "fluid": "molten_black_steel" },
+    "custom": { "fluid": "black_steel" },
     "uvlock": false
   },
   "variants": {

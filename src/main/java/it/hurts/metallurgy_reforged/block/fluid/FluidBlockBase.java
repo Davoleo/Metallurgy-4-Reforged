@@ -35,7 +35,7 @@ public class FluidBlockBase extends BlockFluidClassic {
         setCreativeTab(MetallurgyTabs.tabFluid);
     }
 
-    //Registers the model of the FluidBlock
+    //Registers the model of the item of the FluidBlock
     @SideOnly(Side.CLIENT)
     public void registerItemModel(Item itemBlock)
     {

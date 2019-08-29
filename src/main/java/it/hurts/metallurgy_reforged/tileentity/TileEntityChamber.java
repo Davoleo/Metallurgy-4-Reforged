@@ -61,12 +61,12 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	private final IItemHandler handlerBottom = new SidedInvWrapper(this,EnumFacing.DOWN);
 	private final IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
+	private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
 
 	private String chamberCustomName;
 
 	public int fuelTime = 0;
-	private int activeTime = 0;
+	public int activeTime = 0;
 	public PotionEffect potionEffect = null;
 
 	public List<UUID> affectedPlayers = Lists.newArrayList();

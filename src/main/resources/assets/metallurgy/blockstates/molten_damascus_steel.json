@@ -6,7 +6,7 @@
       "all": "metallurgy:blocks/molten_metal_flow"
     },
     "model": "forge:fluid",
-    "custom": { "fluid": "molten_damascus_steel" },
+    "custom": { "fluid": "damascus_steel" },
     "uvlock": false
   },
   "variants": {

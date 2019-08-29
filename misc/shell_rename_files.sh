@@ -1,13 +1,13 @@
 #!/bin/bash
 # Coded by ItHurtsLikeHell & Davoleo
 
-for file in *_chest.json
+for file in *.json
 do
 
     echo $file
 
-OLD="chest"
-NEW="chestplate"
+OLD="\"molten_"
+NEW="\""
 #   Modifica delle string all'interno del file
 #   sed "s/old_string/new_string/g" $file
 #   remove -i to preview changes
