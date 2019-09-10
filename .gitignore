@@ -24,3 +24,4 @@ run
 *.exe
 local.properties
 classes/
+gource.sh

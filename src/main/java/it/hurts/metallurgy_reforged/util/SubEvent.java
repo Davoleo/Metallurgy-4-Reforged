@@ -14,7 +14,7 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
-import it.hurts.metallurgy_reforged.gui.hud.HudHandler;
+import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
@@ -36,7 +36,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
-		MinecraftForge.EVENT_BUS.register(HudHandler.class);
+		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 
