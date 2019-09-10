@@ -38,41 +38,47 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
 
-public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
+public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 
 	public static final PropertyBool ACTIVE = PropertyBool.create("lit");
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
 
-	public BlockChamber(String name) {
+	public BlockChamber(String name)
+	{
 		super(Material.IRON, name);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, false));
 	}
 
 	@Override
-	public Class<TileEntityChamber> getTileEntityClass() {
+	public Class<TileEntityChamber> getTileEntityClass()
+	{
 		return TileEntityChamber.class;
 	}
 
 	@Override
-	public TileEntityChamber createTileEntity(@Nonnull World world, @Nonnull IBlockState state) {
+	public TileEntityChamber createTileEntity(@Nonnull World world, @Nonnull IBlockState state)
+	{
 		return new TileEntityChamber();
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state)
+	{
 		return false;
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(IBlockState state)
+	{
 		return false;
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
 
 		ItemStack stack = playerIn.getHeldItem(hand);
 
@@ -82,7 +88,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 		{
 			TileEntityChamber chamber = (TileEntityChamber) te;
 
-			BlockSublimationRecipes recipes = BlockSublimationRecipes.getInstance();		
+			BlockSublimationRecipes recipes = BlockSublimationRecipes.getInstance();
 
 			int recipeAmount = recipes.getSublimationBlockAmount(stack);
 
@@ -92,9 +98,9 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 			int currentFuelAmount = fuelStack.getCount();
 
 
-			if(facing == EnumFacing.UP)
+			if (facing == EnumFacing.UP)
 			{
-				if(recipeAmount > 0 && currentMetalAmount < recipeAmount)
+				if (recipeAmount > 0 && currentMetalAmount < recipeAmount)
 				{
 					int i = recipeAmount - currentMetalAmount;
 
@@ -108,7 +114,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 
 				}
 			}
-			else if(facing != EnumFacing.DOWN && (fuelStack.isEmpty() || stack.isItemEqualIgnoreDurability(fuelStack)) && chamber.isItemValidForSlot(TileEntityChamber.FUEL_SLOT, stack))
+			else if (facing != EnumFacing.DOWN && (fuelStack.isEmpty() || stack.isItemEqualIgnoreDurability(fuelStack)) && chamber.isItemValidForSlot(TileEntityChamber.FUEL_SLOT, stack))
 			{
 				int i = fuelStack.getMaxStackSize() - currentFuelAmount;
 				ItemStack copyStack = stack.splitStack(i);
@@ -124,8 +130,9 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,ItemStack stack) {
-		if(stack.hasTagCompound())
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	{
+		if (stack.hasTagCompound())
 		{
 			TileEntity te = worldIn.getTileEntity(pos);
 
@@ -133,10 +140,10 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 			{
 				TileEntityChamber chamber = (TileEntityChamber) te;
 				NBTTagCompound tag = stack.getTagCompound();
-				if(tag.hasKey("chamberTags"))
+				if (tag.hasKey("chamberTags"))
 					chamber.readChamberFromNBT(tag.getCompoundTag("chamberTags"));
 
-				if(chamber.potionEffect != null)
+				if (chamber.potionEffect != null)
 					worldIn.setBlockState(pos, state.withProperty(ACTIVE, true));
 			}
 		}
@@ -182,31 +189,31 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
 	{
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		if(tileEntity instanceof TileEntityChamber)
+		if (tileEntity instanceof TileEntityChamber)
 		{
 
 			TileEntityChamber chamber = (TileEntityChamber) tileEntity;
 
-			if(chamber.potionEffect != null && chamber.fuelTime > 0)
+			if (chamber.potionEffect != null && chamber.fuelTime > 0)
 			{
-				for(EnumFacing facing : EnumFacing.HORIZONTALS)
+				for (EnumFacing facing : EnumFacing.HORIZONTALS)
 				{
-					for(int i = 0;i < 15;i++)
+					for (int i = 0; i < 15; i++)
 					{
-						double d0 = (double)((float)pos.getX() + 0.3F + rand.nextFloat() * 0.8F);
-						double d1 = (double)((float)pos.getY() + 0.1F + rand.nextFloat() * 0.3F);
-						double d2 = (double)((float)pos.getZ() + 0.3F + rand.nextFloat() * 0.8F);
+						double d0 = (float) pos.getX() + 0.3F + rand.nextFloat() * 0.8F;
+						double d1 = (float) pos.getY() + 0.1F + rand.nextFloat() * 0.3F;
+						double d2 = (float) pos.getZ() + 0.3F + rand.nextFloat() * 0.8F;
 
 						List<PotionEffect> effect = Lists.newArrayList();
 						effect.add(chamber.potionEffect);
 
 						int c = PotionUtils.getPotionColorFromEffectList(effect);
 
-						double c0 = (double)(c >> 16 & 255) / 255.0D;
-						double c1 = (double)(c >> 8 & 255) / 255.0D;
-						double c2 = (double)(c >> 0 & 255) / 255.0D;
+						double c0 = (double) (c >> 16 & 255) / 255.0D;
+						double c1 = (double) (c >> 8 & 255) / 255.0D;
+						double c2 = (double) (c >> 0 & 255) / 255.0D;
 
-						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0,c1,c2);
+						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0, c1, c2);
 					}
 				}
 			}
@@ -271,15 +278,15 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 	{
 		switch (meta & 3)
 		{
-		case 0:
-			return EnumFacing.NORTH;
-		case 1:
-			return EnumFacing.SOUTH;
-		case 2:
-			return EnumFacing.WEST;
-		case 3:
-		default:
-			return EnumFacing.EAST;
+			case 0:
+				return EnumFacing.NORTH;
+			case 1:
+				return EnumFacing.SOUTH;
+			case 2:
+				return EnumFacing.WEST;
+			case 3:
+			default:
+				return EnumFacing.EAST;
 		}
 	}
 
@@ -288,15 +295,15 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 	{
 		switch (facing)
 		{
-		case NORTH:
-			return 0;
-		case SOUTH:
-			return 1;
-		case WEST:
-			return 2;
-		case EAST:
-		default:
-			return 3;
+			case NORTH:
+				return 0;
+			case SOUTH:
+				return 1;
+			case WEST:
+				return 2;
+			case EAST:
+			default:
+				return 3;
 		}
 	}
 
@@ -330,4 +337,5 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber>{
 			worldIn.setBlockState(pos, state.withProperty(FACING, face), 2);
 		}
 	}
+
 }

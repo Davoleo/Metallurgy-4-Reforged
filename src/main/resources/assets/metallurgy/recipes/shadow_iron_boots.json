@@ -1,16 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "A A",
-    "A A"
-  ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotShadowIron"
-    }
-  },
-  "result":{
-    "item":"metallurgy:shadow_iron_boots"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"A A",
+		"A A"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotShadowIron"
+		}
+	},
+	"result": {
+		"item": "metallurgy:shadow_iron_boots"
+	}
 }

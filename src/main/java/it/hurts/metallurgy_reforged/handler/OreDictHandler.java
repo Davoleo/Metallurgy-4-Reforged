@@ -23,32 +23,35 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictHandler {
 
-    public static void init()
-    {
-        //Ore-dict
-        //Blocks
-        for(Block b: ModBlocks.blockList) {
-            if(b instanceof BlockOreDict)
-                ((BlockOreDict) b).initOreDict();
-        }
-        //Items
-        for(Item b: ModItems.itemList) {
-            if(b instanceof ItemOreDict)
-                ((ItemOreDict) b).initOreDict();
-        }
+	public static void init()
+	{
+		//Ore-dict
+		//Blocks
+		for (Block b : ModBlocks.blockList)
+		{
+			if (b instanceof BlockOreDict)
+				((BlockOreDict) b).initOreDict();
+		}
+		//Items
+		for (Item b : ModItems.itemList)
+		{
+			if (b instanceof ItemOreDict)
+				((ItemOreDict) b).initOreDict();
+		}
 
-        //Metals
-        for (Metal metal : ModMetals.metalList)
-        {
-            if (metal.getOre() != null)
-                metal.getOre().initOreDict();
-            metal.getBlock().initOreDict();
-            metal.getNugget().initOreDict();
-            metal.getDust().initOreDict();
-            metal.getIngot().initOreDict();
-        }
+		//Metals
+		for (Metal metal : ModMetals.metalList)
+		{
+			if (metal.getOre() != null)
+				metal.getOre().initOreDict();
+			metal.getBlock().initOreDict();
+			metal.getNugget().initOreDict();
+			metal.getDust().initOreDict();
+			metal.getIngot().initOreDict();
+		}
 
-        //Additional oreDict values
-        OreDictionary.registerOre("globTar", ModItems.tar);
-    }
+		//Additional oreDict values
+		OreDictionary.registerOre("globTar", ModItems.tar);
+	}
+
 }

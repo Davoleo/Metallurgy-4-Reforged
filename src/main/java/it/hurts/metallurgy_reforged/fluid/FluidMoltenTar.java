@@ -14,15 +14,17 @@ package it.hurts.metallurgy_reforged.fluid;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBaseTar;
 import net.minecraft.block.material.Material;
 
-public class FluidMoltenTar extends FluidMolten{
+public class FluidMoltenTar extends FluidMolten {
 
-	public FluidMoltenTar(String name, int mapColor, int temperature, boolean isNew) {
+	public FluidMoltenTar(String name, int mapColor, int temperature, boolean isNew)
+	{
 		super(name, mapColor, temperature, isNew);
 		this.setLuminosity(0);
 	}
 
 	@Override
-	public void initFluidBlock() {
+	public void initFluidBlock()
+	{
 		super.block = new FluidBlockBaseTar(this, Material.WATER, fluid.getName());
 	}
 

@@ -18,10 +18,10 @@ import javax.annotation.Nonnull;
  */
 public interface IHasModel {
 
-    /**
-     * @return the model subdirectory (empty string means root models dir)
-     */
-    @Nonnull
-    String getCategory();
+	/**
+	 * @return the model subdirectory (empty string means root models dir)
+	 */
+	@Nonnull
+	String getCategory();
 
 }

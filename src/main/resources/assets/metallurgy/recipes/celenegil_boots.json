@@ -1,16 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "A A",
-    "A A"
-  ],
-  "key":{
-    "A":{
-      "type":"forge:ore_dict",
-      "ore": "ingotCelenegil"
-    }
-  },
-  "result":{
-    "item":"metallurgy:celenegil_boots"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"A A",
+		"A A"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotCelenegil"
+		}
+	},
+	"result": {
+		"item": "metallurgy:celenegil_boots"
+	}
 }

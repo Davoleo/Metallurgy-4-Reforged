@@ -21,22 +21,25 @@ import net.minecraft.item.ItemStack;
 
 public class SublimationChamberTESR extends TileEntitySpecialRenderer<TileEntityChamber> {
 
-    @Override
-    public void render(TileEntityChamber te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+	@Override
+	public void render(TileEntityChamber te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
+	{
 
-        ItemStack metal = te.getStackInSlot(TileEntityChamber.METAL_SLOT);
+		ItemStack metal = te.getStackInSlot(TileEntityChamber.METAL_SLOT);
 
-        if (!metal.isEmpty()) {
+		if (!metal.isEmpty())
+		{
 
-            GlStateManager.pushMatrix();
-            RenderHelper.enableStandardItemLighting();
+			GlStateManager.pushMatrix();
+			RenderHelper.enableStandardItemLighting();
 
-            GlStateManager.translate(x + 0.5, y + 0.25, z + 0.5);
-            GlStateManager.scale(1.7, 1.7, 1.7);
-            Minecraft.getMinecraft().getRenderItem().renderItem(metal, ItemCameraTransforms.TransformType.GROUND);
+			GlStateManager.translate(x + 0.5, y + 0.25, z + 0.5);
+			GlStateManager.scale(1.7, 1.7, 1.7);
+			Minecraft.getMinecraft().getRenderItem().renderItem(metal, ItemCameraTransforms.TransformType.GROUND);
 
-            RenderHelper.disableStandardItemLighting();
-            GlStateManager.popMatrix();
-        }
-    }
+			RenderHelper.disableStandardItemLighting();
+			GlStateManager.popMatrix();
+		}
+	}
+
 }

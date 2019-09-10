@@ -1,16 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "AAA",
-    "A A"
-  ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotTartarite"
-    }
-  },
-  "result":{
-    "item":"metallurgy:tartarite_helmet"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"AAA",
+		"A A"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotTartarite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:tartarite_helmet"
+	}
 }

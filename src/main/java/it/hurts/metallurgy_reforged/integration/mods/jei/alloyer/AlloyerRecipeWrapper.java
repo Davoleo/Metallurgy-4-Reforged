@@ -26,40 +26,41 @@ import java.util.List;
 
 public class AlloyerRecipeWrapper implements IRecipeWrapper {
 
-    private final List<ItemStack> inputs;
-    private final ItemStack output;
+	private final List<ItemStack> inputs;
+	private final ItemStack output;
 
-    public AlloyerRecipeWrapper(List<ItemStack> inputs, ItemStack output)
-    {
-        this.inputs = inputs;
-        this.output = output;
-    }
+	public AlloyerRecipeWrapper(List<ItemStack> inputs, ItemStack output)
+	{
+		this.inputs = inputs;
+		this.output = output;
+	}
 
-    @Override
-    public void getIngredients(@Nonnull IIngredients ingredients)
-    {
-        ingredients.setInputs(VanillaTypes.ITEM, inputs);
-        ingredients.setOutput(VanillaTypes.ITEM, output);
-    }
+	@Override
+	public void getIngredients(@Nonnull IIngredients ingredients)
+	{
+		ingredients.setInputs(VanillaTypes.ITEM, inputs);
+		ingredients.setOutput(VanillaTypes.ITEM, output);
+	}
 
-    public static List<AlloyerRecipeWrapper> getRecipeInputs()
-    {
-        ArrayList<AlloyerRecipeWrapper> recipes = new ArrayList<>();
+	public static List<AlloyerRecipeWrapper> getRecipeInputs()
+	{
+		ArrayList<AlloyerRecipeWrapper> recipes = new ArrayList<>();
 
-        for(Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
-        {
-            List<ItemStack> inputs = Lists.newArrayList();
-            inputs.add(entry.getColumnKey());
-            inputs.add(entry.getRowKey());
-            recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue()));
-        }
+		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		{
+			List<ItemStack> inputs = Lists.newArrayList();
+			inputs.add(entry.getColumnKey());
+			inputs.add(entry.getRowKey());
+			recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue()));
+		}
 
-        return recipes;
-    }
+		return recipes;
+	}
 
-    @Override
-    public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
-    {
-        return false;
-    }
+	@Override
+	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
+	{
+		return false;
+	}
+
 }

@@ -23,18 +23,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*	## INFO ##
- * 
+ *
  * To delete all tool parts :
  * 		' public static MetallurgyTiCStats NAME = new MetallurgyTiCStats(ModMetals.NAME); '
- * 
+ *
  * To add a single part
  * 		' public static MetallurgyTiCStats NAME = new MetallurgyTiCStats(ModMetals.NAME, new HeadMaterialStats / HandleMaterialStats / ExtraMaterialStats '
- * 
+ *
  * To add a single part automatically
  *  	' public static MetallurgyTiCStats NAME = new MetallurgyTiCStats(ModMetals.NAME,  MetallurgyTiCStats.getHeadA / getExtraA / getHandleA (ModMetals.NAME)); '
  */
 
 public class TinkerMetals {
+
 	public static List<MetallurgyTiCStats> metalStatsList = new ArrayList<>();
 
 	public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE,
@@ -46,7 +47,7 @@ public class TinkerMetals {
 			new HeadMaterialStats(180, 25F, 6, 3),
 			new HandleMaterialStats(0.45F, 190),
 			new ExtraMaterialStats(15),
-			new BowMaterialStats((float) (Math.sqrt(2)), 25/12, 6/12));
+			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12, 6 / 12));
 
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM,
 			new HandleMaterialStats(0.75F, 300),
@@ -67,14 +68,15 @@ public class TinkerMetals {
 			new ExtraMaterialStats(157),
 			new HandleMaterialStats(1.11F, 45));
 
-	 @Nullable
-	 public static MetallurgyTiCStats getMetal(Metal metal)
-	 {
-		 for(MetallurgyTiCStats stat : metalStatsList)
-		 {
-			 if(stat.metal.equals(metal))
-				 return stat;
-		 }
-		 return null;
-	 }
+	@Nullable
+	public static MetallurgyTiCStats getMetal(Metal metal)
+	{
+		for (MetallurgyTiCStats stat : metalStatsList)
+		{
+			if (stat.metal.equals(metal))
+				return stat;
+		}
+		return null;
+	}
+
 }

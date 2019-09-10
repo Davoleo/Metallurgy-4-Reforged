@@ -18,49 +18,50 @@ import java.util.Random;
 
 public class Drop {
 
-    //private fields
-    private ItemStack item;
-    private float chance;
+	//private fields
+	private ItemStack item;
+	private float chance;
 
-    //constructors
-    @SuppressWarnings("unused")
-    public Drop(ItemStack itemStack, int percentage)
-    {
-        this.item = itemStack;
-        this.chance = (float) percentage / 100;
-    }
+	//constructors
+	@SuppressWarnings("unused")
+	public Drop(ItemStack itemStack, int percentage)
+	{
+		this.item = itemStack;
+		this.chance = (float) percentage / 100;
+	}
 
-    public Drop(ItemStack itemStack, float chance)
-    {
-        this.item = itemStack;
-        this.chance = chance;
-    }
+	public Drop(ItemStack itemStack, float chance)
+	{
+		this.item = itemStack;
+		this.chance = chance;
+	}
 
-    public Drop(Item item, int amount, float chance)
-    {
-        this.item = new ItemStack(item, amount);
-        this.chance = chance;
-    }
+	public Drop(Item item, int amount, float chance)
+	{
+		this.item = new ItemStack(item, amount);
+		this.chance = chance;
+	}
 
-    //Custom Methods
-    public ItemStack getItemStack()
-    {
-        return item;
-    }
+	//Custom Methods
+	public ItemStack getItemStack()
+	{
+		return item;
+	}
 
-    public float getChance()
-    {
-        return chance;
-    }
+	public float getChance()
+	{
+		return chance;
+	}
 
-    @SuppressWarnings("unused")
-    public int getAmount()
-    {
-        return item.getCount();
-    }
+	@SuppressWarnings("unused")
+	public int getAmount()
+	{
+		return item.getCount();
+	}
 
-    public int getRandomAmount()
-    {
-        return new Random().nextInt(item.getCount()) + 1;
-    }
+	public int getRandomAmount()
+	{
+		return new Random().nextInt(item.getCount()) + 1;
+	}
+
 }

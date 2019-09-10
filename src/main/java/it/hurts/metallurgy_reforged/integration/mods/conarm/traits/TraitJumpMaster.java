@@ -19,16 +19,18 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitJumpMaster extends AbstractArmorTrait implements IConarmMetallurgyTrait{
-	
-	public TraitJumpMaster() {
+public class TraitJumpMaster extends AbstractArmorTrait implements IConarmMetallurgyTrait {
+
+	public TraitJumpMaster()
+	{
 		super("jump_master", TextFormatting.GRAY);
 	}
 
 	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event){	
-		 if(MetallurgyConArmorStats.isArmorTrait(event.player, "jump_master"))
-	    		event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, 1, false, false));
+	public void onArmorTick(PlayerTickEvent event)
+	{
+		if (MetallurgyConArmorStats.isArmorTrait(event.player, "jump_master"))
+			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, 1, false, false));
 	}
 
 }

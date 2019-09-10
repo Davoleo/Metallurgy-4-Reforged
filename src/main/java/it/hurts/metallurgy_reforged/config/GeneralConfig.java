@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config.LangKey("config.metallurgy.category.general")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/general")
 public class GeneralConfig {
-	
+
 	@Config.Name("Enable On World Join Message")
 	@Config.Comment("When set to true it shows the warning message when joining the world")
 	@Config.RequiresMcRestart
@@ -30,21 +30,21 @@ public class GeneralConfig {
 	@Config.Comment("When set to true all tool sets are disabled")
 	@Config.RequiresMcRestart
 	public static boolean disableAllTools = false;
-	
+
 	@Config.Name("Disable all armor set")
 	@Config.Comment("When set to true all armor sets are disabled")
 	@Config.RequiresMcRestart
 	public static boolean disableAllArmors = false;
-	
+
 	@Config.Name("Road Speed Multiplier")
 	@Config.Comment("Set the road speed multiplier")
 	@Config.RangeDouble(min = 1)
 	public static double roadSpeed = 1.50D;
-	
+
 	@Config.Name("Disable tinker integration")
 	@Config.Comment("Set to true to disable Tinkers' Construct Integration")
 	public static boolean tinkerIntegraton = false;
-	
+
 	@Config.Name("Disable ConArm Integration")
 	@Config.Comment("Set to true to disable Construct's Armory Integration")
 	public static boolean armoryIntegraton = false;
@@ -76,10 +76,14 @@ public class GeneralConfig {
 
 	//Handles Config Synchronization
 	public static class ChangeListener {
+
 		@SubscribeEvent
-		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-			if(eventArgs.getModID().equals(Metallurgy.MODID))
+		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
+		{
+			if (eventArgs.getModID().equals(Metallurgy.MODID))
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 		}
+
 	}
+
 }

@@ -14,5 +14,5 @@ package it.hurts.metallurgy_reforged.material;
 public interface IOreDict {
 
 	void initOreDict();
-	
+
 }

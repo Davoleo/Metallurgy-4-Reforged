@@ -22,26 +22,27 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HUDHandler {
 
-    @SubscribeEvent
-    public static void renderOverlay(RenderGameOverlayEvent.Post event) {
+	@SubscribeEvent
+	public static void renderOverlay(RenderGameOverlayEvent.Post event)
+	{
 
-        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL)
-            return;
+		if (event.getType() != RenderGameOverlayEvent.ElementType.ALL)
+			return;
 
-        Minecraft minecraft = Minecraft.getMinecraft();
-        if (minecraft.currentScreen instanceof GuiChat)
-            return;
+		Minecraft minecraft = Minecraft.getMinecraft();
+		if (minecraft.currentScreen instanceof GuiChat)
+			return;
 
-        RayTraceResult rayTrace = minecraft.objectMouseOver;
-        if (rayTrace == null || rayTrace.typeOfHit != RayTraceResult.Type.BLOCK)
-            return;
+		RayTraceResult rayTrace = minecraft.objectMouseOver;
+		if (rayTrace == null || rayTrace.typeOfHit != RayTraceResult.Type.BLOCK)
+			return;
 
-        IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
-        Block block = state.getBlock();
+		IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
+		Block block = state.getBlock();
 
-        if (block == ModBlocks.chamber)
-            SublimationChamberHUD.render(event, minecraft, state, rayTrace.getBlockPos());
+		if (block == ModBlocks.chamber)
+			SublimationChamberHUD.render(event, minecraft, state, rayTrace.getBlockPos());
 
-    }
+	}
 
 }

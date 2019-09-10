@@ -12,34 +12,42 @@
 package it.hurts.metallurgy_reforged.material;
 
 public class ToolStats {
-    private final int toolMagic, harvestLevel, maxUses;
-    private final float efficiency, damage;
 
-    public ToolStats(int toolMagic, int harvestLevel, int maxUses, float efficiency, float damage) {
-        this.toolMagic = toolMagic;
-        this.harvestLevel = harvestLevel;
-        this.maxUses = maxUses;
-        this.efficiency = efficiency;
-        this.damage = damage;
-    }
+	private final int toolMagic, harvestLevel, maxUses;
+	private final float efficiency, damage;
 
-    public int getToolMagic() {
-        return toolMagic;
-    }
+	public ToolStats(int toolMagic, int harvestLevel, int maxUses, float efficiency, float damage)
+	{
+		this.toolMagic = toolMagic;
+		this.harvestLevel = harvestLevel;
+		this.maxUses = maxUses;
+		this.efficiency = efficiency;
+		this.damage = damage;
+	}
 
-    public int getHarvestLevel() {
-        return harvestLevel;
-    }
+	public int getToolMagic()
+	{
+		return toolMagic;
+	}
 
-    public int getMaxUses() {
-        return maxUses;
-    }
+	public int getHarvestLevel()
+	{
+		return harvestLevel;
+	}
 
-    public float getEfficiency() {
-        return efficiency;
-    }
+	public int getMaxUses()
+	{
+		return maxUses;
+	}
 
-    public float getDamage() {
-        return damage;
-    }
+	public float getEfficiency()
+	{
+		return efficiency;
+	}
+
+	public float getDamage()
+	{
+		return damage;
+	}
+
 }

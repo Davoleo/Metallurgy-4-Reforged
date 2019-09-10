@@ -18,26 +18,26 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
 
-
 /**
  * This class is responsible for saving and reading punch effect data from or to server
  */
-public class PunchEffectStorage implements IStorage<IPunchEffect>
-{
+public class PunchEffectStorage implements IStorage<IPunchEffect> {
 
 	@Override
-	public NBTBase writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side) {
-		
+	public NBTBase writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side)
+	{
+
 		NBTTagCompound tag = new NBTTagCompound();
 		tag.setInteger("ticks", instance.getHitTicks());
 		tag.setBoolean("hasAiDisabled", instance.isAIDisabled());
 		tag.setInteger("knockbackTicks", instance.getKnockbackTicks());
-	    
+
 		return tag;
 	}
 
 	@Override
-	public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side, NBTBase nbt) {
+	public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side, NBTBase nbt)
+	{
 		NBTTagCompound tag = (NBTTagCompound) nbt;
 		instance.setHitTicks(tag.getInteger("ticks"));
 		instance.setNoAI(tag.getBoolean("hasAiDisabled"));

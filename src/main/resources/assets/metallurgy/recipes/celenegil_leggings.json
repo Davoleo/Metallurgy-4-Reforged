@@ -1,17 +1,17 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "AAA",
-    "A A",
-    "A A"
-  ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotCelenegil"
-    }
-  },
-  "result":{
-    "item":"metallurgy:celenegil_leggings"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"AAA",
+		"A A",
+		"A A"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotCelenegil"
+		}
+	},
+	"result": {
+		"item": "metallurgy:celenegil_leggings"
+	}
 }

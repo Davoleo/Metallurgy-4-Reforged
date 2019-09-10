@@ -1,13 +1,28 @@
 {
-  "variants":
-  {
-    "inventory": {"model": "metallurgy:striped_road_block"},
-    "facing=north": {"model": "metallurgy:striped_road_block"},
-    "facing=east": {"model": "metallurgy:striped_road_block", "y": 90},
-    "facing=south": {"model": "metallurgy:striped_road_block"},
-    "facing=west": {"model": "metallurgy:striped_road_block", "y": 90},
-    "facing=up": {"model": "metallurgy:striped_road_block"},
-    "facing=down": {"model": "metallurgy:striped_road_block"}
-  },
-  "_comment": "TODO: find a way to remove facing up and down blockstates"
+	"variants": {
+		"inventory": {
+			"model": "metallurgy:striped_road_block"
+		},
+		"facing=north": {
+			"model": "metallurgy:striped_road_block"
+		},
+		"facing=east": {
+			"model": "metallurgy:striped_road_block",
+			"y": 90
+		},
+		"facing=south": {
+			"model": "metallurgy:striped_road_block"
+		},
+		"facing=west": {
+			"model": "metallurgy:striped_road_block",
+			"y": 90
+		},
+		"facing=up": {
+			"model": "metallurgy:striped_road_block"
+		},
+		"facing=down": {
+			"model": "metallurgy:striped_road_block"
+		}
+	},
+	"_comment": "TODO: find a way to remove facing up and down blockstates"
 }

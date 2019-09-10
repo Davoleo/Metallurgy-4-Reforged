@@ -17,9 +17,10 @@ import net.minecraft.util.ResourceLocation;
 
 public class IntegrationIF {
 
-    public static void preInit(){
-        LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "ore.json"));
-        Metallurgy.logger.info("Metallurgy ore are added to Laser Drill recipes");
-    }
+	public static void preInit()
+	{
+		LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "ore.json"));
+		Metallurgy.logger.info("Metallurgy ore are added to Laser Drill recipes");
+	}
 
 }

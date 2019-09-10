@@ -1,6 +1,6 @@
 {
-   "parent": "item/generated",
-   "textures": {
-       "layer0": "metallurgy:items/lutetium_ingot"
-   }
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "metallurgy:items/lutetium_ingot"
+	}
 }

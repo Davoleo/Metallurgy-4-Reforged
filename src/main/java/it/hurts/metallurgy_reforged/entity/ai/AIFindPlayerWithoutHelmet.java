@@ -20,49 +20,59 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 
-public class AIFindPlayerWithoutHelmet extends EntityAIBase{
+public class AIFindPlayerWithoutHelmet extends EntityAIBase {
 
 	private final EntityAIBase findplayerClass;
-	
-	public AIFindPlayerWithoutHelmet(EntityAIBase findplayerClass) {
+
+	public AIFindPlayerWithoutHelmet(EntityAIBase findplayerClass)
+	{
 		this.findplayerClass = findplayerClass;
 	}
-	
-	
+
+
 	//this method is identical to the original one but it checks if the player is wearing the eximite_helmet too
 	@Override
-	public boolean shouldExecute() {
+	public boolean shouldExecute()
+	{
 		boolean shouldExecute = findplayerClass.shouldExecute();
-		if(shouldExecute) {
+		if (shouldExecute)
+		{
 			EntityPlayer pl = getPlayer();
-			shouldExecute = pl != null ? !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModMetals.EXIMITE.getArmor(EntityEquipmentSlot.HEAD)) : false;
+			shouldExecute = pl != null && !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModMetals.EXIMITE.getArmor(EntityEquipmentSlot.HEAD));
 		}
 		return shouldExecute;
 	}
-	
-	
+
+
 	//this method is identical to the original one
 	@Override
-	public void resetTask() {
+	public void resetTask()
+	{
 		findplayerClass.resetTask();
 	}
+
 	//this method is identical to the original one
 	@Override
-	public void startExecuting() {
+	public void startExecuting()
+	{
 		findplayerClass.startExecuting();
 	}
+
 	//this method is identical to the original one
 	@Override
-	public boolean shouldContinueExecuting() {
+	public boolean shouldContinueExecuting()
+	{
 		return findplayerClass.shouldContinueExecuting();
 	}
+
 	//this method is identical to the original one
 	@Override
-	public void updateTask() {
+	public void updateTask()
+	{
 		findplayerClass.updateTask();
 	}
 
-	
+
 	//get the player from the original AI Classe
 	@Nullable
 	public EntityPlayer getPlayer()
@@ -78,5 +88,5 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase{
 			return null;
 		}
 	}
-	
+
 }

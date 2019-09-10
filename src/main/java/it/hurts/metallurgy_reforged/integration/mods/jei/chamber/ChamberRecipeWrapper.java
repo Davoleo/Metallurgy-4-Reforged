@@ -18,18 +18,22 @@ import net.minecraft.item.ItemStack;
 
 public class ChamberRecipeWrapper implements IRecipeWrapper {
 
-    private ItemStack input;
+	private ItemStack input;
 
-    public ChamberRecipeWrapper(ItemStack input) {
-        this.input = input;
-    }
+	public ChamberRecipeWrapper(ItemStack input)
+	{
+		this.input = input;
+	}
 
-    public ItemStack getInput() {
-        return input;
-    }
+	public ItemStack getInput()
+	{
+		return input;
+	}
 
-    @Override
-    public void getIngredients(IIngredients ingredients) {
-        ingredients.setInput(VanillaTypes.ITEM, input);
-    }
+	@Override
+	public void getIngredients(IIngredients ingredients)
+	{
+		ingredients.setInput(VanillaTypes.ITEM, input);
+	}
+
 }

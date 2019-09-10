@@ -21,22 +21,23 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockUtils {
 
-    public static void initBlock(Block block, String name, CreativeTabs tab, boolean addToList)
-    {
-        block.setRegistryName(Metallurgy.MODID, name);
-        block.setTranslationKey(Metallurgy.MODID + "." + name);
-        if (tab != null)
-            block.setCreativeTab(tab);
-        if (addToList)
-            ModBlocks.blockList.add(block);
-    }
+	public static void initBlock(Block block, String name, CreativeTabs tab, boolean addToList)
+	{
+		block.setRegistryName(Metallurgy.MODID, name);
+		block.setTranslationKey(Metallurgy.MODID + "." + name);
+		if (tab != null)
+			block.setCreativeTab(tab);
+		if (addToList)
+			ModBlocks.blockList.add(block);
+	}
 
 
-    public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
-    {
-        for (EnumFacing facing : EnumFacing.values())
-            if (world.isAirBlock(pos.offset(facing)))
-                return facing;
-            return null;
-    }
+	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
+	{
+		for (EnumFacing facing : EnumFacing.values())
+			if (world.isAirBlock(pos.offset(facing)))
+				return facing;
+		return null;
+	}
+
 }

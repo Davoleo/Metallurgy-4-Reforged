@@ -1,21 +1,21 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern": [
-    "INI",
-    "III",
-    " I "
-  ],
-  "key": {
-    "I": {
-      "type": "forge:ore_dict",
-      "ore": "ingotLemurite"
-    },
-    "N": {
-      "type": "forge:ore_dict",
-      "ore": "nuggetLemurite"
-    }
-  },
-  "result": {
-    "item": "metallurgy:lemurite_shield"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"INI",
+		"III",
+		" I "
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotLemurite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetLemurite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:lemurite_shield"
+	}
 }

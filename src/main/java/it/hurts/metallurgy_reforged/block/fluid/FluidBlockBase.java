@@ -26,26 +26,26 @@ import java.util.Objects;
 
 public class FluidBlockBase extends BlockFluidClassic {
 
-    //Creates an instance of a FluidBlock
-    public FluidBlockBase(Fluid fluid, Material material, String name)
-    {
-        super(fluid, material);
-        setRegistryName(Metallurgy.MODID, name);
-        setTranslationKey(Metallurgy.MODID + "." + name);
-        setCreativeTab(MetallurgyTabs.tabFluid);
-    }
+	//Creates an instance of a FluidBlock
+	public FluidBlockBase(Fluid fluid, Material material, String name)
+	{
+		super(fluid, material);
+		setRegistryName(Metallurgy.MODID, name);
+		setTranslationKey(Metallurgy.MODID + "." + name);
+		setCreativeTab(MetallurgyTabs.tabFluid);
+	}
 
-    //Registers the model of the item of the FluidBlock
-    @SideOnly(Side.CLIENT)
-    public void registerItemModel(Item itemBlock)
-    {
-        ItemUtils.registerCustomItemModel(itemBlock, 0);
-    }
+	//Registers the model of the item of the FluidBlock
+	@SideOnly(Side.CLIENT)
+	public void registerItemModel(Item itemBlock)
+	{
+		ItemUtils.registerCustomItemModel(itemBlock, 0);
+	}
 
-    //Creates the inventory version of the FluidBlock
-    public Item createItemBlock()
-    {
-        return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
-    }
+	//Creates the inventory version of the FluidBlock
+	public Item createItemBlock()
+	{
+		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
+	}
 
 }

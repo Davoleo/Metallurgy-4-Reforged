@@ -19,23 +19,24 @@ import javax.annotation.Nullable;
 
 public class MetallurgyTraitDecay extends AbstractTrait implements IMetallurgyTrait {
 
-    public MetallurgyTraitDecay()
-    {
-        super("decay_trait", 0xFF575000);
-        this.register("metallurgy.trait.decay", "metallurgy.trait.decay.tooltip");
-    }
+	public MetallurgyTraitDecay()
+	{
+		super("decay_trait", 0xFF575000);
+		this.register("metallurgy.trait.decay", "metallurgy.trait.decay.tooltip");
+	}
 
-    @Override
-    public void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag)
-    {
-        super.applyEffect(rootCompound, modifierTag);
-    }
+	@Override
+	public void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag)
+	{
+		super.applyEffect(rootCompound, modifierTag);
+	}
 
-    @Override
-    public void register(String name, @Nullable String tooltip)
-    {
-        Utils.localize(String.format(LOC_Name, name));
-        if (tooltip != null)
-            Utils.localize(String.format(LOC_Name, tooltip));
-    }
+	@Override
+	public void register(String name, @Nullable String tooltip)
+	{
+		Utils.localize(String.format(LOC_Name, name));
+		if (tooltip != null)
+			Utils.localize(String.format(LOC_Name, tooltip));
+	}
+
 }

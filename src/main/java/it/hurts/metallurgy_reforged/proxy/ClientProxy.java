@@ -14,13 +14,15 @@ package it.hurts.metallurgy_reforged.proxy;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy extends CommonProxy{
+public class ClientProxy extends CommonProxy {
 
-    @Override
-    public void preInit(FMLPreInitializationEvent e) {
-    }
+	@Override
+	public void preInit(FMLPreInitializationEvent e)
+	{
+	}
 
-    public void postInit(FMLPostInitializationEvent e)
-    {
-    }
+	public void postInit(FMLPostInitializationEvent e)
+	{
+	}
+
 }

@@ -31,59 +31,62 @@ import java.util.List;
 
 public class ItemShovelBase extends ItemSpade implements IHasModel {
 
-    private EnumToolEffects effect;
-    private Enchantment enchantment;
+	private EnumToolEffects effect;
+	private Enchantment enchantment;
 	private int enchantmentLevel;
 
-    public ItemShovelBase(ToolMaterial material, String name)
-    {
-        this(material, name, null, -1);
-    }
-    
-    public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
-        super(material);
-        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-    {
-        if(this.isInCreativeTab(tab)) {
-            ItemStack enchantedShowel = new ItemStack(this);
-            if(enchantment != null) {
-                enchantedShowel.addEnchantment(enchantment, enchantmentLevel);
-            }
-            items.add(enchantedShowel);
-        }
+	public ItemShovelBase(ToolMaterial material, String name)
+	{
+		this(material, name, null, -1);
 	}
 
-    public void setEffect(EnumToolEffects effect)
-    {
-        this.effect = effect;
-    }
+	public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+	{
+		super(material);
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+	}
 
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
-    {
-        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	{
+		if (this.isInCreativeTab(tab))
+		{
+			ItemStack enchantedShowel = new ItemStack(this);
+			if (enchantment != null)
+			{
+				enchantedShowel.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedShowel);
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        if(this.effect != null && effect.isActive())
-        tooltip.add(effect.getLocalized());
-    }
+	public void setEffect(EnumToolEffects effect)
+	{
+		this.effect = effect;
+	}
 
-    @Nonnull
-    @Override
-    public String getCategory()
-    {
-        return "tool/shovel";
-    }
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		if (this.effect != null && effect.isActive())
+			tooltip.add(effect.getLocalized());
+	}
+
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "tool/shovel";
+	}
 
 }

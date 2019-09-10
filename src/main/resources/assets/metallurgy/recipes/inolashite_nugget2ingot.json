@@ -1,19 +1,17 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "III",
-    "III",
-    "III"
-  ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetInolashite"
-    }
-  },
-  "result": {
-    "item": "metallurgy:inolashite_ingot"
-  }
-
-
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetInolashite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:inolashite_ingot"
+	}
 }

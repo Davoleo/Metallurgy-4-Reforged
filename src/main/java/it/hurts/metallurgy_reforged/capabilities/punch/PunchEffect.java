@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class PunchEffect implements IPunchEffect{
+public class PunchEffect implements IPunchEffect {
 
 	private int hit_ticks = 0;
 	private int knockbackTicks = 0;
@@ -30,62 +30,73 @@ public class PunchEffect implements IPunchEffect{
 	private float rotYaw = 0F;
 	private float rotPitch = 0F;
 	private boolean isGauntletUserDead = false;
-	
+
 	@Override
-	public void setHitTicks(int ticks) {
+	public void setHitTicks(int ticks)
+	{
 		this.hit_ticks = ticks;
 	}
 
 	@Override
-	public int getHitTicks() {
+	public int getHitTicks()
+	{
 		return hit_ticks;
 	}
 
 	@Override
-	public void addHitTicks() {
+	public void addHitTicks()
+	{
 		this.hit_ticks++;
 	}
 
 	@Override
-	public void endEffect(EntityLivingBase entity) {
+	public void endEffect(EntityLivingBase entity)
+	{
 		this.setKnockbackTicks(0);
 		this.setHitTicks(0);
 		entity.noClip = false;
 	}
 
 	@Override
-	public void setKnockbackTicks(int ticks) {
+	public void setKnockbackTicks(int ticks)
+	{
 		knockbackTicks = ticks;
 	}
 
 	@Override
-	public int getKnockbackTicks() {
+	public int getKnockbackTicks()
+	{
 		return knockbackTicks;
 	}
 
 	@Override
-	public void addKnockbackTTicks() {
+	public void addKnockbackTTicks()
+	{
 		knockbackTicks += 1;
 	}
 
 	@Override
-	public void setDelayHit(int delay) {
+	public void setDelayHit(int delay)
+	{
 		delayFromHit = delay;
 	}
 
 	@Override
-	public int getDelayHit() {
+	public int getDelayHit()
+	{
 		return delayFromHit;
 	}
 
 	@Override
-	public void setPunchingPlayer(EntityPlayer pl) {
-		this.plUUID = pl == null ? null : pl.getUniqueID();	
+	public void setPunchingPlayer(EntityPlayer pl)
+	{
+		this.plUUID = pl == null ? null : pl.getUniqueID();
 	}
 
 	@Override
 	@Nullable
-	public EntityPlayer getPunchingPlayer(World world) {
+	public EntityPlayer getPunchingPlayer(World world)
+	{
 		return this.plUUID != null ? world.getPlayerEntityByUUID(plUUID) : null;
 	}
 
@@ -94,17 +105,18 @@ public class PunchEffect implements IPunchEffect{
 	//}
 
 	@Override
-	public Vec3d getKnockbackMotionVec() {
+	public Vec3d getKnockbackMotionVec()
+	{
 		float yaw = this.getRotYawPlayer();
 		float pitch = this.getRotPitchPlayer();
 
 		double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-		double y = -MathHelper.sin(pitch * 0.017453292F);		      
+		double y = -MathHelper.sin(pitch * 0.017453292F);
 		double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
 		double f = MathHelper.sqrt(x * x + y * y + z * z);
 		double velocity = this.getHitTicks() > 10 ? 2D : 1D;
 		x = x / f;
-	    y = y / f;
+		y = y / f;
 		z = z / f;
 		x = x * velocity;
 		y = y * velocity;
@@ -113,32 +125,38 @@ public class PunchEffect implements IPunchEffect{
 	}
 
 	@Override
-	public boolean isAIDisabled() {
+	public boolean isAIDisabled()
+	{
 		return this.hasNoAI;
 	}
 
 	@Override
-	public void setNoAI(boolean ai) {
+	public void setNoAI(boolean ai)
+	{
 		this.hasNoAI = ai;
 	}
 
 	@Override
-	public void setRotYawPlayer(float yaw) {
+	public void setRotYawPlayer(float yaw)
+	{
 		this.rotYaw = yaw;
 	}
 
 	@Override
-	public void setRotPitchPlayer(float pitch) {
+	public void setRotPitchPlayer(float pitch)
+	{
 		this.rotPitch = pitch;
 	}
 
 	@Override
-	public float getRotYawPlayer() {
+	public float getRotYawPlayer()
+	{
 		return this.rotYaw;
 	}
 
 	@Override
-	public float getRotPitchPlayer() {
+	public float getRotPitchPlayer()
+	{
 		return this.rotPitch;
 	}
 
@@ -151,7 +169,7 @@ public class PunchEffect implements IPunchEffect{
 	@Override
 	public void setGauntletUserDead()
 	{
-          this.isGauntletUserDead = true;
+		this.isGauntletUserDead = true;
 	}
 
 }

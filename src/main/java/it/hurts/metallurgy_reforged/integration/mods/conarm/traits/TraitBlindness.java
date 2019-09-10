@@ -18,16 +18,20 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class TraitBlindness extends AbstractArmorTrait implements IConarmMetallurgyTrait{
-	
-	public TraitBlindness() {
+public class TraitBlindness extends AbstractArmorTrait implements IConarmMetallurgyTrait {
+
+	public TraitBlindness()
+	{
 		super("blindness", TextFormatting.BLACK);
 	}
-	
+
 	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event){
-		if(MetallurgyConArmorStats.isArmorTrait(event.player, "blindness")) {
+	public void onArmorTick(PlayerTickEvent event)
+	{
+		if (MetallurgyConArmorStats.isArmorTrait(event.player, "blindness"))
+		{
 			event.player.removePotionEffect(MobEffects.BLINDNESS);
 		}
 	}
+
 }

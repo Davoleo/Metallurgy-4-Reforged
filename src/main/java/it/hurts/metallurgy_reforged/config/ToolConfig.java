@@ -17,84 +17,84 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
 
 public class ToolConfig {
-	
-	private static final String[] CATEGORY = {"Axe","Hoe", "Pickaxe","Shovel","Sword"};
 
-	public static boolean[] adamantine = { true,true,true,true,true };
+	private static final String[] CATEGORY = {"Axe", "Hoe", "Pickaxe", "Shovel", "Sword"};
 
-	public static boolean[] amordrine = { true,true,true,true,true };
+	public static boolean[] adamantine = {true, true, true, true, true};
 
-	public static boolean[] angmallen = { true,true,true,true,true };
+	public static boolean[] amordrine = {true, true, true, true, true};
 
-	public static boolean[] astral_silver = { true,true,true,true,true };
+	public static boolean[] angmallen = {true, true, true, true, true};
 
-	public static boolean[] atlarus = { true,true,true,true,true };
+	public static boolean[] astral_silver = {true, true, true, true, true};
 
-	public static boolean[] black_steel = { true,true,true,true,true };
+	public static boolean[] atlarus = {true, true, true, true, true};
 
-	public static boolean[] brass = { true,true,true,true,true };
+	public static boolean[] black_steel = {true, true, true, true, true};
 
-	public static boolean[] bronze = { true,true,true,true,true };
+	public static boolean[] brass = {true, true, true, true, true};
 
-	public static boolean[] carmot = { true,true,true,true,true };
+	public static boolean[] bronze = {true, true, true, true, true};
 
-	public static boolean[] celenegil = { true,true,true,true,true };
+	public static boolean[] carmot = {true, true, true, true, true};
 
-	public static boolean[] ceruclase = { true,true,true,true,true };
+	public static boolean[] celenegil = {true, true, true, true, true};
 
-	public static boolean[] copper = { true,true,true,true,true };
+	public static boolean[] ceruclase = {true, true, true, true, true};
 
-	public static boolean[] damascus_steel = { true,true,true,true,true };
+	public static boolean[] copper = {true, true, true, true, true};
 
-	public static boolean[] deep_iron = { true,true,true,true,true };
+	public static boolean[] damascus_steel = {true, true, true, true, true};
 
-	public static boolean[] desichalkos = { true,true,true,true,true };
+	public static boolean[] deep_iron = {true, true, true, true, true};
 
-	public static boolean[] electrum = { true,true,true,true,true };
+	public static boolean[] desichalkos = {true, true, true, true, true};
 
-	public static boolean[] eximite = { true,true,true,true,true };
+	public static boolean[] electrum = {true, true, true, true, true};
 
-	public static boolean[] haderoth = { true,true,true,true,true };
+	public static boolean[] eximite = {true, true, true, true, true};
 
-	public static boolean[] hepatizon = { true,true,true,true,true };
+	public static boolean[] haderoth = {true, true, true, true, true};
 
-	public static boolean[] ignatius = { true,true,true,true,true };
+	public static boolean[] hepatizon = {true, true, true, true, true};
 
-	public static boolean[] inolashite = { true,true,true,true,true };
+	public static boolean[] ignatius = {true, true, true, true, true};
 
-	public static boolean[] kalendrite = { true,true,true,true,true };
+	public static boolean[] inolashite = {true, true, true, true, true};
+
+	public static boolean[] kalendrite = {true, true, true, true, true};
 
 	public static boolean[] krik = {true, true, true, true, true};
 
-	public static boolean[] midasium = { true,true,true,true,true };
+	public static boolean[] midasium = {true, true, true, true, true};
 
-	public static boolean[] mithril = { true,true,true,true,true };
+	public static boolean[] mithril = {true, true, true, true, true};
 
-	public static boolean[] orichalcum = { true,true,true,true,true };
+	public static boolean[] orichalcum = {true, true, true, true, true};
 
-	public static boolean[] oureclase = { true,true,true,true,true };
+	public static boolean[] oureclase = {true, true, true, true, true};
 
-	public static boolean[] platinum = { true,true,true,true,true };
+	public static boolean[] platinum = {true, true, true, true, true};
 
-	public static boolean[] prometheum = { true,true,true,true,true };
+	public static boolean[] prometheum = {true, true, true, true, true};
 
-	public static boolean[] quicksilver = { true,true,true,true,true };
+	public static boolean[] quicksilver = {true, true, true, true, true};
 
-	public static boolean[] sanguinite = { true,true,true,true,true };
+	public static boolean[] sanguinite = {true, true, true, true, true};
 
-	public static boolean[] shadow_iron = { true,true,true,true,true };
+	public static boolean[] shadow_iron = {true, true, true, true, true};
 
-	public static boolean[] shadow_steel = { true,true,true,true,true };
+	public static boolean[] shadow_steel = {true, true, true, true, true};
 
-	public static boolean[] silver = { true,true,true,true,true };
+	public static boolean[] silver = {true, true, true, true, true};
 
-	public static boolean[] steel = { true,true,true,true,true };
+	public static boolean[] steel = {true, true, true, true, true};
 
-	public static boolean[] tartarite = { true,true,true,true,true };
+	public static boolean[] tartarite = {true, true, true, true, true};
 
-	public static boolean[] vulcanite = { true,true,true,true,true };
+	public static boolean[] vulcanite = {true, true, true, true, true};
 
-	public static boolean[] vyroxeres = { true,true,true,true,true };
+	public static boolean[] vyroxeres = {true, true, true, true, true};
 
 	public static boolean[][] allTools = {
 			adamantine,
@@ -137,27 +137,37 @@ public class ToolConfig {
 			vyroxeres
 	};
 
-	public static void readConfig(Configuration cfg) {
-		try {
+	public static void readConfig(Configuration cfg)
+	{
+		try
+		{
 			initToolConfig(cfg);
-		} catch (Exception e1) {
+		}
+		catch (Exception e1)
+		{
 			Metallurgy.logger.log(Level.ERROR, "Problem loading config file!", e1);
-		} finally {
-			if (cfg.hasChanged()) {
+		}
+		finally
+		{
+			if (cfg.hasChanged())
+			{
 				cfg.save();
 			}
 		}
 	}
 
-	private static void initToolConfig(Configuration cfg) {
-//		Il for annidato andrà a controllare tutti il valore boolean di ogni materiale per un singolo tool ad ogni ripetizione
+	private static void initToolConfig(Configuration cfg)
+	{
+		//		Il for annidato andrà a controllare tutti il valore boolean di ogni materiale per un singolo tool ad ogni ripetizione
 
-		for(int j = 0; j < 5; j++) {
-			for(int i = 0; i < allTools.length; i++) {
+		for (int j = 0; j < 5; j++)
+		{
+			for (int i = 0; i < allTools.length; i++)
+			{
 
 				String category = CATEGORY[j];
 
-				allTools[i][j] = cfg.getBoolean(Utils.modMaterialNames[i], category,  allTools[i][j], "Set to false to disable " + category);
+				allTools[i][j] = cfg.getBoolean(Utils.modMaterialNames[i], category, allTools[i][j], "Set to false to disable " + category);
 			}
 		}
 

@@ -27,138 +27,154 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class Metal {
-    private final MetalStats stats;
 
-    private final ItemOreDict ingot, dust, nugget;
-    private final BlockOreDict ore, block;
-    private final FluidMolten molten;
+	private final MetalStats stats;
 
-    private Item[] toolSet;
-    private ItemArmorBase[] armorSet;
+	private final ItemOreDict ingot, dust, nugget;
+	private final BlockOreDict ore, block;
+	private final FluidMolten molten;
 
-    private FluidBlockBase fluidBlock;
+	private Item[] toolSet;
+	private ItemArmorBase[] armorSet;
 
-    public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet) {
-        this.stats = stats;
-        this.ingot = ingot;
-        this.dust = dust;
-        this.nugget = nugget;
-        this.ore = ore;
-        this.block = block;
-        this.molten = molten;
-        this.toolSet = toolSet;
-        this.armorSet = armorSet;
-        ModMetals.metalList.add(this);
-    }
+	private FluidBlockBase fluidBlock;
 
-    public ItemTool.ToolMaterial getToolMaterial() {
-        return stats.getToolMaterial();
-    }
+	public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
+	{
+		this.stats = stats;
+		this.ingot = ingot;
+		this.dust = dust;
+		this.nugget = nugget;
+		this.ore = ore;
+		this.block = block;
+		this.molten = molten;
+		this.toolSet = toolSet;
+		this.armorSet = armorSet;
+		ModMetals.metalList.add(this);
+	}
 
-    public ItemArmor.ArmorMaterial getArmorMaterial() {
-        return stats.getArmorMaterial();
-    }
+	public ItemTool.ToolMaterial getToolMaterial()
+	{
+		return stats.getToolMaterial();
+	}
 
-    public void initFluidBlock() {
-        fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
-    }
+	public ItemArmor.ArmorMaterial getArmorMaterial()
+	{
+		return stats.getArmorMaterial();
+	}
 
-    /**
-     * @return whether the metal has tools
-     */
-    public boolean hasToolSet()
-    {
-        return stats.getToolStats() != null;
-    }
+	public void initFluidBlock()
+	{
+		fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
+	}
 
-    /**
-     * @return whether the metal has armor
-     */
-    public boolean hasArmorSet()
-    {
-        return stats.getArmorStats() != null;
-    }
+	/**
+	 * @return whether the metal has tools
+	 */
+	public boolean hasToolSet()
+	{
+		return stats.getToolStats() != null;
+	}
 
-    /**
-     * @return whether the metal is an alloy
-     */
-    public boolean isAlloy()
-    {
-        return ore == null;
-    }
+	/**
+	 * @return whether the metal has armor
+	 */
+	public boolean hasArmorSet()
+	{
+		return stats.getArmorStats() != null;
+	}
 
-    @Nonnull
-    public MetalStats getStats() {
-        return stats;
-    }
+	/**
+	 * @return whether the metal is an alloy
+	 */
+	public boolean isAlloy()
+	{
+		return ore == null;
+	}
 
-    @Nonnull
-    public ItemOreDict getIngot() {
-        return ingot;
-    }
+	@Nonnull
+	public MetalStats getStats()
+	{
+		return stats;
+	}
 
-    @Nonnull
-    public ItemOreDict getDust() {
-        return dust;
-    }
+	@Nonnull
+	public ItemOreDict getIngot()
+	{
+		return ingot;
+	}
 
-    @Nonnull
-    public ItemOreDict getNugget() {
-        return nugget;
-    }
+	@Nonnull
+	public ItemOreDict getDust()
+	{
+		return dust;
+	}
 
-    @Nullable
-    public BlockOreDict getOre() {
-        return ore;
-    }
+	@Nonnull
+	public ItemOreDict getNugget()
+	{
+		return nugget;
+	}
 
-    @Nonnull
-    public BlockOreDict getBlock() {
-        return block;
-    }
+	@Nullable
+	public BlockOreDict getOre()
+	{
+		return ore;
+	}
 
-    @Nonnull
-    public FluidMolten getMolten() {
-        return molten;
-    }
+	@Nonnull
+	public BlockOreDict getBlock()
+	{
+		return block;
+	}
 
-    @Nonnull
-    public FluidBlockBase getFluidBlock() {
-        return fluidBlock;
-    }
+	@Nonnull
+	public FluidMolten getMolten()
+	{
+		return molten;
+	}
 
-    /**
-     * @param toolClass The kind of tool you want from a set of tools
-     * @return one of the tools in the toolSet
-     */
-    public Item getTool(EnumTools toolClass)
-    {
-        return toolSet[toolClass.ordinal()];
-    }
+	@Nonnull
+	public FluidBlockBase getFluidBlock()
+	{
+		return fluidBlock;
+	}
 
-    /**
-     * @param armorPiece The armor piece
-     * @return one of the armor pieces in the armorSet
-     */
-    public ItemArmorBase getArmor(EntityEquipmentSlot armorPiece)
-    {
-        return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
-    }
+	/**
+	 * @param toolClass The kind of tool you want from a set of tools
+	 *
+	 * @return one of the tools in the toolSet
+	 */
+	public Item getTool(EnumTools toolClass)
+	{
+		return toolSet[toolClass.ordinal()];
+	}
 
-    public Item[] getToolSet()
-    {
-        return toolSet;
-    }
+	/**
+	 * @param armorPiece The armor piece
+	 *
+	 * @return one of the armor pieces in the armorSet
+	 */
+	public ItemArmorBase getArmor(EntityEquipmentSlot armorPiece)
+	{
+		return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
+	}
 
-    public ItemArmorBase[] getArmorSet()
-    {
-        return armorSet;
-    }
+	public Item[] getToolSet()
+	{
+		return toolSet;
+	}
+
+	public ItemArmorBase[] getArmorSet()
+	{
+		return armorSet;
+	}
 
 
-    @Override
-    public String toString()
-    {
-        return stats.getName();
-    }
+	@Override
+	public String toString()
+	{
+		return stats.getName();
+	}
+
 }

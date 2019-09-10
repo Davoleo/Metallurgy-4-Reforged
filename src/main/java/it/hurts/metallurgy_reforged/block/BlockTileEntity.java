@@ -28,44 +28,44 @@ import javax.annotation.Nullable;
 //An abstract base class for TileBlocks | The generic parameter links the TileBlock Class with the TileEntity Class
 public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
 
-    //Constructor ----------------------------------------------------------------
+	//Constructor ----------------------------------------------------------------
 
-    public BlockTileEntity(Material material, String name)
-    {
-        super(material);
-        BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, true);
-        setSoundType(SoundType.METAL);
-        setHarvestLevel("pickaxe", 1);
-        setHardness(6F);
-        setResistance(8F);
-    }
+	public BlockTileEntity(Material material, String name)
+	{
+		super(material);
+		BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, true);
+		setSoundType(SoundType.METAL);
+		setHarvestLevel("pickaxe", 1);
+		setHardness(6F);
+		setResistance(8F);
+	}
 
-    //Custom Methods -------------------------------------------------------------
+	//Custom Methods -------------------------------------------------------------
 
-    //abstract AKA unimplemented in the base class
-    //gets the linked TileEntity class
-    @SuppressWarnings("unused")
-    public abstract Class<TE> getTileEntityClass();
+	//abstract AKA unimplemented in the base class
+	//gets the linked TileEntity class
+	@SuppressWarnings("unused")
+	public abstract Class<TE> getTileEntityClass();
 
-    //gets the Linked tileEntity
+	//gets the Linked tileEntity
 	@SuppressWarnings({"unchecked", "unused"})
 	public TE getTileEntity(IBlockAccess world, BlockPos pos)
-    {
-        return (TE)world.getTileEntity(pos);
-    }
+	{
+		return (TE) world.getTileEntity(pos);
+	}
 
-    //Overridden Methods -------------------------------------------------------------
+	//Overridden Methods -------------------------------------------------------------
 
-    //Returns true if the block is linked to a tile entity
-    @Override
-    public boolean hasTileEntity(IBlockState state)
-    {
-        return true;
-    }
+	//Returns true if the block is linked to a tile entity
+	@Override
+	public boolean hasTileEntity(IBlockState state)
+	{
+		return true;
+	}
 
-    //creates a new instance of the linked Tile Entity
-    @Nullable
-    @Override
-    public abstract TE createTileEntity(@Nonnull World world, @Nonnull IBlockState state);
+	//creates a new instance of the linked Tile Entity
+	@Nullable
+	@Override
+	public abstract TE createTileEntity(@Nonnull World world, @Nonnull IBlockState state);
 
 }

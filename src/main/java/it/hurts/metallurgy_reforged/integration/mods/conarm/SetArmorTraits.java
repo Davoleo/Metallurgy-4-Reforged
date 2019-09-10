@@ -18,65 +18,80 @@ import slimeknights.tconstruct.library.materials.Material;
 
 public class SetArmorTraits {
 
-	public static void addArmorTrait(Metal metal, Material material){
-		switch(metal.getStats().getName()) {
-		
-			case "quicksilver" : {
+	public static void addArmorTrait(Metal metal, Material material)
+	{
+		switch (metal.getStats().getName())
+		{
+
+			case "quicksilver":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.quickly);
 			}
 			break;
-			
-			case "amordrine" : {
+
+			case "amordrine":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.stronglyAmordrine);
 			}
 			break;
-			
-			case "kalendrite" : {
-				addToEveryPart(material,  MetallurgyArmorTraits.stronglyKalendrite);
+
+			case "kalendrite":
+			{
+				addToEveryPart(material, MetallurgyArmorTraits.stronglyKalendrite);
 			}
 			break;
-			
-			case "astral_silver" : {
-				addToEveryPart(material,  MetallurgyArmorTraits.jumpMaster);
+
+			case "astral_silver":
+			{
+				addToEveryPart(material, MetallurgyArmorTraits.jumpMaster);
 			}
 			break;
-			
-			case "celenegil" : {
+
+			case "celenegil":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.resistance);
 			}
 			break;
-			
-			case "deep_iron" : {
+
+			case "deep_iron":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.deeply);
 			}
 			break;
-			
-			case "vulcanite" : {
+
+			case "vulcanite":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.volcano);
 			}
 			break;
-			
-			case "adamantine" : {
+
+			case "adamantine":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.foodly);
 			}
 			break;
-			
-			case "platinum" : {
+
+			case "platinum":
+			{
 				material.addTrait(MetallurgyArmorTraits.catEyes, ArmorMaterialType.CORE);
 			}
 			break;
-			
-			case "prometheum" : {
+
+			case "prometheum":
+			{
 				material.addTrait(MetallurgyArmorTraits.prometheum, ArmorMaterialType.PLATES);
 			}
 			break;
-			
-			case "shadow_steel" : {
+
+			case "shadow_steel":
+			{
 				addToEveryPart(material, MetallurgyArmorTraits.blindness);
 			}
 			break;
-			
-			default: {}
+
+			default:
+			{
+			}
 			break;
 		}
 	}
@@ -87,5 +102,5 @@ public class SetArmorTraits {
 		material.addTrait(trait, ArmorMaterialType.PLATES);
 		material.addTrait(trait, ArmorMaterialType.TRIM);
 	}
-	
+
 }

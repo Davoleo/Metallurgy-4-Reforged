@@ -28,6 +28,8 @@ public class MetallurgyArmorTraits {
 	public static final AbstractArmorTrait prometheum = new TraitPrometheum();
 	public static final AbstractArmorTrait blindness = new TraitBlindness();
 
-	public static final AbstractArmorTrait[] metallurgyArmorTrait = {quickly, stronglyAmordrine, stronglyKalendrite, jumpMaster, resistance, deeply, volcano, foodly, prometheum, blindness};
-	
+	public static final AbstractArmorTrait[] metallurgyArmorTrait = {quickly, stronglyAmordrine, stronglyKalendrite,
+	                                                                 jumpMaster, resistance, deeply, volcano, foodly,
+	                                                                 prometheum, blindness};
+
 }

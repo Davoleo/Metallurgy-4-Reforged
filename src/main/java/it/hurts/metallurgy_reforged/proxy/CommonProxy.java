@@ -22,23 +22,26 @@ import java.io.File;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
-	
+
 	public static Configuration config;
 	public static Configuration armorConfig;
 	public static Configuration toolConfig;
 
-    public void preInit(FMLPreInitializationEvent e) {
-        File directory = e.getModConfigurationDirectory();
-        
-        armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
-        ArmorConfig.readConfig(armorConfig);
-        
-        toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
-        ToolConfig.readConfig(toolConfig);
-    }
-    
-    public void postInit(FMLPostInitializationEvent e) {
-        if(armorConfig.hasChanged())
-        	armorConfig.save();
-    }
+	public void preInit(FMLPreInitializationEvent e)
+	{
+		File directory = e.getModConfigurationDirectory();
+
+		armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
+		ArmorConfig.readConfig(armorConfig);
+
+		toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
+		ToolConfig.readConfig(toolConfig);
+	}
+
+	public void postInit(FMLPostInitializationEvent e)
+	{
+		if (armorConfig.hasChanged())
+			armorConfig.save();
+	}
+
 }

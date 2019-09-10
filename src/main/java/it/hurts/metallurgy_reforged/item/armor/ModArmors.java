@@ -21,39 +21,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModArmors {
-    public static final List<ItemArmorBase> armorList = new ArrayList<>();
 
-    public static void register(IForgeRegistry<Item> registry) {
-            if (!GeneralConfig.disableAllArmors) {
-                for (int i = 0, c = 0; i < ArmorConfig.allArmor.length; i++) {
-                    if (ArmorConfig.allArmor[i]) {
-                        for (int j = 0; j < 4; j++) {
-                            ItemArmorBase armorPiece = armorList.get(c);
-                            registry.register(armorPiece);
+	public static final List<ItemArmorBase> armorList = new ArrayList<>();
 
-                            EnumArmorEffects effect = EnumArmorEffects.getEffect(armorPiece);
-                            if (effect != null)
-                                armorPiece.setEffect(effect);
+	public static void register(IForgeRegistry<Item> registry)
+	{
+		if (!GeneralConfig.disableAllArmors)
+		{
+			for (int i = 0, c = 0; i < ArmorConfig.allArmor.length; i++)
+			{
+				if (ArmorConfig.allArmor[i])
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						ItemArmorBase armorPiece = armorList.get(c);
+						registry.register(armorPiece);
 
-                            c++;
-                        }
-                    }
-                }
-            }
+						EnumArmorEffects effect = EnumArmorEffects.getEffect(armorPiece);
+						if (effect != null)
+							armorPiece.setEffect(effect);
 
-    }
+						c++;
+					}
+				}
+			}
+		}
 
-    public static void registerModels() {
-        if (!GeneralConfig.disableAllArmors) {
-            for (int i = 0, 
-                 c = 0; i < ArmorConfig.allArmor.length; i++) {
-                for (int j = 0; j < 4; j++) {
-                    if (ArmorConfig.allArmor[i])
-                        ItemUtils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
+	}
 
-                    c++;
-                }
-            }
-        }
-    }
+	public static void registerModels()
+	{
+		if (!GeneralConfig.disableAllArmors)
+		{
+			for (int i = 0,
+			     c = 0; i < ArmorConfig.allArmor.length; i++)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					if (ArmorConfig.allArmor[i])
+						ItemUtils.registerCustomItemModel(armorList.get(c), 0, armorList.get(c).getCategory());
+
+					c++;
+				}
+			}
+		}
+	}
+
 }

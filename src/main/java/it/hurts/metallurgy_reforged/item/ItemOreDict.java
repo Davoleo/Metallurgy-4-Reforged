@@ -38,7 +38,7 @@ public class ItemOreDict extends Item implements IOreDict, IHasModel {
 		this.oreName = oreName;
 	}
 
-    @Override
+	@Override
 	public void initOreDict()
 	{
 		OreDictionary.registerOre(oreName, this);
@@ -73,4 +73,5 @@ public class ItemOreDict extends Item implements IOreDict, IHasModel {
 		super.setCreativeTab(tab);
 		return this;
 	}
+
 }

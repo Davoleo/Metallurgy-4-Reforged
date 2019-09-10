@@ -24,32 +24,33 @@ import javax.annotation.Nonnull;
 
 public class ItemHoeBase extends ItemHoe implements IHasModel {
 
-    public ItemHoeBase(ToolMaterial material, String name)
-    {
-        super(material);
-        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
-    }
+	public ItemHoeBase(ToolMaterial material, String name)
+	{
+		super(material);
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
+	}
 
-    private ItemStack getRepairStack()
-    {
-        String material = this.getMaterialName().toLowerCase();
-        Metal metal = Utils.getMetalFromString(material);
-        if (metal != null)
-            return new ItemStack(metal.getIngot());
-        else return ItemStack.EMPTY;
-    }
+	private ItemStack getRepairStack()
+	{
+		String material = this.getMaterialName().toLowerCase();
+		Metal metal = Utils.getMetalFromString(material);
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else
+			return ItemStack.EMPTY;
+	}
 
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-    {
-        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
-    }
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+	}
 
-    @Nonnull
-    @Override
-    public String getCategory()
-    {
-        return "tool/hoe";
-    }
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "tool/hoe";
+	}
 
 }

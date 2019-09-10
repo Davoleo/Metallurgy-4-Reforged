@@ -31,59 +31,63 @@ import java.util.List;
 
 public class ItemAxeBase extends ItemAxe implements IHasModel {
 
-    private EnumToolEffects effect;
-    private Enchantment enchantment;
+	private EnumToolEffects effect;
+	private Enchantment enchantment;
 	private int enchantmentLevel;
 
-    public ItemAxeBase(ToolMaterial material, String name)
-    {
-        this(material, name, null, -1);
-    }
-    
-    public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel){
-        super(material, GeneralConfig.powerAxes == false ? material.getAttackDamage() + 2 : material.getAttackDamage() + 4, -2.5F -(material.getAttackDamage()/10));
-        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-    {
-        if(this.isInCreativeTab(tab)) {
-            ItemStack enchantedAxe = new ItemStack(this);
-            if(enchantment != null) {
-                enchantedAxe.addEnchantment(enchantment, enchantmentLevel);
-            }
-            items.add(enchantedAxe);
-        }
+	public ItemAxeBase(ToolMaterial material, String name)
+	{
+		this(material, name, null, -1);
 	}
 
-    public ItemAxeBase setEffect(EnumToolEffects effect)
-    {
-        this.effect = effect;
-        return this;
-    }
+	public ItemAxeBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+	{
+		super(material, GeneralConfig.powerAxes == false ? material.getAttackDamage() + 2 : material.getAttackDamage() + 4, -2.5F - (material.getAttackDamage() / 10));
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+	}
 
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
-    {
-        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	{
+		if (this.isInCreativeTab(tab))
+		{
+			ItemStack enchantedAxe = new ItemStack(this);
+			if (enchantment != null)
+			{
+				enchantedAxe.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedAxe);
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        if(this.effect != null && effect.isActive())
-            tooltip.add(effect.getLocalized());
-    }
+	public ItemAxeBase setEffect(EnumToolEffects effect)
+	{
+		this.effect = effect;
+		return this;
+	}
 
-    @Nonnull
-    @Override
-    public String getCategory()
-    {
-        return "tool/axe";
-    }
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		if (this.effect != null && effect.isActive())
+			tooltip.add(effect.getLocalized());
+	}
+
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "tool/axe";
+	}
+
 }

@@ -22,12 +22,15 @@ import static slimeknights.tconstruct.tools.TinkerTraits.*;
 
 public class SetTinkerTraits {
 
-	public static void addTraits(Metal metal, Material material){
+	public static void addTraits(Metal metal, Material material)
+	{
 
-		switch(metal.getStats().getName()) {
-//		TraitSuperheat = Increased damage to enemies that are on fire
+		switch (metal.getStats().getName())
+		{
+			//		TraitSuperheat = Increased damage to enemies that are on fire
 
-			case "midasium" : {
+			case "midasium":
+			{
 				addToEveryPart(material, writable2);
 
 				if (GeneralConfig.enableDuplicationTrait)
@@ -35,71 +38,85 @@ public class SetTinkerTraits {
 			}
 			break;
 
-			case "ignatius": {
+			case "ignatius":
+			{
 				material.addTrait(MetallurgyTinkerTraits.vulcanTrait, HEAD);
 			}
 			break;
 
-			case "vulcanite": {
+			case "vulcanite":
+			{
 				material.addTrait(MetallurgyTinkerTraits.vulcanTrait1, HEAD);
 				material.addTrait(superheat, HANDLE);
 			}
 			break;
 
-			case "eximite": {
+			case "eximite":
+			{
 				material.addTrait(enderference, HEAD);
 			}
 			break;
 
-			case "vyroxeres": {
+			case "vyroxeres":
+			{
 				addToEveryPart(material, poisonous);
 			}
 			break;
 
-			case "mithril": {
-//				TODO Glowing Modifiers
+			case "mithril":
+			{
+				//				TODO Glowing Modifiers
 			}
 			break;
 
-			case "damascus_steel": {
+			case "damascus_steel":
+			{
 				addToEveryPart(material, duritos);
-//				TODO Reinforced II
+				//				TODO Reinforced II
 			}
 			break;
 
-			case "shadow_iron": {
+			case "shadow_iron":
+			{
 				addToEveryPart(material, MetallurgyTinkerTraits.obscureTrait);
 			}
 			break;
 
-			case "sanguinite": {
+			case "sanguinite":
+			{
 				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HEAD);
 				material.addTrait(MetallurgyTinkerTraits.lifeStealTrait, HANDLE);
 			}
 			break;
 
-			case "tartarite": {
+			case "tartarite":
+			{
 				material.addTrait(MetallurgyTinkerTraits.witherTrait, HEAD);
 			}
 			break;
 
-			case "alduorite": {
+			case "alduorite":
+			{
 				material.addTrait(TinkerTraits.unnatural, EXTRA);
 				material.addTrait(TinkerTraits.unnatural, HEAD);
 			}
 			break;
 
-			case "desichalkos": {
+			case "desichalkos":
+			{
 				material.addTrait(MetallurgyTinkerTraits.kingDiceTrait, EXTRA);
 			}
 			break;
 
-			case "deep_iron" : {
+			case "deep_iron":
+			{
 				addToEveryPart(material, MetallurgyTinkerTraits.opistognathusTrait);
 			}
 			break;
 
-			default:{}
+			default:
+			{
+			}
 			break;
 		}
 	}
@@ -110,4 +127,5 @@ public class SetTinkerTraits {
 		material.addTrait(trait, HANDLE);
 		material.addTrait(trait, EXTRA);
 	}
+
 }

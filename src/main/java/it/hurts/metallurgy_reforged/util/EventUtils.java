@@ -19,40 +19,45 @@ import net.minecraft.item.ItemStack;
 import java.util.List;
 
 public class EventUtils {
-	
-//	method to check if player wears the complete ArmorEffectHandler.
-	public static boolean isPlayerWearingArmor(EntityPlayer pl,Item[] armor)
+
+	//	method to check if player wears the complete ArmorEffectHandler.
+	public static boolean isPlayerWearingArmor(EntityPlayer pl, Item[] armor)
 	{
-			
+
 		boolean flag = true;
-			
-		  List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
-		  for(int i = 0; i < list.size();i++) {
-		  if(!list.get(i).getItem().equals(armor[3 - i]))
-           flag = false;
-		   }
-		 return flag;
+
+		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
+		for (int i = 0; i < list.size(); i++)
+		{
+			if (!list.get(i).getItem().equals(armor[3 - i]))
+				flag = false;
 		}
-		
-//  get Specific ArmorEffectHandler Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
-	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl,int index,Item armorEquip)
-	{			
-		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());	      
-	    return list.get(index).getItem().equals(armorEquip);
+		return flag;
+	}
+
+	//  get Specific ArmorEffectHandler Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
+	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl, int index, Item armorEquip)
+	{
+		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
+		return list.get(index).getItem().equals(armorEquip);
 	}
 
 	/**
-	 * @param pl EntityPlayer
+	 * @param pl    EntityPlayer
 	 * @param armor An array with all armor pieces
-	 * @return 	The number of pieces of armor worn by the player
+	 *
+	 * @return The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityPlayer pl, Item[] armor){
+	public static int getArmorPiecesCount(EntityPlayer pl, Item[] armor)
+	{
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
 
 		int counter = 0;
 
-		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i).getItem().equals(armor[3 - i])){
+		for (int i = 0; i < list.size(); i++)
+		{
+			if (list.get(i).getItem().equals(armor[3 - i]))
+			{
 				counter++;
 			}
 		}

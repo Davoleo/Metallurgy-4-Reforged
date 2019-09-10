@@ -1,16 +1,16 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "AAA",
-    "A A"
-  ],
-  "key":{
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotBrass"
-    }
-  },
-  "result":{
-    "item":"metallurgy:brass_helmet"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"AAA",
+		"A A"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotBrass"
+		}
+	},
+	"result": {
+		"item": "metallurgy:brass_helmet"
+	}
 }

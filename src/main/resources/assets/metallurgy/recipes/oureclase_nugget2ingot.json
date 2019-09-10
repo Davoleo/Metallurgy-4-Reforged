@@ -1,19 +1,17 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "III",
-    "III",
-    "III"
-  ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetOureclase"
-    }
-  },
-  "result": {
-    "item": "metallurgy:oureclase_ingot"
-  }
-
-
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetOureclase"
+		}
+	},
+	"result": {
+		"item": "metallurgy:oureclase_ingot"
+	}
 }

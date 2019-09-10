@@ -1,17 +1,17 @@
 {
-  "type":"forge:ore_shaped",
-  "pattern":[
-    "A A",
-    "AAA",
-    "AAA"
-  ],
-  "key": {
-    "A":{
-      "type": "forge:ore_dict",
-      "ore": "ingotTartarite"
-    }
-  },
-  "result":{
-    "item":"metallurgy:tartarite_chestplate"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"A A",
+		"AAA",
+		"AAA"
+	],
+	"key": {
+		"A": {
+			"type": "forge:ore_dict",
+			"ore": "ingotTartarite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:tartarite_chestplate"
+	}
 }

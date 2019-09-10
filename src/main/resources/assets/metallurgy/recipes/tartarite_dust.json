@@ -1,16 +1,16 @@
 {
-  "type": "forge:ore_shapeless",
-  "ingredients": [
-    {
-      "type": "forge:ore_dict",
-      "ore": "dustAdamantine"
-    },
-    {
-      "type": "forge:ore_dict",
-      "ore": "dustAtlarus"
-    }
-  ],
-  "result": {
-    "item": "metallurgy:tartarite_dust"
-  }
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustAdamantine"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustAtlarus"
+		}
+	],
+	"result": {
+		"item": "metallurgy:tartarite_dust"
+	}
 }

@@ -32,23 +32,24 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GadgetsHandler {
-	
+
 	private static MovementInput inputCheck;
-	
-//	Road Speed Effect
+
+	//	Road Speed Effect
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void roadSpeed(PlayerTickEvent event) {
+	public static void roadSpeed(PlayerTickEvent event)
+	{
 		if ((event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockRoad
 				|| event.player.world.getBlockState(new BlockPos(event.player.posX, event.player.posY - 0.5D, event.player.posZ)).getBlock() == ModBlocks.blockStripedRoad)
 				&& event.phase == TickEvent.Phase.START && event.side.isClient() && event.player.onGround)
 		{
-			if(inputCheck == null)
+			if (inputCheck == null)
 				inputCheck = new MovementInputFromOptions(Minecraft.getMinecraft().gameSettings);
 
 			inputCheck.updatePlayerMoveState();
 
-			if((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
+			if ((inputCheck.moveForward != 0 || inputCheck.moveStrafe != 0))
 			{
 				event.player.motionX *= GeneralConfig.roadSpeed;
 				event.player.motionZ *= GeneralConfig.roadSpeed;
@@ -87,4 +88,5 @@ public class GadgetsHandler {
 			event.setResult(Event.Result.DENY);
 		}
 	}
+
 }

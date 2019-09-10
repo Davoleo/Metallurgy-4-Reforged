@@ -22,8 +22,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 
-public class IntegrationCArmory
-{
+public class IntegrationCArmory {
 
 	public static void preInit()
 	{
@@ -33,7 +32,7 @@ public class IntegrationCArmory
 
 		for (Metal metal : ModMetals.metalList)
 		{
-			if(IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null)
+			if (IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null)
 			{
 				Material material = TinkerRegistry.getMaterial(metal.getStats().getName());
 
@@ -43,31 +42,33 @@ public class IntegrationCArmory
 	}
 
 
-
-	public static void init() {
-		for (Metal metal : ModMetals.metalList) {
-			if (IntegrationTIC.checkMaterial(metal)) {
+	public static void init()
+	{
+		for (Metal metal : ModMetals.metalList)
+		{
+			if (IntegrationTIC.checkMaterial(metal))
+			{
 				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
-				
-//				Chiamata al metodo per aggiungere i traits
+
+				//				Chiamata al metodo per aggiungere i traits
 				SetArmorTraits.addArmorTrait(metal, m);
 			}
 		}
 	}
 
-//	public static boolean isArmorAlreadyRegistered(Material material)
-//	{
-//		for (ArmorCore core : ArmoryRegistry)
-//		{
-//			System.out.println("Core: " + core.getLocalizedName());
-//			System.out.println("Material " + material.getLocalizedName());
-//
-//			if (core.getArmorMaterial().getName().equals(material.getLocalizedName()))
-//				return true;
-//		}
-//
-//		return true;
-//	}
+	//	public static boolean isArmorAlreadyRegistered(Material material)
+	//	{
+	//		for (ArmorCore core : ArmoryRegistry)
+	//		{
+	//			System.out.println("Core: " + core.getLocalizedName());
+	//			System.out.println("Material " + material.getLocalizedName());
+	//
+	//			if (core.getArmorMaterial().getName().equals(material.getLocalizedName()))
+	//				return true;
+	//		}
+	//
+	//		return true;
+	//	}
 
-	
+
 }

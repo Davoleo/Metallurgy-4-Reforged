@@ -24,7 +24,8 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class SubEvent {
 
-	public static void init() {
+	public static void init()
+	{
 		MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
 		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
@@ -40,7 +41,7 @@ public class SubEvent {
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 
-		if(ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+		if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
 		{
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyAmordrine);
@@ -55,5 +56,5 @@ public class SubEvent {
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.blindness);
 		}
 	}
-	
+
 }

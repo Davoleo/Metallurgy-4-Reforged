@@ -34,40 +34,41 @@ import java.util.List;
 
 public class ItemPotashFertilizer extends Item implements IHasModel {
 
-    public ItemPotashFertilizer()
-    {
-        ItemUtils.initItem(this, "potash_fertilizer", MetallurgyTabs.tabSpecial, ModItems.itemList);
-    }
+	public ItemPotashFertilizer()
+	{
+		ItemUtils.initItem(this, "potash_fertilizer", MetallurgyTabs.tabSpecial, ModItems.itemList);
+	}
 
-    @Nonnull
-    @Override
-    public String getCategory()
-    {
-        return "";
-    }
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "";
+	}
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        tooltip.add(Constants.POTASH_FERTILIZER);
-    }
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		tooltip.add(Constants.POTASH_FERTILIZER);
+	}
 
-    @Nonnull
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-         if (ItemDye.applyBonemeal(player.getHeldItem(hand), worldIn, pos, player, hand))
-         {
-             if (worldIn.isRemote)
-                 for (int i = 0; i < 50; i++)
-                 {
-                     worldIn.spawnParticle(EnumParticleTypes.DRIP_LAVA, pos.getX() + itemRand.nextDouble(), pos.getY() + itemRand.nextDouble(),
-                             pos.getZ() + itemRand.nextDouble(), 0, 0, 0);
-                 }
+	@Nonnull
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		if (ItemDye.applyBonemeal(player.getHeldItem(hand), worldIn, pos, player, hand))
+		{
+			if (worldIn.isRemote)
+				for (int i = 0; i < 50; i++)
+				{
+					worldIn.spawnParticle(EnumParticleTypes.DRIP_LAVA, pos.getX() + itemRand.nextDouble(), pos.getY() + itemRand.nextDouble(),
+							pos.getZ() + itemRand.nextDouble(), 0, 0, 0);
+				}
 
-             return EnumActionResult.SUCCESS;
-         }
-         else
-             return EnumActionResult.FAIL;
-    }
+			return EnumActionResult.SUCCESS;
+		}
+		else
+			return EnumActionResult.FAIL;
+	}
+
 }

@@ -29,64 +29,72 @@ import javax.annotation.Nonnull;
 
 public class ChamberRecipeCategory implements IRecipeCategory<ChamberRecipeWrapper> {
 
-    public static final int INPUT_SLOT = TileEntityChamber.METAL_SLOT;
+	public static final int INPUT_SLOT = TileEntityChamber.METAL_SLOT;
 
-    private final IDrawableStatic background;
-    //private final IDrawableStatic effect;
-    private final IDrawableAnimated flame;
+	private final IDrawableStatic background;
+	//private final IDrawableStatic effect;
+	private final IDrawableAnimated flame;
 
-    private int effectIndex;
+	private int effectIndex;
 
-    public ChamberRecipeCategory(IGuiHelper helper) {
-        ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/sublimation_chamber_jei.png");
+	public ChamberRecipeCategory(IGuiHelper helper)
+	{
+		ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/sublimation_chamber_jei.png");
 
-        this.background = helper.createDrawable(texture, 0, 0, 175, 81);
-        //this.effect = helper.createDrawable(GuiContainer.INVENTORY_BACKGROUND, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
+		this.background = helper.createDrawable(texture, 0, 0, 175, 81);
+		//this.effect = helper.createDrawable(GuiContainer.INVENTORY_BACKGROUND, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
 
-        IDrawableStatic flameDrawable = helper.createDrawable(texture, 176, 0, 14, 14);
-        flame = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
-    }
+		IDrawableStatic flameDrawable = helper.createDrawable(texture, 176, 0, 14, 14);
+		flame = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
+	}
 
-    @Override
-    public void drawExtras(Minecraft minecraft) {
-        flame.draw(minecraft, 79, 53);
-        //effect.draw(minecraft, 110, 31);
-    }
+	@Override
+	public void drawExtras(Minecraft minecraft)
+	{
+		flame.draw(minecraft, 79, 53);
+		//effect.draw(minecraft, 110, 31);
+	}
 
-    @Nonnull
-    @Override
-    public String getUid() {
-        return IntegrationJEI.SUBLIMATION_CHAMBER;
-    }
+	@Nonnull
+	@Override
+	public String getUid()
+	{
+		return IntegrationJEI.SUBLIMATION_CHAMBER;
+	}
 
-    @Nonnull
-    @Override
-    public String getTitle() {
-        return new ItemStack(ModBlocks.crusher).getDisplayName();
-    }
+	@Nonnull
+	@Override
+	public String getTitle()
+	{
+		return new ItemStack(ModBlocks.crusher).getDisplayName();
+	}
 
-    @Nonnull
-    @Override
-    public String getModName() {
-        return Metallurgy.NAME;
-    }
+	@Nonnull
+	@Override
+	public String getModName()
+	{
+		return Metallurgy.NAME;
+	}
 
-    @Nonnull
-    @Override
-    public IDrawable getBackground() {
-        return background;
-    }
+	@Nonnull
+	@Override
+	public IDrawable getBackground()
+	{
+		return background;
+	}
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull ChamberRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull ChamberRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
+	{
 
-        IGuiIngredientGroup group = recipeLayout.getItemStacks();
+		IGuiIngredientGroup group = recipeLayout.getItemStacks();
 
-        group.init(INPUT_SLOT, true, 46, 30);
-        group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+		group.init(INPUT_SLOT, true, 46, 30);
+		group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 
-        effectIndex = BlockSublimationRecipes.getInstance().recipesMap().get(recipeWrapper.getInput()).getPotion().getStatusIconIndex();
+		effectIndex = BlockSublimationRecipes.getInstance().recipesMap().get(recipeWrapper.getInput()).getPotion().getStatusIconIndex();
 
-    }
+	}
+
 }

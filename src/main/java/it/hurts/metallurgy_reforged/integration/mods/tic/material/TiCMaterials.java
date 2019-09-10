@@ -21,21 +21,22 @@ import slimeknights.tconstruct.library.materials.Material;
 
 public class TiCMaterials {
 
-	public static void addMaterialStats(Metal metal, Material material){	
+	public static void addMaterialStats(Metal metal, Material material)
+	{
 		MetalStats metalS = metal.getStats();
-		
+
 		MetallurgyTiCStats stats = TinkerMetals.getMetal(metal);
 
 
-		if(stats != null)
+		if (stats != null)
 		{
-			for(AbstractMaterialStats stat : stats.stats)
-				registerStat(material,stat);
-		}		
-		else if(metalS != null)
+			for (AbstractMaterialStats stat : stats.stats)
+				registerStat(material, stat);
+		}
+		else if (metalS != null)
 		{
 			ToolStats TStats = metalS.getToolStats();
-			if(TStats != null)
+			if (TStats != null)
 			{
 				registerStats(material,
 						MetallurgyTiCStats.getHeadA(metal),
@@ -43,19 +44,21 @@ public class TiCMaterials {
 						MetallurgyTiCStats.getExtraA(metal),
 						MetallurgyTiCStats.getBowA(metal));
 			}
-		}	
+		}
 	}
 
 
 	public static void registerStat(Material material, IMaterialStats stats)
 	{
-		if(!material.hasStats(stats.getIdentifier()))
-			TinkerRegistry.addMaterialStats(material,stats);
+		if (!material.hasStats(stats.getIdentifier()))
+			TinkerRegistry.addMaterialStats(material, stats);
 	}
 
 
-	public static void registerStats(Material material, IMaterialStats... stats){
-		for(IMaterialStats stat : stats)
-			TiCMaterials.registerStat(material,stat);
+	public static void registerStats(Material material, IMaterialStats... stats)
+	{
+		for (IMaterialStats stat : stats)
+			TiCMaterials.registerStat(material, stat);
 	}
+
 }

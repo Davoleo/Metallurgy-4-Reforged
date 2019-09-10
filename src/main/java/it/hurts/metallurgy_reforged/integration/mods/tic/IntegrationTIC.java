@@ -32,59 +32,66 @@ import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
-public class IntegrationTIC{
-	
-	public static void preInit() {
-		for (Metal metal : ModMetals.metalList) {
-			if (checkMaterial(metal) && checkMaterialPreInit(metal)) {
+public class IntegrationTIC {
+
+	public static void preInit()
+	{
+		for (Metal metal : ModMetals.metalList)
+		{
+			if (checkMaterial(metal) && checkMaterialPreInit(metal))
+			{
 				TiCMaterial material = new TiCMaterial(metal);
-				
+
 				TinkerRegistry.addMaterial(material);
 			}
 		}
 	}
 
-	public static void init() {
-		for (Metal metal : ModMetals.metalList) {
-			if (checkMaterial(metal)) {
+	public static void init()
+	{
+		for (Metal metal : ModMetals.metalList)
+		{
+			if (checkMaterial(metal))
+			{
 				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
-				
-//				Chiamata al metodo per aggiungere i traits
+
+				//				Chiamata al metodo per aggiungere i traits
 				SetTinkerTraits.addTraits(metal, m);
 
-//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilit� di fare il lingotto ed il blocco )
-				if(m.getFluid() == null)
+				//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilit� di fare il lingotto ed il blocco )
+				if (m.getFluid() == null)
 					m.setFluid(metal.getMolten());
 				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
-				
-//				Aggiunge le varie toolpart
+
+				//				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
 			}
-	    }
+		}
 
-		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite,1000), ModFluids.THERMITE,400));
+		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, 400));
 		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
 	}
 
-	public static void postInit() {
-		for(Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
+	public static void postInit()
+	{
+		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			FluidStack output = getFluidFromIngot(entry.getValue());
 			FluidStack input1 = getFluidFromIngot(entry.getRowKey());
 			FluidStack input2 = getFluidFromIngot(entry.getColumnKey());
-			if(output != null && input1 != null && input2 != null && output.getFluid() != TinkerFluids.bronze && output.getFluid() != TinkerFluids.electrum)
-					TinkerRegistry.registerAlloy(output,input1,input2);
+			if (output != null && input1 != null && input2 != null && output.getFluid() != TinkerFluids.bronze && output.getFluid() != TinkerFluids.electrum)
+				TinkerRegistry.registerAlloy(output, input1, input2);
 		}
 		Metallurgy.logger.info("Tinker Smeltery Recipes for Metallurgy Loaded");
 
 		MetallurgyTinkerFuels.init();
 	}
-	
+
 	public static FluidStack getFluidFromIngot(ItemStack stack)
 	{
 
 		MeltingRecipe recipe = TinkerRegistry.getMelting(stack);
-		Item item =  stack.getItem();
+		Item item = stack.getItem();
 		Fluid fluid = recipe != null ? recipe.getResult().getFluid() : null;
 
 		if (Items.IRON_INGOT.equals(item))
@@ -106,11 +113,12 @@ public class IntegrationTIC{
 
 
 		int c = stack.getCount();
-		return fluid != null ? new FluidStack(fluid,(c <= 0 ? 1 : c) * Material.VALUE_Ingot) : null;
+		return fluid != null ? new FluidStack(fluid, (c <= 0 ? 1 : c) * Material.VALUE_Ingot) : null;
 	}
 
-//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono gi� esistenti nella Tinker Base
-	public static boolean checkMaterial(Metal metal) {
+	//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono gi� esistenti nella Tinker Base
+	public static boolean checkMaterial(Metal metal)
+	{
 		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
 				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM
 				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
@@ -120,4 +128,5 @@ public class IntegrationTIC{
 	{
 		return TinkerRegistry.getMaterial(metal.toString()).equals(Material.UNKNOWN);
 	}
+
 }

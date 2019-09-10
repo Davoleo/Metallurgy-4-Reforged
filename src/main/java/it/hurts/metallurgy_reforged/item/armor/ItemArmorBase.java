@@ -63,9 +63,11 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
 	{
-		if(this.isInCreativeTab(tab)) {
+		if (this.isInCreativeTab(tab))
+		{
 			ItemStack enchantedArmor = new ItemStack(this);
-			if(enchantment != null) {
+			if (enchantment != null)
+			{
 				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
 			}
 			items.add(enchantedArmor);
@@ -83,7 +85,8 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		Metal metal = Utils.getMetalFromString(material);
 		if (metal != null)
 			return new ItemStack(metal.getIngot());
-		else return ItemStack.EMPTY;
+		else
+			return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -96,7 +99,8 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
-		if(this.effect != null && effect.isActive())
+		if (this.effect != null && effect.isActive())
 			tooltip.add(this.effect.getLocalized());
 	}
+
 }

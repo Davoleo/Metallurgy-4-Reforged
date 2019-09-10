@@ -21,23 +21,26 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class PickaxeEffectHandler {
-	
+
 	@SubscribeEvent
 	public static void onBreakBlock(PlayerEvent.BreakSpeed event)
 	{
 		EntityPlayer pl = event.getEntityPlayer();
 		ItemStack mainHandStack = pl.getHeldItemMainhand();
 
-		if(pl.isInWater() && mainHandStack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE) && ToolEffectsConfig.deepIronPickaxeEffect) {
+		if (pl.isInWater() && mainHandStack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE) && ToolEffectsConfig.deepIronPickaxeEffect)
+		{
 			event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}
 
 
-//		set tools break speed based on light except for hoe and sword
-		if(ToolEffectsConfig.shadowSteelToolSpeedEffect && mainHandStack.getItem() == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE)) {
-			float percentage = Utils.getLightArmorPercentage(pl,100F);
-			float speed = event.getNewSpeed()  * percentage / 40F;
+		//		set tools break speed based on light except for hoe and sword
+		if (ToolEffectsConfig.shadowSteelToolSpeedEffect && mainHandStack.getItem() == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE))
+		{
+			float percentage = Utils.getLightArmorPercentage(pl, 100F);
+			float speed = event.getNewSpeed() * percentage / 40F;
 			event.setNewSpeed(event.getOriginalSpeed() + speed);
 		}
 	}
+
 }

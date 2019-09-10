@@ -33,46 +33,51 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class RegistrationHandler {
-	
+
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
 
-	
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-        ModMetals.registerItems(event.getRegistry());
-        ModItems.register(event.getRegistry());
-        ModBlocks.registerItemBlocks(event.getRegistry());
-        ModArmors.register(event.getRegistry());
-        ModTools.register(event.getRegistry());
-        ModFluids.registerItem(event.getRegistry());
 
-        //OreDict Registration
-        OreDictHandler.init();
-        Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
-    }
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event)
+	{
+		ModMetals.registerItems(event.getRegistry());
+		ModItems.register(event.getRegistry());
+		ModBlocks.registerItemBlocks(event.getRegistry());
+		ModArmors.register(event.getRegistry());
+		ModTools.register(event.getRegistry());
+		ModFluids.registerItem(event.getRegistry());
 
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        ModMetals.registerBlocks(event.getRegistry());
-        ModBlocks.register(event.getRegistry());
-        ModFluids.registerBlocks(event.getRegistry());
-    }
+		//OreDict Registration
+		OreDictHandler.init();
+		Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
+	}
 
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
-        ModMetals.registerModels();
-        ModItems.registerModels();
-        ModBlocks.registerModels();
-        ModArmors.registerModels();
-        ModTools.registerModels();
-        ModFluids.registerModels();
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event)
+	{
+		ModMetals.registerBlocks(event.getRegistry());
+		ModBlocks.register(event.getRegistry());
+		ModFluids.registerBlocks(event.getRegistry());
+	}
 
-        ModRenderers.registerRenderers();
-    }
-    @SubscribeEvent
-    public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
-    {
-        if(event.getObject() instanceof EntityLivingBase)
-    	  event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
-    }
+	@SubscribeEvent
+	public static void registerModels(ModelRegistryEvent event)
+	{
+		ModMetals.registerModels();
+		ModItems.registerModels();
+		ModBlocks.registerModels();
+		ModArmors.registerModels();
+		ModTools.registerModels();
+		ModFluids.registerModels();
+
+		ModRenderers.registerRenderers();
+	}
+
+	@SubscribeEvent
+	public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
+	{
+		if (event.getObject() instanceof EntityLivingBase)
+			event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
+	}
+
 }

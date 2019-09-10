@@ -22,11 +22,12 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 
-public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait{
+public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait {
 
 	private int level;
 
-	public TraitStrongly(int level) {
+	public TraitStrongly(int level)
+	{
 		super("strongly", String.valueOf(level), 0xffffff, 2, level);
 		this.level = level;
 	}
@@ -39,9 +40,11 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		for (ItemStack armorPiece : event.player.getArmorInventoryList()) {
+		for (ItemStack armorPiece : event.player.getArmorInventoryList())
+		{
 			NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
-			for (int i = 0; i < traits.tagCount(); i++) {
+			for (int i = 0; i < traits.tagCount(); i++)
+			{
 				String id = traits.getStringTagAt(i);
 				ITrait trait = TinkerRegistry.getTrait(id);
 

@@ -47,13 +47,15 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	//Constructors ---------------------------------------------------------------
 
 	//PickaxeEffectHandler-Mineable Block with oredict value, harvest level of 1, and blast resistance of 5
-	public BlockOreDict(String name, String oreName, boolean addToList, CreativeTabs tab) {
+	public BlockOreDict(String name, String oreName, boolean addToList, CreativeTabs tab)
+	{
 		this(name, oreName, addToList, "p", 1, 5F, tab);
 		setHardness(3F);
 	}
 
-    //OreDicted block with custom properties
-	public BlockOreDict(String name, String oreName, boolean addToList, String toolClass, int harvestLevel, float blastResistance, CreativeTabs tab){
+	//OreDicted block with custom properties
+	public BlockOreDict(String name, String oreName, boolean addToList, String toolClass, int harvestLevel, float blastResistance, CreativeTabs tab)
+	{
 		super(Material.ROCK);
 		BlockUtils.initBlock(this, name, tab, addToList);
 		setHardness(3f);
@@ -88,7 +90,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 		OreDictionary.registerOre(oreName, this);
 	}
 
-	
+
 	@Override
 	public void getDrops(@Nonnull NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, @Nonnull IBlockState state, int fortune)
 	{
@@ -96,21 +98,24 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 			drops.add(new ItemStack(this));
 		else
 		{
-			for (Drop drop : customDrops) {
+			for (Drop drop : customDrops)
+			{
 				if (Math.random() <= drop.getChance())
 					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
 			}
 		}
 	}
 
-    //Returns true if the block can be drop from explosions
+	//Returns true if the block can be drop from explosions
 	@Override
 	public boolean canDropFromExplosion(Explosion explosionIn)
 	{
 		return this.getTranslationKey().contains("_ore");
 	}
 
-	public Item createItemBlock() {
+	public Item createItemBlock()
+	{
 		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
+
 }

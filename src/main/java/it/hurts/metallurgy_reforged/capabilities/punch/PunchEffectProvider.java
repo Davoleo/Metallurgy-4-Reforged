@@ -21,43 +21,44 @@ import javax.annotation.Nonnull;
 
 /**
  * Mana provider
- *
+ * <p>
  * This class is responsible for providing a capability.
  */
-public class PunchEffectProvider implements ICapabilitySerializable<NBTBase>
-{
-    @CapabilityInject(IPunchEffect.class)
-    public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
+public class PunchEffectProvider implements ICapabilitySerializable<NBTBase> {
 
-    private final IPunchEffect instance;
+	@CapabilityInject(IPunchEffect.class)
+	public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
 
-    public PunchEffectProvider()
-    {
-        this.instance =  PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : new PunchEffect();
-    }
+	private final IPunchEffect instance;
 
-    @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
-    {
-        return capability.equals(PUNCH_EFFECT_CAP);
-    }
+	public PunchEffectProvider()
+	{
+		this.instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : new PunchEffect();
+	}
 
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
-    {
-        return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
-    }
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
+	{
+		return capability.equals(PUNCH_EFFECT_CAP);
+	}
 
-    @Override
-    public NBTBase serializeNBT()
-    {
-        return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
-    }
+	@Override
+	public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
+	{
+		return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
+	}
 
-    @Override
-    public void deserializeNBT(NBTBase nbt)
-    {
-        if(PUNCH_EFFECT_CAP != null)
-            PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
-    }
+	@Override
+	public NBTBase serializeNBT()
+	{
+		return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
+	}
+
+	@Override
+	public void deserializeNBT(NBTBase nbt)
+	{
+		if (PUNCH_EFFECT_CAP != null)
+			PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
+	}
+
 }

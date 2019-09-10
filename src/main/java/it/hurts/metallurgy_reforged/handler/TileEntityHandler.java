@@ -39,16 +39,16 @@ public class TileEntityHandler {
 		EntityPlayer pl = ev.getEntityPlayer();
 		World world = ev.getWorld();
 
-		if(pl.isSneaking())
+		if (pl.isSneaking())
 		{
 			TileEntity tileEntity = world.getTileEntity(ev.getPos());
-			if(tileEntity instanceof TileEntityChamber)
+			if (tileEntity instanceof TileEntityChamber)
 			{
 				TileEntityChamber chamber = (TileEntityChamber) tileEntity;
 				ItemStack handStack = pl.getHeldItem(ev.getHand());
 				ItemStack fuelStack = chamber.getStackInSlot(TileEntityChamber.FUEL_SLOT);
 
-				if(!fuelStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(fuelStack)))
+				if (!fuelStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(fuelStack)))
 				{
 					int i = handStack.getMaxStackSize() - handStack.getCount();
 					ItemStack copyStack = fuelStack.splitStack(i);
@@ -61,4 +61,5 @@ public class TileEntityHandler {
 			}
 		}
 	}
+
 }

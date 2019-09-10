@@ -1,20 +1,20 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern": [
-    "III",
-    " S ",
-    " S "
-  ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
-    },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotIgnatius"
-    }
-  },
-  "result":{
-    "item":"metallurgy:ignatius_pickaxe"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		" S ",
+		" S "
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:stick"
+		},
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotIgnatius"
+		}
+	},
+	"result": {
+		"item": "metallurgy:ignatius_pickaxe"
+	}
 }

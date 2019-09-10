@@ -1,19 +1,17 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "III",
-    "III",
-    "III"
-  ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetShadowSteel"
-    }
-  },
-  "result": {
-    "item": "metallurgy:shadow_steel_ingot"
-  }
-
-
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetShadowSteel"
+		}
+	},
+	"result": {
+		"item": "metallurgy:shadow_steel_ingot"
+	}
 }

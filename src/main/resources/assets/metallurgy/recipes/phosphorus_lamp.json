@@ -1,23 +1,23 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern": [
-    "III",
-    "BPB",
-    "III"
-  ],
-  "key":{
-    "P":{
-      "item":"metallurgy:phosphorus"
-    },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotIron"
-    },
-    "B": {
-      "item": "minecraft:iron_bars"
-    }
-  },
-  "result":{
-    "item":"metallurgy:phosphorus_lamp"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"BPB",
+		"III"
+	],
+	"key": {
+		"P": {
+			"item": "metallurgy:phosphorus"
+		},
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotIron"
+		},
+		"B": {
+			"item": "minecraft:iron_bars"
+		}
+	},
+	"result": {
+		"item": "metallurgy:phosphorus_lamp"
+	}
 }

@@ -1,20 +1,20 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern": [
-    "III",
-    " S ",
-    " S "
-  ],
-  "key":{
-    "S":{
-      "item":"minecraft:stick"
-    },
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "ingotCopper"
-    }
-  },
-  "result":{
-    "item":"metallurgy:copper_pickaxe"
-  }
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		" S ",
+		" S "
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:stick"
+		},
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotCopper"
+		}
+	},
+	"result": {
+		"item": "metallurgy:copper_pickaxe"
+	}
 }

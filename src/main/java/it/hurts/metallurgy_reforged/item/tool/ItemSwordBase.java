@@ -33,68 +33,72 @@ import java.util.List;
 
 public class ItemSwordBase extends ItemSword implements IHasModel {
 
-    private EnumToolEffects effect;
+	private EnumToolEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
-    public ItemSwordBase(ToolMaterial material, String name)
-    {
-        this(material, name, null, -1);
-    }
-    
-    public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
-    {
-        super(material);
-        ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
-        this.enchantment = enchantment;
-        this.enchantmentLevel = enchantmentLevel;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-    {
-        if(this.isInCreativeTab(tab)) {
-            ItemStack enchantedSword = new ItemStack(this);
-            if(enchantment != null) {
-                enchantedSword.addEnchantment(enchantment, enchantmentLevel);
-            }
-            items.add(enchantedSword);
-        }
+	public ItemSwordBase(ToolMaterial material, String name)
+	{
+		this(material, name, null, -1);
 	}
 
-    public void setEffect(EnumToolEffects effect)
-    {
-        this.effect = effect;
-    }
+	public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+	{
+		super(material);
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+	}
 
-    private ItemStack getRepairStack()
-    {
-        String material = this.getToolMaterialName().toLowerCase();
-        Metal metal = Utils.getMetalFromString(material);
-        if (metal != null)
-            return new ItemStack(metal.getIngot());
-        else return ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
-    {
-        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
-    }
-
-    @SideOnly(Side.CLIENT)
 	@Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-        if(this.effect != null && effect.isActive())
-            tooltip.add(this.effect.getLocalized());
-    }
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	{
+		if (this.isInCreativeTab(tab))
+		{
+			ItemStack enchantedSword = new ItemStack(this);
+			if (enchantment != null)
+			{
+				enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedSword);
+		}
+	}
 
-    @Nonnull
-    @Override
-    public String getCategory()
-    {
-        return "tool/sword";
-    }
+	public void setEffect(EnumToolEffects effect)
+	{
+		this.effect = effect;
+	}
+
+	private ItemStack getRepairStack()
+	{
+		String material = this.getToolMaterialName().toLowerCase();
+		Metal metal = Utils.getMetalFromString(material);
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else
+			return ItemStack.EMPTY;
+	}
+
+	@Override
+	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		if (this.effect != null && effect.isActive())
+			tooltip.add(this.effect.getLocalized());
+	}
+
+	@Nonnull
+	@Override
+	public String getCategory()
+	{
+		return "tool/sword";
+	}
+
 }

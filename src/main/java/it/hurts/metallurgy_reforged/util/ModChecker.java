@@ -20,13 +20,14 @@ public class ModChecker {
 	public static boolean isIFLoaded;
 	public static boolean isProjectELoaded;
 	public static boolean isCraftTweakerLoaded;
-	
-	static{
+
+	static
+	{
 		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
 		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
 		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
 		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
 		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
 	}
-	
+
 }

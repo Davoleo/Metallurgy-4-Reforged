@@ -1,19 +1,17 @@
 {
-  "type": "forge:ore_shaped",
-  "pattern":[
-    "III",
-    "III",
-    "III"
-  ],
-  "key":{
-    "I":{
-      "type": "forge:ore_dict",
-      "ore": "nuggetDesichalkos"
-    }
-  },
-  "result": {
-    "item": "metallurgy:desichalkos_ingot"
-  }
-
-
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetDesichalkos"
+		}
+	},
+	"result": {
+		"item": "metallurgy:desichalkos_ingot"
+	}
 }

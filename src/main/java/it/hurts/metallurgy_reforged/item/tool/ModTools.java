@@ -25,62 +25,67 @@ import java.util.List;
 
 public class ModTools {
 
-    public static final List<Item> toolList = new ArrayList<>();
+	public static final List<Item> toolList = new ArrayList<>();
 
-    public static void register(IForgeRegistry<Item> registry){
+	public static void register(IForgeRegistry<Item> registry)
+	{
 
-        if (!GeneralConfig.disableAllTools) {
+		if (!GeneralConfig.disableAllTools)
+		{
 
-            int c = 0;
-            for (int i = 0; i < ToolConfig.allTools.length; i++) {
+			int c = 0;
+			for (int i = 0; i < ToolConfig.allTools.length; i++)
+			{
 
-                for (int j = 0; j < 5; j++) {
+				for (int j = 0; j < 5; j++)
+				{
 
-                    if (ToolConfig.allTools[i][j])
-                    {
-                        Item tool = toolList.get(c);
-                        registry.register(tool);
+					if (ToolConfig.allTools[i][j])
+					{
+						Item tool = toolList.get(c);
+						registry.register(tool);
 
-                        EnumToolEffects effect = EnumToolEffects.getEffect(tool);
-                        if (effect != null)
-                        {
-                            if (tool instanceof ItemAxeBase)
-                                ((ItemAxeBase) tool).setEffect(effect);
-                            if (tool instanceof ItemPickaxeBase)
-                                ((ItemPickaxeBase) tool).setEffect(effect);
-                            if (tool instanceof ItemSwordBase)
-                                ((ItemSwordBase) tool).setEffect(effect);
-                            if (tool instanceof ItemShovelBase)
-                                ((ItemShovelBase) tool).setEffect(effect);
-                        }
-                    }
+						EnumToolEffects effect = EnumToolEffects.getEffect(tool);
+						if (effect != null)
+						{
+							if (tool instanceof ItemAxeBase)
+								((ItemAxeBase) tool).setEffect(effect);
+							if (tool instanceof ItemPickaxeBase)
+								((ItemPickaxeBase) tool).setEffect(effect);
+							if (tool instanceof ItemSwordBase)
+								((ItemSwordBase) tool).setEffect(effect);
+							if (tool instanceof ItemShovelBase)
+								((ItemShovelBase) tool).setEffect(effect);
+						}
+					}
 
-                    c++;
-                }
-            }
-        }
-    }
+					c++;
+				}
+			}
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    public static void registerModels()
-    {
-        if (!GeneralConfig.disableAllTools)
-        {
-            int c = 0;
+	@SideOnly(Side.CLIENT)
+	public static void registerModels()
+	{
+		if (!GeneralConfig.disableAllTools)
+		{
+			int c = 0;
 
-            for (int i = 0; i < ToolConfig.allTools.length; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    IHasModel item = (IHasModel) toolList.get(c);
+			for (int i = 0; i < ToolConfig.allTools.length; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					IHasModel item = (IHasModel) toolList.get(c);
 
-                    if (ToolConfig.allTools[i][j])
-                        ItemUtils.registerCustomItemModel((Item) item, 0, item.getCategory());
+					if (ToolConfig.allTools[i][j])
+						ItemUtils.registerCustomItemModel((Item) item, 0, item.getCategory());
 
-                    c++;
+					c++;
 
-                }
-            }
-        }
-    }
+				}
+			}
+		}
+	}
+
 }
