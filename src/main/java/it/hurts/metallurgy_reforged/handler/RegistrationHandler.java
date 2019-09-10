@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.armor.ModArmors;
 import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.render.ModRenderers;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -65,6 +66,8 @@ public class RegistrationHandler {
         ModArmors.registerModels();
         ModTools.registerModels();
         ModFluids.registerModels();
+
+        ModRenderers.registerRenderers();
     }
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
