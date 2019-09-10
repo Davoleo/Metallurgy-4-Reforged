@@ -9,14 +9,13 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.integration.mods;
+package it.hurts.metallurgy_reforged.integration.mods.conarm;
 
 
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
-import it.hurts.metallurgy_reforged.integration.mods.conarm.SetArmorTraits;
+import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterials;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;

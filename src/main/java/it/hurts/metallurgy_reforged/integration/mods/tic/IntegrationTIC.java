@@ -9,13 +9,11 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.integration.mods;
+package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
-import it.hurts.metallurgy_reforged.integration.mods.tic.MetallurgyTinkerFuels;
-import it.hurts.metallurgy_reforged.integration.mods.tic.SetTinkerTraits;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;

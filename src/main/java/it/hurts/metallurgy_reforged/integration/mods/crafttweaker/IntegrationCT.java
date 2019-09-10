@@ -9,12 +9,10 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.integration.mods;
+package it.hurts.metallurgy_reforged.integration.mods.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IItemStack;
-import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.CompatAlloyer;
-import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.CompatCrusher;
 import net.minecraft.item.ItemStack;
 
 public class IntegrationCT {

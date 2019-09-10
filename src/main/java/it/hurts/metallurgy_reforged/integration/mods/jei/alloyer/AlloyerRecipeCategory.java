@@ -13,10 +13,11 @@ package it.hurts.metallurgy_reforged.integration.mods.jei.alloyer;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.integration.mods.IntegrationJEI;
+import it.hurts.metallurgy_reforged.integration.mods.jei.IntegrationJEI;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.*;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -36,9 +37,9 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
     private final IDrawableStatic background;
 
     //Animations
-    protected final IDrawableAnimated flame;
-    protected final IDrawableAnimated bar;
-    protected final IDrawableAnimated moltenMetal;
+    private final IDrawableAnimated flame;
+    private final IDrawableAnimated bar;
+    private final IDrawableAnimated moltenMetal;
 
     public AlloyerRecipeCategory(IGuiHelper guiHelper)
     {
@@ -102,7 +103,7 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
         return null;
     }
 
-    @SuppressWarnings({"rawtypes", "deprecation", "unchecked"})
+    @SuppressWarnings("unchecked")
     @Override
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull AlloyerRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
     {
@@ -112,8 +113,8 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
         group.init(INPUT_SLOT_2, true, 122, 23);
         group.init(OUTPUT_SLOT, false, 56, 73);
 
-        group.set(INPUT_SLOT_1, ingredients.getInputs(ItemStack.class).get(0));
-        group.set(INPUT_SLOT_2, ingredients.getInputs(ItemStack.class).get(1));
-        group.set(OUTPUT_SLOT, ingredients.getOutputs(ItemStack.class).get(0));
+        group.set(INPUT_SLOT_1, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+        group.set(INPUT_SLOT_2, ingredients.getInputs(VanillaTypes.ITEM).get(1));
+        group.set(OUTPUT_SLOT, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
     }
 }
