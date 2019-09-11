@@ -33,11 +33,11 @@ public class SublimationRecipes {
 	private SublimationRecipes()
 	{
 
-		this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 6), new PotionEffect(MobEffects.SATURATION, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(), 7), new PotionEffect(MobEffects.HASTE, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(), 7), new PotionEffect(MobEffects.FIRE_RESISTANCE, 12000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.QUICKSILVER.getBlock(), 5), new PotionEffect(MobEffects.SPEED, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.STEEL.getBlock(), 5), new PotionEffect(MobEffects.STRENGTH, 12000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 3), new PotionEffect(MobEffects.SATURATION, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(), 4), new PotionEffect(MobEffects.HASTE, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(), 4), new PotionEffect(MobEffects.FIRE_RESISTANCE, 16000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.QUICKSILVER.getBlock(), 2), new PotionEffect(MobEffects.SPEED, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.STEEL.getBlock(), 2), new PotionEffect(MobEffects.STRENGTH, 16000));
 
 	}
 
