@@ -112,15 +112,30 @@ public class ItemUtils {
 	}
 
 	/**
-	 * @param ingot the ingot you want the metal of
+	 * @param item the item you want the metal of
 	 *
-	 * @return The metal the parameter ingot is made of (null if metal doesn't exist)
+	 * @return The metal the parameter item is made of (null if metal doesn't exist)
 	 */
-	public static Metal getMetalFromIngot(ItemStack ingot)
+	public static Metal getMetalFromItem(Item item)
 	{
 		for (Metal metal : ModMetals.metalList)
 		{
-			if (metal.getIngot() == ingot.getItem())
+			if (metal.getIngot() == item)
+				return metal;
+
+			if (metal.getNugget() == item)
+				return metal;
+
+			if (metal.getDust() == item)
+				return metal;
+
+			if (Item.getItemFromBlock(metal.getMolten().getFluidBlock()) == item)
+				return metal;
+
+			if (!metal.isAlloy() && Item.getItemFromBlock(metal.getOre()) == item)
+				return metal;
+
+			if (Item.getItemFromBlock(metal.getBlock()) == item)
 				return metal;
 		}
 

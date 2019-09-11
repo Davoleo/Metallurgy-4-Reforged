@@ -18,10 +18,10 @@ import it.hurts.metallurgy_reforged.gui.GuiCrusher;
 import it.hurts.metallurgy_reforged.integration.mods.jei.alloyer.AlloyerRecipeCategory;
 import it.hurts.metallurgy_reforged.integration.mods.jei.alloyer.AlloyerRecipeWrapper;
 import it.hurts.metallurgy_reforged.integration.mods.jei.chamber.ChamberRecipeCategory;
+import it.hurts.metallurgy_reforged.integration.mods.jei.chamber.ChamberRecipeWrapper;
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCategory;
+import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -53,7 +53,7 @@ public class IntegrationJEI implements IModPlugin {
 	{
 		//Crusher Compat
 		//registers the recipes through a list built by the method "getRecipeInputs"
-		registry.addRecipes(BlockCrusherRecipes.getInstance().getRecipeMap().keySet(), CRUSHER);
+		registry.addRecipes(CrusherRecipeWrapper.getRecipeInputs(), CRUSHER);
 		//sets the machine icon as the jei recipe icon
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.crusher), CRUSHER);
 		//Maps the area you need to click in to view all the machine Recipes
@@ -65,7 +65,7 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiAlloyer.class, 40, 32, 7, 33, ALLOYER);
 
 		//Sublimation Chamber Compat
-		registry.addRecipes(BlockSublimationRecipes.getInstance().recipesMap().keySet(), SUBLIMATION_CHAMBER);
+		registry.addRecipes(ChamberRecipeWrapper.getRecipeInputs(), SUBLIMATION_CHAMBER);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.chamber), SUBLIMATION_CHAMBER);
 
 		registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");

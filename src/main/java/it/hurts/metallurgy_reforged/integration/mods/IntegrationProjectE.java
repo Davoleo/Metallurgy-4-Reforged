@@ -124,7 +124,7 @@ public class IntegrationProjectE {
 		else if (ingot.getItem().equals(Items.GOLD_INGOT))
 			return 2048;
 
-		Metal metal = ItemUtils.getMetalFromIngot(ingot);
+		Metal metal = ItemUtils.getMetalFromItem(ingot.getItem());
 
 		if (metal.hasToolSet())
 			return getEMCbyHarvestLevel(metal.getToolMaterial().getHarvestLevel());

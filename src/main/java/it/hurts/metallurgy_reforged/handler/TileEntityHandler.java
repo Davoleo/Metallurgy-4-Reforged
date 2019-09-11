@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -34,29 +35,46 @@ public class TileEntityHandler {
 	}
 
 	@SubscribeEvent
-	public static void rightClick(PlayerInteractEvent.RightClickBlock ev)
+	public static void rightClick(PlayerInteractEvent.RightClickBlock event)
 	{
-		EntityPlayer pl = ev.getEntityPlayer();
-		World world = ev.getWorld();
+		EntityPlayer pl = event.getEntityPlayer();
+		World world = event.getWorld();
 
 		if (pl.isSneaking())
 		{
-			TileEntity tileEntity = world.getTileEntity(ev.getPos());
+			TileEntity tileEntity = world.getTileEntity(event.getPos());
 			if (tileEntity instanceof TileEntityChamber)
 			{
 				TileEntityChamber chamber = (TileEntityChamber) tileEntity;
-				ItemStack handStack = pl.getHeldItem(ev.getHand());
-				ItemStack fuelStack = chamber.getStackInSlot(TileEntityChamber.FUEL_SLOT);
+				ItemStack handStack = pl.getHeldItem(event.getHand());
+				EnumFacing facing = event.getFace();
 
-				if (!fuelStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(fuelStack)))
+				if (facing == EnumFacing.UP)
 				{
-					int i = handStack.getMaxStackSize() - handStack.getCount();
-					ItemStack copyStack = fuelStack.splitStack(i);
-					copyStack.setCount(handStack.getCount() + copyStack.getCount());
-					pl.setHeldItem(ev.getHand(), copyStack);
-					ev.setCanceled(true);
-				}
+					ItemStack metalStack = chamber.getStackInSlot(TileEntityChamber.METAL_SLOT);
 
+					if (!metalStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(metalStack)) && !chamber.isActive())
+					{
+						int i = handStack.getMaxStackSize() - handStack.getCount();
+						ItemStack copyStack = metalStack.splitStack(i);
+						copyStack.setCount(handStack.getCount() + copyStack.getCount());
+						pl.setHeldItem(event.getHand(), copyStack);
+						event.setCanceled(true);
+					}
+				}
+				else if (facing != EnumFacing.DOWN)
+				{
+					ItemStack fuelStack = chamber.getStackInSlot(TileEntityChamber.FUEL_SLOT);
+
+					if (!fuelStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(fuelStack)))
+					{
+						int i = handStack.getMaxStackSize() - handStack.getCount();
+						ItemStack copyStack = fuelStack.splitStack(i);
+						copyStack.setCount(handStack.getCount() + copyStack.getCount());
+						pl.setHeldItem(event.getHand(), copyStack);
+						event.setCanceled(true);
+					}
+				}
 
 			}
 		}

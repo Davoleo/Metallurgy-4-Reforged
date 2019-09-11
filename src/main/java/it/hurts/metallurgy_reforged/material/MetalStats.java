@@ -156,6 +156,11 @@ public class MetalStats {
 		return armorMaterial;
 	}
 
+	public int getMetalColor()
+	{
+		return fluid.mapColor;
+	}
+
 	private ItemArmor.ArmorMaterial createArmorMaterial()
 	{
 		if (armor == null)

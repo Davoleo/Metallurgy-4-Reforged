@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.gui.hud;
 
 import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -68,8 +69,6 @@ public class SublimationChamberHUD {
 
 		if (te.potionEffect != null)
 		{
-			minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " seconds", x - 33, y - 30, 0xFFFFFF);
-
 			PotionEffect effect = null;
 
 			for (Map.Entry<ItemStack, PotionEffect> recipe : recipes.entrySet())
@@ -93,6 +92,10 @@ public class SublimationChamberHUD {
 
 				GlStateManager.popMatrix();
 			}
+
+
+			int color = ItemUtils.getMetalFromItem(metal.getItem()).getStats().getMetalColor();
+			minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " seconds", x - 33, y - 30, color);
 		}
 	}
 
