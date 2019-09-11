@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.jei.chamber;
 
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
+import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -47,7 +47,7 @@ public class ChamberRecipeWrapper implements IRecipeWrapper {
 	{
 		ArrayList<ChamberRecipeWrapper> recipes = new ArrayList<>();
 
-		BlockSublimationRecipes.getInstance().recipesMap().forEach((input, effect) -> {
+		SublimationRecipes.getInstance().recipesMap().forEach((input, effect) -> {
 			recipes.add(new ChamberRecipeWrapper(input, effect));
 		});
 

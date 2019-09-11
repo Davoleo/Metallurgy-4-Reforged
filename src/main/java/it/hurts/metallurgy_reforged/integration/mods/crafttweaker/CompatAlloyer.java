@@ -19,7 +19,7 @@ import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import static it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes.getInstance;
+import static it.hurts.metallurgy_reforged.recipe.AlloyerRecipes.getInstance;
 
 @ZenClass("mods.metallurgyreforged.Alloyer")
 public class CompatAlloyer {

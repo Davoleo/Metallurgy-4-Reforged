@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.integration.mods.jei.alloyer;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -46,7 +46,7 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
 	{
 		ArrayList<AlloyerRecipeWrapper> recipes = new ArrayList<>();
 
-		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			List<ItemStack> inputs = Lists.newArrayList();
 			inputs.add(entry.getColumnKey());

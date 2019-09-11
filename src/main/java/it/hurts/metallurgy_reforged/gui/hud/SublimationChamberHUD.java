@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.gui.hud;
 
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
+import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.state.IBlockState;
@@ -46,7 +46,7 @@ public class SublimationChamberHUD {
 		int y = resolution.getScaledHeight() / 2;
 
 		TileEntityChamber te = ((TileEntityChamber) world.getTileEntity(pos));
-		Map<ItemStack, PotionEffect> recipes = BlockSublimationRecipes.getInstance().recipesMap();
+		Map<ItemStack, PotionEffect> recipes = SublimationRecipes.getInstance().recipesMap();
 
 		ItemStack metal = te.getStackInSlot(TileEntityChamber.METAL_SLOT);
 

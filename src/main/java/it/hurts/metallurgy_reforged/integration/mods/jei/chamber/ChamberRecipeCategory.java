@@ -14,7 +14,7 @@ package it.hurts.metallurgy_reforged.integration.mods.jei.chamber;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.integration.mods.jei.IntegrationJEI;
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
+import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.*;
@@ -90,7 +90,7 @@ public class ChamberRecipeCategory implements IRecipeCategory<ChamberRecipeWrapp
 		group.init(INPUT_SLOT, true, 42, 26);
 		group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 
-		effectIndex = BlockSublimationRecipes.getInstance().recipesMap().get(recipeWrapper.getInput()).getPotion().getStatusIconIndex();
+		effectIndex = SublimationRecipes.getInstance().recipesMap().get(recipeWrapper.getInput()).getPotion().getStatusIconIndex();
 
 	}
 

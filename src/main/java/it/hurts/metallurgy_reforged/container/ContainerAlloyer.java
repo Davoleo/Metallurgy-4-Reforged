@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotAlloyerOutput;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -126,7 +126,7 @@ public class ContainerAlloyer extends Container {
 					return ItemStack.EMPTY;
 				}
 				else
-					Utils.giveExperience(player, itemstack.getCount() * BlockAlloyerRecipes.getInstance().getAlloyExperience(itemstack));
+					Utils.giveExperience(player, itemstack.getCount() * AlloyerRecipes.getInstance().getAlloyExperience(itemstack));
 
 			}
 			else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false))

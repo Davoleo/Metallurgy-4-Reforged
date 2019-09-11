@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: BlockAlloyerRecipes
+ * Class: AlloyerRecipes
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -22,21 +22,21 @@ import net.minecraftforge.oredict.OreDictionary;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BlockAlloyerRecipes {
+public class AlloyerRecipes {
 
-	private static final BlockAlloyerRecipes INSTANCE = new BlockAlloyerRecipes();
+	private static final AlloyerRecipes INSTANCE = new AlloyerRecipes();
 	private final Table<ItemStack, ItemStack, ItemStack> alloyingList = HashBasedTable.create();
 
 	private final Map<ItemStack, Float> experienceList = new HashMap<>();
 	private final Map<ItemStack, ItemStack[]> recipeQuants = new HashMap<>();
 
 
-	public static BlockAlloyerRecipes getInstance()
+	public static AlloyerRecipes getInstance()
 	{
 		return INSTANCE;
 	}
 
-	private BlockAlloyerRecipes()
+	private AlloyerRecipes()
 	{
 		//    	( [Input 1, quantit�], [Input 2, quantit�], [Output, quantit�, exp] )
 		this.addAlloyRecipe

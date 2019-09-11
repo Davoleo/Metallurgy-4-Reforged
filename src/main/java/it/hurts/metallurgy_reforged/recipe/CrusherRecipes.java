@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: BlockCrusherRecipes
+ * Class: CrusherRecipes
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -26,21 +26,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class BlockCrusherRecipes {
+public class CrusherRecipes {
 
-	private static final BlockCrusherRecipes INSTANCE = new BlockCrusherRecipes();
+	private static final CrusherRecipes INSTANCE = new CrusherRecipes();
 
 	private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
 	private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
 	private static List<ItemStack> stackBlacklist = new ArrayList<>();
 
-	public static BlockCrusherRecipes getInstance()
+	public static CrusherRecipes getInstance()
 	{
 		return INSTANCE;
 	}
 
-	private BlockCrusherRecipes()
+	private CrusherRecipes()
 	{
 		for (Metal m : ModMetals.metalList)
 		{
@@ -149,7 +149,7 @@ public class BlockCrusherRecipes {
 		if (ore.startsWith(in) && !outs.isEmpty())
 			for (ItemStack stack : OreDictionary.getOres(ore))
 				if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
-					BlockCrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
+					CrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
 	}
 
 }

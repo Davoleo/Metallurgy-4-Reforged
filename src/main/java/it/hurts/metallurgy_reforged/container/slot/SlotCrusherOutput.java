@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.container.slot;
 
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -52,7 +52,7 @@ public class SlotCrusherOutput extends Slot {
 		{
 			int i = output.getCount();
 			output.onCrafting(player.world, player, i);
-			Utils.giveExperience(player, i * BlockCrusherRecipes.getInstance().getCrushingExperience(output));
+			Utils.giveExperience(player, i * CrusherRecipes.getInstance().getCrushingExperience(output));
 		}
 		FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
 	}

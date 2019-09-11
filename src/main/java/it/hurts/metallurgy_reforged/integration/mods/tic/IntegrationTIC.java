@@ -18,7 +18,7 @@ import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -74,7 +74,7 @@ public class IntegrationTIC {
 
 	public static void postInit()
 	{
-		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : BlockAlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			FluidStack output = getFluidFromIngot(entry.getValue());
 			FluidStack input1 = getFluidFromIngot(entry.getRowKey());

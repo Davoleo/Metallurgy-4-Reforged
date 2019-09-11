@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: BlockSublimationRecipes
+ * Class: SublimationRecipes
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -20,17 +20,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class BlockSublimationRecipes {
+public class SublimationRecipes {
 
-	private static final BlockSublimationRecipes INSTANCE = new BlockSublimationRecipes();
+	private static final SublimationRecipes INSTANCE = new SublimationRecipes();
 	private final Map<ItemStack, PotionEffect> sublimationList = new HashMap<>();
 
-	public static BlockSublimationRecipes getInstance()
+	public static SublimationRecipes getInstance()
 	{
 		return INSTANCE;
 	}
 
-	private BlockSublimationRecipes()
+	private SublimationRecipes()
 	{
 
 		this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 6), new PotionEffect(MobEffects.SATURATION, 16000));

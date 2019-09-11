@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -364,7 +364,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			return false;
 		else
 		{
-			ItemStack result = BlockCrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
+			ItemStack result = CrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
 			if (result.isEmpty())
 				return false;
 			else
@@ -403,7 +403,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		if (this.canCrush())
 		{
 			ItemStack input = this.inventory.get(0);
-			ItemStack recipeResult = BlockCrusherRecipes.getInstance().getCrushingResult(input);
+			ItemStack recipeResult = CrusherRecipes.getInstance().getCrushingResult(input);
 			ItemStack output = this.inventory.get(2);
 			ItemStack output1 = this.inventory.get(3);
 			ItemStack output2 = this.inventory.get(4);
@@ -472,7 +472,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		}
 		else if (SlotEnum.INPUT_SLOT.contains(index))
 		{
-			return !BlockCrusherRecipes.getInstance().getCrushingResult(stack).isEmpty();
+			return !CrusherRecipes.getInstance().getCrushingResult(stack).isEmpty();
 		}
 		else
 		{

@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.jei.crusher;
 
-import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -37,7 +37,7 @@ public class CrusherRecipeWrapper implements IRecipeWrapper {
 	{
 		ArrayList<CrusherRecipeWrapper> recipes = new ArrayList<>();
 
-		BlockCrusherRecipes.getInstance().getRecipeMap().forEach((input, output) -> {
+		CrusherRecipes.getInstance().getRecipeMap().forEach((input, output) -> {
 			recipes.add(new CrusherRecipeWrapper(input, output));
 		});
 

@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.container.slot;
 
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -46,7 +46,7 @@ public class SlotAlloyerOutput extends Slot {
 		{
 			int i = output.getCount();
 			output.onCrafting(player.world, player, i);
-			Utils.giveExperience(player, i * BlockAlloyerRecipes.getInstance().getAlloyExperience(output));
+			Utils.giveExperience(player, i * AlloyerRecipes.getInstance().getAlloyExperience(output));
 		}
 		FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
 	}

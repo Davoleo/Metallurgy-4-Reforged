@@ -15,7 +15,7 @@ import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
 import net.minecraft.init.Items;
@@ -108,7 +108,7 @@ public class IntegrationProjectE {
 			else
 			{
 				//Alloy MC calculations
-				Table<ItemStack, ItemStack, ItemStack> recipes = BlockAlloyerRecipes.getInstance().getRecipeTable();
+				Table<ItemStack, ItemStack, ItemStack> recipes = AlloyerRecipes.getInstance().getRecipeTable();
 
 				for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : recipes.cellSet())
 					if (entry.getValue().getItem().equals(m.getIngot()))

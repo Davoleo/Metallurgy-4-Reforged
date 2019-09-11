@@ -27,7 +27,7 @@
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
- import it.hurts.metallurgy_reforged.recipe.BlockCrusherRecipes;
+ import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
  import it.hurts.metallurgy_reforged.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.util.ModChecker;
  import it.hurts.metallurgy_reforged.util.SubEvent;
@@ -145,7 +145,7 @@
 		 }
 
 		 MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
-		 BlockCrusherRecipes.registerDefaultOreRecipes();
+		 CrusherRecipes.registerDefaultOreRecipes();
 	 }
 
 

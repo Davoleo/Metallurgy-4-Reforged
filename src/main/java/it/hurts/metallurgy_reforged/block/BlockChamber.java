@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.block;
 
 import com.google.common.collect.Lists;
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
+import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -88,7 +88,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 		{
 			TileEntityChamber chamber = (TileEntityChamber) te;
 
-			BlockSublimationRecipes recipes = BlockSublimationRecipes.getInstance();
+			SublimationRecipes recipes = SublimationRecipes.getInstance();
 
 			int recipeAmount = recipes.getSublimationBlockAmount(stack);
 

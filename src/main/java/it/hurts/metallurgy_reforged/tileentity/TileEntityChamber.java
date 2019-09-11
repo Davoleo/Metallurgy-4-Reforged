@@ -15,7 +15,7 @@ import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockChamber;
 import it.hurts.metallurgy_reforged.container.ContainerNull;
-import it.hurts.metallurgy_reforged.recipe.BlockSublimationRecipes;
+import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -169,7 +169,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		else
 		{
 			ItemStack itemstack = this.inventory.get(METAL_SLOT);
-			BlockSublimationRecipes recipes = BlockSublimationRecipes.getInstance();
+			SublimationRecipes recipes = SublimationRecipes.getInstance();
 			int recipeAmount = recipes.getSublimationBlockAmount(stack);
 			return itemstack.getCount() < recipeAmount;
 		}
@@ -265,7 +265,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 		PotionEffect potionEffect = this.potionEffect;
 		if (potionEffect == null)
-			potionEffect = BlockSublimationRecipes.getInstance().getSublimationResult(METAL_STACK);
+			potionEffect = SublimationRecipes.getInstance().getSublimationResult(METAL_STACK);
 
 		if (this.fuelTime > 0)
 			this.fuelTime--;

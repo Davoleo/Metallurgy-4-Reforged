@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
-import it.hurts.metallurgy_reforged.recipe.BlockAlloyerRecipes;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -383,10 +383,10 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	private boolean canAlloy()
 	{
 
-		ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyResult(this.inventory.get(0), this.inventory.get(1));
+		ItemStack result = AlloyerRecipes.getInstance().getAlloyResult(this.inventory.get(0), this.inventory.get(1));
 
-		if (result.isEmpty() || this.inventory.get(0).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(0)) ||
-				this.inventory.get(1).getCount() < BlockAlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(1)))
+		if (result.isEmpty() || this.inventory.get(0).getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(0)) ||
+				this.inventory.get(1).getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(1)))
 			return false;
 		else
 		{
@@ -409,7 +409,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			ItemStack input1 = this.inventory.get(0);
 			ItemStack input2 = this.inventory.get(1);
 
-			ItemStack result = BlockAlloyerRecipes.getInstance().getAlloyResult(input1, input2);
+			ItemStack result = AlloyerRecipes.getInstance().getAlloyResult(input1, input2);
 			ItemStack output = this.inventory.get(3);
 
 			if (output.isEmpty())
@@ -417,8 +417,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			else if (output.isItemEqual(result) && ItemStack.areItemStackTagsEqual(output, result))
 				output.grow(result.getCount());
 
-			input1.shrink(BlockAlloyerRecipes.getInstance().getItemQuantity(result, input1));
-			input2.shrink(BlockAlloyerRecipes.getInstance().getItemQuantity(result, input2));
+			input1.shrink(AlloyerRecipes.getInstance().getItemQuantity(result, input1));
+			input2.shrink(AlloyerRecipes.getInstance().getItemQuantity(result, input2));
 		}
 	}
 
@@ -458,7 +458,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		}
 		else if (SlotEnum.INPUT_SLOT.contains(index))
 		{
-			if (BlockAlloyerRecipes.getInstance().isAlloyMetal(stack))
+			if (AlloyerRecipes.getInstance().isAlloyMetal(stack))
 			{
 				if (inventory.get(0).isEmpty())
 				{
@@ -475,7 +475,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 						}
 						else
 						{
-							return !BlockAlloyerRecipes.getInstance().getAlloyResult(one, stack).isEmpty();
+							return !AlloyerRecipes.getInstance().getAlloyResult(one, stack).isEmpty();
 						}
 					}
 				}
@@ -494,7 +494,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 						}
 						else
 						{
-							return !BlockAlloyerRecipes.getInstance().getAlloyResult(zero, stack).isEmpty();
+							return !AlloyerRecipes.getInstance().getAlloyResult(zero, stack).isEmpty();
 						}
 					}
 				}
