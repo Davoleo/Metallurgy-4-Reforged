@@ -415,17 +415,17 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			//TODO check if it's possible to improve this using switch or index
 			if (output.isEmpty())
 				this.inventory.set(2, recipeResult.copy());
-			else if (output.getItem() == recipeResult.getItem() && limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+			else if (ItemStack.areItemsEqual(output, recipeResult) && limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
 				output.grow(recipeResult.getCount());
 
 			else if (output1.isEmpty())
 				this.inventory.set(3, recipeResult.copy());
-			else if (output1.getItem() == recipeResult.getItem() && limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
+			else if (ItemStack.areItemsEqual(output, recipeResult) && limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
 				output1.grow(recipeResult.getCount());
 
 			else if (output2.isEmpty())
 				this.inventory.set(4, recipeResult.copy());
-			else if (output2.getItem() == recipeResult.getItem() && limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
+			else if (ItemStack.areItemsEqual(output, recipeResult) && limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
 				output2.grow(recipeResult.getCount());
 
 			if (input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !this.inventory.get(1).isEmpty() && this.inventory.get(1).getItem() == Items.BUCKET)
