@@ -14,9 +14,8 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run:
-          - chmod +x gradlew
-          -  ./gradlew build --stacktrace
+      before_install: ./chmod +x gradlew
+      run: ./gradlew build --stacktrace
     - name: Push Successful build to Discord
       if: success()
       env:
