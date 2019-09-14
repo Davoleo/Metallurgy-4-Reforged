@@ -47,36 +47,35 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class ArmorEffectHandler {
 
 	//	The speed sword modifier UUID
 	public static final UUID SHADOW_STEEL_ARMOR_MODIFIER_UUID = UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
 
+	public static List<UUID> glowingEntities = new ArrayList<>();
+
 	@SubscribeEvent
 	public static void onArmorTick(PlayerTickEvent event)
 	{
 		EntityPlayer pl = event.player; //The Player
 		World world = pl.world;
-		//		Astral Silver ArmorEffectHandler (Jump Boost)
+		//		Astral Silver Armor (Jump Boost)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.ASTRAL_SILVER.getArmorSet()) && ArmorEffectsConfig.astralSilverArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
 
-		//		Celenegil ArmorEffectHandler (Resistence)
+		//		Celenegil Armor (Resistence)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.CELENEGIL.getArmorSet()) && ArmorEffectsConfig.celenegilArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3, false, false));
 
 
-		//		Deep Iron ArmorEffectHandler (Swimming Speed when the player is in water and on ground)
+		//		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.DEEP_IRON.getArmorSet())
 				&& event.player.isInWater() && ArmorEffectsConfig.deepIronArmorEffect)
 		{
 
-			//			Slot index of ArmorEffectHandler : 5 - 6 - 7 - 8
+			//			Slot index of Armor : 5 - 6 - 7 - 8
 			for (int i = 5; i < 9; i++)
 			{
 				if (!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative())
@@ -141,26 +140,26 @@ public class ArmorEffectHandler {
 
 		}
 
-		//		Vulcanite ArmorEffectHandler (Fire Immunity) //Removes Fire Render
+		//		Vulcanite Armor (Fire Immunity) //Removes Fire Render
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.VULCANITE.getArmorSet()) && event.player.isBurning() && ArmorEffectsConfig.vulcaniteArmorEffect)
 			event.player.extinguish();
 
-		//		Angmallen ArmorEffectHandler (Luck I for Vampirism)
+		//		Angmallen Armor (Luck I for Vampirism)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.ANGMALLEN.getArmorSet()) && ArmorEffectsConfig.angmallenArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0, false, false));
 
 
-		//		Kalendrite ArmorEffectHandler (Strenght I)
+		//		Kalendrite Armor (Strenght I)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.KALENDRITE.getArmorSet()) && ArmorEffectsConfig.kaledriteArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false));
 
 
-		//		Amordrine ArmorEffectHandler (Strenght II)
+		//		Amordrine Armor (Strenght II)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.AMORDRINE.getArmorSet()) && ArmorEffectsConfig.amordrineArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1, false, false));
 
 
-		//		Adamantine ArmorEffectHandler (Saturation)
+		//		Adamantine Armor (Saturation)
 		if (ArmorEffectsConfig.adamantineArmorEffect && !world.isRemote && EventUtils.isPlayerWearingArmor(event.player, ModMetals.ADAMANTINE.getArmorSet()))
 		{
 			FoodStats foodStat = pl.getFoodStats();
@@ -236,7 +235,7 @@ public class ArmorEffectHandler {
 			}
 		}
 
-		//		Platinum ArmorEffectHandler (Night Vision, Needed Vanishing Curse)
+		//		Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmor(EntityEquipmentSlot.HEAD)) && ArmorEffectsConfig.platinumArmorEffect)
 		{
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
@@ -251,16 +250,16 @@ public class ArmorEffectHandler {
 			}
 		}
 
-		//		Carmot ArmorEffectHandler (Haste I)
+		//		Carmot Armor (Haste I)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.CARMOT.getArmorSet()) && ArmorEffectsConfig.carmotArmorEffect)
 			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
 
 
-		//		Prometheum ArmorEffectHandler (No potion, need to implement a new Effect)
+		//		Prometheum Armor (No potion, need to implement a new Effect)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.PROMETHEUM.getArmorSet()) && ArmorEffectsConfig.prometheumArmorEffect)
 			event.player.removePotionEffect(MobEffects.POISON);
 
-		//		Shadow Iron ArmorEffectHandler (No Blindness)
+		//		Shadow Iron Armor (No Blindness)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.SHADOW_IRON.getArmorSet()))
 			event.player.removePotionEffect(MobEffects.BLINDNESS);
 
@@ -284,22 +283,31 @@ public class ArmorEffectHandler {
 		}
 	}
 
-	//	Mithril ArmorEffectHandler (Ultra istinto)
+	//	Mithril Armor
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void glowingArmorEffect(RenderLivingEvent.Pre<EntityLivingBase> ev)
+	public static void glowingArmorEffect(RenderLivingEvent.Pre<EntityLivingBase> event)
 	{
-
-		//		Get Client Side Player
 		EntityPlayer pl = Minecraft.getMinecraft().player;
-		if (pl != null && !ev.getEntity().equals(pl)) //Check if player exists and the Rendered Entity isn't the player himself
-			//checks if:  the player wears The Mithrill ArmorEffectHandler, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
-			if (EventUtils.isPlayerWearingArmor(pl, ModMetals.MITHRIL.getArmorSet())
-					&& ev.getEntity().getDistance(Minecraft.getMinecraft().player) < 30D && !ev.getEntity().isGlowing() && ArmorEffectsConfig.mithrilArmorEffect)
+		EntityLivingBase entity = event.getEntity();
 
-				ev.getEntity().setGlowing(true);
-			else
-				ev.getEntity().setGlowing(false);
+		//Check if player exists and the Rendered Entity isn't the player himself
+		if (pl != null && !entity.equals(pl))
+
+			//checks if the player wears The Mithril Armor, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
+			if (EventUtils.isPlayerWearingArmor(pl, ModMetals.MITHRIL.getArmorSet())
+					&& entity.getDistance(Minecraft.getMinecraft().player) < 30D
+					&& !entity.isGlowing()
+					&& ArmorEffectsConfig.mithrilArmorEffect)
+			{
+				entity.setGlowing(true);
+				glowingEntities.add(entity.getUniqueID());
+			}
+			//Removes the effect only if metallurgy adds it
+			else if (glowingEntities.contains(entity.getUniqueID()))
+			{
+				entity.setGlowing(false);
+			}
 
 	}
 
