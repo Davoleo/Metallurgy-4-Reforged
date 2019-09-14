@@ -307,6 +307,7 @@ public class ArmorEffectHandler {
 			else if (glowingEntities.contains(entity.getUniqueID()))
 			{
 				entity.setGlowing(false);
+				glowingEntities.remove(entity.getUniqueID());
 			}
 
 	}
