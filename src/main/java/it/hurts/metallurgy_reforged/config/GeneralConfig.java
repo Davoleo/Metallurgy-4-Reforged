@@ -43,15 +43,20 @@ public class GeneralConfig {
 
 	@Config.Name("Disable tinker integration")
 	@Config.Comment("Set to true to disable Tinkers' Construct Integration")
-	public static boolean tinkerIntegraton = false;
+	public static boolean tinkerIntegration = false;
+
+	@Config.Name("Tinker Materials Blacklist")
+	@Config.Comment("Add a material in this array to blacklist it during game boot - material name format is \"snake_case\" (e.g. 'osmium' or 'damascus_steel')")
+	@Config.RequiresMcRestart
+	public static String[] tinkerMaterialsBlacklist = new String[]{ };
 
 	@Config.Name("Disable ConArm Integration")
 	@Config.Comment("Set to true to disable Construct's Armory Integration")
-	public static boolean armoryIntegraton = false;
+	public static boolean armoryIntegration = false;
 
 	@Config.Name("Disable IF Integration")
 	@Config.Comment("Set to true to disable Industrial Foregoing Integration")
-	public static boolean inForegoingIntegraton = false;
+	public static boolean inForegoingIntegration = false;
 
 	@Config.Name("Disable Automatic EMC values")
 	@Config.Comment("Set to true to disable default EMC values")

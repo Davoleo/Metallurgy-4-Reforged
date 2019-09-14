@@ -87,19 +87,19 @@
 		 logger.info("Tile Entities Registered!");
 
 		 //		check if tinker is installed
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
+		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 		 {
 			 IntegrationTIC.preInit();
 			 logger.info("Tinkers' Construct integration has been pre-initialized");
 
-			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 			 {
 				 IntegrationCArmory.preInit();
 				 logger.info("Construct's Armory integration has been pre-initialized");
 			 }
 		 }
 
-		 if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegraton)
+		 if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
 		 {
 			 IntegrationIF.preInit();
 			 logger.info("Industrial Foregoing integration has been pre-initialized");
@@ -126,12 +126,12 @@
 		 ModRecipes.init();
 		 logger.info("Recipes loaded!");
 
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
+		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 		 {
 			 IntegrationTIC.init();
 			 logger.info("Tinkers' Construct integration has been initialized");
 
-			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 			 {
 				 IntegrationCArmory.init();
 				 logger.info("Construct's Armory integration has been initialized");
@@ -159,7 +159,7 @@
 		 PacketManager.init();
 		 logger.info(NAME + "'s Network System Loaded");
 
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegraton)
+		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 			 IntegrationTIC.postInit();
 		 logger.info("Tinker's alloy recipes loaded");
 

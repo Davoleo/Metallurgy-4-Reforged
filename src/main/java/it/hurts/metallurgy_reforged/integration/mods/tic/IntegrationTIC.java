@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.integration.mods.tic;
 
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.item.ModItems;
@@ -24,6 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import scala.actors.threadpool.Arrays;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -32,13 +34,17 @@ import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
+import java.util.List;
+
 public class IntegrationTIC {
+
+	public static List<?> blacklistedMaterials = Arrays.asList(GeneralConfig.tinkerMaterialsBlacklist);
 
 	public static void preInit()
 	{
 		for (Metal metal : ModMetals.metalList)
 		{
-			if (checkMaterial(metal) && checkMaterialPreInit(metal))
+			if (checkMaterial(metal) && checkMaterialPreInit(metal) && !blacklistedMaterials.contains(metal.toString()))
 			{
 				TiCMaterial material = new TiCMaterial(metal);
 
@@ -51,7 +57,7 @@ public class IntegrationTIC {
 	{
 		for (Metal metal : ModMetals.metalList)
 		{
-			if (checkMaterial(metal))
+			if (checkMaterial(metal) && !blacklistedMaterials.contains(metal.toString()))
 			{
 				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
 

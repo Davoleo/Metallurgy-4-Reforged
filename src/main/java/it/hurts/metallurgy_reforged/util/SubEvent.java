@@ -41,7 +41,7 @@ public class SubEvent {
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 
-		if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegraton)
+		if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 		{
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.quickly);
 			MinecraftForge.EVENT_BUS.register(MetallurgyArmorTraits.stronglyAmordrine);
