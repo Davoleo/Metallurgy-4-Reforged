@@ -119,6 +119,11 @@ public class Utils {
 		return new TextComponentTranslation(unlocalized).getFormattedText();
 	}
 
+	public static String localizeIgnoreFormat(String unlocalized)
+	{
+		return new TextComponentTranslation(unlocalized).getUnformattedComponentText();
+	}
+
 	public static Potion getRandomEffect()
 	{
 		return randomEffectsList[(int) (Math.random() * Utils.getMaxIndexEffect())];
