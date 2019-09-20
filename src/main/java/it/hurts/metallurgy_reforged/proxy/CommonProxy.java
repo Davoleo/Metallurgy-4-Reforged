@@ -31,10 +31,10 @@ public class CommonProxy {
 	{
 		File directory = e.getModConfigurationDirectory();
 
-		armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\armor.cfg"));
+		armorConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged" + File.separator + "armor.cfg"));
 		ArmorConfig.readConfig(armorConfig);
 
-		toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged\\tool.cfg"));
+		toolConfig = new Configuration(new File(directory.getPath(), "metallurgy_reforged" + File.separator + "tool.cfg"));
 		ToolConfig.readConfig(toolConfig);
 	}
 
