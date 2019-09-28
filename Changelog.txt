@@ -225,3 +225,19 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 - Fixed crash with Lucraft
 - Added JEI description for thermite and lemurite shield
 
+0.2.3
+- CraftTweaker Integration for Metallurgy Machines
+- Fixed infinite xp shift-clicking the machines’ output in your inventory while having full inventory
+- Fixed Tar lakes not generating in non-default world generators (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/186)
+- Fixed Console spam when a player is holding a Tinker's tools using Deep Iron (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/194)
+- Implemented a config entry to allow the end user to restore classic vanilla axes damage values
+- Improvements concerning sword and tool effects handling (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/189)
+- Fixed a bug that caused tooltip registration failure (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/195)
+- Improved Phosphorus Lantern Spawn Block (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/190)
+- Introducing The Sublimation Chamber
+	- new Machine that allows you to sublimate blocks of some materials giving a certain effect to all the players within its area
+	- the peculiarity of this machine is that it provides you with a long duration effect, so you can keep the effect also when leaving the area
+- Fix molten fluids names to respect conventional naming (Should fix bug of the tinker smeltery not alloying materials)
+- Allow the end user to blacklist tinker materials from being loaded in the config
+- Fix crusher metadata exploit (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/205)
+- Fix Glowing effect Robotics Part Compatibility (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/203)
