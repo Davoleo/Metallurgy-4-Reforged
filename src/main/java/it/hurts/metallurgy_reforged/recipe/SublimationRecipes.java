@@ -33,17 +33,17 @@ public class SublimationRecipes {
 	private SublimationRecipes()
 	{
 
-		this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 3), new PotionEffect(MobEffects.SATURATION, 20000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(), 4), new PotionEffect(MobEffects.HASTE, 20000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(), 4), new PotionEffect(MobEffects.FIRE_RESISTANCE, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.QUICKSILVER.getBlock(), 2), new PotionEffect(MobEffects.SPEED, 20000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.STEEL.getBlock(), 2), new PotionEffect(MobEffects.STRENGTH, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.DEEP_IRON.getBlock(), 3), new PotionEffect(MobEffects.WATER_BREATHING, 18000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.ELECTRUM.getBlock(), 3), new PotionEffect(MobEffects.NIGHT_VISION, 20000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.CELENEGIL.getBlock(), 4), new PotionEffect(MobEffects.RESISTANCE, 20000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.KALENDRITE.getBlock(), 3), new PotionEffect(MobEffects.REGENERATION, 18000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.MIDASIUM.getBlock(), 2), new PotionEffect(MobEffects.LUCK, 16000));
-		this.addSublimationRecipe(new ItemStack(ModMetals.HADEROTH.getBlock(), 2), new PotionEffect(MobEffects.HEALTH_BOOST, 16000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ADAMANTINE.getBlock(), 5), new PotionEffect(MobEffects.SATURATION, 24000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.CARMOT.getBlock(), 6), new PotionEffect(MobEffects.HASTE, 24000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(), 6), new PotionEffect(MobEffects.FIRE_RESISTANCE, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.QUICKSILVER.getBlock(), 4), new PotionEffect(MobEffects.SPEED, 24000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.STEEL.getBlock(), 4), new PotionEffect(MobEffects.STRENGTH, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.DEEP_IRON.getBlock(), 5), new PotionEffect(MobEffects.WATER_BREATHING, 22000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ELECTRUM.getBlock(), 5), new PotionEffect(MobEffects.NIGHT_VISION, 24000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.CELENEGIL.getBlock(), 6), new PotionEffect(MobEffects.RESISTANCE, 24000, 1));
+		this.addSublimationRecipe(new ItemStack(ModMetals.KALENDRITE.getBlock(), 5), new PotionEffect(MobEffects.REGENERATION, 22000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.MIDASIUM.getBlock(), 4), new PotionEffect(MobEffects.LUCK, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.HADEROTH.getBlock(), 4), new PotionEffect(MobEffects.HEALTH_BOOST, 20000, 4));
 
 	}
 
