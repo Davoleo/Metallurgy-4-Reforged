@@ -38,6 +38,12 @@ public class SublimationRecipes {
 		this.addSublimationRecipe(new ItemStack(ModMetals.ALDUORITE.getBlock(), 4), new PotionEffect(MobEffects.FIRE_RESISTANCE, 16000));
 		this.addSublimationRecipe(new ItemStack(ModMetals.QUICKSILVER.getBlock(), 2), new PotionEffect(MobEffects.SPEED, 20000));
 		this.addSublimationRecipe(new ItemStack(ModMetals.STEEL.getBlock(), 2), new PotionEffect(MobEffects.STRENGTH, 16000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.DEEP_IRON.getBlock(), 3), new PotionEffect(MobEffects.WATER_BREATHING, 18000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.ELECTRUM.getBlock(), 3), new PotionEffect(MobEffects.NIGHT_VISION, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.CELENEGIL.getBlock(), 4), new PotionEffect(MobEffects.RESISTANCE, 20000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.KALENDRITE.getBlock(), 3), new PotionEffect(MobEffects.REGENERATION, 18000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.MIDASIUM.getBlock(), 2), new PotionEffect(MobEffects.LUCK, 16000));
+		this.addSublimationRecipe(new ItemStack(ModMetals.HADEROTH.getBlock(), 2), new PotionEffect(MobEffects.HEALTH_BOOST, 16000));
 
 	}
 
