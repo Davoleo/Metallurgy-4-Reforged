@@ -1,4 +1,4 @@
-//THIS FEATURE HAS NOT BEEN RELEASED YET AS SUCH THIS INFORMATION IS NOT COHERENT WITH 0.2.2
+//AVAILABLE FROM 0.2.3 AND ON
 
 import mods.metallurgyreforged.Crusher;
 import mods.metallurgyreforged.Alloyer;
