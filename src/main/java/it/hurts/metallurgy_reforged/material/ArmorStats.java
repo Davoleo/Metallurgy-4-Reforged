@@ -34,6 +34,7 @@ public class ArmorStats {
 		return damageReduction;
 	}
 
+	//Armor Enchantability
 	public int getArmorMagic()
 	{
 		return armorMagic;

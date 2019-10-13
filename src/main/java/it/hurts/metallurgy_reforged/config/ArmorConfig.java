@@ -40,6 +40,7 @@ public class ArmorConfig {
 	public static boolean deep_iron = true;
 	public static boolean desichalkos = true;
 	public static boolean electrum = true;
+	public static boolean etherium = true;
 	public static boolean eximite = true;
 	public static boolean haderoth = true;
 	public static boolean hepatizon = true;
@@ -82,6 +83,7 @@ public class ArmorConfig {
 			deep_iron,
 			desichalkos,
 			electrum,
+			etherium,
 			eximite,
 			haderoth,
 			hepatizon,

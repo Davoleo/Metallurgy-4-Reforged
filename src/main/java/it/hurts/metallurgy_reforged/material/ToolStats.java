@@ -25,6 +25,7 @@ public class ToolStats {
 		this.damage = damage;
 	}
 
+	//Tool Enchantability
 	public int getToolMagic()
 	{
 		return toolMagic;

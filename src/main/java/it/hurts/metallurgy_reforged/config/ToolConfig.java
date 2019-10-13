@@ -52,6 +52,8 @@ public class ToolConfig {
 
 	public static boolean[] electrum = {true, true, true, true, true};
 
+	public static boolean[] etherium = {true, true, true, true, true};
+
 	public static boolean[] eximite = {true, true, true, true, true};
 
 	public static boolean[] haderoth = {true, true, true, true, true};
@@ -113,6 +115,7 @@ public class ToolConfig {
 			deep_iron,
 			desichalkos,
 			electrum,
+			etherium,
 			eximite,
 			haderoth,
 			hepatizon,

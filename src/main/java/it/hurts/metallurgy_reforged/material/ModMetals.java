@@ -88,6 +88,9 @@ public class ModMetals {
 	public static final Metal ELECTRUM = new MetalStats("electrum", "Electrum", 2, LOW_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_IMPACT),
 			new ToolStats(30, 2, 70, 14F, 2F), new FluidStats(0xFFEFEF57), -1).createMetal();
+	public static final Metal ETHERIUM = new MetalStats("etherium", "Etherium", 2, LOW_TIER_BLAST_RESISTANCE,
+			new ArmorStats(new int[]{3, 5, 6, 2}, 45, 750, 0F, SoundEvents.UI_TOAST_IN),
+			new ToolStats(35, 8, 500, 18F, 2F), new FluidStats(0xFFBBBBBB), -1).createMetal();
 	public static final Metal EXIMITE = new MetalStats("eximite", "Eximite", 2, HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDERDRAGON_GROWL),
 			new ToolStats(25, 7, 1000, 8F, 4F), new FluidStats(0xFF5E4191), 3).createMetal();
