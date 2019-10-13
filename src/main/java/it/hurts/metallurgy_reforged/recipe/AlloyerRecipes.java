@@ -108,6 +108,10 @@ public class AlloyerRecipes {
 				(new ItemStack(ModMetals.LUTETIUM.getIngot()),
 						new ItemStack(ModMetals.OSMIUM.getIngot()),
 						new ItemStack(ModMetals.KRIK.getIngot(), 2), 1.25F);
+		this.addAlloyRecipe
+				(new ItemStack(ModMetals.ETHERIUM.getIngot()),
+						new ItemStack(ModMetals.CARMOT.getIngot()),
+						new ItemStack(ModMetals.SANGUINITE.getIngot(), 2), 1.25F);
 	}
 
 	public void addAlloyRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience)
