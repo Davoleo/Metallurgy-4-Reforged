@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.recipe;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class SublimationRecipes {
 
 	}
 
-	private void addSublimationRecipe(ItemStack input, PotionEffect potion)
+	public void addSublimationRecipe(ItemStack input, PotionEffect potion)
 	{
 
 		if (input.isEmpty() || potion == null)
@@ -56,6 +57,17 @@ public class SublimationRecipes {
 			return;
 
 		this.sublimationList.put(input, potion);
+	}
+
+	public void removeSublimationRecipe(Potion output)
+	{
+		for (Map.Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet())
+		{
+			if (output == entry.getValue().getPotion())
+			{
+				sublimationList.remove(entry.getKey());
+			}
+		}
 	}
 
 	public PotionEffect getSublimationResult(ItemStack input)

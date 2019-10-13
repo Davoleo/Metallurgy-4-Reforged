@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.gui.hud;
 
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
@@ -48,14 +49,14 @@ public class SublimationChamberHUD {
 		TileEntityChamber te = ((TileEntityChamber) world.getTileEntity(pos));
 		Map<ItemStack, PotionEffect> recipes = SublimationRecipes.getInstance().recipesMap();
 
-		ItemStack metal = te.getStackInSlot(TileEntityChamber.METAL_SLOT);
+		ItemStack metalStack = te.getStackInSlot(TileEntityChamber.METAL_SLOT);
 
-		if (!metal.isEmpty())
+		if (!metalStack.isEmpty())
 		{
 			RenderHelper.enableStandardItemLighting();
-			minecraft.getRenderItem().renderItemIntoGUI(metal, x - 40, y - 7);
+			minecraft.getRenderItem().renderItemIntoGUI(metalStack, x - 40, y - 7);
 			RenderHelper.disableStandardItemLighting();
-			minecraft.fontRenderer.drawStringWithShadow(String.valueOf(metal.getCount()), x - 50, y - 3, 0xFFFFFF);
+			minecraft.fontRenderer.drawStringWithShadow(String.valueOf(metalStack.getCount()), x - 50, y - 3, 0xFFFFFF);
 		}
 
 		ItemStack fuel = te.getStackInSlot(TileEntityChamber.FUEL_SLOT);
@@ -73,10 +74,10 @@ public class SublimationChamberHUD {
 
 			for (Map.Entry<ItemStack, PotionEffect> recipe : recipes.entrySet())
 			{
-				if (recipe.getKey().getItem() == metal.getItem())
+				if (recipe.getKey().getItem() == metalStack.getItem())
 				{
 					effect = recipe.getValue();
-					metal.setCount(recipe.getKey().getCount());
+					metalStack.setCount(recipe.getKey().getCount());
 				}
 			}
 
@@ -94,7 +95,8 @@ public class SublimationChamberHUD {
 			}
 
 
-			int color = ItemUtils.getMetalFromItem(metal.getItem()).getStats().getMetalColor();
+			Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
+			int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
 			minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " seconds", x - 33, y - 30, color);
 		}
 	}

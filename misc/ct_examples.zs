@@ -2,6 +2,7 @@
 
 import mods.metallurgyreforged.Crusher;
 import mods.metallurgyreforged.Alloyer;
+import mods.metallurgyreforged.SublimationChamber;  // Available from 0.3.0
 //import integration classes you need ^^^
 
 
@@ -33,3 +34,14 @@ Alloyer.addRecipe(<metallurgy:inolashite_ingot>, <ore:ingotOrichalcum>, <minecra
 //Removes an existing recipe from the Alloyer recipes list
 //Alloyer.removeRecipe(IItemStack output)
 Alloyer.removeRecipe(<metallurgy:tartarite_ingot>);
+
+
+
+//AVAILABLE from 0.3.0 and on
+//Adds a new Sublimation Recipe to the Sublimation Chamber   -
+//SublimationChamber.addRecipe(IItemStack input, IPotion output, int tickDuration, int amplifier);
+SublimationChamber.addRecipe(<metallurgy:tar> * 32, <potion:minecraft:slowness>, 5000, 1);
+
+//Removes a Sublimation Recipe from the Sublimation Chamber
+//SublimationChamber.removeRecipe(IPotion output);
+SublimationChamber.removeRecipe(<potion:minecraft:strength>);

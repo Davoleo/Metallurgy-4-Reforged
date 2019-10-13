@@ -13,7 +13,9 @@ package it.hurts.metallurgy_reforged.integration.mods.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.potions.IPotion;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 
 public class IntegrationCT {
 
@@ -22,6 +24,7 @@ public class IntegrationCT {
 
 		CraftTweakerAPI.registerClass(CompatCrusher.class);
 		CraftTweakerAPI.registerClass(CompatAlloyer.class);
+		CraftTweakerAPI.registerClass(CompatSublimationChamber.class);
 
 	}
 
@@ -44,6 +47,13 @@ public class IntegrationCT {
 			ret[i] = toStack(iStacks[i]);
 		}
 		return ret;
+	}
+
+	public static Potion getInternalPotion(IPotion effect)
+	{
+		if (effect == null)
+			return null;
+		return (Potion) effect.getInternal();
 	}
 
 }
