@@ -25,7 +25,6 @@ jobs:
         HOOK_OS_NAME: ${{ runner.os }}
         WORKFLOW_NAME: ${{ github.workflow }}
       run: |
-        mkdir webhook
         git clone https://github.com/DiscordHooks/github-actions-discord-webhook.git webhook
-        ./discord.sh success $WEBHOOK_URL	        bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
+        bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
       shell: bash
