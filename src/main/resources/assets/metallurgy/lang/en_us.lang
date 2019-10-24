@@ -483,6 +483,7 @@ fluid.deep_iron=Molten Deep Iron
 fluid.desichalkos=Molten Desichalkos
 fluid.damascus_steel=Molten Damascus Steel
 fluid.electrum=Molten Electrum
+fluid.etherium=Molten Etherium
 fluid.eximite=Molten Eximite
 fluid.haderoth=Molten Haderoth
 fluid.hepatizon=Molten Hepatizon
@@ -509,13 +510,15 @@ fluid.shadow_iron=Molten Shadow Iron
 fluid.shadow_steel=Molten Shadow Steel
 fluid.silver=Molten Silver
 fluid.steel=Molten Steel
-fluid.tar=Liquid Tar
 fluid.tartarite=Molten Tartarite
-fluid.thermite=Molten Thermite
 fluid.tin=Molten Tin
 fluid.vulcanite=Molten Vulcanite
 fluid.vyroxeres=Molten Vyroxeres
 fluid.zinc=Molten Zinc
+
+#Special Fluids
+fluid.molten_thermite=Molten Thermite
+fluid.molten_tar=Liquid Tar
 
 #Ingots
 item.metallurgy.adamantine_ingot.name=Adamantine Ingot
