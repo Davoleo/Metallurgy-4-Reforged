@@ -16,6 +16,7 @@
   </JavaCodeStyleSettings>
   <codeStyleSettings language="JAVA">
     <option name="RIGHT_MARGIN" value="120" />
+      <option name="LINE_COMMENT_AT_FIRST_COLUMN" value="false"/>
     <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
     <option name="KEEP_CONTROL_STATEMENT_IN_ONE_LINE" value="false" />
     <option name="BLANK_LINES_BEFORE_PACKAGE" value="1" />
@@ -38,4 +39,11 @@
       <option name="SMART_TABS" value="true" />
     </indentOptions>
   </codeStyleSettings>
+    <codeStyleSettings language="JSON">
+        <indentOptions>
+            <option name="INDENT_SIZE" value="3"/>
+            <option name="TAB_SIZE" value="3"/>
+            <option name="USE_TAB_CHARACTER" value="true"/>
+        </indentOptions>
+    </codeStyleSettings>
 </code_scheme>
