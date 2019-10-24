@@ -50,6 +50,11 @@ public class ChamberRecipeCategory implements IRecipeCategory<ChamberRecipeWrapp
 	public void drawExtras(Minecraft minecraft)
 	{
 		flame.draw(minecraft, 75, 49);
+
+		//Failed Attempt to draw outside the recipe box :P
+		//minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_effect_duration"),10, 20, 0xFFFFFF);
+		//minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat("|"),50, 20, 0xFFFFFF);
+		//minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_effect_name"),80, 20, 0xFFFFFF);
 	}
 
 	@Nonnull

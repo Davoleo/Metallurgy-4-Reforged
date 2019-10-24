@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -91,13 +92,14 @@ public class SublimationChamberHUD {
 				drawTexturedModalRect(x + 30, y - 10, 141, 166, 24, 24);
 				drawTexturedModalRect(x + 33, y - 8, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
 
+				Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
+				int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
+				minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds"), x - 33, y - 30, color);
+				minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat(effect.getEffectName()), x + 30, y + 25, color);
+
 				GlStateManager.popMatrix();
 			}
 
-
-			Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
-			int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
-			minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " seconds", x - 33, y - 30, color);
 		}
 	}
 
