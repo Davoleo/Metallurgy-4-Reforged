@@ -20,6 +20,8 @@ import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class ModLakeWorldGen {
@@ -29,9 +31,10 @@ public class ModLakeWorldGen {
 	{
 		World world = event.getWorld();
 		Random rand = new Random();
+		List<Integer> dimensionBlacklist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionBlacklist);
 
 		if ((rand.nextInt(500) + 1) <= WorldGenerationConfig.tarLakePercentage)
-			if (world.provider.getDimension() != 1 && world.provider.getDimension() != -1)
+			if (!dimensionBlacklist.contains(world.provider.getDimension()))
 			{
 				int x = event.getChunkX() * 16;
 				int z = event.getChunkZ() * 16;
