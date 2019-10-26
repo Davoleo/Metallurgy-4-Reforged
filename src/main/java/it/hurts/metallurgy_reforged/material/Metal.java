@@ -172,10 +172,13 @@ public class Metal {
 
 	public MetalColors getMetalColor()
 	{
-		return MetalColors.byName(stats.getName());
+		return MetalColors.byName(stats.getName().toUpperCase());
 	}
 
 
+	/**
+	 * @return The metal name in snake_case
+	 */
 	@Override
 	public String toString()
 	{

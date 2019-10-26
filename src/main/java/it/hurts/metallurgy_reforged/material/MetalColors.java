@@ -94,7 +94,8 @@ public enum MetalColors {
 	{
 		for (MetalColors color : values())
 		{
-			if (color.name().toLowerCase() == metal)
+			//System.out.println(color.name() +  " | " + metal);
+			if (color.name().equals(metal))
 				return color;
 		}
 
