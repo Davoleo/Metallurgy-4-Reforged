@@ -170,6 +170,11 @@ public class Metal {
 		return armorSet;
 	}
 
+	public MetalColors getMetalColor()
+	{
+		return MetalColors.byName(stats.getName());
+	}
+
 
 	@Override
 	public String toString()
