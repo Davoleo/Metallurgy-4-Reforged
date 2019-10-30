@@ -920,12 +920,15 @@ tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+#Axes
+tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
+
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
 
 #Shovel
-tooltip.metallurgy.ignatius_shovel_effect=§cAutomatically smelts the block drops
+tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
 
 #Swords
 tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick

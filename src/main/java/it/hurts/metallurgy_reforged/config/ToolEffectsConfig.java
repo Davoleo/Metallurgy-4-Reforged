@@ -18,6 +18,11 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "tools")
 public class ToolEffectsConfig {
 
+	//Axes
+	@Config.Name("Ignatius Pickaxe Effect")
+	@Config.Comment("Has a chance of smelting the block drops depending on fortune applied to the tool")
+	public static boolean ignatiusAxeEffect = true;
+
 	//Pickaxes
 	@Config.Name("Deep Iron Pickaxe Effect")
 	@Config.Comment("Underwater mining is not slowed down")
@@ -29,7 +34,7 @@ public class ToolEffectsConfig {
 
 	//Shovels
 	@Config.Name("Ignatius Shovel Effect")
-	@Config.Comment("Automatically smelts the block drops")
+	@Config.Comment("Has a chance of smelting the block drops depending on fortune applied to the tool")
 	public static boolean ignatiusShovelEffect = true;
 
 	//Tools

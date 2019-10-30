@@ -37,51 +37,7 @@ public class ShovelEffectHandler {
 
 		if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.SHOVEL)))
 		{
-			List<ItemStack> drops = event.getDrops();
-			for (ItemStack drop : drops)
-			{
-				ItemStack smeltedItem = FurnaceRecipes.instance().getSmeltingResult(drop);
-
-				if (!smeltedItem.isEmpty())
-				{
-					switch (event.getFortuneLevel())
-					{
-						//25% chance
-						case 0:
-							if (Utils.random.nextInt(4) == 0)
-							{
-								event.setDropChance(0);
-								world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-							}
-							break;
-
-						//50% chance
-						case 1:
-							if (Utils.random.nextInt(2) == 0)
-							{
-								event.setDropChance(0);
-								world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-							}
-							break;
-
-						//75% chance
-						case 2:
-							if (Utils.random.nextInt(4) != 0)
-							{
-								event.setDropChance(0);
-								world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-							}
-							break;
-
-						//100% chance
-						case 3:
-						default:
-							event.setDropChance(0);
-							world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-							break;
-					}
-				}
-			}
+			dropSmeltedItems(event, world, pos);
 		}
 
 		// TODO: 30/10/2019 ASK PIER
@@ -96,6 +52,54 @@ public class ShovelEffectHandler {
 		//		event.getDrops().add(new ItemStack(nugget, Utils.random.nextInt(3)));
 		//	}
 		//}
+	}
+
+	protected static void dropSmeltedItems(BlockEvent.HarvestDropsEvent event, World world, BlockPos pos) {
+		List<ItemStack> drops = event.getDrops();
+		for (ItemStack drop : drops)
+		{
+			ItemStack smeltedItem = FurnaceRecipes.instance().getSmeltingResult(drop);
+
+			if (!smeltedItem.isEmpty())
+			{
+				switch (event.getFortuneLevel())
+				{
+					//25% chance
+					case 0:
+						if (Utils.random.nextInt(4) == 0)
+						{
+							event.setDropChance(0);
+							world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
+						}
+						break;
+
+					//50% chance
+					case 1:
+						if (Utils.random.nextInt(2) == 0)
+						{
+							event.setDropChance(0);
+							world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
+						}
+						break;
+
+					//75% chance
+					case 2:
+						if (Utils.random.nextInt(4) != 0)
+						{
+							event.setDropChance(0);
+							world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
+						}
+						break;
+
+					//100% chance
+					case 3:
+					default:
+						event.setDropChance(0);
+						world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
+						break;
+				}
+			}
+		}
 	}
 
 }

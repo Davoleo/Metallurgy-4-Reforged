@@ -17,6 +17,9 @@ import net.minecraft.item.Item;
 
 public enum EnumToolEffects {
 
+	//Axe Effects
+	IGNATIUS_AXE_EFFECT("tooltip.metallurgy.ignatius_axe_effect", ToolEffectsConfig.ignatiusAxeEffect, EnumTools.AXE),
+
 	//Pickaxe Effects
 	DEEP_IRON_PICKAXE_EFFECT("tooltip.metallurgy.deep_iron_pickaxe_effect", ToolEffectsConfig.deepIronPickaxeEffect, EnumTools.PICKAXE),
 	IGNATIUS_PICKAXE_EFFECT("tooltip.metallurgy.ignatius_pickaxe_effect", ToolEffectsConfig.ignatiusPickaxeEffect, EnumTools.PICKAXE),
