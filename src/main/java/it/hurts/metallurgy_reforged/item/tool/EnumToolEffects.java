@@ -19,7 +19,11 @@ public enum EnumToolEffects {
 
 	//Pickaxe Effects
 	DEEP_IRON_PICKAXE_EFFECT("tooltip.metallurgy.deep_iron_pickaxe_effect", ToolEffectsConfig.deepIronPickaxeEffect, EnumTools.PICKAXE),
+	IGNATIUS_PICKAXE_EFFECT("tooltip.metallurgy.ignatius_pickaxe_effect", ToolEffectsConfig.ignatiusPickaxeEffect, EnumTools.PICKAXE),
 	SHADOW_STEEL_TOOL_EFFECT("tooltip.metallurgy.shadow_steel_tool_effect", ToolEffectsConfig.shadowSteelToolSpeedEffect, EnumTools.PICKAXE),
+
+	//Shovel Effects
+	IGNATIUS_SHOVEL_EFFECT("tooltip.metallurgy.ignatius_shovel_effect", ToolEffectsConfig.ignatiusShovelEffect, EnumTools.SHOVEL),
 
 	//Sword Effects
 	CELENEGIL_SWORD_EFFECT("tooltip.metallurgy.celenegil_sword_effect", true, EnumTools.SWORD),

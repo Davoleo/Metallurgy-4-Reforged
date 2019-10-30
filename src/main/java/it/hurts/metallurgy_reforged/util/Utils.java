@@ -21,7 +21,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
 
+import java.util.Random;
+
 public class Utils {
+
+	public static Random random = new Random();
 
 	private static Potion[] randomEffectsList = {
 			MobEffects.BLINDNESS,

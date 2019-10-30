@@ -23,6 +23,15 @@ public class ToolEffectsConfig {
 	@Config.Comment("Underwater mining is not slowed down")
 	public static boolean deepIronPickaxeEffect = true;
 
+	@Config.Name("Ignatius Pickaxe Effect")
+	@Config.Comment("Randomly Spawns nuggets of the ore you're breaking")
+	public static boolean ignatiusPickaxeEffect = true;
+
+	//Shovels
+	@Config.Name("Ignatius Shovel Effect")
+	@Config.Comment("Automatically smelts the block drops")
+	public static boolean ignatiusShovelEffect = true;
+
 	//Tools
 	@Config.Name("Shadow Steel Tools Effect")
 	@Config.Comment("The tool speed is proportional to the darkness")

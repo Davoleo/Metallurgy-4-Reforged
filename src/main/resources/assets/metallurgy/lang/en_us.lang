@@ -920,6 +920,13 @@ tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+#Pickaxes
+tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
+
+#Shovel
+tooltip.metallurgy.ignatius_shovel_effect=§cAutomatically smelts the block drops
+
 #Swords
 tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
@@ -936,9 +943,6 @@ tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly pro
 tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cFire Blade II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
-
-#Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
 
 #Tools
 tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
