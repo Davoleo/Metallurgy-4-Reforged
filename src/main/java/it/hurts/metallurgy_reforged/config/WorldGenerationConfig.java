@@ -68,7 +68,7 @@ public class WorldGenerationConfig {
 
 	@Config.Name("Tar Lakes Worldgen Dimension Blacklist")
 	@Config.Comment("Add the ID of the dimension you don't want tar lakes to spawn in")
-	public static Integer[] tarLakeDimensionBlacklist = {1, -1};
+	public static Integer[] tarLakeDimensionWhiteList = {0};
 
 	@Config.Name("Retrogen")
 	@Config.Comment(value = "Enable/Disable Retrogen")

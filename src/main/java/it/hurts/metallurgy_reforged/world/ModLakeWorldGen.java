@@ -31,10 +31,10 @@ public class ModLakeWorldGen {
 	{
 		World world = event.getWorld();
 		Random rand = new Random();
-		List<Integer> dimensionBlacklist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionBlacklist);
+		List<Integer> dimensionWhitelist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionWhiteList);
 
 		if ((rand.nextInt(500) + 1) <= WorldGenerationConfig.tarLakePercentage)
-			if (!dimensionBlacklist.contains(world.provider.getDimension()))
+			if (dimensionWhitelist.contains(world.provider.getDimension()))
 			{
 				int x = event.getChunkX() * 16;
 				int z = event.getChunkZ() * 16;
