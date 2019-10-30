@@ -62,19 +62,43 @@ public enum EnumToolEffects {
 	{
 		for (EnumToolEffects effect : EnumToolEffects.values())
 		{
-
-			if (tool instanceof ItemPickaxeBase)
+			switch (effect.getCategory())
 			{
-				ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
+				case AXE:
+					if (tool instanceof ItemAxeBase)
+					{
+						ItemAxeBase axe = ((ItemAxeBase) tool);
+						if (effect.name().toLowerCase().contains(axe.getToolMaterialName()))
+							return effect;
+					}
+					break;
 
-				if (effect.name().toLowerCase().contains(pickaxe.getToolMaterialName()))
-					return effect;
-			}
-			else if (tool instanceof ItemSwordBase)
-			{
-				ItemSwordBase sword = (ItemSwordBase) tool;
-				if (effect.name().toLowerCase().contains(sword.getToolMaterialName()))
-					return effect;
+				case PICKAXE:
+					if (tool instanceof ItemPickaxeBase)
+					{
+						ItemPickaxeBase pickaxe = (ItemPickaxeBase) tool;
+						if (effect.name().toLowerCase().contains(pickaxe.getToolMaterialName()))
+							return effect;
+					}
+					break;
+
+				case SWORD:
+					if (tool instanceof ItemSwordBase)
+					{
+						ItemSwordBase sword = (ItemSwordBase) tool;
+						if (effect.name().toLowerCase().contains(sword.getToolMaterialName()))
+							return effect;
+					}
+					break;
+
+				case SHOVEL:
+					if (tool instanceof ItemShovelBase)
+					{
+						ItemShovelBase shovel = ((ItemShovelBase) tool);
+						if (effect.name().toLowerCase().contains(shovel.getToolMaterialName()))
+							return effect;
+					}
+					break;
 			}
 		}
 
