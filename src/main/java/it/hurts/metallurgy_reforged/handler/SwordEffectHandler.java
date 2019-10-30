@@ -23,6 +23,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -50,13 +51,15 @@ public class SwordEffectHandler {
 	public static void onAttack(AttackEntityEvent event)
 	{
 		EntityPlayer player = event.getEntityPlayer();
+		Item heldSword = player.getHeldItemMainhand().getItem();
+
 		if (!player.world.isRemote)
 		{
 
 			Entity foe = event.getTarget();
 
 			//			Shadow Iron Sword (Blindness)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.SHADOW_IRON.getTool(EnumTools.SWORD) && ToolEffectsConfig.shadowIronSwordEffect)
+			if (heldSword == ModMetals.SHADOW_IRON.getTool(EnumTools.SWORD) && ToolEffectsConfig.shadowIronSwordEffect)
 			{
 
 				EntityLivingBase foe2 = (EntityLivingBase) foe;
@@ -65,27 +68,27 @@ public class SwordEffectHandler {
 			}
 
 			//			Desichalkos Sword ( Give Random Effect to entity )
-			if (player.getHeldItemMainhand().getItem() == ModMetals.DESICHALKOS.getTool(EnumTools.SWORD) && ToolEffectsConfig.desichalkosSwordEffect)
+			if (heldSword == ModMetals.DESICHALKOS.getTool(EnumTools.SWORD) && ToolEffectsConfig.desichalkosSwordEffect)
 			{
 				((EntityLivingBase) foe).addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
 			}
 
 			//			Vyroxeres Sword (Potion)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.VYROXERES.getTool(EnumTools.SWORD) && ToolEffectsConfig.vyroxeresSwordEffect)
+			if (heldSword == ModMetals.VYROXERES.getTool(EnumTools.SWORD) && ToolEffectsConfig.vyroxeresSwordEffect)
 			{
 				if ((int) (Math.random() * 100) <= 25)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
 			}
 
 			//			Ignatius Sword (Fire Aspect)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.IGNATIUS.getTool(EnumTools.SWORD) && ToolEffectsConfig.shadowIronSwordEffect)
+			if (heldSword == ModMetals.IGNATIUS.getTool(EnumTools.SWORD) && ToolEffectsConfig.shadowIronSwordEffect)
 			{
 				if ((int) (Math.random() * 100) <= 15)
 					foe.setFire(5);
 			}
 
 			//			Vulcanite Sword (Fire Aspect)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.VULCANITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.vulcaniteSwordEffect)
+			if (heldSword == ModMetals.VULCANITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.vulcaniteSwordEffect)
 			{
 
 				if ((int) (Math.random() * 100) <= 30)
@@ -93,7 +96,7 @@ public class SwordEffectHandler {
 			}
 
 			//			Tartarite Sword (Withering II)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.TARTARITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.tartariteSwordEffect)
+			if (heldSword == ModMetals.TARTARITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.tartariteSwordEffect)
 			{
 
 				if ((int) (Math.random() * 100) <= 20)
@@ -101,21 +104,21 @@ public class SwordEffectHandler {
 			}
 
 			//			Mithril Sword (Give Glowing to entity Hitted)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.MITHRIL.getTool(EnumTools.SWORD))
+			if (heldSword == ModMetals.MITHRIL.getTool(EnumTools.SWORD))
 			{
 				if ((int) (Math.random() * 100) <= 50)
 					((EntityLivingBase) foe).addPotionEffect(new PotionEffect(MobEffects.GLOWING, 200, 1, false, false));
 			}
 
 			//			Kalendrite sword (Regeneration)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.KALENDRITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.kalendriteSwordEffect)
+			if (heldSword == ModMetals.KALENDRITE.getTool(EnumTools.SWORD) && ToolEffectsConfig.kalendriteSwordEffect)
 			{
 				if ((int) (Math.random() * 100) <= 30)
 					player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1, false, false));
 			}
 
 			//			Ceruclase Sword (Give slowness)
-			if (player.getHeldItemMainhand().getItem() == ModMetals.CERUCLASE.getTool(EnumTools.SWORD) && ToolEffectsConfig.ceruclaseSwordEffect)
+			if (heldSword == ModMetals.CERUCLASE.getTool(EnumTools.SWORD) && ToolEffectsConfig.ceruclaseSwordEffect)
 			{
 
 				if ((int) (Math.random() * 100) <= 25)
