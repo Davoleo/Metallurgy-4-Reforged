@@ -27,7 +27,7 @@ public class CrusherRecipeWrapper implements IRecipeWrapper {
 	private final ItemStack input;
 	private final ItemStack output;
 
-	public CrusherRecipeWrapper(ItemStack output, ItemStack input)
+	public CrusherRecipeWrapper(ItemStack input, ItemStack output)
 	{
 		this.input = input;
 		this.output = output;
