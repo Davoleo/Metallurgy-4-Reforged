@@ -357,7 +357,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 	}
 
-	//IL PROBLEMA è QUI [#23]
 	private boolean canCrush()
 	{
 		if ((this.inventory.get(0)).isEmpty())

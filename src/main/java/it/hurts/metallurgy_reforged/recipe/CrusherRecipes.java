@@ -74,7 +74,7 @@ public class CrusherRecipes {
 			if (input.isItemEqual(stack))
 				return;
 
-		this.crushingList.put(input.copy(), result);
+		this.crushingList.put(input.copy(), result.copy());
 		this.experienceList.put(result.copy(), experience);
 	}
 
