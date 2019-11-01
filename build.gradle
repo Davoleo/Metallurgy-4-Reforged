@@ -124,33 +124,37 @@ jar {
     destinationDir = file 'output'
 }
 
-clean {
-    delete 'output'
-}
-
 sourceJar {
     destinationDir = file 'output'
 }
 
-//Maven Repository
-def reobfFile = file("${project.projectDir}output/Metallurgy-4-Reforged-${project.version}.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
+clean {
+    delete 'output'
+    delete 'mcmodsrepo'
 }
+
+//Maven Repository
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifact reobfArtifact
+        metallurgy(MavenPublication) {
+            groupId = 'io.github.davoleo'
+            artifactId = 'metallurgy-4-reforged'
+            from components.java
         }
     }
     repositories {
         maven {
+            name "local"
             url "file:///${project.projectDir}/mcmodsrepo"
         }
 
         maven {
+            name "github"
             url "https://maven.pkg.github.com/Davoleo/Metallurgy-4-Reforged"
+            credentials {
+                username = ""
+                password = ""
+            }
         }
     }
 }
