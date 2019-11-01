@@ -9,6 +9,8 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+apply plugin: 'maven-publish'
+
 /*
  * -------------------------------------------------------------------------------------------------------
  * Class: build
@@ -128,4 +130,27 @@ clean {
 
 sourceJar {
     destinationDir = file 'output'
+}
+
+//Maven Repository
+def reobfFile = file("${project.projectDir}output/Metallurgy-4-Reforged-${project.version}.jar")
+def reobfArtifact = artifacts.add('default', reobfFile) {
+    type 'jar'
+    builtBy 'reobfJar'
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact reobfArtifact
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+
+        maven {
+            url "https://maven.pkg.github.com/Davoleo/Metallurgy-4-Reforged"
+        }
+    }
 }
