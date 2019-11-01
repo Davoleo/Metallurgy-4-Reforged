@@ -2,33 +2,56 @@
 name: Bug report
 about: Create an issue to help us fix bugs in the mod
 title: ''
-labels: needs verification, bug
+labels: bug, needs verification
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### General Information
 
-**To Reproduce**
-Steps to reproduce the behavior:
+**Describe the bug:**
+<!-- A clear and concise description of what the bug is. -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**To Reproduce:**
+<!-- Chronological Steps to reproduce the bug in an ordered list -->
+1. First Step
+2. First Step
+3. First Step
 
-**Versions:** _DO NOT write "the latest"_
-- Metallurgy 4: Reforged: 
-- Forge: 
+**Expected behavior:**
+<!-- A clear and concise description of what you expected to happen. -->
+
+***
+
+### Environment Versions
+<!-- Please write specific versions and avoid saying "the latest" -->
+
+**Versions:**
+- Metallurgy:
+- Conflicting mod (if regarding mod integration):
+- Other mods you think could cause issues:
+- Forge:
 - Minecraft:
-- Modpack _(if available)_:
-- Conflicting mod _(if regarding mod integration)_:
-- Other mods you think could cause issues:  
+- Modpack (if available):
 
-**Crash Report** _(if available)_
-**Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
+***
 
-**Log** _(latest.log)_ 
-**Use [gist](https://gist.github.com) or spoilers or [paste.ee](https://paste.ee) or [pastebin](https://pastebin.com)**
+### Logging Information
+**Please Use [gist](https://gist.github.com), [paste.ee](https://paste.ee), [pastebin](https://pastebin.com) or some other log sharing service**
 
-**Additional context** _(if needed)_
-Add any other context about the problem here.
+**Crash Report (if available):**
+<!-- Located in minecraft's "crash reports" directory -->
+
+**Latest Log (if necessary):**
+<!-- Located in minecraft's "logs"  -->
+
+***
+
+### Additional Information
+**Screenshots (if available):**
+<!-- If applicable, add screenshots to help explain your problem. -->
+
+**Additional context (optional):**
+<!-- Add any other context about the problem here. -->
+
+<!-- Feel Free to delete these comments once you've filled in the template -->
