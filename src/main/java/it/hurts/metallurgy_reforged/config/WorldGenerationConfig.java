@@ -66,8 +66,8 @@ public class WorldGenerationConfig {
 	@Config.RangeInt(min = 0, max = 500)
 	public static int tarLakePercentage = 250;
 
-	@Config.Name("Tar Lakes Worldgen Dimension Blacklist")
-	@Config.Comment("Add the ID of the dimension you don't want tar lakes to spawn in")
+	@Config.Name("Tar Lakes Worldgen Dimension Whitelist")
+	@Config.Comment("Add the ID of the dimensions you want tar lakes to spawn in")
 	public static Integer[] tarLakeDimensionWhiteList = {0};
 
 	@Config.Name("Retrogen")
