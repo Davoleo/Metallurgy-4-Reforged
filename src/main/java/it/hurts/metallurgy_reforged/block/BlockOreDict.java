@@ -124,38 +124,42 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	{
 		double d0 = 0.0625D;
 		String metalName = this.getRegistryName().getPath().replace("_ore", "");
-		float[] colorComponents = MetalColors.byName(metalName.toUpperCase()).getRGBValues();
-
-		for (int i = 0; i < 6; ++i)
+		MetalColors color = MetalColors.byName(metalName.toUpperCase());
+		if (color != null)
 		{
+			float[] colorComponents = color.getRGBValues();
 
-			double d1 = (float) pos.getX() + random.nextFloat();
-			double d2 = (float) pos.getY() + random.nextFloat();
-			double d3 = (float) pos.getZ() + random.nextFloat();
-
-			if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
-				d2 = (double) pos.getY() + 0.0625D + 1.0D;
-
-			if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
-				d2 = (double) pos.getY() - 0.0625D;
-
-			if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
-				d3 = (double) pos.getZ() + 0.0625D + 1.0D;
-
-			if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
-				d3 = (double) pos.getZ() - 0.0625D;
-
-			if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
-				d1 = (double) pos.getX() + 0.0625D + 1.0D;
-
-			if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
-				d1 = (double) pos.getX() - 0.0625D;
-
-			if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
+			for (int i = 0; i < 6; ++i)
 			{
-				int harvestLevel = this.getHarvestLevel(this.getDefaultState());
-				if (harvestLevel > 1)
-					Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, colorComponents[0], colorComponents[1], colorComponents[2], harvestLevel - 2));
+
+				double d1 = (float) pos.getX() + random.nextFloat();
+				double d2 = (float) pos.getY() + random.nextFloat();
+				double d3 = (float) pos.getZ() + random.nextFloat();
+
+				if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
+					d2 = (double) pos.getY() + 0.0625D + 1.0D;
+
+				if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
+					d2 = (double) pos.getY() - 0.0625D;
+
+				if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
+					d3 = (double) pos.getZ() + 0.0625D + 1.0D;
+
+				if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
+					d3 = (double) pos.getZ() - 0.0625D;
+
+				if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
+					d1 = (double) pos.getX() + 0.0625D + 1.0D;
+
+				if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
+					d1 = (double) pos.getX() - 0.0625D;
+
+				if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
+				{
+					int harvestLevel = this.getHarvestLevel(this.getDefaultState());
+					if (harvestLevel > 1)
+						Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, colorComponents[0], colorComponents[1], colorComponents[2], harvestLevel - 2));
+				}
 			}
 		}
 	}
