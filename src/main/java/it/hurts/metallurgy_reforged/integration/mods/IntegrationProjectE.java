@@ -47,6 +47,7 @@ public class IntegrationProjectE {
 		emcMap.put("deep_iron", 512L);
 		emcMap.put("desichalkos", 6144L);
 		emcMap.put("electrum", 1280L);
+		emcMap.put("etherium", 8192L);
 		emcMap.put("eximite", 8192L);
 		emcMap.put("haderoth", 3413L);
 		emcMap.put("hepatizon", 508L);
