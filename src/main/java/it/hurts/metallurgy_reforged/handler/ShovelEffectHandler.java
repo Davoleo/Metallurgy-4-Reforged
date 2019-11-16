@@ -29,29 +29,31 @@ public class ShovelEffectHandler {
 
 	@SubscribeEvent
 	public static void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-
-		Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		//IBlockState blockState = world.getBlockState(pos);
-
-		if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.SHOVEL)))
+		if (event.getHarvester() != null)
 		{
-			dropSmeltedItems(event, world, pos);
-		}
+			Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
+			World world = event.getWorld();
+			BlockPos pos = event.getPos();
+			//IBlockState blockState = world.getBlockState(pos);
 
-		// TODO: 30/10/2019 ASK PIER
-		//ResourceLocation regName = blockState.getBlock().getRegistryName();
-		//
-		//if (regName != null && regName.getPath().contains("_ore"))
-		//{
-		//	String nuggetReg = regName.getPath().replace("_ore", "_nugget");
-		//	Item nugget = ForgeRegistries.ITEMS.getValue(new ResourceLocation(regName.getNamespace(), nuggetReg));
-		//	if (nugget != null && Utils.random.nextBoolean())
-		//	{
-		//		event.getDrops().add(new ItemStack(nugget, Utils.random.nextInt(3)));
-		//	}
-		//}
+			if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.SHOVEL)))
+			{
+				dropSmeltedItems(event, world, pos);
+			}
+
+			// TODO: 30/10/2019 ASK PIER
+			//ResourceLocation regName = blockState.getBlock().getRegistryName();
+			//
+			//if (regName != null && regName.getPath().contains("_ore"))
+			//{
+			//	String nuggetReg = regName.getPath().replace("_ore", "_nugget");
+			//	Item nugget = ForgeRegistries.ITEMS.getValue(new ResourceLocation(regName.getNamespace(), nuggetReg));
+			//	if (nugget != null && Utils.random.nextBoolean())
+			//	{
+			//		event.getDrops().add(new ItemStack(nugget, Utils.random.nextInt(3)));
+			//	}
+			//}
+		}
 	}
 
 	protected static void dropSmeltedItems(BlockEvent.HarvestDropsEvent event, World world, BlockPos pos) {

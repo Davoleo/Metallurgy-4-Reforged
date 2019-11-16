@@ -23,13 +23,17 @@ public class AxeEffectHandler {
 
 	@SubscribeEvent
 	public static void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
 
-		if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.AXE)))
+		if (event.getHarvester() != null)
 		{
-			ShovelEffectHandler.dropSmeltedItems(event, world, pos);
+			World world = event.getWorld();
+			Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
+			BlockPos pos = event.getPos();
+
+			if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.AXE)))
+			{
+				ShovelEffectHandler.dropSmeltedItems(event, world, pos);
+			}
 		}
 	}
 
