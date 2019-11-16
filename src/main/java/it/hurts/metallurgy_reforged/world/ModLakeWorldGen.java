@@ -36,8 +36,10 @@ public class ModLakeWorldGen {
 		World world = event.getWorld();
 		Random rand = new Random();
 		List<Integer> dimensionWhitelist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionWhiteList);
+		int randNum = rand.nextInt(500) + 1;
 
-		if ((rand.nextInt(500) + 1) <= WorldGenerationConfig.tarLakePercentage)
+		if (randNum <= WorldGenerationConfig.tarLakePercentage)
+
 			if (dimensionWhitelist.contains(world.provider.getDimension()))
 			{
 				int x = event.getChunkX() * 16;

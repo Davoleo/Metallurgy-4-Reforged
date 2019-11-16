@@ -64,7 +64,7 @@ public class WorldGenerationConfig {
 	@Config.Name("The spawnrate of tar lakes in the overworld")
 	@Config.Comment("Sets to 0 to disable tar lakes world generation")
 	@Config.RangeInt(min = 0, max = 500)
-	public static int tarLakePercentage = 250;
+	public static int tarLakePercentage = 20;
 
 	@Config.Name("Tar Lakes Worldgen Dimension Whitelist")
 	@Config.Comment("Add the ID of the dimensions you want tar lakes to spawn in")
