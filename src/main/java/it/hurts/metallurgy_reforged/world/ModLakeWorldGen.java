@@ -15,6 +15,8 @@ import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderServer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
@@ -25,6 +27,8 @@ import java.util.List;
 import java.util.Random;
 
 public class ModLakeWorldGen {
+
+	public static IChunkGenerator chunkGenerator = null;
 
 	@SubscribeEvent
 	public static void populatesEvent(PopulateChunkEvent.Pre event)
@@ -40,9 +44,14 @@ public class ModLakeWorldGen {
 				int z = event.getChunkZ() * 16;
 
 				BlockPos blockpos = new BlockPos(x, 0, z);
-				IChunkGenerator cgen = world.provider.createChunkGenerator();
-				//				if(cgen instanceof ChunkGeneratorOverworld) {
-				if (net.minecraftforge.event.terraingen.TerrainGen.populate(cgen, world, rand, event.getChunkX(), event.getChunkZ(), false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
+
+				final IChunkProvider chunkProvider = world.getChunkProvider();
+				if (chunkProvider instanceof ChunkProviderServer)
+					chunkGenerator = ((ChunkProviderServer) chunkProvider).chunkGenerator;
+				if (chunkGenerator == null)
+					chunkGenerator = world.provider.createChunkGenerator();
+
+				if (net.minecraftforge.event.terraingen.TerrainGen.populate(chunkGenerator, world, rand, event.getChunkX(), event.getChunkZ(), false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
 				{
 					int i1 = rand.nextInt(16) + 8;
 					int j1 = rand.nextInt(256);
