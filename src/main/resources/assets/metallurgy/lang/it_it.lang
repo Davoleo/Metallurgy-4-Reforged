@@ -1,0 +1,302 @@
+#Armors
+item.metallurgy.adamantine_helmet.name=Elmo di Adamantio
+item.metallurgy.adamantine_chestplate.name=Corazza di Adamantio
+item.metallurgy.adamantine_leggings.name=Gambiera di Adamantio
+item.metallurgy.adamantine_boots.name=Stivali di Adamantio
+
+item.metallurgy.amordrine_helmet.name=Elmo di Amordrina
+item.metallurgy.amordrine_chestplate.name=Corazza di Amordrina
+item.metallurgy.amordrine_leggings.name=Gambiera di Amordrina
+item.metallurgy.amordrine_boots.name=Stivali di Amordrina
+
+item.metallurgy.angmallen_helmet.name=Elmo di Angmallen
+item.metallurgy.angmallen_chestplate.name=Corazza di Angmallen
+item.metallurgy.angmallen_leggings.name=Gambiera di Angmallen
+item.metallurgy.angmallen_boots.name=Stivali di Angmallen
+
+item.metallurgy.atlarus_helmet.name=Elmo di Atlarus
+item.metallurgy.atlarus_chestplate.name=Corazza di Atlarus
+item.metallurgy.atlarus_leggings.name=Gambiera di Atlarus
+item.metallurgy.atlarus_boots.name=Stivali di Atlarus
+
+item.metallurgy.astral_silver_helmet.name=Elmo di Argento Astrale
+item.metallurgy.astral_silver_chestplate.name=Corazza di Argento Astrale
+item.metallurgy.astral_silver_leggings.name=Gambiera di Argento Astrale
+item.metallurgy.astral_silver_boots.name=Stivali di Argento Astrale
+
+item.metallurgy.black_steel_helmet.name=Elmo di Acciaio Nero
+item.metallurgy.black_steel_chestplate.name=Corazza di Acciaio Nero
+item.metallurgy.black_steel_leggings.name=Gambiera di Acciaio Nero
+item.metallurgy.black_steel_boots.name=Stivali di Acciaio Nero
+
+item.metallurgy.brass_helmet.name=Elmo di Ottone
+item.metallurgy.brass_chestplate.name=Corazza di Ottone
+item.metallurgy.brass_leggings.name=Gambiera di Ottone
+item.metallurgy.brass_boots.name=Stivali di Ottone
+
+item.metallurgy.bronze_helmet.name=Elmo di Bronzo
+item.metallurgy.bronze_chestplate.name=Corazza di Bronzo
+item.metallurgy.bronze_leggings.name=Gambiera di Bronzo
+item.metallurgy.bronze_boots.name=Stivali di Bronzo
+
+item.metallurgy.carmot_helmet.name=Elmo di Carmot
+item.metallurgy.carmot_chestplate.name=Corazza di Carmot
+item.metallurgy.carmot_leggings.name=Gambiera di Carmot
+item.metallurgy.carmot_boots.name=Stivali di Carmot
+
+item.metallurgy.celenegil_helmet.name=Elmo di Celenegil
+item.metallurgy.celenegil_chestplate.name=Corazza di Celenegil
+item.metallurgy.celenegil_leggings.name=Gambiera di Celenegil
+item.metallurgy.celenegil_boots.name=Stivali di Celenegil
+
+item.metallurgy.ceruclase_helmet.name=Elmo di Ceruclase
+item.metallurgy.ceruclase_chestplate.name=Corazza di Ceruclase
+item.metallurgy.ceruclase_leggings.name=Gambiera di Ceruclase
+item.metallurgy.ceruclase_boots.name=Stivali di Ceruclase
+
+item.metallurgy.copper_helmet.name=Elmo di Rame
+item.metallurgy.copper_chestplate.name=Corazza di Rame
+item.metallurgy.copper_leggings.name=Gambiera di Rame
+item.metallurgy.copper_boots.name=Stivali di Rame
+
+item.metallurgy.damascus_steel_helmet.name=Elmo di Acciaio Damasco
+item.metallurgy.damascus_steel_chestplate.name=Corazza di Acciaio Damasco
+item.metallurgy.damascus_steel_leggings.name=Gambiera di Acciaio Damasco
+item.metallurgy.damascus_steel_boots.name=Stivali di Acciaio Damasco
+
+item.metallurgy.deep_iron_helmet.name=Elmo di Ferro Profondo
+item.metallurgy.deep_iron_chestplate.name=Corazza di Ferro Profondo
+item.metallurgy.deep_iron_leggings.name=Gambiera di Ferro Profondo
+item.metallurgy.deep_iron_boots.name=Stivali di Ferro Profondo
+
+item.metallurgy.desichalkos_helmet.name=Elmo di Desichalkos
+item.metallurgy.desichalkos_chestplate.name=Corazza di Desichalkos
+item.metallurgy.desichalkos_leggings.name=Gambiera di Desichalkos
+item.metallurgy.desichalkos_boots.name=Stivali di Desichalkos
+
+item.metallurgy.electrum_helmet.name=Elmo di Elettro
+item.metallurgy.electrum_chestplate.name=Corazza di Elettro
+item.metallurgy.electrum_leggings.name=Gambiera di Elettro
+item.metallurgy.electrum_boots.name=Stivali di Elettro
+
+item.metallurgy.etherium_helmet.name=Elmo di Etere
+item.metallurgy.etherium_chestplate.name=Corazza di Etere
+item.metallurgy.etherium_leggings.name=Gambiera di Etere
+item.metallurgy.etherium_boots.name=Stivali di Etere
+
+item.metallurgy.eximite_helmet.name=Elmo di Eximite
+item.metallurgy.eximite_chestplate.name=Corazza di Eximite
+item.metallurgy.eximite_leggings.name=Gambiera di Eximite
+item.metallurgy.eximite_boots.name=Stivali di Eximite
+
+item.metallurgy.haderoth_helmet.name=Elmo di Haderoth
+item.metallurgy.haderoth_chestplate.name=Corazza di Haderoth
+item.metallurgy.haderoth_leggings.name=Gambiera di Haderoth
+item.metallurgy.haderoth_boots.name=Stivali di Haderoth
+
+item.metallurgy.hepatizon_helmet.name=Elmo di Hepatizon
+item.metallurgy.hepatizon_chestplate.name=Corazza di Hepatizon
+item.metallurgy.hepatizon_leggings.name=Gambiera di Hepatizon
+item.metallurgy.hepatizon_boots.name=Stivali di Hepatizon
+
+item.metallurgy.ignatius_helmet.name=Elmo di Ignatius
+item.metallurgy.ignatius_chestplate.name=Corazza di Ignatius
+item.metallurgy.ignatius_leggings.name=Gambiera di Ignatius
+item.metallurgy.ignatius_boots.name=Stivali di Ignatius
+
+item.metallurgy.inolashite_helmet.name=Elmo di Inolashite
+item.metallurgy.inolashite_chestplate.name=Corazza di Inolashite
+item.metallurgy.inolashite_leggings.name=Gambiera di Inolashite
+item.metallurgy.inolashite_boots.name=Stivali di Inolashite
+
+item.metallurgy.kalendrite_helmet.name=Elmo Kalendrite 
+item.metallurgy.kalendrite_chestplate.name=Corazza Kalendrite 
+item.metallurgy.kalendrite_leggings.name=Gambiera Kalendrite 
+item.metallurgy.kalendrite_boots.name=Stivali Kalendrite 
+
+item.metallurgy.krik_helmet.name=Elmo di Krik
+item.metallurgy.krik_chestplate.name=Corazza di Krik
+item.metallurgy.krik_leggings.name=Gambiera di Krik
+item.metallurgy.krik_boots.name=Stivali di Krik
+
+item.metallurgy.lutetium_helmet.name=Elmo di Lutezio
+item.metallurgy.lutetium_chestplate.name=Corazza di Lutezio
+item.metallurgy.lutetium_leggings.name=Gambiera di Lutezio
+item.metallurgy.lutetium_boots.name=Stivali di Lutezio
+
+item.metallurgy.midasium_helmet.name=Elmo di Midasio
+item.metallurgy.midasium_chestplate.name=Corazza di Midasio
+item.metallurgy.midasium_leggings.name=Gambiera di Midasio
+item.metallurgy.midasium_boots.name=Stivali di Midasio
+
+item.metallurgy.mithril_helmet.name=Elmo di Mithril
+item.metallurgy.mithril_chestplate.name=Corazza di Mithril
+item.metallurgy.mithril_leggings.name=Gambiera di Mithril
+item.metallurgy.mithril_boots.name=Stivali di Mithril
+
+item.metallurgy.orichalcum_helmet.name=Elmo di Orichalcum
+item.metallurgy.orichalcum_chestplate.name=Corazza di Orichalcum
+item.metallurgy.orichalcum_leggings.name=Gambiera di Orichalcum
+item.metallurgy.orichalcum_boots.name=Stivali di Orichalcum
+
+item.metallurgy.osmium_helmet.name=Elmo di Osmio
+item.metallurgy.osmium_chestplate.name=Corazza di Osmio
+item.metallurgy.osmium_leggings.name=Gambiera di Osmio
+item.metallurgy.osmium_boots.name=Stivali di Osmio
+
+item.metallurgy.oureclase_helmet.name=Elmo di Oureclase
+item.metallurgy.oureclase_chestplate.name=Corazza di Oureclase
+item.metallurgy.oureclase_leggings.name=Gambiera di Oureclase
+item.metallurgy.oureclase_boots.name=Stivali di Oureclase
+
+item.metallurgy.platinum_helmet.name=Elmo di Platino
+item.metallurgy.platinum_chestplate.name=Corazza di Platino
+item.metallurgy.platinum_leggings.name=Gambiera di Platino
+item.metallurgy.platinum_boots.name=Stivali di Platino
+
+item.metallurgy.prometheum_helmet.name=Elmo di Prometeo
+item.metallurgy.prometheum_chestplate.name=Corazza di Prometeo
+item.metallurgy.prometheum_leggings.name=Gambiera di Prometeo
+item.metallurgy.prometheum_boots.name=Stivali di Prometeo
+
+item.metallurgy.quicksilver_helmet.name=Elmo di Argento Vivo
+item.metallurgy.quicksilver_chestplate.name=Corazza di Argento Vivo
+item.metallurgy.quicksilver_leggings.name=Gambiera di Argento Vivo
+item.metallurgy.quicksilver_boots.name=Stivali di Argento Vivo
+
+item.metallurgy.sanguinite_helmet.name=Elmo di Sanguinite
+item.metallurgy.sanguinite_chestplate.name=Corazza di Sanguinite
+item.metallurgy.sanguinite_leggings.name=Gambiera di Sanguinite
+item.metallurgy.sanguinite_boots.name=Stivali di Sanguinite
+
+item.metallurgy.shadow_iron_helmet.name=Elmo di Ferro Ombra
+item.metallurgy.shadow_iron_chestplate.name=Corazza di Ferro Ombra
+item.metallurgy.shadow_iron_leggings.name=Gambiera di Ferro Ombra
+item.metallurgy.shadow_iron_boots.name=Stivali di Ferro Ombra
+
+item.metallurgy.shadow_steel_helmet.name=Elmo di Acciaio Ombra
+item.metallurgy.shadow_steel_chestplate.name=Corazza di Acciaio Ombra
+item.metallurgy.shadow_steel_leggings.name=Gambiera di Acciaio Ombra
+item.metallurgy.shadow_steel_boots.name=Stivali di Acciaio Ombra
+
+item.metallurgy.silver_helmet.name=Elmo di Argento
+item.metallurgy.silver_chestplate.name=Corazza di Argento
+item.metallurgy.silver_leggings.name=Gambiera di Argento
+item.metallurgy.silver_boots.name=Stivali di Argento
+
+item.metallurgy.steel_helmet.name=Elmo di Acciaio
+item.metallurgy.steel_chestplate.name=Corazza di Acciaio
+item.metallurgy.steel_leggings.name=Gambiera di Acciaio
+item.metallurgy.steel_boots.name=Stivali di Acciaio
+
+item.metallurgy.tartarite_helmet.name=Elmo di Tartarite
+item.metallurgy.tartarite_chestplate.name=Corazza di Tartarite
+item.metallurgy.tartarite_leggings.name=Gambiera di Tartarite
+item.metallurgy.tartarite_boots.name=Stivali di Tartarite
+
+item.metallurgy.vulcanite_helmet.name=Elmo di Vulcanite
+item.metallurgy.vulcanite_chestplate.name=Corazza di Vulcanite
+item.metallurgy.vulcanite_leggings.name=Gambiera di Vulcanite
+item.metallurgy.vulcanite_boots.name=Stivali di Vulcanite
+
+item.metallurgy.vyroxeres_helmet.name=Elmo di Vyroxeres
+item.metallurgy.vyroxeres_chestplate.name=Chest di Vyroxeres
+item.metallurgy.vyroxeres_leggings.name=Gambiera di Vyroxeres
+item.metallurgy.vyroxeres_boots.name=Stivali di Vyroxeres
+
+# Blocks
+tile.metallurgy.road_block.name=Strada
+tile.metallurgy.striped_road_block.name=Strada con Strisce
+tile.metallurgy.charcoal_block.name=Blocco di Carbonella
+tile.metallurgy.bitumen_block.name=Blocco di Bitume
+tile.metallurgy.electrum_block.name=Blocco di Elettro
+tile.metallurgy.copper_block.name=Blocco di Rame
+tile.metallurgy.bronze_block.name=Blocco di Bronzo
+tile.metallurgy.manganese_block.name=Blocco di Manganese
+tile.metallurgy.tin_block.name=Blocco di Stagno
+tile.metallurgy.steel_block.name=Blocco di Acciaio
+tile.metallurgy.hepatizon_block.name=Blocco di Hepatizon
+tile.metallurgy.prometheum_block.name=Blocco di Prometeo
+tile.metallurgy.angmallen_block.name=Blocco di Angmallen
+tile.metallurgy.eximite_block.name=Blocco di Eximite
+tile.metallurgy.meutoite_block.name=Blocco di Meutoite
+tile.metallurgy.desichalkos_block.name=Blocco di Desichalkos
+tile.metallurgy.black_steel_block.name=Blocco di Acciaio Nero
+tile.metallurgy.infuscolium_block.name=Blocco di Infuscolium
+tile.metallurgy.carmot_block.name=Blocco di Carmot
+tile.metallurgy.astral_silver_block.name=Blocco di Argento Astrale
+tile.metallurgy.oureclase_block.name=Blocco di Oureclase
+tile.metallurgy.deep_iron_block.name=Blocco di Ferro Profondo
+tile.metallurgy.quicksilver_block.name=Blocco di Argento Vivo
+tile.metallurgy.mithril_block.name=Blocco di Mithril
+tile.metallurgy.haderoth_block.name=Blocco di Haderoth
+tile.metallurgy.atlarus_block.name=Blocco di Atlarus
+tile.metallurgy.adamantine_block.name=Blocco di Adamantio
+tile.metallurgy.celenegil_block.name=Blocco di Celenegil
+tile.metallurgy.tartarite_block.name=Blocco di Tartarite
+tile.metallurgy.rubracium_block.name=Blocco di Rubracium
+tile.metallurgy.midasium_block.name=Blocco di Midasio
+tile.metallurgy.shadow_steel_block.name=Blocco di Acciaio Ombra
+tile.metallurgy.lemurite_block.name=Blocco di Lemurite
+tile.metallurgy.vyroxeres_block.name=Blocco di Vyroxeres
+tile.metallurgy.kalendrite_block.name=Blocco di Kalendrite
+tile.metallurgy.krik_block.name=Blocco di Krik
+tile.metallurgy.sanguinite_block.name=Blocco di Sanguinite
+tile.metallurgy.alduorite_block.name=Blocco di Alduorite
+tile.metallurgy.ignatius_block.name=Blocco di Ignatius
+tile.metallurgy.shadow_iron_block.name=Blocco di Ferro Ombra
+tile.metallurgy.damascus_steel_block.name=Blocco di Acciaio Damasco
+tile.metallurgy.orichalcum_block.name=Blocco di Orichalcum
+tile.metallurgy.ceruclase_block.name=Blocco di Ceruclase
+tile.metallurgy.vulcanite_block.name=Blocco di Vulcanite
+tile.metallurgy.inolashite_block.name=Blocco di Inolashite
+tile.metallurgy.amordrine_block.name=Blocco di Amordrina
+tile.metallurgy.zinc_block.name=Blocco di Zinco
+tile.metallurgy.silver_block.name=Blocco di Argento
+tile.metallurgy.platinum_block.name=Blocco di Platino
+tile.metallurgy.brass_block.name=Blocco di Ottone
+tile.metallurgy.lutetium_block.name=Blocco di Lutezio
+tile.metallurgy.osmium_block.name=Blocco di Osmio
+tile.metallurgy.sulfur_block.name=Blocco di Zolfo
+tile.metallurgy.etherium_block.name=Blocco di Etere
+
+#Config
+config.metallurgy.category.armor_effects=Abilità Armature
+config.metallurgy.category.general=Generale
+config.metallurgy.category.rubracium_gauntlet=Guanto di Rubracium
+config.metallurgy.category.tool_effects=Abilità Attrezzi
+config.metallurgy.category.worldgen=Generazione nel Mondo
+
+#Construct's Armory Traits
+modifier.blindness_armor.name=Chiaroveggenza
+modifier.cat_eyes_armor.name=Visione Notturna
+modifier.deeply_armor.name=Tuffatore
+modifier.foodly_armor.name=Ben Nutrito
+modifier.jump_master_armor.name=Maestro dei Salti
+modifier.prometheum_armor.name=Immunità al Veleno
+modifier.quickly_armor.name=Azione Veloce
+modifier.resistance_armor.name=Resistenza IV
+modifier.strongly_armor.name=Forza
+modifier.volcano_armor.name=Vulcanico
+
+modifier.blindness_armor.desc=§oNo Cecità >:(§r\nTi fa diventare immune alla cecità
+modifier.cat_eyes_armor.desc=§oCarote non necessarie§r\nTi permette di vedere nel buio
+modifier.deeply_armor.desc=§oPesce d'acqua!§r\nTi permette di compiere azioni più facilmente sott'acqua
+modifier.foodly_armor.desc=§oIl sapore del duro lavoro§r\nRiempe la barra del cibo se hai abbastanza esperienza.
+modifier.jump_master_armor.desc=§oWheeee!§r\nAumenta l'altezza dei tuoi salti.
+modifier.prometheum_armor.desc=§oSa di Cocco... e metallo§r\nTi garantisce l'immunità al veleno.
+modifier.quickly_armor.desc=§oArco Tenero§r\nTirare un arco diventa più veloce
+modifier.resistance_armor.desc=§oDuro come le unghie§r\nRiduce il danno ricevuto ancora di più di quanto di aspetteresti.
+modifier.strongly_armor.desc=§oScommetto che posso sollevarlo§r\nAumenta il danno provocato \n(può essere di livello I o II)
+modifier.volcano_armor.desc=§oAnima di Fuoco!§r\nTi Garantisce l'immunità al fuoco
+
+# Creative Tab
+itemGroup.metallurgy.armors=Armature di Metallurgia
+itemGroup.metallurgy.blocks=Blocchi di Metallurgia
+itemGroup.metallurgy.dusts=Polveri di Metallurgia
+itemGroup.metallurgy.fluids=Fluidi di Metallurgia
+itemGroup.metallurgy.ingots=Lingotti di Metallurgia
+itemGroup.metallurgy.nuggets=Pepite di Metallurgia
+itemGroup.metallurgy.special=Oggetti Speciali di Metallurgia
+itemGroup.metallurgy.ores=Materiali Grezzi di Metallurgia
+itemGroup.metallurgy.tools=Attrezzi di Metallurgia
