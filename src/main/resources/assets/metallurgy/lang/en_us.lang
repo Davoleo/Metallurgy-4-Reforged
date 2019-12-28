@@ -753,11 +753,11 @@ item.metallurgy.electrum_pickaxe.name=Electrum Pickaxe
 item.metallurgy.electrum_shovel.name=Electrum Shovel
 item.metallurgy.electrum_sword.name=Electrum Sword
 
-item.metallurgy.etherium_axe.name=Electrum Axe
-item.metallurgy.etherium_hoe.name=Electrum Hoe
-item.metallurgy.etherium_pickaxe.name=Electrum Pickaxe
-item.metallurgy.etherium_shovel.name=Electrum Shovel
-item.metallurgy.etherium_sword.name=Electrum Sword
+item.metallurgy.etherium_axe.name=Etherium Axe
+item.metallurgy.etherium_hoe.name=Etherium Hoe
+item.metallurgy.etherium_pickaxe.name=Etherium Pickaxe
+item.metallurgy.etherium_shovel.name=Etherium Shovel
+item.metallurgy.etherium_sword.name=Etherium Sword
 
 item.metallurgy.eximite_axe.name=Eximite Axe
 item.metallurgy.eximite_hoe.name=Eximite Hoe
