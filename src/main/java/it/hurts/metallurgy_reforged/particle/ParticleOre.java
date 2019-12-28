@@ -20,7 +20,7 @@ public class ParticleOre extends ParticleRedstone {
 	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int type)
 	{
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, 0, 0, 0);
-		//this.particleMaxAge = 10;
+		this.particleMaxAge = 15;
 		this.particleRed = red;
 		this.particleGreen = green;
 		this.particleBlue = blue;
@@ -50,13 +50,13 @@ public class ParticleOre extends ParticleRedstone {
 
 		if (this.posY == this.prevPosY)
 		{
-			this.motionX *= 1.1D;
-			this.motionZ *= 1.1D;
+			this.motionX *= 0.80D;
+			this.motionZ *= 0.80D;
 		}
 
-		this.motionX *= 0.9599999785423279D;
-		this.motionY *= 0.9599999785423279D;
-		this.motionZ *= 0.9599999785423279D;
+		this.motionX *= 0.8599999785423279D;
+		this.motionY *= 0.8599999785423279D;
+		this.motionZ *= 0.8599999785423279D;
 
 		if (this.onGround)
 		{
