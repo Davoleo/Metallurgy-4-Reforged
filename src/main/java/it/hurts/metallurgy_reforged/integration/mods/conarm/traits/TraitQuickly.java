@@ -15,6 +15,7 @@ import c4.conarm.lib.traits.AbstractArmorTrait;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyConArmorStats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -34,10 +35,13 @@ public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurg
 			EntityPlayer player = (EntityPlayer) ev.getEntityLiving();
 			if (MetallurgyConArmorStats.isArmorTrait(player, "quickly"))
 			{
-				if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
-					ev.setDuration(ev.getDuration() - 6);
-				else
-					ev.setDuration(Math.round(ev.getDuration() / 2F));
+				if (!ev.getItem().getItem().getRegistryName().equals(new ResourceLocation("tconstruct:crossbow")))
+				{
+					if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
+						ev.setDuration(ev.getDuration() - 6);
+					else
+						ev.setDuration(Math.round(ev.getDuration() / 2F));
+				}
 			}
 		}
 	}

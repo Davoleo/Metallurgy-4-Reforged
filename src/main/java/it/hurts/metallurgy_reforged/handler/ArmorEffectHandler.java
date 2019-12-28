@@ -34,6 +34,7 @@ import net.minecraft.network.play.server.SPacketSetExperience;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.FoodStats;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -276,10 +277,13 @@ public class ArmorEffectHandler {
 	{
 		if (ev.getEntityLiving() instanceof EntityPlayer && EventUtils.isPlayerWearingArmor((EntityPlayer) ev.getEntityLiving(), ModMetals.QUICKSILVER.getArmorSet()) && ArmorEffectsConfig.quicksilverArmorEffect)
 		{
-			if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
-				ev.setDuration(ev.getDuration() - 6);
-			else
-				ev.setDuration(Math.round(ev.getDuration() / 2F));
+			if (!ev.getItem().getItem().getRegistryName().equals(new ResourceLocation("tconstruct:crossbow")))
+			{
+				if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
+					ev.setDuration(ev.getDuration() - 6);
+				else
+					ev.setDuration(Math.round(ev.getDuration() / 2F));
+			}
 		}
 	}
 
