@@ -61,13 +61,18 @@ public class SublimationRecipes {
 
 	public void removeSublimationRecipe(Potion output)
 	{
+		ItemStack keyToRemove = ItemStack.EMPTY;
+
 		for (Map.Entry<ItemStack, PotionEffect> entry : this.sublimationList.entrySet())
 		{
 			if (output == entry.getValue().getPotion())
 			{
-				sublimationList.remove(entry.getKey());
+				keyToRemove = entry.getKey();
 			}
 		}
+
+		if (!keyToRemove.isEmpty())
+			this.sublimationList.remove(keyToRemove);
 	}
 
 	public PotionEffect getSublimationResult(ItemStack input)

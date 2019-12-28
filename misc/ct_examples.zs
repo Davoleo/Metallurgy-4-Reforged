@@ -31,8 +31,9 @@ Alloyer.addRecipe(<minecraft:planks:*>, <minecraft:planks:*>, <metallurgy:ourecl
 Alloyer.addRecipe(<metallurgy:inolashite_ingot>, <ore:ingotOrichalcum>, <minecraft:bed>, 1.0F);
 
 
-//Removes an existing recipe from the Alloyer recipes list
+//Removes an existing recipe from the Alloyer recipes list (the parameter should have the right count for the recipe to be removed correctly)
 //Alloyer.removeRecipe(IItemStack output)
+Alloyer.removeRecipe(<metallurgy:angmallen_ingot> * 2);
 Alloyer.removeRecipe(<metallurgy:tartarite_ingot>);
 
 
@@ -40,7 +41,7 @@ Alloyer.removeRecipe(<metallurgy:tartarite_ingot>);
 //AVAILABLE from 0.3.0 and on
 //Adds a new Sublimation Recipe to the Sublimation Chamber   -
 //SublimationChamber.addRecipe(IItemStack input, IPotion output, int tickDuration, int amplifier);
-SublimationChamber.addRecipe(<metallurgy:tar> * 32, <potion:minecraft:slowness>, 5000, 1);
+SublimationChamber.addRecipe(<metallurgy:tar> * 32, <potion:minecraft:slowness>, 300, 1);
 
 //Removes a Sublimation Recipe from the Sublimation Chamber
 //SublimationChamber.removeRecipe(IPotion output);
