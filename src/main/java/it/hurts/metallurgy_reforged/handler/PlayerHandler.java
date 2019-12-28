@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: OnPlayerJoin
+ * Class: PlayerHandler
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -20,13 +20,12 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class OnPlayerJoin {
+public class PlayerHandler {
 
-	private final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
-	private final TextComponentString RENAME_FORM = new TextComponentString(Utils.localizeIgnoreFormat("util.rename_form_url"));
+	private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
 
 	@SubscribeEvent
-	public void PlayerJoin(EntityJoinWorldEvent event)
+	public static void onPlayerJoin(EntityJoinWorldEvent event)
 	{
 		if (!(event.getEntity() instanceof EntityPlayer))
 		{
@@ -36,13 +35,9 @@ public class OnPlayerJoin {
 
 		if (!event.getEntity().world.isRemote && GeneralConfig.warning)
 		{
-			RENAME_FORM.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, RENAME_FORM.getText())).setColor(TextFormatting.BLUE);
 			GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText())).setColor(TextFormatting.BLUE);
 
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
-
-			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.2")));
-			player.sendMessage(RENAME_FORM);
 
 			player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
 			player.sendMessage(GITHUB_REPO);

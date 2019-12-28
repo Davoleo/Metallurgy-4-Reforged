@@ -40,6 +40,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+		MinecraftForge.EVENT_BUS.register(PlayerHandler.class);
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 

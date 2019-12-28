@@ -586,6 +586,8 @@ item.metallurgy.potash.name=Potash
 item.metallurgy.phosphorus.name=Phosphorus
 item.metallurgy.potash_fertilizer.name=Potash Fertilizer
 
+item.metallurgy.wiki.name=Metallurgy Wiki
+
 #JEI
 gui.jei_compat.crusher.name=Crusher
 gui.jei_compat.sublimation_chamber.seconds=seconds
@@ -952,9 +954,7 @@ tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
 tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
 
 #Utils
-util.world_join_message.1=§4§lMetallurgy 4: Reforged
-util.world_join_message.2=§cThis mod is going to change name from 1.14 and up, do you have a cool idea for a name you want to share? check out this google form:
-util.rename_form_url=https://forms.gle/7BXmQtdfsvm28i7H6
+util.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged
 util.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
 util.world_join_message.4=You can disable this message from the mod configuration

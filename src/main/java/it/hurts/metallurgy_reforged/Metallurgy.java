@@ -17,7 +17,6 @@
  import it.hurts.metallurgy_reforged.config.GeneralConfig;
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
- import it.hurts.metallurgy_reforged.handler.OnPlayerJoin;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
  import it.hurts.metallurgy_reforged.integration.mods.IntegrationProjectE;
@@ -144,7 +143,6 @@
 			 logger.info("ProjectE's Integration has been initialized");
 		 }
 
-		 MinecraftForge.EVENT_BUS.register(new OnPlayerJoin());
 		 CrusherRecipes.registerDefaultOreRecipes();
 	 }
 
