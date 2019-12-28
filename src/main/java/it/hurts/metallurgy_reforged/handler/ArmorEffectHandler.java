@@ -196,13 +196,13 @@ public class ArmorEffectHandler {
 		//		Krik effect
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.KRIK.getArmorSet()) && ArmorEffectsConfig.krikArmorEffect)
 		{
-			int counter = 0;
+			int filledSlots = 0;
+			int stackCount = 0;
 
 			for (int i = 5; i < 9; i++)
 			{
 				if (!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative())
 				{
-					//					Inseriamo nello slot dell'inventario in posizione i un custom slot
 					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
 				}
 			}
@@ -212,25 +212,33 @@ public class ArmorEffectHandler {
 				KrikEffectHandler k = new KrikEffectHandler(event.player, i);
 
 				if (k.getHasStack())
-					counter++;
+				{
+					filledSlots++;
+
+					if (stackCount < 28)
+						stackCount += k.getStack().getCount();
+				}
 			}
 
 			//			We need to save the Y of player and check with the couter and Y + 1
-
-			if (event.player.lastTickPosY < 255 - (counter * 10))
-				event.player.motionY = 0.1;
-			else if (!event.player.onGround && event.player.lastTickPosY >= 255 - (counter * 10) - 1 && event.player.lastTickPosY < 255 - (counter * 10) + 1)
-				event.player.motionY = 0;
-			if (pl.onGround)
+			if (stackCount >= 27)
 			{
-				if (pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
+
+				if (event.player.lastTickPosY < 255 - (filledSlots * 10))
+					event.player.motionY = 0.1;
+				else if (!event.player.onGround && event.player.lastTickPosY >= 255 - (filledSlots * 10) - 1 && event.player.lastTickPosY < 255 - (filledSlots * 10) + 1)
+					event.player.motionY = 0;
+				if (pl.onGround)
 				{
-					//		    		Insert in c the container "vanilla"
-					ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-					List<Slot> slots = c.inventorySlots;
-					for (int i = 5; i < 9; i++)
+					if (pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
 					{
-						pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+						//		    		Insert in c the container "vanilla"
+						ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
+						List<Slot> slots = c.inventorySlots;
+						for (int i = 5; i < 9; i++)
+						{
+							pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
+						}
 					}
 				}
 			}

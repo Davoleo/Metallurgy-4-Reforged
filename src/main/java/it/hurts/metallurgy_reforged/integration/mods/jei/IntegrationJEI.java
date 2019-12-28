@@ -22,13 +22,18 @@ import it.hurts.metallurgy_reforged.integration.mods.jei.chamber.ChamberRecipeWr
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCategory;
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import scala.actors.threadpool.Arrays;
+
+import java.util.List;
 
 @JEIPlugin
 public class IntegrationJEI implements IModPlugin {
@@ -74,6 +79,14 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(new ItemStack(ModItems.invisibilityShield), VanillaTypes.ITEM, "description.jei_compat.invisibility_shield");
 		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
 		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
+
+		List<ItemStack> krikArmor = Arrays.asList(new ItemStack[]{
+				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.HEAD)),
+				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.CHEST)),
+				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.LEGS)),
+				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.FEET))
+		});
+		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
 	}
