@@ -202,10 +202,19 @@ public class ArmorEffectHandler {
 
 			IKrikEffect capability = event.player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
 
-			if (capability != null && event.player.posY < capability.getHeight() * STEP)
+			if (capability != null)
 			{
-				event.player.motionY = 0.2;
+				if (event.player.posY < capability.getHeight() * STEP)
+				{
+					event.player.motionY = 0.2;
+				}
+				else if (Math.round(event.player.posY) == capability.getHeight() * STEP)
+				{
+					event.player.motionY = 0;
+				}
+
 			}
+
 		}
 
 		//Platinum Armor (Night Vision, Needed Vanishing Curse)
