@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -60,7 +60,6 @@ public class ModLakeWorldGen {
 					int k1 = rand.nextInt(16) + 8;
 					(new WorldGenLakes(ModFluids.TAR.getFluidBlock())).generate(world, rand, blockpos.add(i1, j1, k1));
 				}
-				//				}
 			}
 	}
 

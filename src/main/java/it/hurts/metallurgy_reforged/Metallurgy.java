@@ -5,12 +5,15 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
  package it.hurts.metallurgy_reforged;
 
+ import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
+ import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
+ import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
  import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
@@ -115,6 +118,9 @@
 
 		 CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 		 logger.info(NAME + ": Punch effect capability Registered");
+
+		 CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
+		 logger.info(NAME + ": Krik effect capability Registered");
 
 	 }
 

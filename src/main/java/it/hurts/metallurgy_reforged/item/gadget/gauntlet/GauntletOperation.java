@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -60,7 +60,7 @@ public class GauntletOperation {
 
 					player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
 
-					PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(copy, true), player);
+					PacketManager.network.sendTo(new PacketSetGauntletSlot(copy, true), player);
 
 					player.inventory.offHandInventory.set(0, copy);
 
@@ -77,7 +77,7 @@ public class GauntletOperation {
 					player.inventoryContainer.inventorySlots.set(45, c.inventorySlots.get(45));
 					player.inventory.offHandInventory.set(0, ItemStack.EMPTY);
 
-					PacketManager.packetReq.sendTo(new PacketSetGauntletSlot(ItemStack.EMPTY, false), player);
+					PacketManager.network.sendTo(new PacketSetGauntletSlot(ItemStack.EMPTY, false), player);
 
 				}
 			}

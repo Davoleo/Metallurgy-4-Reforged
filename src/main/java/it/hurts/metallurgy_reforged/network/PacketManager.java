@@ -5,26 +5,33 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
+import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
+import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketManager {
 
-	//	Creaiamo un "canale" per la mod
-	public static final SimpleNetworkWrapper packetReq = NetworkRegistry.INSTANCE.newSimpleChannel("metallurgy");
+	//Metallurgy Network Channel
+	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("metallurgy");
 
-	//	Registriamo i pacchetti che verranno inizializzati nel postInit (Metallurgy)
+	//PostInit: Register Packets
 	public static void init()
 	{
-		packetReq.registerMessage(PacketSetGauntletSlot.Handler.class, PacketSetGauntletSlot.class, 1, Side.CLIENT);
+		//Server2Client
+		network.registerMessage(PacketSetGauntletSlot.Handler.class, PacketSetGauntletSlot.class, 1, Side.CLIENT);
+
+		//Client2Server
+		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
+		network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
 	}
 
 }

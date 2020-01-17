@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
@@ -24,6 +25,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -42,6 +44,7 @@ import java.util.List;
 public class RegistrationHandler {
 
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
+	public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
 
 	public static List<TextureAtlasSprite> oreParticles = new ArrayList<>();
 
@@ -87,6 +90,11 @@ public class RegistrationHandler {
 	{
 		if (event.getObject() instanceof EntityLivingBase)
 			event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
+
+		if (event.getObject() instanceof EntityPlayer)
+		{
+			event.addCapability(KRIK_EFFECT_CAPABILITY, new KrikEffectProvider());
+		}
 	}
 
 	@SideOnly(Side.CLIENT)

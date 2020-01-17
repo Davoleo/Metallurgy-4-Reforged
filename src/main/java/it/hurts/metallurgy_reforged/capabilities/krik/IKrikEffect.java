@@ -1,24 +1,20 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: KrikEffectHandler
+ * Class: IKrikEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.handler;
+package it.hurts.metallurgy_reforged.capabilities.krik;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
+public interface IKrikEffect {
 
-public class KrikEffectHandler extends Slot {
+	void setHeight(int height);
 
-	public KrikEffectHandler(EntityPlayer player, int index)
-	{
-		super(player.inventory, index, 0, 0);
-	}
+	int getHeight();
 
 }

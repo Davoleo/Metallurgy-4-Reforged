@@ -5,12 +5,14 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.handler;
 
+import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
+import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
 import it.hurts.metallurgy_reforged.entity.ai.AIFindPlayerWithoutHelmet;
@@ -196,55 +198,17 @@ public class ArmorEffectHandler {
 		//		Krik effect
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.KRIK.getArmorSet()) && ArmorEffectsConfig.krikArmorEffect)
 		{
-			int filledSlots = 0;
-			int stackCount = 0;
+			final int STEP = 255 / 27;
 
-			for (int i = 5; i < 9; i++)
+			IKrikEffect capability = event.player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
+
+			if (capability != null && event.player.posY < capability.getHeight() * STEP)
 			{
-				if (!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative())
-				{
-					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
-				}
-			}
-
-			for (int i = 9; i < 36; i++)
-			{
-				KrikEffectHandler k = new KrikEffectHandler(event.player, i);
-
-				if (k.getHasStack())
-				{
-					filledSlots++;
-
-					if (stackCount < 28)
-						stackCount += k.getStack().getCount();
-				}
-			}
-
-			//			We need to save the Y of player and check with the couter and Y + 1
-			if (stackCount >= 27)
-			{
-
-				if (event.player.lastTickPosY < 255 - (filledSlots * 10))
-					event.player.motionY = 0.1;
-				else if (!event.player.onGround && event.player.lastTickPosY >= 255 - (filledSlots * 10) - 1 && event.player.lastTickPosY < 255 - (filledSlots * 10) + 1)
-					event.player.motionY = 0;
-				if (pl.onGround)
-				{
-					if (pl.inventoryContainer.inventorySlots.get(5) instanceof ArmorCustomSlot)
-					{
-						//		    		Insert in c the container "vanilla"
-						ContainerPlayer c = new ContainerPlayer(pl.inventory, !pl.world.isRemote, pl);
-						List<Slot> slots = c.inventorySlots;
-						for (int i = 5; i < 9; i++)
-						{
-							pl.inventoryContainer.inventorySlots.set(i, slots.get(i));
-						}
-					}
-				}
+				event.player.motionY = 0.2;
 			}
 		}
 
-		//		Platinum Armor (Night Vision, Needed Vanishing Curse)
+		//Platinum Armor (Night Vision, Needed Vanishing Curse)
 		if (EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmor(EntityEquipmentSlot.HEAD)) && ArmorEffectsConfig.platinumArmorEffect)
 		{
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
@@ -399,5 +363,4 @@ public class ArmorEffectHandler {
 			e.setStrength(e.getOriginalStrength() * multiplier);
 		}
 	}
-
 }
