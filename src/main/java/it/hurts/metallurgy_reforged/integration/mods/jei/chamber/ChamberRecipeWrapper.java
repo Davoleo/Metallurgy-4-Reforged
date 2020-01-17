@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -26,8 +26,6 @@ import net.minecraft.potion.PotionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static it.hurts.metallurgy_reforged.gui.hud.SublimationChamberHUD.drawTexturedModalRect;
 
 public class ChamberRecipeWrapper implements IRecipeWrapper {
 
@@ -70,7 +68,7 @@ public class ChamberRecipeWrapper implements IRecipeWrapper {
 
 		GlStateManager.pushMatrix();
 		minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);
-		drawTexturedModalRect(106, 27, effect.getPotion().getStatusIconIndex() % 8 * 18, 198 + effect.getPotion().getStatusIconIndex() / 8 * 18, 18, 18);
+		Utils.drawTexturedModalRect(106, 27, effect.getPotion().getStatusIconIndex() % 8 * 18, 198 + effect.getPotion().getStatusIconIndex() / 8 * 18, 18, 18);
 		minecraft.fontRenderer.drawString(effect.getDuration() / 20 + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds") + " | " + Utils.localizeIgnoreFormat(effect.getEffectName()), 5, 5, color);
 
 		GlStateManager.popMatrix();
