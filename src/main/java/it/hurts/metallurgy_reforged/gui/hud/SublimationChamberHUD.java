@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -32,7 +31,7 @@ import java.util.Map;
 
 public class SublimationChamberHUD {
 
-	public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft, IBlockState state, BlockPos pos)
+	public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft, BlockPos pos)
 	{
 
 		World world = minecraft.world;

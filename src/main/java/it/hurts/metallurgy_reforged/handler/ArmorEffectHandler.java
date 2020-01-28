@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
+import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
@@ -204,15 +205,24 @@ public class ArmorEffectHandler {
 
 			if (capability != null)
 			{
-				if (event.player.posY < capability.getHeight() * STEP)
-				{
-					event.player.motionY = 0.2;
-				}
-				else if (Math.round(event.player.posY) == capability.getHeight() * STEP)
-				{
-					event.player.motionY = 0;
-				}
+				int maxLevel = KrikEffect.getMaxLevel(pl);
+				int level = capability.getHeight();
 
+				if (level <= maxLevel)
+				{
+					if (event.player.posY < level * STEP)
+					{
+						event.player.motionY = 0.4;
+					}
+					else if (Math.round(event.player.posY) == level * STEP)
+					{
+						event.player.motionY = 0;
+					}
+				}
+				else
+				{
+					capability.setHeight(maxLevel);
+				}
 			}
 
 		}
