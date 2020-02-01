@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -62,7 +62,7 @@ public enum MetalColors {
 	TARTARITE(0xCA8A32),
 	TIN(0xA9A295),
 	VULCANITE(0x641929),
-	VYROXERES(0x2B00),
+	VYROXERES(0x2BFF00),
 	ZINC(0xCACE84);
 
 	private int colorHex;
