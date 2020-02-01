@@ -596,7 +596,7 @@ gui.jei_compat.sublimation_effect_name=Effect
 description.jei_compat.tar_processing=Tar is generated in the world in a liquid form (Liquid Tar), however if it's kept away from the other tar fluid blocks it cools down becoming Tar Ore, that you can mine to get both the item form of Tar and occasionally Bitumen
 description.jei_compat.invisibility_shield=This peculiar shield can help you a lot in fights against your enemies, in fact you can easily hold right-click to block damage and to become invisible, from that moment on as long as you hold right click mobs won't notice you. When you release right-click the lemurite shield will be on a cooldown for a period of time depending on the time you used the shield. There's a shield use limit of 30 seconds after which the shield is automatically put on cooldown.
 description.jei_compat.thermite=Thermite dust can be melted in Tinkers' Construct's smeltery and then used in the smeltery tank to fuel it, this enhanced fuel allows you to melt ores you couldn't smelt before and to smelt usual ores way faster than when you use lava.
-description.jei_compat.krik_armor=The Krik Armor makes you float at a certain height depending on how much filled your inventory is. You can easily float down spreading a stack of items over your inventory. This effect is temporary and will be reworked to be more user-friendly join our discord server to know more about development related details.
+description.jei_compat.krik_armor=The Krik Armor makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Ores
 tile.metallurgy.adamantine_ore.name=Adamantine Ore
@@ -905,7 +905,7 @@ tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set: Slows Attackers
 tooltip.metallurgy.deep_iron_armor_effect=§1Full Armor Set: Fast Swimming
 tooltip.metallurgy.eximite_helmet_effect=§5Endermens won't notice you
 tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set: Strenght
-tooltip.metallurgy.krik_armor_effect=§2Full Armor Set: Weight controlled flight
+tooltip.metallurgy.krik_armor_effect=§2Full Armor Set: Weight controlled flight (UP and DOWN arrow keys)
 tooltip.metallurgy.lutetium_armor_effect=§6Knockback resistance II
 tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set: Makes entities glow
 tooltip.metallurgy.osmium_armor_effect=§9Knockback resistance I

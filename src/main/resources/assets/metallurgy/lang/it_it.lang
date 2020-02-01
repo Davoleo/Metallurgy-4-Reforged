@@ -596,7 +596,7 @@ gui.jei_compat.sublimation_effect_name=Effetto
 description.jei_compat.tar_processing=Il Catrame è generato nel mondo in forma liquida (Catrame Liquido), tuttavia se mantenuto lontano dagli altri blocchi di catrame liquido si rafredda diventando Catrame Grezzo, il quale può essere scavato per ottenere sia il Catrame sotto forma di oggetto sia, occasionalmente il Bitume.
 description.jei_compat.invisibility_shield=Questo particolare scudo può aiutarti molto nelle battaglie contro i tuoi nemici, infatti ti basta semplicemente tenere premuto tasto destro per bloccare il danno e diventare invisibile, da quel momento in poi finché tieni premuto tasto destro i mob non ti vedranno. Quando rilasci il tasto lo scudo di lemurite sarà in cooldown per un periodo lungo relativamente il tempo per cui è stato utilizzato lo scudo. C'è un limite di 30 secondi dopo i quali lo scudo sarà messo automaticamente in cooldown.
 description.jei_compat.thermite=La polvere di termite può essere sciolta nella Fornace della Tinkers' Construct e può essere poi utilizzata nel serbatoio della fornace per farla funzionare, questo carburante potenziato permette alla fornace di scioglere minerali grezzi che prima non potevi sciogliere e di sciogliere minerali comuni più velocemente di quando usi la lava come carburante.
-description.jei_compat.krik_armor=L'armatura di Krik ti fa fluttuare ad una certa altezza a seconda di quanto è pieno il tuo inventario. Puoi fluttuare di nuovo per terra distribuendo uno stack di oggetti nei tuoi spazi di inventario. Questo effetto è temporaneo e sarà modificato in futuro per essere più comodo nell'utilizzo, fai un salto sul nostro server discord per i dettagli riguardanti lo sviluppo.
+description.jei_compat.krik_armor=L'armatura di Krik ti fa fluttuare ad una certa altezza a seconda di quanto è pieno il tuo inventario. Puoi premere i tasti Freccia SU e Freccia GIU per fluttuare rispettivamente in alto e in basso. Hai un'altezza limite che non puoi superare fluttuando, questo limite dipende da quanto è pieno il tuo inventario (hotbar esclusa). C'è anche un HUD nell'angolo in basso a destra che ti mostra il tuo livello di altezza e il tuo limite.
 
 # Ores
 tile.metallurgy.adamantine_ore.name=Minerale Grezzo di Adamantio
@@ -905,7 +905,7 @@ tooltip.metallurgy.ceruclase_armor_effect=§3Set Completo: Rallenta i nemici
 tooltip.metallurgy.deep_iron_armor_effect=§1Set Completo: Nuoto Veloce
 tooltip.metallurgy.eximite_helmet_effect=§5Gli Endermen non ti vedranno!
 tooltip.metallurgy.kalendrite_armor_effect=§dSet Completo: Forza
-tooltip.metallurgy.krik_armor_effect=§2Set Completo: Volo controllato dal peso
+tooltip.metallurgy.krik_armor_effect=§2Set Completo: Volo controllato dal peso (Freccia SU e GIU per fluttuare)
 tooltip.metallurgy.lutetium_armor_effect=§6Resistenza al Contraccolpo II
 tooltip.metallurgy.mithril_armor_effect=§bSet Completo: Fa brillare le entitità
 tooltip.metallurgy.osmium_armor_effect=§9 Resistenza al Contraccolpo I

@@ -79,6 +79,11 @@ item.metallurgy.electrum_chestplate.name=金银合金胸甲
 item.metallurgy.electrum_leggings.name=金银合金护腿
 item.metallurgy.electrum_boots.name=金银合金靴子
 
+item.metallurgy.etherium_helmet.name=Etherium Helmet
+item.metallurgy.etherium_chestplate.name=Etherium Chestplate
+item.metallurgy.etherium_leggings.name=Etherium Leggings
+item.metallurgy.etherium_boots.name=Etherium Boots
+
 item.metallurgy.eximite_helmet.name=抹灭石头盔
 item.metallurgy.eximite_chestplate.name=抹灭石胸甲
 item.metallurgy.eximite_leggings.name=抹灭石护腿
@@ -253,6 +258,7 @@ tile.metallurgy.brass_block.name=黄铜方塊
 tile.metallurgy.lutetium_block.name=Lutetium Block
 tile.metallurgy.osmium_block.name=Osmium Block
 tile.metallurgy.sulfur_block.name=硫磺方塊
+tile.metallurgy.etherium_block.name=Etherium Block
 
 # 配置
 config.metallurgy.category.armor_effects=护甲效果
@@ -313,6 +319,7 @@ item.metallurgy.deep_iron_dust.name=深铁灰尘
 item.metallurgy.desichalkos_dust.name=德西采寇石灰尘
 item.metallurgy.damascus_steel_dust.name=大马士革钢灰尘
 item.metallurgy.electrum_dust.name=金银合金灰尘
+item.metallurgy.etherium_dust.name=Etherium Dust
 item.metallurgy.eximite_dust.name=抹灭石灰尘
 item.metallurgy.gold_dust.name=Gold灰尘
 item.metallurgy.haderoth_dust.name=海德洛斯合金灰尘
@@ -366,6 +373,7 @@ item.metallurgy.deep_iron_nugget.name=深铁硬块
 item.metallurgy.desichalkos_nugget.name=德西采寇石硬块
 item.metallurgy.damascus_steel_nugget.name=大马士革钢硬块
 item.metallurgy.electrum_nugget.name=金银合金硬块
+item.metallurgy.etherium_nugget.name=Etherium Nugget
 item.metallurgy.eximite_nugget.name=抹灭石硬块
 item.metallurgy.gold_nugget.name=Gold硬块
 item.metallurgy.haderoth_nugget.name=海德洛斯合金硬块
@@ -422,6 +430,7 @@ tile.metallurgy.molten_damascus_steel.name=熔化大马士革钢
 tile.metallurgy.molten_deep_iron.name=熔化深铁
 tile.metallurgy.molten_desichalkos.name=熔化德西采寇石
 tile.metallurgy.molten_electrum.name=熔化金银合金
+tile.metallurgy.molten_etherium.name=Molten Etherium
 tile.metallurgy.molten_eximite.name=熔化抹灭石
 tile.metallurgy.molten_haderoth.name=熔化海德洛斯合金
 tile.metallurgy.molten_hepatizon.name=熔化科林斯青铜
@@ -456,57 +465,59 @@ tile.metallurgy.molten_vulcanite.name=熔化火山熔金
 tile.metallurgy.molten_vyroxeres.name=熔化千焦杂金
 tile.metallurgy.molten_zinc.name=熔化锌
 
-# 流体
-fluid.molten_adamantine=熔化精金
-fluid.molten_alduorite=熔化爱欧杜莱特钢
-fluid.molten_amordrine=熔化爱摩得利安合金
-fluid.molten_angmallen=熔化安格麦金
-fluid.molten_astral_silver=熔化星芒银
-fluid.molten_atlarus=熔化阿塔洛斯杂金
-fluid.molten_black_steel=熔化黑钢
-fluid.molten_brass=熔化黄铜
-fluid.molten_bronze=熔化青铜
-fluid.molten_carmot=熔化彗星银
-fluid.molten_celenegil=熔化伽利内根合金
-fluid.molten_ceruclase=熔化赛鲁克雷斯矿铁
-fluid.molten_copper=熔化铜
-fluid.molten_deep_iron=熔化深铁
-fluid.molten_desichalkos=熔化德西采寇石
-fluid.molten_damascus_steel=熔化大马士革钢
-fluid.molten_electrum=熔化金银合金
-fluid.molten_eximite=熔化抹灭石
-fluid.molten_haderoth=熔化海德洛斯合金
-fluid.molten_hepatizon=熔化科林斯青铜
-fluid.molten_ignatius=熔化焰金
-fluid.molten_infuscolium=熔化因福斯克里安矿铁
-fluid.molten_inolashite=熔化爱钮尼沙合金
-fluid.molten_kalendrite=熔化历铁
-fluid.molten_krik=熔化罪祸哭石
-fluid.molten_lemurite=熔化雷姆利亚钢
-fluid.molten_lutetium=Molten Lutetium
-fluid.molten_manganese=熔化锰
-fluid.molten_meutoite=熔化摩依坦特石
-fluid.molten_midasium=熔化米德西铁
-fluid.molten_mithril=熔化秘银
-fluid.molten_orichalcum=熔化星陨石
-fluid.molten_osmium=Molten Osmium
-fluid.molten_oureclase=熔化奥鲁克雷斯矿铁
-fluid.molten_platinum=熔化铂
-fluid.molten_prometheum=熔化鉕
-fluid.molten_quicksilver=熔化银钻
-fluid.molten_rubracium=熔化红宝碎石
-fluid.molten_sanguinite=熔化狱炎石
-fluid.molten_shadow_iron=熔化暗铁
-fluid.molten_shadow_steel=熔化暗钢
-fluid.molten_silver=熔化银
-fluid.molten_steel=熔化钢
-fluid.molten_tar=Liquid柏油
-fluid.molten_tartarite=熔化酒石杂金
+# Fluids
+fluid.adamantine=Molten Adamantine
+fluid.alduorite=Molten Alduorite
+fluid.amordrine=Molten Amordrine
+fluid.angmallen=Molten Angmallen
+fluid.astral_silver=Molten Astral Silver
+fluid.atlarus=Molten Atlarus
+fluid.black_steel=Molten Black Steel
+fluid.brass=Molten Brass
+fluid.bronze=Molten Bronze
+fluid.carmot=Molten Carmot
+fluid.celenegil=Molten Celenegil
+fluid.ceruclase=Molten Ceruclase
+fluid.copper=Molten Copper
+fluid.deep_iron=Molten Deep Iron
+fluid.desichalkos=Molten Desichalkos
+fluid.damascus_steel=Molten Damascus Steel
+fluid.electrum=Molten Electrum
+fluid.etherium=Molten Etherium
+fluid.eximite=Molten Eximite
+fluid.haderoth=Molten Haderoth
+fluid.hepatizon=Molten Hepatizon
+fluid.ignatius=Molten Ignatius
+fluid.infuscolium=Molten Infuscolium
+fluid.inolashite=Molten Inolashite
+fluid.kalendrite=Molten Kalendrite
+fluid.krik=Molten Krik
+fluid.lemurite=Molten Lemurite
+fluid.lutetium=Molten Lutetium
+fluid.manganese=Molten Manganese
+fluid.meutoite=Molten Meutoite
+fluid.midasium=Molten Midasium
+fluid.mithril=Molten Mithril
+fluid.orichalcum=Molten Orichalcum
+fluid.osmium=Molten Osmium
+fluid.oureclase=Molten Oureclase
+fluid.platinum=Molten Platinum
+fluid.prometheum=Molten Prometheum
+fluid.quicksilver=Molten Quicksilver
+fluid.rubracium=Molten Rubracium
+fluid.sanguinite=Molten Sanguinite
+fluid.shadow_iron=Molten Shadow Iron
+fluid.shadow_steel=Molten Shadow Steel
+fluid.silver=Molten Silver
+fluid.steel=Molten Steel
+fluid.tartarite=Molten Tartarite
+fluid.tin=Molten Tin
+fluid.vulcanite=Molten Vulcanite
+fluid.vyroxeres=Molten Vyroxeres
+fluid.zinc=Molten Zinc
+
 fluid.molten_thermite=熔化铝热
-fluid.molten_tin=熔化锡
-fluid.molten_vulcanite=熔化火山熔金
-fluid.molten_vyroxeres=熔化千焦杂金
-fluid.molten_zinc=熔化锌
+fluid.molten_tar=Liquid柏油
 
 # 锭
 item.metallurgy.adamantine_ingot.name=精金锭
@@ -526,6 +537,7 @@ item.metallurgy.deep_iron_ingot.name=深铁锭
 item.metallurgy.desichalkos_ingot.name=德西采寇石锭
 item.metallurgy.damascus_steel_ingot.name=大马士革钢锭
 item.metallurgy.electrum_ingot.name=金银合金锭
+item.metallurgy.etherium_ingot.name=Etherium Ingot
 item.metallurgy.eximite_ingot.name=抹灭石锭
 item.metallurgy.haderoth_ingot.name=海德洛斯合金锭
 item.metallurgy.hepatizon_ingot.name=科林斯青铜锭
@@ -563,6 +575,7 @@ item.metallurgy.flint_and_ignatius.name=燧石与焰金
 item.metallurgy.flint_and_vulcanite.name=燧石与火山熔金
 item.metallurgy.rubracium_gauntlet.name=红宝碎石长手套
 item.metallurgy.lemurite_shield.name=Lemurite Shield
+tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 # 物品
 item.metallurgy.tar.name=柏油
@@ -570,10 +583,19 @@ item.metallurgy.sulfur_dust.name=硫磺
 item.metallurgy.bitumen.name=沥青
 item.metallurgy.potash.name=钾肥
 item.metallurgy.phosphorus.name=磷
+item.metallurgy.potash_fertilizer.name=Potash Fertilizer
+
+item.metallurgy.wiki.name=Metallurgy Wiki
 
 # JEI
 gui.jei_compat.crusher.name=破碎机
+gui.jei_compat.sublimation_chamber.seconds=seconds
+gui.jei_compat.sublimation_effect_duration=Duration
+gui.jei_compat.sublimation_effect_name=Effect
 description.jei_compat.tar_processing=柏油是世界上以液体形式生产的(液柏油)，然而如果它远离其他焦油液体块，它会冷却成柏油矿石，你可以开采以获得柏油的物品形式，偶尔也会沥青
+description.jei_compat.invisibility_shield=This peculiar shield can help you a lot in fights against your enemies, in fact you can easily hold right-click to block damage and to become invisible, from that moment on as long as you hold right click mobs won't notice you. When you release right-click the lemurite shield will be on a cooldown for a period of time depending on the time you used the shield. There's a shield use limit of 30 seconds after which the shield is automatically put on cooldown.
+description.jei_compat.thermite=Thermite dust can be melted in Tinkers' Construct's smeltery and then used in the smeltery tank to fuel it, this enhanced fuel allows you to melt ores you couldn't smelt before and to smelt usual ores way faster than when you use lava.
+description.jei_compat.krik_armor=The Krik Armor makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 # 矿
 tile.metallurgy.adamantine_ore.name=精金矿
@@ -611,6 +633,29 @@ tile.metallurgy.tin_ore.name=锡矿
 tile.metallurgy.vyroxeres_ore.name=千焦杂金矿
 tile.metallurgy.vulcanite_ore.name=火山熔金矿
 tile.metallurgy.zinc_ore.name=锌矿
+
+# 平铺实体
+container.crusher=破碎机
+container.alloyer=合金
+tile.metallurgy.crusher.name=§6破碎机
+tile.metallurgy.alloyer.name=§e合金
+tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
+
+# 构建特征
+modifier.obscure_trait.name=暗纹
+modifier.obscure_trait.desc=遮挡你的敌人
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
+modifier.vulcan_trait.name=火焰
+modifier.vulcan_trait.desc=使你的敌人着火
+modifier.duplication_trait.name=复制
+modifier.duplication_trait.desc=复制怪物滴
+modifier.life_steal_trait.name=生命窃取
+modifier.life_steal_trait.desc=吸取生命
+modifier.wither_trait.name=干枯
+modifier.wither_trait.desc=对你的敌人施加枯萎效果
+modifier.king_dice_trait.name=随机效应
+modifier.king_dice_trait.desc=对你的敌人施加随机效果
 
 # 工具
 item.metallurgy.adamantine_axe.name=精金斧
@@ -708,6 +753,12 @@ item.metallurgy.electrum_hoe.name=金银合金锄
 item.metallurgy.electrum_pickaxe.name=金银合金镐
 item.metallurgy.electrum_shovel.name=金银合金铲
 item.metallurgy.electrum_sword.name=金银合金剑
+
+item.metallurgy.etherium_axe.name=Etherium Axe
+item.metallurgy.etherium_hoe.name=Etherium Hoe
+item.metallurgy.etherium_pickaxe.name=Etherium Pickaxe
+item.metallurgy.etherium_shovel.name=Etherium Shovel
+item.metallurgy.etherium_sword.name=Etherium Sword
 
 item.metallurgy.eximite_axe.name=抹灭石斧
 item.metallurgy.eximite_hoe.name=抹灭石锄
@@ -841,28 +892,6 @@ item.metallurgy.vyroxeres_pickaxe.name=千焦杂金镐
 item.metallurgy.vyroxeres_shovel.name=千焦杂金铲
 item.metallurgy.vyroxeres_sword.name=千焦杂金剑
 
-# 平铺实体
-container.crusher=破碎机
-container.alloyer=合金
-tile.metallurgy.crusher.name=§6破碎机
-tile.metallurgy.alloyer.name=§e合金
-
-# 构建特征
-modifier.obscure_trait.name=暗纹
-modifier.obscure_trait.desc=遮挡你的敌人
-modifier.opistognathus_trait.name=Opistognathus
-modifier.opistognathus_trait.desc=Increase attack/mining speed in water
-modifier.vulcan_trait.name=火焰
-modifier.vulcan_trait.desc=使你的敌人着火
-modifier.duplication_trait.name=复制
-modifier.duplication_trait.desc=复制怪物滴
-modifier.life_steal_trait.name=生命窃取
-modifier.life_steal_trait.desc=吸取生命
-modifier.wither_trait.name=干枯
-modifier.wither_trait.desc=对你的敌人施加枯萎效果
-modifier.king_dice_trait.name=随机效应
-modifier.king_dice_trait.desc=对你的敌人施加随机效果
-
 # 工具提示
 # 装甲工具提示
 tooltip.metallurgy.adamantine_armor_effect=§4全盔甲套装:消耗经验以获得饥饿点数
@@ -889,6 +918,19 @@ tooltip.metallurgy.vulcanite_armor_effect=§c全盔甲套装:火力免疫
 # 其他工具提示
 tooltip.metallurgy.bitumen=§8获得柏油矿的二次降价
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
+tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
+tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
+
+# Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+# Axes
+tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
+
+# 镐
+tooltip.metallurgy.deep_iron_pickaxe_effect=$1轻量级水下采矿!
+tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
+
+# Shovel
+tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
 
 # 工具提示
 # 剑s
@@ -898,7 +940,7 @@ tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
 tooltip.metallurgy.desichalkos_sword_effect=§5对目标造成一些随机负面影响
 tooltip.metallurgy.ignatius_sword_effect=§c火炎图标.
 tooltip.metallurgy.kalendrite_sword_effect=§d有机会重建你的生活
-tooltip.metallurgy.midasium_tool_effect=§6Duplication
+tooltip.metallurgy.midasium_sword_effect=§6抢劫
 tooltip.metallurgy.mithril_sword_effect=§b使目标发光
 tooltip.metallurgy.orichalcum_sword_effect=§2你的杀戮让你感觉很强
 tooltip.metallurgy.sanguinite_sword_effect=§4偷取
@@ -908,16 +950,11 @@ tooltip.metallurgy.tartarite_sword_effect=§8两者II
 tooltip.metallurgy.vulcanite_sword_effect=§c火焰II
 tooltip.metallurgy.vyroxeres_sword_effect=§a传送你的目标
 
-# 镐
-tooltip.metallurgy.deep_iron_pickaxe_effect=$1轻量级水下采矿!
-
 # 工具
 tooltip.metallurgy.shadow_steel_tool_effect=§8采矿速度与黑暗成正比
 
 # 文字
 util.world_join_message.1=§4§l冶金4:重铸
-util.world_join_message.2=§6[警告:可能有错误]
 util.world_join_message.3=§6有关更多信息,bug报告和建议在这里是github存储库链接:
-util.world_join_message.4=您可以从mod配置中禁用此消息
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
-tooltip.metallurgy.midasium_sword_effect=§6抢劫
+util.world_join_message.4=您可以从mod配置中禁用此消息

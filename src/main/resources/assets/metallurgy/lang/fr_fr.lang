@@ -82,6 +82,11 @@ item.metallurgy.electrum_chestplate.name=Plastron en Electrum
 item.metallurgy.electrum_leggings.name=Jambières en Electrum
 item.metallurgy.electrum_boots.name=Bottes en Electrum
 
+item.metallurgy.etherium_helmet.name=Etherium Helmet
+item.metallurgy.etherium_chestplate.name=Etherium Chestplate
+item.metallurgy.etherium_leggings.name=Etherium Leggings
+item.metallurgy.etherium_boots.name=Etherium Boots
+
 item.metallurgy.eximite_helmet.name=Casque en Eximite
 item.metallurgy.eximite_chestplate.name=Plastron en Eximite
 item.metallurgy.eximite_leggings.name=Jambières en Eximite
@@ -256,6 +261,7 @@ tile.metallurgy.brass_block.name=Bloc de Laiton
 tile.metallurgy.lutetium_block.name=Lutetium Block
 tile.metallurgy.osmium_block.name=Osmium Block
 tile.metallurgy.sulfur_block.name=Bloc de Soufre
+tile.metallurgy.etherium_block.name=Etherium Block
 
 # Config
 config.metallurgy.category.armor_effects=Armor Effects
@@ -317,6 +323,7 @@ item.metallurgy.deep_iron_dust.name=Poussière de Fer Profond
 item.metallurgy.desichalkos_dust.name=Poussière de Desichalkos
 item.metallurgy.damascus_steel_dust.name=Poussière d'Acier de Damas
 item.metallurgy.electrum_dust.name=Poussière d'Electrum
+item.metallurgy.etherium_dust.name=Etherium Dust
 item.metallurgy.eximite_dust.name=Poussière d'Eximite
 item.metallurgy.gold_dust.name=Poussière d'Or
 item.metallurgy.haderoth_dust.name=Poussière d'Haderoth
@@ -370,6 +377,7 @@ item.metallurgy.deep_iron_nugget.name=Deep Iron Nugget
 item.metallurgy.desichalkos_nugget.name=Desichalkos Nugget
 item.metallurgy.damascus_steel_nugget.name=Damascus Steel Nugget
 item.metallurgy.electrum_nugget.name=Electrum Nugget
+item.metallurgy.etherium_nugget.name=Etherium Nugget
 item.metallurgy.eximite_nugget.name=Eximite Nugget
 item.metallurgy.gold_nugget.name=Gold Nugget
 item.metallurgy.haderoth_nugget.name=Haderoth Nugget
@@ -426,6 +434,7 @@ tile.metallurgy.molten_damascus_steel.name= Acier de Damas Fondu
 tile.metallurgy.molten_deep_iron.name= Fer Profond Fondu
 tile.metallurgy.molten_desichalkos.name= Desichalkos Fondu
 tile.metallurgy.molten_electrum.name= Electrum Fondu
+tile.metallurgy.molten_etherium.name=Molten Etherium
 tile.metallurgy.molten_eximite.name= Eximite Fondu
 tile.metallurgy.molten_haderoth.name= Haderoth Fondu
 tile.metallurgy.molten_hepatizon.name= Hepatizon Fondu
@@ -461,56 +470,58 @@ tile.metallurgy.molten_vyroxeres.name= Vyroxeres Fondu
 tile.metallurgy.molten_zinc.name= Zinc Fondu
 
 # Fluids
-fluid.molten_adamantine= Adamantine Fondu
-fluid.molten_alduorite= Alduorite Fondu
-fluid.molten_amordrine= Amordrine Fondu
-fluid.molten_angmallen= Angmallen Fondu
-fluid.molten_astral_silver=  Argent Astral Fondu
-fluid.molten_atlarus= Atlarus Fondu
-fluid.molten_black_steel= Acier noir Fondu
-fluid.molten_brass= Laiton Fondu
-fluid.molten_bronze= Bronze Fondu
-fluid.molten_carmot= Carmot Fondu
-fluid.molten_celenegil= Celenegil Fondu
-fluid.molten_ceruclase= Ceruclase Fondu
-fluid.molten_copper= Cuivre Fondu
-fluid.molten_deep_iron= Fer Profond Fondu
-fluid.molten_desichalkos= Desichalkos Fondu
-fluid.molten_damascus_steel= Acier de Damas Fondu
-fluid.molten_electrum= Electrum Fondu
-fluid.molten_eximite= Eximite Fondu
-fluid.molten_haderoth= Haderoth Fondu
-fluid.molten_hepatizon= Hepatizon Fondu
-fluid.molten_ignatius= Ignatius Fondu
-fluid.molten_infuscolium= Infuscolium Fondu
-fluid.molten_inolashite= Inolashite Fondu
-fluid.molten_kalendrite= Kalendrite Fondu
-fluid.molten_krik=Molten Krik
-fluid.molten_lemurite= Lemurite Fondu
-fluid.molten_lutetium=Molten Lutetium
-fluid.molten_manganese= Manganese Fondu
-fluid.molten_meutoite= Meutoite Fondu
-fluid.molten_midasium= Midasium Fondu
-fluid.molten_mithril= Mithril Fondu
-fluid.molten_orichalcum= Orichalcum Fondu
-fluid.molten_osmium=Molten Osmium
-fluid.molten_oureclase= Oureclase Fondu
-fluid.molten_platinum= Platinum Fondu
-fluid.molten_prometheum= Prometheum Fondu
-fluid.molten_quicksilver= Mercure Fondu
-fluid.molten_rubracium= Rubracium Fondu
-fluid.molten_sanguinite= Sanguinite Fondu
-fluid.molten_shadow_iron= Fer d'Ombre Fondu
-fluid.molten_shadow_steel= Acier d'Ombre Fondu
-fluid.molten_silver= Argent Fondu
-fluid.molten_steel= Acier Fondu
-fluid.molten_tar=Liquid Tar
-fluid.molten_tartarite= Tartarite Fondu
+fluid.adamantine=Molten Adamantine
+fluid.alduorite=Molten Alduorite
+fluid.amordrine=Molten Amordrine
+fluid.angmallen=Molten Angmallen
+fluid.astral_silver=Molten Astral Silver
+fluid.atlarus=Molten Atlarus
+fluid.black_steel=Molten Black Steel
+fluid.brass=Molten Brass
+fluid.bronze=Molten Bronze
+fluid.carmot=Molten Carmot
+fluid.celenegil=Molten Celenegil
+fluid.ceruclase=Molten Ceruclase
+fluid.copper=Molten Copper
+fluid.deep_iron=Molten Deep Iron
+fluid.desichalkos=Molten Desichalkos
+fluid.damascus_steel=Molten Damascus Steel
+fluid.electrum=Molten Electrum
+fluid.etherium=Molten Etherium
+fluid.eximite=Molten Eximite
+fluid.haderoth=Molten Haderoth
+fluid.hepatizon=Molten Hepatizon
+fluid.ignatius=Molten Ignatius
+fluid.infuscolium=Molten Infuscolium
+fluid.inolashite=Molten Inolashite
+fluid.kalendrite=Molten Kalendrite
+fluid.krik=Molten Krik
+fluid.lemurite=Molten Lemurite
+fluid.lutetium=Molten Lutetium
+fluid.manganese=Molten Manganese
+fluid.meutoite=Molten Meutoite
+fluid.midasium=Molten Midasium
+fluid.mithril=Molten Mithril
+fluid.orichalcum=Molten Orichalcum
+fluid.osmium=Molten Osmium
+fluid.oureclase=Molten Oureclase
+fluid.platinum=Molten Platinum
+fluid.prometheum=Molten Prometheum
+fluid.quicksilver=Molten Quicksilver
+fluid.rubracium=Molten Rubracium
+fluid.sanguinite=Molten Sanguinite
+fluid.shadow_iron=Molten Shadow Iron
+fluid.shadow_steel=Molten Shadow Steel
+fluid.silver=Molten Silver
+fluid.steel=Molten Steel
+fluid.tartarite=Molten Tartarite
+fluid.tin=Molten Tin
+fluid.vulcanite=Molten Vulcanite
+fluid.vyroxeres=Molten Vyroxeres
+fluid.zinc=Molten Zinc
+
 fluid.molten_thermite=Molten Thermite
-fluid.molten_tin= Tin Fondu
-fluid.molten_vulcanite= Vulcanite Fondu
-fluid.molten_vyroxeres= Vyroxeres Fondu
-fluid.molten_zinc= Zinc Fondu
+fluid.molten_tar=Liquid Tar
 
 # Ingots
 item.metallurgy.adamantine_ingot.name=Lingot d'Adamantine
@@ -530,6 +541,7 @@ item.metallurgy.deep_iron_ingot.name=Lingot de Fer Profond
 item.metallurgy.desichalkos_ingot.name=Lingot de Desichalkos
 item.metallurgy.damascus_steel_ingot.name=Lingot d'Acier de Damas
 item.metallurgy.electrum_ingot.name=Lingot d'Electrum
+item.metallurgy.etherium_ingot.name=Etherium Ingot
 item.metallurgy.eximite_ingot.name=Lingot d'Eximite
 item.metallurgy.haderoth_ingot.name=Lingot d'Haderoth
 item.metallurgy.hepatizon_ingot.name=Lingot d'Hepatizon
@@ -567,6 +579,7 @@ item.metallurgy.flint_and_ignatius.name=Silex et Ignatius
 item.metallurgy.flint_and_vulcanite.name=Silex et Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Gant en Rubracium
 item.metallurgy.lemurite_shield.name=Lemurite Shield
+tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 # Items
 item.metallurgy.tar.name=Goudron
@@ -574,10 +587,19 @@ item.metallurgy.sulfur_dust.name=Soufre
 item.metallurgy.bitumen.name=Bitume
 item.metallurgy.potash.name=Potasse
 item.metallurgy.phosphorus.name=Phosphore
+item.metallurgy.potash_fertilizer.name=Potash Fertilizer
+
+item.metallurgy.wiki.name=Metallurgy Wiki
 
 # JEI
 gui.jei_compat.crusher.name=Broyeur
+gui.jei_compat.sublimation_chamber.seconds=seconds
+gui.jei_compat.sublimation_effect_duration=Duration
+gui.jei_compat.sublimation_effect_name=Effect
 description.jei_compat.tar_processing=Tar is generated in the world in a liquid form (Liquid Tar), however if it's kept away from the other tar fluid blocks it cools down becoming Tar Ore, that you can mine to get both the item form of Tar and occasionally Bitumen
+description.jei_compat.invisibility_shield=This peculiar shield can help you a lot in fights against your enemies, in fact you can easily hold right-click to block damage and to become invisible, from that moment on as long as you hold right click mobs won't notice you. When you release right-click the lemurite shield will be on a cooldown for a period of time depending on the time you used the shield. There's a shield use limit of 30 seconds after which the shield is automatically put on cooldown.
+description.jei_compat.thermite=Thermite dust can be melted in Tinkers' Construct's smeltery and then used in the smeltery tank to fuel it, this enhanced fuel allows you to melt ores you couldn't smelt before and to smelt usual ores way faster than when you use lava.
+description.jei_compat.krik_armor=The Krik Armor makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 # Ores
 tile.metallurgy.adamantine_ore.name=Minerai d'Adamantine
@@ -615,6 +637,29 @@ tile.metallurgy.tin_ore.name=Minerai de Tin
 tile.metallurgy.vyroxeres_ore.name=Minerai de Vyroxeres
 tile.metallurgy.vulcanite_ore.name=Minerai de Vulcanite
 tile.metallurgy.zinc_ore.name=Minerai de Zinc
+
+# Tile Entities
+container.crusher=Broyeur
+container.alloyer=Fusionneur
+tile.metallurgy.crusher.name=§6Broyeur
+tile.metallurgy.alloyer.name=§eFusionneur
+tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
+
+# Tinkers' Construct Traits
+modifier.obscure_trait.name=Obscur
+modifier.obscure_trait.desc=
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Increase attack/mining speed in water
+modifier.vulcan_trait.name=Volcanique
+modifier.vulcan_trait.desc=
+modifier.duplication_trait.name=Reproduction
+modifier.duplication_trait.desc=
+modifier.life_steal_trait.name=Vol de Vie
+modifier.life_steal_trait.desc=
+modifier.wither_trait.name=Wither
+modifier.wither_trait.desc=
+modifier.king_dice_trait.name=Effets aléatoires
+modifier.king_dice_trait.desc=
 
 # Tools
 item.metallurgy.adamantine_axe.name=Hache en Adamantine
@@ -712,6 +757,12 @@ item.metallurgy.electrum_hoe.name=Houe en Electrum
 item.metallurgy.electrum_pickaxe.name=Pioche en Electrum
 item.metallurgy.electrum_shovel.name=Pelle en Electrum
 item.metallurgy.electrum_sword.name=Epée en Electrum
+
+item.metallurgy.etherium_axe.name=Etherium Axe
+item.metallurgy.etherium_hoe.name=Etherium Hoe
+item.metallurgy.etherium_pickaxe.name=Etherium Pickaxe
+item.metallurgy.etherium_shovel.name=Etherium Shovel
+item.metallurgy.etherium_sword.name=Etherium Sword
 
 item.metallurgy.eximite_axe.name=Hache en Eximite
 item.metallurgy.eximite_hoe.name=Houe en Eximite
@@ -845,28 +896,6 @@ item.metallurgy.vyroxeres_pickaxe.name=Pioche en Vyroxeres
 item.metallurgy.vyroxeres_shovel.name=Pelle en Vyroxeres
 item.metallurgy.vyroxeres_sword.name=Epée en Vyroxeres
 
-# Tile Entities
-container.crusher=Broyeur
-container.alloyer=Fusionneur
-tile.metallurgy.crusher.name=§6Broyeur
-tile.metallurgy.alloyer.name=§eFusionneur
-
-# Tinkers' Construct Traits
-modifier.obscure_trait.name=Obscur
-modifier.obscure_trait.desc=
-modifier.opistognathus_trait.name=Opistognathus
-modifier.opistognathus_trait.desc=Increase attack/mining speed in water
-modifier.vulcan_trait.name=Volcanique
-modifier.vulcan_trait.desc=
-modifier.duplication_trait.name=Reproduction
-modifier.duplication_trait.desc=
-modifier.life_steal_trait.name=Vol de Vie
-modifier.life_steal_trait.desc=
-modifier.wither_trait.name=Wither
-modifier.wither_trait.desc=
-modifier.king_dice_trait.name=Effets aléatoires
-modifier.king_dice_trait.desc=
-
 # Tooltips
 # Armor Tooltips
 tooltip.metallurgy.adamantine_armor_effect=§4Saturation
@@ -893,6 +922,19 @@ tooltip.metallurgy.vulcanite_armor_effect=§cImmunité au feu
 # Other Tooltips
 tooltip.metallurgy.bitumen=§8Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
+tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
+tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
+
+# Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+# Axes
+tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
+
+# Pickaxes
+tooltip.metallurgy.deep_iron_pickaxe_effect=$1Minez plus rapidement sous l'eau!
+tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
+
+# Shovel
+tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
 
 # Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 # Swords
@@ -902,7 +944,7 @@ tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
 tooltip.metallurgy.desichalkos_sword_effect=§5Inflige un effet négatif aléatoire à la cible
 tooltip.metallurgy.ignatius_sword_effect=§cAura de feu I
 tooltip.metallurgy.kalendrite_sword_effect=§dA la chance de régénérer votre vie
-tooltip.metallurgy.midasium_tool_effect=§6Duplication
+tooltip.metallurgy.midasium_sword_effect=§6Duplication
 tooltip.metallurgy.mithril_sword_effect=§bFait briller la cible
 tooltip.metallurgy.orichalcum_sword_effect=§2Vos meurtres vous font sentir fort
 tooltip.metallurgy.sanguinite_sword_effect=§4Vol de vie
@@ -912,20 +954,12 @@ tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cLame de feu II
 tooltip.metallurgy.vyroxeres_sword_effect=§aEmpoisonne votre cible
 
-# Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=$1Minez plus rapidement sous l'eau!
-
 # Tools
 tooltip.metallurgy.shadow_steel_tool_effect=§8La vitesse de minage est directement proportionnelle à l'obscurité
 
 # Utils
 util.world_join_message.1=§4§lMetallurgy 4: Reforged
-util.world_join_message.2=§6[Attention: c'est une version alpha du mod]
 util.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
-util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
 util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
-
-tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
-item.metallurgy.potash_fertilizer.name=Potash Fertilizer
-tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
-tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
+util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
+# Fluids
