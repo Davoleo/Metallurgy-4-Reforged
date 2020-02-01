@@ -40,14 +40,17 @@ public class HUDHandler {
 		if (rayTrace == null)
 			return;
 
-		IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
-		Block block = state.getBlock();
-
 		EntityPlayer player = minecraft.player;
 
-		if (block == ModBlocks.chamber)
+		if (rayTrace.typeOfHit == RayTraceResult.Type.BLOCK)
 		{
-			SublimationChamberHUD.render(event, minecraft, rayTrace.getBlockPos());
+			IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
+			Block block = state.getBlock();
+
+			if (block == ModBlocks.chamber)
+			{
+				SublimationChamberHUD.render(event, minecraft, rayTrace.getBlockPos());
+			}
 		}
 
 		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK.getArmorSet()))
