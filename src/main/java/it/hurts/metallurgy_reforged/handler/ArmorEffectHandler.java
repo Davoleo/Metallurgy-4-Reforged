@@ -33,11 +33,11 @@ import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemBow;
 import net.minecraft.network.play.server.SPacketSetExperience;
 import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.FoodStats;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -268,7 +268,7 @@ public class ArmorEffectHandler {
 	{
 		if (ev.getEntityLiving() instanceof EntityPlayer && EventUtils.isPlayerWearingArmor((EntityPlayer) ev.getEntityLiving(), ModMetals.QUICKSILVER.getArmorSet()) && ArmorEffectsConfig.quicksilverArmorEffect)
 		{
-			if (!ev.getItem().getItem().getRegistryName().equals(new ResourceLocation("tconstruct:crossbow")))
+			if (ev.getItem().getItem() instanceof ItemBow)
 			{
 				if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
 					ev.setDuration(ev.getDuration() - 6);
