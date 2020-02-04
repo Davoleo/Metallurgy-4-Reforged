@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -90,7 +90,7 @@ public class ModMetals {
 			new ArmorStats(new int[]{3, 5, 6, 2}, 30, 51, 3F, SoundEvents.ENTITY_LIGHTNING_IMPACT),
 			new ToolStats(30, 2, 70, 14F, 2F), new FluidStats((int) MetalColors.ELECTRUM.getColorIntWithAlpha()), -1).createMetal();
 	public static final Metal ETHERIUM = new MetalStats("etherium", "Etherium", 2, LOW_TIER_BLAST_RESISTANCE,
-			new ArmorStats(new int[]{3, 5, 6, 2}, 45, 750, 0F, SoundEvents.UI_TOAST_IN),
+			new ArmorStats(new int[]{3, 5, 6, 2}, 45, 75, 0F, SoundEvents.UI_TOAST_IN),
 			new ToolStats(35, 8, 500, 18F, 2F), new FluidStats((int) MetalColors.ETHERIUM.getColorIntWithAlpha()), -1).createMetal();
 	public static final Metal EXIMITE = new MetalStats("eximite", "Eximite", 2, HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDERDRAGON_GROWL),
@@ -116,7 +116,7 @@ public class ModMetals {
 			new ToolStats(17, 4, 350, 5F, 7F), new FluidStats((int) MetalColors.KRIK.getColorIntWithAlpha()), -1).createMetal();
 	public static final Metal LEMURITE = new MetalStats("lemurite", "Lemurite", 2, LOW_TIER_BLAST_RESISTANCE, null, null, new FluidStats((int) MetalColors.LEMURITE.getColorIntWithAlpha()), 2).createMetal();
 	public static final Metal LUTETIUM = new MetalStats("lutetium", "Lutetium", 2, HIGH_TIER_BLAST_RESISTANCE,
-			new ArmorStats(new int[]{5, 6, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+			new ArmorStats(new int[]{5, 6, 5, 4}, 17, 50, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
 			null, new FluidStats((int) MetalColors.LUTETIUM.getColorIntWithAlpha()), 4).createMetal();
 	public static final Metal MANGANESE = new MetalStats("manganese", "Manganese", 2, MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats((int) MetalColors.MANGANESE.getColorIntWithAlpha()), 3).createMetal();
 	public static final Metal MEUTOITE = new MetalStats("meutoite", "Meutoite", 2, HIGH_TIER_BLAST_RESISTANCE, null, null, new FluidStats((int) MetalColors.MEUTOITE.getColorIntWithAlpha()), 4).createMetal();
@@ -130,7 +130,7 @@ public class ModMetals {
 			new ArmorStats(new int[]{2, 6, 7, 2}, 4, 20, 1.4F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
 			new ToolStats(20, 6, 1350, 9F, 7F), new FluidStats((int) MetalColors.ORICHALCUM.getColorIntWithAlpha()), 5).createMetal();
 	public static final Metal OSMIUM = new MetalStats("osmium", "Osmium", 2, EXTREME_TIER_BLAST_RESISTANCE,
-			new ArmorStats(new int[]{4, 5, 5, 4}, 17, 500, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+			new ArmorStats(new int[]{4, 5, 5, 4}, 17, 100, 3F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
 			null, new FluidStats((int) MetalColors.OSMIUM.getColorIntWithAlpha()), 2).createMetal();
 	public static final Metal OURECLASE = new MetalStats("oureclase", "Oureclase", 2, HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{3, 6, 5, 4}, 2, 28, 1.5F, SoundEvents.ITEM_ARMOR_EQUIP_IRON),
