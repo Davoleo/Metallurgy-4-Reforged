@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -30,7 +30,9 @@ public class TraitResistence extends AbstractArmorTrait implements IConarmMetall
 	public void onArmorTick(PlayerTickEvent event)
 	{
 		if (MetallurgyConArmorStats.isArmorTrait(event.player, "resistance"))
-			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 40, 3, false, false));
+		{
+			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
+		}
 	}
 
 }

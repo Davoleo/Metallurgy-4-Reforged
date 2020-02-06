@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -23,7 +23,6 @@ public class EventUtils {
 	//	method to check if player wears the complete ArmorEffectHandler.
 	public static boolean isPlayerWearingArmor(EntityPlayer pl, Item[] armor)
 	{
-
 		boolean flag = true;
 
 		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());

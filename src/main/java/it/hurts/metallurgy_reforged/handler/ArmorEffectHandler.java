@@ -70,8 +70,21 @@ public class ArmorEffectHandler {
 			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
 
 		//		Celenegil Armor (Resistence)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.CELENEGIL.getArmorSet()) && ArmorEffectsConfig.celenegilArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 3, false, false));
+		if (ArmorEffectsConfig.celenegilArmorEffect)
+		{
+			switch (EventUtils.getArmorPiecesCount(event.player, ModMetals.CELENEGIL.getArmorSet()))
+			{
+				case 1:
+				case 2:
+					event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
+					break;
+				case 3:
+				case 4:
+					event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
+				default:
+					return;
+			}
+		}
 
 
 		//		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
