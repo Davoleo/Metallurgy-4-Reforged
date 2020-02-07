@@ -24,7 +24,7 @@ apply plugin: 'maven-publish'
 
 // Non Modificare Sopra
 
-version = "0.3.1"
+version = "0.3.2"
 group = "it.hurts.metallurgy_reforged"
 archivesBaseName = "Metallurgy-4-Reforged"
 
