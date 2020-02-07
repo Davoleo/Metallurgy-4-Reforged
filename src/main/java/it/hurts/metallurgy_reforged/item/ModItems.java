@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -79,7 +79,6 @@ public class ModItems {
 	static
 	{
 		ItemUtils.initItem(wiki, "wiki", MetallurgyTabs.tabSpecial, itemList);
-		ItemUtils.registerCustomItemModel(wiki, 0);
 	}
 
 	public static void register(IForgeRegistry<Item> registry)
@@ -91,12 +90,13 @@ public class ModItems {
 	@SideOnly(Side.CLIENT)
 	public static void registerModels()
 	{
-
 		for (Item item : itemList)
 		{
 			if (item instanceof IHasModel)
 				ItemUtils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
 		}
+
+		ItemUtils.registerCustomItemModel(wiki, 0);
 	}
 
 }

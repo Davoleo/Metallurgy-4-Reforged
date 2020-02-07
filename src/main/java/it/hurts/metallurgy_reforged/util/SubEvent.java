@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
-import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.mods.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
@@ -39,7 +38,6 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
-		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 		MinecraftForge.EVENT_BUS.register(PlayerHandler.class);
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);

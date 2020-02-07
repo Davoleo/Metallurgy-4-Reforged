@@ -59,6 +59,7 @@ public class Utils {
 			"deep_iron",
 			"desichalkos",
 			"electrum",
+			"etherium",
 			"eximite",
 			"haderoth",
 			"hepatizon",

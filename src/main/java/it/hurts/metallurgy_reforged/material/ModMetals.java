@@ -39,7 +39,7 @@ public class ModMetals {
 	//damage_parameter = in-game_sword_damage - 3
 
 	//THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
-	//WHEN ADDING NEW METALS REMEMBER TO REGISTER EMC FOR THEM
+	//WHEN ADDING NEW METALS REMEMBER TO REGISTER EMCs AND ADD THEM TO THE MAIN LIST IN UTILS.JAVA
 	public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
 			new ToolStats(22, 7, 1550, 10F, 5F), new FluidStats((int) MetalColors.ADAMANTINE.getColorIntWithAlpha()), 6).createMetal();

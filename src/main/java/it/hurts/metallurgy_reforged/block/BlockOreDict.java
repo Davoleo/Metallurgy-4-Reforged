@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -31,6 +31,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
@@ -120,15 +122,17 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
 	{
-		if (this.oreName.contains("ore"))
+		if (this.oreName.contains("ore") && worldIn.isRemote)
 		{
 			spawnParticles(worldIn, pos, rand);
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	private void spawnParticles(World worldIn, BlockPos pos, Random random)
 	{
 		double d0 = 0.0625D;
