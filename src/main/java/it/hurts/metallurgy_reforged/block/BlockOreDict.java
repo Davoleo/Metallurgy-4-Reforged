@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.material.IOreDict;
 import it.hurts.metallurgy_reforged.material.MetalColors;
@@ -100,7 +101,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-		if (this.oreName.contains("ore"))
+		if (GeneralConfig.enableOreLight && this.oreName.contains("ore"))
 		{
 			return this.getHarvestLevel(state) >= 5 ? 5 : 0;
 		}
@@ -126,7 +127,7 @@ public class BlockOreDict extends Block implements IOreDict, IHasModel {
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
 	{
-		if (this.oreName.contains("ore") && worldIn.isRemote)
+		if (worldIn.isRemote && GeneralConfig.enableOreParticles && this.oreName.contains("ore"))
 		{
 			spawnParticles(worldIn, pos, rand);
 		}

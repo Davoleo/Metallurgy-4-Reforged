@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -75,9 +75,18 @@ public class GeneralConfig {
 	public static boolean enableAnvilArmorRepair = false;
 
 	@Config.Name("Power to the Axes")
-	@Config.Comment("Set it true to make axes more powerful than swords [ default : false ]")
+	@Config.Comment("Set this to true to make axes more powerful than swords [default: false]")
 	@Config.RequiresMcRestart
 	public static boolean powerAxes = false;
+
+	@Config.Name("Enable Ore Particles")
+	@Config.Comment("Set this to true to enable ore particles (Particles that are bigger depending on the harvest tier of the ore) [default: false]")
+	public static boolean enableOreParticles = true;
+
+	@Config.Name("Should High Tier Ore emit light")
+	@Config.Comment("Set this to true to make ore blocks that have a harvest level higher than 5 to emit light [default: false]")
+	@Config.RequiresWorldRestart
+	public static boolean enableOreLight = true;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {
