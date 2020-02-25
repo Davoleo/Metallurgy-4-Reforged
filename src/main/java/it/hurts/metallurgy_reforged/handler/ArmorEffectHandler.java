@@ -81,8 +81,6 @@ public class ArmorEffectHandler {
 				case 3:
 				case 4:
 					event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
-				default:
-					return;
 			}
 		}
 
