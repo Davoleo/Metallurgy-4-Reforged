@@ -41,7 +41,7 @@ public class KeyboardHandler {
 				{
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
 					capability.setHeight(capability.getHeight() + 1);
-					System.out.println(capability.getHeight());
+					//System.out.println(capability.getHeight());
 				}
 			}
 
@@ -51,7 +51,7 @@ public class KeyboardHandler {
 				{
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
 					capability.setHeight(capability.getHeight() - 1);
-					System.out.println(capability.getHeight());
+					//System.out.println(capability.getHeight());
 				}
 			}
 		}
