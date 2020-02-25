@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -29,6 +29,8 @@ public class FuelHandler {
 			event.setBurnTime(800);
 		if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
 			event.setBurnTime(16000);
+		if (item.getItem().equals(ModItems.dustThermite))
+			event.setBurnTime(1600);
 	}
 
 }

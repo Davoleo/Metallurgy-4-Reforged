@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +53,13 @@ public class ModItems {
 	public static ItemOreDict tar = new ItemOreDict("tar", "slimeball", MetallurgyTabs.tabDust, ModItems.itemList);
 	public static ItemOreDict potash = new ItemOreDict("potash", "dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
 	public static ItemOreDict sulfur = new ItemOreDict("sulfur_dust", "dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList) {
+		@Override
+		public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+		{
+			tooltip.add(Constants.THERMITE_DUST);
+		}
+	};
 	public static ItemOreDict phosphorus = new ItemOreDict("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList);
 
 	public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();

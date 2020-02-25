@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -66,6 +67,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	private int currentBurnTime;
 	private int alloyingTime;
 	private int totalAlloyingTime = 200;
+
+	private boolean isPoweredByThermite;
 
 	public static void registerFixesFurnace(DataFixer fixer)
 	{
@@ -317,27 +320,30 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			if (!this.world.isRemote)
 			{
-				ItemStack itemstack = this.inventory.get(2);
+				ItemStack fuel = this.inventory.get(2);
 
-				if (this.isBurning() || !itemstack.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty()))
+				if (!fuel.isEmpty())
+					isPoweredByThermite = fuel.getItem() == ModItems.dustThermite;
+
+				if (this.isBurning() || !fuel.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty()))
 				{
 					if (!this.isBurning() && this.canAlloy())
 					{
-						this.burnTime = getItemBurnTime(itemstack);
+						this.burnTime = getItemBurnTime(fuel);
 						this.currentBurnTime = this.burnTime;
 
 						if (this.isBurning())
 						{
 							flag1 = true;
 
-							if (!itemstack.isEmpty())
+							if (!fuel.isEmpty())
 							{
-								Item item = itemstack.getItem();
-								itemstack.shrink(1);
+								Item item = fuel.getItem();
+								fuel.shrink(1);
 
-								if (itemstack.isEmpty())
+								if (fuel.isEmpty())
 								{
-									ItemStack item1 = item.getContainerItem(itemstack);
+									ItemStack item1 = item.getContainerItem(fuel);
 									this.inventory.set(2, item1);
 								}
 							}
@@ -346,9 +352,12 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 					if (this.isBurning() && this.canAlloy())
 					{
-						++this.alloyingTime;
+						if (isPoweredByThermite)
+							alloyingTime += 2;
+						else
+							++alloyingTime;
 
-						if (this.alloyingTime == this.totalAlloyingTime)
+						if (this.alloyingTime >= this.totalAlloyingTime)
 						{
 							this.alloyingTime = 0;
 							this.totalAlloyingTime = this.getAlloyingTime(this.inventory.get(0));

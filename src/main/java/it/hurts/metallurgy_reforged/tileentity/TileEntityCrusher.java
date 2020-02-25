@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -72,6 +73,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	private int crushTime;
 	private int totalCrushTime = 200;
 
+	private boolean isPoweredByThermite;
 
 	public static void registerFixesFurnace(DataFixer fixer)
 	{
@@ -293,6 +295,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			ItemStack input = inventory.get(0);
 			ItemStack fuel = this.inventory.get(1);
 
+			if (!fuel.isEmpty())
+				isPoweredByThermite = fuel.getItem() == ModItems.dustThermite;
+
 			if (this.isBurning() || !fuel.isEmpty() && !input.isEmpty())
 			{
 				if (!this.isBurning() && this.canCrush())
@@ -321,9 +326,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 				if (this.isBurning() && this.canCrush())
 				{
-					++crushTime;
+					if (isPoweredByThermite)
+						crushTime += 2;
+					else
+						++crushTime;
 
-					if (crushTime == totalCrushTime)
+					if (crushTime >= totalCrushTime)
 					{
 						crushTime = 0;
 						totalCrushTime = this.getCrushingTime(this.inventory.get(0));
