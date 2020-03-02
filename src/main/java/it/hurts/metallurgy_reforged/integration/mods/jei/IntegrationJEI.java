@@ -31,7 +31,7 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import scala.actors.threadpool.Arrays;
+import java.util.Arrays;
 
 import java.util.List;
 
