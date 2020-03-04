@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -31,8 +31,8 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import scala.actors.threadpool.Arrays;
 
+import java.util.Arrays;
 import java.util.List;
 
 @JEIPlugin
@@ -80,12 +80,10 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
 		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
-		List<ItemStack> krikArmor = Arrays.asList(new ItemStack[]{
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.HEAD)),
+		List<ItemStack> krikArmor = Arrays.asList(new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.HEAD)),
 				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.CHEST)),
 				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.LEGS)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.FEET))
-		});
+				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.FEET)));
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
