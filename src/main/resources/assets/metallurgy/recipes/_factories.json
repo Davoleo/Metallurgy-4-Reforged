@@ -1,0 +1,5 @@
+{
+	"recipes": {
+		"ore_detector_shapeless": "it.hurts.metallurgy_reforged.recipe.OreDetectorRecipe$Factory"
+	}
+}

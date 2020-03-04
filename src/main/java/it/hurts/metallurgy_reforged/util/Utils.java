@@ -11,6 +11,9 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -19,10 +22,16 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.JsonUtils;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.JsonContext;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.util.Random;
 
@@ -103,10 +112,9 @@ public class Utils {
 
 	}
 
-	//maxPercent is the max percent that can reach when the player is in complete darkness
+	//maxPercent is the max percentage that the player can reach when they're in complete darkness
 	public static float getLightArmorPercentage(EntityPlayer pl, float maxPercent)
 	{
-
 		BlockPos pos = new BlockPos(pl.posX, pl.posY, pl.posZ);
 		//check if it is day
 		boolean isDay = (pl.world.getWorldTime() % 23300) <= 12800;
@@ -119,7 +127,6 @@ public class Utils {
 
 		//14 is the max Light possible
 		return maxPercent - (light * maxPercent / 14F);
-
 	}
 
 	public static String localize(String unlocalized)
@@ -190,6 +197,29 @@ public class Utils {
 		bufferbuilder.pos((x + width), (y), 1D).tex(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
 		bufferbuilder.pos((x), (y), 1D).tex(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
 		tessellator.draw();
+	}
+
+	/**
+	 * @param context The parsing context
+	 * @param json    The recipe's JSON object
+	 *
+	 * @return A NonNullList containing the ingredients specified in the JSON object
+	 * @author Choonster
+	 * <p>
+	 * Parse the input of a shapeless recipe.
+	 * <p>
+	 * Adapted from {@link ShapelessOreRecipe#factory}.
+	 */
+	public static NonNullList<Ingredient> parseShapelessRecipe(final JsonContext context, final JsonObject json)
+	{
+		final NonNullList<Ingredient> ingredients = NonNullList.create();
+		for (final JsonElement element : JsonUtils.getJsonArray(json, "ingredients"))
+			ingredients.add(CraftingHelper.getIngredient(element, context));
+
+		if (ingredients.isEmpty())
+			throw new JsonParseException("No ingredients for shapeless recipe");
+
+		return ingredients;
 	}
 
 }

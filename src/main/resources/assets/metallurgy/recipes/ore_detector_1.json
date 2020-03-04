@@ -1,0 +1,11 @@
+{
+	"type": "metallurgy:ore_detector_shapeless",
+	"ingredients": [
+		{
+			"item": "metallurgy:ore_detector"
+		}
+	],
+	"result": {
+		"item": "metallurgy:adamantine_nugget"
+	}
+}
