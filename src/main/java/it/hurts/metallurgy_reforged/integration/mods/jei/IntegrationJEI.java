@@ -80,10 +80,10 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
 		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
-		List<ItemStack> krikArmor = Arrays.asList(new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.HEAD)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.CHEST)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.LEGS)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.FEET)));
+		List<ItemStack> krikArmor = Arrays.asList(new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.HEAD)),
+				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.CHEST)),
+				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.LEGS)),
+				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.FEET)));
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");

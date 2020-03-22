@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.block;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
 import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -40,13 +39,13 @@ public class ModBlocks {
 	//Blocks which drops themselves
 
 	//Mod Blocks with a custom drop
-	public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
+	public static BlockOreDict oreSulfur = new BlockOreDict("sulfur_ore", "oreSulfur", true, Constants.PICKAXE, 2, Constants.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
 			.setDrops(new Drop(new ItemStack(ModItems.sulfur, 4), 1F));
-	public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
+	public static BlockOreDict orePhosphorite = new BlockOreDict("phosphorite_ore", "orePhosphorite", true, Constants.PICKAXE, 2, Constants.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
 			.setDrops(new Drop(ModItems.phosphorus, 3, 1F));
-	public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
+	public static BlockOreDict oreTar = new BlockOreDict("tar_ore", "oreTar", true, Constants.PICKAXE, 2, Constants.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
 			.setDrops(new Drop(ModItems.tar, 2, 1F), new Drop(ModItems.bitumen, 2, 0.5F));
-	public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", true, Constants.PICKAXE, 2, ModMetals.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
+	public static BlockOreDict orePotash = new BlockOreDict("potash_ore", "orePotash", true, Constants.PICKAXE, 2, Constants.MID_TIER_BLAST_RESISTANCE, MetallurgyTabs.tabOre)
 			.setDrops(new Drop(ModItems.potash, 3, 1F));
 
 	//Other Blocks

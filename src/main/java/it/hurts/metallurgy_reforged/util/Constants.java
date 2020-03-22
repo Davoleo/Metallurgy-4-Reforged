@@ -29,4 +29,13 @@ public class Constants {
 	public static final String SHOVEL = "shovel";
 	public static final String SWORD = "sword";
 
+	// Blast Resistance Constants
+	//Disclaimer: These variables might need a balancement update
+	//Davoleo isn't responsible for any blast resistance level complains
+	public static final float LOW_TIER_BLAST_RESISTANCE = 6F;                            //or maybe 3, I don't remember
+	public static final float MID_TIER_BLAST_RESISTANCE = 10F;                            //Cobblestone-like
+	public static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
+	public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                    //Obsidian-like
+	public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;            //Bedrock-like
+
 }

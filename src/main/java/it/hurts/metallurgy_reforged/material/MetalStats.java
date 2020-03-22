@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -17,26 +17,29 @@ import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 
-import java.util.function.Function;
-
-
-//TODO: consider implementing crusher or alloyer recipes, maybe worldgen?
 public class MetalStats {
 
 	private final String name, oreDictName;
 	private final int blockHarvest;
 	private final float blockBlastResistance;
 	public static float blockResistance;
-	//int minVeinSize, int maxVeinSize, int chance, int minY, int maxY
+
+	//Ore Properties
+	int minVeinSize, maxVeinSize;
+	int chance;
+	int minY, maxY;
+
+	//Color
+	private int color;
+
 	private final int oreHarvest;
 
 	private final ArmorStats armor;
@@ -48,7 +51,7 @@ public class MetalStats {
 
 	public Metal createMetal()
 	{
-		//name should be in format [allLowerCase], oreName should be in format [Normalcase]
+		//name should be in format [snake_case], oreName should be in format [camelCase]
 		ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
 		ItemOreDict ingot = new ItemOreDict(name + "_ingot", "ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
 		ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
@@ -93,11 +96,11 @@ public class MetalStats {
 	private int automaticTemperature()
 	{
 		float output = 1000F;
-		if (blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE)
+		if (blockBlastResistance == Constants.LOW_TIER_BLAST_RESISTANCE)
 		{
 			output = blockBlastResistance * 60f;
 		}
-		else if (blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE)
+		else if (blockBlastResistance != Constants.UNBREAKABLE_TIER_BLAST_RESISTANCE)
 		{
 			output = blockBlastResistance * 36F;
 		}
@@ -176,47 +179,4 @@ public class MetalStats {
 
 		return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
 	}
-
-	public static class FluidStats {
-
-		private final ResourceLocation still;
-		private final ResourceLocation flowing;
-		private final int mapColor;
-		private final Function<FluidMolten, FluidMolten> func;
-		private final int TEMPERATURE;
-
-		private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
-		private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
-		private final static Function<FluidMolten, FluidMolten> default_function = n -> (FluidMolten) n.setMaterial(Material.IRON)
-				.setDensity(800)
-				.setGaseous(false)
-				.setLuminosity(9)
-				.setViscosity(4000);
-
-		public FluidStats(int mapColor)
-		{
-			this(default_still, default_flowing, mapColor, 0, default_function);
-		}
-
-		public FluidStats(int mapColor, int temperature)
-		{
-			this(default_still, default_flowing, mapColor, temperature, default_function);
-		}
-
-		public FluidStats(int mapColor, Function<FluidMolten, FluidMolten> func)
-		{
-			this(default_still, default_flowing, mapColor, 0, func);
-		}
-
-		public FluidStats(ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature, Function<FluidMolten, FluidMolten> func)
-		{
-			this.still = still;
-			this.flowing = flowing;
-			this.mapColor = mapColor;
-			this.TEMPERATURE = temperature;
-			this.func = func;
-		}
-
-	}
-
 }

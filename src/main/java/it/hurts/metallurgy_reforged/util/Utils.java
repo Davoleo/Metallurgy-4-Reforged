@@ -186,7 +186,6 @@ public class Utils {
 		return null;
 	}
 
-
 	public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height)
 	{
 		Tessellator tessellator = Tessellator.getInstance();
@@ -220,6 +219,30 @@ public class Utils {
 			throw new JsonParseException("No ingredients for shapeless recipe");
 
 		return ingredients;
+	}
+
+	public static String convertFromSnakeToCamelCase(String snake)
+	{
+		String[] words = snake.split("_");
+		StringBuilder builder = new StringBuilder();
+
+		for (int i = 0; i < words.length; i++)
+		{
+			if (i != 0)
+			{
+				words[i].toCharArray()[0] = Character.toUpperCase(words[i].toCharArray()[0]);
+			}
+
+			builder.append(words[i]);
+		}
+
+		return builder.toString();
+	}
+
+	public static String capitalize(String string)
+	{
+		String up = string.substring(0, 1);
+		return string.replaceFirst(up, up.toUpperCase());
 	}
 
 }

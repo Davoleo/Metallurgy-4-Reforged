@@ -102,5 +102,4 @@ public enum MetalColors {
 		return null;
 	}
 
-
 }

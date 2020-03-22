@@ -239,7 +239,7 @@ public class ArmorEffectHandler {
 		}
 
 		//Platinum Armor (Night Vision, Needed Vanishing Curse)
-		if (EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmor(EntityEquipmentSlot.HEAD)) && ArmorEffectsConfig.platinumArmorEffect)
+		if (EventUtils.isPlayerWearingSpecificArmorPiece(event.player, 3, ModMetals.PLATINUM.getArmorPiece(EntityEquipmentSlot.HEAD)) && ArmorEffectsConfig.platinumArmorEffect)
 		{
 			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
 			event.player.addTag("platinum_effect");

@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -155,7 +155,7 @@ public class Metal {
 	 *
 	 * @return one of the armor pieces in the armorSet
 	 */
-	public ItemArmorBase getArmor(EntityEquipmentSlot armorPiece)
+	public ItemArmorBase getArmorPiece(EntityEquipmentSlot armorPiece)
 	{
 		return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
 	}
@@ -169,12 +169,6 @@ public class Metal {
 	{
 		return armorSet;
 	}
-
-	public MetalColors getMetalColor()
-	{
-		return MetalColors.byName(stats.getName().toUpperCase());
-	}
-
 
 	/**
 	 * @return The metal name in snake_case

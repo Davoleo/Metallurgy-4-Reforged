@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -66,7 +66,7 @@ public class MetallurgyTabs extends CreativeTabs {
 		switch (type)
 		{
 			case 0:
-				return ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmor(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
+				return ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmorPiece(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
 			case 1:
 				return new ItemStack(ModMetals.ADAMANTINE.getBlock());
 			case 2:
