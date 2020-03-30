@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -33,12 +34,9 @@ public class BlockMetal extends Block {
 		this.metal = metal;
 		this.type = type;
 
-		this.setHardness(3F);
-		this.setResistance(blastResistance);
 		this.setSoundType(SoundType.METAL);
-		this.setHarvestLevel("p", 1);
 
-		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, false);
+		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3F, blastResistance, Constants.PICKAXE, 1);
 	}
 
 	/**

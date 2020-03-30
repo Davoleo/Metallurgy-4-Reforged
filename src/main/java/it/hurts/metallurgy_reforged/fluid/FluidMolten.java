@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -27,16 +27,16 @@ import javax.annotation.Nonnull;
 public class FluidMolten extends Fluid {
 
 	protected Fluid fluid = this;
-	protected static Material material = Material.LAVA;
+	protected static final Material material = Material.LAVA;
 	private int mapColor = 0xFFFFFFFF;
 	private float overlayAlpha = 0.2F;
-	private static SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
-	private static SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
+	private static final SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
+	private static final SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
 	protected FluidBlockBase block;
 	private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
 	private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
-	public FluidMolten(String name, int mapColor, int temperature, boolean isNew)
+	public FluidMolten(String name, int mapColor, int temperature)
 	{
 		super(name, default_still, default_flowing);
 		this.setMaterial(Material.IRON)
@@ -46,8 +46,6 @@ public class FluidMolten extends Fluid {
 				.setViscosity(4000)
 				.setTemperature(temperature)
 				.setColor(mapColor);
-		if (isNew)
-			ModFluids.extraFluids.add(this);
 	}
 
 	public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)

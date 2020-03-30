@@ -12,12 +12,7 @@
 package it.hurts.metallurgy_reforged.material;
 
 import it.hurts.metallurgy_reforged.util.Constants;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
-import net.minecraft.block.Block;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,58 +158,6 @@ public class ModMetals {
 			new ToolStats(16, 4, 300, 7F, 7F), new FluidStats((int) MetalColors.VYROXERES.getColorIntWithAlpha()), 4).createMetal();
 	public static final Metal ZINC = new MetalStats("zinc", "Zinc", 2, Constants.MID_TIER_BLAST_RESISTANCE, null, null, new FluidStats((int) MetalColors.ZINC.getColorIntWithAlpha()), 1).createMetal();
 
-	public static void registerFluids()
-	{
-		for (Metal m : metalList)
-		{
-			FluidRegistry.registerFluid(m.getMolten());
-			m.initFluidBlock();
-		}
-	}
-
-	public static void registerBlocks(IForgeRegistry<Block> registry)
-	{
-		for (Metal m : metalList)
-		{
-			registry.register(m.getBlock());
-			if (m.getOre() != null)
-			{
-				registry.register(m.getOre());
-			}
-			registry.register(m.getFluidBlock());
-		}
-	}
-
-	public static void registerModels()
-	{
-		for (Metal m : metalList)
-		{
-			ItemUtils.registerCustomItemModel(m.getDust(), 0);
-			ItemUtils.registerCustomItemModel(m.getIngot(), 0);
-			ItemUtils.registerCustomItemModel(m.getNugget(), 0);
-			if (m.getOre() != null)
-			{
-				ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getOre()), 0);
-			}
-			ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getBlock()), 0);
-			ItemUtils.registerCustomItemModel(Item.getItemFromBlock(m.getFluidBlock()), 0);
-		}
-	}
-
-	public static void registerItems(IForgeRegistry<Item> registry)
-	{
-		for (Metal m : metalList)
-		{
-			registry.register(m.getBlock().createItemBlock());
-			if (m.getOre() != null)
-			{
-				registry.register(m.getOre().createItemBlock());
-			}
-			registry.register(m.getFluidBlock().createItemBlock());
-			registry.register(m.getDust());
-			registry.register(m.getIngot());
-			registry.register(m.getNugget());
-		}
-	}
+	// TODO: 30/03/2020 For each metal: register Fluids, FluidBlocks, Blocks, ItemBlocks, Dusts, Ingots, Nuggets
 
 }

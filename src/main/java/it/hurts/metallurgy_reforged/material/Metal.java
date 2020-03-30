@@ -11,7 +11,8 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import it.hurts.metallurgy_reforged.block.BlockOreDict;
+import it.hurts.metallurgy_reforged.block.BlockMetal;
+import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemOreDict;
@@ -31,7 +32,8 @@ public class Metal {
 	private final MetalStats stats;
 
 	private final ItemOreDict ingot, dust, nugget;
-	private final BlockOreDict ore, block;
+	private final BlockOre ore;
+	private final BlockMetal block;
 	private final FluidMolten molten;
 
 	private Item[] toolSet;
@@ -39,7 +41,7 @@ public class Metal {
 
 	private FluidBlockBase fluidBlock;
 
-	public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOreDict ore, BlockOreDict block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
+	public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOre ore, BlockMetal block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
 	{
 		this.stats = stats;
 		this.ingot = ingot;
@@ -117,13 +119,13 @@ public class Metal {
 	}
 
 	@Nullable
-	public BlockOreDict getOre()
+	public BlockOre getOre()
 	{
 		return ore;
 	}
 
 	@Nonnull
-	public BlockOreDict getBlock()
+	public BlockMetal getBlock()
 	{
 		return block;
 	}
