@@ -28,7 +28,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class MetalStats {
 
-	private final String name, oreDictName;
+	private final String name;
 	private final int hardness;
 	private final int blockHarvest;
 	private final float blockBlastResistance;
@@ -46,7 +46,6 @@ public class MetalStats {
 
 	private final ArmorStats armor;
 	private final ToolStats tool;
-	private final FluidStats fluid;
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
@@ -57,15 +56,17 @@ public class MetalStats {
 		ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
 		ItemOreDict ingot = new ItemOreDict(name + "_ingot", "ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
 		ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
-		BlockMetal rawBlock = new BlockMetal(name + "_block", "block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
+
+		// TODO: 30/03/2020 make this an array
+		BlockMetal block = new BlockMetal(name + "_block", "block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
+
 		BlockOre ore = null;
 		if (oreHarvest >= 0)
 		{
-			ore = new BlockOre(name + "_ore", "ore" + oreDictName, false, "pickaxe", oreHarvest, blockBlastResistance, MetallurgyTabs.tabOre);
+			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance);
 		}
 
-		FluidMolten moltenFluid = new FluidMolten();
-		FluidMolten molten = fluid.func.apply(new FluidMolten(name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature()));
+		FluidMolten moltenFluid = new FluidMolten("molten_" + name, color, automaticTemperature());
 
 		ItemArmorBase[] armorPieces = null;
 		Item[] tools = null;
@@ -93,7 +94,7 @@ public class MetalStats {
 			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
 		}
 
-		return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
+		return new Metal(this, ingot, dust, nugget, ore, block, moltenFluid, tools, armorPieces);
 	}
 
 	private int automaticTemperature()
@@ -111,8 +112,7 @@ public class MetalStats {
 	}
 
 	/**
-	 * @param name            name of the metal - all lowercase with underlines separating words (ex: dark_steel)
-	 * @param oreDictName     ore dict name of the metal - CamelCase with no underscores or spaces (DarkSteel)
+	 * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
 	 * @param hardness
 	 * @param blockHarvest    the harvest level of the metal block
 	 * @param blastResistance the resistance to explosions of the metal block
@@ -120,10 +120,9 @@ public class MetalStats {
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
 	 */
-	public MetalStats(String name, String oreDictName, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest)
+	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest)
 	{
 		this.name = name;
-		this.oreDictName = oreDictName;
 		this.hardness = hardness;
 		this.blockHarvest = blockHarvest;
 		this.blockBlastResistance = blastResistance;
@@ -135,11 +134,6 @@ public class MetalStats {
 	public String getName()
 	{
 		return name;
-	}
-
-	public String getOreDictName()
-	{
-		return oreDictName;
 	}
 
 	public ArmorStats getArmorStats()

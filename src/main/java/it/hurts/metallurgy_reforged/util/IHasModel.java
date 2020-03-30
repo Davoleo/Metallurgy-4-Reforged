@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.util;
 
 import javax.annotation.Nonnull;
 
+// TODO: 30/03/2020 Find a way to remove this interface
 /**
  * When implemented will allow the item model to be loaded
  */

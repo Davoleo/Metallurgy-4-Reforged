@@ -39,33 +39,12 @@ public class FluidMolten extends Fluid {
 	public FluidMolten(String name, int mapColor, int temperature)
 	{
 		super(name, default_still, default_flowing);
-		this.setMaterial(Material.IRON)
-				.setDensity(800)
-				.setGaseous(false)
-				.setLuminosity(9)
-				.setViscosity(4000)
-				.setTemperature(temperature)
-				.setColor(mapColor);
-	}
-
-	public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing)
-	{
-		super(name, still, flowing);
-		ModFluids.fluidList.add(this);
-	}
-
-	public FluidMolten(String name, ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature)
-	{
-		super(name, still, flowing);
-		setColor(mapColor);
-		ModFluids.fluidList.add(this);
+		this.setDensity(800);
+		this.setGaseous(false);
+		this.setLuminosity(9);
+		this.setViscosity(4000);
 		this.setTemperature(temperature);
-	}
-
-	public FluidMolten(String fluidName, ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature, float overlayAlpha)
-	{
-		this(fluidName, still, flowing, mapColor, temperature);
-		setAlpha(overlayAlpha);
+		this.setColor(mapColor);
 	}
 
 	public int getColor()
@@ -91,35 +70,15 @@ public class FluidMolten extends Fluid {
 	}
 
 	@Override
-	public FluidMolten setEmptySound(SoundEvent emptySound)
-	{
-		FluidMolten.emptySound = emptySound;
-		return this;
-	}
-
-	@Override
 	public SoundEvent getEmptySound()
 	{
 		return emptySound;
 	}
 
 	@Override
-	public FluidMolten setFillSound(SoundEvent fillSound)
-	{
-		FluidMolten.fillSound = fillSound;
-		return this;
-	}
-
-	@Override
 	public SoundEvent getFillSound()
 	{
 		return fillSound;
-	}
-
-	public FluidMolten setMaterial(Material material)
-	{
-		FluidMolten.material = material;
-		return this;
 	}
 
 	public Material getMaterial()

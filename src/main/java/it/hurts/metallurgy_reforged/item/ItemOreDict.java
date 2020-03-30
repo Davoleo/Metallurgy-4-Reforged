@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.material.IOreDict;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.client.util.ITooltipFlag;
