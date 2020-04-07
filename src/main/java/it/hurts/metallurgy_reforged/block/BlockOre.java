@@ -12,8 +12,8 @@
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.material.MetalColors;
+import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;

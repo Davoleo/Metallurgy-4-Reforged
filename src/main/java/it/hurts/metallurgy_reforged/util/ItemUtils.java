@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -26,17 +26,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.List;
-
 public class ItemUtils {
 
-	public static void initItem(Item item, String name, CreativeTabs tab, List list)
+	public static void initItem(Item item, String name, CreativeTabs tab)
 	{
 		item.setTranslationKey(Metallurgy.MODID + "." + name);
 		item.setRegistryName(Metallurgy.MODID, name);
 		item.setCreativeTab(tab);
-		if (list != null)
-			list.add(item);
 	}
 
 	//method to check if stack is a specific tool Material
@@ -135,7 +131,7 @@ public class ItemUtils {
 			if (!metal.isAlloy() && Item.getItemFromBlock(metal.getOre()) == item)
 				return metal;
 
-			if (Item.getItemFromBlock(metal.getBlock()) == item)
+			if (Item.getItemFromBlock(metal.getBlocks()) == item)
 				return metal;
 		}
 

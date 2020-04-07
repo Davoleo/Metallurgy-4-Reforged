@@ -11,16 +11,20 @@
 
 package it.hurts.metallurgy_reforged.fluid;
 
-import java.util.ArrayList;
-import java.util.List;
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBaseTar;
+import net.minecraft.block.material.Material;
 
 public class ModFluids {
 
-	public static final List<FluidMolten> moltenMetalFluids = new ArrayList<>();
-	public static final List<FluidMolten> extraFluids = new ArrayList<>();
+	public static final FluidMolten TAR = ((FluidMolten) new FluidMolten("molten_tar", 0xFF111419, 1000) {
+		@Override
+		public void initFluidBlock()
+		{
+			block = new FluidBlockBaseTar(this, Material.WATER, fluid.getName());
+		}
+	}.setLuminosity(0));
 
-	public static final FluidMolten TAR = new FluidMoltenTar("molten_tar", 0xFF111419, 1000, true);
-	public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200, true);
+	public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200);
 
 	// TODO: 30/03/2020 For each block: register the Fluid (FluidRegistry), the FluidBlock, register the FluidItemBlock, register the Model
 }

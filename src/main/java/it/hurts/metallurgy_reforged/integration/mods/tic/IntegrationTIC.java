@@ -5,12 +5,13 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.integration.mods.tic;
 
+import com.google.common.base.CaseFormat;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
@@ -67,7 +68,7 @@ public class IntegrationTIC {
 				//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilit� di fare il lingotto ed il blocco )
 				if (m.getFluid() == null)
 					m.setFluid(metal.getMolten());
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), metal.getStats().getOreDictName());
+				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.getStats().getName()));
 
 				//				Aggiunge le varie toolpart
 				TinkerSmeltery.registerToolpartMeltingCasting(m);

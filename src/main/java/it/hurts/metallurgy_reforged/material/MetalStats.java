@@ -14,12 +14,13 @@ package it.hurts.metallurgy_reforged.material;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockOre;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
 import it.hurts.metallurgy_reforged.util.Constants;
-import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -32,7 +33,6 @@ public class MetalStats {
 	private final int hardness;
 	private final int blockHarvest;
 	private final float blockBlastResistance;
-	public static float blockResistance;
 
 	//Ore Properties
 	int minVeinSize, maxVeinSize;
@@ -53,12 +53,16 @@ public class MetalStats {
 	public Metal createMetal()
 	{
 		//name should be in format [snake_case], oreName should be in format [camelCase]
-		ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
-		ItemOreDict ingot = new ItemOreDict(name + "_ingot", "ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
-		ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
 
-		// TODO: 30/03/2020 make this an array
-		BlockMetal block = new BlockMetal(name + "_block", "block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
+		ItemMetal dust = new ItemMetal(this, ItemTypes.DUST);
+		ItemMetal ingot = new ItemMetal(this, ItemTypes.INGOT);
+		ItemMetal nugget = new ItemMetal(this, ItemTypes.NUGGET);
+
+		BlockMetal[] blocks = new BlockMetal[5];
+		for (int i = 0; i < BlockTypes.values().length; i++)
+		{
+			blocks[i] = new BlockMetal(this, BlockTypes.values()[i]);
+		}
 
 		BlockOre ore = null;
 		if (oreHarvest >= 0)
@@ -94,7 +98,7 @@ public class MetalStats {
 			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
 		}
 
-		return new Metal(this, ingot, dust, nugget, ore, block, moltenFluid, tools, armorPieces);
+		return new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
 	}
 
 	private int automaticTemperature()
@@ -134,6 +138,11 @@ public class MetalStats {
 	public String getName()
 	{
 		return name;
+	}
+
+	public float getBlockBlastResistance()
+	{
+		return blockBlastResistance;
 	}
 
 	public ArmorStats getArmorStats()

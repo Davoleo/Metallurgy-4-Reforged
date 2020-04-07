@@ -5,12 +5,13 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.integration.mods.tic.material;
 
+import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -27,7 +28,7 @@ public class TiCMaterial extends Material {
 		this.addItem(metal.getIngot());
 		this.setRepresentativeItem(metal.getIngot());
 		TiCMaterials.addMaterialStats(metal, this);
-		addCommonItems((metal.getStats().getOreDictName()));
+		addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.getStats().getName()));
 	}
 
 	@Override

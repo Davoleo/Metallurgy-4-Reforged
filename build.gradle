@@ -99,7 +99,7 @@ dependencies {
 	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
     
     //CraftTweaker
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494"
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.19.553"
 
     //Silent's Gems
     deobfCompile "silents-gems:SilentsGems:1.12.2:2.8.22+327"

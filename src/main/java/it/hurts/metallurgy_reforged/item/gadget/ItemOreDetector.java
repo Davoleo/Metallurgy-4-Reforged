@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -25,7 +24,7 @@ public class ItemOreDetector extends Item implements IHasModel {
 
 	public ItemOreDetector()
 	{
-		ItemUtils.initItem(this, "ore_detector", MetallurgyTabs.tabSpecial, ModItems.itemList);
+		ItemUtils.initItem(this, "ore_detector", MetallurgyTabs.tabSpecial);
 		this.setMaxStackSize(1);
 	}
 

@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: ItemOreDict
+ * Class: ItemMetal
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -11,36 +11,25 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemOreDict extends Item implements IOreDict, IHasModel {
+public class ItemMetal extends Item {
 
-	//Internal Variables ----------------------------------------------------
-	private String oreName;
+	private ItemTypes type;
 	private String tooltip;
 
-	//Constructors
-	public ItemOreDict(String name, String oreName, CreativeTabs tab, List list)
+	public ItemMetal(MetalStats metal, ItemTypes type)
 	{
-		ItemUtils.initItem(this, name, tab, list);
-		this.oreName = oreName;
-	}
-
-	@Override
-	public void initOreDict()
-	{
-		OreDictionary.registerOre(oreName, this);
+		this.type = type;
+		ItemUtils.initItem(this, metal.toString() + "_" + type.getName(), type.getTab());
 	}
 
 	@Override
@@ -51,25 +40,15 @@ public class ItemOreDict extends Item implements IOreDict, IHasModel {
 	}
 
 	//Setters & Getters -----------------------------------------------------
-	public ItemOreDict setTooltip(String tooltip)
+	public ItemMetal setTooltip(String tooltip)
 	{
 		this.tooltip = tooltip;
 		return this;
 	}
 
-	@Nonnull
-	@Override
-	public String getCategory()
+	public ItemTypes getType()
 	{
-		return "";
-	}
-
-	@Nonnull
-	@Override
-	public ItemOreDict setCreativeTab(@Nonnull CreativeTabs tab)
-	{
-		super.setCreativeTab(tab);
-		return this;
+		return type;
 	}
 
 }

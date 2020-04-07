@@ -5,13 +5,14 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.block.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
@@ -33,6 +34,8 @@ public class FluidBlockBase extends BlockFluidClassic {
 		setRegistryName(Metallurgy.MODID, name);
 		setTranslationKey(Metallurgy.MODID + "." + name);
 		setCreativeTab(MetallurgyTabs.tabFluid);
+
+		ModBlocks.fluidBlocks.add(this);
 	}
 
 	//Registers the model of the item of the FluidBlock

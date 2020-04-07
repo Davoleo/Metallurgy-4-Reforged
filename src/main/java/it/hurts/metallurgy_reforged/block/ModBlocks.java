@@ -11,26 +11,34 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
-import it.hurts.metallurgy_reforged.data.Drop;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 //Class used as reference for all the manually registered blocks
-@SuppressWarnings("unused")
 public class ModBlocks {
 
-	public static List<Block> oreBlocks = new ArrayList<>();
+	//All the metal blocks
+	public static Map<BlockTypes, List<Block>> metalBlocks = Collections.emptyMap();
+	//All the mod ores
+	public static List<BlockOre> oreBlocks = new ArrayList<>();
 	//All the miscellaneous blocks
 	public static List<Block> miscBlocks = new ArrayList<>();
+	//Molten FluidBlocks
+	public static List<FluidBlockBase> fluidBlocks = new ArrayList<>();
 
 	//Mod Blocks with a custom drop
 	public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 2, Constants.MID_TIER_BLAST_RESISTANCE)
@@ -47,14 +55,6 @@ public class ModBlocks {
 	public static Block blockCharcoal = new Block(Material.ROCK);
 	public static Block blockSulfur = new Block(Material.ROCK);
 
-	//Other Blocks Initialization
-	static
-	{
-		BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
-		BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
-		BlockUtils.initBlock(blockSulfur, "sulfur_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
-	}
-
 	public static BlockPhosphorusLamp blockPhosphorusLamp = new BlockPhosphorusLamp();
 
 	//Road
@@ -67,6 +67,37 @@ public class ModBlocks {
 	//public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
 	public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
+	//Other Blocks Initialization
+	static
+	{
+		for (BlockTypes type : BlockTypes.values())
+		{
+			metalBlocks.put(type, new ArrayList<>());
+		}
+
+		//Initialize remaining blocks
+		BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
+		BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
+		BlockUtils.initBlock(blockSulfur, "sulfur_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
+		miscBlocks.add(blockBitumen);
+		miscBlocks.add(blockCharcoal);
+		miscBlocks.add(blockSulfur);
+	}
+
 	// TODO: 30/03/2020 for each block: register block, register ItemBlock, register Model
+	public static List<Block> joinBlockLists()
+	{
+		List<Block> list = new ArrayList<>();
+		metalBlocks.forEach((blockTypes, blocks) -> list.addAll(blocks));
+		list.addAll(oreBlocks);
+		list.addAll(miscBlocks);
+		list.addAll(fluidBlocks);
+		return list;
+	}
+
+	public static ItemBlock createItemBlock(Block block)
+	{
+		return ((ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName()));
+	}
 
 }

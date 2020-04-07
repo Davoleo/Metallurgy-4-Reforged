@@ -13,9 +13,10 @@ package it.hurts.metallurgy_reforged.material;
 
 import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockOre;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import net.minecraft.block.material.Material;
@@ -31,9 +32,9 @@ public class Metal {
 
 	private final MetalStats stats;
 
-	private final ItemOreDict ingot, dust, nugget;
+	private final ItemMetal ingot, dust, nugget;
 	private final BlockOre ore;
-	private final BlockMetal block;
+	private final BlockMetal[] blocks;
 	private final FluidMolten molten;
 
 	private Item[] toolSet;
@@ -41,14 +42,14 @@ public class Metal {
 
 	private FluidBlockBase fluidBlock;
 
-	public Metal(MetalStats stats, ItemOreDict ingot, ItemOreDict dust, ItemOreDict nugget, BlockOre ore, BlockMetal block, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
+	public Metal(MetalStats stats, ItemMetal ingot, ItemMetal dust, ItemMetal nugget, BlockOre ore, BlockMetal[] blocks, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
 	{
 		this.stats = stats;
 		this.ingot = ingot;
 		this.dust = dust;
 		this.nugget = nugget;
 		this.ore = ore;
-		this.block = block;
+		this.blocks = blocks;
 		this.molten = molten;
 		this.toolSet = toolSet;
 		this.armorSet = armorSet;
@@ -101,19 +102,19 @@ public class Metal {
 	}
 
 	@Nonnull
-	public ItemOreDict getIngot()
+	public ItemMetal getIngot()
 	{
 		return ingot;
 	}
 
 	@Nonnull
-	public ItemOreDict getDust()
+	public ItemMetal getDust()
 	{
 		return dust;
 	}
 
 	@Nonnull
-	public ItemOreDict getNugget()
+	public ItemMetal getNugget()
 	{
 		return nugget;
 	}
@@ -125,9 +126,14 @@ public class Metal {
 	}
 
 	@Nonnull
-	public BlockMetal getBlock()
+	public BlockMetal[] getBlocks()
 	{
-		return block;
+		return blocks;
+	}
+
+	public BlockMetal getBlock(BlockTypes type)
+	{
+		return blocks[type.ordinal()];
 	}
 
 	@Nonnull

@@ -5,13 +5,12 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -33,7 +32,7 @@ public class ItemIgnatiusLighter extends Item implements IHasModel {
 
 	public ItemIgnatiusLighter(String name)
 	{
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabSpecial, ModItems.itemList);
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabSpecial);
 		setMaxDamage(150);
 	}
 

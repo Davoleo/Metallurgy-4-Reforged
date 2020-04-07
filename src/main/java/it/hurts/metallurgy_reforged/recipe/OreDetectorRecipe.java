@@ -12,7 +12,8 @@
 package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.gson.JsonObject;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
@@ -50,7 +51,7 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack s = inv.getStackInSlot(i);
-			if (s.getItem() instanceof ItemOreDict && s.getItem().getRegistryName().getPath().contains("ingot"))
+			if (s.getItem() instanceof ItemMetal && ((ItemMetal) s.getItem()).getType() == ItemTypes.INGOT)
 			{
 				inputs.add(s);
 			}

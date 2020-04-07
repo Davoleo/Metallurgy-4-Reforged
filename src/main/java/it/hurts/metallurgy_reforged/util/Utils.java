@@ -221,24 +221,6 @@ public class Utils {
 		return ingredients;
 	}
 
-	public static String convertFromSnakeToCamelCase(String snake)
-	{
-		String[] words = snake.split("_");
-		StringBuilder builder = new StringBuilder();
-
-		for (int i = 0; i < words.length; i++)
-		{
-			if (i != 0)
-			{
-				words[i].toCharArray()[0] = Character.toUpperCase(words[i].toCharArray()[0]);
-			}
-
-			builder.append(words[i]);
-		}
-
-		return builder.toString();
-	}
-
 	public static String capitalize(String string)
 	{
 		String up = string.substring(0, 1);

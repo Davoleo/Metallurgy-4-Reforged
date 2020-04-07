@@ -68,7 +68,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 0:
 				return ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmorPiece(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
 			case 1:
-				return new ItemStack(ModMetals.ADAMANTINE.getBlock());
+				return new ItemStack(ModMetals.ADAMANTINE.getBlocks());
 			case 2:
 				return new ItemStack(ModMetals.ADAMANTINE.getDust());
 			case 3:

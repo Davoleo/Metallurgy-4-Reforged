@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -40,7 +40,8 @@ public class BlockOrientable extends Block {
 	public BlockOrientable(Material material, String name, CreativeTabs tab)
 	{
 		super(material);
-		BlockUtils.initBlock(this, name, tab, true);
+		BlockUtils.initBlock(this, name, tab);
+		ModBlocks.miscBlocks.add(this);
 	}
 
 	//Custom Methods --------------------------------------------------------------------

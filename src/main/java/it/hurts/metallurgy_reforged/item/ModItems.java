@@ -42,22 +42,22 @@ public class ModItems {
 	public static List<Item> itemList = new ArrayList<>();
 
 	//Vanilla dust
-	public static ItemOreDict dustGold = new ItemOreDict("gold_dust", "dustGold", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemOreDict dustIron = new ItemOreDict("iron_dust", "dustIron", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal dustGold = new ItemMetal("gold_dust", "dustGold", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal dustIron = new ItemMetal("iron_dust", "dustIron", MetallurgyTabs.tabDust, ModItems.itemList);
 
 	//Metallurgy dusts
-	public static ItemOreDict bitumen = new ItemOreDict("bitumen", "dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList).setTooltip(Constants.BITUMEN);
-	public static ItemOreDict tar = new ItemOreDict("tar", "slimeball", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemOreDict potash = new ItemOreDict("potash", "dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemOreDict sulfur = new ItemOreDict("sulfur_dust", "dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemOreDict dustThermite = new ItemOreDict("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList) {
+	public static ItemMetal bitumen = new ItemMetal("bitumen", "dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList).setTooltip(Constants.BITUMEN);
+	public static ItemMetal tar = new ItemMetal("tar", "slimeball", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal potash = new ItemMetal("potash", "dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal sulfur = new ItemMetal("sulfur_dust", "dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal dustThermite = new ItemMetal("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList) {
 		@Override
 		public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 		{
 			tooltip.add(Constants.THERMITE_DUST);
 		}
 	};
-	public static ItemOreDict phosphorus = new ItemOreDict("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemMetal phosphorus = new ItemMetal("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList);
 
 	public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();
 
@@ -84,7 +84,7 @@ public class ModItems {
 
 	static
 	{
-		ItemUtils.initItem(wiki, "wiki", MetallurgyTabs.tabSpecial, itemList);
+		ItemUtils.initItem(wiki, "wiki", MetallurgyTabs.tabSpecial);
 	}
 
 	public static void register(IForgeRegistry<Item> registry)

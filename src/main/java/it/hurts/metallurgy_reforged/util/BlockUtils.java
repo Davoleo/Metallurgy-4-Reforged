@@ -32,6 +32,14 @@ public class BlockUtils {
 		block.setHarvestLevel(toolClass, harvestLevel);
 	}
 
+	public static void initBlock(Block block, String name, CreativeTabs tab)
+	{
+		block.setRegistryName(Metallurgy.MODID, name);
+		block.setTranslationKey(Metallurgy.MODID + "." + name);
+		if (tab != null)
+			block.setCreativeTab(tab);
+	}
+
 
 	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
 	{

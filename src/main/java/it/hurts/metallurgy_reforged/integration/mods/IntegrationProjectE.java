@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -103,7 +103,7 @@ public class IntegrationProjectE {
 				//System.out.println(m.toString() + " --- " + emcMap.keySet().contains(m.toString()));
 
 				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getIngot(), emcMap.get(m.toString()));
-				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlock(), emcMap.get(m.toString()) * 9);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlocks(), emcMap.get(m.toString()) * 9);
 				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getNugget(), emcMap.get(m.toString()) / 9);
 			}
 			else

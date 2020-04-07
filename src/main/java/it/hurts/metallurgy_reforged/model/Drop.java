@@ -5,11 +5,11 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.data;
+package it.hurts.metallurgy_reforged.model;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

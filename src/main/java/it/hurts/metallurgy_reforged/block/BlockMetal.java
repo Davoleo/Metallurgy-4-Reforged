@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -25,18 +25,18 @@ import java.util.Objects;
 
 public class BlockMetal extends Block {
 
-	private Metal metal;
+	private MetalStats metal;
 	private BlockTypes type;
 
-	public BlockMetal(Metal metal, BlockTypes type, float blastResistance)
+	public BlockMetal(MetalStats metal, BlockTypes type)
 	{
 		super(Material.IRON);
 		this.metal = metal;
 		this.type = type;
-
 		this.setSoundType(SoundType.METAL);
 
-		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3F, blastResistance, Constants.PICKAXE, 1);
+		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3F, metal.getBlockBlastResistance(), Constants.PICKAXE, 1);
+		ModBlocks.metalBlocks.get(type).add(this);
 	}
 
 	/**
