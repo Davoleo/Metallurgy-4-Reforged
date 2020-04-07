@@ -77,7 +77,7 @@ public class ModMetals {
 			new ToolStats(30, 2, 70, 14F, 2F), new FluidStats((int) MetalColors.ELECTRUM.getColorIntWithAlpha()), -1).createMetal();
 	public static final Metal ETHERIUM = new MetalStats("etherium", "Etherium", 2, Constants.LOW_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{3, 5, 6, 2}, 45, 75, 0F, SoundEvents.UI_TOAST_IN),
-			new ToolStats(35, 8, 500, 18F, 2F), new FluidStats((int) MetalColors.ETHERIUM.getColorIntWithAlpha()), -1).createMetal();
+			new ToolStats(35, 8, 750, 18F, 8F), new FluidStats((int) MetalColors.ETHERIUM.getColorIntWithAlpha()), -1).createMetal();
 	public static final Metal EXIMITE = new MetalStats("eximite", "Eximite", 2, Constants.HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{4, 5, 6, 4}, 25, 100, 5.0F, SoundEvents.ENTITY_ENDERDRAGON_GROWL),
 			new ToolStats(25, 7, 1000, 8F, 4F), new FluidStats((int) MetalColors.EXIMITE.getColorIntWithAlpha()), 3).createMetal();
