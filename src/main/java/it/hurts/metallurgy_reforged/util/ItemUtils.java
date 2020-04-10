@@ -12,6 +12,8 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -33,6 +35,7 @@ public class ItemUtils {
 		item.setTranslationKey(Metallurgy.MODID + "." + name);
 		item.setRegistryName(Metallurgy.MODID, name);
 		item.setCreativeTab(tab);
+		ModItems.itemList.add(item);
 	}
 
 	//method to check if stack is a specific tool Material
@@ -79,12 +82,6 @@ public class ItemUtils {
 			return ItemStack.EMPTY;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public static void registerCustomItemModel(Item item, int meta)
-	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
-	}
-
 	public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
 	{
 		if (slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())
@@ -102,6 +99,12 @@ public class ItemUtils {
 	}
 
 	@SideOnly(Side.CLIENT)
+	public static void registerCustomItemModel(Item item, int meta)
+	{
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+	}
+
+	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta, String subdir)
 	{
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
@@ -112,27 +115,14 @@ public class ItemUtils {
 	 *
 	 * @return The metal the parameter item is made of (null if metal doesn't exist)
 	 */
-	public static Metal getMetalFromItem(Item item)
+	public static Metal getMetalFromItem(ItemMetal item)
 	{
 		for (Metal metal : ModMetals.metalList)
 		{
-			if (metal.getIngot() == item)
+			if (item.getMetal().getName().equals(metal.toString()))
+			{
 				return metal;
-
-			if (metal.getNugget() == item)
-				return metal;
-
-			if (metal.getDust() == item)
-				return metal;
-
-			if (Item.getItemFromBlock(metal.getMolten().getFluidBlock()) == item)
-				return metal;
-
-			if (!metal.isAlloy() && Item.getItemFromBlock(metal.getOre()) == item)
-				return metal;
-
-			if (Item.getItemFromBlock(metal.getBlocks()) == item)
-				return metal;
+			}
 		}
 
 		return null;

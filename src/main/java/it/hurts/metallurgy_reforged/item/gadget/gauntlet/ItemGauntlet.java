@@ -14,8 +14,7 @@ package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
-import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +23,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
@@ -33,7 +31,7 @@ import net.minecraft.world.WorldServer;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class ItemGauntlet extends Item implements IHasModel {
+public class ItemGauntlet extends ItemBase {
 
 	private Enchantment[] e = {
 			Enchantments.BANE_OF_ARTHROPODS,
@@ -48,17 +46,10 @@ public class ItemGauntlet extends Item implements IHasModel {
 
 	public ItemGauntlet(String name)
 	{
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabSpecial);
+		super(name, MetallurgyTabs.tabSpecial, "gadget");
 		this.setMaxDamage(GauntletConfig.gauntletMaxDamage);
 		this.setNoRepair();
 		this.setMaxStackSize(1);
-	}
-
-	@Nonnull
-	@Override
-	public String getCategory()
-	{
-		return "gadget";
 	}
 
 	@Override

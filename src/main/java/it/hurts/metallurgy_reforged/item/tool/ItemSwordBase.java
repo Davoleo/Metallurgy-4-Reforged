@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,7 +13,6 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -31,43 +30,28 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemSwordBase extends ItemSword implements IHasModel {
+//TODO: if instanceof ItemAxeBase -> modelSubDir = tool/sword
+public class ItemSwordBase extends ItemSword {
 
 	private EnumToolEffects effect;
-	private Enchantment enchantment;
-	private int enchantmentLevel;
+	private Enchantment enchantment = null;
+	private int enchantmentLevel = -1;
 
 	public ItemSwordBase(ToolMaterial material, String name)
 	{
-		this(material, name, null, -1);
-	}
-
-	public ItemSwordBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
-	{
 		super(material);
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
-		this.enchantment = enchantment;
-		this.enchantmentLevel = enchantmentLevel;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-	{
-		if (this.isInCreativeTab(tab))
-		{
-			ItemStack enchantedSword = new ItemStack(this);
-			if (enchantment != null)
-			{
-				enchantedSword.addEnchantment(enchantment, enchantmentLevel);
-			}
-			items.add(enchantedSword);
-		}
+		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool);
 	}
 
 	public void setEffect(EnumToolEffects effect)
 	{
 		this.effect = effect;
+	}
+
+	public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
+	{
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
 	}
 
 	private ItemStack getRepairStack()
@@ -94,11 +78,18 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 			tooltip.add(this.effect.getLocalized());
 	}
 
-	@Nonnull
 	@Override
-	public String getCategory()
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
 	{
-		return "tool/sword";
+		if (this.isInCreativeTab(tab))
+		{
+			ItemStack enchantedSword = new ItemStack(this);
+			if (enchantment != null)
+			{
+				enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedSword);
+		}
 	}
-
 }

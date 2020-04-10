@@ -24,6 +24,7 @@ public class ModMetals {
 	//    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
 	//	  damage_parameter = in-game_sword_damage - 3
 
+	//TODO: Init Metal Fluid stuff in an alternative way
 	//THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
 	//WHEN ADDING NEW METALS REMEMBER TO REGISTER EMCs AND ADD THEM TO THE MAIN LIST IN UTILS.JAVA
 	public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, Constants.HIGH_TIER_BLAST_RESISTANCE,

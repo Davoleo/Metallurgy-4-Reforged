@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.integration.mods;
 
 import com.google.common.collect.Table;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -125,9 +126,9 @@ public class IntegrationProjectE {
 		else if (ingot.getItem().equals(Items.GOLD_INGOT))
 			return 2048;
 
-		Metal metal = ItemUtils.getMetalFromItem(ingot.getItem());
+		Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) ingot.getItem()));
 
-		if (metal.hasToolSet())
+		if (metal != null && metal.hasToolSet())
 			return getEMCbyHarvestLevel(metal.getToolMaterial().getHarvestLevel());
 		return 0;
 	}

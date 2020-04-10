@@ -11,13 +11,11 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -28,11 +26,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemIgnatiusLighter extends Item implements IHasModel {
+public class ItemIgnatiusLighter extends ItemBase {
 
 	public ItemIgnatiusLighter(String name)
 	{
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabSpecial);
+		super(name, MetallurgyTabs.tabSpecial, "gadget");
 		setMaxDamage(150);
 	}
 
@@ -76,12 +74,4 @@ public class ItemIgnatiusLighter extends Item implements IHasModel {
 					worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
 			}
 	}
-
-	@Nonnull
-	@Override
-	public String getCategory()
-	{
-		return "gadget";
-	}
-
 }

@@ -23,9 +23,9 @@ public class OreDictHandler {
 	public static void init()
 	{
 
-
 		//Additional oreDict values
 		OreDictionary.registerOre("globTar", ModItems.tar);
+		OreDictionary.registerOre("slimeball", ModItems.tar);
 	}
 
 	// TODO: 30/03/2020 Register OreDictionary key for every item and block

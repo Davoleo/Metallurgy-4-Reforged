@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -16,6 +16,8 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
 
+//TODO: Remove
+@Deprecated
 public class ToolConfig {
 
 	private static final String[] CATEGORY = {"Axe", "Hoe", "Pickaxe", "Shovel", "Sword"};

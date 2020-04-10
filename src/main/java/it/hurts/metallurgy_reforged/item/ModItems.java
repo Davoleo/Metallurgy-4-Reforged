@@ -17,7 +17,6 @@ import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,32 +31,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
 public class ModItems {
 
 	public static List<Item> itemList = new ArrayList<>();
 
 	//Vanilla dust
-	public static ItemMetal dustGold = new ItemMetal("gold_dust", "dustGold", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemMetal dustIron = new ItemMetal("iron_dust", "dustIron", MetallurgyTabs.tabDust, ModItems.itemList);
+	public static ItemBase dustGold = new ItemBase("gold_dust", MetallurgyTabs.tabDust);
+	public static ItemBase dustIron = new ItemBase("iron_dust", MetallurgyTabs.tabDust);
 
 	//Metallurgy dusts
-	public static ItemMetal bitumen = new ItemMetal("bitumen", "dustBitumen", MetallurgyTabs.tabDust, ModItems.itemList).setTooltip(Constants.BITUMEN);
-	public static ItemMetal tar = new ItemMetal("tar", "slimeball", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemMetal potash = new ItemMetal("potash", "dustPotash", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemMetal sulfur = new ItemMetal("sulfur_dust", "dustSulfur", MetallurgyTabs.tabDust, ModItems.itemList);
-	public static ItemMetal dustThermite = new ItemMetal("thermite_dust", "dustThermite", MetallurgyTabs.tabDust, ModItems.itemList) {
-		@Override
-		public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-		{
-			tooltip.add(Constants.THERMITE_DUST);
-		}
-	};
-	public static ItemMetal phosphorus = new ItemMetal("phosphorus", "dustPhosphorus", MetallurgyTabs.tabDust, ModItems.itemList);
+	//TODO : INITIALIZE OREDICT KEYS CORRECTLY (Interface (?))
+	public static ItemBase bitumen = new ItemBase("bitumen", MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
+	public static ItemBase tar = new ItemBase("tar", MetallurgyTabs.tabDust);
+	public static ItemBase potash = new ItemBase("potash", MetallurgyTabs.tabDust);
+	public static ItemBase sulfur = new ItemBase("sulfur_dust", MetallurgyTabs.tabDust);
+	public static ItemBase dustThermite = new ItemBase("thermite_dust", MetallurgyTabs.tabDust).setTooltip(Constants.THERMITE_DUST);
+	public static ItemBase phosphorus = new ItemBase("phosphorus", MetallurgyTabs.tabDust);
 
 	public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();
 
@@ -69,9 +61,9 @@ public class ModItems {
 	public static ItemOreDetector oreDetector = new ItemOreDetector();
 
 	//Wiki Link Item ------------------------------------------------
-	public static Item wiki = new Item() {
+	public static ItemBase wiki = new ItemBase("wiki", MetallurgyTabs.tabSpecial) {
 		@Override
-		public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+		public ActionResult<ItemStack> onItemRightClick(World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
 		{
 			if (worldIn.isRemote)
 			{
@@ -81,11 +73,6 @@ public class ModItems {
 			return super.onItemRightClick(worldIn, playerIn, handIn);
 		}
 	};
-
-	static
-	{
-		ItemUtils.initItem(wiki, "wiki", MetallurgyTabs.tabSpecial);
-	}
 
 	public static void register(IForgeRegistry<Item> registry)
 	{

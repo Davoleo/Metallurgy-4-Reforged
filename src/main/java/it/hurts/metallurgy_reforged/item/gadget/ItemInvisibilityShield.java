@@ -11,15 +11,13 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.item.ItemBase;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketParticles;
 import net.minecraft.util.*;
@@ -30,11 +28,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemInvisibilityShield extends Item implements IHasModel {
+public class ItemInvisibilityShield extends ItemBase {
 
 	public ItemInvisibilityShield()
 	{
-		ItemUtils.initItem(this, "lemurite_shield", MetallurgyTabs.tabSpecial);
+		super("lemurite_shield", MetallurgyTabs.tabSpecial, "gadget");
 		setMaxStackSize(1);
 		setMaxDamage(250);
 
@@ -46,13 +44,6 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 			}
 		});
 
-	}
-
-	@Nonnull
-	@Override
-	public String getCategory()
-	{
-		return "gadget";
 	}
 
 	@Override

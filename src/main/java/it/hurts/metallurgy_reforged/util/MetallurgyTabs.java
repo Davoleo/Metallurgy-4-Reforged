@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.ToolConfig;
@@ -28,7 +29,7 @@ import java.util.Objects;
 
 public class MetallurgyTabs extends CreativeTabs {
 
-	//  TO.DO : Fix Creative tab icon ticking
+	//TODO : Fix Creative tab icon ticking
 
 	public static final CreativeTabs tabArmor, tabBlock, tabDust, tabFluid, tabIngot, tabNugget, tabSpecial, tabOre, tabTool;
 
@@ -68,7 +69,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 0:
 				return ArmorConfig.allArmor[0] ? new ItemStack(ModMetals.ADAMANTINE.getArmorPiece(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
 			case 1:
-				return new ItemStack(ModMetals.ADAMANTINE.getBlocks());
+				return new ItemStack(ModMetals.ADAMANTINE.getBlock(BlockTypes.BLOCK));
 			case 2:
 				return new ItemStack(ModMetals.ADAMANTINE.getDust());
 			case 3:

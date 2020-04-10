@@ -12,43 +12,27 @@
 package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.material.MetalStats;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-import java.util.List;
-
-public class ItemMetal extends Item {
+public class ItemMetal extends ItemBase {
 
 	private ItemTypes type;
-	private String tooltip;
+	private MetalStats metal;
 
 	public ItemMetal(MetalStats metal, ItemTypes type)
 	{
+		super(metal.toString() + "_" + type.getName(), type.getTab());
 		this.type = type;
-		ItemUtils.initItem(this, metal.toString() + "_" + type.getName(), type.getTab());
-	}
-
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-	{
-		if (this.tooltip != null)
-			tooltip.add(this.tooltip);
-	}
-
-	//Setters & Getters -----------------------------------------------------
-	public ItemMetal setTooltip(String tooltip)
-	{
-		this.tooltip = tooltip;
-		return this;
+		this.metal = metal;
 	}
 
 	public ItemTypes getType()
 	{
 		return type;
+	}
+
+	public MetalStats getMetal()
+	{
+		return metal;
 	}
 
 }

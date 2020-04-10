@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.gui.hud;
 
+import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
@@ -88,7 +89,7 @@ public class SublimationChamberHUD {
 				Utils.drawTexturedModalRect(x + 30, y - 10, 141, 166, 24, 24);
 				Utils.drawTexturedModalRect(x + 33, y - 8, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
 
-				Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
+				Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) metalStack.getItem()));
 				int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
 				minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds"), x - 33, y - 30, color);
 				minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat(effect.getEffectName()), x + 30, y + 25, color);
