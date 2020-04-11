@@ -27,6 +27,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.util.EnumHelper;
 
+import java.awt.*;
+
 public class MetalStats {
 
 	private final String name;
@@ -34,18 +36,14 @@ public class MetalStats {
 	private final int blockHarvest;
 	private final float blockBlastResistance;
 
-	//Ore Properties
-	int minVeinSize, maxVeinSize;
-	int chance;
-	int minY, maxY;
-
 	//Color
-	private int color;
+	private final int color;
 
 	private final int oreHarvest;
 
 	private final ArmorStats armor;
 	private final ToolStats tool;
+	private final GenerationStats genStats;
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
@@ -61,7 +59,7 @@ public class MetalStats {
 		BlockMetal[] blocks = new BlockMetal[5];
 		for (int i = 0; i < BlockTypes.values().length; i++)
 		{
-			blocks[i] = new BlockMetal(this, BlockTypes.values()[i]);
+			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], hardness);
 		}
 
 		BlockOre ore = null;
@@ -117,14 +115,16 @@ public class MetalStats {
 
 	/**
 	 * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
-	 * @param hardness
+	 * @param hardness        the time it takes to break a block made of this metal
 	 * @param blockHarvest    the harvest level of the metal block
 	 * @param blastResistance the resistance to explosions of the metal block
 	 * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
+	 * @param genStats        the GenerationStats instance representing the world generation stats for this metal (is null if this metal is an alloy)
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
+	 * @param color           The representative color of the metal
 	 */
-	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest)
+	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, GenerationStats genStats, int oreHarvest, int color)
 	{
 		this.name = name;
 		this.hardness = hardness;
@@ -132,7 +132,9 @@ public class MetalStats {
 		this.blockBlastResistance = blastResistance;
 		this.armor = armor;
 		this.tool = tool;
+		this.genStats = genStats;
 		this.oreHarvest = oreHarvest;
+		this.color = color;
 	}
 
 	public String getName()
@@ -165,9 +167,22 @@ public class MetalStats {
 		return armorMaterial;
 	}
 
-	public int getMetalColor()
+	public int getColorHex()
 	{
 		return color;
+	}
+
+	public long getColorIntWithAlpha()
+	{
+		String colorWoAlpha = Integer.toHexString(color);
+		String colorWAlpha = "0xff" + colorWoAlpha;
+		return Long.decode(colorWAlpha);
+	}
+
+	public float[] getRGBValues()
+	{
+		Color rgb = new Color(color);
+		return rgb.getRGBColorComponents(null);
 	}
 
 	private ItemArmor.ArmorMaterial createArmorMaterial()

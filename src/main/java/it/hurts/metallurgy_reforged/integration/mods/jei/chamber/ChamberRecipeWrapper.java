@@ -65,7 +65,7 @@ public class ChamberRecipeWrapper implements IRecipeWrapper {
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
 	{
 		Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) input.getItem()));
-		int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
+		int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
 
 		GlStateManager.pushMatrix();
 		minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);

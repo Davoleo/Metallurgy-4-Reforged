@@ -11,10 +11,9 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import java.awt.*;
-
 public enum MetalColors {
 
+	//TODO: Move this outta here
 	ADAMANTINE(0xA31D1D),
 	AMORDRINE(0x9780CB),
 	ANGMALLEN(0xC09844),
@@ -65,41 +64,7 @@ public enum MetalColors {
 	VYROXERES(0x2BFF00),
 	ZINC(0xCACE84);
 
-	private int colorHex;
-
 	MetalColors(int colorHex)
-	{
-		this.colorHex = colorHex;
-	}
-
-	public int getColorHex()
-	{
-		return colorHex;
-	}
-
-	public long getColorIntWithAlpha()
-	{
-		String colorWoAlpha = Integer.toHexString(colorHex);
-		String colorWAlpha = "0xff" + colorWoAlpha;
-		return Long.decode(colorWAlpha);
-	}
-
-	public float[] getRGBValues()
-	{
-		Color color = new Color(colorHex);
-		return color.getRGBColorComponents(null);
-	}
-
-	public static MetalColors byName(String metal)
-	{
-		for (MetalColors color : values())
-		{
-			//System.out.println(color.name() +  " | " + metal);
-			if (color.name().equals(metal))
-				return color;
-		}
-
-		return null;
-	}
+	{ }
 
 }
