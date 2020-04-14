@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.util;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -20,12 +21,17 @@ import java.util.List;
 
 public class EventUtils {
 
-	//	method to check if player wears the complete ArmorEffectHandler.
-	public static boolean isPlayerWearingArmor(EntityPlayer pl, Item[] armor)
+	/**
+	 * @param player The player who may be wearing the armor
+	 * @param armor  The array of armor items the player may be wearing
+	 *
+	 * @return whether a player is wearing the complete armor set
+	 */
+	public static boolean isPlayerWearingArmor(EntityPlayer player, Item[] armor)
 	{
 		boolean flag = true;
 
-		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
+		List<ItemStack> list = Lists.newArrayList(player.getArmorInventoryList().iterator());
 		for (int i = 0; i < list.size(); i++)
 		{
 			if (!list.get(i).getItem().equals(armor[3 - i]))
@@ -34,11 +40,16 @@ public class EventUtils {
 		return flag;
 	}
 
-	//  get Specific ArmorEffectHandler Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
-	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl, int index, Item armorEquip)
+	/**
+	 * @param player     The player who may be wearing the armor piece
+	 * @param slot       The slot in which the player may be wearing a specific armor piece
+	 * @param armorEquip The armor item the player may be wearing in the specified slot
+	 *
+	 * @return whether the player is wearing a specific armor item in a specific Equipment Slot
+	 */
+	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
 	{
-		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
-		return list.get(index).getItem().equals(armorEquip);
+		return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
 	}
 
 	/**

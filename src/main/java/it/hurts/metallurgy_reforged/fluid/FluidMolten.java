@@ -12,7 +12,6 @@
 package it.hurts.metallurgy_reforged.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -22,8 +21,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 
-import javax.annotation.Nonnull;
-
 public class FluidMolten extends Fluid {
 
 	protected Fluid fluid = this;
@@ -32,7 +29,6 @@ public class FluidMolten extends Fluid {
 	private float overlayAlpha = 0.2F;
 	private static final SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
 	private static final SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
-	protected FluidBlockBase block;
 	private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
 	private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
@@ -103,16 +99,4 @@ public class FluidMolten extends Fluid {
 	{
 		return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
 	}
-
-	public void initFluidBlock()
-	{
-		block = new FluidBlockBase(this, Material.LAVA, fluid.getName());
-	}
-
-	@Nonnull
-	public FluidBlockBase getFluidBlock()
-	{
-		return block;
-	}
-
 }

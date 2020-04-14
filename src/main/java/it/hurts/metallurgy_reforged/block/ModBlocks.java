@@ -11,8 +11,9 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -22,6 +23,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.BlockFluidClassic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,7 +40,7 @@ public class ModBlocks {
 	//All the miscellaneous blocks
 	public static List<Block> miscBlocks = new ArrayList<>();
 	//Molten FluidBlocks
-	public static List<FluidBlockBase> fluidBlocks = new ArrayList<>();
+	public static List<BlockFluidClassic> fluidBlocks = new ArrayList<>();
 
 	//Mod Blocks with a custom drop
 	public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 2, Constants.MID_TIER_BLAST_RESISTANCE)
@@ -50,7 +52,7 @@ public class ModBlocks {
 	public static BlockOre orePotash = new BlockOre("potash_ore", 3F, 2, Constants.MID_TIER_BLAST_RESISTANCE)
 			.setDrops(new Drop(ModItems.potash, 3, 1F));
 
-	//Other Blocks
+	//Bitumen, Charcoal and Sulfur Blocks
 	public static Block blockBitumen = new Block(Material.ROCK);
 	public static Block blockCharcoal = new Block(Material.ROCK);
 	public static Block blockSulfur = new Block(Material.ROCK);
@@ -67,6 +69,9 @@ public class ModBlocks {
 	//public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
 	public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
+	//Tar FluidBlock
+	public static FluidBlockTar fluidBlockTar = new FluidBlockTar(ModFluids.TAR, Material.WATER);
+
 	//Other Blocks Initialization
 	static
 	{
@@ -75,13 +80,16 @@ public class ModBlocks {
 			metalBlocks.put(type, new ArrayList<>());
 		}
 
-		//Initialize remaining blocks
+		//Initialize Bitumen, Charcoal and Sulfur Blocks
 		BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
 		BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
 		BlockUtils.initBlock(blockSulfur, "sulfur_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
 		miscBlocks.add(blockBitumen);
 		miscBlocks.add(blockCharcoal);
 		miscBlocks.add(blockSulfur);
+
+		//Initialize Tar FluidBlock
+		BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
 	}
 
 	// TODO: 30/03/2020 for each block: register block, register ItemBlock, register Model

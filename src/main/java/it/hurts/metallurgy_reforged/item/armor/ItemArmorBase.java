@@ -13,7 +13,6 @@ package it.hurts.metallurgy_reforged.item.armor;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -32,51 +31,28 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemArmorBase extends ItemArmor implements IHasModel {
+//TODO: if instanceof ItemAxeBase -> modelSubDir = armor
+public class ItemArmorBase extends ItemArmor {
 
 	private EnumArmorEffects effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
-
 	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
 	{
-		this(material, slot, name, null, 0);
-	}
-
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
-	{
 		super(material, 0, slot);
-		this.enchantment = enchantment;
-		this.enchantmentLevel = enchantmentLevel;
 		ItemUtils.initItem(this, name, MetallurgyTabs.tabArmor);
-	}
-
-	@Nonnull
-	@Override
-	public String getCategory()
-	{
-		return "armor";
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-	{
-		if (this.isInCreativeTab(tab))
-		{
-			ItemStack enchantedArmor = new ItemStack(this);
-			if (enchantment != null)
-			{
-				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
-			}
-			items.add(enchantedArmor);
-		}
 	}
 
 	public void setEffect(EnumArmorEffects effect)
 	{
 		this.effect = effect;
+	}
+
+	public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
+	{
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
 	}
 
 	private ItemStack getRepairStack()
@@ -101,6 +77,21 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	{
 		if (this.effect != null && effect.isActive())
 			tooltip.add(this.effect.getLocalized());
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+	{
+		if (this.isInCreativeTab(tab))
+		{
+			ItemStack enchantedArmor = new ItemStack(this);
+			if (enchantment != null)
+			{
+				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
+			}
+			items.add(enchantedArmor);
+		}
 	}
 
 }

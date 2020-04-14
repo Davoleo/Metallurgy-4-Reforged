@@ -14,33 +14,39 @@ package it.hurts.metallurgy_reforged.material;
 import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBase;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.util.BlockUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
+import net.minecraftforge.fluids.BlockFluidClassic;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class Metal {
 
+	//Metal Properties
 	private final MetalStats stats;
 
+	//Items
 	private final ItemMetal ingot, dust, nugget;
+	//Blocks
 	private final BlockOre ore;
 	private final BlockMetal[] blocks;
+
+	//Tools & Armor
+	private final Item[] toolSet;
+	private final ItemArmorBase[] armorSet;
+
+	//Fluid & FluidBlock
 	private final FluidMolten molten;
-
-	private Item[] toolSet;
-	private ItemArmorBase[] armorSet;
-
-	private FluidBlockBase fluidBlock;
+	private final BlockFluidClassic fluidBlock;
 
 	public Metal(MetalStats stats, ItemMetal ingot, ItemMetal dust, ItemMetal nugget, BlockOre ore, BlockMetal[] blocks, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
 	{
@@ -53,6 +59,10 @@ public class Metal {
 		this.molten = molten;
 		this.toolSet = toolSet;
 		this.armorSet = armorSet;
+
+		this.fluidBlock = new BlockFluidClassic(molten, Material.LAVA);
+		BlockUtils.initFluidBlock(fluidBlock, "molten_" + stats.getName());
+
 		ModMetals.metalList.add(this);
 	}
 
@@ -64,11 +74,6 @@ public class Metal {
 	public ItemArmor.ArmorMaterial getArmorMaterial()
 	{
 		return stats.getArmorMaterial();
-	}
-
-	public void initFluidBlock()
-	{
-		fluidBlock = new FluidBlockBase(molten, Material.LAVA, "molten_" + stats.getName());
 	}
 
 	/**
@@ -143,7 +148,7 @@ public class Metal {
 	}
 
 	@Nonnull
-	public FluidBlockBase getFluidBlock()
+	public BlockFluidClassic getFluidBlock()
 	{
 		return fluidBlock;
 	}

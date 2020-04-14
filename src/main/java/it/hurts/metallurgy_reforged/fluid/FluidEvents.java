@@ -5,14 +5,14 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockBaseTar;
+import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -32,7 +32,7 @@ public class FluidEvents {
 	@SubscribeEvent
 	public static void fogLiquid(RenderBlockOverlayEvent ev)
 	{
-		if (ev.getPlayer().world.getBlockState(new BlockPos(ev.getPlayer().posX, ev.getPlayer().posY + ev.getPlayer().eyeHeight, ev.getPlayer().posZ)).getBlock() instanceof FluidBlockBaseTar)
+		if (ev.getPlayer().world.getBlockState(new BlockPos(ev.getPlayer().posX, ev.getPlayer().posY + ev.getPlayer().eyeHeight, ev.getPlayer().posZ)).getBlock() instanceof FluidBlockTar)
 		{
 			renderTarOverlayTexture(ev.getPlayer());
 			ev.setCanceled(true);

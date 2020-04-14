@@ -30,6 +30,17 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemUtils {
 
+	/**
+	 * Initializes the basic fields of an Item
+	 * - translation key
+	 * - registry name
+	 * - creative tab
+	 * - adds the item to the global list of items in the mod
+	 *
+	 * @param item the instance of the item that is being initialized
+	 * @param name The name of the item
+	 * @param tab  The creative tab this item will be placed in
+	 */
 	public static void initItem(Item item, String name, CreativeTabs tab)
 	{
 		item.setTranslationKey(Metallurgy.MODID + "." + name);
@@ -92,7 +103,9 @@ public class ItemUtils {
 		}
 	}
 
-	//check if itemstack is a specific armor material
+	/**
+	 * checks if an itemstack is made of a specific armor material
+	 */
 	public static boolean isItemStackSpecificArmorMaterial(Metal metal, ItemStack armor)
 	{
 		return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase) armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
@@ -111,15 +124,15 @@ public class ItemUtils {
 	}
 
 	/**
-	 * @param item the item you want the metal of
-	 *
-	 * @return The metal the parameter item is made of (null if metal doesn't exist)
+	 * Gets the instance of a Metal from an ItemMetal
+	 * @param item An ItemMetal instance
+	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
 	public static Metal getMetalFromItem(ItemMetal item)
 	{
 		for (Metal metal : ModMetals.metalList)
 		{
-			if (item.getMetal().getName().equals(metal.toString()))
+			if (item.getMetalStats().getName().equals(metal.toString()))
 			{
 				return metal;
 			}

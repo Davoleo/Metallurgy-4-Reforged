@@ -30,7 +30,7 @@ public class ItemMetal extends ItemBase {
 		return type;
 	}
 
-	public MetalStats getMetal()
+	public MetalStats getMetalStats()
 	{
 		return metal;
 	}

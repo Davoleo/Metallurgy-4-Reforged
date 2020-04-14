@@ -12,11 +12,13 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fluids.BlockFluidClassic;
 
 public class BlockUtils {
 
@@ -40,6 +42,15 @@ public class BlockUtils {
 			block.setCreativeTab(tab);
 	}
 
+	public static void initFluidBlock(BlockFluidClassic fluidBlock, String name)
+	{
+		fluidBlock.getFluid().setBlock(fluidBlock);
+		fluidBlock.setRegistryName(Metallurgy.MODID, name);
+		fluidBlock.setTranslationKey(Metallurgy.MODID + "." + name);
+		fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
+
+		ModBlocks.fluidBlocks.add(fluidBlock);
+	}
 
 	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
 	{

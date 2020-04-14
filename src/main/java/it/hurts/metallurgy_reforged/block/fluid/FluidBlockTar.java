@@ -1,11 +1,11 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: FluidBlockBaseTar
+ * Class: FluidBlockTar
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -18,21 +18,24 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-public class FluidBlockBaseTar extends FluidBlockBase {
+public class FluidBlockTar extends BlockFluidClassic {
 
-	public FluidBlockBaseTar(Fluid fluid, Material material, String name)
+	public FluidBlockTar(Fluid fluid, Material material)
 	{
-		super(fluid, material, name);
+		super(fluid, material);
 	}
 
-	//Slows the player movements when swimming in Tar (80% less speed than in water)
+	/**
+	 * Slows the player movements when swimming in Tar (80% less speed than in water)
+	 */
 	@Override
-	public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+	public void onEntityCollision(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Entity entityIn)
 	{
 		super.onEntityCollision(worldIn, pos, state, entityIn);
 		entityIn.motionX *= 0.2D;
@@ -40,7 +43,9 @@ public class FluidBlockBaseTar extends FluidBlockBase {
 		entityIn.motionZ *= 0.2D;
 	}
 
-	//Handles the solidification of Liquid Tar into a solid form
+	/**
+	 * Handles the solidification of Liquid Tar into a solid form
+	 */
 	@Override
 	public void randomTick(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random random)
 	{
@@ -55,7 +60,7 @@ public class FluidBlockBaseTar extends FluidBlockBase {
 		 * LEVEL is a variable located in BlockFluidClassic, it handles the height of the fluid (from 0 to 15)
 		 * 0 is the max height of the FluidBlock AKA the source block
 		 */
-		if (((FluidBlockBaseTar) state.getBlock()).isSourceBlock(worldIn, pos))
+		if (((FluidBlockTar) state.getBlock()).isSourceBlock(worldIn, pos))
 		{
 
 			do
