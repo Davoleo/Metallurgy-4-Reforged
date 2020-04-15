@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -15,9 +15,11 @@ import net.minecraft.util.SoundEvent;
 
 public class ArmorStats {
 
+	//todo remove equipSound from ArmorStats
 	private final int[] damageReduction;
 	private final int armorMagic, durability;
 	private final float toughness;
+	@Deprecated
 	private final SoundEvent equipSound;
 
 	public ArmorStats(int[] damageReduction, int armorMagic, int durability, float toughness, SoundEvent equipSound)
@@ -50,6 +52,7 @@ public class ArmorStats {
 		return toughness;
 	}
 
+	@Deprecated
 	public SoundEvent getEquipSound()
 	{
 		return equipSound;

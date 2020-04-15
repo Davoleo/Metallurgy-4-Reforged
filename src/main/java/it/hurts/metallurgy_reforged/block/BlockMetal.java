@@ -28,7 +28,7 @@ public class BlockMetal extends Block {
 	private MetalStats metal;
 	private BlockTypes type;
 
-	public BlockMetal(MetalStats metal, BlockTypes type, int hardness)
+	public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
 	{
 		super(Material.IRON);
 		this.metal = metal;

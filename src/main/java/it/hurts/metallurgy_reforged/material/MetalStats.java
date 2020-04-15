@@ -32,18 +32,20 @@ import java.awt.*;
 public class MetalStats {
 
 	private final String name;
-	private final int hardness;
+
+	//Block Properties
 	private final int blockHarvest;
+	private final float hardness;
 	private final float blockBlastResistance;
+
+	//Ore Properties
+	private final int oreHarvest;
 
 	//Color
 	private final int color;
 
-	private final int oreHarvest;
-
 	private final ArmorStats armor;
 	private final ToolStats tool;
-	private final GenerationStats genStats;
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
@@ -120,11 +122,10 @@ public class MetalStats {
 	 * @param blastResistance the resistance to explosions of the metal block
 	 * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
-	 * @param genStats        the GenerationStats instance representing the world generation stats for this metal (is null if this metal is an alloy)
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
 	 * @param color           The representative color of the metal
 	 */
-	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, GenerationStats genStats, int oreHarvest, int color)
+	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
 	{
 		this.name = name;
 		this.hardness = hardness;
@@ -132,7 +133,6 @@ public class MetalStats {
 		this.blockBlastResistance = blastResistance;
 		this.armor = armor;
 		this.tool = tool;
-		this.genStats = genStats;
 		this.oreHarvest = oreHarvest;
 		this.color = color;
 	}

@@ -19,6 +19,8 @@ import java.util.List;
 
 public class ModMetals {
 
+	public static List<MetalStats> metalStatsList = new ArrayList<>();
+
 	public static List<Metal> metalList = new ArrayList<>();
 
 	//    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
@@ -27,7 +29,7 @@ public class ModMetals {
 	//TODO: Init Metal Fluid stuff in an alternative way
 	//THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
 	//WHEN ADDING NEW METALS REMEMBER TO REGISTER EMCs AND ADD THEM TO THE MAIN LIST IN UTILS.JAVA
-	public static final Metal ADAMANTINE = new MetalStats("adamantine", "Adamantine", 2, Constants.HIGH_TIER_BLAST_RESISTANCE,
+	public static final Metal ADAMANTINE = new MetalStats("adamantine", 5F, 2, Constants.HIGH_TIER_BLAST_RESISTANCE,
 			new ArmorStats(new int[]{3, 4, 5, 3}, 8, 36, 3.5F, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND),
 			new ToolStats(22, 7, 1550, 10F, 5F), new FluidStats((int) MetalColors.ADAMANTINE.getColorIntWithAlpha()), 6).createMetal();
 	public static final Metal AMORDRINE = new MetalStats("amordrine", "Amordrine", 2, Constants.MID_TIER_BLAST_RESISTANCE,
