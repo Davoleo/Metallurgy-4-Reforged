@@ -11,24 +11,18 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import net.minecraft.util.SoundEvent;
-
 public class ArmorStats {
 
-	//todo remove equipSound from ArmorStats
 	private final int[] damageReduction;
-	private final int armorMagic, durability;
+	private final int enchantability, durability;
 	private final float toughness;
-	@Deprecated
-	private final SoundEvent equipSound;
 
-	public ArmorStats(int[] damageReduction, int armorMagic, int durability, float toughness, SoundEvent equipSound)
+	public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)
 	{
 		this.damageReduction = damageReduction;
-		this.armorMagic = armorMagic;
+		this.enchantability = enchantability;
 		this.durability = durability;
 		this.toughness = toughness;
-		this.equipSound = equipSound;
 	}
 
 	public int[] getDamageReduction()
@@ -37,9 +31,9 @@ public class ArmorStats {
 	}
 
 	//Armor Enchantability
-	public int getArmorMagic()
+	public int getEnchantability()
 	{
-		return armorMagic;
+		return enchantability;
 	}
 
 	public int getDurability()
@@ -50,12 +44,6 @@ public class ArmorStats {
 	public float getToughness()
 	{
 		return toughness;
-	}
-
-	@Deprecated
-	public SoundEvent getEquipSound()
-	{
-		return equipSound;
 	}
 
 }

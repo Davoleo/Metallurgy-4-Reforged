@@ -1,7 +1,6 @@
 [
 	{
 		"name": "adamantine",
-		"block_harvest_level": 2,
 		"hardness": 5,
 		"blast_resistance": 15,
 		"ore_harvest_level": 6,

@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
@@ -19,6 +20,8 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
@@ -92,4 +95,12 @@ public class ItemSwordBase extends ItemSword {
 			items.add(enchantedSword);
 		}
 	}
+
+	//todo ADD ATTRIBUTE VARIABLES
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+	{
+		return super.getItemAttributeModifiers(equipmentSlot);
+	}
+
 }

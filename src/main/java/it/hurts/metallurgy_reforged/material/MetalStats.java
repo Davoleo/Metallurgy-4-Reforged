@@ -21,6 +21,7 @@ import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
 import it.hurts.metallurgy_reforged.util.Constants;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -34,7 +35,6 @@ public class MetalStats {
 	private final String name;
 
 	//Block Properties
-	private final int blockHarvest;
 	private final float hardness;
 	private final float blockBlastResistance;
 
@@ -49,6 +49,11 @@ public class MetalStats {
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
+
+	//Steins;Gate 0
+	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
+			new ArmorStats(new int[]{0, 0, 0, 0}, 0, 0, 0),
+			new ToolStats(0, 0, 0, 0, 0), 0, 0);
 
 	public Metal createMetal()
 	{
@@ -118,18 +123,16 @@ public class MetalStats {
 	/**
 	 * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
 	 * @param hardness        the time it takes to break a block made of this metal
-	 * @param blockHarvest    the harvest level of the metal block
 	 * @param blastResistance the resistance to explosions of the metal block
 	 * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
 	 * @param color           The representative color of the metal
 	 */
-	public MetalStats(String name, int hardness, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
+	public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
 	{
 		this.name = name;
 		this.hardness = hardness;
-		this.blockHarvest = blockHarvest;
 		this.blockBlastResistance = blastResistance;
 		this.armor = armor;
 		this.tool = tool;
@@ -140,6 +143,16 @@ public class MetalStats {
 	public String getName()
 	{
 		return name;
+	}
+
+	public float getHardness()
+	{
+		return hardness;
+	}
+
+	public int getOreHarvest()
+	{
+		return oreHarvest;
 	}
 
 	public float getBlockBlastResistance()
@@ -190,7 +203,7 @@ public class MetalStats {
 		if (armor == null)
 			throw new UnsupportedOperationException("No Armor Stats Loaded");
 
-		return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getArmorMagic(), armor.getEquipSound(), armor.getToughness());
+		return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getEnchantability(), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, armor.getToughness());
 	}
 
 	private Item.ToolMaterial createToolMaterial()
