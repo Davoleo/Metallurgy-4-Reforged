@@ -94,7 +94,7 @@ public class IntegrationProjectE {
 		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.tar, 128L);
 
 
-		for (Metal m : ModMetals.metalList)
+		for (Metal m : ModMetals.metalMap)
 		{
 			ProjectEAPI.getEMCProxy().registerCustomEMC(m.getDust(), emcMap.get(m.toString()));
 

@@ -26,7 +26,6 @@
  import it.hurts.metallurgy_reforged.integration.mods.conarm.IntegrationCArmory;
  import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.IntegrationCT;
  import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
- import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.CommonProxy;
  import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
@@ -74,7 +73,6 @@
 		 logger.info(NAME + " is entering pre-initialization!");
 		 proxy.preInit(event);
 
-		 ModMetals.registerFluids();
 		 ModFluids.registerFluids();
 		 logger.info("Fluid registration complete!");
 

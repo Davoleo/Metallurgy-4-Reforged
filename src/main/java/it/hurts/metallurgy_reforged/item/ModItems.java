@@ -27,7 +27,6 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -72,12 +71,6 @@ public class ModItems {
 			return super.onItemRightClick(worldIn, playerIn, handIn);
 		}
 	};
-
-	public static void register(IForgeRegistry<Item> registry)
-	{
-		for (Item item : itemList)
-			registry.register(item);
-	}
 
 	@SideOnly(Side.CLIENT)
 	public static void registerModels()

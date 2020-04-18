@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -30,7 +30,7 @@ public class IntegrationCArmory {
 		Material.UNKNOWN.addStats(new CoreMaterialStats(0, 0));
 		Material.UNKNOWN.addStats(new PlatesMaterialStats(1, 0, 0));
 
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 		{
 			if (IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null)
 			{
@@ -44,7 +44,7 @@ public class IntegrationCArmory {
 
 	public static void init()
 	{
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 		{
 			if (IntegrationTIC.checkMaterial(metal))
 			{

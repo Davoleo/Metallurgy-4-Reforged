@@ -29,7 +29,7 @@ public class JsonMaterialHandler {
 
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-	private static final String DEFAULT_CONFIG = Metallurgy.class.getResource("/assets/metallurgy/materials.json").getPath();
+	public static final String DEFAULT_CONFIG = Metallurgy.class.getResource("/assets/metallurgy/materials.json").getPath();
 
 	/**
 	 * Reads the JSON config and creates a new MetalStats object for each entry of the JSON Array

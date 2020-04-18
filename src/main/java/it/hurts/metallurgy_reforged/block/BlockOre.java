@@ -51,7 +51,6 @@ public class BlockOre extends Block {
 		setResistance(blastResistance);
 
 		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, "p", harvestLevel);
-		ModBlocks.oreBlocks.add(this);
 	}
 
 	/**

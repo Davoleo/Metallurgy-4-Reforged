@@ -43,7 +43,7 @@ public class IntegrationTIC {
 
 	public static void preInit()
 	{
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 		{
 			if (checkMaterial(metal) && checkMaterialPreInit(metal) && !blacklistedMaterials.contains(metal.toString()))
 			{
@@ -56,7 +56,7 @@ public class IntegrationTIC {
 
 	public static void init()
 	{
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 		{
 			if (checkMaterial(metal) && !blacklistedMaterials.contains(metal.toString()))
 			{

@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
@@ -49,7 +49,7 @@ public class BlockUtils {
 		fluidBlock.setTranslationKey(Metallurgy.MODID + "." + name);
 		fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
 
-		ModBlocks.fluidBlocks.add(fluidBlock);
+		ModFluids.fluidBlocks.add(fluidBlock);
 	}
 
 	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)

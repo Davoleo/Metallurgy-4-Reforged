@@ -180,7 +180,7 @@ public class Utils {
 
 	public static Metal getMetalFromString(String string)
 	{
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 			if (string.contains(metal.toString()))
 				return metal;
 		return null;

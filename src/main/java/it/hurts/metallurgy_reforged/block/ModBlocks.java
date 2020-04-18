@@ -11,9 +11,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
-import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -23,24 +21,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.BlockFluidClassic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 //Class used as reference for all the manually registered blocks
 public class ModBlocks {
 
-	//All the metal blocks
-	public static Map<BlockTypes, List<Block>> metalBlocks = Collections.emptyMap();
-	//All the mod ores
-	public static List<BlockOre> oreBlocks = new ArrayList<>();
 	//All the miscellaneous blocks
 	public static List<Block> miscBlocks = new ArrayList<>();
-	//Molten FluidBlocks
-	public static List<BlockFluidClassic> fluidBlocks = new ArrayList<>();
 
 	//Mod Blocks with a custom drop
 	public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 2, Constants.MID_TIER_BLAST_RESISTANCE)
@@ -69,17 +58,9 @@ public class ModBlocks {
 	//public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
 	public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
-	//Tar FluidBlock
-	public static FluidBlockTar fluidBlockTar = new FluidBlockTar(ModFluids.TAR, Material.WATER);
-
 	//Other Blocks Initialization
 	static
 	{
-		for (BlockTypes type : BlockTypes.values())
-		{
-			metalBlocks.put(type, new ArrayList<>());
-		}
-
 		//Initialize Bitumen, Charcoal and Sulfur Blocks
 		BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
 		BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.MID_TIER_BLAST_RESISTANCE, "p", 1);
@@ -87,20 +68,6 @@ public class ModBlocks {
 		miscBlocks.add(blockBitumen);
 		miscBlocks.add(blockCharcoal);
 		miscBlocks.add(blockSulfur);
-
-		//Initialize Tar FluidBlock
-		BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
-	}
-
-	// TODO: 30/03/2020 for each block: register block, register ItemBlock, register Model
-	public static List<Block> joinBlockLists()
-	{
-		List<Block> list = new ArrayList<>();
-		metalBlocks.forEach((blockTypes, blocks) -> list.addAll(blocks));
-		list.addAll(oreBlocks);
-		list.addAll(miscBlocks);
-		list.addAll(fluidBlocks);
-		return list;
 	}
 
 	public static ItemBlock createItemBlock(Block block)

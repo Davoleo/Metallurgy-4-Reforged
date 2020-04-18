@@ -12,10 +12,12 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
@@ -49,15 +51,47 @@ public class RegistrationHandler {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
 	{
-		//Register Itemblocks
-		for (Block block : ModBlocks.joinBlockLists())
+		//Misc Itemblocks
+		for (Block block : ModBlocks.miscBlocks)
 		{
 			event.getRegistry().register(ModBlocks.createItemBlock(block));
 		}
 
-		ModItems.register(event.getRegistry());
-		//ModArmors.register(event.getRegistry());
-		//ModTools.register(event.getRegistry());
+		ModMetals.metalMap.forEach((s, metal) -> {
+			//Ore ItemBlocks
+			if (metal.getOre() != null)
+			{
+				event.getRegistry().register(ModBlocks.createItemBlock(metal.getOre()));
+			}
+
+			//Metal ItemBlocks
+			for (BlockMetal block : metal.getBlocks())
+			{
+				event.getRegistry().register(ModBlocks.createItemBlock(block));
+			}
+
+			//Items
+			event.getRegistry().register(metal.getIngot());
+			event.getRegistry().register(metal.getDust());
+			event.getRegistry().register(metal.getNugget());
+
+			//Tools
+			for (Item tool : metal.getToolSet())
+			{
+				event.getRegistry().register(tool);
+			}
+
+			//Armors
+			for (Item armor : metal.getArmorSet())
+			{
+				event.getRegistry().register(armor);
+			}
+		});
+
+		//Misc Items
+		ModItems.itemList.forEach(item -> {
+			event.getRegistry().register(item);
+		});
 
 		//OreDict Registration
 		OreDictHandler.init();
@@ -67,16 +101,37 @@ public class RegistrationHandler {
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		for (Block block : ModBlocks.joinBlockLists())
+		//Misc Blocks
+		for (Block block : ModBlocks.miscBlocks)
 		{
 			event.getRegistry().register(block);
 		}
+
+		ModMetals.metalMap.forEach((s, metal) -> {
+
+			//Ore Blocks
+			if (metal.getOre() != null)
+			{
+				event.getRegistry().register(metal.getOre());
+			}
+
+			//Metal Blocks and Deco
+			for (BlockMetal block : metal.getBlocks())
+			{
+				event.getRegistry().register(block);
+			}
+
+
+			metal.getMolten().getBlock();
+		});
+
+		// TODO: 30/03/2020 For each block: register the Fluid (FluidRegistry), the FluidBlock, register the FluidItemBlock, register the Model
 	}
 
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event)
 	{
-		for (Block block : ModBlocks.joinBlockLists())
+		for (Block block : ModBlocks.miscBlocks)
 		{
 			ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
 		}

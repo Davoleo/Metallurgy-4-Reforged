@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -25,7 +25,7 @@ public class ModRecipes {
 	{
 
 		//Furnace Recipes
-		for (Metal m : ModMetals.metalList)
+		for (Metal m : ModMetals.metalMap)
 		{
 			if (m.getOre() != null)
 			{

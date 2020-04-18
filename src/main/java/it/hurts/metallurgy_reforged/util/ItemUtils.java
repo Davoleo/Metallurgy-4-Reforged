@@ -130,7 +130,7 @@ public class ItemUtils {
 	 */
 	public static Metal getMetalFromItem(ItemMetal item)
 	{
-		for (Metal metal : ModMetals.metalList)
+		for (Metal metal : ModMetals.metalMap)
 		{
 			if (item.getMetalStats().getName().equals(metal.toString()))
 			{

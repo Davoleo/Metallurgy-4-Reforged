@@ -11,14 +11,24 @@
 
 package it.hurts.metallurgy_reforged.material;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ModMetals {
 
-	public static List<MetalStats> metalStatsList = new ArrayList<>();
+	public static Map<String, Metal> metalMap = new HashMap<>();
 
-	public static List<Metal> metalList = new ArrayList<>();
+	public static void init()
+	{
+
+		//TODO copy the default file over to the config folder
+
+		Set<MetalStats> defaultStats = JsonMaterialHandler.readConfig(JsonMaterialHandler.DEFAULT_CONFIG, null);
+		Set<MetalStats> playerStats = JsonMaterialHandler.readConfig("/", defaultStats);
+
+		playerStats.forEach(MetalStats::createMetal);
+	}
 
 	//    MetalStats("name", "Name", harvestLevelOfMetalBlock, blastResistance, ArmorStats, ToolStats, FluidStats, harvestLevelOfOreBlock).createMetal;
 	//	  damage_parameter = in-game_sword_damage - 3

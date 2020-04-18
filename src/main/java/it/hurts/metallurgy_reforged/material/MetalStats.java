@@ -51,9 +51,7 @@ public class MetalStats {
 	private ItemArmor.ArmorMaterial armorMaterial;
 
 	//Steins;Gate 0
-	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
-			new ArmorStats(new int[]{0, 0, 0, 0}, 0, 0, 0),
-			new ToolStats(0, 0, 0, 0, 0), 0, 0);
+	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0, null, null, 0, 0);
 
 	public Metal createMetal()
 	{

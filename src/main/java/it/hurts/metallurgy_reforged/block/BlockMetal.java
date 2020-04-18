@@ -36,7 +36,6 @@ public class BlockMetal extends Block {
 		this.setSoundType(SoundType.METAL);
 
 		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.PICKAXE, 2);
-		ModBlocks.metalBlocks.get(type).add(this);
 	}
 
 	/**

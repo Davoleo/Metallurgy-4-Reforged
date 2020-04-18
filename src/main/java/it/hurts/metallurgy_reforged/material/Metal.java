@@ -63,7 +63,7 @@ public class Metal {
 		this.fluidBlock = new BlockFluidClassic(molten, Material.LAVA);
 		BlockUtils.initFluidBlock(fluidBlock, "molten_" + stats.getName());
 
-		ModMetals.metalList.add(this);
+		ModMetals.metalMap.put(stats.getName(), this);
 	}
 
 	public ItemTool.ToolMaterial getToolMaterial()
