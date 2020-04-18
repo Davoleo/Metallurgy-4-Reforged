@@ -16,8 +16,6 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.item.armor.ModArmors;
-import it.hurts.metallurgy_reforged.item.tool.ModTools;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
@@ -58,8 +56,8 @@ public class RegistrationHandler {
 		}
 
 		ModItems.register(event.getRegistry());
-		ModArmors.register(event.getRegistry());
-		ModTools.register(event.getRegistry());
+		//ModArmors.register(event.getRegistry());
+		//ModTools.register(event.getRegistry());
 
 		//OreDict Registration
 		OreDictHandler.init();
@@ -84,8 +82,8 @@ public class RegistrationHandler {
 		}
 
 		ModItems.registerModels();
-		ModArmors.registerModels();
-		ModTools.registerModels();
+		//ModArmors.registerModels();
+		//ModTools.registerModels();
 
 		ModRenderers.registerRenderers();
 	}

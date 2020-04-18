@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.item;
 import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.Constants;
-import it.hurts.metallurgy_reforged.util.IHasModel;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -85,8 +84,7 @@ public class ModItems {
 	{
 		for (Item item : itemList)
 		{
-			if (item instanceof IHasModel)
-				ItemUtils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
+			//ItemUtils.registerCustomItemModel(item, 0, ((IHasModel) item).getCategory());
 		}
 
 		ItemUtils.registerCustomItemModel(wiki, 0);
