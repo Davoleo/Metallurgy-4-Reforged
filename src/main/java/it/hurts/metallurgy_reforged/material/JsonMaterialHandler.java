@@ -90,6 +90,7 @@ public class JsonMaterialHandler {
 		int oreHarvest = JsonUtils.getInt(metalObj, "ore_harvest_level", defaultStat.getOreHarvest());
 		int color = Integer.parseInt(JsonUtils.getString(metalObj, "color", String.valueOf(defaultStat.getColorHex())));
 
+		//TODO filter null armor and tools
 		ArmorStats armorStats = getArmorStats(metalObj, defaultStat.getArmorStats());
 		ToolStats toolStats = getToolStats(metalObj, defaultStat.getToolStats());
 
