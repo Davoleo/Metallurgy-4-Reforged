@@ -47,7 +47,7 @@ public class BlockOre extends Block {
 	public BlockOre(String name, float hardness, int harvestLevel, float blastResistance)
 	{
 		super(Material.ROCK);
-		setHarvestLevel(Constants.PICKAXE, harvestLevel);
+		setHarvestLevel(Constants.Tools.PICKAXE, harvestLevel);
 		setResistance(blastResistance);
 
 		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, "p", harvestLevel);

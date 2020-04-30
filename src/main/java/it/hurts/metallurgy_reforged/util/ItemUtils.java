@@ -28,6 +28,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Map;
+
 public class ItemUtils {
 
 	/**
@@ -130,11 +132,11 @@ public class ItemUtils {
 	 */
 	public static Metal getMetalFromItem(ItemMetal item)
 	{
-		for (Metal metal : ModMetals.metalMap)
+		for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
 		{
-			if (item.getMetalStats().getName().equals(metal.toString()))
+			if (item.getMetalStats().getName().equals(entry.getKey()))
 			{
-				return metal;
+				return entry.getValue();
 			}
 		}
 

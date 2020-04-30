@@ -32,6 +32,7 @@ import java.awt.*;
 
 public class MetalStats {
 
+	//Name of the material in snake_case
 	private final String name;
 
 	//Block Properties
@@ -107,11 +108,11 @@ public class MetalStats {
 	private int automaticTemperature()
 	{
 		float output = 1000F;
-		if (blockBlastResistance == Constants.LOW_TIER_BLAST_RESISTANCE)
+		if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
 		{
 			output = blockBlastResistance * 60f;
 		}
-		else if (blockBlastResistance != Constants.UNBREAKABLE_TIER_BLAST_RESISTANCE)
+		else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
 		{
 			output = blockBlastResistance * 36F;
 		}

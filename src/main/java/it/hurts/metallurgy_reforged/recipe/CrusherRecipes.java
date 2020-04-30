@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.recipe;
 import com.google.common.collect.Maps;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,15 +41,15 @@ public class CrusherRecipes {
 
 	private CrusherRecipes()
 	{
-		for (Metal m : ModMetals.metalMap)
-		{
+		ModMetals.metalMap.forEach((name, m) -> {
 			if (m.getOre() != null)
 			{
 				// 1 Ore => 2 Dust
 				addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
 			}
+			// 1 Ingot => 1 Dust
 			addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
-		}
+		});
 
 		//Ore2Dust
 		addCrushingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ModItems.dustGold, 2), 0.75F);

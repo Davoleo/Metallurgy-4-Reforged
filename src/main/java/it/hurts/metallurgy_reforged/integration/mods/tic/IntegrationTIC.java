@@ -15,12 +15,15 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,46 +37,58 @@ import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class IntegrationTIC {
 
 	public static List<?> blacklistedMaterials = Arrays.asList(GeneralConfig.tinkerMaterialsBlacklist);
+	private static List<Metal> vanillaTicMetals = new ArrayList<>();
+
+	static
+	{
+		vanillaTicMetals.add(ModMetals.COPPER);
+		vanillaTicMetals.add(ModMetals.BRONZE);
+		vanillaTicMetals.add(ModMetals.ZINC);
+		vanillaTicMetals.add(ModMetals.TIN);
+		vanillaTicMetals.add(ModMetals.SILVER);
+		vanillaTicMetals.add(ModMetals.STEEL);
+		vanillaTicMetals.add(ModMetals.ELECTRUM);
+		vanillaTicMetals.add(ModMetals.BRASS);
+	}
 
 	public static void preInit()
 	{
-		for (Metal metal : ModMetals.metalMap)
-		{
-			if (checkMaterial(metal) && checkMaterialPreInit(metal) && !blacklistedMaterials.contains(metal.toString()))
+		ModMetals.metalMap.forEach((name, metal) -> {
+
+			if (checkMaterial(metal) && checkMaterialPreInit(name) && !blacklistedMaterials.contains(name))
 			{
 				TiCMaterial material = new TiCMaterial(metal);
-
 				TinkerRegistry.addMaterial(material);
 			}
-		}
+		});
 	}
 
 	public static void init()
 	{
-		for (Metal metal : ModMetals.metalMap)
-		{
-			if (checkMaterial(metal) && !blacklistedMaterials.contains(metal.toString()))
+		ModMetals.metalMap.forEach((name, metal) -> {
+			if (checkMaterial(metal) && !blacklistedMaterials.contains(name))
 			{
 				Material m = TinkerRegistry.getMaterial(metal.getStats().getName());
 
-				//				Chiamata al metodo per aggiungere i traits
+				//Add custom traits to TiCon Tools
 				SetTinkerTraits.addTraits(metal, m);
 
-				//				Aggiunge il melting casting di tutti i fluidi ( aggiunta della possibilit� di fare il lingotto ed il blocco )
+				//Add molten fluid cast to ingots, blocks, nuggets and so on...
 				if (m.getFluid() == null)
 					m.setFluid(metal.getMolten());
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.getStats().getName()));
+				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, name));
 
-				//				Aggiunge le varie toolpart
+				//register different Tool parts for each material
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
 			}
-		}
+		});
 
 		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, 400));
 		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
@@ -105,35 +120,43 @@ public class IntegrationTIC {
 			fluid = TinkerFluids.iron;
 		else if (Items.GOLD_INGOT.equals(item))
 			fluid = TinkerFluids.gold;
-		else if (ModMetals.COPPER.getIngot().equals(item))
-			fluid = TinkerFluids.copper;
-		else if (ModMetals.BRONZE.getIngot().equals(item))
-			fluid = TinkerFluids.bronze;
-		else if (ModMetals.ZINC.getIngot().equals(item))
-			fluid = TinkerFluids.zinc;
-		else if (ModMetals.TIN.getIngot().equals(item))
-			fluid = TinkerFluids.tin;
-		else if (ModMetals.SILVER.getIngot().equals(item))
-			fluid = TinkerFluids.silver;
-		else if (ModMetals.STEEL.getIngot().equals(item))
-			fluid = TinkerFluids.steel;
+		else if (stack.getItem() instanceof ItemMetal)
+		{
+			Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) stack.getItem()));
+			if (vanillaTicMetals.contains(metal))
+			{
+				try
+				{
+					fluid = ((FluidMolten) TinkerFluids.class.getDeclaredField(metal.toString()).get(TinkerFluids.class));
+				}
+				catch (NoSuchFieldException | IllegalAccessException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
 
 
 		int c = stack.getCount();
 		return fluid != null ? new FluidStack(fluid, (c <= 0 ? 1 : c) * Material.VALUE_Ingot) : null;
 	}
 
-	//	Creato per evitare che vengano aggiunti i nostri liquidi considerando che sono gi� esistenti nella Tinker Base
+	//Makes sure we don't register Molten Fluids that are registered by default in TiCon
 	public static boolean checkMaterial(Metal metal)
 	{
-		return metal != ModMetals.TIN && metal != ModMetals.COPPER && metal != ModMetals.BRONZE
-				&& metal != ModMetals.STEEL && metal != ModMetals.SILVER && metal != ModMetals.ELECTRUM
-				&& metal != ModMetals.ZINC && metal != ModMetals.BRASS;
+		return !vanillaTicMetals.contains(metal);
 	}
 
-	public static boolean checkMaterialPreInit(Metal metal)
+	/**
+	 * Makes sure the molten material we are registering is not already assigned to another mod's material (prevents the "material already registered" crash)
+	 *
+	 * @param material The checked material name
+	 *
+	 * @return true if the metal hasn't been registered yet
+	 */
+	public static boolean checkMaterialPreInit(String material)
 	{
-		return TinkerRegistry.getMaterial(metal.toString()).equals(Material.UNKNOWN);
+		return TinkerRegistry.getMaterial(material).equals(Material.UNKNOWN);
 	}
 
 }

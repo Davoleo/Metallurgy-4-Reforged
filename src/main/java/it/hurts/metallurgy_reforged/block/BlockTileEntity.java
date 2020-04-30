@@ -34,7 +34,7 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends Block {
 	public BlockTileEntity(Material material, String name)
 	{
 		super(material);
-		BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, 6F, 8F, Constants.PICKAXE, 1);
+		BlockUtils.initBlock(this, name, MetallurgyTabs.tabSpecial, 6F, 8F, Constants.Tools.PICKAXE, 1);
 		setSoundType(SoundType.METAL);
 		ModBlocks.miscBlocks.add(this);
 	}

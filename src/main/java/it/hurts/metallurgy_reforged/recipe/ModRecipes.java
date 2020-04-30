@@ -13,7 +13,6 @@ package it.hurts.metallurgy_reforged.recipe;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -25,14 +24,13 @@ public class ModRecipes {
 	{
 
 		//Furnace Recipes
-		for (Metal m : ModMetals.metalMap)
-		{
-			if (m.getOre() != null)
+		ModMetals.metalMap.forEach((name, metal) -> {
+			if (metal.getOre() != null)
 			{
-				GameRegistry.addSmelting(m.getOre(), new ItemStack(m.getIngot()), 1F);
+				GameRegistry.addSmelting(metal.getOre(), new ItemStack(metal.getIngot()), 1F);
 			}
-			GameRegistry.addSmelting(m.getDust(), new ItemStack(m.getIngot()), 0.6F);
-		}
+			GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
+		});
 
 		//Dust2Ingot
 		GameRegistry.addSmelting(ModItems.dustIron, new ItemStack(Items.IRON_INGOT), 0.6F);

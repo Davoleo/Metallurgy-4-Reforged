@@ -33,6 +33,7 @@ import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
+import java.util.Map;
 import java.util.Random;
 
 public class Utils {
@@ -180,9 +181,11 @@ public class Utils {
 
 	public static Metal getMetalFromString(String string)
 	{
-		for (Metal metal : ModMetals.metalMap)
-			if (string.contains(metal.toString()))
-				return metal;
+		for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
+		{
+			if (string.contains(entry.getKey()))
+				return entry.getValue();
+		}
 		return null;
 	}
 

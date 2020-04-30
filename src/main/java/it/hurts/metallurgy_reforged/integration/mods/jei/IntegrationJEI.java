@@ -32,7 +32,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @JEIPlugin
@@ -80,10 +80,16 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
 		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
-		List<ItemStack> krikArmor = Arrays.asList(new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.HEAD)),
-				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.CHEST)),
-				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.LEGS)),
-				new ItemStack(ModMetals.KRIK.getArmorPiece(EntityEquipmentSlot.FEET)));
+		List<ItemStack> krikArmor = new ArrayList<>();
+
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+		{
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+			{
+				krikArmor.add(new ItemStack(ModMetals.KRIK.getArmorPiece(slot)));
+			}
+		}
+
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");

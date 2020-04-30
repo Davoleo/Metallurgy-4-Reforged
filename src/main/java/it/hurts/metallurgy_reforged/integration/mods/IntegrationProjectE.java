@@ -93,19 +93,18 @@ public class IntegrationProjectE {
 		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.bitumen, 256L);
 		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.tar, 128L);
 
+		ModMetals.metalMap.forEach((s, metal) -> {
 
-		for (Metal m : ModMetals.metalMap)
-		{
-			ProjectEAPI.getEMCProxy().registerCustomEMC(m.getDust(), emcMap.get(m.toString()));
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), emcMap.get(metal.toString()));
 
-			if (!m.isAlloy())
+			if (!metal.isAlloy())
 			{
 				//Debug Print
-				//System.out.println(m.toString() + " --- " + emcMap.keySet().contains(m.toString()));
+				//System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
 
-				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getIngot(), emcMap.get(m.toString()));
-				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getBlocks(), emcMap.get(m.toString()) * 9);
-				ProjectEAPI.getEMCProxy().registerCustomEMC(m.getNugget(), emcMap.get(m.toString()) / 9);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlocks(), emcMap.get(metal.toString()) * 9);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getNugget(), emcMap.get(metal.toString()) / 9);
 			}
 			else
 			{
@@ -113,10 +112,10 @@ public class IntegrationProjectE {
 				Table<ItemStack, ItemStack, ItemStack> recipes = AlloyerRecipes.getInstance().getRecipeTable();
 
 				for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : recipes.cellSet())
-					if (entry.getValue().getItem().equals(m.getIngot()))
-						ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(m.getIngot()), getAlloyIngredientsEMC(entry.getRowKey()) + getAlloyIngredientsEMC(entry.getColumnKey()));
+					if (entry.getValue().getItem().equals(metal.getIngot()))
+						ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(metal.getIngot()), getAlloyIngredientsEMC(entry.getRowKey()) + getAlloyIngredientsEMC(entry.getColumnKey()));
 			}
-		}
+		});
 	}
 
 	private static long getAlloyIngredientsEMC(ItemStack ingot)

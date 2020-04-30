@@ -21,21 +21,33 @@ public class Constants {
 	public static final String THERMITE_DUST = Utils.localize("tooltip.metallurgy.thermite");
 
 
-	//Code constants
-	//Tool Categories
-	public static final String AXE = "axe";
-	public static final String HOE = "hoe";
-	public static final String PICKAXE = "pickaxe";
-	public static final String SHOVEL = "shovel";
-	public static final String SWORD = "sword";
+	/**
+	 * Code constants: Tool Categories
+	 */
+	public static final class Tools {
 
-	// Blast Resistance Constants
-	//Disclaimer: These variables might need a balancement update
-	//Davoleo isn't responsible for any blast resistance level complains
-	public static final float LOW_TIER_BLAST_RESISTANCE = 6F;                            //or maybe 3, I don't remember
-	public static final float MID_TIER_BLAST_RESISTANCE = 10F;                            //Cobblestone-like
-	public static final float HIGH_TIER_BLAST_RESISTANCE = 15F;
-	public static final float EXTREME_TIER_BLAST_RESISTANCE = 20F;                    //Obsidian-like
-	public static final float UNBREAKABLE_TIER_BLAST_RESISTANCE = 18000000F;            //Bedrock-like
+		public static final String AXE = "axe";
+		public static final String HOE = "hoe";
+		public static final String PICKAXE = "pickaxe";
+		public static final String SHOVEL = "shovel";
+		public static final String SWORD = "sword";
+
+	}
+
+	/**
+	 * Blast Resistance Constants<br>
+	 * Disclaimer: These variables might need a balance update
+	 * <br><br>
+	 * (Davoleo isn't responsible for any blast resistance level complains)
+	 */
+	public static final class BlastResistance {
+
+		public static final float LOW_TIER = 6F;                   //or maybe 3, I don't remember
+		public static final float MID_TIER = 10F;                  //Cobblestone Level
+		public static final float HIGH_TIER = 15F;
+		public static final float EXTREME_TIER = 20F;              //Obsidian Level
+		public static final float UNBREAKABLE_TIER = 18000000F;    //Bedrock Level
+
+	}
 
 }
