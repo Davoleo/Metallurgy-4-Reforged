@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -32,6 +33,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -121,9 +123,12 @@ public class RegistrationHandler {
 			{
 				event.getRegistry().register(block);
 			}
-
-			metal.getMolten().getBlock();
 		});
+
+		for (BlockFluidClassic block : ModFluids.fluidBlocks)
+		{
+			event.getRegistry().register(block);
+		}
 	}
 
 	@SubscribeEvent

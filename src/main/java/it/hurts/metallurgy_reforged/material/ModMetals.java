@@ -11,6 +11,8 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -71,14 +73,18 @@ public class ModMetals {
 
 	public static void init()
 	{
-
-		//TODO copy the default file over to the config folder
-
 		Set<MetalStats> defaultStats = JsonMaterialHandler.readConfig(JsonMaterialHandler.DEFAULT_CONFIG, null);
-		Set<MetalStats> playerStats = JsonMaterialHandler.readConfig("/", defaultStats);
+
+		boolean copied = JsonMaterialHandler.copyConfig();
+
+		Set<MetalStats> playerStats = defaultStats;
+
+		if (!copied)
+		{
+			playerStats = JsonMaterialHandler.readConfig(Metallurgy.materialConfig, defaultStats);
+		}
 
 		playerStats.forEach(MetalStats::createMetal);
 	}
-	//TODO: Init Metal Fluid stuff in an alternative way
 
 }

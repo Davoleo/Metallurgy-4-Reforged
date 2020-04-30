@@ -26,6 +26,7 @@
  import it.hurts.metallurgy_reforged.integration.mods.conarm.IntegrationCArmory;
  import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.IntegrationCT;
  import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.IProxy;
  import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
@@ -55,6 +56,8 @@
 
 	 public static Logger logger;
 
+	 public static String materialConfig;
+
 	 @Mod.Instance(MODID)
 	 public static Metallurgy instance;
 
@@ -71,6 +74,9 @@
 	 {
 		 logger = event.getModLog();
 		 logger.info(NAME + " is entering pre-initialization!");
+
+		 materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		 ModMetals.init();
 
 		 ModFluids.registerFluids();
 		 logger.info("Fluid registration complete!");

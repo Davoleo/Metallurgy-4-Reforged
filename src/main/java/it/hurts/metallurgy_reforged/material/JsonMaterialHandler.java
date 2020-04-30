@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraft.util.JsonUtils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -29,23 +30,29 @@ public class JsonMaterialHandler {
 
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-	public static final String DEFAULT_CONFIG = Metallurgy.class.getResource("/assets/metallurgy/materials.json").getPath();
+	public static final String DEFAULT_CONFIG = "/assets/metallurgy/materials.json";
 
 	/**
 	 * Reads the JSON config and creates a new MetalStats object for each entry of the JSON Array
 	 *
-	 * @param path         The path to the JSON Config
+	 * @param resourcePath The path to the JSON Config
 	 * @param defaultStats used as fallback when reading user-customized JSON config,
 	 *
 	 * @return
 	 */
-	public static Set<MetalStats> readConfig(String path, Set<MetalStats> defaultStats)
+	public static Set<MetalStats> readConfig(String resourcePath, Set<MetalStats> defaultStats)
 	{
 		Set<MetalStats> metalStats = new HashSet<>();
 
 		try
 		{
-			BufferedReader reader = Files.newBufferedReader(getPath(path));
+			Path path;
+			if (resourcePath.equals(DEFAULT_CONFIG))
+				path = getPath(resourcePath);
+			else
+				path = new File(Metallurgy.materialConfig).toPath();
+
+			BufferedReader reader = Files.newBufferedReader(path);
 			JsonArray materials = JsonUtils.fromJson(gson, reader, JsonArray.class);
 
 			if (materials != null)
@@ -88,9 +95,8 @@ public class JsonMaterialHandler {
 		float hardness = JsonUtils.getFloat(metalObj, "hardness", defaultStat.getHardness());
 		float blockBlastResistance = JsonUtils.getFloat(metalObj, "blast_resistance", defaultStat.getHardness());
 		int oreHarvest = JsonUtils.getInt(metalObj, "ore_harvest_level", defaultStat.getOreHarvest());
-		int color = Integer.parseInt(JsonUtils.getString(metalObj, "color", String.valueOf(defaultStat.getColorHex())));
+		int color = Integer.parseInt(JsonUtils.getString(metalObj, "color", String.valueOf(defaultStat.getColorHex())), 16);
 
-		//TODO filter null armor and tools
 		ArmorStats armorStats = getArmorStats(metalObj, defaultStat.getArmorStats());
 		ToolStats toolStats = getToolStats(metalObj, defaultStat.getToolStats());
 
@@ -117,7 +123,7 @@ public class JsonMaterialHandler {
 	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback)
 	{
 
-		if (metalStats.has("armor_stats"))
+		if (metalStats.has("armor_stats") && fallback != null)
 		{
 			JsonObject armorStats = JsonUtils.getJsonObject(metalStats, "armor_stats");
 
@@ -135,7 +141,7 @@ public class JsonMaterialHandler {
 	private static ToolStats getToolStats(JsonObject metalStats, ToolStats fallback)
 	{
 
-		if (metalStats.has("tool_stats"))
+		if (metalStats.has("tool_stats") && fallback != null)
 		{
 			JsonObject toolStats = JsonUtils.getJsonObject(metalStats, "tool_stats");
 
@@ -197,7 +203,7 @@ public class JsonMaterialHandler {
 				else
 				{
 					filesystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
-					path = filesystem.getPath("/assets/minecraft/recipes");
+					path = filesystem.getPath(resource);
 				}
 
 				return path;
@@ -213,6 +219,28 @@ public class JsonMaterialHandler {
 		}
 
 		return null;
+	}
+
+	public static boolean copyConfig()
+	{
+		Path defaultPath = getPath(JsonMaterialHandler.DEFAULT_CONFIG);
+
+		File userConfigFile = new File(Metallurgy.materialConfig);
+
+		try
+		{
+			if (!userConfigFile.exists())
+			{
+				Files.copy(defaultPath, userConfigFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+				return true;
+			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 }

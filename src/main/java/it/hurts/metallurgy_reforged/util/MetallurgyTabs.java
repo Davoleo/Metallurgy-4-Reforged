@@ -74,7 +74,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 2:
 				return new ItemStack(adamantine.getDust());
 			case 3:
-				return new ItemStack(adamantine.getFluidBlock());
+				return new ItemStack(adamantine.getMolten().getBlock());
 			case 4:
 				return new ItemStack(adamantine.getIngot());
 			case 5:

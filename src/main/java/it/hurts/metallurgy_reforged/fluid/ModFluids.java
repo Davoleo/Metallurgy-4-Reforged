@@ -11,9 +11,11 @@
 
 package it.hurts.metallurgy_reforged.fluid;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
+import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -31,21 +33,22 @@ public class ModFluids {
 	public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200);
 
 	//FluidBlocks
-	public static FluidBlockTar fluidBlockTar = new FluidBlockTar(TAR, Material.WATER);
-	public static BlockFluidClassic fluidBlockThermite = new BlockFluidClassic(THERMITE, Material.LAVA);
-
-	static
-	{
-		//Initialize Tar FluidBlock
-		BlockUtils.initFluidBlock(fluidBlockThermite, "molten_thermite");
-		BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
-	}
+	public static FluidBlockTar fluidBlockTar;
+	public static BlockFluidClassic fluidBlockThermite;
 
 	public static void registerFluids()
 	{
 		ModMetals.metalMap.forEach((s, metal) -> {
 			FluidRegistry.registerFluid(metal.getMolten());
 			FluidRegistry.addBucketForFluid(metal.getMolten());
+
+			BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
+			fluidBlock.getFluid().setBlock(fluidBlock);
+			fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
+			fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
+			fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
+
+			ModFluids.fluidBlocks.add(fluidBlock);
 		});
 
 		//Register Thermite and Tar
@@ -55,6 +58,13 @@ public class ModFluids {
 		//Add Tar and Thermite Buckets
 		FluidRegistry.addBucketForFluid(TAR);
 		FluidRegistry.addBucketForFluid(THERMITE);
+
+		//Initialize Tar FluidBlock
+		fluidBlockTar = new FluidBlockTar(TAR, Material.WATER);
+		fluidBlockThermite = new BlockFluidClassic(THERMITE, Material.LAVA);
+
+		BlockUtils.initFluidBlock(fluidBlockThermite, "molten_thermite");
+		BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
 	}
 
 }

@@ -18,13 +18,10 @@ import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
-import it.hurts.metallurgy_reforged.util.BlockUtils;
-import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
-import net.minecraftforge.fluids.BlockFluidClassic;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -44,9 +41,8 @@ public class Metal {
 	private final Item[] toolSet;
 	private final ItemArmorBase[] armorSet;
 
-	//Fluid & FluidBlock
+	//Fluid
 	private final FluidMolten molten;
-	private final BlockFluidClassic fluidBlock;
 
 	public Metal(MetalStats stats, ItemMetal ingot, ItemMetal dust, ItemMetal nugget, BlockOre ore, BlockMetal[] blocks, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
 	{
@@ -59,9 +55,6 @@ public class Metal {
 		this.molten = molten;
 		this.toolSet = toolSet;
 		this.armorSet = armorSet;
-
-		this.fluidBlock = new BlockFluidClassic(molten, Material.LAVA);
-		BlockUtils.initFluidBlock(fluidBlock, "molten_" + stats.getName());
 
 		ModMetals.metalMap.put(stats.getName(), this);
 	}
@@ -145,12 +138,6 @@ public class Metal {
 	public FluidMolten getMolten()
 	{
 		return molten;
-	}
-
-	@Nonnull
-	public BlockFluidClassic getFluidBlock()
-	{
-		return fluidBlock;
 	}
 
 	/**

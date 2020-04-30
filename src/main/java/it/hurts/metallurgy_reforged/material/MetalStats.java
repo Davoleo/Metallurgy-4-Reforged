@@ -62,7 +62,7 @@ public class MetalStats {
 		ItemMetal ingot = new ItemMetal(this, ItemTypes.INGOT);
 		ItemMetal nugget = new ItemMetal(this, ItemTypes.NUGGET);
 
-		BlockMetal[] blocks = new BlockMetal[5];
+		BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
 		for (int i = 0; i < BlockTypes.values().length; i++)
 		{
 			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], hardness);
