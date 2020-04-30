@@ -93,7 +93,7 @@ public class RegistrationHandler {
 			event.getRegistry().register(item);
 		});
 
-		//OreDict Registration
+		//Init OreDictionary (Register keys)
 		OreDictHandler.init();
 		Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
 	}
