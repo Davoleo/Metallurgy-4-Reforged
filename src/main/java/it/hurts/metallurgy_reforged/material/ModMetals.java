@@ -80,7 +80,5 @@ public class ModMetals {
 		playerStats.forEach(MetalStats::createMetal);
 	}
 	//TODO: Init Metal Fluid stuff in an alternative way
-	//THIS LIST MUST BE IN SORTED IN ALPHABETICAL ORDER IN ORDER TO MAKE THE MOD FUNCTION PROPERLY
-	//WHEN ADDING NEW METALS REMEMBER TO REGISTER EMCs AND ADD THEM TO THE MAIN LIST IN UTILS.JAVA
 
 }

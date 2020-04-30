@@ -21,7 +21,6 @@ import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-//TODO: if instanceof ItemAxeBase -> modelSubDir = tool/hoe
 public class ItemHoeBase extends ItemHoe {
 
 	public ItemHoeBase(ToolMaterial material, String name)

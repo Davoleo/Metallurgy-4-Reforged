@@ -14,7 +14,7 @@ package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,9 +31,9 @@ import net.minecraft.world.WorldServer;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class ItemGauntlet extends ItemBase {
+public class ItemGauntlet extends ItemExtra {
 
-	private Enchantment[] e = {
+	private final Enchantment[] e = {
 			Enchantments.BANE_OF_ARTHROPODS,
 			Enchantments.MENDING,
 			Enchantments.SMITE,

@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemIgnatiusLighter extends ItemBase {
+public class ItemIgnatiusLighter extends ItemExtra {
 
 	public ItemIgnatiusLighter(String name)
 	{

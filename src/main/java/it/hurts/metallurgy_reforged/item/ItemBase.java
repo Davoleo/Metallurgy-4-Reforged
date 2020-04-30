@@ -17,13 +17,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemBase extends Item {
+public abstract class ItemBase extends Item {
 
 	private String name;
 	private String tooltip;
@@ -41,11 +40,6 @@ public class ItemBase extends Item {
 		this(name, tab, "");
 	}
 
-	public String getOreName()
-	{
-		throw new NotImplementedException();
-	}
-
 	@Override
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
@@ -58,6 +52,11 @@ public class ItemBase extends Item {
 	{
 		this.tooltip = tooltip;
 		return this;
+	}
+
+	public String getModelSubDir()
+	{
+		return modelSubDir;
 	}
 
 }

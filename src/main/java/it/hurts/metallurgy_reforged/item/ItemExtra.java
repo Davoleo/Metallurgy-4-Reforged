@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: BlockTypes
+ * Class: ItemExtra
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,26 +9,21 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.block;
+package it.hurts.metallurgy_reforged.item;
 
-public enum BlockTypes {
+import net.minecraft.creativetab.CreativeTabs;
 
-	BLOCK("block"),
-	ENGRAVED_BLOCK("engraved_block"),
-	LARGE_BRICKS("large_bricks"),
-	BRICKS("bricks"),
-	CRYSTAL("crystals"),
-	GLASS("reinforced_glass");
+public class ItemExtra extends ItemBase {
 
-	private String prefix;
-
-	BlockTypes(String prefix)
+	public ItemExtra(String name, CreativeTabs tab, String modelSubDir)
 	{
-		this.prefix = prefix;
+		super(name, tab, modelSubDir);
+		ModItems.extraItems.add(this);
 	}
 
-	public String getPrefix()
+	public ItemExtra(String name, CreativeTabs tab)
 	{
-		return prefix;
+		this(name, tab, "");
 	}
+
 }

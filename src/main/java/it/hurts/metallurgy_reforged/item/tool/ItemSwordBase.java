@@ -33,7 +33,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-//TODO: if instanceof ItemAxeBase -> modelSubDir = tool/sword
 public class ItemSwordBase extends ItemSword {
 
 	private EnumToolEffects effect;

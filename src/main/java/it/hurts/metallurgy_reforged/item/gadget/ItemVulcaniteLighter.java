@@ -27,7 +27,6 @@ import javax.annotation.Nonnull;
 
 public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 
-	//TODO: fix custom item model subdirectory
 	public ItemVulcaniteLighter(String name)
 	{
 		super(name);

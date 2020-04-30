@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -34,25 +34,11 @@ public class ShovelEffectHandler {
 			Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
 			World world = event.getWorld();
 			BlockPos pos = event.getPos();
-			//IBlockState blockState = world.getBlockState(pos);
 
 			if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.SHOVEL)))
 			{
 				dropSmeltedItems(event, world, pos);
 			}
-
-			// TODO: 30/10/2019 ASK PIER
-			//ResourceLocation regName = blockState.getBlock().getRegistryName();
-			//
-			//if (regName != null && regName.getPath().contains("_ore"))
-			//{
-			//	String nuggetReg = regName.getPath().replace("_ore", "_nugget");
-			//	Item nugget = ForgeRegistries.ITEMS.getValue(new ResourceLocation(regName.getNamespace(), nuggetReg));
-			//	if (nugget != null && Utils.random.nextBoolean())
-			//	{
-			//		event.getDrops().add(new ItemStack(nugget, Utils.random.nextInt(3)));
-			//	}
-			//}
 		}
 	}
 

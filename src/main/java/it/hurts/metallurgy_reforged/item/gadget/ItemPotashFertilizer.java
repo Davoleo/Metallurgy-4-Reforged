@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,11 +25,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemPotashFertilizer extends ItemBase {
+public class ItemPotashFertilizer extends ItemExtra {
 
 	public ItemPotashFertilizer()
 	{
-		super("potash_fertilizer", MetallurgyTabs.tabSpecial);
+		super("potash_fertilizer", MetallurgyTabs.tabSpecial, "gadget");
 		setTooltip(Constants.POTASH_FERTILIZER);
 	}
 

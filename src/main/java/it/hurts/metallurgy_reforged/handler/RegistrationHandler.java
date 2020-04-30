@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
@@ -89,7 +90,7 @@ public class RegistrationHandler {
 		});
 
 		//Misc Items
-		ModItems.itemList.forEach(item -> {
+		ModItems.extraItems.forEach(item -> {
 			event.getRegistry().register(item);
 		});
 
@@ -121,24 +122,39 @@ public class RegistrationHandler {
 				event.getRegistry().register(block);
 			}
 
-
 			metal.getMolten().getBlock();
 		});
-
-		// TODO: 30/03/2020 For each block: register the Fluid (FluidRegistry), the FluidBlock, register the FluidItemBlock, register the Model
 	}
 
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event)
 	{
-		for (Block block : ModBlocks.miscBlocks)
-		{
-			ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
-		}
+		ModBlocks.miscBlocks.forEach(block -> ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0));
 
-		ModItems.registerModels();
-		//ModArmors.registerModels();
-		//ModTools.registerModels();
+		ModItems.extraItems.forEach(item -> ItemUtils.registerCustomItemModel(item, 0, item.getModelSubDir()));
+
+		ModMetals.metalMap.forEach((name, metal) -> {
+
+			ItemUtils.registerCustomItemModel(metal.getIngot(), 0, "ingot");
+			ItemUtils.registerCustomItemModel(metal.getDust(), 0, "dust");
+			ItemUtils.registerCustomItemModel(metal.getNugget(), 0, "nugget");
+
+			//Tools
+			for (EnumTools tool : EnumTools.values())
+			{
+				ItemUtils.registerCustomItemModel(metal.getTool(tool), 0, tool.getName());
+			}
+
+			//Armors
+			for (Item armor : metal.getArmorSet())
+			{
+				ItemUtils.registerCustomItemModel(armor, 0, "armor");
+			}
+		});
+
+		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.crusher), 0);
+		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.alloyer), 0);
+		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.chamber), 0);
 
 		ModRenderers.registerRenderers();
 	}

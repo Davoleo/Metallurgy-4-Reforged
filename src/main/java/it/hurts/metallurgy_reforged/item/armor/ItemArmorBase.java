@@ -31,7 +31,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-//TODO: if instanceof ItemAxeBase -> modelSubDir = armor
 public class ItemArmorBase extends ItemArmor {
 
 	private EnumArmorEffects effect;

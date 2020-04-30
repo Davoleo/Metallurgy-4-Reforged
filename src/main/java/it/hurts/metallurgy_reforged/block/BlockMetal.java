@@ -18,9 +18,12 @@ import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.BlockRenderLayer;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 
 public class BlockMetal extends Block {
@@ -36,6 +39,24 @@ public class BlockMetal extends Block {
 		this.setSoundType(SoundType.METAL);
 
 		BlockUtils.initBlock(this, metal.toString() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean isFullBlock(@Nonnull IBlockState state)
+	{
+		return this.type != BlockTypes.GLASS;
+	}
+
+	@Nonnull
+	@Override
+	public BlockRenderLayer getRenderLayer()
+	{
+		if (type == BlockTypes.GLASS)
+			return BlockRenderLayer.CUTOUT;
+		else
+			return BlockRenderLayer.SOLID;
+
 	}
 
 	/**

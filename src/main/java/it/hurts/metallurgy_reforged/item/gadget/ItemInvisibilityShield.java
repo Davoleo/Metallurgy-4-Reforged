@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemInvisibilityShield extends ItemBase {
+public class ItemInvisibilityShield extends ItemExtra {
 
 	public ItemInvisibilityShield()
 	{

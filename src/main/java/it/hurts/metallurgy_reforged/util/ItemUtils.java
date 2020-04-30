@@ -13,7 +13,6 @@ package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
-import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -37,7 +36,6 @@ public class ItemUtils {
 	 * - translation key
 	 * - registry name
 	 * - creative tab
-	 * - adds the item to the global list of items in the mod
 	 *
 	 * @param item the instance of the item that is being initialized
 	 * @param name The name of the item
@@ -48,7 +46,6 @@ public class ItemUtils {
 		item.setTranslationKey(Metallurgy.MODID + "." + name);
 		item.setRegistryName(Metallurgy.MODID, name);
 		item.setCreativeTab(tab);
-		ModItems.itemList.add(item);
 	}
 
 	//method to check if stack is a specific tool Material

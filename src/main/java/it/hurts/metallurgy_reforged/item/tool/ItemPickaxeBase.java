@@ -28,7 +28,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-//TODO: if instanceof ItemAxeBase -> modelSubDir = tool/pickaxe
 public class ItemPickaxeBase extends ItemPickaxe {
 
 	private EnumToolEffects effect;

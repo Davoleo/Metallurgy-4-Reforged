@@ -11,14 +11,14 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ItemBase;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public class ItemOreDetector extends ItemBase {
+public class ItemOreDetector extends ItemExtra {
 
 	public ItemOreDetector()
 	{

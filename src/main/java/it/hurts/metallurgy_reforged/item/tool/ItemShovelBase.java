@@ -28,7 +28,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-//TODO: if instanceof ItemAxeBase -> modelSubDir = tool/shovel
 public class ItemShovelBase extends ItemSpade {
 
 	private EnumToolEffects effect;
