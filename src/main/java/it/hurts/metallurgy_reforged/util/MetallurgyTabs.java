@@ -14,8 +14,6 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.config.ArmorConfig;
-import it.hurts.metallurgy_reforged.config.ToolConfig;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -70,7 +68,7 @@ public class MetallurgyTabs extends CreativeTabs {
 		switch (type)
 		{
 			case 0:
-				return ArmorConfig.allArmor[0] ? new ItemStack(adamantine.getArmorPiece(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
+				return new ItemStack(adamantine.getArmorPiece(EntityEquipmentSlot.CHEST));
 			case 1:
 				return new ItemStack(adamantine.getBlock(BlockTypes.BLOCK));
 			case 2:
@@ -86,7 +84,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 7:
 				return new ItemStack(Objects.requireNonNull(adamantine.getOre()));
 			case 8:
-				return ToolConfig.allTools[0][2] ? new ItemStack(adamantine.getTool(EnumTools.PICKAXE)) : ItemStack.EMPTY;
+				return new ItemStack(adamantine.getTool(EnumTools.PICKAXE));
 			default:
 				return ItemStack.EMPTY;
 		}

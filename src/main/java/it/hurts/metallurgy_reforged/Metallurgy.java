@@ -27,7 +27,7 @@
  import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.IntegrationCT;
  import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
  import it.hurts.metallurgy_reforged.network.PacketManager;
- import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+ import it.hurts.metallurgy_reforged.proxy.IProxy;
  import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
  import it.hurts.metallurgy_reforged.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.util.ModChecker;
@@ -58,8 +58,8 @@
 	 @Mod.Instance(MODID)
 	 public static Metallurgy instance;
 
-	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.CommonProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
-	 public static CommonProxy proxy;
+	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
+	 public static IProxy proxy;
 
 	 static
 	 {
@@ -71,7 +71,6 @@
 	 {
 		 logger = event.getModLog();
 		 logger.info(NAME + " is entering pre-initialization!");
-		 proxy.preInit(event);
 
 		 ModFluids.registerFluids();
 		 logger.info("Fluid registration complete!");
