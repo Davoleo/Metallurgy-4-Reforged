@@ -79,15 +79,21 @@ public class RegistrationHandler {
 			event.getRegistry().register(metal.getNugget());
 
 			//Tools
-			for (Item tool : metal.getToolSet())
+			if (metal.getToolSet() != null)
 			{
-				event.getRegistry().register(tool);
+				for (Item tool : metal.getToolSet())
+				{
+					event.getRegistry().register(tool);
+				}
 			}
 
 			//Armors
-			for (Item armor : metal.getArmorSet())
+			if (metal.getArmorSet() != null)
 			{
-				event.getRegistry().register(armor);
+				for (Item armor : metal.getArmorSet())
+				{
+					event.getRegistry().register(armor);
+				}
 			}
 		});
 
@@ -140,20 +146,36 @@ public class RegistrationHandler {
 
 		ModMetals.metalMap.forEach((name, metal) -> {
 
+			//ItemBlocks
+			if (metal.getOre() != null)
+				ItemUtils.registerCustomItemModel(Item.getItemFromBlock(metal.getOre()), 0);
+
+			for (BlockMetal block : metal.getBlocks())
+			{
+				ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
+			}
+
+			//Items
 			ItemUtils.registerCustomItemModel(metal.getIngot(), 0, "ingot");
 			ItemUtils.registerCustomItemModel(metal.getDust(), 0, "dust");
 			ItemUtils.registerCustomItemModel(metal.getNugget(), 0, "nugget");
 
 			//Tools
-			for (EnumTools tool : EnumTools.values())
+			if (metal.getToolSet() != null)
 			{
-				ItemUtils.registerCustomItemModel(metal.getTool(tool), 0, tool.getName());
+				for (EnumTools tool : EnumTools.values())
+				{
+					ItemUtils.registerCustomItemModel(metal.getTool(tool), 0, "tool/" + tool.getName());
+				}
 			}
 
 			//Armors
-			for (Item armor : metal.getArmorSet())
+			if (metal.getArmorSet() != null)
 			{
-				ItemUtils.registerCustomItemModel(armor, 0, "armor");
+				for (Item armor : metal.getArmorSet())
+				{
+					ItemUtils.registerCustomItemModel(armor, 0, "armor");
+				}
 			}
 		});
 

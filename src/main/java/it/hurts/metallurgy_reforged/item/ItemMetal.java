@@ -20,7 +20,7 @@ public class ItemMetal extends ItemBase {
 
 	public ItemMetal(MetalStats metal, ItemTypes type)
 	{
-		super(metal.toString() + "_" + type.getName(), type.getTab());
+		super(metal.getName() + "_" + type.getName(), type.getTab());
 		this.type = type;
 		this.metal = metal;
 	}

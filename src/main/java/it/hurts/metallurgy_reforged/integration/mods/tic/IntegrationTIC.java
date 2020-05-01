@@ -15,7 +15,6 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.mods.tic.material.TiCMaterial;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
@@ -127,7 +126,7 @@ public class IntegrationTIC {
 			{
 				try
 				{
-					fluid = ((FluidMolten) TinkerFluids.class.getDeclaredField(metal.toString()).get(TinkerFluids.class));
+					fluid = ((Fluid) TinkerFluids.class.getDeclaredField(metal.toString()).get(TinkerFluids.class));
 				}
 				catch (NoSuchFieldException | IllegalAccessException e)
 				{

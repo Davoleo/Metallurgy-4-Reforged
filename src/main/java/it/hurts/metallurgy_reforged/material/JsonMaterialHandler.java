@@ -123,7 +123,7 @@ public class JsonMaterialHandler {
 	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback)
 	{
 
-		if (metalStats.has("armor_stats") && fallback != null)
+		if (metalStats.has("armor_stats"))
 		{
 			JsonObject armorStats = JsonUtils.getJsonObject(metalStats, "armor_stats");
 
@@ -135,13 +135,13 @@ public class JsonMaterialHandler {
 			return new ArmorStats(damageReduction, enchantability, durability, toughness);
 		}
 
-		return fallback;
+		return null;
 	}
 
 	private static ToolStats getToolStats(JsonObject metalStats, ToolStats fallback)
 	{
 
-		if (metalStats.has("tool_stats") && fallback != null)
+		if (metalStats.has("tool_stats"))
 		{
 			JsonObject toolStats = JsonUtils.getJsonObject(metalStats, "tool_stats");
 
@@ -154,7 +154,7 @@ public class JsonMaterialHandler {
 			return new ToolStats(enchantability, harvestLevel, durability, efficiency, damage);
 		}
 
-		return fallback;
+		return null;
 	}
 
 	private static int[] getIntArray(JsonObject json, String memberName, int[] fallback)

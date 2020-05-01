@@ -57,6 +57,14 @@ public class Metal {
 		this.armorSet = armorSet;
 
 		ModMetals.metalMap.put(stats.getName(), this);
+		try
+		{
+			ModMetals.class.getDeclaredField(stats.getName().toUpperCase()).set(null, this);
+		}
+		catch (IllegalAccessException | NoSuchFieldException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public ItemTool.ToolMaterial getToolMaterial()
@@ -129,6 +137,7 @@ public class Metal {
 		return blocks;
 	}
 
+	@Nonnull
 	public BlockMetal getBlock(BlockTypes type)
 	{
 		return blocks[type.ordinal()];
@@ -160,11 +169,13 @@ public class Metal {
 		return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
 	}
 
+	@Nullable
 	public Item[] getToolSet()
 	{
 		return toolSet;
 	}
 
+	@Nullable
 	public ItemArmorBase[] getArmorSet()
 	{
 		return armorSet;

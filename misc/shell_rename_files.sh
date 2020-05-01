@@ -6,15 +6,15 @@ do
 
     echo $file
 
-OLD="\"molten_"
-NEW="\""
+OLD="\"_block"
+NEW="\"_bricks"
 #   Modifica delle string all'interno del file
 #   sed "s/old_string/new_string/g" $file
 #   remove -i to preview changes
     sed -i "s/$OLD/$NEW/g" $file
 
-    wordToRemove="chest.json"
-    wordToAdd="chestplate.json"
+    wordToRemove="block - Copy.json"
+    wordToAdd="bricks.json"
 
 #   file = test_chest.json  ->  test_
     new=${file//$wordToRemove/}
@@ -32,7 +32,5 @@ done
 function pause() {
    read -p "$*"
 }
-
-
 
 pause 'Press [Enter] key to continue...'
