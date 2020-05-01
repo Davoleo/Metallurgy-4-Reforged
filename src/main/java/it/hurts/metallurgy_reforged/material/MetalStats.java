@@ -54,7 +54,7 @@ public class MetalStats {
 	//Steins;Gate 0
 	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0, new ArmorStats(new int[4], 0, 0, 0), new ToolStats(0, 0, 0, 0, 0), 0, 0);
 
-	public Metal createMetal()
+	public void createMetal()
 	{
 		//name should be in format [snake_case], oreName should be in format [camelCase]
 
@@ -74,7 +74,7 @@ public class MetalStats {
 			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance);
 		}
 
-		FluidMolten moltenFluid = new FluidMolten("molten_" + name, color, automaticTemperature());
+		FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());
 
 		ItemArmorBase[] armorPieces = null;
 		Item[] tools = null;
@@ -102,7 +102,7 @@ public class MetalStats {
 			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
 		}
 
-		return new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
+		new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
 	}
 
 	private int automaticTemperature()

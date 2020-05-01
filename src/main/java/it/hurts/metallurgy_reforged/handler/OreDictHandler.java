@@ -35,9 +35,6 @@ public class OreDictHandler {
 			if (!metal.isAlloy())
 				OreDictionary.registerOre("ore" + Utils.capitalize(name), metal.getOre());
 			OreDictionary.registerOre("block" + Utils.capitalize(name), metal.getBlock(BlockTypes.BLOCK));
-
-			//FluidBlocks
-			OreDictionary.registerOre("molten" + Utils.capitalize(name), metal.getMolten().getBlock());
 		});
 
 		//Additional oreDict values

@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
-import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -43,10 +42,9 @@ public class ModFluids {
 			FluidRegistry.addBucketForFluid(metal.getMolten());
 
 			BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
-			fluidBlock.getFluid().setBlock(fluidBlock);
+			metal.getMolten().setBlock(fluidBlock);
 			fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
 			fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
-			fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
 
 			ModFluids.fluidBlocks.add(fluidBlock);
 		});

@@ -20,6 +20,8 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -74,7 +76,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 2:
 				return new ItemStack(adamantine.getDust());
 			case 3:
-				return new ItemStack(adamantine.getMolten().getBlock());
+				return FluidUtil.getFilledBucket(ModMetals.ADAMANTINE.getMolten().getFluidStack());
 			case 4:
 				return new ItemStack(adamantine.getIngot());
 			case 5:
@@ -88,6 +90,17 @@ public class MetallurgyTabs extends CreativeTabs {
 			default:
 				return ItemStack.EMPTY;
 		}
+	}
+
+	@Override
+	public void displayAllRelevantItems(@Nonnull NonNullList<ItemStack> p_78018_1_)
+	{
+		if (type == 3)
+		{
+			ModMetals.metalMap.forEach((s, metal) -> p_78018_1_.add(FluidUtil.getFilledBucket(metal.getMolten().getFluidStack())));
+		}
+		else
+			super.displayAllRelevantItems(p_78018_1_);
 	}
 
 }
