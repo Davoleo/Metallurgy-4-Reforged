@@ -19,12 +19,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
 
 import javax.annotation.Nonnull;
-import java.util.Objects;
 
 public class BlockMetal extends Block {
 
@@ -59,13 +56,14 @@ public class BlockMetal extends Block {
 
 	}
 
-	/**
-	 * @return A new ItemBlock of this block
-	 */
-	public Item createItemBlock()
+	public MetalStats getMetalStats()
 	{
-		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
+		return metal;
 	}
 
+	public BlockTypes getType()
+	{
+		return type;
+	}
 
 }

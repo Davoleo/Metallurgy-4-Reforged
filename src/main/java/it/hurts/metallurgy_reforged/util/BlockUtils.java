@@ -12,13 +12,18 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
+import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidClassic;
+
+import java.util.Map;
 
 public class BlockUtils {
 
@@ -50,6 +55,31 @@ public class BlockUtils {
 		fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
 
 		ModFluids.fluidBlocks.add(fluidBlock);
+	}
+
+	/**
+	 * Gets the instance of a Metal from an Block
+	 *
+	 * @param block An Block instance
+	 *
+	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
+	 */
+	public static Metal getMetalFromBlock(Block block)
+	{
+		if (block instanceof BlockMetal)
+		{
+			BlockMetal blockMetal = ((BlockMetal) block);
+
+			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
+			{
+				if (blockMetal.getMetalStats().getName().equals(entry.getKey()))
+				{
+					return entry.getValue();
+				}
+			}
+		}
+
+		return null;
 	}
 
 	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)

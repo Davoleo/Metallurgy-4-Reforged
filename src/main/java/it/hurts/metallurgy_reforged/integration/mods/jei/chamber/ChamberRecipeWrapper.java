@@ -11,7 +11,6 @@
 
 package it.hurts.metallurgy_reforged.integration.mods.jei.chamber;
 
-import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
@@ -64,7 +63,7 @@ public class ChamberRecipeWrapper implements IRecipeWrapper {
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
 	{
-		Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) input.getItem()));
+		Metal metal = ItemUtils.getMetalFromItem(input.getItem());
 		int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
 
 		GlStateManager.pushMatrix();

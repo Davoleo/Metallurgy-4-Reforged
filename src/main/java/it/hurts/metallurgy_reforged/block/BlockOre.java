@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -111,7 +112,12 @@ public class BlockOre extends Block {
 	{
 		double d0 = 0.0625D;
 		String metalName = this.getRegistryName().getPath().replace("_ore", "");
-		float[] color = Utils.getMetalFromString(metalName).getStats().getRGBValues();
+		Metal metal = Utils.getMetalFromString(metalName);
+
+		if (metal == null)
+			return;
+
+		float[] color = metal.getStats().getRGBValues();
 
 		for (int i = 0; i < 6; ++i)
 		{

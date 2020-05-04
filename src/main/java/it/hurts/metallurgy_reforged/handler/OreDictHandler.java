@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
+import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ModItems;
@@ -27,14 +28,14 @@ public class OreDictHandler {
 	{
 		ModMetals.metalMap.forEach((name, metal) -> {
 			//Items
-			OreDictionary.registerOre("dust" + Utils.capitalize(name), metal.getDust());
-			OreDictionary.registerOre("ingot" + Utils.capitalize(name), metal.getIngot());
-			OreDictionary.registerOre("nugget" + Utils.capitalize(name), metal.getNugget());
+			OreDictionary.registerOre("dust" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getDust());
+			OreDictionary.registerOre("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getIngot());
+			OreDictionary.registerOre("nugget" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getNugget());
 
 			//Blocks
 			if (!metal.isAlloy())
-				OreDictionary.registerOre("ore" + Utils.capitalize(name), metal.getOre());
-			OreDictionary.registerOre("block" + Utils.capitalize(name), metal.getBlock(BlockTypes.BLOCK));
+				OreDictionary.registerOre("ore" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getOre());
+			OreDictionary.registerOre("block" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getBlock(BlockTypes.BLOCK));
 		});
 
 		//Additional oreDict values

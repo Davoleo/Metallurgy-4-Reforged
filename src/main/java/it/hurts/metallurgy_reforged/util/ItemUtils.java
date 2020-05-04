@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.NonNullList;
@@ -123,18 +124,30 @@ public class ItemUtils {
 	}
 
 	/**
-	 * Gets the instance of a Metal from an ItemMetal
-	 * @param item An ItemMetal instance
+	 * Gets the instance of a Metal from an Item
+	 *
+	 * @param item An Item instance
+	 *
 	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
-	public static Metal getMetalFromItem(ItemMetal item)
+	public static Metal getMetalFromItem(Item item)
 	{
-		for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
+		if (item instanceof ItemMetal)
 		{
-			if (item.getMetalStats().getName().equals(entry.getKey()))
+			ItemMetal metalItem = ((ItemMetal) item);
+
+			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
 			{
-				return entry.getValue();
+				if (metalItem.getMetalStats().getName().equals(entry.getKey()))
+				{
+					return entry.getValue();
+				}
 			}
+		}
+
+		if (item instanceof ItemBlock)
+		{
+			return BlockUtils.getMetalFromBlock(((ItemBlock) item).getBlock());
 		}
 
 		return null;

@@ -125,6 +125,8 @@
 		 CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
 		 logger.info(NAME + ": Krik effect capability Registered");
 
+		 proxy.preInit(event);
+
 	 }
 
 	 @Mod.EventHandler

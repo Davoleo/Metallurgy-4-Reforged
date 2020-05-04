@@ -82,7 +82,7 @@ public class IntegrationTIC {
 				//Add molten fluid cast to ingots, blocks, nuggets and so on...
 				if (m.getFluid() == null)
 					m.setFluid(metal.getMolten());
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, name));
+				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
 
 				//register different Tool parts for each material
 				TinkerSmeltery.registerToolpartMeltingCasting(m);
