@@ -68,6 +68,11 @@ public class ModBlocks {
 		miscBlocks.add(blockBitumen);
 		miscBlocks.add(blockCharcoal);
 		miscBlocks.add(blockSulfur);
+		miscBlocks.add(oreTar);
+		miscBlocks.add(oreSulfur);
+		miscBlocks.add(orePotash);
+		miscBlocks.add(orePhosphorite);
+
 	}
 
 	public static ItemBlock createItemBlock(Block block)

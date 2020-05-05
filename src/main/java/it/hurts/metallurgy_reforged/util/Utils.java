@@ -52,50 +52,6 @@ public class Utils {
 			MobEffects.REGENERATION
 	};
 
-	public static String[] modMaterialNames = {
-			"adamantine",
-			"amordrine",
-			"angmallen",
-			"astral_silver",
-			"atlarus",
-			"black_steel",
-			"brass",
-			"bronze",
-			"carmot",
-			"celenegil",
-			"ceruclase",
-			"copper",
-			"damascus_steel",
-			"deep_iron",
-			"desichalkos",
-			"electrum",
-			"etherium",
-			"eximite",
-			"haderoth",
-			"hepatizon",
-			"ignatius",
-			"inolashite",
-			"kalendrite",
-			"krik",
-			"lutetium",
-			"midasium",
-			"mithril",
-			"orichalcum",
-			"osmium",
-			"oureclase",
-			"platinum",
-			"prometheum",
-			"quicksilver",
-			"sanguinite",
-			"shadow_iron",
-			"shadow_steel",
-			"silver",
-			"steel",
-			"tartarite",
-			"vulcanite",
-			"vyroxeres",
-			};
-
 	public static void giveExperience(EntityPlayer thePlayer, float experience)
 	{
 		int intExp = (int) experience;

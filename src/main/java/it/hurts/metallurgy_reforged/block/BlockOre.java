@@ -23,8 +23,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -37,7 +35,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class BlockOre extends Block {
@@ -52,14 +49,6 @@ public class BlockOre extends Block {
 		setResistance(blastResistance);
 
 		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, "p", harvestLevel);
-	}
-
-	/**
-	 * @return A new ItemBlock of this block
-	 */
-	public Item createItemBlock()
-	{
-		return new ItemBlock(this).setRegistryName(Objects.requireNonNull(getRegistryName()));
 	}
 
 	public BlockOre setDrops(Drop... drops)
