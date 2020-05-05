@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.network;
 
-import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -21,14 +21,11 @@ import net.minecraftforge.fml.relauncher.Side;
 public class PacketManager {
 
 	//Metallurgy Network Channel
-	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("metallurgy");
+	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
 
 	//PostInit: Register Packets
 	public static void init()
 	{
-		//Server2Client
-		network.registerMessage(PacketSetGauntletSlot.Handler.class, PacketSetGauntletSlot.class, 1, Side.CLIENT);
-
 		//Client2Server
 		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
 		network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
