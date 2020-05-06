@@ -34,12 +34,9 @@ public class EventUtils {
 
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && player.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
 			{
-				if (player.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
-				{
-					fullArmored = false;
-				}
+				fullArmored = false;
 			}
 		}
 

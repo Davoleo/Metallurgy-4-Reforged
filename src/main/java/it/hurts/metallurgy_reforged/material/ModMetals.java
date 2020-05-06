@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 
 import java.util.HashMap;
@@ -81,7 +82,17 @@ public class ModMetals {
 
 		if (!copied)
 		{
-			playerStats = JsonMaterialHandler.readConfig(Metallurgy.materialConfig, defaultStats);
+			try
+			{
+				playerStats = JsonMaterialHandler.readConfig(Metallurgy.materialConfig, defaultStats);
+			}
+			catch (JsonSyntaxException e)
+			{
+				Metallurgy.logger.error("There was an error while loading custom stats for Metallurgy Materials (CHECK YOUR JSON CONFIG FOR MISTAKES)");
+				Metallurgy.logger.error("Error Message: " + e.getMessage());
+				Metallurgy.logger.warn("Metallurgy will now load default stats automatically...");
+			}
+
 		}
 
 		playerStats.forEach(MetalStats::createMetal);

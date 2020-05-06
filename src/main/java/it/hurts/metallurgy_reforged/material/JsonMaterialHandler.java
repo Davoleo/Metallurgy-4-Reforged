@@ -40,7 +40,7 @@ public class JsonMaterialHandler {
 	 *
 	 * @return
 	 */
-	public static Set<MetalStats> readConfig(String resourcePath, Set<MetalStats> defaultStats)
+	public static Set<MetalStats> readConfig(String resourcePath, Set<MetalStats> defaultStats) throws JsonSyntaxException
 	{
 		Set<MetalStats> metalStats = new HashSet<>();
 
@@ -76,7 +76,7 @@ public class JsonMaterialHandler {
 		return metalStats;
 	}
 
-	private static MetalStats readMetalFromJson(JsonObject metalObj, Set<MetalStats> defaultStats)
+	private static MetalStats readMetalFromJson(JsonObject metalObj, Set<MetalStats> defaultStats) throws JsonSyntaxException
 	{
 
 		if (!metalObj.has("name"))
