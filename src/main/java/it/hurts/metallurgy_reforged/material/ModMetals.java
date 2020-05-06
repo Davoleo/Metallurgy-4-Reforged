@@ -75,9 +75,9 @@ public class ModMetals {
 
 	public static void init()
 	{
-		Set<MetalStats> defaultStats = JsonMaterialHandler.readConfig(JsonMaterialHandler.DEFAULT_CONFIG, null);
+		Set<MetalStats> defaultStats = JsonMaterialHelper.readConfig(JsonMaterialHelper.DEFAULT_CONFIG, null);
 
-		boolean copied = JsonMaterialHandler.copyConfig();
+		boolean copied = JsonMaterialHelper.copyConfig();
 
 		Set<MetalStats> playerStats = defaultStats;
 
@@ -85,7 +85,7 @@ public class ModMetals {
 		{
 			try
 			{
-				playerStats = JsonMaterialHandler.readConfig(Metallurgy.materialConfig, defaultStats);
+				playerStats = JsonMaterialHelper.readConfig(Metallurgy.materialConfig, defaultStats);
 			}
 			catch (JsonSyntaxException e)
 			{

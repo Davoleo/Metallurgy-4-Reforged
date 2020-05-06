@@ -14,7 +14,8 @@ package it.hurts.metallurgy_reforged.material;
 public class ArmorStats {
 
 	private final int[] damageReduction;
-	private final int enchantability, durability;
+	private final int enchantability;
+	private final int durability;
 	private final float toughness;
 
 	public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)

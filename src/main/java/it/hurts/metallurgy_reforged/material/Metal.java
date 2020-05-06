@@ -32,7 +32,9 @@ public class Metal {
 	private final MetalStats stats;
 
 	//Items
-	private final ItemMetal ingot, dust, nugget;
+	private final ItemMetal ingot;
+	private final ItemMetal dust;
+	private final ItemMetal nugget;
 	//Blocks
 	private final BlockOre ore;
 	private final BlockMetal[] blocks;

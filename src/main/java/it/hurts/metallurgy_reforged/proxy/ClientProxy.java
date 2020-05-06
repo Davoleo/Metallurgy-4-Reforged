@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.proxy;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.KeyboardHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SuppressWarnings("unused")
@@ -26,8 +25,5 @@ public class ClientProxy implements IProxy {
 		MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 	}
-
-	public void postInit(FMLPostInitializationEvent e)
-	{ }
 
 }

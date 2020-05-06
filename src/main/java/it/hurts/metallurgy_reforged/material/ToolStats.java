@@ -13,11 +13,18 @@ package it.hurts.metallurgy_reforged.material;
 
 public class ToolStats {
 
-	private final int toolMagic, harvestLevel, maxUses;
-	private final float efficiency, damage;
+	private final int toolMagic;
+	private final int harvestLevel;
+	private final int maxUses;
+	private final float efficiency;
+	private final float damage;
 
 	//Attributes
-	private double maxHealth, movementSpeed, attackDamage, attackSpeed, reachDistance;
+	private double maxHealth;
+	private double movementSpeed;
+	private double attackDamage;
+	private double attackSpeed;
+	private double reachDistance;
 
 	public ToolStats(int toolMagic, int harvestLevel, int maxUses, float efficiency, float damage)
 	{

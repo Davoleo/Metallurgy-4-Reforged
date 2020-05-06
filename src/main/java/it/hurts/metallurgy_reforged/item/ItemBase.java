@@ -24,13 +24,11 @@ import java.util.List;
 
 public abstract class ItemBase extends Item {
 
-	private String name;
 	private String tooltip;
-	private String modelSubDir;
+	private final String modelSubDir;
 
 	public ItemBase(String name, CreativeTabs tab, String modelSubDir)
 	{
-		this.name = name;
 		this.modelSubDir = modelSubDir;
 		ItemUtils.initItem(this, name, tab);
 	}

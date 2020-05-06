@@ -11,7 +11,10 @@
 
 package it.hurts.metallurgy_reforged.item;
 
-import it.hurts.metallurgy_reforged.item.gadget.*;
+import it.hurts.metallurgy_reforged.item.gadget.ItemIgnatiusLighter;
+import it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield;
+import it.hurts.metallurgy_reforged.item.gadget.ItemPotashFertilizer;
+import it.hurts.metallurgy_reforged.item.gadget.ItemVulcaniteLighter;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -50,7 +53,7 @@ public class ModItems {
 	public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
 	public static ItemInvisibilityShield invisibilityShield = new ItemInvisibilityShield();
-	public static ItemOreDetector oreDetector = new ItemOreDetector();
+	//public static ItemOreDetector oreDetector = new ItemOreDetector();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {

@@ -36,18 +36,13 @@ public class GauntletOperation {
 			EntityPlayerMP player = (EntityPlayerMP) entity;
 			EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
 
-			if (newStack.getItem() == ModItems.gauntlet)
+			if (newStack.getItem() == ModItems.gauntlet && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
 			{
+				ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
+				player.setItemStackToSlot(oppositeSlot, offStack);
 
-				if (player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
-				{
-					ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
-					player.setItemStackToSlot(oppositeSlot, offStack);
-
-					//Sync the client with the server
-					player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
-				}
-
+				//Sync the client with the server
+				player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: JsonMaterialHandler
+ * Class: JsonMaterialHelper
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class JsonMaterialHandler {
+public class JsonMaterialHelper {
 
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -226,7 +226,7 @@ public class JsonMaterialHandler {
 
 	public static boolean copyConfig()
 	{
-		Path defaultPath = getPath(JsonMaterialHandler.DEFAULT_CONFIG);
+		Path defaultPath = getPath(JsonMaterialHelper.DEFAULT_CONFIG);
 
 		File userConfigFile = new File(Metallurgy.materialConfig);
 

@@ -68,7 +68,7 @@ public class OreDictHandler {
 		String oreName = "ore";
 		for (String word : words)
 		{
-			if (!word.equals("ore"))
+			if (!"ore".equals(word))
 				oreName = oreName.concat(Utils.capitalize(word));
 		}
 
