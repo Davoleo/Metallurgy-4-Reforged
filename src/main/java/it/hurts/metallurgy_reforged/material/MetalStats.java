@@ -93,7 +93,7 @@ public class MetalStats {
 		if (tool != null)
 		{
 			Item.ToolMaterial toolMaterial = createToolMaterial();
-			ItemAxeBase axe = new ItemAxeBase(toolMaterial, name + "_axe");
+			ItemAxeBase axe = new ItemAxeBase(toolMaterial, this);
 			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
 			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, name + "_pickaxe");
 			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, name + "_shovel");

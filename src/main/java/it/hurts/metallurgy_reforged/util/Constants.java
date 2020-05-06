@@ -11,6 +11,8 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import java.util.UUID;
+
 public class Constants {
 
 	//Localized
@@ -47,6 +49,14 @@ public class Constants {
 		public static final float HIGH_TIER = 15F;
 		public static final float EXTREME_TIER = 20F;              //Obsidian Level
 		public static final float UNBREAKABLE_TIER = 18000000F;    //Bedrock Level
+
+	}
+
+	public static final class ModAttributes {
+
+		public static final UUID MAX_HEALTH = UUID.fromString("CB3F55D3-645C-4F38-A497-7777733DB5CF");
+		public static final UUID MOVEMENT_SPEED = UUID.fromString("CB3F55D3-645C-4F38-A497-8888833DB5CF");
+		public static final UUID REACH_DISTANCE = UUID.fromString("CB3F55D3-645C-4F38-A497-9999933DB5CF");
 
 	}
 

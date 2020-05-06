@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import com.google.common.collect.Lists;
+import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -23,21 +24,26 @@ public class EventUtils {
 
 	/**
 	 * @param player The player who may be wearing the armor
-	 * @param armor  The array of armor items the player may be wearing
+	 * @param metal  The metal the armor is made of
 	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
-	public static boolean isPlayerWearingArmor(EntityPlayer player, Item[] armor)
+	public static boolean isPlayerWearingArmor(EntityPlayer player, Metal metal)
 	{
-		boolean flag = true;
+		boolean fullArmored = true;
 
-		List<ItemStack> list = Lists.newArrayList(player.getArmorInventoryList().iterator());
-		for (int i = 0; i < list.size(); i++)
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
-			if (!list.get(i).getItem().equals(armor[3 - i]))
-				flag = false;
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+			{
+				if (player.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
+				{
+					fullArmored = false;
+				}
+			}
 		}
-		return flag;
+
+		return fullArmored;
 	}
 
 	/**

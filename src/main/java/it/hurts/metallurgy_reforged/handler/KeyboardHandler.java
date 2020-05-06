@@ -33,7 +33,7 @@ public class KeyboardHandler {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
 
-		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK.getArmorSet()) && ArmorEffectsConfig.krikArmorEffect)
+		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK) && ArmorEffectsConfig.krikArmorEffect)
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
 			{
@@ -41,7 +41,6 @@ public class KeyboardHandler {
 				{
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
 					capability.setHeight(capability.getHeight() + 1);
-					//System.out.println(capability.getHeight());
 				}
 			}
 

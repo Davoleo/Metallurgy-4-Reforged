@@ -126,7 +126,6 @@
 		 logger.info(NAME + ": Krik effect capability Registered");
 
 		 proxy.preInit(event);
-
 	 }
 
 	 @Mod.EventHandler

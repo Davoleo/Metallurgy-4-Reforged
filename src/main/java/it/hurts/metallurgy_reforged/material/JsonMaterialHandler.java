@@ -76,12 +76,6 @@ public class JsonMaterialHandler {
 		return metalStats;
 	}
 
-	/**
-	 * @param metalObj
-	 * @param defaultStats
-	 *
-	 * @return
-	 */
 	private static MetalStats readMetalFromJson(JsonObject metalObj, Set<MetalStats> defaultStats)
 	{
 
@@ -101,9 +95,10 @@ public class JsonMaterialHandler {
 		ToolStats toolStats = getToolStats(metalObj, defaultStat.getToolStats());
 
 		return new MetalStats(name, hardness, blockBlastResistance, armorStats, toolStats, oreHarvest, color);
+		// TODO: 05/05/2020 TEST This stuff INVESTIGATE
 	}
 
-	private static MetalStats getMetalStatsByName(String name, Set<MetalStats> defaultStats)
+	private static MetalStats getMetalStatsByName(String name, Set<MetalStats> defaultStats) throws JsonSyntaxException
 	{
 
 		if (defaultStats != null)
@@ -120,7 +115,7 @@ public class JsonMaterialHandler {
 		return MetalStats.EMPTY_METAL_STATS;
 	}
 
-	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback)
+	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback) throws JsonSyntaxException
 	{
 
 		if (metalStats.has("armor_stats"))
@@ -138,26 +133,34 @@ public class JsonMaterialHandler {
 		return null;
 	}
 
-	private static ToolStats getToolStats(JsonObject metalStats, ToolStats fallback)
+	private static ToolStats getToolStats(JsonObject metalStats, ToolStats fallback) throws JsonSyntaxException
 	{
 
 		if (metalStats.has("tool_stats"))
 		{
-			JsonObject toolStats = JsonUtils.getJsonObject(metalStats, "tool_stats");
+			JsonObject toolStatsObj = JsonUtils.getJsonObject(metalStats, "tool_stats");
 
-			float efficiency = JsonUtils.getFloat(toolStats, "efficiency", fallback.getEfficiency());
-			int harvestLevel = JsonUtils.getInt(toolStats, "harvest_level", fallback.getHarvestLevel());
-			int enchantability = JsonUtils.getInt(toolStats, "enchantability", fallback.getToolMagic());
-			int durability = JsonUtils.getInt(toolStats, "durability", fallback.getMaxUses());
-			float damage = JsonUtils.getFloat(toolStats, "damage", fallback.getDamage());
+			float efficiency = JsonUtils.getFloat(toolStatsObj, "efficiency", fallback.getEfficiency());
+			int harvestLevel = JsonUtils.getInt(toolStatsObj, "harvest_level", fallback.getHarvestLevel());
+			int enchantability = JsonUtils.getInt(toolStatsObj, "enchantability", fallback.getToolMagic());
+			int durability = JsonUtils.getInt(toolStatsObj, "durability", fallback.getMaxUses());
+			float damage = JsonUtils.getFloat(toolStatsObj, "damage", fallback.getDamage());
 
-			return new ToolStats(enchantability, harvestLevel, durability, efficiency, damage);
+			double maxHealth = JsonUtils.getFloat(toolStatsObj, "max_health", (float) fallback.getMaxHealth());
+			double movementSpeed = JsonUtils.getFloat(toolStatsObj, "movement_speed", (float) fallback.getMovementSpeed());
+			double attackDamage = JsonUtils.getFloat(toolStatsObj, "attack_damage", (float) fallback.getAttackDamage());
+			double attackSpeed = JsonUtils.getFloat(toolStatsObj, "attack_speed", (float) fallback.getAttackSpeed());
+			double reachDistance = JsonUtils.getFloat(toolStatsObj, "reach_distance", (float) fallback.getReachDistance());
+
+			ToolStats toolStats = new ToolStats(enchantability, harvestLevel, durability, efficiency, damage);
+			toolStats.setAttributes(maxHealth, movementSpeed, attackDamage, attackSpeed, reachDistance);
+			return toolStats;
 		}
 
 		return null;
 	}
 
-	private static int[] getIntArray(JsonObject json, String memberName, int[] fallback)
+	private static int[] getIntArray(JsonObject json, String memberName, int[] fallback) throws JsonSyntaxException
 	{
 
 		int[] arr = new int[4];

@@ -11,12 +11,20 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.material.ToolStats;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -34,10 +42,13 @@ public class ItemAxeBase extends ItemAxe {
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 
-	public ItemAxeBase(ToolMaterial material, String name)
+	private final MetalStats metalStats;
+
+	public ItemAxeBase(ToolMaterial material, MetalStats metalStats)
 	{
-		super(material, !GeneralConfig.powerAxes ? material.getAttackDamage() + 2 : material.getAttackDamage() + 4, -2.5F - (material.getAttackDamage() / 10));
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool);
+		super(material, material.getAttackDamage() + 4, -2.5F - (material.getAttackDamage() / 10));
+		ItemUtils.initItem(this, metalStats.getName() + "_axe", MetallurgyTabs.tabTool);
+		this.metalStats = metalStats;
 	}
 
 	public ItemAxeBase setEffect(EnumToolEffects effect)
@@ -81,4 +92,27 @@ public class ItemAxeBase extends ItemAxe {
 			items.add(enchantedAxe);
 		}
 	}
+
+	@Nonnull
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+		{
+			ToolStats toolStats = metalStats.getToolStats();
+
+			multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Axe Max Health", toolStats.getMaxHealth(), 0));
+			// FIXME: 06/05/2020 movement speed and attack damage do not override the default values
+			multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Axe Movement Speed", toolStats.getMovementSpeed(), 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Metallurgy Axe Attack Damage", toolStats.getAttackDamage(), 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Metallurgy Axe Attack Speed", toolStats.getAttackSpeed(), 0));
+			multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
+		}
+
+		return multimap;
+
+	}
+
 }

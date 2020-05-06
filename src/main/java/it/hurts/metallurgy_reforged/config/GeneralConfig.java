@@ -74,11 +74,6 @@ public class GeneralConfig {
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
 	public static boolean enableAnvilArmorRepair = false;
 
-	@Config.Name("Power to the Axes")
-	@Config.Comment("Set this to true to make axes more powerful than swords [default: false]")
-	@Config.RequiresMcRestart
-	public static boolean powerAxes = false;
-
 	@Config.Name("Enable Ore Particles")
 	@Config.Comment("Set this to true to enable ore particles (Particles that are bigger depending on the harvest tier of the ore) [default: false]")
 	public static boolean enableOreParticles = true;

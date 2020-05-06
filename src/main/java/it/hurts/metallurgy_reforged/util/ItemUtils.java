@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
@@ -18,6 +19,8 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -28,7 +31,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 public class ItemUtils {
 
@@ -151,6 +157,32 @@ public class ItemUtils {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Replace a modifier in the {@link Multimap} with a copy that's had {@code multiplier} applied to its value.
+	 *
+	 * @param modifierMultimap The MultiMap
+	 * @param attribute        The attribute being modified
+	 * @param id               The ID of the modifier
+	 * @param multiplier       The multiplier to apply
+	 *
+	 * @author Choonster
+	 */
+	public static void replaceModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier)
+	{
+		// Get the modifiers for the specified attribute
+		final Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
+
+		// Find the modifier with the specified ID, if any
+		final Optional<AttributeModifier> modifierOptional = modifiers.stream().filter(attributeModifier -> attributeModifier.getID().equals(id)).findFirst();
+
+		if (modifierOptional.isPresent())
+		{ // If it exists,
+			final AttributeModifier modifier = modifierOptional.get();
+			modifiers.remove(modifier); // Remove it
+			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation())); // Add the new modifier
+		}
 	}
 
 }
