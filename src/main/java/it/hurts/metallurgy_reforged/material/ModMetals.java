@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.material;
 
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 
@@ -90,7 +91,14 @@ public class ModMetals {
 			{
 				Metallurgy.logger.error("There was an error while loading custom stats for Metallurgy Materials (CHECK YOUR JSON CONFIG FOR MISTAKES)");
 				Metallurgy.logger.error("Error Message: " + e.getMessage());
-				Metallurgy.logger.warn("Metallurgy will now load default stats automatically...");
+				Metallurgy.logger.warn("Metallurgy will now load the default material stats automatically...");
+			}
+			catch (JsonParseException e)
+			{
+				Metallurgy.logger.error("There was an error while loading the Metallurgy Materials json config (Your JSON file was invalid!)");
+				Metallurgy.logger.error("Below this line you can read the error StackTrace to try to debug the error: ");
+				e.printStackTrace();
+				Metallurgy.logger.warn("Metallurgy will now load the default material stats automatically...");
 			}
 
 		}

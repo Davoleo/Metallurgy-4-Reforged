@@ -165,11 +165,11 @@ public class ItemUtils {
 	 * @param modifierMultimap The MultiMap
 	 * @param attribute        The attribute being modified
 	 * @param id               The ID of the modifier
-	 * @param multiplier       The multiplier to apply
+	 * @param amount           The Amount to add
 	 *
 	 * @author Choonster
 	 */
-	public static void replaceModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double multiplier)
+	public static void replaceModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double amount)
 	{
 		// Get the modifiers for the specified attribute
 		final Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
@@ -181,7 +181,7 @@ public class ItemUtils {
 		{ // If it exists,
 			final AttributeModifier modifier = modifierOptional.get();
 			modifiers.remove(modifier); // Remove it
-			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() * multiplier, modifier.getOperation())); // Add the new modifier
+			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() + amount, modifier.getOperation())); // Add the new modifier
 		}
 	}
 
