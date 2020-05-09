@@ -11,6 +11,10 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import net.minecraft.inventory.EntityEquipmentSlot;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Constants {
@@ -49,7 +53,6 @@ public class Constants {
 		public static final float HIGH_TIER = 15F;
 		public static final float EXTREME_TIER = 20F;              //Obsidian Level
 		public static final float UNBREAKABLE_TIER = 18000000F;    //Bedrock Level
-
 	}
 
 	public static final class ModAttributes {
@@ -57,12 +60,27 @@ public class Constants {
 		public static final UUID MAX_HEALTH = UUID.fromString("CB3F55D3-645C-4F38-A497-7777733DB5CF");
 		public static final UUID MOVEMENT_SPEED = UUID.fromString("CB3F55D3-645C-4F38-A497-8888833DB5CF");
 		public static final UUID REACH_DISTANCE = UUID.fromString("CB3F55D3-645C-4F38-A497-9999933DB5CF");
-		public static final UUID KNOCKBACK_RESISTANCE = UUID.fromString("CB3F55D3-645C-4F38-A497-1111133DB5CF");
+
+		public static final Map<EntityEquipmentSlot, UUID> ARMOR_MAX_HEALTH = new HashMap<>();
+		public static final Map<EntityEquipmentSlot, UUID> ARMOR_KNOCKBACK_RESISTANCE = new HashMap<>();
+		public static final Map<EntityEquipmentSlot, UUID> ARMOR_MOVEMENT_SPEED = new HashMap<>();
 
 		//Vanilla Item Attributes
 		public static final UUID ATTACK_DAMAGE = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
 		public static final UUID ATTACK_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 
+		static
+		{
+			for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+			{
+				if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+				{
+					ARMOR_MAX_HEALTH.put(slot, UUID.randomUUID());
+					ARMOR_KNOCKBACK_RESISTANCE.put(slot, UUID.randomUUID());
+					ARMOR_MOVEMENT_SPEED.put(slot, UUID.randomUUID());
+				}
+			}
+		}
 	}
 
 }
