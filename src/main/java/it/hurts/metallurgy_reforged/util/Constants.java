@@ -57,6 +57,11 @@ public class Constants {
 		public static final UUID MAX_HEALTH = UUID.fromString("CB3F55D3-645C-4F38-A497-7777733DB5CF");
 		public static final UUID MOVEMENT_SPEED = UUID.fromString("CB3F55D3-645C-4F38-A497-8888833DB5CF");
 		public static final UUID REACH_DISTANCE = UUID.fromString("CB3F55D3-645C-4F38-A497-9999933DB5CF");
+		public static final UUID KNOCKBACK_RESISTANCE = UUID.fromString("CB3F55D3-645C-4F38-A497-1111133DB5CF");
+
+		//Vanilla Item Attributes
+		public static final UUID ATTACK_DAMAGE = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
+		public static final UUID ATTACK_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 
 	}
 

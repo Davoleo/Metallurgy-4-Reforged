@@ -82,10 +82,10 @@ public class MetalStats {
 		if (armor != null)
 		{
 			ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
-			ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_helmet");
-			ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, name + "_chestplate");
-			ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, name + "_leggings");
-			ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, name + "_boots");
+			ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, this);
+			ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, this);
+			ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, this);
+			ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, this);
 
 			armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
 		}
@@ -94,10 +94,10 @@ public class MetalStats {
 		{
 			Item.ToolMaterial toolMaterial = createToolMaterial();
 			ItemAxeBase axe = new ItemAxeBase(toolMaterial, this);
-			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
-			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, name + "_pickaxe");
-			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, name + "_shovel");
-			ItemSwordBase sword = new ItemSwordBase(toolMaterial, name + "_sword");
+			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, this);
+			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, this);
+			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, this);
+			ItemSwordBase sword = new ItemSwordBase(toolMaterial, this);
 
 			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
 		}

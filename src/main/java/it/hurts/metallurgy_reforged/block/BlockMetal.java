@@ -45,6 +45,13 @@ public class BlockMetal extends Block {
 		return this.type != BlockTypes.GLASS;
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean isOpaqueCube(@Nonnull IBlockState state)
+	{
+		return this.type != BlockTypes.GLASS;
+	}
+
 	@Nonnull
 	@Override
 	public BlockRenderLayer getRenderLayer()

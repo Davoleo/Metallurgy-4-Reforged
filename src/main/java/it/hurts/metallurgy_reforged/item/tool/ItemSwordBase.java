@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.item.tool;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -39,10 +40,13 @@ public class ItemSwordBase extends ItemSword {
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 
-	public ItemSwordBase(ToolMaterial material, String name)
+	private final MetalStats metalStats;
+
+	public ItemSwordBase(ToolMaterial material, MetalStats metalStats)
 	{
 		super(material);
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool);
+		ItemUtils.initItem(this, metalStats.getName() + "_sword", MetallurgyTabs.tabTool);
+		this.metalStats = metalStats;
 	}
 
 	public void setEffect(EnumToolEffects effect)
@@ -95,11 +99,13 @@ public class ItemSwordBase extends ItemSword {
 		}
 	}
 
-	//todo ADD ATTRIBUTE VARIABLES
+	@Nonnull
 	@Override
-	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
 	{
-		return super.getItemAttributeModifiers(equipmentSlot);
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+		ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
+		return multimap;
 	}
 
 }

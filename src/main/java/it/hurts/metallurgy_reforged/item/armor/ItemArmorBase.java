@@ -11,14 +11,19 @@
 
 package it.hurts.metallurgy_reforged.item.armor;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -37,10 +42,13 @@ public class ItemArmorBase extends ItemArmor {
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
+	private MetalStats metalStats;
+
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, MetalStats metalStats)
 	{
 		super(material, 0, slot);
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabArmor);
+		ItemUtils.initItem(this, metalStats.getName() + '_' + getSlotArmorSuffix(slot), MetallurgyTabs.tabArmor);
+		this.metalStats = metalStats;
 	}
 
 	public void setEffect(EnumArmorEffects effect)
@@ -65,14 +73,14 @@ public class ItemArmorBase extends ItemArmor {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
 	{
 		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
 		if (this.effect != null && effect.isActive())
 			tooltip.add(this.effect.getLocalized());
@@ -90,6 +98,56 @@ public class ItemArmorBase extends ItemArmor {
 				enchantedArmor.addEnchantment(enchantment, enchantmentLevel);
 			}
 			items.add(enchantedArmor);
+		}
+	}
+
+	@Nonnull
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+		if (equipmentSlot == this.armorType)
+		{
+			multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(
+					Constants.ModAttributes.MAX_HEALTH,
+					"Metallurgy Armor Max Health",
+					metalStats.getArmorStats().getMaxHealth() / 4D,
+					0)
+			);
+
+			multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(
+					Constants.ModAttributes.KNOCKBACK_RESISTANCE,
+					"Metallurgy Armor Knockback Resistance",
+					metalStats.getArmorStats().getKnockbackResistance() / 4D,
+					0)
+			);
+
+			multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(
+					Constants.ModAttributes.MOVEMENT_SPEED,
+					"Metallurgy Armor Movement Speed",
+					metalStats.getArmorStats().getMovementSpeed() / 4D,
+					0)
+			);
+		}
+
+		return multimap;
+	}
+
+	private String getSlotArmorSuffix(EntityEquipmentSlot slot)
+	{
+		switch (slot)
+		{
+			case HEAD:
+				return "helmet";
+			case CHEST:
+				return "chestplate";
+			case LEGS:
+				return "leggings";
+			case FEET:
+				return "boots";
+			default:
+				return "THIS_CAN'T_POSSIBLY_HAPPEN,_FUCK!";
 		}
 	}
 

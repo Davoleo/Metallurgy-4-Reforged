@@ -18,12 +18,42 @@ public class ArmorStats {
 	private final int durability;
 	private final float toughness;
 
+	private double maxHealth;
+	private double knockbackResistance;
+	private double movementSpeed;
+
 	public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)
 	{
 		this.damageReduction = damageReduction;
 		this.enchantability = enchantability;
 		this.durability = durability;
 		this.toughness = toughness;
+
+		this.maxHealth = 0;
+		this.knockbackResistance = 0;
+		this.movementSpeed = 0;
+	}
+
+	public void setAttributes(double maxHealth, double knockbackResistance, double movementSpeed)
+	{
+		this.maxHealth = maxHealth;
+		this.knockbackResistance = knockbackResistance;
+		this.movementSpeed = movementSpeed;
+	}
+
+	public double getMaxHealth()
+	{
+		return maxHealth;
+	}
+
+	public double getKnockbackResistance()
+	{
+		return knockbackResistance;
+	}
+
+	public double getMovementSpeed()
+	{
+		return movementSpeed;
 	}
 
 	public int[] getDamageReduction()

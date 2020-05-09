@@ -16,11 +16,16 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.material.ToolStats;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -31,6 +36,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
+import javax.annotation.Nonnull;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -169,7 +175,7 @@ public class ItemUtils {
 	 *
 	 * @author Choonster
 	 */
-	public static void replaceModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double amount)
+	public static void editModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double amount)
 	{
 		// Get the modifiers for the specified attribute
 		final Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
@@ -182,6 +188,20 @@ public class ItemUtils {
 			final AttributeModifier modifier = modifierOptional.get();
 			modifiers.remove(modifier); // Remove it
 			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() + amount, modifier.getOperation())); // Add the new modifier
+		}
+	}
+
+	public static void setToolAttributes(@Nonnull EntityEquipmentSlot equipmentSlot, Multimap<String, AttributeModifier> multimap, MetalStats metalStats)
+	{
+		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+		{
+			ToolStats toolStats = metalStats.getToolStats();
+
+			multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Axe Max Health", toolStats.getMaxHealth(), 0));
+			multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Axe Movement Speed", toolStats.getMovementSpeed(), 0));
+			ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_DAMAGE, Constants.ModAttributes.ATTACK_DAMAGE, toolStats.getAttackDamage());
+			ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
+			multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
 		}
 	}
 

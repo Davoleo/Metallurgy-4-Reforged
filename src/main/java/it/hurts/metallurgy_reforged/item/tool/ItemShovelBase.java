@@ -11,12 +11,16 @@
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -34,10 +38,13 @@ public class ItemShovelBase extends ItemSpade {
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 
-	public ItemShovelBase(ToolMaterial material, String name)
+	private final MetalStats metalStats;
+
+	public ItemShovelBase(ToolMaterial material, MetalStats metalStats)
 	{
 		super(material);
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool);
+		ItemUtils.initItem(this, metalStats.getName() + "_shovel", MetallurgyTabs.tabTool);
+		this.metalStats = metalStats;
 	}
 
 	public void setEffect(EnumToolEffects effect)
@@ -52,14 +59,14 @@ public class ItemShovelBase extends ItemSpade {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
 	{
 		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
 		if (this.effect != null && effect.isActive())
 			tooltip.add(effect.getLocalized());
@@ -79,4 +86,14 @@ public class ItemShovelBase extends ItemSpade {
 			items.add(enchantedShowel);
 		}
 	}
+
+	@Nonnull
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+		ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
+		return multimap;
+	}
+
 }

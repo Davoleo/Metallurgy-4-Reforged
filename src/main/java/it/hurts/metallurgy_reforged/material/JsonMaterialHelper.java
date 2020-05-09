@@ -120,14 +120,20 @@ public class JsonMaterialHelper {
 
 		if (metalStats.has("armor_stats"))
 		{
-			JsonObject armorStats = JsonUtils.getJsonObject(metalStats, "armor_stats");
+			JsonObject armorStatsObj = JsonUtils.getJsonObject(metalStats, "armor_stats");
 
-			int enchantability = JsonUtils.getInt(armorStats, "enchantability", fallback.getEnchantability());
-			int durability = JsonUtils.getInt(armorStats, "durability", fallback.getDurability());
-			float toughness = JsonUtils.getFloat(armorStats, "toughness", fallback.getToughness());
-			int[] damageReduction = getIntArray(armorStats, "damage_reduction", fallback.getDamageReduction());
+			int enchantability = JsonUtils.getInt(armorStatsObj, "enchantability", fallback.getEnchantability());
+			int durability = JsonUtils.getInt(armorStatsObj, "durability", fallback.getDurability());
+			float toughness = JsonUtils.getFloat(armorStatsObj, "toughness", fallback.getToughness());
+			int[] damageReduction = getIntArray(armorStatsObj, "damage_reduction", fallback.getDamageReduction());
 
-			return new ArmorStats(damageReduction, enchantability, durability, toughness);
+			double maxHealth = JsonUtils.getFloat(armorStatsObj, "max_health", (float) fallback.getMaxHealth());
+			double knockbackResistance = JsonUtils.getFloat(armorStatsObj, "knockback_resistance", (float) fallback.getKnockbackResistance());
+			double movementSpeed = JsonUtils.getFloat(armorStatsObj, "movement_speed", (float) fallback.getMovementSpeed());
+
+			ArmorStats armorStats = new ArmorStats(damageReduction, enchantability, durability, toughness);
+			armorStats.setAttributes(maxHealth, knockbackResistance, movementSpeed);
+			return armorStats;
 		}
 
 		return null;
