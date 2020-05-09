@@ -18,6 +18,8 @@ public class ServerProxy implements IProxy {
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event)
-	{ }
+	{
+		//Nothing to do only on Server-Side
+	}
 
 }
