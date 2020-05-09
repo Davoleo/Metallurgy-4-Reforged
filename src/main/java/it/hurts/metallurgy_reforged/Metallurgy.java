@@ -162,8 +162,6 @@
 	 {
 		 logger.info(NAME + " is entering post-initialization!");
 
-		 proxy.postInit(event);
-
 		 PacketManager.init();
 		 logger.info(NAME + "'s Network System Loaded");
 
