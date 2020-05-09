@@ -37,8 +37,6 @@ public class JsonMaterialHelper {
 	 *
 	 * @param resourcePath The path to the JSON Config
 	 * @param defaultStats used as fallback when reading user-customized JSON config,
-	 *
-	 * @return
 	 */
 	public static Set<MetalStats> readConfig(String resourcePath, Set<MetalStats> defaultStats) throws JsonSyntaxException
 	{
@@ -95,7 +93,6 @@ public class JsonMaterialHelper {
 		ToolStats toolStats = getToolStats(metalObj, defaultStat.getToolStats());
 
 		return new MetalStats(name, hardness, blockBlastResistance, armorStats, toolStats, oreHarvest, color);
-		// TODO: 05/05/2020 TEST This stuff INVESTIGATE
 	}
 
 	private static MetalStats getMetalStatsByName(String name, Set<MetalStats> defaultStats) throws JsonSyntaxException
@@ -211,18 +208,23 @@ public class JsonMaterialHelper {
 				}
 				else
 				{
-					filesystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
+					try
+					{
+						filesystem = FileSystems.getFileSystem(uri);
+					}
+					catch (FileSystemNotFoundException e)
+					{
+						//If the file system doesn't exist we create a new one
+						filesystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
+					}
+
 					path = filesystem.getPath(resource);
 				}
 
 				return path;
 			}
 		}
-		catch (URISyntaxException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IOException e)
+		catch (URISyntaxException | IOException e)
 		{
 			e.printStackTrace();
 		}
