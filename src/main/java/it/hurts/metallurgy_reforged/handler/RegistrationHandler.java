@@ -202,7 +202,7 @@ public class RegistrationHandler {
 	@SubscribeEvent
 	public static void registerTextures(TextureStitchEvent.Pre event)
 	{
-		for (int i = 1; i <= 5; i++)
+		for (int i = 1; i <= 10; i++)
 			oreParticles.add(event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i)));
 	}
 
