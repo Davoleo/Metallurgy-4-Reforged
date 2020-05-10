@@ -18,6 +18,7 @@ public enum BlockTypes {
 	LARGE_BRICKS("large_bricks"),
 	BRICKS("bricks"),
 	CRYSTAL("crystals"),
+	HAZARD_BLOCK("hazard_block"),
 	GLASS("reinforced_glass");
 
 	private String prefix;
