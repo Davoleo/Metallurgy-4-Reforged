@@ -1,17 +1,16 @@
 {
 	"type": "forge:ore_shaped",
 	"pattern": [
-		"II ",
-		"IS ",
-		" S "
+		"MM ",
+		"MI ",
+		" I "
 	],
 	"key": {
-		"S": {
-			"item": "minecraft:stick"
+		"M": {
+			"type": "metallurgy:"
 		},
 		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotAdamantine"
+			"item": "minecraft:stick"
 		}
 	},
 	"result": {

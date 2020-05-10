@@ -1,5 +1,5 @@
 {
-	"type": "forge:ore_shaped",
+	"type": "metallurgy:metal_shaped",
 	"pattern": [
 		"III",
 		" S ",
@@ -10,11 +10,9 @@
 			"item": "minecraft:stick"
 		},
 		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotAdamantine"
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
 		}
 	},
-	"result": {
-		"item": "metallurgy:adamantine_pickaxe"
-	}
+	"result": "pickaxe"
 }

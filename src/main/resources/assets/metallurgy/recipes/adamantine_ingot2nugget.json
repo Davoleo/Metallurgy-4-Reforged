@@ -1,13 +1,10 @@
 {
-	"type": "forge:ore_shapeless",
+	"type": "metallurgy:metal_shapeless",
 	"ingredients": [
 		{
-			"type": "forge:ore_dict",
-			"ore": "ingotAdamantine"
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
 		}
 	],
-	"result": {
-		"item": "metallurgy:adamantine_nugget",
-		"count": 9
-	}
+	"result": "nugget"
 }
