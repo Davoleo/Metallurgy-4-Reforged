@@ -20,6 +20,11 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
@@ -34,6 +39,7 @@ public class BlockMetal extends Block {
 		this.metal = metal;
 		this.type = type;
 		this.setSoundType(SoundType.METAL);
+		this.setLightOpacity(1);
 
 		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
 	}
@@ -61,6 +67,31 @@ public class BlockMetal extends Block {
 		else
 			return BlockRenderLayer.SOLID;
 
+	}
+
+	// TODO: 11/05/2020 Find a way to make it look decent
+	@SuppressWarnings("deprecation")
+	@SideOnly(Side.CLIENT)
+	@Override
+	public boolean shouldSideBeRendered(@Nonnull IBlockState blockState, @Nonnull IBlockAccess blockAccess, @Nonnull BlockPos pos, @Nonnull EnumFacing side)
+	{
+		IBlockState neighbourState = blockAccess.getBlockState(pos.offset(side));
+		Block neighbourBlock = neighbourState.getBlock();
+
+		if (type == BlockTypes.GLASS)
+		{
+			if (blockState != neighbourState)
+			{
+				return true;
+			}
+
+			if (neighbourBlock == this)
+			{
+				return false;
+			}
+		}
+
+		return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
 	}
 
 	public MetalStats getMetalStats()
