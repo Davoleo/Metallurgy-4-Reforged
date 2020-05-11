@@ -1,0 +1,18 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		" M ",
+		" I ",
+		" I "
+	],
+	"key": {
+		"I": {
+			"item": "minecraft:stick"
+		},
+		"M": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		}
+	},
+	"result": "shovel"
+}

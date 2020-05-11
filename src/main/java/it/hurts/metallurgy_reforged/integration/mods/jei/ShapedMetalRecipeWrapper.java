@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.recipe.ShapedMetalRecipe;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
+import net.minecraftforge.common.crafting.IShapedRecipe;
 
 public class ShapedMetalRecipeWrapper extends MetalRecipeWrapper implements IShapedCraftingRecipeWrapper {
 
@@ -26,13 +27,13 @@ public class ShapedMetalRecipeWrapper extends MetalRecipeWrapper implements ISha
 	@Override
 	public int getWidth()
 	{
-		return 3;
+		return ((IShapedRecipe) recipe).getRecipeWidth();
 	}
 
 	@Override
 	public int getHeight()
 	{
-		return 3;
+		return ((IShapedRecipe) recipe).getRecipeHeight();
 	}
 
 }

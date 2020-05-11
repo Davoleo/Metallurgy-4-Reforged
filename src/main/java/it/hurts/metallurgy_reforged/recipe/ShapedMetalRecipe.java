@@ -13,11 +13,13 @@ package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.common.base.CaseFormat;
 import com.google.gson.JsonObject;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -72,12 +74,55 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
 	public ItemStack getOutputFromMetal(Metal metal)
 	{
-		//axe, hoe, pickaxe, shovel, sword, helmet, chestplate, leggings, boots, block, ingot
 		switch (resultType)
 		{
+			//Tools
+			case "axe":
+				if (metal.hasToolSet())
+					return new ItemStack(metal.getTool(EnumTools.AXE));
+			case "hoe":
+				if (metal.hasToolSet())
+					return new ItemStack(metal.getTool(EnumTools.HOE));
 			case "pickaxe":
 				if (metal.hasToolSet())
 					return new ItemStack(metal.getTool(EnumTools.PICKAXE));
+			case "shovel":
+				if (metal.hasToolSet())
+					return new ItemStack(metal.getTool(EnumTools.SHOVEL));
+			case "sword":
+				if (metal.hasToolSet())
+					return new ItemStack(metal.getTool(EnumTools.SWORD));
+				//Armor
+			case "helmet":
+				if (metal.hasArmorSet())
+					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.HEAD));
+			case "chestplate":
+				if (metal.hasArmorSet())
+					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.CHEST));
+			case "leggings":
+				if (metal.hasArmorSet())
+					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.LEGS));
+			case "boots":
+				if (metal.hasArmorSet())
+					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.FEET));
+				//Blocks
+			case "block":
+				return new ItemStack(metal.getBlock(BlockTypes.BLOCK));
+			case "bricks":
+				return new ItemStack(metal.getBlock(BlockTypes.BRICKS), 6);
+			case "large_bricks":
+				return new ItemStack(metal.getBlock(BlockTypes.LARGE_BRICKS), 4);
+			case "crystals":
+				return new ItemStack(metal.getBlock(BlockTypes.CRYSTAL), 4);
+			case "engraved_block":
+				return new ItemStack(metal.getBlock(BlockTypes.ENGRAVED_BLOCK), 8);
+			case "hazard_block":
+				return new ItemStack(metal.getBlock(BlockTypes.HAZARD_BLOCK), 4);
+			case "reinforced_glass":
+				return new ItemStack(metal.getBlock(BlockTypes.GLASS), 5);
+			//Ingot
+			case "ingot":
+				return new ItemStack(metal.getIngot());
 			default:
 				return ItemStack.EMPTY;
 		}

@@ -29,7 +29,7 @@ import java.util.List;
 public class MetalRecipeWrapper implements IRecipeWrapper {
 
 	private Metal metal;
-	private IRecipeMetal recipe;
+	protected IRecipeMetal recipe;
 	private IJeiHelpers helper;
 
 	public MetalRecipeWrapper(Metal metal, IRecipeMetal recipe, IJeiHelpers helper)

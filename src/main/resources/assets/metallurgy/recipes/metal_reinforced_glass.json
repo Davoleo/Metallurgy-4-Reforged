@@ -1,0 +1,18 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		"GMG",
+		"MMM",
+		"GMG"
+	],
+	"key": {
+		"M": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		},
+		"G": {
+			"item": "minecraft:glass"
+		}
+	},
+	"result": "reinforced_glass"
+}
