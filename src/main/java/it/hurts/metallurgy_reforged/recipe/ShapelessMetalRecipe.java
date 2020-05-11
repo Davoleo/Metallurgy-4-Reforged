@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.recipe;
 import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -28,14 +29,15 @@ import javax.annotation.Nonnull;
 
 import static it.hurts.metallurgy_reforged.recipe.ShapedMetalRecipe.getMetalFromOreDictStack;
 
-public class ShapelessMetalRecipe extends ShapelessOreRecipe {
+public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeMetal {
 
 	private String resultType;
 
 	public ShapelessMetalRecipe(NonNullList<Ingredient> input, String resultType)
 	{
-		super(null, input, ItemStack.EMPTY);
+		super(null, input, new ItemStack(Blocks.COMMAND_BLOCK));
 		this.resultType = resultType;
+		ModRecipes.shapelessMetalRecipes.add(this);
 	}
 
 	@Nonnull
@@ -62,12 +64,17 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe {
 		if (metalModel == null)
 			return ItemStack.EMPTY;
 
+		return getOutputFromMetal(metalModel);
+	}
+
+	public ItemStack getOutputFromMetal(Metal metal)
+	{
 		switch (resultType)
 		{
 			case "nugget":
-				return new ItemStack(metalModel.getNugget(), 9);
+				return new ItemStack(metal.getNugget(), 9);
 			case "ingot":
-				return new ItemStack(metalModel.getIngot(), 9);
+				return new ItemStack(metal.getIngot(), 9);
 			default:
 				return ItemStack.EMPTY;
 		}

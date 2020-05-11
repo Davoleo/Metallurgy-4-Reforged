@@ -18,7 +18,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ModRecipes {
+
+	public static Set<ShapedMetalRecipe> shapedMetalRecipes = new HashSet<>();
+	public static Set<ShapelessMetalRecipe> shapelessMetalRecipes = new HashSet<>();
 
 	public static void init()
 	{

@@ -23,12 +23,14 @@ import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCa
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.recipe.ModRecipes;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
@@ -93,6 +95,17 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
+
+		List<MetalRecipeWrapper> recipes = new ArrayList<>();
+
+		ModMetals.metalMap.forEach((name, metal) -> {
+			ModRecipes.shapedMetalRecipes.forEach(shapedMetalRecipe ->
+					recipes.add(new ShapedMetalRecipeWrapper(metal, shapedMetalRecipe, registry.getJeiHelpers())));
+			ModRecipes.shapelessMetalRecipes.forEach(shapelessMetalRecipe ->
+					recipes.add(new MetalRecipeWrapper(metal, shapelessMetalRecipe, registry.getJeiHelpers())));
+		});
+
+		registry.addRecipes(recipes, VanillaRecipeCategoryUid.CRAFTING);
 	}
 
 }

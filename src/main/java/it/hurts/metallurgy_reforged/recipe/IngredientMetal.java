@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.JsonUtils;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.crafting.IIngredientFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.OreDictionary;
@@ -71,6 +72,11 @@ public class IngredientMetal extends Ingredient {
 		}
 
 		return false;
+	}
+
+	public NonNullList<ItemStack> getOreDictStacks(Metal metal)
+	{
+		return OreDictionary.getOres(type + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 	}
 
 	@SuppressWarnings("unused")

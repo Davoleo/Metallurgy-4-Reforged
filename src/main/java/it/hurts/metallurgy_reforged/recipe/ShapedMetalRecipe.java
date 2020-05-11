@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -30,14 +31,15 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
-public class ShapedMetalRecipe extends ShapedOreRecipe {
+public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
 	private String resultType;
 
 	public ShapedMetalRecipe(CraftingHelper.ShapedPrimer primer, String resultType)
 	{
-		super(null, ItemStack.EMPTY, primer);
+		super(null, new ItemStack(Blocks.COMMAND_BLOCK), primer);
 		this.resultType = resultType;
+		ModRecipes.shapedMetalRecipes.add(this);
 	}
 
 	@Nonnull
@@ -64,12 +66,18 @@ public class ShapedMetalRecipe extends ShapedOreRecipe {
 		if (metalModel == null)
 			return ItemStack.EMPTY;
 
+		return getOutputFromMetal(metalModel);
+
+	}
+
+	public ItemStack getOutputFromMetal(Metal metal)
+	{
 		//axe, hoe, pickaxe, shovel, sword, helmet, chestplate, leggings, boots, block, ingot
 		switch (resultType)
 		{
 			case "pickaxe":
-				if (metalModel.hasToolSet())
-					return new ItemStack(metalModel.getTool(EnumTools.PICKAXE));
+				if (metal.hasToolSet())
+					return new ItemStack(metal.getTool(EnumTools.PICKAXE));
 			default:
 				return ItemStack.EMPTY;
 		}
