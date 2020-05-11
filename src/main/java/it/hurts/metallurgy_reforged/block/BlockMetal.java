@@ -35,20 +35,24 @@ public class BlockMetal extends Block {
 
 	public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
 	{
-		super(Material.IRON);
+		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
 		this.metal = metal;
 		this.type = type;
 		this.setSoundType(SoundType.METAL);
-		this.setLightOpacity(1);
+
+		if (this.type == BlockTypes.GLASS)
+		{
+			this.setLightOpacity(0);
+		}
 
 		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isFullBlock(@Nonnull IBlockState state)
+	public boolean isFullCube(@Nonnull IBlockState state)
 	{
-		return this.type != BlockTypes.GLASS;
+		return type != BlockTypes.GLASS;
 	}
 
 	@SuppressWarnings("deprecation")
