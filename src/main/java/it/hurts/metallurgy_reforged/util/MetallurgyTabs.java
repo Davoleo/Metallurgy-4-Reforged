@@ -21,6 +21,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -97,7 +98,10 @@ public class MetallurgyTabs extends CreativeTabs {
 	{
 		if (type == 3)
 		{
-			ModMetals.metalMap.forEach((s, metal) -> p_78018_1_.add(FluidUtil.getFilledBucket(metal.getMolten().getFluidStack())));
+			ModMetals.metalMap.forEach((s, metal) -> {
+				if (FluidRegistry.getFluidName(metal.getMolten()) != null)
+					p_78018_1_.add(FluidUtil.getFilledBucket(metal.getMolten().getFluidStack()));
+			});
 		}
 		else
 			super.displayAllRelevantItems(p_78018_1_);
