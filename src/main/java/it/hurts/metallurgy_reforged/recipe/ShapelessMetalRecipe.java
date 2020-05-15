@@ -14,7 +14,6 @@ package it.hurts.metallurgy_reforged.recipe;
 import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -35,7 +34,7 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeM
 
 	public ShapelessMetalRecipe(NonNullList<Ingredient> input, String resultType)
 	{
-		super(null, input, new ItemStack(Blocks.COMMAND_BLOCK));
+		super(null, input, ItemStack.EMPTY);
 		this.resultType = resultType;
 		ModRecipes.shapelessMetalRecipes.add(this);
 	}
@@ -65,6 +64,12 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeM
 			return ItemStack.EMPTY;
 
 		return getOutputFromMetal(metalModel);
+	}
+
+	@Override
+	public boolean isDynamic()
+	{
+		return true;
 	}
 
 	public ItemStack getOutputFromMetal(Metal metal)

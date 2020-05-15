@@ -18,7 +18,6 @@ import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -39,7 +38,7 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
 	public ShapedMetalRecipe(CraftingHelper.ShapedPrimer primer, String resultType)
 	{
-		super(null, new ItemStack(Blocks.COMMAND_BLOCK), primer);
+		super(null, ItemStack.EMPTY, primer);
 		this.resultType = resultType;
 		ModRecipes.shapedMetalRecipes.add(this);
 	}
@@ -70,6 +69,12 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
 		return getOutputFromMetal(metalModel);
 
+	}
+
+	@Override
+	public boolean isDynamic()
+	{
+		return true;
 	}
 
 	public ItemStack getOutputFromMetal(Metal metal)
