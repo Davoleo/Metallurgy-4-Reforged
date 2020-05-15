@@ -108,6 +108,11 @@ public class Utils {
 		return randomEffectsList.length;
 	}
 
+	public static int intColorFromRGB(int r, int g, int b)
+	{
+		return ((255 << 24) + r * 65536 + g * 256 + b);
+	}
+
 	//TODO : @ItHurtsLikeHell Document this fucking method please
 	public static String getName(String name)
 	{

@@ -43,11 +43,11 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 		ModRecipes.shapedMetalRecipes.add(this);
 	}
 
+	// TODO: 15/05/2020 comment this method
 	@Nonnull
 	@Override
 	public ItemStack getCraftingResult(@Nonnull InventoryCrafting crafting)
 	{
-		// TODO: 10/05/2020 Make this code drier
 		Metal metalModel = null;
 
 		for (int i = 0; i < crafting.getSizeInventory(); i++)
@@ -135,7 +135,6 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
 	public static Metal getMetalFromOreDictStack(ItemStack stack)
 	{
-
 		if (stack.isEmpty())
 			return null;
 
@@ -148,7 +147,9 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
 			{
 				String metalName = entry.getKey();
-				if (ore.endsWith(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metalName)))
+				String oreMetalName = ore.substring(ore.length() - (metalName.length()));
+
+				if (oreMetalName.equals(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metalName)))
 				{
 					return entry.getValue();
 				}

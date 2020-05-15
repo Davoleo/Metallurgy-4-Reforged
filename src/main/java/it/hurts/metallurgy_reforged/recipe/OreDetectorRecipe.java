@@ -12,103 +12,83 @@
 package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.gson.JsonObject;
-import it.hurts.metallurgy_reforged.item.ItemMetal;
-import it.hurts.metallurgy_reforged.item.ItemTypes;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IRecipeFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import javax.annotation.Nonnull;
 
-//Used in recipes/_factories.json
-@SuppressWarnings("unused")
 public class OreDetectorRecipe extends ShapelessOreRecipe {
 
-	public OreDetectorRecipe(ResourceLocation group, NonNullList<Ingredient> input, @Nonnull ItemStack result)
+	public OreDetectorRecipe(ResourceLocation group, NonNullList<Ingredient> input)
 	{
-		super(group, input, result);
+		super(group, input, ItemStack.EMPTY);
 	}
 
 	@Nonnull
 	@Override
 	public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv)
 	{
-		ItemStack stack = super.getCraftingResult(inv);
+		ItemStack output = ItemStack.EMPTY;
 		NonNullList<ItemStack> inputs = NonNullList.create();
+		Metal metalModel = null;
 
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
-			ItemStack s = inv.getStackInSlot(i);
-			if (s.getItem() instanceof ItemMetal && ((ItemMetal) s.getItem()).getType() == ItemTypes.INGOT)
+			ItemStack stack = inv.getStackInSlot(i);
+			Metal otherMetal = ShapedMetalRecipe.getMetalFromOreDictStack(stack);
+			if (otherMetal != null)
 			{
-				inputs.add(s);
+				if (otherMetal == metalModel)
+					return ItemStack.EMPTY;
+
+				inputs.add(stack);
+				metalModel = otherMetal;
+			}
+			else if (stack.getItem() == ModItems.oreDetector)
+			{
+				//set the output of the recipe depending if the detector already has some metals
+				if (!ItemOreDetector.getDetectorMetals(stack).isEmpty())
+					return ItemStack.EMPTY;
+				else
+					output = stack.copy();
 			}
 		}
 
-		writeMetalsToNBT(stack, inputs);
-		return stack;
-	}
-
-	private void writeMetalsToNBT(ItemStack detector, NonNullList<ItemStack> inputs)
-	{
-		NBTTagCompound compound = detector.getTagCompound();
-
-		if (compound != null)
-			compound = new NBTTagCompound();
-
-		NBTTagList ingots = new NBTTagList();
-
-		for (ItemStack input : inputs)
+		if (metalModel == null)
 		{
-			NBTTagCompound ingot = new NBTTagCompound();
-			ingot.setString("ingot", input.getItem().getRegistryName().getPath());
-			ingots.appendTag(ingot);
+			return output;
 		}
 
-		compound.setTag("ingots", ingots);
-		detector.setTagCompound(compound);
+		ItemOreDetector.addIngotsToDetector(output, inputs);
+		return output;
 	}
 
-	@Nonnull
 	@Override
-	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv)
+	public boolean isDynamic()
 	{
-		ItemStack stack = ItemStack.EMPTY;
-
-		int i = 0;
-		while (i < inv.getSizeInventory())
-		{
-			++i;
-			stack = inv.getStackInSlot(i);
-
-			if (stack.getItem() instanceof ItemOreDetector)
-				break;
-		}
-
-		return NonNullList.from(stack);
+		return true;
 	}
 
+	//Used in recipes/_factories.json
+	@SuppressWarnings("unused")
 	public static class Factory implements IRecipeFactory {
 
 		@Override
 		public IRecipe parse(JsonContext context, JsonObject json)
 		{
 			final NonNullList<Ingredient> ingredients = Utils.parseShapelessRecipe(context, json);
-			final ItemStack result = CraftingHelper.getItemStack(JsonUtils.getJsonObject(json, "result"), context);
-
-			return new OreDetectorRecipe(null, ingredients, result);
+			return new OreDetectorRecipe(null, ingredients);
 		}
 
 	}

@@ -47,7 +47,7 @@ public class ItemInvisibilityShield extends ItemExtra {
 	}
 
 	@Override
-	public boolean isShield(ItemStack stack, @Nullable EntityLivingBase entity)
+	public boolean isShield(@Nonnull ItemStack stack, @Nullable EntityLivingBase entity)
 	{
 		return true;
 	}
@@ -59,14 +59,14 @@ public class ItemInvisibilityShield extends ItemExtra {
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack)
+	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
 	{
 		return 600;
 	}
 
 	@Nonnull
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
 		playerIn.setInvisible(true);
 		playerIn.setActiveHand(handIn);
@@ -75,13 +75,13 @@ public class ItemInvisibilityShield extends ItemExtra {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
+	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
 	{
 		terminateEffect(entityLiving, stack, 600 - timeLeft);
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count)
+	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
 	{
 		if (count <= 1)
 			terminateEffect(player, stack, 600);
@@ -102,7 +102,7 @@ public class ItemInvisibilityShield extends ItemExtra {
 
 	@Nonnull
 	@Override
-	public EnumAction getItemUseAction(ItemStack stack)
+	public EnumAction getItemUseAction(@Nonnull ItemStack stack)
 	{
 		return EnumAction.BLOCK;
 	}

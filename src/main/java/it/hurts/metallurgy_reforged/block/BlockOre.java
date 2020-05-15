@@ -106,7 +106,7 @@ public class BlockOre extends Block {
 		if (metal == null)
 			return;
 
-		float[] color = metal.getStats().getRGBValues();
+		float[] color = metal.getStats().getColorRGBValues();
 
 		for (int i = 0; i < 6; ++i)
 		{

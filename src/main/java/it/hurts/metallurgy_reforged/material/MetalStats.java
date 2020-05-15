@@ -191,7 +191,7 @@ public class MetalStats {
 		return Long.decode(colorWAlpha);
 	}
 
-	public float[] getRGBValues()
+	public float[] getColorRGBValues()
 	{
 		Color rgb = new Color(color);
 		return rgb.getRGBColorComponents(null);

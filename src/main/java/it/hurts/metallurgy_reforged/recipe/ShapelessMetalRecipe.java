@@ -39,6 +39,7 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeM
 		ModRecipes.shapelessMetalRecipes.add(this);
 	}
 
+	//TODO: comment this method
 	@Nonnull
 	@Override
 	public ItemStack getCraftingResult(@Nonnull InventoryCrafting crafting)

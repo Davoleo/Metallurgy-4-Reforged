@@ -5,7 +5,7 @@
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
  * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -34,6 +34,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GadgetsHandler {
 
 	private static MovementInput inputCheck;
+	public static long ticks = 0;
+
+	public static void onTick(TickEvent.ClientTickEvent event)
+	{
+		if (event.phase == TickEvent.Phase.START)
+		{
+			ticks++;
+			if (ticks >= Long.MAX_VALUE)
+			{
+				ticks = 0;
+			}
+		}
+	}
 
 	//	Road Speed Effect
 	@SubscribeEvent
