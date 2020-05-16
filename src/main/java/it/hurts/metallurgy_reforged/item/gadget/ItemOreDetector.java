@@ -17,7 +17,7 @@ import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.recipe.ShapedMetalRecipe;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
@@ -134,7 +134,7 @@ public class ItemOreDetector extends ItemExtra {
 
 		for (int i = 0; i < ingots.size(); i++)
 		{
-			Metal metal = ShapedMetalRecipe.getMetalFromOreDictStack(ingots.get(i));
+			Metal metal = ItemUtils.getMetalFromOreDictStack(ingots.get(i));
 			String metalName = metal.toString();
 			nbt.setString("metal_" + (i + 1), metalName);
 		}

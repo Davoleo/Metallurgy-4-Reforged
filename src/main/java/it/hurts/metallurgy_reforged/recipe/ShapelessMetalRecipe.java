@@ -26,7 +26,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import javax.annotation.Nonnull;
 
-import static it.hurts.metallurgy_reforged.recipe.ShapedMetalRecipe.getMetalFromOreDictStack;
+import static it.hurts.metallurgy_reforged.util.ItemUtils.getMetalFromOreDictStack;
 
 public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeMetal {
 

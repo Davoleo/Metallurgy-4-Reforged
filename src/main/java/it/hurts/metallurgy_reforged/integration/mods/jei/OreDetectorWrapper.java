@@ -15,16 +15,17 @@ import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
-import mezz.jei.api.recipe.wrapper.ICraftingRecipeWrapper;
+import mezz.jei.api.recipe.wrapper.ICustomCraftingRecipeWrapper;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
 
-public class OreDetectorWrapper implements ICraftingRecipeWrapper {
+public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 
 	private int size;
 
@@ -33,12 +34,44 @@ public class OreDetectorWrapper implements ICraftingRecipeWrapper {
 		this.size = size;
 	}
 
+	//Setting the outputs manually in the setRecipe Method because otherwise JEI thinks all the detector items are the same
+	// and doesn't loop over the different detectors
+	@Override
+	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IIngredients ingredients)
+	{
+
+		List<ItemStack> outputs = Lists.newArrayList();
+		//Set the inputs
+		List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
+		for (int i = 1; i <= inputs.size(); i++)
+			recipeLayout.getItemStacks().set(i, inputs.get(i - 1));
+
+		ItemStack detector = new ItemStack(ModItems.oreDetector);
+
+		for (int i = 0; i < ModMetals.metalMap.size(); i++)
+		{
+			List<ItemStack> currentRecipeIngots = Lists.newArrayList();
+
+			//skipping the first cycle because the first slot is taken by the ore detector
+			for (int j = 1; j <= size; j++)
+			{
+				currentRecipeIngots.add(inputs.get(j).get(i));
+			}
+
+			ItemOreDetector.addIngotsToDetector(detector, currentRecipeIngots);
+			outputs.add(detector.copy());
+		}
+
+		//Setting the outputs (0 is the output slot id)
+		recipeLayout.getItemStacks().set(0, outputs);
+		recipeLayout.setShapeless();
+	}
+
 	@Override
 	public void getIngredients(@Nonnull IIngredients ingredients)
 	{
 		//The List of the 9 Lists of possible itemstacks of the recipe
 		List<List<ItemStack>> inputs = Lists.newArrayList();
-		List<ItemStack> outputs = Lists.newArrayList();
 
 		//Add the detector item in the first slot
 		inputs.add(Collections.singletonList(new ItemStack(ModItems.oreDetector)));
@@ -50,28 +83,10 @@ public class OreDetectorWrapper implements ICraftingRecipeWrapper {
 		{
 			//offsets the metal list by 1
 			Collections.rotate(metalCombs, 1);
-			inputs.add(metalCombs);
-		}
-
-		for (int i = 0; i < metalCombs.size(); i++)
-		{
-			ItemStack detector = new ItemStack(ModItems.oreDetector);
-
-			List<ItemStack> currentRecipeIngots = Lists.newArrayList();
-
-			//skipping the first cycle because the first slot is taken by the ore detector
-			for (int j = 1; j <= size; j++)
-			{
-				currentRecipeIngots.add(inputs.get(j).get(i));
-			}
-
-			ItemOreDetector.addIngotsToDetector(detector, currentRecipeIngots);
-			outputs.add(detector);
+			inputs.add(Lists.newArrayList(metalCombs));
 		}
 
 		ingredients.setInputLists(VanillaTypes.ITEM, inputs);
-		ingredients.setOutputs(VanillaTypes.ITEM, outputs);
-
 	}
 
 }

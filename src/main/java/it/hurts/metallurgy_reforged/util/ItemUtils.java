@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
@@ -35,6 +36,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
@@ -203,6 +205,33 @@ public class ItemUtils {
 			ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
 			multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
 		}
+	}
+
+	/**
+	 * Checks an ItemStack has an oredicted Metallurgy Metal and returns it
+	 *
+	 * @param stack The ItemStack we're performing the check on
+	 *
+	 * @return The Metal that the stack is made of
+	 */
+	public static Metal getMetalFromOreDictStack(ItemStack stack)
+	{
+		if (stack.isEmpty())
+			return null;
+
+		int[] ids = OreDictionary.getOreIDs(stack);
+
+		for (int id : ids)
+		{
+			String ore = OreDictionary.getOreName(id);
+
+			String snakeOre = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, ore);
+			String[] snakeArray = snakeOre.split("_");
+			String metalName = String.join("_", ArrayUtils.removeElement(snakeArray, snakeArray[0]));
+			return ModMetals.metalMap.get(metalName);
+		}
+
+		return null;
 	}
 
 }

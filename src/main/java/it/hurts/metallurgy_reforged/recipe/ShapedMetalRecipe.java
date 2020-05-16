@@ -11,12 +11,11 @@
 
 package it.hurts.metallurgy_reforged.recipe;
 
-import com.google.common.base.CaseFormat;
 import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryCrafting;
@@ -26,11 +25,9 @@ import net.minecraft.util.JsonUtils;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IRecipeFactory;
 import net.minecraftforge.common.crafting.JsonContext;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import javax.annotation.Nonnull;
-import java.util.Map;
 
 public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 
@@ -54,7 +51,7 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 		{
 			ItemStack stack = crafting.getStackInSlot(i);
 
-			Metal otherMetal = getMetalFromOreDictStack(stack);
+			Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
 			if (otherMetal != null)
 			{
 				if (metalModel == null)
@@ -131,32 +128,6 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 			default:
 				return ItemStack.EMPTY;
 		}
-	}
-
-	public static Metal getMetalFromOreDictStack(ItemStack stack)
-	{
-		if (stack.isEmpty())
-			return null;
-
-		int[] ids = OreDictionary.getOreIDs(stack);
-
-		for (int id : ids)
-		{
-			String ore = OreDictionary.getOreName(id);
-
-			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-			{
-				String metalName = entry.getKey();
-				String oreMetalName = ore.substring(ore.length() - (metalName.length()));
-
-				if (oreMetalName.equals(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metalName)))
-				{
-					return entry.getValue();
-				}
-			}
-		}
-
-		return null;
 	}
 
 	@SuppressWarnings("unused")

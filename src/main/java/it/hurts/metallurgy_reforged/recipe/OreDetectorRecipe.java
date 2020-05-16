@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -46,7 +47,7 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
-			Metal otherMetal = ShapedMetalRecipe.getMetalFromOreDictStack(stack);
+			Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
 			if (otherMetal != null)
 			{
 				if (otherMetal == metalModel)
