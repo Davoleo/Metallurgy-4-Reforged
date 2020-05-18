@@ -48,7 +48,7 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
-			if (otherMetal != null)
+			if (otherMetal != null && !otherMetal.isAlloy())
 			{
 				if (otherMetal == metalModel)
 					return ItemStack.EMPTY;
