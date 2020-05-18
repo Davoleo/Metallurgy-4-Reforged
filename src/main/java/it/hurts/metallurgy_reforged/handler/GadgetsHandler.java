@@ -22,6 +22,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -159,7 +160,7 @@ public class GadgetsHandler {
 
 					float[] rgb = metal.getStats().getColorRGBValues();
 					double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) event.getPartialTicks();
-					double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks() + player.getEyeHeight();
+					double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks();
 					double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) event.getPartialTicks();
 
 					double offsetX = d0 - blockPos.getX();
@@ -170,7 +171,13 @@ public class GadgetsHandler {
 					GlStateManager.translate(-offsetX, -offsetY, -offsetZ);
 					GlStateManager.disableDepth();
 
+					GlStateManager.disableTexture2D();
+					RenderHelper.disableStandardItemLighting();
+
 					RenderGlobal.drawSelectionBoundingBox(Block.FULL_BLOCK_AABB, rgb[0], rgb[1], rgb[2], 1);
+
+					RenderHelper.enableStandardItemLighting();
+					GlStateManager.enableTexture2D();
 
 					GlStateManager.enableDepth();
 					GlStateManager.translate(offsetX, offsetY, offsetZ);
