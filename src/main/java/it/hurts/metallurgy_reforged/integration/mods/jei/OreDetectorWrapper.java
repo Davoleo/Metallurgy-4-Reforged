@@ -39,7 +39,6 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IIngredients ingredients)
 	{
-
 		List<ItemStack> outputs = Lists.newArrayList();
 		//Set the inputs
 		List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
@@ -48,7 +47,7 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 
 		ItemStack detector = new ItemStack(ModItems.oreDetector);
 
-		for (int i = 0; i < ModMetals.metalMap.size(); i++)
+		for (int i = 0; i < inputs.get(1).size(); i++)
 		{
 			List<ItemStack> currentRecipeIngots = Lists.newArrayList();
 
@@ -65,6 +64,7 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 		//Setting the outputs (0 is the output slot id)
 		recipeLayout.getItemStacks().set(0, outputs);
 		recipeLayout.setShapeless();
+
 	}
 
 	@Override
@@ -77,7 +77,12 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 		inputs.add(Collections.singletonList(new ItemStack(ModItems.oreDetector)));
 
 		List<ItemStack> metalCombs = Lists.newArrayList();
-		ModMetals.metalMap.forEach((name, metal) -> metalCombs.add(new ItemStack(metal.getIngot())));
+		ModMetals.metalMap.forEach((name, metal) -> {
+			if (!metal.isAlloy())
+			{
+				metalCombs.add(new ItemStack(metal.getIngot()));
+			}
+		});
 
 		for (int i = 0; i < size; i++)
 		{
