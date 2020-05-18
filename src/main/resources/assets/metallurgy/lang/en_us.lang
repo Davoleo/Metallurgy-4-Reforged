@@ -466,7 +466,58 @@ tile.metallurgy.lutetium_crystals.name=Lutetium Crystals
 tile.metallurgy.osmium_crystals.name=Osmium Crystals
 tile.metallurgy.etherium_crystals.name=Etherium Crystals
 
-# Large Metal Bricks
+# Metal Hazard Blocks
+tile.metallurgy.electrum_hazard_block.name=Electrum Hazard Block
+tile.metallurgy.copper_hazard_block.name=Copper Hazard Block
+tile.metallurgy.bronze_hazard_block.name=Bronze Hazard Block
+tile.metallurgy.manganese_hazard_block.name=Manganese Hazard Block
+tile.metallurgy.tin_hazard_block.name=Tin Hazard Block
+tile.metallurgy.steel_hazard_block.name=Steel Hazard Block
+tile.metallurgy.hepatizon_hazard_block.name=Hepatizon Hazard Block
+tile.metallurgy.prometheum_hazard_block.name=Prometheum Hazard Block
+tile.metallurgy.angmallen_hazard_block.name=Angmallen Hazard Block
+tile.metallurgy.eximite_hazard_block.name=Eximite Hazard Block
+tile.metallurgy.meutoite_hazard_block.name=Meutoite Hazard Block
+tile.metallurgy.desichalkos_hazard_block.name=Desichalkos Hazard Block
+tile.metallurgy.black_steel_hazard_block.name=Black Steel Hazard Block
+tile.metallurgy.infuscolium_hazard_block.name=Infuscolium Hazard Block
+tile.metallurgy.carmot_hazard_block.name=Carmot Hazard Block
+tile.metallurgy.astral_silver_hazard_block.name=Astral Silver Hazard Block
+tile.metallurgy.oureclase_hazard_block.name=Oureclase Hazard Block
+tile.metallurgy.deep_iron_hazard_block.name=Deep Iron Hazard Block
+tile.metallurgy.quicksilver_hazard_block.name=Quicksilver Hazard Block
+tile.metallurgy.mithril_hazard_block.name=Mithril Hazard Block
+tile.metallurgy.haderoth_hazard_block.name=Haderoth Hazard Block
+tile.metallurgy.atlarus_hazard_block.name=Atlarus Hazard Block
+tile.metallurgy.adamantine_hazard_block.name=Adamantine Hazard Block
+tile.metallurgy.celenegil_hazard_block.name=Celenegil Hazard Block
+tile.metallurgy.tartarite_hazard_block.name=Tartarite Hazard Block
+tile.metallurgy.rubracium_hazard_block.name=Rubracium Hazard Block
+tile.metallurgy.midasium_hazard_block.name=Midasium Hazard Block
+tile.metallurgy.shadow_steel_hazard_block.name=Shadow Steel Hazard Block
+tile.metallurgy.lemurite_hazard_block.name=Lemurite Hazard Block
+tile.metallurgy.vyroxeres_hazard_block.name=Vyroxeres Hazard Block
+tile.metallurgy.kalendrite_hazard_block.name=Kalendrite Hazard Block
+tile.metallurgy.krik_hazard_block.name=Krik Hazard Block
+tile.metallurgy.sanguinite_hazard_block.name=Sanguinite Hazard Block
+tile.metallurgy.alduorite_hazard_block.name=Alduorite Hazard Block
+tile.metallurgy.ignatius_hazard_block.name=Ignatius Hazard Block
+tile.metallurgy.shadow_iron_hazard_block.name=Shadow Iron Hazard Block
+tile.metallurgy.damascus_steel_hazard_block.name=Damascus Steel Hazard Block
+tile.metallurgy.orichalcum_hazard_block.name=Orichalcum Hazard Block
+tile.metallurgy.ceruclase_hazard_block.name=Ceruclase Hazard Block
+tile.metallurgy.vulcanite_hazard_block.name=Vulcanite Hazard Block
+tile.metallurgy.inolashite_hazard_block.name=Inolashite Hazard Block
+tile.metallurgy.amordrine_hazard_block.name=Amordrine Hazard Block
+tile.metallurgy.zinc_hazard_block.name=Zinc Hazard Block
+tile.metallurgy.silver_hazard_block.name=Silver Hazard Block
+tile.metallurgy.platinum_hazard_block.name=Platinum Hazard Block
+tile.metallurgy.brass_hazard_block.name=Brass Hazard Block
+tile.metallurgy.lutetium_hazard_block.name=Lutetium Hazard Block
+tile.metallurgy.osmium_hazard_block.name=Osmium Hazard Block
+tile.metallurgy.etherium_hazard_block.name=Etherium Hazard Block
+
+# Metal Reinforced Glass
 tile.metallurgy.electrum_reinforced_glass.name=Electrum Reinforced Glass
 tile.metallurgy.copper_reinforced_glass.name=Copper Reinforced Glass
 tile.metallurgy.bronze_reinforced_glass.name=Bronze Reinforced Glass
@@ -833,6 +884,7 @@ item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
 item.metallurgy.lemurite_shield.name=Lemurite Shield
+item.metallurgy.ore_detector.name=Ore Detector
 tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 #Items

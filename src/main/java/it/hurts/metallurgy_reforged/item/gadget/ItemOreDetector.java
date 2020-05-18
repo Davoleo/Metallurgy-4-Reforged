@@ -13,18 +13,18 @@ package it.hurts.metallurgy_reforged.item.gadget;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Lists;
-import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
@@ -37,7 +37,6 @@ public class ItemOreDetector extends ItemExtra {
 	public ItemOreDetector()
 	{
 		super("ore_detector", MetallurgyTabs.tabSpecial, "gadget");
-
 		this.setMaxStackSize(1);
 	}
 
@@ -55,75 +54,78 @@ public class ItemOreDetector extends ItemExtra {
 		return getDetectorMetals(stack).size() * 100;
 	}
 
+	@Nonnull
 	@Override
-	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
+	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
-		if (stack.getMaxDamage() == 0 || !stack.hasTagCompound())
-			return;
+		ItemStack stack = playerIn.getHeldItem(handIn);
 
-		if (count % 4 == 0)
+		if (getMaxDamage(stack) > 0)
 		{
-			stack.damageItem(1, player);
-
-			if (stack.getItemDamage() >= stack.getMaxDamage())
+			if (stack.getItemDamage() >= getMaxDamage(stack))
 			{
-				for (int i = 0; i < 3; i++)
-				{
-					stack.removeSubCompound("ingot_" + i);
-				}
+				ItemStack copy = new ItemStack(this);
+				playerIn.setHeldItem(handIn, copy);
+			}
+			else
+			{
+				stack.damageItem(1, playerIn);
 			}
 		}
+
+		return new ActionResult<>(EnumActionResult.PASS, stack);
 	}
+
+
+	@Override
+	public boolean shouldCauseReequipAnimation(@Nonnull ItemStack oldStack, @Nonnull ItemStack newStack, boolean slotChanged)
+	{
+		return slotChanged;
+	}
+
 
 	@Override
 	public int getRGBDurabilityForDisplay(@Nonnull ItemStack stack)
 	{
 		List<Metal> metals = getDetectorMetals(stack);
 
-		switch (metals.size())
+		if (!metals.isEmpty())
 		{
-			case 1:
-				return metals.get(0).getStats().getColorHex();
-			case 2:
-			case 3:
-				return getColorShiftFromMetals(metals);
-			default:
-				return 0xFFFFFF;
-
-		}
-	}
-
-	private int getColorShiftFromMetals(List<Metal> metals)
-	{
-
-		float[][] metalColors = new float[][]{
-				metals.get(0).getStats().getColorRGBValues(),
-				metals.get(1).getStats().getColorRGBValues(),
-				metals.size() > 2 ? metals.get(2).getStats().getColorRGBValues() : new float[]{1, 1, 1},
-				};
-
-		double factor = 0.5f * (Math.sin(6.0f * Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks())) + 1.0f);
-
-		if (metals.size() < 3)
-		{
-			return Utils.intColorFromRGB(
-					(int) (255 * (metalColors[0][0] * factor + metalColors[1][0] * (1.0 - factor))),
-					(int) (255 * (metalColors[0][1] * factor + metalColors[1][1] * (1.0 - factor))),
-					(int) (255 * (metalColors[0][2] * factor + metalColors[1][2] * (1.0 - factor)))
-			);
+			return metals.get(0).getStats().getColorHex();
 		}
 		else
 		{
-			int i = ((int) (GadgetsHandler.ticks % 3));
-			int j = i != 2 ? i + 1 : 0;
-
-			return Utils.intColorFromRGB(
-					(int) (255 * (metalColors[i][0] * factor + metalColors[j][0] * (1.0 - factor))),
-					(int) (255 * (metalColors[i][1] * factor + metalColors[j][1] * (1.0 - factor))),
-					(int) (255 * (metalColors[i][2] * factor + metalColors[j][2] * (1.0 - factor)))
-			);
+			return 0xFFFFFF;
 		}
 	}
+
+	//private int getColorShiftFromMetals(List<Metal> metals)
+	//{
+	//	float[][] metalColors = new float[metals.size()][3];
+	//
+	//	for (int i = 0; i < metalColors.length; i++)
+	//	{
+	//		metalColors[i] = metals.get(i).getStats().getColorRGBValues();
+	//	}
+	//
+	//	double factor = 0.5F * (Math.sin(6.0F * Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks())) + 1.0F);
+	//
+	//	Math.rint(1237);
+	//	//-1 0 1
+	//	// TODO: 16/05/2020 Fix 3 Metals Color Shift
+	//	if (factor == 1 || factor == 0)
+	//	{
+	//		System.out.println("test");
+	//		colorId1 = colorId1 < metals.size() - 1 ? colorId1 + 1 : 0;
+	//		colorId2 = colorId2 < metals.size() - 1 ? colorId2 + 1 : 0;
+	//	}
+	//
+	//	return Utils.intColorFromRGB(
+	//			(int) (255 * (metalColors[colorId1][0] * factor + metalColors[colorId2][0] * (1.0 - factor) + metalColors[colorId1][0] * factor)),
+	//			(int) (255 * (metalColors[colorId1][1] * factor + metalColors[colorId2][1] * (1.0 - factor))),
+	//			(int) (255 * (metalColors[colorId1][2] * factor + metalColors[colorId2][2] * (1.0 - factor)))
+	//	);
+	//}
 
 	public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
 	{
@@ -144,9 +146,7 @@ public class ItemOreDetector extends ItemExtra {
 
 	/**
 	 * Returns the current Scanner Metals
-	 *
 	 * @param detector The queried scanner
-	 *
 	 * @return The Hash Set of the ores the scanner has in the NBT Tag
 	 */
 	public static List<Metal> getDetectorMetals(ItemStack detector)

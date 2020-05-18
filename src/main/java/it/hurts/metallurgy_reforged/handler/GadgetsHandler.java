@@ -36,6 +36,8 @@ public class GadgetsHandler {
 	private static MovementInput inputCheck;
 	public static long ticks = 0;
 
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event)
 	{
 		if (event.phase == TickEvent.Phase.START)
