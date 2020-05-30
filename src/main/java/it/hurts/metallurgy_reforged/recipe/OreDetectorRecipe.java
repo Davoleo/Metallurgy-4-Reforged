@@ -44,6 +44,11 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 		NonNullList<ItemStack> inputs = NonNullList.create();
 		Metal metalModel = null;
 
+		if (this.input.size() == 1)
+		{
+			return new ItemStack(ModItems.oreDetector);
+		}
+
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);

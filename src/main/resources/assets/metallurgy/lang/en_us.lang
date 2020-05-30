@@ -1231,6 +1231,7 @@ tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-di
 tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 tooltip.metallurgy.thermite=§cActs as a fuel with the same strength of coal (works best in metallurgy machines 200% efficiency!) [check JEI for more information]
+tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the active materials in the ore detector
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Axes

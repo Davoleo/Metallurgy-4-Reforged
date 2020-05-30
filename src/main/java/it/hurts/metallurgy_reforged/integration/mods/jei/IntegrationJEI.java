@@ -108,7 +108,7 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addRecipes(recipes, VanillaRecipeCategoryUid.CRAFTING);
 
 		List<OreDetectorWrapper> oreDetectorRecipes = new ArrayList<>();
-		for (int i = 1; i <= 3; i++)
+		for (int i = 0; i <= 3; i++)
 			oreDetectorRecipes.add(new OreDetectorWrapper(i));
 
 		registry.addRecipes(oreDetectorRecipes, VanillaRecipeCategoryUid.CRAFTING);
