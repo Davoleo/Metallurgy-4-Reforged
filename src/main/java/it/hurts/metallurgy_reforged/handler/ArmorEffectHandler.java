@@ -42,7 +42,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
@@ -65,25 +64,6 @@ public class ArmorEffectHandler {
 	{
 		EntityPlayer pl = event.player; //The Player
 		World world = pl.world;
-		//		Astral Silver Armor (Jump Boost)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.ASTRAL_SILVER) && ArmorEffectsConfig.astralSilverArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false));
-
-		//		Celenegil Armor (Resistence)
-		if (ArmorEffectsConfig.celenegilArmorEffect)
-		{
-			switch (EventUtils.getArmorPiecesCount(event.player, ModMetals.CELENEGIL.getArmorSet()))
-			{
-				case 1:
-				case 2:
-					event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
-					break;
-				case 3:
-				case 4:
-					event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
-			}
-		}
-
 
 		//		Deep Iron Armor (Swimming Speed when the player is in water and on ground)
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.DEEP_IRON)
@@ -154,25 +134,6 @@ public class ArmorEffectHandler {
 
 
 		}
-
-		//		Vulcanite Armor (Fire Immunity) //Removes Fire Render
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.VULCANITE) && event.player.isBurning() && ArmorEffectsConfig.vulcaniteArmorEffect)
-			event.player.extinguish();
-
-		//		Angmallen Armor (Luck I for Vampirism)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.ANGMALLEN) && ArmorEffectsConfig.angmallenArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 80, 0, false, false));
-
-
-		//		Kalendrite Armor (Strenght I)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.KALENDRITE) && ArmorEffectsConfig.kaledriteArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false));
-
-
-		//		Amordrine Armor (Strenght II)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.AMORDRINE) && ArmorEffectsConfig.amordrineArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 1, false, false));
-
 
 		//		Adamantine Armor (Saturation)
 		if (ArmorEffectsConfig.adamantineArmorEffect && !world.isRemote && EventUtils.isPlayerWearingArmor(event.player, ModMetals.ADAMANTINE))
@@ -252,19 +213,6 @@ public class ArmorEffectHandler {
 				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
 			}
 		}
-
-		//		Carmot Armor (Haste I)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.CARMOT) && ArmorEffectsConfig.carmotArmorEffect)
-			event.player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 60, 0, false, false));
-
-
-		//		Prometheum Armor (No potion, need to implement a new Effect)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.PROMETHEUM) && ArmorEffectsConfig.prometheumArmorEffect)
-			event.player.removePotionEffect(MobEffects.POISON);
-
-		//		Shadow Iron Armor (No Blindness)
-		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.SHADOW_IRON))
-			event.player.removePotionEffect(MobEffects.BLINDNESS);
 
 		//		removes the blindness effect when wearing shadow steel armor
 		if (EventUtils.isPlayerWearingArmor(event.player, ModMetals.SHADOW_STEEL) && pl.isPotionActive(MobEffects.BLINDNESS))
@@ -352,14 +300,6 @@ public class ArmorEffectHandler {
 		}
 	}
 
-	//		FireImmunity
-	@SubscribeEvent
-	public static void cancelFireDamage(LivingAttackEvent event)
-	{
-		if (event.getEntity() instanceof EntityPlayer && event.getSource().isFireDamage() && EventUtils.isPlayerWearingArmor((EntityPlayer) event.getEntity(), ModMetals.VULCANITE))
-			event.setCanceled(true);
-	}
-
 	@SubscribeEvent
 	public static void cancelPlayerFallDamage(LivingFallEvent event)
 	{
@@ -381,15 +321,12 @@ public class ArmorEffectHandler {
 			EntityPlayer player = (EntityPlayer) e.getEntity();
 
 			int osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
-
 			int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
 
 			float strenght = e.getOriginalStrength();
-
 			float multiplier;
 
 			multiplier = (float) (((4 - osmiumMultiplier) * 0.17) + ((4 - lutetiumMultiplier) * 0.138));
-
 			e.setStrength(e.getOriginalStrength() * multiplier);
 		}
 	}

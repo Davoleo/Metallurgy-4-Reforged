@@ -12,8 +12,8 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -52,10 +52,9 @@ public class PickaxeEffectHandler {
 	}
 
 	@SubscribeEvent
-	public static void onBlockBreak(BlockEvent.BreakEvent event)
+	public static void onBlockHarvest(BlockEvent.HarvestDropsEvent event)
 	{
-
-		Item heldItem = event.getPlayer().getHeldItemMainhand().getItem();
+		Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
 		IBlockState blockState = world.getBlockState(pos);

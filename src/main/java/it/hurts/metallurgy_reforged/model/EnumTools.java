@@ -9,7 +9,9 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.item.tool;
+package it.hurts.metallurgy_reforged.model;
+
+import it.hurts.metallurgy_reforged.item.tool.*;
 
 public enum EnumTools {
 	AXE("axe", ItemAxeBase.class),

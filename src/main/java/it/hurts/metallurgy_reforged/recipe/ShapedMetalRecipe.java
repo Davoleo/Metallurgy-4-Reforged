@@ -13,8 +13,8 @@ package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.EntityEquipmentSlot;

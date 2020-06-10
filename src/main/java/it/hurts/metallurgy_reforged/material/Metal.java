@@ -17,7 +17,7 @@ import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;

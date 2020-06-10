@@ -67,7 +67,7 @@ public class ArmorEffectsConfig {
 	@Config.Name("Quicksilver Armor Effect")
 	@Config.Comment("Movements speed up")
 	public static boolean quicksilverArmorEffect = true;
-	@Config.Name("Shadow Steel Armor Effect")
+	@Config.Name("Shadow Iron Armor Effect")
 	@Config.Comment("Absorbed damage is proportional to the darkness")
 	public static boolean shadowSteelArmorEffect = true;
 	@Config.Name("Vulcanite Armor Effect")
