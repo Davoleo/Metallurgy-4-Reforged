@@ -18,15 +18,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class AbstractMetallurgyEffect {
@@ -46,6 +44,7 @@ public abstract class AbstractMetallurgyEffect {
 
 	protected abstract boolean isToolEffect();
 
+	@Nullable
 	protected abstract EnumTools getToolClass();
 
 	public String getTooltip()
@@ -71,7 +70,7 @@ public abstract class AbstractMetallurgyEffect {
 	public void onPlayerTick(EntityPlayer player)
 	{ }
 
-	public void onPlayerUseItem(Item item, int duration)
+	public void onPlayerUseItem(LivingEntityUseItemEvent event)
 	{ }
 
 	@SideOnly(Side.CLIENT)
@@ -87,7 +86,7 @@ public abstract class AbstractMetallurgyEffect {
 	public void onPlayerFalling(LivingFallEvent event)
 	{ }
 
-	public void onPlayerKnockback(EntityPlayer player)
+	public void onPlayerKnockback(LivingKnockBackEvent event)
 	{ }
 
 	public void onBlockHarvested(EntityPlayer harvester, List<ItemStack> drops, int fortuneLevel, float dropChance, boolean isSilkTouching)

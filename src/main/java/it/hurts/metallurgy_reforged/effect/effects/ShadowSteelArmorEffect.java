@@ -21,6 +21,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
+import javax.annotation.Nullable;
+
 public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
 
 	public ShadowSteelArmorEffect()
@@ -40,6 +42,7 @@ public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
 		return false;
 	}
 
+	@Nullable
 	@Override
 	protected EnumTools getToolClass()
 	{

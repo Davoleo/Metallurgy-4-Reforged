@@ -17,6 +17,8 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 
+import javax.annotation.Nullable;
+
 public abstract class ArmorPotionEffect extends AbstractMetallurgyEffect {
 
 	protected PotionEffect effect;
@@ -36,6 +38,7 @@ public abstract class ArmorPotionEffect extends AbstractMetallurgyEffect {
 		return false;
 	}
 
+	@Nullable
 	@Override
 	public EnumTools getToolClass()
 	{

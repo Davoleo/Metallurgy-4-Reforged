@@ -18,6 +18,8 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 
+import javax.annotation.Nullable;
+
 public class ShadowIronArmorEffect extends AbstractMetallurgyEffect {
 
 	public ShadowIronArmorEffect()
@@ -37,6 +39,7 @@ public class ShadowIronArmorEffect extends AbstractMetallurgyEffect {
 		return false;
 	}
 
+	@Nullable
 	@Override
 	protected EnumTools getToolClass()
 	{

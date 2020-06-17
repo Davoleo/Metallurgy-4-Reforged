@@ -18,6 +18,8 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 
+import javax.annotation.Nullable;
+
 public class VulcaniteArmorEffect extends AbstractMetallurgyEffect {
 
 	public VulcaniteArmorEffect()
@@ -37,6 +39,7 @@ public class VulcaniteArmorEffect extends AbstractMetallurgyEffect {
 		return false;
 	}
 
+	@Nullable
 	@Override
 	protected EnumTools getToolClass()
 	{
