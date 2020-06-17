@@ -12,13 +12,13 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.effect.effects.CelenegilArmorEffect;
+import it.hurts.metallurgy_reforged.effect.effects.PrometheumArmorEffect;
+import it.hurts.metallurgy_reforged.effect.effects.ShadowIronArmorEffect;
+import it.hurts.metallurgy_reforged.effect.effects.VulcaniteArmorEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -80,103 +80,14 @@ public class MetallurgyEffects {
 		}
 	};
 
-	// TODO: 10/06/2020 MOVE THESE ANONYMOUS CLASSES IN THEIR OWN FILES
-	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
-	public static final AbstractMetallurgyEffect vulcaniteEffect = new AbstractMetallurgyEffect(ModMetals.VULCANITE) {
-		@Override
-		protected boolean isEnabled()
-		{
-			return ArmorEffectsConfig.vulcaniteArmorEffect;
-		}
-
-		@Override
-		protected boolean isToolEffect()
-		{
-			return false;
-		}
-
-		@Override
-		protected EnumTools getToolClass()
-		{
-			return null;
-		}
-
-		@Override
-		public void onPlayerTick(EntityPlayer player)
-		{
-			if (EventUtils.isPlayerWearingArmor(player, metal) && player.isBurning())
-			{
-				player.extinguish();
-			}
-		}
-
-		@Override
-		public void onPlayerAttacked(LivingAttackEvent event)
-		{
-			if (event.getEntity() instanceof EntityPlayer && event.getSource().isFireDamage() && EventUtils.isPlayerWearingArmor((EntityPlayer) event.getEntity(), metal))
-				event.setCanceled(true);
-		}
-	};
-
 	//Prometheum Armor (No potion, need to implement a new Effect)
-	public static final AbstractMetallurgyEffect prometheumEffect = new AbstractMetallurgyEffect(ModMetals.PROMETHEUM) {
-		@Override
-		protected boolean isEnabled()
-		{
-			return ArmorEffectsConfig.prometheumArmorEffect;
-		}
-
-		@Override
-		protected boolean isToolEffect()
-		{
-			return false;
-		}
-
-		@Override
-		protected EnumTools getToolClass()
-		{
-			return null;
-		}
-
-		@Override
-		public void onPlayerTick(EntityPlayer player)
-		{
-			if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.POISON))
-			{
-				player.removePotionEffect(MobEffects.POISON);
-			}
-		}
-	};
+	public static final AbstractMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
 
 	//Shadow Iron Armor (No Blindness)
-	public static final AbstractMetallurgyEffect shadowIronEffect = new AbstractMetallurgyEffect(ModMetals.SHADOW_IRON) {
-		@Override
-		protected boolean isEnabled()
-		{
-			return true;
-		}
+	public static final AbstractMetallurgyEffect shadowIronEffect = new ShadowIronArmorEffect();
 
-		@Override
-		protected boolean isToolEffect()
-		{
-			return false;
-		}
-
-		@Override
-		protected EnumTools getToolClass()
-		{
-			return null;
-		}
-
-		@Override
-		public void onPlayerTick(EntityPlayer player)
-		{
-			if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
-			{
-				player.removePotionEffect(MobEffects.BLINDNESS);
-			}
-		}
-	};
+	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
+	public static final AbstractMetallurgyEffect vulcaniteEffect = new VulcaniteArmorEffect();
 
 
 }

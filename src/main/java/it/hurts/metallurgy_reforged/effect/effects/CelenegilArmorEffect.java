@@ -9,9 +9,10 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.effect;
+package it.hurts.metallurgy_reforged.effect.effects;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.effect.ArmorPotionEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: ShadowSteelArmorEffect
+ * Class: VulcaniteArmorEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,28 +9,26 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.effect;
+package it.hurts.metallurgy_reforged.effect.effects;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
+public class VulcaniteArmorEffect extends AbstractMetallurgyEffect {
 
-	public ShadowSteelArmorEffect()
+	public VulcaniteArmorEffect()
 	{
-		super(ModMetals.SHADOW_STEEL);
+		super(ModMetals.VULCANITE);
 	}
 
 	@Override
 	protected boolean isEnabled()
 	{
-		return ArmorEffectsConfig.shadowSteelArmorEffect;
+		return ArmorEffectsConfig.vulcaniteArmorEffect;
 	}
 
 	@Override
@@ -46,23 +44,12 @@ public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	public void onEntityHurt(LivingHurtEvent event)
+	public void onPlayerTick(EntityPlayer player)
 	{
-		Entity entity = event.getEntity();
-
-		if (entity instanceof EntityPlayer)
+		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isBurning())
 		{
-			EntityPlayer player = ((EntityPlayer) entity);
-
-			if (EventUtils.isPlayerWearingArmor(player, metal))
-			{
-				float amount = event.getAmount();
-				//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
-				amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
-				event.setAmount(amount);
-			}
+			player.extinguish();
 		}
-
 	}
 
 }
