@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: PrometheumArmorEffect
+ * Class: DeepIronPickaxeEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,50 +9,51 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.effect.effects;
+package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import javax.annotation.Nullable;
 
-public class PrometheumArmorEffect extends AbstractMetallurgyEffect {
+public class DeepIronPickaxeEffect extends AbstractMetallurgyEffect {
 
-	public PrometheumArmorEffect()
+	public DeepIronPickaxeEffect()
 	{
-		super(ModMetals.PROMETHEUM);
+		super(ModMetals.DEEP_IRON);
 	}
 
 	@Override
 	protected boolean isEnabled()
 	{
-		return ArmorEffectsConfig.prometheumArmorEffect;
+		return ToolEffectsConfig.deepIronPickaxeEffect;
 	}
 
 	@Override
 	protected boolean isToolEffect()
 	{
-		return false;
+		return true;
 	}
 
 	@Nullable
 	@Override
 	protected EnumTools getToolClass()
 	{
-		return null;
+		return EnumTools.PICKAXE;
 	}
 
 	@Override
-	public void onPlayerTick(EntityPlayer player)
+	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.POISON))
+		EntityPlayer player = event.getEntityPlayer();
+
+		if (player.isInWater() && player.getHeldItemMainhand().getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE))
 		{
-			player.removePotionEffect(MobEffects.POISON);
+			event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}
 	}
 

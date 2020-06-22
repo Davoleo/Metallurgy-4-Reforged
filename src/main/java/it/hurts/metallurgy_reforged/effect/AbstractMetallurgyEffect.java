@@ -13,14 +13,15 @@ package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -54,16 +55,16 @@ public abstract class AbstractMetallurgyEffect {
 		{
 			if (getToolClass() != null)
 			{
-				return "tooltip.metallurgy." + metal.toString() + "_" + getToolClass().getName() + "_effect";
+				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_" + getToolClass().getName() + "_effect");
 			}
 			else
 			{
-				return "tooltip.metallurgy." + metal.toString() + "_tool_effect";
+				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_tool_effect");
 			}
 		}
 		else
 		{
-			return "tooltip.metallurgy." + metal.toString() + "_armor_effect";
+			return Utils.localize("tooltip.metallurgy." + metal.toString() + "_armor_effect");
 		}
 	}
 
@@ -89,7 +90,7 @@ public abstract class AbstractMetallurgyEffect {
 	public void onPlayerKnockback(LivingKnockBackEvent event)
 	{ }
 
-	public void onBlockHarvested(EntityPlayer harvester, List<ItemStack> drops, int fortuneLevel, float dropChance, boolean isSilkTouching)
+	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
 	{ }
 
 	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)

@@ -24,7 +24,6 @@ public class SubEvent {
 
 	public static void init()
 	{
-		MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
 		MinecraftForge.EVENT_BUS.register(AxeEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);

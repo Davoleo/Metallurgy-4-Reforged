@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: ShovelEffectHandler
+ * Class: IgnatiusAxeShovelEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,42 +9,60 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.handler;
+package it.hurts.metallurgy_reforged.effect.tool;
 
+import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
+import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ShovelEffectHandler {
+public abstract class IgnatiusAxeShovelEffect extends AbstractMetallurgyEffect {
 
-	@SubscribeEvent
-	public static void onBlockDrop(BlockEvent.HarvestDropsEvent event) {
-		if (event.getHarvester() != null)
+	public IgnatiusAxeShovelEffect()
+	{
+		super(ModMetals.IGNATIUS);
+	}
+
+	@Override
+	protected boolean isEnabled()
+	{
+		return getToolClass() == EnumTools.AXE ? ToolEffectsConfig.ignatiusAxeEffect : ToolEffectsConfig.ignatiusShovelEffect;
+	}
+
+	@Override
+	protected boolean isToolEffect()
+	{
+		return true;
+	}
+
+	@Nullable
+	@Override
+	protected abstract EnumTools getToolClass();
+
+	@Override
+	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
+	{
+		if (event.getHarvester().getHeldItemMainhand().getItem().equals(ModMetals.IGNATIUS.getTool(EnumTools.AXE)))
 		{
-			Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
-			World world = event.getWorld();
-			BlockPos pos = event.getPos();
-
-			if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.SHOVEL)))
-			{
-				dropSmeltedItems(event, world, pos);
-			}
+			dropSmeltedItems(event);
 		}
 	}
 
-	protected static void dropSmeltedItems(BlockEvent.HarvestDropsEvent event, World world, BlockPos pos) {
-		List<ItemStack> drops = event.getDrops();
-		for (ItemStack drop : drops)
+	private void dropSmeltedItems(BlockEvent.HarvestDropsEvent event)
+	{
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+
+		for (ItemStack drop : event.getDrops())
 		{
 			ItemStack smeltedItem = FurnaceRecipes.instance().getSmeltingResult(drop);
 

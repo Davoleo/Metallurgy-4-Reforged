@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.effect.effects;
+package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;

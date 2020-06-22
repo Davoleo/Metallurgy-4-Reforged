@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: PickaxeEffectHandler
+ * Class: IgnatiusPickaxeEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -9,50 +9,53 @@
  * --------------------------------------------------------------------------------------------------------
  */
 
-package it.hurts.metallurgy_reforged.handler;
+package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
+import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class PickaxeEffectHandler {
+import javax.annotation.Nullable;
 
-	@SubscribeEvent
-	public static void breakSpeed(PlayerEvent.BreakSpeed event)
+public class IgnatiusPickaxeEffect extends AbstractMetallurgyEffect {
+
+	public IgnatiusPickaxeEffect()
 	{
-		EntityPlayer pl = event.getEntityPlayer();
-		ItemStack mainHandStack = pl.getHeldItemMainhand();
-
-		if (pl.isInWater() && mainHandStack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE) && ToolEffectsConfig.deepIronPickaxeEffect)
-		{
-			event.setNewSpeed(event.getOriginalSpeed() * 3);
-		}
-
-
-		//		set tools break speed based on light except for hoe and sword
-		if (ToolEffectsConfig.shadowSteelToolSpeedEffect && mainHandStack.getItem() == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE))
-		{
-			float percentage = Utils.getLightArmorPercentage(pl, 100F);
-			float speed = event.getNewSpeed() * percentage / 40F;
-			event.setNewSpeed(event.getOriginalSpeed() + speed);
-		}
+		super(ModMetals.IGNATIUS);
 	}
 
-	@SubscribeEvent
-	public static void onBlockHarvest(BlockEvent.HarvestDropsEvent event)
+	@Override
+	protected boolean isEnabled()
+	{
+		return ToolEffectsConfig.ignatiusPickaxeEffect;
+	}
+
+	@Override
+	protected boolean isToolEffect()
+	{
+		return true;
+	}
+
+	@Nullable
+	@Override
+	protected EnumTools getToolClass()
+	{
+		return EnumTools.PICKAXE;
+	}
+
+	@Override
+	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
 	{
 		Item heldItem = event.getHarvester().getHeldItemMainhand().getItem();
 		World world = event.getWorld();
@@ -74,4 +77,5 @@ public class PickaxeEffectHandler {
 			}
 		}
 	}
+
 }
