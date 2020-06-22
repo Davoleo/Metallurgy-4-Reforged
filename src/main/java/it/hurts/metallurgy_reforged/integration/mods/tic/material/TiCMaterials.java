@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -26,7 +26,6 @@ public class TiCMaterials {
 		MetalStats metalS = metal.getStats();
 
 		MetallurgyTiCStats stats = TinkerMetals.getMetal(metal);
-
 
 		if (stats != null)
 		{

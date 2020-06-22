@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -58,7 +58,7 @@ public class ModLakeWorldGen {
 					int i1 = rand.nextInt(16) + 8;
 					int j1 = rand.nextInt(256);
 					int k1 = rand.nextInt(16) + 8;
-					(new WorldGenLakes(ModFluids.TAR.getFluidBlock())).generate(world, rand, blockpos.add(i1, j1, k1));
+					(new WorldGenLakes(ModFluids.fluidBlockTar)).generate(world, rand, blockpos.add(i1, j1, k1));
 				}
 			}
 	}

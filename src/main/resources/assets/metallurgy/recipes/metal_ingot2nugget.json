@@ -1,0 +1,10 @@
+{
+	"type": "metallurgy:metal_shapeless",
+	"ingredients": [
+		{
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		}
+	],
+	"result": "nugget"
+}

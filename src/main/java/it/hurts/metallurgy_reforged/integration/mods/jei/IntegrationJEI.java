@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -23,16 +23,18 @@ import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeCa
 import it.hurts.metallurgy_reforged.integration.mods.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.recipe.ModRecipes;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @JEIPlugin
@@ -80,13 +82,36 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
 		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
-		List<ItemStack> krikArmor = Arrays.asList(new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.HEAD)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.CHEST)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.LEGS)),
-				new ItemStack(ModMetals.KRIK.getArmor(EntityEquipmentSlot.FEET)));
+		List<ItemStack> krikArmor = new ArrayList<>();
+
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+		{
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+			{
+				krikArmor.add(new ItemStack(ModMetals.KRIK.getArmorPiece(slot)));
+			}
+		}
+
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
+
+		List<MetalRecipeWrapper> recipes = new ArrayList<>();
+
+		ModMetals.metalMap.forEach((name, metal) -> {
+			ModRecipes.shapedMetalRecipes.forEach(shapedMetalRecipe ->
+					recipes.add(new ShapedMetalRecipeWrapper(metal, shapedMetalRecipe, registry.getJeiHelpers())));
+			ModRecipes.shapelessMetalRecipes.forEach(shapelessMetalRecipe ->
+					recipes.add(new MetalRecipeWrapper(metal, shapelessMetalRecipe, registry.getJeiHelpers())));
+		});
+
+		registry.addRecipes(recipes, VanillaRecipeCategoryUid.CRAFTING);
+
+		List<OreDetectorWrapper> oreDetectorRecipes = new ArrayList<>();
+		for (int i = 0; i <= 3; i++)
+			oreDetectorRecipes.add(new OreDetectorWrapper(i));
+
+		registry.addRecipes(oreDetectorRecipes, VanillaRecipeCategoryUid.CRAFTING);
 	}
 
 }

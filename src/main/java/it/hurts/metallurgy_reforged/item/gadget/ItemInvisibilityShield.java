@@ -4,23 +4,20 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.util.IHasModel;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketParticles;
 import net.minecraft.util.*;
@@ -31,11 +28,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class ItemInvisibilityShield extends Item implements IHasModel {
+public class ItemInvisibilityShield extends ItemExtra {
 
 	public ItemInvisibilityShield()
 	{
-		ItemUtils.initItem(this, "lemurite_shield", MetallurgyTabs.tabSpecial, ModItems.itemList);
+		super("lemurite_shield", MetallurgyTabs.tabSpecial, "gadget");
 		setMaxStackSize(1);
 		setMaxDamage(250);
 
@@ -49,15 +46,8 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 
 	}
 
-	@Nonnull
 	@Override
-	public String getCategory()
-	{
-		return "gadget";
-	}
-
-	@Override
-	public boolean isShield(ItemStack stack, @Nullable EntityLivingBase entity)
+	public boolean isShield(@Nonnull ItemStack stack, @Nullable EntityLivingBase entity)
 	{
 		return true;
 	}
@@ -69,14 +59,14 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack)
+	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
 	{
 		return 600;
 	}
 
 	@Nonnull
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
 		playerIn.setInvisible(true);
 		playerIn.setActiveHand(handIn);
@@ -85,13 +75,13 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
+	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
 	{
 		terminateEffect(entityLiving, stack, 600 - timeLeft);
 	}
 
 	@Override
-	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count)
+	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
 	{
 		if (count <= 1)
 			terminateEffect(player, stack, 600);
@@ -112,7 +102,7 @@ public class ItemInvisibilityShield extends Item implements IHasModel {
 
 	@Nonnull
 	@Override
-	public EnumAction getItemUseAction(ItemStack stack)
+	public EnumAction getItemUseAction(@Nonnull ItemStack stack)
 	{
 		return EnumAction.BLOCK;
 	}

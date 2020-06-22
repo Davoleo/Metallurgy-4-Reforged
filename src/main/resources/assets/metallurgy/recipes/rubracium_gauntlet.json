@@ -19,6 +19,7 @@
 		}
 	},
 	"result": {
-		"item": "metallurgy:rubracium_gauntlet"
+		"item": "metallurgy:rubracium_gauntlet",
+		"count": 2
 	}
 }

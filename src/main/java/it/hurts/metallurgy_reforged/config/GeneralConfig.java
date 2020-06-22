@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -73,11 +73,6 @@ public class GeneralConfig {
 	@Config.Name("Should Armor be repairable in Anvil")
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
 	public static boolean enableAnvilArmorRepair = false;
-
-	@Config.Name("Power to the Axes")
-	@Config.Comment("Set this to true to make axes more powerful than swords [default: false]")
-	@Config.RequiresMcRestart
-	public static boolean powerAxes = false;
 
 	@Config.Name("Enable Ore Particles")
 	@Config.Comment("Set this to true to enable ore particles (Particles that are bigger depending on the harvest tier of the ore) [default: false]")

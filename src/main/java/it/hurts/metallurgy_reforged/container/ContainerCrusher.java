@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,8 +13,6 @@ package it.hurts.metallurgy_reforged.container;
 
 
 import it.hurts.metallurgy_reforged.container.slot.SlotCrusherOutput;
-import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -59,7 +57,7 @@ public class ContainerCrusher extends Container {
 	}
 
 	//    Errore all'add Listener
-	public void addListener(IContainerListener listener)
+	public void addListener(@Nonnull IContainerListener listener)
 	{
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.crusher);
@@ -104,7 +102,7 @@ public class ContainerCrusher extends Container {
 
 	@Nonnull
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int index)
+	public ItemStack transferStackInSlot(@Nonnull EntityPlayer player, int index)
 	{
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = inventorySlots.get(index);
@@ -122,8 +120,6 @@ public class ContainerCrusher extends Container {
 				{
 					return ItemStack.EMPTY;
 				}
-				else
-					Utils.giveExperience(player, itemstack.getCount() * AlloyerRecipes.getInstance().getAlloyExperience(itemstack));
 
 			}
 			else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false))
@@ -150,97 +146,4 @@ public class ContainerCrusher extends Container {
 
 		return itemstack;
 	}
-
-	@Override
-	protected boolean mergeItemStack(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection)
-	{
-		boolean flag = false;
-		int i = startIndex;
-
-		if (reverseDirection)
-		{
-			i = endIndex - 1;
-		}
-
-		if (stack.isStackable())
-		{
-			while (stack.getCount() > 0 && (!reverseDirection && i < endIndex || reverseDirection && i >= startIndex))
-			{
-				Slot slot = this.inventorySlots.get(i);
-				ItemStack itemstack = slot.getStack();
-
-				if (slot.isItemValid(stack))
-				{
-					if (!itemstack.isEmpty() && itemstack.getItem() == stack.getItem() && (!stack.getHasSubtypes() || stack.getMetadata() == itemstack.getMetadata()) && ItemStack.areItemStackTagsEqual(stack, itemstack))
-					{
-						int j = itemstack.getCount() + stack.getCount();
-
-						if (j <= stack.getMaxStackSize())
-						{
-							stack.setCount(0);
-							itemstack.setCount(j);
-							slot.onSlotChanged();
-							flag = true;
-						}
-						else if (itemstack.getCount() < stack.getMaxStackSize())
-						{
-							stack.shrink(stack.getMaxStackSize() - itemstack.getCount());
-							itemstack.setCount(stack.getMaxStackSize());
-							slot.onSlotChanged();
-							flag = true;
-						}
-					}
-				}
-
-				if (reverseDirection)
-				{
-					--i;
-				}
-				else
-				{
-					++i;
-				}
-			}
-		}
-
-		if (stack.getCount() > 0)
-		{
-			if (reverseDirection)
-			{
-				i = endIndex - 1;
-			}
-			else
-			{
-				i = startIndex;
-			}
-
-			while (!reverseDirection && i < endIndex || reverseDirection && i >= startIndex)
-			{
-				Slot slot1 = this.inventorySlots.get(i);
-				ItemStack itemstack1 = slot1.getStack();
-
-				// Forge: Make sure to respect isItemValid in the slot.
-				if (itemstack1.isEmpty() && slot1.isItemValid(stack))
-				{
-					slot1.putStack(stack.copy());
-					slot1.onSlotChanged();
-					stack.setCount(0);
-					flag = true;
-					break;
-				}
-
-				if (reverseDirection)
-				{
-					--i;
-				}
-				else
-				{
-					++i;
-				}
-			}
-		}
-
-		return flag;
-	}
-
 }

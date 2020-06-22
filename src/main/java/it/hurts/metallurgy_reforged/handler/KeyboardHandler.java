@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -33,7 +33,7 @@ public class KeyboardHandler {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
 
-		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK.getArmorSet()) && ArmorEffectsConfig.krikArmorEffect)
+		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK) && ArmorEffectsConfig.krikArmorEffect)
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
 			{
@@ -41,7 +41,6 @@ public class KeyboardHandler {
 				{
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
 					capability.setHeight(capability.getHeight() + 1);
-					//System.out.println(capability.getHeight());
 				}
 			}
 

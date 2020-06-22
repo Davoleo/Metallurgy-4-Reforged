@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -13,26 +13,30 @@ package it.hurts.metallurgy_reforged.recipe;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ModRecipes {
+
+	public static Set<ShapedMetalRecipe> shapedMetalRecipes = new HashSet<>();
+	public static Set<ShapelessMetalRecipe> shapelessMetalRecipes = new HashSet<>();
 
 	public static void init()
 	{
 
 		//Furnace Recipes
-		for (Metal m : ModMetals.metalList)
-		{
-			if (m.getOre() != null)
+		ModMetals.metalMap.forEach((name, metal) -> {
+			if (metal.getOre() != null)
 			{
-				GameRegistry.addSmelting(m.getOre(), new ItemStack(m.getIngot()), 1F);
+				GameRegistry.addSmelting(metal.getOre(), new ItemStack(metal.getIngot()), 1F);
 			}
-			GameRegistry.addSmelting(m.getDust(), new ItemStack(m.getIngot()), 0.6F);
-		}
+			GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
+		});
 
 		//Dust2Ingot
 		GameRegistry.addSmelting(ModItems.dustIron, new ItemStack(Items.IRON_INGOT), 0.6F);

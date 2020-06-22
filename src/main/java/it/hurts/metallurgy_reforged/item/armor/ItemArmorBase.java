@@ -4,22 +4,27 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.armor;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -32,31 +37,59 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemArmorBase extends ItemArmor implements IHasModel {
+public class ItemArmorBase extends ItemArmor {
 
-	private EnumArmorEffects effect;
+	private BaseMetallurgyEffect effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
+	private MetalStats metalStats;
 
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name)
-	{
-		this(material, slot, name, null, 0);
-	}
-
-	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, String name, Enchantment enchantment, int enchantmentLevel)
+	public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, MetalStats metalStats)
 	{
 		super(material, 0, slot);
-		this.enchantment = enchantment;
-		this.enchantmentLevel = enchantmentLevel;
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabArmor, ModArmors.armorList);
+		ItemUtils.initItem(this, metalStats.getName() + '_' + getSlotArmorSuffix(slot), MetallurgyTabs.tabArmor);
+		this.metalStats = metalStats;
 	}
 
-	@Nonnull
-	@Override
-	public String getCategory()
+	public void setEffect(BaseMetallurgyEffect effect)
 	{
-		return "armor";
+		this.effect = effect;
+	}
+
+	public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
+	{
+		this.enchantment = enchantment;
+		this.enchantmentLevel = enchantmentLevel;
+	}
+
+	public MetalStats getMetalStats()
+	{
+		return metalStats;
+	}
+
+	private ItemStack getRepairStack()
+	{
+		String material = this.metalStats.getName().toLowerCase();
+		Metal metal = Utils.getMetalFromString(material);
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else
+			return ItemStack.EMPTY;
+	}
+
+	@Override
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+	{
+		if (this.effect != null && effect.isEnabled())
+			tooltip.add(this.effect.getTooltip());
 	}
 
 	@Override
@@ -74,33 +107,54 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		}
 	}
 
-	public void setEffect(EnumArmorEffects effect)
-	{
-		this.effect = effect;
-	}
-
-	private ItemStack getRepairStack()
-	{
-		String material = this.getArmorMaterial().getName().toLowerCase();
-		Metal metal = Utils.getMetalFromString(material);
-		if (metal != null)
-			return new ItemStack(metal.getIngot());
-		else
-			return ItemStack.EMPTY;
-	}
-
+	@Nonnull
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
 	{
-		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+		if (equipmentSlot == this.armorType)
+		{
+			multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(
+					Constants.ModAttributes.ARMOR_MAX_HEALTH.get(equipmentSlot),
+					"Metallurgy Armor Max Health",
+					metalStats.getArmorStats().getMaxHealth() / 4D,
+					0)
+			);
+
+			multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(
+					Constants.ModAttributes.ARMOR_KNOCKBACK_RESISTANCE.get(equipmentSlot),
+					"Metallurgy Armor Knockback Resistance",
+					metalStats.getArmorStats().getKnockbackResistance() / 4D,
+					0)
+			);
+
+			multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(
+					Constants.ModAttributes.ARMOR_MOVEMENT_SPEED.get(equipmentSlot),
+					"Metallurgy Armor Movement Speed",
+					metalStats.getArmorStats().getMovementSpeed() / 4D,
+					0)
+			);
+		}
+
+		return multimap;
 	}
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	private String getSlotArmorSuffix(EntityEquipmentSlot slot)
 	{
-		if (this.effect != null && effect.isActive())
-			tooltip.add(this.effect.getLocalized());
+		switch (slot)
+		{
+			case HEAD:
+				return "helmet";
+			case CHEST:
+				return "chestplate";
+			case LEGS:
+				return "leggings";
+			case FEET:
+				return "boots";
+			default:
+				return "THIS_CAN'T_POSSIBLY_HAPPEN,_FUCK!";
+		}
 	}
 
 }

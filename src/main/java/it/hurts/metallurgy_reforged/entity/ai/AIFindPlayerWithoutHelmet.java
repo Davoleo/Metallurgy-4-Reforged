@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -38,7 +38,7 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase {
 		if (shouldExecute)
 		{
 			EntityPlayer pl = getPlayer();
-			shouldExecute = pl != null && !EventUtils.isPlayerWearingSpecificArmorPiece(pl, 3, ModMetals.EXIMITE.getArmor(EntityEquipmentSlot.HEAD));
+			shouldExecute = pl != null && !EventUtils.isPlayerWearingSpecificArmorPiece(pl, EntityEquipmentSlot.HEAD, ModMetals.EXIMITE.getArmorPiece(EntityEquipmentSlot.HEAD));
 		}
 		return shouldExecute;
 	}

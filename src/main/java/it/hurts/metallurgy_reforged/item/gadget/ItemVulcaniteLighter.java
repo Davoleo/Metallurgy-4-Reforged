@@ -4,14 +4,13 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.util.IHasModel;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -26,7 +25,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemVulcaniteLighter extends ItemIgnatiusLighter implements IHasModel {
+public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 
 	public ItemVulcaniteLighter(String name)
 	{
@@ -76,7 +75,6 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter implements IHasMod
 			}
 
 			return EnumActionResult.FAIL;
-
 		}
 	}
 

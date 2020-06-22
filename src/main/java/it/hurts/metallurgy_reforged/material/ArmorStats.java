@@ -4,29 +4,56 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.material;
 
-import net.minecraft.util.SoundEvent;
-
 public class ArmorStats {
 
 	private final int[] damageReduction;
-	private final int armorMagic, durability;
+	private final int enchantability;
+	private final int durability;
 	private final float toughness;
-	private final SoundEvent equipSound;
 
-	public ArmorStats(int[] damageReduction, int armorMagic, int durability, float toughness, SoundEvent equipSound)
+	private double maxHealth;
+	private double knockbackResistance;
+	private double movementSpeed;
+
+	public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)
 	{
 		this.damageReduction = damageReduction;
-		this.armorMagic = armorMagic;
+		this.enchantability = enchantability;
 		this.durability = durability;
 		this.toughness = toughness;
-		this.equipSound = equipSound;
+
+		this.maxHealth = 0;
+		this.knockbackResistance = 0;
+		this.movementSpeed = 0;
+	}
+
+	public void setAttributes(double maxHealth, double knockbackResistance, double movementSpeed)
+	{
+		this.maxHealth = maxHealth;
+		this.knockbackResistance = knockbackResistance;
+		this.movementSpeed = movementSpeed;
+	}
+
+	public double getMaxHealth()
+	{
+		return maxHealth;
+	}
+
+	public double getKnockbackResistance()
+	{
+		return knockbackResistance;
+	}
+
+	public double getMovementSpeed()
+	{
+		return movementSpeed;
 	}
 
 	public int[] getDamageReduction()
@@ -35,9 +62,9 @@ public class ArmorStats {
 	}
 
 	//Armor Enchantability
-	public int getArmorMagic()
+	public int getEnchantability()
 	{
-		return armorMagic;
+		return enchantability;
 	}
 
 	public int getDurability()
@@ -48,11 +75,6 @@ public class ArmorStats {
 	public float getToughness()
 	{
 		return toughness;
-	}
-
-	public SoundEvent getEquipSound()
-	{
-		return equipSound;
 	}
 
 }

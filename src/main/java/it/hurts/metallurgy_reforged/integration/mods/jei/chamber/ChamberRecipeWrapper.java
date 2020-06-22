@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -64,7 +64,7 @@ public class ChamberRecipeWrapper implements IRecipeWrapper {
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
 	{
 		Metal metal = ItemUtils.getMetalFromItem(input.getItem());
-		int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
+		int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
 
 		GlStateManager.pushMatrix();
 		minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);

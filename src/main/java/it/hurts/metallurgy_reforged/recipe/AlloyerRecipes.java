@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -38,7 +38,6 @@ public class AlloyerRecipes {
 
 	private AlloyerRecipes()
 	{
-		//    	( [Input 1, quantit�], [Input 2, quantit�], [Output, quantit�, exp] )
 		this.addAlloyRecipe
 				(new ItemStack(ModMetals.COPPER.getIngot(), 3),
 						new ItemStack(ModMetals.TIN.getIngot()),

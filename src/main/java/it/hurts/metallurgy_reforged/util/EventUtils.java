@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -12,7 +12,9 @@
 package it.hurts.metallurgy_reforged.util;
 
 import com.google.common.collect.Lists;
+import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -20,25 +22,37 @@ import java.util.List;
 
 public class EventUtils {
 
-	//	method to check if player wears the complete ArmorEffectHandler.
-	public static boolean isPlayerWearingArmor(EntityPlayer pl, Item[] armor)
+	/**
+	 * @param player The player who may be wearing the armor
+	 * @param metal  The metal the armor is made of
+	 *
+	 * @return whether a player is wearing the complete armor set
+	 */
+	public static boolean isPlayerWearingArmor(EntityPlayer player, Metal metal)
 	{
-		boolean flag = true;
+		boolean fullArmored = true;
 
-		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
-		for (int i = 0; i < list.size(); i++)
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
-			if (!list.get(i).getItem().equals(armor[3 - i]))
-				flag = false;
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && player.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
+			{
+				fullArmored = false;
+			}
 		}
-		return flag;
+
+		return fullArmored;
 	}
 
-	//  get Specific ArmorEffectHandler Equip [3 = helmet,2 = chest,1 = legs, boots = 0]
-	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer pl, int index, Item armorEquip)
+	/**
+	 * @param player     The player who may be wearing the armor piece
+	 * @param slot       The slot in which the player may be wearing a specific armor piece
+	 * @param armorEquip The armor item the player may be wearing in the specified slot
+	 *
+	 * @return whether the player is wearing a specific armor item in a specific Equipment Slot
+	 */
+	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
 	{
-		List<ItemStack> list = Lists.newArrayList(pl.getArmorInventoryList().iterator());
-		return list.get(index).getItem().equals(armorEquip);
+		return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
 	}
 
 	/**

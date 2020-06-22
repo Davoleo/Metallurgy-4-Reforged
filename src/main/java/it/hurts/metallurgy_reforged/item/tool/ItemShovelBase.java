@@ -4,20 +4,25 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.tool;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.util.IHasModel;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -29,23 +34,57 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemShovelBase extends ItemSpade implements IHasModel {
+public class ItemShovelBase extends ItemSpade implements IToolEffect {
 
-	private EnumToolEffects effect;
-	private Enchantment enchantment;
-	private int enchantmentLevel;
+	private BaseMetallurgyEffect effect;
+	private Enchantment enchantment = null;
+	private int enchantmentLevel = -1;
 
-	public ItemShovelBase(ToolMaterial material, String name)
-	{
-		this(material, name, null, -1);
-	}
+	private final MetalStats metalStats;
 
-	public ItemShovelBase(ToolMaterial material, String name, Enchantment enchantment, int enchantmentLevel)
+	public ItemShovelBase(ToolMaterial material, MetalStats metalStats)
 	{
 		super(material);
-		ItemUtils.initItem(this, name, MetallurgyTabs.tabTool, ModTools.toolList);
+		ItemUtils.initItem(this, metalStats.getName() + "_shovel", MetallurgyTabs.tabTool);
+		this.metalStats = metalStats;
+	}
+
+	@Override
+	public EnumTools getToolClass()
+	{
+		return EnumTools.SHOVEL;
+	}
+
+	@Override
+	public MetalStats getMetalStats()
+	{
+		return metalStats;
+	}
+
+	@Override
+	public void setEffect(BaseMetallurgyEffect effect)
+	{
+		this.effect = effect;
+	}
+
+	public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
+	{
 		this.enchantment = enchantment;
 		this.enchantmentLevel = enchantmentLevel;
+	}
+
+	@Override
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+	{
+		if (this.effect != null && effect.isEnabled())
+			tooltip.add(effect.getTooltip());
 	}
 
 	@Override
@@ -63,30 +102,13 @@ public class ItemShovelBase extends ItemSpade implements IHasModel {
 		}
 	}
 
-	public void setEffect(EnumToolEffects effect)
-	{
-		this.effect = effect;
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
-	{
-		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-	{
-		if (this.effect != null && effect.isActive())
-			tooltip.add(effect.getLocalized());
-	}
-
 	@Nonnull
 	@Override
-	public String getCategory()
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
 	{
-		return "tool/shovel";
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+		ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
+		return multimap;
 	}
 
 }

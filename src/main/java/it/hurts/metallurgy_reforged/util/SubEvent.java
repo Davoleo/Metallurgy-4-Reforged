@@ -4,14 +4,13 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.util;
 
-import it.hurts.metallurgy_reforged.config.ArmorConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
@@ -25,16 +24,11 @@ public class SubEvent {
 
 	public static void init()
 	{
-		MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
-		MinecraftForge.EVENT_BUS.register(AxeEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(ShovelEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
+		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
-		MinecraftForge.EVENT_BUS.register(ArmorConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);

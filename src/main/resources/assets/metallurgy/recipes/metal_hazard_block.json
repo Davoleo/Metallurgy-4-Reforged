@@ -1,0 +1,19 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		},
+		"N": {
+			"type": "metallurgy:metal",
+			"item_type": "nugget"
+		}
+	},
+	"result": "hazard_block"
+}

@@ -17,7 +17,7 @@ apply plugin: 'maven-publish'
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -36,7 +36,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
-	mappings = "stable_39"
+	mappings = "snapshot_20180814"
 }
 
 repositories {
@@ -99,7 +99,7 @@ dependencies {
 	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
     
     //CraftTweaker
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.11.494"
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.19.553"
 
     //Silent's Gems
     deobfCompile "silents-gems:SilentsGems:1.12.2:2.8.22+327"

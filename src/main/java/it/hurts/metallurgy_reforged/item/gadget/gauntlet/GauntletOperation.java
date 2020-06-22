@@ -4,121 +4,87 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 
-import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
-import it.hurts.metallurgy_reforged.container.slot.OffHandCustomSlot;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.client.PacketSetGauntletSlot;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.network.play.server.SPacketEntityEquipment;
+import net.minecraft.network.play.server.SPacketSetSlot;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class GauntletOperation {
 
 	@SubscribeEvent
-	public static void setOffHnand(LivingEquipmentChangeEvent event)
+	public static void setInHand(LivingEquipmentChangeEvent event)
 	{
 		ItemStack newStack = event.getTo();
-		ItemStack oldStack = event.getFrom();
-		ItemStack offStack = event.getEntityLiving().getHeldItemOffhand();
 
 		Entity entity = event.getEntityLiving();
 
-		if (entity instanceof EntityPlayerMP)
+		if (entity instanceof EntityPlayerMP && event.getSlot().getSlotType() == EntityEquipmentSlot.Type.HAND)
 		{
 			EntityPlayerMP player = (EntityPlayerMP) entity;
-			if (event.getSlot() == EntityEquipmentSlot.MAINHAND)
+			EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
+
+			if (newStack.getItem() == ModItems.gauntlet && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
 			{
-				if (newStack.getItem() instanceof ItemGauntlet)
+				ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
+				player.setItemStackToSlot(oppositeSlot, offStack);
+
+				//Sync the client with the server
+				player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
+			}
+		}
+	}
+
+	private static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
+	{
+		//For Every slot in the player inventory
+		for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+		{
+			//Filter out the case when the gauntlet you're looking for is the same one that you're already holding in the "main" hand
+			if (i != player.inventory.currentItem)
+			{
+				ItemStack otherGauntlet = player.inventory.mainInventory.get(i);
+
+				//Check if the main Gauntlet is the same as the moved one
+				if (ItemStack.areItemsEqual(firstGauntlet, otherGauntlet))
 				{
 
+					//Create a copy of the moved Gauntlet
+					ItemStack remainingStack = otherGauntlet.copy();
 
-					ItemStack offStackCopy = offStack.copy();
-
-					ItemStack copy = newStack.copy();
-					if (!newStack.getEnchantmentTagList().isEmpty())
+					//if the Gauntlet stack has more than one items shrink both of the stacks
+					if (remainingStack.getCount() > 1)
 					{
-						copy.getTagCompound().removeTag("ench");
-						copy.getTagCompound().setBoolean("hasEffect", true);
+						otherGauntlet.shrink(1);
+						remainingStack.shrink(1);
+					}
+					else
+					{
+						remainingStack = ItemStack.EMPTY;
 					}
 
-					player.inventoryContainer.inventorySlots.set(45, new OffHandCustomSlot(player));
-
-					PacketManager.network.sendTo(new PacketSetGauntletSlot(copy, true), player);
-
-					player.inventory.offHandInventory.set(0, copy);
-
-					boolean flag = offStackCopy.getItem() == ModItems.gauntlet ? oldStack.getItem() != ModItems.gauntlet && newStack.getTagCompound() != offStackCopy.getTagCompound() : !offStackCopy.isEmpty();
-
-					if (player.ticksExisted > 5 && flag && !player.inventory.addItemStackToInventory(offStackCopy))
-						player.dropItem(offStackCopy, false);
-
-
-				}
-				else if (player.inventoryContainer.inventorySlots.get(45) instanceof OffHandCustomSlot)
-				{
-					ContainerPlayer c = new ContainerPlayer(player.inventory, !player.world.isRemote, player);
-					player.inventoryContainer.inventorySlots.set(45, c.inventorySlots.get(45));
-					player.inventory.offHandInventory.set(0, ItemStack.EMPTY);
-
-					PacketManager.network.sendTo(new PacketSetGauntletSlot(ItemStack.EMPTY, false), player);
-
+					//Set the remaining item after moving the gauntlet
+					player.inventory.mainInventory.set(i, remainingStack);
+					//Update the client to reflect the server change
+					player.connection.sendPacket(new SPacketSetSlot(-2, i, remainingStack));
+					return otherGauntlet;
 				}
 			}
 		}
-	}
 
-
-	@SubscribeEvent
-	public static void onDeath(LivingDeathEvent event)
-	{
-		if (event.getEntity() instanceof EntityPlayer)
-		{
-			EntityPlayer entityPlayer = (EntityPlayer) event.getEntity();
-			IPunchEffect effect = entityPlayer.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-
-			if (isWearingGauntlet(entityPlayer) && effect != null)
-				effect.setGauntletUserDead();
-		}
-	}
-
-	@SubscribeEvent
-	public static void preventGauntletDuplication(PlayerDropsEvent event)
-	{
-		EntityPlayer pl = event.getEntityPlayer();
-		IPunchEffect effect = pl.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);
-		if (effect != null && effect.isGauntletUserDead())
-		{
-			int i = 0;
-			ItemStack mainHand = pl.getHeldItemMainhand();
-
-			int removeGautletSlot = -1;
-			while (removeGautletSlot == -1 && i < event.getDrops().size())
-			{
-				ItemStack stack = event.getDrops().get(i).getItem();
-				if (stack.getItem() == ModItems.gauntlet && (stack.getTagCompound() == null || stack.getTagCompound().equals(mainHand.getTagCompound())))
-					removeGautletSlot = i;
-				i++;
-			}
-			event.getDrops().remove(removeGautletSlot);
-		}
-
+		return ItemStack.EMPTY;
 	}
 
 	public static boolean isWearingGauntlet(EntityLivingBase pl)

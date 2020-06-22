@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -33,14 +33,14 @@ public class SlotAlloyerOutput extends Slot {
 
 	@Nonnull
 	@Override
-	public ItemStack onTake(EntityPlayer thePlayer, @Nonnull ItemStack stack)
+	public ItemStack onTake(@Nonnull EntityPlayer thePlayer, @Nonnull ItemStack stack)
 	{
 		onCrafting(stack);
 		return super.onTake(thePlayer, stack);
 	}
 
 	@Override
-	protected void onCrafting(ItemStack output)
+	protected void onCrafting(@Nonnull ItemStack output)
 	{
 		if (!player.world.isRemote)
 		{
@@ -52,7 +52,7 @@ public class SlotAlloyerOutput extends Slot {
 	}
 
 	@Override
-	public boolean isItemValid(ItemStack stack)
+	public boolean isItemValid(@Nonnull ItemStack stack)
 	{
 		return false;
 	}

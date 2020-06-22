@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -18,6 +18,7 @@
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
  import it.hurts.metallurgy_reforged.config.GeneralConfig;
+ import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
@@ -28,7 +29,7 @@
  import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
- import it.hurts.metallurgy_reforged.proxy.CommonProxy;
+ import it.hurts.metallurgy_reforged.proxy.IProxy;
  import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
  import it.hurts.metallurgy_reforged.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.util.ModChecker;
@@ -56,11 +57,13 @@
 
 	 public static Logger logger;
 
+	 public static String materialConfig;
+
 	 @Mod.Instance(MODID)
 	 public static Metallurgy instance;
 
-	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.CommonProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
-	 public static CommonProxy proxy;
+	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
+	 public static IProxy proxy;
 
 	 static
 	 {
@@ -72,9 +75,10 @@
 	 {
 		 logger = event.getModLog();
 		 logger.info(NAME + " is entering pre-initialization!");
-		 proxy.preInit(event);
 
-		 ModMetals.registerFluids();
+		 materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		 ModMetals.init();
+
 		 ModFluids.registerFluids();
 		 logger.info("Fluid registration complete!");
 
@@ -122,6 +126,7 @@
 		 CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
 		 logger.info(NAME + ": Krik effect capability Registered");
 
+		 proxy.preInit(event);
 	 }
 
 	 @Mod.EventHandler
@@ -150,6 +155,8 @@
 		 }
 
 		 CrusherRecipes.registerDefaultOreRecipes();
+
+		 MetallurgyEffects.initTooltips();
 	 }
 
 
@@ -157,8 +164,6 @@
 	 public void postInit(FMLPostInitializationEvent event)
 	 {
 		 logger.info(NAME + " is entering post-initialization!");
-
-		 proxy.postInit(event);
 
 		 PacketManager.init();
 		 logger.info(NAME + "'s Network System Loaded");

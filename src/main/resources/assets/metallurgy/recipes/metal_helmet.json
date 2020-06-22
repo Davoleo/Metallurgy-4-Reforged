@@ -1,0 +1,14 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		"MMM",
+		"M M"
+	],
+	"key": {
+		"M": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		}
+	},
+	"result": "helmet"
+}

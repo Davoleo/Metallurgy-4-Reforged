@@ -1,0 +1,14 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		"II",
+		"II"
+	],
+	"key": {
+		"I": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		}
+	},
+	"result": "large_bricks"
+}

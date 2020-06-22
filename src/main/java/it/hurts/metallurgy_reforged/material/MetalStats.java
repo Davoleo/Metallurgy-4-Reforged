@@ -4,62 +4,77 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
 package it.hurts.metallurgy_reforged.material;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.BlockOreDict;
+import it.hurts.metallurgy_reforged.block.BlockMetal;
+import it.hurts.metallurgy_reforged.block.BlockOre;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.fluid.FluidMolten;
-import it.hurts.metallurgy_reforged.item.ItemOreDict;
+import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
-import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.block.material.Material;
+import it.hurts.metallurgy_reforged.util.Constants;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 
-import java.util.function.Function;
+import java.awt.*;
 
-
-//TODO: consider implementing crusher or alloyer recipes, maybe worldgen?
 public class MetalStats {
 
-	private final String name, oreDictName;
-	private final int blockHarvest;
+	//Name of the material in snake_case
+	private final String name;
+
+	//Block Properties
+	private final float hardness;
 	private final float blockBlastResistance;
-	public static float blockResistance;
-	//int minVeinSize, int maxVeinSize, int chance, int minY, int maxY
+
+	//Ore Properties
 	private final int oreHarvest;
+
+	//Color
+	private final int color;
 
 	private final ArmorStats armor;
 	private final ToolStats tool;
-	private final FluidStats fluid;
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
 
-	public Metal createMetal()
+	//Steins;Gate 0
+	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0, new ArmorStats(new int[4], 0, 0, 0), new ToolStats(0, 0, 0, 0, 0), 0, 0);
+
+	public void createMetal()
 	{
-		//name should be in format [allLowerCase], oreName should be in format [Normalcase]
-		ItemOreDict dust = new ItemOreDict(name + "_dust", "dust" + oreDictName, MetallurgyTabs.tabDust, null).setCreativeTab(MetallurgyTabs.tabDust);
-		ItemOreDict ingot = new ItemOreDict(name + "_ingot", "ingot" + oreDictName, MetallurgyTabs.tabIngot, null).setCreativeTab(MetallurgyTabs.tabIngot);
-		ItemOreDict nugget = new ItemOreDict(name + "_nugget", "nugget" + oreDictName, MetallurgyTabs.tabNugget, null).setCreativeTab(MetallurgyTabs.tabNugget);
-		BlockOreDict block = new BlockOreDict(name + "_block", "block" + oreDictName, false, "pickaxe", blockHarvest, blockBlastResistance, MetallurgyTabs.tabBlock);
-		BlockOreDict ore = null;
-		if (oreHarvest >= 0)
+		//name should be in format [snake_case], oreName should be in format [camelCase]
+
+		ItemMetal dust = new ItemMetal(this, ItemTypes.DUST);
+		ItemMetal ingot = new ItemMetal(this, ItemTypes.INGOT);
+		ItemMetal nugget = new ItemMetal(this, ItemTypes.NUGGET);
+
+		BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
+		for (int i = 0; i < BlockTypes.values().length; i++)
 		{
-			ore = new BlockOreDict(name + "_ore", "ore" + oreDictName, false, "pickaxe", oreHarvest, blockBlastResistance, MetallurgyTabs.tabOre);
+			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], hardness);
 		}
 
-		FluidMolten molten = fluid.func.apply(new FluidMolten(name, fluid.still, fluid.flowing, fluid.mapColor, fluid.TEMPERATURE != 0 ? fluid.TEMPERATURE : automaticTemperature()));
+		BlockOre ore = null;
+		if (oreHarvest >= 0)
+		{
+			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance);
+		}
+
+		FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());
 
 		ItemArmorBase[] armorPieces = null;
 		Item[] tools = null;
@@ -67,10 +82,10 @@ public class MetalStats {
 		if (armor != null)
 		{
 			ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
-			ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, name + "_helmet");
-			ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, name + "_chestplate");
-			ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, name + "_leggings");
-			ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, name + "_boots");
+			ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, this);
+			ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, this);
+			ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, this);
+			ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, this);
 
 			armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
 		}
@@ -78,26 +93,26 @@ public class MetalStats {
 		if (tool != null)
 		{
 			Item.ToolMaterial toolMaterial = createToolMaterial();
-			ItemAxeBase axe = new ItemAxeBase(toolMaterial, name + "_axe");
-			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, name + "_hoe");
-			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, name + "_pickaxe");
-			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, name + "_shovel");
-			ItemSwordBase sword = new ItemSwordBase(toolMaterial, name + "_sword");
+			ItemAxeBase axe = new ItemAxeBase(toolMaterial, this);
+			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, this);
+			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, this);
+			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, this);
+			ItemSwordBase sword = new ItemSwordBase(toolMaterial, this);
 
 			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
 		}
 
-		return new Metal(this, ingot, dust, nugget, ore, block, molten, tools, armorPieces);
+		new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
 	}
 
 	private int automaticTemperature()
 	{
 		float output = 1000F;
-		if (blockBlastResistance == ModMetals.LOW_TIER_BLAST_RESISTANCE)
+		if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
 		{
 			output = blockBlastResistance * 60f;
 		}
-		else if (blockBlastResistance != ModMetals.UNBREAKABLE_TIER_BLAST_RESISTANCE)
+		else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
 		{
 			output = blockBlastResistance * 36F;
 		}
@@ -105,25 +120,23 @@ public class MetalStats {
 	}
 
 	/**
-	 * @param name            name of the metal - all lowercase with underlines separating words (ex: dark_steel)
-	 * @param oreDictName     ore dict name of the metal - CamelCase with no underscores or spaces (DarkSteel)
-	 * @param blockHarvest    the harvest level of the metal block
+	 * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
+	 * @param hardness        the time it takes to break a block made of this metal
 	 * @param blastResistance the resistance to explosions of the metal block
 	 * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
-	 * @param fluid           the ToolStats instance representing this metal's stats, or null if there are no tools
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
+	 * @param color           The representative color of the metal
 	 */
-	public MetalStats(String name, String oreDictName, int blockHarvest, float blastResistance, ArmorStats armor, ToolStats tool, FluidStats fluid, int oreHarvest)
+	public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
 	{
 		this.name = name;
-		this.oreDictName = oreDictName;
-		this.blockHarvest = blockHarvest;
+		this.hardness = hardness;
 		this.blockBlastResistance = blastResistance;
 		this.armor = armor;
 		this.tool = tool;
-		this.fluid = fluid;
 		this.oreHarvest = oreHarvest;
+		this.color = color;
 	}
 
 	public String getName()
@@ -131,9 +144,19 @@ public class MetalStats {
 		return name;
 	}
 
-	public String getOreDictName()
+	public float getHardness()
 	{
-		return oreDictName;
+		return hardness;
+	}
+
+	public int getOreHarvest()
+	{
+		return oreHarvest;
+	}
+
+	public float getBlockBlastResistance()
+	{
+		return blockBlastResistance;
 	}
 
 	public ArmorStats getArmorStats()
@@ -156,9 +179,22 @@ public class MetalStats {
 		return armorMaterial;
 	}
 
-	public int getMetalColor()
+	public int getColorHex()
 	{
-		return fluid.mapColor;
+		return color;
+	}
+
+	public long getColorIntWithAlpha()
+	{
+		String colorWoAlpha = Integer.toHexString(color);
+		String colorWAlpha = "0xff" + colorWoAlpha;
+		return Long.decode(colorWAlpha);
+	}
+
+	public float[] getColorRGBValues()
+	{
+		Color rgb = new Color(color);
+		return rgb.getRGBColorComponents(null);
 	}
 
 	private ItemArmor.ArmorMaterial createArmorMaterial()
@@ -166,7 +202,7 @@ public class MetalStats {
 		if (armor == null)
 			throw new UnsupportedOperationException("No Armor Stats Loaded");
 
-		return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getArmorMagic(), armor.getEquipSound(), armor.getToughness());
+		return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getEnchantability(), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, armor.getToughness());
 	}
 
 	private Item.ToolMaterial createToolMaterial()
@@ -176,47 +212,4 @@ public class MetalStats {
 
 		return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
 	}
-
-	public static class FluidStats {
-
-		private final ResourceLocation still;
-		private final ResourceLocation flowing;
-		private final int mapColor;
-		private final Function<FluidMolten, FluidMolten> func;
-		private final int TEMPERATURE;
-
-		private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
-		private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
-		private final static Function<FluidMolten, FluidMolten> default_function = n -> (FluidMolten) n.setMaterial(Material.IRON)
-				.setDensity(800)
-				.setGaseous(false)
-				.setLuminosity(9)
-				.setViscosity(4000);
-
-		public FluidStats(int mapColor)
-		{
-			this(default_still, default_flowing, mapColor, 0, default_function);
-		}
-
-		public FluidStats(int mapColor, int temperature)
-		{
-			this(default_still, default_flowing, mapColor, temperature, default_function);
-		}
-
-		public FluidStats(int mapColor, Function<FluidMolten, FluidMolten> func)
-		{
-			this(default_still, default_flowing, mapColor, 0, func);
-		}
-
-		public FluidStats(ResourceLocation still, ResourceLocation flowing, int mapColor, int temperature, Function<FluidMolten, FluidMolten> func)
-		{
-			this.still = still;
-			this.flowing = flowing;
-			this.mapColor = mapColor;
-			this.TEMPERATURE = temperature;
-			this.func = func;
-		}
-
-	}
-
 }

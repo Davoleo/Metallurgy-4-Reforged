@@ -4,8 +4,8 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
- * Copyright (c) 2019.
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
 
@@ -15,13 +15,24 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.block.gadget.PhosphorusLampSavedData;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.material.Metal;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
@@ -31,9 +42,26 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.List;
+
 public class GadgetsHandler {
 
 	private static MovementInput inputCheck;
+	public static long ticks = 0;
+
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void onTick(TickEvent.ClientTickEvent event)
+	{
+		if (event.phase == TickEvent.Phase.START)
+		{
+			ticks++;
+			if (ticks >= Long.MAX_VALUE)
+			{
+				ticks = 0;
+			}
+		}
+	}
 
 	//	Road Speed Effect
 	@SubscribeEvent
@@ -87,6 +115,90 @@ public class GadgetsHandler {
 			//System.out.println(event.getEntity().getName() + " SPAWN DENIED!");
 			event.setResult(Event.Result.DENY);
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void renderWorldLastEvent(RenderWorldLastEvent event)
+	{
+		EntityPlayer player = Minecraft.getMinecraft().player;
+
+		if (player == null)
+			return;
+
+		ItemStack detector = ItemStack.EMPTY;
+		for (EnumHand hand : EnumHand.values())
+		{
+			if (player.getHeldItem(hand).getItem() == ModItems.oreDetector)
+				detector = player.getHeldItem(hand);
+		}
+
+		if (detector.isEmpty())
+			return;
+
+		List<Metal> metalList = ItemOreDetector.getDetectorMetals(detector);
+
+		if (metalList.isEmpty())
+			return;
+
+		if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown())
+		{
+			World world = Minecraft.getMinecraft().world;
+			BlockPos playerPos = player.getPosition();
+			final int RADIUS = 6;
+
+			Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
+
+			for (BlockPos blockPos : posList)
+			{
+				IBlockState state = world.getBlockState(blockPos);
+				Metal metal = oreMatchesMetal(state, metalList);
+
+				if (metal != null)
+				{
+					//System.out.println(blockPos);
+
+					float[] rgb = metal.getStats().getColorRGBValues();
+					double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) event.getPartialTicks();
+					double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks();
+					double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) event.getPartialTicks();
+
+					double offsetX = d0 - blockPos.getX();
+					double offsetY = d1 - blockPos.getY();
+					double offsetZ = d2 - blockPos.getZ();
+
+					GlStateManager.pushMatrix();
+					GlStateManager.translate(-offsetX, -offsetY, -offsetZ);
+					GlStateManager.disableDepth();
+
+					GlStateManager.disableTexture2D();
+					RenderHelper.disableStandardItemLighting();
+
+					RenderGlobal.drawSelectionBoundingBox(Block.FULL_BLOCK_AABB, rgb[0], rgb[1], rgb[2], 1);
+
+					RenderHelper.enableStandardItemLighting();
+					GlStateManager.enableTexture2D();
+
+					GlStateManager.enableDepth();
+					GlStateManager.translate(offsetX, offsetY, offsetZ);
+					GlStateManager.popMatrix();
+				}
+			}
+		}
+	}
+
+	private static Metal oreMatchesMetal(IBlockState state, List<Metal> metals)
+	{
+
+		for (Metal metal : metals)
+		{
+			if (state.getBlock() == metal.getOre())
+			{
+				return metal;
+			}
+		}
+
+		return null;
 	}
 
 }

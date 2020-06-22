@@ -4,7 +4,7 @@
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
- * Authors: ItHurtsLikeHell & Davoleo
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
  * Copyright (c) 2020.
  * --------------------------------------------------------------------------------------------------------
  */
@@ -89,7 +89,7 @@ public class SublimationChamberHUD {
 				Utils.drawTexturedModalRect(x + 33, y - 8, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
 
 				Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
-				int color = metal != null ? metal.getStats().getMetalColor() : 0xFFFFFF;
+				int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
 				minecraft.fontRenderer.drawStringWithShadow((te.activeTime / 20) + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds"), x - 33, y - 30, color);
 				minecraft.fontRenderer.drawStringWithShadow(Utils.localizeIgnoreFormat(effect.getEffectName()), x + 30, y + 25, color);
 

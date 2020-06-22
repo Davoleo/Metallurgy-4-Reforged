@@ -1,0 +1,18 @@
+{
+	"type": "metallurgy:metal_shaped",
+	"pattern": [
+		"III",
+		" S ",
+		" S "
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:stick"
+		},
+		"I": {
+			"type": "metallurgy:metal",
+			"item_type": "ingot"
+		}
+	},
+	"result": "pickaxe"
+}
