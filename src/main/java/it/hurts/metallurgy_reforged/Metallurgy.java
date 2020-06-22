@@ -18,6 +18,7 @@
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
  import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
  import it.hurts.metallurgy_reforged.config.GeneralConfig;
+ import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
@@ -154,6 +155,8 @@
 		 }
 
 		 CrusherRecipes.registerDefaultOreRecipes();
+
+		 MetallurgyEffects.initTooltips();
 	 }
 
 

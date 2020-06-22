@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.container.slot.ArmorCustomSlot;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -27,7 +27,7 @@ import net.minecraft.potion.PotionEffect;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class DeepIronArmorEffect extends AbstractMetallurgyEffect {
+public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 
 	public DeepIronArmorEffect()
 	{
@@ -35,20 +35,20 @@ public class DeepIronArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ArmorEffectsConfig.deepIronArmorEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return false;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return null;
 	}

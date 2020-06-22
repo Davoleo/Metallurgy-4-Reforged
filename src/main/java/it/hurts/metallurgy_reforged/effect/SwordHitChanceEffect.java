@@ -21,7 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public abstract class SwordHitChanceEffect extends AbstractMetallurgyEffect {
+public abstract class SwordHitChanceEffect extends BaseMetallurgyEffect {
 
 	protected Random random = new Random();
 	protected int chance;
@@ -35,17 +35,17 @@ public abstract class SwordHitChanceEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	abstract protected boolean isEnabled();
+	abstract public boolean isEnabled();
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.SWORD;
 	}
@@ -56,9 +56,12 @@ public abstract class SwordHitChanceEffect extends AbstractMetallurgyEffect {
 		if (target instanceof EntityLivingBase)
 		{
 			EntityLivingBase livingTarget = ((EntityLivingBase) target);
-			if (random.nextInt(100) < chance)
+			if (livingTarget.getHeldItemMainhand().getItem() == metal.getTool(getToolClass()))
 			{
-				livingTarget.addPotionEffect(effect);
+				if (random.nextInt(100) < chance)
+				{
+					livingTarget.addPotionEffect(effect);
+				}
 			}
 		}
 	}

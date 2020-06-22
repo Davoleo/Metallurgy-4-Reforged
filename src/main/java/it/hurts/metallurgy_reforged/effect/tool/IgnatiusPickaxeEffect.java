@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
-public class IgnatiusPickaxeEffect extends AbstractMetallurgyEffect {
+public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 
 	public IgnatiusPickaxeEffect()
 	{
@@ -36,20 +36,20 @@ public class IgnatiusPickaxeEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ToolEffectsConfig.ignatiusPickaxeEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.PICKAXE;
 	}

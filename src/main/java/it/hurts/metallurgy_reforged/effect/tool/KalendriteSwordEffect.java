@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.SwordHitChanceEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -27,7 +28,7 @@ public class KalendriteSwordEffect extends SwordHitChanceEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ToolEffectsConfig.kalendriteSwordEffect;
 	}
@@ -35,9 +36,12 @@ public class KalendriteSwordEffect extends SwordHitChanceEffect {
 	@Override
 	public void onPlayerAttack(EntityPlayer attacker, Entity target)
 	{
-		if (random.nextInt(100) < chance)
+		if (attacker.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.SWORD))
 		{
-			attacker.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+			if (random.nextInt(100) < chance)
+			{
+				attacker.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+			}
 		}
 	}
 

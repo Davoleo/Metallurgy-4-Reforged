@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.item.armor;
 
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.util.Constants;
@@ -38,7 +39,7 @@ import java.util.List;
 
 public class ItemArmorBase extends ItemArmor {
 
-	private EnumArmorEffects effect;
+	private BaseMetallurgyEffect effect;
 	private Enchantment enchantment;
 	private int enchantmentLevel;
 
@@ -51,7 +52,7 @@ public class ItemArmorBase extends ItemArmor {
 		this.metalStats = metalStats;
 	}
 
-	public void setEffect(EnumArmorEffects effect)
+	public void setEffect(BaseMetallurgyEffect effect)
 	{
 		this.effect = effect;
 	}
@@ -62,9 +63,14 @@ public class ItemArmorBase extends ItemArmor {
 		this.enchantmentLevel = enchantmentLevel;
 	}
 
+	public MetalStats getMetalStats()
+	{
+		return metalStats;
+	}
+
 	private ItemStack getRepairStack()
 	{
-		String material = this.getArmorMaterial().getName().toLowerCase();
+		String material = this.metalStats.getName().toLowerCase();
 		Metal metal = Utils.getMetalFromString(material);
 		if (metal != null)
 			return new ItemStack(metal.getIngot());
@@ -82,8 +88,8 @@ public class ItemArmorBase extends ItemArmor {
 	@Override
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
-		if (this.effect != null && effect.isActive())
-			tooltip.add(this.effect.getLocalized());
+		if (this.effect != null && effect.isEnabled())
+			tooltip.add(this.effect.getTooltip());
 	}
 
 	@Override

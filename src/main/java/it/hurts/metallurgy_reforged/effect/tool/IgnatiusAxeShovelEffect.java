@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -25,7 +25,7 @@ import net.minecraftforge.event.world.BlockEvent;
 
 import javax.annotation.Nullable;
 
-public abstract class IgnatiusAxeShovelEffect extends AbstractMetallurgyEffect {
+public abstract class IgnatiusAxeShovelEffect extends BaseMetallurgyEffect {
 
 	public IgnatiusAxeShovelEffect()
 	{
@@ -33,25 +33,25 @@ public abstract class IgnatiusAxeShovelEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return getToolClass() == EnumTools.AXE ? ToolEffectsConfig.ignatiusAxeEffect : ToolEffectsConfig.ignatiusShovelEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected abstract EnumTools getToolClass();
+	public abstract EnumTools getToolClass();
 
 	@Override
 	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
 	{
-		if (event.getHarvester().getHeldItemMainhand().getItem().equals(ModMetals.IGNATIUS.getTool(EnumTools.AXE)))
+		if (event.getHarvester().getHeldItemMainhand().getItem().equals(metal.getTool(EnumTools.AXE)))
 		{
 			dropSmeltedItems(event);
 		}

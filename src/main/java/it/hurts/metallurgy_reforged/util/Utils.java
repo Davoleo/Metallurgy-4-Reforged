@@ -31,6 +31,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.JsonContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -93,6 +95,7 @@ public class Utils {
 		return new TextComponentTranslation(unlocalized).getFormattedText();
 	}
 
+	//CULO, CULO CUULO, CULO, CULO CULO CULO
 	public static String localizeIgnoreFormat(String unlocalized)
 	{
 		return new TextComponentTranslation(unlocalized).getUnformattedComponentText();
@@ -113,35 +116,6 @@ public class Utils {
 		return ((255 << 24) + r * 65536 + g * 256 + b);
 	}
 
-	//TODO : @ItHurtsLikeHell Document this fucking method please
-	public static String getName(String name)
-	{
-		String[] str = name.split("_");
-		String[] space = space(str.length);
-		name = "";
-		for (int i = 0; i < str.length; i++)
-		{
-			name = name + str[i].substring(0, 1).toUpperCase() + str[i].substring(1) + space[i];
-		}
-		return name;
-	}
-
-	//TODO : @ItHurtsLikeHell Document this fucking method please
-	private static String[] space(int len)
-	{
-		String[] str = new String[len];
-		for (int i = 0; i < len; i++)
-		{
-			if (i < len - 1)
-			{
-				str[i] = " ";
-			}
-			else
-				str[i] = "";
-		}
-		return str;
-	}
-
 	public static Metal getMetalFromString(String string)
 	{
 		for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
@@ -153,6 +127,7 @@ public class Utils {
 	}
 
 
+	@SideOnly(Side.CLIENT)
 	public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height)
 	{
 		Tessellator tessellator = Tessellator.getInstance();

@@ -11,18 +11,18 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
 
-public class CelenegilOrichalcumSwordEffect extends AbstractMetallurgyEffect {
+public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 
 	public CelenegilOrichalcumSwordEffect(Metal metal)
 	{
@@ -30,26 +30,26 @@ public class CelenegilOrichalcumSwordEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.SWORD;
 	}
 
 	@Override
-	public void onPlayerKill(EntityPlayer killer, Entity killedEntity)
+	public void onPlayerKill(EntityPlayer killer, EntityLivingBase killedEntity)
 	{
 		//			Celenegil Sword ( Give Speed and Strenght on entity kill )
 		if (killer.getHeldItemMainhand().getItem() == ModMetals.CELENEGIL.getTool(EnumTools.SWORD) &&

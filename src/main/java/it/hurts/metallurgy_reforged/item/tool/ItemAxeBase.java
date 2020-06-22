@@ -13,7 +13,9 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
@@ -32,9 +34,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemAxeBase extends ItemAxe {
+public class ItemAxeBase extends ItemAxe implements IToolEffect {
 
-	private EnumToolEffects effect;
+	private BaseMetallurgyEffect effect;
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 
@@ -47,10 +49,22 @@ public class ItemAxeBase extends ItemAxe {
 		this.metalStats = metalStats;
 	}
 
-	public ItemAxeBase setEffect(EnumToolEffects effect)
+	@Override
+	public MetalStats getMetalStats()
+	{
+		return metalStats;
+	}
+
+	@Override
+	public EnumTools getToolClass()
+	{
+		return EnumTools.AXE;
+	}
+
+	@Override
+	public void setEffect(BaseMetallurgyEffect effect)
 	{
 		this.effect = effect;
-		return this;
 	}
 
 	public ItemAxeBase setEnchanted(Enchantment enchantment, int enchantmentLevel)
@@ -70,8 +84,8 @@ public class ItemAxeBase extends ItemAxe {
 	@Override
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
-		if (this.effect != null && effect.isActive())
-			tooltip.add(effect.getLocalized());
+		if (this.effect != null && effect.isEnabled())
+			tooltip.add(effect.getTooltip());
 	}
 
 	@Override

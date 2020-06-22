@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -20,7 +20,7 @@ import net.minecraft.init.MobEffects;
 
 import javax.annotation.Nullable;
 
-public class ShadowIronArmorEffect extends AbstractMetallurgyEffect {
+public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 
 	public ShadowIronArmorEffect()
 	{
@@ -28,20 +28,20 @@ public class ShadowIronArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return false;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return null;
 	}

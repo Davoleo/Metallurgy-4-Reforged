@@ -25,10 +25,7 @@ public class SubEvent {
 	public static void init()
 	{
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
-		MinecraftForge.EVENT_BUS.register(AxeEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(PickaxeEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(ShovelEffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(SwordEffectHandler.class);
+		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);

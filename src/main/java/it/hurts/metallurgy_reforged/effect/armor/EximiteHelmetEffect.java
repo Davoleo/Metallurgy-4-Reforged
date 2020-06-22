@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.entity.ai.AIFindPlayerWithoutHelmet;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -25,7 +25,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import javax.annotation.Nullable;
 import java.util.Iterator;
 
-public class EximiteHelmetEffect extends AbstractMetallurgyEffect {
+public class EximiteHelmetEffect extends BaseMetallurgyEffect {
 
 	public EximiteHelmetEffect()
 	{
@@ -33,20 +33,20 @@ public class EximiteHelmetEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ArmorEffectsConfig.eximiteArmorEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return false;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return null;
 	}

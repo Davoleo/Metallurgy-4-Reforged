@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -22,7 +22,7 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 
 import javax.annotation.Nullable;
 
-public class OsmiumLutetiumArmorEffect extends AbstractMetallurgyEffect {
+public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 
 	public OsmiumLutetiumArmorEffect(Metal metal)
 	{
@@ -30,7 +30,7 @@ public class OsmiumLutetiumArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		if (metal == ModMetals.OSMIUM)
 			return ArmorEffectsConfig.osmiumArmorEffect;
@@ -39,14 +39,14 @@ public class OsmiumLutetiumArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return false;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return null;
 	}

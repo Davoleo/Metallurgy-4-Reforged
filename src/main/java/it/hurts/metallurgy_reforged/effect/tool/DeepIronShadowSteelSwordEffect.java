@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -26,7 +26,7 @@ import net.minecraft.item.ItemStack;
 import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class DeepIronShadowSteelSwordEffect extends AbstractMetallurgyEffect {
+public class DeepIronShadowSteelSwordEffect extends BaseMetallurgyEffect {
 
 	//The speed sword modifier UUID
 	private final UUID SHADOW_STEEL_SWORD_MODIFIER_UUID = UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
@@ -38,20 +38,20 @@ public class DeepIronShadowSteelSwordEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return metal == ModMetals.DEEP_IRON ? ToolEffectsConfig.deepIronSwordEffect : ToolEffectsConfig.shadowSteelSwordEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.SWORD;
 	}

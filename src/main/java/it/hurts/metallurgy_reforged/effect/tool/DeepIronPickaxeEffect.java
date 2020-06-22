@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +20,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import javax.annotation.Nullable;
 
-public class DeepIronPickaxeEffect extends AbstractMetallurgyEffect {
+public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 
 	public DeepIronPickaxeEffect()
 	{
@@ -28,20 +28,20 @@ public class DeepIronPickaxeEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ToolEffectsConfig.deepIronPickaxeEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.PICKAXE;
 	}

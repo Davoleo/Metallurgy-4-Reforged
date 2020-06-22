@@ -13,8 +13,10 @@ package it.hurts.metallurgy_reforged.item.tool;
 
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -34,9 +36,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemSwordBase extends ItemSword {
+public class ItemSwordBase extends ItemSword implements IToolEffect {
 
-	private EnumToolEffects effect;
+	private BaseMetallurgyEffect effect;
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 
@@ -49,7 +51,20 @@ public class ItemSwordBase extends ItemSword {
 		this.metalStats = metalStats;
 	}
 
-	public void setEffect(EnumToolEffects effect)
+	@Override
+	public EnumTools getToolClass()
+	{
+		return EnumTools.SWORD;
+	}
+
+	@Override
+	public MetalStats getMetalStats()
+	{
+		return metalStats;
+	}
+
+	@Override
+	public void setEffect(BaseMetallurgyEffect effect)
 	{
 		this.effect = effect;
 	}
@@ -78,10 +93,10 @@ public class ItemSwordBase extends ItemSword {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
-		if (this.effect != null && effect.isActive())
-			tooltip.add(this.effect.getLocalized());
+		if (this.effect != null && effect.isEnabled())
+			tooltip.add(this.effect.getTooltip());
 	}
 
 	@Override

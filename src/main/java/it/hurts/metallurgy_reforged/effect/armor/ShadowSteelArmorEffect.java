@@ -12,7 +12,7 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -23,7 +23,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import javax.annotation.Nullable;
 
-public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
+public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 
 	public ShadowSteelArmorEffect()
 	{
@@ -31,20 +31,20 @@ public class ShadowSteelArmorEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return ArmorEffectsConfig.shadowSteelArmorEffect;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return false;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return null;
 	}

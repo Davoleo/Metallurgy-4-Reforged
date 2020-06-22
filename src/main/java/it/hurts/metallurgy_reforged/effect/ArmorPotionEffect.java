@@ -19,7 +19,7 @@ import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
 
-public abstract class ArmorPotionEffect extends AbstractMetallurgyEffect {
+public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 
 	protected PotionEffect effect;
 

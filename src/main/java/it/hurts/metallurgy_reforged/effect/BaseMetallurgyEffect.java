@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: AbstractMetallurgyEffect
+ * Class: BaseMetallurgyEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -28,11 +28,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class AbstractMetallurgyEffect {
+public abstract class BaseMetallurgyEffect {
 
 	protected Metal metal;
 
-	public AbstractMetallurgyEffect(Metal metal)
+	public BaseMetallurgyEffect(Metal metal)
 	{
 		this.metal = metal;
 		if (isEnabled())
@@ -41,12 +41,12 @@ public abstract class AbstractMetallurgyEffect {
 		}
 	}
 
-	protected abstract boolean isEnabled();
+	public abstract boolean isEnabled();
 
-	protected abstract boolean isToolEffect();
+	public abstract boolean isToolEffect();
 
 	@Nullable
-	protected abstract EnumTools getToolClass();
+	public abstract EnumTools getToolClass();
 
 	public String getTooltip()
 	{
@@ -68,10 +68,15 @@ public abstract class AbstractMetallurgyEffect {
 		}
 	}
 
+	public Metal getMetal()
+	{
+		return metal;
+	}
+
 	public void onPlayerTick(EntityPlayer player)
 	{ }
 
-	public void onPlayerUseItem(LivingEntityUseItemEvent event)
+	public void onEntityUseItem(LivingEntityUseItemEvent event)
 	{ }
 
 	@SideOnly(Side.CLIENT)
@@ -99,7 +104,7 @@ public abstract class AbstractMetallurgyEffect {
 	public void onPlayerAttack(EntityPlayer attacker, Entity target)
 	{ }
 
-	public void onPlayerKill(EntityPlayer killer, Entity killedEntity)
+	public void onPlayerKill(EntityPlayer killer, EntityLivingBase killedEntity)
 	{ }
 
 	public void onEntityKillDrop(List<EntityItem> drops, EntityPlayer killer)

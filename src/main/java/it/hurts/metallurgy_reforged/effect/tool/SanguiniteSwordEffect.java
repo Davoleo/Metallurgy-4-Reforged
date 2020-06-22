@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
@@ -22,7 +22,7 @@ import scala.util.Random;
 
 import javax.annotation.Nullable;
 
-public class SanguiniteSwordEffect extends AbstractMetallurgyEffect {
+public class SanguiniteSwordEffect extends BaseMetallurgyEffect {
 
 	public SanguiniteSwordEffect()
 	{
@@ -30,20 +30,20 @@ public class SanguiniteSwordEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.SWORD;
 	}

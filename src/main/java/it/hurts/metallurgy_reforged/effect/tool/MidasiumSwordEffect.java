@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.effect.AbstractMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.item.EntityItem;
@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MidasiumSwordEffect extends AbstractMetallurgyEffect {
+public class MidasiumSwordEffect extends BaseMetallurgyEffect {
 
 	public MidasiumSwordEffect()
 	{
@@ -29,20 +29,20 @@ public class MidasiumSwordEffect extends AbstractMetallurgyEffect {
 	}
 
 	@Override
-	protected boolean isEnabled()
+	public boolean isEnabled()
 	{
 		return true;
 	}
 
 	@Override
-	protected boolean isToolEffect()
+	public boolean isToolEffect()
 	{
 		return true;
 	}
 
 	@Nullable
 	@Override
-	protected EnumTools getToolClass()
+	public EnumTools getToolClass()
 	{
 		return EnumTools.SWORD;
 	}

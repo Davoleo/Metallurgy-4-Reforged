@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: PlatinumHelmetEffect
+ * Class: PlatinumArmorEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -17,12 +17,11 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.potion.PotionEffect;
 
-public class PlatinumHelmetEffect extends ArmorPotionEffect {
+public class PlatinumArmorEffect extends ArmorPotionEffect {
 
-	public PlatinumHelmetEffect()
+	public PlatinumArmorEffect()
 	{
 		super(ModMetals.PLATINUM, null);
 	}
@@ -36,7 +35,7 @@ public class PlatinumHelmetEffect extends ArmorPotionEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingSpecificArmorPiece(player, EntityEquipmentSlot.HEAD, metal.getArmorPiece(EntityEquipmentSlot.HEAD)))
+		if (EventUtils.isPlayerWearingArmor(player, metal))
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
 			player.addTag("platinum_effect");
