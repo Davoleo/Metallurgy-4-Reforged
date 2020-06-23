@@ -13,11 +13,13 @@ package it.hurts.metallurgy_reforged.item.gadget;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Lists;
+import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -33,6 +35,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemOreDetector extends ItemExtra {
+
+	public static int indexColor;
 
 	public ItemOreDetector()
 	{
@@ -91,7 +95,7 @@ public class ItemOreDetector extends ItemExtra {
 
 		if (!metals.isEmpty())
 		{
-			return metals.get(0).getStats().getColorHex();
+			return getColorShiftFromMetals(metals);
 		}
 		else
 		{
@@ -99,33 +103,26 @@ public class ItemOreDetector extends ItemExtra {
 		}
 	}
 
-	//private int getColorShiftFromMetals(List<Metal> metals)
-	//{
-	//	float[][] metalColors = new float[metals.size()][3];
-	//
-	//	for (int i = 0; i < metalColors.length; i++)
-	//	{
-	//		metalColors[i] = metals.get(i).getStats().getColorRGBValues();
-	//	}
-	//
-	//	double factor = 0.5F * (Math.sin(6.0F * Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks())) + 1.0F);
-	//
-	//	Math.rint(1237);
-	//	//-1 0 1
-	//	// TODO: 16/05/2020 Fix 3 Metals Color Shift
-	//	if (factor == 1 || factor == 0)
-	//	{
-	//		System.out.println("test");
-	//		colorId1 = colorId1 < metals.size() - 1 ? colorId1 + 1 : 0;
-	//		colorId2 = colorId2 < metals.size() - 1 ? colorId2 + 1 : 0;
-	//	}
-	//
-	//	return Utils.intColorFromRGB(
-	//			(int) (255 * (metalColors[colorId1][0] * factor + metalColors[colorId2][0] * (1.0 - factor) + metalColors[colorId1][0] * factor)),
-	//			(int) (255 * (metalColors[colorId1][1] * factor + metalColors[colorId2][1] * (1.0 - factor))),
-	//			(int) (255 * (metalColors[colorId1][2] * factor + metalColors[colorId2][2] * (1.0 - factor)))
-	//	);
-	//}
+	private int getColorShiftFromMetals(List<Metal> metals)
+	{
+		float[][] metalColors = new float[metals.size()][3];
+
+		for (int i = 0; i < metalColors.length; i++)
+		{
+			metalColors[i] = metals.get(i).getStats().getColorRGBValues();
+		}
+
+		int indexFrom = indexColor % metals.size();
+		int indexTo = indexFrom < (metals.size() - 1) ? indexFrom + 1 : 0;
+
+		double factor = GadgetsHandler.prevFactorToUse;
+
+		int r = (int) (255 * (metalColors[indexTo][0] * factor + metalColors[indexFrom][0] * (1.0 - factor)));
+		int g = (int) (255 * (metalColors[indexTo][1] * factor + metalColors[indexFrom][1] * (1.0 - factor)));
+		int b = (int) (255 * (metalColors[indexTo][2] * factor + metalColors[indexFrom][2] * (1.0 - factor)));
+
+		return Utils.intColorFromRGB(r, g, b);
+	}
 
 	public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
 	{

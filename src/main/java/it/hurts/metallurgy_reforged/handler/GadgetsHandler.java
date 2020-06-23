@@ -47,7 +47,11 @@ import java.util.List;
 public class GadgetsHandler {
 
 	private static MovementInput inputCheck;
+
 	public static long ticks = 0;
+
+	private static double prevFactor = 0;
+	public static double prevFactorToUse = 0;
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
@@ -56,6 +60,17 @@ public class GadgetsHandler {
 		if (event.phase == TickEvent.Phase.START)
 		{
 			ticks++;
+
+			double radiant = Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks());
+			double factor = ((Math.sin(radiant * 6) + 1.0F) * 0.5D);
+			double factorToUse = factor - prevFactor >= 0 ? factor : 1 - factor;
+
+			if (prevFactorToUse - factorToUse > 0.3)
+				ItemOreDetector.indexColor++;
+
+			prevFactor = factor;
+			prevFactorToUse = factorToUse;
+
 			if (ticks >= Long.MAX_VALUE)
 			{
 				ticks = 0;
