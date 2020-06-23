@@ -154,7 +154,10 @@ public class EffectHandler {
 	{
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 		{
-			effect.onBlockHarvested(event);
+			if (event.getHarvester() != null)
+			{
+				effect.onBlockHarvested(event);
+			}
 		}
 	}
 
