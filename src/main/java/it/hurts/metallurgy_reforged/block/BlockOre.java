@@ -45,10 +45,7 @@ public class BlockOre extends Block {
 	public BlockOre(String name, float hardness, int harvestLevel, float blastResistance)
 	{
 		super(Material.ROCK);
-		setHarvestLevel(Constants.Tools.PICKAXE, harvestLevel);
-		setResistance(blastResistance);
-
-		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, "p", harvestLevel);
+		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, Constants.Tools.PICKAXE, harvestLevel);
 	}
 
 	public BlockOre setDrops(Drop... drops)
@@ -56,6 +53,22 @@ public class BlockOre extends Block {
 		this.customDrops = Arrays.asList(drops);
 		return this;
 	}
+
+	@Override
+	public void getDrops(@Nonnull NonNullList<ItemStack> drops, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull IBlockState state, int fortune)
+	{
+		if (customDrops != null)
+		{
+			for (Drop drop : customDrops)
+			{
+				if (Math.random() <= drop.getChance())
+					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
+			}
+		}
+		else
+			super.getDrops(drops, world, pos, state, fortune);
+	}
+
 
 	// VISUAL EFFECTS -----------------------------------------------------------
 	@Override
@@ -75,21 +88,6 @@ public class BlockOre extends Block {
 		if (worldIn.isRemote && GeneralConfig.enableOreParticles)
 		{
 			spawnParticles(worldIn, pos, rand);
-		}
-	}
-
-	@Override
-	public void getDrops(@Nonnull NonNullList<ItemStack> drops, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull IBlockState state, int fortune)
-	{
-		if (customDrops == null)
-			drops.add(new ItemStack(this));
-		else
-		{
-			for (Drop drop : customDrops)
-			{
-				if (Math.random() <= drop.getChance())
-					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
-			}
 		}
 	}
 

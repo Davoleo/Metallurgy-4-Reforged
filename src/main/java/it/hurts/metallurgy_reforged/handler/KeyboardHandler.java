@@ -23,11 +23,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 public class KeyboardHandler {
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public static void onKeyInput(InputEvent.KeyInputEvent event)
 	{
 		EntityPlayer player = Minecraft.getMinecraft().player;
