@@ -1,6 +1,6 @@
 /*
  * -------------------------------------------------------------------------------------------------------
- * Class: EximiteHelmetEffect
+ * Class: EximiteArmorEffect
  * This class is part of Metallurgy 4 Reforged
  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
  * This code is licensed under GNU GPLv3
@@ -25,9 +25,9 @@ import net.minecraft.entity.monster.EntityEnderman;
 import javax.annotation.Nullable;
 import java.util.Iterator;
 
-public class EximiteHelmetEffect extends BaseMetallurgyEffect {
+public class EximiteArmorEffect extends BaseMetallurgyEffect {
 
-	public EximiteHelmetEffect()
+	public EximiteArmorEffect()
 	{
 		super(ModMetals.EXIMITE);
 	}
@@ -57,7 +57,6 @@ public class EximiteHelmetEffect extends BaseMetallurgyEffect {
 		//check if spawned entity is an enderman
 		if (entity instanceof EntityEnderman)
 		{
-
 			EntityEnderman end = (EntityEnderman) entity;
 			EntityAIBase aifindPlayer = null;
 			int priority = 0;

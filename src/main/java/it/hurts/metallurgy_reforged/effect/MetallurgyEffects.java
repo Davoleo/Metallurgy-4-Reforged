@@ -141,6 +141,9 @@ public class MetallurgyEffects {
 	//Celenegil Armor (Resistence)
 	public static final BaseMetallurgyEffect celenegilEffect = new CelenegilArmorEffect();
 
+	//Celenegil Sword Effect
+	public static final BaseMetallurgyEffect celenegilSwordEffect = new CelenegilOrichalcumSwordEffect(ModMetals.CELENEGIL);
+
 	//Ceruclase Sword (Chance to slow enemies on hit)
 	public static final BaseMetallurgyEffect ceruclaseEffect =
 			new SwordHitChanceEffect(ModMetals.CERUCLASE, 75, new PotionEffect(MobEffects.SLOWNESS, 80, 2)) {
@@ -170,8 +173,8 @@ public class MetallurgyEffects {
 				}
 			};
 
-	//Eximite Armor (replaces the enderman's AI Eximite Helmet)
-	public static final BaseMetallurgyEffect eximiteEffect = new EximiteHelmetEffect();
+	//Eximite Armor
+	public static final BaseMetallurgyEffect eximiteEffect = new EximiteArmorEffect();
 
 	//Ignatius Axe & Shovel (Smelt Harvested Items)
 	public static final BaseMetallurgyEffect ignatiusAxeEffect = new IgnatiusAxeShovelEffect() {
@@ -230,6 +233,9 @@ public class MetallurgyEffects {
 				}
 			};
 
+	//Orichalcum Effect
+	public static final BaseMetallurgyEffect orichalcumSwordEffect = new CelenegilOrichalcumSwordEffect(ModMetals.ORICHALCUM);
+
 	//Osmium Effect (Reduced Knockback I)
 	public static final BaseMetallurgyEffect osmiumEffect = new OsmiumLutetiumArmorEffect(ModMetals.OSMIUM);
 
@@ -257,6 +263,9 @@ public class MetallurgyEffects {
 					return ToolEffectsConfig.shadowIronSwordEffect;
 				}
 			};
+
+	//Shadow Steel Armor
+	public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowIronArmorEffect();
 
 	//Shadow Steel Axe
 	//Shadow Steel Pickaxe

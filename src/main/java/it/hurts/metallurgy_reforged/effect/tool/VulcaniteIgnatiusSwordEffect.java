@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 
 import javax.annotation.Nullable;
 
@@ -51,21 +52,27 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerAttack(EntityPlayer attacker, Entity target)
 	{
-		if (target instanceof EntityLivingBase)
+		Item sword = attacker.getHeldItemMainhand().getItem();
+
+		if (sword == ModMetals.IGNATIUS.getTool(EnumTools.SWORD) || sword == ModMetals.VULCANITE.getTool(EnumTools.SWORD))
 		{
-			EntityLivingBase livingTarget = ((EntityLivingBase) target);
-			if (metal == ModMetals.IGNATIUS)
+
+			if (target instanceof EntityLivingBase)
 			{
-				if (Math.random() * 100 < 25)
+				EntityLivingBase livingTarget = ((EntityLivingBase) target);
+				if (metal == ModMetals.IGNATIUS)
 				{
-					livingTarget.setFire(5);
+					if (Math.random() * 100 < 25)
+					{
+						livingTarget.setFire(5);
+					}
 				}
-			}
-			else
-			{
-				if (Math.random() * 100 < 50)
+				else
 				{
-					livingTarget.setFire(5);
+					if (Math.random() * 100 < 50)
+					{
+						livingTarget.setFire(5);
+					}
 				}
 			}
 		}

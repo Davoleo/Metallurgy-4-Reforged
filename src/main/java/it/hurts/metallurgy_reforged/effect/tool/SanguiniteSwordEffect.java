@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import scala.util.Random;
 
@@ -59,7 +58,7 @@ public class SanguiniteSwordEffect extends BaseMetallurgyEffect {
 			//the player that damaged the event entity
 			EntityPlayer pl = (EntityPlayer) source;
 
-			if (pl.getHeldItemMainhand().isItemEqualIgnoreDurability(new ItemStack(ModMetals.SANGUINITE.getTool(EnumTools.SWORD))))
+			if (pl.getHeldItemMainhand().getItem() == ModMetals.SANGUINITE.getTool(EnumTools.SWORD))
 			{
 				{
 					//check if the player is missing hearts.
