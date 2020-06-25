@@ -40,7 +40,7 @@ public class ItemOreDetector extends ItemExtra {
 
 	public ItemOreDetector()
 	{
-		super("metal_detector", MetallurgyTabs.tabSpecial, "gadget");
+		super("ore_detector", MetallurgyTabs.tabSpecial, "gadget");
 		this.setMaxStackSize(1);
 	}
 

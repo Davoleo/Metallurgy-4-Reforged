@@ -13,8 +13,15 @@ package it.hurts.metallurgy_reforged.proxy;
 
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.KeyboardHandler;
+import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.material.Metal;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class ClientProxy implements IProxy {
@@ -25,5 +32,21 @@ public class ClientProxy implements IProxy {
 		MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 	}
+
+	@Override
+	public void init(FMLInitializationEvent event)
+	{
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
+
+			if (tintIndex <= metals.size())
+			{
+				return metals.get(tintIndex - 1).getStats().getColorHex();
+			}
+			return -1;
+
+		}, ModItems.oreDetector);
+	}
+
 
 }

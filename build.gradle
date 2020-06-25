@@ -90,7 +90,7 @@ dependencies {
     compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.13:237"
 	
     //ProjectE
-	compile "projecte:ProjectE:1.12.2:PE1.4.1"
+	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
     
     //CraftTweaker
     compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.576"

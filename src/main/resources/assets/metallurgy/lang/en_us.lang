@@ -884,7 +884,7 @@ item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
 item.metallurgy.lemurite_shield.name=Lemurite Shield
-item.metallurgy.ore_detector.name=Ore Detector
+item.metallurgy.ore_detector.name=Metal Detector
 tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 
 #Items

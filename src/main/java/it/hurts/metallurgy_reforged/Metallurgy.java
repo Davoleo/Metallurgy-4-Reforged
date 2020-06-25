@@ -48,19 +48,19 @@
  import net.minecraftforge.fml.common.registry.GameRegistry;
  import org.apache.logging.log4j.Logger;
 
- @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
- public class Metallurgy {
+@Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
+public class Metallurgy {
 
-	 public static final String MODID = "metallurgy";
-	 public static final String NAME = "Metallurgy 4: Reforged";
-	 public static final String VERSION = "0.3.3";
+	public static final String MODID = "metallurgy";
+	public static final String NAME = "Metallurgy 4: Reforged";
+	public static final String VERSION = "0.3.3";
 
-	 public static Logger logger;
+	public static Logger logger;
 
-	 public static String materialConfig;
+	public static String materialConfig;
 
-	 @Mod.Instance(MODID)
-	 public static Metallurgy instance;
+	@Mod.Instance(MODID)
+	public static Metallurgy instance;
 
 	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
 	 public static IProxy proxy;
@@ -132,6 +132,7 @@
 	 @Mod.EventHandler
 	 public void init(FMLInitializationEvent event)
 	 {
+		 proxy.init(event);
 		 logger.info(NAME + " is entering initialization!");
 		 ModRecipes.init();
 		 logger.info("Recipes loaded!");
@@ -175,4 +176,4 @@
 		 logger.info(NAME + " has been completely loaded");
 	 }
 
- }
+}
