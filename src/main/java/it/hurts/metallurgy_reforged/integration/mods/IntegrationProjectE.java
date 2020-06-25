@@ -12,15 +12,22 @@
 package it.hurts.metallurgy_reforged.integration.mods;
 
 import com.google.common.collect.Table;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -94,17 +101,45 @@ public class IntegrationProjectE {
 		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.tar, 128L);
 
 		ModMetals.metalMap.forEach((s, metal) -> {
+			long baseValue = emcMap.get(metal.toString());
 
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), emcMap.get(metal.toString()));
+			//Nuggets and Dusts
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), baseValue);
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getNugget(), baseValue / 9);
+
+			//Blocks
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.BLOCK), baseValue * 9);
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.ENGRAVED_BLOCK), baseValue);
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.LARGE_BRICKS), baseValue);
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.BRICKS), baseValue);
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.CRYSTAL), baseValue + (baseValue / 9 / 4 * 3));
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.HAZARD_BLOCK), baseValue + (baseValue / 9 / 4 * 5));
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.GLASS), baseValue + (getExistingEMCValue(Blocks.GLASS) / 4));
+
+			//Tools
+			if (metal.hasToolSet())
+			{
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getTool(EnumTools.AXE), (baseValue * 3) + (getExistingEMCValue(Items.STICK) * 2));
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getTool(EnumTools.HOE), (baseValue * 2) + (getExistingEMCValue(Items.STICK) * 2));
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getTool(EnumTools.PICKAXE), (baseValue * 3) + (getExistingEMCValue(Items.STICK) * 2));
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getTool(EnumTools.SHOVEL), baseValue + (getExistingEMCValue(Items.STICK) * 2));
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getTool(EnumTools.SWORD), (baseValue * 2) + (getExistingEMCValue(Items.STICK) * 2));
+			}
+
+			//Armor
+			if (metal.hasArmorSet())
+			{
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.HEAD), baseValue * 5);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.CHEST), baseValue * 8);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.LEGS), baseValue * 7);
+				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.FEET), baseValue * 4);
+			}
 
 			if (!metal.isAlloy())
 			{
 				//Debug Print
 				//System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
-
 				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
-				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlocks(), emcMap.get(metal.toString()) * 9);
-				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getNugget(), emcMap.get(metal.toString()) / 9);
 			}
 			else
 			{
@@ -137,6 +172,21 @@ public class IntegrationProjectE {
 		if (harvestLevel == 0)
 			harvestLevel = 1;
 		return harvestLevel * harvestLevel * 150;
+	}
+
+	private static long getExistingEMCValue(IForgeRegistryEntry<?> entry)
+	{
+		if (entry instanceof Item)
+		{
+			return ProjectEAPI.getEMCProxy().getValue(((Item) entry));
+		}
+
+		if (entry instanceof Block)
+		{
+			return ProjectEAPI.getEMCProxy().getValue(((Block) entry));
+		}
+
+		return 0L;
 	}
 
 }
