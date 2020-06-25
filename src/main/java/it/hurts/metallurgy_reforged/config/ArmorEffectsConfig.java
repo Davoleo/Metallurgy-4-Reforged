@@ -40,7 +40,7 @@ public class ArmorEffectsConfig {
 	@Config.Name("Deep Iron Armor Effect")
 	@Config.Comment("You move faster underwater")
 	public static boolean deepIronArmorEffect = true;
-	@Config.Name("Eximite Helmet Effect")
+	@Config.Name("Eximite Armor Effect")
 	@Config.Comment("Endermen won't notice you when watch them")
 	public static boolean eximiteArmorEffect = true;
 	@Config.Name("Kalendrite Armor Effect")
@@ -59,7 +59,7 @@ public class ArmorEffectsConfig {
 	@Config.Comment("Knockback reduction depending on how much armor is worn (LV 1)")
 	public static boolean osmiumArmorEffect = true;
 	@Config.Name("Platinum Armor Effect")
-	@Config.Comment("The helmet gives you night vision")
+	@Config.Comment("Gives you night vision")
 	public static boolean platinumArmorEffect = true;
 	@Config.Name("Prometheum Armor Effect")
 	@Config.Comment("Removes poison effect whenever you get it")
