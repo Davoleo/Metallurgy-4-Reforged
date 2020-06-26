@@ -61,7 +61,7 @@ public class AlloyerRecipes {
 		this.addAlloyRecipe
 				(new ItemStack(Items.IRON_INGOT),
 						new ItemStack(ModMetals.MANGANESE.getIngot(), 3),
-						new ItemStack(ModMetals.STEEL.getIngot()), 1.5F);
+						new ItemStack(ModMetals.STEEL.getIngot(), 2), 1.5F);
 		this.addAlloyRecipe
 				(new ItemStack(Items.IRON_INGOT),
 						new ItemStack(ModMetals.BRONZE.getIngot(), 2),
