@@ -411,7 +411,7 @@
 		"hardness": 3.0,
 		"blast_resistance": 6.0,
 		"ore_harvest_level": -1,
-		"color": "BBBBBB",
+		"color": "E02355",
 		"armor_stats": {
 			"damage_reduction": [
 				3,
