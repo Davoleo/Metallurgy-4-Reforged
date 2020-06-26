@@ -44,7 +44,7 @@ public class Utils {
 
 	public static Random random = new Random();
 
-	private static Potion[] randomEffectsList = {
+	private static final Potion[] randomEffectsList = {
 			MobEffects.BLINDNESS,
 			MobEffects.LEVITATION,
 			MobEffects.HUNGER,
