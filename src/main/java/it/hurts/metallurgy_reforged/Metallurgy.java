@@ -53,7 +53,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "0.3.3";
+	public static final String VERSION = "1.0.0";
 
 	public static Logger logger;
 
@@ -62,18 +62,18 @@ public class Metallurgy {
 	@Mod.Instance(MODID)
 	public static Metallurgy instance;
 
-	 @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
-	 public static IProxy proxy;
+	@SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
+	public static IProxy proxy;
 
-	 static
-	 {
-		 FluidRegistry.enableUniversalBucket();
-	 }
+	static
+	{
+		FluidRegistry.enableUniversalBucket();
+	}
 
-	 @Mod.EventHandler
-	 public void preInit(FMLPreInitializationEvent event)
-	 {
-		 logger = event.getModLog();
+	@Mod.EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		logger = event.getModLog();
 		 logger.info(NAME + " is entering pre-initialization!");
 
 		 materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
