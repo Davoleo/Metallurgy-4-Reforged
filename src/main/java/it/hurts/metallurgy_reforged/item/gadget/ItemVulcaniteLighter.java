@@ -66,8 +66,6 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 				IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, blockPos, facing, hitX, hitY, hitZ, 0, player, hand);
 				worldIn.setBlockState(blockPos, state);
 				state.getBlock().neighborChanged(state, worldIn, blockPos, state.getBlock(), pos);
-				//worldIn.scheduleUpdate(blockPos, state.getBlock(), 20);
-
 
 				if (!player.isCreative())
 					player.getCooldownTracker().setCooldown(this, 400);
