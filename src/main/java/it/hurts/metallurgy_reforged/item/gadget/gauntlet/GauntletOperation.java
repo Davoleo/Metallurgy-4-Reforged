@@ -47,7 +47,7 @@ public class GauntletOperation {
 		}
 	}
 
-	private static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
+	protected static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
 	{
 		//For Every slot in the player inventory
 		for (int i = 0; i < player.inventory.mainInventory.size(); i++)
@@ -58,7 +58,7 @@ public class GauntletOperation {
 				ItemStack otherGauntlet = player.inventory.mainInventory.get(i);
 
 				//Check if the main Gauntlet is the same as the moved one
-				if (ItemStack.areItemsEqual(firstGauntlet, otherGauntlet))
+				if (ItemStack.areItemsEqualIgnoreDurability(firstGauntlet, otherGauntlet))
 				{
 
 					//Create a copy of the moved Gauntlet

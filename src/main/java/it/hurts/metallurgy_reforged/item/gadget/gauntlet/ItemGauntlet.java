@@ -20,13 +20,17 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -52,14 +56,15 @@ public class ItemGauntlet extends ItemExtra {
 		this.setMaxStackSize(1);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean hasEffect(ItemStack stack)
+	public boolean hasEffect(@Nonnull ItemStack stack)
 	{
 		return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
 	}
 
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment)
+	public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
 	{
 		List<Enchantment> list = Lists.newArrayList(e);
 
@@ -68,7 +73,7 @@ public class ItemGauntlet extends ItemExtra {
 
 	@Nonnull
 	@SuppressWarnings("deprecation")
-	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
 	{
 		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 
@@ -81,13 +86,13 @@ public class ItemGauntlet extends ItemExtra {
 	}
 
 	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
+	public boolean onEntitySwing(EntityLivingBase entityLiving, @Nonnull ItemStack stack)
 	{
 
 		ItemStack mainHand = entityLiving.getHeldItemMainhand();
 		ItemStack offHand = entityLiving.getHeldItemOffhand();
 
-		if (offHand.getItem().equals(this) && mainHand.getItem().equals(this) && entityLiving.swingingHand != null && entityLiving.swingingHand == EnumHand.MAIN_HAND)
+		if (offHand.getItem().equals(this) && mainHand.getItem().equals(this) && entityLiving.swingingHand == EnumHand.MAIN_HAND)
 		{
 			if (!entityLiving.isSwingInProgress || entityLiving.swingProgressInt >= getArmSwingAnimationEnd(entityLiving) / 2 || entityLiving.swingProgressInt < 0)
 			{
@@ -119,11 +124,16 @@ public class ItemGauntlet extends ItemExtra {
 		}
 	}
 
-	//	Questo metodo controlla se l'attacker � in creative, altrimenti danneggia l'oggetto di 1
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker)
+	public boolean hitEntity(@Nonnull ItemStack stack, @Nonnull EntityLivingBase target, @Nonnull EntityLivingBase attacker)
 	{
-		stack.damageItem(1, attacker);
+		if (attacker instanceof EntityPlayerMP)
+		{
+			if (Item.itemRand.nextBoolean())
+				stack.damageItem(1, attacker);
+			else
+				attacker.getHeldItemOffhand().damageItem(1, attacker);
+		}
 		return super.hitEntity(stack, target, attacker);
 	}
 
