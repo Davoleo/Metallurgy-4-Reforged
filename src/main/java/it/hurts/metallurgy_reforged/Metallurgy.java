@@ -36,6 +36,7 @@
  import it.hurts.metallurgy_reforged.util.SubEvent;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
  import it.hurts.metallurgy_reforged.world.WorldTickHandler;
+ import net.minecraft.util.math.Vec3d;
  import net.minecraftforge.common.MinecraftForge;
  import net.minecraftforge.common.capabilities.CapabilityManager;
  import net.minecraftforge.fluids.FluidRegistry;

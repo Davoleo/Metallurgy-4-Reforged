@@ -130,11 +130,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Vulcanite minimum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int minY = 0;
+		public int minY = 27;
 
 		@Config.Comment("Vulcanite maximum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 128;
+		public int maxY = 39;
 
 		@Config.Comment("Vulcanite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -162,11 +162,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Shadow Iron minimum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int minY = 16;
+		public int minY = 113;
 
 		@Config.Comment("Shadow Iron maximum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 124;
+		public int maxY = 123;
 
 		@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
