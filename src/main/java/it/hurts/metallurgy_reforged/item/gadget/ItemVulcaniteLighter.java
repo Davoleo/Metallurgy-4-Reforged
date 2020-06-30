@@ -58,14 +58,16 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 			}
 		else
 		{
-			BlockPos targetPos = blockPos.offset(facing);
 			ItemStack item = player.getHeldItem(hand);
 
-			if (player.canPlayerEdit(targetPos, facing, item) && worldIn.mayPlace(Blocks.LAVA, targetPos, false, facing, player))
+			if (player.canPlayerEdit(blockPos, facing, item) && worldIn.mayPlace(Blocks.LAVA, blockPos, false, facing, player))
 			{
-				worldIn.playSound(player, targetPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
-				IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, targetPos, facing, hitX, hitY, hitZ, 0, player, hand);
-				worldIn.setBlockState(targetPos, state);
+				worldIn.playSound(player, blockPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
+				IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, blockPos, facing, hitX, hitY, hitZ, 0, player, hand);
+				worldIn.setBlockState(blockPos, state);
+				state.getBlock().neighborChanged(state, worldIn, blockPos, state.getBlock(), pos);
+				//worldIn.scheduleUpdate(blockPos, state.getBlock(), 20);
+
 
 				if (!player.isCreative())
 					player.getCooldownTracker().setCooldown(this, 400);

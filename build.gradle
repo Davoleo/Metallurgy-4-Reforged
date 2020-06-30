@@ -88,12 +88,12 @@ dependencies {
      
     //Industrial Foregoing
     compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.13:237"
-	
+
+    //CraftTweaker
+    provided "CraftTweaker2:CraftTweaker2-API:4.1.20.577"
+
     //ProjectE
 	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
-    
-    //CraftTweaker
-    compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.576"
 
     //Silent's Gems
     deobfCompile "silents-gems:SilentsGems:1.12.2:2.8.22+327"
