@@ -90,7 +90,7 @@ dependencies {
     compileOnly "industrial-foregoing:industrialforegoing-1.12.2:1.12.13:237"
 
     //CraftTweaker
-    provided "CraftTweaker2:CraftTweaker2-API:4.1.20.577"
+    deobfProvided "CraftTweaker2:CraftTweaker2-API:4.1.20.577"
 
     //ProjectE
 	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
