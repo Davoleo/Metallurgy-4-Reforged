@@ -4,14 +4,15 @@ import it.hurts.metallurgy_reforged.world.ModWorldGen;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 
 import java.util.Random;
 
 public class SmallIslandsSpawn extends BaseOreSpawn
 {
-    public SmallIslandsSpawn()
+    public SmallIslandsSpawn(Biome[] biomes)
     {
-        super(ModWorldGen.DEFAULT_END);
+        super(ModWorldGen.DEFAULT_END,biomes);
     }
 
     @Override
