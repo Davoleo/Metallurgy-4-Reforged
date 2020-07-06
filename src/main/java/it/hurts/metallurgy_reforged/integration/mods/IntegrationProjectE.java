@@ -11,13 +11,11 @@
 
 package it.hurts.metallurgy_reforged.integration.mods;
 
-import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
 import net.minecraft.block.Block;
@@ -37,6 +35,7 @@ public class IntegrationProjectE {
 
 	static
 	{
+		//Alloy EMC calculation: (ingredient1 * count1 + ingredient2 * count2) / resultCount
 		emcMap.put("adamantine", 8192L);
 		emcMap.put("amordrine", 3072L);
 		emcMap.put("angmallen", 1152L);
@@ -44,20 +43,20 @@ public class IntegrationProjectE {
 		emcMap.put("astral_silver", 2048L);
 		emcMap.put("atlarus", 8192L);
 		emcMap.put("black_steel", 512L);
-		emcMap.put("brass", 160L);
+		emcMap.put("brass", 224L);
 		emcMap.put("bronze", 160L);
 		emcMap.put("carmot", 2048L);
 		emcMap.put("celenegil", 4096L);
 		emcMap.put("ceruclase", 1024L);
 		emcMap.put("copper", 128L);
 		emcMap.put("damascus_steel", 192L);
-		emcMap.put("deep_iron", 512L);
+		emcMap.put("deep_iron", 192L);
 		emcMap.put("desichalkos", 6144L);
 		emcMap.put("electrum", 1280L);
-		emcMap.put("etherium", 8192L);
+		emcMap.put("etherium", 5120L);
 		emcMap.put("eximite", 8192L);
-		emcMap.put("haderoth", 3413L);
-		emcMap.put("hepatizon", 508L);
+		emcMap.put("haderoth", 1024L);
+		emcMap.put("hepatizon", 384L);
 		emcMap.put("ignatius", 256L);
 		emcMap.put("infuscolium", 512L);
 		emcMap.put("inolashite", 1024L);
@@ -74,13 +73,13 @@ public class IntegrationProjectE {
 		emcMap.put("oureclase", 1024L);
 		emcMap.put("platinum", 4096L);
 		emcMap.put("prometheum", 256L);
-		emcMap.put("quicksilver", 4096L);
+		emcMap.put("quicksilver", 1280L);
 		emcMap.put("rubracium", 1024L);
 		emcMap.put("sanguinite", 8192L);
 		emcMap.put("shadow_iron", 256L);
-		emcMap.put("shadow_steel", 448L);
+		emcMap.put("shadow_steel", 512L);
 		emcMap.put("silver", 512L);
-		emcMap.put("steel", 1024L);
+		emcMap.put("steel", 3200L);
 		emcMap.put("tartarite", 16384L);
 		emcMap.put("tin", 256L);
 		emcMap.put("vulcanite", 4096L);
@@ -101,6 +100,10 @@ public class IntegrationProjectE {
 
 		ModMetals.metalMap.forEach((s, metal) -> {
 			long baseValue = emcMap.get(metal.toString());
+
+			//Debug Print
+			//System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
+			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
 
 			//Nuggets and Dusts
 			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), baseValue);
@@ -132,22 +135,6 @@ public class IntegrationProjectE {
 				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.CHEST), baseValue * 8);
 				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.LEGS), baseValue * 7);
 				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getArmorPiece(EntityEquipmentSlot.FEET), baseValue * 4);
-			}
-
-			if (!metal.isAlloy())
-			{
-				//Debug Print
-				//System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
-				ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
-			}
-			else
-			{
-				//Alloy MC calculations
-				Table<ItemStack, ItemStack, ItemStack> recipes = AlloyerRecipes.getInstance().getRecipeTable();
-
-				for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : recipes.cellSet())
-					if (entry.getValue().getItem().equals(metal.getIngot()))
-						ProjectEAPI.getEMCProxy().registerCustomEMC(new ItemStack(metal.getIngot()), getAlloyIngredientsEMC(entry.getRowKey()) + getAlloyIngredientsEMC(entry.getColumnKey()));
 			}
 		});
 	}
