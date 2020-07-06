@@ -14,9 +14,9 @@ public class HighChanceTemperatureSpawn extends BaseOreSpawn
     private final int newRarity;
 
 
-    public HighChanceTemperatureSpawn(Block blockToReplace, Biome.TempCategory tempCategory, int newRarity)
+    public HighChanceTemperatureSpawn(Block blockToReplace,Biome[] biomes, Biome.TempCategory tempCategory, int newRarity)
     {
-        super(blockToReplace);
+        super(blockToReplace,biomes);
         this.tempCategory = tempCategory;
         this.newRarity = newRarity;
     }

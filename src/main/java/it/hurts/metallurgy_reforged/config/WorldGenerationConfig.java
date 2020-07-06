@@ -92,6 +92,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 7;
 
+		@Config.Comment("Meutoite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryEximite {
@@ -107,6 +111,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Eximite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 7;
+
+		@Config.Comment("Eximite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -124,6 +132,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
 
+		@Config.Comment("Vyroxeres biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryVulcanite {
@@ -139,6 +151,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Vulcanite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
+
+		@Config.Comment("Vulcanite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -156,6 +172,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 4;
 
+		@Config.Comment("Sanguinite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryShadowIron {
@@ -171,6 +191,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
+
+		@Config.Comment("Shadow Iron biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -188,6 +212,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
 
+		@Config.Comment("Midasium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryLemurite {
@@ -203,6 +231,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Lemurite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 7;
+
+		@Config.Comment("Lemurite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -220,6 +252,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
 
+		@Config.Comment("Kalendrite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryIgnatius {
@@ -235,6 +271,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Ignatius indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 10;
+
+		@Config.Comment("Ignatius biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -252,6 +292,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
 
+		@Config.Comment("Ceruclase biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryAlduorite {
@@ -267,6 +311,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Alduorite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 4;
+
+		@Config.Comment("Alduorite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -284,6 +332,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 7;
 
+		@Config.Comment("Potash biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryPhosphorite {
@@ -299,6 +351,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Phosphorite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
+
+		@Config.Comment("Phosphorite biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -316,6 +372,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
 
+		@Config.Comment("Sulfur biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryOsmium {
@@ -331,6 +391,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
+
+		@Config.Comment("Osmium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -348,6 +412,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 4;
 
+		@Config.Comment("Lutetium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryPlatinum {
@@ -363,6 +431,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Platinum indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 4;
+
+		@Config.Comment("Platinum biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -380,6 +452,9 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 8;
 
+		@Config.Comment("Silver biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 	}
 
 	public static class CategoryAstralSilver {
@@ -395,6 +470,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Astral Silver indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
+
+		@Config.Comment("Astral Silver biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -412,6 +491,9 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
 
+		@Config.Comment("Orichalcum biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 	}
 
 	public static class CategoryZinc {
@@ -427,6 +509,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Zinc indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 8;
+
+		@Config.Comment("Zinc biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -444,6 +530,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
 
+		@Config.Comment("Mithril biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryCarmot {
@@ -460,6 +550,9 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
 
+		@Config.Comment("Carmot biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 	}
 
 	public static class CategoryAtlarus {
@@ -475,6 +568,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Atlarus indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 3;
+
+		@Config.Comment("Atlarus biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -492,6 +589,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 3;
 
+		@Config.Comment("Adamantine biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryRubracium {
@@ -507,6 +608,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Rubracium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
+
+		@Config.Comment("Rubracium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -524,6 +629,9 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 7;
 
+		@Config.Comment("Infuscolium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 	}
 
 	public static class CategoryOureclase {
@@ -539,6 +647,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Ourseclase indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
+
+		@Config.Comment("Ourseclase biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
@@ -556,6 +668,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 9;
 
+		@Config.Comment("Manganese biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryPrometheum {
@@ -571,6 +687,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Prometheum indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 6;
+
+		@Config.Comment("Prometheum biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{"minecraft:jungle","minecraft:jungle_hills","minecraft:jungle_edge"};
 
 	}
 
@@ -588,6 +708,10 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 10;
 
+		@Config.Comment("Tin biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
+
 	}
 
 	public static class CategoryDeepIron {
@@ -604,6 +728,17 @@ public class WorldGenerationConfig {
 		@Config.RangeInt(min = 0)
 		public int veinSize = 5;
 
+		@Config.Comment("Deep Iron biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{
+				"minecraft:ocean",
+				"minecraft:beaches",
+				"minecraft:river",
+				"minecraft:frozen_river",
+				"minecraft:frozen_ocean",
+				"minecraft:stone_beach",
+				"minecraft:cold_beach"};
+
 	}
 
 	public static class CategoryCopper {
@@ -619,6 +754,10 @@ public class WorldGenerationConfig {
 		@Config.Comment("Copper indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
 		public int veinSize = 8;
+
+		@Config.Comment("Copper biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{};
 
 	}
 
