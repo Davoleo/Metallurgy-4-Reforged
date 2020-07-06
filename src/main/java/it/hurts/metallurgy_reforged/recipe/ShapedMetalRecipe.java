@@ -80,34 +80,25 @@ public class ShapedMetalRecipe extends ShapedOreRecipe implements IRecipeMetal {
 		{
 			//Tools
 			case "axe":
-				if (metal.hasToolSet())
-					return new ItemStack(metal.getTool(EnumTools.AXE));
+				return metal.hasToolSet() ? new ItemStack(metal.getTool(EnumTools.AXE)) : ItemStack.EMPTY;
 			case "hoe":
-				if (metal.hasToolSet())
-					return new ItemStack(metal.getTool(EnumTools.HOE));
+				return metal.hasToolSet() ? new ItemStack(metal.getTool(EnumTools.HOE)) : ItemStack.EMPTY;
 			case "pickaxe":
-				if (metal.hasToolSet())
-					return new ItemStack(metal.getTool(EnumTools.PICKAXE));
+				return metal.hasToolSet() ? new ItemStack(metal.getTool(EnumTools.PICKAXE)) : ItemStack.EMPTY;
 			case "shovel":
-				if (metal.hasToolSet())
-					return new ItemStack(metal.getTool(EnumTools.SHOVEL));
+				return metal.hasToolSet() ? new ItemStack(metal.getTool(EnumTools.SHOVEL)) : ItemStack.EMPTY;
 			case "sword":
-				if (metal.hasToolSet())
-					return new ItemStack(metal.getTool(EnumTools.SWORD));
-				//Armor
+				return metal.hasToolSet() ? new ItemStack(metal.getTool(EnumTools.SWORD)) : ItemStack.EMPTY;
+			//Armor
 			case "helmet":
-				if (metal.hasArmorSet())
-					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.HEAD));
+				return metal.hasArmorSet() ? new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.HEAD)) : ItemStack.EMPTY;
 			case "chestplate":
-				if (metal.hasArmorSet())
-					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.CHEST));
+				return metal.hasArmorSet() ? new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.CHEST)) : ItemStack.EMPTY;
 			case "leggings":
-				if (metal.hasArmorSet())
-					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.LEGS));
+				return metal.hasArmorSet() ? new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.LEGS)) : ItemStack.EMPTY;
 			case "boots":
-				if (metal.hasArmorSet())
-					return new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.FEET));
-				//Blocks
+				return metal.hasArmorSet() ? new ItemStack(metal.getArmorPiece(EntityEquipmentSlot.FEET)) : ItemStack.EMPTY;
+			//Blocks
 			case "block":
 				return new ItemStack(metal.getBlock(BlockTypes.BLOCK));
 			case "bricks":
