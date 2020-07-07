@@ -11,22 +11,25 @@
 
 package it.hurts.metallurgy_reforged.model;
 
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.tool.*;
 
 public enum EnumTools {
-	AXE("axe", ItemAxeBase.class),
-	HOE("hoe", ItemHoeBase.class),
-	PICKAXE("pickaxe", ItemPickaxeBase.class),
-	SHOVEL("shovel", ItemShovelBase.class),
-	SWORD("sword", ItemSwordBase.class);
+	AXE("axe", ItemAxeBase.class, RegistrationConfig.categoryItems.enableMetalAxes),
+	HOE("hoe", ItemHoeBase.class, RegistrationConfig.categoryItems.enableMetalHoes),
+	PICKAXE("pickaxe", ItemPickaxeBase.class, RegistrationConfig.categoryItems.enableMetalPickaxes),
+	SHOVEL("shovel", ItemShovelBase.class, RegistrationConfig.categoryItems.enableMetalShovels),
+	SWORD("sword", ItemSwordBase.class, RegistrationConfig.categoryItems.enableMetalSwords);
 
 	private String name;
 	private Class<?> toolClass;
+	private boolean isEnabled;
 
-	EnumTools(String name, Class<?> toolClass)
+	EnumTools(String name, Class<?> toolClass, boolean enabled)
 	{
 		this.name = name;
 		this.toolClass = toolClass;
+		this.isEnabled = enabled;
 	}
 
 	public String getName()
@@ -37,5 +40,10 @@ public enum EnumTools {
 	public Class<?> getToolClass()
 	{
 		return toolClass;
+	}
+
+	public boolean isEnabled()
+	{
+		return isEnabled;
 	}
 }

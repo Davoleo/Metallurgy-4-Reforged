@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.recipe;
 
 import com.google.gson.JsonObject;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
@@ -36,7 +37,8 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeM
 	{
 		super(null, input, ItemStack.EMPTY);
 		this.resultType = resultType;
-		ModRecipes.shapelessMetalRecipes.add(this);
+		if (ShapedMetalRecipe.isRecipeEnabled(input))
+			ModRecipes.shapelessMetalRecipes.add(this);
 	}
 
 	//TODO: comment this method
@@ -78,7 +80,7 @@ public class ShapelessMetalRecipe extends ShapelessOreRecipe implements IRecipeM
 		switch (resultType)
 		{
 			case "nugget":
-				return new ItemStack(metal.getNugget(), 9);
+				return RegistrationConfig.categoryItems.enableMetalNuggets ? new ItemStack(metal.getNugget(), 9) : ItemStack.EMPTY;
 			case "ingot":
 				return new ItemStack(metal.getIngot(), 9);
 			default:

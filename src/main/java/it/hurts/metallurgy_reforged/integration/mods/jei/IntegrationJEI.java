@@ -99,10 +99,14 @@ public class IntegrationJEI implements IModPlugin {
 		List<MetalRecipeWrapper> recipes = new ArrayList<>();
 
 		ModMetals.metalMap.forEach((name, metal) -> {
-			ModRecipes.shapedMetalRecipes.forEach(shapedMetalRecipe ->
-					recipes.add(new ShapedMetalRecipeWrapper(metal, shapedMetalRecipe, registry.getJeiHelpers())));
-			ModRecipes.shapelessMetalRecipes.forEach(shapelessMetalRecipe ->
-					recipes.add(new MetalRecipeWrapper(metal, shapelessMetalRecipe, registry.getJeiHelpers())));
+			ModRecipes.shapedMetalRecipes.forEach(shapedMetalRecipe -> {
+				if (!shapedMetalRecipe.getOutputFromMetal(metal).isEmpty())
+					recipes.add(new ShapedMetalRecipeWrapper(metal, shapedMetalRecipe, registry.getJeiHelpers()));
+			});
+			ModRecipes.shapelessMetalRecipes.forEach(shapelessMetalRecipe -> {
+				if (!shapelessMetalRecipe.getOutputFromMetal(metal).isEmpty())
+					recipes.add(new MetalRecipeWrapper(metal, shapelessMetalRecipe, registry.getJeiHelpers()));
+			});
 		});
 
 		registry.addRecipes(recipes, VanillaRecipeCategoryUid.CRAFTING);

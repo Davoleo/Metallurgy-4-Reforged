@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.fluid;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.fluid.FluidBlockTar;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import net.minecraft.block.material.Material;
@@ -41,12 +42,16 @@ public class ModFluids {
 			FluidRegistry.registerFluid(metal.getMolten());
 			FluidRegistry.addBucketForFluid(metal.getMolten());
 
-			BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
-			metal.getMolten().setBlock(fluidBlock);
-			fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
-			fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
+			if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks)
+			{
+				BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
 
-			ModFluids.fluidBlocks.add(fluidBlock);
+				metal.getMolten().setBlock(fluidBlock);
+				fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
+				fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
+
+				ModFluids.fluidBlocks.add(fluidBlock);
+			}
 		});
 
 		//Register Thermite and Tar

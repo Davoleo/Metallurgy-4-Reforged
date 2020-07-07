@@ -13,9 +13,11 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockMetal;
+import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -68,27 +70,31 @@ public class RegistrationHandler {
 			}
 
 			//Metal ItemBlocks
-			for (BlockMetal block : metal.getBlocks())
+			for (BlockTypes type : BlockTypes.values())
 			{
-				event.getRegistry().register(ModBlocks.createItemBlock(block));
+				if (type.isEnabled())
+					event.getRegistry().register(ModBlocks.createItemBlock(metal.getBlock(type)));
 			}
 
 			//Items
 			event.getRegistry().register(metal.getIngot());
-			event.getRegistry().register(metal.getDust());
-			event.getRegistry().register(metal.getNugget());
+			if (RegistrationConfig.categoryItems.enableMetalDusts)
+				event.getRegistry().register(metal.getDust());
+			if (RegistrationConfig.categoryItems.enableMetalNuggets)
+				event.getRegistry().register(metal.getNugget());
 
 			//Tools
 			if (metal.getToolSet() != null)
 			{
-				for (Item tool : metal.getToolSet())
+				for (EnumTools toolType : EnumTools.values())
 				{
-					event.getRegistry().register(tool);
+					if (toolType.isEnabled())
+						event.getRegistry().register(metal.getTool(toolType));
 				}
 			}
 
 			//Armors
-			if (metal.getArmorSet() != null)
+			if (metal.getArmorSet() != null && RegistrationConfig.categoryItems.enableMetalArmorSets)
 			{
 				for (Item armor : metal.getArmorSet())
 				{
@@ -125,16 +131,19 @@ public class RegistrationHandler {
 			}
 
 			//Metal Blocks and Deco
-			for (BlockMetal block : metal.getBlocks())
+			for (BlockTypes type : BlockTypes.values())
 			{
-				event.getRegistry().register(block);
+				if (type.isEnabled())
+					event.getRegistry().register(metal.getBlock(type));
 			}
 		});
 
+		//if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks) {
 		for (BlockFluidClassic block : ModFluids.fluidBlocks)
 		{
 			event.getRegistry().register(block);
 		}
+		//}
 	}
 
 	@SubscribeEvent

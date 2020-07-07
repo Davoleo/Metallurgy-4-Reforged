@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.recipe;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.init.Items;
@@ -35,7 +36,8 @@ public class ModRecipes {
 			{
 				GameRegistry.addSmelting(metal.getOre(), new ItemStack(metal.getIngot()), 1F);
 			}
-			GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
+			if (RegistrationConfig.categoryItems.enableMetalDusts)
+				GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
 		});
 
 		//Dust2Ingot

@@ -26,16 +26,6 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean warning = true;
 
-	@Config.Name("Disable all tools")
-	@Config.Comment("When set to true all tool sets are disabled")
-	@Config.RequiresMcRestart
-	public static boolean disableAllTools = false;
-
-	@Config.Name("Disable all armor set")
-	@Config.Comment("When set to true all armor sets are disabled")
-	@Config.RequiresMcRestart
-	public static boolean disableAllArmors = false;
-
 	@Config.Name("Road Speed Multiplier")
 	@Config.Comment("Set the road speed multiplier")
 	@Config.RangeDouble(min = 1)
@@ -67,7 +57,7 @@ public class GeneralConfig {
 	public static boolean enableDuplicationTrait = true;
 
 	@Config.Name("Should Tool be repairable in Anvil")
-	@Config.Comment("Set this to true to enable the possibility to repair tools in Vanilla Anvil")
+	@Config.Comment("Set this to true to be able to repair tools in Vanilla Anvil")
 	public static boolean enableAnvilToolRepair = false;
 
 	@Config.Name("Should Armor be repairable in Anvil")
