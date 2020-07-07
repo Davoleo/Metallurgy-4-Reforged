@@ -36,7 +36,6 @@
  import it.hurts.metallurgy_reforged.util.SubEvent;
  import it.hurts.metallurgy_reforged.world.ModWorldGen;
  import it.hurts.metallurgy_reforged.world.WorldTickHandler;
- import net.minecraft.util.math.Vec3d;
  import net.minecraftforge.common.MinecraftForge;
  import net.minecraftforge.common.capabilities.CapabilityManager;
  import net.minecraftforge.fluids.FluidRegistry;
@@ -54,7 +53,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.0.0";
+	public static final String VERSION = "1.0.1";
 
 	public static Logger logger;
 
