@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustSilver"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustMithril"
+		}
+	],
+	"result": {
+		"item": "metallurgy:quicksilver_dust",
+		"count": 2
+	}
+}
