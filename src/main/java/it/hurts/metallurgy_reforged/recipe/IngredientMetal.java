@@ -22,10 +22,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.crafting.IIngredientFactory;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Map;
 
 public class IngredientMetal extends Ingredient {
 
@@ -51,7 +51,6 @@ public class IngredientMetal extends Ingredient {
 
 	private boolean isMetal(String type, ItemStack stack)
 	{
-
 		int[] ids = OreDictionary.getOreIDs(stack);
 
 		for (int id : ids)
@@ -60,14 +59,10 @@ public class IngredientMetal extends Ingredient {
 
 			if (ore.startsWith(type))
 			{
-				for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-				{
-					String metalName = entry.getKey();
-					if (ore.endsWith(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metalName)))
-					{
-						return true;
-					}
-				}
+				String snakeOre = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, ore);
+				String[] snakeArray = snakeOre.split("_");
+				String metalName = String.join("_", ArrayUtils.removeElement(snakeArray, snakeArray[0]));
+				return ModMetals.metalMap.containsKey(metalName);
 			}
 		}
 
