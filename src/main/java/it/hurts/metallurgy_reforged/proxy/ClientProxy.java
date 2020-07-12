@@ -39,9 +39,9 @@ public class ClientProxy implements IProxy {
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
 			List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
 
-			if (tintIndex <= metals.size())
+			if (tintIndex < metals.size())
 			{
-				return metals.get(tintIndex - 1).getStats().getColorHex();
+				return metals.get(tintIndex).getStats().getColorHex();
 			}
 			return -1;
 

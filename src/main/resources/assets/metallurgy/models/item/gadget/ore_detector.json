@@ -740,7 +740,7 @@
 					],
 					"rotation": 270,
 					"texture": "#1",
-					"tintindex": 1
+					"tintindex": 0
 				},
 				"east": {
 					"uv": [
@@ -751,7 +751,7 @@
 					],
 					"rotation": 270,
 					"texture": "#1",
-					"tintindex": 1
+					"tintindex": 0
 				},
 				"south": {
 					"uv": [
@@ -762,7 +762,7 @@
 					],
 					"rotation": 270,
 					"texture": "#1",
-					"tintindex": 1
+					"tintindex": 0
 				},
 				"west": {
 					"uv": [
@@ -773,7 +773,7 @@
 					],
 					"rotation": 270,
 					"texture": "#1",
-					"tintindex": 1
+					"tintindex": 0
 				},
 				"up": {
 					"uv": [
@@ -784,7 +784,7 @@
 					],
 					"rotation": 270,
 					"texture": "#1",
-					"tintindex": 1
+					"tintindex": 0
 				}
 			}
 		},
@@ -818,7 +818,7 @@
 					],
 					"rotation": 270,
 					"texture": "#2",
-					"tintindex": 2
+					"tintindex": 1
 				},
 				"east": {
 					"uv": [
@@ -829,7 +829,7 @@
 					],
 					"rotation": 270,
 					"texture": "#2",
-					"tintindex": 2
+					"tintindex": 1
 				},
 				"south": {
 					"uv": [
@@ -840,7 +840,7 @@
 					],
 					"rotation": 270,
 					"texture": "#2",
-					"tintindex": 2
+					"tintindex": 1
 				},
 				"west": {
 					"uv": [
@@ -851,7 +851,7 @@
 					],
 					"rotation": 270,
 					"texture": "#2",
-					"tintindex": 2
+					"tintindex": 1
 				},
 				"up": {
 					"uv": [
@@ -862,7 +862,7 @@
 					],
 					"rotation": 270,
 					"texture": "#2",
-					"tintindex": 2
+					"tintindex": 1
 				}
 			}
 		},
@@ -896,7 +896,7 @@
 					],
 					"rotation": 270,
 					"texture": "#3",
-					"tintindex": 3
+					"tintindex": 2
 				},
 				"east": {
 					"uv": [
@@ -907,7 +907,7 @@
 					],
 					"rotation": 270,
 					"texture": "#3",
-					"tintindex": 3
+					"tintindex": 2
 				},
 				"south": {
 					"uv": [
@@ -918,7 +918,7 @@
 					],
 					"rotation": 270,
 					"texture": "#3",
-					"tintindex": 3
+					"tintindex": 2
 				},
 				"west": {
 					"uv": [
@@ -929,7 +929,7 @@
 					],
 					"rotation": 270,
 					"texture": "#3",
-					"tintindex": 3
+					"tintindex": 2
 				},
 				"up": {
 					"uv": [
@@ -940,7 +940,7 @@
 					],
 					"rotation": 270,
 					"texture": "#3",
-					"tintindex": 3
+					"tintindex": 2
 				}
 			}
 		},
