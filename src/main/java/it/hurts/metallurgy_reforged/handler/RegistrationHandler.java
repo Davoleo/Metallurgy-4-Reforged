@@ -25,7 +25,6 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,17 +40,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Mod.EventBusSubscriber
 public class RegistrationHandler {
 
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
 	public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
-
-	public static List<TextureAtlasSprite> oreParticles = new ArrayList<>();
-
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
@@ -212,7 +205,7 @@ public class RegistrationHandler {
 	public static void registerTextures(TextureStitchEvent.Pre event)
 	{
 		for (int i = 1; i <= 10; i++)
-			oreParticles.add(event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i)));
+			event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i));
 	}
 
 }
