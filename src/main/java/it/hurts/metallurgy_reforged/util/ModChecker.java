@@ -20,6 +20,7 @@ public class ModChecker {
 	public static boolean isIFLoaded;
 	public static boolean isProjectELoaded;
 	public static boolean isCraftTweakerLoaded;
+	public static boolean isSilentGemsLoaded;
 
 	static
 	{
@@ -28,6 +29,7 @@ public class ModChecker {
 		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
 		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
 		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
+		ModChecker.isSilentGemsLoaded = Loader.isModLoaded("silentgems");
 	}
 
 }

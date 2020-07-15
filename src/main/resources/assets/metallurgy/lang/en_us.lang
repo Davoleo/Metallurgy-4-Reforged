@@ -1,3 +1,44 @@
+#Generic Material Names
+material.metallurgy.adamantine.name=Adamantine
+material.metallurgy.amordrine.name=Amordrine
+material.metallurgy.angmallen.name=Angmallen
+material.metallurgy.astral_silver.name=Astral Silver
+material.metallurgy.atlarus.name=Atlarus
+material.metallurgy.black_steel.name=Black Steel
+material.metallurgy.brass.name=Brass
+material.metallurgy.bronze.name=Bronze
+material.metallurgy.carmot.name=Carmot
+material.metallurgy.celenegil.name=Celenegil
+material.metallurgy.ceruclase.name=Ceruclase
+material.metallurgy.copper.name=Copper
+material.metallurgy.damascus_steel.name=Damascus Steel
+material.metallurgy.deep_iron.name=Deep Iron
+material.metallurgy.desichalkos.name=Desichalkos
+material.metallurgy.electrum.name=Electrum
+material.metallurgy.etherium.name=Etherium
+material.metallurgy.eximite.name=Eximite
+material.metallurgy.haderoth.name=Haderoth
+material.metallurgy.hepatizon.name=Hepatizon
+material.metallurgy.ignatius.name=Ignatius
+material.metallurgy.inolashite.name=Inolashite
+material.metallurgy.kalendrite.name=Kalendrite
+material.metallurgy.krik.name=Krik
+material.metallurgy.midasium.name=Midasium
+material.metallurgy.mithril.name=Mithril
+material.metallurgy.orichalcum.name=Orichalcum
+material.metallurgy.oureclase.name=Oureclase
+material.metallurgy.platinum.name=Platinum
+material.metallurgy.prometheum.name=Prometheum
+material.metallurgy.quicksilver.name=Quicksilver
+material.metallurgy.sanguinite.name=Sanguinite
+material.metallurgy.shadow_iron.name=Shadow Iron
+material.metallurgy.shadow_steel.name=Shadow Steel
+material.metallurgy.silver.name=Silver
+material.metallurgy.steel.name=Steel
+material.metallurgy.tartarite.name=Tartarite
+material.metallurgy.vulcanite.name=Vulcanite
+material.metallurgy.vyroxeres.name=Vyroxeres
+
 #Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet
 item.metallurgy.adamantine_chestplate.name=Adamantine Chestplate

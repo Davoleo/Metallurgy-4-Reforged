@@ -151,7 +151,7 @@ public class JsonMaterialHelper {
 
 			double maxHealth = JsonUtils.getFloat(toolStatsObj, "max_health", (float) fallback.getMaxHealth());
 			double movementSpeed = JsonUtils.getFloat(toolStatsObj, "movement_speed", (float) fallback.getMovementSpeed());
-			double attackDamage = JsonUtils.getFloat(toolStatsObj, "attack_damage", (float) fallback.getAttackDamage());
+			double attackDamage = JsonUtils.getFloat(toolStatsObj, "attack_damage", (float) fallback.getAttackDamageAttribute());
 			double attackSpeed = JsonUtils.getFloat(toolStatsObj, "attack_speed", (float) fallback.getAttackSpeed());
 			double reachDistance = JsonUtils.getFloat(toolStatsObj, "reach_distance", (float) fallback.getReachDistance());
 

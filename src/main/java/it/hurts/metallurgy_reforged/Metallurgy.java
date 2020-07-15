@@ -26,6 +26,7 @@
  import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
  import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
  import it.hurts.metallurgy_reforged.integration.crafttweaker.IntegrationCT;
+ import it.hurts.metallurgy_reforged.integration.silentgems.IntegrationSilentGems;
  import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
@@ -105,29 +106,35 @@ public class Metallurgy {
 			 }
 		 }
 
-		 if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
-		 {
-			 IntegrationIF.preInit();
-			 logger.info("Industrial Foregoing integration has been pre-initialized");
-		 }
+		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
+		{
+			IntegrationIF.preInit();
+			logger.info("Industrial Foregoing integration has been pre-initialized");
+		}
 
-		 if (ModChecker.isCraftTweakerLoaded)
-		 {
-			 IntegrationCT.preInit();
-			 logger.info("CraftTweaker Integration has been pre-initialized");
-		 }
+		if (ModChecker.isCraftTweakerLoaded)
+		{
+			IntegrationCT.preInit();
+			logger.info("CraftTweaker Integration has been pre-initialized");
+		}
 
-		 NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		 logger.info(NAME + ": GUIs have been registered!");
+		if (ModChecker.isSilentGemsLoaded)
+		{
+			IntegrationSilentGems.init();
+			logger.info("CraftTweaker Integration has been initialized");
+		}
 
-		 CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
-		 logger.info(NAME + ": Punch effect capability Registered");
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		logger.info(NAME + ": GUIs have been registered!");
 
-		 CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
-		 logger.info(NAME + ": Krik effect capability Registered");
+		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
+		logger.info(NAME + ": Punch effect capability Registered");
 
-		 proxy.preInit(event);
-	 }
+		CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
+		logger.info(NAME + ": Krik effect capability Registered");
+
+		proxy.preInit(event);
+	}
 
 	 @Mod.EventHandler
 	 public void init(FMLInitializationEvent event)
