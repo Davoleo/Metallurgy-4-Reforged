@@ -22,11 +22,11 @@
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationIF;
- import it.hurts.metallurgy_reforged.integration.mods.IntegrationProjectE;
- import it.hurts.metallurgy_reforged.integration.mods.conarm.IntegrationCArmory;
- import it.hurts.metallurgy_reforged.integration.mods.crafttweaker.IntegrationCT;
- import it.hurts.metallurgy_reforged.integration.mods.tic.IntegrationTIC;
+ import it.hurts.metallurgy_reforged.integration.IntegrationIF;
+ import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
+ import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
+ import it.hurts.metallurgy_reforged.integration.crafttweaker.IntegrationCT;
+ import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.IProxy;
