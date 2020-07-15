@@ -102,7 +102,7 @@ public class MetallurgyPartProperties implements IPartProperties {
 	@Override
 	public float getMeleeSpeed()
 	{
-		return stats.getToolStats().getEfficiency() / 3F;
+		return stats.getToolStats().getEfficiency() / 6F;
 	}
 
 	@Override
