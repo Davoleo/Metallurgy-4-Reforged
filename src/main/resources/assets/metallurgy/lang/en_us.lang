@@ -1280,7 +1280,7 @@ tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the ac
 tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
 
 #Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lightweight underwater mining!
+tooltip.metallurgy.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
 tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
 
 #Shovel
