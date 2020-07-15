@@ -29,6 +29,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("unused")
 public class MetallurgyEffects {
 
 	public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
