@@ -85,7 +85,7 @@ public class ToolStats {
 		return movementSpeed;
 	}
 
-	public double getAttackDamage()
+	public double getAttackDamageAttribute()
 	{
 		return attackDamage;
 	}

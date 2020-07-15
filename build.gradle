@@ -96,6 +96,7 @@ dependencies {
 	compileOnly "projecte:ProjectE:1.12.2:PE1.4.1"
 
     //Silent's Gems
+    compile "silent-lib:SilentLib:1.12.2:3.0.14+168"
     deobfCompile "silents-gems:SilentsGems:1.12.2:2.8.22+327"
 }
 
