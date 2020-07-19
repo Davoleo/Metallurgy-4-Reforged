@@ -58,11 +58,11 @@ public class GeneralConfig {
 
 	@Config.Name("Should Tool be repairable in Anvil")
 	@Config.Comment("Set this to true to be able to repair tools in Vanilla Anvil")
-	public static boolean enableAnvilToolRepair = false;
+	public static boolean enableAnvilToolRepair = true;
 
 	@Config.Name("Should Armor be repairable in Anvil")
 	@Config.Comment("Set this to true to enable the possibility to repair armors in Vanilla Anvil")
-	public static boolean enableAnvilArmorRepair = false;
+	public static boolean enableAnvilArmorRepair = true;
 
 	@Config.Name("Enable Ore Particles")
 	@Config.Comment("Set this to true to enable ore particles (Particles that are bigger depending on the harvest tier of the ore) [default: false]")
