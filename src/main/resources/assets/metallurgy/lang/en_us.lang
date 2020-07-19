@@ -1267,6 +1267,7 @@ tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Faster Action
 tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set: No Blindness
 tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in the dark
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
+tooltip.metallurgy.etherium_armor_effect=§cFull Armor Set: gives the ability you to go through walls
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

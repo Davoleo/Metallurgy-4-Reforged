@@ -13,14 +13,10 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.*;
@@ -104,7 +100,8 @@ public class EffectHandler
 
             for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
             {
-                effect.onPlayerTick(player);
+                if (effect != MetallurgyEffects.etheriumArmorEffect)
+                    effect.onPlayerTick(player);
             }
 
         }
@@ -114,36 +111,8 @@ public class EffectHandler
     public static void clipPlayer(LivingEvent.LivingUpdateEvent event)
     {
         if(event.getEntity() instanceof EntityPlayer)
-        {
-            EntityPlayer player = (EntityPlayer) event.getEntity();
-
-            if(player.isSneaking() && !player.world.getCollisionBoxes(player, player.getEntityBoundingBox().grow(0.1D, 0, 0.1D)).isEmpty() && EventUtils.isPlayerWearingArmor(player, ModMetals.ETHERIUM))
-            {
-                player.noClip = true;
-                player.motionY = 0D;
-            }
-        }
+            MetallurgyEffects.etheriumArmorEffect.onPlayerTick((EntityPlayer) event.getEntity());
     }
-
-    private static boolean isHeadInsideBlock(EntityPlayer player)
-    {
-
-        for (int i = 0; i < 8; ++i)
-        {
-            double d0 = player.posX + (double) (((float) ((i) % 2) - 0.5F) * player.width * 0.8F);
-            double d1 = player.posY + (double) (((float) ((i >> 1) % 2) - 0.5F) * 0.1F);
-            double d2 = player.posZ + (double) (((float) ((i >> 2) % 2) - 0.5F) * player.width * 0.8F);
-            BlockPos blockpos = new BlockPos(d0, d1 + (double) player.getEyeHeight(), d2);
-            IBlockState iblockstate = player.world.getBlockState(blockpos);
-
-            if(iblockstate.getMaterial().isOpaque())
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 
     @SubscribeEvent

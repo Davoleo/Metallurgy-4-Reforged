@@ -26,3 +26,6 @@ local.properties
 classes/
 gource.sh
 mcmodsrepo/
+
+#floobits
+.floo

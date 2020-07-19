@@ -41,8 +41,11 @@ public class ArmorEffectsConfig {
 	@Config.Comment("Full Armor gives Resistance II")
 	public static boolean celenegilArmorEffect = true;
 	@Config.Name("Deep Iron Armor Effect")
-	@Config.Comment("You move faster underwater")
+	@Config.Comment("Full armor makes you walk faster underwater")
 	public static boolean deepIronArmorEffect = true;
+	@Config.Name("Etherium Armor Effect")
+	@Config.Comment("Full armor gives the ability you to go through walls")
+	public static boolean etheriumArmorEffect = true;
 	@Config.Name("Eximite Armor Effect")
 	@Config.Comment("Endermen won't notice you when watch them")
 	public static boolean eximiteArmorEffect = true;

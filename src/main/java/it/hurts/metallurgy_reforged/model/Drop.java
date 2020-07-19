@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.model;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -23,7 +24,11 @@ public class Drop {
 	private float chance;
 
 	//constructors
-	@SuppressWarnings("unused")
+	public Drop(Block block, int percentage)
+	{
+		this(new ItemStack(block), percentage);
+	}
+
 	public Drop(ItemStack itemStack, int percentage)
 	{
 		this.item = itemStack;
@@ -63,5 +68,6 @@ public class Drop {
 	{
 		return new Random().nextInt(item.getCount()) + 1;
 	}
+
 
 }
