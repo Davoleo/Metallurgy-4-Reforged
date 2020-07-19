@@ -31,6 +31,9 @@ public class ArmorEffectsConfig {
 	@Config.Name("Astral Silver Armor Effect")
 	@Config.Comment("Full Armor gives Jump Boost")
 	public static boolean astralSilverArmorEffect = true;
+	@Config.Name("Atlarus Armor Effect")
+	@Config.Comment("Full armor saves you from taking fall damage thanks to a gust of wind")
+	public static boolean atlarusArmorEffect = true;
 	@Config.Name("Carmot Armor Effect")
 	@Config.Comment("Full Armor gives Haste")
 	public static boolean carmotArmorEffect = true;

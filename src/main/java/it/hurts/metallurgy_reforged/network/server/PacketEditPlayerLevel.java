@@ -23,7 +23,11 @@ public class PacketEditPlayerLevel implements IMessage {
 
 	public boolean increase;
 
-	public PacketEditPlayerLevel() { }
+	@SuppressWarnings("unused")
+	public PacketEditPlayerLevel()
+	{
+		//Mandatory Empty Default Constructor
+	}
 
 	public PacketEditPlayerLevel(boolean increase)
 	{

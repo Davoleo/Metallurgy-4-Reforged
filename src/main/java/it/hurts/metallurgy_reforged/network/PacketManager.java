@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -29,6 +30,9 @@ public class PacketManager {
 		//Client2Server
 		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
 		network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
+
+		//Server2Client
+		network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, 4, Side.CLIENT);
 	}
 
 }

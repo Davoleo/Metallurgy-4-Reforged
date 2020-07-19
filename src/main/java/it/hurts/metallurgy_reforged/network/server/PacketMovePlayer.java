@@ -18,7 +18,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketMovePlayer implements IMessage {
 
-	public PacketMovePlayer() { }
+	public PacketMovePlayer()
+	{
+		//Mandatory Empty Default Constructor
+	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) { }
