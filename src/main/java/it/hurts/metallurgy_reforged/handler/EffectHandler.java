@@ -11,23 +11,17 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -129,52 +123,6 @@ public class EffectHandler
                 player.motionY = 0D;
             }
         }
-    }
-
-    private static final ModelCubeEtherium etheriumSkybox = new ModelCubeEtherium();
-    private static final ResourceLocation etheriumSkyboxTexture = new ResourceLocation(Metallurgy.MODID, "textures/effects/etherium_box.png");
-
-    private static int alphaBox = 0;
-
-
-    //TODO better wall rendering, currently it isn't perfect :/
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void renderEtheriumBox(RenderWorldLastEvent event)
-    {
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        if(player == null)
-            return;
-
-
-        if(isHeadInsideBlock(player) && EventUtils.isPlayerWearingArmor(player, ModMetals.ETHERIUM))
-        {
-            alphaBox = 30;
-        }
-        else if(alphaBox > 0)
-        {
-            alphaBox--;
-        }
-
-        if(alphaBox > 0)
-        {
-
-            float colorShift = (float) (Math.sin(Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks()) * 6D) + 1D) * 0.5F;
-            float alpha = alphaBox / 30F;
-            GlStateManager.pushMatrix();
-            Minecraft.getMinecraft().getTextureManager().bindTexture(etheriumSkyboxTexture);
-            GlStateManager.translate(0F, -15F, 0F);
-            GlStateManager.enableBlend();
-            float red = (143F + 54F * colorShift) / 255F;
-            float green = (14F + 9F * colorShift) / 255F;
-            float blue = (48F + 28F * colorShift) / 255F;
-            System.out.println(colorShift);
-            GlStateManager.color(red,green,blue, alpha);
-            etheriumSkybox.render();
-            GlStateManager.disableBlend();
-            GlStateManager.popMatrix();
-        }
-
     }
 
     private static boolean isHeadInsideBlock(EntityPlayer player)

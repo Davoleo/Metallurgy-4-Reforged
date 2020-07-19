@@ -20,11 +20,15 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
@@ -43,6 +47,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class GadgetsHandler {
 
@@ -119,7 +125,64 @@ public class GadgetsHandler {
 		}
 	}
 
-	@SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    @SuppressWarnings("deprecation")
+    public static void renderRedstoneComponentsThroughBlocks(RenderWorldLastEvent event)
+    {
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        World world = Minecraft.getMinecraft().world;
+
+        if(player == null || player.getHeldItemMainhand().getItem() != Items.APPLE)
+            return;
+
+        BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
+
+        final int RADIUS = 8;
+
+        Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
+
+        List<BlockPos> sortedPositions = StreamSupport.stream(posList.spliterator(), false).sorted((o1, o2) ->
+        {
+            double d1 = playerPos.distanceSq(o1);
+            double d2 = playerPos.distanceSq(o2);
+            if(d1 == d2)
+                return 0;
+            return d1 > d2 ? -1 : 1;
+        }).collect(Collectors.toList());
+
+        for (BlockPos blockPos : sortedPositions)
+        {
+            IBlockState state = world.getBlockState(blockPos);
+            if(state.getBlock().getCreativeTab() == CreativeTabs.REDSTONE || state.getBlock().getItem(world, blockPos, state).getItem().getCreativeTab() == CreativeTabs.REDSTONE)
+            {
+                GlStateManager.pushMatrix();
+                Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+                double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) event.getPartialTicks();
+                double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks();
+                double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) event.getPartialTicks();
+
+                double offsetX = blockPos.getX() - d0;
+                double offsetY = blockPos.getY() - d1;
+                double offsetZ = blockPos.getZ() - d2;
+
+                BlockRendererDispatcher blockRendererDispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+
+
+                GlStateManager.disableDepth();
+                GlStateManager.translate(offsetX, offsetY, offsetZ);
+                GlStateManager.rotate(-90F, 0F, 1F, 0F);
+                state = state.getActualState(world, blockPos);
+                blockRendererDispatcher.getBlockModelRenderer().renderModelBrightness(blockRendererDispatcher.getModelForState(state), state, 1F, true);
+                GlStateManager.enableDepth();
+                GlStateManager.popMatrix();
+            }
+        }
+
+    }
+
+
+    @SubscribeEvent
 	public static void denySpawn(LivingSpawnEvent.CheckSpawn event)
 	{
 		PhosphorusLampSavedData dataManager = PhosphorusLampSavedData.getInstance(event.getWorld());
