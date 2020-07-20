@@ -43,7 +43,7 @@ import java.util.List;
 public class IntegrationTIC {
 
 	public static List<?> blacklistedMaterials = Arrays.asList(GeneralConfig.tinkerMaterialsBlacklist);
-	private static List<Metal> vanillaTicMetals = new ArrayList<>();
+	private static final List<Metal> vanillaTicMetals = new ArrayList<>();
 
 	static
 	{
@@ -54,7 +54,6 @@ public class IntegrationTIC {
 		vanillaTicMetals.add(ModMetals.SILVER);
 		vanillaTicMetals.add(ModMetals.STEEL);
 		vanillaTicMetals.add(ModMetals.ELECTRUM);
-		vanillaTicMetals.add(ModMetals.BRASS);
 	}
 
 	public static void preInit()

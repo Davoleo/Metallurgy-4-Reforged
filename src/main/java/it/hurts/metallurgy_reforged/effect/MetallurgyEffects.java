@@ -20,7 +20,6 @@ import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
@@ -166,15 +165,16 @@ public class MetallurgyEffects {
 	//Deep Iron Sword
 	public static final BaseMetallurgyEffect deepIronSwordEffect = new DeepIronShadowSteelSwordEffect(ModMetals.DEEP_IRON);
 
+	// TODO: 20/07/2020 Broken randomization | Maybe move this effect to another material
 	//Desichalkos Sword Effect (Random Negative Effect)
-	public static final BaseMetallurgyEffect desichalkosSwordEffect =
-			new SwordHitChanceEffect(ModMetals.DESICHALKOS, 100, new PotionEffect(Utils.getRandomEffect(), 80)) {
-				@Override
-				public boolean isEnabled()
-				{
-					return ToolEffectsConfig.desichalkosSwordEffect;
-				}
-			};
+	//public static final BaseMetallurgyEffect desichalkosSwordEffect =
+	//		new SwordHitChanceEffect(ModMetals.DESICHALKOS, 100, new PotionEffect(Utils.getRandomEffect(), 80)) {
+	//			@Override
+	//			public boolean isEnabled()
+	//			{
+	//				return ToolEffectsConfig.desichalkosSwordEffect;
+	//			}
+	//		};
 
 	//Etherium Armor
 	public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();
