@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
@@ -27,6 +28,7 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -45,6 +47,7 @@ public class RegistrationHandler {
 
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
 	public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
+	public static final ResourceLocation ENTITY_DATA_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "entity_data");
 
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
@@ -198,6 +201,8 @@ public class RegistrationHandler {
 		{
 			event.addCapability(KRIK_EFFECT_CAPABILITY, new KrikEffectProvider());
 		}
+		if (event.getObject() instanceof EntityEnderman)
+			event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
 	}
 
 	@SideOnly(Side.CLIENT)

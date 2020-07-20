@@ -50,8 +50,11 @@ public class ToolEffectsConfig {
 	@Config.Comment("Increase attack speed in water")
 	public static boolean deepIronSwordEffect = true;
 	@Config.Name("Desichalkos Sword Effect")
-	@Config.Comment("Gives some random effect to the target")
+	@Config.Comment("Allows the player to teleport in the direction they're looking on right-click")
 	public static boolean desichalkosSwordEffect = true;
+	@Config.Name("Desichalkos Sword Blink Radius")
+	@Config.Comment("The maximum number of blocks that you can teleport away through this effect")
+	public static int desichalkosSwordBlinkRadius = 10;
 	@Config.Name("Ignatius Sword Effect")
 	@Config.Comment("Fire aspect")
 	public static boolean ignatiusSwordEffect = true;

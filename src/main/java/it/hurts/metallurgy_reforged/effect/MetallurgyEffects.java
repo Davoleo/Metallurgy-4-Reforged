@@ -175,6 +175,10 @@ public class MetallurgyEffects {
 	//				return ToolEffectsConfig.desichalkosSwordEffect;
 	//			}
 	//		};
+	public static final DesichalkosSwordEffect desichalkosSwordEffect = new DesichalkosSwordEffect();
+
+	//Desichalcos Trade Armor Effect
+	public static final DesichalcosArmorEffect desichalkosArmorEffect = new DesichalcosArmorEffect();
 
 	//Etherium Armor
 	public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();

@@ -79,6 +79,9 @@ public class ArmorEffectsConfig {
 	@Config.Name("Vulcanite Armor Effect")
 	@Config.Comment("You can't take damage from fire")
 	public static boolean vulcaniteArmorEffect = true;
+	@Config.Name("Desichalkos Armor Effect")
+	@Config.Comment("Allows the pla")
+	public static boolean desichalkosArmorEffect = true;
 
 	private ArmorEffectsConfig() {}
 

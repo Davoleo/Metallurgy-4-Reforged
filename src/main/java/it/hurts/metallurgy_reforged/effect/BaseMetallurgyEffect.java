@@ -21,6 +21,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -111,6 +112,9 @@ public abstract class BaseMetallurgyEffect {
 	{ }
 
 	public void onEntityHurt(LivingHurtEvent event)
+	{ }
+
+	public void onPlayerInteract(PlayerInteractEvent event)
 	{ }
 
 }

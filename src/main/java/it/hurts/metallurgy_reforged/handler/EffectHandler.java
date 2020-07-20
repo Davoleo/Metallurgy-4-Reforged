@@ -22,6 +22,7 @@ import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -182,5 +183,14 @@ public class EffectHandler
         }
     }
 
+
+    @SubscribeEvent
+    public static void onPlayerInteract(PlayerInteractEvent event)
+    {
+        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
+        {
+            effect.onPlayerInteract(event);
+        }
+    }
 
 }

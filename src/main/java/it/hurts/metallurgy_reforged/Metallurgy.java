@@ -11,6 +11,9 @@
 
  package it.hurts.metallurgy_reforged;
 
+ import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
+ import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataCallable;
+ import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
  import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
  import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
  import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
@@ -132,6 +135,10 @@ public class Metallurgy {
 
 		CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
 		logger.info(NAME + ": Krik effect capability Registered");
+
+		CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
+		logger.info(NAME + ": Entity Data capability Registered");
+
 
 		proxy.preInit(event);
 	}
