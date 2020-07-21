@@ -24,12 +24,16 @@ public class EntityData {
 
     public boolean wasSnatched = false;
     public IBlockState snatchableBlock = null;
+    public boolean initialized = false;
 
     public void initEnderman()
     {
         Random random = new Random();
-        if (random.nextInt(4) == 0)
+        if (random.nextInt(4) == 0 && !initialized)
+        {
             this.snatchableBlock = borrowableBlocks[random.nextInt(borrowableBlocks.length)];
+            this.initialized = true;
+        }
     }
 
 }

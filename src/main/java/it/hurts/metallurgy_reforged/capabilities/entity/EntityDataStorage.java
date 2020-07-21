@@ -19,16 +19,18 @@ import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
 
-public class EntityDataStorage implements Capability.IStorage<EntityData> {
+public class EntityDataStorage implements Capability.IStorage<EntityData>
+{
 
     @Nullable
     @Override
     public NBTBase writeNBT(Capability<EntityData> capability, EntityData instance, EnumFacing side)
     {
-        // FIXME: 20/07/2020 NPEeeeeeeeeeeeeeeee
         NBTTagCompound tag = new NBTTagCompound();
         tag.setBoolean("hasTraded", instance.wasSnatched);
-        tag.setInteger("tradeBlockID", Block.getStateId(instance.snatchableBlock));
+        if(instance.snatchableBlock != null)
+            tag.setInteger("tradeBlockID", Block.getStateId(instance.snatchableBlock));
+        tag.setBoolean("initialized", instance.initialized);
 
         return tag;
     }
@@ -38,7 +40,9 @@ public class EntityDataStorage implements Capability.IStorage<EntityData> {
     {
         NBTTagCompound tag = (NBTTagCompound) nbt;
         instance.wasSnatched = tag.getBoolean("hasTraded");
-        instance.snatchableBlock = Block.getStateById(tag.getInteger("tradeBlockID"));
+        if(tag.hasKey("tradeBlockID"))
+            instance.snatchableBlock = Block.getStateById(tag.getInteger("tradeBlockID"));
+        instance.initialized = tag.getBoolean("initialized");
     }
 
 }

@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -26,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 
@@ -82,33 +84,54 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 					switch (result.sideHit)
 					{
 						case WEST:
-							player.setPositionAndUpdate(pos.getX() - 1, pos.getY(), pos.getZ());
+							this.teleport(player,pos.getX() - 1, pos.getY(), pos.getZ());
 							break;
 						case EAST:
-							player.setPositionAndUpdate(pos.getX() + 1, pos.getY(), pos.getZ());
+							this.teleport(player,pos.getX() + 1, pos.getY(), pos.getZ());
 							break;
 						case NORTH:
-							player.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ() - 1);
+							this.teleport(player,pos.getX(), pos.getY(), pos.getZ() - 1);
 							break;
 						case SOUTH:
-							player.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ() + 1);
+							this.teleport(player,pos.getX(), pos.getY(), pos.getZ() + 1);
 							break;
 						case UP:
-							player.setPositionAndUpdate(pos.getX(), pos.getY() + 1, pos.getZ());
+							this.teleport(player,pos.getX(), pos.getY() + 1, pos.getZ());
 							break;
 						case DOWN:
-							player.setPositionAndUpdate(pos.getX(), pos.getY() - player.height, pos.getZ());
+							this.teleport(player,pos.getX(), pos.getY() - player.height, pos.getZ());
 							break;
 					}
 				}
 				else
 				{
-					player.setPositionAndUpdate(targetPos.x, player.getPosition().getY(), targetPos.z);
+					this.teleport(player,targetPos.x, player.getPosition().getY(), targetPos.z);
 				}
+
+				player.swingArm(event.getHand());
+
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
 				player.getCooldownTracker().setCooldown(sword, 20 * 4);
 			}
 		}
+	}
+
+	private void teleport(EntityPlayer player,double x,double y, double z)
+	{
+		Random random = new Random();
+
+		for (int j = 0; j < 128; ++j)
+		{
+			double d6 = (double)j / 127.0D;
+			float f = (random.nextFloat() - 0.5F) * 0.2F;
+			float f1 = (random.nextFloat() - 0.5F) * 0.2F;
+			float f2 = (random.nextFloat() - 0.5F) * 0.2F;
+			double d3 = player.posX + (x - player.posX) * d6 + (random.nextDouble() - 0.5D) * (double)player.width * 2.0D;
+			double d4 = player.posY + (y - player.posY) * d6 + random.nextDouble() * (double)player.height;
+			double d5 = player.posZ + (z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * (double)player.width * 2.0D;
+			player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
+		}
+		player.setPositionAndUpdate(x,y,z);
 	}
 
 }

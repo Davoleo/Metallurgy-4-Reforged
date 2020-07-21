@@ -28,9 +28,9 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import javax.annotation.Nullable;
 
-public class DesichalcosArmorEffect extends BaseMetallurgyEffect {
+public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 
-    public DesichalcosArmorEffect()
+    public DesichalkosArmorEffect()
     {
         super(ModMetals.DESICHALKOS);
     }
@@ -62,7 +62,6 @@ public class DesichalcosArmorEffect extends BaseMetallurgyEffect {
             EntityData entityData = entity.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
             if (entityData != null)
                 entityData.initEnderman();
-
             ((EntityEnderman) entity).tasks.addTask(12, new AIEndermanPlayerSteal((EntityEnderman) entity));
         }
     }
@@ -82,16 +81,15 @@ public class DesichalcosArmorEffect extends BaseMetallurgyEffect {
                 {
                     if (!player.world.isRemote)
                     {
-                        ItemStack trade = new ItemStack(enderman.getHeldBlockState().getBlock());
-                        if (!player.inventory.addItemStackToInventory(trade))
-                            player.dropItem(trade, false);
+                        ItemStack snatchedBlock = new ItemStack(enderman.getHeldBlockState().getBlock());
+                        if (!player.inventory.addItemStackToInventory(snatchedBlock))
+                            player.dropItem(snatchedBlock,false,false);
                         enderman.setHeldBlockState(null);
 
 
                         EntityData data = enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
                         if (data != null)
                             data.wasSnatched = true;
-
                         player.world.playSound(null, enderman.posX, enderman.posY, enderman.posZ, SoundEvents.ENTITY_ENDERMEN_HURT, SoundCategory.HOSTILE, 2F, 1.3F);
                     }
                 }
