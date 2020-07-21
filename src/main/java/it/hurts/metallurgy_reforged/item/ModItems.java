@@ -51,6 +51,7 @@ public class ModItems {
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
 	public static ItemInvisibilityShield invisibilityShield = new ItemInvisibilityShield();
 	public static ItemOreDetector oreDetector = new ItemOreDetector();
+	public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {

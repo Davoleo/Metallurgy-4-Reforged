@@ -28,7 +28,6 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
@@ -59,6 +58,12 @@ public class GadgetsHandler {
 	private static double prevFactor = 0;
 	public static double prevFactorToUse = 0;
 
+	/**
+	 * A global client ticking method that updates a long variable
+	 * <br><br>
+	 * Uses as of 21/07/2020:<br>
+	 * - in {@link ItemOreDetector}
+	 */
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onTick(TickEvent.ClientTickEvent event)
@@ -67,6 +72,7 @@ public class GadgetsHandler {
 		{
 			ticks++;
 
+			//METAL DETECTOR SECTION -----------------------------
 			double radiant = Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks());
 			double factor = ((Math.sin(radiant * 6) + 1.0F) * 0.5D);
 			double factorToUse = factor - prevFactor >= 0 ? factor : 1 - factor;
@@ -76,6 +82,7 @@ public class GadgetsHandler {
 
 			prevFactor = factor;
 			prevFactorToUse = factorToUse;
+			//--------------------------------------------------------
 
 			if (ticks >= Long.MAX_VALUE)
 			{
@@ -84,7 +91,11 @@ public class GadgetsHandler {
 		}
 	}
 
-	//Road Speed Effect
+	/**
+	 * Handles fast walking on Metallurgy road blocks
+	 *
+	 * @param event the player tick event we're handling
+	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void roadSpeed(PlayerTickEvent event)
@@ -106,6 +117,13 @@ public class GadgetsHandler {
 		}
 	}
 
+	/**
+	 * Cancels player render when using a Lemurite shield to become invisible
+	 *
+	 * @param event player render event that we're canceling
+	 *
+	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
+	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
@@ -114,6 +132,13 @@ public class GadgetsHandler {
 			event.setCanceled(true);
 	}
 
+	/**
+	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
+	 *
+	 * @param event living entities update event we're listening to
+	 *
+	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
+	 */
 	@SubscribeEvent
 	public static void disableAI(LivingEvent.LivingUpdateEvent event)
 	{
@@ -125,64 +150,79 @@ public class GadgetsHandler {
 		}
 	}
 
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    @SuppressWarnings("deprecation")
-    public static void renderRedstoneComponentsThroughBlocks(RenderWorldLastEvent event)
-    {
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        World world = Minecraft.getMinecraft().world;
+	/**
+	 * Handles in-world rendering of redstone-related blocks when you're wearing an Etherium Monocle
+	 *
+	 * @param event The world render event we're listening to
+	 *
+	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemEtheriumMonocle
+	 */
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	@SuppressWarnings("deprecation")
+	public static void renderRedstoneComponentsThroughBlocks(RenderWorldLastEvent event)
+	{
+		EntityPlayer player = Minecraft.getMinecraft().player;
+		World world = Minecraft.getMinecraft().world;
 
-        if(player == null || player.getHeldItemMainhand().getItem() != Items.APPLE)
-            return;
+		if (player == null || player.getHeldItemMainhand().getItem() != ModItems.etheriumMonocle)
+			return;
 
-        BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
+		BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
 
-        final int RADIUS = 8;
+		final int RADIUS = 8;
 
-        Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
+		Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
 
-        List<BlockPos> sortedPositions = StreamSupport.stream(posList.spliterator(), false).sorted((o1, o2) ->
-        {
-            double d1 = playerPos.distanceSq(o1);
-            double d2 = playerPos.distanceSq(o2);
-            if(d1 == d2)
-                return 0;
-            return d1 > d2 ? -1 : 1;
-        }).collect(Collectors.toList());
+		List<BlockPos> sortedPositions = StreamSupport.stream(posList.spliterator(), false).sorted((o1, o2) ->
+		{
+			double d1 = playerPos.distanceSq(o1);
+			double d2 = playerPos.distanceSq(o2);
+			if(d1 == d2)
+				return 0;
+			return d1 > d2 ? -1 : 1;
+		}).collect(Collectors.toList());
 
-        for (BlockPos blockPos : sortedPositions)
-        {
-            IBlockState state = world.getBlockState(blockPos);
-            if(state.getBlock().getCreativeTab() == CreativeTabs.REDSTONE || state.getBlock().getItem(world, blockPos, state).getItem().getCreativeTab() == CreativeTabs.REDSTONE)
-            {
-                GlStateManager.pushMatrix();
-                Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-                double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) event.getPartialTicks();
-                double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks();
-                double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) event.getPartialTicks();
+		for (BlockPos blockPos : sortedPositions)
+		{
+			IBlockState state = world.getBlockState(blockPos);
+			if (state.getBlock().getCreativeTab() == CreativeTabs.REDSTONE
+					|| state.getBlock().getItem(world, blockPos, state).getItem().getCreativeTab() == CreativeTabs.REDSTONE)
+			{
+				GlStateManager.pushMatrix();
 
-                double offsetX = blockPos.getX() - d0;
-                double offsetY = blockPos.getY() - d1;
-                double offsetZ = blockPos.getZ() - d2;
+				Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+				double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) event.getPartialTicks();
+				double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) event.getPartialTicks();
+				double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) event.getPartialTicks();
 
-                BlockRendererDispatcher blockRendererDispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
+				double offsetX = blockPos.getX() - d0;
+				double offsetY = blockPos.getY() - d1;
+				double offsetZ = blockPos.getZ() - d2;
 
+				BlockRendererDispatcher blockRendererDispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 
-                GlStateManager.disableDepth();
-                GlStateManager.translate(offsetX, offsetY, offsetZ);
-                GlStateManager.rotate(-90F, 0F, 1F, 0F);
-                state = state.getActualState(world, blockPos);
-                blockRendererDispatcher.getBlockModelRenderer().renderModelBrightness(blockRendererDispatcher.getModelForState(state), state, 1F, true);
-                GlStateManager.enableDepth();
-                GlStateManager.popMatrix();
-            }
-        }
+				GlStateManager.disableDepth();
 
-    }
+				GlStateManager.translate(offsetX, offsetY, offsetZ);
+				GlStateManager.rotate(-90F, 0F, 1F, 0F);
+				state = state.getActualState(world, blockPos);
+				blockRendererDispatcher.getBlockModelRenderer().renderModelBrightness(blockRendererDispatcher.getModelForState(state), state, 1F, true);
 
+				GlStateManager.enableDepth();
+				GlStateManager.popMatrix();
+			}
+		}
+	}
 
-    @SubscribeEvent
+	/**
+	 * Denies mob spawn if the entity spawns in range of a phosphorus lamp
+	 *
+	 * @param event The entity spawn check event we're listening to
+	 *
+	 * @see it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp
+	 */
+	@SubscribeEvent
 	public static void denySpawn(LivingSpawnEvent.CheckSpawn event)
 	{
 		PhosphorusLampSavedData dataManager = PhosphorusLampSavedData.getInstance(event.getWorld());
@@ -195,9 +235,16 @@ public class GadgetsHandler {
 		}
 	}
 
+	/**
+	 * Handles ore outline rendering when using a metal detector to detect nearby ores
+	 *
+	 * @param event the world render event we're listening to
+	 *
+	 * @see ItemOreDetector
+	 */
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public static void renderWorldLastEvent(RenderWorldLastEvent event)
+	public static void metalDetectorOresRender(RenderWorldLastEvent event)
 	{
 		EntityPlayer player = Minecraft.getMinecraft().player;
 
