@@ -19,6 +19,8 @@ import net.minecraft.item.ItemStack;
 import net.silentchaos512.gems.api.lib.EnumMaterialTier;
 import net.silentchaos512.gems.api.tool.part.IPartProperties;
 
+import java.util.stream.IntStream;
+
 public class MetallurgyPartProperties implements IPartProperties {
 
 	private MetalStats stats;
@@ -121,7 +123,9 @@ public class MetallurgyPartProperties implements IPartProperties {
 	public float getProtection()
 	{
 		if (stats.getArmorStats() != null)
-			return stats.getArmorStats().getDamageReduction()[2];
+		{
+			return IntStream.of(stats.getArmorStats().getDamageReduction()).sum();
+		}
 		else
 			return 1;
 	}
