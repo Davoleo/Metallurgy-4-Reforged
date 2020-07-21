@@ -35,6 +35,7 @@ import slimeknights.tconstruct.library.smeltery.BucketCastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
+import slimeknights.tconstruct.tools.ranged.item.CrossBow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -120,7 +121,7 @@ public class IntegrationTIC {
 			fluid = TinkerFluids.gold;
 		else if (stack.getItem() instanceof ItemMetal)
 		{
-			Metal metal = ItemUtils.getMetalFromItem(((ItemMetal) stack.getItem()));
+			Metal metal = ItemUtils.getMetalFromItem(stack.getItem());
 			if (vanillaTicMetals.contains(metal))
 			{
 				try
@@ -155,6 +156,11 @@ public class IntegrationTIC {
 	public static boolean checkMaterialPreInit(String material)
 	{
 		return TinkerRegistry.getMaterial(material).equals(Material.UNKNOWN);
+	}
+
+	public static boolean isCrossbow(Item item)
+	{
+		return item instanceof CrossBow;
 	}
 
 }

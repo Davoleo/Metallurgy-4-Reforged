@@ -13,62 +13,80 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.ModChecker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemBow;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 
 import javax.annotation.Nullable;
 
-public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
+public class QuicksilverArmorEffect extends BaseMetallurgyEffect
+{
 
-	public QuicksilverArmorEffect()
-	{
-		super(ModMetals.QUICKSILVER);
-	}
+    public QuicksilverArmorEffect()
+    {
+        super(ModMetals.QUICKSILVER);
+    }
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.quicksilverArmorEffect;
-	}
+    @Override
+    public boolean isEnabled()
+    {
+        return ArmorEffectsConfig.quicksilverArmorEffect;
+    }
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
+    @Override
+    public boolean isToolEffect()
+    {
+        return false;
+    }
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+    @Nullable
+    @Override
+    public EnumTools getToolClass()
+    {
+        return null;
+    }
 
-	@Override
-	public void onEntityUseItem(LivingEntityUseItemEvent event)
-	{
-		if (event.getEntityLiving() instanceof EntityPlayer)
-		{
-			EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
-			ItemStack stack = event.getItem();
+    @Override
+    public void onEntityUseItem(LivingEntityUseItemEvent event)
+    {
+        if(event.getEntityLiving() instanceof EntityPlayer)
+        {
+            EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
+            ItemStack stack = event.getItem();
+            Item item = stack.getItem();
 
-			if (EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
-			{
-				if (stack.getItem() instanceof ItemBow)
-				{
-					if (stack.getItem().getItemUseAction(stack) == EnumAction.BOW)
-						event.setDuration(event.getDuration() - 6);
-					else
-						event.setDuration(Math.round(event.getDuration() / 2F));
-				}
-			}
-		}
-	}
+            if(EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
+            {
+
+                int duration = event.getDuration();
+
+                if(ModChecker.isTConLoaded && IntegrationTIC.isCrossbow(item))
+                {
+                    if(event instanceof LivingEntityUseItemEvent.Tick)
+                    {
+                        event.setDuration(duration - 1);
+                    }
+                }
+                else if(event instanceof LivingEntityUseItemEvent.Start)
+                {
+                    if(item.getItemUseAction(stack) == EnumAction.BOW)
+                    {
+                        event.setDuration(duration - 7);
+                    }
+                    else
+                    {
+                        event.setDuration(Math.round(duration / 2F));
+                    }
+                }
+            }
+        }
+    }
 
 }

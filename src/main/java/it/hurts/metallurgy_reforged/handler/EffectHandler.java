@@ -43,7 +43,7 @@ public class EffectHandler
     }
 
     @SubscribeEvent
-    public static void onEntityUseItem(LivingEntityUseItemEvent.Start event)
+    public static void onEntityUseItem(LivingEntityUseItemEvent event)
     {
         for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
         {
