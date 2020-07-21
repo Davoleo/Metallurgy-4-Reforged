@@ -55,6 +55,9 @@ public class ToolEffectsConfig {
 	@Config.Name("Desichalkos Sword Blink Radius")
 	@Config.Comment("The maximum number of blocks that you can teleport away through this effect")
 	public static int desichalkosSwordBlinkRadius = 10;
+	@Config.Name("Desichakos Sword Effect Cooldown")
+	@Config.Comment("The cooldown time in seconds that you have to wait before using the effect again")
+	public static int desichalkosSwordEffectCooldown = 3;
 	@Config.Name("Ignatius Sword Effect")
 	@Config.Comment("Fire aspect")
 	public static boolean ignatiusSwordEffect = true;

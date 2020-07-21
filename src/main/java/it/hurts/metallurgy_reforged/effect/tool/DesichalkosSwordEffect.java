@@ -105,13 +105,13 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 				}
 				else
 				{
-					this.teleport(player,targetPos.x, player.getPosition().getY(), targetPos.z);
+					this.teleport(player, targetPos.x, player.getPosition().getY(), targetPos.z);
 				}
 
 				player.swingArm(event.getHand());
 
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-				player.getCooldownTracker().setCooldown(sword, 20 * 4);
+				player.getCooldownTracker().setCooldown(sword, 20 * ToolEffectsConfig.desichalkosSwordEffectCooldown);
 			}
 		}
 	}
