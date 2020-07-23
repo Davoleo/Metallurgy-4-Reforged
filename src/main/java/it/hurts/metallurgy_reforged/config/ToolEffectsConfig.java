@@ -18,6 +18,14 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "tools")
 public class ToolEffectsConfig {
 
+	@Config.Name("Atlarus Axe Effect")
+	@Config.Comment("Right Click to destroy any type of leaves in the distance")
+	public static boolean atlarusAxeEffect = true;
+
+	@Config.Name("Atlarus Sword Effect")
+	@Config.Comment("Allows the player to push away other mobs")
+	public static boolean atlarusSwordEffect = true;
+
 	//Axes
 	@Config.Name("Ignatius Pickaxe Effect")
 	@Config.Comment("Has a chance of smelting the block drops depending on fortune applied to the tool")

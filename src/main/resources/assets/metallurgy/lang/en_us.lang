@@ -1280,6 +1280,7 @@ tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the ac
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Axes
+tooltip.metallurgy.atlarus_axe_effect=§eRight Click to destroy any type of leaves in the distance
 tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
 
 #Pickaxes
@@ -1290,6 +1291,7 @@ tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of 
 tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
 
 #Swords
+tooltip.metallurgy.atlarus_sword_effect=§ePushes Aways any entity near you
 tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
 tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
 tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water

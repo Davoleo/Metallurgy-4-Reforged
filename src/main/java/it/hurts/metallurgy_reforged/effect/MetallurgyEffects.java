@@ -130,6 +130,10 @@ public class MetallurgyEffects {
 
 	public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
+	public static final BaseMetallurgyEffect atlarusAxeEffect = new AtlarusAxeEffect();
+
+	public static final BaseMetallurgyEffect atlarusSwordEffect = new AtlarusSwordEffect();
+
 	//Carmot Armor (Haste I)
 	public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(
 			ModMetals.CARMOT, new PotionEffect(MobEffects.HASTE, 60, 0, false, false)) {
