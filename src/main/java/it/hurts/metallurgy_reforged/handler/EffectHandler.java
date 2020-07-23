@@ -19,11 +19,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,11 +46,11 @@ public class EffectHandler
     }
 
     @SubscribeEvent
-    public static void onEntityUseItem(LivingEntityUseItemEvent event)
+    public static void livingEvent(LivingEvent event)
     {
         for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
         {
-            effect.onEntityUseItem(event);
+            effect.livingEvent(event);
         }
     }
 
@@ -82,16 +85,6 @@ public class EffectHandler
         }
     }
 
-
-    @SubscribeEvent
-    public static void onEntityHurt(LivingHurtEvent event)
-    {
-        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-        {
-            effect.onEntityHurt(event);
-        }
-    }
-
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
@@ -106,13 +99,6 @@ public class EffectHandler
             }
 
         }
-    }
-
-    @SubscribeEvent
-    public static void clipPlayer(LivingEvent.LivingUpdateEvent event)
-    {
-        if(event.getEntity() instanceof EntityPlayer)
-            MetallurgyEffects.etheriumArmorEffect.onPlayerTick((EntityPlayer) event.getEntity());
     }
 
 
@@ -136,39 +122,13 @@ public class EffectHandler
     }
 
     @SubscribeEvent
-    public static void onPlayerAttacked(LivingAttackEvent event)
-    {
-        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-        {
-            effect.onPlayerAttacked(event);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerFalling(LivingFallEvent event)
-    {
-        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-        {
-            effect.onPlayerFalling(event);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerKnockBack(LivingKnockBackEvent event)
-    {
-        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-        {
-            effect.onPlayerKnockback(event);
-        }
-    }
-
-    @SubscribeEvent
     public static void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
     {
-        for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
+        if (event.getHarvester() != null)
         {
-            if(event.getHarvester() != null)
+            for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
             {
+
                 effect.onBlockHarvested(event);
             }
         }
@@ -193,5 +153,16 @@ public class EffectHandler
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerCollision(GetCollisionBoxesEvent event)
+    {
+        if (event.getEntity() instanceof EntityPlayer)
+        {
+            for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
+            {
+                effect.onPlayerCollision(event);
+            }
+        }
+    }
 
 }

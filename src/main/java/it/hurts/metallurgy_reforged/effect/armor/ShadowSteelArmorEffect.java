@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import javax.annotation.Nullable;
@@ -50,20 +51,26 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onEntityHurt(LivingHurtEvent event)
+	public void livingEvent(LivingEvent livingEvent)
 	{
-		Entity entity = event.getEntity();
-
-		if (entity instanceof EntityPlayer)
+		if (livingEvent instanceof LivingHurtEvent)
 		{
-			EntityPlayer player = ((EntityPlayer) entity);
 
-			if (EventUtils.isPlayerWearingArmor(player, metal))
+			LivingHurtEvent event = ((LivingHurtEvent) livingEvent);
+
+			Entity entity = event.getEntity();
+
+			if (entity instanceof EntityPlayer)
 			{
-				float amount = event.getAmount();
-				//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
-				amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
-				event.setAmount(amount);
+				EntityPlayer player = ((EntityPlayer) entity);
+
+				if (EventUtils.isPlayerWearingArmor(player, metal))
+				{
+					float amount = event.getAmount();
+					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
+					amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
+					event.setAmount(amount);
+				}
 			}
 		}
 

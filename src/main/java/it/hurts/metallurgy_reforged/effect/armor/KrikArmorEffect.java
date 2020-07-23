@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 import javax.annotation.Nullable;
@@ -85,14 +86,19 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerFalling(LivingFallEvent event)
+	public void livingEvent(LivingEvent livingEvent)
 	{
-		if (event.getEntity() instanceof EntityPlayer)
+		if (livingEvent instanceof LivingFallEvent)
 		{
-			EntityPlayer player = (EntityPlayer) event.getEntity();
+			LivingFallEvent event = ((LivingFallEvent) livingEvent);
 
-			if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK))
-				event.setCanceled(true);
+			if (event.getEntity() instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) event.getEntity();
+
+				if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK))
+					event.setCanceled(true);
+			}
 		}
 	}
 

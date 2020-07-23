@@ -49,6 +49,9 @@ public class ArmorEffectsConfig {
 	@Config.Name("Eximite Armor Effect")
 	@Config.Comment("Endermen won't notice you when watch them")
 	public static boolean eximiteArmorEffect = true;
+	@Config.Name("Haderoth Armor Effect")
+	@Config.Comment("Allows the player to walk on lava blocks")
+	public static boolean haderothArmorEffect = true;
 	@Config.Name("Kalendrite Armor Effect")
 	@Config.Comment("Full Armor gives Strength I")
 	public static boolean kaledriteArmorEffect = true;

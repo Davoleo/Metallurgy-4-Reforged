@@ -19,10 +19,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -77,23 +78,11 @@ public abstract class BaseMetallurgyEffect {
 	public void onPlayerTick(EntityPlayer player)
 	{ }
 
-	public void onEntityUseItem(LivingEntityUseItemEvent event)
-	{ }
-
 	@SideOnly(Side.CLIENT)
 	public void onEntitiesRender(EntityLivingBase entity, RenderLivingBase<EntityLivingBase> renderer, float partialRenderTicks, double x, double y, double z)
 	{ }
 
 	public void onEntityEnteringChunk(Entity entity)
-	{ }
-
-	public void onPlayerAttacked(LivingAttackEvent event)
-	{ }
-
-	public void onPlayerFalling(LivingFallEvent event)
-	{ }
-
-	public void onPlayerKnockback(LivingKnockBackEvent event)
 	{ }
 
 	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
@@ -111,10 +100,13 @@ public abstract class BaseMetallurgyEffect {
 	public void onEntityKillDrop(List<EntityItem> drops, EntityPlayer killer)
 	{ }
 
-	public void onEntityHurt(LivingHurtEvent event)
+	public void onPlayerInteract(PlayerInteractEvent event)
 	{ }
 
-	public void onPlayerInteract(PlayerInteractEvent event)
+	public void onPlayerCollision(GetCollisionBoxesEvent event)
+	{ }
+
+	public void livingEvent(LivingEvent event)
 	{ }
 
 }

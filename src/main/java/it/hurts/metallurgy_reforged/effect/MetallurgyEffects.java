@@ -132,6 +132,8 @@ public class MetallurgyEffects {
 
 	public static final BaseMetallurgyEffect atlarusAxeEffect = new AtlarusAxeEffect();
 
+	public static final BaseMetallurgyEffect atlarusHoeEffect = new AtlarusHoeEffect();
+
 	public static final BaseMetallurgyEffect atlarusSwordEffect = new AtlarusSwordEffect();
 
 	//Carmot Armor (Haste I)
@@ -189,6 +191,9 @@ public class MetallurgyEffects {
 
 	//Eximite Armor
 	public static final BaseMetallurgyEffect eximiteEffect = new EximiteArmorEffect();
+
+	//Haderoth Armor
+	public static final BaseMetallurgyEffect haderothEffect = new HaderothArmorEffect();
 
 	//Ignatius Axe & Shovel (Smelt Harvested Items)
 	public static final BaseMetallurgyEffect ignatiusAxeEffect = new IgnatiusAxeShovelEffect() {
@@ -279,7 +284,7 @@ public class MetallurgyEffects {
 			};
 
 	//Shadow Steel Armor
-	public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowIronArmorEffect();
+	public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowSteelArmorEffect();
 
 	//Shadow Steel Axe
 	//Shadow Steel Pickaxe

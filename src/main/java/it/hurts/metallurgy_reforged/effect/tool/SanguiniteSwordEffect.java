@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import scala.util.Random;
 
@@ -48,34 +49,39 @@ public class SanguiniteSwordEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onEntityHurt(LivingHurtEvent event)
+	public void livingEvent(LivingEvent livingEvent)
 	{
-		//the entity that damaged the event entity
-		Entity source = event.getSource().getImmediateSource();
-		if (source instanceof EntityPlayer)
+		if (livingEvent instanceof LivingHurtEvent)
 		{
 
-			//the player that damaged the event entity
-			EntityPlayer pl = (EntityPlayer) source;
+			LivingHurtEvent event = ((LivingHurtEvent) livingEvent);
 
-			if (pl.getHeldItemMainhand().getItem() == ModMetals.SANGUINITE.getTool(EnumTools.SWORD))
+			//the entity that damaged the event entity
+			Entity source = event.getSource().getImmediateSource();
+			if (source instanceof EntityPlayer)
 			{
-				{
-					//check if the player is missing hearts.
-					if (pl.getHealth() < pl.getMaxHealth())
-					{
+				//the player that damaged the event entity
+				EntityPlayer player = (EntityPlayer) source;
 
-						int luck_level = Math.round(pl.getLuck());
-						//percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...)
-						int percentage = 15 + (luck_level * 5);
-						if (new Random().nextInt(100) < percentage)
+				if (player.getHeldItemMainhand().getItem() == ModMetals.SANGUINITE.getTool(EnumTools.SWORD))
+				{
+					{
+						//check if the player is missing hearts.
+						if (player.getHealth() < player.getMaxHealth())
 						{
-							//the heal Amount ,that is the 10% of the damage
-							float healAmount = event.getAmount() * 0.15F;
-							if (pl.getHealth() + healAmount >= pl.getMaxHealth())
-								healAmount = 0;
-							//set the player health
-							pl.setHealth(pl.getHealth() + healAmount);
+
+							int luck_level = Math.round(player.getLuck());
+							//percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...)
+							int percentage = 15 + (luck_level * 5);
+							if (new Random().nextInt(100) < percentage)
+							{
+								//the heal Amount ,that is the 10% of the damage
+								float healAmount = event.getAmount() * 0.15F;
+								if (player.getHealth() + healAmount >= player.getMaxHealth())
+									healAmount = 0;
+								//set the player health
+								player.setHealth(player.getHealth() + healAmount);
+							}
 						}
 					}
 				}

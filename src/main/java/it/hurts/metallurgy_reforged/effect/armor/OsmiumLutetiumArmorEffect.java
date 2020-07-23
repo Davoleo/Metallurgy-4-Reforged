@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 
 import javax.annotation.Nullable;
@@ -52,19 +53,25 @@ public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerKnockback(LivingKnockBackEvent event)
+	public void livingEvent(LivingEvent livingEvent)
 	{
-		if (event.getEntity() instanceof EntityPlayer)
+		if (livingEvent instanceof LivingKnockBackEvent)
 		{
-			EntityPlayer player = (EntityPlayer) event.getEntity();
 
-			int osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
-			int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
+			LivingKnockBackEvent event = ((LivingKnockBackEvent) livingEvent);
 
-			float multiplier;
+			if (event.getEntity() instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-			multiplier = (float) (((4 - osmiumMultiplier) * 0.17) + ((4 - lutetiumMultiplier) * 0.138));
-			event.setStrength(event.getOriginalStrength() * multiplier);
+				int osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
+				int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
+
+				float multiplier;
+
+				multiplier = (float) (((4 - osmiumMultiplier) * 0.17) + ((4 - lutetiumMultiplier) * 0.138));
+				event.setStrength(event.getOriginalStrength() * multiplier);
+			}
 		}
 	}
 
