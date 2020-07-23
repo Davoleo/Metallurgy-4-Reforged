@@ -48,7 +48,7 @@ public class ItemEtheriumMonocle extends ItemExtra {
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
 	{
 		if (slot == EntityEquipmentSlot.HEAD)
-			return Metallurgy.MODID + ":textures/models/monocle_texture.png";
+			return Metallurgy.MODID + ":textures/models/etherium_monocle.png";
 		else
 			return null;
 	}

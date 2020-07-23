@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -28,6 +29,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
@@ -165,7 +167,7 @@ public class GadgetsHandler {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		World world = Minecraft.getMinecraft().world;
 
-		if (player == null || player.getHeldItemMainhand().getItem() != ModItems.etheriumMonocle)
+		if (player == null || !EventUtils.isPlayerWearingSpecificArmorPiece(player, EntityEquipmentSlot.HEAD, ModItems.etheriumMonocle))
 			return;
 
 		BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
