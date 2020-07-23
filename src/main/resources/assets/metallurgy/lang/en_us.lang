@@ -1308,6 +1308,9 @@ tooltip.metallurgy.tartarite_sword_effect=§8Wither II
 tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
 tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
 
+#Hoe
+tooltip.metallurgy.atlarus_hoe_effect=§eRight Click destroy all grass near the player
+
 #Tools
 tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
 

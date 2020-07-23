@@ -19,8 +19,12 @@ import net.minecraftforge.common.config.Config;
 public class ToolEffectsConfig {
 
 	@Config.Name("Atlarus Axe Effect")
-	@Config.Comment("Right Click to destroy any type of leaves in the distance")
+	@Config.Comment("Right Click to destroy any type of" +
+			" leaves in the distance")
 	public static boolean atlarusAxeEffect = true;
+	@Config.Name("Ignatius Hoe Effect")
+	@Config.Comment("Destroy all grass near the player")
+	public static boolean atlarusHoeEffect = true;
 
 	@Config.Name("Atlarus Sword Effect")
 	@Config.Comment("Allows the player to push away other mobs")
