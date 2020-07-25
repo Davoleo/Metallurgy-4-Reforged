@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -52,25 +53,43 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
+	public void onPlayerTick(EntityPlayer player)
+	{
+		World world = player.world;
+
+		if (!world.isRemote && EventUtils.isPlayerWearingArmor(player, metal))
+		{
+
+			BlockPos lavaPos = new BlockPos(player.posX, player.posY, player.posZ);
+
+			if (world.getBlockState(lavaPos).getBlock() == Blocks.LAVA)
+			{
+				player.motionY = 0;
+				player.velocityChanged = true;
+			}
+		}
+	}
+
+	@Override
 	public void onPlayerCollision(GetCollisionBoxesEvent event)
 	{
 		World world = event.getWorld();
 		EntityPlayer player = ((EntityPlayer) event.getEntity());
-		int radius = 6;
 
-		Iterable<BlockPos> positions = BlockPos.getAllInBox(player.getPosition().getX() - radius, player.getPosition().getY() - 2, player.getPosition().getZ() - radius,
-				player.getPosition().getX() + radius, player.getPosition().getY() + 2, player.getPosition().getZ() + radius);
+		if (EventUtils.isPlayerWearingArmor(player, metal))
+		{
 
-		positions.forEach(blockPos -> {
-			Block block = world.getBlockState(blockPos).getBlock();
-			if (block == Blocks.LAVA)
+			BlockPos lavaPos = new BlockPos(player.posX, player.posY, player.posZ);
+
+			if (world.getBlockState(lavaPos).getBlock() == Blocks.LAVA)
 			{
-				event.getCollisionBoxesList().add(Block.FULL_BLOCK_AABB.offset(blockPos));
-			}
-		});
+				event.getCollisionBoxesList().add(Block.FULL_BLOCK_AABB.offset(lavaPos));
 
-		if (world.isRemote)
-			world.spawnParticle(EnumParticleTypes.FLAME, player.posX - Math.random(), player.posY, player.posZ + Math.random(), 0, -0.1D, 0);
+				if (world.isRemote)
+					world.spawnParticle(EnumParticleTypes.FLAME, player.posX + Math.random() - 0.5, player.posY, player.posZ + Math.random() - 0.5, 0.3 * (Math.random() - 0.5) * 2, 0.01, 0.3 * (Math.random() - 0.5) * 2);
+			}
+
+		}
 	}
 
 }
