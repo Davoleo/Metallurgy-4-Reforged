@@ -100,7 +100,7 @@ public class MetallurgyEffects {
 
 	//Amordrine Armor (Strenght II)
 	public static final BaseMetallurgyEffect amordrineEffect = new ArmorPotionEffect(
-			ModMetals.AMORDRINE, new PotionEffect(MobEffects.STRENGTH, 60, 1, false, false)) {
+			ModMetals.AMORDRINE, MobEffects.STRENGTH, 1) {
 		@Override
 		public boolean isEnabled()
 		{
@@ -110,7 +110,7 @@ public class MetallurgyEffects {
 
 	//Angmallen Armor (Luck I for Vampirism)
 	public static final BaseMetallurgyEffect angmallenEffect = new ArmorPotionEffect(
-			ModMetals.ANGMALLEN, new PotionEffect(MobEffects.LUCK, 80, 0, false, false)) {
+			ModMetals.ANGMALLEN, MobEffects.LUCK, 0) {
 		@Override
 		public boolean isEnabled()
 		{
@@ -120,7 +120,7 @@ public class MetallurgyEffects {
 
 	//Astral Silver Armor (Jump Boost)
 	public static final BaseMetallurgyEffect astralSilverEffect = new ArmorPotionEffect(
-			ModMetals.ASTRAL_SILVER, new PotionEffect(MobEffects.JUMP_BOOST, 100, 1, false, false)) {
+			ModMetals.ASTRAL_SILVER, MobEffects.JUMP_BOOST, 1) {
 		@Override
 		public boolean isEnabled()
 		{
@@ -138,7 +138,7 @@ public class MetallurgyEffects {
 
 	//Carmot Armor (Haste I)
 	public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(
-			ModMetals.CARMOT, new PotionEffect(MobEffects.HASTE, 60, 0, false, false)) {
+			ModMetals.CARMOT, MobEffects.HASTE, 0) {
 		@Override
 		public boolean isEnabled()
 		{
@@ -219,7 +219,7 @@ public class MetallurgyEffects {
 
 	//Kalendrite Armor (Strenght I)
 	public static final BaseMetallurgyEffect kalendriteEffect = new ArmorPotionEffect(
-			ModMetals.KALENDRITE, new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false)) {
+			ModMetals.KALENDRITE, MobEffects.STRENGTH, 0) {
 		@Override
 		public boolean isEnabled()
 		{

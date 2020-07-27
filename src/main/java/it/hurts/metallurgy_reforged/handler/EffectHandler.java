@@ -94,8 +94,7 @@ public class EffectHandler
 
             for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
             {
-                if(effect != MetallurgyEffects.etheriumArmorEffect)
-                    effect.onPlayerTick(player);
+                effect.onPlayerTick(player);
             }
 
         }

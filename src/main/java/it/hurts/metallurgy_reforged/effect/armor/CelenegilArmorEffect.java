@@ -23,7 +23,7 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 
 	public CelenegilArmorEffect()
 	{
-		super(ModMetals.CELENEGIL, null);
+		super(ModMetals.CELENEGIL, null, 0);
 	}
 
 	@Override

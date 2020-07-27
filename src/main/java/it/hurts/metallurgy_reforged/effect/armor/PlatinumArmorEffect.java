@@ -23,7 +23,7 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 
 	public PlatinumArmorEffect()
 	{
-		super(ModMetals.PLATINUM, null);
+		super(ModMetals.PLATINUM, null, 0);
 	}
 
 	@Override

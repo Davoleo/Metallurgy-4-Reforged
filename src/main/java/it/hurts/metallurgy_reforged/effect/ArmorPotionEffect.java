@@ -15,18 +15,21 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
 
 public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 
-	protected PotionEffect effect;
+	private final Potion potion;
+	private int amplifier;
 
-	public ArmorPotionEffect(Metal metal, PotionEffect effect)
+	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier)
 	{
 		super(metal);
-		this.effect = effect;
+		this.potion = potion;
+		this.amplifier = amplifier;
 	}
 
 	@Override
@@ -50,7 +53,7 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	{
 		if (EventUtils.isPlayerWearingArmor(player, metal))
 		{
-			player.addPotionEffect(effect);
+			player.addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
 		}
 	}
 
