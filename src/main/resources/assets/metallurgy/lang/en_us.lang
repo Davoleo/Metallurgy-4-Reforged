@@ -1269,6 +1269,7 @@ tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in 
 tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 tooltip.metallurgy.etherium_armor_effect=§5Full Armor Set: gives the ability to go through walls
 tooltip.metallurgy.desichalkos_armor_effect=§5Full Armor Set: Allows the player to steal private precious blocks from endermen
+tooltip.metallurgy.haderoth_armor_effect=§7Full Armor Set: Allows the player to walk on lava
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
