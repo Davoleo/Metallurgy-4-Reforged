@@ -23,7 +23,6 @@ import it.hurts.metallurgy_reforged.integration.jei.crusher.CrusherRecipeCategor
 import it.hurts.metallurgy_reforged.integration.jei.crusher.CrusherRecipeWrapper;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.recipe.ModRecipes;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -95,21 +94,6 @@ public class IntegrationJEI implements IModPlugin {
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");
 
 		//registry.addIngredientInfo(new ItemStack(ModFluids.TAR.getFluidBlock()), ItemStack.class, "description.jei_compat.tar_processing");
-
-		List<MetalRecipeWrapper> recipes = new ArrayList<>();
-
-		ModMetals.metalMap.forEach((name, metal) -> {
-			ModRecipes.shapedMetalRecipes.forEach(shapedMetalRecipe -> {
-				if (!shapedMetalRecipe.getOutputFromMetal(metal).isEmpty())
-					recipes.add(new ShapedMetalRecipeWrapper(metal, shapedMetalRecipe, registry.getJeiHelpers()));
-			});
-			ModRecipes.shapelessMetalRecipes.forEach(shapelessMetalRecipe -> {
-				if (!shapelessMetalRecipe.getOutputFromMetal(metal).isEmpty())
-					recipes.add(new MetalRecipeWrapper(metal, shapelessMetalRecipe, registry.getJeiHelpers()));
-			});
-		});
-
-		registry.addRecipes(recipes, VanillaRecipeCategoryUid.CRAFTING);
 
 		List<OreDetectorWrapper> oreDetectorRecipes = new ArrayList<>();
 		for (int i = 0; i <= 3; i++)
