@@ -1,0 +1,1322 @@
+#Generic Material Names
+material.metallurgy.adamantine.name=Adamante
+material.metallurgy.amordrine.name=Amordrino
+material.metallurgy.angmallen.name=Angmáleno
+material.metallurgy.astral_silver.name=Prata astral
+material.metallurgy.atlarus.name=Átlaros
+material.metallurgy.black_steel.name=Aço negro
+material.metallurgy.brass.name=Latão
+material.metallurgy.bronze.name=Bronze
+material.metallurgy.carmot.name=Cármoto
+material.metallurgy.celenegil.name=Celenégilo
+material.metallurgy.ceruclase.name=Ceruclásio
+material.metallurgy.copper.name=Cobre
+material.metallurgy.damascus_steel.name=Aço damasco
+material.metallurgy.deep_iron.name=Ferro escuro
+material.metallurgy.desichalkos.name=Desichalkos
+material.metallurgy.electrum.name=Eletro
+material.metallurgy.etherium.name=Etério
+material.metallurgy.eximite.name=Eximito
+material.metallurgy.haderoth.name=Haderóte
+material.metallurgy.hepatizon.name=Hepatizônio
+material.metallurgy.ignatius.name=Ignátio
+material.metallurgy.inolashite.name=Inolachita
+material.metallurgy.kalendrite.name=Kalendrito
+material.metallurgy.krik.name=Krique
+material.metallurgy.midasium.name=Midásio
+material.metallurgy.mithril.name=Mithril
+material.metallurgy.orichalcum.name=Oricalco
+material.metallurgy.oureclase.name=Oureclásio
+material.metallurgy.platinum.name=Platina
+material.metallurgy.prometheum.name=Prometeu
+material.metallurgy.quicksilver.name=Mercúrio
+material.metallurgy.sanguinite.name=Sanguinito
+material.metallurgy.shadow_iron.name=Ferro sombrio
+material.metallurgy.shadow_steel.name=Aço sombrio
+material.metallurgy.silver.name=Prata
+material.metallurgy.steel.name=Aço
+material.metallurgy.tartarite.name=Tartarito
+material.metallurgy.vulcanite.name=Vulcânito
+material.metallurgy.vyroxeres.name=Viróxeres
+
+#Armors
+item.metallurgy.adamantine_helmet.name=Capacete de adamante
+item.metallurgy.adamantine_chestplate.name=Peitoral de adamante
+item.metallurgy.adamantine_leggings.name=Calças de adamante
+item.metallurgy.adamantine_boots.name=Botas de adamante
+
+item.metallurgy.amordrine_helmet.name=Capacete de amordrino
+item.metallurgy.amordrine_chestplate.name=Peitoral de amordrino
+item.metallurgy.amordrine_leggings.name=Calças de amordrino
+item.metallurgy.amordrine_boots.name=Botas de amordrino
+
+item.metallurgy.angmallen_helmet.name=Capacete de angmáleno
+item.metallurgy.angmallen_chestplate.name=Peitoral de angmáleno
+item.metallurgy.angmallen_leggings.name=Calças de angmáleno
+item.metallurgy.angmallen_boots.name=Botas de angmáleno
+
+item.metallurgy.atlarus_helmet.name=Capacete de átlaros
+item.metallurgy.atlarus_chestplate.name=Peitoral de átlaros
+item.metallurgy.atlarus_leggings.name=Calças de átlaros
+item.metallurgy.atlarus_boots.name=Botas de átlaros
+
+item.metallurgy.astral_silver_helmet.name=Capacete de prata astral
+item.metallurgy.astral_silver_chestplate.name=Peitoral de prata astral
+item.metallurgy.astral_silver_leggings.name=Calças de prata astral
+item.metallurgy.astral_silver_boots.name=Botas de prata astral
+
+item.metallurgy.black_steel_helmet.name=Capacete de aço negro
+item.metallurgy.black_steel_chestplate.name=Peitoral de aço negro
+item.metallurgy.black_steel_leggings.name=Calças de aço negro
+item.metallurgy.black_steel_boots.name=Botas de aço negro
+
+item.metallurgy.brass_helmet.name=Capacete de latão
+item.metallurgy.brass_chestplate.name=Peitoral de latão
+item.metallurgy.brass_leggings.name=Calças de latão
+item.metallurgy.brass_boots.name=Botas de latão
+
+item.metallurgy.bronze_helmet.name=Capacete de bronze
+item.metallurgy.bronze_chestplate.name=Peitoral de bronze
+item.metallurgy.bronze_leggings.name=Calças de bronze
+item.metallurgy.bronze_boots.name=Botas de bronze
+
+item.metallurgy.carmot_helmet.name=Capacete de cármoto
+item.metallurgy.carmot_chestplate.name=Peitoral de cármoto
+item.metallurgy.carmot_leggings.name=Calças de cármoto
+item.metallurgy.carmot_boots.name=Botas de cármoto
+
+item.metallurgy.celenegil_helmet.name=Capacete de celenégilo
+item.metallurgy.celenegil_chestplate.name=Peitoral de celenégilo
+item.metallurgy.celenegil_leggings.name=Calças de celenégilo
+item.metallurgy.celenegil_boots.name=Botas de celenégilo
+
+item.metallurgy.ceruclase_helmet.name=Capacete de ceruclásio
+item.metallurgy.ceruclase_chestplate.name=Peitoral de ceruclásio
+item.metallurgy.ceruclase_leggings.name=Calças de ceruclásio
+item.metallurgy.ceruclase_boots.name=Botas de ceruclásio
+
+item.metallurgy.copper_helmet.name=Capacete de cobre
+item.metallurgy.copper_chestplate.name=Peitoral de cobre
+item.metallurgy.copper_leggings.name=Calças de cobre
+item.metallurgy.copper_boots.name=Botas de cobre
+
+item.metallurgy.damascus_steel_helmet.name=Capacete de aço damasco
+item.metallurgy.damascus_steel_chestplate.name=Peitoral de aço damasco
+item.metallurgy.damascus_steel_leggings.name=Calças de aço damasco
+item.metallurgy.damascus_steel_boots.name=Botas de aço damasco
+
+item.metallurgy.deep_iron_helmet.name=Capacete de ferro escuro
+item.metallurgy.deep_iron_chestplate.name=Peitoral de ferro escuro
+item.metallurgy.deep_iron_leggings.name=Calças de ferro escuro
+item.metallurgy.deep_iron_boots.name=Botas de ferro escuro
+
+item.metallurgy.desichalkos_helmet.name=Capacete de desichalkos
+item.metallurgy.desichalkos_chestplate.name=Peitoral de desichalkos
+item.metallurgy.desichalkos_leggings.name=Calças de desichalkos
+item.metallurgy.desichalkos_boots.name=Botas de desichalkos
+
+item.metallurgy.electrum_helmet.name=Capacete de eletro
+item.metallurgy.electrum_chestplate.name=Peitoral de eletro
+item.metallurgy.electrum_leggings.name=Calças de eletro
+item.metallurgy.electrum_boots.name=Botas de eletro
+
+item.metallurgy.etherium_helmet.name=Capacete de etério
+item.metallurgy.etherium_chestplate.name=Peitoral de etério
+item.metallurgy.etherium_leggings.name=Calças de etério
+item.metallurgy.etherium_boots.name=Botas de etério
+
+item.metallurgy.eximite_helmet.name=Capacete de eximito
+item.metallurgy.eximite_chestplate.name=Peitoral de eximito
+item.metallurgy.eximite_leggings.name=Calças de eximito
+item.metallurgy.eximite_boots.name=Botas de eximito
+
+item.metallurgy.haderoth_helmet.name=Capacete de haderóte
+item.metallurgy.haderoth_chestplate.name=Peitoral de haderóte
+item.metallurgy.haderoth_leggings.name=Calças de haderóte
+item.metallurgy.haderoth_boots.name=Botas de haderóte
+
+item.metallurgy.hepatizon_helmet.name=Capacete de hepatizônio
+item.metallurgy.hepatizon_chestplate.name=Peitoral de hepatizônio
+item.metallurgy.hepatizon_leggings.name=Calças de hepatizônio
+item.metallurgy.hepatizon_boots.name=Botas de hepatizônio
+
+item.metallurgy.ignatius_helmet.name=Capacete de ignátio
+item.metallurgy.ignatius_chestplate.name=Peitoral de ignátio
+item.metallurgy.ignatius_leggings.name=Calças de ignátio
+item.metallurgy.ignatius_boots.name=Botas de ignátio
+
+item.metallurgy.inolashite_helmet.name=Capacete de inolachita
+item.metallurgy.inolashite_chestplate.name=Peitoral de inolachita
+item.metallurgy.inolashite_leggings.name=Calças de inolachita
+item.metallurgy.inolashite_boots.name=Botas de inolachita
+
+item.metallurgy.kalendrite_helmet.name=Capacete de kalendrito
+item.metallurgy.kalendrite_chestplate.name=Peitoral de kalendrito
+item.metallurgy.kalendrite_leggings.name=Calças de kalendrito
+item.metallurgy.kalendrite_boots.name=Botas de kalendrito
+
+item.metallurgy.krik_helmet.name=Capacete de krique
+item.metallurgy.krik_chestplate.name=Peitoral de krique
+item.metallurgy.krik_leggings.name=Calças de krique
+item.metallurgy.krik_boots.name=Botas de krique
+
+item.metallurgy.lutetium_helmet.name=Capacete de lutécio
+item.metallurgy.lutetium_chestplate.name=Peitoral de lutécio
+item.metallurgy.lutetium_leggings.name=Calças de lutécio
+item.metallurgy.lutetium_boots.name=Botas de lutécio
+
+item.metallurgy.midasium_helmet.name=Capacete de midásio
+item.metallurgy.midasium_chestplate.name=Peitoral de midásio
+item.metallurgy.midasium_leggings.name=Calças de midásio
+item.metallurgy.midasium_boots.name=Botas de midásio
+
+item.metallurgy.mithril_helmet.name=Capacete de mithril
+item.metallurgy.mithril_chestplate.name=Peitoral de mithril
+item.metallurgy.mithril_leggings.name=Calças de mithril
+item.metallurgy.mithril_boots.name=Botas de mithril
+
+item.metallurgy.orichalcum_helmet.name=Capacete de oricalco
+item.metallurgy.orichalcum_chestplate.name=Peitoral de oricalco
+item.metallurgy.orichalcum_leggings.name=Calças de oricalco
+item.metallurgy.orichalcum_boots.name=Botas de oricalco
+
+item.metallurgy.osmium_helmet.name=Capacete de ósmio
+item.metallurgy.osmium_chestplate.name=Peitoral de ósmio
+item.metallurgy.osmium_leggings.name=Calças de ósmio
+item.metallurgy.osmium_boots.name=Botas de ósmio
+
+item.metallurgy.oureclase_helmet.name=Capacete de oureclásio
+item.metallurgy.oureclase_chestplate.name=Peitoral de oureclásio
+item.metallurgy.oureclase_leggings.name=Calças de oureclásio
+item.metallurgy.oureclase_boots.name=Botas de oureclásio
+
+item.metallurgy.platinum_helmet.name=Capacete de platina
+item.metallurgy.platinum_chestplate.name=Peitoral de platina
+item.metallurgy.platinum_leggings.name=Calças de platina
+item.metallurgy.platinum_boots.name=Botas de platina
+
+item.metallurgy.prometheum_helmet.name=Capacete de prometeu
+item.metallurgy.prometheum_chestplate.name=Peitoral de prometeu
+item.metallurgy.prometheum_leggings.name=Calças de prometeu
+item.metallurgy.prometheum_boots.name=Botas de prometeu
+
+item.metallurgy.quicksilver_helmet.name=Capacete de mercúrio
+item.metallurgy.quicksilver_chestplate.name=Peitoral de mercúrio
+item.metallurgy.quicksilver_leggings.name=Calças de mercúrio
+item.metallurgy.quicksilver_boots.name=Botas de mercúrio
+
+item.metallurgy.sanguinite_helmet.name=Capacete de sanguinito
+item.metallurgy.sanguinite_chestplate.name=Peitoral de sanguinito
+item.metallurgy.sanguinite_leggings.name=Calças de sanguinito
+item.metallurgy.sanguinite_boots.name=Botas de sanguinito
+
+item.metallurgy.shadow_iron_helmet.name=Capacete de ferro sombrio
+item.metallurgy.shadow_iron_chestplate.name=Peitoral de ferro sombrio
+item.metallurgy.shadow_iron_leggings.name=Calças de ferro sombrio
+item.metallurgy.shadow_iron_boots.name=Botas de ferro sombrio
+
+item.metallurgy.shadow_steel_helmet.name=Capacete de aço sombrio
+item.metallurgy.shadow_steel_chestplate.name=Peitoral de aço sombrio
+item.metallurgy.shadow_steel_leggings.name=Calças de aço sombrio
+item.metallurgy.shadow_steel_boots.name=Botas de aço sombrio
+
+item.metallurgy.silver_helmet.name=Capacete de prata
+item.metallurgy.silver_chestplate.name=Peitoral de prata
+item.metallurgy.silver_leggings.name=Calças de prata
+item.metallurgy.silver_boots.name=Botas de prata
+
+item.metallurgy.steel_helmet.name=Capacete de aço
+item.metallurgy.steel_chestplate.name=Peitoral de aço
+item.metallurgy.steel_leggings.name=Calças de aço
+item.metallurgy.steel_boots.name=Botas de aço
+
+item.metallurgy.tartarite_helmet.name=Capacete de tartarito
+item.metallurgy.tartarite_chestplate.name=Peitoral de tartarito
+item.metallurgy.tartarite_leggings.name=Calças de tartarito
+item.metallurgy.tartarite_boots.name=Botas de tartarito
+
+item.metallurgy.vulcanite_helmet.name=Capacete de vulcânito
+item.metallurgy.vulcanite_chestplate.name=Peitoral de vulcânito
+item.metallurgy.vulcanite_leggings.name=Calças de vulcânito
+item.metallurgy.vulcanite_boots.name=Botas de vulcânito
+
+item.metallurgy.vyroxeres_helmet.name=Capacete de viróxeres
+item.metallurgy.vyroxeres_chestplate.name=Peitoral de viróxeres
+item.metallurgy.vyroxeres_leggings.name=Calças de viróxeres
+item.metallurgy.vyroxeres_boots.name=Botas de viróxeres
+
+# Other Blocks
+tile.metallurgy.road_block.name=Estrada
+tile.metallurgy.striped_road_block.name=Estrada com faixa
+tile.metallurgy.charcoal_block.name=Bloco de carvão vegetal
+tile.metallurgy.bitumen_block.name=Bloco de betume
+tile.metallurgy.sulfur_block.name=Bloco de enxofre
+
+# Metal Blocks
+tile.metallurgy.electrum_block.name=Bloco de eletro
+tile.metallurgy.copper_block.name=Bloco de cobre
+tile.metallurgy.bronze_block.name=Bloco de bronze
+tile.metallurgy.manganese_block.name=Bloco de manganês
+tile.metallurgy.tin_block.name=Bloco de estanho
+tile.metallurgy.steel_block.name=Bloco de aço
+tile.metallurgy.hepatizon_block.name=Bloco de hepatizônio
+tile.metallurgy.prometheum_block.name=Bloco de prometeu
+tile.metallurgy.angmallen_block.name=Bloco de angmáleno
+tile.metallurgy.eximite_block.name=Bloco de eximito
+tile.metallurgy.meutoite_block.name=Bloco de meutóite
+tile.metallurgy.desichalkos_block.name=Bloco de desichalkos
+tile.metallurgy.black_steel_block.name=Bloco de aço negro
+tile.metallurgy.infuscolium_block.name=Bloco de infoscólio
+tile.metallurgy.carmot_block.name=Bloco de cármoto
+tile.metallurgy.astral_silver_block.name=Bloco de prata astral
+tile.metallurgy.oureclase_block.name=Bloco de oureclásio
+tile.metallurgy.deep_iron_block.name=Bloco de ferro escuro
+tile.metallurgy.quicksilver_block.name=Bloco de mercúrio
+tile.metallurgy.mithril_block.name=Bloco de mithril
+tile.metallurgy.haderoth_block.name=Bloco de haderóte
+tile.metallurgy.atlarus_block.name=Bloco de átlaros
+tile.metallurgy.adamantine_block.name=Bloco de adamante
+tile.metallurgy.celenegil_block.name=Bloco de celenégilo
+tile.metallurgy.tartarite_block.name=Bloco de tartarito
+tile.metallurgy.rubracium_block.name=Bloco de rubrácio
+tile.metallurgy.midasium_block.name=Bloco de midásio
+tile.metallurgy.shadow_steel_block.name=Bloco de aço sombrio
+tile.metallurgy.lemurite_block.name=Bloco de lemurito
+tile.metallurgy.vyroxeres_block.name=Bloco de viróxeres
+tile.metallurgy.kalendrite_block.name=Bloco de kalendrito
+tile.metallurgy.krik_block.name=Bloco de krique
+tile.metallurgy.sanguinite_block.name=Bloco de sanguinito
+tile.metallurgy.alduorite_block.name=Bloco de alduorito
+tile.metallurgy.ignatius_block.name=Bloco de ignátio
+tile.metallurgy.shadow_iron_block.name=Bloco de ferro sombrio
+tile.metallurgy.damascus_steel_block.name=Bloco de aço damasco
+tile.metallurgy.orichalcum_block.name=Bloco de oricalco
+tile.metallurgy.ceruclase_block.name=Bloco de ceruclásio
+tile.metallurgy.vulcanite_block.name=Bloco de vulcânito
+tile.metallurgy.inolashite_block.name=Bloco de inolachita
+tile.metallurgy.amordrine_block.name=Bloco de amordrino
+tile.metallurgy.zinc_block.name=Bloco de zinco
+tile.metallurgy.silver_block.name=Bloco de prata
+tile.metallurgy.platinum_block.name=Bloco de platina
+tile.metallurgy.brass_block.name=Bloco de latão
+tile.metallurgy.lutetium_block.name=Bloco de lutécio
+tile.metallurgy.osmium_block.name=Bloco de ósmio
+tile.metallurgy.etherium_block.name=Bloco de etério
+
+# Metal Bricks
+tile.metallurgy.electrum_bricks.name=Tijolos de eletro
+tile.metallurgy.copper_bricks.name=Tijolos de cobre
+tile.metallurgy.bronze_bricks.name=Tijolos de bronze
+tile.metallurgy.manganese_bricks.name=Tijolos de manganês
+tile.metallurgy.tin_bricks.name=Tijolos de estanho
+tile.metallurgy.steel_bricks.name=Tijolos de aço
+tile.metallurgy.hepatizon_bricks.name=Tijolos de hepatizônio
+tile.metallurgy.prometheum_bricks.name=Tijolos de prometeu
+tile.metallurgy.angmallen_bricks.name=Tijolos de angmáleno
+tile.metallurgy.eximite_bricks.name=Tijolos de eximito
+tile.metallurgy.meutoite_bricks.name=Tijolos de meutóite
+tile.metallurgy.desichalkos_bricks.name=Tijolos de desichalkos
+tile.metallurgy.black_steel_bricks.name=Tijolos de aço negro
+tile.metallurgy.infuscolium_bricks.name=Tijolos de infoscólio
+tile.metallurgy.carmot_bricks.name=Tijolos de cármoto
+tile.metallurgy.astral_silver_bricks.name=Tijolos de prata astral
+tile.metallurgy.oureclase_bricks.name=Tijolos de oureclásio
+tile.metallurgy.deep_iron_bricks.name=Tijolos de ferro escuro
+tile.metallurgy.quicksilver_bricks.name=Tijolos de mercúrio
+tile.metallurgy.mithril_bricks.name=Tijolos de mithril
+tile.metallurgy.haderoth_bricks.name=Tijolos de haderóte
+tile.metallurgy.atlarus_bricks.name=Tijolos de átlaros
+tile.metallurgy.adamantine_bricks.name=Tijolos de adamante
+tile.metallurgy.celenegil_bricks.name=Tijolos de celenégilo
+tile.metallurgy.tartarite_bricks.name=Tijolos de tartarito
+tile.metallurgy.rubracium_bricks.name=Tijolos de rubrácio
+tile.metallurgy.midasium_bricks.name=Tijolos de midásio
+tile.metallurgy.shadow_steel_bricks.name=Tijolos de aço sombrio
+tile.metallurgy.lemurite_bricks.name=Tijolos de lemurito
+tile.metallurgy.vyroxeres_bricks.name=Tijolos de viróxeres
+tile.metallurgy.kalendrite_bricks.name=Tijolos de kalendrito
+tile.metallurgy.krik_bricks.name=Tijolos de krique
+tile.metallurgy.sanguinite_bricks.name=Tijolos de sanguinito
+tile.metallurgy.alduorite_bricks.name=Tijolos de alduorito
+tile.metallurgy.ignatius_bricks.name=Tijolos de ignátio
+tile.metallurgy.shadow_iron_bricks.name=Tijolos de ferro sombrio
+tile.metallurgy.damascus_steel_bricks.name=Tijolos de aço damasco
+tile.metallurgy.orichalcum_bricks.name=Tijolos de oricalco
+tile.metallurgy.ceruclase_bricks.name=Tijolos de ceruclásio
+tile.metallurgy.vulcanite_bricks.name=Tijolos de vulcânito
+tile.metallurgy.inolashite_bricks.name=Tijolos de inolachita
+tile.metallurgy.amordrine_bricks.name=Tijolos de amordrino
+tile.metallurgy.zinc_bricks.name=Tijolos de zinco
+tile.metallurgy.silver_bricks.name=Tijolos de prata
+tile.metallurgy.platinum_bricks.name=Tijolos de platina
+tile.metallurgy.brass_bricks.name=Tijolos de latão
+tile.metallurgy.lutetium_bricks.name=Tijolos de lutécio
+tile.metallurgy.osmium_bricks.name=Tijolos de ósmio
+tile.metallurgy.etherium_bricks.name=Tijolos de etério
+
+# Large Metal Bricks
+tile.metallurgy.electrum_large_bricks.name=Tijolos grandes de eletro
+tile.metallurgy.copper_large_bricks.name=Tijolos grandes de cobre
+tile.metallurgy.bronze_large_bricks.name=Tijolos grandes de bronze
+tile.metallurgy.manganese_large_bricks.name=Tijolos grandes de manganês
+tile.metallurgy.tin_large_bricks.name=Tijolos grandes de estanho
+tile.metallurgy.steel_large_bricks.name=Tijolos grandes de aço
+tile.metallurgy.hepatizon_large_bricks.name=Tijolos grandes de hepatizônio
+tile.metallurgy.prometheum_large_bricks.name=Tijolos grandes de prometeu
+tile.metallurgy.angmallen_large_bricks.name=Tijolos grandes de angmáleno
+tile.metallurgy.eximite_large_bricks.name=Tijolos grandes de eximito
+tile.metallurgy.meutoite_large_bricks.name=Tijolos grandes de meutóite
+tile.metallurgy.desichalkos_large_bricks.name=Tijolos grandes de desichalkos
+tile.metallurgy.black_steel_large_bricks.name=Tijolos grandes de aço negro
+tile.metallurgy.infuscolium_large_bricks.name=Tijolos grandes de infoscólio
+tile.metallurgy.carmot_large_bricks.name=Tijolos grandes de cármoto
+tile.metallurgy.astral_silver_large_bricks.name=Tijolos grandes de prata astral
+tile.metallurgy.oureclase_large_bricks.name=Tijolos grandes de oureclásio
+tile.metallurgy.deep_iron_large_bricks.name=Tijolos grandes de ferro escuro
+tile.metallurgy.quicksilver_large_bricks.name=Tijolos grandes de mercúrio
+tile.metallurgy.mithril_large_bricks.name=Tijolos grandes de mithril
+tile.metallurgy.haderoth_large_bricks.name=Tijolos grandes de haderóte
+tile.metallurgy.atlarus_large_bricks.name=Tijolos grandes de átlaros
+tile.metallurgy.adamantine_large_bricks.name=Tijolos grandes de adamante
+tile.metallurgy.celenegil_large_bricks.name=Tijolos grandes de celenégilo
+tile.metallurgy.tartarite_large_bricks.name=Tijolos grandes de tartarito
+tile.metallurgy.rubracium_large_bricks.name=Tijolos grandes de rubrácio
+tile.metallurgy.midasium_large_bricks.name=Tijolos grandes de midásio
+tile.metallurgy.shadow_steel_large_bricks.name=Tijolos grandes de aço sombrio
+tile.metallurgy.lemurite_large_bricks.name=Tijolos grandes de lemurito
+tile.metallurgy.vyroxeres_large_bricks.name=Tijolos grandes de viróxeres
+tile.metallurgy.kalendrite_large_bricks.name=Tijolos grandes de kalendrito
+tile.metallurgy.krik_large_bricks.name=Tijolos grandes de krique
+tile.metallurgy.sanguinite_large_bricks.name=Tijolos grandes de sanguinito
+tile.metallurgy.alduorite_large_bricks.name=Tijolos grandes de alduorito
+tile.metallurgy.ignatius_large_bricks.name=Tijolos grandes de ignátio
+tile.metallurgy.shadow_iron_large_bricks.name=Tijolos grandes de ferro sombrio
+tile.metallurgy.damascus_steel_large_bricks.name=Tijolos grandes de aço damasco
+tile.metallurgy.orichalcum_large_bricks.name=Tijolos grandes de oricalco
+tile.metallurgy.ceruclase_large_bricks.name=Tijolos grandes de ceruclásio
+tile.metallurgy.vulcanite_large_bricks.name=Tijolos grandes de vulcânito
+tile.metallurgy.inolashite_large_bricks.name=Tijolos grandes de inolachita
+tile.metallurgy.amordrine_large_bricks.name=Tijolos grandes de amordrino
+tile.metallurgy.zinc_large_bricks.name=Tijolos grandes de zinco
+tile.metallurgy.silver_large_bricks.name=Tijolos grandes de prata
+tile.metallurgy.platinum_large_bricks.name=Tijolos grandes de platina
+tile.metallurgy.brass_large_bricks.name=Tijolos grandes de latão
+tile.metallurgy.lutetium_large_bricks.name=Tijolos grandes de lutécio
+tile.metallurgy.osmium_large_bricks.name=Tijolos grandes de ósmio
+tile.metallurgy.etherium_large_bricks.name=Tijolos grandes de etério
+
+# Engraved Metal Blocks
+tile.metallurgy.electrum_engraved_block.name=Bloco gravado de eletro
+tile.metallurgy.copper_engraved_block.name=Bloco gravado de cobre
+tile.metallurgy.bronze_engraved_block.name=Bloco gravado de bronze
+tile.metallurgy.manganese_engraved_block.name=Bloco gravado de manganês
+tile.metallurgy.tin_engraved_block.name=Bloco gravado de estanho
+tile.metallurgy.steel_engraved_block.name=Bloco gravado de aço
+tile.metallurgy.hepatizon_engraved_block.name=Bloco gravado de hepatizônio
+tile.metallurgy.prometheum_engraved_block.name=Bloco gravado de prometeu
+tile.metallurgy.angmallen_engraved_block.name=Bloco gravado de angmáleno
+tile.metallurgy.eximite_engraved_block.name=Bloco gravado de eximito
+tile.metallurgy.meutoite_engraved_block.name=Bloco gravado de meutóite
+tile.metallurgy.desichalkos_engraved_block.name=Bloco gravado de desichalkos
+tile.metallurgy.black_steel_engraved_block.name=Bloco gravado de aço negro
+tile.metallurgy.infuscolium_engraved_block.name=Bloco gravado de infoscólio
+tile.metallurgy.carmot_engraved_block.name=Bloco gravado de cármoto
+tile.metallurgy.astral_silver_engraved_block.name=Bloco gravado de prata astral
+tile.metallurgy.oureclase_engraved_block.name=Bloco gravado de oureclásio
+tile.metallurgy.deep_iron_engraved_block.name=Bloco gravado de ferro escuro
+tile.metallurgy.quicksilver_engraved_block.name=Bloco gravado de mercúrio
+tile.metallurgy.mithril_engraved_block.name=Bloco gravado de mithril
+tile.metallurgy.haderoth_engraved_block.name=Bloco gravado de haderóte
+tile.metallurgy.atlarus_engraved_block.name=Bloco gravado de átlaros
+tile.metallurgy.adamantine_engraved_block.name=Bloco gravado de adamante
+tile.metallurgy.celenegil_engraved_block.name=Bloco gravado de celenégilo
+tile.metallurgy.tartarite_engraved_block.name=Bloco gravado de tartarito
+tile.metallurgy.rubracium_engraved_block.name=Bloco gravado de rubrácio
+tile.metallurgy.midasium_engraved_block.name=Bloco gravado de midásio
+tile.metallurgy.shadow_steel_engraved_block.name=Bloco gravado de aço sombrio
+tile.metallurgy.lemurite_engraved_block.name=Bloco gravado de lemurito
+tile.metallurgy.vyroxeres_engraved_block.name=Bloco gravado de viróxeres
+tile.metallurgy.kalendrite_engraved_block.name=Bloco gravado de kalendrito
+tile.metallurgy.krik_engraved_block.name=Bloco gravado de krique
+tile.metallurgy.sanguinite_engraved_block.name=Bloco gravado de sanguinito
+tile.metallurgy.alduorite_engraved_block.name=Bloco gravado de alduorito
+tile.metallurgy.ignatius_engraved_block.name=Bloco gravado de ignátio
+tile.metallurgy.shadow_iron_engraved_block.name=Bloco gravado de ferro sombrio
+tile.metallurgy.damascus_steel_engraved_block.name=Bloco gravado de aço damasco
+tile.metallurgy.orichalcum_engraved_block.name=Bloco gravado de oricalco
+tile.metallurgy.ceruclase_engraved_block.name=Bloco gravado de ceruclásio
+tile.metallurgy.vulcanite_engraved_block.name=Bloco gravado de vulcânito
+tile.metallurgy.inolashite_engraved_block.name=Bloco gravado de inolachita
+tile.metallurgy.amordrine_engraved_block.name=Bloco gravado de amordrino
+tile.metallurgy.zinc_engraved_block.name=Bloco gravado de zinco
+tile.metallurgy.silver_engraved_block.name=Bloco gravado de prata
+tile.metallurgy.platinum_engraved_block.name=Bloco gravado de platina
+tile.metallurgy.brass_engraved_block.name=Bloco gravado de latão
+tile.metallurgy.lutetium_engraved_block.name=Bloco gravado de lutécio
+tile.metallurgy.osmium_engraved_block.name=Bloco gravado de ósmio
+tile.metallurgy.etherium_engraved_block.name=Bloco gravado de etério
+
+# Metal Crystals
+tile.metallurgy.electrum_crystals.name=Cristais de eletro
+tile.metallurgy.copper_crystals.name=Cristais de cobre
+tile.metallurgy.bronze_crystals.name=Cristais de bronze
+tile.metallurgy.manganese_crystals.name=Cristais de manganês
+tile.metallurgy.tin_crystals.name=Cristais de estanho
+tile.metallurgy.steel_crystals.name=Cristais de aço
+tile.metallurgy.hepatizon_crystals.name=Cristais de hepatizônio
+tile.metallurgy.prometheum_crystals.name=Cristais de prometeu
+tile.metallurgy.angmallen_crystals.name=Cristais de angmáleno
+tile.metallurgy.eximite_crystals.name=Cristais de eximito
+tile.metallurgy.meutoite_crystals.name=Cristais de meutóite
+tile.metallurgy.desichalkos_crystals.name=Cristais de desichalkos
+tile.metallurgy.black_steel_crystals.name=Cristais de aço negro
+tile.metallurgy.infuscolium_crystals.name=Cristais de infoscólio
+tile.metallurgy.carmot_crystals.name=Cristais de cármoto
+tile.metallurgy.astral_silver_crystals.name=Cristais de prata astral
+tile.metallurgy.oureclase_crystals.name=Cristais de oureclásio
+tile.metallurgy.deep_iron_crystals.name=Cristais de ferro escuro
+tile.metallurgy.quicksilver_crystals.name=Cristais de mercúrio
+tile.metallurgy.mithril_crystals.name=Cristais de mithril
+tile.metallurgy.haderoth_crystals.name=Cristais de haderóte
+tile.metallurgy.atlarus_crystals.name=Cristais de átlaros
+tile.metallurgy.adamantine_crystals.name=Cristais de adamante
+tile.metallurgy.celenegil_crystals.name=Cristais de celenégilo
+tile.metallurgy.tartarite_crystals.name=Cristais de tartarito
+tile.metallurgy.rubracium_crystals.name=Cristais de rubrácio
+tile.metallurgy.midasium_crystals.name=Cristais de midásio
+tile.metallurgy.shadow_steel_crystals.name=Cristais de aço sombrio
+tile.metallurgy.lemurite_crystals.name=Cristais de lemurito
+tile.metallurgy.vyroxeres_crystals.name=Cristais de viróxeres
+tile.metallurgy.kalendrite_crystals.name=Cristais de kalendrito
+tile.metallurgy.krik_crystals.name=Cristais de krique
+tile.metallurgy.sanguinite_crystals.name=Cristais de sanguinito
+tile.metallurgy.alduorite_crystals.name=Cristais de alduorito
+tile.metallurgy.ignatius_crystals.name=Cristais de ignátio
+tile.metallurgy.shadow_iron_crystals.name=Cristais de ferro sombrio
+tile.metallurgy.damascus_steel_crystals.name=Cristais de aço damasco
+tile.metallurgy.orichalcum_crystals.name=Cristais de oricalco
+tile.metallurgy.ceruclase_crystals.name=Cristais de ceruclásio
+tile.metallurgy.vulcanite_crystals.name=Cristais de vulcânito
+tile.metallurgy.inolashite_crystals.name=Cristais de inolachita
+tile.metallurgy.amordrine_crystals.name=Cristais de amordrino
+tile.metallurgy.zinc_crystals.name=Cristais de zinco
+tile.metallurgy.silver_crystals.name=Cristais de prata
+tile.metallurgy.platinum_crystals.name=Cristais de platina
+tile.metallurgy.brass_crystals.name=Cristais de latão
+tile.metallurgy.lutetium_crystals.name=Cristais de lutécio
+tile.metallurgy.osmium_crystals.name=Cristais de ósmio
+tile.metallurgy.etherium_crystals.name=Cristais de etério
+
+# Metal Hazard Blocks
+tile.metallurgy.electrum_hazard_block.name=Bloco listrado de eletro
+tile.metallurgy.copper_hazard_block.name=Bloco listrado de cobre
+tile.metallurgy.bronze_hazard_block.name=Bloco listrado de bronze
+tile.metallurgy.manganese_hazard_block.name=Bloco listrado de manganês
+tile.metallurgy.tin_hazard_block.name=Bloco listrado de estanho
+tile.metallurgy.steel_hazard_block.name=Bloco listrado de aço
+tile.metallurgy.hepatizon_hazard_block.name=Bloco listrado de hepatizônio
+tile.metallurgy.prometheum_hazard_block.name=Bloco listrado de prometeu
+tile.metallurgy.angmallen_hazard_block.name=Bloco listrado de angmáleno
+tile.metallurgy.eximite_hazard_block.name=Bloco listrado de eximito
+tile.metallurgy.meutoite_hazard_block.name=Bloco listrado de meutóite
+tile.metallurgy.desichalkos_hazard_block.name=Bloco listrado de desichalkos
+tile.metallurgy.black_steel_hazard_block.name=Bloco listrado de aço negro
+tile.metallurgy.infuscolium_hazard_block.name=Bloco listrado de infoscólio
+tile.metallurgy.carmot_hazard_block.name=Bloco listrado de cármoto
+tile.metallurgy.astral_silver_hazard_block.name=Bloco listrado de prata astral
+tile.metallurgy.oureclase_hazard_block.name=Bloco listrado de oureclásio
+tile.metallurgy.deep_iron_hazard_block.name=Bloco listrado de ferro escuro
+tile.metallurgy.quicksilver_hazard_block.name=Bloco listrado de mercúrio
+tile.metallurgy.mithril_hazard_block.name=Bloco listrado de mithril
+tile.metallurgy.haderoth_hazard_block.name=Bloco listrado de haderóte
+tile.metallurgy.atlarus_hazard_block.name=Bloco listrado de átlaros
+tile.metallurgy.adamantine_hazard_block.name=Bloco listrado de adamante
+tile.metallurgy.celenegil_hazard_block.name=Bloco listrado de celenégilo
+tile.metallurgy.tartarite_hazard_block.name=Bloco listrado de tartarito
+tile.metallurgy.rubracium_hazard_block.name=Bloco listrado de rubrácio
+tile.metallurgy.midasium_hazard_block.name=Bloco listrado de midásio
+tile.metallurgy.shadow_steel_hazard_block.name=Bloco listrado de aço sombrio
+tile.metallurgy.lemurite_hazard_block.name=Bloco listrado de lemurito
+tile.metallurgy.vyroxeres_hazard_block.name=Bloco listrado de viróxeres
+tile.metallurgy.kalendrite_hazard_block.name=Bloco listrado de kalendrito
+tile.metallurgy.krik_hazard_block.name=Bloco listrado de krique
+tile.metallurgy.sanguinite_hazard_block.name=Bloco listrado de sanguinito
+tile.metallurgy.alduorite_hazard_block.name=Bloco listrado de alduorito
+tile.metallurgy.ignatius_hazard_block.name=Bloco listrado de ignátio
+tile.metallurgy.shadow_iron_hazard_block.name=Bloco listrado de ferro sombrio
+tile.metallurgy.damascus_steel_hazard_block.name=Bloco listrado de aço damasco
+tile.metallurgy.orichalcum_hazard_block.name=Bloco listrado de oricalco
+tile.metallurgy.ceruclase_hazard_block.name=Bloco listrado de ceruclásio
+tile.metallurgy.vulcanite_hazard_block.name=Bloco listrado de vulcânito
+tile.metallurgy.inolashite_hazard_block.name=Bloco listrado de inolachita
+tile.metallurgy.amordrine_hazard_block.name=Bloco listrado de amordrino
+tile.metallurgy.zinc_hazard_block.name=Bloco listrado de zinco
+tile.metallurgy.silver_hazard_block.name=Bloco listrado de prata
+tile.metallurgy.platinum_hazard_block.name=Bloco listrado de platina
+tile.metallurgy.brass_hazard_block.name=Bloco listrado de latão
+tile.metallurgy.lutetium_hazard_block.name=Bloco listrado de lutécio
+tile.metallurgy.osmium_hazard_block.name=Bloco listrado de ósmio
+tile.metallurgy.etherium_hazard_block.name=Bloco listrado de etério
+
+# Metal Reinforced Glass
+tile.metallurgy.electrum_reinforced_glass.name=Vidro reforçado com eletro
+tile.metallurgy.copper_reinforced_glass.name=Vidro reforçado com cobre
+tile.metallurgy.bronze_reinforced_glass.name=Vidro reforçado com bronze
+tile.metallurgy.manganese_reinforced_glass.name=Vidro reforçado com manganês
+tile.metallurgy.tin_reinforced_glass.name=Vidro reforçado com estanho
+tile.metallurgy.steel_reinforced_glass.name=Vidro reforçado com aço
+tile.metallurgy.hepatizon_reinforced_glass.name=Vidro reforçado com hepatizônio
+tile.metallurgy.prometheum_reinforced_glass.name=Vidro reforçado com prometeu
+tile.metallurgy.angmallen_reinforced_glass.name=Vidro reforçado com angmáleno
+tile.metallurgy.eximite_reinforced_glass.name=Vidro reforçado com eximito
+tile.metallurgy.meutoite_reinforced_glass.name=Vidro reforçado com meutóite
+tile.metallurgy.desichalkos_reinforced_glass.name=Vidro reforçado com desichalkos
+tile.metallurgy.black_steel_reinforced_glass.name=Vidro reforçado com aço negro
+tile.metallurgy.infuscolium_reinforced_glass.name=Vidro reforçado com infoscólio
+tile.metallurgy.carmot_reinforced_glass.name=Vidro reforçado com cármoto
+tile.metallurgy.astral_silver_reinforced_glass.name=Vidro reforçado com prata astral
+tile.metallurgy.oureclase_reinforced_glass.name=Vidro reforçado com oureclásio
+tile.metallurgy.deep_iron_reinforced_glass.name=Vidro reforçado com ferro escuro
+tile.metallurgy.quicksilver_reinforced_glass.name=Vidro reforçado com mercúrio
+tile.metallurgy.mithril_reinforced_glass.name=Vidro reforçado com mithril
+tile.metallurgy.haderoth_reinforced_glass.name=Vidro reforçado com haderóte
+tile.metallurgy.atlarus_reinforced_glass.name=Vidro reforçado com átlaros
+tile.metallurgy.adamantine_reinforced_glass.name=Vidro reforçado com adamante
+tile.metallurgy.celenegil_reinforced_glass.name=Vidro reforçado com celenégilo
+tile.metallurgy.tartarite_reinforced_glass.name=Vidro reforçado com tartarito
+tile.metallurgy.rubracium_reinforced_glass.name=Vidro reforçado com rubrácio
+tile.metallurgy.midasium_reinforced_glass.name=Vidro reforçado com midásio
+tile.metallurgy.shadow_steel_reinforced_glass.name=Vidro reforçado com aço sombrio
+tile.metallurgy.lemurite_reinforced_glass.name=Vidro reforçado com lemurito
+tile.metallurgy.vyroxeres_reinforced_glass.name=Vidro reforçado com viróxeres
+tile.metallurgy.kalendrite_reinforced_glass.name=Vidro reforçado com kalendrito
+tile.metallurgy.krik_reinforced_glass.name=Vidro reforçado com krique
+tile.metallurgy.sanguinite_reinforced_glass.name=Vidro reforçado com sanguinito
+tile.metallurgy.alduorite_reinforced_glass.name=Vidro reforçado com alduorito
+tile.metallurgy.ignatius_reinforced_glass.name=Vidro reforçado com ignátio
+tile.metallurgy.shadow_iron_reinforced_glass.name=Vidro reforçado com ferro sombrio
+tile.metallurgy.damascus_steel_reinforced_glass.name=Vidro reforçado com aço damasco
+tile.metallurgy.orichalcum_reinforced_glass.name=Vidro reforçado com oricalco
+tile.metallurgy.ceruclase_reinforced_glass.name=Vidro reforçado com ceruclásio
+tile.metallurgy.vulcanite_reinforced_glass.name=Vidro reforçado com vulcânito
+tile.metallurgy.inolashite_reinforced_glass.name=Vidro reforçado com inolachita
+tile.metallurgy.amordrine_reinforced_glass.name=Vidro reforçado com amordrino
+tile.metallurgy.zinc_reinforced_glass.name=Vidro reforçado com zinco
+tile.metallurgy.silver_reinforced_glass.name=Vidro reforçado com prata
+tile.metallurgy.platinum_reinforced_glass.name=Vidro reforçado com platina
+tile.metallurgy.brass_reinforced_glass.name=Vidro reforçado com latão
+tile.metallurgy.lutetium_reinforced_glass.name=Vidro reforçado com lutécio
+tile.metallurgy.osmium_reinforced_glass.name=Vidro reforçado com ósmio
+tile.metallurgy.etherium_reinforced_glass.name=Vidro reforçado com etério
+
+#Config
+config.metallurgy.category.armor_effects=Efeitos das armaduras
+config.metallurgy.category.general=Geral
+config.metallurgy.category.registry=Registro
+config.metallurgy.category.rubracium_gauntlet=Manopla de rubrácio
+config.metallurgy.category.tool_effects=Efeitos das ferramentas
+config.metallurgy.category.worldgen=Geração do mundo
+
+#Construct's Armory Traits
+modifier.blindness_armor.name=Clear Vision
+modifier.cat_eyes_armor.name=Visão noturna
+modifier.deeply_armor.name=Mergulhador
+modifier.foodly_armor.name=Bem alimentado
+modifier.jump_master_armor.name=Mestre dos saltos
+modifier.prometheum_armor.name=Imunidade a venenos
+modifier.quickly_armor.name=Ação rápida
+modifier.resistance_armor.name=Resistência IV
+modifier.strongly_armor.name=Força
+modifier.volcano_armor.name=Vulcânico
+
+modifier.blindness_armor.desc=§oSem cegueira >:(§r\nMakes you immune to blindness
+modifier.cat_eyes_armor.desc=§oCenouras não são necessárias§r\nPermite a você enxergar no escuro
+modifier.deeply_armor.desc=§oAquático!§r\nFica mais fácil para você fazer coisas embaixo da água.
+modifier.foodly_armor.desc=§oO gosto do trabalho duro§r\nRecupera a sua barra de fome se você tiver experiência suficiente.
+modifier.jump_master_armor.desc=§oAeee!§r\nAumento da altura do pulo.
+modifier.prometheum_armor.desc=§oTem gosto de coco... e metal§r\nConcede imunidade ao veneno.
+modifier.quickly_armor.desc=§oCurso de arquearia§r\nCurvar um arco fica mais rápido.
+modifier.resistance_armor.desc=§oDuro que nem unha§r\nReduz o dano recebido ainda mais do que você esperaria.
+modifier.strongly_armor.desc=§oEu aposto que posso levantar aquilo§r\nAumento no dano causado \n(pode ser no nível I ou nível II)
+modifier.volcano_armor.desc=§oLigado ao fogo!§r\nTorna você imune ao fogo
+
+# Creative Tab
+itemGroup.metallurgy.armors=Metallurgy - Armaduras
+itemGroup.metallurgy.blocks=Metallurgy - Blocos
+itemGroup.metallurgy.dusts=Metallurgy - Pós
+itemGroup.metallurgy.fluids=Metallurgy - Fluidos
+itemGroup.metallurgy.ingots=Metallurgy - Lingotes
+itemGroup.metallurgy.nuggets=Metallurgy - Pepitas
+itemGroup.metallurgy.special=Metallurgy - Especial
+itemGroup.metallurgy.ores=Metallurgy - Minérios
+itemGroup.metallurgy.tools=Metallurgy - Ferramentas
+
+#Dust
+item.metallurgy.adamantine_dust.name=Pó de adamante
+item.metallurgy.alduorite_dust.name=Pó de alduorito
+item.metallurgy.amordrine_dust.name=Pó de amordrino
+item.metallurgy.angmallen_dust.name=Pó de angmáleno
+item.metallurgy.astral_silver_dust.name=Pó de prata astral
+item.metallurgy.atlarus_dust.name=Pó de átlaros
+item.metallurgy.black_steel_dust.name=Pó de aço negro
+item.metallurgy.brass_dust.name=Pó de latão
+item.metallurgy.bronze_dust.name=Pó de bronze
+item.metallurgy.carmot_dust.name=Pó de cármoto
+item.metallurgy.celenegil_dust.name=Pó de celenégilo
+item.metallurgy.ceruclase_dust.name=Pó de ceruclásio
+item.metallurgy.copper_dust.name=Pó de cobre
+item.metallurgy.deep_iron_dust.name=Pó de ferro escuro
+item.metallurgy.desichalkos_dust.name=Pó de desichalkos
+item.metallurgy.damascus_steel_dust.name=Pó de aço damasco
+item.metallurgy.electrum_dust.name=Pó de eletro
+item.metallurgy.etherium_dust.name=Pó de etério
+item.metallurgy.eximite_dust.name=Pó de eximito
+item.metallurgy.gold_dust.name=Pó de ouro
+item.metallurgy.haderoth_dust.name=Pó de haderóte
+item.metallurgy.hepatizon_dust.name=Pó de hepatizônio
+item.metallurgy.ignatius_dust.name=Pó de ignátio
+item.metallurgy.infuscolium_dust.name=Pó de infoscólio
+item.metallurgy.inolashite_dust.name=Pó de inolachita
+item.metallurgy.iron_dust.name=Pó de ferro
+item.metallurgy.kalendrite_dust.name=Pó de kalendrito
+item.metallurgy.krik_dust.name=Pó de krique
+item.metallurgy.lemurite_dust.name=Pó de lemurito
+item.metallurgy.lutetium_dust.name=Pó de lutécio
+item.metallurgy.manganese_dust.name=Pó de manganês
+item.metallurgy.meutoite_dust.name=Pó de meutóite
+item.metallurgy.midasium_dust.name=Pó de midásio
+item.metallurgy.mithril_dust.name=Pó de mithril
+item.metallurgy.orichalcum_dust.name=Pó de oricalco
+item.metallurgy.osmium_dust.name=Pó de ósmio
+item.metallurgy.oureclase_dust.name=Pó de oureclásio
+item.metallurgy.platinum_dust.name=Pó de platina
+item.metallurgy.prometheum_dust.name=Pó de prometeu
+item.metallurgy.quicksilver_dust.name=Pó de mercúrio
+item.metallurgy.rubracium_dust.name=Pó de rubrácio
+item.metallurgy.sanguinite_dust.name=Pó de sanguinito
+item.metallurgy.shadow_iron_dust.name=Pó de ferro sombrio
+item.metallurgy.shadow_steel_dust.name=Pó de aço sombrio
+item.metallurgy.silver_dust.name=Pó de prata
+item.metallurgy.steel_dust.name=Pó de aço
+item.metallurgy.tartarite_dust.name=Pó de tartarito
+item.metallurgy.thermite_dust.name=Pó de termite
+item.metallurgy.tin_dust.name=Pó de estanho
+item.metallurgy.vulcanite_dust.name=Pó de vulcânito
+item.metallurgy.vyroxeres_dust.name=Pó de viróxeres
+item.metallurgy.zinc_dust.name=Pó de zinco
+
+#Nugget
+item.metallurgy.adamantine_nugget.name=Pepita de adamante
+item.metallurgy.alduorite_nugget.name=Pepita de alduorito
+item.metallurgy.amordrine_nugget.name=Pepita de amordrino
+item.metallurgy.angmallen_nugget.name=Pepita de angmáleno
+item.metallurgy.astral_silver_nugget.name=Pepita de prata astral
+item.metallurgy.atlarus_nugget.name=Pepita de átlaros
+item.metallurgy.black_steel_nugget.name=Pepita de aço negro
+item.metallurgy.brass_nugget.name=Pepita de latão
+item.metallurgy.bronze_nugget.name=Pepita de bronze
+item.metallurgy.carmot_nugget.name=Pepita de cármoto
+item.metallurgy.celenegil_nugget.name=Pepita de celenégilo
+item.metallurgy.ceruclase_nugget.name=Pepita de ceruclásio
+item.metallurgy.copper_nugget.name=Pepita de cobre
+item.metallurgy.deep_iron_nugget.name=Pepita de ferro escuro
+item.metallurgy.desichalkos_nugget.name=Pepita de desichalkos
+item.metallurgy.damascus_steel_nugget.name=Pepita de aço damasco
+item.metallurgy.electrum_nugget.name=Pepita de eletro
+item.metallurgy.etherium_nugget.name=Pepita de etério
+item.metallurgy.eximite_nugget.name=Pepita de eximito
+item.metallurgy.gold_nugget.name=Pepita de ouro
+item.metallurgy.haderoth_nugget.name=Pepita de haderóte
+item.metallurgy.hepatizon_nugget.name=Pepita de hepatizônio
+item.metallurgy.ignatius_nugget.name=Pepita de ignátio
+item.metallurgy.infuscolium_nugget.name=Pepita de infoscólio
+item.metallurgy.inolashite_nugget.name=Pepita de inolachita
+item.metallurgy.iron_nugget.name=Pepita de ferro
+item.metallurgy.kalendrite_nugget.name=Pepita de kalendrito
+item.metallurgy.krik_nugget.name=Pepita de krique
+item.metallurgy.lemurite_nugget.name=Pepita de lemurito
+item.metallurgy.lutetium_nugget.name=Pepita de lutécio
+item.metallurgy.manganese_nugget.name=Pepita de manganês
+item.metallurgy.meutoite_nugget.name=Pepita de meutóite
+item.metallurgy.midasium_nugget.name=Pepita de midásio
+item.metallurgy.mithril_nugget.name=Pepita de mithril
+item.metallurgy.orichalcum_nugget.name=Pepita de oricalco
+item.metallurgy.osmium_nugget.name=Pepita de ósmio
+item.metallurgy.oureclase_nugget.name=Pepita de oureclásio
+item.metallurgy.platinum_nugget.name=Pepita de platina
+item.metallurgy.prometheum_nugget.name=Pepita de prometeu
+item.metallurgy.quicksilver_nugget.name=Pepita de mercúrio
+item.metallurgy.rubracium_nugget.name=Pepita de rubrácio
+item.metallurgy.sanguinite_nugget.name=Pepita de sanguinito
+item.metallurgy.shadow_iron_nugget.name=Pepita de ferro sombrio
+item.metallurgy.shadow_steel_nugget.name=Pepita de aço sombrio
+item.metallurgy.silver_nugget.name=Pepita de prata
+item.metallurgy.steel_nugget.name=Pepita de aço
+item.metallurgy.tartarite_nugget.name=Pepita de tartarito
+item.metallurgy.thermite_nugget.name=Pepita de termite
+item.metallurgy.tin_nugget.name=Pepita de estanho
+item.metallurgy.vulcanite_nugget.name=Pepita de vulcânito
+item.metallurgy.vyroxeres_nugget.name=Pepita de viróxeres
+item.metallurgy.zinc_nugget.name=Pepita de zinco
+
+#Effect
+effect.metallurgy.punch_effect_tired=§4Você está muito cansado(a)! Coma algo primeiro!
+
+#FluidBlocks
+tile.metallurgy.molten_adamantine.name=Adamante derretido
+tile.metallurgy.molten_alduorite.name=Alduorito derretido
+tile.metallurgy.molten_amordrine.name=Amordrino derretido
+tile.metallurgy.molten_angmallen.name=Angmáleno derretido
+tile.metallurgy.molten_astral_silver.name=Prata astral derretida
+tile.metallurgy.molten_atlarus.name=Átlaros derretido
+tile.metallurgy.molten_black_steel.name=Aço negro derretido
+tile.metallurgy.molten_brass.name=Latão derretido
+tile.metallurgy.molten_bronze.name=Bronze derretido
+tile.metallurgy.molten_carmot.name=Cármoto derretido
+tile.metallurgy.molten_celenegil.name=Celenégilo derretido
+tile.metallurgy.molten_ceruclase.name=Ceruclásio derretido
+tile.metallurgy.molten_copper.name=Cobre derretido
+tile.metallurgy.molten_damascus_steel.name=Aço damasco derretido
+tile.metallurgy.molten_deep_iron.name=Ferro escuro derretido
+tile.metallurgy.molten_desichalkos.name=Desichalkos derretido
+tile.metallurgy.molten_electrum.name=Eletro derretido
+tile.metallurgy.molten_etherium.name=Etério derretido
+tile.metallurgy.molten_eximite.name=Eximito derretido
+tile.metallurgy.molten_haderoth.name=Haderóte derretido
+tile.metallurgy.molten_hepatizon.name=Hepatizônio derretido
+tile.metallurgy.molten_ignatius.name=Ignátio derretido
+tile.metallurgy.molten_infuscolium.name=Infoscólio derretido
+tile.metallurgy.molten_inolashite.name=Inolachita derretida
+tile.metallurgy.molten_kalendrite.name=Kalendrito derretido
+tile.metallurgy.molten_krik.name=Krique derretido
+tile.metallurgy.molten_lemurite.name=Lemurito derretido
+tile.metallurgy.molten_lutetium.name=Lutécio derretido
+tile.metallurgy.molten_manganese.name=Manganês derretido
+tile.metallurgy.molten_meutoite.name=Meutóite derretido
+tile.metallurgy.molten_midasium.name=Midásio derretido
+tile.metallurgy.molten_mithril.name=Mithril derretido
+tile.metallurgy.molten_orichalcum.name=Oricalco derretido
+tile.metallurgy.molten_osmium.name=Ósmio derretido
+tile.metallurgy.molten_oureclase.name=Oureclásio derretido
+tile.metallurgy.molten_platinum.name=Platina derretida
+tile.metallurgy.molten_prometheum.name=Prometeu derretido
+tile.metallurgy.molten_quicksilver.name=Mercúrio derretido
+tile.metallurgy.molten_rubracium.name=Rubrácio derretido
+tile.metallurgy.molten_sanguinite.name=Sanguinito derretido
+tile.metallurgy.molten_shadow_iron.name=Ferro sombrio derretido
+tile.metallurgy.molten_shadow_steel.name=Aço sombrio derretido
+tile.metallurgy.molten_silver.name=Prata derretida
+tile.metallurgy.molten_steel.name=Aço derretido
+tile.metallurgy.molten_tar.name=Liquid Tar derretido
+tile.metallurgy.molten_tartarite.name=Tartarito derretido
+tile.metallurgy.molten_thermite.name=Molten Thermite derretido
+tile.metallurgy.molten_tin.name=Estanho derretido
+tile.metallurgy.molten_vulcanite.name=Vulcânito derretido
+tile.metallurgy.molten_vyroxeres.name=Viróxeres derretido
+tile.metallurgy.molten_zinc.name=Zinco derretido
+
+#Fluids
+fluid.adamantine=Adamante derretido
+fluid.alduorite=Alduorito derretido
+fluid.amordrine=Amordrino derretido
+fluid.angmallen=Angmáleno derretido
+fluid.astral_silver=Prata astral derretida
+fluid.atlarus=Átlaros derretido
+fluid.black_steel=Aço negro derretido
+fluid.brass=Latão derretido
+fluid.bronze=Bronze derretido
+fluid.carmot=Cármoto derretido
+fluid.celenegil=Celenégilo derretido
+fluid.ceruclase=Ceruclásio derretido
+fluid.copper=Cobre derretido
+fluid.deep_iron=Ferro escuro derretido
+fluid.desichalkos=Desichalkos derretido
+fluid.damascus_steel=Aço damasco derretido
+fluid.electrum=Eletro derretido
+fluid.etherium=Etério derretido
+fluid.eximite=Eximito derretido
+fluid.haderoth=Haderóte derretido
+fluid.hepatizon=Hepatizônio derretido
+fluid.ignatius=Ignátio derretido
+fluid.infuscolium=Infoscólio derretido
+fluid.inolashite=Inolachita derretida
+fluid.kalendrite=Kalendrito derretido
+fluid.krik=Krique derretido
+fluid.lemurite=Lemurito derretido
+fluid.lutetium=Lutécio derretido
+fluid.manganese=Manganês derretido
+fluid.meutoite=Meutóite derretido
+fluid.midasium=Midásio derretido
+fluid.mithril=Mithril derretido
+fluid.orichalcum=Oricalco derretido
+fluid.osmium=Ósmio derretido
+fluid.oureclase=Oureclásio derretido
+fluid.platinum=Platina derretida
+fluid.prometheum=Prometeu derretido
+fluid.quicksilver=Mercúrio derretido
+fluid.rubracium=Rubrácio derretido
+fluid.sanguinite=Sanguinito derretido
+fluid.shadow_iron=Ferro sombrio derretido
+fluid.shadow_steel=Aço sombrio derretido
+fluid.silver=Prata derretida
+fluid.steel=Aço derretido
+fluid.tartarite=Tartarito derretido
+fluid.tin=Estanho derretido
+fluid.vulcanite=Vulcânito derretido
+fluid.vyroxeres=Viróxeres derretido
+fluid.zinc=Zinco derretido
+
+#Fluids (Special)
+fluid.molten_thermite=Termite derretida
+fluid.molten_tar=Piche líquido
+
+#Ingots
+item.metallurgy.adamantine_ingot.name=Barra de adamante
+item.metallurgy.alduorite_ingot.name=Barra de alduorito
+item.metallurgy.amordrine_ingot.name=Barra de amordrino
+item.metallurgy.angmallen_ingot.name=Barra de angmáleno
+item.metallurgy.astral_silver_ingot.name=Barra de prata astral
+item.metallurgy.atlarus_ingot.name=Barra de átlaros
+item.metallurgy.black_steel_ingot.name=Barra de aço negro
+item.metallurgy.brass_ingot.name=Barra de latão
+item.metallurgy.bronze_ingot.name=Barra de bronze
+item.metallurgy.carmot_ingot.name=Barra de cármoto
+item.metallurgy.celenegil_ingot.name=Barra de celenégilo
+item.metallurgy.ceruclase_ingot.name=Barra de ceruclásio
+item.metallurgy.copper_ingot.name=Barra de cobre
+item.metallurgy.deep_iron_ingot.name=Barra de ferro escuro
+item.metallurgy.desichalkos_ingot.name=Barra de desichalkos
+item.metallurgy.damascus_steel_ingot.name=Barra de aço damasco
+item.metallurgy.electrum_ingot.name=Barra de eletro
+item.metallurgy.etherium_ingot.name=Barra de etério
+item.metallurgy.eximite_ingot.name=Barra de eximito
+item.metallurgy.haderoth_ingot.name=Barra de haderóte
+item.metallurgy.hepatizon_ingot.name=Barra de hepatizônio
+item.metallurgy.ignatius_ingot.name=Barra de ignátio
+item.metallurgy.infuscolium_ingot.name=Barra de infoscólio
+item.metallurgy.inolashite_ingot.name=Barra de inolachita
+item.metallurgy.kalendrite_ingot.name=Barra de kalendrito
+item.metallurgy.krik_ingot.name=Barra de krique
+item.metallurgy.lemurite_ingot.name=Barra de lemurito
+item.metallurgy.lutetium_ingot.name=Barra de lutécio
+item.metallurgy.manganese_ingot.name=Barra de manganês
+item.metallurgy.meutoite_ingot.name=Barra de meutóite
+item.metallurgy.midasium_ingot.name=Barra de midásio
+item.metallurgy.mithril_ingot.name=Barra de mithril
+item.metallurgy.orichalcum_ingot.name=Barra de oricalco
+item.metallurgy.osmium_ingot.name=Barra de ósmio
+item.metallurgy.oureclase_ingot.name=Barra de oureclásio
+item.metallurgy.platinum_ingot.name=Barra de platina
+item.metallurgy.prometheum_ingot.name=Barra de prometeu
+item.metallurgy.quicksilver_ingot.name=Barra de mercúrio
+item.metallurgy.rubracium_ingot.name=Barra de rubrácio
+item.metallurgy.sanguinite_ingot.name=Barra de sanguinito
+item.metallurgy.shadow_iron_ingot.name=Barra de ferro sombrio
+item.metallurgy.shadow_steel_ingot.name=Barra de aço sombrio
+item.metallurgy.silver_ingot.name=Barra de prata
+item.metallurgy.steel_ingot.name=Barra de aço
+item.metallurgy.tartarite_ingot.name=Barra de tartarito
+item.metallurgy.tin_ingot.name=Barra de estanho
+item.metallurgy.vulcanite_ingot.name=Barra de vulcânito
+item.metallurgy.vyroxeres_ingot.name=Barra de viróxeres
+item.metallurgy.zinc_ingot.name=Barra de zinco
+
+#Gadgets
+item.metallurgy.flint_and_ignatius.name=Pederneira e ignátio
+item.metallurgy.flint_and_vulcanite.name=Pederneira e vulcânito
+item.metallurgy.rubracium_gauntlet.name=Manopla de rubrácio
+item.metallurgy.lemurite_shield.name=Escudo de lemurito
+item.metallurgy.ore_detector.name=Detector de metais
+tile.metallurgy.phosphorus_lamp.name=Lanterna de fósforo
+
+#Items
+item.metallurgy.tar.name=Alcatrão
+item.metallurgy.sulfur_dust.name=Enxofre
+item.metallurgy.bitumen.name=Bitume
+item.metallurgy.potash.name=Potassa
+item.metallurgy.phosphorus.name=Fósforo
+item.metallurgy.potash_fertilizer.name=Fertilizante de potassa
+
+item.metallurgy.wiki.name=Wiki do Metallurgy
+
+#JEI
+gui.jei_compat.crusher.name=Britagem
+gui.jei_compat.sublimation_chamber.seconds=segundos
+gui.jei_compat.sublimation_effect_duration=Duração
+gui.jei_compat.sublimation_effect_name=Efeito
+description.jei_compat.tar_processing=O alcatrão é gerado no mundo em uma forma líquida(Piche líquido), porém, se ele for colocado longe de outros blocos de piche líquido, ele endurece e se transforma em minério de alcatrão, que pode ser minerado para conseguir o alcatrão na forma de item, e ocasionalmente betume.
+description.jei_compat.invisibility_shield=Esse escudo peculiar pode te ajudar bastante em lutas contra os seus inimigos, de fato, você pode facilmente segurar o botão direito para bloquear o dano e ficar invisível, e a partir desse momento, desde que você segure o botão direito os monstros não irão notar você. Quando você soltar o botão direito, o escudo de lemurito vai entrar em um período de recarga por um período de tempo equivalente ao tempo em que o escudo foi usado. Há um tempo limite de 30 segundos de uso para o escudo, após o qual ele é colocado em recarga automaticamente.
+description.jei_compat.thermite=Pó de termite pode ser derretido na forja do Tinkers' Construct para depois ser usado no tanque da forja como combustível, esse combustível aprimorado permite derreter minérios que antes você não conseguiria derreter, e também derreter minérios comuns de maneira mais rápida do que se você usasse lava. Se você não tem o Tinkers' Construct instalado, você pode usar ele como um poderoso combustível em qualquer máquina, com resultados aprimorados se usado em máquinas do Metallurgy.
+description.jei_compat.krik_armor=A armadura de krique faz com que você flutue até uma certa altura dependendo de quão cheio o seu inventário estiver. Você pode pressionar o botão direcional CIMA ou BAIXO para fluturar para cima ou para baixo. Você tem um limite de peso que não pode ser ultrapassado enquanto estiver flutuando, esse limite está ligado a quão cheio o seu inventário está (excluindo a barra rápida). Também há um mostrador no canto inferior direito da tela, que mostra o seu nível de peso e o seu limite.
+
+#Ores
+tile.metallurgy.adamantine_ore.name=Minério de adamante
+tile.metallurgy.alduorite_ore.name=Minério de alduorito
+tile.metallurgy.astral_silver_ore.name=Minério de prata astral
+tile.metallurgy.atlarus_ore.name=Minério de átlaros
+tile.metallurgy.tar_ore.name=Minério de alcatrão
+tile.metallurgy.carmot_ore.name=Minério de cármoto
+tile.metallurgy.ceruclase_ore.name=Minério de ceruclásio
+tile.metallurgy.copper_ore.name=Minério de cobre
+tile.metallurgy.deep_iron_ore.name=Minério de ferro escuro
+tile.metallurgy.eximite_ore.name=Minério de eximito
+tile.metallurgy.ignatius_ore.name=Minério de ignátio
+tile.metallurgy.infuscolium_ore.name=Minério de infoscólio
+tile.metallurgy.kalendrite_ore.name=Minério de kalendrito
+tile.metallurgy.lemurite_ore.name=Minério de lemurito
+tile.metallurgy.lutetium_ore.name=Minério de lutécio
+tile.metallurgy.manganese_ore.name=Minério de manganês
+tile.metallurgy.midasium_ore.name=Minério de midásio
+tile.metallurgy.meutoite_ore.name=Minério de meutóite
+tile.metallurgy.mithril_ore.name=Minério de mithril
+tile.metallurgy.orichalcum_ore.name=Minério de oricalco
+tile.metallurgy.osmium_ore.name=Minério de ósmio
+tile.metallurgy.oureclase_ore.name=Minério de oureclásio
+tile.metallurgy.platinum_ore.name=Minério de platina
+tile.metallurgy.potash_ore.name=Minério de potassa
+tile.metallurgy.phosphorite_ore.name=Minério de fosforite
+tile.metallurgy.prometheum_ore.name=Minério de prometeu
+tile.metallurgy.rubracium_ore.name=Minério de rubrácio
+tile.metallurgy.sanguinite_ore.name=Minério de sanguinito
+tile.metallurgy.shadow_iron_ore.name=Minério de ferro sombrio
+tile.metallurgy.silver_ore.name=Minério de prata
+tile.metallurgy.sulfur_ore.name=Minério de enxofre
+tile.metallurgy.tin_ore.name=Minério de estanho
+tile.metallurgy.vyroxeres_ore.name=Minério de viróxeres
+tile.metallurgy.vulcanite_ore.name=Minério de vulcânito
+tile.metallurgy.zinc_ore.name=Minério de zinco
+
+#Machines
+container.crusher=Britador
+container.alloyer=Fundição
+tile.metallurgy.crusher.name=§cBritador
+tile.metallurgy.alloyer.name=§eForja de fundição
+tile.metallurgy.sublimation_chamber.name=§4Câmara de sublimação
+
+#Tinkers' Construct Traits
+modifier.obscure_trait.name=Obscuro
+modifier.obscure_trait.desc=Cega o seu inimigo por algum tempo
+modifier.opistognathus_trait.name=Opistognathus
+modifier.opistognathus_trait.desc=Aumenta a velocidade de ataque e mineração dentro da água
+modifier.vulcan_trait.name=Vulcânico
+modifier.vulcan_trait.desc=Coloca fogo no seu inimigo por um determinado período de tempo (dependendo do nível da habilidade)
+modifier.duplication_trait.name=Duplicação
+modifier.duplication_trait.desc=Tem uma chance de duplicar as quedas de itens
+modifier.life_steal_trait.name=Roubo de saúde
+modifier.life_steal_trait.desc=Tem uma chance baseada na "sorte" de recuperar vida em 10% do dano causado
+modifier.wither_trait.name=Decomposição
+modifier.wither_trait.desc=Aplica o efeito de decomposição no seu inimigo
+modifier.king_dice_trait.name=Rei dado
+modifier.king_dice_trait.desc=Aplica um efeito aleatório no seu inimigo
+
+#Tools
+item.metallurgy.adamantine_axe.name=Machado de adamante
+item.metallurgy.adamantine_hoe.name=Enxada de adamante
+item.metallurgy.adamantine_pickaxe.name=Picareta de adamante
+item.metallurgy.adamantine_shovel.name=Pá de adamante
+item.metallurgy.adamantine_sword.name=Espada de adamante
+
+item.metallurgy.amordrine_axe.name=Machado de amordrino
+item.metallurgy.amordrine_hoe.name=Enxada de amordrino
+item.metallurgy.amordrine_pickaxe.name=Picareta de amordrino
+item.metallurgy.amordrine_shovel.name=Pá de amordrino
+item.metallurgy.amordrine_sword.name=Espada de amordrino
+
+item.metallurgy.angmallen_axe.name=Machado de angmáleno
+item.metallurgy.angmallen_hoe.name=Enxada de angmáleno
+item.metallurgy.angmallen_pickaxe.name=Picareta de angmáleno
+item.metallurgy.angmallen_shovel.name=Pá de angmáleno
+item.metallurgy.angmallen_sword.name=Espada de angmáleno
+
+item.metallurgy.astral_silver_axe.name=Machado de prata astral
+item.metallurgy.astral_silver_hoe.name=Enxada de prata astral
+item.metallurgy.astral_silver_pickaxe.name=Picareta de prata astral
+item.metallurgy.astral_silver_shovel.name=Pá de prata astral
+item.metallurgy.astral_silver_sword.name=Espada de prata astral
+
+item.metallurgy.atlarus_axe.name=Machado de átlaros
+item.metallurgy.atlarus_hoe.name=Enxada de átlaros
+item.metallurgy.atlarus_pickaxe.name=Picareta de átlaros
+item.metallurgy.atlarus_shovel.name=Pá de átlaros
+item.metallurgy.atlarus_sword.name=Espada de átlaros
+
+item.metallurgy.black_steel_axe.name=Machado de aço negro
+item.metallurgy.black_steel_hoe.name=Enxada de aço negro
+item.metallurgy.black_steel_pickaxe.name=Picareta de aço negro
+item.metallurgy.black_steel_shovel.name=Pá de aço negro
+item.metallurgy.black_steel_sword.name=Espada de aço negro
+
+item.metallurgy.brass_axe.name=Machado de latão
+item.metallurgy.brass_hoe.name=Enxada de latão
+item.metallurgy.brass_pickaxe.name=Picareta de latão
+item.metallurgy.brass_shovel.name=Pá de latão
+item.metallurgy.brass_sword.name=Espada de latão
+
+item.metallurgy.bronze_axe.name=Machado de bronze
+item.metallurgy.bronze_hoe.name=Enxada de bronze
+item.metallurgy.bronze_pickaxe.name=Picareta de bronze
+item.metallurgy.bronze_shovel.name=Pá de bronze
+item.metallurgy.bronze_sword.name=Espada de bronze
+
+item.metallurgy.carmot_axe.name=Machado de cármoto
+item.metallurgy.carmot_hoe.name=Enxada de cármoto
+item.metallurgy.carmot_pickaxe.name=Picareta de cármoto
+item.metallurgy.carmot_shovel.name=Pá de cármoto
+item.metallurgy.carmot_sword.name=Espada de cármoto
+
+item.metallurgy.celenegil_axe.name=Machado de celenégilo
+item.metallurgy.celenegil_hoe.name=Enxada de celenégilo
+item.metallurgy.celenegil_pickaxe.name=Picareta de celenégilo
+item.metallurgy.celenegil_shovel.name=Pá de celenégilo
+item.metallurgy.celenegil_sword.name=Espada de celenégilo
+
+item.metallurgy.ceruclase_axe.name=Machado de ceruclásio
+item.metallurgy.ceruclase_hoe.name=Enxada de ceruclásio
+item.metallurgy.ceruclase_pickaxe.name=Picareta de ceruclásio
+item.metallurgy.ceruclase_shovel.name=Pá de ceruclásio
+item.metallurgy.ceruclase_sword.name=Espada de ceruclásio
+
+item.metallurgy.copper_axe.name=Machado de cobre
+item.metallurgy.copper_hoe.name=Enxada de cobre
+item.metallurgy.copper_pickaxe.name=Picareta de cobre
+item.metallurgy.copper_shovel.name=Pá de cobre
+item.metallurgy.copper_sword.name=Espada de cobre
+
+item.metallurgy.damascus_steel_axe.name=Machado de aço damasco
+item.metallurgy.damascus_steel_hoe.name=Enxada de aço damasco
+item.metallurgy.damascus_steel_pickaxe.name=Picareta de aço damasco
+item.metallurgy.damascus_steel_shovel.name=Pá de aço damasco
+item.metallurgy.damascus_steel_sword.name=Espada de aço damasco
+
+item.metallurgy.deep_iron_axe.name=Machado de ferro escuro
+item.metallurgy.deep_iron_hoe.name=Enxada de ferro escuro
+item.metallurgy.deep_iron_pickaxe.name=Picareta de ferro escuro
+item.metallurgy.deep_iron_shovel.name=Pá de ferro escuro
+item.metallurgy.deep_iron_sword.name=Espada de ferro escuro
+
+item.metallurgy.desichalkos_axe.name=Machado de desichalkos
+item.metallurgy.desichalkos_hoe.name=Enxada de desichalkos
+item.metallurgy.desichalkos_pickaxe.name=Picareta de desichalkos
+item.metallurgy.desichalkos_shovel.name=Pá de desichalkos
+item.metallurgy.desichalkos_sword.name=Espada de desichalkos
+
+item.metallurgy.electrum_axe.name=Machado de eletro
+item.metallurgy.electrum_hoe.name=Enxada de eletro
+item.metallurgy.electrum_pickaxe.name=Picareta de eletro
+item.metallurgy.electrum_shovel.name=Pá de eletro
+item.metallurgy.electrum_sword.name=Espada de eletro
+
+item.metallurgy.etherium_axe.name=Machado de etério
+item.metallurgy.etherium_hoe.name=Enxada de etério
+item.metallurgy.etherium_pickaxe.name=Picareta de etério
+item.metallurgy.etherium_shovel.name=Pá de etério
+item.metallurgy.etherium_sword.name=Espada de etério
+
+item.metallurgy.eximite_axe.name=Machado de eximito
+item.metallurgy.eximite_hoe.name=Enxada de eximito
+item.metallurgy.eximite_pickaxe.name=Picareta de eximito
+item.metallurgy.eximite_shovel.name=Pá de eximito
+item.metallurgy.eximite_sword.name=Espada de eximito
+
+item.metallurgy.haderoth_axe.name=Machado de haderóte
+item.metallurgy.haderoth_hoe.name=Enxada de haderóte
+item.metallurgy.haderoth_pickaxe.name=Picareta de haderóte
+item.metallurgy.haderoth_shovel.name=Pá de haderóte
+item.metallurgy.haderoth_sword.name=Espada de haderóte
+
+item.metallurgy.hepatizon_axe.name=Machado de hepatizônio
+item.metallurgy.hepatizon_hoe.name=Enxada de hepatizônio
+item.metallurgy.hepatizon_pickaxe.name=Picareta de hepatizônio
+item.metallurgy.hepatizon_shovel.name=Pá de hepatizônio
+item.metallurgy.hepatizon_sword.name=Espada de hepatizônio
+
+item.metallurgy.ignatius_axe.name=Machado de ignátio
+item.metallurgy.ignatius_hoe.name=Enxada de ignátio
+item.metallurgy.ignatius_pickaxe.name=Picareta de ignátio
+item.metallurgy.ignatius_shovel.name=Pá de ignátio
+item.metallurgy.ignatius_sword.name=Espada de ignátio
+
+item.metallurgy.inolashite_axe.name=Machado de inolachita
+item.metallurgy.inolashite_hoe.name=Enxada de inolachita
+item.metallurgy.inolashite_pickaxe.name=Picareta de inolachita
+item.metallurgy.inolashite_shovel.name=Pá de inolachita
+item.metallurgy.inolashite_sword.name=Espada de inolachita
+
+item.metallurgy.kalendrite_axe.name=Machado de kalendrito
+item.metallurgy.kalendrite_hoe.name=Enxada de kalendrito
+item.metallurgy.kalendrite_pickaxe.name=Picareta de kalendrito
+item.metallurgy.kalendrite_shovel.name=Pá de kalendrito
+item.metallurgy.kalendrite_sword.name=Espada de kalendrito
+
+item.metallurgy.krik_axe.name=Machado de krique
+item.metallurgy.krik_hoe.name=Enxada de krique
+item.metallurgy.krik_pickaxe.name=Picareta de krique
+item.metallurgy.krik_shovel.name=Pá de krique
+item.metallurgy.krik_sword.name=Espada de krique
+
+item.metallurgy.midasium_axe.name=Machado de midásio
+item.metallurgy.midasium_hoe.name=Enxada de midásio
+item.metallurgy.midasium_pickaxe.name=Picareta de midásio
+item.metallurgy.midasium_shovel.name=Pá de midásio
+item.metallurgy.midasium_sword.name=Espada de midásio
+
+item.metallurgy.mithril_axe.name=Machado de mithril
+item.metallurgy.mithril_hoe.name=Enxada de mithril
+item.metallurgy.mithril_pickaxe.name=Picareta de mithril
+item.metallurgy.mithril_shovel.name=Pá de mithril
+item.metallurgy.mithril_sword.name=Espada de mithril
+
+item.metallurgy.orichalcum_axe.name=Machado de oricalco
+item.metallurgy.orichalcum_hoe.name=Enxada de oricalco
+item.metallurgy.orichalcum_pickaxe.name=Picareta de oricalco
+item.metallurgy.orichalcum_shovel.name=Pá de oricalco
+item.metallurgy.orichalcum_sword.name=Espada de oricalco
+
+item.metallurgy.oureclase_axe.name=Machado de oureclásio
+item.metallurgy.oureclase_hoe.name=Enxada de oureclásio
+item.metallurgy.oureclase_pickaxe.name=Picareta de oureclásio
+item.metallurgy.oureclase_shovel.name=Pá de oureclásio
+item.metallurgy.oureclase_sword.name=Espada de oureclásio
+
+item.metallurgy.platinum_axe.name=Machado de platina
+item.metallurgy.platinum_hoe.name=Enxada de platina
+item.metallurgy.platinum_pickaxe.name=Picareta de platina
+item.metallurgy.platinum_shovel.name=Pá de platina
+item.metallurgy.platinum_sword.name=Espada de platina
+
+item.metallurgy.prometheum_axe.name=Machado de prometeu
+item.metallurgy.prometheum_hoe.name=Enxada de prometeu
+item.metallurgy.prometheum_pickaxe.name=Picareta de prometeu
+item.metallurgy.prometheum_shovel.name=Pá de prometeu
+item.metallurgy.prometheum_sword.name=Espada de prometeu
+
+item.metallurgy.quicksilver_axe.name=Machado de mercúrio
+item.metallurgy.quicksilver_hoe.name=Enxada de mercúrio
+item.metallurgy.quicksilver_pickaxe.name=Picareta de mercúrio
+item.metallurgy.quicksilver_shovel.name=Pá de mercúrio
+item.metallurgy.quicksilver_sword.name=Espada de mercúrio
+
+item.metallurgy.sanguinite_axe.name=Machado de sanguinito
+item.metallurgy.sanguinite_hoe.name=Enxada de sanguinito
+item.metallurgy.sanguinite_pickaxe.name=Picareta de sanguinito
+item.metallurgy.sanguinite_shovel.name=Pá de sanguinito
+item.metallurgy.sanguinite_sword.name=Espada de sanguinito
+
+item.metallurgy.shadow_iron_axe.name=Machado de ferro sombrio
+item.metallurgy.shadow_iron_hoe.name=Enxada de ferro sombrio
+item.metallurgy.shadow_iron_pickaxe.name=Picareta de ferro sombrio
+item.metallurgy.shadow_iron_shovel.name=Pá de ferro sombrio
+item.metallurgy.shadow_iron_sword.name=Espada de ferro sombrio
+
+item.metallurgy.shadow_steel_axe.name=Machado de aço sombrio
+item.metallurgy.shadow_steel_hoe.name=Enxada de aço sombrio
+item.metallurgy.shadow_steel_pickaxe.name=Picareta de aço sombrio
+item.metallurgy.shadow_steel_shovel.name=Pá de aço sombrio
+item.metallurgy.shadow_steel_sword.name=Espada de aço sombrio
+
+item.metallurgy.silver_axe.name=Machado de prata
+item.metallurgy.silver_hoe.name=Enxada de prata
+item.metallurgy.silver_pickaxe.name=Picareta de prata
+item.metallurgy.silver_shovel.name=Pá de prata
+item.metallurgy.silver_sword.name=Espada de prata
+
+item.metallurgy.steel_axe.name=Machado de aço
+item.metallurgy.steel_hoe.name=Enxada de aço
+item.metallurgy.steel_pickaxe.name=Picareta de aço
+item.metallurgy.steel_shovel.name=Pá de aço
+item.metallurgy.steel_sword.name=Espada de aço
+
+item.metallurgy.tartarite_axe.name=Machado de tartarito
+item.metallurgy.tartarite_hoe.name=Enxada de tartarito
+item.metallurgy.tartarite_pickaxe.name=Picareta de tartarito
+item.metallurgy.tartarite_shovel.name=Pá de tartarito
+item.metallurgy.tartarite_sword.name=Espada de tartarito
+
+item.metallurgy.vulcanite_axe.name=Machado de vulcânito
+item.metallurgy.vulcanite_hoe.name=Enxada de vulcânito
+item.metallurgy.vulcanite_pickaxe.name=Picareta de vulcânito
+item.metallurgy.vulcanite_shovel.name=Pá de vulcânito
+item.metallurgy.vulcanite_sword.name=Espada de vulcânito
+
+item.metallurgy.vyroxeres_axe.name=Machado de viróxeres
+item.metallurgy.vyroxeres_hoe.name=Enxada de viróxeres
+item.metallurgy.vyroxeres_pickaxe.name=Picareta de viróxeres
+item.metallurgy.vyroxeres_shovel.name=Pá de viróxeres
+item.metallurgy.vyroxeres_sword.name=Espada de viróxeres
+
+#Tooltips
+#Armor Tooltips
+tooltip.metallurgy.adamantine_armor_effect=§4Armadura completa: Consome experiência para recuperar a barra de fome
+tooltip.metallurgy.amordrine_armor_effect=§dArmadura completa: Força II
+tooltip.metallurgy.angmallen_armor_effect=§eArmadura completa: (WIP) Sorte (WIP)
+tooltip.metallurgy.astral_silver_armor_effect=§fArmadura completa: Supersalto
+tooltip.metallurgy.atlarus_armor_effect=§eUma rajada de vento em uma direção aleatória salva você de tomar qualquer dano de queda
+tooltip.metallurgy.carmot_armor_effect=§eArmadura completa: (WIP) Pressa (WIP)
+tooltip.metallurgy.celenegil_armor_effect=§aArmadura completa: Resistência II - Metade do conjunto: Resistência I
+tooltip.metallurgy.ceruclase_armor_effect=§3Armadura completa: Retarda atacantes
+tooltip.metallurgy.deep_iron_armor_effect=§3Armadura completa: Mergulho rápido
+tooltip.metallurgy.eximite_armor_effect=§5Armadura completa: Endermans não irão perceber você
+tooltip.metallurgy.kalendrite_armor_effect=§dArmadura completa: Força
+tooltip.metallurgy.krik_armor_effect=§2Armadura completa: Vôo controlado pelo peso (teclas direcionais CIMA e BAIXO)
+tooltip.metallurgy.lutetium_armor_effect=§6Knockback resistance II
+tooltip.metallurgy.mithril_armor_effect=§bArmadura completa: Faz entidades brilharem
+tooltip.metallurgy.osmium_armor_effect=§9Resistência à repulsão I
+tooltip.metallurgy.platinum_armor_effect=§bVisão noturna
+tooltip.metallurgy.prometheum_armor_effect=§2Armadura completa: Imunidade a venenos
+tooltip.metallurgy.quicksilver_armor_effect=§bArmadura completa: Ação rápida
+tooltip.metallurgy.shadow_iron_armor_effect=§8Armadura completa: Sem cegueira
+tooltip.metallurgy.shadow_steel_armor_effect=§8Armadura completa: Mais resistence quando no escuro
+tooltip.metallurgy.vulcanite_armor_effect=§cArmadura completa: Imunidade ao fogo
+tooltip.metallurgy.etherium_armor_effect=§5Armadura completa: Concede a habilidade de atravessar paredes
+tooltip.metallurgy.desichalkos_armor_effect=§5Armadura completa: Permite ao jogador roubar blocos preciosos e privados de endermans
+tooltip.metallurgy.haderoth_armor_effect=§7Armadura completa: Permite ao jogador andar sobre a lava
+
+#Other Tooltips
+tooltip.metallurgy.bitumen=§7Obtido como um produto secundário do minério de alcatrão
+tooltip.metallurgy.gauntlet_effect_disabled=§4O efeito da manopla foi forçadamente desabilitado porque o Better With Mods está carregado
+tooltip.metallurgy.potash_fertilizer=§6Efeito artificial da farinha de osso :D
+tooltip.metallurgy.phosphorus_lamp=§7Nega a geração de monstros em uma área de 16x8x16 blocos em volta dela (emite uma luz fraca)
+tooltip.metallurgy.thermite=§cAge como um combustível com a mesma força do carvão (funciona melhor em máquinas do metallurgy com 200% de eficiência!) [olhe o JEI para mais informações]
+tooltip.metallurgy.clear_detector_warning=§4Aviso: isso vai limpar todos os materiais ativos no detector de minérios
+
+#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+#Axes
+tooltip.metallurgy.atlarus_axe_effect=§eBotão direito para destruir qualquer tipo de folha à distância
+tooltip.metallurgy.ignatius_axe_effect=§cTem uma chance de derreter as quedas dos blocos
+
+#Pickaxes
+tooltip.metallurgy.deep_iron_pickaxe_effect=§1Mineração subaquática leve!
+tooltip.metallurgy.ignatius_pickaxe_effect=§6Gera de maneira aleatória uma ou duas pepitas do minério que você minerar
+
+#Shovel
+tooltip.metallurgy.ignatius_shovel_effect=§cTem uma chance de derreter as quedas dos blocos
+
+#Swords
+tooltip.metallurgy.atlarus_sword_effect=§eEmpurra para longe qualquer entidade perto de você
+tooltip.metallurgy.celenegil_sword_effect=§aAs suas matanças fazem você se sentir forte & veloz
+tooltip.metallurgy.ceruclase_sword_effect=§3Retarda o alvo
+tooltip.metallurgy.deep_iron_sword_effect=§3Aumenta a velocidade de ataque dentro da água
+tooltip.metallurgy.desichalkos_sword_effect=§5Permite ao jogador se teleportar na direção em que estiver olhando
+tooltip.metallurgy.ignatius_sword_effect=§cAspecto flamejante I
+tooltip.metallurgy.kalendrite_sword_effect=§dTem uma chance de regenerar sua vida
+tooltip.metallurgy.midasium_sword_effect=§6Duplicação
+tooltip.metallurgy.mithril_sword_effect=§bFaz o alvo brilhar
+tooltip.metallurgy.orichalcum_sword_effect=§2As suas matanças fazem você se sentir forte
+tooltip.metallurgy.sanguinite_sword_effect=§4Roubo de saúde
+tooltip.metallurgy.shadow_iron_sword_effect=§8Cega o alvo [Envolve o seu inimigo na escuridão!]
+tooltip.metallurgy.shadow_steel_sword_effect=§8A velocidade de ataque é diretamente proporcional à escuridão
+tooltip.metallurgy.tartarite_sword_effect=§8Decomposição II
+tooltip.metallurgy.vulcanite_sword_effect=§cAspecto flamejante II
+tooltip.metallurgy.vyroxeres_sword_effect=§aEnvenena o seu alvo
+
+#Hoe
+tooltip.metallurgy.atlarus_hoe_effect=§eBotão direito para destruir toda as gramas próximas
+
+#Tools
+tooltip.metallurgy.shadow_steel_tool_effect=§8A velocidade de mineração é diretamente proporcional à escuridão
+
+#Utils
+util.world_join_message.1=§6§lBem-vindo ao Metallurgy 4: Refeito
+util.world_join_message.3=§6Para mais informações, relatar bugs e sugestões, aqui está o link do repositório do github:
+util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+util.world_join_message.4=Você pode desabilitar essa mensagem nas configurações do mod
