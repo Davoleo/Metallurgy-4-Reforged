@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotAlduorite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetAlduorite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:alduorite_hazard_block"
+	}
+}

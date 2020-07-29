@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotBrass"
+		}
+	],
+	"result": {
+		"item": "metallurgy:brass_nugget",
+		"count": 9
+	}
+}

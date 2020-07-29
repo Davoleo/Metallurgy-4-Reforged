@@ -1,0 +1,16 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"II",
+		"II"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotAlduorite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:alduorite_large_bricks"
+	}
+}

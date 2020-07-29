@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotInolashite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetInolashite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:inolashite_hazard_block"
+	}
+}

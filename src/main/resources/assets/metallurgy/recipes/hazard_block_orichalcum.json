@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotOrichalcum"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetOrichalcum"
+		}
+	},
+	"result": {
+		"item": "metallurgy:orichalcum_hazard_block"
+	}
+}

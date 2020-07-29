@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockManganese"
+		}
+	],
+	"result": {
+		"item": "metallurgy:manganese_ingot",
+		"count": 9
+	}
+}

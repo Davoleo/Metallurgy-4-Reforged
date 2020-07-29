@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockTartarite"
+		}
+	],
+	"result": {
+		"item": "metallurgy:tartarite_ingot",
+		"count": 9
+	}
+}

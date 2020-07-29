@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NNN",
+		"NNN",
+		"NNN"
+	],
+	"key": {
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetLemurite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:lemurite_ingot"
+	}
+}

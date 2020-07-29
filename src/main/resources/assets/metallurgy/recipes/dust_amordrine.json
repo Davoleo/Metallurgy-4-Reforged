@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustPlatinum"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustKalendrite"
+		}
+	],
+	"result": {
+		"item": "metallurgy:amordrine_dust",
+		"count": 2
+	}
+}

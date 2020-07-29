@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotHaderoth"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetHaderoth"
+		}
+	},
+	"result": {
+		"item": "metallurgy:haderoth_hazard_block"
+	}
+}

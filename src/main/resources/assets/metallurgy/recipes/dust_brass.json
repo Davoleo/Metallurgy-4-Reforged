@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustZinc"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustCopper"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustCopper"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustCopper"
+		}
+	],
+	"result": {
+		"item": "metallurgy:brass_dust",
+		"count": 4
+	}
+}

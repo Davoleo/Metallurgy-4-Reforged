@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockOureclase"
+		}
+	],
+	"result": {
+		"item": "metallurgy:oureclase_ingot",
+		"count": 9
+	}
+}

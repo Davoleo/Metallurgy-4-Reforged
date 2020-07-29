@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockLutetium"
+		}
+	],
+	"result": {
+		"item": "metallurgy:lutetium_ingot",
+		"count": 9
+	}
+}

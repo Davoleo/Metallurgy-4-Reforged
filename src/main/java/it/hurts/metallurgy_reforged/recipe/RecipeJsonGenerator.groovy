@@ -17,7 +17,7 @@ import it.hurts.metallurgy_reforged.integration.IntegrationProjectE
 
 class RecipeJsonGenerator {
 
-    static final def RECIPES_DIR_PATH = "src/main/resources/assets/metallurgy/recipes/gen/"
+    static final def RECIPES_DIR_PATH = "src/main/resources/assets/metallurgy/recipes/"
 
     static def materials = IntegrationProjectE.emcMap.keySet()
 
@@ -391,7 +391,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_engraved"
+                        item: "metallurgy:${metal}_engraved_block"
                 ]
         ]
         def crystalsObj = [
@@ -487,7 +487,7 @@ class RecipeJsonGenerator {
         ]
 
         writeJson("block", metal, blockObj)
-        writeJson("engraved", metal, engravedObj)
+        writeJson("engraved_block", metal, engravedObj)
         writeJson("crystals", metal, crystalsObj)
         writeJson("bricks", metal, bricksObj)
         writeJson("large_bricks", metal, largeBricksObj)
@@ -549,8 +549,8 @@ class RecipeJsonGenerator {
                 type       : "forge:ore_shapeless",
                 ingredients: ingredients,
                 result     : [
-                        item : "metallurgy:${alloy.get(2).name}_ingot",
-                        count: 9
+                        item : "metallurgy:${alloy.get(2).name}_dust",
+                        count: alloy.get(2).count
                 ]
         ]
 

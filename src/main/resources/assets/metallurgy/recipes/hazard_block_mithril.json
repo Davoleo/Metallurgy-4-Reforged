@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotMithril"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetMithril"
+		}
+	},
+	"result": {
+		"item": "metallurgy:mithril_hazard_block"
+	}
+}

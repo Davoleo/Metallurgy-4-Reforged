@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotKalendrite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetKalendrite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:kalendrite_hazard_block"
+	}
+}

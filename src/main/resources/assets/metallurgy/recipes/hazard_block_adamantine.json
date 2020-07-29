@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotAdamantine"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetAdamantine"
+		}
+	},
+	"result": {
+		"item": "metallurgy:adamantine_hazard_block"
+	}
+}

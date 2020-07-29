@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockTin"
+		}
+	],
+	"result": {
+		"item": "metallurgy:tin_ingot",
+		"count": 9
+	}
+}

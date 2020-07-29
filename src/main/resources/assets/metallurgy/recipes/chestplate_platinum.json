@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotPlatinum"
+		}
+	},
+	"result": {
+		"item": "metallurgy:platinum_chestplate"
+	}
+}

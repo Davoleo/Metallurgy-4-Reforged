@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockCopper"
+		}
+	],
+	"result": {
+		"item": "metallurgy:copper_ingot",
+		"count": 9
+	}
+}

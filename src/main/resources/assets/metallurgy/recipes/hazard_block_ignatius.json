@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotIgnatius"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetIgnatius"
+		}
+	},
+	"result": {
+		"item": "metallurgy:ignatius_hazard_block"
+	}
+}

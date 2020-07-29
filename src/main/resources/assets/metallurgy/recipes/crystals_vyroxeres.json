@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		" N ",
+		"NIN",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotVyroxeres"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetVyroxeres"
+		}
+	},
+	"result": {
+		"item": "metallurgy:vyroxeres_crystals"
+	}
+}

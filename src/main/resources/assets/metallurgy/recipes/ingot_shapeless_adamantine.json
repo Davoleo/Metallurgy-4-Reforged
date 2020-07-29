@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockAdamantine"
+		}
+	],
+	"result": {
+		"item": "metallurgy:adamantine_ingot",
+		"count": 9
+	}
+}

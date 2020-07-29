@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotLemurite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetLemurite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:lemurite_hazard_block"
+	}
+}

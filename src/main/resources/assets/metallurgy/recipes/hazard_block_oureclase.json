@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotOureclase"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetOureclase"
+		}
+	},
+	"result": {
+		"item": "metallurgy:oureclase_hazard_block"
+	}
+}

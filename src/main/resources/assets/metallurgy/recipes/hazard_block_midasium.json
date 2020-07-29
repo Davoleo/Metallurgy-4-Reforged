@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotMidasium"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetMidasium"
+		}
+	},
+	"result": {
+		"item": "metallurgy:midasium_hazard_block"
+	}
+}

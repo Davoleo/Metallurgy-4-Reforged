@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustSteel"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustInfuscolium"
+		}
+	],
+	"result": {
+		"item": "metallurgy:hepatizon_dust",
+		"count": 2
+	}
+}

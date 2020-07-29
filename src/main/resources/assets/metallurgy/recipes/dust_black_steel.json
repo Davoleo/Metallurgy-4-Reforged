@@ -1,0 +1,25 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustInfuscolium"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustDeepIron"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustDeepIron"
+		},
+		{
+			"type": "forge:ore_dict",
+			"ore": "dustDeepIron"
+		}
+	],
+	"result": {
+		"item": "metallurgy:black_steel_dust",
+		"count": 4
+	}
+}

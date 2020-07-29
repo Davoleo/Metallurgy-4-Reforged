@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockAmordrine"
+		}
+	],
+	"result": {
+		"item": "metallurgy:amordrine_ingot",
+		"count": 9
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"I I",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotManganese"
+		}
+	},
+	"result": {
+		"item": "metallurgy:manganese_engraved_block"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotMeutoite"
+		}
+	],
+	"result": {
+		"item": "metallurgy:meutoite_nugget",
+		"count": 9
+	}
+}

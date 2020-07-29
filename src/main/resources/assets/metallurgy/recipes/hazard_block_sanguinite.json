@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotSanguinite"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetSanguinite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:sanguinite_hazard_block"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotLemurite"
+		}
+	],
+	"result": {
+		"item": "metallurgy:lemurite_nugget",
+		"count": 9
+	}
+}

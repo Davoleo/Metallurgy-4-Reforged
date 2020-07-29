@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotIgnatius"
+		}
+	],
+	"result": {
+		"item": "metallurgy:ignatius_nugget",
+		"count": 9
+	}
+}

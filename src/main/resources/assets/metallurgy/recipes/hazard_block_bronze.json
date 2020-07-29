@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"NIN",
+		"INI",
+		"NIN"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotBronze"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetBronze"
+		}
+	},
+	"result": {
+		"item": "metallurgy:bronze_hazard_block"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"II",
+		"II"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotEtherium"
+		}
+	},
+	"result": {
+		"item": "metallurgy:etherium_large_bricks"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotAngmallen"
+		}
+	],
+	"result": {
+		"item": "metallurgy:angmallen_nugget",
+		"count": 9
+	}
+}

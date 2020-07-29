@@ -1,0 +1,16 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotInolashite"
+		}
+	},
+	"result": {
+		"item": "metallurgy:inolashite_bricks"
+	}
+}

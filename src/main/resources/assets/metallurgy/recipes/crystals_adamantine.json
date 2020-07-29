@@ -1,0 +1,21 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		" N ",
+		"NIN",
+		"III"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotAdamantine"
+		},
+		"N": {
+			"type": "forge:ore_dict",
+			"ore": "nuggetAdamantine"
+		}
+	},
+	"result": {
+		"item": "metallurgy:adamantine_crystals"
+	}
+}

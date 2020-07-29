@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "blockIgnatius"
+		}
+	],
+	"result": {
+		"item": "metallurgy:ignatius_ingot",
+		"count": 9
+	}
+}

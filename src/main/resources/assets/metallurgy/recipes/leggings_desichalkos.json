@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"III",
+		"I I",
+		"I I"
+	],
+	"key": {
+		"I": {
+			"type": "forge:ore_dict",
+			"ore": "ingotDesichalkos"
+		}
+	},
+	"result": {
+		"item": "metallurgy:desichalkos_leggings"
+	}
+}

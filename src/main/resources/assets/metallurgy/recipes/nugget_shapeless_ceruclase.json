@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{
+			"type": "forge:ore_dict",
+			"ore": "ingotCeruclase"
+		}
+	],
+	"result": {
+		"item": "metallurgy:ceruclase_nugget",
+		"count": 9
+	}
+}
