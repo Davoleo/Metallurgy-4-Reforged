@@ -105,10 +105,10 @@ item.metallurgy.damascus_steel_chestplate.name=Damaskusstålharnesk
 item.metallurgy.damascus_steel_leggings.name=Damaskusstålbyxor
 item.metallurgy.damascus_steel_boots.name=Damaskusstålstövlar
 
-item.metallurgy.deep_iron_helmet.name=Thogchajärnhjälm
-item.metallurgy.deep_iron_chestplate.name=Thogchajärnharnesk
-item.metallurgy.deep_iron_leggings.name=Thogchajärnbyxor
-item.metallurgy.deep_iron_boots.name=Thogchajärnstövlar
+item.metallurgy.deep_iron_helmet.name=Djupjärnjärnhjälm
+item.metallurgy.deep_iron_chestplate.name=Djupjärnjärnharnesk
+item.metallurgy.deep_iron_leggings.name=Djupjärnjärnbyxor
+item.metallurgy.deep_iron_boots.name=Djupjärnjärnstövlar
 
 item.metallurgy.desichalkos_helmet.name=Desichalkoshjälm
 item.metallurgy.desichalkos_chestplate.name=Desichalkosharnesk
