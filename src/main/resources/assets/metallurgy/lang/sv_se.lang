@@ -1,0 +1,1321 @@
+#Generic Material Names
+material.metallurgy.adamantine.name=Adamantin
+material.metallurgy.amordrine.name=Amordrin
+material.metallurgy.angmallen.name=Ångmall
+material.metallurgy.astral_silver.name=Astralsilver
+material.metallurgy.atlarus.name=Altarit
+material.metallurgy.black_steel.name=Svartstål
+material.metallurgy.brass.name=Mässing
+material.metallurgy.bronze.name=Brons
+material.metallurgy.carmot.name=Karmot
+material.metallurgy.celenegil.name=Selengil
+material.metallurgy.ceruclase.name=Ceruklas
+material.metallurgy.copper.name=Koppar
+material.metallurgy.damascus_steel.name=Damaskusstål
+material.metallurgy.deep_iron.name=Djupjärn
+material.metallurgy.desichalkos.name=Desichalkos
+material.metallurgy.electrum.name=Elektrum
+material.metallurgy.etherium.name=Eterium
+material.metallurgy.eximite.name=Eximit
+material.metallurgy.haderoth.name=Haderot
+material.metallurgy.hepatizon.name=Hepazit
+material.metallurgy.ignatius.name=Ignitit
+material.metallurgy.inolashite.name=Inolasit
+material.metallurgy.kalendrite.name=Kalendrit
+material.metallurgy.krik.name=Krik
+material.metallurgy.midasium.name=Midasit
+material.metallurgy.mithril.name=Mithril
+material.metallurgy.orichalcum.name=Orikalsit
+material.metallurgy.oureclase.name=Horiklasit
+material.metallurgy.platinum.name=Platinum
+material.metallurgy.prometheum.name=Bastnäsit
+material.metallurgy.quicksilver.name=Alvsilverstål
+material.metallurgy.sanguinite.name=Sangvin
+material.metallurgy.shadow_iron.name=Svartjärn
+material.metallurgy.shadow_steel.name=Svartstål
+material.metallurgy.silver.name=Silver
+material.metallurgy.steel.name=Stål
+material.metallurgy.tartarite.name=Tartarit
+material.metallurgy.vulcanite.name=Vulkanit
+material.metallurgy.vyroxeres.name=Vyroxit
+
+#Armors
+item.metallurgy.adamantine_helmet.name=Adamantithjälm
+item.metallurgy.adamantine_chestplate.name=Adamantitharnesk
+item.metallurgy.adamantine_leggings.name=Adamantitbyxor
+item.metallurgy.adamantine_boots.name=Adamantitstövlar
+
+item.metallurgy.amordrine_helmet.name=Amordrinhjälm
+item.metallurgy.amordrine_chestplate.name=Amordrinharnesk
+item.metallurgy.amordrine_leggings.name=Amordrinbyxor
+item.metallurgy.amordrine_boots.name=Amordrinstövlar
+
+item.metallurgy.angmallen_helmet.name=Ångmallhjälm
+item.metallurgy.angmallen_chestplate.name=Ångmallharnesk
+item.metallurgy.angmallen_leggings.name=Ångmallbyxor
+item.metallurgy.angmallen_boots.name=Ångmallstövlar
+
+item.metallurgy.atlarus_helmet.name=Atlarisk Hjälm
+item.metallurgy.atlarus_chestplate.name=Atlarisk Harnesk
+item.metallurgy.atlarus_leggings.name=Atlariska Byxor
+item.metallurgy.atlarus_boots.name=Atlariska Stövlar
+
+item.metallurgy.astral_silver_helmet.name=Astralsilverhjälm
+item.metallurgy.astral_silver_chestplate.name=Astralsilverharnesk
+item.metallurgy.astral_silver_leggings.name=Astralsilverbyxor
+item.metallurgy.astral_silver_boots.name=Astralsilverstövlar
+
+item.metallurgy.black_steel_helmet.name=Svartstålhjälm
+item.metallurgy.black_steel_chestplate.name=Svartstålharnesk
+item.metallurgy.black_steel_leggings.name=Svartstålbyxor
+item.metallurgy.black_steel_boots.name=Svartstålstövlar
+
+item.metallurgy.brass_helmet.name=Mässingshjälm
+item.metallurgy.brass_chestplate.name=Mässingsharnesk
+item.metallurgy.brass_leggings.name=Mässingsbyxor
+item.metallurgy.brass_boots.name=Mässingsstövlar
+
+item.metallurgy.bronze_helmet.name=Bronshjälm
+item.metallurgy.bronze_chestplate.name=Bronsharnesk
+item.metallurgy.bronze_leggings.name=Bronsbyxor
+item.metallurgy.bronze_boots.name=Bronsstövlar
+
+item.metallurgy.carmot_helmet.name=Karmothjälm
+item.metallurgy.carmot_chestplate.name=Karmotharnesk
+item.metallurgy.carmot_leggings.name=Karmotbyxor
+item.metallurgy.carmot_boots.name=Karmotstövlar
+
+item.metallurgy.celenegil_helmet.name=Selengilhjälm
+item.metallurgy.celenegil_chestplate.name=Selengilharnesk
+item.metallurgy.celenegil_leggings.name=Selengilbyxor
+item.metallurgy.celenegil_boots.name=Selengilstövlar
+
+item.metallurgy.ceruclase_helmet.name=Ceruklashjälm
+item.metallurgy.ceruclase_chestplate.name=Ceruklasharnesk
+item.metallurgy.ceruclase_leggings.name=Ceruklasbyxor
+item.metallurgy.ceruclase_boots.name=Ceruklasstövlar
+
+item.metallurgy.copper_helmet.name=Kopparhjälm
+item.metallurgy.copper_chestplate.name=Kopparharnesk
+item.metallurgy.copper_leggings.name=Kopparbyxor
+item.metallurgy.copper_boots.name=Kopparstövlar
+
+item.metallurgy.damascus_steel_helmet.name=Damaskusstålhjälm
+item.metallurgy.damascus_steel_chestplate.name=Damaskusstålharnesk
+item.metallurgy.damascus_steel_leggings.name=Damaskusstålbyxor
+item.metallurgy.damascus_steel_boots.name=Damaskusstålstövlar
+
+item.metallurgy.deep_iron_helmet.name=Djupjärnjärnhjälm
+item.metallurgy.deep_iron_chestplate.name=Djupjärnjärnharnesk
+item.metallurgy.deep_iron_leggings.name=Djupjärnjärnbyxor
+item.metallurgy.deep_iron_boots.name=Djupjärnjärnstövlar
+
+item.metallurgy.desichalkos_helmet.name=Desichalkoshjälm
+item.metallurgy.desichalkos_chestplate.name=Desichalkosharnesk
+item.metallurgy.desichalkos_leggings.name=Desichalkosbyxor
+item.metallurgy.desichalkos_boots.name=Desichalkosstövlar
+
+item.metallurgy.electrum_helmet.name=Elektrumhjälm
+item.metallurgy.electrum_chestplate.name=Elektrumharnesk
+item.metallurgy.electrum_leggings.name=Elektrumbyxor
+item.metallurgy.electrum_boots.name=Elektrumstövlar
+
+item.metallurgy.etherium_helmet.name=Eteriumhjälm
+item.metallurgy.etherium_chestplate.name=Eteriumharnesk
+item.metallurgy.etherium_leggings.name=Eteriumbyxor
+item.metallurgy.etherium_boots.name=Eteriumstövlar
+
+item.metallurgy.eximite_helmet.name=Eximithjälm
+item.metallurgy.eximite_chestplate.name=Eximitharnesk
+item.metallurgy.eximite_leggings.name=Eximitbyxor
+item.metallurgy.eximite_boots.name=Eximitstövlar
+
+item.metallurgy.haderoth_helmet.name=Haderotjälm
+item.metallurgy.haderoth_chestplate.name=Haderotarnesk
+item.metallurgy.haderoth_leggings.name=Haderotbyxor
+item.metallurgy.haderoth_boots.name=Haderotstövlar
+
+item.metallurgy.hepatizon_helmet.name=Hepazithjälm
+item.metallurgy.hepatizon_chestplate.name=Hepazitharnesk
+item.metallurgy.hepatizon_leggings.name=Hepazitbyxor
+item.metallurgy.hepatizon_boots.name=Hepazitstövlar
+
+item.metallurgy.ignatius_helmet.name=Ignitithjälm
+item.metallurgy.ignatius_chestplate.name=Ignititharnesk
+item.metallurgy.ignatius_leggings.name=Ignititbyxor
+item.metallurgy.ignatius_boots.name=Ignititstövlar
+
+item.metallurgy.inolashite_helmet.name=Inolasithjälm
+item.metallurgy.inolashite_chestplate.name=Inolasitharnesk
+item.metallurgy.inolashite_leggings.name=Inolasitbyxor
+item.metallurgy.inolashite_boots.name=Inolasitstövlar
+
+item.metallurgy.kalendrite_helmet.name=Kalendrithjälm
+item.metallurgy.kalendrite_chestplate.name=Kalendritharnesk
+item.metallurgy.kalendrite_leggings.name=Kalendritbyxor
+item.metallurgy.kalendrite_boots.name=Kalendritstövlar
+
+item.metallurgy.krik_helmet.name=Krikhjälm
+item.metallurgy.krik_chestplate.name=Krikharnesk
+item.metallurgy.krik_leggings.name=Krikbyxor
+item.metallurgy.krik_boots.name=Krikstövlar
+
+item.metallurgy.lutetium_helmet.name=Lutetithjälm
+item.metallurgy.lutetium_chestplate.name=Lutetitharnesk
+item.metallurgy.lutetium_leggings.name=Lutetitbyxor
+item.metallurgy.lutetium_boots.name=Lutetitstövlar
+
+item.metallurgy.midasium_helmet.name=Midasithjälm
+item.metallurgy.midasium_chestplate.name=Midasitharnesk
+item.metallurgy.midasium_leggings.name=Midasitbyxor
+item.metallurgy.midasium_boots.name=Midasitstövlar
+
+item.metallurgy.mithril_helmet.name=Mithrilhjälm
+item.metallurgy.mithril_chestplate.name=Mithrilharnesk
+item.metallurgy.mithril_leggings.name=Mithrilbyxor
+item.metallurgy.mithril_boots.name=Mithrilstövlar
+
+item.metallurgy.orichalcum_helmet.name=Orikalsithjälm
+item.metallurgy.orichalcum_chestplate.name=Orikalsitharnesk
+item.metallurgy.orichalcum_leggings.name=Orikalsitbyxor
+item.metallurgy.orichalcum_boots.name=Orikalsitstövlar
+
+item.metallurgy.osmium_helmet.name=Osmiumhjälm
+item.metallurgy.osmium_chestplate.name=Osmiumharnesk
+item.metallurgy.osmium_leggings.name=Osmiumbyxor
+item.metallurgy.osmium_boots.name=Osmiumstövlar
+
+item.metallurgy.oureclase_helmet.name=Horiklashjälm
+item.metallurgy.oureclase_chestplate.name=Horiklasharnesk
+item.metallurgy.oureclase_leggings.name=Horiklasbyxor
+item.metallurgy.oureclase_boots.name=Horiklasstövlar
+
+item.metallurgy.platinum_helmet.name=Platinumhjälm
+item.metallurgy.platinum_chestplate.name=Platinumharnesk
+item.metallurgy.platinum_leggings.name=Platinumbyxor
+item.metallurgy.platinum_boots.name=Platinumstövlar
+
+item.metallurgy.prometheum_helmet.name=Bastnäsithjälm
+item.metallurgy.prometheum_chestplate.name=Bastnäsitharnesk
+item.metallurgy.prometheum_leggings.name=Bastnäsitbyxor
+item.metallurgy.prometheum_boots.name=Bastnäsitstövlar
+
+item.metallurgy.quicksilver_helmet.name=Månsilverhjälm
+item.metallurgy.quicksilver_chestplate.name=Månsilverharnesk
+item.metallurgy.quicksilver_leggings.name=Månsilverbyxor
+item.metallurgy.quicksilver_boots.name=Månsilverstövlar
+
+item.metallurgy.sanguinite_helmet.name=Sangvinhjälm
+item.metallurgy.sanguinite_chestplate.name=Sangvinharnesk
+item.metallurgy.sanguinite_leggings.name=Sangvinbyxor
+item.metallurgy.sanguinite_boots.name=Sangvinstövlar
+
+item.metallurgy.shadow_iron_helmet.name=Svartjärnhjälm
+item.metallurgy.shadow_iron_chestplate.name=Svartjärnharnesk
+item.metallurgy.shadow_iron_leggings.name=Svartjärnbyxor
+item.metallurgy.shadow_iron_boots.name=Svartjärnstövlar
+
+item.metallurgy.shadow_steel_helmet.name=Svartstålhjälm
+item.metallurgy.shadow_steel_chestplate.name=Svartstålharnesk
+item.metallurgy.shadow_steel_leggings.name=Svartstålbyxor
+item.metallurgy.shadow_steel_boots.name=Svartstålstövlar
+
+item.metallurgy.silver_helmet.name=Silverhjälm
+item.metallurgy.silver_chestplate.name=Silverharnesk
+item.metallurgy.silver_leggings.name=Silverbyxor
+item.metallurgy.silver_boots.name=Silverstövlar
+
+item.metallurgy.steel_helmet.name=Stålhjälm
+item.metallurgy.steel_chestplate.name=Stålharnesk
+item.metallurgy.steel_leggings.name=Stålbyxor
+item.metallurgy.steel_boots.name=Stålstövlar
+
+item.metallurgy.tartarite_helmet.name=Tartarithjälm
+item.metallurgy.tartarite_chestplate.name=Tartaritharnesk
+item.metallurgy.tartarite_leggings.name=Tartaritbyxor
+item.metallurgy.tartarite_boots.name=Tartaritstövlar
+
+item.metallurgy.vulcanite_helmet.name=Vulkanithjälm
+item.metallurgy.vulcanite_chestplate.name=Vulkanitharnesk
+item.metallurgy.vulcanite_leggings.name=Vulkanitbyxor
+item.metallurgy.vulcanite_boots.name=Vulkanitstövlar
+
+item.metallurgy.vyroxeres_helmet.name=Vyroxithjälm
+item.metallurgy.vyroxeres_chestplate.name=Vyroxitharnesk
+item.metallurgy.vyroxeres_leggings.name=Vyroxitbyxor
+item.metallurgy.vyroxeres_boots.name=Vyroxitstövlar
+
+# Otherblocks
+tile.metallurgy.road_block.name=Väg
+tile.metallurgy.striped_road_block.name=Randad Väg
+tile.metallurgy.charcoal_block.name=Träkolsblock
+tile.metallurgy.bitumen_block.name=Bitumenblock
+tile.metallurgy.sulfur_block.name=Svavelblock
+
+# Metalblocks
+tile.metallurgy.electrum_block.name=Elektrumblock
+tile.metallurgy.copper_block.name=Kopparblock
+tile.metallurgy.bronze_block.name=Bronsblock
+tile.metallurgy.manganese_block.name=Manganblock
+tile.metallurgy.tin_block.name=Tennblock
+tile.metallurgy.steel_block.name=Stålblock
+tile.metallurgy.hepatizon_block.name=Hepazitblock
+tile.metallurgy.prometheum_block.name=Bastnäsitblock
+tile.metallurgy.angmallen_block.name=Ångmallblock
+tile.metallurgy.eximite_block.name=Eximitblock
+tile.metallurgy.meutoite_block.name=Meuritblock
+tile.metallurgy.desichalkos_block.name=Desichalkosblock
+tile.metallurgy.black_steel_block.name=Svartstålblock
+tile.metallurgy.infuscolium_block.name=Infuskolitblock
+tile.metallurgy.carmot_block.name=Karmotblock
+tile.metallurgy.astral_silver_block.name=Astralsilverblock
+tile.metallurgy.oureclase_block.name=Horiklasitblock
+tile.metallurgy.deep_iron_block.name=Djupjärnblock
+tile.metallurgy.quicksilver_block.name=Alvsilverstålblock
+tile.metallurgy.mithril_block.name=Mithrilblock
+tile.metallurgy.haderoth_block.name=Haderotblock
+tile.metallurgy.atlarus_block.name=Atlarusblock
+tile.metallurgy.adamantine_block.name=Adamantblock
+tile.metallurgy.celenegil_block.name=Selenegilblock
+tile.metallurgy.tartarite_block.name=Tartaritblock
+tile.metallurgy.rubracium_block.name=Rubrakitblock
+tile.metallurgy.midasium_block.name=Midasitblock
+tile.metallurgy.shadow_steel_block.name=Svartstålblock
+tile.metallurgy.lemurite_block.name=Lemuritblock
+tile.metallurgy.vyroxeres_block.name=Vyroxitblock
+tile.metallurgy.kalendrite_block.name=Kalendritblock
+tile.metallurgy.krik_block.name=Krikblock
+tile.metallurgy.sanguinite_block.name=Sangvinblock
+tile.metallurgy.alduorite_block.name=Alduritblock
+tile.metallurgy.ignatius_block.name=Ignititblock
+tile.metallurgy.shadow_iron_block.name=Svartjärnblock
+tile.metallurgy.damascus_steel_block.name=Damaskusstålblock
+tile.metallurgy.orichalcum_block.name=Orikalsitblock
+tile.metallurgy.ceruclase_block.name=Ceruklasblock
+tile.metallurgy.vulcanite_block.name=Vulkanitblock
+tile.metallurgy.inolashite_block.name=Inolasitblock
+tile.metallurgy.amordrine_block.name=Amordrinblock
+tile.metallurgy.zinc_block.name=Zinkblock
+tile.metallurgy.silver_block.name=Silverblock
+tile.metallurgy.platinum_block.name=Platinumblock
+tile.metallurgy.brass_block.name=Mässingblock
+tile.metallurgy.lutetium_block.name=Lutetiumblock
+tile.metallurgy.osmium_block.name=Osmiumblock
+tile.metallurgy.etherium_block.name=Eteriumblock
+
+# Metaltegel
+tile.metallurgy.electrum_bricks.name=Elektrumtegel
+tile.metallurgy.copper_bricks.name=Koppartegel
+tile.metallurgy.bronze_bricks.name=Bronstegel
+tile.metallurgy.manganese_bricks.name=Mangantegel
+tile.metallurgy.tin_bricks.name=Tenntegel
+tile.metallurgy.steel_bricks.name=Ståltegel
+tile.metallurgy.hepatizon_bricks.name=Hepazittegel
+tile.metallurgy.prometheum_bricks.name=Bastnäsittegel
+tile.metallurgy.angmallen_bricks.name=Ångmalltegel
+tile.metallurgy.eximite_bricks.name=Exemittegel
+tile.metallurgy.meutoite_bricks.name=Meutoittegel
+tile.metallurgy.desichalkos_bricks.name=Desichalkostegel
+tile.metallurgy.black_steel_bricks.name=Svartståltegel
+tile.metallurgy.infuscolium_bricks.name=Infuskolittegel
+tile.metallurgy.carmot_bricks.name=Karmottegel
+tile.metallurgy.astral_silver_bricks.name=Astralsilvertegel
+tile.metallurgy.oureclase_bricks.name=Horiklasittegel
+tile.metallurgy.deep_iron_bricks.name=Djupjärntegel
+tile.metallurgy.quicksilver_bricks.name=Alvsilverståltegel
+tile.metallurgy.mithril_bricks.name=Mithriltegel
+tile.metallurgy.haderoth_bricks.name=Haderottegel
+tile.metallurgy.atlarus_bricks.name=Atlarustegel
+tile.metallurgy.adamantine_bricks.name=Adamanttegel
+tile.metallurgy.celenegil_bricks.name=Selenegiltegel
+tile.metallurgy.tartarite_bricks.name=Tartarittegel
+tile.metallurgy.rubracium_bricks.name=Rubrakittegel
+tile.metallurgy.midasium_bricks.name=Midasittegel
+tile.metallurgy.shadow_steel_bricks.name=Svartståltegel
+tile.metallurgy.lemurite_bricks.name=Lemurittegel
+tile.metallurgy.vyroxeres_bricks.name=Vyroxittegel
+tile.metallurgy.kalendrite_bricks.name=Kalendrittegel
+tile.metallurgy.krik_bricks.name=Kriktegel
+tile.metallurgy.sanguinite_bricks.name=Sangvintegel
+tile.metallurgy.alduorite_bricks.name=Aldurittegel
+tile.metallurgy.ignatius_bricks.name=Ignitittegel
+tile.metallurgy.shadow_iron_bricks.name=Svartjärntegel
+tile.metallurgy.damascus_steel_bricks.name=Damaskusståltegel
+tile.metallurgy.orichalcum_bricks.name=Orikalsittegel
+tile.metallurgy.ceruclase_bricks.name=Ceruklastegel
+tile.metallurgy.vulcanite_bricks.name=Vulkanittegel
+tile.metallurgy.inolashite_bricks.name=Inolasittegel
+tile.metallurgy.amordrine_bricks.name=Amordrintegel
+tile.metallurgy.zinc_bricks.name=Zinktegel
+tile.metallurgy.silver_bricks.name=Silvertegel
+tile.metallurgy.platinum_bricks.name=Platinumtegel
+tile.metallurgy.brass_bricks.name=Mässingtegel
+tile.metallurgy.lutetium_bricks.name=Lutetiumtegel
+tile.metallurgy.osmium_bricks.name=Osmiumtegel
+tile.metallurgy.etherium_bricks.name=Eteriumtegel
+
+# Large Metaltegel
+tile.metallurgy.electrum_large_bricks.name=Elektrumgrovtegel
+tile.metallurgy.copper_large_bricks.name=Koppargrovtegel
+tile.metallurgy.bronze_large_bricks.name=Bronsgrovtegel
+tile.metallurgy.manganese_large_bricks.name=Mangangrovtegel
+tile.metallurgy.tin_large_bricks.name=Tenngrovtegel
+tile.metallurgy.steel_large_bricks.name=Stålgrovtegel
+tile.metallurgy.hepatizon_large_bricks.name=Hepazitgrovtegel
+tile.metallurgy.prometheum_large_bricks.name=Bastnäsitgrovtegel
+tile.metallurgy.angmallen_large_bricks.name=Ångmallgrovtegel
+tile.metallurgy.eximite_large_bricks.name=Exemitgrovtegel
+tile.metallurgy.meutoite_large_bricks.name=Meutoitgrovtegel
+tile.metallurgy.desichalkos_large_bricks.name=Desichalkosgrovtegel
+tile.metallurgy.black_steel_large_bricks.name=Svartstålgrovtegel
+tile.metallurgy.infuscolium_large_bricks.name=Infuskolitgrovtegel
+tile.metallurgy.carmot_large_bricks.name=Karmotgrovtegel
+tile.metallurgy.astral_silver_large_bricks.name=Astralsilvergrovtegel
+tile.metallurgy.oureclase_large_bricks.name=Horiklasitgrovtegel
+tile.metallurgy.deep_iron_large_bricks.name=Djupjärngrovtegel
+tile.metallurgy.quicksilver_large_bricks.name=Alvsilverstålgrovtegel
+tile.metallurgy.mithril_large_bricks.name=Mithrilgrovtegel
+tile.metallurgy.haderoth_large_bricks.name=Haderotgrovtegel
+tile.metallurgy.atlarus_large_bricks.name=Atlarusgrovtegel
+tile.metallurgy.adamantine_large_bricks.name=Adamantgrovtegel
+tile.metallurgy.celenegil_large_bricks.name=Selengilgrovtegel
+tile.metallurgy.tartarite_large_bricks.name=Tartaritgrovtegel
+tile.metallurgy.rubracium_large_bricks.name=Rubrakitgrovtegel
+tile.metallurgy.midasium_large_bricks.name=Midasitgrovtegel
+tile.metallurgy.shadow_steel_large_bricks.name=Svartstålgrovtegel
+tile.metallurgy.lemurite_large_bricks.name=Lemuritgrovtegel
+tile.metallurgy.vyroxeres_large_bricks.name=Vyroxitgrovtegel
+tile.metallurgy.kalendrite_large_bricks.name=Kalendritgrovtegel
+tile.metallurgy.krik_large_bricks.name=Krikgrovtegel
+tile.metallurgy.sanguinite_large_bricks.name=Sangvingrovtegel
+tile.metallurgy.alduorite_large_bricks.name=Alduritgrovtegel
+tile.metallurgy.ignatius_large_bricks.name=Ignititgrovtegel
+tile.metallurgy.shadow_iron_large_bricks.name=Svartjärngrovtegel
+tile.metallurgy.damascus_steel_large_bricks.name=Damaskusstålgrovtegel
+tile.metallurgy.orichalcum_large_bricks.name=Orikalsitgrovtegel
+tile.metallurgy.ceruclase_large_bricks.name=Ceruklasgrovtegel
+tile.metallurgy.vulcanite_large_bricks.name=Vulkanitgrovtegel
+tile.metallurgy.inolashite_large_bricks.name=Inolasitgrovtegel
+tile.metallurgy.amordrine_large_bricks.name=Amordringrovtegel
+tile.metallurgy.zinc_large_bricks.name=Zinkgrovtegel
+tile.metallurgy.silver_large_bricks.name=Silvergrovtegel
+tile.metallurgy.platinum_large_bricks.name=Platinumgrovtegel
+tile.metallurgy.brass_large_bricks.name=Mässinggrovtegel
+tile.metallurgy.lutetium_large_bricks.name=Lutetiumgrovtegel
+tile.metallurgy.osmium_large_bricks.name=Osmiumgrovtegel
+tile.metallurgy.etherium_large_bricks.name=Eteriumgrovtegel
+
+# Engraved Metalblocks
+tile.metallurgy.electrum_engraved_block.name=Elektrum-engraverat Block
+tile.metallurgy.copper_engraved_block.name=Koppar-engraverat Block
+tile.metallurgy.bronze_engraved_block.name=Brons-engraverat Block
+tile.metallurgy.manganese_engraved_block.name=Mangan-engraverat Block
+tile.metallurgy.tin_engraved_block.name=Tenn-engraverat Block
+tile.metallurgy.steel_engraved_block.name=Stål-engraverat Block
+tile.metallurgy.hepatizon_engraved_block.name=Hepazit-engraverat Block
+tile.metallurgy.prometheum_engraved_block.name=Bastnäsit-engraverat Block
+tile.metallurgy.angmallen_engraved_block.name=Ångmall-engraverat Block
+tile.metallurgy.eximite_engraved_block.name=Exemit-engraverat Block
+tile.metallurgy.meutoite_engraved_block.name=Meutoit-engraverat Block
+tile.metallurgy.desichalkos_engraved_block.name=Desichalkos-engraverat Block
+tile.metallurgy.black_steel_engraved_block.name=Svartstål-engraverat Block
+tile.metallurgy.infuscolium_engraved_block.name=Infuskolit-engraverat Block
+tile.metallurgy.carmot_engraved_block.name=Karmot-engraverat Block
+tile.metallurgy.astral_silver_engraved_block.name=Astralsilver-engraverat Block
+tile.metallurgy.oureclase_engraved_block.name=Horiklasit-engraverat Block
+tile.metallurgy.deep_iron_engraved_block.name=Djupjärn-engraverat Block
+tile.metallurgy.quicksilver_engraved_block.name=Alvsilverstål-engraverat Block
+tile.metallurgy.mithril_engraved_block.name=Mithril-engraverat Block
+tile.metallurgy.haderoth_engraved_block.name=Haderot-engraverat Block
+tile.metallurgy.atlarus_engraved_block.name=Atlarus-engraverat Block
+tile.metallurgy.adamantine_engraved_block.name=Adamant-engraverat Block
+tile.metallurgy.celenegil_engraved_block.name=Selengil-engraverat Block
+tile.metallurgy.tartarite_engraved_block.name=Tartarit-engraverat Block
+tile.metallurgy.rubracium_engraved_block.name=Rubrakit-engraverat Block
+tile.metallurgy.midasium_engraved_block.name=Midasit-engraverat Block
+tile.metallurgy.shadow_steel_engraved_block.name=Svartstål-engraverat Block
+tile.metallurgy.lemurite_engraved_block.name=Lemurit-engraverat Block
+tile.metallurgy.vyroxeres_engraved_block.name=Vyroxit-engraverat Block
+tile.metallurgy.kalendrite_engraved_block.name=Kalendrit-engraverat Block
+tile.metallurgy.krik_engraved_block.name=Krik-engraverat Block
+tile.metallurgy.sanguinite_engraved_block.name=Sangvin-engraverat Block
+tile.metallurgy.alduorite_engraved_block.name=Aldurit-engraverat Block
+tile.metallurgy.ignatius_engraved_block.name=Ignitit-engraverat Block
+tile.metallurgy.shadow_iron_engraved_block.name=Svartjärn-engraverat Block
+tile.metallurgy.damascus_steel_engraved_block.name=Damaskusstål-engraverat Block
+tile.metallurgy.orichalcum_engraved_block.name=Orikalsit-engraverat Block
+tile.metallurgy.ceruclase_engraved_block.name=Ceruklas-engraverat Block
+tile.metallurgy.vulcanite_engraved_block.name=Vulkanit-engraverat Block
+tile.metallurgy.inolashite_engraved_block.name=Inolasit-engraverat Block
+tile.metallurgy.amordrine_engraved_block.name=Amordrin-engraverat Block
+tile.metallurgy.zinc_engraved_block.name=Zink-engraverat Block
+tile.metallurgy.silver_engraved_block.name=Silver-engraverat Block
+tile.metallurgy.platinum_engraved_block.name=Platinum-engraverat Block
+tile.metallurgy.brass_engraved_block.name=Mässing-engraverat Block
+tile.metallurgy.lutetium_engraved_block.name=Lutetium-engraverat Block
+tile.metallurgy.osmium_engraved_block.name=Osmium-engraverat Block
+tile.metallurgy.etherium_engraved_block.name=Eterium-engraverat Block
+
+# Metalkristall
+tile.metallurgy.electrum_crystals.name=Elektrumkristall
+tile.metallurgy.copper_crystals.name=Kopparkristall
+tile.metallurgy.bronze_crystals.name=Bronskristall
+tile.metallurgy.manganese_crystals.name=Mangankristall
+tile.metallurgy.tin_crystals.name=Tennkristall
+tile.metallurgy.steel_crystals.name=Stålkristall
+tile.metallurgy.hepatizon_crystals.name=Hepazitkristall
+tile.metallurgy.prometheum_crystals.name=Bastnäsitkristall
+tile.metallurgy.angmallen_crystals.name=Ångmallkristall
+tile.metallurgy.eximite_crystals.name=Exemitkristall
+tile.metallurgy.meutoite_crystals.name=Meutoitkristall
+tile.metallurgy.desichalkos_crystals.name=Desichalkoskristall
+tile.metallurgy.black_steel_crystals.name=Svartstålkristall
+tile.metallurgy.infuscolium_crystals.name=Infuskolitkristall
+tile.metallurgy.carmot_crystals.name=Karmotkristall
+tile.metallurgy.astral_silver_crystals.name=Astralsilverkristall
+tile.metallurgy.oureclase_crystals.name=Horiklasitkristall
+tile.metallurgy.deep_iron_crystals.name=Djupjärnkristall
+tile.metallurgy.quicksilver_crystals.name=Alvsilverstålkristall
+tile.metallurgy.mithril_crystals.name=Mithrilkristall
+tile.metallurgy.haderoth_crystals.name=Haderotkristall
+tile.metallurgy.atlarus_crystals.name=Atlaruskristall
+tile.metallurgy.adamantine_crystals.name=Adamantkristall
+tile.metallurgy.celenegil_crystals.name=Selengilkristall
+tile.metallurgy.tartarite_crystals.name=Tartaritkristall
+tile.metallurgy.rubracium_crystals.name=Rubrakitkristall
+tile.metallurgy.midasium_crystals.name=Midasitkristall
+tile.metallurgy.shadow_steel_crystals.name=Svartstålkristall
+tile.metallurgy.lemurite_crystals.name=Lemuritkristall
+tile.metallurgy.vyroxeres_crystals.name=Vyroxitkristall
+tile.metallurgy.kalendrite_crystals.name=Kalendritkristall
+tile.metallurgy.krik_crystals.name=Krikkristall
+tile.metallurgy.sanguinite_crystals.name=Sangvinkristall
+tile.metallurgy.alduorite_crystals.name=Alduritkristall
+tile.metallurgy.ignatius_crystals.name=Ignititkristall
+tile.metallurgy.shadow_iron_crystals.name=Svartjärnkristall
+tile.metallurgy.damascus_steel_crystals.name=Damaskusstålkristall
+tile.metallurgy.orichalcum_crystals.name=Orikalsitkristall
+tile.metallurgy.ceruclase_crystals.name=Ceruklaskristall
+tile.metallurgy.vulcanite_crystals.name=Vulkanitkristall
+tile.metallurgy.inolashite_crystals.name=Inolasitkristall
+tile.metallurgy.amordrine_crystals.name=Amordrinkristall
+tile.metallurgy.zinc_crystals.name=Zinkkristall
+tile.metallurgy.silver_crystals.name=Silverkristall
+tile.metallurgy.platinum_crystals.name=Platinumkristall
+tile.metallurgy.brass_crystals.name=Mässingkristall
+tile.metallurgy.lutetium_crystals.name=Lutetiumkristall
+tile.metallurgy.osmium_crystals.name=Osmiumkristall
+tile.metallurgy.etherium_crystals.name=Eteriumkristall
+
+# Metal Hazardblocks
+tile.metallurgy.electrum_hazard_block.name=Elektrum Hazardblock
+tile.metallurgy.copper_hazard_block.name=Koppar Hazardblock
+tile.metallurgy.bronze_hazard_block.name=Brons Hazardblock
+tile.metallurgy.manganese_hazard_block.name=Mangan Hazardblock
+tile.metallurgy.tin_hazard_block.name=Tenn Hazardblock
+tile.metallurgy.steel_hazard_block.name=Stål Hazardblock
+tile.metallurgy.hepatizon_hazard_block.name=Hepazit Hazardblock
+tile.metallurgy.prometheum_hazard_block.name=Bastnäsit Hazardblock
+tile.metallurgy.angmallen_hazard_block.name=Ångmall Hazardblock
+tile.metallurgy.eximite_hazard_block.name=Exemit Hazardblock
+tile.metallurgy.meutoite_hazard_block.name=Meutoit Hazardblock
+tile.metallurgy.desichalkos_hazard_block.name=Desichalkos Hazardblock
+tile.metallurgy.black_steel_hazard_block.name=Svartstål Hazardblock
+tile.metallurgy.infuscolium_hazard_block.name=Infuskolit Hazardblock
+tile.metallurgy.carmot_hazard_block.name=Karmot Hazardblock
+tile.metallurgy.astral_silver_hazard_block.name=Astralsilver Hazardblock
+tile.metallurgy.oureclase_hazard_block.name=Horiklasit Hazardblock
+tile.metallurgy.deep_iron_hazard_block.name=Djupjärn Hazardblock
+tile.metallurgy.quicksilver_hazard_block.name=Alvsilverstål Hazardblock
+tile.metallurgy.mithril_hazard_block.name=Mithril Hazardblock
+tile.metallurgy.haderoth_hazard_block.name=Haderot Hazardblock
+tile.metallurgy.atlarus_hazard_block.name=Atlarus Hazardblock
+tile.metallurgy.adamantine_hazard_block.name=Adamant Hazardblock
+tile.metallurgy.celenegil_hazard_block.name=Selengil Hazardblock
+tile.metallurgy.tartarite_hazard_block.name=Tartarit Hazardblock
+tile.metallurgy.rubracium_hazard_block.name=Rubrakit Hazardblock
+tile.metallurgy.midasium_hazard_block.name=Midasit Hazardblock
+tile.metallurgy.shadow_steel_hazard_block.name=Svartstål Hazardblock
+tile.metallurgy.lemurite_hazard_block.name=Lemurit Hazardblock
+tile.metallurgy.vyroxeres_hazard_block.name=Vyroxit Hazardblock
+tile.metallurgy.kalendrite_hazard_block.name=Kalendrit Hazardblock
+tile.metallurgy.krik_hazard_block.name=Krik Hazardblock
+tile.metallurgy.sanguinite_hazard_block.name=Sangvin Hazardblock
+tile.metallurgy.alduorite_hazard_block.name=Aldurit Hazardblock
+tile.metallurgy.ignatius_hazard_block.name=Ignitit Hazardblock
+tile.metallurgy.shadow_iron_hazard_block.name=Svartjärn Hazardblock
+tile.metallurgy.damascus_steel_hazard_block.name=Damaskusstål Hazardblock
+tile.metallurgy.orichalcum_hazard_block.name=Orikalsit Hazardblock
+tile.metallurgy.ceruclase_hazard_block.name=Ceruklas Hazardblock
+tile.metallurgy.vulcanite_hazard_block.name=Vulkanit Hazardblock
+tile.metallurgy.inolashite_hazard_block.name=Inolasit Hazardblock
+tile.metallurgy.amordrine_hazard_block.name=Amordrin Hazardblock
+tile.metallurgy.zinc_hazard_block.name=Zink Hazardblock
+tile.metallurgy.silver_hazard_block.name=Silver Hazardblock
+tile.metallurgy.platinum_hazard_block.name=Platinum Hazardblock
+tile.metallurgy.brass_hazard_block.name=Mässing Hazardblock
+tile.metallurgy.lutetium_hazard_block.name=Lutetium Hazardblock
+tile.metallurgy.osmium_hazard_block.name=Osmium Hazardblock
+tile.metallurgy.etherium_hazard_block.name=Eterium Hazardblock
+
+# Metal Armerat Glas
+tile.metallurgy.electrum_reinforced_glass.name=Elektrum-armerat Glas
+tile.metallurgy.copper_reinforced_glass.name=Koppar-armerat Glas
+tile.metallurgy.bronze_reinforced_glass.name=Brons-armerat Glas
+tile.metallurgy.manganese_reinforced_glass.name=Mangan-armerat Glas
+tile.metallurgy.tin_reinforced_glass.name=Tenn-armerat Glas
+tile.metallurgy.steel_reinforced_glass.name=Stål-armerat Glas
+tile.metallurgy.hepatizon_reinforced_glass.name=Hepazit-armerat Glas
+tile.metallurgy.prometheum_reinforced_glass.name=Bastnäsit-armerat Glas
+tile.metallurgy.angmallen_reinforced_glass.name=Ångmall-armerat Glas
+tile.metallurgy.eximite_reinforced_glass.name=Exemit-armerat Glas
+tile.metallurgy.meutoite_reinforced_glass.name=Meutoit-armerat Glas
+tile.metallurgy.desichalkos_reinforced_glass.name=Desichalkos-armerat Glas
+tile.metallurgy.black_steel_reinforced_glass.name=Svartstål-armerat Glas
+tile.metallurgy.infuscolium_reinforced_glass.name=Infuskolit-armerat Glas
+tile.metallurgy.carmot_reinforced_glass.name=Karmot-armerat Glas
+tile.metallurgy.astral_silver_reinforced_glass.name=Astralsilver-armerat Glas
+tile.metallurgy.oureclase_reinforced_glass.name=Horiklasit-armerat Glas
+tile.metallurgy.deep_iron_reinforced_glass.name=Djupjärn-armerat Glas
+tile.metallurgy.quicksilver_reinforced_glass.name=Alvsilverstål-armerat Glas
+tile.metallurgy.mithril_reinforced_glass.name=Mithril-armerat Glas
+tile.metallurgy.haderoth_reinforced_glass.name=Haderot-armerat Glas
+tile.metallurgy.atlarus_reinforced_glass.name=Atlarus-armerat Glas
+tile.metallurgy.adamantine_reinforced_glass.name=Adamant-armerat Glas
+tile.metallurgy.celenegil_reinforced_glass.name=Selengil-armerat Glas
+tile.metallurgy.tartarite_reinforced_glass.name=Tartarit-armerat Glas
+tile.metallurgy.rubracium_reinforced_glass.name=Rubrakit-armerat Glas
+tile.metallurgy.midasium_reinforced_glass.name=Midasit-armerat Glas
+tile.metallurgy.shadow_steel_reinforced_glass.name=Svartstål-armerat Glas
+tile.metallurgy.lemurite_reinforced_glass.name=Lemurit-armerat Glas
+tile.metallurgy.vyroxeres_reinforced_glass.name=Vyroxit-armerat Glas
+tile.metallurgy.kalendrite_reinforced_glass.name=Kalendrit-armerat Glas
+tile.metallurgy.krik_reinforced_glass.name=Krik-armerat Glas
+tile.metallurgy.sanguinite_reinforced_glass.name=Sangvin-armerat Glas
+tile.metallurgy.alduorite_reinforced_glass.name=Aldurit-armerat Glas
+tile.metallurgy.ignatius_reinforced_glass.name=Ignitit-armerat Glas
+tile.metallurgy.shadow_iron_reinforced_glass.name=Svartjärn-armerat Glas
+tile.metallurgy.damascus_steel_reinforced_glass.name=Damaskusstål-armerat Glas
+tile.metallurgy.orichalcum_reinforced_glass.name=Orikalsit-armerat Glas
+tile.metallurgy.ceruclase_reinforced_glass.name=Ceruklas-armerat Glas
+tile.metallurgy.vulcanite_reinforced_glass.name=Vulkanit-armerat Glas
+tile.metallurgy.inolashite_reinforced_glass.name=Inolasit-armerat Glas
+tile.metallurgy.amordrine_reinforced_glass.name=Amordrin-armerat Glas
+tile.metallurgy.zinc_reinforced_glass.name=Zink-armerat Glas
+tile.metallurgy.silver_reinforced_glass.name=Silver-armerat Glas
+tile.metallurgy.platinum_reinforced_glass.name=Platinum-armerat Glas
+tile.metallurgy.brass_reinforced_glass.name=Mässing-armerat Glas
+tile.metallurgy.lutetium_reinforced_glass.name=Lutetium-armerat Glas
+tile.metallurgy.osmium_reinforced_glass.name=Osmium-armerat Glas
+tile.metallurgy.etherium_reinforced_glass.name=Eterium-armerat Glas
+
+#Config
+config.metallurgy.category.armor_effects=Rustningseffekter
+config.metallurgy.category.general=Generalinställningar
+config.metallurgy.category.registry=Register
+config.metallurgy.category.rubracium_gauntlet=Rubrakithandske
+config.metallurgy.category.tool_effects=Verktygseffekter
+config.metallurgy.category.worldgen=Världsgenerering
+
+#Construct'srustningy Traits
+modifier.blindness_armor.name=Frisyn
+modifier.cat_eyes_armor.name=Nattsyn
+modifier.deeply_armor.name=Dykarare
+modifier.foodly_armor.name=Välmättad
+modifier.jump_master_armor.name=Höjdare
+modifier.prometheum_armor.name=Giftimmunitet
+modifier.quickly_armor.name=Snabbdra
+modifier.resistance_armor.name=Resistance IV
+modifier.strongly_armor.name=Styrka
+modifier.volcano_armor.name=Vulkanisk
+
+modifier.blindness_armor.desc=§oPuts-Väck, Gråkatarr§r\nGör dig immun mot blindhet
+modifier.cat_eyes_armor.desc=§oInga Blåbär Här§r\nDu har nu mörkerseende
+modifier.deeply_armor.desc=§oVattuman§r\nFöränkar undervattensaktiviteter
+modifier.foodly_armor.desc=§oMätt och Belåten§r\nFyller hungermetern om du har erfarenhetspoäng
+modifier.jump_master_armor.desc=§oBumbibjörn§r\nUpp, upp och iväg!
+modifier.prometheum_armor.desc=§oAktiverat kol§r\nMotgiftsbesjänkande!
+modifier.quickly_armor.desc=§oRegn-båge§r\nLika lätt som solens ljus
+modifier.resistance_armor.desc=§oHårdare än sten§r\nSänker inkommande skada
+modifier.strongly_armor.desc=§oTyngdlyftare§r\nÖkar applicerad skada \n(Fins i dubbla nivåer)
+modifier.volcano_armor.desc=§oAnti-drakeld§r\nAldrig mer att dö i ett inferno
+
+# Creative Tab
+itemGroup.metallurgy.armors=Metallurgiutrustning
+itemGroup.metallurgy.blocks=Metallurgiblock
+itemGroup.metallurgy.dusts=Metallurgidamm
+itemGroup.metallurgy.fluids=Metallurgivätskor
+itemGroup.metallurgy.ingots=Metallurgitackor
+itemGroup.metallurgy.nuggets=Metallurgiklimpar
+itemGroup.metallurgy.special=Metallurgimaskiner
+itemGroup.metallurgy.ores=Metallurgimalm
+itemGroup.metallurgy.tools=Metallurgiverktyg
+
+#Dust
+item.metallurgy.adamantine_dust.name=Adamantdamm
+item.metallurgy.alduorite_dust.name=Alduritdamm
+item.metallurgy.amordrine_dust.name=Amordrindamm
+item.metallurgy.angmallen_dust.name=Ångmalldamm
+item.metallurgy.astral_silver_dust.name=Astralsilverdamm
+item.metallurgy.atlarus_dust.name=Atlarusdamm
+item.metallurgy.black_steel_dust.name=Svartståldamm
+item.metallurgy.brass_dust.name=Mässingdamm
+item.metallurgy.bronze_dust.name=Bronsdamm
+item.metallurgy.carmot_dust.name=Karmotdamm
+item.metallurgy.celenegil_dust.name=Selengildamm
+item.metallurgy.ceruclase_dust.name=Ceruklasdamm
+item.metallurgy.copper_dust.name=Koppardamm
+item.metallurgy.deep_iron_dust.name=Djupjärndamm
+item.metallurgy.desichalkos_dust.name=Desichalkosdamm
+item.metallurgy.damascus_steel_dust.name=Damaskusståldamm
+item.metallurgy.electrum_dust.name=Elektrumdamm
+item.metallurgy.etherium_dust.name=Eteriumdamm
+item.metallurgy.eximite_dust.name=Exemitdamm
+item.metallurgy.gold_dust.name=Golddamm
+item.metallurgy.haderoth_dust.name=Haderotdamm
+item.metallurgy.hepatizon_dust.name=Hepazitdamm
+item.metallurgy.ignatius_dust.name=Ignititdamm
+item.metallurgy.infuscolium_dust.name=Infuskolitdamm
+item.metallurgy.inolashite_dust.name=Inolasitdamm
+item.metallurgy.iron_dust.name=Irondamm
+item.metallurgy.kalendrite_dust.name=Kalendritdamm
+item.metallurgy.krik_dust.name=Krikdamm
+item.metallurgy.lemurite_dust.name=Lemuritdamm
+item.metallurgy.lutetium_dust.name=Lutetiumdamm
+item.metallurgy.manganese_dust.name=Mangandamm
+item.metallurgy.meutoite_dust.name=Meutoitdamm
+item.metallurgy.midasium_dust.name=Midasitdamm
+item.metallurgy.mithril_dust.name=Mithrildamm
+item.metallurgy.orichalcum_dust.name=Orikalsitdamm
+item.metallurgy.osmium_dust.name=Osmiumdamm
+item.metallurgy.oureclase_dust.name=Horiklasitdamm
+item.metallurgy.platinum_dust.name=Platinumdamm
+item.metallurgy.prometheum_dust.name=Bastnäsitdamm
+item.metallurgy.quicksilver_dust.name=Alvsilverståldamm
+item.metallurgy.rubracium_dust.name=Rubrakitdamm
+item.metallurgy.sanguinite_dust.name=Sangvindamm
+item.metallurgy.shadow_iron_dust.name=Svartjärndamm
+item.metallurgy.shadow_steel_dust.name=Svartståldamm
+item.metallurgy.silver_dust.name=Silverdamm
+item.metallurgy.steel_dust.name=Ståldamm
+item.metallurgy.tartarite_dust.name=Tartaritdamm
+item.metallurgy.thermite_dust.name=Termitdamm
+item.metallurgy.tin_dust.name=Tenndamm
+item.metallurgy.vulcanite_dust.name=Vulkanitdamm
+item.metallurgy.vyroxeres_dust.name=Vyroxitdamm
+item.metallurgy.zinc_dust.name=Zinkdamm
+
+#Nugget
+item.metallurgy.adamantine_nugget.name=Adamantklimp
+item.metallurgy.alduorite_nugget.name=Alduritklimp
+item.metallurgy.amordrine_nugget.name=Amordrinklimp
+item.metallurgy.angmallen_nugget.name=Ångmallklimp
+item.metallurgy.astral_silver_nugget.name=Astralsilverklimp
+item.metallurgy.atlarus_nugget.name=Atlarusklimp
+item.metallurgy.black_steel_nugget.name=Svartstålklimp
+item.metallurgy.brass_nugget.name=Mässingklimp
+item.metallurgy.bronze_nugget.name=Bronsklimp
+item.metallurgy.carmot_nugget.name=Karmotklimp
+item.metallurgy.celenegil_nugget.name=Selengilklimp
+item.metallurgy.ceruclase_nugget.name=Ceruklasklimp
+item.metallurgy.copper_nugget.name=Kopparklimp
+item.metallurgy.deep_iron_nugget.name=Djupjärnklimp
+item.metallurgy.desichalkos_nugget.name=Desichalkosklimp
+item.metallurgy.damascus_steel_nugget.name=Damaskusstålklimp
+item.metallurgy.electrum_nugget.name=Elektrumklimp
+item.metallurgy.etherium_nugget.name=Eteriumklimp
+item.metallurgy.eximite_nugget.name=Exemitklimp
+item.metallurgy.gold_nugget.name=Goldklimp
+item.metallurgy.haderoth_nugget.name=Haderotklimp
+item.metallurgy.hepatizon_nugget.name=Hepazitklimp
+item.metallurgy.ignatius_nugget.name=Ignititklimp
+item.metallurgy.infuscolium_nugget.name=Infuskolitklimp
+item.metallurgy.inolashite_nugget.name=Inolasitklimp
+item.metallurgy.iron_nugget.name=Ironklimp
+item.metallurgy.kalendrite_nugget.name=Kalendritklimp
+item.metallurgy.krik_nugget.name=Krikklimp
+item.metallurgy.lemurite_nugget.name=Lemuritklimp
+item.metallurgy.lutetium_nugget.name=Lutetiumklimp
+item.metallurgy.manganese_nugget.name=Manganklimp
+item.metallurgy.meutoite_nugget.name=Meutoitklimp
+item.metallurgy.midasium_nugget.name=Midasitklimp
+item.metallurgy.mithril_nugget.name=Mithrilklimp
+item.metallurgy.orichalcum_nugget.name=Orikalsitklimp
+item.metallurgy.osmium_nugget.name=Osmiumklimp
+item.metallurgy.oureclase_nugget.name=Horiklasitklimp
+item.metallurgy.platinum_nugget.name=Platinumklimp
+item.metallurgy.prometheum_nugget.name=Bastnäsitklimp
+item.metallurgy.quicksilver_nugget.name=Alvsilverstålklimp
+item.metallurgy.rubracium_nugget.name=Rubrakitklimp
+item.metallurgy.sanguinite_nugget.name=Sangvinklimp
+item.metallurgy.shadow_iron_nugget.name=Svartjärnklimp
+item.metallurgy.shadow_steel_nugget.name=Svartstålklimp
+item.metallurgy.silver_nugget.name=Silverklimp
+item.metallurgy.steel_nugget.name=Stålklimp
+item.metallurgy.tartarite_nugget.name=Tartaritklimp
+item.metallurgy.thermite_nugget.name=Termitklimp
+item.metallurgy.tin_nugget.name=Tennklimp
+item.metallurgy.vulcanite_nugget.name=Vulkanitklimp
+item.metallurgy.vyroxeres_nugget.name=Vyroxitklimp
+item.metallurgy.zinc_nugget.name=Zinkklimp
+
+#Effect
+effect.metallurgy.punch_effect_tired=§4Du är för utmattad! Ät något först!
+
+#FluidBlocks
+tile.metallurgy.molten_adamantine.name=Smält Adamant
+tile.metallurgy.molten_alduorite.name=Smält Aldurit
+tile.metallurgy.molten_amordrine.name=Smält Amordrin
+tile.metallurgy.molten_angmallen.name=Smält Ångmall
+tile.metallurgy.molten_astral_silver.name=Smält Astralsilver
+tile.metallurgy.molten_atlarus.name=Smält Atlarus
+tile.metallurgy.molten_black_steel.name=Smält Svartstål
+tile.metallurgy.molten_brass.name=Smält Mässing
+tile.metallurgy.molten_bronze.name=Smält Brons
+tile.metallurgy.molten_carmot.name=Smält Karmot
+tile.metallurgy.molten_celenegil.name=Smält Selengil
+tile.metallurgy.molten_ceruclase.name=Smält Ceruklas
+tile.metallurgy.molten_copper.name=Smält Koppar
+tile.metallurgy.molten_damascus_steel.name=Smält Damaskusstål
+tile.metallurgy.molten_deep_iron.name=Smält Djupjärn
+tile.metallurgy.molten_desichalkos.name=Smält Desichalkos
+tile.metallurgy.molten_electrum.name=Smält Elektrum
+tile.metallurgy.molten_etherium.name=Smält Eterium
+tile.metallurgy.molten_eximite.name=Smält Exemit
+tile.metallurgy.molten_haderoth.name=Smält Haderot
+tile.metallurgy.molten_hepatizon.name=Smält Hepazit
+tile.metallurgy.molten_ignatius.name=Smält Ignitit
+tile.metallurgy.molten_infuscolium.name=Smält Infuskolit
+tile.metallurgy.molten_inolashite.name=Smält Inolasit
+tile.metallurgy.molten_kalendrite.name=Smält Kalendrit
+tile.metallurgy.molten_krik.name=Smält Krik
+tile.metallurgy.molten_lemurite.name=Smält Lemurit
+tile.metallurgy.molten_lutetium.name=Smält Lutetium
+tile.metallurgy.molten_manganese.name=Smält Mangan
+tile.metallurgy.molten_meutoite.name=Smält Meutoit
+tile.metallurgy.molten_midasium.name=Smält Midasit
+tile.metallurgy.molten_mithril.name=Smält Mithril
+tile.metallurgy.molten_orichalcum.name=Smält Orikalsit
+tile.metallurgy.molten_osmium.name=Smält Osmium
+tile.metallurgy.molten_oureclase.name=Smält Horiklas
+tile.metallurgy.molten_platinum.name=Smält Platinum
+tile.metallurgy.molten_prometheum.name=Smält Bastnäsit
+tile.metallurgy.molten_quicksilver.name=Smält Alvsilverstål
+tile.metallurgy.molten_rubracium.name=Smält Rubrakit
+tile.metallurgy.molten_sanguinite.name=Smält Sangvin
+tile.metallurgy.molten_shadow_iron.name=Smält Svartjärn
+tile.metallurgy.molten_shadow_steel.name=Smält Svartstål
+tile.metallurgy.molten_silver.name=Smält Silver
+tile.metallurgy.molten_steel.name=Smält Stål
+tile.metallurgy.molten_tar.name=Tjära
+tile.metallurgy.molten_tartarite.name=Smält Tartarit
+tile.metallurgy.molten_thermite.name=Smält Termit
+tile.metallurgy.molten_tin.name=Smält Tenn
+tile.metallurgy.molten_vulcanite.name=Smält Vulkanit
+tile.metallurgy.molten_vyroxeres.name=Smält Vyroxit
+tile.metallurgy.molten_zinc.name=Smält Zink
+
+#Fluids
+fluid.adamantine=Smält Adamant
+fluid.alduorite=Smält Aldurit
+fluid.amordrine=Smält Amordrin
+fluid.angmallen=Smält Ångmall
+fluid.astral_silver=Smält Astralsilver
+fluid.atlarus=Smält Atlarus
+fluid.black_steel=Smält Svartstål
+fluid.brass=Smält Mässing
+fluid.bronze=Smält Brons
+fluid.carmot=Smält Karmot
+fluid.celenegil=Smält Selengil
+fluid.ceruclase=Smält Ceruklas
+fluid.copper=Smält Koppar
+fluid.deep_iron=Smält Djupjärn
+fluid.desichalkos=Smält Desichalkos
+fluid.damascus_steel=Smält Damaskusstål
+fluid.electrum=Smält Elektrum
+fluid.etherium=Smält Eterium
+fluid.eximite=Smält Exemit
+fluid.haderoth=Smält Haderot
+fluid.hepatizon=Smält Hepazit
+fluid.ignatius=Smält Ignitit
+fluid.infuscolium=Smält Infuskolit
+fluid.inolashite=Smält Inolasit
+fluid.kalendrite=Smält Kalendrit
+fluid.krik=Smält Krik
+fluid.lemurite=Smält Lemurit
+fluid.lutetium=Smält Lutetium
+fluid.manganese=Smält Mangan
+fluid.meutoite=Smält Meutoit
+fluid.midasium=Smält Midasit
+fluid.mithril=Smält Mithril
+fluid.orichalcum=Smält Orikalsit
+fluid.osmium=Smält Osmium
+fluid.oureclase=Smält Horiklas
+fluid.platinum=Smält Platinum
+fluid.prometheum=Smält Bastnäsit
+fluid.quicksilver=Smält Alvsilverstål
+fluid.rubracium=Smält Rubrakit
+fluid.sanguinite=Smält Sangvin
+fluid.shadow_iron=Smält Svartjärn
+fluid.shadow_steel=Smält Svartstål
+fluid.silver=Smält Silver
+fluid.steel=Smält Stål
+fluid.tartarite=Smält Tartarit
+fluid.tin=Smält Tenn
+fluid.vulcanite=Smält Vulkanit
+fluid.vyroxeres=Smält Vyroxit
+fluid.zinc=Smält Zink
+
+#Fluids (Special)
+fluid.molten_thermite=Smält Termit
+fluid.molten_tar=Mineralolja
+
+#Ingots
+item.metallurgy.adamantine_ingot.name=Adamanttacka
+item.metallurgy.alduorite_ingot.name=Aldurittacka
+item.metallurgy.amordrine_ingot.name=Amordrintacka
+item.metallurgy.angmallen_ingot.name=Ångmalltacka
+item.metallurgy.astral_silver_ingot.name=Astralsilvertacka
+item.metallurgy.atlarus_ingot.name=Atlarustacka
+item.metallurgy.black_steel_ingot.name=Svartståltacka
+item.metallurgy.brass_ingot.name=Mässingtacka
+item.metallurgy.bronze_ingot.name=Bronstacka
+item.metallurgy.carmot_ingot.name=Karmottacka
+item.metallurgy.celenegil_ingot.name=Selengiltacka
+item.metallurgy.ceruclase_ingot.name=Ceruklastacka
+item.metallurgy.copper_ingot.name=Koppartacka
+item.metallurgy.deep_iron_ingot.name=Djupjärntacka
+item.metallurgy.desichalkos_ingot.name=Desichalkostacka
+item.metallurgy.damascus_steel_ingot.name=Damaskusståltacka
+item.metallurgy.electrum_ingot.name=Elektrumtacka
+item.metallurgy.etherium_ingot.name=Eteriumtacka
+item.metallurgy.eximite_ingot.name=Exemittacka
+item.metallurgy.haderoth_ingot.name=Haderottacka
+item.metallurgy.hepatizon_ingot.name=Hepazittacka
+item.metallurgy.ignatius_ingot.name=Ignitittacka
+item.metallurgy.infuscolium_ingot.name=Infuskolittacka
+item.metallurgy.inolashite_ingot.name=Inolasittacka
+item.metallurgy.kalendrite_ingot.name=Kalendrittacka
+item.metallurgy.krik_ingot.name=Kriktacka
+item.metallurgy.lemurite_ingot.name=Lemurittacka
+item.metallurgy.lutetium_ingot.name=Lutetiumtacka
+item.metallurgy.manganese_ingot.name=Mangantacka
+item.metallurgy.meutoite_ingot.name=Meutoittacka
+item.metallurgy.midasium_ingot.name=Midasittacka
+item.metallurgy.mithril_ingot.name=Mithriltacka
+item.metallurgy.orichalcum_ingot.name=Orikalsittacka
+item.metallurgy.osmium_ingot.name=Osmiumtacka
+item.metallurgy.oureclase_ingot.name=Horiklasacka
+item.metallurgy.platinum_ingot.name=Platinumtacka
+item.metallurgy.prometheum_ingot.name=Bastnäsittacka
+item.metallurgy.quicksilver_ingot.name=Alvsilverståltacka
+item.metallurgy.rubracium_ingot.name=Rubrakittacka
+item.metallurgy.sanguinite_ingot.name=Sangvintacka
+item.metallurgy.shadow_iron_ingot.name=Svartjärntacka
+item.metallurgy.shadow_steel_ingot.name=Svartståltacka
+item.metallurgy.silver_ingot.name=Silvertacka
+item.metallurgy.steel_ingot.name=Ståltacka
+item.metallurgy.tartarite_ingot.name=Tartarittacka
+item.metallurgy.tin_ingot.name=Tenntacka
+item.metallurgy.vulcanite_ingot.name=Vulkanittacka
+item.metallurgy.vyroxeres_ingot.name=Vyroxittacka
+item.metallurgy.zinc_ingot.name=Zinktacka
+
+#Gadgets
+item.metallurgy.flint_and_ignatius.name=Flintignit
+item.metallurgy.flint_and_vulcanite.name=Flintvulkanit
+item.metallurgy.rubracium_gauntlet.name=Rubrakithandske
+item.metallurgy.lemurite_shield.name=Lemuritsköld
+item.metallurgy.ore_detector.name=Metalldetektor
+tile.metallurgy.phosphorus_lamp.name=Fosforlampa
+
+#Items
+item.metallurgy.tar.name=Tjära
+item.metallurgy.sulfur_dust.name=Svavel
+item.metallurgy.bitumen.name=Bitumen
+item.metallurgy.potash.name=Pottaska
+item.metallurgy.phosphorus.name=Fosfor
+item.metallurgy.potash_fertilizer.name=Pottaskefertilisering
+
+item.metallurgy.wiki.name=Metallurgy Wiki
+
+#JEI
+gui.jei_compat.crusher.name=Tryckkross
+gui.jei_compat.sublimation_chamber.seconds=sekunder
+gui.jei_compat.sublimation_effect_duration=Period
+gui.jei_compat.sublimation_effect_name=Effekt
+description.jei_compat.tar_processing=Tjära generas i världen i sin flytande form (Mineralolja), dock, om den särskiljs till ett enskilt block, stelnar den till Bitumenskiffer, som du kan utvinna både faktisk tjära ifrån samt vissa gånger, Bitumen.
+description.jei_compat.invisibility_shield=Denna sköld är i särklass och kan vara en sann livräddare efterssom med ett enkelt högerklick kan du både blockera slag samt bli osynlig om du väl fortsätter att hålla in högerklick. när du väl släpper högerklick kommer lemuritskölden hmna i en vänteperiod beroende på användningstiden. Max användningstid är 30 sekunder.
+description.jei_compat.thermite=Termitdamm kann smältas i Tinkers' Construct's masugn ok kan därefter användas som masugnsbränsle, detta bränsle bränner hetare och tillåter dig att smälta malm med högre smältpunkt än lava, och dessutom smälta malm med annars lägre smältpunkt än lava ännu snabbare. Utan Tinkers' Construkt fungerar detta dessutom som bränsle i någon av moddets egna maskiner med jämnförelsebar effektivitet.
+description.jei_compat.krik_armor=Krikrustningen låter dig levitera på en viss höjd beroende på ditt inventori. Du kan trycka på PILTANGENTERNA för att justera höjden.  Maxhöjden beror på hur belastad du är för tillfället (exklusive hotbaren). Det finns också en HUD som visar både maxhöjd och nuvarande höjd nere till höger.
+
+#Ores
+tile.metallurgy.adamantine_ore.name=Adamantmalm
+tile.metallurgy.alduorite_ore.name=Alduritmalm
+tile.metallurgy.astral_silver_ore.name=Astralsilvermalm
+tile.metallurgy.atlarus_ore.name=Atlarusmalm
+tile.metallurgy.tar_ore.name=Bitumenskiffer
+tile.metallurgy.carmot_ore.name=Karmotmalm
+tile.metallurgy.ceruclase_ore.name=Ceruklasmalm
+tile.metallurgy.copper_ore.name=Kopparmalm
+tile.metallurgy.deep_iron_ore.name=Djupjärnsmalm
+tile.metallurgy.eximite_ore.name=Exemitmalm
+tile.metallurgy.ignatius_ore.name=Ignititmalm
+tile.metallurgy.infuscolium_ore.name=Infuskolitmalm
+tile.metallurgy.kalendrite_ore.name=Kalendritmalm
+tile.metallurgy.lemurite_ore.name=Lemuritmalm
+tile.metallurgy.lutetium_ore.name=Lutetiummalm
+tile.metallurgy.manganese_ore.name=Manganmalm
+tile.metallurgy.midasium_ore.name=Midasitmalm
+tile.metallurgy.meutoite_ore.name=Meutoitmalm
+tile.metallurgy.mithril_ore.name=Mithrilmalm
+tile.metallurgy.orichalcum_ore.name=Orikalsitmalm
+tile.metallurgy.osmium_ore.name=Osmiummalm
+tile.metallurgy.oureclase_ore.name=Horiklasitmalm
+tile.metallurgy.platinum_ore.name=Platinummalm
+tile.metallurgy.potash_ore.name=Pottaskamalm
+tile.metallurgy.phosphorite_ore.name=Fosformalm
+tile.metallurgy.prometheum_ore.name=Bastnäsitmalm
+tile.metallurgy.rubracium_ore.name=Rubrakitmalm
+tile.metallurgy.sanguinite_ore.name=Sangvinmalm
+tile.metallurgy.shadow_iron_ore.name=Svartjärnmalm
+tile.metallurgy.silver_ore.name=Silvermalm
+tile.metallurgy.sulfur_ore.name=Sulfurmalm
+tile.metallurgy.tin_ore.name=Tennmalm
+tile.metallurgy.vyroxeres_ore.name=Vyroxitmalm
+tile.metallurgy.vulcanite_ore.name=Vulkanitmalm
+tile.metallurgy.zinc_ore.name=Zinkmalm
+
+#Machines
+container.crusher=Tryckpress
+container.alloyer=Legeringsugn
+tile.metallurgy.crusher.name=§cTryckpress
+tile.metallurgy.alloyer.name=§eLegeringsugn
+tile.metallurgy.sublimation_chamber.name=§4Sublimeringskammare
+
+#Tennkers' Construct Traits
+modifier.obscure_trait.name=Det Okända
+modifier.obscure_trait.desc=Binder fast dina fiender på sin plats för en stund
+modifier.opistognathus_trait.name=Rena rama Braxen
+modifier.opistognathus_trait.desc=Starkare attacker, och snabbare aktioner i vatten
+modifier.vulcan_trait.name=Island, nästa!
+modifier.vulcan_trait.desc=Tuttar temporärt eld på dina fiender beroende på nivå
+modifier.duplication_trait.name=Duplicering
+modifier.duplication_trait.desc=Chans till droppduplikation
+modifier.life_steal_trait.name=Blodigel
+modifier.life_steal_trait.desc="Turbaserad" chans to att få 10% av skadan gjord som hälsoåterbäring
+modifier.wither_trait.name=Vittring
+modifier.wither_trait.desc=Applicerar Withereffekten på fiender
+modifier.king_dice_trait.name=Schack med Djävulen
+modifier.king_dice_trait.desc=Vem fasiken vet vad som kommer hända!
+
+#Tools
+item.metallurgy.adamantine_axe.name=Adamantyxa
+item.metallurgy.adamantine_hoe.name=Adamantflohacka
+item.metallurgy.adamantine_pickaxe.name=Adamanthacka
+item.metallurgy.adamantine_shovel.name=Adamantspade
+item.metallurgy.adamantine_sword.name=Adamantsvärd
+
+item.metallurgy.amordrine_axe.name=Amordrinyxa
+item.metallurgy.amordrine_hoe.name=Amordrinflohacka
+item.metallurgy.amordrine_pickaxe.name=Amordrinhacka
+item.metallurgy.amordrine_shovel.name=Amordrinspade
+item.metallurgy.amordrine_sword.name=Amordrinsvärd
+
+item.metallurgy.angmallen_axe.name=Ångmallyxa
+item.metallurgy.angmallen_hoe.name=Ångmallflohacka
+item.metallurgy.angmallen_pickaxe.name=Ångmallhacka
+item.metallurgy.angmallen_shovel.name=Ångmallspade
+item.metallurgy.angmallen_sword.name=Ångmallsvärd
+
+item.metallurgy.astral_silver_axe.name=Astralsilveryxa
+item.metallurgy.astral_silver_hoe.name=Astralsilverflohacka
+item.metallurgy.astral_silver_pickaxe.name=Astralsilverhacka
+item.metallurgy.astral_silver_shovel.name=Astralsilverspade
+item.metallurgy.astral_silver_sword.name=Astralsilversvärd
+
+item.metallurgy.atlarus_axe.name=Atlarusyxa
+item.metallurgy.atlarus_hoe.name=Atlarusflohacka
+item.metallurgy.atlarus_pickaxe.name=Atlarushacka
+item.metallurgy.atlarus_shovel.name=Atlarusspade
+item.metallurgy.atlarus_sword.name=Atlarussvärd
+
+item.metallurgy.black_steel_axe.name=Svartstålyxa
+item.metallurgy.black_steel_hoe.name=Svartstålflohacka
+item.metallurgy.black_steel_pickaxe.name=Svartstålhacka
+item.metallurgy.black_steel_shovel.name=Svartstålspade
+item.metallurgy.black_steel_sword.name=Svartstålsvärd
+
+item.metallurgy.brass_axe.name=Mässingyxa
+item.metallurgy.brass_hoe.name=Mässingflohacka
+item.metallurgy.brass_pickaxe.name=Mässinghacka
+item.metallurgy.brass_shovel.name=Mässingspade
+item.metallurgy.brass_sword.name=Mässingsvärd
+
+item.metallurgy.bronze_axe.name=Bronsyxa
+item.metallurgy.bronze_hoe.name=Bronsflohacka
+item.metallurgy.bronze_pickaxe.name=Bronshacka
+item.metallurgy.bronze_shovel.name=Bronsspade
+item.metallurgy.bronze_sword.name=Bronssvärd
+
+item.metallurgy.carmot_axe.name=Karmotyxa
+item.metallurgy.carmot_hoe.name=Karmotflohacka
+item.metallurgy.carmot_pickaxe.name=Karmothacka
+item.metallurgy.carmot_shovel.name=Karmotspade
+item.metallurgy.carmot_sword.name=Karmotsvärd
+
+item.metallurgy.celenegil_axe.name=Selengilyxa
+item.metallurgy.celenegil_hoe.name=Selengilflohacka
+item.metallurgy.celenegil_pickaxe.name=Selengilhacka
+item.metallurgy.celenegil_shovel.name=Selengilspade
+item.metallurgy.celenegil_sword.name=Selengilsvärd
+
+item.metallurgy.ceruclase_axe.name=Ceruklasyxa
+item.metallurgy.ceruclase_hoe.name=Ceruklasflohacka
+item.metallurgy.ceruclase_pickaxe.name=Ceruklashacka
+item.metallurgy.ceruclase_shovel.name=Ceruklasspade
+item.metallurgy.ceruclase_sword.name=Ceruklassvärd
+
+item.metallurgy.copper_axe.name=Kopparyxa
+item.metallurgy.copper_hoe.name=Kopparflohacka
+item.metallurgy.copper_pickaxe.name=Kopparhacka
+item.metallurgy.copper_shovel.name=Kopparspade
+item.metallurgy.copper_sword.name=Kopparsvärd
+
+item.metallurgy.damascus_steel_axe.name=Damaskusstålyxa
+item.metallurgy.damascus_steel_hoe.name=Damaskusstålflohacka
+item.metallurgy.damascus_steel_pickaxe.name=Damaskusstålhacka
+item.metallurgy.damascus_steel_shovel.name=Damaskusstålspade
+item.metallurgy.damascus_steel_sword.name=Damaskusstålsvärd
+
+item.metallurgy.deep_iron_axe.name=Djupjärnyxa
+item.metallurgy.deep_iron_hoe.name=Djupjärnflohacka
+item.metallurgy.deep_iron_pickaxe.name=Djupjärnhacka
+item.metallurgy.deep_iron_shovel.name=Djupjärnspade
+item.metallurgy.deep_iron_sword.name=Djupjärnsvärd
+
+item.metallurgy.desichalkos_axe.name=Desichalkosyxa
+item.metallurgy.desichalkos_hoe.name=Desichalkosflohacka
+item.metallurgy.desichalkos_pickaxe.name=Desichalkoshacka
+item.metallurgy.desichalkos_shovel.name=Desichalkosspade
+item.metallurgy.desichalkos_sword.name=Desichalkossvärd
+
+item.metallurgy.electrum_axe.name=Elektrumyxa
+item.metallurgy.electrum_hoe.name=Elektrumflohacka
+item.metallurgy.electrum_pickaxe.name=Elektrumhacka
+item.metallurgy.electrum_shovel.name=Elektrumspade
+item.metallurgy.electrum_sword.name=Elektrumsvärd
+
+item.metallurgy.etherium_axe.name=Eteriumyxa
+item.metallurgy.etherium_hoe.name=Eteriumflohacka
+item.metallurgy.etherium_pickaxe.name=Eteriumhacka
+item.metallurgy.etherium_shovel.name=Eteriumspade
+item.metallurgy.etherium_sword.name=Eteriumsvärd
+
+item.metallurgy.eximite_axe.name=Exemityxa
+item.metallurgy.eximite_hoe.name=Exemitflohacka
+item.metallurgy.eximite_pickaxe.name=Exemithacka
+item.metallurgy.eximite_shovel.name=Exemitspade
+item.metallurgy.eximite_sword.name=Exemitsvärd
+
+item.metallurgy.haderoth_axe.name=Haderotyxa
+item.metallurgy.haderoth_hoe.name=Haderotflohacka
+item.metallurgy.haderoth_pickaxe.name=Haderothacka
+item.metallurgy.haderoth_shovel.name=Haderotspade
+item.metallurgy.haderoth_sword.name=Haderotsvärd
+
+item.metallurgy.hepatizon_axe.name=Hepazityxa
+item.metallurgy.hepatizon_hoe.name=Hepazitflohacka
+item.metallurgy.hepatizon_pickaxe.name=Hepazithacka
+item.metallurgy.hepatizon_shovel.name=Hepazitspade
+item.metallurgy.hepatizon_sword.name=Hepazitsvärd
+
+item.metallurgy.ignatius_axe.name=Ignitityxa
+item.metallurgy.ignatius_hoe.name=Ignititflohacka
+item.metallurgy.ignatius_pickaxe.name=Ignitithacka
+item.metallurgy.ignatius_shovel.name=Ignititspade
+item.metallurgy.ignatius_sword.name=Ignititsvärd
+
+item.metallurgy.inolashite_axe.name=Inolasityxa
+item.metallurgy.inolashite_hoe.name=Inolasitflohacka
+item.metallurgy.inolashite_pickaxe.name=Inolasithacka
+item.metallurgy.inolashite_shovel.name=Inolasitspade
+item.metallurgy.inolashite_sword.name=Inolasitsvärd
+
+item.metallurgy.kalendrite_axe.name=Kalendrityxa
+item.metallurgy.kalendrite_hoe.name=Kalendritflohacka
+item.metallurgy.kalendrite_pickaxe.name=Kalendrithacka
+item.metallurgy.kalendrite_shovel.name=Kalendritspade
+item.metallurgy.kalendrite_sword.name=Kalendritsvärd
+
+item.metallurgy.krik_axe.name=Krikyxa
+item.metallurgy.krik_hoe.name=Krikflohacka
+item.metallurgy.krik_pickaxe.name=Krikhacka
+item.metallurgy.krik_shovel.name=Krikspade
+item.metallurgy.krik_sword.name=Kriksvärd
+
+item.metallurgy.midasium_axe.name=Midasityxa
+item.metallurgy.midasium_hoe.name=Midasitflohacka
+item.metallurgy.midasium_pickaxe.name=Midasithacka
+item.metallurgy.midasium_shovel.name=Midasitspade
+item.metallurgy.midasium_sword.name=Midasitsvärd
+
+item.metallurgy.mithril_axe.name=Mithrilyxa
+item.metallurgy.mithril_hoe.name=Mithrilflohacka
+item.metallurgy.mithril_pickaxe.name=Mithrilhacka
+item.metallurgy.mithril_shovel.name=Mithrilspade
+item.metallurgy.mithril_sword.name=Mithrilsvärd
+
+item.metallurgy.orichalcum_axe.name=Orikalsityxa
+item.metallurgy.orichalcum_hoe.name=Orikalsitflohacka
+item.metallurgy.orichalcum_pickaxe.name=Orikalsithacka
+item.metallurgy.orichalcum_shovel.name=Orikalsitspade
+item.metallurgy.orichalcum_sword.name=Orikalsitsvärd
+
+item.metallurgy.oureclase_axe.name=Horiklasyxa
+item.metallurgy.oureclase_hoe.name=Horiklasflohacka
+item.metallurgy.oureclase_pickaxe.name=Horiklashacka
+item.metallurgy.oureclase_shovel.name=Horiklasspade
+item.metallurgy.oureclase_sword.name=Horiklassvärd
+
+item.metallurgy.platinum_axe.name=Platinumyxa
+item.metallurgy.platinum_hoe.name=Platinumflohacka
+item.metallurgy.platinum_pickaxe.name=Platinumhacka
+item.metallurgy.platinum_shovel.name=Platinumspade
+item.metallurgy.platinum_sword.name=Platinumsvärd
+
+item.metallurgy.prometheum_axe.name=Bastnäsityxa
+item.metallurgy.prometheum_hoe.name=Bastnäsitflohacka
+item.metallurgy.prometheum_pickaxe.name=Bastnäsithacka
+item.metallurgy.prometheum_shovel.name=Bastnäsitspade
+item.metallurgy.prometheum_sword.name=Bastnäsitsvärd
+
+item.metallurgy.quicksilver_axe.name=Alvsilverstålyxa
+item.metallurgy.quicksilver_hoe.name=Alvsilverstålflohacka
+item.metallurgy.quicksilver_pickaxe.name=Alvsilverstålhacka
+item.metallurgy.quicksilver_shovel.name=Alvsilverstålspade
+item.metallurgy.quicksilver_sword.name=Alvsilverstålsvärd
+
+item.metallurgy.sanguinite_axe.name=Sangvinyxa
+item.metallurgy.sanguinite_hoe.name=Sangvinflohacka
+item.metallurgy.sanguinite_pickaxe.name=Sangvinhacka
+item.metallurgy.sanguinite_shovel.name=Sangvinspade
+item.metallurgy.sanguinite_sword.name=Sangvinsvärd
+
+item.metallurgy.shadow_iron_axe.name=Svartjärnyxa
+item.metallurgy.shadow_iron_hoe.name=Svartjärnflohacka
+item.metallurgy.shadow_iron_pickaxe.name=Svartjärnhacka
+item.metallurgy.shadow_iron_shovel.name=Svartjärnspade
+item.metallurgy.shadow_iron_sword.name=Svartjärnsvärd
+
+item.metallurgy.shadow_steel_axe.name=Svartstålyxa
+item.metallurgy.shadow_steel_hoe.name=Svartstålflohacka
+item.metallurgy.shadow_steel_pickaxe.name=Svartstålhacka
+item.metallurgy.shadow_steel_shovel.name=Svartstålspade
+item.metallurgy.shadow_steel_sword.name=Svartstålsvärd
+
+item.metallurgy.silver_axe.name=Silveryxa
+item.metallurgy.silver_hoe.name=Silverflohacka
+item.metallurgy.silver_pickaxe.name=Silverhacka
+item.metallurgy.silver_shovel.name=Silverspade
+item.metallurgy.silver_sword.name=Silversvärd
+
+item.metallurgy.steel_axe.name=Stålyxa
+item.metallurgy.steel_hoe.name=Stålflohacka
+item.metallurgy.steel_pickaxe.name=Stålhacka
+item.metallurgy.steel_shovel.name=Stålspade
+item.metallurgy.steel_sword.name=Stålsvärd
+
+item.metallurgy.tartarite_axe.name=Tartarityxa
+item.metallurgy.tartarite_hoe.name=Tartaritflohacka
+item.metallurgy.tartarite_pickaxe.name=Tartarithacka
+item.metallurgy.tartarite_shovel.name=Tartaritspade
+item.metallurgy.tartarite_sword.name=Tartaritsvärd
+
+item.metallurgy.vulcanite_axe.name=Vulkanityxa
+item.metallurgy.vulcanite_hoe.name=Vulkanitflohacka
+item.metallurgy.vulcanite_pickaxe.name=Vulkanithacka
+item.metallurgy.vulcanite_shovel.name=Vulkanitspade
+item.metallurgy.vulcanite_sword.name=Vulkanitsvärd
+
+item.metallurgy.vyroxeres_axe.name=Vyroxityxa
+item.metallurgy.vyroxeres_hoe.name=Vyroxitflohacka
+item.metallurgy.vyroxeres_pickaxe.name=Vyroxithacka
+item.metallurgy.vyroxeres_shovel.name=Vyroxitspade
+item.metallurgy.vyroxeres_sword.name=Vyroxitsvärd
+
+#Tooltips
+#Armor Tooltips
+tooltip.metallurgy.adamantine_armor_effect=§4Vid kompletterat set: Konsumera erfarenhetspoäng för att återfå hunger
+tooltip.metallurgy.atlarus_armor_effect=§eSkapar en magisk bris för att förmjuka dina fall
+tooltip.metallurgy.amordrine_armor_effect=§dVid kompletterat set: Styrka II
+tooltip.metallurgy.angmallen_armor_effect=§eVid kompletterat set: (WIP) "Mer Tur" (WIP)
+tooltip.metallurgy.astral_silver_armor_effect=§fVid kompletterat set: Hoppstyrka
+tooltip.metallurgy.carmot_armor_effect=§eVid kompletterat set: (WIP) Skyndsamhet (WIP)
+tooltip.metallurgy.celenegil_armor_effect=§aVid kompletterat set: Resistans II - Vid halvt kompletterat set: Resistans I
+tooltip.metallurgy.ceruclase_armor_effect=§3Vid kompletterat set: Fiendeförsinkning
+tooltip.metallurgy.deep_iron_armor_effect=§3Vid kompletterat set: Snabbdykare
+tooltip.metallurgy.eximite_armor_effect=§5Vid kompletterat set: Endermen ser dig ej
+tooltip.metallurgy.kalendrite_armor_effect=§dVid kompletterat set: Styrka
+tooltip.metallurgy.krik_armor_effect=§2Vid kompletterat set: Tyngdkontrollerad levitering (Kontrolleras med PILTANGENTERNA)
+tooltip.metallurgy.lutetium_armor_effect=§6Slgasskydd II
+tooltip.metallurgy.mithril_armor_effect=§bVid kompletterat set: Entiteter lyser
+tooltip.metallurgy.osmium_armor_effect=§9SlgasskyddI
+tooltip.metallurgy.platinum_armor_effect=§bMörkerseende
+tooltip.metallurgy.prometheum_armor_effect=§2Vid kompletterat set: Giftimunitet
+tooltip.metallurgy.quicksilver_armor_effect=§bVid kompletterat set: Skyndsamhet
+tooltip.metallurgy.shadow_iron_armor_effect=§8Vid kompletterat set: Blindhetsimmunitet
+tooltip.metallurgy.shadow_steel_armor_effect=§8Vid kompletterat set: Håller längre i mörker
+tooltip.metallurgy.vulcanite_armor_effect=§cVid kompletterat set: Flammresistant
+tooltip.metallurgy.etherium_armor_effect=§5Vid kompletterat set: Likt en fantom kan du passera igenom solida väggar
+tooltip.metallurgy.desichalkos_armor_effect=§5Vid kompletterat set: Ger dig fingerfärdigheten att sno endermans älskade block, elaka du!
+tooltip.metallurgy.haderoth_armor_effect=§7Vid kompletterat set: Precis som Jesus, fast, på lava.
+
+#Other Tooltips
+tooltip.metallurgy.bitumen=§7Fås som sekundärdropp från torv
+tooltip.metallurgy.gauntlet_effect_disabled=§4Hanskens effekt har annulerats då moddet "Better With Mods" har laddats in
+tooltip.metallurgy.potash_fertilizer=§6Artificiell benmjölseffekt :D
+tooltip.metallurgy.phosphorus_lamp=§7Hindrar mobs från att spawna i en 16x8x16 block area runt den (ger ifrån sig svagt ljus)
+tooltip.metallurgy.thermite=§cKan som kol användas som bränsle (Men funkar bäst i Metallurgys egna maskiner med 200% effektivitet!) [Kolla in JEI för mer infor]
+tooltip.metallurgy.clear_detector_warning=§4Varning: Detta kommer rensa alla material som metalldetektorn kommer utlösas för
+
+#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
+#Axes
+tooltip.metallurgy.atlarus_axe_effect=§eHögerklicka för att förstöra lövblock bortom din normal slagsräckvidd
+tooltip.metallurgy.ignatius_axe_effect=§cHar chans till att smälta blocktrops
+
+#Pickaxes
+tooltip.metallurgy.deep_iron_pickaxe_effect=$1Lättviktig undervattenshackning
+tooltip.metallurgy.ignatius_pickaxe_effect=§6Kan spontant droppa en extra klimp av den malm du hackar på
+
+#spade
+tooltip.metallurgy.ignatius_shovel_effect=§cHar chans till att smälta blocktrops
+
+#svärds
+tooltip.metallurgy.celenegil_sword_effect=§aDem som fallit mot dig skänker dig både stryrka och snabbhet
+tooltip.metallurgy.ceruclase_sword_effect=§3Försinkar fiender
+tooltip.metallurgy.deep_iron_sword_effect=§3Förhöjd attackhastighet under vatten
+tooltip.metallurgy.desichalkos_sword_effect=§5Inducerar en slumpmässig debuff emot träffade
+tooltip.metallurgy.ignatius_sword_effect=§cEldkraft I
+tooltip.metallurgy.kalendrite_sword_effect=§dHar en chans att regenerera ditt liv
+tooltip.metallurgy.midasium_sword_effect=§6Duplisering
+tooltip.metallurgy.mithril_sword_effect=§bLyser upp den träffade
+tooltip.metallurgy.orichalcum_sword_effect=§2Dem som fallit mot dig skänker dig stryrka
+tooltip.metallurgy.sanguinite_sword_effect=§4Livsåterbäring
+tooltip.metallurgy.shadow_iron_sword_effect=§8Förblindar målet [Bind din fiende i skoggor!]
+tooltip.metallurgy.shadow_steel_sword_effect=§8Attackhastigheten är proportionell med mörkernivån
+tooltip.metallurgy.tartarite_sword_effect=§8Vissnande II
+tooltip.metallurgy.vulcanite_sword_effect=§cEldkraft II
+tooltip.metallurgy.vyroxeres_sword_effect=§aFörgiftar den träffade
+
+#Hoe
+tooltip.metallurgy.atlarus_hoe_effect=§eHögerklicka för att förstöra allt gräs i närheten av spelaren
+
+#Tools
+tooltip.metallurgy.shadow_steel_tool_effect=§8Verktygets hastighet är propotionell till mörkernivån
+
+#Utils
+util.world_join_message.1=§6§lVälkommen till Metallurgy 4: Reforged
+util.world_join_message.3=§6För mer info, bugrapporter och feedback finns Githubbet nedan:
+util.github_repo_url=https://github.com/Davoleo/Metallurgi-4-Reforged
+util.world_join_message.4=Du kan stänga av detta meddelande i konfigurationsfilen
