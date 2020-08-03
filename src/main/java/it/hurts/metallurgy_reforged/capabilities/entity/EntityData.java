@@ -11,16 +11,12 @@
 
 package it.hurts.metallurgy_reforged.capabilities.entity;
 
+import it.hurts.metallurgy_reforged.effect.armor.DesichalkosArmorEffect;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 
 import java.util.Random;
 
 public class EntityData {
-
-    private static final IBlockState[] borrowableBlocks = new IBlockState[]{Blocks.DIRT.getDefaultState(),
-                                                                            Blocks.IRON_BLOCK.getDefaultState(),
-                                                                            Blocks.COMMAND_BLOCK.getDefaultState()};
 
     public boolean wasSnatched = false;
     public IBlockState snatchableBlock = null;
@@ -31,7 +27,7 @@ public class EntityData {
         Random random = new Random();
         if (random.nextInt(4) == 0 && !initialized)
         {
-            this.snatchableBlock = borrowableBlocks[random.nextInt(borrowableBlocks.length)];
+            this.snatchableBlock = DesichalkosArmorEffect.borrowableBlocks[random.nextInt(DesichalkosArmorEffect.borrowableBlocks.length)];
             this.initialized = true;
         }
     }

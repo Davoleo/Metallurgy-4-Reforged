@@ -43,6 +43,15 @@ public class ArmorEffectsConfig {
 	@Config.Name("Deep Iron Armor Effect")
 	@Config.Comment("Full armor makes you walk faster underwater")
 	public static boolean deepIronArmorEffect = true;
+	@Config.Name("Desichalkos Armor Effect")
+	@Config.Comment("Allows the player to take some special blocks from endermen")
+	public static boolean desichalkosArmorEffect = true;
+	@Config.Name("Desichalkos Armor Effect")
+	@Config.Comment("Allows the player to take some special blocks from endermen")
+	public static String[] desichalkosEndermenBlocks = {"minecraft:iron_block", "minecraft:gold_block",
+	                                                    "minecraft:obsidian", "minecraft:glowstone",
+	                                                    "minecraft:diamond_block", "metallurgy:adamantine_block",
+	                                                    "metallurgy:atlarus_block"};
 	@Config.Name("Etherium Armor Effect")
 	@Config.Comment("Full armor gives the ability you to go through walls")
 	public static boolean etheriumArmorEffect = true;
@@ -82,9 +91,6 @@ public class ArmorEffectsConfig {
 	@Config.Name("Vulcanite Armor Effect")
 	@Config.Comment("You can't take damage from fire")
 	public static boolean vulcaniteArmorEffect = true;
-	@Config.Name("Desichalkos Armor Effect")
-	@Config.Comment("Allows the pla")
-	public static boolean desichalkosArmorEffect = true;
 
 	private ArmorEffectsConfig() {}
 
