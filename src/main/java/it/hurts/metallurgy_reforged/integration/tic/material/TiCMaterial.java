@@ -21,14 +21,16 @@ public class TiCMaterial extends Material {
 
 	public TiCMaterial(Metal metal)
 	{
-		super(metal.getStats().getName(), metal.getMolten().getColor(), false);
+		super(metal.toString(), metal.getMolten().getColor(), false);
 		this.metal = metal;
 		this.setFluid(metal.getMolten());
 		this.setCastable(true);
-		this.addItem(metal.getIngot());
-		this.setRepresentativeItem(metal.getIngot());
+		this.addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+		this.setRepresentativeItem("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 		TiCMaterials.addMaterialStats(metal, this);
-		addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.getStats().getName()));
+
+		//Gli slang di @PierKnight100
+		//NullerPointer | Buggo | Oredirect | WRUAPPER
 	}
 
 	@Override
