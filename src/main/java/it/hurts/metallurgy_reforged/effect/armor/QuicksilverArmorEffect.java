@@ -59,39 +59,42 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect
     {
         if (livingEvent instanceof LivingEntityUseItemEvent)
         {
-
             LivingEntityUseItemEvent event = ((LivingEntityUseItemEvent) livingEvent);
 
             if (event.getEntityLiving() instanceof EntityPlayer)
             {
                 EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
-                ItemStack stack = event.getItem();
-                Item item = stack.getItem();
 
                 if (EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
                 {
-
-                    int duration = event.getDuration();
-
-                    if (ModChecker.isTConLoaded && IntegrationTIC.isCrossbow(item))
-                    {
-                        if (event instanceof LivingEntityUseItemEvent.Tick)
-                        {
-                            event.setDuration(duration - 1);
-                        }
-                    }
-                    else if (event instanceof LivingEntityUseItemEvent.Start)
-                    {
-                        if (item.getItemUseAction(stack) == EnumAction.BOW)
-                        {
-                            event.setDuration(duration - 7);
-                        }
-                        else
-                        {
-                            event.setDuration(Math.round(duration / 2F));
-                        }
-                    }
+                    apply(event);
                 }
+            }
+        }
+    }
+
+    public static void apply(LivingEntityUseItemEvent event)
+    {
+        ItemStack stack = event.getItem();
+        Item item = stack.getItem();
+        int duration = event.getDuration();
+
+        if (ModChecker.isTConLoaded && IntegrationTIC.isCrossbow(item))
+        {
+            if (event instanceof LivingEntityUseItemEvent.Tick)
+            {
+                event.setDuration(duration - 1);
+            }
+        }
+        else if (event instanceof LivingEntityUseItemEvent.Start)
+        {
+            if (item.getItemUseAction(stack) == EnumAction.BOW)
+            {
+                event.setDuration(duration - 7);
+            }
+            else
+            {
+                event.setDuration(Math.round(duration / 2F));
             }
         }
     }

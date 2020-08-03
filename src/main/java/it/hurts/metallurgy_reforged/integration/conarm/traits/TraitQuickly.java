@@ -12,10 +12,9 @@
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
+import it.hurts.metallurgy_reforged.effect.armor.QuicksilverArmorEffect;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemBow;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -28,22 +27,13 @@ public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurg
 	}
 
 	@SubscribeEvent
-	public void increaseVelocity(LivingEntityUseItemEvent.Start ev)
+	public void increaseVelocity(LivingEntityUseItemEvent event)
 	{
-		if (ev.getEntityLiving() instanceof EntityPlayer)
+		if (MetallurgyConArmorStats.isArmorTrait((EntityPlayer) event.getEntity(), "quickly"))
 		{
-			EntityPlayer player = (EntityPlayer) ev.getEntityLiving();
-			if (MetallurgyConArmorStats.isArmorTrait(player, "quickly"))
-			{
-				if (ev.getItem().getItem() instanceof ItemBow)
-				{
-					if (ev.getItem().getItem().getItemUseAction(ev.getItem()) == EnumAction.BOW)
-						ev.setDuration(ev.getDuration() - 6);
-					else
-						ev.setDuration(Math.round(ev.getDuration() / 2F));
-				}
-			}
+			QuicksilverArmorEffect.apply(event);
 		}
 	}
+
 
 }
