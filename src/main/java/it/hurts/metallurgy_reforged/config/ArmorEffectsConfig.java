@@ -46,8 +46,8 @@ public class ArmorEffectsConfig {
 	@Config.Name("Desichalkos Armor Effect")
 	@Config.Comment("Allows the player to take some special blocks from endermen")
 	public static boolean desichalkosArmorEffect = true;
-	@Config.Name("Desichalkos Armor Effect")
-	@Config.Comment("Allows the player to take some special blocks from endermen")
+	@Config.Name("Desichalkos Effect Special Blocks")
+	@Config.Comment("The list of blocks that endermen can show the player when they're wearing a desichalkos armor set")
 	public static String[] desichalkosEndermenBlocks = {"minecraft:iron_block", "minecraft:gold_block",
 	                                                    "minecraft:obsidian", "minecraft:glowstone",
 	                                                    "minecraft:diamond_block", "metallurgy:adamantine_block",

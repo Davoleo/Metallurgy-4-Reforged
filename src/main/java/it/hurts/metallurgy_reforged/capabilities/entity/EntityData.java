@@ -27,6 +27,7 @@ public class EntityData {
         Random random = new Random();
         if (random.nextInt(4) == 0 && !initialized)
         {
+            System.out.println(DesichalkosArmorEffect.borrowableBlocks.length);
             this.snatchableBlock = DesichalkosArmorEffect.borrowableBlocks[random.nextInt(DesichalkosArmorEffect.borrowableBlocks.length)];
             this.initialized = true;
         }

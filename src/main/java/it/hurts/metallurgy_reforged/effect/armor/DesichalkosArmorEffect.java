@@ -37,16 +37,11 @@ import java.util.Objects;
 
 public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 
-    public static IBlockState[] borrowableBlocks;
-
-    static
-    {
-        borrowableBlocks = Arrays.stream(ArmorEffectsConfig.desichalkosEndermenBlocks)
-                .map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
-                .filter(Objects::nonNull)
-                .map(Block::getDefaultState)
-                .toArray(IBlockState[]::new);
-    }
+    public static final IBlockState[] borrowableBlocks = Arrays.stream(ArmorEffectsConfig.desichalkosEndermenBlocks)
+            .map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
+            .filter(Objects::nonNull)
+            .map(Block::getDefaultState)
+            .toArray(IBlockState[]::new);
 
     public DesichalkosArmorEffect()
     {
