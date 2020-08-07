@@ -21,7 +21,7 @@ class RecipeJsonGenerator {
 
     static def materials = IntegrationProjectE.emcMap.keySet()
 
-    static def pascalMaterials = materials.each { CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, it) }
+    //static def pascalMaterials = materials.each { CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, it) }
 
     //JsonOutput.prettyPrint()
     //BufferedWriter
@@ -271,7 +271,7 @@ class RecipeJsonGenerator {
             writeJson("boots", metal, bootsObj)
         }
 
-        if (markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR) {
+        if (markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR && markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS) {
             //------------------------------- TOOLS --------------------------------
 
             //axe
