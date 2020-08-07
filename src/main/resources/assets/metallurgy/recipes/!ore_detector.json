@@ -1,18 +1,18 @@
 {
 	"type": "forge:ore_shaped",
 	"pattern": [
-		"CI ",
-		"ICI",
-		" IR"
+		"CA ",
+		"ACA",
+		" AR"
 	],
 	"key": {
 		"C": {
 			"type": "forge:ore_dict",
 			"ore": "ingotCopper"
 		},
-		"I": {
+		"A": {
 			"type": "forge:ore_dict",
-			"ore": "ingotIron"
+			"ore": "ingotAngmallen"
 		},
 		"R": {
 			"type": "forge:ore_dict",
