@@ -18,7 +18,7 @@ public class SmallIslandsSpawn extends BaseOreSpawn
     @Override
     public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
     {
-        if(pos.getX() > 5000 || pos.getZ() > 5000)
+        if(Math.abs(pos.getX()) >= 700 || Math.abs(pos.getZ()) >= 700)
             return super.canOreSpawn(world, pos, state, random);
         return false;
     }
