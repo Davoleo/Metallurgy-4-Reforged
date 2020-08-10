@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		" N ",
-		"NIN",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotEximite"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetEximite"
-		}
-	},
-	"result": {
-		"item": "metallurgy:eximite_crystals"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " N ",
+        "NIN",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotEximite"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetEximite"
+        }
+    },
+    "result": {
+        "item": "metallurgy:eximite_crystals"
+    }
 }

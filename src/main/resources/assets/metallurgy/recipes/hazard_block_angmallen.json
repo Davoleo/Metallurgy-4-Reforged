@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotAngmallen"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetAngmallen"
-		}
-	},
-	"result": {
-		"item": "metallurgy:angmallen_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotAngmallen"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetAngmallen"
+        }
+    },
+    "result": {
+        "item": "metallurgy:angmallen_hazard_block"
+    }
 }

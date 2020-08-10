@@ -3,19 +3,23 @@
     "ingredients": [
         {
             "type": "forge:ore_dict",
-            "ore": "dustLemurite"
+            "ore": "dustManganese"
         },
         {
             "type": "forge:ore_dict",
-            "ore": "dustShadowIron"
+            "ore": "dustManganese"
         },
         {
             "type": "forge:ore_dict",
-            "ore": "dustShadowIron"
+            "ore": "dustManganese"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustIron"
         }
     ],
     "result": {
-        "item": "metallurgy:shadow_steel_dust",
-        "count": 3
+        "item": "metallurgy:steel_dust",
+        "count": 2
     }
 }

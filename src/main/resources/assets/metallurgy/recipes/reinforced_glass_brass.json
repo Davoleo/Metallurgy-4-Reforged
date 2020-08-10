@@ -1,20 +1,20 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"GIG",
-		"III",
-		"GIG"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotBrass"
-		},
-		"G": {
-			"item": "minecraft:glass"
-		}
-	},
-	"result": {
-		"item": "metallurgy:brass_reinforced_glass"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "GIG",
+        "III",
+        "GIG"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotBrass"
+        },
+        "G": {
+            "item": "minecraft:glass"
+        }
+    },
+    "result": {
+        "item": "metallurgy:brass_reinforced_glass"
+    }
 }

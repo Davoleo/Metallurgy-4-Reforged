@@ -123,6 +123,11 @@ class RecipeJsonGenerator {
                     new RecipesJsonGenHelper.Stack("brass", 4)
             ],
             [
+                    new RecipesJsonGenHelper.Stack("iron", 1),
+                    new RecipesJsonGenHelper.Stack("manganese", 3),
+                    new RecipesJsonGenHelper.Stack("steel", 2)
+            ],
+            [
                     new RecipesJsonGenHelper.Stack("deep_iron", 3),
                     new RecipesJsonGenHelper.Stack("infuscolium", 1),
                     new RecipesJsonGenHelper.Stack("black_steel", 4)

@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotQuicksilver"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetQuicksilver"
-		}
-	},
-	"result": {
-		"item": "metallurgy:quicksilver_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotQuicksilver"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetQuicksilver"
+        }
+    },
+    "result": {
+        "item": "metallurgy:quicksilver_hazard_block"
+    }
 }

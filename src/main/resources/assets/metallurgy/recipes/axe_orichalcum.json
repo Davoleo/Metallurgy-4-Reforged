@@ -1,20 +1,20 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"II",
-		"IS",
-		" S"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotOrichalcum"
-		},
-		"S": {
-			"item": "minecraft:stick"
-		}
-	},
-	"result": {
-		"item": "metallurgy:orichalcum_axe"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "II",
+        "IS",
+        " S"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotOrichalcum"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "metallurgy:orichalcum_axe"
+    }
 }

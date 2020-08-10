@@ -1,16 +1,16 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"III",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotTartarite"
-		}
-	},
-	"result": {
-		"item": "metallurgy:tartarite_bricks"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "III",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotTartarite"
+        }
+    },
+    "result": {
+        "item": "metallurgy:tartarite_bricks"
+    }
 }

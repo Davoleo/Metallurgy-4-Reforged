@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotTin"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetTin"
-		}
-	},
-	"result": {
-		"item": "metallurgy:tin_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotTin"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetTin"
+        }
+    },
+    "result": {
+        "item": "metallurgy:tin_hazard_block"
+    }
 }

@@ -1,17 +1,17 @@
 {
-	"type": "forge:ore_shapeless",
-	"ingredients": [
-		{
-			"type": "forge:ore_dict",
-			"ore": "dustCarmot"
-		},
-		{
-			"type": "forge:ore_dict",
-			"ore": "dustSanguinite"
-		}
-	],
-	"result": {
-		"item": "metallurgy:etherium_dust",
-		"count": 2
-	}
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustCarmot"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustSanguinite"
+        }
+    ],
+    "result": {
+        "item": "metallurgy:etherium_dust",
+        "count": 2
+    }
 }

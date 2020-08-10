@@ -1,16 +1,16 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"III",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotEximite"
-		}
-	},
-	"result": {
-		"item": "metallurgy:eximite_bricks"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "III",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotEximite"
+        }
+    },
+    "result": {
+        "item": "metallurgy:eximite_bricks"
+    }
 }

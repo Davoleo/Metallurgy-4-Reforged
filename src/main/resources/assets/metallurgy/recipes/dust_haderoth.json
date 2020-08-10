@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shapeless",
-	"ingredients": [
-		{
-			"type": "forge:ore_dict",
-			"ore": "dustRubracium"
-		},
-		{
-			"type": "forge:ore_dict",
-			"ore": "dustRubracium"
-		},
-		{
-			"type": "forge:ore_dict",
-			"ore": "dustMithril"
-		}
-	],
-	"result": {
-		"item": "metallurgy:haderoth_dust",
-		"count": 3
-	}
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRubracium"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRubracium"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustMithril"
+        }
+    ],
+    "result": {
+        "item": "metallurgy:haderoth_dust",
+        "count": 3
+    }
 }
