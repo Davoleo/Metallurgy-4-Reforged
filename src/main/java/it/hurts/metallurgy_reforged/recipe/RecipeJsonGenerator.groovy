@@ -195,16 +195,12 @@ class RecipeJsonGenerator {
     ]
 
     static void main(String[] args) {
-        materials.forEach(metal -> {
+        materials.forEach({ metal ->
             generateShapedRecipes(metal)
             generateShapelessRecipes(metal)
         })
 
-        alloys.each { alloy ->
-            {
-                generateAlloyRecipes(alloy)
-            }
-        }
+        alloys.each { alloy -> generateAlloyRecipes(alloy) }
     }
 
     private static void generateShapedRecipes(String metal) {
