@@ -1,13 +1,13 @@
 {
-	"type": "forge:ore_shapeless",
-	"ingredients": [
-		{
-			"type": "forge:ore_dict",
-			"ore": "ingotEtherium"
-		}
-	],
-	"result": {
-		"item": "metallurgy:etherium_nugget",
-		"count": 9
-	}
+    "type": "forge:ore_shapeless",
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotEtherium"
+        }
+    ],
+    "result": {
+        "item": "metallurgy:etherium_nugget",
+        "count": 9
+    }
 }

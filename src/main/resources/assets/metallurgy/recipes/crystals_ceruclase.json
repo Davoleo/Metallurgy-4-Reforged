@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		" N ",
-		"NIN",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotCeruclase"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetCeruclase"
-		}
-	},
-	"result": {
-		"item": "metallurgy:ceruclase_crystals"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        " N ",
+        "NIN",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotCeruclase"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetCeruclase"
+        }
+    },
+    "result": {
+        "item": "metallurgy:ceruclase_crystals"
+    }
 }

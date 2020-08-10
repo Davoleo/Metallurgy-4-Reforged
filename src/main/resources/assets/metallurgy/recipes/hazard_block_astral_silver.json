@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotAstralSilver"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetAstralSilver"
-		}
-	},
-	"result": {
-		"item": "metallurgy:astral_silver_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotAstralSilver"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetAstralSilver"
+        }
+    },
+    "result": {
+        "item": "metallurgy:astral_silver_hazard_block"
+    }
 }

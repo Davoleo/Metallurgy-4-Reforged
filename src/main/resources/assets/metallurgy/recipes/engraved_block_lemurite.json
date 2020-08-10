@@ -1,17 +1,17 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"III",
-		"I I",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotLemurite"
-		}
-	},
-	"result": {
-		"item": "metallurgy:lemurite_engraved_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "III",
+        "I I",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotLemurite"
+        }
+    },
+    "result": {
+        "item": "metallurgy:lemurite_engraved_block"
+    }
 }

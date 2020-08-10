@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotCelenegil"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetCelenegil"
-		}
-	},
-	"result": {
-		"item": "metallurgy:celenegil_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotCelenegil"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetCelenegil"
+        }
+    },
+    "result": {
+        "item": "metallurgy:celenegil_hazard_block"
+    }
 }

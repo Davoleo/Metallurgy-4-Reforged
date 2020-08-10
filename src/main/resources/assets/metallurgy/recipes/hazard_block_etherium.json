@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotEtherium"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetEtherium"
-		}
-	},
-	"result": {
-		"item": "metallurgy:etherium_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotEtherium"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetEtherium"
+        }
+    },
+    "result": {
+        "item": "metallurgy:etherium_hazard_block"
+    }
 }

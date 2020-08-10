@@ -1,16 +1,16 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"II",
-		"II"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotKrik"
-		}
-	},
-	"result": {
-		"item": "metallurgy:krik_large_bricks"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "II",
+        "II"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotKrik"
+        }
+    },
+    "result": {
+        "item": "metallurgy:krik_large_bricks"
+    }
 }

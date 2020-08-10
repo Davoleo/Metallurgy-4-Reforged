@@ -1,21 +1,21 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"NIN",
-		"INI",
-		"NIN"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotSilver"
-		},
-		"N": {
-			"type": "forge:ore_dict",
-			"ore": "nuggetSilver"
-		}
-	},
-	"result": {
-		"item": "metallurgy:silver_hazard_block"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "NIN",
+        "INI",
+        "NIN"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotSilver"
+        },
+        "N": {
+            "type": "forge:ore_dict",
+            "ore": "nuggetSilver"
+        }
+    },
+    "result": {
+        "item": "metallurgy:silver_hazard_block"
+    }
 }

@@ -1,20 +1,20 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"GIG",
-		"III",
-		"GIG"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotTin"
-		},
-		"G": {
-			"item": "minecraft:glass"
-		}
-	},
-	"result": {
-		"item": "metallurgy:tin_reinforced_glass"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "GIG",
+        "III",
+        "GIG"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotTin"
+        },
+        "G": {
+            "item": "minecraft:glass"
+        }
+    },
+    "result": {
+        "item": "metallurgy:tin_reinforced_glass"
+    }
 }

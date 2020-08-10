@@ -1,17 +1,17 @@
 {
-	"type": "forge:ore_shaped",
-	"pattern": [
-		"I I",
-		"III",
-		"III"
-	],
-	"key": {
-		"I": {
-			"type": "forge:ore_dict",
-			"ore": "ingotAtlarus"
-		}
-	},
-	"result": {
-		"item": "metallurgy:atlarus_chestplate"
-	}
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "I I",
+        "III",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotAtlarus"
+        }
+    },
+    "result": {
+        "item": "metallurgy:atlarus_chestplate"
+    }
 }
