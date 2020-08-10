@@ -41,6 +41,8 @@ minecraft {
 
 repositories {
 
+    jcenter()
+
     //location of the maven that hosts JEI & TCon
 	maven {
 		name = "Progwml6 maven"
@@ -67,6 +69,8 @@ repositories {
 }
 
 dependencies {
+
+    implementation('org.codehaus.groovy:groovy-all:2.5.7')
     
     //deobfProvided: Direct Source Code
     //runtime: only at runtime

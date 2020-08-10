@@ -11,18 +11,13 @@
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.entity.model.MonocleModel;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
@@ -30,27 +25,7 @@ public class ItemEtheriumMonocle extends ItemExtra {
 
 	public ItemEtheriumMonocle()
 	{
-		super("etherium_monocle", MetallurgyTabs.tabSpecial, "gadget");
-	}
-
-	@Nullable
-	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default)
-	{
-		if (armorSlot == EntityEquipmentSlot.HEAD)
-			return new MonocleModel();
-		else
-			return null;
-	}
-
-	@Nullable
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
-	{
-		if (slot == EntityEquipmentSlot.HEAD)
-			return Metallurgy.MODID + ":textures/models/etherium_monocle.png";
-		else
-			return null;
+		super("etherium_goggles", MetallurgyTabs.tabSpecial, "gadget");
 	}
 
 	@Override
