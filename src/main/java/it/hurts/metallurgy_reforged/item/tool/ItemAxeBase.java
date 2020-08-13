@@ -14,7 +14,9 @@ package it.hurts.metallurgy_reforged.item.tool;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -77,7 +79,9 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
 	@Override
 	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
 	{
-		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(ItemUtils.getToolRepairStack(this), repair)) || super.getIsRepairable(toRepair, repair);
+		Metal metal = ModMetals.metalMap.get(metalStats.getName());
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(new ItemStack(metal.getIngot()), repair))
+				|| super.getIsRepairable(toRepair, repair);
 	}
 
 	@SideOnly(Side.CLIENT)

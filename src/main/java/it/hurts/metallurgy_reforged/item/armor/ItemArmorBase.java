@@ -16,10 +16,10 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -71,7 +71,7 @@ public class ItemArmorBase extends ItemArmor {
 	private ItemStack getRepairStack()
 	{
 		String material = this.metalStats.getName().toLowerCase();
-		Metal metal = Utils.getMetalFromString(material);
+		Metal metal = ModMetals.metalMap.get(material);
 		if (metal != null)
 			return new ItemStack(metal.getIngot());
 		else
