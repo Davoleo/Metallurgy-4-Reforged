@@ -14,8 +14,6 @@ package it.hurts.metallurgy_reforged.util;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.*;
-import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -115,17 +113,6 @@ public class Utils {
 	{
 		return ((255 << 24) + r * 65536 + g * 256 + b);
 	}
-
-	public static Metal getMetalFromString(String string)
-	{
-		for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-		{
-			if (string.contains(entry.getKey()))
-				return entry.getValue();
-		}
-		return null;
-	}
-
 
 	@SideOnly(Side.CLIENT)
 	public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height)

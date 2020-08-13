@@ -97,16 +97,6 @@ public class ItemUtils {
 				.getItemDamage());
 	}
 
-	public static ItemStack getToolRepairStack(ItemTool tool)
-	{
-		String material = tool.getToolMaterialName().toLowerCase();
-		Metal metal = Utils.getMetalFromString(material);
-		if (metal != null)
-			return new ItemStack(metal.getIngot());
-		else
-			return ItemStack.EMPTY;
-	}
-
 	public static void editInventoryStackSize(NonNullList<ItemStack> inventory, int slot, int amount)
 	{
 		if (slot >= 0 && slot < inventory.size() && !inventory.get(slot).isEmpty())

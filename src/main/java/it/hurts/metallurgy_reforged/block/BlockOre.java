@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -86,9 +87,9 @@ public class BlockOre extends Block {
 	{
 		if (GeneralConfig.enableOreLight)
 		{
-			return this.getHarvestLevel(state) >= 5 ? 5 : 0;
+			return this.getHarvestLevel(state) >= 5 ? 5 : super.getLightValue(state, world, pos);
 		}
-		return 0;
+		return super.getLightValue(state, world, pos);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -109,7 +110,7 @@ public class BlockOre extends Block {
 	{
 		double d0 = 0.0625D;
 		String metalName = this.getRegistryName().getPath().replace("_ore", "");
-		Metal metal = Utils.getMetalFromString(metalName);
+		Metal metal = ModMetals.metalMap.get(metalName);
 
 		if (metal == null)
 			return;
