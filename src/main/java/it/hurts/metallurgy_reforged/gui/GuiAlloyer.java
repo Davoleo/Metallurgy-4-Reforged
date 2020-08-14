@@ -79,16 +79,16 @@ public class GuiAlloyer extends GuiContainer {
 	//returns the burn animation parameter (scaled by the size of the animated texture)
 	private int getBurnLeftScaled(int pixels)
 	{
-		int i = this.alloyer.getField(1);
-		return this.alloyer.getField(0) * pixels / Math.max(i, 200);
+		int totalBurnTime = this.alloyer.getField(1);
+		return this.alloyer.getField(0) * pixels / Math.max(totalBurnTime, 200);
 	}
 
 	//returns the process animation parameter (scaled by the size of the animated texture)
 	private int getAlloyingProgressScaled(int pixels)
 	{
-		int i = this.alloyer.getField(2);
-		int j = this.alloyer.getField(3);
-		return j != 0 && i != 0 ? i * pixels / j : 0;
+		int alloyingTime = this.alloyer.getField(2);
+		int totalAlloyingTime = TileEntityAlloyer.TOTAL_ALLOYING_TIME;
+		return alloyingTime != 0 ? alloyingTime * pixels / totalAlloyingTime : 0;
 	}
 
 }

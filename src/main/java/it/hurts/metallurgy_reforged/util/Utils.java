@@ -54,7 +54,7 @@ public class Utils {
 			MobEffects.REGENERATION
 	};
 
-	public static void giveExperience(EntityPlayer thePlayer, float experience)
+	public static void giveExperience(EntityPlayer player, float experience)
 	{
 		int intExp = (int) experience;
 		float fractional = experience - intExp;
@@ -66,7 +66,7 @@ public class Utils {
 		{
 			int j = EntityXPOrb.getXPSplit(intExp);
 			intExp -= j;
-			thePlayer.world.spawnEntity(new EntityXPOrb(thePlayer.world, thePlayer.posX, thePlayer.posY + 0.5D, thePlayer.posZ + 0.5D, j));
+			player.world.spawnEntity(new EntityXPOrb(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, j));
 		}
 
 	}
