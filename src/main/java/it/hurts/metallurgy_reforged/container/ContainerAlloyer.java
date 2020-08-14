@@ -26,19 +26,19 @@ public class ContainerAlloyer extends Container {
 	private final IInventory alloyer;
 	private int alloyingTime, burnTime, currentBurnTime;
 
-	//Default values for player inventory, edit iStart only
-	public static final int iStart = 4, iEnd = iStart + 26, hStart = iEnd + 1, hEnd = hStart + 8;
-
 	public ContainerAlloyer(InventoryPlayer playerInv, IInventory alloyerInv)
 	{
 		this.alloyer = alloyerInv;
-		//    	playerInventory, Invenotry, Index, X, Y
-		this.addSlotToContainer(new Slot(alloyerInv, 0, 102, -8));    //Input
-		this.addSlotToContainer(new Slot(alloyerInv, 1, 123, -8));    //Input
-		this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 48));   //Fuel
-		this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 57, 42)); //Result 1
+		//input1
+		this.addSlotToContainer(new Slot(alloyerInv, 0, 102, -8));
+		//input2
+		this.addSlotToContainer(new Slot(alloyerInv, 1, 123, -8));
+		//Fuel
+		this.addSlotToContainer(new SlotFurnaceFuel(alloyerInv, 2, 111, 48));
+		//output
+		this.addSlotToContainer(new SlotAlloyerOutput(playerInv.player, alloyerInv, 3, 57, 42));
 
-		//        Collegamento all'inventario del player
+		//Add player main inventory slots
 		for (int y = 0; y < 3; y++)
 		{
 			for (int x = 0; x < 9; x++)
@@ -47,21 +47,25 @@ public class ContainerAlloyer extends Container {
 			}
 		}
 
-		//        Collegamento all'inventario della hotbar
+		//Add player hotbar slots
 		for (int x = 0; x < 9; x++)
 		{
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
 		}
 	}
 
-	//    Errore all'add Listener
-	public void addListener(IContainerListener listener)
+	/**
+	 * Synchronizes TE items
+	 */
+	public void addListener(@Nonnull IContainerListener listener)
 	{
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.alloyer);
 	}
 
-	//    Da qui non so come gestirmi
+	/**
+	 * Synchronizes TE fields with the client
+	 */
 	@Override
 	public void detectAndSendChanges()
 	{
@@ -80,7 +84,6 @@ public class ContainerAlloyer extends Container {
 		this.alloyingTime = this.alloyer.getField(2);
 		this.burnTime = this.alloyer.getField(0);
 		this.currentBurnTime = this.alloyer.getField(1);
-
 	}
 
 	@Override
@@ -96,11 +99,12 @@ public class ContainerAlloyer extends Container {
 		return this.alloyer.isUsableByPlayer(playerIn);
 	}
 
-
-	//-------------------- GENERAL SHIFT-CLICK METHODS --------------------
+	/**
+	 * Handles shift clicking in the GUI slots
+	 */
 	@Nonnull
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int index)
+	public ItemStack transferStackInSlot(@Nonnull EntityPlayer player, int index)
 	{
 		//Final Instance of the clicked item -
 		ItemStack itemstack = ItemStack.EMPTY;
@@ -121,10 +125,10 @@ public class ContainerAlloyer extends Container {
 					return ItemStack.EMPTY;
 				}
 
-				//TODO
-				//if (index == 3) {
-				//	slot.onTake(player, itemstack);
-				//}
+				if (index == 3)
+				{
+					slot.onTake(player, itemstack);
+				}
 			}
 			else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false))
 			{
