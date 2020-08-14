@@ -17,7 +17,6 @@ import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.world.spawn.*;
 import net.minecraft.block.Block;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -44,8 +43,8 @@ public class ModWorldGen implements IWorldGenerator
     private static final Block DEFAULT_NETHER = Blocks.NETHERRACK;
     public static final Block DEFAULT_END = Blocks.END_STONE;
 
-    private final int COMMON = WorldGenerationConfig.rarity.commonRarity;
-    private static final int UNCOMMON = WorldGenerationConfig.rarity.uncommonRarity;
+    public static final int COMMON = WorldGenerationConfig.rarity.commonRarity;
+    public static final int UNCOMMON = WorldGenerationConfig.rarity.uncommonRarity;
     private final int RARE = WorldGenerationConfig.rarity.rareRarity;
     private final int ULTRA_RARE = WorldGenerationConfig.rarity.ultraRareRarity;
 
@@ -113,7 +112,7 @@ public class ModWorldGen implements IWorldGenerator
         generateOre(ModMetals.ALDUORITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.alduorite.veinSize, UNCOMMON, WorldGenerationConfig.alduorite.minY, WorldGenerationConfig.alduorite.maxY, DEFAULT_NETHER,WorldGenerationConfig.alduorite.biomes);
         generateOre(ModMetals.KALENDRITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.kalendrite.veinSize, UNCOMMON, WorldGenerationConfig.kalendrite.minY, WorldGenerationConfig.kalendrite.maxY, DEFAULT_NETHER,WorldGenerationConfig.kalendrite.biomes);
         generateOre(ModMetals.VULCANITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.vulcanite.veinSize, UNCOMMON, WorldGenerationConfig.vulcanite.minY, WorldGenerationConfig.vulcanite.maxY, DEFAULT_NETHER,WorldGenerationConfig.vulcanite.biomes);
-        generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.sanguinite.veinSize, RARE, WorldGenerationConfig.sanguinite.minY, WorldGenerationConfig.sanguinite.maxY, DEFAULT_NETHER,WorldGenerationConfig.sanguinite.biomes);
+        generateOre(ModMetals.SANGUINITE.getOre(), world, random, chunkX, chunkZ, WorldGenerationConfig.sanguinite.veinSize, RARE, WorldGenerationConfig.sanguinite.minY, WorldGenerationConfig.sanguinite.maxY,new NearFortressSpawn());
     }
 
     private void generateEnd(Random random, int chunkX, int chunkZ, World world)
@@ -129,7 +128,7 @@ public class ModWorldGen implements IWorldGenerator
 
         if(veinSize > 0)
         {
-            WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), veinSize < 3 ? 3 : veinSize, oreSpawn.getBlockPredicate());
+            WorldGenMinable generator = new WorldGenMinable(block.getDefaultState(), Math.max(veinSize, 3), oreSpawn.getBlockPredicate());
             int heightdiff = maxY - minY + 1;
             int x, y, z;
 

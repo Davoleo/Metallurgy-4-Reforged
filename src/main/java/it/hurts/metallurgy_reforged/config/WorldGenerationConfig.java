@@ -382,11 +382,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Osmium minimum Y level")
 		@Config.RangeInt(min = 2, max = 255)
-		public int minY = 10;
+		public int minY = 3;
 
 		@Config.Comment("Osmium maximum Y level")
 		@Config.RangeInt(min = 2, max = 255)
-		public int maxY = 50;
+		public int maxY = 10;
 
 		@Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
