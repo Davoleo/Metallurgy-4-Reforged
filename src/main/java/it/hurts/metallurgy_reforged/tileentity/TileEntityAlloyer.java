@@ -15,27 +15,20 @@ import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.datafix.FixTypes;
-import net.minecraft.util.datafix.walkers.ItemStackDataLists;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -45,93 +38,31 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
+
+import static net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime;
 
 public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory {
 
-	private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
-	private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
-	private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
-	private static final int ALLOYING_TIME = 140;
-	private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
-	private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
-	private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
+	private static final int[] slotsBottom = Slots.OUTPUT_SLOT.slots();
+	private static final int[] slotsSides = Slots.FUEL_SLOT.slots();
+	private final IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+	private final IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
+	private final IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 	private NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
+
 	private String customName;
+
+	public static final int TOTAL_ALLOYING_TIME = 140;
 	private int burnTime;
-	private int currentBurnTime;
+	private int totalBurnTime;
 	private int alloyingTime;
-	private int totalAlloyingTime = 200;
 
 	private boolean isPoweredByThermite;
-
-	public static void registerFixesFurnace(DataFixer fixer)
-	{
-		fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
-	}
-
-	public static int getItemBurnTime(ItemStack stack)
-	{
-		if (stack.isEmpty())
-			return 0;
-		else
-		{
-			int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(stack);
-			if (burnTime >= 0)
-				return burnTime;
-			Item item = stack.getItem();
-
-			if (item == Item.getItemFromBlock(Blocks.WOODEN_SLAB))
-				return 150;
-			else if (item == Item.getItemFromBlock(Blocks.WOOL))
-				return 100;
-			else if (item == Item.getItemFromBlock(Blocks.CARPET))
-				return 67;
-			else if (item == Item.getItemFromBlock(Blocks.LADDER))
-				return 300;
-			else if (item == Item.getItemFromBlock(Blocks.WOODEN_BUTTON))
-				return 100;
-			else if (Block.getBlockFromItem(item).getDefaultState().getMaterial() == Material.WOOD)
-				return 300;
-			else if (item == Item.getItemFromBlock(Blocks.COAL_BLOCK))
-				return 16000;
-			else if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
-				return 200;
-			else if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
-				return 200;
-			else if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
-				return 200;
-			else if (item == Items.STICK)
-				return 100;
-			else if (item != Items.BOW && item != Items.FISHING_ROD)
-			{
-				if (item == Items.SIGN)
-					return 200;
-				else if (item == Items.COAL)
-					return 1600;
-				else if (item == Items.LAVA_BUCKET)
-					return 20000;
-				else if (item != Item.getItemFromBlock(Blocks.SAPLING) && item != Items.BOWL)
-				{
-					if (item == Items.BLAZE_ROD)
-						return 2400;
-					else if (item instanceof ItemDoor && item != Items.IRON_DOOR)
-						return 200;
-					else
-						return item instanceof ItemBoat ? 400 : 0;
-				}
-				else
-					return 100;
-			}
-			else
-				return 300;
-		}
-	}
 
 	public static boolean isItemFuel(ItemStack fuel)
 	{
@@ -161,12 +92,12 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public int getSizeInventory()
 	{
-
 		return this.inventory.size();
-
 	}
 
-	//Returns true if the inventory is empty
+	/**
+	 * @return true if the inventory is empty
+	 */
 	@Override
 	public boolean isEmpty()
 	{
@@ -187,7 +118,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public ItemStack decrStackSize(int index, int count)
 	{
-
 		return ItemStackHelper.getAndSplit(this.inventory, index, count);
 	}
 
@@ -195,7 +125,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public ItemStack removeStackFromSlot(int index)
 	{
-
 		return ItemStackHelper.getAndRemove(this.inventory, index);
 	}
 
@@ -203,24 +132,24 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	public void setInventorySlotContents(int index, @Nonnull ItemStack stack)
 	{
 		ItemStack itemstack = this.inventory.get(index);
-		boolean flag = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
+		boolean isEmptyOrNotEqualToTheSlotStack = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
+		//copies the stack you want to insert into the slot defined by the index
 		this.inventory.set(index, stack);
 
-		if (stack.getCount() > this.getInventoryStackLimit()) //Raccogliamo la quantità e controlliamo lo stack limit
-		{
+		if (stack.getCount() > this.getInventoryStackLimit())
 			stack.setCount(this.getInventoryStackLimit());
-		}
 
-		//Gathers information about the item you put in
-		if (SlotEnum.INPUT_SLOT.contains(index) && flag)
+		//Resets the alloying time in case you put some different items in the input slots
+		if (Slots.INPUT_SLOT.contains(index) && isEmptyOrNotEqualToTheSlotStack)
 		{
-			this.totalAlloyingTime = this.getAlloyingTime(stack);
 			this.alloyingTime = 0;
 			this.markDirty();
 		}
 	}
 
-	//Returns the name of the Tile Entity
+	/**
+	 * @return the name of the Tile Entity
+	 */
 	@Override
 	@Nonnull
 	public String getName()
@@ -228,73 +157,86 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		return this.hasCustomName() ? this.customName : "container.alloyer";
 	}
 
-	//Returns true if the tile entity has a custom name
+	/**
+	 * @return true if the tile entity has a custom name
+	 */
 	@Override
 	public boolean hasCustomName()
 	{
 		return this.customName != null && !this.customName.isEmpty();
 	}
 
-	//customName setter
 	public void setCustomName(String customName)
 	{
 		this.customName = customName;
 	}
 
-	//If the name is not custom it trasnlates the name
-	//If it is, returns directly the name
+	/**
+	 * If the name is not custom it translates the name
+	 * If it is, returns directly the name
+	 *
+	 * @return the name to be displayed
+	 */
 	@Override
 	@Nonnull
 	public ITextComponent getDisplayName()
 	{
-		return this.hasCustomName() ? new TextComponentString(this.getName())
-				: new TextComponentTranslation(this.getName());
+		return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
 	}
 
-	//Reads data from the NBT Tag
+	/**
+	 * Reads data from the NBT Tag
+	 */
 	@Override
-	public void readFromNBT(NBTTagCompound compound)
+	public void readFromNBT(@Nonnull NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
 		this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.inventory);
-		this.burnTime = compound.getInteger("burn_time");
-		this.alloyingTime = compound.getInteger("alloying_time");
-		this.totalAlloyingTime = compound.getInteger("total_alloying_time");
-		this.currentBurnTime = compound.getInteger("current_burn_time");
+		this.burnTime = compound.getShort("burn_time");
+		this.alloyingTime = compound.getShort("alloying_time");
+		this.totalBurnTime = compound.getShort("total_burn_time");
+
+		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
 
 		if (compound.hasKey("CustomName", 8))
 			this.setCustomName(compound.getString("CustomName"));
-
 	}
 
-	//Writes data to the NBT Tag
+	/**
+	 * Writes data to the NBT Tag
+	 */
 	@Nonnull
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound)
+	public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound compound)
 	{
-		super.writeToNBT(compound); //Ripeto che non lo ricordo
-		compound.setInteger("burn_time", (short) this.burnTime); //Impostiamo il BurnTime ma con meno bit possibili(lo compressiamo)
-		compound.setInteger("alloying_time", (short) this.alloyingTime);//Impostiamo il AlloyingTime ma con meno bit possibili(lo compressiamo)
-		compound.setInteger("current_burn_time", (short) this.currentBurnTime);//Impostiamo il BurnTime ma con meno bit possibili(lo compressiamo)
-		compound.setInteger("total_alloying_time", (short) this.totalAlloyingTime);//Impostiamo il AlloyingTime totale ma con meno bit possibili(lo compressiamo)
+		super.writeToNBT(compound);
+		compound.setShort("burn_time", (short) this.burnTime);
+		compound.setShort("alloying_time", (short) this.alloyingTime);
+		compound.setShort("total_burn_time", (short) this.totalBurnTime);
+
+		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
 		if (this.hasCustomName())
 			compound.setString("custom_name", this.customName);
 
 		return compound;
-
 	}
 
-	//Returns the Stack Limit as an int
+	/**
+	 * @return Returns the Stack Limit as an int
+	 */
 	@Override
 	public int getInventoryStackLimit()
 	{
 		return 64;
 	}
 
-	//Returns true if the fuel is burning
+	/**
+	 * @return true if the fuel is burning
+	 */
 	public boolean isBurning()
 	{
 		return this.burnTime > 0;
@@ -309,110 +251,109 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public void update()
 	{
+		boolean oldBurningState = isBurning();
+
+		if (isBurning())
 		{
-			boolean flag = this.isBurning();
-			boolean flag1 = false;
+			this.burnTime--;
 
-			if (this.isBurning())
+			if (canAlloy())
 			{
-				--this.burnTime;
-			}
 
-			if (!this.world.isRemote)
-			{
-				ItemStack fuel = this.inventory.get(2);
-
-				if (!fuel.isEmpty())
-					isPoweredByThermite = fuel.getItem() == ModItems.dustThermite;
-
-				if (this.isBurning() || !fuel.isEmpty() && !(this.inventory.get(0)).isEmpty() && !(this.inventory.get(1).isEmpty()))
+				if (!isPoweredByThermite)
 				{
-					if (!this.isBurning() && this.canAlloy())
-					{
-						this.burnTime = getItemBurnTime(fuel);
-						this.currentBurnTime = this.burnTime;
-
-						if (this.isBurning())
-						{
-							flag1 = true;
-
-							if (!fuel.isEmpty())
-							{
-								Item item = fuel.getItem();
-								fuel.shrink(1);
-
-								if (fuel.isEmpty())
-								{
-									ItemStack item1 = item.getContainerItem(fuel);
-									this.inventory.set(2, item1);
-								}
-							}
-						}
-					}
-
-					if (this.isBurning() && this.canAlloy())
-					{
-						if (isPoweredByThermite)
-							alloyingTime += 2;
-						else
-							++alloyingTime;
-
-						if (this.alloyingTime >= this.totalAlloyingTime)
-						{
-							this.alloyingTime = 0;
-							this.totalAlloyingTime = this.getAlloyingTime(this.inventory.get(0));
-							this.alloyItem();
-							flag1 = true;
-						}
-					}
-					else
-					{
-						this.alloyingTime = 0;
-					}
+					this.alloyingTime++;
 				}
-				else if (!this.isBurning() && this.alloyingTime > 0)
+				else
 				{
-					this.alloyingTime = MathHelper.clamp(this.alloyingTime - 2, 0, this.totalAlloyingTime);
+					//if alloying time is higher than the total then return total alloying time otherwise increase by 2
+					this.alloyingTime = Math.min(this.alloyingTime += 2, TOTAL_ALLOYING_TIME);
 				}
 
-				if (flag != this.isBurning())
+				if (alloyingTime >= TOTAL_ALLOYING_TIME)
 				{
-					flag1 = true;
-					BlockAlloyer.setState(this.isBurning(), this.world, this.pos);
+					alloyItem();
+					this.alloyingTime = 0;
+					markDirty();
 				}
 			}
+		}
+		else
+		{
+			ItemStack fuelStack = inventory.get(Slots.FUEL_SLOT.slots[0]);
+			Item fuelItem = fuelStack.getItem();
 
-			if (flag1)
+			if (!fuelStack.isEmpty() && canAlloy())
 			{
-				this.markDirty();
+				this.isPoweredByThermite = fuelStack.getItem() == ModItems.dustThermite;
+				this.burnTime = getItemBurnTime(fuelStack);
+				this.totalBurnTime = this.burnTime;
+				fuelStack.shrink(1);
+
+				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel
+				if (fuelStack.isEmpty())
+				{
+					ItemStack containerItem = fuelItem.getContainerItem(fuelStack);
+					inventory.set(Slots.FUEL_SLOT.slots[0], containerItem);
+				}
+
+				markDirty();
 			}
+
+			if (this.alloyingTime > 0)
+			{
+				//if alloying time is negative then alloying time should be zero, bitch
+				this.alloyingTime = Math.max(this.alloyingTime - 3, 0);
+			}
+		}
+
+		if (oldBurningState != isBurning())
+		{
+			BlockAlloyer.setState(isBurning(), this.world, this.pos);
 		}
 	}
 
+	/**
+	 * @return true if the recipe is valid and alloys can be made
+	 */
 	private boolean canAlloy()
 	{
+		ItemStack input1 = this.inventory.get(Slots.INPUT_SLOT.slots[0]);
+		ItemStack input2 = this.inventory.get(Slots.INPUT_SLOT.slots[1]);
 
-		ItemStack result = AlloyerRecipes.getInstance().getAlloyResult(this.inventory.get(0), this.inventory.get(1));
+		ItemStack result = AlloyerRecipes.getInstance().getAlloyResult(input1, input2);
 
-		if (result.isEmpty() || this.inventory.get(0).getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(0)) ||
-				this.inventory.get(1).getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, this.inventory.get(1)))
+		boolean areInputCountsLessThanRecipeCounts =
+				input1.getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, input1)
+						|| input2.getCount() < AlloyerRecipes.getInstance().getItemQuantity(result, input2);
+
+		//Can't alloy if the recipe result is empty or the input counts are less than recipe counts
+		if (result.isEmpty() || areInputCountsLessThanRecipeCounts)
+		{
 			return false;
+		}
 		else
 		{
-			ItemStack output = this.inventory.get(3);
+			ItemStack output = this.inventory.get(Slots.OUTPUT_SLOT.slots[0]);
+
+			//Can alloy if the output slot is empty
+			//Can't alloy if the output items or itemStacks are different
 			if (output.isEmpty())
 				return true;
 			else if (!output.isItemEqual(result) || !ItemStack.areItemStackTagsEqual(output, result))
 				return false;
 
-			int res = output.getCount() + result.getCount();
-			return res <= getInventoryStackLimit() && res <= output.getMaxStackSize();
+			//Can alloy if the output is the same itemStack and the sum of the old output and the recipe results don't exceed the stack limit
+			int resultCount = output.getCount() + result.getCount();
+			return resultCount <= getInventoryStackLimit() && resultCount <= output.getMaxStackSize();
 		}
 	}
 
+	/**
+	 * Handles input shrinking and output growing depending on the Alloying recipe
+	 */
 	private void alloyItem()
 	{
-
 		if (this.canAlloy())
 		{
 			ItemStack input1 = this.inventory.get(0);
@@ -431,11 +372,6 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		}
 	}
 
-	private int getAlloyingTime(@SuppressWarnings("unused") ItemStack stack)
-	{
-		return ALLOYING_TIME;
-	}
-
 	@Override
 	public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
 	{
@@ -445,67 +381,66 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			return player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
+	/**
+	 * Server side stuff when you open the GUI
+	 */
 	@Override
 	public void openInventory(@Nonnull EntityPlayer player)
 	{}
 
+	/**
+	 * Server side stuff when you close the GUI
+	 */
 	@Override
 	public void closeInventory(@Nonnull EntityPlayer player)
 	{}
 
+	/**
+	 * Only called when stacks are inserted using automated methods (i.e. hopper)
+	 *
+	 * @param index the index of the slot this item is being put into
+	 * @param stack the stack that is put into the slot
+	 *
+	 * @return Whether this item can be inserted in the slot
+	 */
 	@Override
 	public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
 	{
-		if (SlotEnum.OUTPUT_SLOT.contains(index))
+		//if the slot is the output we don't want to accept any itemstack
+		if (Slots.OUTPUT_SLOT.contains(index))
 		{
 			return false;
 		}
-		else if (SlotEnum.FUEL_SLOT.contains(index))
+		else if (Slots.FUEL_SLOT.contains(index))
 		{
-			ItemStack stack1 = inventory.get(index);
-			return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
+			ItemStack fuelStack = inventory.get(index);
+			return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && fuelStack.getItem() != Items.BUCKET;
 		}
-		else if (SlotEnum.INPUT_SLOT.contains(index))
+		else if (Slots.INPUT_SLOT.contains(index))
 		{
 			if (AlloyerRecipes.getInstance().isAlloyMetal(stack))
 			{
-				if (inventory.get(0).isEmpty())
+				ItemStack input1 = inventory.get(0);
+				ItemStack input2 = inventory.get(1);
+
+				if (input1.isEmpty())
 				{
-					ItemStack one = inventory.get(1);
-					if (one.isEmpty())
-					{
+					if (input2.isEmpty())
 						return true;
-					}
 					else
 					{
 						if (index == 1)
-						{
-							return one.isItemEqual(stack) || ItemStack.areItemsEqual(one, stack);
-						}
+							return input2.isItemEqual(stack) || ItemStack.areItemsEqual(input2, stack);
 						else
-						{
-							return !AlloyerRecipes.getInstance().getAlloyResult(one, stack).isEmpty();
-						}
+							return !AlloyerRecipes.getInstance().getAlloyResult(input2, stack).isEmpty();
 					}
 				}
-				else if (inventory.get(1).isEmpty())
+				else if (input2.isEmpty())
 				{
-					ItemStack zero = inventory.get(0);
-					if (zero.isEmpty())
-					{
-						return true;
-					}
+					if (index == 0)
+						return input1.isItemEqual(stack) || ItemStack.areItemsEqual(input1, stack);
 					else
-					{
-						if (index == 0)
-						{
-							return zero.isItemEqual(stack) || ItemStack.areItemsEqual(zero, stack);
-						}
-						else
-						{
-							return !AlloyerRecipes.getInstance().getAlloyResult(zero, stack).isEmpty();
-						}
-					}
+						return !AlloyerRecipes.getInstance().getAlloyResult(input1, stack).isEmpty();
 				}
 				else
 				{
@@ -514,14 +449,10 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 				}
 			}
 			else
-			{
 				return false;
-			}
 		}
 		else
-		{
 			return false;
-		}
 	}
 
 	@Nonnull
@@ -546,11 +477,9 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			case 0:
 				return this.burnTime;
 			case 1:
-				return this.currentBurnTime;
+				return this.totalBurnTime;
 			case 2:
 				return this.alloyingTime;
-			case 3:
-				return this.totalAlloyingTime;
 			default:
 				return 0;
 		}
@@ -565,13 +494,10 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 				this.burnTime = value;
 				break;
 			case 1:
-				this.currentBurnTime = value;
+				this.totalBurnTime = value;
 				break;
 			case 2:
 				this.alloyingTime = value;
-				break;
-			case 3:
-				this.totalAlloyingTime = value;
 				break;
 			default:
 				break;
@@ -584,6 +510,9 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		return 4;
 	}
 
+	/**
+	 * Clears the inventory
+	 */
 	@Override
 	public void clear()
 	{
@@ -606,29 +535,28 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction)
 	{
-		return SlotEnum.OUTPUT_SLOT.contains(index);
+		return Slots.OUTPUT_SLOT.contains(index);
 	}
 
-	public enum SlotEnum {// 	enumerate the slots
+	public enum Slots {
+
 		INPUT_SLOT(0, 1), OUTPUT_SLOT(3), FUEL_SLOT(2);
 
 		private final int[] slots;
-		private Set<Integer> slotSet;
 
-		SlotEnum(int... slots)
+		Slots(int... slots)
 		{
 			this.slots = slots;
-			slotSet = Arrays.stream(slots).boxed().collect(Collectors.toSet());
 		}
 
 		public int[] slots()
 		{
-			return Arrays.copyOf(slots, slots.length);
+			return slots;
 		}
 
 		public boolean contains(int i)
 		{
-			return slotSet.contains(i);
+			return ArrayUtils.contains(slots, i);
 		}
 	}
 

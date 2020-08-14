@@ -117,7 +117,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//Overrides the information about the items to drop when the block is broken
 	@Nonnull
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	public Item getItemDropped(@Nonnull IBlockState state, @Nonnull Random rand, int fortune)
 	{
 		return Item.getItemFromBlock(ModBlocks.alloyer);
 	}
@@ -125,14 +125,14 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//Overrides the itemstack that the player picks up
 	@Nonnull
 	@Override
-	public ItemStack getPickBlock(@Nonnull IBlockState state, RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, @Nonnull EntityPlayer player)
 	{
 		return new ItemStack(ModBlocks.alloyer);
 	}
 
 	//Called when the block is right-clicked by a player
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
+	public boolean onBlockActivated(World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull EntityPlayer player, @Nonnull EnumHand hand, @Nonnull EnumFacing side, float hitX, float hitY, float hitZ)
 	{
 		//if on server world
 		if (!world.isRemote)
@@ -152,7 +152,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//Called after the block is set in the Chunk data, but before the Tile Entity is set
 	//Adjusts the rotation at which the block is placed, based on the blocks around the Alloyer and the angle of the player while placing the block
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	public void onBlockAdded(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
 	{
 		// if on server world
 		if (!worldIn.isRemote)
@@ -180,7 +180,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//Overrides the light level of this block
 	//It returns 0 if the Alloyer BURNING state is false, it returns 8 if the Alloyer BURNING state is true
 	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
+	public int getLightValue(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
 	{
 		if (state.getValue(BURNING))
 		{
@@ -234,7 +234,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//We getOpposite since we want the front of the Block to be directly facing our side
 	@Nonnull
 	@Override
-	public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
+	public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, @Nonnull EnumHand hand)
 	{
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
@@ -242,7 +242,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	//Called by ItemBlocks after a block is set in the world, to allow post-place logic
 	//We getOpposite since we want the front of the Block to be directly facing our side
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	public void onBlockPlacedBy(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
 		worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 
@@ -259,14 +259,14 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isFullCube(IBlockState state)
+	public boolean isFullCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isOpaqueCube(IBlockState state)
+	public boolean isOpaqueCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
@@ -276,7 +276,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	@SuppressWarnings("deprecation")
 	@Nonnull
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state)
+	public EnumBlockRenderType getRenderType(@Nonnull IBlockState state)
 	{
 		return EnumBlockRenderType.MODEL;
 	}

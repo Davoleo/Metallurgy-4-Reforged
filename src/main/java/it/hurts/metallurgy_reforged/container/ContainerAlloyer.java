@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
 public class ContainerAlloyer extends Container {
 
 	private final IInventory alloyer;
-	private int alloyingTime, totalAlloyingTime, burnTime, currentBurnTime;
+	private int alloyingTime, burnTime, currentBurnTime;
 
 	//Default values for player inventory, edit iStart only
 	public static final int iStart = 4, iEnd = iStart + 26, hStart = iEnd + 1, hEnd = hStart + 8;
@@ -75,14 +75,11 @@ public class ContainerAlloyer extends Container {
 				listener.sendWindowProperty(this, 0, this.alloyer.getField(0));
 			if (this.currentBurnTime != this.alloyer.getField(1))
 				listener.sendWindowProperty(this, 1, this.alloyer.getField(1));
-			if (this.totalAlloyingTime != this.alloyer.getField(3))
-				listener.sendWindowProperty(this, 3, this.alloyer.getField(3));
 		}
 
 		this.alloyingTime = this.alloyer.getField(2);
 		this.burnTime = this.alloyer.getField(0);
 		this.currentBurnTime = this.alloyer.getField(1);
-		this.totalAlloyingTime = this.alloyer.getField(3);
 
 	}
 
@@ -123,6 +120,11 @@ public class ContainerAlloyer extends Container {
 				{
 					return ItemStack.EMPTY;
 				}
+
+				//TODO
+				//if (index == 3) {
+				//	slot.onTake(player, itemstack);
+				//}
 			}
 			else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false))
 			{
