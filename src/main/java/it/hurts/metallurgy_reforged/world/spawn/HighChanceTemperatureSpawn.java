@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
 /**
- * this class permits to spawn an ore more likely in a specific biome than another one.
+ * this class permits to spawn an ore more likely in a specific temperature than another one.
  */
 public class HighChanceTemperatureSpawn extends BaseOreSpawn
 {

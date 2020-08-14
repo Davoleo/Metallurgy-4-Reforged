@@ -1,12 +1,11 @@
 package it.hurts.metallurgy_reforged.world.spawn;
 
+import com.google.common.base.Predicate;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.google.common.base.Predicate;
 import net.minecraft.world.biome.Biome;
 
 import java.util.Random;
@@ -46,7 +45,6 @@ public class BaseOreSpawn implements IOreSpawn
             for (Biome biome : biomes)
                 if(world.getBiome(pos) == biome)
                     return true;
-            return false;
         }
         return true;
     }
