@@ -65,7 +65,7 @@ public class CompatAlloyer {
 
 			for (ItemStack key1 : inputStacks1)
 				for (ItemStack key2 : inputStacks2)
-					getInstance().addAlloyRecipe(key1, key2, outputStack, xp);
+					getInstance().addCustomAlloyRecipe(key1, key2, outputStack, xp);
 		}
 
 		@Override

@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.integration.tic;
 
 import com.google.common.base.CaseFormat;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
@@ -21,6 +22,7 @@ import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.AlloySample;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.init.Items;
@@ -37,25 +39,21 @@ import slimeknights.tconstruct.shared.TinkerFluids;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import slimeknights.tconstruct.tools.ranged.item.CrossBow;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class IntegrationTIC {
 
 	public static List<?> blacklistedMaterials = Arrays.asList(GeneralConfig.tinkerMaterialsBlacklist);
-	private static final List<Metal> vanillaTicMetals = new ArrayList<>();
-
-	static
-	{
-		vanillaTicMetals.add(ModMetals.COPPER);
-		vanillaTicMetals.add(ModMetals.BRONZE);
-		vanillaTicMetals.add(ModMetals.ZINC);
-		vanillaTicMetals.add(ModMetals.TIN);
-		vanillaTicMetals.add(ModMetals.SILVER);
-		vanillaTicMetals.add(ModMetals.STEEL);
-		vanillaTicMetals.add(ModMetals.ELECTRUM);
-	}
+	private static final List<Metal> vanillaTicMetals = Lists.newArrayList(
+			ModMetals.COPPER,
+			ModMetals.BRONZE,
+			ModMetals.ZINC,
+			ModMetals.TIN,
+			ModMetals.SILVER,
+			ModMetals.STEEL,
+			ModMetals.ELECTRUM
+	);
 
 	public static void preInit()
 	{
@@ -95,11 +93,11 @@ public class IntegrationTIC {
 
 	public static void postInit()
 	{
-		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<AlloySample, AlloySample, AlloySample> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
-			FluidStack output = getFluidFromIngot(entry.getValue());
-			FluidStack input1 = getFluidFromIngot(entry.getRowKey());
-			FluidStack input2 = getFluidFromIngot(entry.getColumnKey());
+			FluidStack output = getFluidFromIngot(entry.getValue().getStack());
+			FluidStack input1 = getFluidFromIngot(entry.getRowKey().getStack());
+			FluidStack input2 = getFluidFromIngot(entry.getColumnKey().getStack());
 			if (output != null && input1 != null && input2 != null && output.getFluid() != TinkerFluids.bronze && output.getFluid() != TinkerFluids.electrum)
 				TinkerRegistry.registerAlloy(output, input1, input2);
 		}

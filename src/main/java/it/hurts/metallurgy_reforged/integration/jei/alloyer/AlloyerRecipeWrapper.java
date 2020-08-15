@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.integration.jei.alloyer;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
+import it.hurts.metallurgy_reforged.model.AlloySample;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -46,19 +47,17 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
 	{
 		ArrayList<AlloyerRecipeWrapper> recipes = new ArrayList<>();
 
-		for (Table.Cell<ItemStack, ItemStack, ItemStack> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<AlloySample, AlloySample, AlloySample> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
-			List<ItemStack> inputs = Lists.newArrayList();
-			inputs.add(entry.getColumnKey());
-			inputs.add(entry.getRowKey());
-			recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue()));
+			List<ItemStack> inputs = Lists.newArrayList(entry.getRowKey().getStack(), entry.getColumnKey().getStack());
+			recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue().getStack()));
 		}
 
 		return recipes;
 	}
 
 	@Override
-	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
+	public boolean handleClick(@Nonnull Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
 	{
 		return false;
 	}
