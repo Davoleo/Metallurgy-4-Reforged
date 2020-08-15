@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.container;
 
 import it.hurts.metallurgy_reforged.container.slot.SlotAlloyerOutput;
+import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -125,7 +126,7 @@ public class ContainerAlloyer extends Container {
 					return ItemStack.EMPTY;
 				}
 
-				if (index == 3)
+				if (TileEntityAlloyer.Slots.OUTPUT_SLOT.contains(index))
 				{
 					slot.onTake(player, itemstack);
 				}

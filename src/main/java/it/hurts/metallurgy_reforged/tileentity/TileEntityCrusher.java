@@ -11,55 +11,44 @@
 
 package it.hurts.metallurgy_reforged.tileentity;
 
-import it.hurts.metallurgy_reforged.block.BlockCrusher;
+import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.datafix.FixTypes;
-import net.minecraft.util.datafix.walkers.ItemStackDataLists;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-//VOGLIO MORIRE EDITION
+import static net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime;
 
-//ticking tile entity
 public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory {
 
-	private static final int[] slotsTop = SlotEnum.INPUT_SLOT.slots();
-	private static final int[] slotsBottom = SlotEnum.OUTPUT_SLOT.slots();
-	private static final int[] slotsSides = SlotEnum.FUEL_SLOT.slots();
-
+	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
+	private static final int[] slotsBottom = Slots.OUTPUT_SLOT.slots();
+	private static final int[] slotsSides = Slots.FUEL_SLOT.slots();
 	private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
 	private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
 	private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
@@ -67,59 +56,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 	private String customName;
 
-	private static final int CRUSHING_TIME = 140;
 	private int burnTime;
-	private int currentBurnTime;
+	private int totalBurnTime;
 	private int crushTime;
-	private int totalCrushTime = 200;
+	public static final int TOTAL_CRUSHING_TIME = 140;
 
 	private boolean isPoweredByThermite;
-
-	public static void registerFixesFurnace(DataFixer fixer)
-	{
-		fixer.registerWalker(FixTypes.BLOCK_ENTITY, new ItemStackDataLists(TileEntityFurnace.class, "Items"));
-	}
-
-	private static int getItemBurnTime(ItemStack fuel)
-	{
-		if (fuel.isEmpty())
-			return 0;
-		else
-		{
-			Item item = fuel.getItem();
-
-			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-			{
-				Block block = Block.getBlockFromItem(item);
-
-				if (block == Blocks.WOODEN_SLAB)
-					return 150;
-				if (block.getDefaultState().getMaterial() == Material.WOOD)
-					return 300;
-				if (block == Blocks.COAL_BLOCK)
-					return 16000;
-			}
-
-			if (item instanceof ItemTool && "WOOD".equals(((ItemTool) item).getToolMaterialName()))
-				return 200;
-			if (item instanceof ItemSword && "WOOD".equals(((ItemSword) item).getToolMaterialName()))
-				return 200;
-			if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe) item).getMaterialName()))
-				return 200;
-			if (item == Items.STICK)
-				return 100;
-			if (item == Items.COAL)
-				return 1600;
-			if (item == Items.LAVA_BUCKET)
-				return 20000;
-			if (item == Item.getItemFromBlock(Blocks.SAPLING))
-				return 100;
-			if (item == Items.BLAZE_ROD)
-				return 2400;
-
-			return ForgeEventFactory.getItemBurnTime(fuel);
-		}
-	}
 
 	public static boolean isItemFuel(ItemStack fuel)
 	{
@@ -152,6 +94,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		return this.inventory.size();
 	}
 
+	/**
+	 * @return true if the inventory is empty
+	 */
 	@Override
 	public boolean isEmpty()
 	{
@@ -190,7 +135,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	public void setInventorySlotContents(int index, @Nonnull ItemStack stack)
 	{
 		ItemStack itemstack = this.inventory.get(index);
-		boolean flag = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
+		boolean isEmptyOrNotEqualToTheSlotStack = stack.isEmpty() || !stack.isItemEqual(itemstack) || !ItemStack.areItemStackTagsEqual(stack, itemstack);
 		this.inventory.set(index, stack);
 
 		if (stack.getCount() > this.getInventoryStackLimit())
@@ -198,14 +143,16 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			stack.setCount(this.getInventoryStackLimit());
 		}
 
-		if (SlotEnum.INPUT_SLOT.contains(index) && flag)
+		if (Slots.INPUT_SLOT.contains(index) && isEmptyOrNotEqualToTheSlotStack)
 		{
-			this.totalCrushTime = this.getCrushingTime(stack);
 			this.crushTime = 0;
 			this.markDirty();
 		}
 	}
 
+	/**
+	 * @return the name of the Tile Entity
+	 */
 	@Override
 	@Nonnull
 	public String getName()
@@ -213,6 +160,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		return this.hasCustomName() ? this.customName : "container.crusher";
 	}
 
+	/**
+	 * @return true if the tile entity has a custom name
+	 */
 	@Override
 	public boolean hasCustomName()
 	{
@@ -224,6 +174,12 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		this.customName = customName;
 	}
 
+	/**
+	 * If the name is not custom it translates the name
+	 * If it is, returns directly the name
+	 *
+	 * @return the name to be displayed
+	 */
 	@Override
 	@Nonnull
 	public ITextComponent getDisplayName()
@@ -232,31 +188,40 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 				: new TextComponentTranslation(this.getName());
 	}
 
+	/**
+	 * Reads data from the NBT Tag
+	 */
 	@Override
-	public void readFromNBT(NBTTagCompound compound)
+	public void readFromNBT(@Nonnull NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
 		this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.inventory);
 		this.burnTime = compound.getInteger("burn_time");
 		this.crushTime = compound.getInteger("crush_time");
-		this.totalCrushTime = compound.getInteger("total_crush_time");
-		this.currentBurnTime = compound.getInteger("current_burn_time");
+		this.totalBurnTime = compound.getInteger("total_burn_time");
 
-		if (compound.hasKey("CustomName", 8))
-			this.setCustomName(compound.getString("CustomName"));
+		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
+
+		if (compound.hasKey("custom_name", 8))
+			this.setCustomName(compound.getString("custom_name"));
 
 	}
 
+	/**
+	 * Writes data to the NBT Tag
+	 */
 	@Override
 	@Nonnull
-	public NBTTagCompound writeToNBT(NBTTagCompound compound)
+	public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
 		compound.setInteger("burn_time", (short) this.burnTime);
-		compound.setInteger("current_burn_time", (short) this.currentBurnTime);
+		compound.setInteger("total_burn_time", (short) this.totalBurnTime);
 		compound.setInteger("crush_time", (short) this.crushTime);
-		compound.setInteger("total_crush_time", (short) this.totalCrushTime);
+
+		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
 		if (this.hasCustomName())
@@ -266,12 +231,18 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 	}
 
+	/**
+	 * @return Returns the Stack Limit as an int
+	 */
 	@Override
 	public int getInventoryStackLimit()
 	{
 		return 64;
 	}
 
+	/**
+	 * @return true if the fuel is burning
+	 */
 	public boolean isBurning()
 	{
 		return this.burnTime > 0;
@@ -280,174 +251,152 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	@Override
 	public void update()
 	{
-		boolean flag = this.isBurning();
-		boolean flag1 = false;
+		boolean oldBurningState = isBurning();
 
-		//Fuel Usage
-		if (this.isBurning())
+		if (isBurning())
 		{
-			--this.burnTime;
-		}
+			this.burnTime--;
 
-		if (!this.world.isRemote)
-		{
-
-			ItemStack input = inventory.get(0);
-			ItemStack fuel = this.inventory.get(1);
-
-			if (!fuel.isEmpty())
-				isPoweredByThermite = fuel.getItem() == ModItems.dustThermite;
-
-			if (this.isBurning() || !fuel.isEmpty() && !input.isEmpty())
+			if (canCrush())
 			{
-				if (!this.isBurning() && this.canCrush())
+
+				if (!isPoweredByThermite)
 				{
-					this.burnTime = getItemBurnTime(fuel);
-					this.currentBurnTime = burnTime;
-
-					if (this.isBurning())
-					{
-						flag1 = true;
-
-						if (!fuel.isEmpty())
-						{
-							Item item = fuel.getItem();
-							fuel.shrink(1);
-
-							if (fuel.isEmpty())
-							{
-								ItemStack item1 = item.getContainerItem(fuel);
-								this.inventory.set(1, item1);
-							}
-						}
-					}
-
-				}
-
-				if (this.isBurning() && this.canCrush())
-				{
-					if (isPoweredByThermite)
-						crushTime += 2;
-					else
-						++crushTime;
-
-					if (crushTime >= totalCrushTime)
-					{
-						crushTime = 0;
-						totalCrushTime = this.getCrushingTime(this.inventory.get(0));
-						this.crushItem();
-						flag1 = true;
-					}
+					this.crushTime++;
 				}
 				else
 				{
-					//When the crusher is burning in idle
+					//if crushing time is higher than the total then return total crushing time otherwise increase by 2
+					this.crushTime = Math.min(this.crushTime += 2, TOTAL_CRUSHING_TIME);
+				}
+
+				if (crushTime >= TOTAL_CRUSHING_TIME)
+				{
+					crushItem();
 					this.crushTime = 0;
+					markDirty();
 				}
 			}
-			else if (!this.isBurning() && this.crushTime > 0)
+		}
+		else
+		{
+			ItemStack fuelStack = inventory.get(TileEntityCrusher.Slots.FUEL_SLOT.slots[0]);
+			Item fuelItem = fuelStack.getItem();
+
+			if (!fuelStack.isEmpty() && canCrush())
 			{
-				//When the fuel is not enough
-				this.crushTime = MathHelper.clamp(this.crushTime - 2, 0, this.totalCrushTime);
+				this.isPoweredByThermite = fuelStack.getItem() == ModItems.dustThermite;
+				this.burnTime = getItemBurnTime(fuelStack);
+				this.totalBurnTime = this.burnTime;
+				fuelStack.shrink(1);
+
+				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel (i.e. lava bucket)
+				if (fuelStack.isEmpty())
+				{
+					ItemStack containerItem = fuelItem.getContainerItem(fuelStack);
+					inventory.set(TileEntityCrusher.Slots.FUEL_SLOT.slots[0], containerItem);
+				}
+
+				markDirty();
 			}
 
-			if (flag != this.isBurning())
+			if (this.crushTime > 0)
 			{
-				flag1 = true;
-				BlockCrusher.setState(this.isBurning(), this.world, this.pos);
+				//if crushing time is negative then crushing time should be zero, bitch
+				this.crushTime = Math.max(this.crushTime - 2, 0);
 			}
 		}
 
-		if (flag1)
+		if (oldBurningState != isBurning())
 		{
-			this.markDirty();
+			BlockAlloyer.setState(isBurning(), this.world, this.pos);
 		}
 
 	}
 
+	/**
+	 * @return true if the recipe is valid and the item can be crushed
+	 */
 	private boolean canCrush()
 	{
-		if ((this.inventory.get(0)).isEmpty())
+		ItemStack input = this.inventory.get(Slots.INPUT_SLOT.slots[0]);
+
+		if (input.isEmpty())
 			return false;
 		else
 		{
-			ItemStack result = CrusherRecipes.getInstance().getCrushingResult(this.inventory.get(0));
+			ItemStack result = CrusherRecipes.getInstance().getCrushingResult(input);
 			if (result.isEmpty())
 				return false;
 			else
 			{
-				ItemStack output = this.inventory.get(2);
-				ItemStack output1 = this.inventory.get(3);
-				ItemStack output2 = this.inventory.get(4);
-				int limit = output.getCount() + result.getCount();
-				int limit1 = output1.getCount() + result.getCount();
-				int limit2 = output2.getCount() + result.getCount();
+				ItemStack output = this.inventory.get(Slots.OUTPUT_SLOT.slots[0]);
+				ItemStack output1 = this.inventory.get(Slots.OUTPUT_SLOT.slots[1]);
+				ItemStack output2 = this.inventory.get(Slots.OUTPUT_SLOT.slots[2]);
+				int totalAmount = output.getCount() + result.getCount();
+				int totalAmount1 = output1.getCount() + result.getCount();
+				int totalAmount2 = output2.getCount() + result.getCount();
 
+				//can crush if one of the various outputs is empty
 				if (output.isEmpty() || output1.isEmpty() || output2.isEmpty())
 					return true;
-				else if (!output.isItemEqual(result) && !output1.isItemEqual(result) && !output2.isItemEqual(result))
+
+				//Can't crush if all of the output slots are filled with an item that is different from the recipe result
+				if (!output.isItemEqual(result) && !output1.isItemEqual(result) && !output2.isItemEqual(result))
 					return false;
-					//                else if (!output1.isItemEqual(result))
-					//                    return false;
-					//                else if (!output2.isItemEqual(result))
-					//                    return false;
-				else if (limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
+					//if the previous condition is not met check whether the sum of the recipe result count and the slot amount doesn't overcome the stack limit
+				else if (totalAmount <= this.getInventoryStackLimit() && totalAmount <= output.getMaxStackSize())
 					return true;
-				else if (limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
-					return true;
-				else if (limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
+				else if (totalAmount1 <= this.getInventoryStackLimit() && totalAmount1 <= output1.getMaxStackSize())
 					return true;
 				else
-					return limit <= 64 && limit <= output.getMaxStackSize();
+					return (totalAmount2 <= this.getInventoryStackLimit() && totalAmount2 <= output2.getMaxStackSize());
 
 			}
 		}
 	}
 
-	//  Called the instant when the item is ready to get crushed and to output the result
+	/**
+	 * Handles input shrinking and output growing depending on the Alloying recipe
+	 */
 	private void crushItem()
 	{
 		if (this.canCrush())
 		{
-			ItemStack input = this.inventory.get(0);
+			ItemStack input = this.inventory.get(Slots.INPUT_SLOT.slots[0]);
 			ItemStack recipeResult = CrusherRecipes.getInstance().getCrushingResult(input);
-			ItemStack output = this.inventory.get(2);
-			ItemStack output1 = this.inventory.get(3);
-			ItemStack output2 = this.inventory.get(4);
+			ItemStack output = this.inventory.get(Slots.OUTPUT_SLOT.slots[0]);
+			ItemStack output1 = this.inventory.get(Slots.OUTPUT_SLOT.slots[1]);
+			ItemStack output2 = this.inventory.get(Slots.OUTPUT_SLOT.slots[2]);
 
 			int limit = output.getCount() + recipeResult.getCount();
 			int limit1 = output1.getCount() + recipeResult.getCount();
 			int limit2 = output2.getCount() + recipeResult.getCount();
 
-			//TODO check if it's possible to improve this using switch or index
 			if (output.isEmpty())
-				this.inventory.set(2, recipeResult.copy());
+				this.inventory.set(Slots.OUTPUT_SLOT.slots[0], recipeResult.copy());
 			else if (ItemStack.areItemsEqual(output, recipeResult) && limit <= this.getInventoryStackLimit() && limit <= output.getMaxStackSize())
 				output.grow(recipeResult.getCount());
 
 			else if (output1.isEmpty())
-				this.inventory.set(3, recipeResult.copy());
-			else if (ItemStack.areItemsEqual(output, recipeResult) && limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
+				this.inventory.set(Slots.OUTPUT_SLOT.slots[1], recipeResult.copy());
+			else if (ItemStack.areItemsEqual(output1, recipeResult) && limit1 <= this.getInventoryStackLimit() && limit1 <= output1.getMaxStackSize())
 				output1.grow(recipeResult.getCount());
 
 			else if (output2.isEmpty())
-				this.inventory.set(4, recipeResult.copy());
-			else if (ItemStack.areItemsEqual(output, recipeResult) && limit2 <= this.getInventoryStackLimit() && limit2 <= output.getMaxStackSize())
+				this.inventory.set(Slots.OUTPUT_SLOT.slots[2], recipeResult.copy());
+			else if (ItemStack.areItemsEqual(output2, recipeResult) && limit2 <= this.getInventoryStackLimit() && limit2 <= output2.getMaxStackSize())
 				output2.grow(recipeResult.getCount());
 
-			if (input.getItem() == Item.getItemFromBlock(Blocks.SPONGE) && input.getMetadata() == 1 && !this.inventory.get(1).isEmpty() && this.inventory.get(1).getItem() == Items.BUCKET)
-				this.inventory.set(1, new ItemStack(Items.WATER_BUCKET));
-
 			input.shrink(1);
-
 		}
 	}
 
-	private int getCrushingTime(@SuppressWarnings("unused") ItemStack stack)
-	{
-		return CRUSHING_TIME;
-	}
-
+	/**
+	 * used to block interactions with the block if the player is really far from it (avoids synchronization bugs)
+	 *
+	 * @return whether the player can interact with the inventory
+	 */
 	@Override
 	public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
 	{
@@ -457,27 +406,39 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			return player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
 	}
 
+	/**
+	 * Server side stuff when you open the GUI
+	 */
 	@Override
 	public void openInventory(@Nonnull EntityPlayer player)
-	{
-	}
+	{}
 
+	/**
+	 * Server side stuff when you close the GUI
+	 */
 	@Override
 	public void closeInventory(@Nonnull EntityPlayer player)
-	{
-	}
+	{}
 
+	/**
+	 * Only called when stacks are inserted using automated methods (i.e. hopper)
+	 *
+	 * @param index the index of the slot this item is being put into
+	 * @param stack the stack that is put into the slot
+	 *
+	 * @return Whether this item can be inserted in the slot
+	 */
 	@Override
 	public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack)
 	{
-		if (SlotEnum.OUTPUT_SLOT.contains(index))
+		if (Slots.OUTPUT_SLOT.contains(index))
 			return false;
-		else if (SlotEnum.FUEL_SLOT.contains(index))
+		else if (Slots.FUEL_SLOT.contains(index))
 		{
-			ItemStack stack1 = inventory.get(index);
-			return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && stack1.getItem() != Items.BUCKET;
+			ItemStack fuelStack = inventory.get(index);
+			return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && fuelStack.getItem() != Items.BUCKET;
 		}
-		else if (SlotEnum.INPUT_SLOT.contains(index))
+		else if (Slots.INPUT_SLOT.contains(index))
 		{
 			return !CrusherRecipes.getInstance().getCrushingResult(stack).isEmpty();
 		}
@@ -509,22 +470,13 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			case 0:
 				return this.burnTime;
 			case 1:
-				return this.currentBurnTime;
+				return this.totalBurnTime;
 			case 2:
 				return this.crushTime;
-			case 3:
-				return this.totalCrushTime;
 			default:
 				return 0;
 		}
 	}
-
-	/*
-	 * serve per trasferire le informazioni di a che punto è il processo, quanto carburante ha, quanto tempo ha bisogno un processo
-	 * private tile entity variables getter [process and combustion info]
-	 * getField(getFieldCount)
-	 * setField(getField, valore)
-	 */
 
 	@Override
 	public void setField(int id, int value)
@@ -535,22 +487,23 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 				this.burnTime = value;
 				break;
 			case 1:
-				this.currentBurnTime = value;
+				this.totalBurnTime = value;
 				break;
 			case 2:
 				this.crushTime = value;
 				break;
-			case 3:
-				this.totalCrushTime = value;
 		}
 	}
 
 	@Override
 	public int getFieldCount()
 	{
-		return 4;
+		return 3;
 	}
 
+	/**
+	 * Clears the inventory
+	 */
 	@Override
 	public void clear()
 	{
@@ -573,19 +526,17 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	@Override
 	public boolean canExtractItem(int index, @Nonnull ItemStack stack, @Nonnull EnumFacing direction)
 	{
-		return SlotEnum.OUTPUT_SLOT.contains(index);
+		return Slots.OUTPUT_SLOT.contains(index);
 	}
 
-	public enum SlotEnum {// 	enumerate the slots
+	public enum Slots {
 		INPUT_SLOT(0), OUTPUT_SLOT(2, 3, 4), FUEL_SLOT(1);
 
 		private final int[] slots;
-		private Set<Integer> slotSet;
 
-		SlotEnum(int... slots)
+		Slots(int... slots)
 		{
 			this.slots = slots;
-			slotSet = Arrays.stream(slots).boxed().collect(Collectors.toSet());
 		}
 
 		public int[] slots()
@@ -595,10 +546,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 		public boolean contains(int i)
 		{
-			return slotSet.contains(i);
+			return ArrayUtils.contains(slots, i);
 		}
 	}
 
 	//provate pure a pensare di essere assolti, siete lo stesso coinvolti
-
 }

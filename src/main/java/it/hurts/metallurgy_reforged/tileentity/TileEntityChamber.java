@@ -349,7 +349,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 	@Nonnull
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound)
+	public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound compound)
 	{
 
 		super.writeToNBT(compound);
@@ -388,7 +388,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound)
+	public void readFromNBT(@Nonnull NBTTagCompound compound)
 	{
 		super.readFromNBT(compound);
 		this.readChamberFromNBT(compound);
@@ -439,7 +439,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	}
 
 	@Override
-	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
+	public boolean shouldRefresh(@Nonnull World world, @Nonnull BlockPos pos, IBlockState oldState, IBlockState newState)
 	{
 		return oldState.getBlock() != newState.getBlock();
 	}
