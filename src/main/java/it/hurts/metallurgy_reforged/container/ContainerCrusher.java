@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.container;
 
 
 import it.hurts.metallurgy_reforged.container.slot.SlotCrusherOutput;
+import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -25,22 +26,24 @@ import javax.annotation.Nonnull;
 public class ContainerCrusher extends Container {
 
 	private final IInventory crusher;
-	private int crushTime, totalCrushTime, burnTime, currentBurnTime;
-
-	//Default values for player inventory, edit iStart only
-	public static final int iStart = 5, iEnd = iStart + 26, hStart = iEnd + 1, hEnd = hStart + 8;
+	private int crushTime, burnTime, totalBurnTime;
 
 	public ContainerCrusher(InventoryPlayer playerInv, IInventory crusherInv)
 	{
 		this.crusher = crusherInv;
-		//    	playerInventory, Invenotry, Index, X, Y
-		this.addSlotToContainer(new Slot(crusherInv, 0, 61, -4));  //Input
-		this.addSlotToContainer(new SlotFurnaceFuel(crusherInv, 1, 129, 48));   //Fuel
-		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 2, 67, 36)); //Result 1
-		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 3, 48, 36)); //Result 2
-		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 4, 29, 36)); //Result 3
 
-		//        Collegamento all'inventario del player
+		//Input
+		this.addSlotToContainer(new Slot(crusherInv, 0, 61, -4));
+		//Fuel
+		this.addSlotToContainer(new SlotFurnaceFuel(crusherInv, 1, 129, 48));
+		//Output 1
+		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 2, 67, 36));
+		//Output 2
+		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 3, 48, 36));
+		//Output 3
+		this.addSlotToContainer(new SlotCrusherOutput(playerInv.player, crusherInv, 4, 29, 36));
+
+		//Player Inventory Slots
 		for (int y = 0; y < 3; y++)
 		{
 			for (int x = 0; x < 9; x++)
@@ -49,21 +52,25 @@ public class ContainerCrusher extends Container {
 			}
 		}
 
-		//        Collegamento all'inventario della hotbar
+		//Player Hotbar slots
 		for (int x = 0; x < 9; x++)
 		{
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
 		}
 	}
 
-	//    Errore all'add Listener
+	/**
+	 * Synchronizes TE items
+	 */
 	public void addListener(@Nonnull IContainerListener listener)
 	{
 		super.addListener(listener);
 		listener.sendAllWindowProperties(this, this.crusher);
 	}
 
-	//    Da qui non so come gestirmi
+	/**
+	 * Synchronizes TE fields with the client
+	 */
 	@Override
 	public void detectAndSendChanges()
 	{
@@ -75,16 +82,13 @@ public class ContainerCrusher extends Container {
 				listener.sendWindowProperty(this, 2, this.crusher.getField(2));
 			if (this.burnTime != this.crusher.getField(0))
 				listener.sendWindowProperty(this, 0, this.crusher.getField(0));
-			if (this.currentBurnTime != this.crusher.getField(1))
+			if (this.totalBurnTime != this.crusher.getField(1))
 				listener.sendWindowProperty(this, 1, this.crusher.getField(1));
-			if (this.totalCrushTime != this.crusher.getField(3))
-				listener.sendWindowProperty(this, 3, this.crusher.getField(3));
 		}
 
 		this.crushTime = this.crusher.getField(2);
 		this.burnTime = this.crusher.getField(0);
-		this.currentBurnTime = this.crusher.getField(1);
-		this.totalCrushTime = this.crusher.getField(3);
+		this.totalBurnTime = this.crusher.getField(1);
 	}
 
 	@Override
@@ -100,6 +104,9 @@ public class ContainerCrusher extends Container {
 		return this.crusher.isUsableByPlayer(playerIn);
 	}
 
+	/**
+	 * Handles shift clicking in the GUI slots
+	 */
 	@Nonnull
 	@Override
 	public ItemStack transferStackInSlot(@Nonnull EntityPlayer player, int index)
@@ -117,29 +124,21 @@ public class ContainerCrusher extends Container {
 			if (index < containerSlots)
 			{
 				if (!this.mergeItemStack(itemstack1, containerSlots, inventorySlots.size(), true))
-				{
 					return ItemStack.EMPTY;
-				}
 
+				if (TileEntityCrusher.Slots.OUTPUT_SLOT.contains(index))
+					slot.onTake(player, itemstack);
 			}
 			else if (!this.mergeItemStack(itemstack1, 0, containerSlots, false))
-			{
 				return ItemStack.EMPTY;
-			}
 
 			if (itemstack1.isEmpty())
-			{
 				slot.putStack(ItemStack.EMPTY);
-			}
 			else
-			{
 				slot.onSlotChanged();
-			}
 
 			if (itemstack1.getCount() == itemstack.getCount())
-			{
 				return ItemStack.EMPTY;
-			}
 
 			slot.onTake(player, itemstack1);
 		}

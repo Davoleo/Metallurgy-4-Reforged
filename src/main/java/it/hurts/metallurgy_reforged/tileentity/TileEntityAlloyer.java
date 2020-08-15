@@ -199,8 +199,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
 
-		if (compound.hasKey("CustomName", 8))
-			this.setCustomName(compound.getString("CustomName"));
+		if (compound.hasKey("custom_name", 8))
+			this.setCustomName(compound.getString("custom_name"));
 	}
 
 	/**
@@ -290,7 +290,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 				this.totalBurnTime = this.burnTime;
 				fuelStack.shrink(1);
 
-				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel
+				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel (i.e. lava bucket)
 				if (fuelStack.isEmpty())
 				{
 					ItemStack containerItem = fuelItem.getContainerItem(fuelStack);
@@ -314,7 +314,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	}
 
 	/**
-	 * @return true if the recipe is valid and alloys can be made
+	 * @return true if the recipe is valid and the alloy can be made
 	 */
 	private boolean canAlloy()
 	{
@@ -372,6 +372,11 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		}
 	}
 
+	/**
+	 * used to block interactions with the block if the player is really far from it (avoids synchronization bugs)
+	 *
+	 * @return whether the player can interact with the inventory
+	 */
 	@Override
 	public boolean isUsableByPlayer(@Nonnull EntityPlayer player)
 	{
@@ -507,7 +512,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public int getFieldCount()
 	{
-		return 4;
+		return 3;
 	}
 
 	/**

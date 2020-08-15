@@ -22,14 +22,11 @@ import net.minecraft.util.ResourceLocation;
 public class GuiCrusher extends GuiContainer {
 
 	private static final ResourceLocation TEXTURES = new ResourceLocation(Metallurgy.MODID + ":textures/gui/crusher.png");
-	@SuppressWarnings("unused")
-	private final InventoryPlayer player;
 	private final TileEntityCrusher crusher;
 
 	public GuiCrusher(InventoryPlayer player, TileEntityCrusher crusher)
 	{
 		super(new ContainerCrusher(player, crusher));
-		this.player = player;
 		this.crusher = crusher;
 	}
 
@@ -51,7 +48,7 @@ public class GuiCrusher extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+		GlStateManager.color(1F, 1F, 1F, 1F);
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		//x & y: drawn texture coordinates | textureX & textureY: original texture coordinates | width & height: texture dimensions
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop - 31, 0, 0, 175, 196);
@@ -70,20 +67,21 @@ public class GuiCrusher extends GuiContainer {
 		}
 	}
 
-
-	//parameter: texture height -1
+	/**
+	 * @param pixels texture height -1
+	 */
 	private int getBurnLeftScaled(int pixels)
 	{
-		int i = this.crusher.getField(1);
-		return this.crusher.getField(0) * pixels / Math.max(i, 200);
+		return this.crusher.getField(0) * pixels / Math.max(this.crusher.getField(1), 200);
 	}
 
-	//Parameter: Texture height
+	/**
+	 * @param pixels Texture height
+	 */
 	private int getCrushProgressScaled(int pixels)
 	{
-		int i = this.crusher.getField(2);
-		int j = this.crusher.getField(3);
-		return j != 0 && i != 0 ? i * pixels / j : 0;
+		int crushingTime = this.crusher.getField(2);
+		return crushingTime != 0 ? crushingTime * pixels / TileEntityCrusher.TOTAL_CRUSHING_TIME : 0;
 	}
 
 }
