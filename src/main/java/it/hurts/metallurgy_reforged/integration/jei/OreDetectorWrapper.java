@@ -28,7 +28,7 @@ import java.util.List;
 
 public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 
-	private int size;
+	private final int size;
 
 	public OreDetectorWrapper(int size)
 	{
