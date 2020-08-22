@@ -22,6 +22,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -103,14 +104,31 @@ public class CrusherRecipes {
 	{
 		for (Map.Entry<ItemStack, ItemStack> entry : this.crushingList.entrySet())
 		{
-			ItemStack in = entry.getKey();
-			if (in.isItemEqual(input) || (in.getItem() == input.getItem() && in.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+			ItemStack recipeInput = entry.getKey();
+			if (isValidInput(input, recipeInput))
 			{
 				return entry.getValue();
 			}
 		}
 		return ItemStack.EMPTY;
+	}
 
+	private boolean isValidInput(ItemStack input, ItemStack recipeInput)
+	{
+		if (input.isItemEqual(recipeInput) || (input.getItem() == recipeInput.getItem() && recipeInput.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+			return true;
+
+		List<ItemStack> otherValidStuff = new ArrayList<>();
+
+		for (int id : OreDictionary.getOreIDs(recipeInput))
+		{
+			if (Arrays.stream(OreDictionary.getOreIDs(input)).anyMatch(inputId -> inputId == id))
+			{
+				otherValidStuff.addAll(OreDictionary.getOres(OreDictionary.getOreName(id)));
+			}
+		}
+
+		return !otherValidStuff.isEmpty();
 	}
 
 	public float getCrushingExperience(ItemStack stack)
@@ -158,8 +176,9 @@ public class CrusherRecipes {
 
 		if (ore.startsWith(in) && !outs.isEmpty())
 			for (ItemStack stack : OreDictionary.getOres(ore))
-				if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
-					CrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
+				if (!getInstance().crushingList.containsKey(stack))
+					if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
+						CrusherRecipes.getInstance().addCrushingRecipe(stack, ItemHandlerHelper.copyStackWithSize(outs.get(0), amount), exp);
 	}
 
 }
