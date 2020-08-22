@@ -128,6 +128,10 @@ public class CrusherRecipes {
 		return crushingList;
 	}
 
+	/**
+	 * @deprecated - It overrides CraftTweaker recipe removal making it impossible to remove certain recipes
+	 */
+	@Deprecated
 	public static void registerDefaultOreRecipes()
 	{
 		for (String ore : OreDictionary.getOreNames())
@@ -139,12 +143,19 @@ public class CrusherRecipes {
 		//Removed the flower section
 	}
 
+	/**
+	 * @see CrusherRecipes#registerDefaultOreRecipes()
+	 * @deprecated
+	 */
+	@Deprecated
 	private static void add(String ore, String in, String out, int amount, float exp)
 	{
 		if (ore.length() <= in.length())
 			return;
+
 		String mat = ore.substring(in.length());
 		List<ItemStack> outs = OreDictionary.getOres(out + mat);
+
 		if (ore.startsWith(in) && !outs.isEmpty())
 			for (ItemStack stack : OreDictionary.getOres(ore))
 				if (stackBlacklist.stream().noneMatch((blacklistStack) -> ItemStack.areItemStacksEqual(blacklistStack, stack)))
