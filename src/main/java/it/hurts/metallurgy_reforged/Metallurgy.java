@@ -34,6 +34,7 @@
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.IProxy;
+ import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
  import it.hurts.metallurgy_reforged.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.util.ModChecker;
  import it.hurts.metallurgy_reforged.util.SubEvent;
@@ -169,7 +170,7 @@ public class Metallurgy {
 		 }
 
 		 // TODO: 22/08/2020 eventually remove these method completely if sure there's no need of them anymore
-		 //CrusherRecipes.registerDefaultOreRecipes();
+		 CrusherRecipes.registerDefaultOreRecipes();
 
 		 MetallurgyEffects.initTooltips();
 	 }

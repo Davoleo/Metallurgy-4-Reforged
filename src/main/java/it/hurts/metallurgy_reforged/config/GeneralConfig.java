@@ -80,6 +80,11 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static int thermiteFuelValue = 8;
 
+	@Config.Name("OreDict Crusher Recipes")
+	@Config.Comment("When set to true the mod will load new recipes from the OreDictionary (this could cause some incompatibility issues when removing recipes with CraftTweaker disable this if you see that some recipes are not being removed)")
+	@Config.RequiresMcRestart
+	public static boolean enableOreDictCrusherRecipes = true;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 

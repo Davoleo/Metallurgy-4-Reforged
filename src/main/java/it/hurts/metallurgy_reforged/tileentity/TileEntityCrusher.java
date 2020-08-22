@@ -11,7 +11,7 @@
 
 package it.hurts.metallurgy_reforged.tileentity;
 
-import it.hurts.metallurgy_reforged.block.BlockAlloyer;
+import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
@@ -309,7 +309,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 		if (oldBurningState != isBurning())
 		{
-			BlockAlloyer.setState(isBurning(), this.world, this.pos);
+			BlockCrusher.setState(isBurning(), this.world, this.pos);
 		}
 
 	}
@@ -333,6 +333,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 				ItemStack output = this.inventory.get(Slots.OUTPUT_SLOT.slots[0]);
 				ItemStack output1 = this.inventory.get(Slots.OUTPUT_SLOT.slots[1]);
 				ItemStack output2 = this.inventory.get(Slots.OUTPUT_SLOT.slots[2]);
+
 				int totalAmount = output.getCount() + result.getCount();
 				int totalAmount1 = output1.getCount() + result.getCount();
 				int totalAmount2 = output2.getCount() + result.getCount();
@@ -357,7 +358,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	}
 
 	/**
-	 * Handles input shrinking and output growing depending on the Alloying recipe
+	 * Handles input shrinking and output growing depending on the Crushing recipe
 	 */
 	private void crushItem()
 	{
