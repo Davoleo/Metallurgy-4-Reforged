@@ -85,12 +85,11 @@ public class ChamberRecipeCategory implements IRecipeCategory<ChamberRecipeWrapp
 		return background;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull ChamberRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
 	{
 
-		IGuiIngredientGroup group = recipeLayout.getItemStacks();
+		IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
 		group.init(INPUT_SLOT, true, 42, 26);
 		group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));

@@ -1,13 +1,13 @@
  /*
  * -------------------------------------------------------------------------------------------------------
  * Class: Metallurgy
-  * This class is part of Metallurgy 4 Reforged
-  * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
-  * This code is licensed under GNU GPLv3
-  * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
-  * Copyright (c) 2020.
-  * --------------------------------------------------------------------------------------------------------
-  */
+ * This class is part of Metallurgy 4 Reforged
+ * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
+ * This code is licensed under GNU GPLv3
+ * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ * Copyright (c) 2020.
+ * --------------------------------------------------------------------------------------------------------
+ */
 
  package it.hurts.metallurgy_reforged;
 
@@ -34,7 +34,6 @@
  import it.hurts.metallurgy_reforged.material.ModMetals;
  import it.hurts.metallurgy_reforged.network.PacketManager;
  import it.hurts.metallurgy_reforged.proxy.IProxy;
- import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
  import it.hurts.metallurgy_reforged.recipe.ModRecipes;
  import it.hurts.metallurgy_reforged.util.ModChecker;
  import it.hurts.metallurgy_reforged.util.SubEvent;
@@ -169,7 +168,8 @@ public class Metallurgy {
 			 logger.info("ProjectE's Integration has been initialized");
 		 }
 
-		 CrusherRecipes.registerDefaultOreRecipes();
+		 // TODO: 22/08/2020 eventually remove these method completely if sure there's no need of them anymore
+		 //CrusherRecipes.registerDefaultOreRecipes();
 
 		 MetallurgyEffects.initTooltips();
 	 }

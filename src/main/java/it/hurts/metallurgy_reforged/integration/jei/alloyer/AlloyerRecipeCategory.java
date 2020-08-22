@@ -61,7 +61,7 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
 	}
 
 	@Override
-	public void drawExtras(Minecraft minecraft)
+	public void drawExtras(@Nonnull Minecraft minecraft)
 	{
 		flame.draw(minecraft, 110, 61);
 		bar.draw(minecraft, 40, 66);
@@ -103,11 +103,10 @@ public class AlloyerRecipeCategory implements IRecipeCategory<AlloyerRecipeWrapp
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull AlloyerRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
 	{
-		IGuiIngredientGroup group = recipeLayout.getItemStacks();
+		IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
 		group.init(INPUT_SLOT_1, true, 101, 23);
 		group.init(INPUT_SLOT_2, true, 122, 23);

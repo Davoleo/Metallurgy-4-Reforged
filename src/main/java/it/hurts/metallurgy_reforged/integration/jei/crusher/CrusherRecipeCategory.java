@@ -96,11 +96,10 @@ public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapp
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull CrusherRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
 	{
-		IGuiIngredientGroup group = recipeLayout.getItemStacks();
+		IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
 		group.init(INPUT_SLOT, true, 60, 27);
 		group.init(OUTPUT_SLOT, false, 66, 66);
