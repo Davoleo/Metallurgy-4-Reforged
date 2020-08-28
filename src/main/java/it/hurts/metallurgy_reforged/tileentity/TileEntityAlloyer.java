@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -26,6 +27,8 @@ import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -34,6 +37,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -46,6 +50,7 @@ import javax.annotation.Nullable;
 
 import static net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime;
 
+@Optional.Interface(modid = "immersiveengineering", iface = "blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler$IExternalHeatable")
 public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory, ExternalHeaterHandler.IExternalHeatable {
 
 	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
@@ -249,6 +254,34 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		return te.getField(0) > 0;
 	}
 
+	//---------------------------------------------------------------------------------------
+	//Handle Client/Server Syncing
+	//sync process when notifyBlockUpdate is called
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket()
+	{
+		NBTTagCompound compound = new NBTTagCompound();
+		writeToNBT(compound);
+		return new SPacketUpdateTileEntity(this.getPos(), 0, compound);
+	}
+
+	@Override
+	public void onDataPacket(@Nonnull NetworkManager net, SPacketUpdateTileEntity pkt)
+	{
+		readFromNBT(pkt.getNbtCompound());
+	}
+
+	public void sendUpdate()
+	{
+		if (world != null)
+		{
+			IBlockState state = world.getBlockState(pos);
+			world.notifyBlockUpdate(pos, state, state, 8);
+			markDirty();
+		}
+	}
+	//---------------------------------------------------------------------------------------
+
 	@Override
 	public void update()
 	{
@@ -321,22 +354,26 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	@Override
 	public int doHeatTick(int energyAvailable, boolean redstone)
 	{
-
 		if (canAlloy() || redstone)
 		{
-			burnTime = Math.min(burnTime += 3, 111);
+			totalBurnTime = 111;
+
+			burnTime = Math.min(burnTime += 2, totalBurnTime);
+
+			if (canAlloy() && totalBurnTime == burnTime && alloyingTime < TOTAL_ALLOYING_TIME)
+				alloyingTime++;
 
 			if (!world.getBlockState(pos).getValue(BlockAlloyer.BURNING))
 			{
 				BlockAlloyer.setState(true, world, pos);
 			}
 
-			markDirty();
+			sendUpdate();
 		}
 
 		if (!isBurning())
 			return 0;
-		else if (burnTime < 111)
+		else if (burnTime < totalBurnTime)
 			return ExternalHeaterHandler.defaultFurnaceEnergyCost;
 		else
 			return ExternalHeaterHandler.defaultFurnaceSpeedupCost + ExternalHeaterHandler.defaultFurnaceEnergyCost;

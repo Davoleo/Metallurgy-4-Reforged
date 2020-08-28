@@ -80,7 +80,7 @@ public class GuiAlloyer extends GuiContainer {
 	private int getBurnLeftScaled(int pixels)
 	{
 		int totalBurnTime = this.alloyer.getField(1);
-		return this.alloyer.getField(0) * pixels / Math.max(totalBurnTime, 200);
+		return this.alloyer.getField(0) * pixels / totalBurnTime;
 	}
 
 	//returns the process animation parameter (scaled by the size of the animated texture)

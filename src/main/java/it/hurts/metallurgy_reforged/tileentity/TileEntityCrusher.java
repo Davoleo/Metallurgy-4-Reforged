@@ -11,10 +11,13 @@
 
 package it.hurts.metallurgy_reforged.tileentity;
 
+import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
+import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -25,6 +28,8 @@ import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -33,6 +38,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -44,7 +50,8 @@ import java.util.Arrays;
 
 import static net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime;
 
-public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory {
+@Optional.Interface(modid = "immersiveengineering", iface = "blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler$IExternalHeatable")
+public class TileEntityCrusher extends TileEntityLockable implements ITickable, ISidedInventory, ExternalHeaterHandler.IExternalHeatable {
 
 	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
 	private static final int[] slotsBottom = Slots.OUTPUT_SLOT.slots();
@@ -248,6 +255,34 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		return this.burnTime > 0;
 	}
 
+	//---------------------------------------------------------------------------------------
+	//Handle Client/Server Syncing
+	//sync process when notifyBlockUpdate is called
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket()
+	{
+		NBTTagCompound compound = new NBTTagCompound();
+		writeToNBT(compound);
+		return new SPacketUpdateTileEntity(this.getPos(), 0, compound);
+	}
+
+	@Override
+	public void onDataPacket(@Nonnull NetworkManager net, SPacketUpdateTileEntity pkt)
+	{
+		readFromNBT(pkt.getNbtCompound());
+	}
+
+	public void sendUpdate()
+	{
+		if (world != null)
+		{
+			IBlockState state = world.getBlockState(pos);
+			world.notifyBlockUpdate(pos, state, state, 8);
+			markDirty();
+		}
+	}
+	//---------------------------------------------------------------------------------------
+
 	@Override
 	public void update()
 	{
@@ -312,6 +347,37 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 			BlockCrusher.setState(isBurning(), this.world, this.pos);
 		}
 
+	}
+
+	/**
+	 * Called Every tick when this block is powered by an External Heater from Immersive Engineering
+	 */
+	@Override
+	public int doHeatTick(int energyAvailable, boolean redstone)
+	{
+		if (canCrush() || redstone)
+		{
+			totalBurnTime = 111;
+
+			burnTime = Math.min(burnTime += 2, totalBurnTime);
+
+			if (canCrush() && totalBurnTime == burnTime && crushTime < TOTAL_CRUSHING_TIME)
+				crushTime++;
+
+			if (!world.getBlockState(pos).getValue(BlockAlloyer.BURNING))
+			{
+				BlockAlloyer.setState(true, world, pos);
+			}
+
+			sendUpdate();
+		}
+
+		if (!isBurning())
+			return 0;
+		else if (burnTime < totalBurnTime)
+			return ExternalHeaterHandler.defaultFurnaceEnergyCost;
+		else
+			return ExternalHeaterHandler.defaultFurnaceSpeedupCost + ExternalHeaterHandler.defaultFurnaceEnergyCost;
 	}
 
 	/**
