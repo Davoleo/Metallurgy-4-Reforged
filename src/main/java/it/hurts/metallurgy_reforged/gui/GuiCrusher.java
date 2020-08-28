@@ -72,7 +72,7 @@ public class GuiCrusher extends GuiContainer {
 	 */
 	private int getBurnLeftScaled(int pixels)
 	{
-		return this.crusher.getField(0) * pixels / Math.max(this.crusher.getField(1), 200);
+		return this.crusher.getField(0) * pixels / crusher.getField(1);
 	}
 
 	/**
