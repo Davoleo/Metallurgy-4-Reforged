@@ -87,6 +87,9 @@ public class ContainerAlloyer extends Container {
 		this.currentBurnTime = this.alloyer.getField(1);
 	}
 
+	/**
+	 * Called on the client side when the packet is received
+	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateProgressBar(int id, int data)
