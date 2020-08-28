@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.integration.conarm.traits;
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import it.hurts.metallurgy_reforged.effect.armor.QuicksilverArmorEffect;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
@@ -29,9 +30,12 @@ public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurg
 	@SubscribeEvent
 	public void increaseVelocity(LivingEntityUseItemEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait((EntityPlayer) event.getEntity(), "quickly"))
+		Entity entity = event.getEntity();
+		if (entity instanceof EntityPlayer)
 		{
-			QuicksilverArmorEffect.apply(event);
+			EntityPlayer player = ((EntityPlayer) entity);
+			if (MetallurgyConArmorStats.isArmorTrait(player, "quickly"))
+				QuicksilverArmorEffect.apply(event);
 		}
 	}
 
