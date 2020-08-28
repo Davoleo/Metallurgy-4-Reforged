@@ -11,6 +11,7 @@
 
 package it.hurts.metallurgy_reforged.tileentity;
 
+import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
 import it.hurts.metallurgy_reforged.item.ModItems;
@@ -45,7 +46,7 @@ import javax.annotation.Nullable;
 
 import static net.minecraft.tileentity.TileEntityFurnace.getItemBurnTime;
 
-public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory {
+public class TileEntityAlloyer extends TileEntityLockable implements ITickable, ISidedInventory, ExternalHeaterHandler.IExternalHeatable {
 
 	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
 	private static final int[] slotsBottom = Slots.OUTPUT_SLOT.slots();
@@ -259,15 +260,15 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			if (canAlloy())
 			{
-
-				if (!isPoweredByThermite)
-				{
-					this.alloyingTime++;
-				}
-				else
+				//When the alloyer is powered by thermite
+				if (isPoweredByThermite)
 				{
 					//if alloying time is higher than the total then return total alloying time otherwise increase by 2
 					this.alloyingTime = Math.min(this.alloyingTime += 2, TOTAL_ALLOYING_TIME);
+				}
+				else
+				{
+					alloyingTime++;
 				}
 
 				if (alloyingTime >= TOTAL_ALLOYING_TIME)
@@ -312,6 +313,35 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			BlockAlloyer.setState(isBurning(), this.world, this.pos);
 		}
 	}
+
+
+	/**
+	 * Called Every tick when this block is powered by an External Heater from Immersive Engineering
+	 */
+	@Override
+	public int doHeatTick(int energyAvailable, boolean redstone)
+	{
+
+		if (canAlloy() || redstone)
+		{
+			burnTime = Math.min(burnTime += 3, 111);
+
+			if (!world.getBlockState(pos).getValue(BlockAlloyer.BURNING))
+			{
+				BlockAlloyer.setState(true, world, pos);
+			}
+
+			markDirty();
+		}
+
+		if (!isBurning())
+			return 0;
+		else if (burnTime < 111)
+			return ExternalHeaterHandler.defaultFurnaceEnergyCost;
+		else
+			return ExternalHeaterHandler.defaultFurnaceSpeedupCost + ExternalHeaterHandler.defaultFurnaceEnergyCost;
+	}
+
 
 	/**
 	 * @return true if the recipe is valid and the alloy can be made
@@ -564,5 +594,4 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			return ArrayUtils.contains(slots, i);
 		}
 	}
-
 }
