@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -66,16 +67,21 @@ public class MetallurgyEffects {
 	{
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 		{
-			if (effect.getMetal().toString().equals(stats.getName()) && effect.isToolEffect())
+			Metal metal = effect.getMetal();
+			if (metal != null)
 			{
-				if (effect.getToolClass() != null && effect.getToolClass() == toolClass)
+				if (metal.toString().equals(stats.getName()) && effect.isToolEffect())
 				{
-					return effect;
-				}
+					if (effect.getToolClass() != null && effect.getToolClass() == toolClass)
+					{
+						return effect;
+					}
 
-				if (effect.getToolClass() == null)
-					return effect;
+					if (effect.getToolClass() == null)
+						return effect;
+				}
 			}
+
 		}
 
 		return null;
@@ -85,9 +91,13 @@ public class MetallurgyEffects {
 	{
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 		{
-			if (effect.getMetal().toString().equals(stats.getName()) && !effect.isToolEffect())
+			Metal metal = effect.getMetal();
+			if (metal != null)
 			{
-				return effect;
+				if (metal.toString().equals(stats.getName()) && !effect.isToolEffect())
+				{
+					return effect;
+				}
 			}
 		}
 
