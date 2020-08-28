@@ -13,9 +13,10 @@ package it.hurts.metallurgy_reforged.model;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
-import jline.internal.Nullable;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
+
+import javax.annotation.Nullable;
 
 @MethodsReturnNonnullByDefault
 public class AlloySample {
@@ -87,7 +88,8 @@ public class AlloySample {
 
 	public ItemStack getStack()
 	{
-		if (hasFallenBack())
+		//The second condition is important when metals are disabled in materials.json (it'll return an empty itemStack)
+		if (hasFallenBack() || metal == null)
 			return fallbackStack;
 
 		return new ItemStack(metal.getIngot(), amount);
