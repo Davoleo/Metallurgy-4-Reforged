@@ -31,6 +31,7 @@ public class ItemIgnatiusLighter extends ItemExtra {
 	public ItemIgnatiusLighter(String name)
 	{
 		super(name, MetallurgyTabs.tabSpecial, "gadget");
+		setMaxStackSize(1);
 		setMaxDamage(150);
 	}
 
