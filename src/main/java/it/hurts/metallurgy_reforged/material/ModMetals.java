@@ -14,6 +14,7 @@ package it.hurts.metallurgy_reforged.material;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,7 +85,8 @@ public class ModMetals {
 
 		Set<MetalStats> playerStats = defaultStats;
 
-		if (!copied)
+		//If the configuration file was already copied and the custom stats loader was enabled
+		if (GeneralConfig.enableCustomMaterialStatsConfig && !copied)
 		{
 			try
 			{
