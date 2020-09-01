@@ -85,6 +85,11 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableOreDictCrusherRecipes = true;
 
+	@Config.Name("Enable Custom Materials Stats Configuration file")
+	@Config.Comment("Loads the `material.json` file in the config folder that allows players to edit any material stat in the mod and to disable specific metals")
+	@Config.RequiresMcRestart
+	public static boolean enableCustomMaterialStatsConfig = false;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 
