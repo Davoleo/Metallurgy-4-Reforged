@@ -129,7 +129,8 @@ public class AlloyerRecipes {
 
 	public void addAlloyRecipe(AlloySample input1, AlloySample input2, AlloySample result)
 	{
-		this.alloyingList.put(input1, input2, result);
+		if (input1.getMetal() != null && input2.getMetal() != null && result.getMetal() != null)
+			this.alloyingList.put(input1, input2, result);
 	}
 
 	public void removeAlloyRecipe(ItemStack output)
