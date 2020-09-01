@@ -21,6 +21,7 @@ public class ModChecker {
 	public static boolean isProjectELoaded;
 	public static boolean isCraftTweakerLoaded;
 	public static boolean isSilentGemsLoaded;
+	public static boolean isNetherExLoaded;
 
 	static
 	{
@@ -30,6 +31,7 @@ public class ModChecker {
 		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
 		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
 		ModChecker.isSilentGemsLoaded = Loader.isModLoaded("silentgems");
+		ModChecker.isNetherExLoaded = Loader.isModLoaded("netherex");
 	}
 
 }
