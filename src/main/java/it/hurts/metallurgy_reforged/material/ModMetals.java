@@ -21,6 +21,9 @@ import java.util.Set;
 
 public class ModMetals {
 
+	//@PierKnight100's Slangs
+	//NullerPointer | Buggo | Oredirect | WRUAPPER
+
 	public static Map<String, Metal> metalMap = new HashMap<>();
 
 	public static Metal ADAMANTINE;

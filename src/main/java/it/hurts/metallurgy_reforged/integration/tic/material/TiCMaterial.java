@@ -28,9 +28,6 @@ public class TiCMaterial extends Material {
 		this.addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 		this.setRepresentativeItem("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 		TiCMaterials.addMaterialStats(metal, this);
-
-		//Gli slang di @PierKnight100
-		//NullerPointer | Buggo | Oredirect | WRUAPPER
 	}
 
 	@Override

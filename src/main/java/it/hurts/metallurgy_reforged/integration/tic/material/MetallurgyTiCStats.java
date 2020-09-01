@@ -35,7 +35,7 @@ public class MetallurgyTiCStats {
 		float attack = metal.getToolMaterial().getAttackDamage();
 		int harvestL = metal.getToolMaterial().getHarvestLevel();
 
-		//		Dovremmo modificare lo speed ?
+		// ? should we change the break speed
 		return new HeadMaterialStats(durability / 4, speed, attack, harvestL);
 	}
 
