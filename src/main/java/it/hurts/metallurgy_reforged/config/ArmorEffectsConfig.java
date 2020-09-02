@@ -85,15 +85,17 @@ public class ArmorEffectsConfig {
 	@Config.Name("Quicksilver Armor Effect")
 	@Config.Comment("Movements speed up")
 	public static boolean quicksilverArmorEffect = true;
+	@Config.Name("Quicksilver Blacklist Armor Effect")
+	@Config.Comment("Blacklist items which can't be speed up")
+	public static String[] quickSilverBlacklist = new String[]{
+		"bountifulbaubles:magicmirror"
+	};
 	@Config.Name("Shadow Iron Armor Effect")
 	@Config.Comment("Absorbed damage is proportional to the darkness")
 	public static boolean shadowSteelArmorEffect = true;
 	@Config.Name("Vulcanite Armor Effect")
 	@Config.Comment("You can't take damage from fire")
 	public static boolean vulcaniteArmorEffect = true;
-	@Config.Name("Quicksilver Blacklist Armor Effect")
-	@Config.Comment("Blacklist items which can't be speed up")
-	public static String[] quickSilverBlacklist = new String[]{};
 
 	private ArmorEffectsConfig() {}
 
