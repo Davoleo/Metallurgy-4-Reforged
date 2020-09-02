@@ -91,6 +91,9 @@ public class ArmorEffectsConfig {
 	@Config.Name("Vulcanite Armor Effect")
 	@Config.Comment("You can't take damage from fire")
 	public static boolean vulcaniteArmorEffect = true;
+	@Config.Name("Quicksilver Blacklist Armor Effect")
+	@Config.Comment("Blacklist items which can't be speed up")
+	public static String[] quickSilverBlacklist = new String[]{};
 
 	private ArmorEffectsConfig() {}
 

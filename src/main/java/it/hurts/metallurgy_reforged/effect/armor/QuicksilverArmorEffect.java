@@ -22,6 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
@@ -57,15 +58,15 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect
     @Override
     public void livingEvent(LivingEvent livingEvent)
     {
-        if (livingEvent instanceof LivingEntityUseItemEvent)
+        if(livingEvent instanceof LivingEntityUseItemEvent)
         {
             LivingEntityUseItemEvent event = ((LivingEntityUseItemEvent) livingEvent);
 
-            if (event.getEntityLiving() instanceof EntityPlayer)
+            if(event.getEntityLiving() instanceof EntityPlayer)
             {
                 EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
 
-                if (EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
+                if(EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
                 {
                     apply(event);
                 }
@@ -73,22 +74,35 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect
         }
     }
 
+    private static boolean isItemBlacklisted(Item item)
+    {
+        ResourceLocation registryName = item.getRegistryName();
+        if(registryName != null)
+            for (String blacklistedName : ArmorEffectsConfig.quickSilverBlacklist)
+                if(blacklistedName.equals(registryName.toString()))
+                    return true;
+        return false;
+    }
+
     public static void apply(LivingEntityUseItemEvent event)
     {
         ItemStack stack = event.getItem();
         Item item = stack.getItem();
+        if(isItemBlacklisted(item))
+            return;
+
         int duration = event.getDuration();
 
-        if (ModChecker.isTConLoaded && IntegrationTIC.isCrossbow(item))
+        if(ModChecker.isTConLoaded && IntegrationTIC.isCrossbow(item))
         {
-            if (event instanceof LivingEntityUseItemEvent.Tick)
+            if(event instanceof LivingEntityUseItemEvent.Tick)
             {
                 event.setDuration(duration - 1);
             }
         }
-        else if (event instanceof LivingEntityUseItemEvent.Start)
+        else if(event instanceof LivingEntityUseItemEvent.Start)
         {
-            if (item.getItemUseAction(stack) == EnumAction.BOW)
+            if(item.getItemUseAction(stack) == EnumAction.BOW)
             {
                 event.setDuration(duration - 7);
             }
