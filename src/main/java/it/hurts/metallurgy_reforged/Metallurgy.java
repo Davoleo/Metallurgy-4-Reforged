@@ -78,36 +78,36 @@ public class Metallurgy {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		logger = event.getModLog();
-		 logger.info(NAME + " is entering pre-initialization!");
+		logger.info(NAME + " is entering pre-initialization!");
 
-		 materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
-		 ModMetals.init();
+		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		ModMetals.init();
 
-		 ModFluids.registerFluids();
-		 logger.info("Fluid registration complete!");
+		ModFluids.registerFluids();
+		logger.info("Fluid registration complete!");
 
-		 GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
-		 MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
-		 MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
-		 logger.info("World generation successful!");
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
+		logger.info("World generation successful!");
 
-		 SubEvent.init();
+		SubEvent.init();
 
-		 TileEntityHandler.registerTileEntities();
-		 logger.info("Tile Entities Registered!");
+		TileEntityHandler.registerTileEntities();
+		logger.info("Tile Entities Registered!");
 
-		 //		check if tinker is installed
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-		 {
-			 IntegrationTIC.preInit();
-			 logger.info("Tinkers' Construct integration has been pre-initialized");
+		//checks if tinker is installed
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		{
+			IntegrationTIC.preInit();
+			logger.info("Tinkers' Construct integration has been pre-initialized");
 
-			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
-			 {
-				 IntegrationCArmory.preInit();
-				 logger.info("Construct's Armory integration has been pre-initialized");
-			 }
-		 }
+			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+			{
+				IntegrationCArmory.preInit();
+				logger.info("Construct's Armory integration has been pre-initialized");
+			}
+		}
 
 		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
 		{

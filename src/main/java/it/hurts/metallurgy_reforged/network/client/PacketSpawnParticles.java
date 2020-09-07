@@ -19,6 +19,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PacketSpawnParticles implements IMessage {
 
@@ -73,8 +75,9 @@ public class PacketSpawnParticles implements IMessage {
 
 	public static class Handler implements IMessageHandler<PacketSpawnParticles, IMessage> {
 
+		@SideOnly(Side.CLIENT)
 		@Override
-		public IMessage onMessage(PacketSpawnParticles message, MessageContext ctx)
+		public IMessage onMessage(final PacketSpawnParticles message, final MessageContext ctx)
 		{
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
 				World world = Minecraft.getMinecraft().world;
