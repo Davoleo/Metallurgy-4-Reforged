@@ -25,8 +25,7 @@ public class Constants {
 	public static final String POTASH_FERTILIZER = Utils.localize("tooltip.metallurgy.potash_fertilizer");
 	public static final String PHOSPHORUS_LAMP = Utils.localize("tooltip.metallurgy.phosphorus_lamp");
 	public static final String THERMITE_DUST = Utils.localize("tooltip.metallurgy.thermite");
-	public static final String ORE_HARVEST_LEVEL = Utils.localize("tooltip.metallurgy.ore_harvest_level");
-	public static final String TOOL_HARVEST_LEVEL = Utils.localize("tooltip.metallurgy.tool_harvest_level");
+
 
 	/**
 	 * Code constants: Tool Categories

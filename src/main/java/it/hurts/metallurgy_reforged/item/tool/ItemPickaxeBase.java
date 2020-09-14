@@ -18,7 +18,6 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
@@ -88,8 +87,6 @@ public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
 	@Override
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
-		int harvestLevel = this.getMetalStats().getToolStats().getHarvestLevel();
-		tooltip.add(Constants.TOOL_HARVEST_LEVEL + Integer.toString( harvestLevel ));
 		if (this.effect != null && effect.isEnabled())
 			tooltip.add(effect.getTooltip());
 	}
