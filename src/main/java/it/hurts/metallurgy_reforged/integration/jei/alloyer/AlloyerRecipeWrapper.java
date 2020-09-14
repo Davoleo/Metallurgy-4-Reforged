@@ -73,8 +73,11 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
 		List<ItemStack> inputList = NonNullList.create();
 
 		for (int id : OreDictionary.getOreIDs(originalStack))
-			inputList.addAll(OreDictionary.getOres(OreDictionary.getOreName(id)));
-
+		{
+			List<ItemStack> input = OreDictionary.getOres(OreDictionary.getOreName(id));
+			input.forEach(stack -> stack.setCount(originalStack.getCount()));
+			inputList.addAll(input);
+		}
 		if (inputList.isEmpty())
 			return Collections.singletonList(originalStack);
 		else
