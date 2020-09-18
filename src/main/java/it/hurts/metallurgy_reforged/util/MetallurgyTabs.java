@@ -66,7 +66,14 @@ public class MetallurgyTabs extends CreativeTabs {
 	@Override
 	public ItemStack createIcon()
 	{
+
+		if (type == 6)
+			return new ItemStack(ModBlocks.crusher);
+
 		Metal adamantine = ModMetals.ADAMANTINE;
+
+		if (adamantine == null)
+			return ItemStack.EMPTY;
 
 		switch (type)
 		{
@@ -82,8 +89,6 @@ public class MetallurgyTabs extends CreativeTabs {
 				return new ItemStack(adamantine.getIngot());
 			case 5:
 				return new ItemStack(adamantine.getNugget());
-			case 6:
-				return new ItemStack(ModBlocks.crusher);
 			case 7:
 				return new ItemStack(Objects.requireNonNull(adamantine.getOre()));
 			case 8:

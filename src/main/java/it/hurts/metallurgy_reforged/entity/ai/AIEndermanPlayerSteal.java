@@ -38,7 +38,7 @@ public class AIEndermanPlayerSteal extends EntityAIBase
     {
         EntityPlayer player = this.enderman.world.getClosestPlayerToEntity(this.enderman,10);
         EntityData data = this.enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY,null);
-        if(player != null && data != null && !data.wasSnatched)
+        if(ModMetals.DESICHALKOS != null && player != null && data != null && !data.wasSnatched)
         {
             this.player = player;
             this.endermanData = data;

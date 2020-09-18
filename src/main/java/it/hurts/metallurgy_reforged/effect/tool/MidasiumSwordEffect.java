@@ -50,7 +50,7 @@ public class MidasiumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onEntityKillDrop(List<EntityItem> drops, EntityPlayer killer)
 	{
-		if (killer.getHeldItemMainhand().getItem() == ModMetals.MIDASIUM.getTool(EnumTools.SWORD))
+		if (killer.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.SWORD))
 		{
 			List<EntityItem> dupeDrops = new ArrayList<>();
 

@@ -51,7 +51,7 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
-		if (player.isInWater() && player.getHeldItemMainhand().getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE))
+		if (player.isInWater() && player.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.PICKAXE))
 		{
 			event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}

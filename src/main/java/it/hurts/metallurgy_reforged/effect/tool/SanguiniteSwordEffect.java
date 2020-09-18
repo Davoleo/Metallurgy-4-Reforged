@@ -63,7 +63,7 @@ public class SanguiniteSwordEffect extends BaseMetallurgyEffect {
 				//the player that damaged the event entity
 				EntityPlayer player = (EntityPlayer) source;
 
-				if (player.getHeldItemMainhand().getItem() == ModMetals.SANGUINITE.getTool(EnumTools.SWORD))
+				if (player.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.SWORD))
 				{
 					{
 						//check if the player is missing hearts.

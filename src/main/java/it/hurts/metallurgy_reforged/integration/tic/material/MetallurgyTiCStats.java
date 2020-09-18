@@ -24,7 +24,9 @@ public class MetallurgyTiCStats {
 	{
 		this.metal = metal;
 		this.stats = abstractMaterialStats;
-		TinkerMetals.metalStatsList.add(this);
+		if (metal != null) {
+			TinkerMetals.metalStatsList.add(this);
+		}
 	}
 
 

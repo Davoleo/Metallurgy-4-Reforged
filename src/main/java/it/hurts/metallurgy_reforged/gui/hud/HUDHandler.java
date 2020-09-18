@@ -32,6 +32,9 @@ public class HUDHandler {
 		if (event.getType() != RenderGameOverlayEvent.ElementType.ALL)
 			return;
 
+		if (ModMetals.KRIK == null)
+			return;
+
 		Minecraft minecraft = Minecraft.getMinecraft();
 		if (minecraft.currentScreen instanceof GuiChat)
 			return;

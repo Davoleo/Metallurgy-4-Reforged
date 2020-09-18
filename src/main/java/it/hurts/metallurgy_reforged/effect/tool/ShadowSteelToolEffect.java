@@ -63,9 +63,9 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 
 	private boolean isShadowSteelTool(Item heldItem)
 	{
-		return heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.AXE) ||
-				heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE) ||
-				heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.SHOVEL);
+		return heldItem == metal.getTool(EnumTools.AXE) ||
+				heldItem == metal.getTool(EnumTools.PICKAXE) ||
+				heldItem == metal.getTool(EnumTools.SHOVEL);
 	}
 
 }

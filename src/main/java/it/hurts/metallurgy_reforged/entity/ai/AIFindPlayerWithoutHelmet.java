@@ -33,6 +33,9 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase {
 	@Override
 	public boolean shouldExecute()
 	{
+		if (ModMetals.EXIMITE == null)
+			return false;
+
 		boolean shouldExecute = findplayerClass.shouldExecute();
 		if (shouldExecute)
 		{

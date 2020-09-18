@@ -48,7 +48,7 @@ public class TinkerMetals {
 			new HeadMaterialStats(180, 25F, 6, 3),
 			new HandleMaterialStats(0.45F, 190),
 			new ExtraMaterialStats(15),
-			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12, 6 / 12));
+			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12F, 6 / 12F));
 
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM,
 			new HandleMaterialStats(0.75F, 300),

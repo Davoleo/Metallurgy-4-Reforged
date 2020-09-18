@@ -62,7 +62,7 @@ public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 		BlockPos pos = event.getPos();
 		IBlockState blockState = world.getBlockState(pos);
 
-		if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.PICKAXE)))
+		if (heldItem.equals(metal.getTool(EnumTools.PICKAXE)))
 		{
 			ResourceLocation regName = blockState.getBlock().getRegistryName();
 

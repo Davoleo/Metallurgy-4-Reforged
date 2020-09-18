@@ -66,7 +66,7 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect
             {
                 EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
 
-                if(EventUtils.isPlayerWearingArmor(player, ModMetals.QUICKSILVER))
+                if(EventUtils.isPlayerWearingArmor(player, metal))
                 {
                     apply(event);
                 }
