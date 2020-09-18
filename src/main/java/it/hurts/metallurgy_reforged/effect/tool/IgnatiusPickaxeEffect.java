@@ -44,7 +44,7 @@ public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isToolEffect()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Nullable

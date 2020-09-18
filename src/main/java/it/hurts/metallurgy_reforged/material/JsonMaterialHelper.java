@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.material;
 
 import com.google.gson.*;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.util.Constants;
 import net.minecraft.util.JsonUtils;
 
 import java.io.BufferedReader;
@@ -109,7 +110,7 @@ public class JsonMaterialHelper {
 			}
 		}
 
-		return MetalStats.EMPTY_METAL_STATS;
+		return Constants.EMPTY_METAL_STATS;
 	}
 
 	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback) throws JsonSyntaxException

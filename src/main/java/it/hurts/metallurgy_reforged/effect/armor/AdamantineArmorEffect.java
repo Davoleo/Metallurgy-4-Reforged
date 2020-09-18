@@ -37,7 +37,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.adamantineArmorEffect;
+		return ArmorEffectsConfig.adamantineArmorEffect && super.isEnabled();
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (!player.world.isRemote && EventUtils.isPlayerWearingArmor(player, ModMetals.ADAMANTINE))
+		if (!player.world.isRemote && EventUtils.isPlayerWearingArmor(player, metal))
 		{
 			FoodStats foodStat = player.getFoodStats();
 			int amount = 2;

@@ -11,6 +11,10 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.material.ArmorStats;
+import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.material.ToolStats;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
 import java.util.HashMap;
@@ -18,6 +22,11 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Constants {
+
+	//Metal
+	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
+			new ArmorStats(new int[4], 0, 0, 0),
+			new ToolStats(0, 0, 0, 0, 0), 0, 0);
 
 	//Localized
 	public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");

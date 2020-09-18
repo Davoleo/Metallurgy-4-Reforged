@@ -45,7 +45,7 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
-        return ToolEffectsConfig.atlarusHoeEffect;
+        return ToolEffectsConfig.atlarusHoeEffect && super.isEnabled();
     }
 
     @Override

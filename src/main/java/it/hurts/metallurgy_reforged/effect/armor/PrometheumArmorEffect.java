@@ -31,7 +31,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.prometheumArmorEffect;
+		return ArmorEffectsConfig.prometheumArmorEffect && super.isEnabled();
 	}
 
 	@Override

@@ -40,7 +40,7 @@ public class MithrilArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.mithrilArmorEffect;
+		return ArmorEffectsConfig.mithrilArmorEffect && super.isEnabled();
 	}
 
 	@Override

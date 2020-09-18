@@ -35,7 +35,7 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.eximiteArmorEffect;
+		return ArmorEffectsConfig.eximiteArmorEffect && super.isEnabled();
 	}
 
 	@Override

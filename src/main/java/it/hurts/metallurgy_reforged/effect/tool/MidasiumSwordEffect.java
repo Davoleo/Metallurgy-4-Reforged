@@ -31,7 +31,7 @@ public class MidasiumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Override

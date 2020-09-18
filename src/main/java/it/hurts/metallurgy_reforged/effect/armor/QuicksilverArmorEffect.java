@@ -39,7 +39,7 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
-        return ArmorEffectsConfig.quicksilverArmorEffect;
+        return ArmorEffectsConfig.quicksilverArmorEffect && super.isEnabled();
     }
 
     @Override

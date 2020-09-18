@@ -37,7 +37,7 @@ public class AtlarusAxeEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
-        return ToolEffectsConfig.atlarusAxeEffect;
+        return ToolEffectsConfig.atlarusAxeEffect && super.isEnabled();
     }
 
     @Override

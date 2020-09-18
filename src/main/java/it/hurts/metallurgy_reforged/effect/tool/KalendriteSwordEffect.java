@@ -30,7 +30,7 @@ public class KalendriteSwordEffect extends SwordHitChanceEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.kalendriteSwordEffect;
+		return ToolEffectsConfig.kalendriteSwordEffect && super.isEnabled();
 	}
 
 	@Override

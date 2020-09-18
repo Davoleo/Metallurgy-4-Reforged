@@ -30,7 +30,7 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.vulcaniteArmorEffect;
+		return ArmorEffectsConfig.vulcaniteArmorEffect && super.isEnabled();
 	}
 
 	@Override

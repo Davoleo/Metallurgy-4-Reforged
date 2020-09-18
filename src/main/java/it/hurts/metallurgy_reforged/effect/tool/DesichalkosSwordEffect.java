@@ -39,7 +39,7 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.desichalkosSwordEffect;
+		return ToolEffectsConfig.desichalkosSwordEffect && super.isEnabled();
 	}
 
 	@Override

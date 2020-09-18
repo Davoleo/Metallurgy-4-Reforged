@@ -34,7 +34,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.shadowSteelArmorEffect;
+		return ArmorEffectsConfig.shadowSteelArmorEffect && super.isEnabled();
 	}
 
 	@Override

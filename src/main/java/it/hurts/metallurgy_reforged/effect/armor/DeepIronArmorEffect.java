@@ -37,7 +37,7 @@ public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.deepIronArmorEffect;
+		return ArmorEffectsConfig.deepIronArmorEffect && super.isEnabled();
 	}
 
 	@Override

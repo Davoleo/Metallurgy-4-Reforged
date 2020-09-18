@@ -40,6 +40,9 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
+        if (!super.isEnabled())
+            return false;
+
         return metal == ModMetals.IGNATIUS ? ToolEffectsConfig.ignatiusSwordEffect : ToolEffectsConfig.vulcaniteSwordEffect;
     }
 

@@ -114,7 +114,7 @@ public class MetallurgyEffects {
 		@Override
 		public boolean isEnabled()
 		{
-			return ArmorEffectsConfig.amordrineArmorEffect;
+			return ArmorEffectsConfig.amordrineArmorEffect && super.isEnabled();
 		}
 	};
 
@@ -124,7 +124,7 @@ public class MetallurgyEffects {
 		@Override
 		public boolean isEnabled()
 		{
-			return ArmorEffectsConfig.angmallenArmorEffect;
+			return ArmorEffectsConfig.angmallenArmorEffect && super.isEnabled();
 		}
 	};
 
@@ -134,7 +134,7 @@ public class MetallurgyEffects {
 		@Override
 		public boolean isEnabled()
 		{
-			return ArmorEffectsConfig.astralSilverArmorEffect;
+			return ArmorEffectsConfig.astralSilverArmorEffect && super.isEnabled();
 		}
 	};
 
@@ -152,7 +152,7 @@ public class MetallurgyEffects {
 		@Override
 		public boolean isEnabled()
 		{
-			return ArmorEffectsConfig.carmotArmorEffect;
+			return ArmorEffectsConfig.carmotArmorEffect && super.isEnabled();
 		}
 	};
 
@@ -168,7 +168,7 @@ public class MetallurgyEffects {
 				@Override
 				public boolean isEnabled()
 				{
-					return ToolEffectsConfig.ceruclaseSwordEffect;
+					return ToolEffectsConfig.ceruclaseSwordEffect && super.isEnabled();
 				}
 			};
 
@@ -233,7 +233,7 @@ public class MetallurgyEffects {
 		@Override
 		public boolean isEnabled()
 		{
-			return ArmorEffectsConfig.kaledriteArmorEffect;
+			return ArmorEffectsConfig.kaledriteArmorEffect && super.isEnabled();
 		}
 	};
 
@@ -254,13 +254,7 @@ public class MetallurgyEffects {
 
 	//Mithril Sword (Glowing effect applied on hit entity)
 	public static final BaseMetallurgyEffect mithrilSwordEffect =
-			new SwordHitChanceEffect(ModMetals.MITHRIL, 100, new PotionEffect(MobEffects.GLOWING, 200, 1)) {
-				@Override
-				public boolean isEnabled()
-				{
-					return true;
-				}
-			};
+			new SwordHitChanceEffect(ModMetals.MITHRIL, 100, new PotionEffect(MobEffects.GLOWING, 200, 1));
 
 	//Orichalcum Effect
 	public static final BaseMetallurgyEffect orichalcumSwordEffect = new CelenegilOrichalcumSwordEffect(ModMetals.ORICHALCUM);
@@ -289,7 +283,7 @@ public class MetallurgyEffects {
 				@Override
 				public boolean isEnabled()
 				{
-					return ToolEffectsConfig.shadowIronSwordEffect;
+					return ToolEffectsConfig.shadowIronSwordEffect && super.isEnabled();
 				}
 			};
 
@@ -311,7 +305,7 @@ public class MetallurgyEffects {
 				@Override
 				public boolean isEnabled()
 				{
-					return ToolEffectsConfig.tartariteSwordEffect;
+					return ToolEffectsConfig.tartariteSwordEffect && super.isEnabled();
 				}
 			};
 
@@ -327,7 +321,7 @@ public class MetallurgyEffects {
 				@Override
 				public boolean isEnabled()
 				{
-					return ToolEffectsConfig.vyroxeresSwordEffect;
+					return ToolEffectsConfig.vyroxeresSwordEffect && super.isEnabled();
 				}
 			};
 

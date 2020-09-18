@@ -38,7 +38,7 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
     @Override
     public boolean isEnabled()
     {
-        return ArmorEffectsConfig.haderothArmorEffect;
+        return ArmorEffectsConfig.haderothArmorEffect && super.isEnabled();
     }
 
     @Override

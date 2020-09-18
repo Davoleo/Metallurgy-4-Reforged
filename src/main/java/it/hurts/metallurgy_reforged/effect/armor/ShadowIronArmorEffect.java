@@ -30,7 +30,7 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Override

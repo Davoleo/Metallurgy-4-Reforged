@@ -46,7 +46,7 @@ public class Metal {
 	//Fluid
 	private final FluidMolten molten;
 
-	public Metal(MetalStats stats, ItemMetal ingot, ItemMetal dust, ItemMetal nugget, BlockOre ore, BlockMetal[] blocks, FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
+	public Metal(@Nonnull MetalStats stats, @Nonnull ItemMetal ingot, @Nonnull ItemMetal dust, @Nonnull ItemMetal nugget, BlockOre ore, @Nonnull BlockMetal[] blocks, @Nonnull FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
 	{
 		this.stats = stats;
 		this.ingot = ingot;

@@ -24,7 +24,7 @@ public class AtlarusSwordEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
-        return ToolEffectsConfig.atlarusSwordEffect;
+        return ToolEffectsConfig.atlarusSwordEffect && super.isEnabled();
     }
 
     @Override

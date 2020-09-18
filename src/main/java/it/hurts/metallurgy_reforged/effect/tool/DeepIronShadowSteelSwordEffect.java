@@ -40,6 +40,9 @@ public class DeepIronShadowSteelSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
+		if (!super.isEnabled())
+			return false;
+
 		return metal == ModMetals.DEEP_IRON ? ToolEffectsConfig.deepIronSwordEffect : ToolEffectsConfig.shadowSteelSwordEffect;
 	}
 

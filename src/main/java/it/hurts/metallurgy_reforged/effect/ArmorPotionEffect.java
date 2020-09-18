@@ -33,7 +33,9 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public abstract boolean isEnabled();
+	public boolean isEnabled() {
+		return super.isEnabled();
+	}
 
 	@Override
 	public boolean isToolEffect()

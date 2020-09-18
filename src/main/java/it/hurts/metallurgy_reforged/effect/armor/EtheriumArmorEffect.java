@@ -31,7 +31,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect {
     @Override
     public boolean isEnabled()
     {
-        return ArmorEffectsConfig.etheriumArmorEffect;
+        return ArmorEffectsConfig.etheriumArmorEffect && super.isEnabled();
     }
 
     @Override

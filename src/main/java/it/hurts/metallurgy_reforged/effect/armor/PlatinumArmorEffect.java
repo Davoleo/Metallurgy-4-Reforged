@@ -29,7 +29,7 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.platinumArmorEffect;
+		return ArmorEffectsConfig.platinumArmorEffect && super.isEnabled();
 	}
 
 	@Override

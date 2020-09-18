@@ -30,7 +30,7 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.deepIronPickaxeEffect;
+		return ToolEffectsConfig.deepIronPickaxeEffect && super.isEnabled();
 	}
 
 	@Override

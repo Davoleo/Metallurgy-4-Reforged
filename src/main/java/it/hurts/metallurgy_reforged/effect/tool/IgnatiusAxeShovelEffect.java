@@ -35,6 +35,9 @@ public abstract class IgnatiusAxeShovelEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
+		if (!super.isEnabled())
+			return false;
+
 		return getToolClass() == EnumTools.AXE ? ToolEffectsConfig.ignatiusAxeEffect : ToolEffectsConfig.ignatiusShovelEffect;
 	}
 

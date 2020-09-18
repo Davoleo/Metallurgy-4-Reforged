@@ -51,7 +51,7 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
     @Override
     public boolean isEnabled()
     {
-        return ArmorEffectsConfig.desichalkosArmorEffect;
+        return ArmorEffectsConfig.desichalkosArmorEffect && super.isEnabled();
     }
 
     @Override

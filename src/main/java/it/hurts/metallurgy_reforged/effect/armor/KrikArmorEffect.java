@@ -35,7 +35,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.krikArmorEffect;
+		return ArmorEffectsConfig.krikArmorEffect && super.isEnabled();
 	}
 
 	@Override

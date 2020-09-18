@@ -21,7 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public abstract class SwordHitChanceEffect extends BaseMetallurgyEffect {
+public class SwordHitChanceEffect extends BaseMetallurgyEffect {
 
 	protected Random random = new Random();
 	protected int chance;
@@ -35,7 +35,9 @@ public abstract class SwordHitChanceEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	abstract public boolean isEnabled();
+	public boolean isEnabled() {
+		return super.isEnabled();
+	}
 
 	@Override
 	public boolean isToolEffect()

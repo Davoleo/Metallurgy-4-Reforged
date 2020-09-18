@@ -29,7 +29,7 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.celenegilArmorEffect;
+		return ArmorEffectsConfig.celenegilArmorEffect && super.isEnabled();
 	}
 
 	@Override

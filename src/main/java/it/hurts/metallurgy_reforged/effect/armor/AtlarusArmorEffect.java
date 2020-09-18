@@ -37,7 +37,7 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect
     @Override
     public boolean isEnabled()
     {
-        return ArmorEffectsConfig.atlarusArmorEffect;
+        return ArmorEffectsConfig.atlarusArmorEffect && super.isEnabled();
     }
 
     @Override

@@ -32,7 +32,7 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.shadowSteelToolSpeedEffect;
+		return ToolEffectsConfig.shadowSteelToolSpeedEffect && super.isEnabled();
 	}
 
 	@Override

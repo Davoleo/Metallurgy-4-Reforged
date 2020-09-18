@@ -37,13 +37,17 @@ public abstract class BaseMetallurgyEffect {
 	public BaseMetallurgyEffect(Metal metal)
 	{
 		this.metal = metal;
+
 		if (isEnabled())
 		{
 			MetallurgyEffects.effects.add(this);
 		}
 	}
 
-	public abstract boolean isEnabled();
+	//TODO Maybe look for metal config reference automatically
+	public boolean isEnabled() {
+		return metal != null;
+	}
 
 	public abstract boolean isToolEffect();
 

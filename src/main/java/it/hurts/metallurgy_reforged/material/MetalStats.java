@@ -51,9 +51,6 @@ public class MetalStats {
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
 
-	//Steins;Gate 0
-	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0, new ArmorStats(new int[4], 0, 0, 0), new ToolStats(0, 0, 0, 0, 0), 0, 0);
-
 	public void createMetal()
 	{
 		//name should be in format [snake_case], oreName should be in format [camelCase]

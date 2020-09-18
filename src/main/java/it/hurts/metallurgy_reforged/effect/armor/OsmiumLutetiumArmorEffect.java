@@ -33,6 +33,9 @@ public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
+		if (!super.isEnabled())
+			return false;
+
 		if (metal == ModMetals.OSMIUM)
 			return ArmorEffectsConfig.osmiumArmorEffect;
 		else
