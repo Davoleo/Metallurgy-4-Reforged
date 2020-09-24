@@ -28,6 +28,10 @@ public class Constants {
 			new ArmorStats(new int[4], 0, 0, 0),
 			new ToolStats(0, 0, 0, 0, 0), 0, 0);
 
+	//Vanilla Metals
+	public static final String METAL_IRON = "iron";
+	public static final String METAL_GOLD = "gold";
+
 	//Localized
 	public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");
 	public static final String GAUNTLET_EFFECT_DISABLED = Utils.localize("tooltip.metallurgy.gauntlet_effect_disabled");

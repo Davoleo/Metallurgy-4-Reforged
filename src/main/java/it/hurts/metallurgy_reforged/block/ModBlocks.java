@@ -23,6 +23,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 //Class used as reference for all the manually registered blocks
@@ -58,6 +59,22 @@ public class ModBlocks {
 	//public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
 	public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
+	//Vanilla Decorative Blocks Init
+	//Iron
+	public static BlockMetal engravedIronBlock = new BlockMetal(Constants.METAL_IRON, BlockTypes.ENGRAVED_BLOCK);
+	public static BlockMetal largeIronBricks = new BlockMetal(Constants.METAL_IRON, BlockTypes.LARGE_BRICKS);
+	public static BlockMetal ironBricks = new BlockMetal(Constants.METAL_IRON, BlockTypes.BRICKS);
+	public static BlockMetal ironCrystal = new BlockMetal(Constants.METAL_IRON, BlockTypes.CRYSTAL);
+	public static BlockMetal ironHazardBlock = new BlockMetal(Constants.METAL_IRON, BlockTypes.HAZARD_BLOCK);
+	public static BlockMetal ironReinforcedGlass = new BlockMetal(Constants.METAL_IRON, BlockTypes.GLASS);
+	//Gold
+	public static BlockMetal engravedGoldBlock = new BlockMetal(Constants.METAL_GOLD, BlockTypes.ENGRAVED_BLOCK);
+	public static BlockMetal largeGoldBricks = new BlockMetal(Constants.METAL_GOLD, BlockTypes.LARGE_BRICKS);
+	public static BlockMetal goldBricks = new BlockMetal(Constants.METAL_GOLD, BlockTypes.BRICKS);
+	public static BlockMetal goldCrystal = new BlockMetal(Constants.METAL_GOLD, BlockTypes.CRYSTAL);
+	public static BlockMetal goldHazardBlock = new BlockMetal(Constants.METAL_GOLD, BlockTypes.HAZARD_BLOCK);
+	public static BlockMetal goldReinforcedGlass = new BlockMetal(Constants.METAL_GOLD, BlockTypes.GLASS);
+
 	//Other Blocks Initialization
 	static
 	{
@@ -72,7 +89,8 @@ public class ModBlocks {
 		miscBlocks.add(oreSulfur);
 		miscBlocks.add(orePotash);
 		miscBlocks.add(orePhosphorite);
-
+		Collections.addAll(miscBlocks, engravedGoldBlock, largeGoldBricks, goldBricks, goldCrystal, goldHazardBlock, goldReinforcedGlass);
+		Collections.addAll(miscBlocks, engravedIronBlock, largeIronBricks, ironBricks, ironCrystal, ironHazardBlock, ironReinforcedGlass);
 	}
 
 	public static ItemBlock createItemBlock(Block block)

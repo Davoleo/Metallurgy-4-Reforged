@@ -13,6 +13,10 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 
+/**
+ * Enumerates all the different kinds of decorative blocks the mod has<br>
+ * Note to self: When adding new BlockType remember to add vanilla metals versions as well in {@link ModBlocks}
+ */
 public enum BlockTypes {
 
 	BLOCK("block", RegistrationConfig.categoryBlocks.enableRawMetalBlocks),

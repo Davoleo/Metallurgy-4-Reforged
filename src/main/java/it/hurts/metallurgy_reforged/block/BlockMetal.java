@@ -30,8 +30,8 @@ import javax.annotation.Nonnull;
 
 public class BlockMetal extends Block {
 
-	private MetalStats metal;
-	private BlockTypes type;
+	private final MetalStats metal;
+	private final BlockTypes type;
 
 	public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
 	{
@@ -46,6 +46,20 @@ public class BlockMetal extends Block {
 		}
 
 		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
+	}
+
+	public BlockMetal(String metalName, BlockTypes type) {
+		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
+		this.metal = null;
+		this.type = type;
+		this.setSoundType(SoundType.METAL);
+
+		if (this.type == BlockTypes.GLASS)
+		{
+			this.setLightOpacity(0);
+		}
+
+		BlockUtils.initBlock(this, metalName + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3, 5F, Constants.Tools.PICKAXE, 1);
 	}
 
 	@SuppressWarnings("deprecation")
