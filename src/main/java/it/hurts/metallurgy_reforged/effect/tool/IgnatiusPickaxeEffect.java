@@ -66,10 +66,10 @@ public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 		{
 			ResourceLocation regName = blockState.getBlock().getRegistryName();
 
-			if (regName != null && regName.getPath().contains("_ore"))
+			if (regName != null && regName.getResourcePath().contains("_ore"))
 			{
-				String nuggetReg = regName.getPath().replace("_ore", "_nugget");
-				Item nugget = ForgeRegistries.ITEMS.getValue(new ResourceLocation(regName.getNamespace(), nuggetReg));
+				String nuggetReg = regName.getResourcePath().replace("_ore", "_nugget");
+				Item nugget = ForgeRegistries.ITEMS.getValue(new ResourceLocation(regName.getResourceDomain(), nuggetReg));
 				if (nugget != null && Utils.random.nextBoolean())
 				{
 					world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(nugget, Utils.random.nextInt(3))));

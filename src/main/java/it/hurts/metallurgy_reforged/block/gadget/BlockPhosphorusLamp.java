@@ -111,7 +111,7 @@ public class BlockPhosphorusLamp extends BlockOrientable {
 
 	@Nonnull
 	@Override
-	public BlockRenderLayer getRenderLayer()
+	public BlockRenderLayer getBlockLayer()
 	{
 		return BlockRenderLayer.CUTOUT;
 	}

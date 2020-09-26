@@ -40,7 +40,7 @@ public class MetallurgyToolPart extends ToolPartMain {
 	{
 
 		Item item = tool.getItem();
-		String name = item.getRegistryName().getPath();
+		String name = item.getRegistryName().getResourcePath();
 		name = SilentGems.MODID + ":" + name.toLowerCase() + "/" + name;
 		boolean isBow = item instanceof ItemGemBow;
 		String num = isBow ? "" : "15";

@@ -99,7 +99,7 @@ public class BlockOre extends Block {
 	private void spawnParticles(World worldIn, BlockPos pos, Random random)
 	{
 		double d0 = 0.0625D;
-		String metalName = this.getRegistryName().getPath().replace("_ore", "");
+		String metalName = this.getRegistryName().getResourcePath().replace("_ore", "");
 		Metal metal = ModMetals.metalMap.get(metalName);
 
 		if (metal == null)

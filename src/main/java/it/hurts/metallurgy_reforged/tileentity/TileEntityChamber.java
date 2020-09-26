@@ -364,7 +364,7 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 			nbttaglist.appendTag(nbttagcompound);
 		}
 
-		if (!nbttaglist.isEmpty())
+		if (!nbttaglist.hasNoTags())
 		{
 			compound.setTag("affectedPlayers", nbttaglist);
 		}

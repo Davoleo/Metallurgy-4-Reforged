@@ -71,7 +71,7 @@ public class OreDictHandler {
 
 	public static void initOreDict(IForgeRegistryEntry.Impl<?> itemOrBlock)
 	{
-		String[] words = itemOrBlock.getRegistryName().getPath().split("_");
+		String[] words = itemOrBlock.getRegistryName().getResourcePath().split("_");
 		String oreName = "ore";
 		for (String word : words)
 		{

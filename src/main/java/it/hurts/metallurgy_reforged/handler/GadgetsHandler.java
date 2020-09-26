@@ -188,7 +188,7 @@ public class GadgetsHandler {
 		for (BlockPos blockPos : sortedPositions)
 		{
 			IBlockState state = world.getBlockState(blockPos);
-			if (state.getBlock().getCreativeTab() == CreativeTabs.REDSTONE
+			if (state.getBlock().getCreativeTabToDisplayOn() == CreativeTabs.REDSTONE
 					|| state.getBlock().getItem(world, blockPos, state).getItem().getCreativeTab() == CreativeTabs.REDSTONE)
 			{
 				GlStateManager.pushMatrix();

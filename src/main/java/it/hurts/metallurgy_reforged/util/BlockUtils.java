@@ -30,7 +30,7 @@ public class BlockUtils {
 	public static void initBlock(Block block, String name, CreativeTabs tab, float hardness, float blastResistance, String toolClass, int harvestLevel)
 	{
 		block.setRegistryName(Metallurgy.MODID, name);
-		block.setTranslationKey(Metallurgy.MODID + "." + name);
+		block.setUnlocalizedName(Metallurgy.MODID + "." + name);
 		if (tab != null)
 			block.setCreativeTab(tab);
 
@@ -42,7 +42,7 @@ public class BlockUtils {
 	public static void initBlock(Block block, String name, CreativeTabs tab)
 	{
 		block.setRegistryName(Metallurgy.MODID, name);
-		block.setTranslationKey(Metallurgy.MODID + "." + name);
+		block.setUnlocalizedName(Metallurgy.MODID + "." + name);
 		if (tab != null)
 			block.setCreativeTab(tab);
 	}
@@ -51,7 +51,7 @@ public class BlockUtils {
 	{
 		fluidBlock.getFluid().setBlock(fluidBlock);
 		fluidBlock.setRegistryName(Metallurgy.MODID, name);
-		fluidBlock.setTranslationKey(Metallurgy.MODID + "." + name);
+		fluidBlock.setUnlocalizedName(Metallurgy.MODID + "." + name);
 		fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
 
 		ModFluids.fluidBlocks.add(fluidBlock);

@@ -48,7 +48,7 @@ public class ModFluids {
 
 				metal.getMolten().setBlock(fluidBlock);
 				fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
-				fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
+				fluidBlock.setUnlocalizedName(Metallurgy.MODID + ".molten_" + metal.toString());
 
 				ModFluids.fluidBlocks.add(fluidBlock);
 			}

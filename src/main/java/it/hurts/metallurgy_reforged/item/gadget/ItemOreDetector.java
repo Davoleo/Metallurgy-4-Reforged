@@ -152,7 +152,7 @@ public class ItemOreDetector extends ItemExtra {
 
 		List<Metal> metalSet = Lists.newArrayList();
 
-		if (nbt != null && !nbt.isEmpty())
+		if (nbt != null && !nbt.hasNoTags())
 		{
 			for (int i = 1; i <= 3; i++)
 			{

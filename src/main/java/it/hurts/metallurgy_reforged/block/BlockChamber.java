@@ -213,7 +213,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 						double c1 = (double) (c >> 8 & 255) / 255.0D;
 						double c2 = (double) (c >> 0 & 255) / 255.0D;
 
-						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0, c1, c2);
+						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getFrontOffsetX() * 0.5F, d1, d2 + facing.getFrontOffsetZ() * 0.5F, c0, c1, c2);
 					}
 				}
 			}

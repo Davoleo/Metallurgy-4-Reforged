@@ -26,7 +26,7 @@ public class HighChanceTemperatureSpawn extends BaseOreSpawn
     public int getRarity(World world, int chunkX, int chunkZ,int originalRarity)
     {
 
-        for (byte b : world.getChunk(chunkX, chunkZ).getBiomeArray())
+        for (byte b : world.getChunkFromChunkCoords(chunkX, chunkZ).getBiomeArray())
         {
             Biome biome = Biome.getBiomeForId(b);
             if(biome != null && getTempCategory(biome) == tempCategory)

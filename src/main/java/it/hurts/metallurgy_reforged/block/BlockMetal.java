@@ -78,13 +78,11 @@ public class BlockMetal extends Block {
 
 	@Nonnull
 	@Override
-	public BlockRenderLayer getRenderLayer()
-	{
+	public BlockRenderLayer getBlockLayer() {
 		if (type == BlockTypes.GLASS)
 			return BlockRenderLayer.CUTOUT;
 		else
 			return BlockRenderLayer.SOLID;
-
 	}
 
 	// TODO: 11/05/2020 Find a way to make it look decent

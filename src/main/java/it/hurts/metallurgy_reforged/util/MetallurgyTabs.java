@@ -64,7 +64,7 @@ public class MetallurgyTabs extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	@Nonnull
 	@Override
-	public ItemStack createIcon()
+	public ItemStack getTabIconItem()
 	{
 
 		if (type == 6)

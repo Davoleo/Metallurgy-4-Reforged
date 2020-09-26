@@ -68,7 +68,7 @@ public class ModWorldGen implements IWorldGenerator {
             generateEnd(random, chunkX, chunkZ, world);
         if(!newGen)
         {
-            world.getChunk(chunkX, chunkZ).markDirty();
+            world.getChunkFromChunkCoords(chunkX, chunkZ).markDirty();
         }
     }
 

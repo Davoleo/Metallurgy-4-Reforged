@@ -35,9 +35,8 @@ public class FluidBlockTar extends BlockFluidClassic {
 	 * Slows the player movements when swimming in Tar (80% less speed than in water)
 	 */
 	@Override
-	public void onEntityCollision(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Entity entityIn)
-	{
-		super.onEntityCollision(worldIn, pos, state, entityIn);
+	public void onEntityCollidedWithBlock(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Entity entityIn) {
+		super.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
 		entityIn.motionX *= 0.2D;
 		entityIn.motionY *= 0.2D;
 		entityIn.motionZ *= 0.2D;

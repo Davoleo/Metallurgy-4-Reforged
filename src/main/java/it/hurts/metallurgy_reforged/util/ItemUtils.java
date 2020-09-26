@@ -58,7 +58,7 @@ public class ItemUtils {
 	 */
 	public static void initItem(Item item, String name, CreativeTabs tab)
 	{
-		item.setTranslationKey(Metallurgy.MODID + "." + name);
+		item.setUnlocalizedName(Metallurgy.MODID + "." + name);
 		item.setRegistryName(Metallurgy.MODID, name);
 		item.setCreativeTab(tab);
 	}
@@ -75,7 +75,7 @@ public class ItemUtils {
 			for (String type : except)
 			{
 				String toolName = metal.getStats().getName() + "_" + type;
-				if (tool.getTranslationKey().equalsIgnoreCase(toolName))
+				if (tool.getUnlocalizedName().equalsIgnoreCase(toolName))
 					valid = false;
 			}
 			return valid;
@@ -124,7 +124,7 @@ public class ItemUtils {
 	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta, String subdir)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getResourcePath(), "inventory"));
 	}
 
 	/**
