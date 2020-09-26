@@ -55,10 +55,15 @@ repositories {
     
     //Jared's Maven Repository (CraftTweaker)
     maven {
-        name 'jared maven'
+        name = 'jared maven'
         url "http://maven.blamejared.com/"
     }
-	
+
+    maven {
+        name = 'curse maven'
+        url = "https://www.cursemaven.com"
+    }
+
     //CurseForge maven as a final fallback
     maven {
         name = "CurseForge"
@@ -68,41 +73,47 @@ repositories {
 
 dependencies {
 
+    //api = this is a dependency required both at runtime and at compile time. Moreover it is transitive (i.e. if A depends on B and B depends on C via api, then A can access C)
+    //implementation = this is a dependency required both at runtime and at compile time. It is not transitive (i.e. if A depends on B and B depends on C via implementation, then A cannot access C)
+    //runtimeOnly = this is a dependency only required at runtime. It won't be present at compile time
+    //compileOnly = this is a dependency only required at compile time. It won't be present at runtime
+
+    //compileOnly doesn't always stop things from loading at runtime
+
+    //provided = same as compileOnly, don't use
+    //compile = same as api, don't use
+    //runtime = same as runtimeOnly, don't use
+
     implementation('org.codehaus.groovy:groovy-all:2.5.7')
-    
-    //deobfProvided: Direct Source Code
-    //runtime: only at runtime
-    //deobfCompile: Compiled De-obfuscated Source Code
-    //compile: Compiled Source Code
-    //compileOnly: NO runtime
+
 
     //Compile against the JEI API but do not include it at runtime
-    deobfProvided 'mezz.jei:jei_1.12.2:4.15.+:api'
+    compileOnly 'mezz.jei:jei_1.12.2:4.15.+:api'
 	
     //At runtime, use the full JEI jar
-    runtime 'mezz.jei:jei_1.12.2:4.15.+'
+    runtimeOnly 'mezz.jei:jei_1.12.2:4.15.+'
 	
     //Tinker Construct & Mantle
-	deobfCompile 'slimeknights.mantle:Mantle:1.12-1.3.3.56'
-    deobfCompile 'slimeknights:TConstruct:1.12.2-2.13.0.184'
+	implementation 'slimeknights.mantle:Mantle:1.12-1.3.3.56'
+    implementation 'slimeknights:TConstruct:1.12.2-2.13.0.184'
     
-    deobfCompile 'constructs-armory:conarm:1.12.2:1.2.5.9'
+    implementation 'constructs-armory:conarm:1.12.2:1.2.5.9'
      
     //Industrial Foregoing
-    compileOnly 'industrial-foregoing:industrialforegoing-1.12.2:1.12.13:237'
+    compileOnly 'curse.maven:industrialforegoing-api:2745323'
 
     //CraftTweaker
-    compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.586'
+    implementation 'CraftTweaker2:CraftTweaker2-API:4.1.20.586'
 
     //ProjectE
-	compileOnly 'projecte:ProjectE:1.12.2:PE1.4.1'
+    compileOnly 'projecte:ProjectE:1.12.2:PE1.4.1'
 
     //Silent's Gems
-    compile 'silent-lib:SilentLib:1.12.2:3.0.14+168'
-    deobfCompile 'silents-gems:SilentsGems:1.12.2:2.8.22+327'
+    implementation 'silent-lib:SilentLib:1.12.2:3.0.14+168'
+    implementation 'silents-gems:SilentsGems:1.12.2:2.8.22+327'
 
     //Immersive Engineering
-    provided 'immersive-engineering:ImmersiveEngineering:0.12:98'
+    compileOnly 'immersive-engineering:ImmersiveEngineering:0.12:98'
 }
 
 processResources {
