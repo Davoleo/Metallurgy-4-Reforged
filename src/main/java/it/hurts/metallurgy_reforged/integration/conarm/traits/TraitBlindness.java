@@ -28,7 +28,7 @@ public class TraitBlindness extends AbstractArmorTrait implements IConarmMetallu
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait(event.player, "blindness"))
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "blindness"))
 		{
 			event.player.removePotionEffect(MobEffects.BLINDNESS);
 		}

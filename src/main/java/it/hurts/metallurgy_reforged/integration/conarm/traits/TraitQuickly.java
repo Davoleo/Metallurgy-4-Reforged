@@ -34,7 +34,7 @@ public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurg
 		if (entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = ((EntityPlayer) entity);
-			if (MetallurgyConArmorStats.isArmorTrait(player, "quickly"))
+			if (MetallurgyConArmorStats.hasValidArmorTrait(player, "quickly"))
 				QuicksilverArmorEffect.apply(event);
 		}
 	}

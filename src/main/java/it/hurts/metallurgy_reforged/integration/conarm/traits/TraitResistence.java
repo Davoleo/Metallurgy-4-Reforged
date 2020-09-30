@@ -29,7 +29,7 @@ public class TraitResistence extends AbstractArmorTrait implements IConarmMetall
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait(event.player, "resistance"))
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "resistance"))
 		{
 			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
 		}

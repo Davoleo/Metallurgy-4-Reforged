@@ -28,7 +28,7 @@ public class TraitPrometheum extends AbstractArmorTrait implements IConarmMetall
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait(event.player, "prometheum"))
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "prometheum"))
 		{
 			event.player.removePotionEffect(MobEffects.POISON);
 		}

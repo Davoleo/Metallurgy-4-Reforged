@@ -37,7 +37,7 @@ public class TraitDeeply extends AbstractArmorTrait implements IConarmMetallurgy
 	public void onArmorTick(PlayerTickEvent event)
 	{
 		EntityPlayer pl = event.player;
-		if (MetallurgyConArmorStats.isArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative())
+		if (MetallurgyConArmorStats.hasValidArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative())
 		{
 			for (int i = 5; i < 9; i++)
 			{

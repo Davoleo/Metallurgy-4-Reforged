@@ -25,6 +25,7 @@ import net.minecraft.nbt.NBTTagList;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class MetallurgyConArmorStats extends ArmorMaterials {
 
@@ -66,14 +67,16 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 		return maxDefensePoint;
 	}
 
-	public static boolean isArmorTrait(EntityPlayer player, String traitToCheck)
+	public static boolean hasValidArmorTrait(EntityPlayer player, String traitToCheck)
 	{
-		boolean flag = false;
+
 		for (ItemStack stack : player.inventory.armorInventory)
 		{
 			Item item = stack.getItem();
 			if (item instanceof TinkersArmor)
 			{
+				if (ToolHelper.isBroken(stack))
+					continue;
 
 				NBTTagList list = TagUtil.getTraitsTagList(stack);
 
@@ -86,13 +89,26 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 
 						if (armorTrait.getIdentifier().equals(traitToCheck + "_armor"))
-							flag = true;
+							return true;
 					}
 				}
 			}
 		}
 
-		return flag;
+		return false;
+	}
+
+	public static boolean isArmorBroken(EntityPlayer player)
+	{
+		for (ItemStack stack : player.inventory.armorInventory)
+		{
+			if (stack.getItem() instanceof TinkersArmor)
+			{
+
+			}
+		}
+
+		return false;
 	}
 
 }

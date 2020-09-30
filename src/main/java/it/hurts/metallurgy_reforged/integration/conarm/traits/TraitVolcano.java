@@ -27,7 +27,7 @@ public class TraitVolcano extends AbstractArmorTrait implements IConarmMetallurg
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait(event.player, "volcano"))
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "volcano"))
 			event.player.extinguish();
 	}
 

@@ -33,7 +33,7 @@ public class TraitFoodly extends AbstractArmorTrait implements IConarmMetallurgy
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.isArmorTrait(event.player, "foodly"))
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "foodly"))
 		{
 			FoodStats foodStat = event.player.getFoodStats();
 			int amount = 4;
