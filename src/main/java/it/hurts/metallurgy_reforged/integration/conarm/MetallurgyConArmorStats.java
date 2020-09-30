@@ -97,18 +97,4 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 
 		return false;
 	}
-
-	public static boolean isArmorBroken(EntityPlayer player)
-	{
-		for (ItemStack stack : player.inventory.armorInventory)
-		{
-			if (stack.getItem() instanceof TinkersArmor)
-			{
-
-			}
-		}
-
-		return false;
-	}
-
 }
