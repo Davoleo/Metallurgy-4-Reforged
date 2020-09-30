@@ -609,6 +609,20 @@ tile.metallurgy.lutetium_reinforced_glass.name=Lutetium Reinforced Glass
 tile.metallurgy.osmium_reinforced_glass.name=Osmium Reinforced Glass
 tile.metallurgy.etherium_reinforced_glass.name=Etherium Reinforced Glass
 
+#Vanilla Metal Blocks
+tile.metallurgy.gold_engraved_block.name=Gold Engraved Block
+tile.metallurgy.gold_large_bricks.name=Gold Large Bricks
+tile.metallurgy.gold_bricks.name=Gold Bricks
+tile.metallurgy.gold_crystals.name=Gold Crystals
+tile.metallurgy.gold_hazard_block.name=Gold Hazard Block
+tile.metallurgy.gold_reinforced_glass.name=Gold Reinforced Glass
+tile.metallurgy.iron_engraved_block.name=Iron Engraved Block
+tile.metallurgy.iron_large_bricks.name=Iron Large Bricks
+tile.metallurgy.iron_bricks.name=Iron Bricks
+tile.metallurgy.iron_crystals.name=Iron Crystals
+tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
+tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
+
 #Config
 config.metallurgy.category.armor_effects=Armor Effects
 config.metallurgy.category.general=General
