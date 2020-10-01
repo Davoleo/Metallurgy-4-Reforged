@@ -18,6 +18,7 @@ Crusher.addRecipe(<metallurgy:manganese_block>, <minecraft:gravel>, 0.5);
 
 //Removes an existing recipe from the Crusher recipes list
 //Crusher.removeRecipe(IItemStack output)
+//!!! If you have trouble removing some of the oredicted default crusher recipes disable the oredict crusher recipes entry in general.cfg !!!
 Crusher.removeRecipe(<metallurgy:adamantine_dust>);
 
 
