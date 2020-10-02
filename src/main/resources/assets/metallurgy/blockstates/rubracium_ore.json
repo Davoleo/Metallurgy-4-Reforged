@@ -2,7 +2,8 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
-			"all": "metallurgy:blocks/rubracium_ore"
+			"filler": "minecraft:blocks/stone",
+			"vein": "metallurgy:blocks/rubracium_ore"
 		}
 	},
 	"variants": {
