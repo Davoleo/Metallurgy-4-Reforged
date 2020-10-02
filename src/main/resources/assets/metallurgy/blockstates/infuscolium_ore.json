@@ -8,10 +8,10 @@
 	},
 	"variants": {
 		"normal": {
-			"model": "metallurgy:block/ore"
+			"model": "metallurgy:ore"
 		},
 		"inventory": {
-			"model": "metallurgy:block/ore"
+			"model": "metallurgy:ore"
 		}
 	}
 }
