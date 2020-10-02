@@ -241,3 +241,160 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 - Allow the end user to blacklist tinker materials from being loaded in the config
 - Fix crusher metadata exploit (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/205)
 - Fix Glowing effect Robotics Part Compatibility (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/203)
+
+0.3.1
+- New Material: Etherium
+- Sublimation Chamber Crafttweaker Integration (Custom effects from custom items)
+- New ore Textures (Tweaked by Matpac)
+- Added some missing localizations (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/206)
+- Increase Sublimation Chamber effect information (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/207)
+- Added a dimension whitelist filter to control where tar lakes are generated
+- Added different Ore particles depending on the ore harvest level (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/204)
+- Fixed inverted jei crusher recipes registration (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/211)
+- Fixed Tool Tooltips getting loaded for every tool class
+- Implemented new Ignatius tool effects (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/210)
+	- Tools that got new effects: Axe, Shovel, Pickaxe
+- Italian Mod Localization
+- Excluded every item that isn’t a bow from the Quicksilver armor effect and trait
+- Fixed a bug that blocked the player in middle air with no chance to get back down while wearing Krik Armor
+- Added a new Item that links to the Metallurgy wiki (This hopefully helps people on the first experience with this mod)
+- Fixed ConcurrentModificationException when removing Sublimation Recipes with Crafttweaker
+- Reworked the effect for the Krik Armor
+
+0.3.2
+- Nerf Celenegil Armor Effect (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/221)
+- Fixed some bugs: (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/230)
+	- Fixed Particles being registered on the server
+	- Fixed HUD Handler being registered on the server
+	- Fixed Wiki Item Model being loaded on the server
+- Added Missing Entry in the modMaterials Array that caused an IOOB Exception
+0.3.3
+- Fixed Armor Effects not working (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/234)
+- Disable Krik Armor Height Level debug Logging
+- Add config options to disable ore particles and ore light emission (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/235)
+- Thermite is now powerful fuel for any kind of machine
+- Fixed an issue with JEI Integration (https://github.com/Davoleo/Metallurgy-4-Reforged/issues/237)
+1.0.0
+- If you’re curious about the actual code changes behind this update check this PR out (https://github.com/Davoleo/Metallurgy-4-Reforged/pull/242)
+- Reworked Most of the codebase!!
+- Removed the option to disable items directly from the config (Was extremely limited and caused console errors) [you can use Crafttweaker to hide items and remove recipes while a new system might be implemented if the request is high (if you find that feature “ESSENTIAL” feel free to open a suggestion issue on github)]
+- Brand new json configuration that allows you to edit nearly any material property!
+- The new json config also allows you to add special attributes to specific metals
+- Added the long waited Metal Decorative Blocks! (Bricks, Large Bricks, Reinforced Glass, Engraved Blocks, Hazard Blocks, Crystals)
+- Fixed an Experience Duplication Bug with Crusher and Alloyer Machines
+- Fixed any possible gauntlet duplication bug (now you get 2 gauntlets on craft automatically [no need to create a new one anymore yay])
+- Items and Normal Blocks Texture Rework
+- Now Recipes are created through IRecipeFactory (which basically means that adding recipes for things that are made of 50 different metals is not a problem anymore [one JSON Recipe takes care of the same recipe with all the different metals])
+- Removed Molten Metal Fluid Item-Blocks (now you can directly find Forge Buckets inside the Fluids Creative Tab)
+- Fixed Github Issues:
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/197
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/214
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/245
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/247
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/252
+- Balance Changes:
+- Buffed Etherium Durability and Efficiency
+
+1.0.1
+- Fix Flint and Vulcanite Lava block fluid update & wrong position
+- Fix inventory rubracium gauntlet check to ignore durability
+- Now every hit damages one of the two rubracium gauntlets instead of both at the same time
+- Implemented new ore gen system which will help to add special conditions when spawning ores
+    - Platinum: Make platinum a bit more abundant in warm zones like jungle or savanna.(@Klazkin idea)
+    - Vulcanite: It spawns only at lava sea level
+    - Eximite: It Spawns only on the small islands (@Luke616 idea)
+    - Shadow iron spawns near the bedrock (top) (@Luke616 idea)
+    - Prometheum spawns only in jungle biomes
+- implemented configurable biome ore spawn
+- ProjectE Alloys EMC Values are not calculated dynamically anymore
+- Fixed Github Issues:
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/248
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/94
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/257
+	- https://github.com/Davoleo/Metallurgy-4-Reforged/issues/256
+- New Configuration option to cancel registration of metal items and blocks by type
+
+1.0.2
+- Fix a crash when placing the metal detector inside of a Tinkers’ Construct Crafting Station (#260)
+- Fix an issue that prevented players from crafting different kinds of steel from other mods (#261)
+- Added the missing dust blending recipes (now you should be able to make alloys even when you don’t have access to an Alloyer)
+- Implemented Animated Ore Particles (finally, yay)
+- Fixed an issue where ore particles would get other vanilla or modded textures (#251)
+1.1.0
+- Revamped Astral silver textures
+- Improved ore particles
+- Buffed Ignatius Sword Fire Aspect Effect (60% chance to cause fire damage)
+- Improved Fire Aspect II effect on Vulcanite Swords (now it affects enemies in a bigger radius and has a cute visual and audio effect)
+- Silent Gems Integration
+- Fixed Deep Iron Pickaxe Tooltip color
+- Now Tools and Armor Sets anvil repairing is enabled by default
+- Atlarus Armor Effect: A Strong gust of wind in a random direction saves you from taking falling damage
+- Etherium Armor Effect: Allows you to go through any kind of wall when sneaking
+- Fixed a bug that prevented player from making Tinkers’ tools out of brass
+- Desichalkos Armor Effect: When you can take special blocks from endermen
+- Desichalkos Sword Effect Reworked: Allows the player to teleport in the direction they’re looking at while right clicking
+- Quicksilver Armor Effect Improved: Now Crossbows are affected as well
+- Etherium Goggles: Special Gadget Goggles that allows the player to see redstone related blocks behind other blocks
+- Atlarus Sword Effect: Pushes any nearby entity away from the player on right click
+- Atlarus Axe Effect: Right Click to break any type of leaves in range of the gust of wind
+- Atlarus Hoe Effect: Right Click to break grass blocks around the player
+- Haderoth Armor Effect: Allows the player to walk on lava
+- Fixed a bug with Kalendrite, Amordrine, Etherium
+- Added Brazilian Portuguese Translation
+- Added Swedish Translation
+- Reworked the recipes system to be compatible with Crafttweaker
+- Fixed some issues with repairing tinkers tools
+- Made Thermite fuel value configurable and tweaked the JEI info page
+- Make the new Desichalkos Armor Effect configurable
+- Revamped Vanilla Metals dust textures
+- Changed the detector main metal from Iron to Angmallen
+- Fixed Eximite Inconsistent generation and made sure it’s generated at negative Z and X coords as well
+- Fix a Memory Leak when you wore Armors that gave you a ticking effect
+- Fixed some issues with particle colors
+- Maybe fix an issue with Ore blocks shadow when using Optifine
+- Osmium now only generates near bedrock (Y level: [3-10])
+- Sanguinite generates more frequently near Nether Fortresses
+- Made the Alloy Recipes handler more flexible
+- Now the alloyer can accept Oredictionary alternatives of Metallurgy Metals
+- Optimized and made OreDict Crushing recipes loading configurable (in case someone is having issues with removing recipes from the Crusher via CraftTweaker)
+- Metallurgy Machines can now be powered by Immersive Engineering’s External Heater
+- materials.json config is now disabled by default, and you need to enable it in general.cfg to be able to customize and remove materials
+- Fix Flint and Ignatius and Flint and Vulcanite to only stack at amounts of 1 (vanilla flint and steel behaviour)
+- Fixed some crashes when you removed a metal from the materials.json config
+- Integrate nether ores generation with NetherEX
+- Add a blacklist to disable Quicksilver armor effect on some items, if they break it
+- Add Magic Mirror to the blacklist declared before ^^^
+
+Related Github Issues and PRs:
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/188
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/94
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/275
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/280
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/279
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/274
+https://github.com/Davoleo/Metallurgy-4-Reforged/pull/272
+https://github.com/Davoleo/Metallurgy-4-Reforged/pull/271
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/263
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/224
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/218
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/228
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/231
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/267
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/90
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/276
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/281
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/217
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/282
+https://github.com/Davoleo/Metallurgy-4-Reforged/issues/283
+
+1.1.1
+- Add Gold and Iron Decorative Blocks  (#287)
+- Updated Simplified Chinese translations (#288)
+- Hopefully Fixed all Metal NPEs when you disable a metal from the materials.json file (#286)
+- Fixed Celenegil Tooltip showing the wrong level of Resistance (#286)
+- Fixed Wrong JEI Info about alloys Ingredients count (#286)
+- Fixed Vulcanite Fire Immunity protection (previously was just partial now it actually protects you completely from fire and lava damage)
+- Hopefully Fixed some Conarm Traits from working fine despite the armor being broken
+- add a new advice comment to ct_examples.zs to address issues when trying to remove ore-dicted crusher recipes through CraftTweaker integration
+- Rephrased Quicksilver Armor Effect config entry comment and Quicksilver Conarm trait to a nicer form
+- Implemented a new ore model system to allow ore textures to be compatible with other resource packs (#278)
