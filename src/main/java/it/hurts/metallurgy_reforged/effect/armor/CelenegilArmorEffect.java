@@ -37,11 +37,11 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 	{
 		int armorCount = EventUtils.getArmorPiecesCount(player, metal.getArmorSet());
 
-		if (armorCount >= 3)
+		if (armorCount > 2)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
 		}
-		else if (armorCount >= 1)
+		else if (armorCount > 0)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
 		}

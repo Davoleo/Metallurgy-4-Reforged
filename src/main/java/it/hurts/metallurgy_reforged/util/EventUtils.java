@@ -65,9 +65,9 @@ public class EventUtils {
 
 		int count = 0;
 		//Reverse for loop because armorList contains armor stacks in reverse order (index 0 are boots)
-		for (int i = armorList.size() - 1; i >= 0; i--)
+		for (int i = 0; i < armorList.size(); i++)
 		{
-			if (armorList.get(i).getItem().equals(armor[i]))
+			if (armorList.get(3 - i).getItem().equals(armor[i]))
 				count++;
 		}
 
