@@ -2,6 +2,7 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
+			"particle": "minecraft:blocks/netherrack",
 			"filler": "minecraft:blocks/netherrack",
 			"vein": "metallurgy:blocks/lemurite_ore"
 		}
