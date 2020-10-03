@@ -86,7 +86,6 @@ dependencies {
 
     implementation('org.codehaus.groovy:groovy-all:2.5.7')
 
-
     //Compile against the JEI API but do not include it at runtime
     compileOnly 'mezz.jei:jei_1.12.2:4.15.+:api'
 	
@@ -103,8 +102,9 @@ dependencies {
     compileOnly 'curse.maven:industrialforegoing-api:2745323'
 
     //CraftTweaker
-    compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.586'
-    runtimeOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.586'
+    //compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.586'
+    //runtimeOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.586'
+    implementation 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.586'
 
     //ProjectE
     compileOnly 'projecte:ProjectE:1.12.2:PE1.4.1'
