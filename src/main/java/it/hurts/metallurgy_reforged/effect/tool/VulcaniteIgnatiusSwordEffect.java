@@ -62,9 +62,15 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect
     @Override
     public void onPlayerAttack(EntityPlayer attacker, Entity target)
     {
-        Item sword = attacker.getHeldItemMainhand().getItem();
+        Item ignatiusSword = null;
+        Item vulcaniteSword = null;
 
-        if(sword == ModMetals.IGNATIUS.getTool(EnumTools.SWORD) || sword == ModMetals.VULCANITE.getTool(EnumTools.SWORD))
+        if (ModMetals.CELENEGIL != null)
+            ignatiusSword = ModMetals.IGNATIUS.getTool(EnumTools.SWORD);
+        if (ModMetals.SHADOW_STEEL != null)
+            vulcaniteSword = ModMetals.VULCANITE.getTool(EnumTools.SWORD);
+
+        if(attacker.getHeldItemMainhand().getItem() == ignatiusSword || attacker.getHeldItemMainhand().getItem() == vulcaniteSword)
         {
 
             if(target instanceof EntityLivingBase)
@@ -73,13 +79,10 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect
                 if(metal == ModMetals.IGNATIUS)
                 {
                     if(Math.random() * 100 < 60)
-                    {
                         livingTarget.setFire(5);
-                    }
                 }
                 else
                 {
-
                     World world = attacker.world;
 
                     double y = attacker.posY + (double) attacker.getEyeHeight() + attacker.getLookVec().scale(attacker.getDistance(target)).y;
@@ -98,14 +101,10 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect
                             double x = (range / 2D) - Math.random() * range;
                             double z = (range / 2D) - Math.random() * range;
                             world.spawnParticle(EnumParticleTypes.FLAME, hitPos.x, hitPos.y, hitPos.z, x, 0, z);
-
                         }
                     }
                     else
-                    {
                         world.playSound(null, hitPos.x, hitPos.y, hitPos.z, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 1F, 0.8F);
-
-                    }
 
                 }
             }

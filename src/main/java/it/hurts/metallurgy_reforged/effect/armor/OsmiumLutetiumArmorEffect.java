@@ -67,8 +67,14 @@ public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-				int osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
-				int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
+				int osmiumMultiplier = 0;
+				int lutetiumMultiplier = 0;
+
+				if (ModMetals.OSMIUM != null)
+					osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
+
+				if (ModMetals.LUTETIUM != null)
+					lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
 
 				float multiplier;
 

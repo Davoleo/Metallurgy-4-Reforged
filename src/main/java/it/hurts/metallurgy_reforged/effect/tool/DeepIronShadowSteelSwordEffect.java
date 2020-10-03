@@ -21,6 +21,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import javax.annotation.Nullable;
@@ -65,7 +66,15 @@ public class DeepIronShadowSteelSwordEffect extends BaseMetallurgyEffect {
 		ItemStack stack = player.getHeldItemMainhand();
 		IAttributeInstance attackSpeedInstance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 
-		if (stack.getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.SWORD) || stack.getItem() == ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD))
+		Item deepIronSword = null;
+		Item shadowSteelSword = null;
+
+		if (ModMetals.DEEP_IRON != null)
+			deepIronSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
+		if (ModMetals.SHADOW_STEEL != null)
+			shadowSteelSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
+
+		if (stack.getItem() == deepIronSword || stack.getItem() == shadowSteelSword)
 		{
 			if (metal == ModMetals.SHADOW_STEEL)
 			{
