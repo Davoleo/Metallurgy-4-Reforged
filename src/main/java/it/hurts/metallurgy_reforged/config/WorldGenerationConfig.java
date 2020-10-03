@@ -559,15 +559,15 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Atlarus minimum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int minY = 0;
+		public int minY = 12;
 
 		@Config.Comment("Atlarus maximum Y level")
 		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 64;
+		public int maxY = 48;
 
 		@Config.Comment("Atlarus indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 3;
+		public int veinSize = 6;
 
 		@Config.Comment("Atlarus biome spawn")
 		@Config.RequiresWorldRestart
