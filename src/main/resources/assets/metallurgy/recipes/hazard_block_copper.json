@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:copper_hazard_block"
+        "item": "metallurgy:copper_hazard_block",
+        "count": 4
     }
 }

@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:inolashite_engraved_block"
+        "item": "metallurgy:inolashite_engraved_block",
+        "count": 8
     }
 }

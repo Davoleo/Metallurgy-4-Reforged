@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lemurite_crystals"
+        "item": "metallurgy:lemurite_crystals",
+        "count": 4
     }
 }

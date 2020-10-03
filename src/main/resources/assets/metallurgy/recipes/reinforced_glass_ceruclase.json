@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:ceruclase_reinforced_glass"
+        "item": "metallurgy:ceruclase_reinforced_glass",
+        "count": 5
     }
 }

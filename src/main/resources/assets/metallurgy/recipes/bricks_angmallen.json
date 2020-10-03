@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:angmallen_bricks"
+        "item": "metallurgy:angmallen_bricks",
+        "count": 6
     }
 }

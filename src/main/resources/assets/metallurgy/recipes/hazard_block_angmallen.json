@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:angmallen_hazard_block"
+        "item": "metallurgy:angmallen_hazard_block",
+        "count": 4
     }
 }

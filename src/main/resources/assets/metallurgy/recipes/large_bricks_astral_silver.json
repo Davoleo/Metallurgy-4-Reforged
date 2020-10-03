@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:astral_silver_large_bricks"
+        "item": "metallurgy:astral_silver_large_bricks",
+        "count": 4
     }
 }

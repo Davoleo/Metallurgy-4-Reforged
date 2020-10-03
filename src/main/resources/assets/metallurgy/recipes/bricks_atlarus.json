@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:atlarus_bricks"
+        "item": "metallurgy:atlarus_bricks",
+        "count": 6
     }
 }

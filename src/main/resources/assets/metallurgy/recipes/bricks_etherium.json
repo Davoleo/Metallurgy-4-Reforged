@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:etherium_bricks"
+        "item": "metallurgy:etherium_bricks",
+        "count": 6
     }
 }

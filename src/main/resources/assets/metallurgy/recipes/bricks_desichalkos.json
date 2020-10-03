@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:desichalkos_bricks"
+        "item": "metallurgy:desichalkos_bricks",
+        "count": 6
     }
 }

@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:atlarus_crystals"
+        "item": "metallurgy:atlarus_crystals",
+        "count": 4
     }
 }

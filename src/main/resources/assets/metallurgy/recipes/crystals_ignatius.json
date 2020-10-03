@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:ignatius_crystals"
+        "item": "metallurgy:ignatius_crystals",
+        "count": 4
     }
 }

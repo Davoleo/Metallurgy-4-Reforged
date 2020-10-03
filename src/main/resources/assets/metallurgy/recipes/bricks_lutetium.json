@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lutetium_bricks"
+        "item": "metallurgy:lutetium_bricks",
+        "count": 6
     }
 }

@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:osmium_reinforced_glass"
+        "item": "metallurgy:osmium_reinforced_glass",
+        "count": 5
     }
 }

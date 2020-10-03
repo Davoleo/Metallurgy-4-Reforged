@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:shadow_iron_bricks"
+        "item": "metallurgy:shadow_iron_bricks",
+        "count": 6
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lemurite_bricks"
+        "item": "metallurgy:lemurite_bricks",
+        "count": 6
     }
 }

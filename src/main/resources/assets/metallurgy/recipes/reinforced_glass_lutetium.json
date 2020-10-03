@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lutetium_reinforced_glass"
+        "item": "metallurgy:lutetium_reinforced_glass",
+        "count": 5
     }
 }

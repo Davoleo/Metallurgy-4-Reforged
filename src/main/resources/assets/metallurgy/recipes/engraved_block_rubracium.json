@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:rubracium_engraved_block"
+        "item": "metallurgy:rubracium_engraved_block",
+        "count": 8
     }
 }

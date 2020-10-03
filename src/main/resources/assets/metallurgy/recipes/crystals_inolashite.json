@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:inolashite_crystals"
+        "item": "metallurgy:inolashite_crystals",
+        "count": 4
     }
 }

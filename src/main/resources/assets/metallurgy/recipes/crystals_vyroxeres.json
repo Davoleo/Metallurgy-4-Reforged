@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vyroxeres_crystals"
+        "item": "metallurgy:vyroxeres_crystals",
+        "count": 4
     }
 }

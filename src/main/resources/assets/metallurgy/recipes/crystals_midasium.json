@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:midasium_crystals"
+        "item": "metallurgy:midasium_crystals",
+        "count": 4
     }
 }

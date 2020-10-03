@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:kalendrite_reinforced_glass"
+        "item": "metallurgy:kalendrite_reinforced_glass",
+        "count": 5
     }
 }

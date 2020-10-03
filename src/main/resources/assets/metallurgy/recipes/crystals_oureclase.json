@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:oureclase_crystals"
+        "item": "metallurgy:oureclase_crystals",
+        "count": 4
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:brass_bricks"
+        "item": "metallurgy:brass_bricks",
+        "count": 6
     }
 }

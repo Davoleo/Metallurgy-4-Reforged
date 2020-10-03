@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:infuscolium_reinforced_glass"
+        "item": "metallurgy:infuscolium_reinforced_glass",
+        "count": 5
     }
 }

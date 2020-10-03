@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:meutoite_crystals"
+        "item": "metallurgy:meutoite_crystals",
+        "count": 4
     }
 }

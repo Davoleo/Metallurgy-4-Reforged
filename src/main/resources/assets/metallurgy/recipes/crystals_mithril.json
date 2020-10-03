@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:mithril_crystals"
+        "item": "metallurgy:mithril_crystals",
+        "count": 4
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:rubracium_bricks"
+        "item": "metallurgy:rubracium_bricks",
+        "count": 6
     }
 }

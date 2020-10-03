@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:platinum_bricks"
+        "item": "metallurgy:platinum_bricks",
+        "count": 6
     }
 }

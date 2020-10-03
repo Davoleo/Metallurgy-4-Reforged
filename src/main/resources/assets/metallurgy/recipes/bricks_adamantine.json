@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:adamantine_bricks"
+        "item": "metallurgy:adamantine_bricks",
+        "count": 6
     }
 }

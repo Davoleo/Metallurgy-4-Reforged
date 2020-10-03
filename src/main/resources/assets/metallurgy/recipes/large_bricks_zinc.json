@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:zinc_large_bricks"
+        "item": "metallurgy:zinc_large_bricks",
+        "count": 4
     }
 }

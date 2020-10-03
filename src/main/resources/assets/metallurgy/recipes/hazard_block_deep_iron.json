@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:deep_iron_hazard_block"
+        "item": "metallurgy:deep_iron_hazard_block",
+        "count": 4
     }
 }

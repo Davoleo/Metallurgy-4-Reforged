@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:amordrine_crystals"
+        "item": "metallurgy:amordrine_crystals",
+        "count": 4
     }
 }

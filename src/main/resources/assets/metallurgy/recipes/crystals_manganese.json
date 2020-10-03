@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:manganese_crystals"
+        "item": "metallurgy:manganese_crystals",
+        "count": 4
     }
 }

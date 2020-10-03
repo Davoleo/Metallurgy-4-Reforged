@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:quicksilver_large_bricks"
+        "item": "metallurgy:quicksilver_large_bricks",
+        "count": 4
     }
 }

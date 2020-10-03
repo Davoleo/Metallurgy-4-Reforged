@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:haderoth_hazard_block"
+        "item": "metallurgy:haderoth_hazard_block",
+        "count": 4
     }
 }

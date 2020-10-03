@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:alduorite_crystals"
+        "item": "metallurgy:alduorite_crystals",
+        "count": 4
     }
 }

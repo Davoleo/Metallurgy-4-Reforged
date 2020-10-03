@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:brass_crystals"
+        "item": "metallurgy:brass_crystals",
+        "count": 4
     }
 }

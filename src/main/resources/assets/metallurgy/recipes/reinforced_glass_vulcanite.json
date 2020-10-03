@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vulcanite_reinforced_glass"
+        "item": "metallurgy:vulcanite_reinforced_glass",
+        "count": 5
     }
 }

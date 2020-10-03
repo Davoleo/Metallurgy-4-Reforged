@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:silver_reinforced_glass"
+        "item": "metallurgy:silver_reinforced_glass",
+        "count": 5
     }
 }

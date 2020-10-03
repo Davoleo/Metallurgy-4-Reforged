@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:tartarite_crystals"
+        "item": "metallurgy:tartarite_crystals",
+        "count": 4
     }
 }

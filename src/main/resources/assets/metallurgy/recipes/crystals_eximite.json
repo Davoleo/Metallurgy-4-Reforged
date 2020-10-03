@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:eximite_crystals"
+        "item": "metallurgy:eximite_crystals",
+        "count": 4
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:mithril_bricks"
+        "item": "metallurgy:mithril_bricks",
+        "count": 6
     }
 }

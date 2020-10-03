@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lutetium_crystals"
+        "item": "metallurgy:lutetium_crystals",
+        "count": 4
     }
 }

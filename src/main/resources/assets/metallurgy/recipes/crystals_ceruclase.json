@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:ceruclase_crystals"
+        "item": "metallurgy:ceruclase_crystals",
+        "count": 4
     }
 }

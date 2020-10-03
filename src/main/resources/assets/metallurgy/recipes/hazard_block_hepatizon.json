@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:hepatizon_hazard_block"
+        "item": "metallurgy:hepatizon_hazard_block",
+        "count": 4
     }
 }

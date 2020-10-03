@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:rubracium_reinforced_glass"
+        "item": "metallurgy:rubracium_reinforced_glass",
+        "count": 5
     }
 }

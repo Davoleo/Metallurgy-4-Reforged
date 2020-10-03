@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vulcanite_bricks"
+        "item": "metallurgy:vulcanite_bricks",
+        "count": 6
     }
 }

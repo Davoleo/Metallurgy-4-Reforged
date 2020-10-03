@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:oureclase_reinforced_glass"
+        "item": "metallurgy:oureclase_reinforced_glass",
+        "count": 5
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:ceruclase_large_bricks"
+        "item": "metallurgy:ceruclase_large_bricks",
+        "count": 4
     }
 }

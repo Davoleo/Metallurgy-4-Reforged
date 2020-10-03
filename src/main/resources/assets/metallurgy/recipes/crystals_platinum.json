@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:platinum_crystals"
+        "item": "metallurgy:platinum_crystals",
+        "count": 4
     }
 }

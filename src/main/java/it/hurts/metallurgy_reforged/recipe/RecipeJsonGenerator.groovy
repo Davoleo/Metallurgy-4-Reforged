@@ -392,7 +392,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_engraved_block"
+                        item: "metallurgy:${metal}_engraved_block",
+                        count: 8
                 ]
         ]
         def crystalsObj = [
@@ -409,7 +410,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_crystals"
+                        item: "metallurgy:${metal}_crystals",
+                        count: 4
                 ]
         ]
         def bricksObj = [
@@ -422,7 +424,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_bricks"
+                        item: "metallurgy:${metal}_bricks",
+                        count: 6
                 ]
         ]
         def largeBricksObj = [
@@ -435,7 +438,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_large_bricks"
+                        item: "metallurgy:${metal}_large_bricks",
+                        count: 4
                 ]
         ]
         def hazardBlocksObj = [
@@ -452,7 +456,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_hazard_block"
+                        item: "metallurgy:${metal}_hazard_block",
+                        count: 4
                 ]
         ]
         def reinforcedGlassObj = [
@@ -468,7 +473,8 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_reinforced_glass"
+                        item: "metallurgy:${metal}_reinforced_glass",
+                        count: 5
                 ]
         ]
 
@@ -562,7 +568,7 @@ class RecipeJsonGenerator {
         def jsonObj = JsonOutput.toJson(obj)
         def prettyObj = JsonOutput.prettyPrint(jsonObj)
         def file = new File(RECIPES_DIR_PATH + type + "_" + metal + ".json")
-        file.createNewFile();
+        file.createNewFile()
         file.write(prettyObj)
     }
 }

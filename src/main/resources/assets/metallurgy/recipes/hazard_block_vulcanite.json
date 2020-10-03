@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vulcanite_hazard_block"
+        "item": "metallurgy:vulcanite_hazard_block",
+        "count": 4
     }
 }

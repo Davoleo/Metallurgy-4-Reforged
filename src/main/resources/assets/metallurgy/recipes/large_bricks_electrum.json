@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:electrum_large_bricks"
+        "item": "metallurgy:electrum_large_bricks",
+        "count": 4
     }
 }

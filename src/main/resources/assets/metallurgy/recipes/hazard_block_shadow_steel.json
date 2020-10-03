@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:shadow_steel_hazard_block"
+        "item": "metallurgy:shadow_steel_hazard_block",
+        "count": 4
     }
 }

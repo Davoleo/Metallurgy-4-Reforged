@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:haderoth_reinforced_glass"
+        "item": "metallurgy:haderoth_reinforced_glass",
+        "count": 5
     }
 }

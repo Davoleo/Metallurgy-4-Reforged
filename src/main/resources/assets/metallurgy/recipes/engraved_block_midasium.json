@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:midasium_engraved_block"
+        "item": "metallurgy:midasium_engraved_block",
+        "count": 8
     }
 }

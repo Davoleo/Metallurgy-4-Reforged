@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:orichalcum_hazard_block"
+        "item": "metallurgy:orichalcum_hazard_block",
+        "count": 4
     }
 }

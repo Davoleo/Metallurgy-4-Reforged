@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:shadow_iron_reinforced_glass"
+        "item": "metallurgy:shadow_iron_reinforced_glass",
+        "count": 5
     }
 }

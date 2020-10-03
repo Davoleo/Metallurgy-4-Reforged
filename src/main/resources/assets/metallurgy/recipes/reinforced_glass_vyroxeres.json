@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vyroxeres_reinforced_glass"
+        "item": "metallurgy:vyroxeres_reinforced_glass",
+        "count": 5
     }
 }

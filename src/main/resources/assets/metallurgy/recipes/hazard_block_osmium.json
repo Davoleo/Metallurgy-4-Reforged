@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:osmium_hazard_block"
+        "item": "metallurgy:osmium_hazard_block",
+        "count": 4
     }
 }

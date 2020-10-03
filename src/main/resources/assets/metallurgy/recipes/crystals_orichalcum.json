@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:orichalcum_crystals"
+        "item": "metallurgy:orichalcum_crystals",
+        "count": 4
     }
 }

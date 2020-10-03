@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:osmium_large_bricks"
+        "item": "metallurgy:osmium_large_bricks",
+        "count": 4
     }
 }

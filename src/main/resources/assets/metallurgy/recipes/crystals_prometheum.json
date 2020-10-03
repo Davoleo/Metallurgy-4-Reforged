@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:prometheum_crystals"
+        "item": "metallurgy:prometheum_crystals",
+        "count": 4
     }
 }

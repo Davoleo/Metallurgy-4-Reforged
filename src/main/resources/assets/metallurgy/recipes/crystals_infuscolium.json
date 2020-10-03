@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:infuscolium_crystals"
+        "item": "metallurgy:infuscolium_crystals",
+        "count": 4
     }
 }

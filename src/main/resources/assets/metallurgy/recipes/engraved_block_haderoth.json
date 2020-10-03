@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:haderoth_engraved_block"
+        "item": "metallurgy:haderoth_engraved_block",
+        "count": 8
     }
 }

@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:krik_crystals"
+        "item": "metallurgy:krik_crystals",
+        "count": 4
     }
 }

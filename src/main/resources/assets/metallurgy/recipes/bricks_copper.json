@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:copper_bricks"
+        "item": "metallurgy:copper_bricks",
+        "count": 6
     }
 }

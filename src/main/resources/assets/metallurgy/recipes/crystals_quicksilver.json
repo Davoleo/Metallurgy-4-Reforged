@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:quicksilver_crystals"
+        "item": "metallurgy:quicksilver_crystals",
+        "count": 4
     }
 }

@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:orichalcum_reinforced_glass"
+        "item": "metallurgy:orichalcum_reinforced_glass",
+        "count": 5
     }
 }

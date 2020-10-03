@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:krik_engraved_block"
+        "item": "metallurgy:krik_engraved_block",
+        "count": 8
     }
 }

@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:black_steel_reinforced_glass"
+        "item": "metallurgy:black_steel_reinforced_glass",
+        "count": 5
     }
 }

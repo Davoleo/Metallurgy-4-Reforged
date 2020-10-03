@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vyroxeres_bricks"
+        "item": "metallurgy:vyroxeres_bricks",
+        "count": 6
     }
 }

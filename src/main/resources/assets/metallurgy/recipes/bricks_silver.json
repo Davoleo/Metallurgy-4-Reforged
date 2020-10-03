@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:silver_bricks"
+        "item": "metallurgy:silver_bricks",
+        "count": 6
     }
 }

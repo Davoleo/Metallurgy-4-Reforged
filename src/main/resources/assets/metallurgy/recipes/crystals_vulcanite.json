@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:vulcanite_crystals"
+        "item": "metallurgy:vulcanite_crystals",
+        "count": 4
     }
 }

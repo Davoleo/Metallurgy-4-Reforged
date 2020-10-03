@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:copper_crystals"
+        "item": "metallurgy:copper_crystals",
+        "count": 4
     }
 }

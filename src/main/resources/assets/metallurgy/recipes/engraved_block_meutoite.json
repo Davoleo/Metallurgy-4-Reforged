@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:meutoite_engraved_block"
+        "item": "metallurgy:meutoite_engraved_block",
+        "count": 8
     }
 }

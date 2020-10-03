@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:prometheum_large_bricks"
+        "item": "metallurgy:prometheum_large_bricks",
+        "count": 4
     }
 }

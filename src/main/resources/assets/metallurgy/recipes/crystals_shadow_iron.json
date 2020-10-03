@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:shadow_iron_crystals"
+        "item": "metallurgy:shadow_iron_crystals",
+        "count": 4
     }
 }

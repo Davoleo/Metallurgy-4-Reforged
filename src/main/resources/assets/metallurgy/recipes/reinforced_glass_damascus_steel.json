@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:damascus_steel_reinforced_glass"
+        "item": "metallurgy:damascus_steel_reinforced_glass",
+        "count": 5
     }
 }

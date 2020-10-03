@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:etherium_crystals"
+        "item": "metallurgy:etherium_crystals",
+        "count": 4
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lutetium_large_bricks"
+        "item": "metallurgy:lutetium_large_bricks",
+        "count": 4
     }
 }

@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:copper_reinforced_glass"
+        "item": "metallurgy:copper_reinforced_glass",
+        "count": 5
     }
 }

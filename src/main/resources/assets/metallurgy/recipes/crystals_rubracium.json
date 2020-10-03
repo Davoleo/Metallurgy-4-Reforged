@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:rubracium_crystals"
+        "item": "metallurgy:rubracium_crystals",
+        "count": 4
     }
 }

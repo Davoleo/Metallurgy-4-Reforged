@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:midasium_bricks"
+        "item": "metallurgy:midasium_bricks",
+        "count": 6
     }
 }

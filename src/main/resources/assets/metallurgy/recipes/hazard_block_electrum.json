@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:electrum_hazard_block"
+        "item": "metallurgy:electrum_hazard_block",
+        "count": 4
     }
 }

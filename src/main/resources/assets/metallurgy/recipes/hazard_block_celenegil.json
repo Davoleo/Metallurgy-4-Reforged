@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:celenegil_hazard_block"
+        "item": "metallurgy:celenegil_hazard_block",
+        "count": 4
     }
 }

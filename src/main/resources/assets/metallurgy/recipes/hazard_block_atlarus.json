@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:atlarus_hazard_block"
+        "item": "metallurgy:atlarus_hazard_block",
+        "count": 4
     }
 }

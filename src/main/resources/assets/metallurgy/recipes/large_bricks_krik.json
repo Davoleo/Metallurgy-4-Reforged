@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:krik_large_bricks"
+        "item": "metallurgy:krik_large_bricks",
+        "count": 4
     }
 }

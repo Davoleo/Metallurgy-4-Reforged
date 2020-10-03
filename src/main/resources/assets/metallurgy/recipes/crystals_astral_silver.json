@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:astral_silver_crystals"
+        "item": "metallurgy:astral_silver_crystals",
+        "count": 4
     }
 }

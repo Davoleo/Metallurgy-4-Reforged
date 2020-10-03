@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:sanguinite_crystals"
+        "item": "metallurgy:sanguinite_crystals",
+        "count": 4
     }
 }

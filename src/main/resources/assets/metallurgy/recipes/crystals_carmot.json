@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:carmot_crystals"
+        "item": "metallurgy:carmot_crystals",
+        "count": 4
     }
 }

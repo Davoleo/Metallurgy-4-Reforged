@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:manganese_bricks"
+        "item": "metallurgy:manganese_bricks",
+        "count": 6
     }
 }

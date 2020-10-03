@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:steel_crystals"
+        "item": "metallurgy:steel_crystals",
+        "count": 4
     }
 }

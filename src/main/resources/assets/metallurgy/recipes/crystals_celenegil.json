@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:celenegil_crystals"
+        "item": "metallurgy:celenegil_crystals",
+        "count": 4
     }
 }

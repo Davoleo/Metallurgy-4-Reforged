@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:eximite_large_bricks"
+        "item": "metallurgy:eximite_large_bricks",
+        "count": 4
     }
 }

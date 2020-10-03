@@ -15,6 +15,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:krik_reinforced_glass"
+        "item": "metallurgy:krik_reinforced_glass",
+        "count": 5
     }
 }

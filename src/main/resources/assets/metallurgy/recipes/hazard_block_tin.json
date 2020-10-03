@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:tin_hazard_block"
+        "item": "metallurgy:tin_hazard_block",
+        "count": 4
     }
 }

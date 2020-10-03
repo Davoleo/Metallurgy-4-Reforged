@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:lutetium_hazard_block"
+        "item": "metallurgy:lutetium_hazard_block",
+        "count": 4
     }
 }

@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:orichalcum_engraved_block"
+        "item": "metallurgy:orichalcum_engraved_block",
+        "count": 8
     }
 }

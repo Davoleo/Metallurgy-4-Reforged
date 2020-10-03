@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:prometheum_hazard_block"
+        "item": "metallurgy:prometheum_hazard_block",
+        "count": 4
     }
 }

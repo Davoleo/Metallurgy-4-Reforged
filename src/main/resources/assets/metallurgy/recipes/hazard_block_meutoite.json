@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:meutoite_hazard_block"
+        "item": "metallurgy:meutoite_hazard_block",
+        "count": 4
     }
 }

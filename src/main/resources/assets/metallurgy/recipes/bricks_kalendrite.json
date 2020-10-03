@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:kalendrite_bricks"
+        "item": "metallurgy:kalendrite_bricks",
+        "count": 6
     }
 }

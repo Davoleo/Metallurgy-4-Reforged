@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:deep_iron_large_bricks"
+        "item": "metallurgy:deep_iron_large_bricks",
+        "count": 4
     }
 }

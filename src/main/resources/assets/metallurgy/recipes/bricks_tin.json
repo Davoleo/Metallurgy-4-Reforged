@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:tin_bricks"
+        "item": "metallurgy:tin_bricks",
+        "count": 6
     }
 }

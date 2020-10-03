@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:haderoth_crystals"
+        "item": "metallurgy:haderoth_crystals",
+        "count": 4
     }
 }

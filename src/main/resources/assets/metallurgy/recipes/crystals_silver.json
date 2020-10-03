@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:silver_crystals"
+        "item": "metallurgy:silver_crystals",
+        "count": 4
     }
 }

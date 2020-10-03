@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:hepatizon_crystals"
+        "item": "metallurgy:hepatizon_crystals",
+        "count": 4
     }
 }

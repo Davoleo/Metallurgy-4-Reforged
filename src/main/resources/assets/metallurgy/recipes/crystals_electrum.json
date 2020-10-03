@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:electrum_crystals"
+        "item": "metallurgy:electrum_crystals",
+        "count": 4
     }
 }

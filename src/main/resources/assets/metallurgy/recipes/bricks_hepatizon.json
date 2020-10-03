@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:hepatizon_bricks"
+        "item": "metallurgy:hepatizon_bricks",
+        "count": 6
     }
 }

@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:inolashite_bricks"
+        "item": "metallurgy:inolashite_bricks",
+        "count": 6
     }
 }

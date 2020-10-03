@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:osmium_crystals"
+        "item": "metallurgy:osmium_crystals",
+        "count": 4
     }
 }

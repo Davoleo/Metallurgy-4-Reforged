@@ -16,6 +16,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:platinum_hazard_block"
+        "item": "metallurgy:platinum_hazard_block",
+        "count": 4
     }
 }

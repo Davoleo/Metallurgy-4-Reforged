@@ -11,6 +11,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:infuscolium_bricks"
+        "item": "metallurgy:infuscolium_bricks",
+        "count": 6
     }
 }

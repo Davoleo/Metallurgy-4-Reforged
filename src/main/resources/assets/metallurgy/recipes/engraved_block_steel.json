@@ -12,6 +12,7 @@
         }
     },
     "result": {
-        "item": "metallurgy:steel_engraved_block"
+        "item": "metallurgy:steel_engraved_block",
+        "count": 8
     }
 }
