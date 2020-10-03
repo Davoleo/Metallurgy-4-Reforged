@@ -1,0 +1,18 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "III",
+        "I I",
+        "III"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotGold"
+        }
+    },
+    "result": {
+        "item": "metallurgy:gold_engraved_block",
+        "count": 8
+    }
+}

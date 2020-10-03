@@ -1,0 +1,17 @@
+{
+    "type": "forge:ore_shaped",
+    "pattern": [
+        "II",
+        "II"
+    ],
+    "key": {
+        "I": {
+            "type": "forge:ore_dict",
+            "ore": "ingotGold"
+        }
+    },
+    "result": {
+        "item": "metallurgy:gold_large_bricks",
+        "count": 4
+    }
+}
