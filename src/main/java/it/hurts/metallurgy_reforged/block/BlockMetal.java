@@ -50,7 +50,7 @@ public class BlockMetal extends Block {
 
 	public BlockMetal(String metalName, BlockTypes type) {
 		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
-		this.metal = null;
+		this.metal = Constants.EMPTY_METAL_STATS;
 		this.type = type;
 		this.setSoundType(SoundType.METAL);
 
@@ -87,7 +87,6 @@ public class BlockMetal extends Block {
 
 	}
 
-	// TODO: 11/05/2020 Find a way to make it look decent
 	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	@Override

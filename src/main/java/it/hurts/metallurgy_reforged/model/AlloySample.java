@@ -21,10 +21,10 @@ import javax.annotation.Nullable;
 @MethodsReturnNonnullByDefault
 public class AlloySample {
 
-	private Metal metal;
+	private final Metal metal;
 	private ItemStack fallbackStack = ItemStack.EMPTY;
-	private int amount;
-	private boolean isOriginal;
+	private final int amount;
+	private final boolean isOriginal;
 	private float xp = -1F;
 
 	public AlloySample(Metal metal, int amount, float xp)
@@ -86,6 +86,12 @@ public class AlloySample {
 		return fallbackStack != ItemStack.EMPTY;
 	}
 
+	/**
+	 * @return
+	 * either an ingot stack of the provided metal<br>
+	 * or the fallbackStack provided in the constructor<br>
+	 * if a metal was disabled it'll return an empty itemstack
+	 */
 	public ItemStack getStack()
 	{
 		//The second condition is important when metals are disabled in materials.json (it'll return an empty itemStack)

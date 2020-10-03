@@ -127,9 +127,11 @@ public class AlloyerRecipes {
 		);
 	}
 
-	public void addAlloyRecipe(AlloySample input1, AlloySample input2, AlloySample result)
+	//Internal Use only
+	private void addAlloyRecipe(AlloySample input1, AlloySample input2, AlloySample result)
 	{
-		if (input1.getMetal() != null && input2.getMetal() != null && result.getMetal() != null)
+		//Make sure input1 input2 and result metals were not disabled
+		if (!input1.getStack().isEmpty() && !input2.getStack().isEmpty() && !result.getStack().isEmpty())
 			this.alloyingList.put(input1, input2, result);
 	}
 
