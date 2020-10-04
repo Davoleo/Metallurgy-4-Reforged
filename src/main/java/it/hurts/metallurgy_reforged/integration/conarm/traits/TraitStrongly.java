@@ -12,6 +12,7 @@
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
+import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
@@ -40,18 +41,8 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		for (ItemStack armorPiece : event.player.getArmorInventoryList())
-		{
-			NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
-			for (int i = 0; i < traits.tagCount(); i++)
-			{
-				String id = traits.getStringTagAt(i);
-				ITrait trait = TinkerRegistry.getTrait(id);
-
-				if (trait instanceof TraitStrongly)
-					event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, ((TraitStrongly) trait).getLevel(), false, false));
-			}
-		}
+		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "strongly"))
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
 	}
 
 }
