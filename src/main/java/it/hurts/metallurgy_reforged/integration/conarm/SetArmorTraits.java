@@ -22,77 +22,40 @@ public class SetArmorTraits {
 	{
 		switch (metal.getStats().getName())
 		{
-
 			case "quicksilver":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.quickly);
-			}
-			break;
-
+				break;
 			case "amordrine":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.stronglyAmordrine);
-			}
-			break;
-
+				break;
 			case "kalendrite":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.stronglyKalendrite);
-			}
-			break;
-
+				break;
 			case "astral_silver":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.jumpMaster);
-			}
-			break;
-
+				break;
 			case "celenegil":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.resistance);
-			}
-			break;
-
+				break;
 			case "deep_iron":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.deeply);
-			}
-			break;
-
+				break;
 			case "vulcanite":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.volcano);
-			}
-			break;
-
+				break;
 			case "adamantine":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.foodly);
-			}
-			break;
-
+				break;
 			case "platinum":
-			{
 				material.addTrait(MetallurgyArmorTraits.catEyes, ArmorMaterialType.CORE);
-			}
-			break;
-
+				break;
 			case "prometheum":
-			{
 				material.addTrait(MetallurgyArmorTraits.prometheum, ArmorMaterialType.PLATES);
-			}
-			break;
-
+				break;
 			case "shadow_steel":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.blindness);
-			}
-			break;
-
+				break;
 			default:
-			{
-			}
-			break;
 		}
 	}
 

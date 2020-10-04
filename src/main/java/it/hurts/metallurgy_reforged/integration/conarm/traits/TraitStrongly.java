@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait {
 
@@ -41,8 +43,28 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "strongly"))
+		if (hasValidStregthTrait(event.player))
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
+	}
+
+	private boolean hasValidStregthTrait(EntityPlayer player) {
+		for (ItemStack armorPiece : player.getArmorInventoryList())
+		{
+			if (ToolHelper.isBroken(armorPiece))
+				continue;
+
+			NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
+			for (int i = 0; i < traits.tagCount(); i++)
+			{
+				String id = traits.getStringTagAt(i);
+				ITrait trait = TinkerRegistry.getTrait(id);
+
+				if (trait instanceof TraitStrongly)
+					return true;
+			}
+		}
+
+		return false;
 	}
 
 }
