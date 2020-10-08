@@ -42,7 +42,7 @@ public class SpawnHandler {
 	private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
 
 	@SubscribeEvent
-	public static void onPlayerJoin(EntityJoinWorldEvent event)
+	public static void onEntitySpawn(EntityJoinWorldEvent event)
 	{
 		if (GeneralConfig.mobsThatCanHaveEquipment.length == 0)
 			return;
