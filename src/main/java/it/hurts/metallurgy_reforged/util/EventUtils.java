@@ -11,12 +11,20 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import jline.internal.Nullable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
+import java.util.Random;
 
 public class EventUtils {
 
@@ -72,6 +80,23 @@ public class EventUtils {
 		}
 
 		return count;
+	}
+
+	@Nullable
+	public static Metal getRandomMetalBasedOnDifficulty(World world)
+	{
+		float chance = 1/*world.getDifficulty().getId() / 10F*/;
+		Random random = new Random();
+
+		if (random.nextFloat() <= chance) {
+			Metal[] metalllarray = ModMetals.metalMap.values().stream()
+					.filter(metal -> metal != null && metal.hasArmorSet())
+					.toArray(Metal[]::new);
+			int metalIndex = random.nextInt(metalllarray.length);
+			return metalllarray[metalIndex];
+		}
+
+		return null;
 	}
 
 }

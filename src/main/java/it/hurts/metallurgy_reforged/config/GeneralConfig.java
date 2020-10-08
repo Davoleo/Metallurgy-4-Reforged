@@ -90,6 +90,16 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableCustomMaterialStatsConfig = false;
 
+	@Config.Name("Mob that can spawn equipped")
+	@Config.Comment("A list of mob ids that can spawn with metallurgy armor and/or tools")
+	public static String[] mobsThatCanHaveEquipment = {
+			"minecraft:zombie",
+			"minecraft:skeleton",
+			"minecraft:wither_skeleton",
+			"minecraft:stray",
+			"minecraft:husk"
+	};
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 
