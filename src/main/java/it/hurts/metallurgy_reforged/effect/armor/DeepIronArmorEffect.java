@@ -56,18 +56,14 @@ public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isInWater())
+		if (EventUtils.isEntityWearingArmor(player, metal) && player.isInWater())
 		{
 
 			//Slot index of Armor : 5 - 6 - 7 - 8
 			for (int i = 5; i < 9; i++)
 			{
 				if (!(player.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !player.isCreative())
-				{
-					//					Inseriamo nello slot dell'inventario in posizione i un custom slot
 					player.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(player, i - 5, true));
-				}
-
 			}
 			//Add effect to Player
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));

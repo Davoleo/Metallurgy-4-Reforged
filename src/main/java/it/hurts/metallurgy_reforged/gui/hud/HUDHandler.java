@@ -56,7 +56,7 @@ public class HUDHandler {
 			}
 		}
 
-		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK))
+		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK))
 		{
 			KrikArmorHUD.render(event, minecraft);
 		}

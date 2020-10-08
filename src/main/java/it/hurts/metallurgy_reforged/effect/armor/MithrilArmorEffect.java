@@ -66,7 +66,7 @@ public class MithrilArmorEffect extends BaseMetallurgyEffect {
 		if (clientPlayer != null && !entity.equals(clientPlayer))
 		{
 			//checks if the player wears The Mithril Armor, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
-			if (EventUtils.isPlayerWearingArmor(clientPlayer, metal)
+			if (EventUtils.isEntityWearingArmor(clientPlayer, metal)
 					&& entity.getDistance(clientPlayer) < 30D
 					&& !entity.isGlowing()
 					&& ArmorEffectsConfig.mithrilArmorEffect)

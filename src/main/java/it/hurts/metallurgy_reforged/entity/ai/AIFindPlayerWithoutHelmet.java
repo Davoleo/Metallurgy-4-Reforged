@@ -40,7 +40,7 @@ public class AIFindPlayerWithoutHelmet extends EntityAIBase {
 		if (shouldExecute)
 		{
 			EntityPlayer player = getPlayer();
-			shouldExecute = player != null && !EventUtils.isPlayerWearingArmor(player, ModMetals.EXIMITE);
+			shouldExecute = player != null && !EventUtils.isEntityWearingArmor(player, ModMetals.EXIMITE);
 		}
 		return shouldExecute;
 	}

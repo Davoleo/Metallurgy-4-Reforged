@@ -83,7 +83,7 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
     public void onPlayerInteract(PlayerInteractEvent event)
     {
         EntityPlayer player = event.getEntityPlayer();
-        if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isPlayerWearingArmor(player, metal))
+        if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isEntityWearingArmor(player, metal))
         {
             Entity target = ((PlayerInteractEvent.EntityInteract) event).getTarget();
 

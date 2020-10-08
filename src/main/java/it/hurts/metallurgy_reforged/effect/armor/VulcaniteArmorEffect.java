@@ -16,12 +16,9 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import javax.annotation.Nullable;
 
@@ -54,7 +51,7 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isBurning())
+		if (EventUtils.isEntityWearingArmor(player, metal) && player.isBurning())
 		{
 			player.extinguish();
 		}
@@ -68,7 +65,7 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 			EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
 			boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
 
-			if (EventUtils.isPlayerWearingArmor(player, metal) && isFireDamage)
+			if (EventUtils.isEntityWearingArmor(player, metal) && isFireDamage)
 			{
 				event.setCanceled(true);
 			}

@@ -16,8 +16,10 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 import javax.annotation.Nullable;
 
@@ -48,11 +50,14 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerTick(EntityPlayer player)
+	public void livingEvent(LivingEvent event)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.POISON))
+		if (event instanceof LivingEvent.LivingUpdateEvent)
 		{
-			player.removePotionEffect(MobEffects.POISON);
+			EntityLivingBase entity = event.getEntityLiving();
+			
+			if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
+				entity.removePotionEffect(MobEffects.POISON);
 		}
 	}
 

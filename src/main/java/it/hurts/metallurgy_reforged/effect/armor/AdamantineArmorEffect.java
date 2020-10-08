@@ -56,7 +56,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (!player.world.isRemote && EventUtils.isPlayerWearingArmor(player, metal))
+		if (!player.world.isRemote && EventUtils.isEntityWearingArmor(player, metal))
 		{
 			FoodStats foodStat = player.getFoodStats();
 			int amount = 2;

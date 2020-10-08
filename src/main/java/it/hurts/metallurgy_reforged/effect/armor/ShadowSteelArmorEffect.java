@@ -64,7 +64,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = ((EntityPlayer) entity);
 
-				if (EventUtils.isPlayerWearingArmor(player, metal))
+				if (EventUtils.isEntityWearingArmor(player, metal))
 				{
 					float amount = event.getAmount();
 					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness

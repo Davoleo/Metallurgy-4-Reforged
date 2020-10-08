@@ -18,11 +18,13 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import javax.annotation.Nullable;
@@ -54,13 +56,14 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect
     }
 
     @Override
-    public void onPlayerTick(EntityPlayer player)
+    public void livingEvent(LivingEvent event)
     {
-        World world = player.world;
+        EntityLivingBase entity = event.getEntityLiving();
+        World world = entity.world;
 
-        if(!player.isCreative() && EventUtils.isPlayerWearingArmor(player, metal) && player.fallDistance >= 4F)
+        if(event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isEntityWearingArmor(entity, metal) && entity.fallDistance >= 4F)
         {
-            AxisAlignedBB nearCollitions = player.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
+            AxisAlignedBB nearCollitions = entity.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
             if(world.collidesWithAnyBlock(nearCollitions))
             {
                 double motionX = 2D - Math.random() * 4D;
@@ -68,17 +71,17 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect
 
                 if(!world.isRemote)
                 {
-                    player.motionX = motionX;
-                    player.motionZ = motionZ;
-                    player.velocityChanged = true;
+                    entity.motionX = motionX;
+                    entity.motionZ = motionZ;
+                    entity.velocityChanged = true;
 
                     if(world instanceof WorldServer)
                     {
                         for (int i = 0; i < 15; i++)
                         {
-                            double particleX = player.posX + (Math.random() - 0.5D) * (double) player.width;
-                            double particleY = player.posY + Math.random() * (double) player.height;
-                            double particleZ = player.posZ + (Math.random() - 0.5D) * (double) player.width;
+                            double particleX = entity.posX + (Math.random() - 0.5D) * (double) entity.width;
+                            double particleY = entity.posY + Math.random() * (double) entity.height;
+                            double particleZ = entity.posZ + (Math.random() - 0.5D) * (double) entity.width;
 
                             PacketSpawnParticles packetSpawnParticles = new PacketSpawnParticles(EnumParticleTypes.CLOUD.getParticleID(),
                                     (float) particleX, (float) particleY, (float) particleZ,
@@ -90,7 +93,7 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect
                         }
                     }
                 }
-                player.fallDistance = 0F;
+                entity.fallDistance = 0F;
             }
 
         }

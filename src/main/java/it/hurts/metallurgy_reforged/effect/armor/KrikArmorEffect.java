@@ -54,7 +54,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal))
+		if (EventUtils.isEntityWearingArmor(player, metal))
 		{
 			final int STEP = 255 / 27;
 
@@ -96,7 +96,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-				if (EventUtils.isPlayerWearingArmor(player, metal))
+				if (EventUtils.isEntityWearingArmor(player, metal))
 					event.setCanceled(true);
 			}
 		}

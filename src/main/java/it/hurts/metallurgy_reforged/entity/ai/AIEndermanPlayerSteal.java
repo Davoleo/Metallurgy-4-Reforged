@@ -42,7 +42,7 @@ public class AIEndermanPlayerSteal extends EntityAIBase
         {
             this.player = player;
             this.endermanData = data;
-            return EventUtils.isPlayerWearingArmor(player, ModMetals.DESICHALKOS);
+            return EventUtils.isEntityWearingArmor(player, ModMetals.DESICHALKOS);
         }
         return false;
     }

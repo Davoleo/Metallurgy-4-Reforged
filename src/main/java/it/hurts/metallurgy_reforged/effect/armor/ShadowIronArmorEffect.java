@@ -49,7 +49,7 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
+		if (EventUtils.isEntityWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
 		{
 			player.removePotionEffect(MobEffects.BLINDNESS);
 		}

@@ -36,7 +36,7 @@ public class KeyboardHandler {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
 
-		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK) && ArmorEffectsConfig.krikArmorEffect)
+		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && ArmorEffectsConfig.krikArmorEffect)
 		{
 			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
 			{

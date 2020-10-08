@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import jline.internal.Nullable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -29,18 +30,18 @@ import java.util.Random;
 public class EventUtils {
 
 	/**
-	 * @param player The player who may be wearing the armor
+	 * @param entity The entity who is wearing the armor
 	 * @param metal  The metal the armor is made of
 	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
-	public static boolean isPlayerWearingArmor(EntityPlayer player, Metal metal)
+	public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
 	{
 		boolean fullArmored = true;
 
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && player.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
 			{
 				fullArmored = false;
 			}
@@ -85,7 +86,7 @@ public class EventUtils {
 	@Nullable
 	public static Metal getRandomMetalBasedOnDifficulty(World world)
 	{
-		float chance = 1/*world.getDifficulty().getId() / 10F*/;
+		float chance = world.getDifficulty().getId() / 10F;
 		Random random = new Random();
 
 		if (random.nextFloat() <= chance) {
