@@ -12,18 +12,13 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.integration.tic.trait.IMetallurgyTrait;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
@@ -56,12 +51,16 @@ public class SpawnHandler {
 
 		Entity entity = event.getEntity();
 
-		if (metal != null && isEntityValid) {
+
+		if (!event.getWorld().isRemote && metal != null && isEntityValid) {
+
 			for (EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
-				entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
+				if(slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+				   entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
 			}
 
-			if (metal.hasToolSet() && entity instanceof EntityLivingBase && !((EntityLivingBase) entity).getHeldItemMainhand().isEmpty()) {
+
+			if (metal.hasToolSet() && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().isEmpty()) {
 				if (Math.random() < 0.25F) {
 					entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.AXE)));
 				} else {

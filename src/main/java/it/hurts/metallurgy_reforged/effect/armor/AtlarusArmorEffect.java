@@ -19,7 +19,6 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -58,10 +57,13 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect
     @Override
     public void livingEvent(LivingEvent event)
     {
+        if(!(event instanceof LivingEvent.LivingUpdateEvent))
+            return;
+
         EntityLivingBase entity = event.getEntityLiving();
         World world = entity.world;
 
-        if(event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isEntityWearingArmor(entity, metal) && entity.fallDistance >= 4F)
+        if(EventUtils.isEntityWearingArmor(entity, metal) && entity.fallDistance >= 4F)
         {
             AxisAlignedBB nearCollitions = entity.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
             if(world.collidesWithAnyBlock(nearCollitions))

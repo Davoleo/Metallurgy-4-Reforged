@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class PlatinumArmorEffect extends ArmorPotionEffect {
 
@@ -30,6 +31,11 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 	public boolean isEnabled()
 	{
 		return ArmorEffectsConfig.platinumArmorEffect && super.isEnabled();
+	}
+
+	@Override
+	public void livingEvent(LivingEvent event)
+	{
 	}
 
 	@Override

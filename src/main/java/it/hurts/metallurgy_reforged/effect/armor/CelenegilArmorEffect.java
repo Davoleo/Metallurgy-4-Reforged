@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class CelenegilArmorEffect extends ArmorPotionEffect {
 
@@ -47,4 +48,8 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 		}
 	}
 
+	@Override
+	public void livingEvent(LivingEvent event)
+	{
+	}
 }
