@@ -86,7 +86,31 @@ public class EventUtils {
 	@Nullable
 	public static Metal getRandomMetalBasedOnDifficulty(World world)
 	{
-		float chance = world.getDifficulty().getId() / 10F;
+
+		//Some math Reminders
+		//(1 * 1 - 0) * 5 = 5;
+		//(2 * 2 - 1) * 5 = 15;
+		//(3 * 3 - 2) * 5 = 35;
+		//(3^0) * 5 = 5 - 5 * difficulty + 1 = 0;
+		//(3^1) * 5 = 15 - 5 * difficulty + 1 = 5;
+		//(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
+		//(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
+		float chance = 0;
+		switch (world.getDifficulty().getId()) {
+			case 0:
+				chance = 0;
+				break;
+			case 1:
+				chance = 5;
+				break;
+			case 2:
+				chance = 15;
+				break;
+			case 3:
+				chance = 30;
+				break;
+		}
+
 		Random random = new Random();
 
 		if (random.nextFloat() <= chance) {
