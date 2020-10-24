@@ -104,16 +104,16 @@ public class EventUtils {
 				chance = 5;
 				break;
 			case 2:
-				chance = 15;
+				chance = 10;
 				break;
 			case 3:
-				chance = 30;
+				chance = 20;
 				break;
 		}
 
 		Random random = new Random();
 
-		if (random.nextFloat() <= chance) {
+		if ((random.nextFloat() * 100) < chance) {
 			Metal[] metalllarray = ModMetals.metalMap.values().stream()
 					.filter(metal -> metal != null && metal.hasArmorSet())
 					.toArray(Metal[]::new);
