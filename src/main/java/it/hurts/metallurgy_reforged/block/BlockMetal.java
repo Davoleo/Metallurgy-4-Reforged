@@ -111,6 +111,11 @@ public class BlockMetal extends Block {
 		return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
 	}
 
+	@Override
+	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon) {
+		return type == BlockTypes.BLOCK;
+	}
+
 	public MetalStats getMetalStats()
 	{
 		return metal;
