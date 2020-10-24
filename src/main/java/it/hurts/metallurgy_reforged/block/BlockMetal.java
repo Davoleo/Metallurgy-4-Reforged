@@ -112,8 +112,9 @@ public class BlockMetal extends Block {
 	}
 
 	@Override
-	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon) {
-		return type == BlockTypes.BLOCK;
+	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon)
+	{
+		return metal.getOreHarvest() > 1 && type == BlockTypes.BLOCK;
 	}
 
 	public MetalStats getMetalStats()
