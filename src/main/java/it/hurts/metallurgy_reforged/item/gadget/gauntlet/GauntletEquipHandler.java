@@ -22,7 +22,7 @@ import net.minecraft.network.play.server.SPacketSetSlot;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class GauntletOperation {
+public class GauntletEquipHandler {
 
 	@SubscribeEvent
 	public static void setInHand(LivingEquipmentChangeEvent event)

@@ -40,7 +40,7 @@ public class GauntletEffect {
 		if (entity instanceof EntityLivingBase)
 		{
 			EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
-			if (GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
+			if (GauntletEquipHandler.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
 			{
 				FoodStats foodStats = pl.getFoodStats();
 

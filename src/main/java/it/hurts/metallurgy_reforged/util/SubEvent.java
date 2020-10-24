@@ -16,7 +16,7 @@ import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
-import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletOperation;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEquipHandler;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -26,7 +26,7 @@ public class SubEvent {
 	{
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
 		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
+		MinecraftForge.EVENT_BUS.register(GauntletEquipHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);

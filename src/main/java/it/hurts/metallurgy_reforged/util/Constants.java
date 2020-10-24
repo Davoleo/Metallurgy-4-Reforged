@@ -15,6 +15,8 @@ import it.hurts.metallurgy_reforged.material.ArmorStats;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ToolStats;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
 import java.util.HashMap;
@@ -38,6 +40,16 @@ public class Constants {
 	public static final String POTASH_FERTILIZER = Utils.localize("tooltip.metallurgy.potash_fertilizer");
 	public static final String PHOSPHORUS_LAMP = Utils.localize("tooltip.metallurgy.phosphorus_lamp");
 	public static final String THERMITE_DUST = Utils.localize("tooltip.metallurgy.thermite");
+
+	//Enchantments
+	public static final Enchantment[] GAUNTLET_ENCHANTMENTS = {
+			Enchantments.BANE_OF_ARTHROPODS,
+			Enchantments.MENDING,
+			Enchantments.SMITE,
+			Enchantments.VANISHING_CURSE,
+			Enchantments.UNBREAKING,
+			Enchantments.SHARPNESS
+	};
 
 
 	/**

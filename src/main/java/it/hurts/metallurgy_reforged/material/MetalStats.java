@@ -146,6 +146,9 @@ public class MetalStats {
 		return hardness;
 	}
 
+	/**
+	 * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
+	 */
 	public int getOreHarvest()
 	{
 		return oreHarvest;

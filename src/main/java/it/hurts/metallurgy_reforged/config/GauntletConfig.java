@@ -18,8 +18,8 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "gauntlet")
 public class GauntletConfig {
 
-	@Config.Name("Gauntlet Max Damage")
-	@Config.Comment("Sets the Maximum Damage value for the Rubracium Gauntlet")
+	@Config.Name("Gauntlet Durability")
+	@Config.Comment("Sets the Maximum Durability for the Rubracium Gauntlet")
 	@Config.RequiresMcRestart
 	public static int gauntletMaxDamage = 750;
 

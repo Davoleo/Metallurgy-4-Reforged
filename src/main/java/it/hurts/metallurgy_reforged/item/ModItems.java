@@ -52,6 +52,7 @@ public class ModItems {
 	public static ItemInvisibilityShield invisibilityShield = new ItemInvisibilityShield();
 	public static ItemOreDetector oreDetector = new ItemOreDetector();
 	public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
+	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {

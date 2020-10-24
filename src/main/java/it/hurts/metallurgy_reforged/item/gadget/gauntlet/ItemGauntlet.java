@@ -15,6 +15,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GauntletConfig;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
+import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,14 +38,6 @@ import java.util.List;
 
 public class ItemGauntlet extends ItemExtra {
 
-	private final Enchantment[] e = {
-			Enchantments.BANE_OF_ARTHROPODS,
-			Enchantments.MENDING,
-			Enchantments.SMITE,
-			Enchantments.VANISHING_CURSE,
-			Enchantments.UNBREAKING,
-			Enchantments.SHARPNESS
-	};
 	//	private final double attack_damage = 1.05;
 	//	private final double attack_speed;
 
@@ -66,21 +59,21 @@ public class ItemGauntlet extends ItemExtra {
 	@Override
 	public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
 	{
-		List<Enchantment> list = Lists.newArrayList(e);
+		List<Enchantment> list = Lists.newArrayList(Constants.GAUNTLET_ENCHANTMENTS);
 
 		return list.contains(enchantment);
 	}
 
 	@Nonnull
-	@SuppressWarnings("deprecation")
-	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+	@Override
+	public Multimap<String, AttributeModifier> getAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot, @Nonnull ItemStack stack)
 	{
-		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(equipmentSlot, stack);
 
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
 		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet modifier", GauntletConfig.gauntletAttackDamage, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", GauntletConfig.gauntletAttackSpeed, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet Damage modifier", GauntletConfig.gauntletAttackDamage, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Gauntlet Speed modifier", GauntletConfig.gauntletAttackSpeed, 0));
 		}
 		return multimap;
 	}
