@@ -23,6 +23,7 @@ public class ItemKnuckles extends ItemExtra {
         super(name, MetallurgyTabs.tabSpecial, "gadget");
 
         setMaxStackSize(1);
+        setMaxDamage(250);
     }
 
     @SideOnly(Side.CLIENT)
@@ -47,7 +48,7 @@ public class ItemKnuckles extends ItemExtra {
 
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", 2D, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", 1D, 0));
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Knuckles Speed modifier", 16D, 0));
         }
         return multimap;
@@ -58,6 +59,8 @@ public class ItemKnuckles extends ItemExtra {
     {
         target.motionX *= 0.25;
         target.motionZ *= 0.25;
+        target.hurtTime = 10;
+        target.hurtResistantTime = 13;
         stack.damageItem(1, attacker);
         return true;
     }

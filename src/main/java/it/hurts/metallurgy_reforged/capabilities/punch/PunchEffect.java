@@ -70,7 +70,7 @@ public class PunchEffect implements IPunchEffect {
 	}
 
 	@Override
-	public void addKnockbackTTicks()
+	public void addKnockbackTicks()
 	{
 		knockbackTicks += 1;
 	}

@@ -48,7 +48,7 @@ public interface IPunchEffect {
 
 	int getKnockbackTicks();
 
-	void addKnockbackTTicks();
+	void addKnockbackTicks();
 
 	// void setKnockbackMotionVec(Vec3d vec);
 
