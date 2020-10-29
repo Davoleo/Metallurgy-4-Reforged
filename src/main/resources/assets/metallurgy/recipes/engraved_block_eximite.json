@@ -1,18 +1,25 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "III",
-        "I I",
-        "III"
+        "ICI",
+        "CDC",
+        "ICI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotEximite"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
+        },
+        "C": {
+            "item": "minecraft:stonebrick",
+            "data": 3
         }
     },
     "result": {
         "item": "metallurgy:eximite_engraved_block",
-        "count": 8
+        "count": 32
     }
 }

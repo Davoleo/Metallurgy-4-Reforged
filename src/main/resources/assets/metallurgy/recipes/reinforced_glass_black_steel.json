@@ -1,9 +1,9 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "GIG",
-        "III",
-        "GIG"
+        "IGI",
+        "GDG",
+        "IGI"
     ],
     "key": {
         "I": {
@@ -12,10 +12,13 @@
         },
         "G": {
             "item": "minecraft:glass"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:black_steel_reinforced_glass",
-        "count": 5
+        "count": 32
     }
 }

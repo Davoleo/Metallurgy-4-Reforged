@@ -3,7 +3,7 @@
     "pattern": [
         " N ",
         "NIN",
-        "III"
+        "IDI"
     ],
     "key": {
         "I": {
@@ -13,10 +13,13 @@
         "N": {
             "type": "forge:ore_dict",
             "ore": "nuggetElectrum"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:electrum_crystals",
-        "count": 4
+        "count": 32
     }
 }

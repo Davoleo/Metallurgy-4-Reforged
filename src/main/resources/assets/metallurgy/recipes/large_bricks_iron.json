@@ -1,17 +1,25 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "II",
-        "II"
+        "IBI",
+        "BDB",
+        "IBI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotIron"
+        },
+        "B": {
+            "item": "minecraft:stonebrick",
+            "data": 3
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:iron_large_bricks",
-        "count": 4
+        "count": 32
     }
 }

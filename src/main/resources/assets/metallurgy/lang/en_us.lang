@@ -252,6 +252,8 @@ tile.metallurgy.charcoal_block.name=Block of Charcoal
 tile.metallurgy.bitumen_block.name=Bitumen Block
 tile.metallurgy.sulfur_block.name=Sulfur Block
 
+tile.metallurgy.scaffolding.name=Bimetal Structure
+
 # Metal Blocks
 tile.metallurgy.electrum_block.name=Electrum Block
 tile.metallurgy.copper_block.name=Copper Block

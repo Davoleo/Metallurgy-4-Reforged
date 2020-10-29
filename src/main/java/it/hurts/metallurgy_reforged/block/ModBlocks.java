@@ -19,9 +19,12 @@ import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,6 +62,28 @@ public class ModBlocks {
 	//public static BlockLightningRod lightningRod = new BlockLightningRod("lightning_rod");
 	public static BlockChamber chamber = new BlockChamber("sublimation_chamber");
 
+	//Metal Scaffolding - Machine Frame
+	public static BlockMetal structureBlock = new BlockMetal("bimetal_structure", BlockTypes.BLOCK) {
+		@Override
+		public boolean isFullCube(@Nonnull IBlockState state)
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isOpaqueCube(@Nonnull IBlockState state)
+		{
+			return false;
+		}
+
+		@Nonnull
+		@Override
+		public BlockRenderLayer getRenderLayer()
+		{
+			return BlockRenderLayer.CUTOUT;
+		}
+	};
+
 	//Vanilla Decorative Blocks Init
 	//Iron
 	public static BlockMetal engravedIronBlock = new BlockMetal(Constants.METAL_IRON, BlockTypes.ENGRAVED_BLOCK);
@@ -91,6 +116,7 @@ public class ModBlocks {
 		miscBlocks.add(orePhosphorite);
 		Collections.addAll(miscBlocks, engravedGoldBlock, largeGoldBricks, goldBricks, goldCrystal, goldHazardBlock, goldReinforcedGlass);
 		Collections.addAll(miscBlocks, engravedIronBlock, largeIronBricks, ironBricks, ironCrystal, ironHazardBlock, ironReinforcedGlass);
+		miscBlocks.add(structureBlock);
 	}
 
 	public static ItemBlock createItemBlock(Block block)

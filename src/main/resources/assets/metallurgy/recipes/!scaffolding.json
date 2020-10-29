@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "TPT",
+    "P P",
+    "TPT"
+  ],
+  "key": {
+    "T": {
+      "type": "forge:ore_dict",
+      "ore": "ingotTin"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "ingotPrometheum"
+    }
+  },
+  "result": {
+    "item": "metallurgy:scaffolding"
+  }
+}

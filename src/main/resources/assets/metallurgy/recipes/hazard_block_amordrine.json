@@ -1,22 +1,24 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "NIN",
-        "INI",
-        "NIN"
+        "ICI",
+        "CDC",
+        "ICI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotAmordrine"
         },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetAmordrine"
+        "C": {
+            "item": "minecraft:cobblestone"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:amordrine_hazard_block",
-        "count": 4
+        "count": 32
     }
 }

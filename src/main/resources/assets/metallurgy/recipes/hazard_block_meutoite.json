@@ -1,22 +1,24 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "NIN",
-        "INI",
-        "NIN"
+        "ICI",
+        "CDC",
+        "ICI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotMeutoite"
         },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetMeutoite"
+        "C": {
+            "item": "minecraft:cobblestone"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:meutoite_hazard_block",
-        "count": 4
+        "count": 32
     }
 }

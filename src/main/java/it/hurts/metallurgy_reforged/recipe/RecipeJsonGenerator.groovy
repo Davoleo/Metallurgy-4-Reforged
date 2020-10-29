@@ -39,12 +39,12 @@ class RecipeJsonGenerator {
             boots           : ["I I", "I I"],
 
             block           : ["III", "III", "III"],
-            engraved_block  : ["III", "I I", "III"],
-            crystals        : [" N ", "NIN", "III"],
-            bricks          : ["III", "III"],
-            large_bricks    : ["II", "II"],
-            hazard_block    : ["NIN", "INI", "NIN"],
-            reinforced_glass: ["GIG", "III", "GIG"],
+            engraved_block  : ["ICI", "CDC", "ICI"],
+            crystals        : [" N ", "NIN", "IDI"],
+            bricks          : ["III", "IDI", "III"],
+            large_bricks    : ["IBI", "BDB", "IBI"],
+            hazard_block    : ["ICI", "CDC", "ICI"],
+            reinforced_glass: ["IGI", "GDG", "IGI"],
 
             ingot           : ["NNN", "NNN", "NNN"]
     ]
@@ -197,10 +197,14 @@ class RecipeJsonGenerator {
     static void main(String[] args) {
         materials.forEach({ metal ->
             generateShapedRecipes(metal)
+            println("$metal Shaped Recipes generated!")
             generateShapelessRecipes(metal)
+            println("$metal Shapeless Recipes generated!")
         })
+        println("------------------------------------------")
 
         alloys.each { alloy -> generateAlloyRecipes(alloy) }
+        println("Alloy Recipes generated!")
     }
 
     private static void generateShapedRecipes(String metal) {
@@ -389,11 +393,18 @@ class RecipeJsonGenerator {
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
+                        ],
+                        "C": [
+                                item: "minecraft:stonebrick",
+                                data: 3
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_engraved_block",
-                        count: 8
+                        count: 32
                 ]
         ]
         def crystalsObj = [
@@ -407,11 +418,14 @@ class RecipeJsonGenerator {
                         "N": [
                                 type: "forge:ore_dict",
                                 ore : "nugget$pascalName"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_crystals",
-                        count: 4
+                        count: 32
                 ]
         ]
         def bricksObj = [
@@ -421,11 +435,14 @@ class RecipeJsonGenerator {
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_bricks",
-                        count: 6
+                        count: 48
                 ]
         ]
         def largeBricksObj = [
@@ -435,11 +452,18 @@ class RecipeJsonGenerator {
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
+                        ],
+                        "B": [
+                                item: "minecraft:stonebrick",
+                                data: 0
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_large_bricks",
-                        count: 4
+                        count: 32
                 ]
         ]
         def hazardBlocksObj = [
@@ -450,14 +474,16 @@ class RecipeJsonGenerator {
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
                         ],
-                        "N": [
-                                type: "forge:ore_dict",
-                                ore : "nugget$pascalName"
+                        "C": [
+                                item: "minecraft:cobblestone"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_hazard_block",
-                        count: 4
+                        count: 32
                 ]
         ]
         def reinforcedGlassObj = [
@@ -470,11 +496,14 @@ class RecipeJsonGenerator {
                         ],
                         "G": [
                                 item: "minecraft:glass"
+                        ],
+                        "D": [
+                                item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
                 result : [
                         item: "metallurgy:${metal}_reinforced_glass",
-                        count: 5
+                        count: 32
                 ]
         ]
 
@@ -500,7 +529,6 @@ class RecipeJsonGenerator {
         writeJson("large_bricks", metal, largeBricksObj)
         writeJson("hazard_block", metal, hazardBlocksObj)
         writeJson("reinforced_glass", metal, reinforcedGlassObj)
-
         writeJson("ingot", metal, ingotObj)
     }
 

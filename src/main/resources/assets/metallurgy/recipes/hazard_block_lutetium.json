@@ -1,22 +1,24 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "NIN",
-        "INI",
-        "NIN"
+        "ICI",
+        "CDC",
+        "ICI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotLutetium"
         },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetLutetium"
+        "C": {
+            "item": "minecraft:cobblestone"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:lutetium_hazard_block",
-        "count": 4
+        "count": 32
     }
 }

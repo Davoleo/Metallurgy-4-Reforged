@@ -1,22 +1,24 @@
 {
     "type": "forge:ore_shaped",
     "pattern": [
-        "NIN",
-        "INI",
-        "NIN"
+        "ICI",
+        "CDC",
+        "ICI"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotBrass"
         },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetBrass"
+        "C": {
+            "item": "minecraft:cobblestone"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:brass_hazard_block",
-        "count": 4
+        "count": 32
     }
 }

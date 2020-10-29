@@ -2,16 +2,20 @@
     "type": "forge:ore_shaped",
     "pattern": [
         "III",
+        "IDI",
         "III"
     ],
     "key": {
         "I": {
             "type": "forge:ore_dict",
             "ore": "ingotKalendrite"
+        },
+        "D": {
+            "item": "metallurgy:bimetal_structure_block"
         }
     },
     "result": {
         "item": "metallurgy:kalendrite_bricks",
-        "count": 6
+        "count": 48
     }
 }
