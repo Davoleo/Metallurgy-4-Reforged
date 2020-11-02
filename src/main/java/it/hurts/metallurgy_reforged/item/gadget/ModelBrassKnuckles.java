@@ -61,6 +61,7 @@ public class ModelBrassKnuckles extends ModelBase
             this.arm.addBox(0.0F, 0.0F, 0.0F, 4, 12, 4, 0.0F);
             this.armWear.addBox(0.0F, 0.0F, 0.0F, 4, 12, 4, 0.25F);
         }
+
         this.arm.isHidden = transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND && transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
         this.armWear.isHidden = this.arm.isHidden;
 
@@ -104,18 +105,7 @@ public class ModelBrassKnuckles extends ModelBase
             renderGlint();
     }
 
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z)
-    {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
-    }
-
     protected static final ResourceLocation ENCHANTED_ITEM_GLINT_RES = new ResourceLocation("textures/misc/enchanted_item_glint.png");
-
 
     private void renderGlint()
     {
