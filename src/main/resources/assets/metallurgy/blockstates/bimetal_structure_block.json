@@ -1,10 +1,10 @@
 {
 	"variants": {
 		"normal": {
-			"model": "metallurgy:block/bimetal_block"
+			"model": "metallurgy:bimetal_block"
 		},
 		"inventory": {
-			"model": "metallurgy:block/bimetal_block"
+			"model": "metallurgy:bimetal_block"
 		}
 	}
 }
