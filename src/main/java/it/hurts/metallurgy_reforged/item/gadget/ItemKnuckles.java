@@ -24,6 +24,7 @@ public class ItemKnuckles extends ItemExtra {
 
         setMaxStackSize(1);
         setMaxDamage(250);
+        this.setTileEntityItemStackRenderer(new KnucklesRenderer());
     }
 
     @SideOnly(Side.CLIENT)
