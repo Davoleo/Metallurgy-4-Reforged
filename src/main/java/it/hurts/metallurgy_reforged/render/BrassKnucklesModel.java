@@ -1,4 +1,4 @@
-package it.hurts.metallurgy_reforged.item.gadget;
+package it.hurts.metallurgy_reforged.render;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraft.client.Minecraft;
@@ -12,7 +12,7 @@ import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ModelBrassKnuckles extends ModelBase
+public class BrassKnucklesModel extends ModelBase
 {
 
     private final EntityPlayerSP player;
@@ -22,7 +22,9 @@ public class ModelBrassKnuckles extends ModelBase
     public ModelRenderer arm;
     public ModelRenderer armWear;
 
-    public ModelBrassKnuckles(Minecraft mc, ItemCameraTransforms.TransformType transformType)
+    private static final ResourceLocation TEXTURE = new ResourceLocation(Metallurgy.MODID, "textures/items/gadgets/brass_knuckles.png");
+
+    public BrassKnucklesModel(Minecraft mc, ItemCameraTransforms.TransformType transformType)
     {
         this.player = mc.player;
         this.textureManager = mc.getTextureManager();
@@ -62,14 +64,12 @@ public class ModelBrassKnuckles extends ModelBase
             this.armWear.addBox(0.0F, 0.0F, 0.0F, 4, 12, 4, 0.25F);
         }
 
-        this.arm.isHidden = transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND && transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
-        this.armWear.isHidden = this.arm.isHidden;
-
+        //this.arm.isHidden = transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND && transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
+        //this.armWear.isHidden = this.arm.isHidden;
 
         this.shape1 = new ModelRenderer(this, 0, 0);
-        this.shape1.setRotationPoint(1.0F, -0.5F, 0.4F);
-        this.shape1.addBox(0.0F, 0.0F, 0.0F, 1, 2, 4, 0.0F);
-
+        this.shape1.setRotationPoint(0.75F, 1.0F, 0.5F);
+        this.shape1.addBox(0.0F, 0.0F, 0.0F, 2, 1, 4, 0.0F);
 
     }
 
@@ -81,13 +81,13 @@ public class ModelBrassKnuckles extends ModelBase
         this.armWear.render(0.15f);
     }
 
+
     private void renderKnuckles()
     {
         float f5 = 0.15f;
 
         GlStateManager.pushMatrix();
-        textureManager.bindTexture(new ResourceLocation(Metallurgy.MODID, "textures/items/gadgets/test.png"));
-
+        textureManager.bindTexture(TEXTURE);
         GlStateManager.translate(this.shape1.offsetX, this.shape1.offsetY, this.shape1.offsetZ);
         GlStateManager.translate(this.shape1.rotationPointX * f5, this.shape1.rotationPointY * f5, this.shape1.rotationPointZ * f5);
         GlStateManager.scale(1.25D, 1.25D, 1.25D);

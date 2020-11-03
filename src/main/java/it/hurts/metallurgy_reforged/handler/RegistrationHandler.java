@@ -21,9 +21,9 @@ import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.item.gadget.KnucklesBakedModel;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
@@ -201,7 +201,7 @@ public class RegistrationHandler {
 	{
 		ModelResourceLocation location = new ModelResourceLocation(new ResourceLocation(Metallurgy.MODID, "gadget/brass_knuckles"), "inventory");
 		IBakedModel original = event.getModelRegistry().getObject(location);
-		event.getModelRegistry().putObject(location, new KnucklesBakedModel(original));
+		event.getModelRegistry().putObject(location, new BrassKnucklesBakedModel(original));
 	}
 
 	@SubscribeEvent

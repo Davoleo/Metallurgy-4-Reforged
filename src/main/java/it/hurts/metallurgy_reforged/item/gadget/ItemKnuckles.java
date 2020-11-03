@@ -3,6 +3,7 @@ package it.hurts.metallurgy_reforged.item.gadget;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
+import it.hurts.metallurgy_reforged.render.BrassKnucklesTEISR;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -24,7 +25,7 @@ public class ItemKnuckles extends ItemExtra {
 
         setMaxStackSize(1);
         setMaxDamage(250);
-        this.setTileEntityItemStackRenderer(new KnucklesRenderer());
+        this.setTileEntityItemStackRenderer(new BrassKnucklesTEISR());
     }
 
     @SideOnly(Side.CLIENT)
