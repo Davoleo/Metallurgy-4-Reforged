@@ -274,13 +274,13 @@ public class Utils {
 		return null;
 	}
 
-	public static boolean copyFile(Path originalPath, String newPath)
+	public static boolean copyFile(Path originalPath, String newPath, boolean overwrite)
 	{
 		File userConfigFile = new File(newPath);
 
 		try
 		{
-			if (!userConfigFile.exists())
+			if (!userConfigFile.exists() || overwrite)
 			{
 				Files.copy(originalPath, userConfigFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				return true;

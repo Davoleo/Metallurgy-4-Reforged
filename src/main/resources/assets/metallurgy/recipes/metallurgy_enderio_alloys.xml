@@ -2,7 +2,11 @@
 <enderio:recipes xmlns:enderio="http://enderio.com/recipes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://enderio.com/recipes enderio_recipes_schema.xsd ">
 
-<!--  EnergyRequired = 1500 * ToolHarvestLevel -->
+    <!--  EnergyRequired = 1500 * ToolHarvestLevel -->
+    <!--  Editing this file won't have any effect on restart if the related configuration option in general.cfg is disabled  -->
+    <!--  Enabling the config option means that this file will never be overwritten by the mod anymore (hence no updates from the default file will be overwritten)  -->
+    <!--  If you want to reset/update this file to its original version disable the feature in general.cfg and the file will be overwritten  -->
+    <!--  for more information about editing this file check the related page on our wiki on github: https://github.com/Davoleo/Metallurgy-4-Reforged/wiki  -->
 
     <recipe name="Alloy: Bronze (Metallurgy)" required="false">
         <alloying energy="4500" exp="0.75">

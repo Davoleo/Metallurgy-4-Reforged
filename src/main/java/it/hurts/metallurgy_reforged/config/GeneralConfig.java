@@ -90,6 +90,11 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableCustomMaterialStatsConfig = false;
 
+	@Config.Name("Enable EnderIO alloying recipes xml file")
+	@Config.Comment("Loads the `metallurgy_enderio_alloys.xml` file in the config folder that allows players to edit alloy recipes that you can make in the Alloy Smelter from EnderIO")
+	@Config.RequiresMcRestart
+	public static boolean enableEnderIOAlloyConfig = false;
+
 	@Config.Name("Mob that can spawn equipped")
 	@Config.Comment("A list of mob ids that can spawn with metallurgy armor and/or tools")
 	public static String[] mobsThatCanHaveEquipment = {

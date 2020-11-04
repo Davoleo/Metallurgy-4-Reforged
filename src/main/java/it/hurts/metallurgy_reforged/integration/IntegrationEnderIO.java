@@ -1,5 +1,6 @@
 package it.hurts.metallurgy_reforged.integration;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
@@ -9,7 +10,7 @@ public class IntegrationEnderIO {
 
     public static void init(String recipeXMLPath)
     {
-        Utils.copyFile(Utils.getPath(DEFAULT_XML), recipeXMLPath);
+        Utils.copyFile(Utils.getPath(DEFAULT_XML), recipeXMLPath, !GeneralConfig.enableEnderIOAlloyConfig);
         FMLInterModComms.sendMessage("enderio", "recipe:xml:file", recipeXMLPath);
     }
 

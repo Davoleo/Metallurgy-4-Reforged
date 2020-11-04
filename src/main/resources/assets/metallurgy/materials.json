@@ -1,4 +1,10 @@
 [
+	"These Strings will be ignored by the parser",
+	"Editing this file won't have any effect on restart if the related configuration option in general.cfg is disabled",
+	"Enabling the config option means that this file will never be overwritten by the mod anymore",
+	"(hence no updates from us to the default material.json will be overwritten to your custom version)",
+	"If you want to reset/update this file to its original version disable the feature in general.cfg and the file will be overwritten",
+	"for more information about editing this file read the related page on our wiki on github: https://github.com/Davoleo/Metallurgy-4-Reforged/wiki",
 	{
 		"name": "adamantine",
 		"hardness": 5.0,

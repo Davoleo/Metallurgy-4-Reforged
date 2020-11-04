@@ -84,12 +84,12 @@ public class ModMetals {
 		Path defaultConfigPath = Utils.getPath(JsonMaterialHelper.DEFAULT_CONFIG);
 		Set<MetalStats> defaultStats = JsonMaterialHelper.readConfig(JsonMaterialHelper.DEFAULT_CONFIG, null);
 
-		boolean copied = Utils.copyFile(defaultConfigPath, Metallurgy.materialConfig);
+		boolean copied = Utils.copyFile(defaultConfigPath, Metallurgy.materialConfig, !GeneralConfig.enableCustomMaterialStatsConfig);
 
 		Set<MetalStats> playerStats = defaultStats;
 
 		//If the configuration file was already copied and the custom stats loader was enabled
-		if (GeneralConfig.enableCustomMaterialStatsConfig && !copied)
+		if (!copied)
 		{
 			try
 			{
