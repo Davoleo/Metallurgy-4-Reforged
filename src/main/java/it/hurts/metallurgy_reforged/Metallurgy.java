@@ -100,31 +100,31 @@ public class Metallurgy {
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 		{
 			IntegrationTIC.preInit();
-			logger.info("Tinkers' Construct integration has been pre-initialized");
+			logger.info("Tinkers' Construct Compatibility module has been pre-initialized");
 
 			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 			{
 				IntegrationCArmory.preInit();
-				logger.info("Construct's Armory integration has been pre-initialized");
+				logger.info("Construct's Armory Compatibility module has been pre-initialized");
 			}
 		}
 
 		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
 		{
 			IntegrationIF.preInit();
-			logger.info("Industrial Foregoing integration has been pre-initialized");
+			logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
 		}
 
 		if (ModChecker.isCraftTweakerLoaded)
 		{
 			IntegrationCT.preInit();
-			logger.info("CraftTweaker Integration has been pre-initialized");
+			logger.info("CraftTweaker Compatibility module has been pre-initialized");
 		}
 
 		if (ModChecker.isSilentGemsLoaded)
 		{
 			IntegrationSilentGems.init();
-			logger.info("CraftTweaker Integration has been initialized");
+			logger.info("CraftTweaker Compatibility module has been initialized");
 		}
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -154,23 +154,26 @@ public class Metallurgy {
 		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 		 {
 			 IntegrationTIC.init();
-			 logger.info("Tinkers' Construct integration has been initialized");
+			 logger.info("Tinkers' Construct Compatibility module has been initialized");
 
 			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 			 {
 				 IntegrationCArmory.init();
-				 logger.info("Construct's Armory integration has been initialized");
+				 logger.info("Construct's Armory Compatibility module has been initialized");
 			 }
 		 }
 
 		 if (ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration)
 		 {
 			 IntegrationProjectE.init();
-			 logger.info("ProjectE's Integration has been initialized");
+			 logger.info("ProjectE's Compatibility module has been initialized");
 		 }
 
-		 // TODO: 22/08/2020 eventually remove these method completely if sure there's no need of them anymore
-		 CrusherRecipes.registerDefaultOreRecipes();
+		 if (GeneralConfig.enableOreDictCrusherRecipes)
+		 {
+			 CrusherRecipes.registerDefaultOreRecipes();
+			 logger.info("Ore Dictionary based Crusher recipe loaded!");
+		 }
 
 		 MetallurgyEffects.initTooltips();
 	 }
