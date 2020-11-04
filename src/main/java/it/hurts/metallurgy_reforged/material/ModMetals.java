@@ -15,7 +15,9 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.util.Utils;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -79,9 +81,10 @@ public class ModMetals {
 
 	public static void init()
 	{
+		Path defaultConfigPath = Utils.getPath(JsonMaterialHelper.DEFAULT_CONFIG);
 		Set<MetalStats> defaultStats = JsonMaterialHelper.readConfig(JsonMaterialHelper.DEFAULT_CONFIG, null);
 
-		boolean copied = JsonMaterialHelper.copyConfig();
+		boolean copied = Utils.copyFile(defaultConfigPath, Metallurgy.materialConfig);
 
 		Set<MetalStats> playerStats = defaultStats;
 

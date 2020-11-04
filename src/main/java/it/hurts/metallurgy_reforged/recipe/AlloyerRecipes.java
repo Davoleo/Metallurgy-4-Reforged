@@ -59,8 +59,8 @@ public class AlloyerRecipes {
 						new AlloySample(ModMetals.BLACK_STEEL, 4, 1.75F));
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
-						new AlloySample(ModMetals.MANGANESE, 3),
-						new AlloySample(ModMetals.STEEL, 2, 1.5F));
+						new AlloySample(ModMetals.MANGANESE, 2),
+						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance sake
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.BRONZE, 2),

@@ -49,147 +49,147 @@ class RecipeJsonGenerator {
     ]
 
     static def markers = [
-            adamantine    : RecipesJsonGenHelper.Markers.ALL,
-            alduorite     : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            amordrine     : RecipesJsonGenHelper.Markers.ALL,
-            angmallen     : RecipesJsonGenHelper.Markers.ALL,
-            astral_silver : RecipesJsonGenHelper.Markers.ALL,
-            atlarus       : RecipesJsonGenHelper.Markers.ALL,
-            black_steel   : RecipesJsonGenHelper.Markers.ALL,
-            brass         : RecipesJsonGenHelper.Markers.ALL,
-            bronze        : RecipesJsonGenHelper.Markers.ALL,
-            carmot        : RecipesJsonGenHelper.Markers.ALL,
-            celenegil     : RecipesJsonGenHelper.Markers.ALL,
-            ceruclase     : RecipesJsonGenHelper.Markers.ALL,
-            copper        : RecipesJsonGenHelper.Markers.ALL,
-            damascus_steel: RecipesJsonGenHelper.Markers.ALL,
-            deep_iron     : RecipesJsonGenHelper.Markers.ALL,
-            desichalkos   : RecipesJsonGenHelper.Markers.ALL,
-            electrum      : RecipesJsonGenHelper.Markers.ALL,
-            etherium      : RecipesJsonGenHelper.Markers.ALL,
-            eximite       : RecipesJsonGenHelper.Markers.ALL,
-            haderoth      : RecipesJsonGenHelper.Markers.ALL,
-            hepatizon     : RecipesJsonGenHelper.Markers.ALL,
-            ignatius      : RecipesJsonGenHelper.Markers.ALL,
-            infuscolium   : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            inolashite    : RecipesJsonGenHelper.Markers.ALL,
-            kalendrite    : RecipesJsonGenHelper.Markers.ALL,
-            krik          : RecipesJsonGenHelper.Markers.ALL,
-            lemurite      : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            lutetium      : RecipesJsonGenHelper.Markers.NO_TOOLS,
-            manganese     : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            meutoite      : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            midasium      : RecipesJsonGenHelper.Markers.ALL,
-            mithril       : RecipesJsonGenHelper.Markers.ALL,
-            orichalcum    : RecipesJsonGenHelper.Markers.ALL,
-            osmium        : RecipesJsonGenHelper.Markers.NO_TOOLS,
-            oureclase     : RecipesJsonGenHelper.Markers.ALL,
-            platinum      : RecipesJsonGenHelper.Markers.ALL,
-            prometheum    : RecipesJsonGenHelper.Markers.ALL,
-            quicksilver   : RecipesJsonGenHelper.Markers.ALL,
-            rubracium     : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            sanguinite    : RecipesJsonGenHelper.Markers.ALL,
-            shadow_iron   : RecipesJsonGenHelper.Markers.ALL,
-            shadow_steel  : RecipesJsonGenHelper.Markers.ALL,
-            silver        : RecipesJsonGenHelper.Markers.ALL,
-            steel         : RecipesJsonGenHelper.Markers.ALL,
-            tartarite     : RecipesJsonGenHelper.Markers.ALL,
-            tin           : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
-            vulcanite     : RecipesJsonGenHelper.Markers.ALL,
-            vyroxeres     : RecipesJsonGenHelper.Markers.ALL,
-            zinc          : RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            adamantine    : RecipeGenHelper.Markers.ALL,
+            alduorite     : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            amordrine     : RecipeGenHelper.Markers.ALL,
+            angmallen     : RecipeGenHelper.Markers.ALL,
+            astral_silver : RecipeGenHelper.Markers.ALL,
+            atlarus       : RecipeGenHelper.Markers.ALL,
+            black_steel   : RecipeGenHelper.Markers.ALL,
+            brass         : RecipeGenHelper.Markers.ALL,
+            bronze        : RecipeGenHelper.Markers.ALL,
+            carmot        : RecipeGenHelper.Markers.ALL,
+            celenegil     : RecipeGenHelper.Markers.ALL,
+            ceruclase     : RecipeGenHelper.Markers.ALL,
+            copper        : RecipeGenHelper.Markers.ALL,
+            damascus_steel: RecipeGenHelper.Markers.ALL,
+            deep_iron     : RecipeGenHelper.Markers.ALL,
+            desichalkos   : RecipeGenHelper.Markers.ALL,
+            electrum      : RecipeGenHelper.Markers.ALL,
+            etherium      : RecipeGenHelper.Markers.ALL,
+            eximite       : RecipeGenHelper.Markers.ALL,
+            haderoth      : RecipeGenHelper.Markers.ALL,
+            hepatizon     : RecipeGenHelper.Markers.ALL,
+            ignatius      : RecipeGenHelper.Markers.ALL,
+            infuscolium   : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            inolashite    : RecipeGenHelper.Markers.ALL,
+            kalendrite    : RecipeGenHelper.Markers.ALL,
+            krik          : RecipeGenHelper.Markers.ALL,
+            lemurite      : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            lutetium      : RecipeGenHelper.Markers.NO_TOOLS,
+            manganese     : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            meutoite      : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            midasium      : RecipeGenHelper.Markers.ALL,
+            mithril       : RecipeGenHelper.Markers.ALL,
+            orichalcum    : RecipeGenHelper.Markers.ALL,
+            osmium        : RecipeGenHelper.Markers.NO_TOOLS,
+            oureclase     : RecipeGenHelper.Markers.ALL,
+            platinum      : RecipeGenHelper.Markers.ALL,
+            prometheum    : RecipeGenHelper.Markers.ALL,
+            quicksilver   : RecipeGenHelper.Markers.ALL,
+            rubracium     : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            sanguinite    : RecipeGenHelper.Markers.ALL,
+            shadow_iron   : RecipeGenHelper.Markers.ALL,
+            shadow_steel  : RecipeGenHelper.Markers.ALL,
+            silver        : RecipeGenHelper.Markers.ALL,
+            steel         : RecipeGenHelper.Markers.ALL,
+            tartarite     : RecipeGenHelper.Markers.ALL,
+            tin           : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
+            vulcanite     : RecipeGenHelper.Markers.ALL,
+            vyroxeres     : RecipeGenHelper.Markers.ALL,
+            zinc          : RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR,
     ]
 
     static def alloys = [
             [
-                    new RecipesJsonGenHelper.Stack("copper", 3),
-                    new RecipesJsonGenHelper.Stack("tin", 1),
-                    new RecipesJsonGenHelper.Stack("bronze", 4)
+                    new RecipeGenHelper.Stack("copper", 3),
+                    new RecipeGenHelper.Stack("tin", 1),
+                    new RecipeGenHelper.Stack("bronze", 4)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("shadow_iron", 2),
-                    new RecipesJsonGenHelper.Stack("lemurite", 1),
-                    new RecipesJsonGenHelper.Stack("shadow_steel", 3)
+                    new RecipeGenHelper.Stack("shadow_iron", 2),
+                    new RecipeGenHelper.Stack("lemurite", 1),
+                    new RecipeGenHelper.Stack("shadow_steel", 3)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("alduorite", 1),
-                    new RecipesJsonGenHelper.Stack("ceruclase", 1),
-                    new RecipesJsonGenHelper.Stack("inolashite", 2)
+                    new RecipeGenHelper.Stack("alduorite", 1),
+                    new RecipeGenHelper.Stack("ceruclase", 1),
+                    new RecipeGenHelper.Stack("inolashite", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("copper", 3),
-                    new RecipesJsonGenHelper.Stack("zinc", 1),
-                    new RecipesJsonGenHelper.Stack("brass", 4)
+                    new RecipeGenHelper.Stack("copper", 3),
+                    new RecipeGenHelper.Stack("zinc", 1),
+                    new RecipeGenHelper.Stack("brass", 4)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("iron", 1),
-                    new RecipesJsonGenHelper.Stack("manganese", 3),
-                    new RecipesJsonGenHelper.Stack("steel", 2)
+                    new RecipeGenHelper.Stack("iron", 1),
+                    new RecipeGenHelper.Stack("manganese", 3),
+                    new RecipeGenHelper.Stack("steel", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("deep_iron", 3),
-                    new RecipesJsonGenHelper.Stack("infuscolium", 1),
-                    new RecipesJsonGenHelper.Stack("black_steel", 4)
+                    new RecipeGenHelper.Stack("deep_iron", 3),
+                    new RecipeGenHelper.Stack("infuscolium", 1),
+                    new RecipeGenHelper.Stack("black_steel", 4)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("iron", 1),
-                    new RecipesJsonGenHelper.Stack("bronze", 2),
-                    new RecipesJsonGenHelper.Stack("damascus_steel", 3)
+                    new RecipeGenHelper.Stack("iron", 1),
+                    new RecipeGenHelper.Stack("bronze", 2),
+                    new RecipeGenHelper.Stack("damascus_steel", 3)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("silver", 1),
-                    new RecipesJsonGenHelper.Stack("gold", 1),
-                    new RecipesJsonGenHelper.Stack("electrum", 2)
+                    new RecipeGenHelper.Stack("silver", 1),
+                    new RecipeGenHelper.Stack("gold", 1),
+                    new RecipeGenHelper.Stack("electrum", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("orichalcum", 1),
-                    new RecipesJsonGenHelper.Stack("platinum", 1),
-                    new RecipesJsonGenHelper.Stack("celenegil", 2)
+                    new RecipeGenHelper.Stack("orichalcum", 1),
+                    new RecipeGenHelper.Stack("platinum", 1),
+                    new RecipeGenHelper.Stack("celenegil", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("kalendrite", 1),
-                    new RecipesJsonGenHelper.Stack("platinum", 1),
-                    new RecipesJsonGenHelper.Stack("amordrine", 2)
+                    new RecipeGenHelper.Stack("kalendrite", 1),
+                    new RecipeGenHelper.Stack("platinum", 1),
+                    new RecipeGenHelper.Stack("amordrine", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("mithril", 1),
-                    new RecipesJsonGenHelper.Stack("rubracium", 2),
-                    new RecipesJsonGenHelper.Stack("haderoth", 3)
+                    new RecipeGenHelper.Stack("mithril", 1),
+                    new RecipeGenHelper.Stack("rubracium", 2),
+                    new RecipeGenHelper.Stack("haderoth", 3)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("adamantine", 1),
-                    new RecipesJsonGenHelper.Stack("atlarus", 1),
-                    new RecipesJsonGenHelper.Stack("tartarite", 1)
+                    new RecipeGenHelper.Stack("adamantine", 1),
+                    new RecipeGenHelper.Stack("atlarus", 1),
+                    new RecipeGenHelper.Stack("tartarite", 1)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("eximite", 1),
-                    new RecipesJsonGenHelper.Stack("meutoite", 1),
-                    new RecipesJsonGenHelper.Stack("desichalkos", 2)
+                    new RecipeGenHelper.Stack("eximite", 1),
+                    new RecipeGenHelper.Stack("meutoite", 1),
+                    new RecipeGenHelper.Stack("desichalkos", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("iron", 1),
-                    new RecipesJsonGenHelper.Stack("gold", 1),
-                    new RecipesJsonGenHelper.Stack("angmallen", 2)
+                    new RecipeGenHelper.Stack("iron", 1),
+                    new RecipeGenHelper.Stack("gold", 1),
+                    new RecipeGenHelper.Stack("angmallen", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("infuscolium", 1),
-                    new RecipesJsonGenHelper.Stack("steel", 1),
-                    new RecipesJsonGenHelper.Stack("hepatizon", 2)
+                    new RecipeGenHelper.Stack("infuscolium", 1),
+                    new RecipeGenHelper.Stack("steel", 1),
+                    new RecipeGenHelper.Stack("hepatizon", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("silver", 1),
-                    new RecipesJsonGenHelper.Stack("mithril", 1),
-                    new RecipesJsonGenHelper.Stack("quicksilver", 2)
+                    new RecipeGenHelper.Stack("silver", 1),
+                    new RecipeGenHelper.Stack("mithril", 1),
+                    new RecipeGenHelper.Stack("quicksilver", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("lutetium", 1),
-                    new RecipesJsonGenHelper.Stack("osmium", 1),
-                    new RecipesJsonGenHelper.Stack("krik", 2)
+                    new RecipeGenHelper.Stack("lutetium", 1),
+                    new RecipeGenHelper.Stack("osmium", 1),
+                    new RecipeGenHelper.Stack("krik", 2)
             ],
             [
-                    new RecipesJsonGenHelper.Stack("sanguinite", 1),
-                    new RecipesJsonGenHelper.Stack("carmot", 1),
-                    new RecipesJsonGenHelper.Stack("etherium", 2)
+                    new RecipeGenHelper.Stack("sanguinite", 1),
+                    new RecipeGenHelper.Stack("carmot", 1),
+                    new RecipeGenHelper.Stack("etherium", 2)
             ],
     ]
 
@@ -209,7 +209,7 @@ class RecipeJsonGenerator {
     private static void generateShapedRecipes(String metal) {
         String pascalName = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal)
 
-        if (markers[metal] == RecipesJsonGenHelper.Markers.ALL || markers[metal] == RecipesJsonGenHelper.Markers.NO_TOOLS) {
+        if (markers[metal] == RecipeGenHelper.Markers.ALL || markers[metal] == RecipeGenHelper.Markers.NO_TOOLS) {
             //-------------------------- ARMOR ----------------------------------            
             //helmet
             def helmetObj = [
@@ -269,13 +269,13 @@ class RecipeJsonGenerator {
                     ]
             ]
 
-            RecipesJsonGenHelper.writeJson("helmet", metal, helmetObj)
-            RecipesJsonGenHelper.writeJson("chestplate", metal, chestplateObj)
-            RecipesJsonGenHelper.writeJson("leggings", metal, leggingsObj)
-            RecipesJsonGenHelper.writeJson("boots", metal, bootsObj)
+            RecipeGenHelper.writeJson("helmet", metal, helmetObj)
+            RecipeGenHelper.writeJson("chestplate", metal, chestplateObj)
+            RecipeGenHelper.writeJson("leggings", metal, leggingsObj)
+            RecipeGenHelper.writeJson("boots", metal, bootsObj)
         }
 
-        if (markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR && markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS) {
+        if (markers[metal] != RecipeGenHelper.Markers.NO_TOOLS_NO_ARMOR && markers[metal] != RecipeGenHelper.Markers.NO_TOOLS) {
             //------------------------------- TOOLS --------------------------------
 
             //axe
@@ -364,11 +364,11 @@ class RecipeJsonGenerator {
                     ]
             ]
 
-            RecipesJsonGenHelper.writeJson("axe", metal, axeObj)
-            RecipesJsonGenHelper.writeJson("hoe", metal, hoeObj)
-            RecipesJsonGenHelper.writeJson("pickaxe", metal, pickaxeObj)
-            RecipesJsonGenHelper.writeJson("shovel", metal, shovelObj)
-            RecipesJsonGenHelper.writeJson("sword", metal, swordObj)
+            RecipeGenHelper.writeJson("axe", metal, axeObj)
+            RecipeGenHelper.writeJson("hoe", metal, hoeObj)
+            RecipeGenHelper.writeJson("pickaxe", metal, pickaxeObj)
+            RecipeGenHelper.writeJson("shovel", metal, shovelObj)
+            RecipeGenHelper.writeJson("sword", metal, swordObj)
         }
 
         //----------------- BLOCKS -----------------------
@@ -521,14 +521,14 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        RecipesJsonGenHelper.writeJson("block", metal, blockObj)
-        RecipesJsonGenHelper.writeJson("engraved_block", metal, engravedObj)
-        RecipesJsonGenHelper.writeJson("crystals", metal, crystalsObj)
-        RecipesJsonGenHelper.writeJson("bricks", metal, bricksObj)
-        RecipesJsonGenHelper.writeJson("large_bricks", metal, largeBricksObj)
-        RecipesJsonGenHelper.writeJson("hazard_block", metal, hazardBlocksObj)
-        RecipesJsonGenHelper.writeJson("reinforced_glass", metal, reinforcedGlassObj)
-        RecipesJsonGenHelper.writeJson("ingot", metal, ingotObj)
+        RecipeGenHelper.writeJson("block", metal, blockObj)
+        RecipeGenHelper.writeJson("engraved_block", metal, engravedObj)
+        RecipeGenHelper.writeJson("crystals", metal, crystalsObj)
+        RecipeGenHelper.writeJson("bricks", metal, bricksObj)
+        RecipeGenHelper.writeJson("large_bricks", metal, largeBricksObj)
+        RecipeGenHelper.writeJson("hazard_block", metal, hazardBlocksObj)
+        RecipeGenHelper.writeJson("reinforced_glass", metal, reinforcedGlassObj)
+        RecipeGenHelper.writeJson("ingot", metal, ingotObj)
     }
 
     private static void generateShapelessRecipes(String metal) {
@@ -563,11 +563,11 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        RecipesJsonGenHelper.writeJson("ingot_shapeless", metal, ingotObj)
-        RecipesJsonGenHelper.writeJson("nugget_shapeless", metal, nuggetObj)
+        RecipeGenHelper.writeJson("ingot_shapeless", metal, ingotObj)
+        RecipeGenHelper.writeJson("nugget_shapeless", metal, nuggetObj)
     }
 
-    private static void generateAlloyRecipes(List<RecipesJsonGenHelper.Stack> alloy) {
+    private static void generateAlloyRecipes(List<RecipeGenHelper.Stack> alloy) {
         def ingredients = []
 
         for (i in 0..1) {
@@ -588,7 +588,7 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        RecipesJsonGenHelper.writeJson("dust", alloy.get(2).name, alloyRecipeObj)
+        RecipeGenHelper.writeJson("dust", alloy.get(2).name, alloyRecipeObj)
     }
 
 }

@@ -27,6 +27,5 @@ classes/
 gource.sh
 mcmodsrepo/
 
-#floobits
-.floo
-.flooignore
+# enderIO's recipes XML Schema
+src/main/resources/assets/metallurgy/recipes/enderio_recipes_schema.xsd

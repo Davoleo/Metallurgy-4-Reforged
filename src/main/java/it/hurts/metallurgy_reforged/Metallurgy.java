@@ -25,6 +25,7 @@
  import it.hurts.metallurgy_reforged.fluid.ModFluids;
  import it.hurts.metallurgy_reforged.gui.GuiHandler;
  import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
+ import it.hurts.metallurgy_reforged.integration.IntegrationEnderIO;
  import it.hurts.metallurgy_reforged.integration.IntegrationIF;
  import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
  import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
@@ -62,6 +63,7 @@ public class Metallurgy {
 	public static Logger logger;
 
 	public static String materialConfig;
+	public static String enderIOAlloyRecipes;
 
 	@Mod.Instance(MODID)
 	public static Metallurgy instance;
@@ -81,6 +83,8 @@ public class Metallurgy {
 		logger.info(NAME + " is entering pre-initialization!");
 
 		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
+
 		ModMetals.init();
 
 		ModFluids.registerFluids();
@@ -167,6 +171,11 @@ public class Metallurgy {
 		 {
 			 IntegrationProjectE.init();
 			 logger.info("ProjectE's Compatibility module has been initialized");
+		 }
+
+		 if (ModChecker.isEnderIOLoaded)
+		 {
+			 IntegrationEnderIO.init(enderIOAlloyRecipes);
 		 }
 
 		 if (GeneralConfig.enableOreDictCrusherRecipes)

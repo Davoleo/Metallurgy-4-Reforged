@@ -13,7 +13,7 @@ package it.hurts.metallurgy_reforged.recipe
 
 import groovy.json.JsonOutput
 
-class RecipesJsonGenHelper {
+class RecipeGenHelper {
 
     static enum Markers {
         ALL,
