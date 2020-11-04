@@ -12,7 +12,6 @@
 package it.hurts.metallurgy_reforged.recipe
 
 import com.google.common.base.CaseFormat
-import groovy.json.JsonOutput
 import it.hurts.metallurgy_reforged.integration.IntegrationProjectE
 
 class RecipeJsonGenerator {
@@ -270,10 +269,10 @@ class RecipeJsonGenerator {
                     ]
             ]
 
-            writeJson("helmet", metal, helmetObj)
-            writeJson("chestplate", metal, chestplateObj)
-            writeJson("leggings", metal, leggingsObj)
-            writeJson("boots", metal, bootsObj)
+            RecipesJsonGenHelper.writeJson("helmet", metal, helmetObj)
+            RecipesJsonGenHelper.writeJson("chestplate", metal, chestplateObj)
+            RecipesJsonGenHelper.writeJson("leggings", metal, leggingsObj)
+            RecipesJsonGenHelper.writeJson("boots", metal, bootsObj)
         }
 
         if (markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS_NO_ARMOR && markers[metal] != RecipesJsonGenHelper.Markers.NO_TOOLS) {
@@ -365,11 +364,11 @@ class RecipeJsonGenerator {
                     ]
             ]
 
-            writeJson("axe", metal, axeObj)
-            writeJson("hoe", metal, hoeObj)
-            writeJson("pickaxe", metal, pickaxeObj)
-            writeJson("shovel", metal, shovelObj)
-            writeJson("sword", metal, swordObj)
+            RecipesJsonGenHelper.writeJson("axe", metal, axeObj)
+            RecipesJsonGenHelper.writeJson("hoe", metal, hoeObj)
+            RecipesJsonGenHelper.writeJson("pickaxe", metal, pickaxeObj)
+            RecipesJsonGenHelper.writeJson("shovel", metal, shovelObj)
+            RecipesJsonGenHelper.writeJson("sword", metal, swordObj)
         }
 
         //----------------- BLOCKS -----------------------
@@ -522,14 +521,14 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        writeJson("block", metal, blockObj)
-        writeJson("engraved_block", metal, engravedObj)
-        writeJson("crystals", metal, crystalsObj)
-        writeJson("bricks", metal, bricksObj)
-        writeJson("large_bricks", metal, largeBricksObj)
-        writeJson("hazard_block", metal, hazardBlocksObj)
-        writeJson("reinforced_glass", metal, reinforcedGlassObj)
-        writeJson("ingot", metal, ingotObj)
+        RecipesJsonGenHelper.writeJson("block", metal, blockObj)
+        RecipesJsonGenHelper.writeJson("engraved_block", metal, engravedObj)
+        RecipesJsonGenHelper.writeJson("crystals", metal, crystalsObj)
+        RecipesJsonGenHelper.writeJson("bricks", metal, bricksObj)
+        RecipesJsonGenHelper.writeJson("large_bricks", metal, largeBricksObj)
+        RecipesJsonGenHelper.writeJson("hazard_block", metal, hazardBlocksObj)
+        RecipesJsonGenHelper.writeJson("reinforced_glass", metal, reinforcedGlassObj)
+        RecipesJsonGenHelper.writeJson("ingot", metal, ingotObj)
     }
 
     private static void generateShapelessRecipes(String metal) {
@@ -564,8 +563,8 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        writeJson("ingot_shapeless", metal, ingotObj)
-        writeJson("nugget_shapeless", metal, nuggetObj)
+        RecipesJsonGenHelper.writeJson("ingot_shapeless", metal, ingotObj)
+        RecipesJsonGenHelper.writeJson("nugget_shapeless", metal, nuggetObj)
     }
 
     private static void generateAlloyRecipes(List<RecipesJsonGenHelper.Stack> alloy) {
@@ -589,60 +588,7 @@ class RecipeJsonGenerator {
                 ]
         ]
 
-        writeJson("dust", alloy.get(2).name, alloyRecipeObj)
+        RecipesJsonGenHelper.writeJson("dust", alloy.get(2).name, alloyRecipeObj)
     }
 
-    private static void writeJson(String type, String metal, Object obj) {
-
-        String subdir
-
-        switch (type) {
-            case "helmet":
-            case "chestplate":
-            case "leggings":
-            case "boots":
-                subdir = "item/armor/"
-                break
-            case "axe":
-            case "hoe":
-            case "pickaxe":
-            case "shovel":
-            case "sword":
-                subdir = "item/tool/"
-                break
-
-            case "block":
-            case "engraved_block":
-            case "crystals":
-            case "bricks":
-            case "large_bricks":
-            case "hazard_block":
-            case "reinforced_glass":
-                subdir = "block/"
-                break
-
-            case "ingot":
-                subdir = "item/"
-                break
-
-            case "ingot_shapeless":
-            case "nugget_shapeless":
-                subdir = "item/shapeless/"
-                break
-
-            case "dust":
-                subdir = "item/dust/"
-                break
-
-            default:
-                subdir = ""
-                break
-        }
-
-        def jsonObj = JsonOutput.toJson(obj)
-        def prettyObj = JsonOutput.prettyPrint(jsonObj)
-        def file = new File(RECIPES_DIR_PATH + subdir + type + "_" + metal + ".json")
-        file.createNewFile()
-        file.write(prettyObj)
-    }
 }
