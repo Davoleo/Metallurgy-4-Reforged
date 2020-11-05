@@ -5,10 +5,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
+import net.minecraftforge.common.model.TRSRTransformation;
 import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.util.vector.Vector3f;
 import org.testng.collections.Lists;
@@ -51,7 +54,9 @@ public class BrassKnucklesBakedModel implements IBakedModel
     @Override
     public boolean isBuiltInRenderer()
     {
-        return BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GUI/*&& BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.FIXED*/;
+        return BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GUI
+                && BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.FIXED
+                && BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GROUND;
     }
 
     @Nonnull
@@ -81,16 +86,12 @@ public class BrassKnucklesBakedModel implements IBakedModel
     @Nonnull
     public ItemCameraTransforms getItemCameraTransforms()
     {
-        ItemCameraTransforms origin = ItemCameraTransforms.DEFAULT;
-        ItemTransformVec3f ground = origin.ground;
-        ItemTransformVec3f gui = origin.gui;
-        ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 25F), new Vector3f(0.1F, 0.3F, -0.3F), new Vector3f(0.4F,0.4F,0.4F));
-        ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -25F), new Vector3f(0.1F, 0.3F, -0.3F), new Vector3f(0.4F,0.4F,0.4F));
-        ItemTransformVec3f thirdpersonRight =  new ItemTransformVec3f(new Vector3f(90f, 0F, 0F), new Vector3f(0.1f,-0.13f,0.15f), new Vector3f(0.375F,0.375F,0.375F));
-        ItemTransformVec3f thirdpersonLeft =  new ItemTransformVec3f(new Vector3f(90f, 180F, 0F), new Vector3f(0.1f,-0.08f,0.15f), new Vector3f(0.375F,0.375F,0.375F));
-        ItemTransformVec3f itemframe = origin.fixed;
+        ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 50F), new Vector3f(0.2F, 0.3F, -0.4F), new Vector3f(0.4F,0.55F,0.4F));
+        ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -50F), new Vector3f(0.2F, 0.3F, -0.4F), new Vector3f(0.4F,0.55F,0.4F));
+        ItemTransformVec3f thirdpersonRight =  new ItemTransformVec3f(new Vector3f(-90f, 0F, 0F), new Vector3f(0.08f,-0.11f,-0.13f), new Vector3f(0.375F,0.375F,0.375F));
+        ItemTransformVec3f thirdpersonLeft =  new ItemTransformVec3f(new Vector3f(-90f, 180F, 0F), new Vector3f(0.06f,-0.13f,-0.13f), new Vector3f(0.375F,0.375F,0.375F));
 
-        return new ItemCameraTransforms(thirdpersonLeft, thirdpersonRight, firstpersonLeft, firstpersonRight, ItemTransformVec3f.DEFAULT, gui, ground, itemframe);
+        return new ItemCameraTransforms(thirdpersonLeft, thirdpersonRight, firstpersonLeft, firstpersonRight, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT);
     }
 
     @Nonnull
@@ -101,8 +102,11 @@ public class BrassKnucklesBakedModel implements IBakedModel
 
     private IBakedModel getItemModel()
     {
-        ResourceLocation itemModel = new ResourceLocation(Metallurgy.MODID, "gadget/brass_knuckles_item");
-        return Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getModel(ModelLoader.getInventoryVariant(itemModel.toString()));
+        ResourceLocation itemModel = new ResourceLocation(Metallurgy.MODID, "item/gadget/brass_knuckles_item");
+        return ModelLoaderRegistry.getModelOrMissing(itemModel)
+                .bake(TRSRTransformation.identity(),
+                        DefaultVertexFormats.ITEM, location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString())
+                );
     }
 
 }

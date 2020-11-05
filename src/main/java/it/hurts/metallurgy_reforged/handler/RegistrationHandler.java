@@ -20,7 +20,9 @@ import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
+import it.hurts.metallurgy_reforged.integration.tic.trait.MetallurgyTraitLifeSteal;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
@@ -224,6 +226,9 @@ public class RegistrationHandler {
 	{
 		for (int i = 1; i <= 10; i++)
 			event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i));
+
+		//Register brass knuckles item texture
+		event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "items/gadgets/brass_knuckles_item"));
 	}
 
 }

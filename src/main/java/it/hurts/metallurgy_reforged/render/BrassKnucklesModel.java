@@ -68,39 +68,23 @@ public class BrassKnucklesModel extends ModelBase
         //this.armWear.isHidden = this.arm.isHidden;
 
         this.shape1 = new ModelRenderer(this, 0, 0);
-        this.shape1.setRotationPoint(0.75F, 1.0F, 0.5F);
-        this.shape1.addBox(0.0F, 0.0F, 0.0F, 2, 1, 4, 0.0F);
+        this.shape1.setRotationPoint(1.0F, 0.0F, 0.5F);
+        this.shape1.addBox(0.0F, 0.0F, 0.0F, 1, 2, 5, 0.0F);
 
     }
 
-    private void renderArm()
-    {
-
-        textureManager.bindTexture(player.getLocationSkin());
-        this.arm.render(0.15f);
-        this.armWear.render(0.15f);
-    }
-
-
-    private void renderKnuckles()
-    {
-        float f5 = 0.15f;
-
-        GlStateManager.pushMatrix();
-        textureManager.bindTexture(TEXTURE);
-        GlStateManager.translate(this.shape1.offsetX, this.shape1.offsetY, this.shape1.offsetZ);
-        GlStateManager.translate(this.shape1.rotationPointX * f5, this.shape1.rotationPointY * f5, this.shape1.rotationPointZ * f5);
-        GlStateManager.scale(1.25D, 1.25D, 1.25D);
-        GlStateManager.translate(-this.shape1.offsetX, -this.shape1.offsetY, -this.shape1.offsetZ);
-        GlStateManager.translate(-this.shape1.rotationPointX * f5, -this.shape1.rotationPointY * f5, -this.shape1.rotationPointZ * f5);
-        this.shape1.render(f5);
-        GlStateManager.popMatrix();
-    }
 
     public void render(ItemStack stack)
     {
-        renderArm();
-        renderKnuckles();
+        //render the player's arm
+        textureManager.bindTexture(player.getLocationSkin());
+        this.arm.render(0.15F);
+        this.armWear.render(0.15F);
+
+        //render the knuckles model
+        textureManager.bindTexture(TEXTURE);
+        this.shape1.render(0.15F);
+
         if(stack.hasEffect())
             renderGlint();
     }
@@ -128,7 +112,8 @@ public class BrassKnucklesModel extends ModelBase
             GlStateManager.rotate(30.0F - (float) i * 60.0F, 0.0F, 0.0F, 1.0F);
             GlStateManager.translate(0.0F, f * (0.001F + (float) i * 0.003F) * 20.0F, 0.0F);
             GlStateManager.matrixMode(5888);
-            renderKnuckles();
+            textureManager.bindTexture(TEXTURE);
+            this.shape1.render(0.15F);
             GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         }
 
