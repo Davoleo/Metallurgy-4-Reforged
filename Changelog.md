@@ -1,3 +1,20 @@
+### 1.2.0
+- :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
+- :dart: Atlarus and Vulcanite Armor effects now works on mobs
+- :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
+- :sparkles: NEW GADGET - Brass Knuckles: Really Fast Attack speed and low damage level ([#267](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/267))
+- :bento: Add Localized name and recipe to Etherium Goggles
+- :balance_scale: Reworked Decorative metal blocks recipes to be more balanced (buff) and to avoid recipe conflicts with vanilla
+- :sparkles: Added a new Block (Bi-Metal Structure) (as of right now it’s used to create decorative blocks, but it also might be used as a machine frames for tile entities)
+- :recycle: Refactor Recipe JSON Files
+- :sparkles: EnderIO Integration for alloy recipes in the alloy smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
+- :sparkles: Bucklers (a new kind of shield lighter and more active)
+	- Allows to run and walk at normal speed wile holding it
+	- As well as allowing to hit entities and the air :P
+	- They Go on cooldown after a hit
+- :sparkles: Zinc Buckler (Tier 1) (no effect)
+
+
 ### 1.1.2
 - :bug: Fix Shadow Iron and Lemurite ores having stone filler texture (instead of netherrack)
 - :bento: Add Missing ore blocks breaking particle textures ([#292](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/292))
