@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemTartariteShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemZincBuckler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -58,6 +59,7 @@ public class ModItems {
 	//Shields
 	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
 	public static ItemTartariteShield witherShield = new ItemTartariteShield();
+	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {

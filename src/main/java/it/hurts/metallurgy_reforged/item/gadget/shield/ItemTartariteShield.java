@@ -33,7 +33,7 @@ public class ItemTartariteShield extends ItemShieldBase {
         if (damageSource.getTrueSource() instanceof EntityLivingBase)
         {
             EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 10, 1));
+            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
         }
     }
 }
