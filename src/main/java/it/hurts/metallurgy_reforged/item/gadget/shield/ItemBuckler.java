@@ -12,17 +12,15 @@ import javax.annotation.Nonnull;
 
 public abstract class ItemBuckler extends ItemShieldBase {
 
-    protected int maxCooldown;
+    protected int cooldown;
 
     public ItemBuckler(String name, int durability, int cooldown) {
         super(name, durability);
-        this.maxCooldown = cooldown;
+        this.cooldown = cooldown;
     }
 
     @Override
-    public int getMaxItemUseDuration(@Nonnull ItemStack stack) {
-        return maxCooldown;
-    }
+    public abstract int getMaxItemUseDuration(@Nonnull ItemStack stack);
 
     @Nonnull
     @Override
@@ -34,7 +32,7 @@ public abstract class ItemBuckler extends ItemShieldBase {
     @Override
     public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
     {
-        setOnCooldown(entityLiving,  maxCooldown - timeLeft);
+        setOnCooldown(entityLiving);
     }
 
     @Override
@@ -50,20 +48,11 @@ public abstract class ItemBuckler extends ItemShieldBase {
     }
 
     /**
-     * Makes the shield go on cooldown for a custom amount of time
-     * @param cooldown amount of time the shield should be on cooldown for
-     */
-    public void setOnCooldown(EntityLivingBase player, int cooldown)
-    {
-        if (player instanceof EntityPlayer)
-            ((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
-    }
-
-    /**
-     * Makes the shield go on cooldown for the standard amount of time
+     * Makes the shield go on cooldown for a standard amount of time
      */
     public void setOnCooldown(EntityLivingBase player)
     {
-        this.setOnCooldown(player, maxCooldown);
+        if (player instanceof EntityPlayer)
+            ((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
     }
 }
