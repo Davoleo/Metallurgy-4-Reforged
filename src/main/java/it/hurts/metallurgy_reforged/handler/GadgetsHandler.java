@@ -17,7 +17,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemInvisibilityShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -30,19 +30,23 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -121,39 +125,6 @@ public class GadgetsHandler {
 				event.player.motionX *= GeneralConfig.roadSpeed;
 				event.player.motionZ *= GeneralConfig.roadSpeed;
 			}
-		}
-	}
-
-	/**
-	 * Cancels player render when using a Lemurite shield to become invisible
-	 *
-	 * @param event player render event that we're canceling
-	 *
-	 * @see ItemInvisibilityShield
-	 */
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
-	{
-		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-			event.setCanceled(true);
-	}
-
-	/**
-	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
-	 *
-	 * @param event living entities update event we're listening to
-	 *
-	 * @see ItemInvisibilityShield
-	 */
-	@SubscribeEvent
-	public static void disableAI(LivingEvent.LivingUpdateEvent event)
-	{
-		if (event.getEntityLiving() instanceof EntityLiving)
-		{
-			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
-			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-				entity.setAttackTarget(null);
 		}
 	}
 
@@ -284,7 +255,16 @@ public class GadgetsHandler {
 			for (BlockPos blockPos : posList)
 			{
 				IBlockState state = world.getBlockState(blockPos);
-				Metal metal = oreMatchesMetal(state, metalList);
+				Metal metal = null;
+
+				for (Metal m : metalList)
+				{
+					if (state.getBlock() == m.getOre())
+					{
+						metal = m;
+						break;
+					}
+				}
 
 				if (metal != null)
 				{
@@ -319,6 +299,10 @@ public class GadgetsHandler {
 		}
 	}
 
+
+	// --------- SHIELD SECTION --------- //
+
+	// Buckler section START
 	/**
 	 * Makes the player walk at the normal speed when holding a Buckler
 	 * the game multiplies it by 0.2, and we multiply it by 5 to neutralize the slowing effect
@@ -372,18 +356,76 @@ public class GadgetsHandler {
 
 	}
 
-	private static Metal oreMatchesMetal(IBlockState state, List<Metal> metals)
+	/**
+	 * Handles Bucklers going on cooldown after blocking a hit
+	 * @see EntityLivingBase#canBlockDamageSource(DamageSource)
+	 */
+	@SuppressWarnings("JavadocReference")
+	@SubscribeEvent
+	public static void onDamageBlock(LivingHurtEvent event)
 	{
+		//Why did you leave ItHurtsLikeHell, I miss you >_>
+		DamageSource damageSource = event.getSource();
+		EntityLivingBase entity = event.getEntityLiving();
 
-		for (Metal metal : metals)
+		//Vanilla code - START
+		if (!damageSource.isUnblockable() && entity.getActiveItemStack().getItem() instanceof ItemBuckler)
 		{
-			if (state.getBlock() == metal.getOre())
+			Vec3d damageLocation = damageSource.getDamageLocation();
+
+			if (damageLocation != null)
 			{
-				return metal;
+				Vec3d entityLook = entity.getLook(1F);
+
+				//(Entity coords - Damage Location coords).normalized |
+				//A vector from the damage location, pointing to the player
+				Vec3d damageToPlayerVec = damageLocation.subtractReverse(new Vec3d(entity.posX, entity.posY, entity.posZ)).normalize();
+				damageToPlayerVec = new Vec3d(damageToPlayerVec.x, 0, damageToPlayerVec.z);
+
+				//it blocks damage on half of the player figure (only at the front)
+				//if the damage vec and the look vec are both positive or negative the damage source is behind the player and it doesn't get blocked
+				//if the damage vec and the look vec have different signum the damage source is behind the player and it gets blocked
+				//max: 2 | min -2
+				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D)
+				{
+					((ItemBuckler) entity.getActiveItemStack().getItem()).setOnCooldown(entity);
+				}
 			}
 		}
+	}
+	//Buckler section END
 
-		return null;
+
+	// Lemurite shield section START
+
+	/**
+	 * Cancels player render when using a Lemurite shield to become invisible
+	 * @param event player render event that we're canceling
+	 * @see ItemLemuriteShield
+	 */
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
+	{
+		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			event.setCanceled(true);
 	}
 
+	/**
+	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
+	 * @param event living entities update event we're listening to
+	 * @see ItemLemuriteShield
+	 */
+	@SubscribeEvent
+	public static void disableAI(LivingEvent.LivingUpdateEvent event)
+	{
+		if (event.getEntityLiving() instanceof EntityLiving)
+		{
+			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
+			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+				entity.setAttackTarget(null);
+		}
+	}
+
+	// Lemurite shield section END
 }

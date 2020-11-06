@@ -22,9 +22,9 @@ public abstract class ItemShieldBase extends ItemExtra {
 
     public ItemShieldBase(String name, int durability)
     {
-        super("lemurite_shield", MetallurgyTabs.tabSpecial, "gadget");
+        super(name, MetallurgyTabs.tabSpecial, "gadget");
         setMaxStackSize(1);
-        //setMaxDamage(250);
+        setMaxDamage(durability);
 
         this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)

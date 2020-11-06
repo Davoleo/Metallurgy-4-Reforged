@@ -27,25 +27,37 @@ public abstract class ItemBuckler extends ItemShieldBase {
     @Override
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
-        playerIn.setInvisible(true);
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @Override
     public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
     {
-        terminateEffect(entityLiving, stack, maxCooldown - timeLeft);
+        setOnCooldown(entityLiving,  maxCooldown - timeLeft);
     }
 
     @Override
     public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
     {
         if (count <= 1)
-            terminateEffect(player, stack, maxCooldown);
+            setOnCooldown(player);
     }
 
-    private void terminateEffect(EntityLivingBase player, ItemStack stack, int cooldown)
+    /**
+     * Makes the shield go on cooldown for a custom amount of time
+     * @param cooldown amount of time the shield should be on cooldown for
+     */
+    public void setOnCooldown(EntityLivingBase player, int cooldown)
     {
-        ((EntityPlayer) player).getCooldownTracker().setCooldown(stack.getItem(), cooldown);
+        if (player instanceof EntityPlayer)
+            ((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
+    }
+
+    /**
+     * Makes the shield go on cooldown for the standard amount of time
+     */
+    public void setOnCooldown(EntityLivingBase player)
+    {
+        this.setOnCooldown(player, maxCooldown);
     }
 }

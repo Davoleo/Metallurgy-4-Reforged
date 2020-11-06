@@ -23,9 +23,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
-public class ItemInvisibilityShield extends ItemShieldBase {
+public class ItemLemuriteShield extends ItemShieldBase {
 
-	public ItemInvisibilityShield()
+	public ItemLemuriteShield()
 	{
 		super("lemurite_shield", 250);
 	}
@@ -54,21 +54,21 @@ public class ItemInvisibilityShield extends ItemShieldBase {
 	@Override
 	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
 	{
-		terminateEffect(entityLiving, stack, 600 - timeLeft);
+		terminateEffect(entityLiving, 600 - timeLeft);
 	}
 
 	@Override
 	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
 	{
 		if (count <= 1)
-			terminateEffect(player, stack, 600);
+			terminateEffect(player, 600);
 	}
 
-	private void terminateEffect(EntityLivingBase player, ItemStack stack, int cooldown)
+	private void terminateEffect(EntityLivingBase player, int cooldown)
 	{
 		spawnParticles(player);
 		player.setInvisible(false);
-		((EntityPlayer) player).getCooldownTracker().setCooldown(stack.getItem(), cooldown);
+		((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
 	}
 
 	private void spawnParticles(EntityLivingBase entity)
