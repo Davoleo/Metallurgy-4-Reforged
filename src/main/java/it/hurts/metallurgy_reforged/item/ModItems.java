@@ -13,6 +13,7 @@ package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;

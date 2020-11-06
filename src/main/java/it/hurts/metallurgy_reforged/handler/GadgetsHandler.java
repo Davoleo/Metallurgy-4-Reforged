@@ -15,7 +15,9 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.block.gadget.PhosphorusLampSavedData;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemInvisibilityShield;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -36,12 +38,15 @@ import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -124,7 +129,7 @@ public class GadgetsHandler {
 	 *
 	 * @param event player render event that we're canceling
 	 *
-	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
+	 * @see ItemInvisibilityShield
 	 */
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -139,7 +144,7 @@ public class GadgetsHandler {
 	 *
 	 * @param event living entities update event we're listening to
 	 *
-	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
+	 * @see ItemInvisibilityShield
 	 */
 	@SubscribeEvent
 	public static void disableAI(LivingEvent.LivingUpdateEvent event)
@@ -312,6 +317,59 @@ public class GadgetsHandler {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Makes the player walk at the normal speed when holding a Buckler
+	 * the game multiplies it by 0.2, and we multiply it by 5 to neutralize the slowing effect
+	 * @param event fired on any movement input of the player
+	 */
+	@SubscribeEvent
+	public static void onPlayerInput(InputUpdateEvent event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+
+		if (player.getActiveItemStack().getItem() instanceof ItemBuckler)
+		{
+			MovementInput input = event.getMovementInput();
+			input.moveForward *= 5;
+			input.moveStrafe *= 5;
+		}
+	}
+
+	/**
+	 * Allows the player to attack entities and punch air when holding a buckler
+	 * @param event Any input from the user on either the keyboard or the mouse
+	 * @see Minecraft#clickMouse()
+	 */
+	@SuppressWarnings("JavadocReference")
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void onDeviceInput(InputEvent event) {
+		Minecraft minecraft = Minecraft.getMinecraft();
+
+		if (minecraft.player == null)
+			return;
+
+		if (minecraft.player.getActiveItemStack().getItem() instanceof ItemBuckler)
+		{
+			while (minecraft.gameSettings.keyBindAttack.isPressed())
+			{
+				//From Minecraft#clickMouse
+				switch (minecraft.objectMouseOver.typeOfHit)
+				{
+					case ENTITY:
+						minecraft.playerController.attackEntity(minecraft.player, minecraft.objectMouseOver.entityHit);
+						break;
+					case MISS:
+						minecraft.player.resetCooldown();
+						ForgeHooks.onEmptyLeftClick(minecraft.player);
+				}
+
+				minecraft.player.swingArm(EnumHand.MAIN_HAND);
+			}
+		}
+
 	}
 
 	private static Metal oreMatchesMetal(IBlockState state, List<Metal> metals)
