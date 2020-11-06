@@ -57,7 +57,7 @@ public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 
 		if (ModMetals.CELENEGIL != null)
 			celenegilSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
-		if (ModMetals.SHADOW_STEEL != null)
+		if (ModMetals.ORICHALCUM != null)
 			orichalcumSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
 
 		if (isEligibleForEffect(killer, celenegilSword))
