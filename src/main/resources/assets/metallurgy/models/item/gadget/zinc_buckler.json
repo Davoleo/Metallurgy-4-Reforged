@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench, by matpac for m4r",
-	"texture_size": [32, 16],
+	"texture_size": [32, 32],
 	"textures": {
 		"0": "metallurgy:items/gadgets/zinc_buckler",
 		"particle": "metallurgy:items/gadgets/zinc_buckler"
@@ -311,6 +311,14 @@
 			"name": "border",
 			"origin": [8, 8, 8],
 			"children": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+		}
+	],
+	"overrides": [
+		{
+			"predicate": {
+				"blocking": 1
+			},
+			"model": "metallurgy:item/gadget/zinc_buckler_blocking"
 		}
 	]
 }

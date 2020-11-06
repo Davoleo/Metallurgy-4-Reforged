@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench, by matpac for m4r",
-	"texture_size": [32, 16],
+	"texture_size": [32, 32],
 	"textures": {
 		"0": "metallurgy:items/gadgets/zinc_buckler",
 		"particle": "metallurgy:items/gadgets/zinc_buckler"
