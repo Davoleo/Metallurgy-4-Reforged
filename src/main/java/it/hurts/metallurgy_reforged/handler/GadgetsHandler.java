@@ -33,6 +33,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -304,6 +305,8 @@ public class GadgetsHandler {
 	// --------- SHIELD SECTION --------- //
 
 	// Buckler section START
+	private static int sprintToggleTimer = 0;
+
 	/**
 	 * Makes the player walk at the normal speed when holding a Buckler
 	 * the game multiplies it by 0.2, and we multiply it by 5 to neutralize the slowing effect
@@ -314,11 +317,24 @@ public class GadgetsHandler {
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
+		if (sprintToggleTimer > 0)
+			sprintToggleTimer--;
+
 		if (player.getActiveItemStack().getItem() instanceof ItemBuckler)
 		{
 			MovementInput input = event.getMovementInput();
 			input.moveForward *= 5;
 			input.moveStrafe *= 5;
+
+			//Double W tap timer starts when you stop sprinting for one time
+			if (input.moveForward > 0.8) {
+				//keyBindSprint is checked here
+				if (sprintToggleTimer != 0 || Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown())
+					player.setSprinting(true);
+			}
+			else {
+				sprintToggleTimer = 7;
+			}
 		}
 	}
 
