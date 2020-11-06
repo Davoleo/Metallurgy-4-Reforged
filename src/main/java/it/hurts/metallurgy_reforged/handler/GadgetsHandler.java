@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -369,7 +370,7 @@ public class GadgetsHandler {
 		EntityLivingBase entity = event.getEntityLiving();
 
 		//Vanilla code - START
-		if (!damageSource.isUnblockable() && entity.getActiveItemStack().getItem() instanceof ItemBuckler)
+		if (!damageSource.isUnblockable() && entity.getActiveItemStack().getItem() instanceof ItemShieldBase)
 		{
 			Vec3d damageLocation = damageSource.getDamageLocation();
 
@@ -388,7 +389,7 @@ public class GadgetsHandler {
 				//max: 2 | min -2
 				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D)
 				{
-					((ItemBuckler) entity.getActiveItemStack().getItem()).setOnCooldown(entity);
+					((ItemShieldBase) entity.getActiveItemStack().getItem()).onDamageBlocked(entity, damageSource);
 				}
 			}
 		}

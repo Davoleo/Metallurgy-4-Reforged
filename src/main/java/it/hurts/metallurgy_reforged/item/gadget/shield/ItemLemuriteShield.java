@@ -33,7 +33,7 @@ public class ItemLemuriteShield extends ItemShieldBase {
 	@Override
 	public int getItemEnchantability()
 	{
-		return 25;
+		return 17;
 	}
 
 	@Override
@@ -54,7 +54,8 @@ public class ItemLemuriteShield extends ItemShieldBase {
 	@Override
 	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
 	{
-		terminateEffect(entityLiving, 600 - timeLeft);
+		//Cooldown can't be less than one second (you can't spam to make mobs buffer kek)
+		terminateEffect(entityLiving, Math.max(600 - timeLeft, 20));
 	}
 
 	@Override

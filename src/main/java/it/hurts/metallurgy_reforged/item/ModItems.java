@@ -14,6 +14,8 @@ package it.hurts.metallurgy_reforged.item;
 import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemTartariteShield;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,10 +52,12 @@ public class ModItems {
 	public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");
 	public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
 	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
-	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
 	public static ItemOreDetector oreDetector = new ItemOreDetector();
 	public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
 	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
+	//Shields
+	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
+	public static ItemTartariteShield witherShield = new ItemTartariteShield();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {
