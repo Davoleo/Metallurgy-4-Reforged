@@ -24,6 +24,9 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 
     @Override
     public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource) {
+
+        super.onDamageBlocked(entity,damageSource);
+
         if (damageSource.getTrueSource() instanceof EntityLivingBase)
         {
             EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
