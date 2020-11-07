@@ -1,25 +1,25 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        " N ",
-        "NIN",
-        "IDI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotPrometheum"
-        },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetPrometheum"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " N ",
+    "NIN",
+    "IDI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotPrometheum"
     },
-    "result": {
-        "item": "metallurgy:prometheum_crystals",
-        "count": 32
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetPrometheum"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:prometheum_crystals",
+    "count": 32
+  }
 }

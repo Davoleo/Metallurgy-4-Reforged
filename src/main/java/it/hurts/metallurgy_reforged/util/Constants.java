@@ -10,7 +10,6 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.material.ArmorStats;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ToolStats;
 import net.minecraft.enchantment.Enchantment;
@@ -76,6 +75,7 @@ public class Constants {
 		public static final float HIGH_TIER = 15F;
 		public static final float EXTREME_TIER = 20F;              //Obsidian Level
 		public static final float UNBREAKABLE_TIER = 18000000F;    //Bedrock Level
+
 	}
 
 	public static final class ModAttributes {

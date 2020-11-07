@@ -28,79 +28,79 @@ import javax.annotation.Nullable;
 
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
-    public HaderothArmorEffect()
-    {
-        super(ModMetals.HADEROTH);
-    }
+	public HaderothArmorEffect()
+	{
+		super(ModMetals.HADEROTH);
+	}
 
-    @Override
-    public boolean isEnabled()
-    {
-        return ArmorEffectsConfig.haderothArmorEffect && super.isEnabled();
-    }
+	@Override
+	public boolean isEnabled()
+	{
+		return ArmorEffectsConfig.haderothArmorEffect && super.isEnabled();
+	}
 
-    @Override
-    public boolean isToolEffect()
-    {
-        return false;
-    }
+	@Override
+	public boolean isToolEffect()
+	{
+		return false;
+	}
 
-    @Nullable
-    @Override
-    public EnumTools getToolClass()
-    {
-        return null;
-    }
+	@Nullable
+	@Override
+	public EnumTools getToolClass()
+	{
+		return null;
+	}
 
-    @Override
-    public void onPlayerCollision(GetCollisionBoxesEvent event)
-    {
-        World world = event.getWorld();
-        EntityPlayer player = ((EntityPlayer) event.getEntity());
-        AxisAlignedBB playerBB = event.getAabb();
-        if (EventUtils.isEntityWearingArmor(player, metal))
-        {
-            if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA))
-            {
-                BlockPos.PooledMutableBlockPos minPos = BlockPos.PooledMutableBlockPos.retain(playerBB.minX + 0.001D, playerBB.minY + 0.001D, playerBB.minZ + 0.001D);
-                BlockPos.PooledMutableBlockPos maxPos = BlockPos.PooledMutableBlockPos.retain(playerBB.maxX - 0.001D, playerBB.maxY - 0.001D, playerBB.maxZ - 0.001D);
-                BlockPos.PooledMutableBlockPos pos = BlockPos.PooledMutableBlockPos.retain();
+	@Override
+	public void onPlayerCollision(GetCollisionBoxesEvent event)
+	{
+		World world = event.getWorld();
+		EntityPlayer player = ((EntityPlayer) event.getEntity());
+		AxisAlignedBB playerBB = event.getAabb();
+		if (EventUtils.isEntityWearingArmor(player, metal))
+		{
+			if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA))
+			{
+				BlockPos.PooledMutableBlockPos minPos = BlockPos.PooledMutableBlockPos.retain(playerBB.minX + 0.001D, playerBB.minY + 0.001D, playerBB.minZ + 0.001D);
+				BlockPos.PooledMutableBlockPos maxPos = BlockPos.PooledMutableBlockPos.retain(playerBB.maxX - 0.001D, playerBB.maxY - 0.001D, playerBB.maxZ - 0.001D);
+				BlockPos.PooledMutableBlockPos pos = BlockPos.PooledMutableBlockPos.retain();
 
-                if (world.isAreaLoaded(minPos, maxPos))
-                {
-                    for (int i = minPos.getX(); i <= maxPos.getX(); ++i)
-                    {
-                        for (int j = minPos.getY(); j <= maxPos.getY(); ++j)
-                        {
-                            for (int k = minPos.getZ(); k <= maxPos.getZ(); ++k)
-                            {
-                                pos.setPos(i, j, k);
-                                IBlockState state = world.getBlockState(pos);
+				if (world.isAreaLoaded(minPos, maxPos))
+				{
+					for (int i = minPos.getX(); i <= maxPos.getX(); ++i)
+					{
+						for (int j = minPos.getY(); j <= maxPos.getY(); ++j)
+						{
+							for (int k = minPos.getZ(); k <= maxPos.getZ(); ++k)
+							{
+								pos.setPos(i, j, k);
+								IBlockState state = world.getBlockState(pos);
 
-                                if (state.getMaterial() == Material.LAVA)
-                                {
-                                    AxisAlignedBB lavaBox = Block.FULL_BLOCK_AABB.offset(pos);
-                                    event.getCollisionBoxesList().add(lavaBox);
-                                }
+								if (state.getMaterial() == Material.LAVA)
+								{
+									AxisAlignedBB lavaBox = Block.FULL_BLOCK_AABB.offset(pos);
+									event.getCollisionBoxesList().add(lavaBox);
+								}
 
-                            }
-                        }
-                    }
-                }
-                if (world.isRemote)
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        double particleX = player.posX + Math.random() - 0.5D;
-                        double particleZ = player.posZ + Math.random() - 0.5D;
+							}
+						}
+					}
+				}
+				if (world.isRemote)
+				{
+					for (int i = 0; i < 10; i++)
+					{
+						double particleX = player.posX + Math.random() - 0.5D;
+						double particleZ = player.posZ + Math.random() - 0.5D;
 
-                        AxisAlignedBB checkBox = new AxisAlignedBB(particleX - 0.05D, player.posY - 0.05D, particleZ - 0.05D, particleX + 0.05D, player.posY + 0.05D, particleZ + 0.05D);
-                        if (world.isMaterialInBB(checkBox, Material.LAVA))
-                            world.spawnAlwaysVisibleParticle(EnumParticleTypes.FLAME.getParticleID(), particleX, player.posY, particleZ, 0D, -Math.random() * 0.3D, 0D);
-                    }
-                }
-            }
-        }
-    }
+						AxisAlignedBB checkBox = new AxisAlignedBB(particleX - 0.05D, player.posY - 0.05D, particleZ - 0.05D, particleX + 0.05D, player.posY + 0.05D, particleZ + 0.05D);
+						if (world.isMaterialInBB(checkBox, Material.LAVA))
+							world.spawnAlwaysVisibleParticle(EnumParticleTypes.FLAME.getParticleID(), particleX, player.posY, particleZ, 0D, -Math.random() * 0.3D, 0D);
+					}
+				}
+			}
+		}
+	}
 
 }

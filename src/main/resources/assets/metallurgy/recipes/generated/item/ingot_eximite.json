@@ -1,17 +1,17 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "NNN",
-        "NNN",
-        "NNN"
-    ],
-    "key": {
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetEximite"
-        }
-    },
-    "result": {
-        "item": "metallurgy:eximite_ingot"
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "NNN",
+    "NNN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetEximite"
     }
+  },
+  "result": {
+    "item": "metallurgy:eximite_ingot"
+  }
 }

@@ -1,25 +1,25 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        " N ",
-        "NIN",
-        "IDI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotHepatizon"
-        },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetHepatizon"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " N ",
+    "NIN",
+    "IDI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotHepatizon"
     },
-    "result": {
-        "item": "metallurgy:hepatizon_crystals",
-        "count": 32
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetHepatizon"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:hepatizon_crystals",
+    "count": 32
+  }
 }

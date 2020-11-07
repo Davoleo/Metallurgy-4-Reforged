@@ -1,18 +1,18 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"particle": "minecraft:blocks/stone",
-			"filler": "minecraft:blocks/stone",
-			"vein": "metallurgy:blocks/oureclase_ore"
-		}
-	},
-	"variants": {
-		"normal": {
-			"model": "metallurgy:ore"
-		},
-		"inventory": {
-			"model": "metallurgy:ore"
-		}
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "minecraft:blocks/stone",
+      "filler": "minecraft:blocks/stone",
+      "vein": "metallurgy:blocks/oureclase_ore"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "metallurgy:ore"
+    },
+    "inventory": {
+      "model": "metallurgy:ore"
+    }
+  }
 }

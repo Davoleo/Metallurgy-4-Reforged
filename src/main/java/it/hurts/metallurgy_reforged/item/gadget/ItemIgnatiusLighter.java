@@ -73,4 +73,5 @@ public class ItemIgnatiusLighter extends ItemExtra {
 					worldIn.setBlockState(pos, Blocks.FIRE.getDefaultState(), 11);
 			}
 	}
+
 }

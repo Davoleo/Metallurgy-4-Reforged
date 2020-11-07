@@ -1,25 +1,25 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        " N ",
-        "NIN",
-        "IDI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotZinc"
-        },
-        "N": {
-            "type": "forge:ore_dict",
-            "ore": "nuggetZinc"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " N ",
+    "NIN",
+    "IDI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotZinc"
     },
-    "result": {
-        "item": "metallurgy:zinc_crystals",
-        "count": 32
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetZinc"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:zinc_crystals",
+    "count": 32
+  }
 }

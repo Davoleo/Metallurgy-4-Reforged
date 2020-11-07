@@ -1,28 +1,28 @@
 {
-	"variants": {
-		"inventory": {
-			"model": "metallurgy:lamp_ground"
-		},
-		"facing=north": {
-			"model": "metallurgy:lamp_wall",
-			"y": 270
-		},
-		"facing=east": {
-			"model": "metallurgy:lamp_wall"
-		},
-		"facing=south": {
-			"model": "metallurgy:lamp_wall",
-			"y": 90
-		},
-		"facing=west": {
-			"model": "metallurgy:lamp_wall",
-			"y": 180
-		},
-		"facing=up": {
-			"model": "metallurgy:lamp_ground"
-		},
-		"facing=down": {
-			"model": "metallurgy:lamp_hanging"
-		}
-	}
+  "variants": {
+    "inventory": {
+      "model": "metallurgy:lamp_ground"
+    },
+    "facing=north": {
+      "model": "metallurgy:lamp_wall",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "metallurgy:lamp_wall"
+    },
+    "facing=south": {
+      "model": "metallurgy:lamp_wall",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "metallurgy:lamp_wall",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "metallurgy:lamp_ground"
+    },
+    "facing=down": {
+      "model": "metallurgy:lamp_hanging"
+    }
+  }
 }

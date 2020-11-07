@@ -1,17 +1,17 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "III",
-        "I I",
-        "I I"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotEtherium"
-        }
-    },
-    "result": {
-        "item": "metallurgy:etherium_leggings"
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "I I",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotEtherium"
     }
+  },
+  "result": {
+    "item": "metallurgy:etherium_leggings"
+  }
 }

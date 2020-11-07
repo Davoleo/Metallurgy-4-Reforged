@@ -1,24 +1,24 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "ICI",
-        "CDC",
-        "ICI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotOrichalcum"
-        },
-        "C": {
-            "item": "minecraft:cobblestone"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ICI",
+    "CDC",
+    "ICI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotOrichalcum"
     },
-    "result": {
-        "item": "metallurgy:orichalcum_hazard_block",
-        "count": 32
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:orichalcum_hazard_block",
+    "count": 32
+  }
 }

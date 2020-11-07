@@ -26,48 +26,49 @@ import javax.annotation.Nullable;
 
 public abstract class ItemShieldBase extends ItemExtra {
 
-    public ItemShieldBase(String name, int durability)
-    {
-        super(name, MetallurgyTabs.tabSpecial, "gadget");
-        setMaxStackSize(1);
-        setMaxDamage(durability);
+	public ItemShieldBase(String name, int durability)
+	{
+		super(name, MetallurgyTabs.tabSpecial, "gadget");
+		setMaxStackSize(1);
+		setMaxDamage(durability);
 
-        this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter() {
-            @SideOnly(Side.CLIENT)
-            public float apply(@Nonnull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
-            {
-                return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
-            }
-        });
-    }
+		this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter() {
+			@SideOnly(Side.CLIENT)
+			public float apply(@Nonnull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
+			{
+				return entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F;
+			}
+		});
+	}
 
-    @Override
-    public boolean isShield(@Nonnull ItemStack stack, @Nullable EntityLivingBase entity)
-    {
-        return true;
-    }
+	@Override
+	public boolean isShield(@Nonnull ItemStack stack, @Nullable EntityLivingBase entity)
+	{
+		return true;
+	}
 
-    @Override
-    public abstract int getItemEnchantability();
+	@Override
+	public abstract int getItemEnchantability();
 
-    @Override
-    public abstract int getMaxItemUseDuration(@Nonnull ItemStack stack);
+	@Override
+	public abstract int getMaxItemUseDuration(@Nonnull ItemStack stack);
 
-    @Nonnull
-    @Override
-    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
-    {
-        playerIn.setActiveHand(handIn);
-        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-    }
+	@Nonnull
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+	{
+		playerIn.setActiveHand(handIn);
+		return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+	}
 
-    @Nonnull
-    @Override
-    public EnumAction getItemUseAction(@Nonnull ItemStack stack)
-    {
-        return EnumAction.BLOCK;
-    }
+	@Nonnull
+	@Override
+	public EnumAction getItemUseAction(@Nonnull ItemStack stack)
+	{
+		return EnumAction.BLOCK;
+	}
 
-    public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
-    { }
+	public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
+	{ }
+
 }

@@ -1,17 +1,17 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "I I",
-        "III",
-        "III"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotBrass"
-        }
-    },
-    "result": {
-        "item": "metallurgy:brass_chestplate"
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "I I",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrass"
     }
+  },
+  "result": {
+    "item": "metallurgy:brass_chestplate"
+  }
 }

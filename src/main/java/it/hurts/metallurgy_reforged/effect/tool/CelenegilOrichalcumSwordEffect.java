@@ -71,12 +71,15 @@ public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 
 	private boolean isEligibleForEffect(EntityPlayer player, Item sword)
 	{
-		if (sword == player.getHeldItemMainhand().getItem()) {
-			if (!player.isPotionActive(MobEffects.STRENGTH) || player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8){
+		if (sword == player.getHeldItemMainhand().getItem())
+		{
+			if (!player.isPotionActive(MobEffects.STRENGTH) || player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8)
+			{
 				return true;
 			}
 
-			if (metal == ModMetals.CELENEGIL) {
+			if (metal == ModMetals.CELENEGIL)
+			{
 				return !player.isPotionActive(MobEffects.SPEED) || player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8;
 			}
 		}

@@ -629,4 +629,5 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 			return ArrayUtils.contains(slots, i);
 		}
 	}
+
 }

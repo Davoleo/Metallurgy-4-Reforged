@@ -46,7 +46,8 @@ public class BlockMetal extends Block {
 		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
 	}
 
-	public BlockMetal(String metalName, BlockTypes type) {
+	public BlockMetal(String metalName, BlockTypes type)
+	{
 		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
 		this.metal = Constants.EMPTY_METAL_STATS;
 		this.type = type;

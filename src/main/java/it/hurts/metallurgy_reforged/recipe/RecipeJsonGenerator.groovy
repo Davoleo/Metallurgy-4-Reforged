@@ -400,7 +400,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_engraved_block",
+                        item : "metallurgy:${metal}_engraved_block",
                         count: 32
                 ]
         ]
@@ -421,7 +421,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_crystals",
+                        item : "metallurgy:${metal}_crystals",
                         count: 32
                 ]
         ]
@@ -438,7 +438,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_bricks",
+                        item : "metallurgy:${metal}_bricks",
                         count: 48
                 ]
         ]
@@ -459,7 +459,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_large_bricks",
+                        item : "metallurgy:${metal}_large_bricks",
                         count: 32
                 ]
         ]
@@ -479,7 +479,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_hazard_block",
+                        item : "metallurgy:${metal}_hazard_block",
                         count: 32
                 ]
         ]
@@ -499,7 +499,7 @@ class RecipeJsonGenerator {
                         ]
                 ],
                 result : [
-                        item: "metallurgy:${metal}_reinforced_glass",
+                        item : "metallurgy:${metal}_reinforced_glass",
                         count: 32
                 ]
         ]

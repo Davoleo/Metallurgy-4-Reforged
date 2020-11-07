@@ -1,25 +1,25 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "IBI",
-        "BDB",
-        "IBI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotOsmium"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        },
-        "B": {
-            "item": "minecraft:stonebrick",
-            "data": 0
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "IBI",
+    "BDB",
+    "IBI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotOsmium"
     },
-    "result": {
-        "item": "metallurgy:osmium_large_bricks",
-        "count": 32
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
+    },
+    "B": {
+      "item": "minecraft:stonebrick",
+      "data": 0
     }
+  },
+  "result": {
+    "item": "metallurgy:osmium_large_bricks",
+    "count": 32
+  }
 }

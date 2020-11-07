@@ -1,21 +1,21 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "III",
-        "IDI",
-        "III"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotCopper"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "IDI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotCopper"
     },
-    "result": {
-        "item": "metallurgy:copper_bricks",
-        "count": 48
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:copper_bricks",
+    "count": 48
+  }
 }

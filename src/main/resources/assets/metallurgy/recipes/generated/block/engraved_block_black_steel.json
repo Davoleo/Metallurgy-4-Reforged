@@ -1,25 +1,25 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "ICI",
-        "CDC",
-        "ICI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotBlackSteel"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        },
-        "C": {
-            "item": "minecraft:stonebrick",
-            "data": 3
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ICI",
+    "CDC",
+    "ICI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBlackSteel"
     },
-    "result": {
-        "item": "metallurgy:black_steel_engraved_block",
-        "count": 32
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
+    },
+    "C": {
+      "item": "minecraft:stonebrick",
+      "data": 3
     }
+  },
+  "result": {
+    "item": "metallurgy:black_steel_engraved_block",
+    "count": 32
+  }
 }

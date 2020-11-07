@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemTartariteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemVulcaniteBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemZincBuckler;
-import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,4 +73,5 @@ public class ModItems {
 			return super.onItemRightClick(worldIn, playerIn, handIn);
 		}
 	};
+
 }

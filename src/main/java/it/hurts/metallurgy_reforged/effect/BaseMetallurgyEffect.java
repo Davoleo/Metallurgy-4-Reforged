@@ -43,7 +43,8 @@ public abstract class BaseMetallurgyEffect {
 	}
 
 	//TODO Maybe look for metal config reference automatically
-	public boolean isEnabled() {
+	public boolean isEnabled()
+	{
 		return metal != null;
 	}
 

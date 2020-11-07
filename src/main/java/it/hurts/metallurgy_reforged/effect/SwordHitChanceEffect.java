@@ -33,7 +33,8 @@ public class SwordHitChanceEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public boolean isEnabled() {
+	public boolean isEnabled()
+	{
 		return super.isEnabled();
 	}
 

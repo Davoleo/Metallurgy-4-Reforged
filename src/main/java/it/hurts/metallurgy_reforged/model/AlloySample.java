@@ -85,8 +85,7 @@ public class AlloySample {
 	}
 
 	/**
-	 * @return
-	 * either an ingot stack of the provided metal<br>
+	 * @return either an ingot stack of the provided metal<br>
 	 * or the fallbackStack provided in the constructor<br>
 	 * if a metal was disabled it'll return an empty itemstack
 	 */

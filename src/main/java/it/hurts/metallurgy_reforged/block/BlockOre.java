@@ -94,7 +94,8 @@ public class BlockOre extends Block {
 	@SideOnly(Side.CLIENT)
 	@Nonnull
 	@Override
-	public BlockRenderLayer getRenderLayer() {
+	public BlockRenderLayer getRenderLayer()
+	{
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 

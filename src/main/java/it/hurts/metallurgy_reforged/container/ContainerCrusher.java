@@ -143,4 +143,5 @@ public class ContainerCrusher extends Container {
 
 		return itemstack;
 	}
+
 }

@@ -192,6 +192,7 @@ public class GauntletEffect {
 	/**
 	 * checks if the players isn't holding an item and if he is wearing
 	 * apply effect if the player has a minimum food level or if he's in creative mode
+	 *
 	 * @param entity the player
 	 */
 	private static void throwEntity(EntityLivingBase entity)

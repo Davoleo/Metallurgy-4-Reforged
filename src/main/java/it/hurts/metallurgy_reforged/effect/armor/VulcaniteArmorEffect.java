@@ -69,4 +69,5 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 			event.getEntityLiving().extinguish();
 		}
 	}
+
 }

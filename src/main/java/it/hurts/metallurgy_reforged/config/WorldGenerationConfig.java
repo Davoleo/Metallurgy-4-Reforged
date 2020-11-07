@@ -92,7 +92,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Meutoite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -112,7 +112,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Eximite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -132,7 +132,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Vyroxeres biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -152,7 +152,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Vulcanite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -172,7 +172,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Sanguinite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -192,7 +192,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Shadow Iron biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -212,7 +212,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Midasium biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -232,7 +232,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Lemurite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -252,7 +252,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Kalendrite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -272,7 +272,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ignatius biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -292,7 +292,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ceruclase biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -312,7 +312,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Alduorite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -332,7 +332,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Potash biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -352,7 +352,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Phosphorite biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -372,7 +372,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Sulfur biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -392,7 +392,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Osmium biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -412,7 +412,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Lutetium biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -432,7 +432,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Platinum biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -452,7 +452,8 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Silver biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
+
 	}
 
 	public static class CategoryAstralSilver {
@@ -471,7 +472,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Astral Silver biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -491,7 +492,8 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Orichalcum biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
+
 	}
 
 	public static class CategoryZinc {
@@ -510,7 +512,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Zinc biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -530,7 +532,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Mithril biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -550,7 +552,8 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Carmot biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
+
 	}
 
 	public static class CategoryAtlarus {
@@ -569,7 +572,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Atlarus biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -589,7 +592,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Adamantine biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -609,7 +612,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Rubracium biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -629,7 +632,8 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Infuscolium biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
+
 	}
 
 	public static class CategoryOureclase {
@@ -648,7 +652,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ourseclase biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -668,7 +672,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Manganese biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -688,7 +692,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Prometheum biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{"minecraft:jungle","minecraft:jungle_hills","minecraft:jungle_edge"};
+		public String[] biomes = new String[]{"minecraft:jungle", "minecraft:jungle_hills", "minecraft:jungle_edge"};
 
 	}
 
@@ -708,7 +712,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Tin biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 
@@ -755,7 +759,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Copper biome spawn")
 		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{};
+		public String[] biomes = new String[]{ };
 
 	}
 

@@ -1,24 +1,24 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "IGI",
-        "GDG",
-        "IGI"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotPlatinum"
-        },
-        "G": {
-            "item": "minecraft:glass"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "IGI",
+    "GDG",
+    "IGI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotPlatinum"
     },
-    "result": {
-        "item": "metallurgy:platinum_reinforced_glass",
-        "count": 32
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:platinum_reinforced_glass",
+    "count": 32
+  }
 }

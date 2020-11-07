@@ -31,7 +31,8 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public boolean isEnabled() {
+	public boolean isEnabled()
+	{
 		return super.isEnabled();
 	}
 
@@ -49,12 +50,15 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void livingEvent(LivingEvent event) {
-		if (event instanceof LivingEvent.LivingUpdateEvent) {
+	public void livingEvent(LivingEvent event)
+	{
+		if (event instanceof LivingEvent.LivingUpdateEvent)
+		{
 			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal))
 			{
 				event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
 			}
 		}
 	}
+
 }

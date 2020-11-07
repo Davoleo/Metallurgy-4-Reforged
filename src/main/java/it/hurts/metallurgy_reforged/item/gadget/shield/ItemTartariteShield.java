@@ -19,30 +19,31 @@ import javax.annotation.Nonnull;
 
 public class ItemTartariteShield extends ItemShieldBase {
 
-    public ItemTartariteShield()
-    {
-        super("tartarite_shield", 1000);
-    }
+	public ItemTartariteShield()
+	{
+		super("tartarite_shield", 1000);
+	}
 
-    @Override
-    public int getItemEnchantability()
-    {
-        return 25;
-    }
+	@Override
+	public int getItemEnchantability()
+	{
+		return 25;
+	}
 
-    @Override
-    public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-    {
-        return 600;
-    }
+	@Override
+	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
+	{
+		return 600;
+	}
 
-    @Override
-    public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
-    {
-        if (damageSource.getTrueSource() instanceof EntityLivingBase)
-        {
-            EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
-        }
-    }
+	@Override
+	public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
+	{
+		if (damageSource.getTrueSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
+			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
+		}
+	}
+
 }

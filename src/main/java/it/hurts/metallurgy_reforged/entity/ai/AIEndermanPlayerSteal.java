@@ -17,52 +17,52 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class AIEndermanPlayerSteal extends EntityAIBase
-{
+public class AIEndermanPlayerSteal extends EntityAIBase {
 
-    private final EntityEnderman enderman;
-    private EntityPlayer player;
-    private EntityData endermanData;
-
-
-    public AIEndermanPlayerSteal(EntityEnderman enderman)
-    {
-        this.enderman = enderman;
-    }
+	private final EntityEnderman enderman;
+	private EntityPlayer player;
+	private EntityData endermanData;
 
 
-    @Override
-    public boolean shouldExecute()
-    {
-        EntityPlayer player = this.enderman.world.getClosestPlayerToEntity(this.enderman,10);
-        EntityData data = this.enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY,null);
-        if(ModMetals.DESICHALKOS != null && player != null && data != null && !data.wasSnatched)
-        {
-            this.player = player;
-            this.endermanData = data;
-            return EventUtils.isEntityWearingArmor(player, ModMetals.DESICHALKOS);
-        }
-        return false;
-    }
+	public AIEndermanPlayerSteal(EntityEnderman enderman)
+	{
+		this.enderman = enderman;
+	}
 
-    @Override
-    public void updateTask()
-    {
-        this.enderman.getLookHelper().setLookPositionWithEntity(this.player,180F,180F);
-    }
 
-    @Override
-    public void startExecuting()
-    {
-        if(this.enderman.getHeldBlockState() == null)
-        {
-            this.enderman.setHeldBlockState(endermanData.snatchableBlock);
-        }
-    }
+	@Override
+	public boolean shouldExecute()
+	{
+		EntityPlayer player = this.enderman.world.getClosestPlayerToEntity(this.enderman, 10);
+		EntityData data = this.enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
+		if (ModMetals.DESICHALKOS != null && player != null && data != null && !data.wasSnatched)
+		{
+			this.player = player;
+			this.endermanData = data;
+			return EventUtils.isEntityWearingArmor(player, ModMetals.DESICHALKOS);
+		}
+		return false;
+	}
 
-    @Override
-    public void resetTask()
-    {
-        this.enderman.setHeldBlockState(null);
-    }
+	@Override
+	public void updateTask()
+	{
+		this.enderman.getLookHelper().setLookPositionWithEntity(this.player, 180F, 180F);
+	}
+
+	@Override
+	public void startExecuting()
+	{
+		if (this.enderman.getHeldBlockState() == null)
+		{
+			this.enderman.setHeldBlockState(endermanData.snatchableBlock);
+		}
+	}
+
+	@Override
+	public void resetTask()
+	{
+		this.enderman.setHeldBlockState(null);
+	}
+
 }

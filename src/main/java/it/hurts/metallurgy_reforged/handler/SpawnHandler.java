@@ -50,18 +50,24 @@ public class SpawnHandler {
 		Entity entity = event.getEntity();
 
 
-		if (!event.getWorld().isRemote && metal != null && isEntityValid) {
+		if (!event.getWorld().isRemote && metal != null && isEntityValid)
+		{
 
-			for (EntityEquipmentSlot slot : EntityEquipmentSlot.values()) {
-				if(slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-				   entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
+			for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+			{
+				if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+					entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
 			}
 
 
-			if (metal.hasToolSet() && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().isEmpty()) {
-				if (Math.random() < 0.25F) {
+			if (metal.hasToolSet() && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().isEmpty())
+			{
+				if (Math.random() < 0.25F)
+				{
 					entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.AXE)));
-				} else {
+				}
+				else
+				{
 					entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.SWORD)));
 				}
 			}

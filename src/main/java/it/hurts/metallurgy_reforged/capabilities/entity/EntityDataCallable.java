@@ -13,10 +13,10 @@ import java.util.concurrent.Callable;
 
 public class EntityDataCallable implements Callable<EntityData> {
 
-    @Override
-    public EntityData call() throws Exception
-    {
-        return new EntityData();
-    }
+	@Override
+	public EntityData call() throws Exception
+	{
+		return new EntityData();
+	}
 
 }

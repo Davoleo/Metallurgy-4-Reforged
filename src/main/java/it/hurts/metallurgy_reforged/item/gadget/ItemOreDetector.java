@@ -141,7 +141,9 @@ public class ItemOreDetector extends ItemExtra {
 
 	/**
 	 * Returns the current Scanner Metals
+	 *
 	 * @param detector The queried scanner
+	 *
 	 * @return The Hash Set of the ores the scanner has in the NBT Tag
 	 */
 	public static List<Metal> getDetectorMetals(ItemStack detector)

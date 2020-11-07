@@ -1,15 +1,15 @@
 {
-	"type": "forge:ore_shapeless",
-	"ingredients": [
-		{
-			"type": "forge:ore_dict",
-			"ore": "orePrometheum"
-		},
-		{
-			"item": "minecraft:book"
-		}
-	],
-	"result": {
-		"item": "metallurgy:wiki"
-	}
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "orePrometheum"
+    },
+    {
+      "item": "minecraft:book"
+    }
+  ],
+  "result": {
+    "item": "metallurgy:wiki"
+  }
 }

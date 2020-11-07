@@ -1,21 +1,21 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "III",
-        "IDI",
-        "III"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotAmordrine"
-        },
-        "D": {
-            "item": "metallurgy:bimetal_structure_block"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "IDI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotAmordrine"
     },
-    "result": {
-        "item": "metallurgy:amordrine_bricks",
-        "count": 48
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
     }
+  },
+  "result": {
+    "item": "metallurgy:amordrine_bricks",
+    "count": 48
+  }
 }

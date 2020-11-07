@@ -13,8 +13,8 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.block.gadget.PhosphorusLampSavedData;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -31,7 +31,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -156,7 +155,7 @@ public class GadgetsHandler {
 		{
 			double d1 = playerPos.distanceSq(o1);
 			double d2 = playerPos.distanceSq(o2);
-			if(d1 == d2)
+			if (d1 == d2)
 				return 0;
 			return d1 > d2 ? -1 : 1;
 		}).collect(Collectors.toList());
@@ -308,6 +307,7 @@ public class GadgetsHandler {
 	/**
 	 * Makes the player walk at the normal speed when holding a Buckler
 	 * the game multiplies it by 0.2, and we multiply it by 5 to neutralize the slowing effect
+	 *
 	 * @param event fired on any movement input of the player
 	 */
 	@SubscribeEvent
@@ -325,12 +325,14 @@ public class GadgetsHandler {
 			input.moveStrafe *= 5;
 
 			//Double W tap timer starts when you stop sprinting for one time
-			if (input.moveForward > 0.8) {
+			if (input.moveForward > 0.8)
+			{
 				//keyBindSprint is checked here
 				if (sprintToggleTimer != 0 || Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown())
 					player.setSprinting(true);
 			}
-			else {
+			else
+			{
 				sprintToggleTimer = 7;
 			}
 		}
@@ -338,13 +340,16 @@ public class GadgetsHandler {
 
 	/**
 	 * Allows the player to attack entities and punch air when holding a buckler
+	 *
 	 * @param event Any input from the user on either the keyboard or the mouse
+	 *
 	 * @see Minecraft#clickMouse()
 	 */
 	@SuppressWarnings("JavadocReference")
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public static void onDeviceInput(InputEvent event) {
+	public static void onDeviceInput(InputEvent event)
+	{
 		Minecraft minecraft = Minecraft.getMinecraft();
 
 		if (minecraft.player == null)
@@ -373,6 +378,7 @@ public class GadgetsHandler {
 
 	/**
 	 * Handles Bucklers going on cooldown after blocking a hit
+	 *
 	 * @see EntityLivingBase#canBlockDamageSource(DamageSource)
 	 */
 	@SuppressWarnings("JavadocReference")
@@ -415,7 +421,9 @@ public class GadgetsHandler {
 
 	/**
 	 * Cancels player render when using a Lemurite shield to become invisible
+	 *
 	 * @param event player render event that we're canceling
+	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent
@@ -428,7 +436,9 @@ public class GadgetsHandler {
 
 	/**
 	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
+	 *
 	 * @param event living entities update event we're listening to
+	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent

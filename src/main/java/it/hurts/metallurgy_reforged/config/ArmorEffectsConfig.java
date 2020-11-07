@@ -141,7 +141,7 @@ public class ArmorEffectsConfig {
 			"aoa3:vortex_blaster",
 			"aoa3:whimsy_winder",
 			"aoa3:withers_wrath"
-};
+	};
 	@Config.Name("Shadow Iron Armor Effect")
 	@Config.Comment("Absorbed damage is proportional to the darkness")
 	public static boolean shadowSteelArmorEffect = true;

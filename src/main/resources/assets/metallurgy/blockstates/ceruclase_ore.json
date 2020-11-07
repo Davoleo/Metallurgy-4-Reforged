@@ -1,18 +1,18 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"particle": "minecraft:blocks/netherrack",
-			"filler": "minecraft:blocks/netherrack",
-			"vein": "metallurgy:blocks/ceruclase_ore"
-		}
-	},
-	"variants": {
-		"normal": {
-			"model": "metallurgy:ore"
-		},
-		"inventory": {
-			"model": "metallurgy:ore"
-		}
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "minecraft:blocks/netherrack",
+      "filler": "minecraft:blocks/netherrack",
+      "vein": "metallurgy:blocks/ceruclase_ore"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "metallurgy:ore"
+    },
+    "inventory": {
+      "model": "metallurgy:ore"
+    }
+  }
 }

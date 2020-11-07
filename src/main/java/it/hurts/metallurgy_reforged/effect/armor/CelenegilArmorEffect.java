@@ -50,4 +50,5 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 	public void livingEvent(LivingEvent event)
 	{
 	}
+
 }

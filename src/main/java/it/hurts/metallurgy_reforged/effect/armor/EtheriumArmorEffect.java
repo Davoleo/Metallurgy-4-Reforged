@@ -21,45 +21,45 @@ import javax.annotation.Nullable;
 
 public class EtheriumArmorEffect extends BaseMetallurgyEffect {
 
-    public EtheriumArmorEffect()
-    {
-        super(ModMetals.ETHERIUM);
-    }
+	public EtheriumArmorEffect()
+	{
+		super(ModMetals.ETHERIUM);
+	}
 
-    @Override
-    public boolean isEnabled()
-    {
-        return ArmorEffectsConfig.etheriumArmorEffect && super.isEnabled();
-    }
+	@Override
+	public boolean isEnabled()
+	{
+		return ArmorEffectsConfig.etheriumArmorEffect && super.isEnabled();
+	}
 
-    @Override
-    public boolean isToolEffect()
-    {
-        return false;
-    }
+	@Override
+	public boolean isToolEffect()
+	{
+		return false;
+	}
 
-    @Nullable
-    @Override
-    public EnumTools getToolClass()
-    {
-        return null;
-    }
+	@Nullable
+	@Override
+	public EnumTools getToolClass()
+	{
+		return null;
+	}
 
-    @Override
-    public void livingEvent(LivingEvent event)
-    {
-        if (event instanceof LivingEvent.LivingUpdateEvent)
-        {
-            if (event.getEntityLiving() instanceof EntityPlayer)
-            {
-                EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-                if (player.isSneaking() && !player.world.getCollisionBoxes(player, player.getEntityBoundingBox().grow(0.1D, 0, 0.1D)).isEmpty() && EventUtils.isEntityWearingArmor(player, metal))
-                {
-                    player.noClip = true;
-                    player.motionY = 0D;
-                }
-            }
-        }
-    }
+	@Override
+	public void livingEvent(LivingEvent event)
+	{
+		if (event instanceof LivingEvent.LivingUpdateEvent)
+		{
+			if (event.getEntityLiving() instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+				if (player.isSneaking() && !player.world.getCollisionBoxes(player, player.getEntityBoundingBox().grow(0.1D, 0, 0.1D)).isEmpty() && EventUtils.isEntityWearingArmor(player, metal))
+				{
+					player.noClip = true;
+					player.motionY = 0D;
+				}
+			}
+		}
+	}
 
 }

@@ -146,6 +146,7 @@ public class CrusherRecipes {
 
 	/**
 	 * TODO: 22/08/2020 eventually remove these method completely if sure there's no need of them anymore
+	 *
 	 * @deprecated - It overrides CraftTweaker recipe removal making it impossible to remove certain recipes
 	 */
 	@Deprecated

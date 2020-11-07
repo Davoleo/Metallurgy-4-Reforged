@@ -95,4 +95,5 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 
 		return false;
 	}
+
 }

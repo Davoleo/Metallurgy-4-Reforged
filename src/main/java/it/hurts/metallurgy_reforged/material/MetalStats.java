@@ -210,4 +210,5 @@ public class MetalStats {
 
 		return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
 	}
+
 }

@@ -1,20 +1,20 @@
 {
-    "type": "forge:ore_shaped",
-    "pattern": [
-        "I",
-        "S",
-        "S"
-    ],
-    "key": {
-        "I": {
-            "type": "forge:ore_dict",
-            "ore": "ingotAmordrine"
-        },
-        "S": {
-            "item": "minecraft:stick"
-        }
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "I",
+    "S",
+    "S"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotAmordrine"
     },
-    "result": {
-        "item": "metallurgy:amordrine_shovel"
+    "S": {
+      "item": "minecraft:stick"
     }
+  },
+  "result": {
+    "item": "metallurgy:amordrine_shovel"
+  }
 }

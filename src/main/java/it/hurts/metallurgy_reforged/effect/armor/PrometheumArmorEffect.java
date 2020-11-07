@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
@@ -53,7 +52,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 		if (event instanceof LivingEvent.LivingUpdateEvent)
 		{
 			EntityLivingBase entity = event.getEntityLiving();
-			
+
 			if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
 				entity.removePotionEffect(MobEffects.POISON);
 		}

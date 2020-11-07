@@ -17,18 +17,19 @@ import net.minecraft.world.biome.Biome;
 
 import java.util.Random;
 
-public class SmallIslandsSpawn extends BaseOreSpawn
-{
-    public SmallIslandsSpawn(Biome[] biomes)
-    {
-        super(ModWorldGen.DEFAULT_END_BLOCK, biomes);
-    }
+public class SmallIslandsSpawn extends BaseOreSpawn {
 
-    @Override
-    public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
-    {
-        if(Math.abs(pos.getX()) >= 700 || Math.abs(pos.getZ()) >= 700)
-            return super.canOreSpawn(world, pos, state, random);
-        return false;
-    }
+	public SmallIslandsSpawn(Biome[] biomes)
+	{
+		super(ModWorldGen.DEFAULT_END_BLOCK, biomes);
+	}
+
+	@Override
+	public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
+	{
+		if (Math.abs(pos.getX()) >= 700 || Math.abs(pos.getZ()) >= 700)
+			return super.canOreSpawn(world, pos, state, random);
+		return false;
+	}
+
 }

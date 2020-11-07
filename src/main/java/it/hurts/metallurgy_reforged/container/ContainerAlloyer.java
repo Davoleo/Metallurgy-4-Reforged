@@ -156,4 +156,5 @@ public class ContainerAlloyer extends Container {
 
 		return itemstack;
 	}
+
 }

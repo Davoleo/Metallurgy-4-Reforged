@@ -1,9 +1,9 @@
 {
-	"recipes": {
-		"ore_detector_shapeless": "it.hurts.metallurgy_reforged.recipe.OreDetectorRecipe$Factory"
-	},
-	"ingredients": {
-		"metal": "it.hurts.metallurgy_reforged.recipe.IngredientMetal$Factory"
-	},
-	"_comment": "Classes: Ingredient, IIngredientFactory, ShapedOreRecipe, IRecipeFactory"
+  "recipes": {
+    "ore_detector_shapeless": "it.hurts.metallurgy_reforged.recipe.OreDetectorRecipe$Factory"
+  },
+  "ingredients": {
+    "metal": "it.hurts.metallurgy_reforged.recipe.IngredientMetal$Factory"
+  },
+  "_comment": "Classes: Ingredient, IIngredientFactory, ShapedOreRecipe, IRecipeFactory"
 }

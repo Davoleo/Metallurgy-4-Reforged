@@ -31,7 +31,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemHoeBase extends ItemHoe implements IToolEffect  {
+public class ItemHoeBase extends ItemHoe implements IToolEffect {
 
 	private BaseMetallurgyEffect effect;
 	private final MetalStats metalStats;
@@ -93,4 +93,5 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect  {
 	{
 		this.effect = effect;
 	}
+
 }

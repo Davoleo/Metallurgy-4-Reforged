@@ -10,7 +10,6 @@
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
-import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -45,7 +44,8 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
 	}
 
-	private boolean hasValidStregthTrait(EntityPlayer player) {
+	private boolean hasValidStregthTrait(EntityPlayer player)
+	{
 		for (ItemStack armorPiece : player.getArmorInventoryList())
 		{
 			if (ToolHelper.isBroken(armorPiece))

@@ -97,4 +97,5 @@ public class FluidMolten extends Fluid {
 	{
 		return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
 	}
+
 }

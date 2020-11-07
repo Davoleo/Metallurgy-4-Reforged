@@ -10,7 +10,6 @@
 package it.hurts.metallurgy_reforged.integration.tic;
 
 import com.google.common.base.CaseFormat;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -56,7 +55,8 @@ public class IntegrationTIC {
 			ModMetals.ELECTRUM
 	);
 
-	static {
+	static
+	{
 		vanillaTicMetals.removeIf(Objects::isNull);
 	}
 
