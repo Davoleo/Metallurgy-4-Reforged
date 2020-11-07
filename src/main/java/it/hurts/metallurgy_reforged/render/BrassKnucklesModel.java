@@ -72,8 +72,8 @@ public class BrassKnucklesModel extends ModelBase {
 			this.armWear.addBox(0.0F, 0.0F, 0.0F, 4, 12, 4, 0.25F);
 		}
 
-		//this.arm.isHidden = transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND && transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
-		//this.armWear.isHidden = this.arm.isHidden;
+		this.arm.isHidden = transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND && transformType != ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND;
+		this.armWear.isHidden = this.arm.isHidden;
 
 		this.shape1 = new ModelRenderer(this, 0, 0);
 		this.shape1.setRotationPoint(1.0F, 0.0F, 0.5F);
