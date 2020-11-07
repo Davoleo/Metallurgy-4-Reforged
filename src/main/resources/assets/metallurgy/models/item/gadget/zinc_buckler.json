@@ -314,5 +314,13 @@
 			"origin": [8, 8, 8],
 			"children": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 		}
+	],	
+	"overrides": [	
+		{	
+			"predicate": {	
+				"blocking": 1	
+			},	
+			"model": "metallurgy:item/gadget/zinc_buckler_blocking"	
+		}
 	]
 }
