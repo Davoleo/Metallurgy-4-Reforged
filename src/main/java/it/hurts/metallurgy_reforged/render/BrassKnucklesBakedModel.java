@@ -93,8 +93,8 @@ public class BrassKnucklesBakedModel implements IBakedModel {
 	@Nonnull
 	public ItemCameraTransforms getItemCameraTransforms()
 	{
-		ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 50F), new Vector3f(0.2F, 0.3F, -0.4F), new Vector3f(0.4F, 0.55F, 0.4F));
-		ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -50F), new Vector3f(0.2F, 0.3F, -0.4F), new Vector3f(0.4F, 0.55F, 0.4F));
+		ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
+		ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
 		ItemTransformVec3f thirdpersonRight = new ItemTransformVec3f(new Vector3f(-90f, 0F, 0F), new Vector3f(0.08f, -0.11f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
 		ItemTransformVec3f thirdpersonLeft = new ItemTransformVec3f(new Vector3f(-90f, 180F, 0F), new Vector3f(0.06f, -0.13f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
 
