@@ -61,7 +61,7 @@ public class BrassKnucklesModel extends ModelBase {
 		this.arm.setRotationPoint(0.0F, -11.0F, 1.0F);
 		this.armWear.setRotationPoint(0.0F, -11.0F, 1.0F);
 
-		if (DefaultPlayerSkin.getSkinType(mc.player.getUniqueID()).equals("slim"))
+		if (player.getSkinType().equals("slim"))
 		{
 			this.arm.addBox(0.0F, 0.0F, 0.0F, 3, 12, 4, 0.0F);
 			this.armWear.addBox(0.0F, 0.0F, 0.0F, 3, 12, 4, 0.25F);
