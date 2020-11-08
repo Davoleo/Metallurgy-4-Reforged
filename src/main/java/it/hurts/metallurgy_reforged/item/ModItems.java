@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.item;
 import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemTartariteShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemSanguiniteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemVulcaniteBuckler;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemZincBuckler;
 import it.hurts.metallurgy_reforged.util.Constants;
@@ -56,7 +56,7 @@ public class ModItems {
 	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
 	//Shields
 	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
-	public static ItemTartariteShield witherShield = new ItemTartariteShield();
+	public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
 	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
 	public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
 

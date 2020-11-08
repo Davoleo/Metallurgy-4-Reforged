@@ -17,11 +17,11 @@ import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class ItemTartariteShield extends ItemShieldBase {
+public class ItemSanguiniteShield extends ItemShieldBase {
 
-	public ItemTartariteShield()
+	public ItemSanguiniteShield()
 	{
-		super("tartarite_shield", 1000);
+		super("sanguinite_shield", 1000);
 	}
 
 	@Override
