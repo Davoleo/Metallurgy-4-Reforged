@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " Z ",
+    "ZWZ",
+    " Z "
+  ],
+  "key": {
+    "Z": {
+      "type": "forge:ore_dict",
+      "ore": "ingotZinc"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    }
+  },
+  "result": {
+    "item": "metallurgy:zinc_buckler"
+  }
+}

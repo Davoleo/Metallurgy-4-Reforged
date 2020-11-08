@@ -17,7 +17,7 @@ public class ItemZincBuckler extends ItemBuckler {
 
 	public ItemZincBuckler()
 	{
-		super("zinc_buckler", 150, 30);
+		super("zinc_buckler", 200, 30);
 	}
 
 	@Override

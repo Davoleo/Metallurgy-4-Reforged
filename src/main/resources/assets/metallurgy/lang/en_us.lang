@@ -941,11 +941,14 @@ item.metallurgy.zinc_ingot.name=Zinc Ingot
 item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
-item.metallurgy.lemurite_shield.name=Lemurite Shield
 item.metallurgy.ore_detector.name=Metal Detector
 tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 item.metallurgy.etherium_goggles.name=Etherium Goggles
 item.metallurgy.brass_knuckles.name=Brass Knuckles
+item.metallurgy.lemurite_shield.name=Lemurite Shield
+item.metallurgy.sanguinite_shield.name=Sanguinite Shield
+item.metallurgy.zinc_buckler.name=Zinc Buckler
+item.metallurgy.vulcanite_buckler.name=Vulcanite Buckler
 
 #Items
 item.metallurgy.tar.name=Tar

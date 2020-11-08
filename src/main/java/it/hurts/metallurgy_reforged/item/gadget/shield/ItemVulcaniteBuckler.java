@@ -19,7 +19,7 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 
 	public ItemVulcaniteBuckler()
 	{
-		super("vulcanite_buckler", 300, 30);
+		super("vulcanite_buckler", 500, 30);
 	}
 
 	@Override
@@ -38,12 +38,12 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 	public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
 	{
 
-		super.onDamageBlocked(entity, damageSource);
+		//super.onDamageBlocked(entity, damageSource);
 
 		if (damageSource.getTrueSource() instanceof EntityLivingBase)
 		{
 			EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-			target.world.createExplosion(entity, target.posX, target.posY + target.height / 3, target.posZ, 2F, false);
+			target.world.createExplosion(entity, target.posX, target.posY + target.height * 0.75, target.posZ, 1, false);
 		}
 	}
 
