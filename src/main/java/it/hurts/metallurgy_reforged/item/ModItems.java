@@ -11,10 +11,7 @@ package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.item.gadget.*;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.ItemGauntlet;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemSanguiniteShield;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemVulcaniteBuckler;
-import it.hurts.metallurgy_reforged.item.gadget.shield.ItemZincBuckler;
+import it.hurts.metallurgy_reforged.item.gadget.shield.*;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -59,6 +56,7 @@ public class ModItems {
 	public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
 	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
 	public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
+	public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {
