@@ -79,15 +79,27 @@ public class ItemCeruclaseShield extends ItemShieldBase {
     {
         super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
         ((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(this, 60);
-        removeTagAndShield(worldIn, stack);
+
+        NBTTagCompound tag = stack.getTagCompound();
+        tag.setLong("worldTime", worldIn.getTotalWorldTime());
+        stack.setTagCompound(tag);
     }
 
     @Override
     public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
     {
-        if (!isSelected)
-            removeTagAndShield(worldIn, stack);
+        //  if (!isSelected)
+        //    removeTagAndShield(worldIn, stack);
 
+        NBTTagCompound tag = stack.getTagCompound();
+        if (tag != null && tag.hasKey("worldTime"))
+        {
+           long timer = tag.getLong("worldTime");
+           int passedTime = (int) (worldIn.getTotalWorldTime() - timer);
+
+           if(passedTime > 80)
+               removeTagAndShield(worldIn, stack);
+        }
 
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
     }
@@ -113,6 +125,7 @@ public class ItemCeruclaseShield extends ItemShieldBase {
             tag.removeTag("playerX");
             tag.removeTag("playerY");
             tag.removeTag("playerZ");
+            tag.removeTag("worldTime");
 
             manageShield(world, new BlockPos.MutableBlockPos(playerPos), true);
         }
