@@ -30,6 +30,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -46,6 +47,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -423,7 +425,6 @@ public class GadgetsHandler {
 	 * Cancels player render when using a Lemurite shield to become invisible
 	 *
 	 * @param event player render event that we're canceling
-	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent
@@ -438,17 +439,16 @@ public class GadgetsHandler {
 	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
 	 *
 	 * @param event living entities update event we're listening to
-	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent
-	public static void disableAI(LivingEvent.LivingUpdateEvent event)
+	public static void disableAI(LivingSetAttackTargetEvent event)
 	{
-		if (event.getEntityLiving() instanceof EntityLiving)
-		{
-			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
-			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-				entity.setAttackTarget(null);
+		EntityLiving mob = ((EntityLiving) event.getEntityLiving());
+		EntityLivingBase target = event.getTarget();
+
+		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield)) {
+			mob.setAttackTarget(null);
 		}
 	}
 
