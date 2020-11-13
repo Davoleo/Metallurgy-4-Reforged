@@ -4,8 +4,7 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustSteel"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustInfuscolium"
     }

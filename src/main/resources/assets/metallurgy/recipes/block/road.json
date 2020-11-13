@@ -1,9 +1,7 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "BBB",
-    "BBB",
-    "BBB"
+    "BBB", "BBB", "BBB"
   ],
   "key": {
     "B": {

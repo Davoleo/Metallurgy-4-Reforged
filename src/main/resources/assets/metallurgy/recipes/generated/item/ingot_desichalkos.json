@@ -1,9 +1,7 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "NNN",
-    "NNN",
-    "NNN"
+    "NNN", "NNN", "NNN"
   ],
   "key": {
     "N": {

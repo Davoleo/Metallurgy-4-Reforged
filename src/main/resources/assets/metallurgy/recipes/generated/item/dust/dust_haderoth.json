@@ -4,12 +4,10 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustRubracium"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustRubracium"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustMithril"
     }

@@ -4,16 +4,13 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustManganese"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustManganese"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustManganese"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustIron"
     }

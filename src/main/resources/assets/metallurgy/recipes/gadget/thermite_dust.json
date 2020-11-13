@@ -4,12 +4,10 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustPotash"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustIron"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustSulfur"
     }

@@ -1,9 +1,7 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "IGI",
-    "GDG",
-    "IGI"
+    "IGI", "GDG", "IGI"
   ],
   "key": {
     "I": {

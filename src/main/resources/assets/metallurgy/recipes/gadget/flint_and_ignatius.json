@@ -4,8 +4,7 @@
     {
       "type": "forge:ore_dict",
       "ore": "ingotIgnatius"
-    },
-    {
+    }, {
       "item": "minecraft:flint"
     }
   ],

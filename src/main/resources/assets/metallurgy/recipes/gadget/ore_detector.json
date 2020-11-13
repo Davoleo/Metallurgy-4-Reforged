@@ -1,9 +1,7 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "CA ",
-    "ACA",
-    " AR"
+    "CA ", "ACA", " AR"
   ],
   "key": {
     "C": {

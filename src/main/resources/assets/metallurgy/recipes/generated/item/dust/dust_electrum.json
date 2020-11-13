@@ -4,8 +4,7 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustGold"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustSilver"
     }

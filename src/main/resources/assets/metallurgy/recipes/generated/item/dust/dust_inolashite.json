@@ -4,8 +4,7 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustCeruclase"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustAlduorite"
     }

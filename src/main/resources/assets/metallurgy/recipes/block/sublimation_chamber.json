@@ -1,9 +1,7 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "ITI",
-    "BCB",
-    "SFS"
+    "ITI", "BCB", "SFS"
   ],
   "key": {
     "I": {

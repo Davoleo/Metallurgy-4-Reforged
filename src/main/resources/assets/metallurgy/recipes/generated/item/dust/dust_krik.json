@@ -4,8 +4,7 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustOsmium"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustLutetium"
     }

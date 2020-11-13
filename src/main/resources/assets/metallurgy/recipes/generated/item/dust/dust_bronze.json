@@ -4,16 +4,13 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustTin"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustCopper"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustCopper"
-    },
-    {
+    }, {
       "type": "forge:ore_dict",
       "ore": "dustCopper"
     }
