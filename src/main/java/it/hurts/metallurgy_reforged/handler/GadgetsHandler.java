@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemCeruclaseShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -44,6 +45,7 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
@@ -445,10 +447,21 @@ public class GadgetsHandler {
 		EntityLiving mob = ((EntityLiving) event.getEntityLiving());
 		EntityLivingBase target = event.getTarget();
 
-		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield)) {
+		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+		{
 			mob.setAttackTarget(null);
 		}
 	}
 
 	// Lemurite shield section END
+
+	@SubscribeEvent
+	public static void test(LivingEquipmentChangeEvent event)
+	{
+		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
+		{
+			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
+		}
+	}
+
 }

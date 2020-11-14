@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
@@ -47,6 +48,8 @@ public class ModBlocks {
 	public static Block blockBitumen = new Block(Material.ROCK);
 	public static Block blockCharcoal = new Block(Material.ROCK);
 	public static Block blockSulfur = new Block(Material.ROCK);
+
+	public static Block iceShield = new BlockIceShield();
 
 	public static BlockPhosphorusLamp blockPhosphorusLamp = new BlockPhosphorusLamp();
 
@@ -115,6 +118,8 @@ public class ModBlocks {
 		Collections.addAll(miscBlocks, engravedGoldBlock, largeGoldBricks, goldBricks, goldCrystal, goldHazardBlock, goldReinforcedGlass);
 		Collections.addAll(miscBlocks, engravedIronBlock, largeIronBricks, ironBricks, ironCrystal, ironHazardBlock, ironReinforcedGlass);
 		miscBlocks.add(structureBlock);
+
+		miscBlocks.add(iceShield);
 	}
 
 	public static ItemBlock createItemBlock(Block block)
