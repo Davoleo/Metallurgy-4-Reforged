@@ -55,7 +55,7 @@ public abstract class ItemBuckler extends ItemShieldBase {
 	@Override
 	public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
 	{
-		setOnCooldown(entity);
+		entity.stopActiveHand();
 	}
 
 	/**
