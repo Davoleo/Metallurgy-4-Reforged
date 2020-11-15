@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: ItemSanguiniteShield
+ = Class: ItemOrichalcumBuckler
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -10,38 +10,32 @@
 package it.hurts.metallurgy_reforged.item.gadget.shield;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 
 import javax.annotation.Nonnull;
 
-public class ItemSanguiniteShield extends ItemShieldBase {
+public class ItemOrichalcumBuckler extends ItemBuckler {
 
-	public ItemSanguiniteShield()
-	{
-		super("sanguinite_shield", 1000);
-	}
-
-	@Override
-	public int getItemEnchantability()
-	{
-		return 25;
-	}
-
-	@Override
-	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-	{
-		return 600;
-	}
-
-	@Override
-    public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
-        if (damageSource.getTrueSource() instanceof EntityLivingBase) {
-            EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
-        }
+    public ItemOrichalcumBuckler() {
+        super("orichalcum_buckler", 500, 80);
     }
 
+    @Override
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack) {
+        return 30;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return 20;
+    }
+
+    @Override
+    public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
+        if (damageSource.getTrueSource() instanceof EntityLivingBase) {
+            EntityLivingBase blockedEntity = ((EntityLivingBase) damageSource.getTrueSource());
+            blockedEntity.attackEntityFrom(damageSource, amount * 2);
+        }
+    }
 }

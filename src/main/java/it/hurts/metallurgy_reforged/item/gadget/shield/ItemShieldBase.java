@@ -63,12 +63,11 @@ public abstract class ItemShieldBase extends ItemExtra {
 
 	@Nonnull
 	@Override
-	public EnumAction getItemUseAction(@Nonnull ItemStack stack)
-	{
+	public EnumAction getItemUseAction(@Nonnull ItemStack stack) {
 		return EnumAction.BLOCK;
 	}
 
-	public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource)
-	{ }
+	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
+	}
 
 }

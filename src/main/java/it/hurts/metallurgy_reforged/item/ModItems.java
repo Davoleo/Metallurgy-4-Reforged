@@ -57,14 +57,13 @@ public class ModItems {
 	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
 	public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
 	public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();
+	public static ItemOrichalcumBuckler orichalcumBuckler = new ItemOrichalcumBuckler();
 
 	//Wiki Link Item ------------------------------------------------
 	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {
 		@Override
-		public ActionResult<ItemStack> onItemRightClick(World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
-		{
-			if (worldIn.isRemote)
-			{
+		public ActionResult<ItemStack> onItemRightClick(World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn) {
+			if (worldIn.isRemote) {
 				TextComponentString link = new TextComponentString("https://github.com/Davoleo/Metallurgy-4-Reforged/wiki");
 				playerIn.sendMessage(link.setStyle(link.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Davoleo/Metallurgy-4-Reforged/wiki")).setColor(TextFormatting.BLUE)));
 			}

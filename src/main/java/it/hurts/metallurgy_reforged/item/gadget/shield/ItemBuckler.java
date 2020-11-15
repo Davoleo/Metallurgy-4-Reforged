@@ -13,7 +13,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
@@ -44,12 +43,6 @@ public abstract class ItemBuckler extends ItemShieldBase {
 	{
 		if (count <= 1)
             setOnCooldown(player);
-    }
-
-    @Override
-    public void onDamageBlocked(EntityLivingBase entity, DamageSource damageSource) {
-        //Makes the player drop the shield and calls onPlayerStoppedUsing
-        entity.stopActiveHand();
     }
 
     @Override

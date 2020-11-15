@@ -45,10 +45,7 @@ import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -380,42 +377,59 @@ public class GadgetsHandler {
 
 	/**
 	 * Handles Bucklers going on cooldown after blocking a hit
+	 */
+	@SubscribeEvent
+	public static void onDamageBlocked(LivingHurtEvent event) {
+		//Why did you leave ItHurtsLikeHell, I miss you >_>
+		EntityLivingBase entity = event.getEntityLiving();
+
+		//Makes the player drop the shield and calls onPlayerStoppedUsing
+		if (entity.getActiveItemStack().getItem() instanceof ItemBuckler && canDamageBeBlocked(event.getSource(), entity))
+			entity.stopActiveHand();
+	}
+
+	/**
+	 * Invokes a method callback when our modded shields block damage
+	 */
+	@SubscribeEvent
+	public static void onDamageBlock(LivingAttackEvent event) {
+		EntityLivingBase entity = event.getEntityLiving();
+
+		if (entity.getActiveItemStack().getItem() instanceof ItemShieldBase && canDamageBeBlocked(event.getSource(), entity))
+			((ItemShieldBase) entity.getActiveItemStack().getItem()).onDamageBlocked(entity, event.getSource(), event.getAmount());
+	}
+
+	/**
+	 * Checks if the shield can block incoming damage
 	 *
 	 * @see EntityLivingBase#canBlockDamageSource(DamageSource)
 	 */
 	@SuppressWarnings("JavadocReference")
-	@SubscribeEvent
-	public static void onDamageBlock(LivingHurtEvent event)
-	{
-		//Why did you leave ItHurtsLikeHell, I miss you >_>
-		DamageSource damageSource = event.getSource();
-		EntityLivingBase entity = event.getEntityLiving();
-
-		//Vanilla code - START
-		if (!damageSource.isUnblockable() && entity.getActiveItemStack().getItem() instanceof ItemShieldBase)
-		{
+	private static boolean canDamageBeBlocked(DamageSource damageSource, EntityLivingBase blockerEntity) {
+		if (!damageSource.isUnblockable()) {
 			Vec3d damageLocation = damageSource.getDamageLocation();
 
-			if (damageLocation != null)
-			{
-				Vec3d entityLook = entity.getLook(1F);
+			if (damageLocation != null) {
+				Vec3d entityLook = blockerEntity.getLook(1F);
 
 				//(Entity coords - Damage Location coords).normalized |
 				//A vector from the damage location, pointing to the player
-				Vec3d damageToPlayerVec = damageLocation.subtractReverse(new Vec3d(entity.posX, entity.posY, entity.posZ)).normalize();
+				Vec3d damageToPlayerVec = damageLocation.subtractReverse(new Vec3d(blockerEntity.posX, blockerEntity.posY, blockerEntity.posZ)).normalize();
 				damageToPlayerVec = new Vec3d(damageToPlayerVec.x, 0, damageToPlayerVec.z);
 
 				//it blocks damage on half of the player figure (only at the front)
 				//if the damage vec and the look vec are both positive or negative the damage source is behind the player and it doesn't get blocked
 				//if the damage vec and the look vec have different signum the damage source is behind the player and it gets blocked
 				//max: 2 | min -2
-				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D)
-				{
-					((ItemShieldBase) entity.getActiveItemStack().getItem()).onDamageBlocked(entity, damageSource);
+				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D) {
+					return true;
 				}
 			}
 		}
+
+		return false;
 	}
+
 	//Buckler section END
 
 
