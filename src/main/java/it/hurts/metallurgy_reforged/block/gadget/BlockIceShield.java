@@ -1,3 +1,12 @@
+/*==============================================================================
+ = Class: BlockIceShield
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
+
 package it.hurts.metallurgy_reforged.block.gadget;
 
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -10,7 +19,9 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -37,32 +48,31 @@ public class BlockIceShield extends BlockBreakable {
 
 	}
 
-	public int getMetaFromState(IBlockState state)
-	{
+	public int getMetaFromState(IBlockState state) {
 		return state.getValue(AGE);
 	}
 
-	public IBlockState getStateFromMeta(int meta)
-	{
+	@SuppressWarnings("deprecation")
+	@Nonnull
+	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(AGE, MathHelper.clamp(meta, 0, 3));
 	}
 
-	protected BlockStateContainer createBlockState()
-	{
+	@Nonnull
+	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[]{AGE});
 	}
 
 	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-	{
+	public void updateTick(@Nonnull World worldIn, @Nonnull BlockPos pos, IBlockState state, @Nonnull Random rand) {
 		int age = state.getValue(AGE);
-		if (age < 3)
-		{
+		if (age < 3) {
 			worldIn.scheduleUpdate(pos, this, 10 + rand.nextInt(11));
 			worldIn.setBlockState(pos, state.withProperty(AGE, age + 1), 2);
-		}
-		else
+		} else {
 			worldIn.setBlockToAir(pos);
+			worldIn.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 0.15F, 1.25F);
+		}
 
 	}
 

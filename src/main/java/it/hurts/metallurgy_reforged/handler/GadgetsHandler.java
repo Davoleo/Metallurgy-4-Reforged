@@ -456,12 +456,9 @@ public class GadgetsHandler {
 	// Lemurite shield section END
 
 	@SubscribeEvent
-	public static void test(LivingEquipmentChangeEvent event)
-	{
+	public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
 		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
-		{
-			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
-		}
+			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getFrom());
 	}
 
 }
