@@ -1,7 +1,9 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "EBB", "GEG", "EBB"
+    "EBB",
+    "GEG",
+    "EBB"
   ],
   "key": {
     "E": {

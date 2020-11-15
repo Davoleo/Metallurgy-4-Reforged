@@ -1,7 +1,9 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "AAA", "SCS", "SFS"
+    "AAA",
+    "SCS",
+    "SFS"
   ],
   "key": {
     "A": {

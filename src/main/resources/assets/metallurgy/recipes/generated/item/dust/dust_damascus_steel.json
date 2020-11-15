@@ -4,10 +4,12 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustBronze"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustBronze"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustIron"
     }

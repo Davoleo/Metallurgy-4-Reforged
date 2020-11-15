@@ -4,13 +4,16 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustInfuscolium"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustDeepIron"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustDeepIron"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustDeepIron"
     }

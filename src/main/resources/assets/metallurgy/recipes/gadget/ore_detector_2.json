@@ -3,10 +3,12 @@
   "ingredients": [
     {
       "item": "metallurgy:ore_detector"
-    }, {
+    },
+    {
       "type": "metallurgy:metal",
       "item_type": "ingot"
-    }, {
+    },
+    {
       "type": "metallurgy:metal",
       "item_type": "ingot"
     }

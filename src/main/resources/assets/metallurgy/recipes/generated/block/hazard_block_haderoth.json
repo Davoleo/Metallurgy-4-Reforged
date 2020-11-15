@@ -1,7 +1,9 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "ICI", "CDC", "ICI"
+    "ICI",
+    "CDC",
+    "ICI"
   ],
   "key": {
     "I": {

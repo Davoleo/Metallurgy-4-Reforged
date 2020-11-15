@@ -1,7 +1,9 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "LIB", "  B", "LIB"
+    "LIB",
+    "  B",
+    "LIB"
   ],
   "key": {
     "I": {

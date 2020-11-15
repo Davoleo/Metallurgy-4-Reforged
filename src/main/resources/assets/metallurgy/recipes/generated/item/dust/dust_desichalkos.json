@@ -4,7 +4,8 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustMeutoite"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustEximite"
     }

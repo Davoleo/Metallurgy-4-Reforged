@@ -4,7 +4,8 @@
     {
       "type": "forge:ore_dict",
       "ore": "dustAtlarus"
-    }, {
+    },
+    {
       "type": "forge:ore_dict",
       "ore": "dustAdamantine"
     }
