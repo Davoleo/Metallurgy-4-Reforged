@@ -162,10 +162,9 @@ public class MetallurgyEffects {
 
 	//Ceruclase Sword (Chance to slow enemies on hit)
 	public static final BaseMetallurgyEffect ceruclaseEffect =
-			new SwordHitChanceEffect(ModMetals.CERUCLASE, 75, new PotionEffect(MobEffects.SLOWNESS, 80, 2)) {
+			new SwordHitChanceEffect(ModMetals.CERUCLASE, 75, () -> new PotionEffect(MobEffects.SLOWNESS, 80, 2)) {
 				@Override
-				public boolean isEnabled()
-				{
+				public boolean isEnabled() {
 					return ToolEffectsConfig.ceruclaseSwordEffect && super.isEnabled();
 				}
 			};
@@ -252,7 +251,7 @@ public class MetallurgyEffects {
 
 	//Mithril Sword (Glowing effect applied on hit entity)
 	public static final BaseMetallurgyEffect mithrilSwordEffect =
-			new SwordHitChanceEffect(ModMetals.MITHRIL, 100, new PotionEffect(MobEffects.GLOWING, 200, 1));
+			new SwordHitChanceEffect(ModMetals.MITHRIL, 100, () -> new PotionEffect(MobEffects.GLOWING, 200, 1));
 
 	//Orichalcum Effect
 	public static final BaseMetallurgyEffect orichalcumSwordEffect = new CelenegilOrichalcumSwordEffect(ModMetals.ORICHALCUM);
@@ -277,10 +276,9 @@ public class MetallurgyEffects {
 
 	//Shadow Iron Sword Effect (50% Chance to give Blindness to enemies)
 	public static final BaseMetallurgyEffect shadowIronSwordEffect =
-			new SwordHitChanceEffect(ModMetals.SHADOW_IRON, 50, new PotionEffect(MobEffects.BLINDNESS, 100)) {
+			new SwordHitChanceEffect(ModMetals.SHADOW_IRON, 50, () -> new PotionEffect(MobEffects.BLINDNESS, 100)) {
 				@Override
-				public boolean isEnabled()
-				{
+				public boolean isEnabled() {
 					return ToolEffectsConfig.shadowIronSwordEffect && super.isEnabled();
 				}
 			};
@@ -299,10 +297,9 @@ public class MetallurgyEffects {
 
 	//Tartarite Sword (25% chance Wither II)
 	public static final BaseMetallurgyEffect tartariteSwordEffect =
-			new SwordHitChanceEffect(ModMetals.TARTARITE, 25, new PotionEffect(MobEffects.WITHER, 80, 1)) {
+			new SwordHitChanceEffect(ModMetals.TARTARITE, 25, () -> new PotionEffect(MobEffects.WITHER, 80, 1)) {
 				@Override
-				public boolean isEnabled()
-				{
+				public boolean isEnabled() {
 					return ToolEffectsConfig.tartariteSwordEffect && super.isEnabled();
 				}
 			};
@@ -315,10 +312,9 @@ public class MetallurgyEffects {
 
 	//Vyroxeres Sword (Chance to poison the enemy)
 	public static final BaseMetallurgyEffect vyroxeresSwordEffect =
-			new SwordHitChanceEffect(ModMetals.VYROXERES, 50, new PotionEffect(MobEffects.POISON, 100, 2)) {
+			new SwordHitChanceEffect(ModMetals.VYROXERES, 50, () -> new PotionEffect(MobEffects.POISON, 100, 2)) {
 				@Override
-				public boolean isEnabled()
-				{
+				public boolean isEnabled() {
 					return ToolEffectsConfig.vyroxeresSwordEffect && super.isEnabled();
 				}
 			};

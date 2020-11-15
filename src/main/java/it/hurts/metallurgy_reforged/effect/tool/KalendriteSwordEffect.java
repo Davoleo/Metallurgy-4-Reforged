@@ -22,7 +22,7 @@ public class KalendriteSwordEffect extends SwordHitChanceEffect {
 
 	public KalendriteSwordEffect()
 	{
-		super(ModMetals.KALENDRITE, 50, new PotionEffect(MobEffects.REGENERATION, 100, 1));
+		super(ModMetals.KALENDRITE, 50, () -> new PotionEffect(MobEffects.REGENERATION, 100, 1));
 	}
 
 	@Override

@@ -18,23 +18,22 @@ import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class SwordHitChanceEffect extends BaseMetallurgyEffect {
 
 	protected Random random = new Random();
 	protected int chance;
-	protected PotionEffect effect;
+	protected Supplier<PotionEffect> effect;
 
-	public SwordHitChanceEffect(Metal metal, int chance, PotionEffect effect)
-	{
+	public SwordHitChanceEffect(Metal metal, int chance, Supplier<PotionEffect> effect) {
 		super(metal);
 		this.chance = chance;
 		this.effect = effect;
 	}
 
 	@Override
-	public boolean isEnabled()
-	{
+	public boolean isEnabled() {
 		return super.isEnabled();
 	}
 
@@ -52,16 +51,12 @@ public class SwordHitChanceEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerAttack(EntityPlayer attacker, Entity target)
-	{
-		if (target instanceof EntityLivingBase)
-		{
-			EntityLivingBase livingTarget = ((EntityLivingBase) target);
-			if (livingTarget.getHeldItemMainhand().getItem() == metal.getTool(getToolClass()))
-			{
-				if (random.nextInt(100) < chance)
-				{
-					livingTarget.addPotionEffect(effect);
+	public void onPlayerAttack(EntityPlayer attacker, Entity target) {
+		if (!attacker.world.isRemote && target instanceof EntityLivingBase) {
+			if (attacker.getHeldItemMainhand().getItem() == metal.getTool(getToolClass())) {
+				if (random.nextInt(100) < chance) {
+					EntityLivingBase livingTarget = ((EntityLivingBase) target);
+					livingTarget.addPotionEffect(effect.get());
 				}
 			}
 		}

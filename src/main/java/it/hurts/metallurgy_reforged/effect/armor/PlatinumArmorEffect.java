@@ -34,14 +34,19 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 	@Override
 	public void livingEvent(LivingEvent event)
 	{
+		//Overwriting the normal potion effect event handling
+		//This effects needs some specific controls to work correctly
 	}
 
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isEntityWearingArmor(player, metal))
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
+		if (EventUtils.isEntityWearingArmor(player, metal)) {
+			if (player.world.getTotalWorldTime() % 220 == 0) {
+				PotionEffect effect = new PotionEffect(MobEffects.NIGHT_VISION, 400, 0, false, false);
+				effect.setPotionDurationMax(true);
+				player.addPotionEffect(effect);
+			}
 			player.addTag("platinum_effect");
 		}
 		else if (player.getTags().contains("platinum_effect"))
