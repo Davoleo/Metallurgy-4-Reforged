@@ -1,4 +1,21 @@
-### 1.2.0
+##### 1.2.0-beta.1 (will be merged with 1.2.0 once its out)
+- :bug: Fixed Model Issues with Zinc Buckler
+- :bug: Fixed Vulcanite Buckler Not going on cooldown after a hit
+- :bug: Made player arm correctly invisible in third person
+- :dizzy: Improved brass knuckles punch animation
+- :bug: Fixed arm rendering for slim player model
+- :bento: added Recipes and localized names to Zinc Buckler
+- :globe_with_meridians: added localized names for Sanguinite and Vulcanite Shields
+- :sparkles: Ceruclase Shield (creates a time based ice shield of a specific radius around the player)
+- :bug: Fixed Lemurite shield not handling invisibility properly in some cases
+- :bug: Now Player hand are reset properly after blocking a hit with Bucklers
+- :sparkles: added a special ice shield block that expires after a custom timespan (default ice texture right now)
+- :sparkles: Orichalcum Buckler (reflects 200% of the damage it blocks to the source of the damage)
+- :bento: Improvements to non-metal textures
+- :bento: Added models and texures for the new shields
+- :bento: Improved old textures of Rubracium Gauntlet and Lemurite Shield  
+
+### 1.2.0-alpha.1
 - :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
 - :dart: Atlarus and Vulcanite Armor effects now works on mobs
 - :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
@@ -13,7 +30,6 @@
 	- As well as allowing to hit entities and the air :P
 	- They Go on cooldown after a hit
 - :sparkles: Zinc Buckler (Tier 1) (no effect)
-
 
 ### 1.1.2
 - :bug: Fix Shadow Iron and Lemurite ores having stone filler texture (instead of netherrack)

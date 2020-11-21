@@ -1,11 +1,11 @@
 /*==============================================================================
-= Class: Metallurgy
-= This class is part of Metallurgy 4: Reforged
-= Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
-= This code is licensed under GNU GPLv3
-= Authors: Davoleo, ItHurtsLikeHell, PierKnight100
-= Copyright (c) 2018-2020.
-=============================================================================*/
+ = Class: Metallurgy
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged;
 
@@ -56,7 +56,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.2.0-alpha.1";
+	public static final String VERSION = "1.2.0-beta.1";
 
 	public static Logger logger;
 
