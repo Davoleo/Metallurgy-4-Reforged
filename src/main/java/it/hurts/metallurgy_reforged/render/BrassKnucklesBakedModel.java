@@ -87,7 +87,6 @@ public class BrassKnucklesBakedModel implements IBakedModel {
 		return ForgeHooksClient.handlePerspective(this, cameraTransformType);
 	}
 
-	//Temporary method that allows real-time loading of rendering changes
 	@Override
 	@SuppressWarnings("deprecation")
 	@Nonnull

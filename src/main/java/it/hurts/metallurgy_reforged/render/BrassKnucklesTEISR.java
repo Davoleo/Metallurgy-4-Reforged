@@ -37,7 +37,7 @@ public class BrassKnucklesTEISR extends TileEntityItemStackRenderer {
 			float swing = pl.getSwingProgress(ticks);
 
 			float animationTick = MathHelper.sin(swing * (float) Math.PI);
-			GlStateManager.translate(animationTick, 0F, 0F);
+			GlStateManager.translate(animationTick * 0.8F, 0F, 0F);
 			GlStateManager.rotate(animationTick * -30F, 0F, 0F, 1F);
 		}
 

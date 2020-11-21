@@ -17,7 +17,6 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -38,19 +37,16 @@ public class BrassKnucklesModel extends ModelBase {
 		this.textureManager = mc.getTextureManager();
 		boolean isLeft = transformType == ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND;
 
-
 		this.textureWidth = 16;
 		this.textureHeight = 16;
-
 
 		if (!isLeft)
 			this.arm = new ModelRenderer(this, 40, 16);
 		else
 			this.arm = new ModelRenderer(this, 32, 48);
 
-
 		this.arm.setTextureSize(64, 64);
-		this.arm.mirror = isLeft;
+		this.arm.mirror = !isLeft;
 
 		if (!isLeft)
 			this.armWear = new ModelRenderer(this, 40, 32);
