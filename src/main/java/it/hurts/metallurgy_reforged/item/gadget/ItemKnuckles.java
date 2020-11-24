@@ -29,19 +29,21 @@ import java.util.List;
 
 public class ItemKnuckles extends ItemExtra {
 
-	public ItemKnuckles(String name)
-	{
+	public ItemKnuckles(String name) {
 		super(name, MetallurgyTabs.tabSpecial, "gadget");
 
 		setMaxStackSize(1);
 		setMaxDamage(250);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void initTEISR() {
 		this.setTileEntityItemStackRenderer(new BrassKnucklesTEISR());
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean hasEffect(@Nonnull ItemStack stack)
-	{
+	public boolean hasEffect(@Nonnull ItemStack stack) {
 		return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
 	}
 

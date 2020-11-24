@@ -29,6 +29,7 @@ public class ClientProxy implements IProxy {
 	{
 		MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+		ModItems.brassKnuckles.initTEISR();
 	}
 
 	@Override

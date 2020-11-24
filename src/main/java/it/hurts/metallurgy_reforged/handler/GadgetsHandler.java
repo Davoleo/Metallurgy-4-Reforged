@@ -60,6 +60,7 @@ import java.util.stream.StreamSupport;
 
 public class GadgetsHandler {
 
+	@SideOnly(Side.CLIENT)
 	private static MovementInput inputCheck;
 
 	public static long ticks = 0;
@@ -309,16 +310,15 @@ public class GadgetsHandler {
 	 *
 	 * @param event fired on any movement input of the player
 	 */
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public static void onPlayerInput(InputUpdateEvent event)
-	{
+	public static void onPlayerInput(InputUpdateEvent event) {
 		EntityPlayer player = event.getEntityPlayer();
 
 		if (sprintToggleTimer > 0)
 			sprintToggleTimer--;
 
-		if (player.getActiveItemStack().getItem() instanceof ItemBuckler)
-		{
+		if (player.getActiveItemStack().getItem() instanceof ItemBuckler) {
 			MovementInput input = event.getMovementInput();
 			input.moveForward *= 5;
 			input.moveStrafe *= 5;
