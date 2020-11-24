@@ -117,7 +117,7 @@ public class BlockMetal extends Block {
 			return false;
 
 		if (metal.getOreHarvest() == -1)
-			return metal.getToolStats().getHarvestLevel() > 2;
+			return metal.getToolStats().getHarvestLevel() > 1;
 		else
 			return metal.getOreHarvest() > 1;
 	}
