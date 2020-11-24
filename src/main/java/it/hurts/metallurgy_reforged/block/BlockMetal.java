@@ -113,7 +113,13 @@ public class BlockMetal extends Block {
 	@Override
 	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon)
 	{
-		return metal.getOreHarvest() > 1 && type == BlockTypes.BLOCK;
+		if (type != BlockTypes.BLOCK)
+			return false;
+
+		if (metal.getOreHarvest() == -1)
+			return metal.getToolStats().getHarvestLevel() > 2;
+		else
+			return metal.getOreHarvest() > 1;
 	}
 
 	public MetalStats getMetalStats()

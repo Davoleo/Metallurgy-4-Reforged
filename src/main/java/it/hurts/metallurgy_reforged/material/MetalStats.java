@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
 import it.hurts.metallurgy_reforged.util.Constants;
+import jline.internal.Nullable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -147,28 +148,25 @@ public class MetalStats {
 	/**
 	 * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
 	 */
-	public int getOreHarvest()
-	{
+	public int getOreHarvest() {
 		return oreHarvest;
 	}
 
-	public float getBlockBlastResistance()
-	{
+	public float getBlockBlastResistance() {
 		return blockBlastResistance;
 	}
 
-	public ArmorStats getArmorStats()
-	{
+	@Nullable
+	public ArmorStats getArmorStats() {
 		return armor;
 	}
 
-	public ToolStats getToolStats()
-	{
+	@Nullable
+	public ToolStats getToolStats() {
 		return tool;
 	}
 
-	public ItemTool.ToolMaterial getToolMaterial()
-	{
+	public ItemTool.ToolMaterial getToolMaterial() {
 		return toolMaterial;
 	}
 
