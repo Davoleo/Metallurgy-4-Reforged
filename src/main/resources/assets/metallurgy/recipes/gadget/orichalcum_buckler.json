@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "OOO",
+    "NON",
+    " N "
+  ],
+  "key": {
+    "O": {
+      "type": "forge:ore_dict",
+      "ore": "ingotOrichalcum"
+    },
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetOrichalcum"
+    }
+  },
+  "result": {
+    "item": "metallurgy:zinc_buckler"
+  }
+}

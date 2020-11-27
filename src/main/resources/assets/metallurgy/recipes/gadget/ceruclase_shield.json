@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " C ",
+    "CDC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "ingotCeruclase"
+    },
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "ingotDeepIron"
+    }
+  },
+  "result": {
+    "item": "metallurgy:zinc_buckler"
+  }
+}

@@ -946,9 +946,10 @@ tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
 item.metallurgy.etherium_goggles.name=Etherium Goggles
 item.metallurgy.brass_knuckles.name=Brass Knuckles
 item.metallurgy.lemurite_shield.name=Lemurite Shield
-item.metallurgy.sanguinite_shield.name=Sanguinite Shield
+item.metallurgy.ceruclase_shield.name=Ceruclase Shield
 item.metallurgy.zinc_buckler.name=Zinc Buckler
 item.metallurgy.vulcanite_buckler.name=Vulcanite Buckler
+item.metallurgy.orichalcum_buckler.name=Orichalcum Buckler
 
 #Items
 item.metallurgy.tar.name=Tar
