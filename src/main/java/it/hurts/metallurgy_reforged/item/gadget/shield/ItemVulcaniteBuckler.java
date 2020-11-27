@@ -39,9 +39,10 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 
 		super.onDamageBlocked(player, damageSource, amount);
 
-		if (damageSource.getTrueSource() instanceof EntityLivingBase) {
-			EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-			target.world.createExplosion(player, target.posX, target.posY + target.height * 0.75, target.posZ, 1, false);
+		if (damageSource.getImmediateSource() instanceof EntityLivingBase) {
+			EntityLivingBase target = ((EntityLivingBase) damageSource.getImmediateSource());
+			target.world.createExplosion(player, target.posX, target.posY, target.posZ, 0.5F, false);
+			target.knockBack(target, 3F, player.posX - target.posX, player.posZ - target.posZ);
 		}
 
 	}
