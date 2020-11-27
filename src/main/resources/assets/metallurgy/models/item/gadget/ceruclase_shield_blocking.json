@@ -633,7 +633,7 @@
 		},
 		"thirdperson_lefthand": {
 			"rotation": [60, 0, 0],
-			"translation": [0.5, 0, 0]
+			"translation": [-0.5, 0, 0]
 		},
 		"firstperson_righthand": {
 			"rotation": [7, 4, 11],
