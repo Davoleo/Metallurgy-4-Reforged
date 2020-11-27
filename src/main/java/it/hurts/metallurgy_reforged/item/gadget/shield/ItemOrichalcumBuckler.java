@@ -12,13 +12,14 @@ package it.hurts.metallurgy_reforged.item.gadget.shield;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.Vec3d;
 
 import javax.annotation.Nonnull;
 
 public class ItemOrichalcumBuckler extends ItemBuckler {
 
     public ItemOrichalcumBuckler() {
-        super("orichalcum_buckler", 500, 80);
+        super("orichalcum_buckler", 500, 50);
     }
 
     @Override
@@ -33,9 +34,12 @@ public class ItemOrichalcumBuckler extends ItemBuckler {
 
     @Override
     public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
-        if (damageSource.getTrueSource() instanceof EntityLivingBase) {
+        if (damageSource.getImmediateSource() != damageSource.getTrueSource() && damageSource.getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase blockedEntity = ((EntityLivingBase) damageSource.getTrueSource());
-            blockedEntity.attackEntityFrom(damageSource, amount * 2);
+            blockedEntity.attackEntityFrom(damageSource, amount);
+
+            Vec3d playerLook = player.getLookVec().scale(2);
+            blockedEntity.attemptTeleport(player.posX + playerLook.x, player.posY + 2, player.posZ + playerLook.z);
         }
     }
 }
