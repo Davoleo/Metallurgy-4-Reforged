@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 public class ItemOrichalcumBuckler extends ItemBuckler {
 
     public ItemOrichalcumBuckler() {
-        super("orichalcum_buckler", 500, 50);
+        super("orichalcum_buckler", 823, 30);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ItemOrichalcumBuckler extends ItemBuckler {
 
     @Override
     public int getItemEnchantability() {
-        return 20;
+        return 22;
     }
 
     @Override
