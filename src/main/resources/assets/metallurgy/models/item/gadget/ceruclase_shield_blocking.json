@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench, by matpac for M4R",
 	"textures": {
-		"texture": "metallurgy:items/gadgets/ceruclase_shield"
+		"texture": "metallurgy:items/gadgets/ceruclase_shield",
+		"particle": "metallurgy:items/gadgets/ceruclase_shield"
 	},
 	"elements": [
 		{

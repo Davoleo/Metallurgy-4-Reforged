@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench and Cubik, by matpac for M4R",
 	"textures": {
-		"texture": "metallurgy:items/gadgets/lemurite_shield_blocking"
+		"texture": "metallurgy:items/gadgets/lemurite_shield_blocking",
+		"particle": "metallurgy:items/gadgets/lemurite_shield_blocking"
 	},
 	"elements": [
 		{
