@@ -8,7 +8,7 @@
 - :sparkles: Added a new Block (Bi-Metal Structure) (as of right now it’s used to create decorative blocks, but it also might be used as a machine frames for tile entities)
 - :recycle: Refactor Recipe JSON Files
 - :sparkles: EnderIO Integration for alloy recipes in the alloy smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
-- :sparkles: Bucklers (a new kind of shield lighter and more dynamic) [#]
+- :sparkles: Bucklers (a new kind of shield lighter and more dynamic) [#164](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/164)
 	- Allows to run and walk at normal speed wile holding it
 	- As well as allowing to hit entities and the air :P
 	- They Go on cooldown after a hit
