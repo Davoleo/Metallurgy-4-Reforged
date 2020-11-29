@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.world.spawn;
 
-import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.world.ModWorldGen;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
@@ -33,9 +32,6 @@ public class NearFortressSpawn extends NetherOreSpawn {
 	@Override
 	public int getRarity(World world, int chunkX, int chunkZ, int originalRarity)
 	{
-		if (ModChecker.isNetherExLoaded)
-			return originalRarity;
-
 		BlockPos pos = new BlockPos(chunkX * 16, world.getSeaLevel(), chunkZ * 16);
 
 		BlockPos blockpos = world.findNearestStructure("Fortress", pos, false);
@@ -46,8 +42,6 @@ public class NearFortressSpawn extends NetherOreSpawn {
 		}
 
 		return originalRarity;
-
-
 	}
 
 }

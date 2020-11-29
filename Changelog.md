@@ -21,6 +21,7 @@
 - :bento: Improved old textures of Rubracium Gauntlet and Lemurite Shield (and made Lemurite shield give visual feedback from first person perspective)
 - :dart: Now alloy metal blocks can be used in beacon block bases too
 - :bento: Improvements to Shadow Steel armor texture
+- :alien: Now Sanguinite special ore generation works when NetherEX is installed
 
 ### 1.1.2
 - :bug: Fix Shadow Iron and Lemurite ores having stone filler texture (instead of netherrack)
