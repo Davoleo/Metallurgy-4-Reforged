@@ -1,21 +1,24 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    " C ",
-    "CDC",
-    " C "
+    "SCS",
+    "CWC",
+    "SCS"
   ],
   "key": {
     "C": {
       "type": "forge:ore_dict",
       "ore": "ingotCeruclase"
     },
-    "D": {
+    "W": {
       "type": "forge:ore_dict",
-      "ore": "ingotDeepIron"
+      "ore": "plankWood"
+    },
+    "S": {
+      "item": "minecraft:snow"
     }
   },
   "result": {
-    "item": "metallurgy:zinc_buckler"
+    "item": "metallurgy:ceruclase_shield"
   }
 }

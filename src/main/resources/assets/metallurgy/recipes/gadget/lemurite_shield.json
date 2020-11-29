@@ -1,18 +1,21 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "INI",
-    "III",
-    " I "
+    "LDL",
+    "LWL",
+    " L "
   ],
   "key": {
-    "I": {
+    "L": {
       "type": "forge:ore_dict",
       "ore": "ingotLemurite"
     },
-    "N": {
+    "W": {
       "type": "forge:ore_dict",
-      "ore": "nuggetLemurite"
+      "ore": "plankWood"
+    },
+    "D": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {

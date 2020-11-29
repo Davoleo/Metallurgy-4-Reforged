@@ -22,6 +22,7 @@
 - :dart: Now alloy metal blocks can be used in beacon block bases too
 - :bento: Improvements to Shadow Steel armor texture
 - :alien: Now Sanguinite special ore generation works when NetherEX is installed
+- :bug: Fixed thermite item description.
 
 ### 1.1.2
 - :bug: Fix Shadow Iron and Lemurite ores having stone filler texture (instead of netherrack)
