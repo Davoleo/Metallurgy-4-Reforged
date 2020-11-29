@@ -53,7 +53,7 @@ public class ModItems {
 	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
 	//Shields
 	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
-	public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
+	//public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
 	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
 	public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
 	public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();

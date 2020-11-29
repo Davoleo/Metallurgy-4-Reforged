@@ -1,21 +1,4 @@
-##### 1.2.0-beta.1 (will be merged with 1.2.0 once its out)
-- :bug: Fixed Model Issues with Zinc Buckler
-- :bug: Fixed Vulcanite Buckler Not going on cooldown after a hit
-- :bug: Made player arm correctly invisible in third person
-- :dizzy: Improved brass knuckles punch animation
-- :bug: Fixed arm rendering for slim player model
-- :bento: added Recipes and localized names to Zinc Buckler
-- :globe_with_meridians: added localized names for Sanguinite and Vulcanite Shields
-- :sparkles: Ceruclase Shield (creates a time based ice shield of a specific radius around the player)
-- :bug: Fixed Lemurite shield not handling invisibility properly in some cases
-- :bug: Now Player hand are reset properly after blocking a hit with Bucklers
-- :sparkles: added a special ice shield block that expires after a custom timespan (default ice texture right now)
-- :sparkles: Orichalcum Buckler (reflects 200% of the damage it blocks to the source of the damage)
-- :bento: Improvements to non-metal textures
-- :bento: Added models and texures for the new shields
-- :bento: Improved old textures of Rubracium Gauntlet and Lemurite Shield  
-
-### 1.2.0-alpha.1
+### 1.2.0
 - :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
 - :dart: Atlarus and Vulcanite Armor effects now works on mobs
 - :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
@@ -25,11 +8,19 @@
 - :sparkles: Added a new Block (Bi-Metal Structure) (as of right now it’s used to create decorative blocks, but it also might be used as a machine frames for tile entities)
 - :recycle: Refactor Recipe JSON Files
 - :sparkles: EnderIO Integration for alloy recipes in the alloy smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
-- :sparkles: Bucklers (a new kind of shield lighter and more active)
+- :sparkles: Bucklers (a new kind of shield lighter and more dynamic) [#]
 	- Allows to run and walk at normal speed wile holding it
 	- As well as allowing to hit entities and the air :P
 	- They Go on cooldown after a hit
 - :sparkles: Zinc Buckler (Tier 1) (no effect)
+- :sparkles: Vulcanite Buckler (Tier 2) (creates a small explosion that knockbacks enemies away from you, only damaging melee attackers)
+- :sparkles: Orichalcum Buckler (Tier 2) (reflects 150% of the damage to ranged-attacking entities teleporting them in front of the player at the same time)
+- :sparkles: Ceruclase Shield (Tier 2)  (Creates an icy sphere around the player and cushions a portion of the fall damage when activated. The ice breaks after withdrawing the shield.) 
+- :bug: Fixed Lemurite shield not handling invisibility properly in some cases
+- :bento: Improvements to non-metal textures
+- :bento: Improved old textures of Rubracium Gauntlet and Lemurite Shield (and made Lemurite shield give visual feedback from first person perspective)
+- :dart: Now alloy metal blocks can be used in beacon block bases too
+- :bento: Improvements to Shadow Steel armor texture
 
 ### 1.1.2
 - :bug: Fix Shadow Iron and Lemurite ores having stone filler texture (instead of netherrack)
