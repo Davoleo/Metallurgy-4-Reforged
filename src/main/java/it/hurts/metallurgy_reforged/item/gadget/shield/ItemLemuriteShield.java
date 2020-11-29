@@ -25,7 +25,7 @@ public class ItemLemuriteShield extends ItemShieldBase {
 
 	public ItemLemuriteShield()
 	{
-		super("lemurite_shield", 250);
+		super("lemurite_shield", 256);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class ItemLemuriteShield extends ItemShieldBase {
 	@Override
 	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
 	{
-		return 600;
+		return 200;
 	}
 
 	@Nonnull
@@ -53,21 +53,22 @@ public class ItemLemuriteShield extends ItemShieldBase {
 	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
 	{
 		//Cooldown can't be less than one second (you can't spam to make mobs buffer kek)
-		terminateEffect(entityLiving, Math.max(600 - timeLeft, 20));
+		terminateEffect(entityLiving, Math.max(200 - timeLeft, 20), stack);
 	}
 
 	@Override
 	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
 	{
 		if (count <= 1)
-			terminateEffect(player, 600);
+			terminateEffect(player, 200, stack);
 	}
 
-	private void terminateEffect(EntityLivingBase player, int cooldown)
+	private void terminateEffect(EntityLivingBase player, int cooldown, ItemStack stack)
 	{
 		spawnParticles(player);
 		player.setInvisible(false);
 		((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
+		stack.damageItem(Math.round( cooldown / 8F), player);
 	}
 
 	private void spawnParticles(EntityLivingBase entity)

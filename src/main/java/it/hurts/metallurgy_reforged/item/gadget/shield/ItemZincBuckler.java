@@ -17,19 +17,19 @@ public class ItemZincBuckler extends ItemBuckler {
 
 	public ItemZincBuckler()
 	{
-		super("zinc_buckler", 200, 30);
+		super("zinc_buckler", 396, 30);
 	}
 
 	@Override
 	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
 	{
-		return 60;
+		return 40;
 	}
 
 	@Override
 	public int getItemEnchantability()
 	{
-		return 10;
+		return 8;
 	}
 
 }
