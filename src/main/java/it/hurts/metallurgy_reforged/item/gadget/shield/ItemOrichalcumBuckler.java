@@ -36,7 +36,7 @@ public class ItemOrichalcumBuckler extends ItemBuckler {
     public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
         if (damageSource.getImmediateSource() != damageSource.getTrueSource() && damageSource.getTrueSource() instanceof EntityLivingBase) {
             EntityLivingBase blockedEntity = ((EntityLivingBase) damageSource.getTrueSource());
-            blockedEntity.attackEntityFrom(damageSource, amount);
+            blockedEntity.attackEntityFrom(damageSource, amount * 1.5F);
 
             Vec3d playerLook = player.getLookVec().scale(2);
             blockedEntity.attemptTeleport(player.posX + playerLook.x, player.posY + 2, player.posZ + playerLook.z);
