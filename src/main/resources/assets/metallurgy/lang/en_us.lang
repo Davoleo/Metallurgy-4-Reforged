@@ -1310,6 +1310,13 @@ tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block d
 tooltip.metallurgy.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
 tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
 
+#Shields
+tooltip.metallurgy.ceruclase_shield=§3(W.I.P.) Creates a spheric ice shield around the player that decays after releasing the right mouse button. Can be used to protect multiple players at the same time and also halves the fall damage amount if any is present
+tooltip.metallurgy.lemurite_shield=§fMakes you invisible to other players and hostile creatures as long as you hold the shield
+tooltip.metallurgy.orichalcum_buckler=§2Reflects 150% of the damage to ranged enemies and teleports them in front of the player so they can be attacked with melee weapons. (also has the features of the Zinc Buckler)
+tooltip.metallurgy.vulcanite_buckler=§cCreates a small explosion that knockbacks entities away when they touch the shield (only effective with melee attackers). (also has the features of the Zinc Buckler)
+tooltip.metallurgy.zinc_buckler=Simple buckler that is reset and goes on cooldown after being hit one time, although you can run and walk and attack when you use it.
+
 #Shovel
 tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
 

@@ -11,6 +11,8 @@ package it.hurts.metallurgy_reforged.item.gadget.shield;
 
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public abstract class ItemShieldBase extends ItemExtra {
 
@@ -70,4 +73,8 @@ public abstract class ItemShieldBase extends ItemExtra {
 	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
 	}
 
+	@Override
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
+		tooltip.add(Utils.localize("tooltip.metallurgy." + getRegistryName().getPath()));
+	}
 }
