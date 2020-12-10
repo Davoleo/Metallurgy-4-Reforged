@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: MidasiumSwordEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: MidasiumSwordEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -31,7 +29,7 @@ public class MidasiumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Override
@@ -50,7 +48,7 @@ public class MidasiumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onEntityKillDrop(List<EntityItem> drops, EntityPlayer killer)
 	{
-		if (killer.getHeldItemMainhand().getItem() == ModMetals.MIDASIUM.getTool(EnumTools.SWORD))
+		if (killer.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.SWORD))
 		{
 			List<EntityItem> dupeDrops = new ArrayList<>();
 

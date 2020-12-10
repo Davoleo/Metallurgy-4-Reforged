@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "EBB",
+    "GEG",
+    "EBB"
+  ],
+  "key": {
+    "E": {
+      "type": "forge:ore_dict",
+      "ore": "ingotEtherium"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBlackSteel"
+    },
+    "G": {
+      "item": "metallurgy:etherium_reinforced_glass"
+    }
+  },
+  "result": {
+    "item": "metallurgy:etherium_goggles"
+  }
+}

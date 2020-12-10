@@ -1,6 +1,6 @@
 {
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "metallurgy:items/tools/prometheum_sword"
-	}
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "metallurgy:items/tools/prometheum_sword"
+  }
 }

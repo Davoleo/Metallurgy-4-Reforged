@@ -1,17 +1,16 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: TraitStrongly
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: TraitStrongly
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
@@ -21,6 +20,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait {
 
@@ -40,8 +40,17 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		for (ItemStack armorPiece : event.player.getArmorInventoryList())
+		if (hasValidStregthTrait(event.player))
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
+	}
+
+	private boolean hasValidStregthTrait(EntityPlayer player)
+	{
+		for (ItemStack armorPiece : player.getArmorInventoryList())
 		{
+			if (ToolHelper.isBroken(armorPiece))
+				continue;
+
 			NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
 			for (int i = 0; i < traits.tagCount(); i++)
 			{
@@ -49,9 +58,11 @@ public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmM
 				ITrait trait = TinkerRegistry.getTrait(id);
 
 				if (trait instanceof TraitStrongly)
-					event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, ((TraitStrongly) trait).getLevel(), false, false));
+					return true;
 			}
 		}
+
+		return false;
 	}
 
 }

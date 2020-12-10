@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<enderio:recipes xmlns:enderio="http://enderio.com/recipes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://enderio.com/recipes enderio_recipes_schema.xsd ">
+
+    <!--  EnergyRequired = 1500 * ToolHarvestLevel -->
+    <!--  Editing this file won't have any effect on restart if the related configuration option in general.cfg is disabled  -->
+    <!--  Enabling the config option means that this file will never be overwritten by the mod anymore (hence no updates from the default file will be overwritten)  -->
+    <!--  If you want to reset/update this file to its original version disable the feature in general.cfg and the file will be overwritten  -->
+    <!--  for more information about editing this file check the related page on our wiki on github: https://github.com/Davoleo/Metallurgy-4-Reforged/wiki  -->
+
+    <recipe name="Alloy: Bronze (Metallurgy)" required="false">
+        <alloying energy="4500" exp="0.75">
+            <input name="ingotTin"/>
+            <input name="ingotCopper" amount="3"/>
+            <output name="ingotBronze" amount="4"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Shadow Steel (Metallurgy)" required="false">
+        <alloying energy="4500" exp="0.5">
+            <input name="ingotShadowIron" amount="2"/>
+            <input name="ingotLemurite"/>
+            <output name="ingotShadowSteel" amount="3"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Inolashite (Metallurgy)" required="false">
+        <alloying energy="7500" exp="0.25">
+            <input name="ingotAlduorite"/>
+            <input name="ingotCeruclase"/>
+            <output name="ingotInolashite" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Brass (Metallurgy)" required="false">
+        <alloying energy="1500" exp="0.75">
+            <input name="ingotCopper" amount="3"/>
+            <input name="ingotZinc"/>
+            <output name="ingotBrass" amount="4"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Black Steel (Metallurgy)" required="false">
+        <alloying energy="4500" exp="0.75">
+            <input name="ingotDeepIron" amount="3"/>
+            <input name="ingotInfuscolium"/>
+            <output name="ingotBlackSteel" amount="4"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Steel (Metallurgy)" required="false">
+        <alloying energy="6000" exp="0.5">
+            <input name="ingotIron"/>
+            <input name="ingotManganese" amount="2"/>
+            <output name="ingotSteel" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Damascus Steel (Metallurgy)" required="false">
+        <alloying energy="6000" exp="0.5">
+            <input name="ingotIron"/>
+            <input name="ingotBronze"/>
+            <output name="ingotDamascusSteel" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Electrum (Metallurgy)" required="false">
+        <alloying energy="3000" exp="0.25">
+            <input name="ingotSilver"/>
+            <input name="ingotGold"/>
+            <output name="ingotElectrum" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Celenegil (Metallurgy)" required="false">
+        <alloying energy="9000" exp="0.25">
+            <input name="ingotOrichalcum"/>
+            <input name="ingotPlatinum"/>
+            <output name="ingotCelenegil" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Amordrine (Metallurgy)" required="false">
+        <alloying energy="7500" exp="0.25">
+            <input name="ingotKalendrite"/>
+            <input name="ingotPlatinum"/>
+            <output name="ingotAmordrine" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Haderoth (Metallurgy)" required="false">
+        <alloying energy="7500" exp="0.5">
+            <input name="ingotMithril"/>
+            <input name="ingotRubracium" amount="2"/>
+            <output name="ingotHaderoth" amount="3"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Tartarite (Metallurgy)" required="false">
+        <alloying energy="12000" exp="0.5">
+            <input name="ingotAdamantine"/>
+            <input name="ingotAtlarus"/>
+            <output name="ingotTartarite"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Desichalkos (Metallurgy)" required="false">
+        <alloying energy="6000" exp="0.25">
+            <input name="ingotEximite"/>
+            <input name="ingotMeutoite"/>
+            <output name="ingotDesichalkos" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Angmallen (Metallurgy)" required="false">
+        <alloying energy="4500" exp="0.25">
+            <input name="ingotGold"/>
+            <input name="ingotIron"/>
+            <output name="ingotAngmallen" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Hepatizon (Metallurgy)" required="false">
+        <alloying energy="4500" exp="0.25">
+            <input name="ingotInfuscolium"/>
+            <input name="ingotSteel"/>
+            <output name="ingotHepatizon" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Quicksilver (Metallurgy)" required="false">
+        <alloying energy="7500" exp="0.25">
+            <input name="ingotSilver"/>
+            <input name="ingotMithril"/>
+            <output name="ingotQuicksilver" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Krik (Metallurgy)" required="false">
+        <alloying energy="6000" exp="0.25">
+            <input name="ingotLutetium"/>
+            <input name="ingotOsmium"/>
+            <output name="ingotKrik" amount="2"/>
+        </alloying>
+    </recipe>
+
+    <recipe name="Alloy: Etherium (Metallurgy)" required="false">
+        <alloying energy="12000" exp="0.25">
+            <input name="ingotSanguinite"/>
+            <input name="ingotCarmot"/>
+            <output name="ingotEtherium" amount="2"/>
+        </alloying>
+    </recipe>
+
+</enderio:recipes>

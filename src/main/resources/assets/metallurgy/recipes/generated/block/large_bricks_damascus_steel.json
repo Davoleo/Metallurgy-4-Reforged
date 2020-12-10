@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "IBI",
+    "BDB",
+    "IBI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotDamascusSteel"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
+    },
+    "B": {
+      "item": "minecraft:stonebrick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "metallurgy:damascus_steel_large_bricks",
+    "count": 32
+  }
+}

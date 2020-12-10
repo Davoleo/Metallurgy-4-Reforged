@@ -1,67 +1,67 @@
- /*
- * -------------------------------------------------------------------------------------------------------
- * Class: Metallurgy
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: Metallurgy
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
- package it.hurts.metallurgy_reforged;
+package it.hurts.metallurgy_reforged;
 
- import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
- import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataCallable;
- import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
- import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
- import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
- import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
- import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
- import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
- import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
- import it.hurts.metallurgy_reforged.config.GeneralConfig;
- import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
- import it.hurts.metallurgy_reforged.fluid.ModFluids;
- import it.hurts.metallurgy_reforged.gui.GuiHandler;
- import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
- import it.hurts.metallurgy_reforged.integration.IntegrationIF;
- import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
- import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
- import it.hurts.metallurgy_reforged.integration.crafttweaker.IntegrationCT;
- import it.hurts.metallurgy_reforged.integration.silentgems.IntegrationSilentGems;
- import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
- import it.hurts.metallurgy_reforged.material.ModMetals;
- import it.hurts.metallurgy_reforged.network.PacketManager;
- import it.hurts.metallurgy_reforged.proxy.IProxy;
- import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
- import it.hurts.metallurgy_reforged.recipe.ModRecipes;
- import it.hurts.metallurgy_reforged.util.ModChecker;
- import it.hurts.metallurgy_reforged.util.SubEvent;
- import it.hurts.metallurgy_reforged.world.ModWorldGen;
- import it.hurts.metallurgy_reforged.world.WorldTickHandler;
- import net.minecraftforge.common.MinecraftForge;
- import net.minecraftforge.common.capabilities.CapabilityManager;
- import net.minecraftforge.fluids.FluidRegistry;
- import net.minecraftforge.fml.common.Mod;
- import net.minecraftforge.fml.common.SidedProxy;
- import net.minecraftforge.fml.common.event.FMLInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
- import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
- import net.minecraftforge.fml.common.network.NetworkRegistry;
- import net.minecraftforge.fml.common.registry.GameRegistry;
- import org.apache.logging.log4j.Logger;
+import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
+import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataCallable;
+import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
+import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
+import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
+import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
+import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
+import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
+import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import it.hurts.metallurgy_reforged.fluid.ModFluids;
+import it.hurts.metallurgy_reforged.gui.GuiHandler;
+import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
+import it.hurts.metallurgy_reforged.integration.IntegrationEnderIO;
+import it.hurts.metallurgy_reforged.integration.IntegrationIF;
+import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
+import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
+import it.hurts.metallurgy_reforged.integration.crafttweaker.IntegrationCT;
+import it.hurts.metallurgy_reforged.integration.silentgems.IntegrationSilentGems;
+import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.proxy.IProxy;
+import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
+import it.hurts.metallurgy_reforged.recipe.ModRecipes;
+import it.hurts.metallurgy_reforged.util.ModChecker;
+import it.hurts.metallurgy_reforged.util.SubEvent;
+import it.hurts.metallurgy_reforged.world.ModWorldGen;
+import it.hurts.metallurgy_reforged.world.WorldTickHandler;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.1.0";
+	public static final String VERSION = "1.2.0";
 
 	public static Logger logger;
 
 	public static String materialConfig;
+	public static String enderIOAlloyRecipes;
 
 	@Mod.Instance(MODID)
 	public static Metallurgy instance;
@@ -81,6 +81,8 @@ public class Metallurgy {
 		logger.info(NAME + " is entering pre-initialization!");
 
 		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
+
 		ModMetals.init();
 
 		ModFluids.registerFluids();
@@ -100,31 +102,31 @@ public class Metallurgy {
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 		{
 			IntegrationTIC.preInit();
-			logger.info("Tinkers' Construct integration has been pre-initialized");
+			logger.info("Tinkers' Construct Compatibility module has been pre-initialized");
 
 			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 			{
 				IntegrationCArmory.preInit();
-				logger.info("Construct's Armory integration has been pre-initialized");
+				logger.info("Construct's Armory Compatibility module has been pre-initialized");
 			}
 		}
 
 		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
 		{
 			IntegrationIF.preInit();
-			logger.info("Industrial Foregoing integration has been pre-initialized");
+			logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
 		}
 
 		if (ModChecker.isCraftTweakerLoaded)
 		{
 			IntegrationCT.preInit();
-			logger.info("CraftTweaker Integration has been pre-initialized");
+			logger.info("CraftTweaker Compatibility module has been pre-initialized");
 		}
 
 		if (ModChecker.isSilentGemsLoaded)
 		{
 			IntegrationSilentGems.init();
-			logger.info("CraftTweaker Integration has been initialized");
+			logger.info("CraftTweaker Compatibility module has been initialized");
 		}
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -143,52 +145,60 @@ public class Metallurgy {
 		proxy.preInit(event);
 	}
 
-	 @Mod.EventHandler
-	 public void init(FMLInitializationEvent event)
-	 {
-		 proxy.init(event);
-		 logger.info(NAME + " is entering initialization!");
-		 ModRecipes.init();
-		 logger.info("Recipes loaded!");
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		proxy.init(event);
+		logger.info(NAME + " is entering initialization!");
+		ModRecipes.init();
+		logger.info("Recipes loaded!");
 
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-		 {
-			 IntegrationTIC.init();
-			 logger.info("Tinkers' Construct integration has been initialized");
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		{
+			IntegrationTIC.init();
+			logger.info("Tinkers' Construct Compatibility module has been initialized");
 
-			 if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
-			 {
-				 IntegrationCArmory.init();
-				 logger.info("Construct's Armory integration has been initialized");
-			 }
-		 }
+			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+			{
+				IntegrationCArmory.init();
+				logger.info("Construct's Armory Compatibility module has been initialized");
+			}
+		}
 
-		 if (ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration)
-		 {
-			 IntegrationProjectE.init();
-			 logger.info("ProjectE's Integration has been initialized");
-		 }
+		if (ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration)
+		{
+			IntegrationProjectE.init();
+			logger.info("ProjectE's Compatibility module has been initialized");
+		}
 
-		 // TODO: 22/08/2020 eventually remove these method completely if sure there's no need of them anymore
-		 CrusherRecipes.registerDefaultOreRecipes();
+		if (ModChecker.isEnderIOLoaded)
+		{
+			IntegrationEnderIO.init(enderIOAlloyRecipes);
+		}
 
-		 MetallurgyEffects.initTooltips();
-	 }
+		if (GeneralConfig.enableOreDictCrusherRecipes)
+		{
+			CrusherRecipes.registerDefaultOreRecipes();
+			logger.info("Ore Dictionary based Crusher recipe loaded!");
+		}
+
+		MetallurgyEffects.initTooltips();
+	}
 
 
-	 @Mod.EventHandler
-	 public void postInit(FMLPostInitializationEvent event)
-	 {
-		 logger.info(NAME + " is entering post-initialization!");
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		logger.info(NAME + " is entering post-initialization!");
 
-		 PacketManager.init();
-		 logger.info(NAME + "'s Network System Loaded");
+		PacketManager.init();
+		logger.info(NAME + "'s Network System Loaded");
 
-		 if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-			 IntegrationTIC.postInit();
-		 logger.info("Tinker's alloy recipes loaded");
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+			IntegrationTIC.postInit();
+		logger.info("Tinker's alloy recipes loaded");
 
-		 logger.info(NAME + " has been completely loaded");
-	 }
+		logger.info(NAME + " has been completely loaded");
+	}
 
 }

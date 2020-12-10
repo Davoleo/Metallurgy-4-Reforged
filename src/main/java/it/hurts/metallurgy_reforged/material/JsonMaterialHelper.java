@@ -1,28 +1,25 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: JsonMaterialHelper
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: JsonMaterialHelper
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
 
 import com.google.gson.*;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.util.Constants;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.util.JsonUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.*;
-import java.util.Collections;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,7 +43,7 @@ public class JsonMaterialHelper {
 		{
 			Path path;
 			if (resourcePath.equals(DEFAULT_CONFIG))
-				path = getPath(resourcePath);
+				path = Utils.getPath(resourcePath);
 			else
 				path = new File(Metallurgy.materialConfig).toPath();
 
@@ -109,7 +106,7 @@ public class JsonMaterialHelper {
 			}
 		}
 
-		return MetalStats.EMPTY_METAL_STATS;
+		return Constants.EMPTY_METAL_STATS;
 	}
 
 	private static ArmorStats getArmorStats(JsonObject metalStats, ArmorStats fallback) throws JsonSyntaxException
@@ -187,71 +184,6 @@ public class JsonMaterialHelper {
 		}
 
 		return arr;
-	}
-
-	private static Path getPath(String resource)
-	{
-		FileSystem filesystem;
-
-		try
-		{
-			URL url = Metallurgy.class.getResource(resource);
-
-			if (url != null)
-			{
-				URI uri = url.toURI();
-				Path path;
-
-				if ("file".equals(uri.getScheme()))
-				{
-					path = Paths.get(Metallurgy.class.getResource(resource).toURI());
-				}
-				else
-				{
-					try
-					{
-						filesystem = FileSystems.getFileSystem(uri);
-					}
-					catch (FileSystemNotFoundException e)
-					{
-						//If the file system doesn't exist we create a new one
-						filesystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
-					}
-
-					path = filesystem.getPath(resource);
-				}
-
-				return path;
-			}
-		}
-		catch (URISyntaxException | IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
-	public static boolean copyConfig()
-	{
-		Path defaultPath = getPath(JsonMaterialHelper.DEFAULT_CONFIG);
-
-		File userConfigFile = new File(Metallurgy.materialConfig);
-
-		try
-		{
-			if (!userConfigFile.exists())
-			{
-				Files.copy(defaultPath, userConfigFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-				return true;
-			}
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-
-		return false;
 	}
 
 }

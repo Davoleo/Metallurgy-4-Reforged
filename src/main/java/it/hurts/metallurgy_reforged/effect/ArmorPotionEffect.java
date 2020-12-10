@@ -1,22 +1,20 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ArmorPotionEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ArmorPotionEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 import javax.annotation.Nullable;
 
@@ -33,7 +31,10 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public abstract boolean isEnabled();
+	public boolean isEnabled()
+	{
+		return super.isEnabled();
+	}
 
 	@Override
 	public boolean isToolEffect()
@@ -49,11 +50,14 @@ public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerTick(EntityPlayer player)
+	public void livingEvent(LivingEvent event)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal))
+		if (event instanceof LivingEvent.LivingUpdateEvent)
 		{
-			player.addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
+			boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
+
+			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
+				event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
 		}
 	}
 

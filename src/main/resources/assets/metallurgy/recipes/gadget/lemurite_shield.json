@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "LDL",
+    "LWL",
+    " L "
+  ],
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "ingotLemurite"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "metallurgy:lemurite_shield"
+  }
+}

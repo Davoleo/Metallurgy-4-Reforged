@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ModMetals
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ModMetals
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
 
@@ -15,7 +13,9 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.util.Utils;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +23,7 @@ import java.util.Set;
 public class ModMetals {
 
 	//@PierKnight100's Slangs
-	//NullerPointer | Buggo | Oredirect | WRUAPPER
+	//NullerPointer | Buggo | Oredirect | WRUAPPER | OVedi! | (F)PH(R)oggers
 
 	public static Map<String, Metal> metalMap = new HashMap<>();
 
@@ -79,14 +79,15 @@ public class ModMetals {
 
 	public static void init()
 	{
+		Path defaultConfigPath = Utils.getPath(JsonMaterialHelper.DEFAULT_CONFIG);
 		Set<MetalStats> defaultStats = JsonMaterialHelper.readConfig(JsonMaterialHelper.DEFAULT_CONFIG, null);
 
-		boolean copied = JsonMaterialHelper.copyConfig();
+		boolean copied = Utils.copyFile(defaultConfigPath, Metallurgy.materialConfig, !GeneralConfig.enableCustomMaterialStatsConfig);
 
 		Set<MetalStats> playerStats = defaultStats;
 
 		//If the configuration file was already copied and the custom stats loader was enabled
-		if (GeneralConfig.enableCustomMaterialStatsConfig && !copied)
+		if (!copied)
 		{
 			try
 			{

@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "FV ",
+    "VWV",
+    " VF"
+  ],
+  "key": {
+    "V": {
+      "type": "forge:ore_dict",
+      "ore": "ingotVulcanite"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "F": {
+      "item": "metallurgy:flint_and_vulcanite"
+    }
+  },
+  "result": {
+    "item": "metallurgy:vulcanite_buckler"
+  }
+}

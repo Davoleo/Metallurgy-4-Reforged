@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: DeepIronPickaxeEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: DeepIronPickaxeEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -30,7 +28,7 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.deepIronPickaxeEffect;
+		return ToolEffectsConfig.deepIronPickaxeEffect && super.isEnabled();
 	}
 
 	@Override
@@ -51,7 +49,7 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
-		if (player.isInWater() && player.getHeldItemMainhand().getItem() == ModMetals.DEEP_IRON.getTool(EnumTools.PICKAXE))
+		if (player.isInWater() && player.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.PICKAXE))
 		{
 			event.setNewSpeed(event.getOriginalSpeed() * 3);
 		}

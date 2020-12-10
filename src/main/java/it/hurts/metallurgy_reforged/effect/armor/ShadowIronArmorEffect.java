@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ShadowIronArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ShadowIronArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -30,7 +28,7 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Override
@@ -49,7 +47,7 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
+		if (EventUtils.isEntityWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
 		{
 			player.removePotionEffect(MobEffects.BLINDNESS);
 		}

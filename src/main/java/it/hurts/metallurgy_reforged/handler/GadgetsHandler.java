@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: GadgetsHandler
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: GadgetsHandler
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
 
@@ -16,6 +14,10 @@ import it.hurts.metallurgy_reforged.block.gadget.PhosphorusLampSavedData;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemBuckler;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemCeruclaseShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
+import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -28,20 +30,25 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.MovementInput;
 import net.minecraft.util.MovementInputFromOptions;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.InputUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -53,6 +60,7 @@ import java.util.stream.StreamSupport;
 
 public class GadgetsHandler {
 
+	@SideOnly(Side.CLIENT)
 	private static MovementInput inputCheck;
 
 	public static long ticks = 0;
@@ -120,39 +128,6 @@ public class GadgetsHandler {
 	}
 
 	/**
-	 * Cancels player render when using a Lemurite shield to become invisible
-	 *
-	 * @param event player render event that we're canceling
-	 *
-	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
-	 */
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
-	{
-		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-			event.setCanceled(true);
-	}
-
-	/**
-	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
-	 *
-	 * @param event living entities update event we're listening to
-	 *
-	 * @see it.hurts.metallurgy_reforged.item.gadget.ItemInvisibilityShield
-	 */
-	@SubscribeEvent
-	public static void disableAI(LivingEvent.LivingUpdateEvent event)
-	{
-		if (event.getEntityLiving() instanceof EntityLiving)
-		{
-			EntityLiving entity = ((EntityLiving) event.getEntityLiving());
-			if (entity.getAttackTarget() instanceof EntityPlayer && entity.getAttackTarget().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-				entity.setAttackTarget(null);
-		}
-	}
-
-	/**
 	 * Handles in-world rendering of redstone-related blocks when you're wearing an Etherium Monocle
 	 *
 	 * @param event The world render event we're listening to
@@ -180,7 +155,7 @@ public class GadgetsHandler {
 		{
 			double d1 = playerPos.distanceSq(o1);
 			double d2 = playerPos.distanceSq(o2);
-			if(d1 == d2)
+			if (d1 == d2)
 				return 0;
 			return d1 > d2 ? -1 : 1;
 		}).collect(Collectors.toList());
@@ -279,7 +254,16 @@ public class GadgetsHandler {
 			for (BlockPos blockPos : posList)
 			{
 				IBlockState state = world.getBlockState(blockPos);
-				Metal metal = oreMatchesMetal(state, metalList);
+				Metal metal = null;
+
+				for (Metal m : metalList)
+				{
+					if (state.getBlock() == m.getOre())
+					{
+						metal = m;
+						break;
+					}
+				}
 
 				if (metal != null)
 				{
@@ -314,18 +298,181 @@ public class GadgetsHandler {
 		}
 	}
 
-	private static Metal oreMatchesMetal(IBlockState state, List<Metal> metals)
-	{
 
-		for (Metal metal : metals)
-		{
-			if (state.getBlock() == metal.getOre())
+	// --------- SHIELD SECTION --------- //
+
+	// Buckler section START
+	private static int sprintToggleTimer = 0;
+
+	/**
+	 * Makes the player walk at the normal speed when holding a Buckler
+	 * the game multiplies it by 0.2, and we multiply it by 5 to neutralize the slowing effect
+	 *
+	 * @param event fired on any movement input of the player
+	 */
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void onPlayerInput(InputUpdateEvent event) {
+		EntityPlayer player = event.getEntityPlayer();
+
+		if (sprintToggleTimer > 0)
+			sprintToggleTimer--;
+
+		if (player.getActiveItemStack().getItem() instanceof ItemBuckler) {
+			MovementInput input = event.getMovementInput();
+			input.moveForward *= 5;
+			input.moveStrafe *= 5;
+
+			//Double W tap timer starts when you stop sprinting for one time
+			if (input.moveForward > 0.8)
 			{
-				return metal;
+				//keyBindSprint is checked here
+				if (sprintToggleTimer != 0 || Minecraft.getMinecraft().gameSettings.keyBindSprint.isKeyDown())
+					player.setSprinting(true);
+			}
+			else
+			{
+				sprintToggleTimer = 7;
+			}
+		}
+	}
+
+	/**
+	 * Allows the player to attack entities and punch air when holding a buckler
+	 *
+	 * @param event Any input from the user on either the keyboard or the mouse
+	 *
+	 * @see Minecraft#clickMouse()
+	 */
+	@SuppressWarnings("JavadocReference")
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void onDeviceInput(InputEvent event)
+	{
+		Minecraft minecraft = Minecraft.getMinecraft();
+
+		if (minecraft.player == null)
+			return;
+
+		if (minecraft.player.getActiveItemStack().getItem() instanceof ItemBuckler)
+		{
+			while (minecraft.gameSettings.keyBindAttack.isPressed())
+			{
+				//From Minecraft#clickMouse
+				switch (minecraft.objectMouseOver.typeOfHit)
+				{
+					case ENTITY:
+						minecraft.playerController.attackEntity(minecraft.player, minecraft.objectMouseOver.entityHit);
+						break;
+					case MISS:
+						minecraft.player.resetCooldown();
+						ForgeHooks.onEmptyLeftClick(minecraft.player);
+				}
+
+				minecraft.player.swingArm(EnumHand.MAIN_HAND);
 			}
 		}
 
-		return null;
+	}
+
+	/**
+	 * Handles Bucklers going on cooldown after blocking a hit
+	 */
+	@SubscribeEvent
+	public static void onDamageBlocked(LivingHurtEvent event) {
+		//Why did you leave ItHurtsLikeHell, I miss you >_>
+		EntityLivingBase entity = event.getEntityLiving();
+
+		//Makes the player drop the shield and calls onPlayerStoppedUsing
+		if (entity.getActiveItemStack().getItem() instanceof ItemBuckler && canDamageBeBlocked(event.getSource(), entity))
+			entity.stopActiveHand();
+	}
+
+	/**
+	 * Invokes a method callback when our modded shields block damage
+	 */
+	@SubscribeEvent
+	public static void onDamageBlock(LivingAttackEvent event) {
+		EntityLivingBase entity = event.getEntityLiving();
+
+		if (entity.getActiveItemStack().getItem() instanceof ItemShieldBase && canDamageBeBlocked(event.getSource(), entity))
+			((ItemShieldBase) entity.getActiveItemStack().getItem()).onDamageBlocked(entity, event.getSource(), event.getAmount());
+	}
+
+	/**
+	 * Checks if the shield can block incoming damage
+	 *
+	 * @see EntityLivingBase#canBlockDamageSource(DamageSource)
+	 */
+	@SuppressWarnings("JavadocReference")
+	private static boolean canDamageBeBlocked(DamageSource damageSource, EntityLivingBase blockerEntity) {
+		if (!damageSource.isUnblockable()) {
+			Vec3d damageLocation = damageSource.getDamageLocation();
+
+			if (damageLocation != null) {
+				Vec3d entityLook = blockerEntity.getLook(1F);
+
+				//(Entity coords - Damage Location coords).normalized |
+				//A vector from the damage location, pointing to the player
+				Vec3d damageToPlayerVec = damageLocation.subtractReverse(new Vec3d(blockerEntity.posX, blockerEntity.posY, blockerEntity.posZ)).normalize();
+				damageToPlayerVec = new Vec3d(damageToPlayerVec.x, 0, damageToPlayerVec.z);
+
+				//it blocks damage on half of the player figure (only at the front)
+				//if the damage vec and the look vec are both positive or negative the damage source is behind the player and it doesn't get blocked
+				//if the damage vec and the look vec have different signum the damage source is behind the player and it gets blocked
+				//max: 2 | min -2
+				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	//Buckler section END
+
+
+	// Lemurite shield section START
+
+	/**
+	 * Cancels player render when using a Lemurite shield to become invisible
+	 *
+	 * @param event player render event that we're canceling
+	 * @see ItemLemuriteShield
+	 */
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
+	{
+		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			event.setCanceled(true);
+	}
+
+	/**
+	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
+	 *
+	 * @param event living entities update event we're listening to
+	 * @see ItemLemuriteShield
+	 */
+	@SubscribeEvent
+	public static void disableAI(LivingSetAttackTargetEvent event)
+	{
+		EntityLiving mob = ((EntityLiving) event.getEntityLiving());
+		EntityLivingBase target = event.getTarget();
+
+		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+		{
+			mob.setAttackTarget(null);
+		}
+	}
+
+	// Lemurite shield section END
+
+	@SubscribeEvent
+	public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
+			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getFrom());
 	}
 
 }

@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: KrikArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: KrikArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -35,7 +33,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.krikArmorEffect;
+		return ArmorEffectsConfig.krikArmorEffect && super.isEnabled();
 	}
 
 	@Override
@@ -54,7 +52,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK))
+		if (EventUtils.isEntityWearingArmor(player, metal))
 		{
 			final int STEP = 255 / 27;
 
@@ -96,7 +94,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-				if (EventUtils.isPlayerWearingArmor(player, ModMetals.KRIK))
+				if (EventUtils.isEntityWearingArmor(player, metal))
 					event.setCanceled(true);
 			}
 		}

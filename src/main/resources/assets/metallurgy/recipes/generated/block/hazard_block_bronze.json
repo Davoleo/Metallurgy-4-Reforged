@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "ICI",
+    "CDC",
+    "ICI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBronze"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "D": {
+      "item": "metallurgy:bimetal_structure_block"
+    }
+  },
+  "result": {
+    "item": "metallurgy:bronze_hazard_block",
+    "count": 32
+  }
+}

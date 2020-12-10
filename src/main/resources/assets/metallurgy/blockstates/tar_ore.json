@@ -1,16 +1,18 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"all": "metallurgy:blocks/tar_ore"
-		}
-	},
-	"variants": {
-		"normal": {
-			"model": "cube_all"
-		},
-		"inventory": {
-			"model": "cube_all"
-		}
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "metallurgy:blocks/tar_ore",
+      "filler": "minecraft:blocks/stone",
+      "vein": "metallurgy:blocks/tar_ore"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "metallurgy:ore"
+    },
+    "inventory": {
+      "model": "metallurgy:ore"
+    }
+  }
 }

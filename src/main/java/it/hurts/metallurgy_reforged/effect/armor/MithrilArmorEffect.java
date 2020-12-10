@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: MithrilArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: MithrilArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -40,7 +38,7 @@ public class MithrilArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.mithrilArmorEffect;
+		return ArmorEffectsConfig.mithrilArmorEffect && super.isEnabled();
 	}
 
 	@Override
@@ -66,7 +64,7 @@ public class MithrilArmorEffect extends BaseMetallurgyEffect {
 		if (clientPlayer != null && !entity.equals(clientPlayer))
 		{
 			//checks if the player wears The Mithril Armor, the rendered entity is not glowing and it's within 30 blocks from the player, the effect is not disabled in the config
-			if (EventUtils.isPlayerWearingArmor(clientPlayer, ModMetals.MITHRIL)
+			if (EventUtils.isEntityWearingArmor(clientPlayer, metal)
 					&& entity.getDistance(clientPlayer) < 30D
 					&& !entity.isGlowing()
 					&& ArmorEffectsConfig.mithrilArmorEffect)

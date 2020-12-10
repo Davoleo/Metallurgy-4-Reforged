@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: AlloyerRecipes
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: AlloyerRecipes
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe;
 
@@ -59,8 +57,8 @@ public class AlloyerRecipes {
 						new AlloySample(ModMetals.BLACK_STEEL, 4, 1.75F));
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
-						new AlloySample(ModMetals.MANGANESE, 3),
-						new AlloySample(ModMetals.STEEL, 2, 1.5F));
+						new AlloySample(ModMetals.MANGANESE, 2),
+						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance sake
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.BRONZE, 2),
@@ -127,9 +125,11 @@ public class AlloyerRecipes {
 		);
 	}
 
-	public void addAlloyRecipe(AlloySample input1, AlloySample input2, AlloySample result)
+	//Internal Use only
+	private void addAlloyRecipe(AlloySample input1, AlloySample input2, AlloySample result)
 	{
-		if (input1.getMetal() != null && input2.getMetal() != null && result.getMetal() != null)
+		//Make sure input1 input2 and result metals were not disabled
+		if (!input1.getStack().isEmpty() && !input2.getStack().isEmpty() && !result.getStack().isEmpty())
 			this.alloyingList.put(input1, input2, result);
 	}
 

@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: BlockMetal
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: BlockMetal
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block;
 
@@ -30,8 +28,8 @@ import javax.annotation.Nonnull;
 
 public class BlockMetal extends Block {
 
-	private MetalStats metal;
-	private BlockTypes type;
+	private final MetalStats metal;
+	private final BlockTypes type;
 
 	public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
 	{
@@ -46,6 +44,21 @@ public class BlockMetal extends Block {
 		}
 
 		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
+	}
+
+	public BlockMetal(String metalName, BlockTypes type)
+	{
+		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
+		this.metal = Constants.EMPTY_METAL_STATS;
+		this.type = type;
+		this.setSoundType(SoundType.METAL);
+
+		if (this.type == BlockTypes.GLASS)
+		{
+			this.setLightOpacity(0);
+		}
+
+		BlockUtils.initBlock(this, metalName + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3, 5F, Constants.Tools.PICKAXE, 1);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -73,7 +86,6 @@ public class BlockMetal extends Block {
 
 	}
 
-	// TODO: 11/05/2020 Find a way to make it look decent
 	@SuppressWarnings("deprecation")
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -96,6 +108,18 @@ public class BlockMetal extends Block {
 		}
 
 		return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+	}
+
+	@Override
+	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon)
+	{
+		if (type != BlockTypes.BLOCK)
+			return false;
+
+		if (metal.getOreHarvest() == -1)
+			return metal.getToolStats().getHarvestLevel() > 1;
+		else
+			return metal.getOreHarvest() > 1;
 	}
 
 	public MetalStats getMetalStats()

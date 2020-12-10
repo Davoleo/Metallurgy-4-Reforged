@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ShadowSteelToolEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ShadowSteelToolEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -32,7 +30,7 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.shadowSteelToolSpeedEffect;
+		return ToolEffectsConfig.shadowSteelToolSpeedEffect && super.isEnabled();
 	}
 
 	@Override
@@ -63,9 +61,9 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 
 	private boolean isShadowSteelTool(Item heldItem)
 	{
-		return heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.AXE) ||
-				heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.PICKAXE) ||
-				heldItem == ModMetals.SHADOW_STEEL.getTool(EnumTools.SHOVEL);
+		return heldItem == metal.getTool(EnumTools.AXE) ||
+				heldItem == metal.getTool(EnumTools.PICKAXE) ||
+				heldItem == metal.getTool(EnumTools.SHOVEL);
 	}
 
 }

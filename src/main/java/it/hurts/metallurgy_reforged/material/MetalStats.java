@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: MetalStats
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: MetalStats
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
 
@@ -21,6 +19,7 @@ import it.hurts.metallurgy_reforged.item.ItemTypes;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.*;
 import it.hurts.metallurgy_reforged.util.Constants;
+import jline.internal.Nullable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -50,9 +49,6 @@ public class MetalStats {
 
 	private ItemTool.ToolMaterial toolMaterial;
 	private ItemArmor.ArmorMaterial armorMaterial;
-
-	//Steins;Gate 0
-	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0, new ArmorStats(new int[4], 0, 0, 0), new ToolStats(0, 0, 0, 0, 0), 0, 0);
 
 	public void createMetal()
 	{
@@ -149,28 +145,28 @@ public class MetalStats {
 		return hardness;
 	}
 
-	public int getOreHarvest()
-	{
+	/**
+	 * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
+	 */
+	public int getOreHarvest() {
 		return oreHarvest;
 	}
 
-	public float getBlockBlastResistance()
-	{
+	public float getBlockBlastResistance() {
 		return blockBlastResistance;
 	}
 
-	public ArmorStats getArmorStats()
-	{
+	@Nullable
+	public ArmorStats getArmorStats() {
 		return armor;
 	}
 
-	public ToolStats getToolStats()
-	{
+	@Nullable
+	public ToolStats getToolStats() {
 		return tool;
 	}
 
-	public ItemTool.ToolMaterial getToolMaterial()
-	{
+	public ItemTool.ToolMaterial getToolMaterial() {
 		return toolMaterial;
 	}
 
@@ -212,4 +208,5 @@ public class MetalStats {
 
 		return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
 	}
+
 }

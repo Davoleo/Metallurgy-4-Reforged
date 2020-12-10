@@ -1,3 +1,12 @@
+/*==============================================================================
+ = Class: AtlarusAxeEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
+
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
@@ -27,104 +36,104 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class AtlarusAxeEffect extends BaseMetallurgyEffect
-{
-    public AtlarusAxeEffect()
-    {
-        super(ModMetals.ATLARUS);
-    }
+public class AtlarusAxeEffect extends BaseMetallurgyEffect {
 
-    @Override
-    public boolean isEnabled()
-    {
-        return ToolEffectsConfig.atlarusAxeEffect;
-    }
+	public AtlarusAxeEffect()
+	{
+		super(ModMetals.ATLARUS);
+	}
 
-    @Override
-    public boolean isToolEffect()
-    {
-        return true;
-    }
+	@Override
+	public boolean isEnabled()
+	{
+		return ToolEffectsConfig.atlarusAxeEffect && super.isEnabled();
+	}
 
-    @Nullable
-    @Override
-    public EnumTools getToolClass()
-    {
-        return EnumTools.AXE;
-    }
+	@Override
+	public boolean isToolEffect()
+	{
+		return true;
+	}
 
-    @Override
-    public void onPlayerInteract(PlayerInteractEvent event)
-    {
-        World world = event.getWorld();
-        ItemStack stack = event.getItemStack();
-        EntityPlayer player = event.getEntityPlayer();
-        if(stack.getItem() == metal.getTool(EnumTools.AXE))
-        {
-            if(event instanceof PlayerInteractEvent.RightClickItem)
-            {
-                Vec3d eyePosition = player.getPositionEyes(1.0F);
-                Vec3d scaledLookVec = player.getLookVec().scale(30D);
-                Vec3d targetPos = new Vec3d(eyePosition.x + scaledLookVec.x, eyePosition.y + scaledLookVec.y, eyePosition.z + scaledLookVec.z);
+	@Nullable
+	@Override
+	public EnumTools getToolClass()
+	{
+		return EnumTools.AXE;
+	}
 
-
-                RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos, false, true, true);
-
-                player.swingArm(event.getHand());
+	@Override
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{
+		World world = event.getWorld();
+		ItemStack stack = event.getItemStack();
+		EntityPlayer player = event.getEntityPlayer();
+		if (stack.getItem() == metal.getTool(EnumTools.AXE))
+		{
+			if (event instanceof PlayerInteractEvent.RightClickItem)
+			{
+				Vec3d eyePosition = player.getPositionEyes(1.0F);
+				Vec3d scaledLookVec = player.getLookVec().scale(30D);
+				Vec3d targetPos = new Vec3d(eyePosition.x + scaledLookVec.x, eyePosition.y + scaledLookVec.y, eyePosition.z + scaledLookVec.z);
 
 
-                if(result != null)
-                {
-                    targetPos = new Vec3d(result.getBlockPos());
+				RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos, false, true, true);
 
-                    BlockPos.getAllInBox(result.getBlockPos().add(-2, -2, -2), result.getBlockPos().add(2, 2, 2)).forEach(leavesPos ->
-                    {
-                        IBlockState state = world.getBlockState(leavesPos);
-                        if((state.getBlock() instanceof BlockLeaves || state.getBlock() instanceof BlockVine) && !world.isRemote)
-                        {
-                            if(EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0)
-                            {
-                                int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
-                                List<ItemStack> drops = ((IShearable) state.getBlock()).onSheared(stack, world, leavesPos, fortune);
+				player.swingArm(event.getHand());
 
-                                for (ItemStack drop : drops)
-                                {
-                                    float f = 0.7F;
-                                    double d = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
-                                    double d1 = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
-                                    double d2 = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
-                                    EntityItem entityitem = new EntityItem(player.getEntityWorld(), leavesPos.getX() + d, leavesPos.getY() + d1, leavesPos.getZ() + d2, drop);
-                                    entityitem.setDefaultPickupDelay();
-                                    world.spawnEntity(entityitem);
-                                }
-                            }
-                            stack.onBlockDestroyed(world, world.getBlockState(leavesPos), leavesPos, player);
-                            world.destroyBlock(leavesPos, true);
-                            stack.damageItem(1, player);
-                        }
-                    });
-                }
-                if(world.isRemote)
-                {
-                    Random random = new Random();
-                    Vec3d particleVec = player.getLookVec().scale(1.3D);
-                    // world.spawnParticle(EnumParticleTypes.CLOUD, eyePosition.x, eyePosition.y, eyePosition.z, particleVec.x, particleVec.y, particleVec.z);
 
-                    for (int j = 0; j < 170; ++j)
-                    {
-                        double d6 = (double) j / 169.0D;
-                        double d3 = eyePosition.x + (targetPos.x - player.posX) * d6 + (random.nextDouble() - 0.5D) * 2.0D;
-                        double d4 = eyePosition.y + (targetPos.y - player.posY) * d6 + random.nextDouble() * 2.0D - 1D;
-                        double d5 = eyePosition.z + (targetPos.z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * 2.0D;
-                        player.world.spawnAlwaysVisibleParticle(EnumParticleTypes.CLOUD.getParticleID(), d3, d4, d5, particleVec.x,particleVec.y,particleVec.z);
-                    }
-                }
-                else
-                    world.playSound(null,player.posX,player.posY,player.posZ, SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.AMBIENT,1F,0.9F);
+				if (result != null)
+				{
+					targetPos = new Vec3d(result.getBlockPos());
 
-            }
-        }
-    }
+					BlockPos.getAllInBox(result.getBlockPos().add(-2, -2, -2), result.getBlockPos().add(2, 2, 2)).forEach(leavesPos ->
+					{
+						IBlockState state = world.getBlockState(leavesPos);
+						if ((state.getBlock() instanceof BlockLeaves || state.getBlock() instanceof BlockVine) && !world.isRemote)
+						{
+							if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0)
+							{
+								int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
+								List<ItemStack> drops = ((IShearable) state.getBlock()).onSheared(stack, world, leavesPos, fortune);
+
+								for (ItemStack drop : drops)
+								{
+									float f = 0.7F;
+									double d = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
+									double d1 = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
+									double d2 = TConstruct.random.nextFloat() * f + (1.0F - f) * 0.5D;
+									EntityItem entityitem = new EntityItem(player.getEntityWorld(), leavesPos.getX() + d, leavesPos.getY() + d1, leavesPos.getZ() + d2, drop);
+									entityitem.setDefaultPickupDelay();
+									world.spawnEntity(entityitem);
+								}
+							}
+							stack.onBlockDestroyed(world, world.getBlockState(leavesPos), leavesPos, player);
+							world.destroyBlock(leavesPos, true);
+							stack.damageItem(1, player);
+						}
+					});
+				}
+				if (world.isRemote)
+				{
+					Random random = new Random();
+					Vec3d particleVec = player.getLookVec().scale(1.3D);
+					// world.spawnParticle(EnumParticleTypes.CLOUD, eyePosition.x, eyePosition.y, eyePosition.z, particleVec.x, particleVec.y, particleVec.z);
+
+					for (int j = 0; j < 170; ++j)
+					{
+						double d6 = (double) j / 169.0D;
+						double d3 = eyePosition.x + (targetPos.x - player.posX) * d6 + (random.nextDouble() - 0.5D) * 2.0D;
+						double d4 = eyePosition.y + (targetPos.y - player.posY) * d6 + random.nextDouble() * 2.0D - 1D;
+						double d5 = eyePosition.z + (targetPos.z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * 2.0D;
+						player.world.spawnAlwaysVisibleParticle(EnumParticleTypes.CLOUD.getParticleID(), d3, d4, d5, particleVec.x, particleVec.y, particleVec.z);
+					}
+				}
+				else
+					world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.AMBIENT, 1F, 0.9F);
+
+			}
+		}
+	}
 
 
 }

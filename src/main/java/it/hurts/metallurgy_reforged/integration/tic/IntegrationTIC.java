@@ -1,18 +1,16 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: IntegrationTIC
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: IntegrationTIC
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic;
 
 import com.google.common.base.CaseFormat;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
@@ -41,11 +39,13 @@ import slimeknights.tconstruct.tools.ranged.item.CrossBow;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class IntegrationTIC {
 
 	public static List<?> blacklistedMaterials = Arrays.asList(GeneralConfig.tinkerMaterialsBlacklist);
-	private static final List<Metal> vanillaTicMetals = Lists.newArrayList(
+	private static final Set<Metal> vanillaTicMetals = Sets.newHashSet(
 			ModMetals.COPPER,
 			ModMetals.BRONZE,
 			ModMetals.ZINC,
@@ -54,6 +54,11 @@ public class IntegrationTIC {
 			ModMetals.STEEL,
 			ModMetals.ELECTRUM
 	);
+
+	static
+	{
+		vanillaTicMetals.removeIf(Objects::isNull);
+	}
 
 	public static void preInit()
 	{

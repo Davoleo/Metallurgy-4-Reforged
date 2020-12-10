@@ -1,16 +1,19 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: Constants
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: Constants
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.material.ArmorStats;
+import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.material.ToolStats;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
 import java.util.HashMap;
@@ -19,12 +22,31 @@ import java.util.UUID;
 
 public class Constants {
 
+	//Metal
+	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
+			new ArmorStats(new int[4], 0, 0, 0),
+			new ToolStats(0, 0, 0, 0, 0), 0, 0);
+
+	//Vanilla Metals
+	public static final String METAL_IRON = "iron";
+	public static final String METAL_GOLD = "gold";
+
 	//Localized
 	public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");
 	public static final String GAUNTLET_EFFECT_DISABLED = Utils.localize("tooltip.metallurgy.gauntlet_effect_disabled");
 	public static final String POTASH_FERTILIZER = Utils.localize("tooltip.metallurgy.potash_fertilizer");
 	public static final String PHOSPHORUS_LAMP = Utils.localize("tooltip.metallurgy.phosphorus_lamp");
 	public static final String THERMITE_DUST = Utils.localize("tooltip.metallurgy.thermite");
+
+	//Enchantments
+	public static final Enchantment[] GAUNTLET_ENCHANTMENTS = {
+			Enchantments.BANE_OF_ARTHROPODS,
+			Enchantments.MENDING,
+			Enchantments.SMITE,
+			Enchantments.VANISHING_CURSE,
+			Enchantments.UNBREAKING,
+			Enchantments.SHARPNESS
+	};
 
 
 	/**
@@ -53,6 +75,7 @@ public class Constants {
 		public static final float HIGH_TIER = 15F;
 		public static final float EXTREME_TIER = 20F;              //Obsidian Level
 		public static final float UNBREAKABLE_TIER = 18000000F;    //Bedrock Level
+
 	}
 
 	public static final class ModAttributes {

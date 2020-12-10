@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: RegistrationHandler
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: RegistrationHandler
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
 
@@ -23,15 +21,19 @@ import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -191,6 +193,15 @@ public class RegistrationHandler {
 		ModRenderers.registerRenderers();
 	}
 
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void onModelBake(ModelBakeEvent event)
+	{
+		ModelResourceLocation location = new ModelResourceLocation(new ResourceLocation(Metallurgy.MODID, "gadget/brass_knuckles"), "inventory");
+		IBakedModel original = event.getModelRegistry().getObject(location);
+		event.getModelRegistry().putObject(location, new BrassKnucklesBakedModel(original));
+	}
+
 	@SubscribeEvent
 	public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
 	{
@@ -211,6 +222,9 @@ public class RegistrationHandler {
 	{
 		for (int i = 1; i <= 10; i++)
 			event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i));
+
+		//Register brass knuckles item texture
+		event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "items/gadgets/brass_knuckles_item"));
 	}
 
 }

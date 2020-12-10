@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: MetallurgyTabs
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: MetallurgyTabs
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
 
@@ -66,7 +64,14 @@ public class MetallurgyTabs extends CreativeTabs {
 	@Override
 	public ItemStack createIcon()
 	{
+
+		if (type == 6)
+			return new ItemStack(ModBlocks.crusher);
+
 		Metal adamantine = ModMetals.ADAMANTINE;
+
+		if (adamantine == null)
+			return ItemStack.EMPTY;
 
 		switch (type)
 		{
@@ -82,8 +87,6 @@ public class MetallurgyTabs extends CreativeTabs {
 				return new ItemStack(adamantine.getIngot());
 			case 5:
 				return new ItemStack(adamantine.getNugget());
-			case 6:
-				return new ItemStack(ModBlocks.crusher);
 			case 7:
 				return new ItemStack(Objects.requireNonNull(adamantine.getOre()));
 			case 8:

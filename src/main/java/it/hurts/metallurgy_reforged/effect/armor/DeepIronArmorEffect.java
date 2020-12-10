@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: DeepIronArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: DeepIronArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -37,7 +35,7 @@ public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.deepIronArmorEffect;
+		return ArmorEffectsConfig.deepIronArmorEffect && super.isEnabled();
 	}
 
 	@Override
@@ -56,18 +54,14 @@ public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal) && player.isInWater())
+		if (EventUtils.isEntityWearingArmor(player, metal) && player.isInWater())
 		{
 
 			//Slot index of Armor : 5 - 6 - 7 - 8
 			for (int i = 5; i < 9; i++)
 			{
 				if (!(player.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !player.isCreative())
-				{
-					//					Inseriamo nello slot dell'inventario in posizione i un custom slot
 					player.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(player, i - 5, true));
-				}
-
 			}
 			//Add effect to Player
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));

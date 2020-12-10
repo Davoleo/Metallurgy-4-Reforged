@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: SwordHitChanceEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: SwordHitChanceEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect;
 
@@ -20,22 +18,24 @@ import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
 import java.util.Random;
+import java.util.function.Supplier;
 
-public abstract class SwordHitChanceEffect extends BaseMetallurgyEffect {
+public class SwordHitChanceEffect extends BaseMetallurgyEffect {
 
 	protected Random random = new Random();
 	protected int chance;
-	protected PotionEffect effect;
+	protected Supplier<PotionEffect> effect;
 
-	public SwordHitChanceEffect(Metal metal, int chance, PotionEffect effect)
-	{
+	public SwordHitChanceEffect(Metal metal, int chance, Supplier<PotionEffect> effect) {
 		super(metal);
 		this.chance = chance;
 		this.effect = effect;
 	}
 
 	@Override
-	abstract public boolean isEnabled();
+	public boolean isEnabled() {
+		return super.isEnabled();
+	}
 
 	@Override
 	public boolean isToolEffect()
@@ -51,16 +51,12 @@ public abstract class SwordHitChanceEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public void onPlayerAttack(EntityPlayer attacker, Entity target)
-	{
-		if (target instanceof EntityLivingBase)
-		{
-			EntityLivingBase livingTarget = ((EntityLivingBase) target);
-			if (livingTarget.getHeldItemMainhand().getItem() == metal.getTool(getToolClass()))
-			{
-				if (random.nextInt(100) < chance)
-				{
-					livingTarget.addPotionEffect(effect);
+	public void onPlayerAttack(EntityPlayer attacker, Entity target) {
+		if (!attacker.world.isRemote && target instanceof EntityLivingBase) {
+			if (attacker.getHeldItemMainhand().getItem() == metal.getTool(getToolClass())) {
+				if (random.nextInt(100) < chance) {
+					EntityLivingBase livingTarget = ((EntityLivingBase) target);
+					livingTarget.addPotionEffect(effect.get());
 				}
 			}
 		}

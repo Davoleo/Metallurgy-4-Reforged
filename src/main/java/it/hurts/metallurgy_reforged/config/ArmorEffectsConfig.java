@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ArmorEffectsConfig
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ArmorEffectsConfig
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.config;
 
@@ -83,67 +81,67 @@ public class ArmorEffectsConfig {
 	@Config.Comment("Removes poison effect whenever you get it")
 	public static boolean prometheumArmorEffect = true;
 	@Config.Name("Quicksilver Armor Effect")
-	@Config.Comment("Movements speed up")
+	@Config.Comment("Full Armor increases the speed of your actions, such as using bows, eating food, etc")
 	public static boolean quicksilverArmorEffect = true;
 	@Config.Name("Quicksilver Blacklist Armor Effect")
 	@Config.Comment("Blacklist items which can't be speed up")
 	public static String[] quickSilverBlacklist = new String[]{
 			"bountifulbaubles:magicmirror",
-	"aoa3:apoco_shower",
-	"aoa3:atomizer",
-	"aoa3:beamer",
-	"aoa3:blast_chiller",
-	"aoa3:blood_drainer",
-	"aoa3:bone_blaster",
-	"aoa3:bubble_horn",
-	"aoa3:confetti_cannon",
-	"aoa3:confetti_cluster",
-	"aoa3:dark_destroyer",
-	"aoa3:darkly_guster",
-	"aoa3:death_ray",
-	"aoa3:doom_bringer",
-	"aoa3:eradicator",
-	"aoa3:flowercorne",
-	"aoa3:fragment",
-	"aoa3:froster",
-	"aoa3:gas_blaster",
-	"aoa3:ghoul_gasser",
-	"aoa3:gold_bringer",
-	"aoa3:gravity_blaster",
-	"aoa3:hell_horn",
-	"aoa3:illusion_revolver",
-	"aoa3:illusion_smg",
-	"aoa3:ion_blaster",
-	"aoa3:iro_miner",
-	"aoa3:laser_blaster",
-	"aoa3:light_blaster",
-	"aoa3:light_spark",
-	"aoa3:luna_blaster",
-	"aoa3:mecha_blaster",
-	"aoa3:mind_blaster",
-	"aoa3:moon_destroyer",
-	"aoa3:moon_shiner",
-	"aoa3:odious",
-	"aoa3:orbocron",
-	"aoa3:paralyzer",
-	"aoa3:party_popper",
-	"aoa3:poison_plunger",
-	"aoa3:power_ray",
-	"aoa3:proton",
-	"aoa3:reefer",
-	"aoa3:revolution",
-	"aoa3:seaocron",
-	"aoa3:skullo_blaster",
-	"aoa3:soul_drainer",
-	"aoa3:soul_spark",
-	"aoa3:soul_storm",
-	"aoa3:spirit_shower",
-	"aoa3:swarmotron",
-	"aoa3:toxic_terrorizer",
-	"aoa3:vortex_blaster",
-	"aoa3:whimsy_winder",
-	"aoa3:withers_wrath"
-};
+			"aoa3:apoco_shower",
+			"aoa3:atomizer",
+			"aoa3:beamer",
+			"aoa3:blast_chiller",
+			"aoa3:blood_drainer",
+			"aoa3:bone_blaster",
+			"aoa3:bubble_horn",
+			"aoa3:confetti_cannon",
+			"aoa3:confetti_cluster",
+			"aoa3:dark_destroyer",
+			"aoa3:darkly_guster",
+			"aoa3:death_ray",
+			"aoa3:doom_bringer",
+			"aoa3:eradicator",
+			"aoa3:flowercorne",
+			"aoa3:fragment",
+			"aoa3:froster",
+			"aoa3:gas_blaster",
+			"aoa3:ghoul_gasser",
+			"aoa3:gold_bringer",
+			"aoa3:gravity_blaster",
+			"aoa3:hell_horn",
+			"aoa3:illusion_revolver",
+			"aoa3:illusion_smg",
+			"aoa3:ion_blaster",
+			"aoa3:iro_miner",
+			"aoa3:laser_blaster",
+			"aoa3:light_blaster",
+			"aoa3:light_spark",
+			"aoa3:luna_blaster",
+			"aoa3:mecha_blaster",
+			"aoa3:mind_blaster",
+			"aoa3:moon_destroyer",
+			"aoa3:moon_shiner",
+			"aoa3:odious",
+			"aoa3:orbocron",
+			"aoa3:paralyzer",
+			"aoa3:party_popper",
+			"aoa3:poison_plunger",
+			"aoa3:power_ray",
+			"aoa3:proton",
+			"aoa3:reefer",
+			"aoa3:revolution",
+			"aoa3:seaocron",
+			"aoa3:skullo_blaster",
+			"aoa3:soul_drainer",
+			"aoa3:soul_spark",
+			"aoa3:soul_storm",
+			"aoa3:spirit_shower",
+			"aoa3:swarmotron",
+			"aoa3:toxic_terrorizer",
+			"aoa3:vortex_blaster",
+			"aoa3:whimsy_winder",
+			"aoa3:withers_wrath"
+	};
 	@Config.Name("Shadow Iron Armor Effect")
 	@Config.Comment("Absorbed damage is proportional to the darkness")
 	public static boolean shadowSteelArmorEffect = true;

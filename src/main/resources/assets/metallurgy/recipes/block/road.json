@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "BBB",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "dustBitumen"
+    }
+  },
+  "result": {
+    "item": "metallurgy:road_block",
+    "count": 32
+  }
+}

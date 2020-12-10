@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: OsmiumLutetiumArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: OsmiumLutetiumArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -33,6 +31,9 @@ public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
+		if (!super.isEnabled())
+			return false;
+
 		if (metal == ModMetals.OSMIUM)
 			return ArmorEffectsConfig.osmiumArmorEffect;
 		else
@@ -64,8 +65,14 @@ public class OsmiumLutetiumArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = (EntityPlayer) event.getEntity();
 
-				int osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
-				int lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
+				int osmiumMultiplier = 0;
+				int lutetiumMultiplier = 0;
+
+				if (ModMetals.OSMIUM != null)
+					osmiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.OSMIUM.getArmorSet());
+
+				if (ModMetals.LUTETIUM != null)
+					lutetiumMultiplier = EventUtils.getArmorPiecesCount(player, ModMetals.LUTETIUM.getArmorSet());
 
 				float multiplier;
 

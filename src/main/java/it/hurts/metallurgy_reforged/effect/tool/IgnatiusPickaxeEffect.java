@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: IgnatiusPickaxeEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: IgnatiusPickaxeEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -44,7 +42,7 @@ public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isToolEffect()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Nullable
@@ -62,7 +60,7 @@ public class IgnatiusPickaxeEffect extends BaseMetallurgyEffect {
 		BlockPos pos = event.getPos();
 		IBlockState blockState = world.getBlockState(pos);
 
-		if (heldItem.equals(ModMetals.IGNATIUS.getTool(EnumTools.PICKAXE)))
+		if (heldItem.equals(metal.getTool(EnumTools.PICKAXE)))
 		{
 			ResourceLocation regName = blockState.getBlock().getRegistryName();
 

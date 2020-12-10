@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: CelenegilOrichalcumSwordEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: CelenegilOrichalcumSwordEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -18,6 +16,7 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nullable;
@@ -32,7 +31,7 @@ public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return true;
+		return super.isEnabled();
 	}
 
 	@Override
@@ -51,19 +50,41 @@ public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public void onPlayerKill(EntityPlayer killer, EntityLivingBase killedEntity)
 	{
-		//			Celenegil Sword ( Give Speed and Strenght on entity kill )
-		if (killer.getHeldItemMainhand().getItem() == ModMetals.CELENEGIL.getTool(EnumTools.SWORD) &&
-				(killer.isPotionActive(MobEffects.STRENGTH) ? killer.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8 : false ||
-						!killer.isPotionActive(MobEffects.SPEED) || killer.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8))
+		Item celenegilSword = null;
+		Item orichalcumSword = null;
+
+		if (ModMetals.CELENEGIL != null)
+			celenegilSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
+		if (ModMetals.ORICHALCUM != null)
+			orichalcumSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
+
+		if (isEligibleForEffect(killer, celenegilSword))
 		{
 
 			killer.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0, false, false));
 			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
 		}
 
-		//Orichalcum Sword ( Give Strenght on entity kill )
-		if (killer.getHeldItemMainhand().getItem() == ModMetals.ORICHALCUM.getTool(EnumTools.SWORD) && (!killer.isPotionActive(MobEffects.STRENGTH) || killer.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8))
+		if (isEligibleForEffect(killer, orichalcumSword))
 			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
+	}
+
+	private boolean isEligibleForEffect(EntityPlayer player, Item sword)
+	{
+		if (sword == player.getHeldItemMainhand().getItem())
+		{
+			if (!player.isPotionActive(MobEffects.STRENGTH) || player.getActivePotionEffect(MobEffects.STRENGTH).getDuration() < 8)
+			{
+				return true;
+			}
+
+			if (metal == ModMetals.CELENEGIL)
+			{
+				return !player.isPotionActive(MobEffects.SPEED) || player.getActivePotionEffect(MobEffects.SPEED).getDuration() < 8;
+			}
+		}
+
+		return false;
 	}
 
 }

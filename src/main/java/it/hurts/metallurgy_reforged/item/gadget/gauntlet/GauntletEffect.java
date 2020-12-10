@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: GauntletEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: GauntletEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 
@@ -40,7 +38,7 @@ public class GauntletEffect {
 		if (entity instanceof EntityLivingBase)
 		{
 			EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
-			if (GauntletOperation.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
+			if (GauntletEquipHandler.isWearingGauntlet(pl) && entityLivingBase.deathTime <= 0)
 			{
 				FoodStats foodStats = pl.getFoodStats();
 
@@ -105,8 +103,6 @@ public class GauntletEffect {
 		}
 	}
 
-
-	//	Event tick entity
 	@SubscribeEvent
 	public static void applyPunchThrowEffects(LivingUpdateEvent event)
 	{
@@ -137,7 +133,7 @@ public class GauntletEffect {
 				effect.setPunchingPlayer(null);
 			}
 
-			//		check if entity has been punched
+			//check if entity has been punched
 			if (effect.getKnockbackTicks() > 0)
 			{
 				entity.motionX = effect.getKnockbackMotionVec().x;
@@ -154,7 +150,7 @@ public class GauntletEffect {
 					AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D, 0.4D);
 					if (!entity.isDead && !GauntletConfig.disableBlockGriefing)
 					{
-						//				destroy blocks and damage the punched entity (the damage is based from block's hardness
+						//destroy blocks and damage the punched entity (the damage is based from block's hardness
 						for (double i = axisalignedbb.minX; i < axisalignedbb.maxX; i += 0.1D)
 						{
 							for (double j = axisalignedbb.minY; j < axisalignedbb.maxY; j += 0.1D)
@@ -183,9 +179,9 @@ public class GauntletEffect {
 				}
 
 
-				//			adds the punch effect ticks
-				effect.addKnockbackTTicks();
-				//	if the knockback ticks reaches his limit,the entity will lose his "effect"
+				//adds the punch effect ticks
+				effect.addKnockbackTicks();
+				//if the knockback ticks reaches his limit,the entity will lose his "effect"
 				if (effect.getKnockbackTicks() > effect.getHitTicks() / 4)
 					effect.endEffect(entity);
 
@@ -193,8 +189,12 @@ public class GauntletEffect {
 		}
 	}
 
-	//		checks if the players isn't holding an item and if he is wearing
-	//		apply effect if the player has a minimum food level or if he is in creative
+	/**
+	 * checks if the players isn't holding an item and if he is wearing
+	 * apply effect if the player has a minimum food level or if he's in creative mode
+	 *
+	 * @param entity the player
+	 */
 	private static void throwEntity(EntityLivingBase entity)
 	{
 		IPunchEffect effect = entity.getCapability(PunchEffectProvider.PUNCH_EFFECT_CAP, null);

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:coal",
+      "data": 1
+    }
+  },
+  "result": {
+    "item": "metallurgy:charcoal_block"
+  }
+}

@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: SubEvent
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: SubEvent
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
 
@@ -16,7 +14,7 @@ import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyArmorTraits;
 import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEffect;
-import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletOperation;
+import it.hurts.metallurgy_reforged.item.gadget.gauntlet.GauntletEquipHandler;
 import it.hurts.metallurgy_reforged.world.ModLakeWorldGen;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -26,13 +24,13 @@ public class SubEvent {
 	{
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
 		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
-		MinecraftForge.EVENT_BUS.register(GauntletOperation.class);
+		MinecraftForge.EVENT_BUS.register(GauntletEquipHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
 		MinecraftForge.EVENT_BUS.register(FuelHandler.class);
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
-		MinecraftForge.EVENT_BUS.register(PlayerHandler.class);
+		MinecraftForge.EVENT_BUS.register(SpawnHandler.class);
 
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 

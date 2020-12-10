@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: DesichalkosSwordEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: DesichalkosSwordEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
@@ -39,7 +37,7 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ToolEffectsConfig.desichalkosSwordEffect;
+		return ToolEffectsConfig.desichalkosSwordEffect && super.isEnabled();
 	}
 
 	@Override
@@ -84,22 +82,22 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 					switch (result.sideHit)
 					{
 						case WEST:
-							this.teleport(player,pos.getX() - 1, pos.getY(), pos.getZ());
+							this.teleport(player, pos.getX() - 1, pos.getY(), pos.getZ());
 							break;
 						case EAST:
-							this.teleport(player,pos.getX() + 1, pos.getY(), pos.getZ());
+							this.teleport(player, pos.getX() + 1, pos.getY(), pos.getZ());
 							break;
 						case NORTH:
-							this.teleport(player,pos.getX(), pos.getY(), pos.getZ() - 1);
+							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() - 1);
 							break;
 						case SOUTH:
-							this.teleport(player,pos.getX(), pos.getY(), pos.getZ() + 1);
+							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() + 1);
 							break;
 						case UP:
-							this.teleport(player,pos.getX(), pos.getY() + 1, pos.getZ());
+							this.teleport(player, pos.getX(), pos.getY() + 1, pos.getZ());
 							break;
 						case DOWN:
-							this.teleport(player,pos.getX(), pos.getY() - player.height, pos.getZ());
+							this.teleport(player, pos.getX(), pos.getY() - player.height, pos.getZ());
 							break;
 					}
 				}
@@ -116,22 +114,22 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 		}
 	}
 
-	private void teleport(EntityPlayer player,double x,double y, double z)
+	private void teleport(EntityPlayer player, double x, double y, double z)
 	{
 		Random random = new Random();
 
 		for (int j = 0; j < 128; ++j)
 		{
-			double d6 = (double)j / 127.0D;
+			double d6 = (double) j / 127.0D;
 			float f = (random.nextFloat() - 0.5F) * 0.2F;
 			float f1 = (random.nextFloat() - 0.5F) * 0.2F;
 			float f2 = (random.nextFloat() - 0.5F) * 0.2F;
-			double d3 = player.posX + (x - player.posX) * d6 + (random.nextDouble() - 0.5D) * (double)player.width * 2.0D;
-			double d4 = player.posY + (y - player.posY) * d6 + random.nextDouble() * (double)player.height;
-			double d5 = player.posZ + (z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * (double)player.width * 2.0D;
+			double d3 = player.posX + (x - player.posX) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
+			double d4 = player.posY + (y - player.posY) * d6 + random.nextDouble() * (double) player.height;
+			double d5 = player.posZ + (z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
 			player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
 		}
-		player.setPositionAndUpdate(x,y,z);
+		player.setPositionAndUpdate(x, y, z);
 	}
 
 }

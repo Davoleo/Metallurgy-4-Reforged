@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: SetArmorTraits
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: SetArmorTraits
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.conarm;
 
@@ -22,77 +20,40 @@ public class SetArmorTraits {
 	{
 		switch (metal.getStats().getName())
 		{
-
 			case "quicksilver":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.quickly);
-			}
-			break;
-
+				break;
 			case "amordrine":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.stronglyAmordrine);
-			}
-			break;
-
+				break;
 			case "kalendrite":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.stronglyKalendrite);
-			}
-			break;
-
+				break;
 			case "astral_silver":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.jumpMaster);
-			}
-			break;
-
+				break;
 			case "celenegil":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.resistance);
-			}
-			break;
-
+				break;
 			case "deep_iron":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.deeply);
-			}
-			break;
-
+				break;
 			case "vulcanite":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.volcano);
-			}
-			break;
-
+				break;
 			case "adamantine":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.foodly);
-			}
-			break;
-
+				break;
 			case "platinum":
-			{
 				material.addTrait(MetallurgyArmorTraits.catEyes, ArmorMaterialType.CORE);
-			}
-			break;
-
+				break;
 			case "prometheum":
-			{
 				material.addTrait(MetallurgyArmorTraits.prometheum, ArmorMaterialType.PLATES);
-			}
-			break;
-
+				break;
 			case "shadow_steel":
-			{
 				addToEveryPart(material, MetallurgyArmorTraits.blindness);
-			}
-			break;
-
+				break;
 			default:
-			{
-			}
-			break;
 		}
 	}
 

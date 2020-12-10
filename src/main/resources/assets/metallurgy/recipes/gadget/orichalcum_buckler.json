@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "OEO",
+    "OWO",
+    " O "
+  ],
+  "key": {
+    "O": {
+      "type": "forge:ore_dict",
+      "ore": "ingotOrichalcum"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result": {
+    "item": "metallurgy:orichalcum_buckler"
+  }
+}

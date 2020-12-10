@@ -252,6 +252,8 @@ tile.metallurgy.charcoal_block.name=Block of Charcoal
 tile.metallurgy.bitumen_block.name=Bitumen Block
 tile.metallurgy.sulfur_block.name=Sulfur Block
 
+tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
+
 # Metal Blocks
 tile.metallurgy.electrum_block.name=Electrum Block
 tile.metallurgy.copper_block.name=Copper Block
@@ -609,6 +611,20 @@ tile.metallurgy.lutetium_reinforced_glass.name=Lutetium Reinforced Glass
 tile.metallurgy.osmium_reinforced_glass.name=Osmium Reinforced Glass
 tile.metallurgy.etherium_reinforced_glass.name=Etherium Reinforced Glass
 
+#Vanilla Metal Blocks
+tile.metallurgy.gold_engraved_block.name=Gold Engraved Block
+tile.metallurgy.gold_large_bricks.name=Gold Large Bricks
+tile.metallurgy.gold_bricks.name=Gold Bricks
+tile.metallurgy.gold_crystals.name=Gold Crystals
+tile.metallurgy.gold_hazard_block.name=Gold Hazard Block
+tile.metallurgy.gold_reinforced_glass.name=Gold Reinforced Glass
+tile.metallurgy.iron_engraved_block.name=Iron Engraved Block
+tile.metallurgy.iron_large_bricks.name=Iron Large Bricks
+tile.metallurgy.iron_bricks.name=Iron Bricks
+tile.metallurgy.iron_crystals.name=Iron Crystals
+tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
+tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
+
 #Config
 config.metallurgy.category.armor_effects=Armor Effects
 config.metallurgy.category.general=General
@@ -625,7 +641,7 @@ modifier.foodly_armor.name=Well Fed
 modifier.jump_master_armor.name=Jump Master
 modifier.prometheum_armor.name=Poison Immunity
 modifier.quickly_armor.name=Quick Action
-modifier.resistance_armor.name=Resistance IV
+modifier.resistance_armor.name=Resistance II
 modifier.strongly_armor.name=Strength
 modifier.volcano_armor.name=Volcanic
 
@@ -635,7 +651,7 @@ modifier.deeply_armor.desc=§oAqua-bound!§r\nIt makes it easier for you to do t
 modifier.foodly_armor.desc=§oThe taste of hard work§r\nReplenishes your food bar if you have enough experience.
 modifier.jump_master_armor.desc=§oWheeee!§r\nIncreases jump height.
 modifier.prometheum_armor.desc=§oTastes like coconut... and metal§r\nGrants immunity to poison.
-modifier.quickly_armor.desc=§oBow Tender§r\nStretching a bow becomes faster
+modifier.quickly_armor.desc=§oBow Tender§r\nPerform actions faster, such as using bows, eating food, etc
 modifier.resistance_armor.desc=§oHard as nails§r\nReduces incoming damage even further than you'd expect.
 modifier.strongly_armor.desc=§oI bet I could lift that§r\nIncreases damage dealt \n(can be level I or level II)
 modifier.volcano_armor.desc=§oFire-bound!§r\nIt makes you immune to fire
@@ -925,9 +941,15 @@ item.metallurgy.zinc_ingot.name=Zinc Ingot
 item.metallurgy.flint_and_ignatius.name=Flint and Ignatius
 item.metallurgy.flint_and_vulcanite.name=Flint and Vulcanite
 item.metallurgy.rubracium_gauntlet.name=Rubracium Gauntlet
-item.metallurgy.lemurite_shield.name=Lemurite Shield
 item.metallurgy.ore_detector.name=Metal Detector
 tile.metallurgy.phosphorus_lamp.name=Phosphorus Lantern
+item.metallurgy.etherium_goggles.name=Etherium Goggles
+item.metallurgy.brass_knuckles.name=Brass Knuckles
+item.metallurgy.lemurite_shield.name=Lemurite Shield
+item.metallurgy.ceruclase_shield.name=Ceruclase Shield
+item.metallurgy.zinc_buckler.name=Zinc Buckler
+item.metallurgy.vulcanite_buckler.name=Vulcanite Buckler
+item.metallurgy.orichalcum_buckler.name=Orichalcum Buckler
 
 #Items
 item.metallurgy.tar.name=Tar
@@ -990,7 +1012,7 @@ tile.metallurgy.zinc_ore.name=Zinc Ore
 container.crusher=Crusher
 container.alloyer=Alloyer
 tile.metallurgy.crusher.name=§cCrusher
-tile.metallurgy.alloyer.name=§eAlloyer
+tile.metallurgy.alloyer.name=§9Alloyer
 tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
 
 #Tinkers' Construct Traits
@@ -1003,7 +1025,7 @@ modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time 
 modifier.duplication_trait.name=Duplication
 modifier.duplication_trait.desc=Has a chance to duplicate drops
 modifier.life_steal_trait.name=Life Steal
-modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 10% of the dealt damage
+modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 0.1x of the dealt damage
 modifier.wither_trait.name=Wither
 modifier.wither_trait.desc=Applies wither effect on your enemy
 modifier.king_dice_trait.name=King Dice
@@ -1276,7 +1298,7 @@ tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
 tooltip.metallurgy.gauntlet_effect_disabled=§4Gauntlet effect has been force-disabled because Better With Mods is loaded
 tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
-tooltip.metallurgy.thermite=§cActs as a fuel with the same strength of coal (works best in metallurgy machines 200% efficiency!) [check JEI for more information]
+tooltip.metallurgy.thermite=§cActs as a fuel with the same strength of coal (works best in metallurgy machines 2x efficiency!) [check JEI for more information]
 tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the active materials in the ore detector
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
@@ -1287,6 +1309,13 @@ tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block d
 #Pickaxes
 tooltip.metallurgy.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
 tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
+
+#Shields
+tooltip.metallurgy.ceruclase_shield=§3(W.I.P.) When activated, creates an icy sphere around the player and cushions a portion of the fall damage. The ice is destroyed after withdrawing the shield.
+tooltip.metallurgy.lemurite_shield=§fWhile active, makes the player completely invisible to most entities (including other players).
+tooltip.metallurgy.orichalcum_buckler=Upgraded buckler. §2When attacked by a ranged enemy, reflects 1.5x of the damage to the attacker and teleports them to be within melee reach.
+tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a melee enemy, creates a small explosion that knocks them back.
+tooltip.metallurgy.zinc_buckler=A generic buckler, a lighter and more durable alternative to the normal shield. While active, does not hinder the players movement speed but has a cooldown after each block. 
 
 #Shovel
 tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops

@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: TraitDeeply
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: TraitDeeply
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
@@ -37,7 +35,7 @@ public class TraitDeeply extends AbstractArmorTrait implements IConarmMetallurgy
 	public void onArmorTick(PlayerTickEvent event)
 	{
 		EntityPlayer pl = event.player;
-		if (MetallurgyConArmorStats.isArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative())
+		if (MetallurgyConArmorStats.hasValidArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative())
 		{
 			for (int i = 5; i < 9; i++)
 			{

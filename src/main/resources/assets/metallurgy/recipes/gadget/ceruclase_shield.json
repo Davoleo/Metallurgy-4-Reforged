@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SCS",
+    "CWC",
+    "SCS"
+  ],
+  "key": {
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "ingotCeruclase"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "S": {
+      "item": "minecraft:snow"
+    }
+  },
+  "result": {
+    "item": "metallurgy:ceruclase_shield"
+  }
+}

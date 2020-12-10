@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: ShadowSteelArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: ShadowSteelArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -34,7 +32,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.shadowSteelArmorEffect;
+		return ArmorEffectsConfig.shadowSteelArmorEffect && super.isEnabled();
 	}
 
 	@Override
@@ -64,7 +62,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = ((EntityPlayer) entity);
 
-				if (EventUtils.isPlayerWearingArmor(player, metal))
+				if (EventUtils.isEntityWearingArmor(player, metal))
 				{
 					float amount = event.getAmount();
 					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness

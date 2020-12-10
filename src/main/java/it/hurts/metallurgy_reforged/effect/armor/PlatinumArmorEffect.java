@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: PlatinumArmorEffect
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: PlatinumArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
@@ -18,6 +16,7 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class PlatinumArmorEffect extends ArmorPotionEffect {
 
@@ -29,15 +28,25 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 	@Override
 	public boolean isEnabled()
 	{
-		return ArmorEffectsConfig.platinumArmorEffect;
+		return ArmorEffectsConfig.platinumArmorEffect && super.isEnabled();
+	}
+
+	@Override
+	public void livingEvent(LivingEvent event)
+	{
+		//Overwriting the normal potion effect event handling
+		//This effects needs some specific controls to work correctly
 	}
 
 	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		if (EventUtils.isPlayerWearingArmor(player, metal))
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
+		if (EventUtils.isEntityWearingArmor(player, metal)) {
+			if (player.world.getTotalWorldTime() % 220 == 0) {
+				PotionEffect effect = new PotionEffect(MobEffects.NIGHT_VISION, 400, 0, false, false);
+				effect.setPotionDurationMax(true);
+				player.addPotionEffect(effect);
+			}
 			player.addTag("platinum_effect");
 		}
 		else if (player.getTags().contains("platinum_effect"))

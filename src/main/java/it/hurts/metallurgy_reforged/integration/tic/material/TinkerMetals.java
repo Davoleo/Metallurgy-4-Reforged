@@ -1,13 +1,11 @@
-/*
- * -------------------------------------------------------------------------------------------------------
- * Class: TinkerMetals
- * This class is part of Metallurgy 4 Reforged
- * Complete source code is available at: https://github.com/Davoleo/Metallurgy-4-Reforged
- * This code is licensed under GNU GPLv3
- * Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- * Copyright (c) 2020.
- * --------------------------------------------------------------------------------------------------------
- */
+/*==============================================================================
+ = Class: TinkerMetals
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2020.
+ =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic.material;
 
@@ -48,7 +46,7 @@ public class TinkerMetals {
 			new HeadMaterialStats(180, 25F, 6, 3),
 			new HandleMaterialStats(0.45F, 190),
 			new ExtraMaterialStats(15),
-			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12, 6 / 12));
+			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12F, 6 / 12F));
 
 	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM,
 			new HandleMaterialStats(0.75F, 300),
