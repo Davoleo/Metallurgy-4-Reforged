@@ -472,7 +472,7 @@ public class GadgetsHandler {
 	@SubscribeEvent
 	public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
 		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
-			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getFrom());
+			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
 	}
 
 }
