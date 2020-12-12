@@ -9,10 +9,9 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,8 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 
-import javax.annotation.Nullable;
-
+@Deprecated
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
 	public HaderothArmorEffect()
@@ -33,24 +31,10 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.HADEROTH);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.haderothArmorEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
+    }
 
 	@Override
 	public void onPlayerCollision(GetCollisionBoxesEvent event)

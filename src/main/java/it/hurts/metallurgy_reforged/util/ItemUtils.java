@@ -62,16 +62,14 @@ public class ItemUtils {
 	}
 
 	//method to check if stack is a specific tool Material
-	public static boolean isItemStackASpecificToolMaterial(Metal metal, ItemStack toolStack, String... except)
-	{
+    @Deprecated
+    public static boolean isItemStackASpecificToolMaterial(Metal metal, ItemStack toolStack, String... except) {
 
-		Item item = toolStack.getItem();
-		if (!toolStack.isEmpty() && item instanceof ItemTool)
-		{
-			ItemTool tool = (ItemTool) toolStack.getItem();
-			boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
-			for (String type : except)
-			{
+        Item item = toolStack.getItem();
+        if (!toolStack.isEmpty() && item instanceof ItemTool) {
+            ItemTool tool = (ItemTool) toolStack.getItem();
+            boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
+            for (String type : except) {
 				String toolName = metal.getStats().getName() + "_" + type;
 				if (tool.getTranslationKey().equalsIgnoreCase(toolName))
 					valid = false;
@@ -105,13 +103,15 @@ public class ItemUtils {
 		}
 	}
 
-	/**
-	 * checks if an itemstack is made of a specific armor material
-	 */
-	public static boolean isItemStackSpecificArmorMaterial(Metal metal, ItemStack armor)
-	{
-		return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase) armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
-	}
+    /**
+     * checks if an itemstack is made of a specific armor material
+     *
+     * @deprecated you can use {@link ItemUtils#getMetalFromItem(Item)} to achieve the same thing
+     */
+    @Deprecated
+    public static boolean isItemStackSpecificArmorMaterial(Metal metal, ItemStack armor) {
+        return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase) armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
+    }
 
 	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta)

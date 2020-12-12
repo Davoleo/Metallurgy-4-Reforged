@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: IgnatiusAxeShovelEffect
+ = Class: IgnatiusToolEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -21,33 +21,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 
-import javax.annotation.Nullable;
+public class IgnatiusToolEffect extends BaseMetallurgyEffect {
 
-public abstract class IgnatiusAxeShovelEffect extends BaseMetallurgyEffect {
-
-	public IgnatiusAxeShovelEffect()
-	{
+	public IgnatiusToolEffect() {
 		super(ModMetals.IGNATIUS);
 	}
 
 	@Override
-	public boolean isEnabled()
-	{
-		if (!super.isEnabled())
-			return false;
-
-		return getToolClass() == EnumTools.AXE ? ToolEffectsConfig.ignatiusAxeEffect : ToolEffectsConfig.ignatiusShovelEffect;
+	public EnumEffectCategory getCategory() {
+		return EnumEffectCategory.TOOL;
 	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public abstract EnumTools getToolClass();
 
 	@Override
 	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)

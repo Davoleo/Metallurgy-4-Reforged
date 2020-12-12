@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.ArmorPotionEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -23,12 +22,6 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 	public CelenegilArmorEffect()
 	{
 		super(ModMetals.CELENEGIL, null, 0);
-	}
-
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.celenegilArmorEffect && super.isEnabled();
 	}
 
 	@Override

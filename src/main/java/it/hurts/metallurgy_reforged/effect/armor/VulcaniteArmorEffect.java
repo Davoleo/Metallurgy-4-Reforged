@@ -9,17 +9,14 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
-import javax.annotation.Nullable;
-
+@Deprecated
 public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 
 	public VulcaniteArmorEffect()
@@ -27,30 +24,10 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.VULCANITE);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.vulcaniteArmorEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
+    }
 
 	@Override
 	public void livingEvent(LivingEvent event)

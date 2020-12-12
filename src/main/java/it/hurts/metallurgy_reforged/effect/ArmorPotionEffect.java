@@ -10,43 +10,25 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
-import javax.annotation.Nullable;
-
-public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
+public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
 	private final Potion potion;
 	private int amplifier;
 
-	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier)
-	{
+	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier) {
 		super(metal);
 		this.potion = potion;
 		this.amplifier = amplifier;
 	}
 
 	@Override
-	public boolean isEnabled()
-	{
-		return super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
+	public EnumEffectCategory getCategory() {
+		return EnumEffectCategory.ARMOR;
 	}
 
 	@Override

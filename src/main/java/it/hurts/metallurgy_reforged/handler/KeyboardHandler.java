@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.handler;
 import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
 import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
@@ -29,17 +29,13 @@ public class KeyboardHandler {
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void onKeyInput(InputEvent.KeyInputEvent event)
-	{
+	public static void onKeyInput(InputEvent.KeyInputEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
 
-		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && ArmorEffectsConfig.krikArmorEffect)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-			{
-				if (capability != null && capability.getHeight() < KrikEffect.getMaxLevel(player))
-				{
+		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikArmorEffect) {
+			if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+				if (capability != null && capability.getHeight() < KrikEffect.getMaxLevel(player)) {
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
 					capability.setHeight(capability.getHeight() + 1);
 				}

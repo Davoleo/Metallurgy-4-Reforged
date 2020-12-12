@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,112 +24,88 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
+@Deprecated
 public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 
-	public DesichalkosSwordEffect()
-	{
-		super(ModMetals.DESICHALKOS);
-	}
+    public DesichalkosSwordEffect() {
+        super(ModMetals.DESICHALKOS);
+    }
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ToolEffectsConfig.desichalkosSwordEffect && super.isEnabled();
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
+    @Override
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (event instanceof PlayerInteractEvent.RightClickItem) {
+            EntityPlayer player = event.getEntityPlayer();
+            World world = event.getWorld();
+            Item sword = player.getHeldItem(event.getHand()).getItem();
+            int radius = 10;
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.SWORD;
-	}
+            if (sword == metal.getTool(EnumTools.SWORD)) {
+                Vec3d look = player.getLookVec();
+                Vec3d scaledLookVec = look.scale(radius);
 
-	@Override
-	public void onPlayerInteract(PlayerInteractEvent event)
-	{
-		if (event instanceof PlayerInteractEvent.RightClickItem)
-		{
-			EntityPlayer player = event.getEntityPlayer();
-			World world = event.getWorld();
-			Item sword = player.getHeldItem(event.getHand()).getItem();
-			int radius = ToolEffectsConfig.desichalkosSwordBlinkRadius;
+                Vec3d eyePosition = player.getPositionEyes(1.0F);
+                Vec3d targetPos = new Vec3d(eyePosition.x + scaledLookVec.x,
+                        eyePosition.y + scaledLookVec.y,
+                        eyePosition.z + scaledLookVec.z);
+                RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos,
+                        false, true, true);
 
-			if (sword == metal.getTool(EnumTools.SWORD))
-			{
-				Vec3d look = player.getLookVec();
-				Vec3d scaledLookVec = look.scale(radius);
+                if (result != null) {
+                    BlockPos pos = result.getBlockPos();
 
-				Vec3d eyePosition = player.getPositionEyes(1.0F);
-				Vec3d targetPos = new Vec3d(eyePosition.x + scaledLookVec.x,
-						eyePosition.y + scaledLookVec.y,
-						eyePosition.z + scaledLookVec.z);
-				RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos,
-						false, true, true);
+                    switch (result.sideHit) {
+                        case WEST:
+                            this.teleport(player, pos.getX() - 1, pos.getY(), pos.getZ());
+                            break;
+                        case EAST:
+                            this.teleport(player, pos.getX() + 1, pos.getY(), pos.getZ());
+                            break;
+                        case NORTH:
+                            this.teleport(player, pos.getX(), pos.getY(), pos.getZ() - 1);
+                            break;
+                        case SOUTH:
+                            this.teleport(player, pos.getX(), pos.getY(), pos.getZ() + 1);
+                            break;
+                        case UP:
+                            this.teleport(player, pos.getX(), pos.getY() + 1, pos.getZ());
+                            break;
+                        case DOWN:
+                            this.teleport(player, pos.getX(), pos.getY() - player.height, pos.getZ());
+                            break;
+                    }
+                } else {
+                    this.teleport(player, targetPos.x, player.getPosition().getY(), targetPos.z);
+                }
 
-				if (result != null)
-				{
-					BlockPos pos = result.getBlockPos();
+                player.swingArm(event.getHand());
 
-					switch (result.sideHit)
-					{
-						case WEST:
-							this.teleport(player, pos.getX() - 1, pos.getY(), pos.getZ());
-							break;
-						case EAST:
-							this.teleport(player, pos.getX() + 1, pos.getY(), pos.getZ());
-							break;
-						case NORTH:
-							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() - 1);
-							break;
-						case SOUTH:
-							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() + 1);
-							break;
-						case UP:
-							this.teleport(player, pos.getX(), pos.getY() + 1, pos.getZ());
-							break;
-						case DOWN:
-							this.teleport(player, pos.getX(), pos.getY() - player.height, pos.getZ());
-							break;
-					}
-				}
-				else
-				{
-					this.teleport(player, targetPos.x, player.getPosition().getY(), targetPos.z);
-				}
+                world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
+                player.getCooldownTracker().setCooldown(sword, 20 * 3);
+            }
+        }
+    }
 
-				player.swingArm(event.getHand());
+    private void teleport(EntityPlayer player, double x, double y, double z) {
+        Random random = new Random();
 
-				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-				player.getCooldownTracker().setCooldown(sword, 20 * ToolEffectsConfig.desichalkosSwordEffectCooldown);
-			}
-		}
-	}
-
-	private void teleport(EntityPlayer player, double x, double y, double z)
-	{
-		Random random = new Random();
-
-		for (int j = 0; j < 128; ++j)
-		{
-			double d6 = (double) j / 127.0D;
-			float f = (random.nextFloat() - 0.5F) * 0.2F;
-			float f1 = (random.nextFloat() - 0.5F) * 0.2F;
-			float f2 = (random.nextFloat() - 0.5F) * 0.2F;
-			double d3 = player.posX + (x - player.posX) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
-			double d4 = player.posY + (y - player.posY) * d6 + random.nextDouble() * (double) player.height;
-			double d5 = player.posZ + (z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
-			player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
-		}
-		player.setPositionAndUpdate(x, y, z);
-	}
+        for (int j = 0; j < 128; ++j) {
+            double d6 = (double) j / 127.0D;
+            float f = (random.nextFloat() - 0.5F) * 0.2F;
+            float f1 = (random.nextFloat() - 0.5F) * 0.2F;
+            float f2 = (random.nextFloat() - 0.5F) * 0.2F;
+            double d3 = player.posX + (x - player.posX) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
+            double d4 = player.posY + (y - player.posY) * d6 + random.nextDouble() * (double) player.height;
+            double d5 = player.posZ + (z - player.posZ) * d6 + (random.nextDouble() - 0.5D) * (double) player.width * 2.0D;
+            player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
+        }
+        player.setPositionAndUpdate(x, y, z);
+    }
 
 }

@@ -9,10 +9,9 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -20,8 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 
-import javax.annotation.Nullable;
-
+@Deprecated
 public class EximiteArmorEffect extends BaseMetallurgyEffect {
 
 	public EximiteArmorEffect()
@@ -29,24 +27,10 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.EXIMITE);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.eximiteArmorEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
+    }
 
 	@Override
 	public void livingEvent(LivingEvent event) {

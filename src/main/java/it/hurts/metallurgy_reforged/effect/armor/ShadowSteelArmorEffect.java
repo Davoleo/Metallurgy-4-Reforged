@@ -9,10 +9,9 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
@@ -20,8 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import javax.annotation.Nullable;
-
+@Deprecated
 public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 
 	public ShadowSteelArmorEffect()
@@ -29,24 +27,10 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.SHADOW_STEEL);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ArmorEffectsConfig.shadowSteelArmorEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
+    }
 
 	@Override
 	public void livingEvent(LivingEvent livingEvent)

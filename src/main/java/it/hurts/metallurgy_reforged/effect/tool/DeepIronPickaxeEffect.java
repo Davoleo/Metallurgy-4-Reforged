@@ -9,14 +9,11 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-import javax.annotation.Nullable;
 
 public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 
@@ -25,34 +22,15 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
 		super(ModMetals.DEEP_IRON);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ToolEffectsConfig.deepIronPickaxeEffect && super.isEnabled();
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.TOOL;
+    }
 
 	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.PICKAXE;
-	}
-
-	@Override
-	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
-	{
-		EntityPlayer player = event.getEntityPlayer();
-
-		if (player.isInWater() && player.getHeldItemMainhand().getItem() == metal.getTool(EnumTools.PICKAXE))
-		{
-			event.setNewSpeed(event.getOriginalSpeed() * 3);
-		}
-	}
+	public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {
+        if (event.getEntityPlayer().isWet())
+            event.setNewSpeed(event.getOriginalSpeed() * 3);
+    }
 
 }

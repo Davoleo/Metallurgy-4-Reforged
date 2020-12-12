@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: AtlarusSwordEffect
+ = Class: AtlarusWeaponEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
@@ -23,30 +23,16 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class AtlarusSwordEffect extends BaseMetallurgyEffect {
+public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
 
-	public AtlarusSwordEffect()
-	{
-		super(ModMetals.ATLARUS);
-	}
+    public AtlarusWeaponEffect() {
+        super(ModMetals.ATLARUS);
+    }
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ToolEffectsConfig.atlarusSwordEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.SWORD;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
 	@Override
 	public void onPlayerInteract(PlayerInteractEvent event)

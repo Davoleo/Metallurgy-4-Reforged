@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: DeepIronShadowSteelSwordEffect
+ = Class: DeepIronShadowSteelWeaponEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -22,41 +22,23 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
-public class DeepIronShadowSteelSwordEffect extends BaseMetallurgyEffect {
+@Deprecated
+public class DeepIronShadowSteelWeaponEffect extends BaseMetallurgyEffect {
 
-	//The speed sword modifier UUID
-	private final UUID SHADOW_STEEL_SWORD_MODIFIER_UUID = UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
-	private final UUID DEEP_IRON_SWORD_MODIFIER_UUID = UUID.fromString("8dfd3581-6559-468f-a5a5-66c46ff7b70b");
+    //The speed sword modifier UUID
+    private final UUID SHADOW_STEEL_SWORD_MODIFIER_UUID = UUID.fromString("9bfd3581-6559-468f-a5a5-66c46ff7b70c");
+    private final UUID DEEP_IRON_SWORD_MODIFIER_UUID = UUID.fromString("8dfd3581-6559-468f-a5a5-66c46ff7b70b");
 
-	public DeepIronShadowSteelSwordEffect(Metal metal)
-	{
-		super(metal);
-	}
+    public DeepIronShadowSteelWeaponEffect(Metal metal) {
+        super(metal);
+    }
 
-	@Override
-	public boolean isEnabled()
-	{
-		if (!super.isEnabled())
-			return false;
-
-		return metal == ModMetals.DEEP_IRON ? ToolEffectsConfig.deepIronSwordEffect : ToolEffectsConfig.shadowSteelSwordEffect;
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.SWORD;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
 	@Override
 	public void onPlayerTick(EntityPlayer player)

@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.block.BlockBush;
@@ -28,8 +28,6 @@ import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import javax.annotation.Nullable;
-
 public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 
 	private static final int MAX_RANGE = 5;
@@ -39,24 +37,10 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 		super(ModMetals.ATLARUS);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		return ToolEffectsConfig.atlarusHoeEffect && super.isEnabled();
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.HOE;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.HOE;
+    }
 
 	@Override
 	public void onPlayerTick(EntityPlayer player)

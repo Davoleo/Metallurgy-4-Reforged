@@ -9,14 +9,19 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
+import com.google.common.base.CaseFormat;
+import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -24,8 +29,12 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.Nullable;
+import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.List;
 
 public abstract class BaseMetallurgyEffect {
@@ -42,44 +51,70 @@ public abstract class BaseMetallurgyEffect {
 		}
 	}
 
-	//TODO Maybe look for metal config reference automatically
-	public boolean isEnabled()
-	{
-		return metal != null;
-	}
+	public boolean isEnabled() {
+		if (metal == null)
+			return false;
+		else {
+			String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
 
-	public abstract boolean isToolEffect();
-
-	@Nullable
-	public abstract EnumTools getToolClass();
-
-	public String getTooltip()
-	{
-
-		if (isToolEffect())
-		{
-			if (getToolClass() != null)
-			{
-				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_" + getToolClass().getName() + "_effect");
+			try {
+				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
+				return enabledField.getBoolean(EffectsConfig.class);
+			} catch (NoSuchFieldException | IllegalAccessException e) {
+				Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
+				e.printStackTrace();
+				return true;
 			}
-			else
-			{
-				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_tool_effect");
-			}
-		}
-		else
-		{
-			return Utils.localize("tooltip.metallurgy." + metal.toString() + "_armor_effect");
 		}
 	}
 
-	public Metal getMetal()
-	{
+	public abstract EnumEffectCategory getCategory();
+
+	public float getLevel(EntityPlayer player) {
+
+		EnumEffectCategory category = getCategory();
+
+		if (category == EnumEffectCategory.ALL) {
+			if (EventUtils.getArmorPiecesCount(player, metal.getArmorSet()) > 0 || player.getHeldItemMainhand().getItem() instanceof IToolEffect) {
+				return 1;
+			}
+		}
+
+		if (category == EnumEffectCategory.ARMOR) {
+			return EventUtils.getArmorPiecesCount(player, metal.getArmorSet()) * 0.25F;
+		} else if (player.getHeldItemMainhand().getItem() instanceof IToolEffect) {
+			IToolEffect tool = ((IToolEffect) player.getHeldItemMainhand().getItem());
+
+			if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
+				if (tool.getMetalStats().getName().equals(metal.toString())) {
+					return 1;
+				}
+			}
+		}
+
+		return 0;
+	}
+
+	public boolean canBeApplied(EntityPlayer player) {
+		return getLevel(player) > 0;
+	}
+
+	/**
+	 * @return A pair of Strings, the first containing the effect name and the second containing its description
+	 */
+	public Pair<String, String> getTooltip() {
+		TextFormatting format = Utils.getSimilarMinecraftColor(new Color(metal.getStats().getColorHex()));
+		String name = format.toString() + Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+		String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
+		return ImmutablePair.of(name, description);
+	}
+
+	public Metal getMetal() {
 		return metal;
 	}
 
-	public void onPlayerTick(EntityPlayer player)
-	{ }
+	public void onPlayerTick(EntityPlayer player) {
+	}
 
 	@SideOnly(Side.CLIENT)
 	public void onEntitiesRender(EntityLivingBase entity, RenderLivingBase<EntityLivingBase> renderer, float partialRenderTicks, double x, double y, double z)

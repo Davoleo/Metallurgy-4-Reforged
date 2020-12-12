@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -25,8 +25,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
+@Deprecated
 public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect {
 
 	public VulcaniteIgnatiusSwordEffect(Metal metal)
@@ -34,27 +33,10 @@ public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect {
 		super(metal);
 	}
 
-	@Override
-	public boolean isEnabled()
-	{
-		if (!super.isEnabled())
-			return false;
-
-		return metal == ModMetals.IGNATIUS ? ToolEffectsConfig.ignatiusSwordEffect : ToolEffectsConfig.vulcaniteSwordEffect;
-	}
-
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.SWORD;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
 	@Override
 	public void onPlayerAttack(EntityPlayer attacker, Entity target)
