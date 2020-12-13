@@ -25,8 +25,8 @@ public class EffectHandler {
 		if (event.getEntityLiving() instanceof EntityPlayer)
 			for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 				for (BaseMetallurgyEffect.EventInstance eventInstance : effect.getEvents())
-					if (eventInstance.canApply(event) && effect.canBeApplied((EntityPlayer) event.getEntityLiving()))
-						eventInstance.getConsumer().accept(event);
+					if (eventInstance.equalsEvent(event) && effect.canBeApplied((EntityPlayer) event.getEntityLiving()))
+						eventInstance.getHandler().accept(event);
 
 	}
 

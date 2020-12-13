@@ -129,23 +129,20 @@ public abstract class BaseMetallurgyEffect {
 
 	public static class EventInstance<E extends LivingEvent> {
 
-		private final Consumer<E> consumer;
-		private final Class<E> tClass;
+		private final Consumer<E> handler;
+		private final Class<E> eClass;
 
-		public EventInstance(Consumer<E> consumer, Class<E> tClass)
-		{
-			this.consumer = consumer;
-			this.tClass = tClass;
+		public EventInstance(Consumer<E> handler, Class<E> eClass) {
+			this.handler = handler;
+			this.eClass = eClass;
 		}
 
-		public Consumer<E> getConsumer()
-		{
-			return consumer;
+		public Consumer<E> getHandler() {
+			return handler;
 		}
 
-		public boolean canApply(LivingEvent event)
-		{
-			return event.getClass().equals(tClass);
+		public boolean equalsEvent(LivingEvent event) {
+			return event.getClass().equals(eClass);
 		}
 
 	}
