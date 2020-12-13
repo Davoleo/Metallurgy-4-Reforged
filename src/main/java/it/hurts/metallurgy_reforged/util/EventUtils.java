@@ -16,8 +16,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -58,23 +56,20 @@ public class EventUtils {
 	}
 
 	/**
-	 * @param player EntityPlayer
+	 * @param entity EntityLivingBase
 	 * @param armor  An array with all armor pieces
 	 *
 	 * @return The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityPlayer player, Item[] armor)
+	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
 	{
 
-		NonNullList<ItemStack> armorList = player.inventory.armorInventory;
-
 		int count = 0;
-		//Reverse for loop because armorList contains armor stacks in reverse order (index 0 are boots)
-		for (int i = 0; i < armorList.size(); i++)
-		{
-			if (armorList.get(3 - i).getItem().equals(armor[i]))
-				count++;
-		}
+
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+				if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
+					count++;
 
 		return count;
 	}

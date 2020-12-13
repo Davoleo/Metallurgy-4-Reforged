@@ -14,7 +14,6 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -25,26 +24,33 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 
+	private static final EventInstance<LivingEvent.LivingUpdateEvent> WIND_FALL_DAMAGE = new EventInstance<>(AtlarusArmorEffect::cancelFallDamage, LivingEvent.LivingUpdateEvent.class);
+
+
 	public AtlarusArmorEffect()
 	{
 		super(ModMetals.ATLARUS);
 	}
 
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 	@Override
-	public void livingEvent(LivingEvent event)
+	public EventInstance<? extends LivingEvent>[] getEvents()
 	{
-		if (!(event instanceof LivingEvent.LivingUpdateEvent))
-			return;
+		return new EventInstance[]{WIND_FALL_DAMAGE};
+	}
+
+	private static void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
+	{
 
 		EntityLivingBase entity = event.getEntityLiving();
 		World world = entity.world;
 
-		if (EventUtils.isEntityWearingArmor(entity, metal) && entity.fallDistance >= 4F)
+		if (entity.fallDistance >= 4F)
 		{
 			AxisAlignedBB nearCollitions = entity.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
 			if (world.collidesWithAnyBlock(nearCollitions))

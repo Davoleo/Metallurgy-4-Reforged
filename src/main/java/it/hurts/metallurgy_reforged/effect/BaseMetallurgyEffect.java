@@ -16,7 +16,8 @@ import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import org.apache.commons.lang3.ArrayUtils;
@@ -65,14 +66,16 @@ public abstract class BaseMetallurgyEffect {
 
 	public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityPlayer player)
+	public float getLevel(EntityLivingBase entity)
 	{
 
 		EnumEffectCategory category = getCategory();
 
+		Item heldItem = entity.getHeldItemMainhand().getItem();
+
 		if (category == EnumEffectCategory.ALL)
 		{
-			if (EventUtils.getArmorPiecesCount(player, metal.getArmorSet()) > 0 || player.getHeldItemMainhand().getItem() instanceof IToolEffect)
+			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || (heldItem instanceof IToolEffect && ((IToolEffect) heldItem).getMetalStats().getName().equals(metal.toString())))
 			{
 				return 1;
 			}
@@ -80,11 +83,11 @@ public abstract class BaseMetallurgyEffect {
 
 		if (category == EnumEffectCategory.ARMOR)
 		{
-			return EventUtils.getArmorPiecesCount(player, metal.getArmorSet()) * 0.25F;
+			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
 		}
-		else if (player.getHeldItemMainhand().getItem() instanceof IToolEffect)
+		else if (heldItem instanceof IToolEffect)
 		{
-			IToolEffect tool = ((IToolEffect) player.getHeldItemMainhand().getItem());
+			IToolEffect tool = ((IToolEffect) heldItem);
 
 			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
 			{
@@ -102,9 +105,9 @@ public abstract class BaseMetallurgyEffect {
 	public abstract EventInstance<? extends LivingEvent>[] getEvents();
 
 
-	public boolean canBeApplied(EntityPlayer player)
+	public boolean canBeApplied(EntityLivingBase entity)
 	{
-		return getLevel(player) > 0;
+		return getLevel(entity) > 0;
 	}
 
 	/**
