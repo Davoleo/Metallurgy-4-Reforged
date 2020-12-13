@@ -88,7 +88,7 @@ dependencies {
     implementation 'constructs-armory:conarm:1.12.2:1.2.5.9'
      
     //Industrial Foregoing
-    compileOnly 'curse.maven:industrialforegoing-api:2745323'
+    compileOnly 'curse.maven:industrialforegoing_api-266515:2745323'
 
     //CraftTweaker
     compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.586'
