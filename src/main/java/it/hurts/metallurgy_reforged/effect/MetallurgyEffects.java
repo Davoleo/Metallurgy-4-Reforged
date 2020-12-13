@@ -58,8 +58,11 @@ public class MetallurgyEffects {
         }
     }
 
-    //Symbiosis (I) - Effect
+    //Symbiosis (I)
     public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
+
+    //Symbiosis (II)
+    public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
 
     //Angmallen Armor (Luck I for Vampirism)
     @Deprecated
