@@ -1,3 +1,8 @@
+### 1.2.1
+- :globe_with_meridians: Added Russian Localization files
+- :globe_with_meridians: Updated Swedish Localization files [#301](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/301)
+- :bug: Fixed Ceruclase Shield inconsistent behaviour [#299](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/299)
+
 ### 1.2.0
 - :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
 - :dart: Atlarus and Vulcanite Armor effects now works on mobs
