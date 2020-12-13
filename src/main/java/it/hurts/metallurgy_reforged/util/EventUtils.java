@@ -65,6 +65,7 @@ public class EventUtils {
 	 */
 	public static int getArmorPiecesCount(EntityPlayer player, Item[] armor)
 	{
+
 		NonNullList<ItemStack> armorList = player.inventory.armorInventory;
 
 		int count = 0;
