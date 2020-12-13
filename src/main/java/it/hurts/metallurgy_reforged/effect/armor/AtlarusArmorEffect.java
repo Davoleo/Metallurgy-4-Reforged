@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,25 +25,21 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 
-	private static final EventInstance<LivingEvent.LivingUpdateEvent> WIND_FALL_DAMAGE = new EventInstance<>(AtlarusArmorEffect::cancelFallDamage, LivingEvent.LivingUpdateEvent.class);
+    private static final LivingEventHandler<LivingEvent.LivingUpdateEvent> WIND_FALL_DAMAGE = new LivingEventHandler<>(AtlarusArmorEffect::cancelFallDamage, LivingEvent.LivingUpdateEvent.class);
 
+    public AtlarusArmorEffect() {
+        super(ModMetals.ATLARUS);
+    }
 
-	public AtlarusArmorEffect()
-	{
-		super(ModMetals.ATLARUS);
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public EnumEffectCategory getCategory()
-	{
-		return EnumEffectCategory.ARMOR;
-	}
-
-	@Override
-	public EventInstance<? extends LivingEvent>[] getEvents()
-	{
-		return new EventInstance[]{WIND_FALL_DAMAGE};
-	}
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[]{WIND_FALL_DAMAGE};
+    }
 
 	private static void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
 	{

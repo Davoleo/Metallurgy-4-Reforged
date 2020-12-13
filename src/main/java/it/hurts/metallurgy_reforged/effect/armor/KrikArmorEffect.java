@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -22,26 +23,23 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 public class KrikArmorEffect extends BaseMetallurgyEffect {
 
-	private static final EventInstance<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new EventInstance<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
-	private static final EventInstance<LivingFallEvent> CANCEL_FALL = new EventInstance<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
+    private static final LivingEventHandler<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new LivingEventHandler<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
+    private static final LivingEventHandler<LivingFallEvent> CANCEL_FALL = new LivingEventHandler<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
 
 
-	public KrikArmorEffect()
-	{
-		super(ModMetals.KRIK);
-	}
+    public KrikArmorEffect() {
+        super(ModMetals.KRIK);
+    }
 
-	@Override
-	public EnumEffectCategory getCategory()
-	{
+    @Override
+    public EnumEffectCategory getCategory() {
 		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public EventInstance<? extends LivingEvent>[] getEvents()
-	{
-		return new EventInstance[]{LEVITATE_EFFECT, CANCEL_FALL};
-	}
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[]{LEVITATE_EFFECT, CANCEL_FALL};
+    }
 
 	private static void livingUpdate(LivingEvent.LivingUpdateEvent event)
 	{

@@ -10,10 +10,12 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -26,23 +28,27 @@ public class WeaponHitChanceEffect extends BaseMetallurgyEffect {
 
 	public WeaponHitChanceEffect(Metal metal, int chance, Supplier<PotionEffect> effect) {
 		super(metal);
-		this.chance = chance;
-		this.effect = effect;
-	}
+        this.chance = chance;
+        this.effect = effect;
+    }
 
-	@Override
-	public EnumEffectCategory getCategory() {
-		return EnumEffectCategory.WEAPON;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
-	@Override
-	public void onPlayerAttack(EntityPlayer attacker, Entity target) {
-		if (!attacker.world.isRemote && target instanceof EntityLivingBase) {
-			if (random.nextInt(100) < chance) {
-				EntityLivingBase livingTarget = ((EntityLivingBase) target);
-				livingTarget.addPotionEffect(effect.get());
-			}
-		}
-	}
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
+    public void onPlayerAttack(EntityPlayer attacker, Entity target) {
+        if (!attacker.world.isRemote && target instanceof EntityLivingBase) {
+            if (random.nextInt(100) < chance) {
+                EntityLivingBase livingTarget = ((EntityLivingBase) target);
+                livingTarget.addPotionEffect(effect.get());
+            }
+        }
+    }
 
 }

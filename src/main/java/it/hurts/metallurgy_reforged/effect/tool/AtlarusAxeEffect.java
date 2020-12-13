@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockVine;
 import net.minecraft.block.state.IBlockState;
@@ -29,6 +30,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import slimeknights.tconstruct.TConstruct;
 
@@ -48,6 +50,10 @@ public class AtlarusAxeEffect extends BaseMetallurgyEffect {
     }
 
     @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
     public void onPlayerInteract(PlayerInteractEvent event) {
         World world = event.getWorld();
         ItemStack stack = event.getItemStack();

@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.entity.ai.AIEndermanPlayerSteal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +27,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -51,6 +53,10 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
     }
 
     @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
     public void onEntityEnteringChunk(Entity entity) {
         if (entity instanceof EntityEnderman) {
             EntityData entityData = entity.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
@@ -60,7 +66,6 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
         }
     }
 
-    @Override
     public void onPlayerInteract(PlayerInteractEvent event) {
         EntityPlayer player = event.getEntityPlayer();
         if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isEntityWearingArmor(player, metal)) {

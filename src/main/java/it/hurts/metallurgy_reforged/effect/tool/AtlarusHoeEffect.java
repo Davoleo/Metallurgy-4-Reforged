@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.MaterialTransparent;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,26 +33,27 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 
 	private static final int MAX_RANGE = 5;
 
-	public AtlarusHoeEffect()
-	{
-		super(ModMetals.ATLARUS);
-	}
+	public AtlarusHoeEffect() {
+        super(ModMetals.ATLARUS);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.HOE;
     }
 
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-		World world = player.world;
-		ItemStack stack = player.getHeldItemMainhand();
-		if (stack.getItem() == metal.getTool(EnumTools.HOE) && world.getTotalWorldTime() % 4 == 0)
-		{
-			NBTTagCompound tag = stack.getTagCompound();
-			if (tag != null && tag.hasKey("range"))
+    public void onPlayerTick(EntityPlayer player) {
+
+        World world = player.world;
+        ItemStack stack = player.getHeldItemMainhand();
+        if (stack.getItem() == metal.getTool(EnumTools.HOE) && world.getTotalWorldTime() % 4 == 0) {
+            NBTTagCompound tag = stack.getTagCompound();
+            if (tag != null && tag.hasKey("range"))
 			{
 				NBTTagCompound posTag = tag.getCompoundTag("startPos");
 				BlockPos startPos = new BlockPos(posTag.getInteger("posX"), posTag.getInteger("posY"), posTag.getInteger("posZ"));
@@ -124,7 +126,6 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 		return 0;
 	}
 
-	@Override
 	public void onPlayerInteract(PlayerInteractEvent event)
 	{
 
@@ -162,7 +163,6 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 
 	}
 
-	@Override
 	public void livingEvent(LivingEvent event)
 	{
 

@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -22,25 +23,27 @@ public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
 	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier) {
 		super(metal);
-		this.potion = potion;
-		this.amplifier = amplifier;
-	}
+        this.potion = potion;
+        this.amplifier = amplifier;
+    }
 
-	@Override
-	public EnumEffectCategory getCategory() {
-		return EnumEffectCategory.ARMOR;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.ARMOR;
+    }
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (event instanceof LivingEvent.LivingUpdateEvent)
-		{
-			boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
-				event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
-		}
+    public void livingEvent(LivingEvent event) {
+        if (event instanceof LivingEvent.LivingUpdateEvent) {
+            boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
+
+            if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
+                event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
+        }
 	}
 
 }

@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
@@ -56,6 +57,9 @@ public class MetallurgyEffects {
             }
         }
     }
+
+    //Symbiosis (I) - Effect
+    public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
 
     //Angmallen Armor (Luck I for Vampirism)
     @Deprecated

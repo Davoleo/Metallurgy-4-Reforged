@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -19,26 +20,26 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 @Deprecated
 public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 
-	public VulcaniteArmorEffect()
-	{
-		super(ModMetals.VULCANITE);
-	}
+	public VulcaniteArmorEffect() {
+        super(ModMetals.VULCANITE);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (event instanceof LivingAttackEvent)
-		{
-			boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && isFireDamage)
-			{
-				event.setCanceled(true);
+    public void livingEvent(LivingEvent event) {
+        if (event instanceof LivingAttackEvent) {
+            boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
+
+            if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && isFireDamage) {
+                event.setCanceled(true);
 			}
 		}
 		if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())

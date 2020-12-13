@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ModChecker;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,26 +28,26 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 @Deprecated
 public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
 
-	public QuicksilverArmorEffect()
-	{
-		super(ModMetals.QUICKSILVER);
-	}
+	public QuicksilverArmorEffect() {
+        super(ModMetals.QUICKSILVER);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
-	@Override
-	public void livingEvent(LivingEvent livingEvent)
-	{
-		if (livingEvent instanceof LivingEntityUseItemEvent)
-		{
-			LivingEntityUseItemEvent event = ((LivingEntityUseItemEvent) livingEvent);
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-			if (event.getEntityLiving() instanceof EntityPlayer)
-			{
-				EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
+    public void livingEvent(LivingEvent livingEvent) {
+        if (livingEvent instanceof LivingEntityUseItemEvent) {
+            LivingEntityUseItemEvent event = ((LivingEntityUseItemEvent) livingEvent);
+
+            if (event.getEntityLiving() instanceof EntityPlayer) {
+                EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
 
 				if (EventUtils.isEntityWearingArmor(player, metal))
 				{

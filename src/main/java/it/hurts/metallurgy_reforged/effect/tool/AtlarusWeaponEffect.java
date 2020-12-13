@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -21,6 +22,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
@@ -34,15 +36,16 @@ public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.WEAPON;
     }
 
-	@Override
-	public void onPlayerInteract(PlayerInteractEvent event)
-	{
-		if (event instanceof PlayerInteractEvent.RightClickItem)
-		{
-			World world = event.getWorld();
-			EntityPlayer player = event.getEntityPlayer();
-			if (event.getItemStack().getItem() == metal.getTool(EnumTools.SWORD))
-			{
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (event instanceof PlayerInteractEvent.RightClickItem) {
+            World world = event.getWorld();
+            EntityPlayer player = event.getEntityPlayer();
+            if (event.getItemStack().getItem() == metal.getTool(EnumTools.SWORD)) {
 
 
 				AxisAlignedBB box = new AxisAlignedBB(player.posX, player.posY, player.posZ, player.posX, player.posY, player.posZ).grow(5D);

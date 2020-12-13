@@ -13,35 +13,39 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 
 public class IgnatiusToolEffect extends BaseMetallurgyEffect {
 
-	public IgnatiusToolEffect() {
-		super(ModMetals.IGNATIUS);
-	}
+    public IgnatiusToolEffect() {
+        super(ModMetals.IGNATIUS);
+    }
 
-	@Override
-	public EnumEffectCategory getCategory() {
-		return EnumEffectCategory.TOOL;
-	}
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.TOOL;
+    }
 
-	@Override
-	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
-	{
-		if (event.getHarvester().getHeldItemMainhand().getItem().equals(metal.getTool(EnumTools.AXE)))
-		{
-			dropSmeltedItems(event);
-		}
-	}
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-	private void dropSmeltedItems(BlockEvent.HarvestDropsEvent event)
+    public void onBlockHarvested(BlockEvent.HarvestDropsEvent event) {
+        if (event.getHarvester().getHeldItemMainhand().getItem().equals(metal.getTool(EnumTools.AXE))) {
+            dropSmeltedItems(event);
+        }
+    }
+
+    private void dropSmeltedItems(BlockEvent.HarvestDropsEvent event)
 	{
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();

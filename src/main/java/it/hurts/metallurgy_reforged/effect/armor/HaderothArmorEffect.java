@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -21,31 +22,32 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 
 @Deprecated
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
-	public HaderothArmorEffect()
-	{
-		super(ModMetals.HADEROTH);
-	}
+	public HaderothArmorEffect() {
+        super(ModMetals.HADEROTH);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
-	@Override
-	public void onPlayerCollision(GetCollisionBoxesEvent event)
-	{
-		World world = event.getWorld();
-		EntityPlayer player = ((EntityPlayer) event.getEntity());
-		AxisAlignedBB playerBB = event.getAabb();
-		if (EventUtils.isEntityWearingArmor(player, metal))
-		{
-			if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA))
-			{
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
+    public void onPlayerCollision(GetCollisionBoxesEvent event) {
+        World world = event.getWorld();
+        EntityPlayer player = ((EntityPlayer) event.getEntity());
+        AxisAlignedBB playerBB = event.getAabb();
+        if (EventUtils.isEntityWearingArmor(player, metal)) {
+            if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA)) {
 				BlockPos.PooledMutableBlockPos minPos = BlockPos.PooledMutableBlockPos.retain(playerBB.minX + 0.001D, playerBB.minY + 0.001D, playerBB.minZ + 0.001D);
 				BlockPos.PooledMutableBlockPos maxPos = BlockPos.PooledMutableBlockPos.retain(playerBB.maxX - 0.001D, playerBB.maxY - 0.001D, playerBB.maxZ - 0.001D);
 				BlockPos.PooledMutableBlockPos pos = BlockPos.PooledMutableBlockPos.retain();

@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -21,6 +22,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 import java.util.UUID;
 
@@ -40,16 +42,19 @@ public class DeepIronShadowSteelWeaponEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.WEAPON;
     }
 
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-		ItemStack stack = player.getHeldItemMainhand();
-		IAttributeInstance attackSpeedInstance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-		Item deepIronSword = null;
-		Item shadowSteelSword = null;
+    public void onPlayerTick(EntityPlayer player) {
+        ItemStack stack = player.getHeldItemMainhand();
+        IAttributeInstance attackSpeedInstance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 
-		if (ModMetals.DEEP_IRON != null)
+        Item deepIronSword = null;
+        Item shadowSteelSword = null;
+
+        if (ModMetals.DEEP_IRON != null)
 			deepIronSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
 		if (ModMetals.SHADOW_STEEL != null)
 			shadowSteelSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);

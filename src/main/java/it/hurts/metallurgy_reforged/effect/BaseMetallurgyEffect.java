@@ -14,7 +14,9 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -26,7 +28,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.awt.*;
 import java.lang.reflect.Field;
-import java.util.function.Consumer;
 
 public abstract class BaseMetallurgyEffect {
 
@@ -66,33 +67,32 @@ public abstract class BaseMetallurgyEffect {
 
 	public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityLivingBase entity)
-	{
+	public float getLevel(EntityLivingBase entity) {
 
 		EnumEffectCategory category = getCategory();
 
-		Item heldItem = entity.getHeldItemMainhand().getItem();
+		Item mainItem = entity.getHeldItemMainhand().getItem();
+		Item offItem = entity.getHeldItemOffhand().getItem();
 
-		if (category == EnumEffectCategory.ALL)
-		{
-			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || (heldItem instanceof IToolEffect && ((IToolEffect) heldItem).getMetalStats().getName().equals(metal.toString())))
-			{
+		if (category == EnumEffectCategory.ALL) {
+			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem)) {
 				return 1;
 			}
 		}
 
-		if (category == EnumEffectCategory.ARMOR)
-		{
+		if (category == EnumEffectCategory.ARMOR) {
 			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
-		}
-		else if (heldItem instanceof IToolEffect)
-		{
-			IToolEffect tool = ((IToolEffect) heldItem);
-
-			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
-			{
-				if (tool.getMetalStats().getName().equals(metal.toString()))
-				{
+		} else if (ItemUtils.isMadeOfMetal(metal, mainItem)) {
+			IToolEffect tool = ((IToolEffect) mainItem);
+			if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
+				if (tool.getMetalStats().getName().equals(metal.toString())) {
+					return 1;
+				}
+			}
+		} else if (ItemUtils.isMadeOfMetal(metal, offItem)) {
+			IToolEffect tool = ((IToolEffect) offItem);
+			if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
+				if (tool.getMetalStats().getName().equals(metal.toString())) {
 					return 1;
 				}
 			}
@@ -102,11 +102,10 @@ public abstract class BaseMetallurgyEffect {
 	}
 
 
-	public abstract EventInstance<? extends LivingEvent>[] getEvents();
+	public abstract LivingEventHandler<? extends LivingEvent>[] getEvents();
 
 
-	public boolean canBeApplied(EntityLivingBase entity)
-	{
+	public boolean canBeApplied(EntityLivingBase entity) {
 		return getLevel(entity) > 0;
 	}
 
@@ -124,27 +123,6 @@ public abstract class BaseMetallurgyEffect {
 	public Metal getMetal()
 	{
 		return metal;
-	}
-
-
-	public static class EventInstance<E extends LivingEvent> {
-
-		private final Consumer<E> handler;
-		private final Class<E> eClass;
-
-		public EventInstance(Consumer<E> handler, Class<E> eClass) {
-			this.handler = handler;
-			this.eClass = eClass;
-		}
-
-		public Consumer<E> getHandler() {
-			return handler;
-		}
-
-		public boolean equalsEvent(LivingEvent event) {
-			return event.getClass().equals(eClass);
-		}
-
 	}
 
 

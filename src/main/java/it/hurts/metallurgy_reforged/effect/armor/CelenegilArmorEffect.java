@@ -24,20 +24,16 @@ public class CelenegilArmorEffect extends ArmorPotionEffect {
 		super(ModMetals.CELENEGIL, null, 0);
 	}
 
-	@Override
 	public void onPlayerTick(EntityPlayer player)
 	{
-		int armorCount = EventUtils.getArmorPiecesCount(player, metal.getArmorSet());
+        int armorCount = EventUtils.getArmorPiecesCount(player, metal);
 
-		if (armorCount > 2)
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
-		}
-		else if (armorCount > 0)
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
-		}
-	}
+        if (armorCount > 2) {
+            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
+        } else if (armorCount > 0) {
+            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
+        }
+    }
 
 	@Override
 	public void livingEvent(LivingEvent event)

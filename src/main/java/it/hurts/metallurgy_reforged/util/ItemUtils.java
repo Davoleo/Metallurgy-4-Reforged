@@ -14,6 +14,7 @@ import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
+import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -103,15 +104,25 @@ public class ItemUtils {
 		}
 	}
 
-    /**
-     * checks if an itemstack is made of a specific armor material
-     *
-     * @deprecated you can use {@link ItemUtils#getMetalFromItem(Item)} to achieve the same thing
-     */
-    @Deprecated
-    public static boolean isItemStackSpecificArmorMaterial(Metal metal, ItemStack armor) {
-        return !armor.isEmpty() && armor.getItem() instanceof ItemArmorBase && ((ItemArmorBase) armor.getItem()).getArmorMaterial().getName().equalsIgnoreCase(metal.getArmorMaterial().getName());
-    }
+	/**
+	 * Checks if an item is made of a specific metal
+	 *
+	 * @param metal the metal the item could be made of
+	 * @param item  the item to check
+	 *              TODO Implement the other metal items
+	 */
+	public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item) {
+
+		if (item instanceof ItemArmorBase) {
+			ItemArmorBase armor = ((ItemArmorBase) item);
+			return armor.getMetalStats().getName().equals(metal.toString());
+		} else if (item instanceof IToolEffect) {
+			IToolEffect tool = ((IToolEffect) item);
+			return tool.getMetalStats().getName().equals(metal.toString());
+		}
+
+		return false;
+	}
 
 	@SideOnly(Side.CLIENT)
 	public static void registerCustomItemModel(Item item, int meta)

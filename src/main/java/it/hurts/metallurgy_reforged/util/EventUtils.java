@@ -16,8 +16,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class EventUtils {
@@ -57,13 +60,10 @@ public class EventUtils {
 
 	/**
 	 * @param entity EntityLivingBase
-	 * @param armor  An array with all armor pieces
-	 *
+	 * @param metal  The metal you need to count the number of armor piece of
 	 * @return The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
-	{
-
+	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal) {
 		int count = 0;
 
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
@@ -74,9 +74,34 @@ public class EventUtils {
 		return count;
 	}
 
+	public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity) {
+
+		final List<ItemStack> equip = new ArrayList<>();
+
+		for (ItemStack stack : entity.getEquipmentAndArmor()) {
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem())) {
+				equip.add(stack);
+			}
+		}
+
+		return equip;
+	}
+
+	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity) {
+
+		final List<ItemStack> equip = new ArrayList<>();
+
+		for (ItemStack stack : entity.getEquipmentAndArmor()) {
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem())) {
+				equip.add(stack);
+			}
+		}
+
+		return equip.get(Utils.random.nextInt(equip.size()));
+	}
+
 	@Nullable
-	public static Metal getRandomMetalBasedOnDifficulty(World world)
-	{
+	public static Metal getRandomMetalBasedOnDifficulty(World world) {
 
 		//Some math Reminders
 		//(1 * 1 - 0) * 5 = 5;
@@ -87,8 +112,7 @@ public class EventUtils {
 		//(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
 		//(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
 		float chance = 0;
-		switch (world.getDifficulty().getId())
-		{
+		switch (world.getDifficulty().getId()) {
 			case 0:
 				chance = 0;
 				break;
@@ -105,8 +129,7 @@ public class EventUtils {
 
 		Random random = new Random();
 
-		if ((random.nextFloat() * 100) < chance)
-		{
+		if ((random.nextFloat() * 100) < chance) {
 			Metal[] metalllarray = ModMetals.metalMap.values().stream()
 					.filter(metal -> metal != null && metal.hasArmorSet())
 					.toArray(Metal[]::new);

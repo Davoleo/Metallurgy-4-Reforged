@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -22,26 +23,29 @@ import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 @Deprecated
 public class EximiteArmorEffect extends BaseMetallurgyEffect {
 
-	public EximiteArmorEffect()
-	{
-		super(ModMetals.EXIMITE);
-	}
+	public EximiteArmorEffect() {
+        super(ModMetals.EXIMITE);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
-	@Override
-	public void livingEvent(LivingEvent event) {
-		if (event instanceof LivingSetAttackTargetEvent) {
-			if (event.getEntityLiving() instanceof EntityEnderman) {
-				EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
-				if (target instanceof EntityPlayer) {
-					if (EventUtils.isEntityWearingArmor(target, metal)) {
-						((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
-					}
-				}
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
+
+    public void livingEvent(LivingEvent event) {
+        if (event instanceof LivingSetAttackTargetEvent) {
+            if (event.getEntityLiving() instanceof EntityEnderman) {
+                EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
+                if (target instanceof EntityPlayer) {
+                    if (EventUtils.isEntityWearingArmor(target, metal)) {
+                        ((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
+                    }
+                }
 			}
 		}
 	}

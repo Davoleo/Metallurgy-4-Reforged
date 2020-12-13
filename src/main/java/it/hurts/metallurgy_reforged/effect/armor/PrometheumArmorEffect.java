@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -20,26 +21,27 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 @Deprecated
 public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 
-	public PrometheumArmorEffect()
-	{
-		super(ModMetals.PROMETHEUM);
-	}
+	public PrometheumArmorEffect() {
+        super(ModMetals.PROMETHEUM);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (event instanceof LivingEvent.LivingUpdateEvent)
-		{
-			EntityLivingBase entity = event.getEntityLiving();
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-			if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
-				entity.removePotionEffect(MobEffects.POISON);
-		}
+    public void livingEvent(LivingEvent event) {
+        if (event instanceof LivingEvent.LivingUpdateEvent) {
+            EntityLivingBase entity = event.getEntityLiving();
+
+            if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
+                entity.removePotionEffect(MobEffects.POISON);
+        }
 	}
 
 }

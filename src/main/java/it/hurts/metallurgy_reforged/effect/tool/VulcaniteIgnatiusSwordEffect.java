@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,30 +25,33 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingEvent;
 
 @Deprecated
 public class VulcaniteIgnatiusSwordEffect extends BaseMetallurgyEffect {
 
-	public VulcaniteIgnatiusSwordEffect(Metal metal)
-	{
-		super(metal);
-	}
+	public VulcaniteIgnatiusSwordEffect(Metal metal) {
+        super(metal);
+    }
 
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
     }
 
-	@Override
-	public void onPlayerAttack(EntityPlayer attacker, Entity target)
-	{
-		Item ignatiusSword = null;
-		Item vulcaniteSword = null;
+    @Override
+    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
+        return new LivingEventHandler[0];
+    }
 
-		if (ModMetals.CELENEGIL != null)
-			ignatiusSword = ModMetals.IGNATIUS.getTool(EnumTools.SWORD);
-		if (ModMetals.SHADOW_STEEL != null)
-			vulcaniteSword = ModMetals.VULCANITE.getTool(EnumTools.SWORD);
+    public void onPlayerAttack(EntityPlayer attacker, Entity target) {
+        Item ignatiusSword = null;
+        Item vulcaniteSword = null;
+
+        if (ModMetals.CELENEGIL != null)
+            ignatiusSword = ModMetals.IGNATIUS.getTool(EnumTools.SWORD);
+        if (ModMetals.SHADOW_STEEL != null)
+            vulcaniteSword = ModMetals.VULCANITE.getTool(EnumTools.SWORD);
 
 		if (attacker.getHeldItemMainhand().getItem() == ignatiusSword || attacker.getHeldItemMainhand().getItem() == vulcaniteSword)
 		{
