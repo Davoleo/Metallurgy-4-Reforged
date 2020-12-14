@@ -42,7 +42,7 @@ public class MetallurgyEffects {
                 MetallurgyEffects.effects.stream()
                         .filter(eff -> ArrayUtils.contains(eff.getCategory().getTools(), tool.getToolClass()) && metalStats.getName().equals(eff.metal.toString()))
                         .findAny()
-                        .ifPresent(tool::setEffect);
+                        .ifPresent(tool::addEffect);
             }
 
             if (item instanceof ItemArmorBase) {

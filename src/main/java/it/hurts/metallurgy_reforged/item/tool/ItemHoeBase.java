@@ -18,7 +18,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,19 +26,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
 
 public class ItemHoeBase extends ItemHoe implements IToolEffect {
 
-	private BaseMetallurgyEffect effect;
+	private Set<BaseMetallurgyEffect> effects;
 	private final MetalStats metalStats;
 
-	public ItemHoeBase(ToolMaterial material, MetalStats metalStats)
-	{
+	public ItemHoeBase(ToolMaterial material, MetalStats metalStats) {
 		super(material);
 		this.metalStats = metalStats;
 		ItemUtils.initItem(this, metalStats.getName() + "_hoe", MetallurgyTabs.tabTool);
@@ -64,14 +62,7 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
-        if (this.effect != null && effect.isEnabled()) {
-            tooltip.add(this.effect.getTooltip().getLeft());
-
-            if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
-                tooltip.add(this.effect.getTooltip().getRight());
-            else
-                tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
-        }
+		ItemUtils.buildTooltip(tooltip, effects);
     }
 
 	@Nonnull
@@ -96,9 +87,8 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
 	}
 
 	@Override
-	public void setEffect(BaseMetallurgyEffect effect)
-	{
-		this.effect = effect;
+	public void addEffect(BaseMetallurgyEffect effect) {
+		effects.add(effect);
 	}
 
 }

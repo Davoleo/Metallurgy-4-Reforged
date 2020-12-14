@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.util;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
@@ -36,12 +37,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
+import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class ItemUtils {
 
@@ -69,8 +68,8 @@ public class ItemUtils {
         Item item = toolStack.getItem();
         if (!toolStack.isEmpty() && item instanceof ItemTool) {
             ItemTool tool = (ItemTool) toolStack.getItem();
-            boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
-            for (String type : except) {
+			boolean valid = tool.getToolMaterialName().equalsIgnoreCase(metal.getToolMaterial().name());
+			for (String type : except) {
 				String toolName = metal.getStats().getName() + "_" + type;
 				if (tool.getTranslationKey().equalsIgnoreCase(toolName))
 					valid = false;
@@ -80,10 +79,22 @@ public class ItemUtils {
 		return false;
 	}
 
-	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
-	{
-		if (wild.isEmpty() || check.isEmpty())
-		{
+	public static void buildTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects) {
+		if (!effects.isEmpty()) {
+			effects.forEach(effect -> {
+				if (effect.isEnabled()) {
+					tooltip.add(effect.getTooltip().getLeft());
+					if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+						tooltip.add(effect.getTooltip().getRight());
+					else
+						tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
+				}
+			});
+		}
+	}
+
+	public static boolean equalsWildcard(ItemStack wild, ItemStack check) {
+		if (wild.isEmpty() || check.isEmpty()) {
 			return check.equals(wild);
 		}
 

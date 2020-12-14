@@ -19,6 +19,6 @@ public interface IToolEffect {
 
 	EnumTools getToolClass();
 
-	void setEffect(BaseMetallurgyEffect effect);
+	void addEffect(BaseMetallurgyEffect effect);
 
 }
