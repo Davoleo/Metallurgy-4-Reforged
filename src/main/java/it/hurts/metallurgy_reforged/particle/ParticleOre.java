@@ -29,8 +29,7 @@ public class ParticleOre extends ParticleRedstone {
 	private int prevTextureIndex = 0;
 	private int level;
 
-	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int level)
-	{
+	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int level) {
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, 0, 0, 0);
 		this.particleMaxAge = 40;
 		this.particleRed = red;
@@ -41,15 +40,19 @@ public class ParticleOre extends ParticleRedstone {
 		this.setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[0].toString()));
 	}
 
+	public void setMotionMultiplier(float motion) {
+		this.motionX *= motion;
+		this.motionY *= motion;
+		this.motionZ *= motion;
+	}
+
 	@Override
-	public int getFXLayer()
-	{
+	public int getFXLayer() {
 		return 1;
 	}
 
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		prevTextureIndex = textureIndex;
 
 		this.prevPosX = this.posX;

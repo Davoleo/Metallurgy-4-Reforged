@@ -13,8 +13,13 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.LivingEventHandler;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -42,20 +47,27 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
         return new LivingEventHandler[]{ENTITY_HURTS};
     }
 
-    // TODO: 13/12/2020 add particle effect
     public void onEntityDeath(LivingDeathEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
-        if (getLevel(entity) < 1)
-            return;
 
-        event.setCanceled(true);
+        if (!entity.world.isRemote && entity instanceof EntityPlayerMP) {
+            EntityEquipmentSlot randomArmorSlot = EntityEquipmentSlot.values()[2 + Utils.random.nextInt(4)];
 
-        if (!entity.world.isRemote) {
-            entity.setItemStackToSlot(EntityEquipmentSlot.values()[2 + Utils.random.nextInt(4)], ItemStack.EMPTY);
-            entity.world.playSound(null, entity.getPosition(), SoundEvents.ITEM_TOTEM_USE, SoundCategory.PLAYERS, 1, 1);
-            entity.setHealth(2F);
+            ItemStack armorPiece = entity.getItemStackFromSlot(randomArmorSlot);
+            if (ItemUtils.isMadeOfMetal(metal, armorPiece.getItem())) {
+                entity.setItemStackToSlot(randomArmorSlot, ItemStack.EMPTY);
+                entity.world.playSound(null, entity.getPosition(), SoundEvents.ITEM_TOTEM_USE, SoundCategory.PLAYERS, 1, 1);
+                entity.setHealth(1F);
+                event.setCanceled(true);
+
+                PacketRenderDeathProtection packet = new PacketRenderDeathProtection(entity, armorPiece);
+                CriteriaTriggers.USED_TOTEM.trigger(((EntityPlayerMP) entity), armorPiece);
+                PacketManager.network.sendTo(packet, ((EntityPlayerMP) entity));
+                PacketManager.network.sendToAllTracking(packet, entity);
+            }
         }
 
-        entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 2));
+        entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20 * 25, 2));
+        entity.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 60, 1));
     }
 }
