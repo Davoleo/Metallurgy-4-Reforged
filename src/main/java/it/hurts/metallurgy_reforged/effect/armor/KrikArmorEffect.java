@@ -32,7 +32,6 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
     private static final LivingEventHandler<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new LivingEventHandler<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
     private static final LivingEventHandler<LivingFallEvent> CANCEL_FALL = new LivingEventHandler<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
 
-
     public KrikArmorEffect() {
         super(ModMetals.KRIK);
     }
@@ -85,7 +84,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	 */
 	@SideOnly(Side.CLIENT)
 	public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
-		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikArmorEffect) {
+		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor) {
 			if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 				if (capability != null && capability.getKrikHeight() < PlayerEffectData.getKrikMaxLevel(player)) {
 					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));

@@ -11,37 +11,31 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.entity.ai.AIEndermanPlayerSteal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 @Deprecated
 public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 
-    public static final IBlockState[] borrowableBlocks = Arrays.stream(EffectsConfig.desichalkosEndermenBlocks)
-            .map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
-            .filter(Objects::nonNull)
-            .map(Block::getDefaultState)
-            .toArray(IBlockState[]::new);
+    public static final IBlockState[] borrowableBlocks = {};
+    //Arrays.stream(EffectsConfig.desichalkosEndermenBlocks)
+    //.map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
+    //.filter(Objects::nonNull)
+    //.map(Block::getDefaultState)
+    //.toArray(IBlockState[]::new);
 
     public DesichalkosArmorEffect() {
         super(ModMetals.DESICHALKOS);

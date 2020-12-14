@@ -31,14 +31,16 @@ import java.lang.reflect.Field;
 
 public abstract class BaseMetallurgyEffect {
 
+	public final String name;
 	protected Metal metal;
 
-	public BaseMetallurgyEffect(Metal metal)
-	{
+	public BaseMetallurgyEffect(Metal metal) {
 		this.metal = metal;
 
-		if (isEnabled())
-		{
+		TextFormatting format = Utils.getSimilarMinecraftColor(new Color(metal.getStats().getColorHex()));
+		this.name = format.toString() + Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+
+		if (isEnabled()) {
 			MetallurgyEffects.effects.add(this);
 		}
 	}
@@ -112,18 +114,16 @@ public abstract class BaseMetallurgyEffect {
 	/**
 	 * @return A pair of Strings, the first containing the effect name and the second containing its description
 	 */
-	public Pair<String, String> getTooltip()
-	{
-		TextFormatting format = Utils.getSimilarMinecraftColor(new Color(metal.getStats().getColorHex()));
-		String name = format.toString() + Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+	public Pair<String, String> getTooltip() {
 		String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
 		return ImmutablePair.of(name, description);
 	}
 
-	public Metal getMetal()
-	{
+	public Metal getMetal() {
 		return metal;
 	}
 
-
+	public final String getName() {
+		return name;
+	}
 }

@@ -32,12 +32,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
 
-	private Set<BaseMetallurgyEffect> effects;
+	private Set<BaseMetallurgyEffect> effects = new HashSet<>();
 	private Enchantment enchantment = null;
 	private int enchantmentLevel = -1;
 

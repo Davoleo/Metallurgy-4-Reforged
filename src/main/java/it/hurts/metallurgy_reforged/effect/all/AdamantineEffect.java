@@ -31,8 +31,6 @@ import java.util.List;
 
 public class AdamantineEffect extends BaseMetallurgyEffect {
 
-    public static final String NAME = "Symbiosis I";
-
     private final LivingEventHandler<LivingEntityUseItemEvent.Finish> REPAIR_EQUIP =
             new LivingEventHandler<>(this::onFinishedEating, LivingEntityUseItemEvent.Finish.class);
 

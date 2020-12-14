@@ -14,13 +14,17 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.particle.ParticleOreEmitter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
+/**
+ * Sent to Players tracking the player that is resurrected and to the Resurrected player itself
+ *
+ * @see it.hurts.metallurgy_reforged.effect.armor.AdamantineArmorEffect
+ */
 public class PacketRenderDeathProtection implements IMessage {
 
     private Entity entity;
@@ -54,10 +58,12 @@ public class PacketRenderDeathProtection implements IMessage {
             Minecraft client = Minecraft.getMinecraft();
 
             Minecraft.getMinecraft().addScheduledTask(() -> {
+                //Get the RGB colors of Adamantine
                 float[] colors = ModMetals.ADAMANTINE.getStats().getColorRGBValues();
+                //Instantiate and start a Particle Ore Emitter
                 client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, message.entity, 40, colors[0], colors[1], colors[2]));
-                client.world.playSound(message.entity.posX, message.entity.posY, message.entity.posZ, SoundEvents.ITEM_TOTEM_USE, message.entity.getSoundCategory(), 1.0F, 1.0F, false);
 
+                //If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
                 if (message.entity == client.player) {
                     client.entityRenderer.displayItemActivation(message.stack);
                 }

@@ -43,7 +43,6 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 
 	private static void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
 	{
-
 		EntityLivingBase entity = event.getEntityLiving();
 		World world = entity.world;
 

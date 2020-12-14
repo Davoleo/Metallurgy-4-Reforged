@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.integration.tic.IntegrationTIC;
@@ -21,7 +20,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
@@ -59,11 +57,6 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
 
 	private static boolean isItemBlacklisted(Item item)
 	{
-		ResourceLocation registryName = item.getRegistryName();
-        if (registryName != null)
-            for (String blacklistedName : EffectsConfig.quickSilverBlacklist)
-                if (blacklistedName.equals(registryName.toString()))
-                    return true;
 		return false;
 	}
 

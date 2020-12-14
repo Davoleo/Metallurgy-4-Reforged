@@ -29,12 +29,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class ItemHoeBase extends ItemHoe implements IToolEffect {
 
-	private Set<BaseMetallurgyEffect> effects;
+	private Set<BaseMetallurgyEffect> effects = new HashSet<>();
 	private final MetalStats metalStats;
 
 	public ItemHoeBase(ToolMaterial material, MetalStats metalStats) {
@@ -43,8 +44,7 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
 		ItemUtils.initItem(this, metalStats.getName() + "_hoe", MetallurgyTabs.tabTool);
 	}
 
-	private ItemStack getRepairStack()
-	{
+	private ItemStack getRepairStack() {
 		Metal metal = ModMetals.metalMap.get(metalStats.getName());
 
 		if (metal != null)

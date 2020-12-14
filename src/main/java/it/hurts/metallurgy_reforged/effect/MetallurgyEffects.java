@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
@@ -66,16 +65,6 @@ public class MetallurgyEffects {
 
     //Sky-High
     public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
-
-    //Angmallen Armor (Luck I for Vampirism)
-    @Deprecated
-    public static final BaseMetallurgyEffect angmallenEffect = new ArmorPotionEffect(
-            ModMetals.ANGMALLEN, MobEffects.LUCK, 0) {
-        @Override
-        public boolean isEnabled() {
-            return EffectsConfig.angmallenArmorEffect && super.isEnabled();
-        }
-    };
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
