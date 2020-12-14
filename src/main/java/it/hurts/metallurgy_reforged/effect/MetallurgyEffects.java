@@ -64,6 +64,9 @@ public class MetallurgyEffects {
     //Symbiosis (II)
     public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
 
+    //Sky-High
+    public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
+
     //Angmallen Armor (Luck I for Vampirism)
     @Deprecated
     public static final BaseMetallurgyEffect angmallenEffect = new ArmorPotionEffect(

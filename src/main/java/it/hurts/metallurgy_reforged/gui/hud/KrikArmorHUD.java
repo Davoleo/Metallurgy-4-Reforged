@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.gui.hud;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -23,12 +23,11 @@ public class KrikArmorHUD {
 
 	public static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Metallurgy.MODID, "textures/gui/krik_overlay.png");
 
-	public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft)
-	{
+	public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft) {
 		ScaledResolution resolution = event.getResolution();
 
-		int playerYLevel = minecraft.player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null).getHeight();
-		int maxLevel = KrikEffect.getMaxLevel(minecraft.player);
+		int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).getKrikHeight();
+		int maxLevel = PlayerEffectData.getKrikMaxLevel(minecraft.player);
 
 		//System.out.println(playerYLevel + " | " +  maxLevel);
 

@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.network;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
+import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -20,18 +21,20 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketManager {
 
-	//Metallurgy Network Channel
-	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
+    //Metallurgy Network Channel
+    public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
+    private static int id = 0;
 
-	//PostInit: Register Packets
-	public static void init() {
+    //PostInit: Register Packets
+    public static void init() {
         //Client2Server
-        network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
-        network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
+        network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, id++, Side.SERVER);
+        network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, id++, Side.SERVER);
+        network.registerMessage(PacketAmordrineJump.Handler.class, PacketAmordrineJump.class, id++, Side.SERVER);
 
         //Server2Client
-        network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, 4, Side.CLIENT);
-        network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, 5, Side.CLIENT);
+        network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, id++, Side.CLIENT);
+        network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, id++, Side.CLIENT);
     }
 
 }

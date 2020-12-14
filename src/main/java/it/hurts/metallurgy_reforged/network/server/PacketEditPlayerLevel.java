@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.network.server;
 
 import io.netty.buffer.ByteBuf;
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -47,18 +47,16 @@ public class PacketEditPlayerLevel implements IMessage {
 	public static class Handler implements IMessageHandler<PacketEditPlayerLevel, IMessage> {
 
 		@Override
-		public IMessage onMessage(PacketEditPlayerLevel message, MessageContext ctx)
-		{
+		public IMessage onMessage(PacketEditPlayerLevel message, MessageContext ctx) {
 
 			EntityPlayer player = ctx.getServerHandler().player;
-			IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
+			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-			if (capability != null)
-			{
+			if (capability != null) {
 				if (message.increase)
-					capability.setHeight(capability.getHeight() + 1);
+					capability.setKrikHeight(capability.getKrikHeight() + 1);
 				else
-					capability.setHeight(capability.getHeight() - 1);
+					capability.setKrikHeight(capability.getKrikHeight() - 1);
 			}
 
 			return null;

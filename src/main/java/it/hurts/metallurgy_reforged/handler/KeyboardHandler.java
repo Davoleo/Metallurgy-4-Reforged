@@ -9,21 +9,16 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
-import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
-import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.effect.armor.AmordrineArmorEffect;
+import it.hurts.metallurgy_reforged.effect.armor.KrikArmorEffect;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 
 public class KeyboardHandler {
 
@@ -31,26 +26,11 @@ public class KeyboardHandler {
 	@SideOnly(Side.CLIENT)
 	public static void onKeyInput(InputEvent.KeyInputEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().player;
-		IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
+		PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikArmorEffect) {
-			if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-				if (capability != null && capability.getHeight() < KrikEffect.getMaxLevel(player)) {
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
-					capability.setHeight(capability.getHeight() + 1);
-				}
-			}
+		AmordrineArmorEffect.onPlayerJump(player);
 
-			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
-			{
-				if (capability != null && capability.getHeight() > 0)
-				{
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
-					capability.setHeight(capability.getHeight() - 1);
-					//System.out.println(capability.getHeight());
-				}
-			}
-		}
+		KrikArmorEffect.changeKrikLevel(player, capability);
 	}
 
 }

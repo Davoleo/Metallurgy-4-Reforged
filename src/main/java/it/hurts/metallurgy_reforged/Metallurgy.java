@@ -12,9 +12,9 @@ package it.hurts.metallurgy_reforged;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataCallable;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataCallable;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataStorage;
+import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
@@ -135,8 +135,8 @@ public class Metallurgy {
 		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
 		logger.info(NAME + ": Punch effect capability Registered");
 
-		CapabilityManager.INSTANCE.register(IKrikEffect.class, new KrikEffectStorage(), new KrikEffectCallable());
-		logger.info(NAME + ": Krik effect capability Registered");
+		CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), new EffectDataCallable());
+		logger.info(NAME + ": Metallurgy Effects capability Registered");
 
 		CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
 		logger.info(NAME + ": Entity Data capability Registered");

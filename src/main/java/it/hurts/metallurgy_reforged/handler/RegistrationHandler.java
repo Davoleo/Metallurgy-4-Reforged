@@ -14,7 +14,7 @@ import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
@@ -208,9 +208,8 @@ public class RegistrationHandler {
 		if (event.getObject() instanceof EntityLivingBase)
 			event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
-		if (event.getObject() instanceof EntityPlayer)
-		{
-			event.addCapability(KRIK_EFFECT_CAPABILITY, new KrikEffectProvider());
+		if (event.getObject() instanceof EntityPlayer) {
+			event.addCapability(KRIK_EFFECT_CAPABILITY, new EffectDataProvider());
 		}
 		if (event.getObject() instanceof EntityEnderman)
 			event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
