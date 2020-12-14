@@ -17,9 +17,13 @@ import net.minecraftforge.common.config.Config;
 public class EffectsConfig {
 
 	//Armors
-	@Config.Name("Adamantine Armor Effect")
-	@Config.Comment("Consumes Experience to fill the hunger bar")
-	public static boolean adamantineArmorEffect = true;
+	@Config.Name("Symbiosis I")
+	@Config.Comment("Starving consumes equipment while eating restores it")
+	public static boolean adamantineEffectAll = true;
+	@Config.Name("Symbiosis II")
+	@Config.Comment("When taking lethal damage you have a chance (based on how many armor pieces you wear) to survive the hit and lose a piece of armor")
+	public static boolean adamantineEffectArmor = true;
+	//------------------------------------
 	@Config.Name("Amordrine Armor Effect")
 	@Config.Comment("Full Armor gives Strength II")
 	public static boolean amordrineArmorEffect = true;

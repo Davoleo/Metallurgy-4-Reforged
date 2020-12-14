@@ -1267,8 +1267,11 @@ item.metallurgy.vyroxeres_shovel.name=Vyroxeres Shovel
 item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
 
 #Tooltips
-#Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set: Consumes experience to gain hunger points
+
+#Effect Names
+tooltip.metallurgy.effect.adamantine_all.name=Symbiosis I
+tooltip.metallurgy.effect.adamantine_armor.name=Symbiosis II
+#---
 tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght II
 tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set: (WIP) Luck (WIP)
 tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set: Jump Boost
@@ -1292,6 +1295,10 @@ tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
 tooltip.metallurgy.etherium_armor_effect=§5Full Armor Set: gives the ability to go through walls
 tooltip.metallurgy.desichalkos_armor_effect=§5Full Armor Set: Allows the player to steal private precious blocks from endermen
 tooltip.metallurgy.haderoth_armor_effect=§7Full Armor Set: Allows the player to walk on lava
+
+#Effect Descriptions
+tooltip.metallurgy.effect.adamantine_all.desc=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
+tooltip.metallurgy.effect.adamantine_armor.desc=Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full set)
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
