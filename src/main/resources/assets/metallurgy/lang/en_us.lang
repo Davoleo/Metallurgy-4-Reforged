@@ -1272,6 +1272,7 @@ item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
 tooltip.metallurgy.effect.adamantine_all.name=Symbiosis I
 tooltip.metallurgy.effect.adamantine_armor.name=Symbiosis II
 tooltip.metallurgy.effect.amordrine_armor.name=Sky-High
+tooltip.metallurgy.effect.amordrine_all.name=Soulbound
 tooltip.metallurgy.effect.amordrine_weapon.name=Coup de grâce
 tooltip.metallurgy.effect.atlarus_armor.name=Whirlwind
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
@@ -1280,6 +1281,7 @@ tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 tooltip.metallurgy.effect.adamantine_all.desc=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
 tooltip.metallurgy.effect.adamantine_armor.desc=Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25<PC> (with a maximum of 100<PC> when wearing full set)
 tooltip.metallurgy.effect.amordrine_armor.desc=Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing
+tooltip.metallurgy.effect.amordrine_all.desc=Items that have this effect are kept in your inventory after death
 tooltip.metallurgy.effect.amordrine_weapon.desc=Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200<PC> damage boost)
 tooltip.metallurgy.effect.atlarus_armor.desc=A gust of wind in a random direction saves you from taking any fall damage
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
@@ -1291,7 +1293,7 @@ tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 tooltip.metallurgy.thermite=§cActs as a fuel with the same strength of coal (works best in metallurgy machines 2x efficiency!) [check JEI for more information]
 tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the active materials in the ore detector
-tooltip.metallurgy.press_ctrl=Press [CTRL] to reveal the effect description
+tooltip.metallurgy.press_ctrl=Press [CTRL] to reveal effect description
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Axes

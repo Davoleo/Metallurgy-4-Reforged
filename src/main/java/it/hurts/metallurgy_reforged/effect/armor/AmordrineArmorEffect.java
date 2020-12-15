@@ -13,8 +13,8 @@ import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -44,7 +44,6 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 
     public void resetJumpCount(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntity() instanceof EntityPlayer) {
-            event.getEntity().fallDistance = 0;
             PlayerEffectData capability = event.getEntity().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
             if (capability != null) {
                 if (event.getEntity().onGround && capability.getAmordrineJumps() > 0) {

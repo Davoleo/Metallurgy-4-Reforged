@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
+import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;

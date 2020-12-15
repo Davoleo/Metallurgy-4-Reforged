@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
+import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect;
@@ -26,7 +27,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.HashSet;
 import java.util.Set;
 
-@SuppressWarnings("unused")
 public class MetallurgyEffects {
 
 	public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
@@ -58,13 +58,16 @@ public class MetallurgyEffects {
     }
 
     //Symbiosis (I)
-    public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
+    public static final BaseMetallurgyEffect adamantineEffect = new AdamantineEffect();
 
     //Symbiosis (II)
-    public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
+    public static final BaseMetallurgyEffect adamantineArmorEffect = new AdamantineArmorEffect();
 
     //Sky-High
-    public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
+    public static final BaseMetallurgyEffect amordrineArmorEffect = new AmordrineArmorEffect();
+
+    //Soulbound
+    public static final BaseMetallurgyEffect amordrineEffect = new AmordrineEffect();
 
     //Coup de grâce
     public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();

@@ -99,8 +99,8 @@ dependencies {
     compileOnly 'projecte:ProjectE:1.12.2:PE1.4.1'
 
     //Silent's Gems
-    implementation 'silent-lib:SilentLib:1.12.2:3.0.14+168'
-    implementation 'silents-gems:SilentsGems:1.12.2:2.8.22+327'
+    compileOnly 'silent-lib:SilentLib:1.12.2:3.0.14+168'
+    compileOnly 'silents-gems:SilentsGems:1.12.2:2.8.22+327'
 
     //Immersive Engineering
     compileOnly 'immersive-engineering:ImmersiveEngineering:0.12:98'

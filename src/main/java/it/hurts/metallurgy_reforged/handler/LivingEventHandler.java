@@ -7,7 +7,7 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.model;
+package it.hurts.metallurgy_reforged.handler;
 
 import net.minecraftforge.event.entity.living.LivingEvent;
 

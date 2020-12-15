@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
+import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.model.LivingEventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
