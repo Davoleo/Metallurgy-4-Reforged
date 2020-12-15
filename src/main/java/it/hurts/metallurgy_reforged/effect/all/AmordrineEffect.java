@@ -75,8 +75,8 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
             if (ItemUtils.isMadeOfMetal(metal, item.getItem())) {
                 if (item.getItem() instanceof ItemArmorBase || item.getItem() instanceof IToolEffect) {
                     player.addItemStackToInventory(item);
+                    dropIterator.remove();
                 }
-                dropIterator.remove();
             }
         }
     }
