@@ -22,6 +22,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -34,13 +35,15 @@ public abstract class BaseMetallurgyEffect {
 	public final String name;
 	protected Metal metal;
 
-	public BaseMetallurgyEffect(Metal metal) {
+	public BaseMetallurgyEffect(Metal metal)
+	{
 		this.metal = metal;
 
 		TextFormatting format = Utils.getSimilarMinecraftColor(new Color(metal.getStats().getColorHex()));
 		this.name = format.toString() + Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
 
-		if (isEnabled()) {
+		if (isEnabled())
+		{
 			MetallurgyEffects.effects.add(this);
 		}
 	}
@@ -69,32 +72,43 @@ public abstract class BaseMetallurgyEffect {
 
 	public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityLivingBase entity) {
+	public float getLevel(EntityLivingBase entity)
+	{
 
 		EnumEffectCategory category = getCategory();
 
 		Item mainItem = entity.getHeldItemMainhand().getItem();
 		Item offItem = entity.getHeldItemOffhand().getItem();
 
-		if (category == EnumEffectCategory.ALL) {
-			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem)) {
+		if (category == EnumEffectCategory.ALL)
+		{
+			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem))
 				return 1;
-			}
+			return 0;
 		}
 
-		if (category == EnumEffectCategory.ARMOR) {
+		if (category == EnumEffectCategory.ARMOR)
+		{
 			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
-		} else if (ItemUtils.isMadeOfMetal(metal, mainItem)) {
+		}
+		else if (ItemUtils.isMadeOfMetal(metal, mainItem))
+		{
 			IToolEffect tool = ((IToolEffect) mainItem);
-			if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
-				if (tool.getMetalStats().getName().equals(metal.toString())) {
+			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
+			{
+				if (tool.getMetalStats().getName().equals(metal.toString()))
+				{
 					return 1;
 				}
 			}
-		} else if (ItemUtils.isMadeOfMetal(metal, offItem)) {
+		}
+		else if (ItemUtils.isMadeOfMetal(metal, offItem))
+		{
 			IToolEffect tool = ((IToolEffect) offItem);
-			if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
-				if (tool.getMetalStats().getName().equals(metal.toString())) {
+			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
+			{
+				if (tool.getMetalStats().getName().equals(metal.toString()))
+				{
 					return 1;
 				}
 			}
@@ -107,19 +121,34 @@ public abstract class BaseMetallurgyEffect {
 	public abstract LivingEventHandler<? extends LivingEvent>[] getEvents();
 
 
-	public boolean canBeApplied(EntityLivingBase entity) {
+	public boolean canBeApplied(EntityLivingBase entity)
+	{
 		return getLevel(entity) > 0;
+	}
+
+	/**
+	 * @return the entity which should have the equip metal depending on the event
+	 * @see it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect
+	 */
+	public EntityLivingBase getEquipUserFromEvent(Event event)
+	{
+
+		if (event instanceof LivingEvent)
+			return ((LivingEvent) event).getEntityLiving();
+		return null;
 	}
 
 	/**
 	 * @return A pair of Strings, the first containing the effect name and the second containing its description
 	 */
-	public Pair<String, String> getTooltip() {
+	public Pair<String, String> getTooltip()
+	{
 		String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
 		return ImmutablePair.of(name, description);
 	}
 
-	public Metal getMetal() {
+	public Metal getMetal()
+	{
 		return metal;
 	}
 

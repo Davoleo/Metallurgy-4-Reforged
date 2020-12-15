@@ -12,20 +12,22 @@ package it.hurts.metallurgy_reforged.handler;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.model.LivingEventHandler;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EffectHandler {
 
-    // TODO: 13/12/2020 Find a better way to do this with generics
-    @SubscribeEvent
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static void livingEvent(LivingEvent event) {
-        if (event.getEntityLiving() instanceof EntityPlayer)
-            for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-                for (LivingEventHandler livingEventHandler : effect.getEvents())
-                    if (livingEventHandler.equalsEvent(event) && effect.canBeApplied(event.getEntityLiving()))
-                        livingEventHandler.getDelegate().accept(event);
-    }
+	// TODO: 13/12/2020 Find a better way to do this with generics
+	@SubscribeEvent
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static void livingEvent(LivingEvent event)
+	{
+		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
+			for (LivingEventHandler livingEventHandler : effect.getEvents())
+			{
+				if (livingEventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
+					livingEventHandler.getDelegate().accept(event);
+			}
+	}
+
 }

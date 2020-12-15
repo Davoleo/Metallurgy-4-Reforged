@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect;
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
+import it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
@@ -35,24 +36,23 @@ public class MetallurgyEffects {
 	{
 		for (Item item : ForgeRegistries.ITEMS)
 		{
-			if (item instanceof IToolEffect) {
+            if (item instanceof IToolEffect)
+            {
                 IToolEffect tool = ((IToolEffect) item);
                 MetalStats metalStats = tool.getMetalStats();
                 MetallurgyEffects.effects.stream()
                         .filter(eff -> ArrayUtils.contains(eff.getCategory().getTools(), tool.getToolClass()) && metalStats.getName().equals(eff.metal.toString()))
-                        .findAny()
-                        .ifPresent(tool::addEffect);
+                        .forEach(tool::addEffect);
             }
-
-            if (item instanceof ItemArmorBase) {
+            else if (item instanceof ItemArmorBase)
+            {
                 ItemArmorBase armor = ((ItemArmorBase) item);
                 MetalStats metalStats = armor.getMetalStats();
 
                 MetallurgyEffects.effects.stream()
                         .filter(eff -> eff.getCategory() == EnumEffectCategory.ARMOR || eff.getCategory() == EnumEffectCategory.ALL)
                         .filter(eff -> eff.metal.toString().equals(metalStats.getName()))
-                        .findAny()
-                        .ifPresent(armor::setEffect);
+                        .forEach(armor::setEffect);
             }
         }
     }
@@ -65,6 +65,9 @@ public class MetallurgyEffects {
 
     //Sky-High
     public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
+
+    //Coup de grâce
+    public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 

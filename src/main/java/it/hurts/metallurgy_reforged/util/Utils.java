@@ -114,7 +114,7 @@ public class Utils {
 
 	public static String localize(String unlocalized)
 	{
-		return new TextComponentTranslation(unlocalized).getFormattedText();
+		return new TextComponentTranslation(unlocalized).getFormattedText().replace("<PC>", "%");
 	}
 
 	//CULO, CULO CUULO, CULO, CULO CULO CULO
