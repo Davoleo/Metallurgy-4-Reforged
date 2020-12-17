@@ -13,6 +13,8 @@ import com.google.common.base.Predicate;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemElectrumMagnet extends ItemExtra {
@@ -56,6 +59,30 @@ public class ItemElectrumMagnet extends ItemExtra {
             else
                 return 0F;
         });
+    }
+
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
+        if (stack.getTagCompound() != null) {
+            Status status = Status.byOrdinal(stack.getTagCompound().getInteger("status"));
+
+            tooltip.add("§eAttracts dropped items on the ground (Has 3 different modes)");
+            String statusString = Utils.localize("tooltip.metallurgy.electrum_magnet_mode") + " ";
+
+            switch (status) {
+                case DISABLED:
+                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_disabled");
+                    break;
+                case METAL_ONLY:
+                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_metal_only");
+                    break;
+                case ENABLED:
+                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_enabled");
+                    break;
+            }
+
+            tooltip.add(statusString);
+        }
     }
 
     @Override

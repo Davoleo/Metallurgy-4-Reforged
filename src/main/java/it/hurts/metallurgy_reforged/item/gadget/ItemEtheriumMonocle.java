@@ -11,12 +11,18 @@ package it.hurts.metallurgy_reforged.item.gadget;
 
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @ParametersAreNonnullByDefault
 public class ItemEtheriumMonocle extends ItemExtra {
@@ -27,14 +33,15 @@ public class ItemEtheriumMonocle extends ItemExtra {
 	}
 
 	@Override
-	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)
-	{
-		if (stack.getItem() == this && entity instanceof EntityPlayer)
-		{
+	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) {
+		if (stack.getItem() == this && entity instanceof EntityPlayer) {
 			return armorType == EntityEquipmentSlot.HEAD;
-		}
-		else
+		} else
 			return false;
 	}
 
+	@Override
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
+		tooltip.add(Utils.localize("tooltip.metallurgy.etherium_goggles"));
+	}
 }
