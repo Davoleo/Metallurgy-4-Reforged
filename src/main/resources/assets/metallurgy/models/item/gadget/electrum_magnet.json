@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "metallurgy:items/gadgets/electrum_magnet_off"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "metallurgy:item/gadget/electrum_magnet_active"
+    }
+  ]
+}

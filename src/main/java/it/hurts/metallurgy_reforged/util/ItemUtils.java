@@ -127,9 +127,9 @@ public class ItemUtils {
 
 	/**
 	 * Gets the instance of a Metal from an Item
+	 * TODO: Add other metal items and blocks
 	 *
 	 * @param item An Item instance
-	 *
 	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
 	public static Metal getMetalFromItem(Item item)

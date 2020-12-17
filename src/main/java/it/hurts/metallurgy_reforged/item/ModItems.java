@@ -51,6 +51,7 @@ public class ModItems {
 	public static ItemOreDetector oreDetector = new ItemOreDetector();
 	public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
 	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
+	public static ItemElectrumMagnet electrumMagnet = new ItemElectrumMagnet();
 	//Shields
 	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
 	//public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
