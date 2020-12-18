@@ -62,11 +62,9 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
 
 	private void onMobAttacked(LivingHurtEvent event)
 	{
-
 		float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
 		float originalAMount = event.getAmount();
 		event.setAmount(originalAMount + originalAMount * percentage * 2);
-
 	}
 
 }

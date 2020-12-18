@@ -12,8 +12,13 @@ package it.hurts.metallurgy_reforged.effect;
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
-import it.hurts.metallurgy_reforged.effect.tool.*;
+import it.hurts.metallurgy_reforged.effect.tool.AtlarusHoeEffect;
+import it.hurts.metallurgy_reforged.effect.tool.DeepIronPickaxeEffect;
+import it.hurts.metallurgy_reforged.effect.tool.IgnatiusToolEffect;
+import it.hurts.metallurgy_reforged.effect.tool.VulcaniteIgnatiusSwordEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect;
+import it.hurts.metallurgy_reforged.effect.weapon.AngmallenWeaponEffect;
+import it.hurts.metallurgy_reforged.effect.weapon.AtlarusWeaponEffect;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
@@ -71,6 +76,8 @@ public class MetallurgyEffects {
 
     //Coup de grâce
     public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
+
+    public static final AngmallenWeaponEffect angmallenWeaponEffect = new AngmallenWeaponEffect();
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 

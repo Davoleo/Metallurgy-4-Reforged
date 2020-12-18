@@ -25,23 +25,26 @@ public class EffectsConfig {
 	public static boolean adamantineEffectArmor = true;
 
 	@Config.Name("Sky-High")
-	@Config.Comment("Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing")
-	public static boolean amordrineEffectArmor = true;
-	@Config.Name("Sky-High")
-	@Config.Comment("Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing")
-	public static boolean amordrineEffectAll = true;
+    @Config.Comment("Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing")
+    public static boolean amordrineEffectArmor = true;
+    @Config.Name("Sky-High")
+    @Config.Comment("Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing")
+    public static boolean amordrineEffectAll = true;
 
-	@Config.Name("Coup de grâce")
-	@Config.Comment("Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200% damage boost)")
-	public static boolean amordrineEffectWeapon = true;
+    @Config.Name("Coup de grâce")
+    @Config.Comment("Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200% damage boost)")
+    public static boolean amordrineEffectWeapon = true;
 
-	@Config.Name("Weight-Controlled Flight")
-	@Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
-	public static boolean krikEffectArmor = true;
-	//------------------------------------
+    @Config.Name("Reactive II")
+    @Config.Comment("Deal more damage to armored enemies")
+    public static boolean angmallenEffectWeapon = true;
 
-	private EffectsConfig()
-	{
-	}
+    @Config.Name("Weight-Controlled Flight")
+    @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
+    public static boolean krikEffectArmor = true;
+    //------------------------------------
+
+    private EffectsConfig() {
+    }
 
 }

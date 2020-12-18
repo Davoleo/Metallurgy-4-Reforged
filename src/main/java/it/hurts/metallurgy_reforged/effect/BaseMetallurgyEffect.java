@@ -132,7 +132,6 @@ public abstract class BaseMetallurgyEffect {
 	 */
 	public EntityLivingBase getEquipUserFromEvent(Event event)
 	{
-
 		if (event instanceof LivingEvent)
 			return ((LivingEvent) event).getEntityLiving();
 		return null;
