@@ -69,7 +69,7 @@ public class Utils {
 		minecraftColors.put(TextFormatting.DARK_RED, new Color(0xAA0000));
 		minecraftColors.put(TextFormatting.DARK_PURPLE, new Color(0xAA00AA));
 		minecraftColors.put(TextFormatting.GOLD, new Color(0xFFAA00));
-		minecraftColors.put(TextFormatting.GRAY, new Color(0xAAAAAA));
+		//minecraftColors.put(TextFormatting.GRAY, new Color(0xAAAAAA));
 		minecraftColors.put(TextFormatting.DARK_GRAY, new Color(0x555555));
 		minecraftColors.put(TextFormatting.BLUE, new Color(0x5555FF));
 		minecraftColors.put(TextFormatting.GREEN, new Color(0x55FF55));

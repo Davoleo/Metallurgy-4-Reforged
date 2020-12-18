@@ -16,8 +16,10 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -84,8 +86,7 @@ public class ItemSwordBase extends ItemSword implements IToolEffect {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
-	{
+	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
 		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
@@ -95,15 +96,19 @@ public class ItemSwordBase extends ItemSword implements IToolEffect {
 		ItemUtils.buildTooltip(tooltip, effects);
 	}
 
+	@SideOnly(Side.CLIENT)
+	@Nullable
+	@Override
+	public FontRenderer getFontRenderer(@Nonnull ItemStack stack) {
+		return ClientProxy.fontRenderer;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
-	{
-		if (this.isInCreativeTab(tab))
-		{
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items) {
+		if (this.isInCreativeTab(tab)) {
 			ItemStack enchantedSword = new ItemStack(this);
-			if (enchantment != null)
-			{
+			if (enchantment != null) {
 				enchantedSword.addEnchantment(enchantment, enchantmentLevel);
 			}
 			items.add(enchantedSword);

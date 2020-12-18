@@ -10,21 +10,25 @@
 package it.hurts.metallurgy_reforged.proxy;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @SuppressWarnings("unused")
 public class ServerProxy implements IProxy {
 
 	@Override
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public void preInit(FMLPreInitializationEvent event) {
 		//Nothing to do only on Server-Side
 	}
 
 	@Override
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent event) {
 		//NOTHING TO DO, FUCK YOU
+	}
+
+	@Override
+	public void postInit(FMLPostInitializationEvent event) {
+
 	}
 
 }

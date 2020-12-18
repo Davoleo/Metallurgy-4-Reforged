@@ -15,19 +15,18 @@ import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.render.font.FontColor;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 
 public abstract class BaseMetallurgyEffect {
@@ -35,15 +34,12 @@ public abstract class BaseMetallurgyEffect {
 	public final String name;
 	protected Metal metal;
 
-	public BaseMetallurgyEffect(Metal metal)
-	{
+	public BaseMetallurgyEffect(Metal metal) {
 		this.metal = metal;
 
-		TextFormatting format = Utils.getSimilarMinecraftColor(new Color(metal.getStats().getColorHex()));
-		this.name = format.toString() + Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+		this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
 
-		if (isEnabled())
-		{
+		if (isEnabled()) {
 			MetallurgyEffects.effects.add(this);
 		}
 	}
@@ -140,10 +136,10 @@ public abstract class BaseMetallurgyEffect {
 	/**
 	 * @return A pair of Strings, the first containing the effect name and the second containing its description
 	 */
-	public Pair<String, String> getTooltip()
-	{
+	public Pair<String, String> getTooltip() {
+		String format = FontColor.encodeColor(metal.getStats().getColorHex());
 		String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
-		return ImmutablePair.of(name, description);
+		return ImmutablePair.of(format + name, description);
 	}
 
 	public Metal getMetal()

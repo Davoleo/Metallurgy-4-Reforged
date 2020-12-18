@@ -148,13 +148,13 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		proxy.init(event);
 		logger.info(NAME + " is entering initialization!");
+		proxy.init(event);
+
 		ModRecipes.init();
 		logger.info("Recipes loaded!");
 
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-		{
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration) {
 			IntegrationTIC.init();
 			logger.info("Tinkers' Construct Compatibility module has been initialized");
 
@@ -187,9 +187,9 @@ public class Metallurgy {
 
 
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+	public void postInit(FMLPostInitializationEvent event) {
 		logger.info(NAME + " is entering post-initialization!");
+		proxy.postInit(event);
 
 		PacketManager.init();
 		logger.info(NAME + "'s Network System Loaded");

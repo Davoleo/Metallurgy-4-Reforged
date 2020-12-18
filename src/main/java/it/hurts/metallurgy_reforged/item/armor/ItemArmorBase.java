@@ -15,9 +15,11 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -66,8 +68,7 @@ public class ItemArmorBase extends ItemArmor {
 		return metalStats;
 	}
 
-	private ItemStack getRepairStack()
-	{
+	private ItemStack getRepairStack() {
 		String material = this.metalStats.getName().toLowerCase();
 		Metal metal = ModMetals.metalMap.get(material);
 		if (metal != null)
@@ -76,9 +77,15 @@ public class ItemArmorBase extends ItemArmor {
 			return ItemStack.EMPTY;
 	}
 
+	@SideOnly(Side.CLIENT)
+	@Nullable
 	@Override
-	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
-	{
+	public FontRenderer getFontRenderer(@Nonnull ItemStack stack) {
+		return ClientProxy.fontRenderer;
+	}
+
+	@Override
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair) {
 		return (GeneralConfig.enableAnvilArmorRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
 	}
 
