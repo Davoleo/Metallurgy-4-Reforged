@@ -159,14 +159,7 @@ public class ItemUtils {
 		if (item instanceof ItemMetal)
 		{
 			ItemMetal metalItem = ((ItemMetal) item);
-
-			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-			{
-				if (metalItem.getMetalStats().getName().equals(entry.getKey()))
-				{
-					return entry.getValue();
-				}
-			}
+			return ModMetals.metalMap.get(metalItem.getMetalStats().getName());
 		}
 
 		if (item instanceof ItemBlock)
