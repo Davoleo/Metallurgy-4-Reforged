@@ -17,7 +17,6 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -109,12 +108,6 @@ public class IntegrationProjectE {
 
 			//Blocks
 			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.BLOCK), baseValue * 9);
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.ENGRAVED_BLOCK), baseValue);
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.LARGE_BRICKS), baseValue);
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.BRICKS), baseValue);
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.CRYSTAL), baseValue + (baseValue / 9 / 4 * 3));
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.HAZARD_BLOCK), baseValue + (baseValue / 9 / 4 * 5));
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getBlock(BlockTypes.GLASS), baseValue + (getExistingEMCValue(Blocks.GLASS) / 4));
 
 			//Tools
 			if (metal.hasToolSet())
