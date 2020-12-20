@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.all;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -27,30 +27,30 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 public class AdamantineEffect extends BaseMetallurgyEffect {
 
-    private final LivingEventHandler<LivingEntityUseItemEvent.Finish> REPAIR_EQUIP =
-            new LivingEventHandler<>(this::onFinishedEating, LivingEntityUseItemEvent.Finish.class);
+    private final EventHandler<LivingEntityUseItemEvent.Finish> REPAIR_EQUIP =
+            new EventHandler<>(this::onFinishedEating, LivingEntityUseItemEvent.Finish.class);
 
-    private final LivingEventHandler<LivingEvent.LivingUpdateEvent> CONSUME_EQUIP =
-            new LivingEventHandler<>(this::onLivingUpdate, LivingEvent.LivingUpdateEvent.class);
+    private final EventHandler<LivingEvent.LivingUpdateEvent> CONSUME_EQUIP =
+            new EventHandler<>(this::onLivingUpdate, LivingEvent.LivingUpdateEvent.class);
 
-    public AdamantineEffect()
-    {
+    public AdamantineEffect() {
         super(ModMetals.ADAMANTINE);
     }
 
+    @Nonnull
     @Override
-    public EnumEffectCategory getCategory()
-    {
+    public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ALL;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[]{REPAIR_EQUIP, CONSUME_EQUIP};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{REPAIR_EQUIP, CONSUME_EQUIP};
     }
 
     private void onFinishedEating(LivingEntityUseItemEvent.Finish event) {

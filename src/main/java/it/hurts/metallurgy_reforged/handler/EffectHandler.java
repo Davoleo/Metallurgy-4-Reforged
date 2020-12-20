@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.handler;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EffectHandler {
@@ -19,13 +20,21 @@ public class EffectHandler {
 	// TODO: 13/12/2020 Find a better way to do this with generics
 	@SubscribeEvent
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public static void livingEvent(LivingEvent event)
-	{
+	public static void livingEvent(LivingEvent event) {
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
-			for (LivingEventHandler livingEventHandler : effect.getEvents())
-			{
-				if (livingEventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
-					livingEventHandler.getDelegate().accept(event);
+			for (EventHandler eventHandler : effect.getLivingEvents()) {
+				if (eventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
+					eventHandler.getDelegate().accept(event);
+			}
+	}
+
+	@SubscribeEvent
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static void blockEvent(BlockEvent event) {
+		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
+			for (EventHandler eventHandler : effect.getBlockEvents()) {
+				if (eventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
+					eventHandler.getDelegate().accept(event);
 			}
 	}
 

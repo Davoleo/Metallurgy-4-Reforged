@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.Entity;
@@ -25,20 +25,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
+import javax.annotation.Nonnull;
+
 public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
 
     public AtlarusWeaponEffect() {
         super(ModMetals.ATLARUS);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void onPlayerInteract(PlayerInteractEvent event) {

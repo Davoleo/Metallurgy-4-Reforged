@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
@@ -29,22 +29,25 @@ import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
+import javax.annotation.Nonnull;
+
 public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
-    private final LivingEventHandler<LivingDeathEvent> ENTITY_HURTS = new LivingEventHandler<>(this::onEntityDeath, LivingDeathEvent.class);
+    private final EventHandler<LivingDeathEvent> ENTITY_HURTS = new EventHandler<>(this::onEntityDeath, LivingDeathEvent.class);
 
     public AdamantineArmorEffect() {
         super(ModMetals.ADAMANTINE);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[]{ENTITY_HURTS};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{ENTITY_HURTS};
     }
 
     /**

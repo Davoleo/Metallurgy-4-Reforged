@@ -11,28 +11,31 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
+import javax.annotation.Nonnull;
+
 @Deprecated
 public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 
-	public PrometheumArmorEffect() {
+    public PrometheumArmorEffect() {
         super(ModMetals.PROMETHEUM);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void livingEvent(LivingEvent event) {

@@ -14,7 +14,7 @@ import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
@@ -27,23 +27,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
+import javax.annotation.Nonnull;
+
 public class KrikArmorEffect extends BaseMetallurgyEffect {
 
-    private static final LivingEventHandler<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new LivingEventHandler<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
-    private static final LivingEventHandler<LivingFallEvent> CANCEL_FALL = new LivingEventHandler<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
+    private static final EventHandler<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new EventHandler<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
+    private static final EventHandler<LivingFallEvent> CANCEL_FALL = new EventHandler<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
 
     public KrikArmorEffect() {
         super(ModMetals.KRIK);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
-		return EnumEffectCategory.ARMOR;
-	}
+        return EnumEffectCategory.ARMOR;
+    }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[]{LEVITATE_EFFECT, CANCEL_FALL};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{LEVITATE_EFFECT, CANCEL_FALL};
     }
 
 	private static void livingUpdate(LivingEvent.LivingUpdateEvent event)

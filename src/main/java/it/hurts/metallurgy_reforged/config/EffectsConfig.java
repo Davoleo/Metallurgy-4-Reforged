@@ -39,6 +39,10 @@ public class EffectsConfig {
     @Config.Comment("Deal more damage to armored enemies")
     public static boolean angmallenEffectWeapon = true;
 
+    @Config.Name("Transmute")
+    @Config.Comment("Mining an ore  sometimes drops another ore of +1/-1/+0 harvest level (50% chance)")
+    public static boolean angmallenEffectPickaxe = true;
+
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
     public static boolean krikEffectArmor = true;

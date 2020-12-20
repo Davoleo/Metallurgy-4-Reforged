@@ -9,32 +9,35 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
+import javax.annotation.Nonnull;
+
 public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
-	private final Potion potion;
-	private int amplifier;
+    private final Potion potion;
+    private int amplifier;
 
-	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier) {
-		super(metal);
+    public ArmorPotionEffect(Metal metal, Potion potion, int amplifier) {
+        super(metal);
         this.potion = potion;
         this.amplifier = amplifier;
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void livingEvent(LivingEvent event) {

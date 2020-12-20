@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.effect;
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.render.font.FontColor;
@@ -22,11 +22,13 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
+import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
 
 public abstract class BaseMetallurgyEffect {
@@ -56,9 +58,7 @@ public abstract class BaseMetallurgyEffect {
 			{
 				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
 				return enabledField.getBoolean(EffectsConfig.class);
-			}
-			catch (NoSuchFieldException | IllegalAccessException e)
-			{
+			} catch (NoSuchFieldException | IllegalAccessException e) {
 				Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
 				e.printStackTrace();
 				return true;
@@ -66,10 +66,13 @@ public abstract class BaseMetallurgyEffect {
 		}
 	}
 
+	/**
+	 * @return The category of tools the effect is applied to
+	 */
+	@Nonnull
 	public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityLivingBase entity)
-	{
+	public float getLevel(EntityLivingBase entity) {
 
 		EnumEffectCategory category = getCategory();
 
@@ -103,8 +106,7 @@ public abstract class BaseMetallurgyEffect {
 			IToolEffect tool = ((IToolEffect) offItem);
 			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
 			{
-				if (tool.getMetalStats().getName().equals(metal.toString()))
-				{
+				if (tool.getMetalStats().getName().equals(metal.toString())) {
 					return 1;
 				}
 			}
@@ -114,11 +116,15 @@ public abstract class BaseMetallurgyEffect {
 	}
 
 
-	public abstract LivingEventHandler<? extends LivingEvent>[] getEvents();
+	public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+		return new EventHandler[]{};
+	}
 
+	public EventHandler<? extends BlockEvent>[] getBlockEvents() {
+		return new EventHandler[]{};
+	}
 
-	public boolean canBeApplied(EntityLivingBase entity)
-	{
+	public boolean canBeApplied(EntityLivingBase entity) {
 		return getLevel(entity) > 0;
 	}
 

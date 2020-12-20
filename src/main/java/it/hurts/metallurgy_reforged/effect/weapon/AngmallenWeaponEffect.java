@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,25 +21,27 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import javax.annotation.Nonnull;
 import java.util.Spliterator;
 import java.util.stream.StreamSupport;
 
 public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
 
-    private final LivingEventHandler<LivingHurtEvent> BUFF_DAMAGE = new LivingEventHandler<>(this::buffDamage, LivingHurtEvent.class);
+    private final EventHandler<LivingHurtEvent> BUFF_DAMAGE = new EventHandler<>(this::buffDamage, LivingHurtEvent.class);
 
     public AngmallenWeaponEffect() {
         super(ModMetals.ANGMALLEN);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[]{BUFF_DAMAGE};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{BUFF_DAMAGE};
     }
 
     @Override

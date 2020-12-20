@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.block.BlockLeaves;
@@ -34,6 +34,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import slimeknights.tconstruct.TConstruct;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
 
@@ -44,14 +45,15 @@ public class AtlarusAxeEffect extends BaseMetallurgyEffect {
         super(ModMetals.ATLARUS);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return null;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void onPlayerInteract(PlayerInteractEvent event) {

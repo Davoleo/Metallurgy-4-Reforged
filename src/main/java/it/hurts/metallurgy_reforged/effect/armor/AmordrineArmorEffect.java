@@ -13,7 +13,7 @@ import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
@@ -24,22 +24,25 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 
-    private final LivingEventHandler<LivingEvent.LivingUpdateEvent> RESET_JUMP_COUNT = new LivingEventHandler<>(this::resetJumpCount, LivingEvent.LivingUpdateEvent.class);
+    private final EventHandler<LivingEvent.LivingUpdateEvent> RESET_JUMP_COUNT = new EventHandler<>(this::resetJumpCount, LivingEvent.LivingUpdateEvent.class);
 
     public AmordrineArmorEffect() {
         super(ModMetals.AMORDRINE);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[]{RESET_JUMP_COUNT};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{RESET_JUMP_COUNT};
     }
 
     public void resetJumpCount(LivingEvent.LivingUpdateEvent event) {

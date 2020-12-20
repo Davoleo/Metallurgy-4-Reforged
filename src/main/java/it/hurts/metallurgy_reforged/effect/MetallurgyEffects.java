@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect;
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
+import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.DeepIronPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.IgnatiusToolEffect;
@@ -35,7 +36,6 @@ import java.util.Set;
 public class MetallurgyEffects {
 
 	public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
-
 
 	public static void initTooltips()
 	{
@@ -77,7 +77,11 @@ public class MetallurgyEffects {
     //Coup de grâce
     public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
 
+    //Reactive II
     public static final AngmallenWeaponEffect angmallenWeaponEffect = new AngmallenWeaponEffect();
+
+    //Transmute
+    public static final AngmallenPickaxeEffect angmallenPickaxeEffect = new AngmallenPickaxeEffect();
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 

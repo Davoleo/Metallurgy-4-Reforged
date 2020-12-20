@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.block.BlockBush;
@@ -29,22 +29,25 @@ import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
+import javax.annotation.Nonnull;
+
 public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 
-	private static final int MAX_RANGE = 5;
+    private static final int MAX_RANGE = 5;
 
-	public AtlarusHoeEffect() {
+    public AtlarusHoeEffect() {
         super(ModMetals.ATLARUS);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.HOE;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void onPlayerTick(EntityPlayer player) {

@@ -1275,6 +1275,7 @@ tooltip.metallurgy.effect.amordrine_armor.name=Sky-High
 tooltip.metallurgy.effect.amordrine_all.name=Soulbound
 tooltip.metallurgy.effect.amordrine_weapon.name=Divine Grace
 tooltip.metallurgy.effect.angmallen_weapon.name=Reactive II
+tooltip.metallurgy.effect.angmallen_pickaxe.name=Transmute
 tooltip.metallurgy.effect.atlarus_armor.name=Whirlwind
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
@@ -1285,6 +1286,7 @@ tooltip.metallurgy.effect.amordrine_armor.desc=Grants extra jumps (from 1 to 4) 
 tooltip.metallurgy.effect.amordrine_all.desc=Items that have this effect are kept in your inventory after death
 tooltip.metallurgy.effect.amordrine_weapon.desc=Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200<PC> damage boost)
 tooltip.metallurgy.effect.angmallen_weapon.desc=Deals Bonus Damage to armored enemies
+tooltip.metallurgy.effect.angmallen_pickaxe.desc=Mining an ore  sometimes drops another ore of +1/-1/+0 harvest level (50<PC> chance)
 tooltip.metallurgy.effect.atlarus_armor.desc=A gust of wind in a random direction saves you from taking any fall damage
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 

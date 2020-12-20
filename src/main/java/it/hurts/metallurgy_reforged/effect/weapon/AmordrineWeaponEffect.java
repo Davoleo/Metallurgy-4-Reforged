@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,27 +19,27 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import javax.annotation.Nonnull;
+
 public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
 
 
-	private LivingEventHandler<LivingHurtEvent> ATTACK_MOB = new LivingEventHandler<>(this::onMobAttacked, LivingHurtEvent.class);
+    private EventHandler<LivingHurtEvent> ATTACK_MOB = new EventHandler<>(this::onMobAttacked, LivingHurtEvent.class);
 
-	public AmordrineWeaponEffect()
-	{
-		super(ModMetals.AMORDRINE);
-	}
+    public AmordrineWeaponEffect() {
+        super(ModMetals.AMORDRINE);
+    }
 
-	@Override
-	public EnumEffectCategory getCategory()
-	{
-		return EnumEffectCategory.WEAPON;
-	}
+    @Nonnull
+    @Override
+    public EnumEffectCategory getCategory() {
+        return EnumEffectCategory.WEAPON;
+    }
 
-	@Override
-	public LivingEventHandler<? extends LivingEvent>[] getEvents()
-	{
-		return new LivingEventHandler[]{ATTACK_MOB};
-	}
+    @Override
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{ATTACK_MOB};
+    }
 
 	/**
 	 * in this case of LivingHurtEvent, the attacker should have the armor, not the mob which is attacked

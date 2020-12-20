@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -25,21 +25,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 
+import javax.annotation.Nonnull;
+
 @Deprecated
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
-	public HaderothArmorEffect() {
+    public HaderothArmorEffect() {
         super(ModMetals.HADEROTH);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void onPlayerCollision(GetCollisionBoxesEvent event) {

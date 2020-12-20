@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
+import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -122,9 +123,11 @@ public class ModBlocks {
 		miscBlocks.add(iceShield);
 	}
 
-	public static ItemBlock createItemBlock(Block block)
-	{
-		return ((ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName()));
+	public static ItemBlock createItemBlock(Block block) {
+		if (block instanceof BlockOre)
+			return (ItemBlock) new ItemBlockOre((BlockOre) block).setRegistryName(block.getRegistryName());
+
+		return (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 
 }

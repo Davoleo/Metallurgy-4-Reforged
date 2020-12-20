@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.Utils;
@@ -20,21 +20,24 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
+import javax.annotation.Nonnull;
+
 @Deprecated
 public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 
-	public ShadowSteelToolEffect() {
+    public ShadowSteelToolEffect() {
         super(ModMetals.SHADOW_STEEL);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.TOOL;
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[0];
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[0];
     }
 
     public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {

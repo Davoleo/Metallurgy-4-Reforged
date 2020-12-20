@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.all;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.LivingEventHandler;
+import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -25,17 +25,19 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import javax.annotation.Nonnull;
 import java.util.ListIterator;
 
 public class AmordrineEffect extends BaseMetallurgyEffect {
 
-    private final LivingEventHandler<PlayerDropsEvent> BIND_ITEMS_TO_CORPSE = new LivingEventHandler<>(this::bindEquipmentToCorpse, PlayerDropsEvent.class);
-    private final LivingEventHandler<PlayerEvent.Clone> COPY_TO_NEW_ENTITY = new LivingEventHandler<>(this::copyEquipmentToNewEntity, PlayerEvent.Clone.class);
+    private final EventHandler<PlayerDropsEvent> BIND_ITEMS_TO_CORPSE = new EventHandler<>(this::bindEquipmentToCorpse, PlayerDropsEvent.class);
+    private final EventHandler<PlayerEvent.Clone> COPY_TO_NEW_ENTITY = new EventHandler<>(this::copyEquipmentToNewEntity, PlayerEvent.Clone.class);
 
     public AmordrineEffect() {
         super(ModMetals.AMORDRINE);
     }
 
+    @Nonnull
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ALL;
@@ -56,8 +58,8 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
     }
 
     @Override
-    public LivingEventHandler<? extends LivingEvent>[] getEvents() {
-        return new LivingEventHandler[] {BIND_ITEMS_TO_CORPSE, COPY_TO_NEW_ENTITY};
+    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
+        return new EventHandler[]{BIND_ITEMS_TO_CORPSE, COPY_TO_NEW_ENTITY};
     }
 
     private void bindEquipmentToCorpse(PlayerDropsEvent event) {
