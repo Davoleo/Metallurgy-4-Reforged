@@ -130,7 +130,7 @@ public class ModFontRenderer extends FontRenderer {
 
             this.setColor(((color >> 16) & 255) / 255f,
                     ((color >> 8) & 255) / 255f,
-                    ((color >> 0) & 255) / 255f,
+                    ((color) & 255) / 255f,
                     ((color >> 24) & 255) / 255f);
             return 0;
         }
@@ -145,7 +145,7 @@ public class ModFontRenderer extends FontRenderer {
     }
 
     @Override
-    public void onResourceManagerReload(IResourceManager resourceManager) {
+    public void onResourceManagerReload(@Nonnull IResourceManager resourceManager) {
         super.onResourceManagerReload(resourceManager);
         setUnicodeFlag(Minecraft.getMinecraft().getLanguageManager().isCurrentLocaleUnicode() || Minecraft.getMinecraft().gameSettings.forceUnicodeFont);
         setBidiFlag(Minecraft.getMinecraft().getLanguageManager().isCurrentLanguageBidirectional());
