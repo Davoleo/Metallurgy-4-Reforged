@@ -22,8 +22,6 @@ public class TooltipRenderHandler {
         Item item = event.getStack().getItem();
         Metal metal = ItemUtils.getMetalFromItem(item);
         if (metal != null) {
-            System.out.println(metal.toString());
-
             int color = metal.getStats().getColorHex();
             //Move the alpha channel 6 digits (24 / 4) to the left and add the rgb color to it
             int argb = (0xFF << 24) + color;
