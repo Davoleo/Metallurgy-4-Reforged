@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -23,8 +24,12 @@ public class EffectHandler {
 	public static void livingEvent(LivingEvent event) {
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 			for (EventHandler eventHandler : effect.getLivingEvents()) {
-				if (eventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
-					eventHandler.getDelegate().accept(event);
+				if (eventHandler.equalsEvent(event)) {
+					EntityLivingBase entity = effect.getEquipUserFromEvent(event);
+					if (entity != null && effect.canBeApplied(entity)) {
+						eventHandler.getDelegate().accept(event);
+					}
+				}
 			}
 	}
 
@@ -33,8 +38,12 @@ public class EffectHandler {
 	public static void blockEvent(BlockEvent event) {
 		for (BaseMetallurgyEffect effect : MetallurgyEffects.effects)
 			for (EventHandler eventHandler : effect.getBlockEvents()) {
-				if (eventHandler.equalsEvent(event) && effect.canBeApplied(effect.getEquipUserFromEvent(event)))
-					eventHandler.getDelegate().accept(event);
+				if (eventHandler.equalsEvent(event)) {
+					EntityLivingBase entity = effect.getEquipUserFromEvent(event);
+					if (entity != null && effect.canBeApplied(entity)) {
+						eventHandler.getDelegate().accept(event);
+					}
+				}
 			}
 	}
 
