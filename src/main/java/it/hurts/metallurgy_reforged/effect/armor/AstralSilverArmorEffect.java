@@ -26,7 +26,7 @@ public class AstralSilverArmorEffect extends BaseMetallurgyEffect {
     private final EventHandler<LivingEvent.LivingUpdateEvent> HANDLE_STARLIGHT = new EventHandler<>(this::handleStarlight, LivingEvent.LivingUpdateEvent.class);
 
     public AstralSilverArmorEffect() {
-        super(ModMetals.ANGMALLEN);
+        super(ModMetals.ASTRAL_SILVER);
     }
 
     @Nonnull

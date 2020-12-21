@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.effect.tool.IgnatiusToolEffect;
 import it.hurts.metallurgy_reforged.effect.tool.VulcaniteIgnatiusSwordEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AngmallenWeaponEffect;
+import it.hurts.metallurgy_reforged.effect.weapon.AstralSilverWeaponEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AtlarusWeaponEffect;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
@@ -88,6 +89,10 @@ public class MetallurgyEffects {
 
     //Starlight
     public static final AstralSilverArmorEffect astralSilverArmorEffect = new AstralSilverArmorEffect();
+
+    //Extraterrestrial I
+    public static final AstralSilverWeaponEffect astralSilverWeaponEffect = new AstralSilverWeaponEffect();
+
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
