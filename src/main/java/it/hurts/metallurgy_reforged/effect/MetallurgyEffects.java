@@ -13,10 +13,7 @@ import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.tool.AtlarusHoeEffect;
-import it.hurts.metallurgy_reforged.effect.tool.DeepIronPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.tool.IgnatiusToolEffect;
-import it.hurts.metallurgy_reforged.effect.tool.VulcaniteIgnatiusSwordEffect;
+import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AngmallenWeaponEffect;
 import it.hurts.metallurgy_reforged.effect.weapon.AstralSilverWeaponEffect;
@@ -93,6 +90,8 @@ public class MetallurgyEffects {
     //Extraterrestrial I
     public static final AstralSilverWeaponEffect astralSilverWeaponEffect = new AstralSilverWeaponEffect();
 
+    //Extraterrestrial II
+    public static final AstralSilverToolEffect astralSilverToolEffect = new AstralSilverToolEffect();
 
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 

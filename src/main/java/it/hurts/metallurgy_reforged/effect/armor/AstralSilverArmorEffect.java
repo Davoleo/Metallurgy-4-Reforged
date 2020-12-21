@@ -43,9 +43,9 @@ public class AstralSilverArmorEffect extends BaseMetallurgyEffect {
     private void handleStarlight(LivingEvent.LivingUpdateEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
         boolean meetsConditions = entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ))
-                && (entity.dimension == 1 || !entity.world.isDaytime());
+                && (entity.dimension == 1 || !entity.world.isDaytime() && entity.world.provider.hasSkyLight());
 
-        if (entity.ticksExisted % 80 == 0 && meetsConditions) {
+        if (!entity.world.isRemote && entity.ticksExisted % 80 == 0 && meetsConditions) {
             entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, false, false));
 
             int level = (int) (getLevel(entity) * 4F);
