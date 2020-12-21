@@ -86,6 +86,9 @@ public class MetallurgyEffects {
     //Reactive III
     public static final AngmallenArmorEffect angmallenArmorEffect = new AngmallenArmorEffect();
 
+    //Starlight
+    public static final AstralSilverArmorEffect astralSilverArmorEffect = new AstralSilverArmorEffect();
+
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
     public static final BaseMetallurgyEffect atlarusHoeEffect = new AtlarusHoeEffect();
