@@ -83,6 +83,9 @@ public class MetallurgyEffects {
     //Transmute
     public static final AngmallenPickaxeEffect angmallenPickaxeEffect = new AngmallenPickaxeEffect();
 
+    //Reactive III
+    public static final AngmallenArmorEffect angmallenArmorEffect = new AngmallenArmorEffect();
+
     public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
     public static final BaseMetallurgyEffect atlarusHoeEffect = new AtlarusHoeEffect();
