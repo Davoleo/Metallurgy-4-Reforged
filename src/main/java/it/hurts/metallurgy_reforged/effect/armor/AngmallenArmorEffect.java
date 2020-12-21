@@ -53,7 +53,7 @@ public class AngmallenArmorEffect extends BaseMetallurgyEffect {
                 if (player.getRNG().nextFloat() < getLevel(player) * 0.4) {
                     BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
                     if (rareOrePos != null)
-                        player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 1, 1, true);
+                        player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 0.75F, 1, true);
                 }
             }
         }
