@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,13 +19,13 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
 
 public class AngmallenArmorEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<LivingEvent.LivingUpdateEvent> DETECT_NEARBY_ORES = new EventHandler<>(this::detectNearbyOres, LivingEvent.LivingUpdateEvent.class);
     private final int RADIUS = 4;
 
     public AngmallenArmorEffect() {
@@ -39,24 +38,25 @@ public class AngmallenArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{DETECT_NEARBY_ORES};
-    }
+    /**
+     * check for nearby rare ores and make a sound if there are any in a range of 4 blocks
+     */
+    @SubscribeEvent
+    public void detectNearbyOres(TickEvent.PlayerTickEvent event) {
 
-    private void detectNearbyOres(LivingEvent.LivingUpdateEvent event) {
+        EntityPlayer player = event.player;
 
-        if (event.getEntity() instanceof EntityPlayer) {
-            EntityPlayer player = ((EntityPlayer) event.getEntity());
+        if (!canBeApplied(player))
+            return;
 
-            if (player.world.isRemote && player.ticksExisted % 20 == 0) {
-                if (player.getRNG().nextFloat() < getLevel(player) * 0.4) {
-                    BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
-                    if (rareOrePos != null)
-                        player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 0.75F, 1, true);
-                }
+        if (player.world.isRemote && player.ticksExisted % 20 == 0) {
+            if (player.getRNG().nextFloat() < getLevel(player) * 0.4) {
+                BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
+                if (rareOrePos != null)
+                    player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 0.75F, 1, true);
             }
         }
+
     }
 
     private BlockPos getRareOrePos(World world, BlockPos playerPos) {

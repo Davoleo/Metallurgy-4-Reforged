@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,10 +30,6 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
-    }
 
     public void livingEvent(LivingEvent event) {
         if (event instanceof LivingEvent.LivingUpdateEvent) {

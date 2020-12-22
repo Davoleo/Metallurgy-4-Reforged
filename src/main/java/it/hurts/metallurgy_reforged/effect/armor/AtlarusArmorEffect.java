@@ -20,13 +20,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import javax.annotation.Nonnull;
 
 public class AtlarusArmorEffect extends BaseMetallurgyEffect {
-
-    private static final EventHandler<LivingEvent.LivingUpdateEvent> WIND_FALL_DAMAGE = new EventHandler<>(AtlarusArmorEffect::cancelFallDamage, LivingEvent.LivingUpdateEvent.class);
 
     public AtlarusArmorEffect() {
         super(ModMetals.ATLARUS);
@@ -38,26 +37,23 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{WIND_FALL_DAMAGE};
-    }
 
 	/**
 	 * prevent fall damage by summoning wind by a random direction
 	 */
 
 	@SubscribeEvent
-	public void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
-	{
+	public void cancelFallDamage(LivingEvent.LivingUpdateEvent event) {
 		EntityLivingBase entity = event.getEntityLiving();
+
+		if (!canBeApplied(entity))
+			return;
+
 		World world = entity.world;
 
-		if (entity.fallDistance >= 4F)
-		{
+		if (entity.fallDistance >= 4F) {
 			AxisAlignedBB nearCollitions = entity.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
-			if (world.collidesWithAnyBlock(nearCollitions))
-			{
+			if (world.collidesWithAnyBlock(nearCollitions)) {
 				double motionX = 2D - Math.random() * 4D;
 				double motionZ = 2D - Math.random() * 4D;
 

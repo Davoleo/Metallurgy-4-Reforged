@@ -13,7 +13,6 @@ import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
@@ -21,6 +20,7 @@ import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -28,7 +28,6 @@ import javax.annotation.Nonnull;
 
 public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<LivingEvent.LivingUpdateEvent> RESET_JUMP_COUNT = new EventHandler<>(this::resetJumpCount, LivingEvent.LivingUpdateEvent.class);
 
     public AmordrineArmorEffect() {
         super(ModMetals.AMORDRINE);
@@ -40,12 +39,17 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{RESET_JUMP_COUNT};
-    }
 
+    /**
+     * after x jumps, the cooldown should be reset when on ground, This is to make jump possible again
+     *
+     * @param event
+     */
+    @SubscribeEvent
     public void resetJumpCount(LivingEvent.LivingUpdateEvent event) {
+        if (!canBeApplied(event.getEntityLiving()))
+            return;
+
         if (event.getEntity() instanceof EntityPlayer) {
             PlayerEffectData capability = event.getEntity().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
             if (capability != null) {

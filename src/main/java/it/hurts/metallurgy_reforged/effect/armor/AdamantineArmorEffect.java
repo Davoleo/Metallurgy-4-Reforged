@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
@@ -27,13 +26,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<LivingDeathEvent> ENTITY_HURTS = new EventHandler<>(this::onEntityDeath, LivingDeathEvent.class);
 
     public AdamantineArmorEffect() {
         super(ModMetals.ADAMANTINE);
@@ -45,18 +43,18 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{ENTITY_HURTS};
-    }
 
     /**
      * If the player has Adamantine armor they have a chance to survive death with an armor piece sacrificing itself
      *
      * @param event Fired when the player is about to die
      */
+    @SubscribeEvent
     public void onEntityDeath(LivingDeathEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
+
+        if (!canBeApplied(entity))
+            return;
 
         if (!entity.world.isRemote && entity instanceof EntityPlayerMP) {
             //Get a random slot from the Armor slots (the "2 +" skips main hand and off hand slots)

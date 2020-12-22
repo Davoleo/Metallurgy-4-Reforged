@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
@@ -22,7 +21,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 
 import javax.annotation.Nonnull;
@@ -40,10 +38,6 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
-    }
 
     public void onPlayerCollision(GetCollisionBoxesEvent event) {
         World world = event.getWorld();

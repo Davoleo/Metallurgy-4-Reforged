@@ -11,19 +11,18 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 public class AstralSilverArmorEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<LivingEvent.LivingUpdateEvent> HANDLE_STARLIGHT = new EventHandler<>(this::handleStarlight, LivingEvent.LivingUpdateEvent.class);
 
     public AstralSilverArmorEffect() {
         super(ModMetals.ASTRAL_SILVER);
@@ -35,13 +34,17 @@ public class AstralSilverArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{HANDLE_STARLIGHT};
-    }
 
-    private void handleStarlight(LivingEvent.LivingUpdateEvent event) {
+    /**
+     * apply speed and night vision, if the player has sky above their head and while night time or in the end
+     */
+    @SubscribeEvent
+    public void handleStarlight(LivingEvent.LivingUpdateEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
+
+        if (!canBeApplied(entity))
+            return;
+
         boolean meetsConditions = entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ))
                 && (entity.dimension == 1 || !entity.world.isDaytime() && entity.world.provider.hasSkyLight());
 

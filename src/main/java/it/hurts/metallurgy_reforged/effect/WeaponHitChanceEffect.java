@@ -9,18 +9,16 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.entity.living.LivingEvent;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.function.Supplier;
-
+@Deprecated
 public class WeaponHitChanceEffect extends BaseMetallurgyEffect {
 
 	protected Random random = new Random();
@@ -39,10 +37,6 @@ public class WeaponHitChanceEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.WEAPON;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
-    }
 
     public void onPlayerAttack(EntityPlayer attacker, Entity target) {
         if (!attacker.world.isRemote && target instanceof EntityLivingBase) {

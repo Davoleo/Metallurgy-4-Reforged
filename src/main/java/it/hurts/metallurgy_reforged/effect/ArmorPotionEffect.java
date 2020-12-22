@@ -17,6 +17,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 import javax.annotation.Nonnull;
 
+@Deprecated
 public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
     private final Potion potion;
@@ -41,6 +42,6 @@ public class ArmorPotionEffect extends BaseMetallurgyEffect {
             if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
                 event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
         }
-	}
+    }
 
 }

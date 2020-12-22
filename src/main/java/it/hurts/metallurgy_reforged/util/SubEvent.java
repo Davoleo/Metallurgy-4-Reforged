@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.FuelHandler;
 import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
@@ -26,7 +27,6 @@ public class SubEvent {
 	public static void init()
 	{
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
-		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEquipHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);

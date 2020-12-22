@@ -20,6 +20,8 @@ import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
@@ -28,8 +30,6 @@ import javax.annotation.Nonnull;
 
 public class KrikArmorEffect extends BaseMetallurgyEffect {
 
-    private static final EventHandler<LivingEvent.LivingUpdateEvent> LEVITATE_EFFECT = new EventHandler<>(KrikArmorEffect::livingUpdate, LivingEvent.LivingUpdateEvent.class);
-    private static final EventHandler<LivingFallEvent> CANCEL_FALL = new EventHandler<>(KrikArmorEffect::cancelFall, LivingFallEvent.class);
 
     public KrikArmorEffect() {
         super(ModMetals.KRIK);
@@ -46,16 +46,16 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
     public void livingUpdate(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
-        if(!canBeApplied(player))
+        if (!canBeApplied(player))
             return;
 
         final int STEP = 255 / 27;
 
-			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+        PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-			if (capability != null) {
-				int maxLevel = PlayerEffectData.getKrikMaxLevel(player);
-				int level = capability.getKrikHeight();
+        if (capability != null) {
+            int maxLevel = PlayerEffectData.getKrikMaxLevel(player);
+            int level = capability.getKrikHeight();
 
             if (level <= maxLevel) {
                 if (player.posY < level * STEP) {
@@ -69,34 +69,35 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
         }
 
 
-	}
+    }
 
-	private static void cancelFall(LivingFallEvent event) {
-		if (event.getEntityLiving() instanceof EntityPlayer)
-			event.setCanceled(true);
-	}
+    @SubscribeEvent
+    public void cancelFall(LivingFallEvent event) {
+        if (canBeApplied(event.getEntityLiving()) && event.getEntityLiving() instanceof EntityPlayer)
+            event.setCanceled(true);
+    }
 
-	/**
-	 * Called in {@link it.hurts.metallurgy_reforged.handler.KeyboardHandler}
-	 */
-	@SideOnly(Side.CLIENT)
-	public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
-		if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor) {
-			if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-				if (capability != null && capability.getKrikHeight() < PlayerEffectData.getKrikMaxLevel(player)) {
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
-					capability.setKrikHeight(capability.getKrikHeight() + 1);
-				}
-			}
+    /**
+     * Called in {@link it.hurts.metallurgy_reforged.handler.KeyboardHandler}
+     */
+    @SideOnly(Side.CLIENT)
+    public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
+        if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+                if (capability != null && capability.getKrikHeight() < PlayerEffectData.getKrikMaxLevel(player)) {
+                    PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
+                    capability.setKrikHeight(capability.getKrikHeight() + 1);
+                }
+            }
 
-			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-				if (capability != null && capability.getKrikHeight() > 0) {
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
-					capability.setKrikHeight(capability.getKrikHeight() - 1);
-					//System.out.println(capability.getHeight());
-				}
-			}
-		}
-	}
+            if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+                if (capability != null && capability.getKrikHeight() > 0) {
+                    PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
+                    capability.setKrikHeight(capability.getKrikHeight() - 1);
+                    //System.out.println(capability.getHeight());
+                }
+            }
+        }
+    }
 
 }

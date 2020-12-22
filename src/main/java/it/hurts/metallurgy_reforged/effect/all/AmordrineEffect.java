@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.all;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -20,18 +19,16 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.ListIterator;
 
 public class AmordrineEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<PlayerDropsEvent> BIND_ITEMS_TO_CORPSE = new EventHandler<>(this::bindEquipmentToCorpse, PlayerDropsEvent.class);
-    private final EventHandler<PlayerEvent.Clone> COPY_TO_NEW_ENTITY = new EventHandler<>(this::copyEquipmentToNewEntity, PlayerEvent.Clone.class);
 
     public AmordrineEffect() {
         super(ModMetals.AMORDRINE);
@@ -52,19 +49,10 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
         return super.getEquipUserFromEvent(event);
     }
 
-    @Override
-    public boolean canBeApplied(EntityLivingBase entity) {
-        return true;
-    }
+    @SubscribeEvent
+    public void bindEquipmentToCorpse(PlayerDropsEvent event) {
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{BIND_ITEMS_TO_CORPSE, COPY_TO_NEW_ENTITY};
-    }
-
-    private void bindEquipmentToCorpse(PlayerDropsEvent event) {
-
-        if(event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+        if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
             return;
 
         EntityPlayer player = (EntityPlayer) getEquipUserFromEvent(event);
@@ -83,11 +71,12 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
         }
     }
 
-    private void copyEquipmentToNewEntity(PlayerEvent.Clone event) {
+    @SubscribeEvent
+    public void copyEquipmentToNewEntity(PlayerEvent.Clone event) {
         if (event.isCanceled())
             return;
 
-        if(event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+        if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
             return;
 
         if (event.isWasDeath()) {

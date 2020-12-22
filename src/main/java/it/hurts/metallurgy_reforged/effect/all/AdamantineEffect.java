@@ -32,12 +32,6 @@ import java.util.List;
 
 public class AdamantineEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<LivingEntityUseItemEvent.Finish> REPAIR_EQUIP =
-            new EventHandler<>(this::onFinishedEating, LivingEntityUseItemEvent.Finish.class);
-
-    private final EventHandler<LivingEvent.LivingUpdateEvent> CONSUME_EQUIP =
-            new EventHandler<>(this::onLivingUpdate, LivingEvent.LivingUpdateEvent.class);
-
     public AdamantineEffect() {
         super(ModMetals.ADAMANTINE);
     }
@@ -65,7 +59,6 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
             if (stack.getItemDamage() != 0)
             {
-
                 if (!entity.world.isRemote)
                     stack.setItemDamage(Math.max(stack.getItemDamage() - ((ItemFood) food).getHealAmount(stack) * 2, 0));
                 else
@@ -83,7 +76,6 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
         if (event.side == Side.SERVER)
         {
-            EntityPlayer player = (EntityPlayer) entity;
             float foodLevelPercentage = player.getFoodStats().getFoodLevel() / 20F;
 
             if (foodLevelPercentage < 1)
@@ -103,7 +95,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
                         randomEquip.shrink(1);
                     }
 
-                    entity.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 0.3F, 0.8F);
+                    player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 0.3F, 0.8F);
                 }
             }
         }
