@@ -49,11 +49,11 @@ public class AstralSilverArmorEffect extends BaseMetallurgyEffect {
                 && (entity.dimension == 1 || !entity.world.isDaytime() && entity.world.provider.hasSkyLight());
 
         if (!entity.world.isRemote && entity.ticksExisted % 80 == 0 && meetsConditions) {
-            entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, false, false));
+            entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 300, 0, false, true));
 
             int level = (int) (getLevel(entity) * 4F);
             if (level > 1) {
-                entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, level - 2, false, false));
+                entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 100, level - 2, false, true));
             }
         }
     }

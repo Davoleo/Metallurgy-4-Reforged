@@ -59,7 +59,11 @@ public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
         boolean hasArmor = StreamSupport.stream(spliterator, false).anyMatch(stack -> stack.getItem() instanceof ItemArmor);
 
         //Increase damage by 75% if the enemy has a piece of armor
-        if (hasArmor)
+        if (hasArmor) {
             event.setAmount(event.getAmount() * 1.75F);
+            if (!event.getEntity().world.isRemote)
+                for (int i = 0; i < 10; i++)
+                    spawnParticle(event.getEntity(), 1.5f, 10);
+        }
     }
 }

@@ -14,14 +14,20 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
 import it.hurts.metallurgy_reforged.render.font.FontColor;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -31,120 +37,136 @@ import java.lang.reflect.Field;
 
 public abstract class BaseMetallurgyEffect {
 
-	public final String name;
-	protected Metal metal;
+    public final String name;
+    protected Metal metal;
 
-	public BaseMetallurgyEffect(Metal metal) {
-		this.metal = metal;
+    public BaseMetallurgyEffect(Metal metal) {
+        this.metal = metal;
 
-		this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+        this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
 
-		if (isEnabled()) {
-			MetallurgyEffects.effects.add(this);
-		}
-	}
+        if (isEnabled()) {
+            MetallurgyEffects.effects.add(this);
+        }
+    }
 
-	public boolean isEnabled()
-	{
-		if (metal == null)
-			return false;
-		else
-		{
-			String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
+    public boolean isEnabled() {
+        if (metal == null)
+            return false;
+        else {
+            String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
 
-			try
-			{
-				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
-				return enabledField.getBoolean(EffectsConfig.class);
-			} catch (NoSuchFieldException | IllegalAccessException e) {
-				Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
-				e.printStackTrace();
-				return true;
-			}
-		}
-	}
+            try {
+                Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
+                return enabledField.getBoolean(EffectsConfig.class);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
+                e.printStackTrace();
+                return true;
+            }
+        }
+    }
 
-	/**
-	 * @return The category of tools the effect is applied to
-	 */
-	@Nonnull
-	public abstract EnumEffectCategory getCategory();
+    /**
+     * @return The category of tools the effect is applied to
+     */
+    @Nonnull
+    public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityLivingBase entity) {
-		if (entity == null)
-			return 0;
+    public float getLevel(EntityLivingBase entity) {
+        if (entity == null)
+            return 0;
 
-		EnumEffectCategory category = getCategory();
+        EnumEffectCategory category = getCategory();
 
-		Item mainItem = entity.getHeldItemMainhand().getItem();
-		Item offItem = entity.getHeldItemOffhand().getItem();
+        Item mainItem = entity.getHeldItemMainhand().getItem();
+        Item offItem = entity.getHeldItemOffhand().getItem();
 
-		if (category == EnumEffectCategory.ALL)
-		{
-			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem))
-				return 1;
-			return 0;
-		}
+        if (category == EnumEffectCategory.ALL) {
+            if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem))
+                return 1;
+            return 0;
+        }
 
-		if (category == EnumEffectCategory.ARMOR)
-		{
-			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
-		}
-		else if (ItemUtils.isMadeOfMetal(metal, mainItem))
-		{
-			IToolEffect tool = ((IToolEffect) mainItem);
-			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
-			{
-				if (tool.getMetalStats().getName().equals(metal.toString()))
-				{
-					return 1;
-				}
-			}
-		}
-		else if (ItemUtils.isMadeOfMetal(metal, offItem))
-		{
-			IToolEffect tool = ((IToolEffect) offItem);
-			if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
-			{
-				if (tool.getMetalStats().getName().equals(metal.toString())) {
-					return 1;
-				}
-			}
-		}
+        if (category == EnumEffectCategory.ARMOR) {
+            return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
+        } else if (ItemUtils.isMadeOfMetal(metal, mainItem)) {
+            IToolEffect tool = ((IToolEffect) mainItem);
+            if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
+                if (tool.getMetalStats().getName().equals(metal.toString())) {
+                    return 1;
+                }
+            }
+        } else if (ItemUtils.isMadeOfMetal(metal, offItem)) {
+            IToolEffect tool = ((IToolEffect) offItem);
+            if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
+                if (tool.getMetalStats().getName().equals(metal.toString())) {
+                    return 1;
+                }
+            }
+        }
 
-		return 0;
-	}
+        return 0;
+    }
 
-	public boolean canBeApplied(EntityLivingBase entity) {
-		return getLevel(entity) > 0;
-	}
+    public boolean canBeApplied(EntityLivingBase entity) {
+        return getLevel(entity) > 0;
+    }
 
-	/**
-	 * @return the entity which should have the equip metal depending on the event
-	 * @see it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect
-	 */
-	public EntityLivingBase getEquipUserFromEvent(Event event)
-	{
-		if (event instanceof LivingEvent)
-			return ((LivingEvent) event).getEntityLiving();
-		return null;
-	}
+    /**
+     * @return the entity which should have the equip metal depending on the event
+     * @see it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect
+     */
+    public EntityLivingBase getEquipUserFromEvent(Event event) {
+        if (event instanceof LivingEvent)
+            return ((LivingEvent) event).getEntityLiving();
+        return null;
+    }
 
-	/**
-	 * @return A pair of Strings, the first containing the effect name and the second containing its description
-	 */
-	public Pair<String, String> getTooltip() {
-		String format = FontColor.encodeColor(metal.getStats().getColorHex());
-		String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
-		return ImmutablePair.of(format + name, description);
-	}
+    /**
+     * @return A pair of Strings, the first containing the effect name and the second containing its description
+     */
+    public Pair<String, String> getTooltip() {
+        String format = FontColor.encodeColor(metal.getStats().getColorHex());
+        String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
+        return ImmutablePair.of(format + name, description);
+    }
 
-	public Metal getMetal()
-	{
-		return metal;
-	}
+    /**
+     * spawn ore particles randomly on a entity
+     */
+    protected void spawnParticle(Entity entity, float scale, int level) {
+        double x = entity.posX + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
+        double y = entity.posY + Utils.random.nextDouble() * (double) entity.height;
+        double z = entity.posZ + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
 
-	public final String getName() {
-		return name;
-	}
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), entity);
+    }
+
+    /**
+     * spawn ore particles randomly on block position
+     */
+    protected void spawnParticle(World world, BlockPos pos, float scale, int level) {
+        double x = pos.getX() + Utils.random.nextDouble();
+        double y = pos.getY() + Utils.random.nextDouble();
+        double z = pos.getZ() + Utils.random.nextDouble();
+
+        spawnParticle(world, x, y, z, scale, level);
+    }
+
+    /**
+     * spawn ore particles in a specific point
+     */
+    protected void spawnParticle(World world, double x, double y, double z, float scale, int level) {
+        NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), targetPoint);
+    }
+
+    public Metal getMetal() {
+        return metal;
+    }
+
+    public final String getName() {
+        return name;
+    }
 }

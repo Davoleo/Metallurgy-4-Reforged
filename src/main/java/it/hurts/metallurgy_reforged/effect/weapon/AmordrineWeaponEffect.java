@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,31 +33,33 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.WEAPON;
     }
 
-	/**
-	 * in this case of LivingHurtEvent, the attacker should have the armor, not the mob which is attacked
-	 */
-	@Override
-	public EntityLivingBase getEquipUserFromEvent(Event event)
-	{
-		if (event instanceof LivingHurtEvent)
-		{
-			LivingHurtEvent hurtEvent = (LivingHurtEvent) event;
-			Entity attacker = hurtEvent.getSource().getImmediateSource();
-			if (attacker instanceof EntityLivingBase)
-				return (EntityLivingBase) attacker;
-		}
-		return super.getEquipUserFromEvent(event);
-	}
+    /**
+     * in this case of LivingHurtEvent, the attacker should have the armor, not the mob which is attacked
+     */
+    @Override
+    public EntityLivingBase getEquipUserFromEvent(Event event) {
+        if (event instanceof LivingHurtEvent) {
+            LivingHurtEvent hurtEvent = (LivingHurtEvent) event;
+            Entity attacker = hurtEvent.getSource().getImmediateSource();
+            if (attacker instanceof EntityLivingBase)
+                return (EntityLivingBase) attacker;
+        }
+        return super.getEquipUserFromEvent(event);
+    }
 
-	@SubscribeEvent
-	public void onMobAttacked(LivingHurtEvent event)
-	{
-		if (!canBeApplied(getEquipUserFromEvent(event)))
-			return;
+    @SubscribeEvent
+    public void onMobAttacked(LivingHurtEvent event) {
+        if (!canBeApplied(getEquipUserFromEvent(event)))
+            return;
 
-		float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
-		float originalAMount = event.getAmount();
-		event.setAmount(originalAMount + originalAMount * percentage * 2);
-	}
+        //Higher Percentage means lower entity life
+        float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
+        float originalAMount = event.getAmount();
+        event.setAmount(originalAMount + originalAMount * percentage * 2);
+
+        if (!event.getEntity().world.isRemote)
+            for (int i = 0; i < 25; i++)
+                spawnParticle(event.getEntityLiving(), 1F + percentage * 2F, 1 + MathHelper.floor(percentage * 9));
+    }
 
 }

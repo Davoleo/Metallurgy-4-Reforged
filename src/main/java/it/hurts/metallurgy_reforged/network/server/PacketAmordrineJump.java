@@ -12,9 +12,12 @@ package it.hurts.metallurgy_reforged.network.server;
 import io.netty.buffer.ByteBuf;
 import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.network.client.PacketAttachEmitter;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -41,10 +44,11 @@ public class PacketAmordrineJump implements IMessage {
         buf.writeInt(maxJumps);
     }
 
-    public static class Handler implements IMessageHandler<PacketAmordrineJump, IMessage> {
+    public static class Handler implements IMessageHandler<PacketAmordrineJump, PacketAttachEmitter> {
         @Override
-        public IMessage onMessage(PacketAmordrineJump message, MessageContext ctx) {
+        public PacketAttachEmitter onMessage(PacketAmordrineJump message, MessageContext ctx) {
             EntityPlayerMP player = ctx.getServerHandler().player;
+
             PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
             if (capability != null) {
@@ -55,6 +59,11 @@ public class PacketAmordrineJump implements IMessage {
                     player.velocityChanged = true;
                     player.fallDistance = 0;
                     player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.PLAYERS, 0.5F, 2F);
+                    AxisAlignedBB playerBox = player.getEntityBoundingBox();
+                    AxisAlignedBB feetBox = new AxisAlignedBB(playerBox.minX, playerBox.minY, playerBox.minZ, playerBox.maxX, playerBox.minY, playerBox.maxZ);
+
+                    return new PacketAttachEmitter(feetBox, ModMetals.AMORDRINE.getStats().getColorHex(),
+                            1, 4 - currentJumps, 30);
                 }
             }
 

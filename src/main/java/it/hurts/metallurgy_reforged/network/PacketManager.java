@@ -10,8 +10,10 @@
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.network.client.PacketAttachEmitter;
 import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
@@ -33,8 +35,10 @@ public class PacketManager {
         network.registerMessage(PacketAmordrineJump.Handler.class, PacketAmordrineJump.class, id++, Side.SERVER);
 
         //Server2Client
-        network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, id++, Side.CLIENT);
+        network.registerMessage(PacketSpawnVanillaParticles.Handler.class, PacketSpawnVanillaParticles.class, id++, Side.CLIENT);
         network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, id++, Side.CLIENT);
+        network.registerMessage(PacketSpawnOreParticles.Handler.class, PacketSpawnOreParticles.class, id++, Side.CLIENT);
+        network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
     }
 
 }

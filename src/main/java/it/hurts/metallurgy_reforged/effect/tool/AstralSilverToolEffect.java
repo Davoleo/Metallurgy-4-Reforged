@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -36,6 +37,7 @@ public class AstralSilverToolEffect extends BaseMetallurgyEffect {
 
         if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1) {
             event.setNewSpeed(event.getOriginalSpeed() * 2);
+            spawnParticle(event.getEntity().world, event.getPos(), 0.7F, Utils.random.nextInt(6));
         }
     }
 }

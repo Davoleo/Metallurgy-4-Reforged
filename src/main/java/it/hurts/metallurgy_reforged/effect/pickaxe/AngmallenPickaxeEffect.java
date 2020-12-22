@@ -63,6 +63,9 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
                 stack.setTagCompound(compound);
                 event.getDrops().add(stack);
                 event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1F, 1F);
+
+                for (int i = 0; i < 20; i++)
+                    spawnParticle(event.getWorld(), event.getPos(), 1.3F, 5);
             }
         }
     }

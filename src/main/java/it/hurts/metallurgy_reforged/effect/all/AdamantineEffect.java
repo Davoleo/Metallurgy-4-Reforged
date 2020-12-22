@@ -89,13 +89,16 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
                     randomEquip.setItemDamage(randomEquip.getItemDamage() + 2);
 
-                    if (randomEquip.getItemDamage() > randomEquip.getMaxDamage())
-                    {
+                    if (randomEquip.getItemDamage() > randomEquip.getMaxDamage()) {
                         player.renderBrokenItemStack(randomEquip);
                         randomEquip.shrink(1);
                     }
 
                     player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 0.3F, 0.8F);
+
+                    for (int i = 0; i < 6; i++)
+                        spawnParticle(player, 1F, 1);
+
                 }
             }
         }

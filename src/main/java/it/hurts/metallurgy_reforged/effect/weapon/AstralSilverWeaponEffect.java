@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -54,14 +55,19 @@ public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
 	}
 
 	@SubscribeEvent
-	public void onMobAttacked(LivingHurtEvent event)
-	{
+	public void onMobAttacked(LivingHurtEvent event) {
 		if (!canBeApplied(getEquipUserFromEvent(event)))
 			return;
 
 		float originalAMount = event.getAmount();
-		if (event.getEntityLiving().world.provider.getDimension() != 0)
+		World world = event.getEntity().world;
+		if (world.provider.getDimension() != 0) {
 			event.setAmount(originalAMount * 1.45F);
+
+			if (!world.isRemote)
+				for (int i = 0; i < 10; i++)
+					spawnParticle(event.getEntity(), 1.5f, 10);
+		}
 	}
 
 }

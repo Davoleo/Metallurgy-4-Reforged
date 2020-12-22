@@ -13,7 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -57,21 +57,18 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 				double motionX = 2D - Math.random() * 4D;
 				double motionZ = 2D - Math.random() * 4D;
 
-				if (!world.isRemote)
-				{
+				if (!world.isRemote) {
 					entity.motionX = motionX;
 					entity.motionZ = motionZ;
 					entity.velocityChanged = true;
 
-					if (world instanceof WorldServer)
-					{
-						for (int i = 0; i < 15; i++)
-						{
+					if (world instanceof WorldServer) {
+						for (int i = 0; i < 15; i++) {
 							double particleX = entity.posX + (Math.random() - 0.5D) * (double) entity.width;
 							double particleY = entity.posY + Math.random() * (double) entity.height;
 							double particleZ = entity.posZ + (Math.random() - 0.5D) * (double) entity.width;
 
-							PacketSpawnParticles packetSpawnParticles = new PacketSpawnParticles(EnumParticleTypes.CLOUD.getParticleID(),
+							PacketSpawnVanillaParticles packetSpawnParticles = new PacketSpawnVanillaParticles(EnumParticleTypes.CLOUD.getParticleID(),
 									(float) particleX, (float) particleY, (float) particleZ,
 									(float) motionX, -0.25F, (float) motionZ);
 
