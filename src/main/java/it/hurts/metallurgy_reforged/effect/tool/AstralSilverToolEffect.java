@@ -38,7 +38,7 @@ public class AstralSilverToolEffect extends BaseMetallurgyEffect {
     }
 
     private void handleBreakSpeed(PlayerEvent.BreakSpeed event) {
-        if (event.getEntityPlayer().dimension != 0) {
+        if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1) {
             event.setNewSpeed(event.getOriginalSpeed() * 2);
         }
     }
