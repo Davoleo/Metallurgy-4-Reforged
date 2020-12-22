@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect;
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.render.font.FontColor;
@@ -22,7 +21,6 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -73,6 +71,8 @@ public abstract class BaseMetallurgyEffect {
 	public abstract EnumEffectCategory getCategory();
 
 	public float getLevel(EntityLivingBase entity) {
+		if (entity == null)
+			return 0;
 
 		EnumEffectCategory category = getCategory();
 
@@ -113,15 +113,6 @@ public abstract class BaseMetallurgyEffect {
 		}
 
 		return 0;
-	}
-
-
-	public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-		return new EventHandler[]{};
-	}
-
-	public EventHandler<? extends BlockEvent>[] getBlockEvents() {
-		return new EventHandler[]{};
 	}
 
 	public boolean canBeApplied(EntityLivingBase entity) {

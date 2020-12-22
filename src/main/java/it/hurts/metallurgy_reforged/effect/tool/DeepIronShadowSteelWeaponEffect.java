@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
@@ -22,7 +21,6 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEvent;
 
 import javax.annotation.Nonnull;
 import java.util.UUID;
@@ -42,11 +40,6 @@ public class DeepIronShadowSteelWeaponEffect extends BaseMetallurgyEffect {
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
     }
 
     public void onPlayerTick(EntityPlayer player) {

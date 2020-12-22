@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
@@ -44,7 +43,12 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
         return new EventHandler[]{WIND_FALL_DAMAGE};
     }
 
-	private static void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
+	/**
+	 * prevent fall damage by summoning wind by a random direction
+	 */
+
+	@SubscribeEvent
+	public void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
 		World world = entity.world;

@@ -11,9 +11,7 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import javax.annotation.Nonnull;
@@ -29,11 +27,6 @@ public class DeepIronPickaxeEffect extends BaseMetallurgyEffect {
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.TOOL;
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
     }
 
     public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {

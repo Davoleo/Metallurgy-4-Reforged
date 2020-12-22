@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.potion.Potion;
@@ -33,11 +32,6 @@ public class ArmorPotionEffect extends BaseMetallurgyEffect {
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.ARMOR;
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
     }
 
     public void livingEvent(LivingEvent event) {

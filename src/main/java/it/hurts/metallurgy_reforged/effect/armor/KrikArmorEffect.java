@@ -14,14 +14,11 @@ import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,17 +41,15 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{LEVITATE_EFFECT, CANCEL_FALL};
-    }
 
-	private static void livingUpdate(LivingEvent.LivingUpdateEvent event)
-	{
-		EntityLivingBase entity = event.getEntityLiving();
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			final int STEP = 255 / 27;
+    @SubscribeEvent
+    public void livingUpdate(TickEvent.PlayerTickEvent event) {
+        EntityPlayer player = event.player;
+
+        if(!canBeApplied(player))
+            return;
+
+        final int STEP = 255 / 27;
 
 			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
@@ -62,18 +57,17 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 				int maxLevel = PlayerEffectData.getKrikMaxLevel(player);
 				int level = capability.getKrikHeight();
 
-				if (level <= maxLevel) {
-					if (player.posY < level * STEP) {
-						player.motionY = 0.4;
-					} else if (Math.round(player.posY) == level * STEP) {
-						player.motionY = 0;
-					}
-				}
-				else {
-					capability.setKrikHeight(maxLevel);
-				}
-			}
-		}
+            if (level <= maxLevel) {
+                if (player.posY < level * STEP) {
+                    player.motionY = 0.4;
+                } else if (Math.round(player.posY) == level * STEP) {
+                    player.motionY = 0;
+                }
+            } else {
+                capability.setKrikHeight(maxLevel);
+            }
+        }
+
 
 	}
 

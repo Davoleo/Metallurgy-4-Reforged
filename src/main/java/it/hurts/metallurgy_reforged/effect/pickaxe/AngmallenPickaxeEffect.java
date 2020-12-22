@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.pickaxe;
 import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
@@ -23,14 +22,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
-
-    private final EventHandler<BlockEvent.HarvestDropsEvent> TRANSMUTE_ORE = new EventHandler<>(this::transmuteOre, BlockEvent.HarvestDropsEvent.class);
 
     public AngmallenPickaxeEffect() {
         super(ModMetals.ANGMALLEN);
@@ -43,11 +41,6 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
     }
 
     @Override
-    public EventHandler<? extends BlockEvent>[] getBlockEvents() {
-        return new EventHandler[]{TRANSMUTE_ORE};
-    }
-
-    @Override
     public EntityLivingBase getEquipUserFromEvent(Event event) {
         return ((BlockEvent.HarvestDropsEvent) event).getHarvester();
     }
@@ -55,7 +48,12 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
     /**
      * handles 1/2 Chance to transmute the harvested ore into something else
      */
-    private void transmuteOre(BlockEvent.HarvestDropsEvent event) {
+    @SubscribeEvent
+    public void transmuteOre(BlockEvent.HarvestDropsEvent event) {
+
+        if (!canBeApplied(getEquipUserFromEvent(event)))
+            return;
+
         if (!event.getWorld().isRemote && event.getState().getBlock() instanceof BlockOre) {
             if (Utils.random.nextBoolean()) {
                 event.getDrops().clear();
@@ -76,6 +74,7 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
      * @return a BlockOre ItemStack
      */
     private ItemStack getRandomOreStack(BlockOre ore) {
+        //Loop over the metal map and filter for the right ores via Streams
         List<ItemStack> oresDropList = ModMetals.metalMap.values().stream().filter(mettle -> {
             if (ore == mettle.getOre())
                 return false;
@@ -83,6 +82,7 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
             IBlockState state = ore.getDefaultState();
             return level >= ore.getHarvestLevel(state) - 1 && level <= ore.getHarvestLevel(state) + 1;
         }).map(mettle -> new ItemStack(mettle.getOre())).collect(Collectors.toList());
+        // Map metals to ore itemStacks and collect all of them into a list
 
         return oresDropList.get(Utils.random.nextInt(oresDropList.size()));
     }

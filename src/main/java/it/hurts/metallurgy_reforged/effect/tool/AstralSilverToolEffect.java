@@ -11,24 +11,16 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 public class AstralSilverToolEffect extends BaseMetallurgyEffect {
 
-    private final EventHandler<PlayerEvent.BreakSpeed> INCREASE_BREAK_SPEED = new EventHandler<>(this::handleBreakSpeed, PlayerEvent.BreakSpeed.class);
-
     public AstralSilverToolEffect() {
         super(ModMetals.ASTRAL_SILVER);
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{INCREASE_BREAK_SPEED};
     }
 
     @Nonnull
@@ -37,7 +29,11 @@ public class AstralSilverToolEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.TOOL;
     }
 
-    private void handleBreakSpeed(PlayerEvent.BreakSpeed event) {
+    @SubscribeEvent
+    public void handleBreakSpeed(PlayerEvent.BreakSpeed event) {
+        if (!canBeApplied(event.getEntityPlayer()))
+            return;
+
         if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1) {
             event.setNewSpeed(event.getOriginalSpeed() * 2);
         }

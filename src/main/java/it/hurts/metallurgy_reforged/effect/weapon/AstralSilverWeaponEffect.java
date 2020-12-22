@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: AmordrineWeaponEffect
+ = Class: AstralSilverWeaponEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -11,20 +11,16 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
-
-
-	private EventHandler<LivingHurtEvent> ATTACK_MOB = new EventHandler<>(this::onMobAttacked, LivingHurtEvent.class);
 
 	public AstralSilverWeaponEffect()
 	{
@@ -36,12 +32,6 @@ public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
 	public EnumEffectCategory getCategory()
 	{
 		return EnumEffectCategory.WEAPON;
-	}
-
-	@Override
-	public EventHandler<? extends LivingEvent>[] getLivingEvents()
-	{
-		return new EventHandler[]{ATTACK_MOB};
 	}
 
 	/**
@@ -63,13 +53,15 @@ public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
 		return super.getEquipUserFromEvent(event);
 	}
 
-	private void onMobAttacked(LivingHurtEvent event)
+	@SubscribeEvent
+	public void onMobAttacked(LivingHurtEvent event)
 	{
+		if (!canBeApplied(getEquipUserFromEvent(event)))
+			return;
+
 		float originalAMount = event.getAmount();
 		if (event.getEntityLiving().world.provider.getDimension() != 0)
-		{
 			event.setAmount(originalAMount * 1.45F);
-		}
 	}
 
 }

@@ -14,6 +14,7 @@ import net.minecraftforge.common.config.Config;
 
 @Config.LangKey("config.metallurgy.category.armor_effects")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_roster")
+@Config.RequiresMcRestart
 public class EffectsConfig {
 
 	//Armors

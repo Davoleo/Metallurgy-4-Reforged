@@ -11,23 +11,20 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.Spliterator;
 import java.util.stream.StreamSupport;
 
 public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
-
-    private final EventHandler<LivingHurtEvent> BUFF_DAMAGE = new EventHandler<>(this::buffDamage, LivingHurtEvent.class);
 
     public AngmallenWeaponEffect() {
         super(ModMetals.ANGMALLEN);
@@ -37,11 +34,6 @@ public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{BUFF_DAMAGE};
     }
 
     @Override
@@ -57,7 +49,11 @@ public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
         return super.getEquipUserFromEvent(event);
     }
 
-    private void buffDamage(LivingHurtEvent event) {
+    @SubscribeEvent
+    public void buffDamage(LivingHurtEvent event) {
+
+        if (!canBeApplied(getEquipUserFromEvent(event)))
+            return;
 
         Spliterator<ItemStack> spliterator = event.getEntityLiving().getArmorInventoryList().spliterator();
         boolean hasArmor = StreamSupport.stream(spliterator, false).anyMatch(stack -> stack.getItem() instanceof ItemArmor);

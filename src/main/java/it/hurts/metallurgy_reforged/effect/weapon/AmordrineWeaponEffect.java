@@ -11,20 +11,16 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
 public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
-
-
-    private EventHandler<LivingHurtEvent> ATTACK_MOB = new EventHandler<>(this::onMobAttacked, LivingHurtEvent.class);
 
     public AmordrineWeaponEffect() {
         super(ModMetals.AMORDRINE);
@@ -34,11 +30,6 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
     @Override
     public EnumEffectCategory getCategory() {
         return EnumEffectCategory.WEAPON;
-    }
-
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{ATTACK_MOB};
     }
 
 	/**
@@ -52,16 +43,17 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
 			LivingHurtEvent hurtEvent = (LivingHurtEvent) event;
 			Entity attacker = hurtEvent.getSource().getImmediateSource();
 			if (attacker instanceof EntityLivingBase)
-			{
-
 				return (EntityLivingBase) attacker;
-			}
 		}
 		return super.getEquipUserFromEvent(event);
 	}
 
-	private void onMobAttacked(LivingHurtEvent event)
+	@SubscribeEvent
+	public void onMobAttacked(LivingHurtEvent event)
 	{
+		if (!canBeApplied(getEquipUserFromEvent(event)))
+			return;
+
 		float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
 		float originalAMount = event.getAmount();
 		event.setAmount(originalAMount + originalAMount * percentage * 2);

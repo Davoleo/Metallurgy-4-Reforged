@@ -11,11 +11,9 @@ package it.hurts.metallurgy_reforged.effect.all;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -25,7 +23,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -48,12 +48,10 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ALL;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[]{REPAIR_EQUIP, CONSUME_EQUIP};
-    }
-
-    private void onFinishedEating(LivingEntityUseItemEvent.Finish event) {
+    @SubscribeEvent
+    public void onFinishedEating(LivingEntityUseItemEvent.Finish event) {
+        if(!canBeApplied(event.getEntityLiving()))
+            return;
 
         Item food = event.getItem().getItem();
         EntityLivingBase entity = event.getEntityLiving();
@@ -76,10 +74,14 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
         }
     }
 
-    private void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
+    @SubscribeEvent
+    public void onLivingUpdate(TickEvent.PlayerTickEvent event)
     {
-        Entity entity = event.getEntityLiving();
-        if (entity instanceof EntityPlayer && !entity.world.isRemote)
+        EntityPlayer player = event.player;
+        if(!canBeApplied(player))
+            return;
+
+        if (event.side == Side.SERVER)
         {
             EntityPlayer player = (EntityPlayer) entity;
             float foodLevelPercentage = player.getFoodStats().getFoodLevel() / 20F;
@@ -103,10 +105,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
                     entity.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 0.3F, 0.8F);
                 }
-
             }
-
-
         }
     }
 

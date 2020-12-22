@@ -11,12 +11,10 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.handler.EventHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.MaterialTransparent;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,6 +26,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
 
@@ -45,15 +45,14 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.HOE;
     }
 
-    @Override
-    public EventHandler<? extends LivingEvent>[] getLivingEvents() {
-        return new EventHandler[0];
-    }
+    @SubscribeEvent
+    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
 
-    public void onPlayerTick(EntityPlayer player) {
+    	if (!canBeApplied(event.player))
+    		return;
 
-        World world = player.world;
-        ItemStack stack = player.getHeldItemMainhand();
+        World world = event.player.world;
+        ItemStack stack = event.player.getHeldItemMainhand();
         if (stack.getItem() == metal.getTool(EnumTools.HOE) && world.getTotalWorldTime() % 4 == 0) {
             NBTTagCompound tag = stack.getTagCompound();
             if (tag != null && tag.hasKey("range"))
@@ -99,7 +98,7 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 				}
 
 				if (destroyedBlocks > 0)
-					stack.damageItem(Math.round(destroyedBlocks * 0.5F), player);
+					stack.damageItem(Math.round(destroyedBlocks * 0.5F), event.player);
 
 				world.playSound(null, startPos.getX(), startPos.getY(), startPos.getZ(), SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.AMBIENT, 1.4F, 1F - ((float) range / MAX_RANGE) * 0.3F);
 
