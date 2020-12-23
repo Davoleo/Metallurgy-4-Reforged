@@ -21,37 +21,37 @@ import java.util.Random;
 
 public class WorldTickHandler {
 
-	public static WorldTickHandler instance = new WorldTickHandler();
+    public static WorldTickHandler instance = new WorldTickHandler();
 
-	public static TIntObjectHashMap<ArrayDeque<ChunkPos>> chunksToGenerate = new TIntObjectHashMap<>();
+    public static TIntObjectHashMap<ArrayDeque<ChunkPos>> chunksToGenerate = new TIntObjectHashMap<>();
 
-	@SubscribeEvent
-	public void onTickEnd(TickEvent.WorldTickEvent event)
-	{
-		if (event.side != Side.SERVER)
-			return;
+    @SubscribeEvent
+    public void onTickEnd(TickEvent.WorldTickEvent event)
+    {
+        if (event.side != Side.SERVER)
+            return;
 
-		if (event.phase == TickEvent.Phase.END)
-		{
-			World world = event.world;
-			int dimension = world.provider.getDimension();
+        if (event.phase == TickEvent.Phase.END)
+        {
+            World world = event.world;
+            int dimension = world.provider.getDimension();
 
-			ArrayDeque<ChunkPos> chunks = chunksToGenerate.get(dimension);
+            ArrayDeque<ChunkPos> chunks = chunksToGenerate.get(dimension);
 
-			if (chunks != null && !chunks.isEmpty())
-			{
-				ChunkPos c = chunks.pollFirst();
-				long worldSeed = world.getSeed();
-				Random random = new Random(worldSeed);
-				long xSeed = random.nextLong() >> 2 + 1L;
-				long zSeed = random.nextLong() >> 2 + 1L;
-				random.setSeed(xSeed * c.x + zSeed * c.z ^ worldSeed);
-				ModWorldGen.instance.generateWorld(random, c.x, c.z, world, false);
-				chunksToGenerate.put(dimension, chunks);
-			}
-			else if (chunks != null)
-				chunksToGenerate.remove(dimension);
-		}
-	}
+            if (chunks != null && !chunks.isEmpty())
+            {
+                ChunkPos c = chunks.pollFirst();
+                long worldSeed = world.getSeed();
+                Random random = new Random(worldSeed);
+                long xSeed = random.nextLong() >> 2 + 1L;
+                long zSeed = random.nextLong() >> 2 + 1L;
+                random.setSeed(xSeed * c.x + zSeed * c.z ^ worldSeed);
+                ModWorldGen.instance.generateWorld(random, c.x, c.z, world, false);
+                chunksToGenerate.put(dimension, chunks);
+            }
+            else if (chunks != null)
+                chunksToGenerate.remove(dimension);
+        }
+    }
 
 }

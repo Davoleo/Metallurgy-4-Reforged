@@ -13,24 +13,24 @@ import it.hurts.metallurgy_reforged.material.MetalStats;
 
 public class ItemMetal extends ItemBase {
 
-	private ItemTypes type;
-	private MetalStats metal;
+    private ItemTypes type;
+    private MetalStats metal;
 
-	public ItemMetal(MetalStats metal, ItemTypes type)
-	{
-		super(metal.getName() + "_" + type.getName(), type.getTab());
-		this.type = type;
-		this.metal = metal;
-	}
+    public ItemMetal(MetalStats metal, ItemTypes type)
+    {
+        super(metal.getName() + "_" + type.getName(), type.getTab());
+        this.type = type;
+        this.metal = metal;
+    }
 
-	public ItemTypes getType()
-	{
-		return type;
-	}
+    public ItemTypes getType()
+    {
+        return type;
+    }
 
-	public MetalStats getMetalStats()
-	{
-		return metal;
-	}
+    public MetalStats getMetalStats()
+    {
+        return metal;
+    }
 
 }

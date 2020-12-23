@@ -21,28 +21,28 @@ import javax.annotation.Nullable;
 
 public class MetallurgyTraitDuplication extends AbstractTrait implements IMetallurgyTrait {
 
-	public MetallurgyTraitDuplication()
-	{
-		super("duplication_trait", TextFormatting.YELLOW);
-	}
+    public MetallurgyTraitDuplication()
+    {
+        super("duplication_trait", TextFormatting.YELLOW);
+    }
 
-	@Override
-	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
-	{
-		if ((!(target instanceof EntityPlayer)) && (target.getHealth() <= 0.0F && (int) (Math.random() * 100) < 50))
-			for (EntityItem item : target.capturedDrops)
-			{
-				EntityItem clone = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
-				item.world.spawnEntity(clone);
-			}
-	}
+    @Override
+    public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
+    {
+        if ((!(target instanceof EntityPlayer)) && (target.getHealth() <= 0.0F && (int) (Math.random() * 100) < 50))
+            for (EntityItem item : target.capturedDrops)
+            {
+                EntityItem clone = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
+                item.world.spawnEntity(clone);
+            }
+    }
 
-	@Override
-	public void register(String name, @Nullable String tooltip)
-	{
-		Utils.localize(String.format(LOC_Name, name));
-		if (tooltip != null)
-			Utils.localize(String.format(LOC_Name, tooltip));
-	}
+    @Override
+    public void register(String name, @Nullable String tooltip)
+    {
+        Utils.localize(String.format(LOC_Name, name));
+        if (tooltip != null)
+            Utils.localize(String.format(LOC_Name, tooltip));
+    }
 
 }

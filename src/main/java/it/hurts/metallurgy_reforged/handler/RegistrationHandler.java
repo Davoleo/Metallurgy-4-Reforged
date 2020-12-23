@@ -47,183 +47,184 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class RegistrationHandler {
 
-	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
-	public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
-	public static final ResourceLocation ENTITY_DATA_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "entity_data");
+    public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
+    public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
+    public static final ResourceLocation ENTITY_DATA_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "entity_data");
 
-	@SubscribeEvent
-	public static void registerItems(RegistryEvent.Register<Item> event)
-	{
-		//Misc Itemblocks
-		for (Block block : ModBlocks.miscBlocks)
-		{
-			event.getRegistry().register(ModBlocks.createItemBlock(block));
-		}
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event)
+    {
+        //Misc Itemblocks
+        for (Block block : ModBlocks.miscBlocks)
+        {
+            event.getRegistry().register(ModBlocks.createItemBlock(block));
+        }
 
-		ModMetals.metalMap.forEach((s, metal) -> {
-			//Ore ItemBlocks
-			if (metal.getOre() != null)
-			{
-				event.getRegistry().register(ModBlocks.createItemBlock(metal.getOre()));
-			}
+        ModMetals.metalMap.forEach((s, metal) -> {
+            //Ore ItemBlocks
+            if (metal.getOre() != null)
+            {
+                event.getRegistry().register(ModBlocks.createItemBlock(metal.getOre()));
+            }
 
-			//Metal ItemBlocks
-			for (BlockTypes type : BlockTypes.values())
-			{
-				if (type.isEnabled())
-					event.getRegistry().register(ModBlocks.createItemBlock(metal.getBlock(type)));
-			}
+            //Metal ItemBlocks
+            for (BlockTypes type : BlockTypes.values())
+            {
+                if (type.isEnabled())
+                    event.getRegistry().register(ModBlocks.createItemBlock(metal.getBlock(type)));
+            }
 
-			//Items
-			event.getRegistry().register(metal.getIngot());
-			if (RegistrationConfig.categoryItems.enableMetalDusts)
-				event.getRegistry().register(metal.getDust());
-			if (RegistrationConfig.categoryItems.enableMetalNuggets)
-				event.getRegistry().register(metal.getNugget());
+            //Items
+            event.getRegistry().register(metal.getIngot());
+            if (RegistrationConfig.categoryItems.enableMetalDusts)
+                event.getRegistry().register(metal.getDust());
+            if (RegistrationConfig.categoryItems.enableMetalNuggets)
+                event.getRegistry().register(metal.getNugget());
 
-			//Tools
-			if (metal.getToolSet() != null)
-			{
-				for (EnumTools toolType : EnumTools.values())
-				{
-					if (toolType.isEnabled())
-						event.getRegistry().register(metal.getTool(toolType));
-				}
-			}
+            //Tools
+            if (metal.getToolSet() != null)
+            {
+                for (EnumTools toolType : EnumTools.values())
+                {
+                    if (toolType.isEnabled())
+                        event.getRegistry().register(metal.getTool(toolType));
+                }
+            }
 
-			//Armors
-			if (metal.getArmorSet() != null && RegistrationConfig.categoryItems.enableMetalArmorSets)
-			{
-				for (Item armor : metal.getArmorSet())
-				{
-					event.getRegistry().register(armor);
-				}
-			}
-		});
+            //Armors
+            if (metal.getArmorSet() != null && RegistrationConfig.categoryItems.enableMetalArmorSets)
+            {
+                for (Item armor : metal.getArmorSet())
+                {
+                    event.getRegistry().register(armor);
+                }
+            }
+        });
 
-		//Misc Items
-		ModItems.extraItems.forEach(item -> {
-			event.getRegistry().register(item);
-		});
+        //Misc Items
+        ModItems.extraItems.forEach(item -> {
+            event.getRegistry().register(item);
+        });
 
-		//Init OreDictionary (Register keys)
-		OreDictHandler.init();
-		Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
-	}
+        //Init OreDictionary (Register keys)
+        OreDictHandler.init();
+        Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
+    }
 
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event)
-	{
-		//Misc Blocks
-		for (Block block : ModBlocks.miscBlocks)
-		{
-			event.getRegistry().register(block);
-		}
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event)
+    {
+        //Misc Blocks
+        for (Block block : ModBlocks.miscBlocks)
+        {
+            event.getRegistry().register(block);
+        }
 
-		ModMetals.metalMap.forEach((s, metal) -> {
+        ModMetals.metalMap.forEach((s, metal) -> {
 
-			//Ore Blocks
-			if (metal.getOre() != null)
-			{
-				event.getRegistry().register(metal.getOre());
-			}
+            //Ore Blocks
+            if (metal.getOre() != null)
+            {
+                event.getRegistry().register(metal.getOre());
+            }
 
-			//Metal Blocks and Deco
-			for (BlockTypes type : BlockTypes.values())
-			{
-				if (type.isEnabled())
-					event.getRegistry().register(metal.getBlock(type));
-			}
-		});
+            //Metal Blocks and Deco
+            for (BlockTypes type : BlockTypes.values())
+            {
+                if (type.isEnabled())
+                    event.getRegistry().register(metal.getBlock(type));
+            }
+        });
 
-		//if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks) {
-		for (BlockFluidClassic block : ModFluids.fluidBlocks)
-		{
-			event.getRegistry().register(block);
-		}
-		//}
-	}
+        //if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks) {
+        for (BlockFluidClassic block : ModFluids.fluidBlocks)
+        {
+            event.getRegistry().register(block);
+        }
+        //}
+    }
 
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event)
-	{
-		ModBlocks.miscBlocks.forEach(block -> ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0));
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event)
+    {
+        ModBlocks.miscBlocks.forEach(block -> ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0));
 
-		ModItems.extraItems.forEach(item -> ItemUtils.registerCustomItemModel(item, 0, item.getModelSubDir()));
+        ModItems.extraItems.forEach(item -> ItemUtils.registerCustomItemModel(item, 0, item.getModelSubDir()));
 
-		ModMetals.metalMap.forEach((name, metal) -> {
+        ModMetals.metalMap.forEach((name, metal) -> {
 
-			//ItemBlocks
-			if (metal.getOre() != null)
-				ItemUtils.registerCustomItemModel(Item.getItemFromBlock(metal.getOre()), 0);
+            //ItemBlocks
+            if (metal.getOre() != null)
+                ItemUtils.registerCustomItemModel(Item.getItemFromBlock(metal.getOre()), 0);
 
-			for (BlockMetal block : metal.getBlocks())
-			{
-				ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
-			}
+            for (BlockMetal block : metal.getBlocks())
+            {
+                ItemUtils.registerCustomItemModel(Item.getItemFromBlock(block), 0);
+            }
 
-			//Items
-			ItemUtils.registerCustomItemModel(metal.getIngot(), 0, "ingot");
-			ItemUtils.registerCustomItemModel(metal.getDust(), 0, "dust");
-			ItemUtils.registerCustomItemModel(metal.getNugget(), 0, "nugget");
+            //Items
+            ItemUtils.registerCustomItemModel(metal.getIngot(), 0, "ingot");
+            ItemUtils.registerCustomItemModel(metal.getDust(), 0, "dust");
+            ItemUtils.registerCustomItemModel(metal.getNugget(), 0, "nugget");
 
-			//Tools
-			if (metal.getToolSet() != null)
-			{
-				for (EnumTools tool : EnumTools.values())
-				{
-					ItemUtils.registerCustomItemModel(metal.getTool(tool), 0, "tool/" + tool.getName());
-				}
-			}
+            //Tools
+            if (metal.getToolSet() != null)
+            {
+                for (EnumTools tool : EnumTools.values())
+                {
+                    ItemUtils.registerCustomItemModel(metal.getTool(tool), 0, "tool/" + tool.getName());
+                }
+            }
 
-			//Armors
-			if (metal.getArmorSet() != null)
-			{
-				for (Item armor : metal.getArmorSet())
-				{
-					ItemUtils.registerCustomItemModel(armor, 0, "armor");
-				}
-			}
-		});
+            //Armors
+            if (metal.getArmorSet() != null)
+            {
+                for (Item armor : metal.getArmorSet())
+                {
+                    ItemUtils.registerCustomItemModel(armor, 0, "armor");
+                }
+            }
+        });
 
-		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.crusher), 0);
-		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.alloyer), 0);
-		ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.chamber), 0);
+        ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.crusher), 0);
+        ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.alloyer), 0);
+        ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.chamber), 0);
 
-		ModRenderers.registerRenderers();
-	}
+        ModRenderers.registerRenderers();
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void onModelBake(ModelBakeEvent event)
-	{
-		ModelResourceLocation location = new ModelResourceLocation(new ResourceLocation(Metallurgy.MODID, "gadget/brass_knuckles"), "inventory");
-		IBakedModel original = event.getModelRegistry().getObject(location);
-		event.getModelRegistry().putObject(location, new BrassKnucklesBakedModel(original));
-	}
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void onModelBake(ModelBakeEvent event)
+    {
+        ModelResourceLocation location = new ModelResourceLocation(new ResourceLocation(Metallurgy.MODID, "gadget/brass_knuckles"), "inventory");
+        IBakedModel original = event.getModelRegistry().getObject(location);
+        event.getModelRegistry().putObject(location, new BrassKnucklesBakedModel(original));
+    }
 
-	@SubscribeEvent
-	public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
-	{
-		if (event.getObject() instanceof EntityLivingBase)
-			event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
+    @SubscribeEvent
+    public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
+    {
+        if (event.getObject() instanceof EntityLivingBase)
+            event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
-		if (event.getObject() instanceof EntityPlayer) {
-			event.addCapability(KRIK_EFFECT_CAPABILITY, new EffectDataProvider());
-		}
-		if (event.getObject() instanceof EntityEnderman)
-			event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
-	}
+        if (event.getObject() instanceof EntityPlayer)
+        {
+            event.addCapability(KRIK_EFFECT_CAPABILITY, new EffectDataProvider());
+        }
+        if (event.getObject() instanceof EntityEnderman)
+            event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerTextures(TextureStitchEvent.Pre event)
-	{
-		for (int i = 1; i <= 10; i++)
-			event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i));
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerTextures(TextureStitchEvent.Pre event)
+    {
+        for (int i = 1; i <= 10; i++)
+            event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + i));
 
-		//Register brass knuckles item texture
-		event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "items/gadgets/brass_knuckles_item"));
-	}
+        //Register brass knuckles item texture
+        event.getMap().registerSprite(new ResourceLocation(Metallurgy.MODID, "items/gadgets/brass_knuckles_item"));
+    }
 
 }

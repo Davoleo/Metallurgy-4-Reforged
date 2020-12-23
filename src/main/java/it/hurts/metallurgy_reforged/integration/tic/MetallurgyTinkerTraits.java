@@ -22,41 +22,41 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class MetallurgyTinkerTraits {
 
-	public static final AbstractTrait obscureTrait = new MetallurgyTraitObscure();
-	public static final AbstractTrait vulcanTrait = new MetallurgyTraitVulcan(0);
-	public static final AbstractTrait vulcanTrait1 = new MetallurgyTraitVulcan(1);
-	public static final AbstractTrait vulcanTrait2 = new MetallurgyTraitVulcan(2);
-	public static final AbstractTrait witherTrait = new MetallurgyTraitWither();
-	public static final AbstractTrait lifeStealTrait = new MetallurgyTraitLifeSteal();
-	public static final AbstractTrait kingDiceTrait = new MetallurgyTraitKingDice();
-	public static final AbstractTrait duplicaitonTrait = new MetallurgyTraitDuplication();
-	public static final AbstractTrait opistognathusTrait = new MetallurgyTraitOpistognathus();
+    public static final AbstractTrait obscureTrait = new MetallurgyTraitObscure();
+    public static final AbstractTrait vulcanTrait = new MetallurgyTraitVulcan(0);
+    public static final AbstractTrait vulcanTrait1 = new MetallurgyTraitVulcan(1);
+    public static final AbstractTrait vulcanTrait2 = new MetallurgyTraitVulcan(2);
+    public static final AbstractTrait witherTrait = new MetallurgyTraitWither();
+    public static final AbstractTrait lifeStealTrait = new MetallurgyTraitLifeSteal();
+    public static final AbstractTrait kingDiceTrait = new MetallurgyTraitKingDice();
+    public static final AbstractTrait duplicaitonTrait = new MetallurgyTraitDuplication();
+    public static final AbstractTrait opistognathusTrait = new MetallurgyTraitOpistognathus();
 
-	public static boolean isMetallurgyTrait(EntityPlayer player, String traitToCheck)
-	{
-		boolean flag = false;
+    public static boolean isMetallurgyTrait(EntityPlayer player, String traitToCheck)
+    {
+        boolean flag = false;
 
-		Item item = player.getHeldItem(EnumHand.MAIN_HAND).getItem();
+        Item item = player.getHeldItem(EnumHand.MAIN_HAND).getItem();
 
-		if (item instanceof TinkersItem)
-		{
-			NBTTagList list = TagUtil.getTraitsTagList(player.getHeldItem(EnumHand.MAIN_HAND));
+        if (item instanceof TinkersItem)
+        {
+            NBTTagList list = TagUtil.getTraitsTagList(player.getHeldItem(EnumHand.MAIN_HAND));
 
-			for (int i = 0; i < list.tagCount(); i++)
-			{
-				ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
+            for (int i = 0; i < list.tagCount(); i++)
+            {
+                ITrait trait = TinkerRegistry.getTrait(list.getStringTagAt(i));
 
-				if (trait instanceof IMetallurgyTrait)
-				{
-					IMetallurgyTrait metallurgyTrait = (IMetallurgyTrait) trait;
+                if (trait instanceof IMetallurgyTrait)
+                {
+                    IMetallurgyTrait metallurgyTrait = (IMetallurgyTrait) trait;
 
-					if (metallurgyTrait.getIdentifier().equals(traitToCheck + "_trait"))
-						flag = true;
-				}
-			}
-		}
+                    if (metallurgyTrait.getIdentifier().equals(traitToCheck + "_trait"))
+                        flag = true;
+                }
+            }
+        }
 
-		return flag;
-	}
+        return flag;
+    }
 
 }

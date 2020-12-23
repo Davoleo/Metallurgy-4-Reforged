@@ -30,90 +30,90 @@ import java.util.List;
 
 public class BrassKnucklesBakedModel implements IBakedModel {
 
-	private final IBakedModel originalModel;
+    private final IBakedModel originalModel;
 
-	public BrassKnucklesBakedModel(IBakedModel originalModel)
-	{
-		this.originalModel = originalModel;
-	}
+    public BrassKnucklesBakedModel(IBakedModel originalModel)
+    {
+        this.originalModel = originalModel;
+    }
 
-	@Nonnull
-	@Override
-	public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand)
-	{
-		if (!isBuiltInRenderer())
-			return getItemModel().getQuads(state, side, rand);
-		return originalModel.getQuads(state, side, rand);
-	}
+    @Nonnull
+    @Override
+    public List<BakedQuad> getQuads(@Nullable IBlockState state, @Nullable EnumFacing side, long rand)
+    {
+        if (!isBuiltInRenderer())
+            return getItemModel().getQuads(state, side, rand);
+        return originalModel.getQuads(state, side, rand);
+    }
 
-	@Override
-	public boolean isAmbientOcclusion()
-	{
-		return originalModel.isAmbientOcclusion();
-	}
+    @Override
+    public boolean isAmbientOcclusion()
+    {
+        return originalModel.isAmbientOcclusion();
+    }
 
-	@Override
-	public boolean isGui3d()
-	{
-		return originalModel.isGui3d();
-	}
+    @Override
+    public boolean isGui3d()
+    {
+        return originalModel.isGui3d();
+    }
 
-	@Override
-	public boolean isBuiltInRenderer()
-	{
-		return BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GUI
-				&& BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.FIXED
-				&& BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GROUND;
-	}
+    @Override
+    public boolean isBuiltInRenderer()
+    {
+        return BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GUI
+                && BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.FIXED
+                && BrassKnucklesTEISR.type != ItemCameraTransforms.TransformType.GROUND;
+    }
 
-	@Nonnull
-	@Override
-	public TextureAtlasSprite getParticleTexture()
-	{
-		return originalModel.getParticleTexture();
-	}
+    @Nonnull
+    @Override
+    public TextureAtlasSprite getParticleTexture()
+    {
+        return originalModel.getParticleTexture();
+    }
 
-	@Nonnull
-	@Override
-	public Pair<? extends IBakedModel, Matrix4f> handlePerspective(@Nonnull ItemCameraTransforms.TransformType cameraTransformType)
-	{
+    @Nonnull
+    @Override
+    public Pair<? extends IBakedModel, Matrix4f> handlePerspective(@Nonnull ItemCameraTransforms.TransformType cameraTransformType)
+    {
 
-		BrassKnucklesTEISR.type = cameraTransformType;
+        BrassKnucklesTEISR.type = cameraTransformType;
 
-		//GUI and itemFrame Contexts
-		if (!isBuiltInRenderer())
-			return ForgeHooksClient.handlePerspective(getItemModel(), cameraTransformType);
+        //GUI and itemFrame Contexts
+        if (!isBuiltInRenderer())
+            return ForgeHooksClient.handlePerspective(getItemModel(), cameraTransformType);
 
-		return ForgeHooksClient.handlePerspective(this, cameraTransformType);
-	}
+        return ForgeHooksClient.handlePerspective(this, cameraTransformType);
+    }
 
-	@Override
-	@SuppressWarnings("deprecation")
-	@Nonnull
-	public ItemCameraTransforms getItemCameraTransforms()
-	{
-		ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
-		ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
-		ItemTransformVec3f thirdpersonRight = new ItemTransformVec3f(new Vector3f(-90f, 0F, 0F), new Vector3f(0.08f, -0.11f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
-		ItemTransformVec3f thirdpersonLeft = new ItemTransformVec3f(new Vector3f(-90f, 180F, 0F), new Vector3f(0.06f, -0.13f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
+    @Override
+    @SuppressWarnings("deprecation")
+    @Nonnull
+    public ItemCameraTransforms getItemCameraTransforms()
+    {
+        ItemTransformVec3f firstpersonRight = new ItemTransformVec3f(new Vector3f(0, 280F, 50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
+        ItemTransformVec3f firstpersonLeft = new ItemTransformVec3f(new Vector3f(0, 100F, -50F), new Vector3f(0.15F, 0.3F, -0.3F), new Vector3f(0.4F, 0.50F, 0.4F));
+        ItemTransformVec3f thirdpersonRight = new ItemTransformVec3f(new Vector3f(-90f, 0F, 0F), new Vector3f(0.08f, -0.11f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
+        ItemTransformVec3f thirdpersonLeft = new ItemTransformVec3f(new Vector3f(-90f, 180F, 0F), new Vector3f(0.06f, -0.13f, -0.13f), new Vector3f(0.375F, 0.375F, 0.375F));
 
-		return new ItemCameraTransforms(thirdpersonLeft, thirdpersonRight, firstpersonLeft, firstpersonRight, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT);
-	}
+        return new ItemCameraTransforms(thirdpersonLeft, thirdpersonRight, firstpersonLeft, firstpersonRight, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT, ItemTransformVec3f.DEFAULT);
+    }
 
-	@Nonnull
-	@Override
-	public ItemOverrideList getOverrides()
-	{
-		return originalModel.getOverrides();
-	}
+    @Nonnull
+    @Override
+    public ItemOverrideList getOverrides()
+    {
+        return originalModel.getOverrides();
+    }
 
-	private IBakedModel getItemModel()
-	{
-		ResourceLocation itemModel = new ResourceLocation(Metallurgy.MODID, "item/gadget/brass_knuckles_item");
-		return ModelLoaderRegistry.getModelOrMissing(itemModel)
-				.bake(TRSRTransformation.identity(),
-						DefaultVertexFormats.ITEM, location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString())
-				);
-	}
+    private IBakedModel getItemModel()
+    {
+        ResourceLocation itemModel = new ResourceLocation(Metallurgy.MODID, "item/gadget/brass_knuckles_item");
+        return ModelLoaderRegistry.getModelOrMissing(itemModel)
+                .bake(TRSRTransformation.identity(),
+                        DefaultVertexFormats.ITEM, location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString())
+                );
+    }
 
 }

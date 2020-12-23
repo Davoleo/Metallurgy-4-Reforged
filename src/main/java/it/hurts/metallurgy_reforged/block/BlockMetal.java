@@ -28,108 +28,108 @@ import javax.annotation.Nonnull;
 
 public class BlockMetal extends Block {
 
-	private final MetalStats metal;
-	private final BlockTypes type;
+    private final MetalStats metal;
+    private final BlockTypes type;
 
-	public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
-	{
-		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
-		this.metal = metal;
-		this.type = type;
-		this.setSoundType(SoundType.METAL);
+    public BlockMetal(MetalStats metal, BlockTypes type, float hardness)
+    {
+        super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
+        this.metal = metal;
+        this.type = type;
+        this.setSoundType(SoundType.METAL);
 
-		if (this.type == BlockTypes.GLASS)
-		{
-			this.setLightOpacity(0);
-		}
+        if (this.type == BlockTypes.GLASS)
+        {
+            this.setLightOpacity(0);
+        }
 
-		BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
-	}
+        BlockUtils.initBlock(this, metal.getName() + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, hardness, metal.getBlockBlastResistance(), Constants.Tools.PICKAXE, 2);
+    }
 
-	public BlockMetal(String metalName, BlockTypes type)
-	{
-		super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
-		this.metal = Constants.EMPTY_METAL_STATS;
-		this.type = type;
-		this.setSoundType(SoundType.METAL);
+    public BlockMetal(String metalName, BlockTypes type)
+    {
+        super(type == BlockTypes.GLASS ? Material.GLASS : Material.IRON);
+        this.metal = Constants.EMPTY_METAL_STATS;
+        this.type = type;
+        this.setSoundType(SoundType.METAL);
 
-		if (this.type == BlockTypes.GLASS)
-		{
-			this.setLightOpacity(0);
-		}
+        if (this.type == BlockTypes.GLASS)
+        {
+            this.setLightOpacity(0);
+        }
 
-		BlockUtils.initBlock(this, metalName + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3, 5F, Constants.Tools.PICKAXE, 1);
-	}
+        BlockUtils.initBlock(this, metalName + "_" + type.getPrefix(), MetallurgyTabs.tabBlock, 3, 5F, Constants.Tools.PICKAXE, 1);
+    }
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public boolean isFullCube(@Nonnull IBlockState state)
-	{
-		return type != BlockTypes.GLASS;
-	}
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isFullCube(@Nonnull IBlockState state)
+    {
+        return type != BlockTypes.GLASS;
+    }
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public boolean isOpaqueCube(@Nonnull IBlockState state)
-	{
-		return this.type != BlockTypes.GLASS;
-	}
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isOpaqueCube(@Nonnull IBlockState state)
+    {
+        return this.type != BlockTypes.GLASS;
+    }
 
-	@Nonnull
-	@Override
-	public BlockRenderLayer getRenderLayer()
-	{
-		if (type == BlockTypes.GLASS)
-			return BlockRenderLayer.CUTOUT;
-		else
-			return BlockRenderLayer.SOLID;
+    @Nonnull
+    @Override
+    public BlockRenderLayer getRenderLayer()
+    {
+        if (type == BlockTypes.GLASS)
+            return BlockRenderLayer.CUTOUT;
+        else
+            return BlockRenderLayer.SOLID;
 
-	}
+    }
 
-	@SuppressWarnings("deprecation")
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean shouldSideBeRendered(@Nonnull IBlockState blockState, @Nonnull IBlockAccess blockAccess, @Nonnull BlockPos pos, @Nonnull EnumFacing side)
-	{
-		IBlockState neighbourState = blockAccess.getBlockState(pos.offset(side));
-		Block neighbourBlock = neighbourState.getBlock();
+    @SuppressWarnings("deprecation")
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean shouldSideBeRendered(@Nonnull IBlockState blockState, @Nonnull IBlockAccess blockAccess, @Nonnull BlockPos pos, @Nonnull EnumFacing side)
+    {
+        IBlockState neighbourState = blockAccess.getBlockState(pos.offset(side));
+        Block neighbourBlock = neighbourState.getBlock();
 
-		if (type == BlockTypes.GLASS)
-		{
-			if (blockState != neighbourState)
-			{
-				return true;
-			}
+        if (type == BlockTypes.GLASS)
+        {
+            if (blockState != neighbourState)
+            {
+                return true;
+            }
 
-			if (neighbourBlock == this)
-			{
-				return false;
-			}
-		}
+            if (neighbourBlock == this)
+            {
+                return false;
+            }
+        }
 
-		return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-	}
+        return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+    }
 
-	@Override
-	public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon)
-	{
-		if (type != BlockTypes.BLOCK)
-			return false;
+    @Override
+    public boolean isBeaconBase(@Nonnull IBlockAccess worldObj, @Nonnull BlockPos pos, @Nonnull BlockPos beacon)
+    {
+        if (type != BlockTypes.BLOCK)
+            return false;
 
-		if (metal.getOreHarvest() == -1)
-			return metal.getToolStats().getHarvestLevel() > 1;
-		else
-			return metal.getOreHarvest() > 1;
-	}
+        if (metal.getOreHarvest() == -1)
+            return metal.getToolStats().getHarvestLevel() > 1;
+        else
+            return metal.getOreHarvest() > 1;
+    }
 
-	public MetalStats getMetalStats()
-	{
-		return metal;
-	}
+    public MetalStats getMetalStats()
+    {
+        return metal;
+    }
 
-	public BlockTypes getType()
-	{
-		return type;
-	}
+    public BlockTypes getType()
+    {
+        return type;
+    }
 
 }

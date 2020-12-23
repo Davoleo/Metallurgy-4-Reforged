@@ -24,39 +24,39 @@ import javax.annotation.Nonnull;
  */
 public class PunchEffectProvider implements ICapabilitySerializable<NBTBase> {
 
-	@CapabilityInject(IPunchEffect.class)
-	public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
+    @CapabilityInject(IPunchEffect.class)
+    public static final Capability<IPunchEffect> PUNCH_EFFECT_CAP = null;
 
-	private final IPunchEffect instance;
+    private final IPunchEffect instance;
 
-	public PunchEffectProvider()
-	{
-		this.instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : new PunchEffect();
-	}
+    public PunchEffectProvider()
+    {
+        this.instance = PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getDefaultInstance() : new PunchEffect();
+    }
 
-	@Override
-	public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
-	{
-		return capability.equals(PUNCH_EFFECT_CAP);
-	}
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
+    {
+        return capability.equals(PUNCH_EFFECT_CAP);
+    }
 
-	@Override
-	public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
-	{
-		return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
-	}
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, EnumFacing facing)
+    {
+        return capability == PUNCH_EFFECT_CAP ? PUNCH_EFFECT_CAP.cast(this.instance) : null;
+    }
 
-	@Override
-	public NBTBase serializeNBT()
-	{
-		return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
-	}
+    @Override
+    public NBTBase serializeNBT()
+    {
+        return PUNCH_EFFECT_CAP != null ? PUNCH_EFFECT_CAP.getStorage().writeNBT(PUNCH_EFFECT_CAP, this.instance, null) : null;
+    }
 
-	@Override
-	public void deserializeNBT(NBTBase nbt)
-	{
-		if (PUNCH_EFFECT_CAP != null)
-			PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
-	}
+    @Override
+    public void deserializeNBT(NBTBase nbt)
+    {
+        if (PUNCH_EFFECT_CAP != null)
+            PUNCH_EFFECT_CAP.getStorage().readNBT(PUNCH_EFFECT_CAP, this.instance, null, nbt);
+    }
 
 }

@@ -21,38 +21,38 @@ import javax.annotation.Nonnull;
 
 public class SlotAlloyerOutput extends Slot {
 
-	private final EntityPlayer player;
+    private final EntityPlayer player;
 
-	public SlotAlloyerOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
-	{
-		super(inventory, index, xPos, yPos);
-		this.player = player;
-	}
+    public SlotAlloyerOutput(EntityPlayer player, IInventory inventory, int index, int xPos, int yPos)
+    {
+        super(inventory, index, xPos, yPos);
+        this.player = player;
+    }
 
-	@Nonnull
-	@Override
-	public ItemStack onTake(@Nonnull EntityPlayer thePlayer, @Nonnull ItemStack stack)
-	{
-		onCrafting(stack);
-		return super.onTake(thePlayer, stack);
-	}
+    @Nonnull
+    @Override
+    public ItemStack onTake(@Nonnull EntityPlayer thePlayer, @Nonnull ItemStack stack)
+    {
+        onCrafting(stack);
+        return super.onTake(thePlayer, stack);
+    }
 
-	@Override
-	protected void onCrafting(@Nonnull ItemStack output)
-	{
-		if (!player.world.isRemote)
-		{
-			int i = output.getCount();
-			output.onCrafting(player.world, player, i);
-			Utils.giveExperience(player, i * AlloyerRecipes.getInstance().getAlloyExperience(output));
-		}
-		FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
-	}
+    @Override
+    protected void onCrafting(@Nonnull ItemStack output)
+    {
+        if (!player.world.isRemote)
+        {
+            int i = output.getCount();
+            output.onCrafting(player.world, player, i);
+            Utils.giveExperience(player, i * AlloyerRecipes.getInstance().getAlloyExperience(output));
+        }
+        FMLCommonHandler.instance().firePlayerSmeltedEvent(player, output);
+    }
 
-	@Override
-	public boolean isItemValid(@Nonnull ItemStack stack)
-	{
-		return false;
-	}
+    @Override
+    public boolean isItemValid(@Nonnull ItemStack stack)
+    {
+        return false;
+    }
 
 }

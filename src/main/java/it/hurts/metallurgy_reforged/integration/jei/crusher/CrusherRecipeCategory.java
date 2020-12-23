@@ -26,84 +26,84 @@ import javax.annotation.Nullable;
 
 public class CrusherRecipeCategory implements IRecipeCategory<CrusherRecipeWrapper> {
 
-	//Slot IDs
-	private static final int INPUT_SLOT = 0;
-	private static final int OUTPUT_SLOT = 1;
+    //Slot IDs
+    private static final int INPUT_SLOT = 0;
+    private static final int OUTPUT_SLOT = 1;
 
-	//gui background
-	private final IDrawableStatic background;
+    //gui background
+    private final IDrawableStatic background;
 
-	//Animations
-	private final IDrawableAnimated flame;
-	private final IDrawableAnimated bar;
+    //Animations
+    private final IDrawableAnimated flame;
+    private final IDrawableAnimated bar;
 
-	public CrusherRecipeCategory(IGuiHelper helper)
-	{
-		ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/crusher.png");
+    public CrusherRecipeCategory(IGuiHelper helper)
+    {
+        ResourceLocation texture = new ResourceLocation(Metallurgy.MODID, "textures/gui/crusher.png");
 
-		background = helper.createDrawable(texture, 0, 0, 176, 108);
+        background = helper.createDrawable(texture, 0, 0, 176, 108);
 
-		//Burning Fuel Animation
-		IDrawableStatic flameDrawable = helper.createDrawable(texture, 176, 61, 17, 17);
-		flame = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
+        //Burning Fuel Animation
+        IDrawableStatic flameDrawable = helper.createDrawable(texture, 176, 61, 17, 17);
+        flame = helper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);
 
-		//Progress Bar Animation
-		IDrawableStatic barDrawable = helper.createDrawable(texture, 176, 0, 7, 33);
-		bar = helper.createAnimatedDrawable(barDrawable, 140, IDrawableAnimated.StartDirection.BOTTOM, false);
-	}
+        //Progress Bar Animation
+        IDrawableStatic barDrawable = helper.createDrawable(texture, 176, 0, 7, 33);
+        bar = helper.createAnimatedDrawable(barDrawable, 140, IDrawableAnimated.StartDirection.BOTTOM, false);
+    }
 
-	@Override
-	public void drawExtras(Minecraft minecraft)
-	{
-		flame.draw(minecraft, 128, 61);
-		bar.draw(minecraft, 93, 65);
-	}
+    @Override
+    public void drawExtras(Minecraft minecraft)
+    {
+        flame.draw(minecraft, 128, 61);
+        bar.draw(minecraft, 93, 65);
+    }
 
-	@Nonnull
-	@Override
-	public String getUid()
-	{
-		return IntegrationJEI.CRUSHER;
-	}
+    @Nonnull
+    @Override
+    public String getUid()
+    {
+        return IntegrationJEI.CRUSHER;
+    }
 
-	@Nonnull
-	@Override
-	public String getTitle()
-	{
-		return new ItemStack(ModBlocks.crusher).getDisplayName();
-	}
+    @Nonnull
+    @Override
+    public String getTitle()
+    {
+        return new ItemStack(ModBlocks.crusher).getDisplayName();
+    }
 
-	@Nonnull
-	@Override
-	public String getModName()
-	{
-		return Metallurgy.NAME;
-	}
+    @Nonnull
+    @Override
+    public String getModName()
+    {
+        return Metallurgy.NAME;
+    }
 
-	@Nonnull
-	@Override
-	public IDrawable getBackground()
-	{
-		return background;
-	}
+    @Nonnull
+    @Override
+    public IDrawable getBackground()
+    {
+        return background;
+    }
 
-	@Nullable
-	@Override
-	public IDrawable getIcon()
-	{
-		return null;
-	}
+    @Nullable
+    @Override
+    public IDrawable getIcon()
+    {
+        return null;
+    }
 
-	@Override
-	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull CrusherRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
-	{
-		IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
+    @Override
+    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull CrusherRecipeWrapper recipeWrapper, @Nonnull IIngredients ingredients)
+    {
+        IGuiIngredientGroup<ItemStack> group = recipeLayout.getItemStacks();
 
-		group.init(INPUT_SLOT, true, 60, 27);
-		group.init(OUTPUT_SLOT, false, 66, 66);
+        group.init(INPUT_SLOT, true, 60, 27);
+        group.init(OUTPUT_SLOT, false, 66, 66);
 
-		group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));
-		group.set(OUTPUT_SLOT, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
-	}
+        group.set(INPUT_SLOT, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+        group.set(OUTPUT_SLOT, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
+    }
 
 }

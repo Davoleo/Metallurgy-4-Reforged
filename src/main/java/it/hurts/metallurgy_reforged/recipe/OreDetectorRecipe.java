@@ -29,72 +29,72 @@ import javax.annotation.Nonnull;
 
 public class OreDetectorRecipe extends ShapelessOreRecipe {
 
-	public OreDetectorRecipe(ResourceLocation group, NonNullList<Ingredient> input)
-	{
-		super(group, input, ItemStack.EMPTY);
-	}
+    public OreDetectorRecipe(ResourceLocation group, NonNullList<Ingredient> input)
+    {
+        super(group, input, ItemStack.EMPTY);
+    }
 
-	@Nonnull
-	@Override
-	public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv)
-	{
-		ItemStack output = ItemStack.EMPTY;
-		NonNullList<ItemStack> inputs = NonNullList.create();
-		Metal metalModel = null;
+    @Nonnull
+    @Override
+    public ItemStack getCraftingResult(@Nonnull InventoryCrafting inv)
+    {
+        ItemStack output = ItemStack.EMPTY;
+        NonNullList<ItemStack> inputs = NonNullList.create();
+        Metal metalModel = null;
 
-		if (this.input.size() == 1)
-		{
-			return new ItemStack(ModItems.oreDetector);
-		}
+        if (this.input.size() == 1)
+        {
+            return new ItemStack(ModItems.oreDetector);
+        }
 
-		for (int i = 0; i < inv.getSizeInventory(); i++)
-		{
-			ItemStack stack = inv.getStackInSlot(i);
-			Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
-			if (otherMetal != null)
-			{
-				if (otherMetal == metalModel || otherMetal.isAlloy())
-					return ItemStack.EMPTY;
+        for (int i = 0; i < inv.getSizeInventory(); i++)
+        {
+            ItemStack stack = inv.getStackInSlot(i);
+            Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
+            if (otherMetal != null)
+            {
+                if (otherMetal == metalModel || otherMetal.isAlloy())
+                    return ItemStack.EMPTY;
 
-				inputs.add(stack);
-				metalModel = otherMetal;
-			}
-			else if (stack.getItem() == ModItems.oreDetector)
-			{
-				//set the output of the recipe depending if the detector already has some metals
-				if (!ItemOreDetector.getDetectorMetals(stack).isEmpty())
-					return ItemStack.EMPTY;
-				else
-					output = stack.copy();
-			}
-		}
+                inputs.add(stack);
+                metalModel = otherMetal;
+            }
+            else if (stack.getItem() == ModItems.oreDetector)
+            {
+                //set the output of the recipe depending if the detector already has some metals
+                if (!ItemOreDetector.getDetectorMetals(stack).isEmpty())
+                    return ItemStack.EMPTY;
+                else
+                    output = stack.copy();
+            }
+        }
 
-		if (metalModel == null)
-		{
-			return output;
-		}
+        if (metalModel == null)
+        {
+            return output;
+        }
 
-		ItemOreDetector.addIngotsToDetector(output, inputs);
-		return output;
-	}
+        ItemOreDetector.addIngotsToDetector(output, inputs);
+        return output;
+    }
 
-	@Override
-	public boolean isDynamic()
-	{
-		return true;
-	}
+    @Override
+    public boolean isDynamic()
+    {
+        return true;
+    }
 
-	//Used in recipes/_factories.json
-	@SuppressWarnings("unused")
-	public static class Factory implements IRecipeFactory {
+    //Used in recipes/_factories.json
+    @SuppressWarnings("unused")
+    public static class Factory implements IRecipeFactory {
 
-		@Override
-		public IRecipe parse(JsonContext context, JsonObject json)
-		{
-			final NonNullList<Ingredient> ingredients = Utils.parseShapelessRecipe(context, json);
-			return new OreDetectorRecipe(null, ingredients);
-		}
+        @Override
+        public IRecipe parse(JsonContext context, JsonObject json)
+        {
+            final NonNullList<Ingredient> ingredients = Utils.parseShapelessRecipe(context, json);
+            return new OreDetectorRecipe(null, ingredients);
+        }
 
-	}
+    }
 
 }

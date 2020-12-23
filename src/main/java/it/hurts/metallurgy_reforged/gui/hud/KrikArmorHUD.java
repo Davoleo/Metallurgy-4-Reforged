@@ -21,27 +21,28 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class KrikArmorHUD {
 
-	public static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Metallurgy.MODID, "textures/gui/krik_overlay.png");
+    public static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(Metallurgy.MODID, "textures/gui/krik_overlay.png");
 
-	public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft) {
-		ScaledResolution resolution = event.getResolution();
+    public static void render(RenderGameOverlayEvent.Post event, Minecraft minecraft)
+    {
+        ScaledResolution resolution = event.getResolution();
 
-		int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).getKrikHeight();
-		int maxLevel = PlayerEffectData.getKrikMaxLevel(minecraft.player);
+        int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).getKrikHeight();
+        int maxLevel = PlayerEffectData.getKrikMaxLevel(minecraft.player);
 
-		//System.out.println(playerYLevel + " | " +  maxLevel);
+        //System.out.println(playerYLevel + " | " +  maxLevel);
 
-		GlStateManager.pushMatrix();
+        GlStateManager.pushMatrix();
 
-		minecraft.getTextureManager().bindTexture(OVERLAY_TEXTURE);
-		//Draw Bar border
-		Utils.drawTexturedModalRect(resolution.getScaledWidth() - 15, resolution.getScaledHeight() - 60, 0, 0, 8, 58);
-		//Draw Bar
-		Utils.drawTexturedModalRect(resolution.getScaledWidth() - 13, resolution.getScaledHeight() - 4 - playerYLevel * 2, 10, 0, 4, playerYLevel * 2);
-		//Draw Limit
-		Utils.drawTexturedModalRect(resolution.getScaledWidth() - 13, resolution.getScaledHeight() - 6 - maxLevel * 2, 22, 0, 4, 2);
+        minecraft.getTextureManager().bindTexture(OVERLAY_TEXTURE);
+        //Draw Bar border
+        Utils.drawTexturedModalRect(resolution.getScaledWidth() - 15, resolution.getScaledHeight() - 60, 0, 0, 8, 58);
+        //Draw Bar
+        Utils.drawTexturedModalRect(resolution.getScaledWidth() - 13, resolution.getScaledHeight() - 4 - playerYLevel * 2, 10, 0, 4, playerYLevel * 2);
+        //Draw Limit
+        Utils.drawTexturedModalRect(resolution.getScaledWidth() - 13, resolution.getScaledHeight() - 6 - maxLevel * 2, 22, 0, 4, 2);
 
-		GlStateManager.popMatrix();
-	}
+        GlStateManager.popMatrix();
+    }
 
 }

@@ -40,88 +40,96 @@ import java.util.Set;
 
 public class ItemSwordBase extends ItemSword implements IToolEffect {
 
-	private Set<BaseMetallurgyEffect> effects = new HashSet<>();
-	private Enchantment enchantment = null;
-	private int enchantmentLevel = -1;
+    private Set<BaseMetallurgyEffect> effects = new HashSet<>();
+    private Enchantment enchantment = null;
+    private int enchantmentLevel = -1;
 
-	private final MetalStats metalStats;
+    private final MetalStats metalStats;
 
-	public ItemSwordBase(ToolMaterial material, MetalStats metalStats) {
-		super(material);
-		ItemUtils.initItem(this, metalStats.getName() + "_sword", MetallurgyTabs.tabTool);
-		this.metalStats = metalStats;
-	}
+    public ItemSwordBase(ToolMaterial material, MetalStats metalStats)
+    {
+        super(material);
+        ItemUtils.initItem(this, metalStats.getName() + "_sword", MetallurgyTabs.tabTool);
+        this.metalStats = metalStats;
+    }
 
-	@Override
-	public EnumTools getToolClass()
-	{
-		return EnumTools.SWORD;
-	}
+    @Override
+    public EnumTools getToolClass()
+    {
+        return EnumTools.SWORD;
+    }
 
-	@Override
-	public MetalStats getMetalStats()
-	{
-		return metalStats;
-	}
+    @Override
+    public MetalStats getMetalStats()
+    {
+        return metalStats;
+    }
 
-	@Override
-	public void addEffect(BaseMetallurgyEffect effect) {
-		this.effects.add(effect);
-	}
+    @Override
+    public void addEffect(BaseMetallurgyEffect effect)
+    {
+        this.effects.add(effect);
+    }
 
-	public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
-	{
-		this.enchantment = enchantment;
-		this.enchantmentLevel = enchantmentLevel;
-	}
+    public void setEnchanted(Enchantment enchantment, int enchantmentLevel)
+    {
+        this.enchantment = enchantment;
+        this.enchantmentLevel = enchantmentLevel;
+    }
 
-	private ItemStack getRepairStack()
-	{
-		String material = this.getToolMaterialName().toLowerCase();
-		Metal metal = ModMetals.metalMap.get(material);
-		if (metal != null)
-			return new ItemStack(metal.getIngot());
-		else
-			return ItemStack.EMPTY;
-	}
+    private ItemStack getRepairStack()
+    {
+        String material = this.getToolMaterialName().toLowerCase();
+        Metal metal = ModMetals.metalMap.get(material);
+        if (metal != null)
+            return new ItemStack(metal.getIngot());
+        else
+            return ItemStack.EMPTY;
+    }
 
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair) {
-		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+    {
+        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
-		ItemUtils.buildTooltip(tooltip, effects);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+    {
+        ItemUtils.buildTooltip(tooltip, effects);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Nullable
-	@Override
-	public FontRenderer getFontRenderer(@Nonnull ItemStack stack) {
-		return ClientProxy.fontRenderer;
-	}
+    @SideOnly(Side.CLIENT)
+    @Nullable
+    @Override
+    public FontRenderer getFontRenderer(@Nonnull ItemStack stack)
+    {
+        return ClientProxy.fontRenderer;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items) {
-		if (this.isInCreativeTab(tab)) {
-			ItemStack enchantedSword = new ItemStack(this);
-			if (enchantment != null) {
-				enchantedSword.addEnchantment(enchantment, enchantmentLevel);
-			}
-			items.add(enchantedSword);
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> items)
+    {
+        if (this.isInCreativeTab(tab))
+        {
+            ItemStack enchantedSword = new ItemStack(this);
+            if (enchantment != null)
+            {
+                enchantedSword.addEnchantment(enchantment, enchantmentLevel);
+            }
+            items.add(enchantedSword);
+        }
+    }
 
-	@Nonnull
-	@Override
-	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
-	{
-		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
-		ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
-		return multimap;
-	}
+    @Nonnull
+    @Override
+    public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+    {
+        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+        ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
+        return multimap;
+    }
 
 }

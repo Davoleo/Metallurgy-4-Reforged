@@ -20,22 +20,22 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurgyTrait {
 
-	public TraitQuickly()
-	{
-		super("quickly", TextFormatting.DARK_AQUA);
-	}
+    public TraitQuickly()
+    {
+        super("quickly", TextFormatting.DARK_AQUA);
+    }
 
-	@SubscribeEvent
-	public void increaseVelocity(LivingEntityUseItemEvent event)
-	{
-		Entity entity = event.getEntity();
-		if (entity instanceof EntityPlayer)
-		{
-			EntityPlayer player = ((EntityPlayer) entity);
-			if (MetallurgyConArmorStats.hasValidArmorTrait(player, "quickly"))
-				QuicksilverArmorEffect.apply(event);
-		}
-	}
+    @SubscribeEvent
+    public void increaseVelocity(LivingEntityUseItemEvent event)
+    {
+        Entity entity = event.getEntity();
+        if (entity instanceof EntityPlayer)
+        {
+            EntityPlayer player = ((EntityPlayer) entity);
+            if (MetallurgyConArmorStats.hasValidArmorTrait(player, "quickly"))
+                QuicksilverArmorEffect.apply(event);
+        }
+    }
 
 
 }

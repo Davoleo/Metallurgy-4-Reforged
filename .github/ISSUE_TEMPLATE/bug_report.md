@@ -1,9 +1,6 @@
 ---
-name: Bug report
-about: Create an issue to help us fix bugs in the mod
-title: ''
-labels: bug, needs verification
-assignees: ''
+name: Bug report about: Create an issue to help us fix bugs in the mod title: ''
+labels: bug, needs verification assignees: ''
 
 ---
 
@@ -14,6 +11,7 @@ assignees: ''
 
 **To Reproduce:**
 <!-- Chronological Steps to reproduce the bug in an ordered list -->
+
 1. First Step
 2. First Step
 3. First Step
@@ -24,9 +22,11 @@ assignees: ''
 ***
 
 ### Environment Versions
+
 <!-- Please write specific versions and avoid saying "the latest" -->
 
 **Versions:**
+
 - Metallurgy:
 - Conflicting mod (if regarding mod integration):
 - Other mods you think could cause issues:
@@ -37,7 +37,9 @@ assignees: ''
 ***
 
 ### Logging Information
-**Please Use [gist](https://gist.github.com), [paste.ee](https://paste.ee), [pastebin](https://pastebin.com) or some other log sharing service**
+
+**Please Use [gist](https://gist.github.com), [paste.ee](https://paste.ee), [pastebin](https://pastebin.com) or some
+other log sharing service**
 
 **Crash Report (if available):**
 <!-- Located in minecraft's "crash reports" directory -->
@@ -48,6 +50,7 @@ assignees: ''
 ***
 
 ### Additional Information
+
 **Screenshots (if available):**
 <!-- If applicable, add screenshots to help explain your problem. -->
 

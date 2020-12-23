@@ -25,29 +25,29 @@ import javax.annotation.Nonnull;
 
 public class ItemPotashFertilizer extends ItemExtra {
 
-	public ItemPotashFertilizer()
-	{
-		super("potash_fertilizer", MetallurgyTabs.tabSpecial, "gadget");
-		setTooltip(Constants.POTASH_FERTILIZER);
-	}
+    public ItemPotashFertilizer()
+    {
+        super("potash_fertilizer", MetallurgyTabs.tabSpecial, "gadget");
+        setTooltip(Constants.POTASH_FERTILIZER);
+    }
 
-	@Nonnull
-	@Override
-	public EnumActionResult onItemUse(@Nonnull EntityPlayer player, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		if (ItemDye.applyBonemeal(player.getHeldItem(hand), worldIn, pos, player, hand))
-		{
-			if (worldIn.isRemote)
-				for (int i = 0; i < 50; i++)
-				{
-					worldIn.spawnParticle(EnumParticleTypes.DRIP_LAVA, pos.getX() + itemRand.nextDouble(), pos.getY() + itemRand.nextDouble(),
-							pos.getZ() + itemRand.nextDouble(), 0, 0, 0);
-				}
+    @Nonnull
+    @Override
+    public EnumActionResult onItemUse(@Nonnull EntityPlayer player, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        if (ItemDye.applyBonemeal(player.getHeldItem(hand), worldIn, pos, player, hand))
+        {
+            if (worldIn.isRemote)
+                for (int i = 0; i < 50; i++)
+                {
+                    worldIn.spawnParticle(EnumParticleTypes.DRIP_LAVA, pos.getX() + itemRand.nextDouble(), pos.getY() + itemRand.nextDouble(),
+                            pos.getZ() + itemRand.nextDouble(), 0, 0, 0);
+                }
 
-			return EnumActionResult.SUCCESS;
-		}
-		else
-			return EnumActionResult.FAIL;
-	}
+            return EnumActionResult.SUCCESS;
+        }
+        else
+            return EnumActionResult.FAIL;
+    }
 
 }

@@ -18,20 +18,22 @@ import javax.annotation.Nullable;
 
 public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> {
 
-	@Nullable
-	@Override
-	public NBTBase writeNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side) {
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
-		tag.setInteger("krik_height", instance.getKrikHeight());
-		return tag;
-	}
+    @Nullable
+    @Override
+    public NBTBase writeNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side)
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
+        tag.setInteger("krik_height", instance.getKrikHeight());
+        return tag;
+    }
 
-	@Override
-	public void readNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side, NBTBase nbt) {
-		NBTTagCompound tag = ((NBTTagCompound) nbt);
-		instance.setKrikHeight(tag.getInteger("krik_height"));
-		instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
-	}
+    @Override
+    public void readNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side, NBTBase nbt)
+    {
+        NBTTagCompound tag = ((NBTTagCompound) nbt);
+        instance.setKrikHeight(tag.getInteger("krik_height"));
+        instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
+    }
 
 }

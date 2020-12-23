@@ -18,22 +18,25 @@ import net.minecraft.potion.PotionEffect;
 import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.function.Supplier;
+
 @Deprecated
 public class WeaponHitChanceEffect extends BaseMetallurgyEffect {
 
-	protected Random random = new Random();
-	protected int chance;
-	protected Supplier<PotionEffect> effect;
+    protected Random random = new Random();
+    protected int chance;
+    protected Supplier<PotionEffect> effect;
 
-	public WeaponHitChanceEffect(Metal metal, int chance, Supplier<PotionEffect> effect) {
-		super(metal);
+    public WeaponHitChanceEffect(Metal metal, int chance, Supplier<PotionEffect> effect)
+    {
+        super(metal);
         this.chance = chance;
         this.effect = effect;
     }
 
     @Nonnull
     @Override
-    public EnumEffectCategory getCategory() {
+    public EnumEffectCategory getCategory()
+    {
         return EnumEffectCategory.WEAPON;
     }
 

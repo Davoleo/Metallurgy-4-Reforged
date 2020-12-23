@@ -19,18 +19,18 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class TraitResistence extends AbstractArmorTrait implements IConarmMetallurgyTrait {
 
-	public TraitResistence()
-	{
-		super("resistance", TextFormatting.GREEN);
-	}
+    public TraitResistence()
+    {
+        super("resistance", TextFormatting.GREEN);
+    }
 
-	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event)
-	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "resistance"))
-		{
-			event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
-		}
-	}
+    @SubscribeEvent
+    public void onArmorTick(PlayerTickEvent event)
+    {
+        if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "resistance"))
+        {
+            event.player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
+        }
+    }
 
 }

@@ -44,7 +44,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
     @SubscribeEvent
     public void onFinishedEating(LivingEntityUseItemEvent.Finish event) {
-        if(!canBeApplied(event.getEntityLiving()))
+        if (!canBeApplied(event.getEntityLiving()))
             return;
 
         Item food = event.getItem().getItem();
@@ -71,7 +71,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
     public void onLivingUpdate(TickEvent.PlayerTickEvent event)
     {
         EntityPlayer player = event.player;
-        if(!canBeApplied(player))
+        if (!canBeApplied(player))
             return;
 
         if (event.side == Side.SERVER)
@@ -89,7 +89,8 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 
                     randomEquip.setItemDamage(randomEquip.getItemDamage() + 2);
 
-                    if (randomEquip.getItemDamage() > randomEquip.getMaxDamage()) {
+                    if (randomEquip.getItemDamage() > randomEquip.getMaxDamage())
+                    {
                         player.renderBrokenItemStack(randomEquip);
                         randomEquip.shrink(1);
                     }

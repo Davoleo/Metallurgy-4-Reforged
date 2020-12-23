@@ -13,35 +13,35 @@ import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.tool.*;
 
 public enum EnumTools {
-	AXE("axe", ItemAxeBase.class, RegistrationConfig.categoryItems.enableMetalAxes),
-	HOE("hoe", ItemHoeBase.class, RegistrationConfig.categoryItems.enableMetalHoes),
-	PICKAXE("pickaxe", ItemPickaxeBase.class, RegistrationConfig.categoryItems.enableMetalPickaxes),
-	SHOVEL("shovel", ItemShovelBase.class, RegistrationConfig.categoryItems.enableMetalShovels),
-	SWORD("sword", ItemSwordBase.class, RegistrationConfig.categoryItems.enableMetalSwords);
+    AXE("axe", ItemAxeBase.class, RegistrationConfig.categoryItems.enableMetalAxes),
+    HOE("hoe", ItemHoeBase.class, RegistrationConfig.categoryItems.enableMetalHoes),
+    PICKAXE("pickaxe", ItemPickaxeBase.class, RegistrationConfig.categoryItems.enableMetalPickaxes),
+    SHOVEL("shovel", ItemShovelBase.class, RegistrationConfig.categoryItems.enableMetalShovels),
+    SWORD("sword", ItemSwordBase.class, RegistrationConfig.categoryItems.enableMetalSwords);
 
-	private String name;
-	private Class<?> toolClass;
-	private boolean isEnabled;
+    private String name;
+    private Class<?> toolClass;
+    private boolean isEnabled;
 
-	EnumTools(String name, Class<?> toolClass, boolean enabled)
-	{
-		this.name = name;
-		this.toolClass = toolClass;
-		this.isEnabled = enabled;
-	}
+    EnumTools(String name, Class<?> toolClass, boolean enabled)
+    {
+        this.name = name;
+        this.toolClass = toolClass;
+        this.isEnabled = enabled;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public Class<?> getToolClass()
-	{
-		return toolClass;
-	}
+    public Class<?> getToolClass()
+    {
+        return toolClass;
+    }
 
-	public boolean isEnabled()
-	{
-		return isEnabled;
-	}
+    public boolean isEnabled()
+    {
+        return isEnabled;
+    }
 }

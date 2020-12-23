@@ -21,20 +21,20 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class ItemEtheriumMonocle extends ItemExtra {
 
-	public ItemEtheriumMonocle()
-	{
-		super("etherium_goggles", MetallurgyTabs.tabSpecial, "gadget");
-	}
+    public ItemEtheriumMonocle()
+    {
+        super("etherium_goggles", MetallurgyTabs.tabSpecial, "gadget");
+    }
 
-	@Override
-	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)
-	{
-		if (stack.getItem() == this && entity instanceof EntityPlayer)
-		{
-			return armorType == EntityEquipmentSlot.HEAD;
-		}
-		else
-			return false;
-	}
+    @Override
+    public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)
+    {
+        if (stack.getItem() == this && entity instanceof EntityPlayer)
+        {
+            return armorType == EntityEquipmentSlot.HEAD;
+        }
+        else
+            return false;
+    }
 
 }

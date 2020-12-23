@@ -32,15 +32,18 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect {
 
 
     public void livingEvent(LivingEvent event) {
-        if (event instanceof LivingEvent.LivingUpdateEvent) {
-            if (event.getEntityLiving() instanceof EntityPlayer) {
+        if (event instanceof LivingEvent.LivingUpdateEvent)
+        {
+            if (event.getEntityLiving() instanceof EntityPlayer)
+            {
                 EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-                if (player.isSneaking() && !player.world.getCollisionBoxes(player, player.getEntityBoundingBox().grow(0.1D, 0, 0.1D)).isEmpty() && EventUtils.isEntityWearingArmor(player, metal)) {
-					player.noClip = true;
-					player.motionY = 0D;
-				}
-			}
-		}
-	}
+                if (player.isSneaking() && !player.world.getCollisionBoxes(player, player.getEntityBoundingBox().grow(0.1D, 0, 0.1D)).isEmpty() && EventUtils.isEntityWearingArmor(player, metal))
+                {
+                    player.noClip = true;
+                    player.motionY = 0D;
+                }
+            }
+        }
+    }
 
 }

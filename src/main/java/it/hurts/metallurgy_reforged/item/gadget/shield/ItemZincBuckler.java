@@ -15,21 +15,21 @@ import javax.annotation.Nonnull;
 
 public class ItemZincBuckler extends ItemBuckler {
 
-	public ItemZincBuckler()
-	{
-		super("zinc_buckler", 396, 30);
-	}
+    public ItemZincBuckler()
+    {
+        super("zinc_buckler", 396, 30);
+    }
 
-	@Override
-	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-	{
-		return 40;
-	}
+    @Override
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack)
+    {
+        return 40;
+    }
 
-	@Override
-	public int getItemEnchantability()
-	{
-		return 8;
-	}
+    @Override
+    public int getItemEnchantability()
+    {
+        return 8;
+    }
 
 }

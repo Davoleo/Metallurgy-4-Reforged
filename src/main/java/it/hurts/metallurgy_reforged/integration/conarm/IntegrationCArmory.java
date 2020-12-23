@@ -21,32 +21,32 @@ import slimeknights.tconstruct.library.materials.Material;
 
 public class IntegrationCArmory {
 
-	public static void preInit()
-	{
-		Material.UNKNOWN.addStats(new TrimMaterialStats(0));
-		Material.UNKNOWN.addStats(new CoreMaterialStats(0, 0));
-		Material.UNKNOWN.addStats(new PlatesMaterialStats(1, 0, 0));
+    public static void preInit()
+    {
+        Material.UNKNOWN.addStats(new TrimMaterialStats(0));
+        Material.UNKNOWN.addStats(new CoreMaterialStats(0, 0));
+        Material.UNKNOWN.addStats(new PlatesMaterialStats(1, 0, 0));
 
-		ModMetals.metalMap.forEach((name, metal) -> {
-			if (IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null)
-			{
-				Material material = TinkerRegistry.getMaterial(name);
-				TiCMaterials.registerStats(material, MetallurgyConArmorStats.getCoreStats(metal), MetallurgyConArmorStats.getPlatesStats(metal), MetallurgyConArmorStats.getTrimStats(metal));
-			}
-		});
-	}
+        ModMetals.metalMap.forEach((name, metal) -> {
+            if (IntegrationTIC.checkMaterial(metal) && metal.getStats().getArmorStats() != null)
+            {
+                Material material = TinkerRegistry.getMaterial(name);
+                TiCMaterials.registerStats(material, MetallurgyConArmorStats.getCoreStats(metal), MetallurgyConArmorStats.getPlatesStats(metal), MetallurgyConArmorStats.getTrimStats(metal));
+            }
+        });
+    }
 
 
-	public static void init()
-	{
-		ModMetals.metalMap.forEach((name, metal) -> {
-			if (IntegrationTIC.checkMaterial(metal))
-			{
-				Material m = TinkerRegistry.getMaterial(name);
-				//Add Custom Armor Traits
-				SetArmorTraits.addArmorTrait(metal, m);
-			}
-		});
-	}
+    public static void init()
+    {
+        ModMetals.metalMap.forEach((name, metal) -> {
+            if (IntegrationTIC.checkMaterial(metal))
+            {
+                Material m = TinkerRegistry.getMaterial(name);
+                //Add Custom Armor Traits
+                SetArmorTraits.addArmorTrait(metal, m);
+            }
+        });
+    }
 
 }

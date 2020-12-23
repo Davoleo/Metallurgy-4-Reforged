@@ -30,104 +30,109 @@ import java.util.Random;
 
 public class ItemCeruclaseShield extends ItemShieldBase {
 
-	public ItemCeruclaseShield()
-	{
-		super("ceruclase_shield", 500);
-	}
+    public ItemCeruclaseShield()
+    {
+        super("ceruclase_shield", 500);
+    }
 
-	@Override
-	public int getItemEnchantability()
-	{
-		return 18;
-	}
+    @Override
+    public int getItemEnchantability()
+    {
+        return 18;
+    }
 
-	@Override
-	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-	{
-		return 200;
-	}
+    @Override
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack)
+    {
+        return 200;
+    }
 
-	@Nonnull
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn) {
-		if (!worldIn.isRemote) {
-			ItemStack stack = playerIn.getHeldItem(handIn);
-			NBTTagCompound tag = stack.getTagCompound();
-			if (tag == null)
-				tag = new NBTTagCompound();
+    @Nonnull
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+    {
+        if (!worldIn.isRemote)
+        {
+            ItemStack stack = playerIn.getHeldItem(handIn);
+            NBTTagCompound tag = stack.getTagCompound();
+            if (tag == null)
+                tag = new NBTTagCompound();
 
-			if (!tag.hasKey("playerPos")) {
-				BlockPos playerPos = playerIn.getPosition();
-				tag.setLong("playerPos", playerPos.toLong());
-				stack.setTagCompound(tag);
+            if (!tag.hasKey("playerPos"))
+            {
+                BlockPos playerPos = playerIn.getPosition();
+                tag.setLong("playerPos", playerPos.toLong());
+                stack.setTagCompound(tag);
 
-				playerIn.fallDistance /= 2F;
-				manageShield(worldIn, new BlockPos.MutableBlockPos(playerPos), false);
-			}
-		}
+                playerIn.fallDistance /= 2F;
+                manageShield(worldIn, new BlockPos.MutableBlockPos(playerPos), false);
+            }
+        }
 
-		return super.onItemRightClick(worldIn, playerIn, handIn);
-	}
+        return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
 
 
-	//---------------------
-	@Override
-	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft) {
-		super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
-		((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(ModItems.ceruclaseShield, 140);
-		removeTagAndShield(worldIn, stack);
-	}
+    //---------------------
+    @Override
+    public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
+    {
+        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
+        ((EntityPlayer) entityLiving).getCooldownTracker().setCooldown(ModItems.ceruclaseShield, 140);
+        removeTagAndShield(worldIn, stack);
+    }
 
-	public static void removeTagAndShield(World world, ItemStack stack) {
-		NBTTagCompound tag = stack.getTagCompound();
+    public static void removeTagAndShield(World world, ItemStack stack)
+    {
+        NBTTagCompound tag = stack.getTagCompound();
 
-		if (world.isRemote || tag == null || !tag.hasKey("playerPos"))
-			return;
+        if (world.isRemote || tag == null || !tag.hasKey("playerPos"))
+            return;
 
-		BlockPos pos = BlockPos.fromLong(tag.getLong("playerPos"));
-		tag.removeTag("playerPos");
+        BlockPos pos = BlockPos.fromLong(tag.getLong("playerPos"));
+        tag.removeTag("playerPos");
 
-		manageShield(world, new BlockPos.MutableBlockPos(pos), true);
-	}
+        manageShield(world, new BlockPos.MutableBlockPos(pos), true);
+    }
 
-	//---------------------
+    //---------------------
 
-	private static final int RANGE = 5;
+    private static final int RANGE = 5;
 
-	private static void manageShield(World world, BlockPos.MutableBlockPos playerPos, boolean destroy)
-	{
-		for (int x = -RANGE - 1; x < RANGE + 1; x++)
-		{
-			for (int y = -RANGE - 1; y < RANGE + 1; y++)
-			{
-				for (int z = -RANGE - 1; z < RANGE + 1; z++)
-				{
-					BlockPos blockPos = playerPos.add(x, y, z);
-					IBlockState blockState = world.getBlockState(blockPos);
-					if (Math.ceil(blockPos.getDistance(playerPos.getX(), playerPos.getY(), playerPos.getZ())) == RANGE)
-					{
-						boolean canPlaceIce = world.mayPlace(ModBlocks.iceShield, blockPos, true, EnumFacing.UP, null) || blockState.getBlock() instanceof BlockBush;
+    private static void manageShield(World world, BlockPos.MutableBlockPos playerPos, boolean destroy)
+    {
+        for (int x = -RANGE - 1; x < RANGE + 1; x++)
+        {
+            for (int y = -RANGE - 1; y < RANGE + 1; y++)
+            {
+                for (int z = -RANGE - 1; z < RANGE + 1; z++)
+                {
+                    BlockPos blockPos = playerPos.add(x, y, z);
+                    IBlockState blockState = world.getBlockState(blockPos);
+                    if (Math.ceil(blockPos.getDistance(playerPos.getX(), playerPos.getY(), playerPos.getZ())) == RANGE)
+                    {
+                        boolean canPlaceIce = world.mayPlace(ModBlocks.iceShield, blockPos, true, EnumFacing.UP, null) || blockState.getBlock() instanceof BlockBush;
 
-						if (!destroy)
-						{
-							if (canPlaceIce)
-							{
-								world.setBlockState(blockPos, ModBlocks.iceShield.getDefaultState());
-							}
+                        if (!destroy)
+                        {
+                            if (canPlaceIce)
+                            {
+                                world.setBlockState(blockPos, ModBlocks.iceShield.getDefaultState());
+                            }
 
-						}
-						else if (blockState.getBlock() == ModBlocks.iceShield)
-						{
-							Random random = new Random();
-							world.scheduleUpdate(blockPos, ModBlocks.iceShield, 10 + random.nextInt(11));
-						}
-					}
-				}
-			}
-		}
+                        }
+                        else if (blockState.getBlock() == ModBlocks.iceShield)
+                        {
+                            Random random = new Random();
+                            world.scheduleUpdate(blockPos, ModBlocks.iceShield, 10 + random.nextInt(11));
+                        }
+                    }
+                }
+            }
+        }
 
-		if (!destroy)
-			world.playSound(null, playerPos, SoundEvents.BLOCK_GLASS_PLACE, SoundCategory.BLOCKS, 1F, 2F);
-	}
+        if (!destroy)
+            world.playSound(null, playerPos, SoundEvents.BLOCK_GLASS_PLACE, SoundCategory.BLOCKS, 1F, 2F);
+    }
 
 }

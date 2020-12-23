@@ -34,136 +34,135 @@ import java.util.List;
 
 public class ItemOreDetector extends ItemExtra {
 
-	public static int indexColor;
+    public static int indexColor;
 
-	public ItemOreDetector()
-	{
-		super("ore_detector", MetallurgyTabs.tabSpecial, "gadget");
-		this.setMaxStackSize(1);
-	}
+    public ItemOreDetector()
+    {
+        super("ore_detector", MetallurgyTabs.tabSpecial, "gadget");
+        this.setMaxStackSize(1);
+    }
 
-	@Override
-	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
-	{
-		List<Metal> metals = getDetectorMetals(stack);
-		for (int i = 0; i < metals.size(); i++)
-			tooltip.add(TextFormatting.DARK_AQUA + "Metal " + i + ": " + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metals.get(i).toString()));
-	}
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+    {
+        List<Metal> metals = getDetectorMetals(stack);
+        for (int i = 0; i < metals.size(); i++)
+            tooltip.add(TextFormatting.DARK_AQUA + "Metal " + i + ": " + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metals.get(i).toString()));
+    }
 
-	@Override
-	public int getMaxDamage(@Nonnull ItemStack stack)
-	{
-		return getDetectorMetals(stack).size() * 100;
-	}
+    @Override
+    public int getMaxDamage(@Nonnull ItemStack stack)
+    {
+        return getDetectorMetals(stack).size() * 100;
+    }
 
-	@Nonnull
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
-	{
-		ItemStack stack = playerIn.getHeldItem(handIn);
+    @Nonnull
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
+    {
+        ItemStack stack = playerIn.getHeldItem(handIn);
 
-		if (getMaxDamage(stack) > 0)
-		{
-			if (stack.getItemDamage() >= getMaxDamage(stack))
-			{
-				ItemStack copy = new ItemStack(this);
-				playerIn.setHeldItem(handIn, copy);
-			}
-			else
-			{
-				stack.damageItem(1, playerIn);
-			}
-		}
+        if (getMaxDamage(stack) > 0)
+        {
+            if (stack.getItemDamage() >= getMaxDamage(stack))
+            {
+                ItemStack copy = new ItemStack(this);
+                playerIn.setHeldItem(handIn, copy);
+            }
+            else
+            {
+                stack.damageItem(1, playerIn);
+            }
+        }
 
-		return new ActionResult<>(EnumActionResult.PASS, stack);
-	}
-
-
-	@Override
-	public boolean shouldCauseReequipAnimation(@Nonnull ItemStack oldStack, @Nonnull ItemStack newStack, boolean slotChanged)
-	{
-		return slotChanged;
-	}
+        return new ActionResult<>(EnumActionResult.PASS, stack);
+    }
 
 
-	@Override
-	public int getRGBDurabilityForDisplay(@Nonnull ItemStack stack)
-	{
-		List<Metal> metals = getDetectorMetals(stack);
+    @Override
+    public boolean shouldCauseReequipAnimation(@Nonnull ItemStack oldStack, @Nonnull ItemStack newStack, boolean slotChanged)
+    {
+        return slotChanged;
+    }
 
-		if (!metals.isEmpty())
-		{
-			return getColorShiftFromMetals(metals);
-		}
-		else
-		{
-			return 0xFFFFFF;
-		}
-	}
 
-	private int getColorShiftFromMetals(List<Metal> metals)
-	{
-		float[][] metalColors = new float[metals.size()][3];
+    @Override
+    public int getRGBDurabilityForDisplay(@Nonnull ItemStack stack)
+    {
+        List<Metal> metals = getDetectorMetals(stack);
 
-		for (int i = 0; i < metalColors.length; i++)
-		{
-			metalColors[i] = metals.get(i).getStats().getColorRGBValues();
-		}
+        if (!metals.isEmpty())
+        {
+            return getColorShiftFromMetals(metals);
+        }
+        else
+        {
+            return 0xFFFFFF;
+        }
+    }
 
-		int indexFrom = indexColor % metals.size();
-		int indexTo = indexFrom < (metals.size() - 1) ? indexFrom + 1 : 0;
+    private int getColorShiftFromMetals(List<Metal> metals)
+    {
+        float[][] metalColors = new float[metals.size()][3];
 
-		double factor = GadgetsHandler.prevFactorToUse;
+        for (int i = 0; i < metalColors.length; i++)
+        {
+            metalColors[i] = metals.get(i).getStats().getColorRGBValues();
+        }
 
-		int r = (int) (255 * (metalColors[indexTo][0] * factor + metalColors[indexFrom][0] * (1.0 - factor)));
-		int g = (int) (255 * (metalColors[indexTo][1] * factor + metalColors[indexFrom][1] * (1.0 - factor)));
-		int b = (int) (255 * (metalColors[indexTo][2] * factor + metalColors[indexFrom][2] * (1.0 - factor)));
+        int indexFrom = indexColor % metals.size();
+        int indexTo = indexFrom < (metals.size() - 1) ? indexFrom + 1 : 0;
 
-		return Utils.intColorFromRGB(r, g, b);
-	}
+        double factor = GadgetsHandler.prevFactorToUse;
 
-	public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
-	{
-		NBTTagCompound nbt = detector.getTagCompound();
+        int r = (int) (255 * (metalColors[indexTo][0] * factor + metalColors[indexFrom][0] * (1.0 - factor)));
+        int g = (int) (255 * (metalColors[indexTo][1] * factor + metalColors[indexFrom][1] * (1.0 - factor)));
+        int b = (int) (255 * (metalColors[indexTo][2] * factor + metalColors[indexFrom][2] * (1.0 - factor)));
 
-		if (nbt == null)
-			nbt = new NBTTagCompound();
+        return Utils.intColorFromRGB(r, g, b);
+    }
 
-		for (int i = 0; i < ingots.size(); i++)
-		{
-			Metal metal = ItemUtils.getMetalFromOreDictStack(ingots.get(i));
-			String metalName = metal.toString();
-			nbt.setString("metal_" + (i + 1), metalName);
-		}
+    public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
+    {
+        NBTTagCompound nbt = detector.getTagCompound();
 
-		detector.setTagCompound(nbt);
-	}
+        if (nbt == null)
+            nbt = new NBTTagCompound();
 
-	/**
-	 * Returns the current Scanner Metals
-	 *
-	 * @param detector The queried scanner
-	 *
-	 * @return The Hash Set of the ores the scanner has in the NBT Tag
-	 */
-	public static List<Metal> getDetectorMetals(ItemStack detector)
-	{
-		NBTTagCompound nbt = detector.getTagCompound();
+        for (int i = 0; i < ingots.size(); i++)
+        {
+            Metal metal = ItemUtils.getMetalFromOreDictStack(ingots.get(i));
+            String metalName = metal.toString();
+            nbt.setString("metal_" + (i + 1), metalName);
+        }
 
-		List<Metal> metalSet = Lists.newArrayList();
+        detector.setTagCompound(nbt);
+    }
 
-		if (nbt != null && !nbt.isEmpty())
-		{
-			for (int i = 1; i <= 3; i++)
-			{
-				String metalName = nbt.getString("metal_" + i);
-				Metal metal = ModMetals.metalMap.get(metalName);
-				if (metal != null)
-					metalSet.add(metal);
-			}
-		}
+    /**
+     * Returns the current Scanner Metals
+     *
+     * @param detector The queried scanner
+     * @return The Hash Set of the ores the scanner has in the NBT Tag
+     */
+    public static List<Metal> getDetectorMetals(ItemStack detector)
+    {
+        NBTTagCompound nbt = detector.getTagCompound();
 
-		return metalSet;
-	}
+        List<Metal> metalSet = Lists.newArrayList();
+
+        if (nbt != null && !nbt.isEmpty())
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                String metalName = nbt.getString("metal_" + i);
+                Metal metal = ModMetals.metalMap.get(metalName);
+                if (metal != null)
+                    metalSet.add(metal);
+            }
+        }
+
+        return metalSet;
+    }
 
 }

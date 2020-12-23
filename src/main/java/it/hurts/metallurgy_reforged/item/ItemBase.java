@@ -22,37 +22,37 @@ import java.util.List;
 
 public abstract class ItemBase extends Item {
 
-	private String tooltip;
-	private final String modelSubDir;
+    private String tooltip;
+    private final String modelSubDir;
 
-	public ItemBase(String name, CreativeTabs tab, String modelSubDir)
-	{
-		this.modelSubDir = modelSubDir;
-		ItemUtils.initItem(this, name, tab);
-	}
+    public ItemBase(String name, CreativeTabs tab, String modelSubDir)
+    {
+        this.modelSubDir = modelSubDir;
+        ItemUtils.initItem(this, name, tab);
+    }
 
-	public ItemBase(String name, CreativeTabs tab)
-	{
-		this(name, tab, "");
-	}
+    public ItemBase(String name, CreativeTabs tab)
+    {
+        this(name, tab, "");
+    }
 
-	@Override
-	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
-	{
-		if (this.tooltip != null)
-			tooltip.add(this.tooltip);
-	}
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+    {
+        if (this.tooltip != null)
+            tooltip.add(this.tooltip);
+    }
 
-	//Setters & Getters -----------------------------------------------------
-	public ItemBase setTooltip(String tooltip)
-	{
-		this.tooltip = tooltip;
-		return this;
-	}
+    //Setters & Getters -----------------------------------------------------
+    public ItemBase setTooltip(String tooltip)
+    {
+        this.tooltip = tooltip;
+        return this;
+    }
 
-	public String getModelSubDir()
-	{
-		return modelSubDir;
-	}
+    public String getModelSubDir()
+    {
+        return modelSubDir;
+    }
 
 }

@@ -16,26 +16,30 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketMovePlayer implements IMessage {
 
-	public PacketMovePlayer()
-	{
-		//Mandatory Empty Default Constructor
-	}
+    public PacketMovePlayer()
+    {
+        //Mandatory Empty Default Constructor
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buf) { }
+    @Override
+    public void fromBytes(ByteBuf buf)
+    {
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf) { }
+    @Override
+    public void toBytes(ByteBuf buf)
+    {
+    }
 
-	public static class Handler implements IMessageHandler<PacketMovePlayer, IMessage> {
+    public static class Handler implements IMessageHandler<PacketMovePlayer, IMessage> {
 
-		@Override
-		public IMessage onMessage(PacketMovePlayer message, MessageContext ctx)
-		{
-			ctx.getServerHandler().player.motionY = 0.2;
-			return null;
-		}
+        @Override
+        public IMessage onMessage(PacketMovePlayer message, MessageContext ctx)
+        {
+            ctx.getServerHandler().player.motionY = 0.2;
+            return null;
+        }
 
-	}
+    }
 
 }

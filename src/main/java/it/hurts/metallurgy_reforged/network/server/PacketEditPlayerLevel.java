@@ -19,49 +19,51 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketEditPlayerLevel implements IMessage {
 
-	public boolean increase;
+    public boolean increase;
 
-	@SuppressWarnings("unused")
-	public PacketEditPlayerLevel()
-	{
-		//Mandatory Empty Default Constructor
-	}
+    @SuppressWarnings("unused")
+    public PacketEditPlayerLevel()
+    {
+        //Mandatory Empty Default Constructor
+    }
 
-	public PacketEditPlayerLevel(boolean increase)
-	{
-		this.increase = increase;
-	}
+    public PacketEditPlayerLevel(boolean increase)
+    {
+        this.increase = increase;
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buf)
-	{
-		buf.readBoolean();
-	}
+    @Override
+    public void fromBytes(ByteBuf buf)
+    {
+        buf.readBoolean();
+    }
 
-	@Override
-	public void toBytes(ByteBuf buf)
-	{
-		buf.writeBoolean(increase);
-	}
+    @Override
+    public void toBytes(ByteBuf buf)
+    {
+        buf.writeBoolean(increase);
+    }
 
-	public static class Handler implements IMessageHandler<PacketEditPlayerLevel, IMessage> {
+    public static class Handler implements IMessageHandler<PacketEditPlayerLevel, IMessage> {
 
-		@Override
-		public IMessage onMessage(PacketEditPlayerLevel message, MessageContext ctx) {
+        @Override
+        public IMessage onMessage(PacketEditPlayerLevel message, MessageContext ctx)
+        {
 
-			EntityPlayer player = ctx.getServerHandler().player;
-			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+            EntityPlayer player = ctx.getServerHandler().player;
+            PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-			if (capability != null) {
-				if (message.increase)
-					capability.setKrikHeight(capability.getKrikHeight() + 1);
-				else
-					capability.setKrikHeight(capability.getKrikHeight() - 1);
-			}
+            if (capability != null)
+            {
+                if (message.increase)
+                    capability.setKrikHeight(capability.getKrikHeight() + 1);
+                else
+                    capability.setKrikHeight(capability.getKrikHeight() - 1);
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-	}
+    }
 
 }

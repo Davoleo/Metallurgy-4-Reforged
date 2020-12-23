@@ -33,21 +33,23 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.TOOL;
     }
 
-    public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {
+    public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
+    {
         EntityPlayer player = event.getEntityPlayer();
 
-        if (isShadowSteelTool(player.getHeldItemMainhand().getItem())) {
+        if (isShadowSteelTool(player.getHeldItemMainhand().getItem()))
+        {
             float percentage = Utils.getLightArmorPercentage(player, 100F);
             float speed = event.getNewSpeed() * percentage / 40F;
             event.setNewSpeed(event.getOriginalSpeed() + speed);
-		}
-	}
+        }
+    }
 
-	private boolean isShadowSteelTool(Item heldItem)
-	{
-		return heldItem == metal.getTool(EnumTools.AXE) ||
-				heldItem == metal.getTool(EnumTools.PICKAXE) ||
-				heldItem == metal.getTool(EnumTools.SHOVEL);
-	}
+    private boolean isShadowSteelTool(Item heldItem)
+    {
+        return heldItem == metal.getTool(EnumTools.AXE) ||
+                heldItem == metal.getTool(EnumTools.PICKAXE) ||
+                heldItem == metal.getTool(EnumTools.SHOVEL);
+    }
 
 }

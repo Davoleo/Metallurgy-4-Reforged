@@ -32,62 +32,62 @@ import java.util.Arrays;
 
 public class SpawnHandler {
 
-	private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
+    private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
 
-	@SubscribeEvent
-	public static void onEntitySpawn(EntityJoinWorldEvent event)
-	{
-		if (GeneralConfig.mobsThatCanHaveEquipment.length == 0)
-			return;
+    @SubscribeEvent
+    public static void onEntitySpawn(EntityJoinWorldEvent event)
+    {
+        if (GeneralConfig.mobsThatCanHaveEquipment.length == 0)
+            return;
 
-		boolean isEntityValid = Arrays.stream(GeneralConfig.mobsThatCanHaveEquipment).anyMatch(entityId -> {
-			EntityEntry entry = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entityId));
-			return entry.getEntityClass() == event.getEntity().getClass();
-		});
+        boolean isEntityValid = Arrays.stream(GeneralConfig.mobsThatCanHaveEquipment).anyMatch(entityId -> {
+            EntityEntry entry = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entityId));
+            return entry.getEntityClass() == event.getEntity().getClass();
+        });
 
-		Metal metal = EventUtils.getRandomMetalBasedOnDifficulty(event.getWorld());
+        Metal metal = EventUtils.getRandomMetalBasedOnDifficulty(event.getWorld());
 
-		Entity entity = event.getEntity();
-
-
-		if (!event.getWorld().isRemote && metal != null && isEntityValid)
-		{
-
-			for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-			{
-				if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-					entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
-			}
+        Entity entity = event.getEntity();
 
 
-			if (metal.hasToolSet() && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().isEmpty())
-			{
-				if (Math.random() < 0.25F)
-				{
-					entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.AXE)));
-				}
-				else
-				{
-					entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.SWORD)));
-				}
-			}
-		}
-	}
+        if (!event.getWorld().isRemote && metal != null && isEntityValid)
+        {
 
-	@SubscribeEvent
-	public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event)
-	{
-		if (!event.player.world.isRemote && GeneralConfig.warning)
-		{
-			GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText())).setColor(TextFormatting.BLUE);
+            for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+            {
+                if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+                    entity.setItemStackToSlot(slot, new ItemStack(metal.getArmorPiece(slot)));
+            }
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
-			event.player.sendMessage(GITHUB_REPO);
+            if (metal.hasToolSet() && entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHeldItemMainhand().isEmpty())
+            {
+                if (Math.random() < 0.25F)
+                {
+                    entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.AXE)));
+                }
+                else
+                {
+                    entity.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(metal.getTool(EnumTools.SWORD)));
+                }
+            }
+        }
+    }
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
-		}
-	}
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event)
+    {
+        if (!event.player.world.isRemote && GeneralConfig.warning)
+        {
+            GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText())).setColor(TextFormatting.BLUE);
+
+            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
+
+            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
+            event.player.sendMessage(GITHUB_REPO);
+
+            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
+        }
+    }
 
 }

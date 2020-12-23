@@ -33,12 +33,12 @@ import java.util.Set;
 
 public class MetallurgyEffects {
 
-	public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
+    public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
 
-	public static void initTooltips()
-	{
-		for (Item item : ForgeRegistries.ITEMS)
-		{
+    public static void initTooltips()
+    {
+        for (Item item : ForgeRegistries.ITEMS)
+        {
             if (item instanceof IToolEffect)
             {
                 IToolEffect tool = ((IToolEffect) item);

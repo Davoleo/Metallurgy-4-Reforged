@@ -29,43 +29,48 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class ClientProxy implements IProxy {
 
-	public static ModFontRenderer fontRenderer;
-	public static Minecraft client = Minecraft.getMinecraft();
+    public static ModFontRenderer fontRenderer;
+    public static Minecraft client = Minecraft.getMinecraft();
 
-	@Override
-	public void preInit(FMLPreInitializationEvent e) {
-		MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
-		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
-		MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
-		ModItems.brassKnuckles.initTEISR();
-	}
+    @Override
+    public void preInit(FMLPreInitializationEvent e)
+    {
+        MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
+        MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+        MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
+        ModItems.brassKnuckles.initTEISR();
+    }
 
-	@Override
-	public void init(FMLInitializationEvent event) {
-		client.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-			List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
+    @Override
+    public void init(FMLInitializationEvent event)
+    {
+        client.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+            List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
 
-			if (tintIndex < metals.size()) {
-				return metals.get(tintIndex).getStats().getColorHex();
-			}
-			return -1;
+            if (tintIndex < metals.size())
+            {
+                return metals.get(tintIndex).getStats().getColorHex();
+            }
+            return -1;
 
-		}, ModItems.oreDetector);
-	}
+        }, ModItems.oreDetector);
+    }
 
-	@Override
-	public void postInit(FMLPostInitializationEvent event) {
+    @Override
+    public void postInit(FMLPostInitializationEvent event)
+    {
 
-		//Load custom Font Renderer
-		IReloadableResourceManager resourceManager = (IReloadableResourceManager) client.getResourceManager();
+        //Load custom Font Renderer
+        IReloadableResourceManager resourceManager = (IReloadableResourceManager) client.getResourceManager();
 
-		fontRenderer = new ModFontRenderer(client.gameSettings,
-				new ResourceLocation("textures/font/ascii.png"), client.renderEngine);
+        fontRenderer = new ModFontRenderer(client.gameSettings,
+                new ResourceLocation("textures/font/ascii.png"), client.renderEngine);
 
-		if (client.gameSettings.language != null) {
-			fontRenderer.setUnicodeFlag(client.getLanguageManager().isCurrentLocaleUnicode() || client.gameSettings.forceUnicodeFont);
-			fontRenderer.setBidiFlag(client.getLanguageManager().isCurrentLanguageBidirectional());
-		}
-		resourceManager.registerReloadListener(fontRenderer);
-	}
+        if (client.gameSettings.language != null)
+        {
+            fontRenderer.setUnicodeFlag(client.getLanguageManager().isCurrentLocaleUnicode() || client.gameSettings.forceUnicodeFont);
+            fontRenderer.setBidiFlag(client.getLanguageManager().isCurrentLanguageBidirectional());
+        }
+        resourceManager.registerReloadListener(fontRenderer);
+    }
 }

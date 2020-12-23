@@ -54,151 +54,153 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
 
-	public static final String MODID = "metallurgy";
-	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.2.0";
+    public static final String MODID = "metallurgy";
+    public static final String NAME = "Metallurgy 4: Reforged";
+    public static final String VERSION = "1.2.0";
 
-	public static Logger logger;
+    public static Logger logger;
 
-	public static String materialConfig;
-	public static String enderIOAlloyRecipes;
+    public static String materialConfig;
+    public static String enderIOAlloyRecipes;
 
-	@Mod.Instance(MODID)
-	public static Metallurgy instance;
+    @Mod.Instance(MODID)
+    public static Metallurgy instance;
 
-	@SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
-	public static IProxy proxy;
+    @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
+    public static IProxy proxy;
 
-	static
-	{
-		FluidRegistry.enableUniversalBucket();
-	}
+    static
+    {
+        FluidRegistry.enableUniversalBucket();
+    }
 
-	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		logger = event.getModLog();
-		logger.info(NAME + " is entering pre-initialization!");
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        logger = event.getModLog();
+        logger.info(NAME + " is entering pre-initialization!");
 
-		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
-		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
+        materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+        enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
 
-		ModMetals.init();
+        ModMetals.init();
 
-		ModFluids.registerFluids();
-		logger.info("Fluid registration complete!");
+        ModFluids.registerFluids();
+        logger.info("Fluid registration complete!");
 
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
-		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
-		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
-		logger.info("World generation successful!");
+        GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+        MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+        MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
+        logger.info("World generation successful!");
 
-		SubEvent.init();
+        SubEvent.init();
 
-		TileEntityHandler.registerTileEntities();
-		logger.info("Tile Entities Registered!");
+        TileEntityHandler.registerTileEntities();
+        logger.info("Tile Entities Registered!");
 
-		//checks if tinker is installed
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-		{
-			IntegrationTIC.preInit();
-			logger.info("Tinkers' Construct Compatibility module has been pre-initialized");
+        //checks if tinker is installed
+        if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+        {
+            IntegrationTIC.preInit();
+            logger.info("Tinkers' Construct Compatibility module has been pre-initialized");
 
-			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
-			{
-				IntegrationCArmory.preInit();
-				logger.info("Construct's Armory Compatibility module has been pre-initialized");
-			}
-		}
+            if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+            {
+                IntegrationCArmory.preInit();
+                logger.info("Construct's Armory Compatibility module has been pre-initialized");
+            }
+        }
 
-		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
-		{
-			IntegrationIF.preInit();
-			logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
-		}
+        if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
+        {
+            IntegrationIF.preInit();
+            logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
+        }
 
-		if (ModChecker.isCraftTweakerLoaded)
-		{
-			IntegrationCT.preInit();
-			logger.info("CraftTweaker Compatibility module has been pre-initialized");
-		}
+        if (ModChecker.isCraftTweakerLoaded)
+        {
+            IntegrationCT.preInit();
+            logger.info("CraftTweaker Compatibility module has been pre-initialized");
+        }
 
-		if (ModChecker.isSilentGemsLoaded)
-		{
-			IntegrationSilentGems.init();
-			logger.info("CraftTweaker Compatibility module has been initialized");
-		}
+        if (ModChecker.isSilentGemsLoaded)
+        {
+            IntegrationSilentGems.init();
+            logger.info("CraftTweaker Compatibility module has been initialized");
+        }
 
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		logger.info(NAME + ": GUIs have been registered!");
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        logger.info(NAME + ": GUIs have been registered!");
 
-		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
-		logger.info(NAME + ": Punch effect capability Registered");
+        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
+        logger.info(NAME + ": Punch effect capability Registered");
 
-		CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), new EffectDataCallable());
-		logger.info(NAME + ": Metallurgy Effects capability Registered");
+        CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), new EffectDataCallable());
+        logger.info(NAME + ": Metallurgy Effects capability Registered");
 
-		CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
-		logger.info(NAME + ": Entity Data capability Registered");
-
-
-		proxy.preInit(event);
-	}
-
-	@Mod.EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		logger.info(NAME + " is entering initialization!");
-		proxy.init(event);
-
-		ModRecipes.init();
-		logger.info("Recipes loaded!");
-
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration) {
-			IntegrationTIC.init();
-			logger.info("Tinkers' Construct Compatibility module has been initialized");
-
-			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
-			{
-				IntegrationCArmory.init();
-				logger.info("Construct's Armory Compatibility module has been initialized");
-			}
-		}
-
-		if (ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration)
-		{
-			IntegrationProjectE.init();
-			logger.info("ProjectE's Compatibility module has been initialized");
-		}
-
-		if (ModChecker.isEnderIOLoaded)
-		{
-			IntegrationEnderIO.init(enderIOAlloyRecipes);
-		}
-
-		if (GeneralConfig.enableOreDictCrusherRecipes)
-		{
-			CrusherRecipes.registerDefaultOreRecipes();
-			logger.info("Ore Dictionary based Crusher recipe loaded!");
-		}
-
-		MetallurgyEffects.initTooltips();
-	}
+        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
+        logger.info(NAME + ": Entity Data capability Registered");
 
 
-	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		logger.info(NAME + " is entering post-initialization!");
-		proxy.postInit(event);
+        proxy.preInit(event);
+    }
 
-		PacketManager.init();
-		logger.info(NAME + "'s Network System Loaded");
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        logger.info(NAME + " is entering initialization!");
+        proxy.init(event);
 
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-			IntegrationTIC.postInit();
-		logger.info("Tinker's alloy recipes loaded");
+        ModRecipes.init();
+        logger.info("Recipes loaded!");
 
-		logger.info(NAME + " has been completely loaded");
-	}
+        if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+        {
+            IntegrationTIC.init();
+            logger.info("Tinkers' Construct Compatibility module has been initialized");
+
+            if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+            {
+                IntegrationCArmory.init();
+                logger.info("Construct's Armory Compatibility module has been initialized");
+            }
+        }
+
+        if (ModChecker.isProjectELoaded && !GeneralConfig.projectEIntegration)
+        {
+            IntegrationProjectE.init();
+            logger.info("ProjectE's Compatibility module has been initialized");
+        }
+
+        if (ModChecker.isEnderIOLoaded)
+        {
+            IntegrationEnderIO.init(enderIOAlloyRecipes);
+        }
+
+        if (GeneralConfig.enableOreDictCrusherRecipes)
+        {
+            CrusherRecipes.registerDefaultOreRecipes();
+            logger.info("Ore Dictionary based Crusher recipe loaded!");
+        }
+
+        MetallurgyEffects.initTooltips();
+    }
+
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        logger.info(NAME + " is entering post-initialization!");
+        proxy.postInit(event);
+
+        PacketManager.init();
+        logger.info(NAME + "'s Network System Loaded");
+
+        if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+            IntegrationTIC.postInit();
+        logger.info("Tinker's alloy recipes loaded");
+
+        logger.info(NAME + " has been completely loaded");
+    }
 
 }

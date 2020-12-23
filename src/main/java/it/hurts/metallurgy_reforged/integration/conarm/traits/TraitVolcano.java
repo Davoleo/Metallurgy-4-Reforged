@@ -17,16 +17,16 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class TraitVolcano extends AbstractArmorTrait implements IConarmMetallurgyTrait {
 
-	public TraitVolcano()
-	{
-		super("volcano", TextFormatting.RED);
-	}
+    public TraitVolcano()
+    {
+        super("volcano", TextFormatting.RED);
+    }
 
-	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event)
-	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "volcano"))
-			event.player.extinguish();
-	}
+    @SubscribeEvent
+    public void onArmorTick(PlayerTickEvent event)
+    {
+        if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "volcano"))
+            event.player.extinguish();
+    }
 
 }

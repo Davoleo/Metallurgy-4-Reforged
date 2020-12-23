@@ -50,59 +50,59 @@ public class DeepIronShadowSteelWeaponEffect extends BaseMetallurgyEffect {
         Item shadowSteelSword = null;
 
         if (ModMetals.DEEP_IRON != null)
-			deepIronSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
-		if (ModMetals.SHADOW_STEEL != null)
-			shadowSteelSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
+            deepIronSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
+        if (ModMetals.SHADOW_STEEL != null)
+            shadowSteelSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
 
-		if (stack.getItem() == deepIronSword || stack.getItem() == shadowSteelSword)
-		{
-			if (metal == ModMetals.SHADOW_STEEL)
-			{
+        if (stack.getItem() == deepIronSword || stack.getItem() == shadowSteelSword)
+        {
+            if (metal == ModMetals.SHADOW_STEEL)
+            {
 
-				float percentage = Utils.getLightArmorPercentage(player, 50F);
-				//calculate the Speed to add to the sword
-				double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
-				//the modifier UUID
-				AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID, "Shadow Steel Sword Modifier", added_speed, 0);
-				//checks if player has the modifier
-				if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) == null)
-				{
-					//if not,add the modifier
-					attackSpeedInstance.applyModifier(shadow_steel_modifier);
-				}
-				else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null && attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID).getAmount() != added_speed)
-				{
-					//if  player has already the modifier and there is a light change,this method will update the speed attack
-					attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
-					attackSpeedInstance.applyModifier(shadow_steel_modifier);
-				}
+                float percentage = Utils.getLightArmorPercentage(player, 50F);
+                //calculate the Speed to add to the sword
+                double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
+                //the modifier UUID
+                AttributeModifier shadow_steel_modifier = new AttributeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID, "Shadow Steel Sword Modifier", added_speed, 0);
+                //checks if player has the modifier
+                if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) == null)
+                {
+                    //if not,add the modifier
+                    attackSpeedInstance.applyModifier(shadow_steel_modifier);
+                }
+                else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null && attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID).getAmount() != added_speed)
+                {
+                    //if  player has already the modifier and there is a light change,this method will update the speed attack
+                    attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
+                    attackSpeedInstance.applyModifier(shadow_steel_modifier);
+                }
 
-			}
-			else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null)
-			{
-				//removes the modifier if player doesn't held the sword
-				attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
-			}
+            }
+            else if (attackSpeedInstance.getModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID) != null)
+            {
+                //removes the modifier if player doesn't held the sword
+                attackSpeedInstance.removeModifier(SHADOW_STEEL_SWORD_MODIFIER_UUID);
+            }
 
-			if (metal == ModMetals.DEEP_IRON)
-			{
-				AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
-				if (player.isInWater() && attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) == null)
-				{
-					attackSpeedInstance.applyModifier(deep_iron_trait_modifier);
-				}
-				else
-				{
-					if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null && !player.isInWater())
-						attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
-				}
-			}
-			else
-			{
-				if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null)
-					attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
-			}
-		}
-	}
+            if (metal == ModMetals.DEEP_IRON)
+            {
+                AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
+                if (player.isInWater() && attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) == null)
+                {
+                    attackSpeedInstance.applyModifier(deep_iron_trait_modifier);
+                }
+                else
+                {
+                    if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null && !player.isInWater())
+                        attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
+                }
+            }
+            else
+            {
+                if (attackSpeedInstance.getModifier(DEEP_IRON_SWORD_MODIFIER_UUID) != null)
+                    attackSpeedInstance.removeModifier(DEEP_IRON_SWORD_MODIFIER_UUID);
+            }
+        }
+    }
 
 }

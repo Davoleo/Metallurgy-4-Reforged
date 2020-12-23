@@ -29,55 +29,58 @@ import java.util.List;
 
 public class ItemKnuckles extends ItemExtra {
 
-	public ItemKnuckles(String name) {
-		super(name, MetallurgyTabs.tabSpecial, "gadget");
+    public ItemKnuckles(String name)
+    {
+        super(name, MetallurgyTabs.tabSpecial, "gadget");
 
-		setMaxStackSize(1);
-		setMaxDamage(250);
-	}
+        setMaxStackSize(1);
+        setMaxDamage(250);
+    }
 
-	@SideOnly(Side.CLIENT)
-	public void initTEISR() {
-		this.setTileEntityItemStackRenderer(new BrassKnucklesTEISR());
-	}
+    @SideOnly(Side.CLIENT)
+    public void initTEISR()
+    {
+        this.setTileEntityItemStackRenderer(new BrassKnucklesTEISR());
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public boolean hasEffect(@Nonnull ItemStack stack) {
-		return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean hasEffect(@Nonnull ItemStack stack)
+    {
+        return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
+    }
 
-	@Override
-	public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
-	{
-		List<Enchantment> list = Lists.newArrayList(Constants.GAUNTLET_ENCHANTMENTS);
+    @Override
+    public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
+    {
+        List<Enchantment> list = Lists.newArrayList(Constants.GAUNTLET_ENCHANTMENTS);
 
-		return list.contains(enchantment);
-	}
+        return list.contains(enchantment);
+    }
 
-	@Nonnull
-	@Override
-	public Multimap<String, AttributeModifier> getAttributeModifiers(@Nonnull EntityEquipmentSlot slot, @Nonnull ItemStack stack)
-	{
-		Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(slot, stack);
+    @Nonnull
+    @Override
+    public Multimap<String, AttributeModifier> getAttributeModifiers(@Nonnull EntityEquipmentSlot slot, @Nonnull ItemStack stack)
+    {
+        Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(slot, stack);
 
-		if (slot == EntityEquipmentSlot.MAINHAND)
-		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", 1D, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Knuckles Speed modifier", 16D, 0));
-		}
-		return multimap;
-	}
+        if (slot == EntityEquipmentSlot.MAINHAND)
+        {
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", 1D, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Knuckles Speed modifier", 16D, 0));
+        }
+        return multimap;
+    }
 
-	@Override
-	public boolean hitEntity(@Nonnull ItemStack stack, @Nonnull EntityLivingBase target, @Nonnull EntityLivingBase attacker)
-	{
-		target.motionX *= 0.25;
-		target.motionZ *= 0.25;
-		target.hurtTime = 10;
-		target.hurtResistantTime = 13;
-		stack.damageItem(1, attacker);
-		return true;
-	}
+    @Override
+    public boolean hitEntity(@Nonnull ItemStack stack, @Nonnull EntityLivingBase target, @Nonnull EntityLivingBase attacker)
+    {
+        target.motionX *= 0.25;
+        target.motionZ *= 0.25;
+        target.hurtTime = 10;
+        target.hurtResistantTime = 13;
+        stack.damageItem(1, attacker);
+        return true;
+    }
 
 }

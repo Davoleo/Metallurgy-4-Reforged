@@ -17,15 +17,15 @@ import net.minecraftforge.common.config.Config;
 @Config.RequiresMcRestart
 public class EffectsConfig {
 
-	//Armors
-	@Config.Name("Symbiosis I")
-	@Config.Comment("Starving consumes equipment while eating restores it")
-	public static boolean adamantineEffectAll = true;
-	@Config.Name("Symbiosis II")
-	@Config.Comment("When taking lethal damage you have a chance (based on how many armor pieces you wear) to survive the hit and lose a piece of armor")
-	public static boolean adamantineEffectArmor = true;
+    //Armors
+    @Config.Name("Symbiosis I")
+    @Config.Comment("Starving consumes equipment while eating restores it")
+    public static boolean adamantineEffectAll = true;
+    @Config.Name("Symbiosis II")
+    @Config.Comment("When taking lethal damage you have a chance (based on how many armor pieces you wear) to survive the hit and lose a piece of armor")
+    public static boolean adamantineEffectArmor = true;
 
-	@Config.Name("Sky-High")
+    @Config.Name("Sky-High")
     @Config.Comment("Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing")
     public static boolean amordrineEffectArmor = true;
     @Config.Name("Sky-High")

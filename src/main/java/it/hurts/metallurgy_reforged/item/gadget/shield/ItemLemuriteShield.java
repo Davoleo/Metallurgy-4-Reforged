@@ -23,58 +23,58 @@ import javax.annotation.Nonnull;
 
 public class ItemLemuriteShield extends ItemShieldBase {
 
-	public ItemLemuriteShield()
-	{
-		super("lemurite_shield", 256);
-	}
+    public ItemLemuriteShield()
+    {
+        super("lemurite_shield", 256);
+    }
 
-	@Override
-	public int getItemEnchantability()
-	{
-		return 17;
-	}
+    @Override
+    public int getItemEnchantability()
+    {
+        return 17;
+    }
 
-	@Override
-	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-	{
-		return 200;
-	}
+    @Override
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack)
+    {
+        return 200;
+    }
 
-	@Nonnull
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
-	{
-		playerIn.setInvisible(true);
-		spawnParticles(playerIn);
-		return super.onItemRightClick(worldIn, playerIn, handIn);
-	}
+    @Nonnull
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
+    {
+        playerIn.setInvisible(true);
+        spawnParticles(playerIn);
+        return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
 
-	@Override
-	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
-	{
-		//Cooldown can't be less than one second (you can't spam to make mobs buffer kek)
-		terminateEffect(entityLiving, Math.max(200 - timeLeft, 20), stack);
-	}
+    @Override
+    public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
+    {
+        //Cooldown can't be less than one second (you can't spam to make mobs buffer kek)
+        terminateEffect(entityLiving, Math.max(200 - timeLeft, 20), stack);
+    }
 
-	@Override
-	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
-	{
-		if (count <= 1)
-			terminateEffect(player, 200, stack);
-	}
+    @Override
+    public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
+    {
+        if (count <= 1)
+            terminateEffect(player, 200, stack);
+    }
 
-	private void terminateEffect(EntityLivingBase player, int cooldown, ItemStack stack)
-	{
-		spawnParticles(player);
-		player.setInvisible(false);
-		((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
-		stack.damageItem(Math.round( cooldown / 8F), player);
-	}
+    private void terminateEffect(EntityLivingBase player, int cooldown, ItemStack stack)
+    {
+        spawnParticles(player);
+        player.setInvisible(false);
+        ((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
+        stack.damageItem(Math.round(cooldown / 8F), player);
+    }
 
-	private void spawnParticles(EntityLivingBase entity)
-	{
-		if (entity instanceof EntityPlayerMP)
-			((EntityPlayerMP) entity).connection.sendPacket(new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) entity.posX, (float) entity.posY + 1, (float) entity.posZ, 0, 0, 0, 0, 1, 0));
-	}
+    private void spawnParticles(EntityLivingBase entity)
+    {
+        if (entity instanceof EntityPlayerMP)
+            ((EntityPlayerMP) entity).connection.sendPacket(new SPacketParticles(EnumParticleTypes.EXPLOSION_LARGE, true, (float) entity.posX, (float) entity.posY + 1, (float) entity.posZ, 0, 0, 0, 0, 1, 0));
+    }
 
 }

@@ -14,43 +14,50 @@ import net.minecraft.inventory.Slot;
 
 public class PlayerEffectData {
 
-	//Amordrine Section --------------------------------------
-	private int amordineJumps;
+    //Amordrine Section --------------------------------------
+    private int amordineJumps;
 
-	public void setAmordrineJumps(int jumps) {
-		amordineJumps = jumps;
-	}
+    public void setAmordrineJumps(int jumps)
+    {
+        amordineJumps = jumps;
+    }
 
-	public int getAmordrineJumps() {
-		return amordineJumps;
-	}
+    public int getAmordrineJumps()
+    {
+        return amordineJumps;
+    }
 
-	public void resetAmordrineJumps() {
-		amordineJumps = 0;
-	}
+    public void resetAmordrineJumps()
+    {
+        amordineJumps = 0;
+    }
 
-	// Krik Section ---------------------------------------
-	private int krikHeight;
+    // Krik Section ---------------------------------------
+    private int krikHeight;
 
-	public void setKrikHeight(int height) {
-		this.krikHeight = height;
-	}
+    public void setKrikHeight(int height)
+    {
+        this.krikHeight = height;
+    }
 
-	public int getKrikHeight() {
-		return krikHeight;
-	}
+    public int getKrikHeight()
+    {
+        return krikHeight;
+    }
 
-	public static int getKrikMaxLevel(EntityPlayer player) {
+    public static int getKrikMaxLevel(EntityPlayer player)
+    {
 
-		int count = 0;
+        int count = 0;
 
-		for (int i = 9; i < 36; i++) {
-			Slot k = new Slot(player.inventory, i, 0, 0);
-			if (!k.getHasStack())
-				count++;
-		}
+        for (int i = 9; i < 36; i++)
+        {
+            Slot k = new Slot(player.inventory, i, 0, 0);
+            if (!k.getHasStack())
+                count++;
+        }
 
-		return count;
-	}
+        return count;
+    }
 
 }

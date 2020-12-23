@@ -19,26 +19,28 @@ import javax.annotation.Nonnull;
 
 public class ItemSanguiniteShield extends ItemShieldBase {
 
-	public ItemSanguiniteShield()
-	{
-		super("sanguinite_shield", 1000);
-	}
+    public ItemSanguiniteShield()
+    {
+        super("sanguinite_shield", 1000);
+    }
 
-	@Override
-	public int getItemEnchantability()
-	{
-		return 25;
-	}
+    @Override
+    public int getItemEnchantability()
+    {
+        return 25;
+    }
 
-	@Override
-	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
-	{
-		return 600;
-	}
+    @Override
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack)
+    {
+        return 600;
+    }
 
-	@Override
-    public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
-        if (damageSource.getTrueSource() instanceof EntityLivingBase) {
+    @Override
+    public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount)
+    {
+        if (damageSource.getTrueSource() instanceof EntityLivingBase)
+        {
             EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
             target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
         }

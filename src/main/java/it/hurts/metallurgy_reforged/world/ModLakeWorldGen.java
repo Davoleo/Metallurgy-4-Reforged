@@ -26,39 +26,39 @@ import java.util.Random;
 
 public class ModLakeWorldGen {
 
-	public static IChunkGenerator chunkGenerator = null;
+    public static IChunkGenerator chunkGenerator = null;
 
-	@SubscribeEvent
-	public static void populatesEvent(PopulateChunkEvent.Pre event)
-	{
-		World world = event.getWorld();
-		Random rand = new Random();
-		List<Integer> dimensionWhitelist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionWhiteList);
-		int randNum = rand.nextInt(500) + 1;
+    @SubscribeEvent
+    public static void populatesEvent(PopulateChunkEvent.Pre event)
+    {
+        World world = event.getWorld();
+        Random rand = new Random();
+        List<Integer> dimensionWhitelist = Arrays.asList(WorldGenerationConfig.tarLakeDimensionWhiteList);
+        int randNum = rand.nextInt(500) + 1;
 
-		if (randNum <= WorldGenerationConfig.tarLakePercentage)
+        if (randNum <= WorldGenerationConfig.tarLakePercentage)
 
-			if (dimensionWhitelist.contains(world.provider.getDimension()))
-			{
-				int x = event.getChunkX() * 16;
-				int z = event.getChunkZ() * 16;
+            if (dimensionWhitelist.contains(world.provider.getDimension()))
+            {
+                int x = event.getChunkX() * 16;
+                int z = event.getChunkZ() * 16;
 
-				BlockPos blockpos = new BlockPos(x, 0, z);
+                BlockPos blockpos = new BlockPos(x, 0, z);
 
-				final IChunkProvider chunkProvider = world.getChunkProvider();
-				if (chunkProvider instanceof ChunkProviderServer)
-					chunkGenerator = ((ChunkProviderServer) chunkProvider).chunkGenerator;
-				if (chunkGenerator == null)
-					chunkGenerator = world.provider.createChunkGenerator();
+                final IChunkProvider chunkProvider = world.getChunkProvider();
+                if (chunkProvider instanceof ChunkProviderServer)
+                    chunkGenerator = ((ChunkProviderServer) chunkProvider).chunkGenerator;
+                if (chunkGenerator == null)
+                    chunkGenerator = world.provider.createChunkGenerator();
 
-				if (net.minecraftforge.event.terraingen.TerrainGen.populate(chunkGenerator, world, rand, event.getChunkX(), event.getChunkZ(), false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
-				{
-					int i1 = rand.nextInt(16) + 8;
-					int j1 = rand.nextInt(256);
-					int k1 = rand.nextInt(16) + 8;
-					(new WorldGenLakes(ModFluids.fluidBlockTar)).generate(world, rand, blockpos.add(i1, j1, k1));
-				}
-			}
-	}
+                if (net.minecraftforge.event.terraingen.TerrainGen.populate(chunkGenerator, world, rand, event.getChunkX(), event.getChunkZ(), false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
+                {
+                    int i1 = rand.nextInt(16) + 8;
+                    int j1 = rand.nextInt(256);
+                    int k1 = rand.nextInt(16) + 8;
+                    (new WorldGenLakes(ModFluids.fluidBlockTar)).generate(world, rand, blockpos.add(i1, j1, k1));
+                }
+            }
+    }
 
 }

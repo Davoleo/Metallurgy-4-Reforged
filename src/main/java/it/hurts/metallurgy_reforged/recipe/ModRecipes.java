@@ -19,28 +19,28 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecipes {
 
-	public static void init()
-	{
+    public static void init()
+    {
 
-		//Furnace Recipes
-		ModMetals.metalMap.forEach((name, metal) -> {
-			if (metal.getOre() != null)
-			{
-				GameRegistry.addSmelting(metal.getOre(), new ItemStack(metal.getIngot()), 1F);
-			}
-			if (RegistrationConfig.categoryItems.enableMetalDusts)
-				GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
-		});
+        //Furnace Recipes
+        ModMetals.metalMap.forEach((name, metal) -> {
+            if (metal.getOre() != null)
+            {
+                GameRegistry.addSmelting(metal.getOre(), new ItemStack(metal.getIngot()), 1F);
+            }
+            if (RegistrationConfig.categoryItems.enableMetalDusts)
+                GameRegistry.addSmelting(metal.getDust(), new ItemStack(metal.getIngot()), 0.6F);
+        });
 
-		//Dust2Ingot
-		GameRegistry.addSmelting(ModItems.dustIron, new ItemStack(Items.IRON_INGOT), 0.6F);
-		GameRegistry.addSmelting(ModItems.dustGold, new ItemStack(Items.GOLD_INGOT), 0.6F);
+        //Dust2Ingot
+        GameRegistry.addSmelting(ModItems.dustIron, new ItemStack(Items.IRON_INGOT), 0.6F);
+        GameRegistry.addSmelting(ModItems.dustGold, new ItemStack(Items.GOLD_INGOT), 0.6F);
 
-		//Ore2Material
-		GameRegistry.addSmelting(ModBlocks.oreTar, new ItemStack(ModItems.tar), 0.5F);
-		GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.phosphorus), 0.5F);
-		GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.potash), 0.5F);
-		GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.sulfur), 0.5F);
-	}
+        //Ore2Material
+        GameRegistry.addSmelting(ModBlocks.oreTar, new ItemStack(ModItems.tar), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePhosphorite, new ItemStack(ModItems.phosphorus), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.orePotash, new ItemStack(ModItems.potash), 0.5F);
+        GameRegistry.addSmelting(ModBlocks.oreSulfur, new ItemStack(ModItems.sulfur), 0.5F);
+    }
 
 }

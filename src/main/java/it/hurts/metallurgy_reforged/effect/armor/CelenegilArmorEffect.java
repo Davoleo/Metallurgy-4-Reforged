@@ -19,25 +19,28 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class CelenegilArmorEffect extends ArmorPotionEffect {
 
-	public CelenegilArmorEffect()
-	{
-		super(ModMetals.CELENEGIL, null, 0);
-	}
+    public CelenegilArmorEffect()
+    {
+        super(ModMetals.CELENEGIL, null, 0);
+    }
 
-	public void onPlayerTick(EntityPlayer player)
-	{
+    public void onPlayerTick(EntityPlayer player)
+    {
         int armorCount = EventUtils.getArmorPiecesCount(player, metal);
 
-        if (armorCount > 2) {
+        if (armorCount > 2)
+        {
             player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 1, false, false));
-        } else if (armorCount > 0) {
+        }
+        else if (armorCount > 0)
+        {
             player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 100, 0, false, false));
         }
     }
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-	}
+    @Override
+    public void livingEvent(LivingEvent event)
+    {
+    }
 
 }

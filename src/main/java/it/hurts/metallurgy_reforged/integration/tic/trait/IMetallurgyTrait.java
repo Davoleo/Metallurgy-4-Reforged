@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public interface IMetallurgyTrait extends IToolMod {
 
-	void register(String name, @Nullable String tooltip);
+    void register(String name, @Nullable String tooltip);
 
 
     /* {

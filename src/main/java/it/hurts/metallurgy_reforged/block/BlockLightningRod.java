@@ -29,97 +29,97 @@ import javax.annotation.Nullable;
 
 public class BlockLightningRod extends BlockTileEntity {
 
-	//public static final ResourceLocation LIGHTNING_ROD = new ResourceLocation(Metallurgy.MODID, "lightning_rod");
+    //public static final ResourceLocation LIGHTNING_ROD = new ResourceLocation(Metallurgy.MODID, "lightning_rod");
 
-	//public static PropertyBool ACTIVE = PropertyBool.create("active");
+    //public static PropertyBool ACTIVE = PropertyBool.create("active");
 
-	public BlockLightningRod(String name)
-	{
-		super(Material.IRON, name);
-		//setCreativeTab(MetallurgyTabs.tabSpecial);
-	}
+    public BlockLightningRod(String name)
+    {
+        super(Material.IRON, name);
+        //setCreativeTab(MetallurgyTabs.tabSpecial);
+    }
 
-	@Nullable
-	@Override
-	public TileEntity createTileEntity(@Nonnull World world, @Nonnull IBlockState state)
-	{
-		return new TileLightningRod();
-	}
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(@Nonnull World world, @Nonnull IBlockState state)
+    {
+        return new TileLightningRod();
+    }
 
-	@Override
-	public Class getTileEntityClass()
-	{
-		return TileLightningRod.class;
-	}
+    @Override
+    public Class getTileEntityClass()
+    {
+        return TileLightningRod.class;
+    }
 
-	@Override
-	public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
-	{
-		TileEntity te = world.getTileEntity(pos);
+    @Override
+    public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+    {
+        TileEntity te = world.getTileEntity(pos);
 
-		if (te instanceof TileEntityAlloyer)
-		{
-			InventoryHelper.dropInventoryItems(world, pos, (TileEntityAlloyer) te);
-		}
-	}
+        if (te instanceof TileEntityAlloyer)
+        {
+            InventoryHelper.dropInventoryItems(world, pos, (TileEntityAlloyer) te);
+        }
+    }
 
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-	}
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+    }
 
-	//    @Nonnull
-	//    @Override
-	//    protected BlockStateContainer createBlockState()
-	//    {
-	//        return new BlockStateContainer(this, ACTIVE);
-	//    }
+    //    @Nonnull
+    //    @Override
+    //    protected BlockStateContainer createBlockState()
+    //    {
+    //        return new BlockStateContainer(this, ACTIVE);
+    //    }
 
-	//    @Nonnull
-	//    @Override
-	//    public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
-	//    {
-	//        return this.getDefaultState().withProperty(ACTIVE, false);
-	//    }
+    //    @Nonnull
+    //    @Override
+    //    public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, EnumHand hand)
+    //    {
+    //        return this.getDefaultState().withProperty(ACTIVE, false);
+    //    }
 
-	@Nonnull
-	@Override
-	public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
-	{
-		return ItemStack.EMPTY;
-	}
+    @Nonnull
+    @Override
+    public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
+    {
+        return ItemStack.EMPTY;
+    }
 
-	//    @Nonnull
-	//    @Override
-	//    public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess worldIn, BlockPos pos)
-	//    {
-	//        TileEntity te = worldIn instanceof ChunkCache ? ((ChunkCache) worldIn).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : worldIn.getTileEntity(pos);
-	//        if (te instanceof TileLightningRod)
-	//            return state.withProperty(ACTIVE, ((TileLightningRod) te).isActive());
-	//        return super.getActualState(state, worldIn, pos);
-	//    }
+    //    @Nonnull
+    //    @Override
+    //    public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    //    {
+    //        TileEntity te = worldIn instanceof ChunkCache ? ((ChunkCache) worldIn).getTileEntity(pos, Chunk.EnumCreateEntityType.CHECK) : worldIn.getTileEntity(pos);
+    //        if (te instanceof TileLightningRod)
+    //            return state.withProperty(ACTIVE, ((TileLightningRod) te).isActive());
+    //        return super.getActualState(state, worldIn, pos);
+    //    }
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public boolean isOpaqueCube(IBlockState state)
-	{
-		return false;
-	}
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public boolean isFullCube(IBlockState state)
-	{
-		return false;
-	}
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
 
-	@Nonnull
-	@Override
-	public BlockLightningRod setCreativeTab(@Nonnull CreativeTabs tab)
-	{
-		super.setCreativeTab(tab);
-		return this;
-	}
+    @Nonnull
+    @Override
+    public BlockLightningRod setCreativeTab(@Nonnull CreativeTabs tab)
+    {
+        super.setCreativeTab(tab);
+        return this;
+    }
 
 }

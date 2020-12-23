@@ -13,10 +13,10 @@ import java.util.concurrent.Callable;
 
 public class PunchEffectCallable implements Callable<PunchEffect> {
 
-	@Override
-	public PunchEffect call() throws Exception
-	{
-		return new PunchEffect();
-	}
+    @Override
+    public PunchEffect call() throws Exception
+    {
+        return new PunchEffect();
+    }
 
 }

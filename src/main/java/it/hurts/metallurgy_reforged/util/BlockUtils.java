@@ -25,67 +25,66 @@ import java.util.Map;
 
 public class BlockUtils {
 
-	public static void initBlock(Block block, String name, CreativeTabs tab, float hardness, float blastResistance, String toolClass, int harvestLevel)
-	{
-		block.setRegistryName(Metallurgy.MODID, name);
-		block.setTranslationKey(Metallurgy.MODID + "." + name);
-		if (tab != null)
-			block.setCreativeTab(tab);
+    public static void initBlock(Block block, String name, CreativeTabs tab, float hardness, float blastResistance, String toolClass, int harvestLevel)
+    {
+        block.setRegistryName(Metallurgy.MODID, name);
+        block.setTranslationKey(Metallurgy.MODID + "." + name);
+        if (tab != null)
+            block.setCreativeTab(tab);
 
-		block.setHardness(hardness);
-		block.setResistance(blastResistance);
-		block.setHarvestLevel(toolClass, harvestLevel);
-	}
+        block.setHardness(hardness);
+        block.setResistance(blastResistance);
+        block.setHarvestLevel(toolClass, harvestLevel);
+    }
 
-	public static void initBlock(Block block, String name, CreativeTabs tab)
-	{
-		block.setRegistryName(Metallurgy.MODID, name);
-		block.setTranslationKey(Metallurgy.MODID + "." + name);
-		if (tab != null)
-			block.setCreativeTab(tab);
-	}
+    public static void initBlock(Block block, String name, CreativeTabs tab)
+    {
+        block.setRegistryName(Metallurgy.MODID, name);
+        block.setTranslationKey(Metallurgy.MODID + "." + name);
+        if (tab != null)
+            block.setCreativeTab(tab);
+    }
 
-	public static void initFluidBlock(BlockFluidClassic fluidBlock, String name)
-	{
-		fluidBlock.getFluid().setBlock(fluidBlock);
-		fluidBlock.setRegistryName(Metallurgy.MODID, name);
-		fluidBlock.setTranslationKey(Metallurgy.MODID + "." + name);
-		fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
+    public static void initFluidBlock(BlockFluidClassic fluidBlock, String name)
+    {
+        fluidBlock.getFluid().setBlock(fluidBlock);
+        fluidBlock.setRegistryName(Metallurgy.MODID, name);
+        fluidBlock.setTranslationKey(Metallurgy.MODID + "." + name);
+        fluidBlock.setCreativeTab(MetallurgyTabs.tabFluid);
 
-		ModFluids.fluidBlocks.add(fluidBlock);
-	}
+        ModFluids.fluidBlocks.add(fluidBlock);
+    }
 
-	/**
-	 * Gets the instance of a Metal from an Block
-	 *
-	 * @param block An Block instance
-	 *
-	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
-	 */
-	public static Metal getMetalFromBlock(Block block)
-	{
-		if (block instanceof BlockMetal)
-		{
-			BlockMetal blockMetal = ((BlockMetal) block);
+    /**
+     * Gets the instance of a Metal from an Block
+     *
+     * @param block An Block instance
+     * @return The metal the parameter item is made of (null if it isn't made of any metal)
+     */
+    public static Metal getMetalFromBlock(Block block)
+    {
+        if (block instanceof BlockMetal)
+        {
+            BlockMetal blockMetal = ((BlockMetal) block);
 
-			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-			{
-				if (blockMetal.getMetalStats().getName().equals(entry.getKey()))
-				{
-					return entry.getValue();
-				}
-			}
-		}
+            for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
+            {
+                if (blockMetal.getMetalStats().getName().equals(entry.getKey()))
+                {
+                    return entry.getValue();
+                }
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
-	{
-		for (EnumFacing facing : EnumFacing.values())
-			if (world.isAirBlock(pos.offset(facing)))
-				return facing;
-		return null;
-	}
+    public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
+    {
+        for (EnumFacing facing : EnumFacing.values())
+            if (world.isAirBlock(pos.offset(facing)))
+                return facing;
+        return null;
+    }
 
 }

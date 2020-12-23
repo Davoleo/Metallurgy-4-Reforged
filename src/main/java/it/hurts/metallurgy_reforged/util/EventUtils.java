@@ -25,119 +25,127 @@ import java.util.Random;
 
 public class EventUtils {
 
-	/**
-	 * @param entity The entity who is wearing the armor
-	 * @param metal  The metal the armor is made of
-	 *
-	 * @return whether a player is wearing the complete armor set
-	 */
-	public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
-	{
-		boolean fullArmored = true;
+    /**
+     * @param entity The entity who is wearing the armor
+     * @param metal  The metal the armor is made of
+     * @return whether a player is wearing the complete armor set
+     */
+    public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
+    {
+        boolean fullArmored = true;
 
-		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-		{
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
-			{
-				fullArmored = false;
-			}
-		}
+        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+        {
+            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
+            {
+                fullArmored = false;
+            }
+        }
 
-		return fullArmored;
-	}
+        return fullArmored;
+    }
 
-	/**
-	 * @param player     The player who may be wearing the armor piece
-	 * @param slot       The slot in which the player may be wearing a specific armor piece
-	 * @param armorEquip The armor item the player may be wearing in the specified slot
-	 *
-	 * @return whether the player is wearing a specific armor item in a specific Equipment Slot
-	 */
-	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
-	{
-		return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
-	}
+    /**
+     * @param player     The player who may be wearing the armor piece
+     * @param slot       The slot in which the player may be wearing a specific armor piece
+     * @param armorEquip The armor item the player may be wearing in the specified slot
+     * @return whether the player is wearing a specific armor item in a specific Equipment Slot
+     */
+    public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
+    {
+        return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
+    }
 
-	/**
-	 * @param entity EntityLivingBase
-	 * @param metal  The metal you need to count the number of armor piece of
-	 * @return The number of pieces of armor worn by the player
-	 */
-	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal) {
-		int count = 0;
+    /**
+     * @param entity EntityLivingBase
+     * @param metal  The metal you need to count the number of armor piece of
+     * @return The number of pieces of armor worn by the player
+     */
+    public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
+    {
+        int count = 0;
 
-		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-				if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
-					count++;
+        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+                if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
+                    count++;
 
-		return count;
-	}
+        return count;
+    }
 
-	public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity) {
+    public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
+    {
 
-		final List<ItemStack> equip = new ArrayList<>();
+        final List<ItemStack> equip = new ArrayList<>();
 
-		for (ItemStack stack : entity.getEquipmentAndArmor()) {
-			if (ItemUtils.isMadeOfMetal(metal, stack.getItem())) {
-				equip.add(stack);
-			}
-		}
+        for (ItemStack stack : entity.getEquipmentAndArmor())
+        {
+            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+            {
+                equip.add(stack);
+            }
+        }
 
-		return equip;
-	}
+        return equip;
+    }
 
-	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity) {
+    public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
+    {
 
-		final List<ItemStack> equip = new ArrayList<>();
+        final List<ItemStack> equip = new ArrayList<>();
 
-		for (ItemStack stack : entity.getEquipmentAndArmor()) {
-			if (ItemUtils.isMadeOfMetal(metal, stack.getItem())) {
-				equip.add(stack);
-			}
-		}
+        for (ItemStack stack : entity.getEquipmentAndArmor())
+        {
+            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+            {
+                equip.add(stack);
+            }
+        }
 
-		return equip.get(Utils.random.nextInt(equip.size()));
-	}
+        return equip.get(Utils.random.nextInt(equip.size()));
+    }
 
-	@Nullable
-	public static Metal getRandomMetalBasedOnDifficulty(World world) {
+    @Nullable
+    public static Metal getRandomMetalBasedOnDifficulty(World world)
+    {
 
-		//Some math Reminders
-		//(1 * 1 - 0) * 5 = 5;
-		//(2 * 2 - 1) * 5 = 15;
-		//(3 * 3 - 2) * 5 = 35;
-		//(3^0) * 5 = 5 - 5 * difficulty + 1 = 0;
-		//(3^1) * 5 = 15 - 5 * difficulty + 1 = 5;
-		//(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
-		//(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
-		float chance = 0;
-		switch (world.getDifficulty().getId()) {
-			case 0:
-				chance = 0;
-				break;
-			case 1:
-				chance = 5;
-				break;
-			case 2:
-				chance = 10;
-				break;
-			case 3:
-				chance = 20;
-				break;
-		}
+        //Some math Reminders
+        //(1 * 1 - 0) * 5 = 5;
+        //(2 * 2 - 1) * 5 = 15;
+        //(3 * 3 - 2) * 5 = 35;
+        //(3^0) * 5 = 5 - 5 * difficulty + 1 = 0;
+        //(3^1) * 5 = 15 - 5 * difficulty + 1 = 5;
+        //(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
+        //(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
+        float chance = 0;
+        switch (world.getDifficulty().getId())
+        {
+            case 0:
+                chance = 0;
+                break;
+            case 1:
+                chance = 5;
+                break;
+            case 2:
+                chance = 10;
+                break;
+            case 3:
+                chance = 20;
+                break;
+        }
 
-		Random random = new Random();
+        Random random = new Random();
 
-		if ((random.nextFloat() * 100) < chance) {
-			Metal[] metalllarray = ModMetals.metalMap.values().stream()
-					.filter(metal -> metal != null && metal.hasArmorSet())
-					.toArray(Metal[]::new);
-			int metalIndex = random.nextInt(metalllarray.length);
-			return metalllarray[metalIndex];
-		}
+        if ((random.nextFloat() * 100) < chance)
+        {
+            Metal[] metalllarray = ModMetals.metalMap.values().stream()
+                    .filter(metal -> metal != null && metal.hasArmorSet())
+                    .toArray(Metal[]::new);
+            int metalIndex = random.nextInt(metalllarray.length);
+            return metalllarray[metalIndex];
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }

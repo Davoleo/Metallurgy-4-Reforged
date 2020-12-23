@@ -13,9 +13,10 @@ import java.util.concurrent.Callable;
 
 public class EffectDataCallable implements Callable<PlayerEffectData> {
 
-	@Override
-	public PlayerEffectData call() {
-		return new PlayerEffectData();
-	}
+    @Override
+    public PlayerEffectData call()
+    {
+        return new PlayerEffectData();
+    }
 
 }

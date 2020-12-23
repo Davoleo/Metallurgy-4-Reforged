@@ -15,10 +15,10 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 
 public interface IToolEffect {
 
-	MetalStats getMetalStats();
+    MetalStats getMetalStats();
 
-	EnumTools getToolClass();
+    EnumTools getToolClass();
 
-	void addEffect(BaseMetallurgyEffect effect);
+    void addEffect(BaseMetallurgyEffect effect);
 
 }

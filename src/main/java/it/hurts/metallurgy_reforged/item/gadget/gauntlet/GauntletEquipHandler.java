@@ -22,74 +22,74 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class GauntletEquipHandler {
 
-	@SubscribeEvent
-	public static void setInHand(LivingEquipmentChangeEvent event)
-	{
-		ItemStack newStack = event.getTo();
+    @SubscribeEvent
+    public static void setInHand(LivingEquipmentChangeEvent event)
+    {
+        ItemStack newStack = event.getTo();
 
-		Entity entity = event.getEntityLiving();
+        Entity entity = event.getEntityLiving();
 
-		if (entity instanceof EntityPlayerMP && event.getSlot().getSlotType() == EntityEquipmentSlot.Type.HAND)
-		{
-			EntityPlayerMP player = (EntityPlayerMP) entity;
-			EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
+        if (entity instanceof EntityPlayerMP && event.getSlot().getSlotType() == EntityEquipmentSlot.Type.HAND)
+        {
+            EntityPlayerMP player = (EntityPlayerMP) entity;
+            EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
 
-			if (newStack.getItem() == ModItems.gauntlet && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
-			{
-				ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
-				player.setItemStackToSlot(oppositeSlot, offStack);
+            if (newStack.getItem() == ModItems.gauntlet && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
+            {
+                ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
+                player.setItemStackToSlot(oppositeSlot, offStack);
 
-				//Sync the client with the server
-				player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
-			}
-		}
-	}
+                //Sync the client with the server
+                player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
+            }
+        }
+    }
 
-	protected static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
-	{
-		//For Every slot in the player inventory
-		for (int i = 0; i < player.inventory.mainInventory.size(); i++)
-		{
-			//Filter out the case when the gauntlet you're looking for is the same one that you're already holding in the "main" hand
-			if (i != player.inventory.currentItem)
-			{
-				ItemStack otherGauntlet = player.inventory.mainInventory.get(i);
+    protected static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
+    {
+        //For Every slot in the player inventory
+        for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+        {
+            //Filter out the case when the gauntlet you're looking for is the same one that you're already holding in the "main" hand
+            if (i != player.inventory.currentItem)
+            {
+                ItemStack otherGauntlet = player.inventory.mainInventory.get(i);
 
-				//Check if the main Gauntlet is the same as the moved one
-				if (ItemStack.areItemsEqualIgnoreDurability(firstGauntlet, otherGauntlet))
-				{
+                //Check if the main Gauntlet is the same as the moved one
+                if (ItemStack.areItemsEqualIgnoreDurability(firstGauntlet, otherGauntlet))
+                {
 
-					//Create a copy of the moved Gauntlet
-					ItemStack remainingStack = otherGauntlet.copy();
+                    //Create a copy of the moved Gauntlet
+                    ItemStack remainingStack = otherGauntlet.copy();
 
-					//if the Gauntlet stack has more than one items shrink both of the stacks
-					if (remainingStack.getCount() > 1)
-					{
-						otherGauntlet.shrink(1);
-						remainingStack.shrink(1);
-					}
-					else
-					{
-						remainingStack = ItemStack.EMPTY;
-					}
+                    //if the Gauntlet stack has more than one items shrink both of the stacks
+                    if (remainingStack.getCount() > 1)
+                    {
+                        otherGauntlet.shrink(1);
+                        remainingStack.shrink(1);
+                    }
+                    else
+                    {
+                        remainingStack = ItemStack.EMPTY;
+                    }
 
-					//Set the remaining item after moving the gauntlet
-					player.inventory.mainInventory.set(i, remainingStack);
-					//Update the client to reflect the server change
-					player.connection.sendPacket(new SPacketSetSlot(-2, i, remainingStack));
-					return otherGauntlet;
-				}
-			}
-		}
+                    //Set the remaining item after moving the gauntlet
+                    player.inventory.mainInventory.set(i, remainingStack);
+                    //Update the client to reflect the server change
+                    player.connection.sendPacket(new SPacketSetSlot(-2, i, remainingStack));
+                    return otherGauntlet;
+                }
+            }
+        }
 
-		return ItemStack.EMPTY;
-	}
+        return ItemStack.EMPTY;
+    }
 
-	public static boolean isWearingGauntlet(EntityLivingBase pl)
-	{
-		ItemStack mainHand = pl.getHeldItemMainhand();
-		ItemStack offHand = pl.getHeldItemOffhand();
-		return offHand.getItem().equals(ModItems.gauntlet) && mainHand.getItem().equals(ModItems.gauntlet);
-	}
+    public static boolean isWearingGauntlet(EntityLivingBase pl)
+    {
+        ItemStack mainHand = pl.getHeldItemMainhand();
+        ItemStack offHand = pl.getHeldItemOffhand();
+        return offHand.getItem().equals(ModItems.gauntlet) && mainHand.getItem().equals(ModItems.gauntlet);
+    }
 
 }

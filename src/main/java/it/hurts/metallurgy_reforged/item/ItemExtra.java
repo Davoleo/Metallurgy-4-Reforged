@@ -13,15 +13,15 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class ItemExtra extends ItemBase {
 
-	public ItemExtra(String name, CreativeTabs tab, String modelSubDir)
-	{
-		super(name, tab, modelSubDir);
-		ModItems.extraItems.add(this);
-	}
+    public ItemExtra(String name, CreativeTabs tab, String modelSubDir)
+    {
+        super(name, tab, modelSubDir);
+        ModItems.extraItems.add(this);
+    }
 
-	public ItemExtra(String name, CreativeTabs tab)
-	{
-		this(name, tab, "");
-	}
+    public ItemExtra(String name, CreativeTabs tab)
+    {
+        this(name, tab, "");
+    }
 
 }

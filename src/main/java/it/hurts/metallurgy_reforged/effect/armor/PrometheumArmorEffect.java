@@ -40,6 +40,6 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect {
             if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
                 entity.removePotionEffect(MobEffects.POISON);
         }
-	}
+    }
 
 }

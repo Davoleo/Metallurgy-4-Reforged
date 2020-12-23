@@ -14,26 +14,26 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public enum ItemTypes {
 
-	INGOT("ingot", MetallurgyTabs.tabIngot),
-	DUST("dust", MetallurgyTabs.tabDust),
-	NUGGET("nugget", MetallurgyTabs.tabNugget);
+    INGOT("ingot", MetallurgyTabs.tabIngot),
+    DUST("dust", MetallurgyTabs.tabDust),
+    NUGGET("nugget", MetallurgyTabs.tabNugget);
 
-	private String name;
-	private CreativeTabs tab;
+    private String name;
+    private CreativeTabs tab;
 
-	ItemTypes(String name, CreativeTabs tab)
-	{
-		this.name = name;
-		this.tab = tab;
-	}
+    ItemTypes(String name, CreativeTabs tab)
+    {
+        this.name = name;
+        this.tab = tab;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public CreativeTabs getTab()
-	{
-		return tab;
-	}
+    public CreativeTabs getTab()
+    {
+        return tab;
+    }
 }

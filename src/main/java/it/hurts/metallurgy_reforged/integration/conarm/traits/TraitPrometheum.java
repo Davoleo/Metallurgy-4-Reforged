@@ -18,19 +18,19 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class TraitPrometheum extends AbstractArmorTrait implements IConarmMetallurgyTrait {
 
-	public TraitPrometheum()
-	{
-		super("prometheum", TextFormatting.DARK_GREEN);
-	}
+    public TraitPrometheum()
+    {
+        super("prometheum", TextFormatting.DARK_GREEN);
+    }
 
-	@SubscribeEvent
-	public void onArmorTick(PlayerTickEvent event)
-	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "prometheum"))
-		{
-			event.player.removePotionEffect(MobEffects.POISON);
-		}
+    @SubscribeEvent
+    public void onArmorTick(PlayerTickEvent event)
+    {
+        if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "prometheum"))
+        {
+            event.player.removePotionEffect(MobEffects.POISON);
+        }
 
-	}
+    }
 
 }

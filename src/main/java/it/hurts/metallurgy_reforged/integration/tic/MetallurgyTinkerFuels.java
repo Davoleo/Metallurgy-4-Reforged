@@ -15,9 +15,9 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 
 public class MetallurgyTinkerFuels {
 
-	public static void init()
-	{
-		TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.THERMITE, 50), 100);
-	}
+    public static void init()
+    {
+        TinkerRegistry.registerSmelteryFuel(new FluidStack(ModFluids.THERMITE, 50), 100);
+    }
 
 }

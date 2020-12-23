@@ -22,90 +22,88 @@ import javax.annotation.Nonnull;
 
 public class ParticleOre extends Particle {
 
-	private static final ResourceLocation[] TEXTURES = new ResourceLocation[10];
+    private static final ResourceLocation[] TEXTURES = new ResourceLocation[10];
 
-	static
-	{
-		for (int i = 0; i < 10; i++)
-			TEXTURES[i] = new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + (i + 1));
-	}
+    static
+    {
+        for (int i = 0; i < 10; i++)
+            TEXTURES[i] = new ResourceLocation(Metallurgy.MODID, "particles/ore_particle_" + (i + 1));
+    }
 
-	private int textureIndex = 0;
-	private final int level;
-	private final float particleOreScale;
+    private int textureIndex = 0;
+    private final int level;
+    private final float particleOreScale;
 
-	/**
-	 * @param level value from 1 to 10, it specifies the texture progression of this particle,the higher it is , the more detailed the texture gets
-	 */
-	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double motionX, double motionY, double motionZ, float scale, float red, float green, float blue, int level)
-	{
-		this(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue, level);
-		this.motionX = motionX;
-		this.motionY = motionY;
-		this.motionZ = motionZ;
+    /**
+     * @param level value from 1 to 10, it specifies the texture progression of this particle,the higher it is , the more detailed the texture gets
+     */
+    public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double motionX, double motionY, double motionZ, float scale, float red, float green, float blue, int level)
+    {
+        this(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue, level);
+        this.motionX = motionX;
+        this.motionY = motionY;
+        this.motionZ = motionZ;
+    }
 
+    /**
+     * particle with random direction
+     */
+    public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int level)
+    {
+        super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0.0D, 0.0D, 0.0D);
+        this.particleMaxAge = (int) (40 * 0.8D + Math.random() * 0.4D);
+        this.particleRed = red;
+        this.particleGreen = green;
+        this.particleBlue = blue;
+        this.level = level;
+        float f = (float) Math.random() * 0.4F + 0.6F;
+        this.particleRed = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * red * f;
+        this.particleGreen = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * green * f;
+        this.particleBlue = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * blue * f;
+        this.particleScale *= 0.75F;
+        this.particleScale *= scale;
+        this.particleOreScale = this.particleScale;
 
-	}
+        this.motionX *= 0.10000000149011612D;
+        this.motionY *= 0.10000000149011612D;
+        this.motionZ *= 0.10000000149011612D;
+        this.setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[0].toString()));
+    }
 
-	/**
-	 * particle with random direction
-	 */
-	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int level)
-	{
-		super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0.0D, 0.0D, 0.0D);
-		this.particleMaxAge = (int) (40 * 0.8D + Math.random() * 0.4D);
-		this.particleRed = red;
-		this.particleGreen = green;
-		this.particleBlue = blue;
-		this.level = level;
-		float f = (float) Math.random() * 0.4F + 0.6F;
-		this.particleRed = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * red * f;
-		this.particleGreen = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * green * f;
-		this.particleBlue = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * blue * f;
-		this.particleScale *= 0.75F;
-		this.particleScale *= scale;
-		this.particleOreScale = this.particleScale;
+    public void setMotionMultiplier(float motion)
+    {
+        this.motionX *= motion;
+        this.motionY *= motion;
+        this.motionZ *= motion;
+    }
 
-		this.motionX *= 0.10000000149011612D;
-		this.motionY *= 0.10000000149011612D;
-		this.motionZ *= 0.10000000149011612D;
-		this.setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[0].toString()));
-	}
+    public void renderParticle(@Nonnull BufferBuilder buffer, @Nonnull Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
+    {
+        float f = ((float) this.particleAge + partialTicks) / (float) this.particleMaxAge * 32.0F;
+        f = MathHelper.clamp(f, 0.0F, 1.0F);
+        this.particleScale = this.particleOreScale * f;
+        super.renderParticle(buffer, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
+    }
 
-	public void setMotionMultiplier(float motion)
-	{
-		this.motionX *= motion;
-		this.motionY *= motion;
-		this.motionZ *= motion;
-	}
+    @Override
+    public int getFXLayer()
+    {
+        return 1;
+    }
 
-	public void renderParticle(@Nonnull BufferBuilder buffer, @Nonnull Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
-	{
-		float f = ((float) this.particleAge + partialTicks) / (float) this.particleMaxAge * 32.0F;
-		f = MathHelper.clamp(f, 0.0F, 1.0F);
-		this.particleScale = this.particleOreScale * f;
-		super.renderParticle(buffer, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
-	}
+    @Override
+    public void onUpdate()
+    {
+        int prevTextureIndex = textureIndex;
 
-	@Override
-	public int getFXLayer()
-	{
-		return 1;
-	}
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
 
-	@Override
-	public void onUpdate()
-	{
-		int prevTextureIndex = textureIndex;
+        if (this.particleAge++ >= this.particleMaxAge)
+            this.setExpired();
 
-		this.prevPosX = this.posX;
-		this.prevPosY = this.posY;
-		this.prevPosZ = this.posZ;
-
-		if (this.particleAge++ >= this.particleMaxAge)
-			this.setExpired();
-
-		this.move(this.motionX, this.motionY, this.motionZ);
+        this.move(this.motionX, this.motionY, this.motionZ);
 
 		/*
 		if (this.posY == this.prevPosY)
@@ -120,27 +118,27 @@ public class ParticleOre extends Particle {
 
 		 */
 
-		if (this.onGround)
-		{
-			this.motionX *= 0.699999988079071D;
-			this.motionZ *= 0.699999988079071D;
-		}
+        if (this.onGround)
+        {
+            this.motionX *= 0.699999988079071D;
+            this.motionZ *= 0.699999988079071D;
+        }
 
 
-		int tickStep = (particleMaxAge / 10);
-		if (particleAge % tickStep == 0)
-		{
+        int tickStep = (particleMaxAge / 10);
+        if (particleAge % tickStep == 0)
+        {
 
-			textureIndex++;
+            textureIndex++;
 
-			if (textureIndex > Math.min(level - 1, 9))
-				textureIndex = 0;
+            if (textureIndex > Math.min(level - 1, 9))
+                textureIndex = 0;
 
-			if (prevTextureIndex != textureIndex)
-				setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[textureIndex].toString()));
-		}
+            if (prevTextureIndex != textureIndex)
+                setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[textureIndex].toString()));
+        }
 
 
-	}
+    }
 
 }

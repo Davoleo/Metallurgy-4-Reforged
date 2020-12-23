@@ -23,7 +23,7 @@ compileJava {
 minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
-	mappings = "snapshot_20180814"
+    mappings = "snapshot_20180814"
 }
 
 repositories {
@@ -31,17 +31,17 @@ repositories {
     jcenter()
 
     //location of the maven that hosts JEI & TCon
-	maven {
-		name = "Progwml6 maven"
-		url = "http://dvs1.progwml6.com/files/maven"
-	}
-  
+    maven {
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+
     //JEI maven fallback
-	maven {
-		name = "ModMaven"
-		url = "modmaven.k-4u.nl"
-	}
-    
+    maven {
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
+
     //Jared's Maven Repository (CraftTweaker)
     maven {
         name = 'jared maven'
@@ -77,16 +77,16 @@ dependencies {
 
     //Compile against the JEI API but do not include it at runtime
     compileOnly 'mezz.jei:jei_1.12.2:4.15.+:api'
-	
+
     //At runtime, use the full JEI jar
     runtimeOnly 'mezz.jei:jei_1.12.2:4.15.+'
-	
+
     //Tinker Construct & Mantle
-	implementation 'slimeknights.mantle:Mantle:1.12-1.3.3.56'
+    implementation 'slimeknights.mantle:Mantle:1.12-1.3.3.56'
     implementation 'slimeknights:TConstruct:1.12.2-2.13.0.184'
 
     compileOnly 'constructs-armory:conarm:1.12.2:1.2.5.9'
-     
+
     //Industrial Foregoing
     compileOnly 'curse.maven:industrialforegoing_api-266515:2745323'
 
@@ -107,13 +107,13 @@ dependencies {
 }
 
 processResources {
-    
+
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     from(sourceSets.main.resources.srcDirs) {

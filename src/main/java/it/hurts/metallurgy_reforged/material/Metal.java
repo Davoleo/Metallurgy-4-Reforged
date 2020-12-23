@@ -26,168 +26,166 @@ import javax.annotation.Nullable;
 
 public class Metal {
 
-	//Metal Properties
-	private final MetalStats stats;
+    //Metal Properties
+    private final MetalStats stats;
 
-	//Items
-	private final ItemMetal ingot;
-	private final ItemMetal dust;
-	private final ItemMetal nugget;
-	//Blocks
-	private final BlockOre ore;
-	private final BlockMetal[] blocks;
+    //Items
+    private final ItemMetal ingot;
+    private final ItemMetal dust;
+    private final ItemMetal nugget;
+    //Blocks
+    private final BlockOre ore;
+    private final BlockMetal[] blocks;
 
-	//Tools & Armor
-	private final Item[] toolSet;
-	private final ItemArmorBase[] armorSet;
+    //Tools & Armor
+    private final Item[] toolSet;
+    private final ItemArmorBase[] armorSet;
 
-	//Fluid
-	private final FluidMolten molten;
+    //Fluid
+    private final FluidMolten molten;
 
-	public Metal(@Nonnull MetalStats stats, @Nonnull ItemMetal ingot, @Nonnull ItemMetal dust, @Nonnull ItemMetal nugget, BlockOre ore, @Nonnull BlockMetal[] blocks, @Nonnull FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
-	{
-		this.stats = stats;
-		this.ingot = ingot;
-		this.dust = dust;
-		this.nugget = nugget;
-		this.ore = ore;
-		this.blocks = blocks;
-		this.molten = molten;
-		this.toolSet = toolSet;
-		this.armorSet = armorSet;
+    public Metal(@Nonnull MetalStats stats, @Nonnull ItemMetal ingot, @Nonnull ItemMetal dust, @Nonnull ItemMetal nugget, BlockOre ore, @Nonnull BlockMetal[] blocks, @Nonnull FluidMolten molten, Item[] toolSet, ItemArmorBase[] armorSet)
+    {
+        this.stats = stats;
+        this.ingot = ingot;
+        this.dust = dust;
+        this.nugget = nugget;
+        this.ore = ore;
+        this.blocks = blocks;
+        this.molten = molten;
+        this.toolSet = toolSet;
+        this.armorSet = armorSet;
 
-		ModMetals.metalMap.put(stats.getName(), this);
-		try
-		{
-			ModMetals.class.getDeclaredField(stats.getName().toUpperCase()).set(null, this);
-		}
-		catch (IllegalAccessException | NoSuchFieldException e)
-		{
-			e.printStackTrace();
-		}
-	}
+        ModMetals.metalMap.put(stats.getName(), this);
+        try
+        {
+            ModMetals.class.getDeclaredField(stats.getName().toUpperCase()).set(null, this);
+        }
+        catch (IllegalAccessException | NoSuchFieldException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
-	public ItemTool.ToolMaterial getToolMaterial()
-	{
-		return stats.getToolMaterial();
-	}
+    public ItemTool.ToolMaterial getToolMaterial()
+    {
+        return stats.getToolMaterial();
+    }
 
-	public ItemArmor.ArmorMaterial getArmorMaterial()
-	{
-		return stats.getArmorMaterial();
-	}
+    public ItemArmor.ArmorMaterial getArmorMaterial()
+    {
+        return stats.getArmorMaterial();
+    }
 
-	/**
-	 * @return whether the metal has tools
-	 */
-	public boolean hasToolSet()
-	{
-		return stats.getToolStats() != null;
-	}
+    /**
+     * @return whether the metal has tools
+     */
+    public boolean hasToolSet()
+    {
+        return stats.getToolStats() != null;
+    }
 
-	/**
-	 * @return whether the metal has armor
-	 */
-	public boolean hasArmorSet()
-	{
-		return stats.getArmorStats() != null;
-	}
+    /**
+     * @return whether the metal has armor
+     */
+    public boolean hasArmorSet()
+    {
+        return stats.getArmorStats() != null;
+    }
 
-	/**
-	 * @return whether the metal is an alloy
-	 */
-	public boolean isAlloy()
-	{
-		return ore == null;
-	}
+    /**
+     * @return whether the metal is an alloy
+     */
+    public boolean isAlloy()
+    {
+        return ore == null;
+    }
 
-	@Nonnull
-	public MetalStats getStats()
-	{
-		return stats;
-	}
+    @Nonnull
+    public MetalStats getStats()
+    {
+        return stats;
+    }
 
-	@Nonnull
-	public ItemMetal getIngot()
-	{
-		return ingot;
-	}
+    @Nonnull
+    public ItemMetal getIngot()
+    {
+        return ingot;
+    }
 
-	@Nonnull
-	public ItemMetal getDust()
-	{
-		return dust;
-	}
+    @Nonnull
+    public ItemMetal getDust()
+    {
+        return dust;
+    }
 
-	@Nonnull
-	public ItemMetal getNugget()
-	{
-		return nugget;
-	}
+    @Nonnull
+    public ItemMetal getNugget()
+    {
+        return nugget;
+    }
 
-	@Nullable
-	public BlockOre getOre()
-	{
-		return ore;
-	}
+    @Nullable
+    public BlockOre getOre()
+    {
+        return ore;
+    }
 
-	@Nonnull
-	public BlockMetal[] getBlocks()
-	{
-		return blocks;
-	}
+    @Nonnull
+    public BlockMetal[] getBlocks()
+    {
+        return blocks;
+    }
 
-	@Nonnull
-	public BlockMetal getBlock(BlockTypes type)
-	{
-		return blocks[type.ordinal()];
-	}
+    @Nonnull
+    public BlockMetal getBlock(BlockTypes type)
+    {
+        return blocks[type.ordinal()];
+    }
 
-	@Nonnull
-	public FluidMolten getMolten()
-	{
-		return molten;
-	}
+    @Nonnull
+    public FluidMolten getMolten()
+    {
+        return molten;
+    }
 
-	/**
-	 * @param toolClass The kind of tool you want from a set of tools
-	 *
-	 * @return one of the tools in the toolSet
-	 */
-	public Item getTool(EnumTools toolClass)
-	{
-		return toolSet[toolClass.ordinal()];
-	}
+    /**
+     * @param toolClass The kind of tool you want from a set of tools
+     * @return one of the tools in the toolSet
+     */
+    public Item getTool(EnumTools toolClass)
+    {
+        return toolSet[toolClass.ordinal()];
+    }
 
-	/**
-	 * @param armorPiece The armor piece
-	 *
-	 * @return one of the armor pieces in the armorSet
-	 */
-	public ItemArmorBase getArmorPiece(EntityEquipmentSlot armorPiece)
-	{
-		return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
-	}
+    /**
+     * @param armorPiece The armor piece
+     * @return one of the armor pieces in the armorSet
+     */
+    public ItemArmorBase getArmorPiece(EntityEquipmentSlot armorPiece)
+    {
+        return armorPiece.getSlotType() == EntityEquipmentSlot.Type.ARMOR ? armorSet[3 - armorPiece.getIndex()] : null;
+    }
 
-	@Nullable
-	public Item[] getToolSet()
-	{
-		return toolSet;
-	}
+    @Nullable
+    public Item[] getToolSet()
+    {
+        return toolSet;
+    }
 
-	@Nullable
-	public ItemArmorBase[] getArmorSet()
-	{
-		return armorSet;
-	}
+    @Nullable
+    public ItemArmorBase[] getArmorSet()
+    {
+        return armorSet;
+    }
 
-	/**
-	 * @return The metal name in snake_case
-	 */
-	@Override
-	public String toString()
-	{
-		return stats.getName();
-	}
+    /**
+     * @return The metal name in snake_case
+     */
+    @Override
+    public String toString()
+    {
+        return stats.getName();
+    }
 
 }
