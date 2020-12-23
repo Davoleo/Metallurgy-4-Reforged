@@ -23,6 +23,7 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -146,27 +147,52 @@ public abstract class BaseMetallurgyEffect {
     /**
      * spawn ore particles randomly on block position
      */
-    protected void spawnParticle(World world, BlockPos pos, float scale, int level) {
-        double x = pos.getX() + Utils.random.nextDouble();
-        double y = pos.getY() + Utils.random.nextDouble();
-        double z = pos.getZ() + Utils.random.nextDouble();
+    protected void spawnParticle(World world, BlockPos pos, float scale, int level, double motionX, double motionY, double motionZ)
+    {
 
-        spawnParticle(world, x, y, z, scale, level);
+        AxisAlignedBB box = world.getBlockState(pos).getBoundingBox(world, pos);
+
+
+        double width = box.maxX - box.minX;
+        double height = box.maxY - box.minY;
+        double depth = box.maxZ - box.minZ;
+
+
+        double border = 0.15D;
+
+        double x = pos.getX() + box.minX - border + (width + border * 2) * Utils.random.nextDouble();
+        double y = pos.getY() + box.minY - border + (height + border * 2) * Utils.random.nextDouble();
+        double z = pos.getZ() + box.minZ - border + (depth + border * 2) * Utils.random.nextDouble();
+        spawnParticle(world, x, y, z, motionX, motionY, motionZ, scale, level);
     }
 
     /**
-     * spawn ore particles in a specific point
+     * spawn ore particles in a specific point with a custom motion
      */
-    protected void spawnParticle(World world, double x, double y, double z, float scale, int level) {
+    protected void spawnParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float scale, int level)
+    {
+        NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, motionX, motionY, motionZ, metal.getStats().getColorHex(), scale, level), targetPoint);
+    }
+
+    /**
+     * spawn ore particles in a specific point with random motion (like redstone particles)
+     */
+    protected void spawnParticle(World world, double x, double y, double z, float scale, int level)
+    {
         NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
         PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), targetPoint);
     }
 
-    public Metal getMetal() {
+
+    public Metal getMetal()
+    {
         return metal;
     }
 
-    public final String getName() {
+    public final String getName()
+    {
         return name;
     }
+
 }

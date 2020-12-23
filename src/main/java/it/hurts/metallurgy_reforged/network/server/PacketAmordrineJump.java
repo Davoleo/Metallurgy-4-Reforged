@@ -24,50 +24,63 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketAmordrineJump implements IMessage {
 
-    private int maxJumps;
+	private int maxJumps;
 
-    public PacketAmordrineJump() {
-        //Mandatory empty constructor
-    }
+	public PacketAmordrineJump()
+	{
+		//Mandatory empty constructor
+	}
 
-    public PacketAmordrineJump(int maxJumps) {
-        this.maxJumps = maxJumps;
-    }
+	public PacketAmordrineJump(int maxJumps)
+	{
+		this.maxJumps = maxJumps;
+	}
 
-    @Override
-    public void fromBytes(ByteBuf buf) {
-        maxJumps = buf.readInt();
-    }
+	@Override
+	public void fromBytes(ByteBuf buf)
+	{
+		maxJumps = buf.readInt();
+	}
 
-    @Override
-    public void toBytes(ByteBuf buf) {
-        buf.writeInt(maxJumps);
-    }
+	@Override
+	public void toBytes(ByteBuf buf)
+	{
+		buf.writeInt(maxJumps);
+	}
 
-    public static class Handler implements IMessageHandler<PacketAmordrineJump, PacketAttachEmitter> {
-        @Override
-        public PacketAttachEmitter onMessage(PacketAmordrineJump message, MessageContext ctx) {
-            EntityPlayerMP player = ctx.getServerHandler().player;
+	public static class Handler implements IMessageHandler<PacketAmordrineJump, PacketAttachEmitter> {
 
-            PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+		@Override
+		public PacketAttachEmitter onMessage(PacketAmordrineJump message, MessageContext ctx)
+		{
+			EntityPlayerMP player = ctx.getServerHandler().player;
 
-            if (capability != null) {
-                int currentJumps = capability.getAmordrineJumps();
-                if (currentJumps < message.maxJumps) {
-                    capability.setAmordrineJumps(currentJumps + 1);
-                    player.jump();
-                    player.velocityChanged = true;
-                    player.fallDistance = 0;
-                    player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.PLAYERS, 0.5F, 2F);
-                    AxisAlignedBB playerBox = player.getEntityBoundingBox();
-                    AxisAlignedBB feetBox = new AxisAlignedBB(playerBox.minX, playerBox.minY, playerBox.minZ, playerBox.maxX, playerBox.minY, playerBox.maxZ);
+			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-                    return new PacketAttachEmitter(feetBox, ModMetals.AMORDRINE.getStats().getColorHex(),
-                            1, 4 - currentJumps, 30);
-                }
-            }
+			if (capability != null)
+			{
+				int currentJumps = capability.getAmordrineJumps();
+				if (currentJumps < message.maxJumps)
+				{
+					capability.setAmordrineJumps(currentJumps + 1);
+					player.jump();
+					player.velocityChanged = true;
+					player.fallDistance = 0;
+					player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.PLAYERS, 0.5F, 2F);
+					AxisAlignedBB playerBox = player.getEntityBoundingBox();
+					AxisAlignedBB feetBox = new AxisAlignedBB(playerBox.minX, playerBox.minY, playerBox.minZ, playerBox.maxX, playerBox.minY, playerBox.maxZ).grow(0.7D, 0D, 0.7D);
 
-            return null;
-        }
-    }
+					return new PacketAttachEmitter(feetBox,
+							0, -0.03D, 0,
+							ModMetals.AMORDRINE.getStats().getColorHex(),
+							1, 4 - currentJumps, 10);
+
+				}
+			}
+
+			return null;
+		}
+
+	}
+
 }

@@ -16,33 +16,56 @@ import net.minecraft.world.World;
 // TODO: 14/12/2020 Generify this
 public class ParticleOreEmitter extends ParticleOre {
 
-    private final AxisAlignedBB attachedBox;
-    private int age;
-    private final int lifetime;
-    private final int level;
+	private final AxisAlignedBB attachedBox;
+	private int age;
+	private final int lifetime;
+	private final int level;
 
-    public ParticleOreEmitter(World worldIn, AxisAlignedBB box, int lifetime, float red, float green, float blue, int level) {
-        super(worldIn, box.getCenter().x, box.getCenter().y, box.getCenter().z, 1F, red, green, blue, 5);
-        attachedBox = box;
-        this.lifetime = lifetime;
-        this.level = level;
-    }
+	private boolean hasMotion = false;
 
-    @Override
-    public void onUpdate() {
-        for (int i = 0; i < 16; ++i) {
-            double x = attachedBox.minX + (attachedBox.maxX - attachedBox.minX) * rand.nextFloat();
-            double y = attachedBox.minY + (attachedBox.maxY - attachedBox.minY) * rand.nextFloat();
-            double z = attachedBox.minZ + (attachedBox.maxZ - attachedBox.minZ) * rand.nextFloat();
-            ParticleOre particle = new ParticleOre(world, x, y, z, rand.nextFloat() + 0.5F, this.particleRed, this.particleGreen, this.particleBlue, this.level);
-            particle.setMotionMultiplier(10);
-            Minecraft.getMinecraft().effectRenderer.addEffect(particle);
-        }
 
-        ++this.age;
+	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, int lifetime, float red, float green, float blue, int level)
+	{
+		super(worldIn, box.getCenter().x, box.getCenter().y, box.getCenter().z, 1F, red, green, blue, 5);
+		attachedBox = box;
+		this.lifetime = lifetime;
+		this.level = level;
+	}
 
-        if (this.age >= this.lifetime) {
-            this.setExpired();
-        }
-    }
+	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, double motionX, double motionY, double motionZ, int lifetime, float red, float green, float blue, int level)
+	{
+		this(worldIn, box, lifetime, red, green, blue, level);
+		this.motionX = motionX;
+		this.motionY = motionY;
+		this.motionZ = motionZ;
+		this.hasMotion = true;
+
+	}
+
+	@Override
+	public void onUpdate()
+	{
+		for (int i = 0; i < 16; ++i)
+		{
+			double x = attachedBox.minX + (attachedBox.maxX - attachedBox.minX) * rand.nextFloat();
+			double y = attachedBox.minY + (attachedBox.maxY - attachedBox.minY) * rand.nextFloat();
+			double z = attachedBox.minZ + (attachedBox.maxZ - attachedBox.minZ) * rand.nextFloat();
+			ParticleOre particle;
+
+			if (hasMotion)
+				particle = new ParticleOre(world, x, y, z, motionX, motionY, motionZ, rand.nextFloat() + 0.5F, this.particleRed, this.particleGreen, this.particleBlue, this.level);
+			else
+				particle = new ParticleOre(world, x, y, z, rand.nextFloat() + 0.5F, this.particleRed, this.particleGreen, this.particleBlue, this.level);
+
+			Minecraft.getMinecraft().effectRenderer.addEffect(particle);
+		}
+
+		++this.age;
+
+		if (this.age >= this.lifetime)
+		{
+			this.setExpired();
+		}
+	}
+
 }

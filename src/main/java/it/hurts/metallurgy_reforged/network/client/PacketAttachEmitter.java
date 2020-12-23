@@ -29,11 +29,27 @@ public class PacketAttachEmitter implements IMessage {
     private int level;
     private int lifetime;
 
-    public PacketAttachEmitter() {
+    private double motionX;
+    private double motionY;
+    private double motionZ;
+    private boolean hasMotion = false;
+
+    public PacketAttachEmitter()
+    {
         //Mandatory Packet Constructor
     }
 
-    public PacketAttachEmitter(AxisAlignedBB aabb, int color, float scale, int level, int lifetime) {
+    public PacketAttachEmitter(AxisAlignedBB aabb, double motionX, double motionY, double motionZ, int color, float scale, int level, int lifetime)
+    {
+        this(aabb, color, scale, level, lifetime);
+        this.hasMotion = true;
+        this.motionX = motionX;
+        this.motionY = motionY;
+        this.motionZ = motionZ;
+    }
+
+    public PacketAttachEmitter(AxisAlignedBB aabb, int color, float scale, int level, int lifetime)
+    {
         x1 = aabb.minX;
         x2 = aabb.maxX;
         y1 = aabb.minY;
@@ -58,6 +74,14 @@ public class PacketAttachEmitter implements IMessage {
         scale = buf.readFloat();
         level = buf.readInt();
         lifetime = buf.readInt();
+
+        hasMotion = buf.readBoolean();
+        if (hasMotion)
+        {
+            this.motionX = buf.readDouble();
+            this.motionY = buf.readDouble();
+            this.motionZ = buf.readDouble();
+        }
     }
 
     @Override
@@ -72,6 +96,14 @@ public class PacketAttachEmitter implements IMessage {
         buf.writeFloat(scale);
         buf.writeInt(level);
         buf.writeInt(lifetime);
+
+        buf.writeBoolean(hasMotion);
+        if (hasMotion)
+        {
+            buf.writeDouble(motionX);
+            buf.writeDouble(motionY);
+            buf.writeDouble(motionZ);
+        }
     }
 
     public static class Handler implements IMessageHandler<PacketAttachEmitter, IMessage> {
@@ -84,7 +116,12 @@ public class PacketAttachEmitter implements IMessage {
                 float[] rgb = new Color(message.color).getColorComponents(null);
 
                 AxisAlignedBB box = new AxisAlignedBB(message.x1, message.y1, message.z1, message.x2, message.y2, message.z2);
-                ParticleOreEmitter particleOre = new ParticleOreEmitter(minecraft.world, box, message.lifetime, rgb[0], rgb[1], rgb[2], message.level);
+                ParticleOreEmitter particleOre;
+                if (message.hasMotion)
+                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.motionX, message.motionY, message.motionZ, message.lifetime, rgb[0], rgb[1], rgb[2], message.level);
+                else
+                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.lifetime, rgb[0], rgb[1], rgb[2], message.level);
+
                 minecraft.effectRenderer.addEffect(particleOre);
             });
 
