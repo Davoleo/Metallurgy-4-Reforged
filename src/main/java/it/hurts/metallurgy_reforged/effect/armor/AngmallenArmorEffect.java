@@ -60,22 +60,28 @@ public class AngmallenArmorEffect extends BaseMetallurgyEffect {
     }
 
     private BlockPos getRareOrePos(World world, BlockPos playerPos) {
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
-        for (int x = -RADIUS; x < RADIUS; x++) {
-            for (int y = -RADIUS; y < RADIUS; y++) {
-                for (int z = -RADIUS; z < RADIUS; z++) {
+        BlockPos nearestPos = null;
 
-                    pos.setPos(playerPos.getX() + x, playerPos.getY() + y, playerPos.getZ() + z);
+        for (int x = -RADIUS; x < RADIUS; x++)
+        {
+            for (int y = -RADIUS; y < RADIUS; y++)
+            {
+                for (int z = -RADIUS; z < RADIUS; z++)
+                {
+
+                    BlockPos pos = new BlockPos(playerPos.getX() + x, playerPos.getY() + y, playerPos.getZ() + z);
                     IBlockState state = world.getBlockState(pos);
-                    if (state.getBlock() instanceof BlockOre && state.getBlock().getHarvestLevel(state) > 3) {
-                        return pos;
+                    if (state.getBlock() instanceof BlockOre && state.getBlock().getHarvestLevel(state) > 3)
+                    {
+                        if (nearestPos == null || pos.distanceSq(playerPos) < nearestPos.distanceSq(playerPos))
+                            nearestPos = pos;
                     }
                 }
             }
         }
 
-        return null;
+        return nearestPos;
     }
 
 }
