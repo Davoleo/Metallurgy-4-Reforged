@@ -14,8 +14,10 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -46,7 +48,7 @@ public class BlackSteelArmorEffect extends BaseMetallurgyEffect {
         int slownessAmp = getPotionAmplifier(entity, MobEffects.SLOWNESS);
         int resistanceAmp = getPotionAmplifier(entity, MobEffects.RESISTANCE);
 
-        if (entity.getRNG().nextFloat() < 0.3)
+        if (entity.getRNG().nextBoolean())
         {
             //amp can be -1 to 2
             //you get a new effect amplifier for each armor piece
@@ -55,6 +57,13 @@ public class BlackSteelArmorEffect extends BaseMetallurgyEffect {
             {
                 entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, slownessAmp + 1));
                 entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, slownessAmp + 1));
+
+                if (!entity.world.isRemote)
+                {
+                    entity.world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.7F, 0.7F);
+                    for (int i = 0; i < 10; i++)
+                        spawnParticle(entity, 3F, 9);
+                }
             }
         }
 

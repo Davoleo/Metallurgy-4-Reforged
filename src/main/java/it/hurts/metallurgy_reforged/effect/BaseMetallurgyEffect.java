@@ -22,7 +22,9 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -41,13 +43,17 @@ public abstract class BaseMetallurgyEffect {
 
     public final String name;
     protected Metal metal;
+    //Contains the itemStack of the active tool (empty if it's not a tool effect)
+    protected ItemStack toolStack = ItemStack.EMPTY;
 
-    public BaseMetallurgyEffect(Metal metal) {
+    public BaseMetallurgyEffect(Metal metal)
+    {
         this.metal = metal;
 
         this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
 
-        if (isEnabled()) {
+        if (isEnabled())
+        {
             MetallurgyEffects.effects.add(this);
         }
     }
@@ -110,6 +116,7 @@ public abstract class BaseMetallurgyEffect {
                     {
                         if (tool.getMetalStats().getName().equals(metal.toString()))
                         {
+                            this.toolStack = entity.getHeldItem(hand);
                             return 1;
                         }
                     }
@@ -146,12 +153,15 @@ public abstract class BaseMetallurgyEffect {
     /**
      * spawn ore particles randomly on a entity
      */
-    protected void spawnParticle(Entity entity, float scale, int level) {
+    protected void spawnParticle(Entity entity, float scale, int level)
+    {
         double x = entity.posX + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
         double y = entity.posY + Utils.random.nextDouble() * (double) entity.height;
         double z = entity.posZ + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
 
         PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), entity);
+        if (entity instanceof EntityPlayerMP)
+            PacketManager.network.sendTo(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), (EntityPlayerMP) entity);
     }
 
     /**

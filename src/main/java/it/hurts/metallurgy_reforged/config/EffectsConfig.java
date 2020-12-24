@@ -76,6 +76,10 @@ public class EffectsConfig {
     @Config.Comment("Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.)")
     public static boolean blackSteelEffectArmor = true;
 
+    @Config.Name("Mountain II")
+    @Config.Comment("Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.")
+    public static boolean blackSteelEffectWeapon = true;
+
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
     public static boolean krikEffectArmor = true;
