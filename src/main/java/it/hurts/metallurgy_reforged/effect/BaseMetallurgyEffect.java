@@ -23,6 +23,7 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -89,20 +90,29 @@ public abstract class BaseMetallurgyEffect {
             return 0;
         }
 
-        if (category == EnumEffectCategory.ARMOR) {
+        if (category == EnumEffectCategory.ARMOR)
+        {
             return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
-        } else if (ItemUtils.isMadeOfMetal(metal, mainItem)) {
-            IToolEffect tool = ((IToolEffect) mainItem);
-            if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
-                if (tool.getMetalStats().getName().equals(metal.toString())) {
-                    return 1;
-                }
-            }
-        } else if (ItemUtils.isMadeOfMetal(metal, offItem)) {
-            IToolEffect tool = ((IToolEffect) offItem);
-            if (ArrayUtils.contains(category.getTools(), tool.getToolClass())) {
-                if (tool.getMetalStats().getName().equals(metal.toString())) {
-                    return 1;
+        }
+        else
+        {
+            for (EnumHand hand : EnumHand.values())
+            {
+                Item handItem = entity.getHeldItem(hand).getItem();
+                if (ItemUtils.isMadeOfMetal(metal, handItem))
+                {
+                    //In case the player has a non tool item in the hand
+                    if (!(handItem instanceof IToolEffect))
+                        return 0;
+
+                    IToolEffect tool = ((IToolEffect) handItem);
+                    if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
+                    {
+                        if (tool.getMetalStats().getName().equals(metal.toString()))
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }

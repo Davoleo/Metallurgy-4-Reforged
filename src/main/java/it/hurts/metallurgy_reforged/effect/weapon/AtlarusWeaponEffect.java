@@ -56,6 +56,9 @@ public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
 
         AxisAlignedBB box = new AxisAlignedBB(player.posX, player.posY, player.posZ, player.posX, player.posY, player.posZ).grow(RANGE);
 
+
+        player.swingArm(event.getHand());
+
         //enemies to affect
         for (Entity entity : world.getEntitiesWithinAABBExcludingEntity(player, box))
         {
