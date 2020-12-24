@@ -106,6 +106,9 @@ public class MetallurgyEffects {
     //Gust of Wind
     public static final BaseMetallurgyEffect atlarusWeaponEffect = new AtlarusWeaponEffect();
 
+    //Mountain I
+    public static final BaseMetallurgyEffect blackSteelArmorEffect = new BlackSteelArmorEffect();
+
     //Carmot Armor (Haste I)
     public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(
             ModMetals.CARMOT, MobEffects.HASTE, 0);

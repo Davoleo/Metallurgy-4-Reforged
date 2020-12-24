@@ -1283,6 +1283,7 @@ tooltip.metallurgy.effect.astral_silver_tool.name=Extraterrastrial II
 tooltip.metallurgy.effect.atlarus_armor.name=Whirlwind
 tooltip.metallurgy.effect.atlarus_weapon.name=Gust of Wind
 tooltip.metallurgy.effect.atlarus_hoe.name=Wind Scythe
+tooltip.metallurgy.effect.black_steel_armor.name="Mountain I
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
 #Effect Descriptions
@@ -1300,6 +1301,7 @@ tooltip.metallurgy.effect.astral_silver_tool.desc=Increased speed when breaking 
 tooltip.metallurgy.effect.atlarus_armor.desc=A whirlwind will save you from taking fall damage pushing you in a random direction
 tooltip.metallurgy.effect.atlarus_weapon.desc=A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you
 tooltip.metallurgy.effect.atlarus_hoe.desc=Wind helps you remove bushes and crops around you
+tooltip.metallurgy.effect.black_steel_armor.desc=Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
