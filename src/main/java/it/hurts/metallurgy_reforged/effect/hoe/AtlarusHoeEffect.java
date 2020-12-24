@@ -7,7 +7,7 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.effect.tool;
+package it.hurts.metallurgy_reforged.effect.hoe;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
@@ -24,36 +24,38 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
 
+// TODO: 24/12/2020 @PierKnight comment this class
 public class AtlarusHoeEffect extends BaseMetallurgyEffect {
 
     private static final int MAX_RANGE = 5;
 
-    public AtlarusHoeEffect() {
+    public AtlarusHoeEffect()
+    {
         super(ModMetals.ATLARUS);
     }
 
     @Nonnull
     @Override
-    public EnumEffectCategory getCategory() {
+    public EnumEffectCategory getCategory()
+    {
         return EnumEffectCategory.HOE;
     }
 
     @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
-
+    public void onPlayerTick(TickEvent.PlayerTickEvent event)
+    {
         if (!canBeApplied(event.player))
             return;
 
         World world = event.player.world;
         ItemStack stack = event.player.getHeldItemMainhand();
-        if (stack.getItem() == metal.getTool(EnumTools.HOE) && world.getTotalWorldTime() % 4 == 0)
+        if (world.getTotalWorldTime() % 4 == 0)
         {
             NBTTagCompound tag = stack.getTagCompound();
             if (tag != null && tag.hasKey("range"))
@@ -112,11 +114,8 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
                 }
 
                 stack.setTagCompound(tag);
-
             }
         }
-
-
     }
 
     private int getParticleY(World world, int x, int y, int z)
@@ -129,63 +128,51 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
         return 0;
     }
 
-    public void onPlayerInteract(PlayerInteractEvent event)
+    @SubscribeEvent
+    public void onPlayerInteract(PlayerInteractEvent.RightClickItem event)
     {
 
-        World world = event.getWorld();
-        if (event instanceof PlayerInteractEvent.RightClickItem)
+        if (!canBeApplied(event.getEntityPlayer()))
+            return;
+
+        ItemStack stack = event.getItemStack();
+
+        NBTTagCompound tag = stack.getTagCompound();
+        if (tag == null)
+            tag = new NBTTagCompound();
+
+        if (!tag.hasKey("range"))
         {
-            ItemStack stack = event.getItemStack();
-            if (stack.getItem() == metal.getTool(EnumTools.HOE))
-            {
-                NBTTagCompound tag = stack.getTagCompound();
-                if (tag == null)
-                    tag = new NBTTagCompound();
+            tag.setInteger("range", 0);
 
-                if (!tag.hasKey("range"))
-                {
-                    tag.setInteger("range", 0);
+            BlockPos pos = event.getEntityPlayer().getPosition();
+            NBTTagCompound posTag = new NBTTagCompound();
+            posTag.setInteger("posX", pos.getX());
+            posTag.setInteger("posY", pos.getY());
+            posTag.setInteger("posZ", pos.getZ());
+            tag.setTag("startPos", posTag);
+            stack.setTagCompound(tag);
 
-                    BlockPos pos = event.getEntityPlayer().getPosition();
-                    NBTTagCompound posTag = new NBTTagCompound();
-                    posTag.setInteger("posX", pos.getX());
-                    posTag.setInteger("posY", pos.getY());
-                    posTag.setInteger("posZ", pos.getZ());
-                    tag.setTag("startPos", posTag);
-                    stack.setTagCompound(tag);
-
-                    event.getEntityPlayer().swingArm(event.getHand());
-                    event.getEntityPlayer().getCooldownTracker().setCooldown(metal.getTool(EnumTools.HOE), 30);
-                    event.setCanceled(true);
-                }
-
-
-            }
+            event.getEntityPlayer().swingArm(event.getHand());
+            event.getEntityPlayer().getCooldownTracker().setCooldown(metal.getTool(EnumTools.HOE), 30);
+            event.setCanceled(true);
         }
-
 
     }
 
-    public void livingEvent(LivingEvent event)
+    @SubscribeEvent
+    public void livingEvent(LivingEquipmentChangeEvent event)
     {
 
 
-        if (event instanceof LivingEquipmentChangeEvent)
+        ItemStack to = event.getTo();
+        if (to.getItem() == metal.getTool(EnumTools.HOE) && event.getFrom().getItem() != metal.getTool(EnumTools.HOE))
         {
-            LivingEquipmentChangeEvent changeEvent = (LivingEquipmentChangeEvent) event;
-            ItemStack to = changeEvent.getTo();
-            if (to.getItem() == metal.getTool(EnumTools.HOE) && changeEvent.getFrom().getItem() != metal.getTool(EnumTools.HOE))
-            {
-                NBTTagCompound tag = to.getTagCompound();
-                if (tag != null && tag.hasKey("range"))
-                    tag.removeTag("range");
-                to.setTagCompound(tag);
-
-            }
-
+            NBTTagCompound tag = to.getTagCompound();
+            if (tag != null && tag.hasKey("range"))
+                tag.removeTag("range");
+            to.setTagCompound(tag);
         }
-
-
     }
 
 }

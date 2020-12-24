@@ -42,7 +42,6 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
     /**
      * prevent fall damage by summoning wind by a random direction
      */
-
     @SubscribeEvent
     public void cancelFallDamage(LivingEvent.LivingUpdateEvent event)
     {

@@ -60,11 +60,25 @@ public class EffectsConfig {
     @Config.Comment("Increased speed when breaking blocks in dimensions that aren't the Overworld")
     public static boolean astralSilverEffectTool = true;
 
+    @Config.Name("Whirlwind")
+    @Config.Comment("A whirlwind will save you from taking fall damage pushing you in a random direction")
+    public static boolean atlarusEffectArmor = true;
+
+    @Config.Name("Gust of Wind")
+    @Config.Comment("A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you")
+    public static boolean atlarusEffectWeapon = true;
+
+    @Config.Name("Wind Scythe")
+    @Config.Comment("Wind helps you removes bushes and crops around you")
+    public static boolean atlarusEffectHoe = true;
+
+
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
     public static boolean krikEffectArmor = true;
 
-    private EffectsConfig() {
+    private EffectsConfig()
+    {
     }
 
 }
