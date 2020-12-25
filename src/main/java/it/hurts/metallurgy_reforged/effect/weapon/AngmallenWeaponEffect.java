@@ -63,7 +63,7 @@ public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
             event.setAmount(event.getAmount() * 1.75F);
             if (!event.getEntity().world.isRemote)
                 for (int i = 0; i < 10; i++)
-                    spawnParticle(event.getEntity(), 1.5f, 10);
+                    spawnParticle(event.getEntity(), 1.5f, 9);
         }
     }
 }

@@ -59,7 +59,7 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
 
         if (!event.getEntity().world.isRemote)
             for (int i = 0; i < 25; i++)
-                spawnParticle(event.getEntityLiving(), 1F + percentage * 2F, 1 + MathHelper.floor(percentage * 9));
+                spawnParticle(event.getEntityLiving(), 1F + percentage * 2F, MathHelper.floor(percentage * 9));
     }
 
 }
