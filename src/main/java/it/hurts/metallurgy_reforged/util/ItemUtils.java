@@ -41,6 +41,7 @@ import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ItemUtils {
 
@@ -86,16 +87,19 @@ public class ItemUtils {
     {
         if (!effects.isEmpty())
         {
+            AtomicBoolean anyEnabled = new AtomicBoolean(false);
             effects.forEach(effect -> {
                 if (effect.isEnabled())
                 {
+                    anyEnabled.set(true);
                     tooltip.add(effect.getTooltip().getLeft());
                     if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                         tooltip.add(effect.getTooltip().getRight());
-                    else
-                        tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
                 }
             });
+
+            if (anyEnabled.get())
+                tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
         }
     }
 
