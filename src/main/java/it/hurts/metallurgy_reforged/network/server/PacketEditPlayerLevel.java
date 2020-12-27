@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.network.server;
 
 import io.netty.buffer.ByteBuf;
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

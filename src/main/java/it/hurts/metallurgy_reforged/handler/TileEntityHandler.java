@@ -23,7 +23,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileEntityHandler {
+public abstract class TileEntityHandler {
 
     public static void registerTileEntities()
     {

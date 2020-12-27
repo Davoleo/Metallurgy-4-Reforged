@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.proxy;
 
 import it.hurts.metallurgy_reforged.gui.TooltipRenderHandler;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
-import it.hurts.metallurgy_reforged.handler.KeyboardHandler;
+import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -35,7 +35,7 @@ public class ClientProxy implements IProxy {
     @Override
     public void preInit(FMLPreInitializationEvent e)
     {
-        MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
+        MinecraftForge.EVENT_BUS.register(ClientEventsHandler.class);
         MinecraftForge.EVENT_BUS.register(HUDHandler.class);
         MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
         ModItems.brassKnuckles.initTEISR();

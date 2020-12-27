@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: KeyboardHandler
+ = Class: ClientEventsHandler
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.armor.AmordrineArmorEffect;
 import it.hurts.metallurgy_reforged.effect.armor.KrikArmorEffect;
 import net.minecraft.client.Minecraft;
@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class KeyboardHandler {
+public abstract class ClientEventsHandler {
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)

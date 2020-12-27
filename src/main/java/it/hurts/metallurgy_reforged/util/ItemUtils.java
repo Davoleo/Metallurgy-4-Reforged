@@ -98,7 +98,7 @@ public class ItemUtils {
                 }
             });
 
-            if (anyEnabled.get())
+            if (anyEnabled.get() && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                 tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
         }
     }

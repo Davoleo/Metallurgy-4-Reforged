@@ -9,11 +9,12 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
@@ -78,7 +79,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
     }
 
     /**
-     * Called in {@link it.hurts.metallurgy_reforged.handler.KeyboardHandler}
+     * Called in {@link ClientEventsHandler}
      */
     @SideOnly(Side.CLIENT)
     public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {

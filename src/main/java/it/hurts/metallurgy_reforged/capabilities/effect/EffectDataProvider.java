@@ -7,7 +7,7 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.capabilities.krik;
+package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;

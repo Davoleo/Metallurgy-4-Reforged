@@ -53,9 +53,7 @@ public abstract class BaseMetallurgyEffect {
         this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
 
         if (isEnabled())
-        {
             MetallurgyEffects.effects.add(this);
-        }
     }
 
     public boolean isEnabled() {

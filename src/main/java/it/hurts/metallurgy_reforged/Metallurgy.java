@@ -9,14 +9,12 @@
 
 package it.hurts.metallurgy_reforged;
 
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataStorage;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
-import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataCallable;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataCallable;
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataStorage;
-import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
-import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
+import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
@@ -132,13 +130,13 @@ public class Metallurgy {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         logger.info(NAME + ": GUIs have been registered!");
 
-        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
+        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), PunchEffect::new);
         logger.info(NAME + ": Punch effect capability Registered");
 
-        CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), new EffectDataCallable());
+        CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), PlayerEffectData::new);
         logger.info(NAME + ": Metallurgy Effects capability Registered");
 
-        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
+        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), EntityData::new);
         logger.info(NAME + ": Entity Data capability Registered");
 
 

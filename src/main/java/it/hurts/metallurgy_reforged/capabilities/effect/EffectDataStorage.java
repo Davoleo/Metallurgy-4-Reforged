@@ -7,7 +7,7 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.capabilities.krik;
+package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,6 +23,8 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
     public NBTBase writeNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side)
     {
         NBTTagCompound tag = new NBTTagCompound();
+
+        instance.effectBundles.values().forEach(bundle -> bundle.toNBT(tag));
         tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
         tag.setInteger("krik_height", instance.getKrikHeight());
         return tag;
@@ -32,8 +34,10 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
     public void readNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side, NBTBase nbt)
     {
         NBTTagCompound tag = ((NBTTagCompound) nbt);
-        instance.setKrikHeight(tag.getInteger("krik_height"));
+
+        instance.effectBundles.values().forEach(bundle -> bundle.fromNBT(tag));
         instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
+        instance.setKrikHeight(tag.getInteger("krik_height"));
     }
 
 }

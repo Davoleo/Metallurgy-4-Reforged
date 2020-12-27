@@ -7,14 +7,25 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.capabilities.krik;
+package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlayerEffectData {
 
-    //Amordrine Section --------------------------------------
+    //Progressive Effects Bundles -----------------------------------
+    public final Map<String, ProgressiveDataBundle> effectBundles = new HashMap<>();
+
+    public PlayerEffectData()
+    {
+        effectBundles.put(brassToolBundle.getKey(), brassToolBundle);
+    }
+
+    //Amordrine Armor ----------------------------------------
     private int amordineJumps;
 
     public void setAmordrineJumps(int jumps)
@@ -32,7 +43,10 @@ public class PlayerEffectData {
         amordineJumps = 0;
     }
 
-    // Krik Section ---------------------------------------
+    //Brass Tools
+    public ProgressiveDataBundle brassToolBundle = new ProgressiveDataBundle("brass_tool", null, 0, 4);
+
+    // Krik Armor --------------------------------------------
     private int krikHeight;
 
     public void setKrikHeight(int height)
@@ -47,7 +61,6 @@ public class PlayerEffectData {
 
     public static int getKrikMaxLevel(EntityPlayer player)
     {
-
         int count = 0;
 
         for (int i = 9; i < 36; i++)

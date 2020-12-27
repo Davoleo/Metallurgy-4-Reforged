@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.Arrays;
 
-public class SpawnHandler {
+public abstract class SpawnHandler {
 
     private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
 

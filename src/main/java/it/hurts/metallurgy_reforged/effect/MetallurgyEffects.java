@@ -14,10 +14,7 @@ import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.tool.AstralSilverToolEffect;
-import it.hurts.metallurgy_reforged.effect.tool.DeepIronPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.tool.IgnatiusToolEffect;
-import it.hurts.metallurgy_reforged.effect.tool.VulcaniteIgnatiusSwordEffect;
+import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
@@ -108,6 +105,8 @@ public class MetallurgyEffects {
 
     //Mountain II
     public static final BaseMetallurgyEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
+
+    public static final BaseMetallurgyEffect brassToolEffect = new BrassToolEffect();
 
     //Carmot Armor (Haste I)
     public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(

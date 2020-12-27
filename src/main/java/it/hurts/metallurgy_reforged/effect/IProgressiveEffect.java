@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: EntityDataCallable
+ = Class: IProgressiveEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -7,16 +7,14 @@
  = Copyright (c) 2018-2020.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.capabilities.entity;
+package it.hurts.metallurgy_reforged.effect;
 
-import java.util.concurrent.Callable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-public class EntityDataCallable implements Callable<EntityData> {
+@FunctionalInterface
+public interface IProgressiveEffect {
 
-    @Override
-    public EntityData call() throws Exception
-    {
-        return new EntityData();
-    }
+    void onStep(World world, BlockPos pos, int step, int maxSteps);
 
 }

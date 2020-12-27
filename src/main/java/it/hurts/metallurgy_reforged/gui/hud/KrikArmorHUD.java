@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.gui.hud;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.capabilities.krik.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.PlayerEffectData;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
