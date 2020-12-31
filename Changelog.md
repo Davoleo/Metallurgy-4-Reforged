@@ -1,12 +1,28 @@
+### 1.2.2
+
+- New Gadget **Electrum Magnet**
+	- Portable Magnet that attracts dropped items towards the player
+	- Configurable in 3 different ways
+- Fix EMC Exploits introduced with the new Decorative blocks
+  recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
+- Updated Russian Translation ([#303](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/303))
+- Fixed println pollution on when Endermen spawn ([#304](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/304))
+
 ### 1.2.1
+
 - :globe_with_meridians: Added Russian Localization files
-- :globe_with_meridians: Updated Swedish Localization files [#301](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/301)
-- :bug: Fixed Ceruclase Shield inconsistent behaviour [#299](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/299)
+- :globe_with_meridians: Updated Swedish Localization
+  files ([#301](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/301))
+- :bug: Fixed Ceruclase Shield inconsistent
+  behaviour ([#299](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/299))
 
 ### 1.2.0
-- :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
+
+- :sparkles: Mob now have a chance to spawn with random Metallurgy
+  equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
 - :dart: Atlarus and Vulcanite Armor effects now works on mobs
-- :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
+- :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base
+  blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
 - :sparkles: NEW GADGET - Brass Knuckles: Really Fast Attack speed and low damage level ([#267](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/267))
 - :bento: Add Localized name and recipe to Etherium Goggles
 - :balance_scale: Reworked Decorative metal blocks recipes to be more balanced (buff) and to avoid recipe conflicts with vanilla
@@ -110,11 +126,11 @@
 - Fix inventory rubracium gauntlet check to ignore durability
 - Now every hit damages one of the two rubracium gauntlets instead of both at the same time
 - Implemented new ore gen system which will help to add special conditions when spawning ores
-    - Platinum: Make platinum a bit more abundant in warm zones like jungle or savanna.(@Klazkin idea)
-    - Vulcanite: It spawns only at lava sea level
-    - Eximite: It Spawns only on the small islands (@Luke616 idea)
-    - Shadow iron spawns near the bedrock (top) (@Luke616 idea)
-    - Prometheum spawns only in jungle biome
+	- Platinum: Make platinum a bit more abundant in warm zones like jungle or savanna.(@Klazkin idea)
+	- Vulcanite: It spawns only at lava sea level
+	- Eximite: It Spawns only on the small islands (@Luke616 idea)
+	- Shadow iron spawns near the bedrock (top) (@Luke616 idea)
+	- Prometheum spawns only in jungle biome
 - implemented configurable biome ore spawn
 - ProjectE Alloys EMC Values are not calculated dynamically anymore
 - Fixed Github Issues:
@@ -144,7 +160,6 @@
 	- [#252](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/252)
 - Balance Changes:
 - Buffed Etherium Durability and Efficiency
-
 
 ### 0.3.3
 - Fixed Armor Effects not working ([#234](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/234))
@@ -179,7 +194,6 @@
 - Added a new Item that links to the Metallurgy wiki (This hopefully helps people on the first experience with this mod)
 - Fixed ConcurrentModificationException when removing Sublimation Recipes with Crafttweaker
 - Reworked the effect for the Krik Armor
-
 
 ### 0.2.3
 - CraftTweaker Integration for Metallurgy Machines
@@ -362,11 +376,11 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 - Fixed a server side crash
 - Mod Integration: Tinkers’ Construct [ Not Final - May be edited ]
 - Added some Custom traits to TiC integration
-    - Obscure Trait
-    - Vulcan Trait [ 0 - 1 - 2 ]
-    - Wither Trait
-    - Life Steal Trait
-    - King Dice Trait
+	- Obscure Trait
+	- Vulcan Trait [ 0 - 1 - 2 ]
+	- Wither Trait
+	- Life Steal Trait
+	- King Dice Trait
 
 ### 0.0.5
 - Fixed Molten Hepatizon color
