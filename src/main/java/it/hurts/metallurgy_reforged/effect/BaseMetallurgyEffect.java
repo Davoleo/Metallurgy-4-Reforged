@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect;
@@ -67,7 +67,7 @@ public abstract class BaseMetallurgyEffect {
                 return enabledField.getBoolean(EffectsConfig.class);
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
-                e.printStackTrace();
+                //e.printStackTrace();
                 return true;
             }
         }

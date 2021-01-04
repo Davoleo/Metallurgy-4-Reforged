@@ -4,11 +4,12 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 
@@ -16,13 +17,15 @@ public class ProgressiveDataBundle {
 
     private String key;
     private BlockPos pos;
+    private IBlockState state;
     private int currentStep;
     private final int maxSteps;
 
-    public ProgressiveDataBundle(String key, BlockPos pos, int currentStep, int maxSteps)
+    public ProgressiveDataBundle(String key, BlockPos pos, IBlockState state, int currentStep, int maxSteps)
     {
         this.key = key;
         this.pos = pos;
+        this.state = state;
         this.currentStep = currentStep;
         this.maxSteps = maxSteps;
     }
@@ -30,6 +33,16 @@ public class ProgressiveDataBundle {
     public String getKey()
     {
         return key;
+    }
+
+    public IBlockState getState()
+    {
+        return state;
+    }
+
+    public void setState(IBlockState state)
+    {
+        this.state = state;
     }
 
     public BlockPos getPos()

@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
@@ -55,29 +56,39 @@ public class BrassToolEffect extends BaseMetallurgyEffect implements IProgressiv
             ProgressiveDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).brassToolBundle;
             //Initializes the progressive effect
             effectBundle.setPos(event.getPos());
+            effectBundle.setState(event.getState());
             effectBundle.incrementStep();
         }
     }
 
     @Override
-    public void onStep(World world, BlockPos pos, int step, int maxSteps)
+    public void onStep(World world, BlockPos pos, IBlockState state, int maxSteps, int step)
     {
         if (!world.isRemote)
         {
-            for (double yaw = 0; yaw <= Math.PI * 2; yaw += Math.PI / 10)
-            {
-                for (double pitch = 0; pitch <= Math.PI * 2; pitch += Math.PI / 10)
-                {
-                    double x = Math.cos(yaw) * step * Math.cos(pitch);
-                    double y = Math.sin(pitch) * step;
-                    double z = Math.sin(yaw) * step * Math.cos(pitch);
+            float pitch = ((8 - step) / 8F);
+            world.playSound(null, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 1, pitch);
 
-                    world.destroyBlock(pos.add(x, y, z), true);
-
-                }
-            }
-
-            world.playSound(null, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 1, ((4 - step) / 4F));
+            //for (int x = -step - 1; x < step + 1; x++)
+            //{
+            //    for (int y = -step - 1; y < step + 1; y++)
+            //    {
+            //        for (int z = -step - 1; z < step + 1; z++)
+            //        {
+            //            BlockPos blockPos = pos.add(x, y, z);
+            //            IBlockState blockState = world.getBlockState(blockPos);
+            //
+            //            if (state == null || pos == null)
+            //                return;
+            //
+            //            if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
+            //            {
+            //                if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
+            //                    world.destroyBlock(pos, false);
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 
