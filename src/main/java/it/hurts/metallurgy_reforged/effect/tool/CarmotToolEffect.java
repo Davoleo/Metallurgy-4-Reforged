@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: BrassToolEffect
+ = Class: CarmotToolEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -28,11 +28,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
-public class BrassToolEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
+public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public BrassToolEffect()
+    public CarmotToolEffect()
     {
-        super(ModMetals.BRASS);
+        super(ModMetals.CARMOT);
     }
 
     @Nonnull
@@ -53,7 +53,7 @@ public class BrassToolEffect extends BaseMetallurgyEffect implements IProgressiv
             EntityPlayer player = event.getPlayer();
             Vec3d look = player.getLookVec();
 
-            ProgressiveDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).brassToolBundle;
+            ProgressiveDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
             //Initializes the progressive effect
             effectBundle.setPos(event.getPos());
             effectBundle.setState(event.getState());

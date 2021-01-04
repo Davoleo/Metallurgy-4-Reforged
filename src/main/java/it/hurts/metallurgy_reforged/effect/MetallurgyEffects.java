@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect;
@@ -106,7 +106,8 @@ public class MetallurgyEffects {
     //Mountain II
     public static final BaseMetallurgyEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
 
-    public static final BaseMetallurgyEffect brassToolEffect = new BrassToolEffect();
+    //Carmot Tool Effect
+    public static final BaseMetallurgyEffect carmotToolEffect = new CarmotToolEffect();
 
     //Carmot Armor (Haste I)
     public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(

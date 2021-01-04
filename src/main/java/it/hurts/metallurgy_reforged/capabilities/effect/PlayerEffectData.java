@@ -22,7 +22,7 @@ public class PlayerEffectData {
 
     public PlayerEffectData()
     {
-        effectBundles.put(brassToolBundle.getKey(), brassToolBundle);
+        effectBundles.put(carmotToolBundle.getKey(), carmotToolBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -43,8 +43,8 @@ public class PlayerEffectData {
         amordineJumps = 0;
     }
 
-    //Brass Tools
-    public ProgressiveDataBundle brassToolBundle = new ProgressiveDataBundle("brass_tool", null, null, 0, 4);
+    //Carmot Tools
+    public ProgressiveDataBundle carmotToolBundle = new ProgressiveDataBundle("carmot_tool", null, null, 0, 4);
 
     // Krik Armor --------------------------------------------
     private int krikHeight;
