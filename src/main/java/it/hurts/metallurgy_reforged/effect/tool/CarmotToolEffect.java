@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -64,31 +65,33 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     @Override
     public void onStep(World world, BlockPos pos, IBlockState state, int maxSteps, int step)
     {
+        if (state == null || pos == null)
+            return;
+
         if (!world.isRemote)
         {
-            float pitch = ((8 - step) / 8F);
-            world.playSound(null, pos, SoundEvents.BLOCK_NOTE_XYLOPHONE, SoundCategory.BLOCKS, 1, pitch);
 
-            //for (int x = -step - 1; x < step + 1; x++)
-            //{
-            //    for (int y = -step - 1; y < step + 1; y++)
-            //    {
-            //        for (int z = -step - 1; z < step + 1; z++)
-            //        {
-            //            BlockPos blockPos = pos.add(x, y, z);
-            //            IBlockState blockState = world.getBlockState(blockPos);
-            //
-            //            if (state == null || pos == null)
-            //                return;
-            //
-            //            if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
-            //            {
-            //                if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
-            //                    world.destroyBlock(pos, false);
-            //            }
-            //        }
-            //    }
-            //}
+            for (int x = -step - 1; x < step + 1; x++)
+            {
+                for (int y = -step - 1; y < step + 1; y++)
+                {
+                    for (int z = -step - 1; z < step + 1; z++)
+                    {
+                        BlockPos blockPos = pos.add(x, y, z);
+                        IBlockState blockState = world.getBlockState(blockPos);
+
+                        if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
+                        {
+                            if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
+                                world.destroyBlock(blockPos, true);
+                        }
+                    }
+                }
+            }
+
+            float pitch = ((8 - step) / 6F);
+            System.out.println(pitch);
+            world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.BLOCKS, 1.5F, pitch);
         }
     }
 
