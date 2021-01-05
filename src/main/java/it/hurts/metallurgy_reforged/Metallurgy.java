@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged;
@@ -56,7 +56,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.2.2";
+	public static final String VERSION = "1.2.3";
 
 	public static Logger logger;
 
