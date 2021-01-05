@@ -71,11 +71,11 @@ public class EffectsConfig {
     @Config.Comment("Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.")
     public static boolean blackSteelEffectWeapon = true;
 
-    @Config.Name("Echoes II")
-    @Config.Comment("When breaking a block, there is a chance for neighbour blocks to also be broken in the same direction of where the player is looking")
+    @Config.Name("Cadence")
+    @Config.Comment("Mining  a block will mine surrounding blocks of the same type in a spheric range")
     public static boolean carmotEffectTool = true;
     @Config.Name("Power User")
-    @Config.Comment("You can comsume and use items faster")
+    @Config.Comment("You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff")
     public static boolean carmotEffectArmor = true;
 
     @Config.Name("Weight-Controlled Flight")
