@@ -251,6 +251,7 @@ tile.metallurgy.striped_road_block.name=Striped Road
 tile.metallurgy.charcoal_block.name=Block of Charcoal
 tile.metallurgy.bitumen_block.name=Bitumen Block
 tile.metallurgy.sulfur_block.name=Sulfur Block
+tile.metallurgy.ice_shield.name=Ice Shield
 
 tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
 
