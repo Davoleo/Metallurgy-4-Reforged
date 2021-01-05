@@ -106,11 +106,14 @@ public class MetallurgyEffects {
     //Mountain II
     public static final BlackSteelWeaponEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
 
-    //Carmot Tool Effect
+    //Carmot Tool Effect (Cadence)
     public static final CarmotToolEffect carmotToolEffect = new CarmotToolEffect();
 
-    //Carmot Armor (Haste I)
+    //Carmot Armor (Power User)
     public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
+
+    //Carmot Weapon (Overclocking)
+    public static final CarmotWeaponEffect carmotWeaponEffect = new CarmotWeaponEffect();
 
     //Celenegil Armor (Resistence)
     public static final BaseMetallurgyEffect celenegilEffect = new CelenegilArmorEffect();

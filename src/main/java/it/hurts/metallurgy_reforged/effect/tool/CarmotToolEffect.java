@@ -90,7 +90,6 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
             }
 
             float pitch = ((8 - step) / 6F);
-            System.out.println(pitch);
             world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.BLOCKS, 1.5F, pitch);
         }
     }
