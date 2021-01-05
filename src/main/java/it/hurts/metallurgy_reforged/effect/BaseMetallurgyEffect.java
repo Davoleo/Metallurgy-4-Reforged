@@ -167,14 +167,11 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(World world, BlockPos pos, float scale, int level, double motionX, double motionY, double motionZ)
     {
-
         AxisAlignedBB box = world.getBlockState(pos).getBoundingBox(world, pos);
-
 
         double width = box.maxX - box.minX;
         double height = box.maxY - box.minY;
         double depth = box.maxZ - box.minZ;
-
 
         double border = 0.15D;
 

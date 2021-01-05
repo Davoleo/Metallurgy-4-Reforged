@@ -59,16 +59,16 @@ public class MetallurgyEffects {
     }
 
     //Symbiosis (I)
-    public static final BaseMetallurgyEffect adamantineEffect = new AdamantineEffect();
+    public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
 
     //Symbiosis (II)
-    public static final BaseMetallurgyEffect adamantineArmorEffect = new AdamantineArmorEffect();
+    public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
 
     //Sky-High
-    public static final BaseMetallurgyEffect amordrineArmorEffect = new AmordrineArmorEffect();
+    public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
 
     //Soulbound
-    public static final BaseMetallurgyEffect amordrineEffect = new AmordrineEffect();
+    public static final AmordrineEffect amordrineEffect = new AmordrineEffect();
 
     //Coup de grâce
     public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
@@ -92,26 +92,25 @@ public class MetallurgyEffects {
     public static final AstralSilverToolEffect astralSilverToolEffect = new AstralSilverToolEffect();
 
     //Whirlwind
-    public static final BaseMetallurgyEffect atlarusArmorEffect = new AtlarusArmorEffect();
+    public static final AtlarusArmorEffect atlarusArmorEffect = new AtlarusArmorEffect();
 
     //Wind Scythe
-    public static final BaseMetallurgyEffect atlarusHoeEffect = new AtlarusHoeEffect();
+    public static final AtlarusHoeEffect atlarusHoeEffect = new AtlarusHoeEffect();
 
     //Gust of Wind
-    public static final BaseMetallurgyEffect atlarusWeaponEffect = new AtlarusWeaponEffect();
+    public static final AtlarusWeaponEffect atlarusWeaponEffect = new AtlarusWeaponEffect();
 
     //Mountain I
-    public static final BaseMetallurgyEffect blackSteelArmorEffect = new BlackSteelArmorEffect();
+    public static final BlackSteelArmorEffect blackSteelArmorEffect = new BlackSteelArmorEffect();
 
     //Mountain II
-    public static final BaseMetallurgyEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
+    public static final BlackSteelWeaponEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
 
     //Carmot Tool Effect
-    public static final BaseMetallurgyEffect carmotToolEffect = new CarmotToolEffect();
+    public static final CarmotToolEffect carmotToolEffect = new CarmotToolEffect();
 
     //Carmot Armor (Haste I)
-    public static final BaseMetallurgyEffect carmotEffect = new ArmorPotionEffect(
-            ModMetals.CARMOT, MobEffects.HASTE, 0);
+    public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
 
     //Celenegil Armor (Resistence)
     public static final BaseMetallurgyEffect celenegilEffect = new CelenegilArmorEffect();

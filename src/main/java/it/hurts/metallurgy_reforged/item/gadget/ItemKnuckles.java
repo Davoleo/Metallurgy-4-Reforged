@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget;
@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.item.gadget;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
-import it.hurts.metallurgy_reforged.render.BrassKnucklesTEISR;
+import it.hurts.metallurgy_reforged.render.knuckles.BrassKnucklesTEISR;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
