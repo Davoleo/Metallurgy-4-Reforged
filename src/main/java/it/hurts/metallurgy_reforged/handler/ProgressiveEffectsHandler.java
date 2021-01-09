@@ -35,7 +35,7 @@ public abstract class ProgressiveEffectsHandler {
                     ProgressiveDataBundle bundle = data.effectBundles.get(key);
                     if (bundle != null && bundle.isEffectInProgress())
                     {
-                        ((IProgressiveEffect) effect).onStep(event.player.world, bundle.getPos(), bundle.getState(), bundle.getMaxSteps(), bundle.getCurrentStep());
+                        ((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getMaxSteps(), bundle.getCurrentStep(), bundle);
                         bundle.incrementStep();
                     }
                 }

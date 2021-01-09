@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class PlayerEffectData {
     public PlayerEffectData()
     {
         effectBundles.put(carmotToolBundle.getKey(), carmotToolBundle);
+        effectBundles.put(celenegilToolBundle.getKey(), celenegilToolBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -44,7 +46,17 @@ public class PlayerEffectData {
     }
 
     //Carmot Tools
-    public ProgressiveDataBundle carmotToolBundle = new ProgressiveDataBundle("carmot_tool", null, null, 0, 4);
+    public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4);
+
+    //Celenegil Tools ----------------------------------------
+    public ExtraFilledDataBundle<NBTTagCompound> celenegilToolBundle =
+            new ExtraFilledDataBundle<NBTTagCompound>("celenegil_tool", 0, 3, new NBTTagCompound()) {
+                @Override
+                public boolean isEffectInProgress()
+                {
+                    return getExtra().getInteger("broken_blocks") != 0;
+                }
+            };
 
     // Krik Armor --------------------------------------------
     private int krikHeight;

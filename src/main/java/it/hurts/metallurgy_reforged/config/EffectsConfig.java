@@ -78,6 +78,10 @@ public class EffectsConfig {
     @Config.Comment("You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff")
     public static boolean carmotEffectArmor = true;
 
+    @Config.Name("Escalation")
+    @Config.Comment("Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)")
+    public static boolean celenegilEffectTool = true;
+
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
     public static boolean krikEffectArmor = true;

@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
+import it.hurts.metallurgy_reforged.capabilities.effect.BlockInfoDataBundle;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
@@ -54,7 +55,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
             EntityPlayer player = event.getPlayer();
             Vec3d look = player.getLookVec();
 
-            ProgressiveDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+            BlockInfoDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
             //Initializes the progressive effect
             effectBundle.setPos(event.getPos());
             effectBundle.setState(event.getState());
@@ -63,14 +64,17 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     }
 
     @Override
-    public void onStep(World world, BlockPos pos, IBlockState state, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer player, int maxSteps, int step, ProgressiveDataBundle bundle)
     {
-        if (state == null || pos == null)
+        BlockInfoDataBundle blockBundle = ((BlockInfoDataBundle) bundle);
+        BlockPos pos = blockBundle.getPos();
+        IBlockState state = blockBundle.getState();
+
+        if (pos == null || state == null)
             return;
 
         if (!world.isRemote)
         {
-
             for (int x = -step - 1; x < step + 1; x++)
             {
                 for (int y = -step - 1; y < step + 1; y++)

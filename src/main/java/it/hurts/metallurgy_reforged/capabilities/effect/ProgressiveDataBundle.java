@@ -9,23 +9,19 @@
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.BlockPos;
+
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class ProgressiveDataBundle {
 
-    private String key;
-    private BlockPos pos;
-    private IBlockState state;
-    private int currentStep;
-    private final int maxSteps;
+    protected final int maxSteps;
+    protected String key;
+    protected int currentStep;
 
-    public ProgressiveDataBundle(String key, BlockPos pos, IBlockState state, int currentStep, int maxSteps)
+    public ProgressiveDataBundle(String key, int currentStep, int maxSteps)
     {
         this.key = key;
-        this.pos = pos;
-        this.state = state;
         this.currentStep = currentStep;
         this.maxSteps = maxSteps;
     }
@@ -33,26 +29,6 @@ public class ProgressiveDataBundle {
     public String getKey()
     {
         return key;
-    }
-
-    public IBlockState getState()
-    {
-        return state;
-    }
-
-    public void setState(IBlockState state)
-    {
-        this.state = state;
-    }
-
-    public BlockPos getPos()
-    {
-        return pos;
-    }
-
-    public void setPos(BlockPos pos)
-    {
-        this.pos = pos;
     }
 
     public int getCurrentStep()
@@ -67,7 +43,7 @@ public class ProgressiveDataBundle {
 
     public boolean isEffectInProgress()
     {
-        return currentStep > 0 && pos != null;
+        return currentStep > 0;
     }
 
     public void incrementStep()
@@ -81,23 +57,17 @@ public class ProgressiveDataBundle {
     public void resetProgress()
     {
         currentStep = 0;
-        pos = null;
     }
 
+    @OverridingMethodsMustInvokeSuper
     public void toNBT(NBTTagCompound compound)
     {
         compound.setInteger(key + "_current_step", currentStep);
-        if (pos != null)
-            compound.setLong(key + "_pos", pos.toLong());
     }
 
+    @OverridingMethodsMustInvokeSuper
     public void fromNBT(NBTTagCompound compound)
     {
         currentStep = compound.getInteger(key + "_current_step");
-
-        if (compound.hasKey(key + "_pos"))
-            pos = BlockPos.fromLong(compound.getLong(key + "_pos"));
-        else
-            pos = null;
     }
 }

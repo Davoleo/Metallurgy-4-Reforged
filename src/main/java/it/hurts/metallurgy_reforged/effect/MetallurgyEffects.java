@@ -112,8 +112,8 @@ public class MetallurgyEffects {
     //Carmot Armor (Power User)
     public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
 
-    //Carmot Weapon (Overclocking)
-    public static final CarmotWeaponEffect carmotWeaponEffect = new CarmotWeaponEffect();
+    //Celenegil Tools (Escalation)
+    public static final CelenegilToolEffect celenegilToolEffect = new CelenegilToolEffect();
 
     //Celenegil Armor (Resistence)
     public static final BaseMetallurgyEffect celenegilEffect = new CelenegilArmorEffect();
