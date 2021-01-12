@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -238,7 +239,7 @@ public class GadgetsHandler {
 		if (detector.isEmpty())
 			return;
 
-		List<Metal> metalList = ItemOreDetector.getDetectorMetals(detector);
+		final List<Metal> metalList = ItemOreDetector.getDetectorMetals(detector);
 
 		if (metalList.isEmpty())
 			return;
@@ -254,16 +255,13 @@ public class GadgetsHandler {
 			for (BlockPos blockPos : posList)
 			{
 				IBlockState state = world.getBlockState(blockPos);
-				Metal metal = null;
+				Metal mToCheck = ItemUtils.getMetalFromOreDictStack(new ItemStack(state.getBlock()));
+				if (mToCheck == null)
+					continue;
 
-				for (Metal m : metalList)
-				{
-					if (state.getBlock() == m.getOre())
-					{
-						metal = m;
-						break;
-					}
-				}
+				Metal metal = null;
+				if (metalList.contains(mToCheck))
+					metal = mToCheck;
 
 				if (metal != null)
 				{
