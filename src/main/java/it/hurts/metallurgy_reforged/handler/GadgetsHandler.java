@@ -47,6 +47,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -456,19 +457,33 @@ public class GadgetsHandler {
 	@SubscribeEvent
 	public static void disableAI(LivingSetAttackTargetEvent event)
 	{
-		EntityLiving mob = ((EntityLiving) event.getEntityLiving());
-		EntityLivingBase target = event.getTarget();
-
-		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+		if (event.getEntityLiving() instanceof EntityLiving)
 		{
-			mob.setAttackTarget(null);
+			EntityLiving mob = (EntityLiving) event.getEntityLiving();
+			EntityLivingBase target = event.getTarget();
+
+			if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			{
+				mob.setAttackTarget(null);
+			}
 		}
+	}
+
+	/**
+	 * Disables player visibility to AIs so that mobs won't try to target the player again while they still have the shield on
+	 */
+	@SubscribeEvent
+	public static void disablePlayerVisibility(PlayerEvent.Visibility event)
+	{
+		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			event.modifyVisibility(0);
 	}
 
 	// Lemurite shield section END
 
 	@SubscribeEvent
-	public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+	public static void onEquipmentChange(LivingEquipmentChangeEvent event)
+	{
 		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
 			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
 	}
