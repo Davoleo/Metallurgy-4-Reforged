@@ -28,7 +28,8 @@ public abstract class ExtraFilledDataBundle<E extends NBTBase> extends Progressi
     public void toNBT(NBTTagCompound compound)
     {
         super.toNBT(compound);
-        compound.setTag(key + "_extra", extraVariable);
+        if (extraVariable != null)
+            compound.setTag(key + "_extra", extraVariable);
     }
 
     @Override
@@ -44,6 +45,8 @@ public abstract class ExtraFilledDataBundle<E extends NBTBase> extends Progressi
     @Nonnull
     public E getExtra()
     {
+        if (extraVariable == null)
+            return (E) new NBTTagCompound();
         return extraVariable;
     }
 
