@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.weapon;
@@ -62,12 +62,12 @@ public class AtlarusWeaponEffect extends BaseMetallurgyEffect {
         //enemies to affect
         for (Entity entity : world.getEntitiesWithinAABBExcludingEntity(player, box))
         {
-            Vec3d motionVector = new Vec3d(entity.posX - player.posX, 0.4D, entity.posZ - player.posZ).normalize();
+            Vec3d motionVector = new Vec3d(entity.posX - player.posX, 0.6D, entity.posZ - player.posZ).normalize();
             if (!world.isRemote)
             {
-                entity.motionX += motionVector.x * 1.4D;
+                entity.motionX += motionVector.x * 1.5D;
                 entity.motionY += motionVector.y;
-                entity.motionZ += motionVector.z * 1.4D;
+                entity.motionZ += motionVector.z * 1.5D;
                 entity.velocityChanged = true;
             }
             else
