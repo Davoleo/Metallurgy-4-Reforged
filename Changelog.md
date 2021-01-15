@@ -1,17 +1,29 @@
+### 1.2.4
+
+- Metal Detector now detects oredicted variants of Metallurgy ores
+- Fix crash and buggy enemies AI in multiplayer when using Lemurite
+  Shield ([#307](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/307))
+- Fixed Ignatius Pickaxe effect (it now drops nuggets correctly)
+- Fixed Ignatius Shovel and Axe effect:
+	- Fixed buggy spawning of entity items that glitched inside blocks
+	- Balanced chance for the autosmelt effect to occur
+	- Temporarily patched a duplication issue with smelted drops
+	- Make the effect work correctly with shovels too
+
 ### 1.2.3
 
 - Fixed a model Error with Ceruclase Ice Shield
 - Add a localized name to the Ice Shield
 - Add a missing recipe for Electrum Magnet
 - Fixed a minor issue in Swedish Translation
+- Fix a crash when wearing Platinum Armor ([#306](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/306))
 
 ### 1.2.2
 
 - New Gadget **Electrum Magnet**
 	- Portable Magnet that attracts dropped items towards the player
 	- Configurable in 3 different ways
-- Fix EMC Exploits introduced with the new Decorative blocks
-  recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
+- Fix EMC Exploits introduced with the new Decorative blocks recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
 - Updated Russian Translation ([#303](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/303))
 - Fixed println pollution on when Endermen spawn ([#304](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/304))
 
