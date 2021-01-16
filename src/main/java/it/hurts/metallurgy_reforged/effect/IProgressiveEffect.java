@@ -9,13 +9,12 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 @FunctionalInterface
 public interface IProgressiveEffect {
 
-    void onStep(World world, EntityPlayer player, int maxSteps, int step, ProgressiveDataBundle bundle);
+    void onStep(World world, EntityPlayer player, int maxSteps, int step);
 
 }

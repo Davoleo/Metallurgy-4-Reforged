@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.BlockInfoDataBundle;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -76,9 +75,10 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step, ProgressiveDataBundle bundle)
+    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
     {
-        BlockInfoDataBundle blockBundle = ((BlockInfoDataBundle) bundle);
+        BlockInfoDataBundle blockBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+
         BlockPos pos = blockBundle.getPos();
         IBlockState state = blockBundle.getState();
 

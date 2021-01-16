@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
 
+// TODO: 16/01/2021 I don't like this at all, I'll have to think of a better way of implementing this soon
 public abstract class ExtraFilledDataBundle<E extends NBTBase> extends ProgressiveDataBundle {
 
     private E extraVariable;

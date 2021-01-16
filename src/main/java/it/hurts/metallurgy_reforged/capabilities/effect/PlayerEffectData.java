@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.HashMap;
@@ -47,6 +48,16 @@ public class PlayerEffectData {
 
     //Carmot Tools
     public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4);
+
+    //Celenegil Armor
+    public ExtraFilledDataBundle<NBTTagByte> celenegilArmorBundle =
+            new ExtraFilledDataBundle<NBTTagByte>("celenegil_armor", 0, 3, new NBTTagByte((byte) 0)) {
+                @Override
+                public boolean isEffectInProgress()
+                {
+                    return getExtra().getByte() > 0;
+                }
+            };
 
     //Celenegil Tools ----------------------------------------
     public ExtraFilledDataBundle<NBTTagCompound> celenegilToolBundle =

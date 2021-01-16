@@ -10,9 +10,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
-import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -88,9 +86,9 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step, ProgressiveDataBundle bundle)
+    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
     {
-        NBTTagCompound data = ((ExtraFilledDataBundle<NBTTagCompound>) bundle).getExtra();
+        NBTTagCompound data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle.getExtra();
         boolean inactive = data.getBoolean("inactive");
 
         //on step one the effect is flagged as inactive (this flag is removed if the player mines another block)
