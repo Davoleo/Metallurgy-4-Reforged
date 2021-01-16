@@ -45,6 +45,10 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect {
     public void onPlayerHurt(LivingHurtEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
+
+        if (canBeApplied(entity))
+            return;
+
         NBTTagCompound data = entity.getEntityData();
 
         int hits = data.getInteger("celenegil_armor_hits");

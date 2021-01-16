@@ -46,7 +46,6 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void livingEvent(LivingEntityUseItemEvent livingEvent)
     {
-
         float level = getLevel(livingEvent.getEntityLiving());
 
         if (level == 0)

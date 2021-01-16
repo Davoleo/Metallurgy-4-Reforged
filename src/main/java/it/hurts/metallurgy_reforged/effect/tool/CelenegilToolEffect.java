@@ -47,8 +47,11 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
     @SubscribeEvent
     public void breakBlock(BlockEvent.BreakEvent event)
     {
-
         EntityPlayer player = event.getPlayer();
+
+        if (!canBeApplied(player))
+            return;
+
         PlayerEffectData data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
         NBTTagCompound compound = data.celenegilToolBundle.getExtra();
         int brokenBlocks = compound.getInteger("broken_blocks");

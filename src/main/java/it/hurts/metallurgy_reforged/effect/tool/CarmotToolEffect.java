@@ -20,6 +20,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -52,14 +53,25 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
 
         if (!event.getWorld().isRemote)
         {
-            EntityPlayer player = event.getPlayer();
-            Vec3d look = player.getLookVec();
+            if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), event.getPlayer()))
+                return;
 
-            BlockInfoDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
-            //Initializes the progressive effect
-            effectBundle.setPos(event.getPos());
-            effectBundle.setState(event.getState());
-            effectBundle.incrementStep();
+            Item tool = event.getPlayer().getHeldItemMainhand().getItem();
+            String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
+            if (blockToolClass == null || tool.getRegistryName().getPath().contains(blockToolClass))
+            {
+                //check passed because axe is contained in pickaxe
+                if (blockToolClass != null && blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
+                    return;
+
+                EntityPlayer player = event.getPlayer();
+
+                BlockInfoDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+                //Initializes the progressive effect
+                effectBundle.setPos(event.getPos());
+                effectBundle.setState(event.getState());
+                effectBundle.incrementStep();
+            }
         }
     }
 
