@@ -16,19 +16,19 @@ import javax.annotation.OverridingMethodsMustInvokeSuper;
 public class ProgressiveDataBundle {
 
     protected final int maxSteps;
-    protected String key;
+    protected String prefixKey;
     protected int currentStep;
 
-    public ProgressiveDataBundle(String key, int currentStep, int maxSteps)
+    public ProgressiveDataBundle(String prefixKey, int currentStep, int maxSteps)
     {
-        this.key = key;
+        this.prefixKey = prefixKey;
         this.currentStep = currentStep;
         this.maxSteps = maxSteps;
     }
 
-    public String getKey()
+    public String getPrefixKey()
     {
-        return key;
+        return prefixKey;
     }
 
     public int getCurrentStep()
@@ -62,12 +62,12 @@ public class ProgressiveDataBundle {
     @OverridingMethodsMustInvokeSuper
     public void toNBT(NBTTagCompound compound)
     {
-        compound.setInteger(key + "_current_step", currentStep);
+        compound.setInteger(prefixKey + "_current_step", currentStep);
     }
 
     @OverridingMethodsMustInvokeSuper
     public void fromNBT(NBTTagCompound compound)
     {
-        currentStep = compound.getInteger(key + "_current_step");
+        currentStep = compound.getInteger(prefixKey + "_current_step");
     }
 }

@@ -10,7 +10,7 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
+import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -19,7 +19,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
@@ -50,9 +49,8 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
         if (!canBeApplied(player))
             return;
 
-        PlayerEffectData data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
-        NBTTagCompound compound = data.celenegilToolBundle.getExtra();
-        int brokenBlocks = compound.getInteger("broken_blocks");
+        ExtraFilledDataBundle data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle;
+        int brokenBlocks = data.getExtraInt("broken_blocks");
 
         //If escalation is complete
         if (brokenBlocks >= 5)
@@ -70,7 +68,7 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
             ItemStack tool = player.getHeldItemMainhand();
             tool.setItemDamage(tool.getItemDamage() - 1);
             //Reset the effect as active
-            compound.setInteger("prev_broken_blocks", brokenBlocks);
+            data.setExtra("prev_broken_blocks", brokenBlocks);
         }
         else
         {
@@ -79,30 +77,29 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
             event.getWorld().playSound(null, player.getPosition(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.75F, 0.75F + ((brokenBlocks + 1) / 5F));
         }
         //reset inactive state
-        compound.setBoolean("inactive", false);
+        data.setExtra("inactive", false);
         //Increase number of broken blocks
-        compound.setInteger("broken_blocks", brokenBlocks + 1);
-        data.celenegilToolBundle.setExtra(compound);
+        data.setExtra("broken_blocks", brokenBlocks + 1);
     }
 
     @Override
     public void onStep(World world, EntityPlayer player, int maxSteps, int step)
     {
-        NBTTagCompound data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle.getExtra();
-        boolean inactive = data.getBoolean("inactive");
+        ExtraFilledDataBundle data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle;
+        boolean inactive = data.getExtraBool("inactive");
 
         //on step one the effect is flagged as inactive (this flag is removed if the player mines another block)
         if (step == 1)
         {
             //System.out.println("inactive");
-            data.setBoolean("inactive", true);
+            data.setExtra("inactive", true);
         }
 
         //if the effect is inactive after one second it means the effect has to be reset
         if (step == 3 && inactive)
         {
             //System.out.println("Reset");
-            data.setInteger("broken_blocks", 0);
+            data.setExtra("broken_blocks", 0);
             player.world.playSound(null, player.getPosition(), SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.PLAYERS, 0.75F, 0.75F);
         }
     }

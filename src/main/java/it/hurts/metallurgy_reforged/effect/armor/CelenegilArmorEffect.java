@@ -15,11 +15,8 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.nbt.NBTTagByte;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -49,17 +46,18 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
     @SubscribeEvent
     public void onPlayerHurt(LivingHurtEvent event)
     {
-        EntityLivingBase entity = event.getEntityLiving();
-        ExtraFilledDataBundle<NBTTagByte> bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilArmorBundle;
-
-        if (canBeApplied(entity))
+        if (!(event.getEntityLiving() instanceof EntityPlayer))
             return;
 
-        NBTTagCompound data = entity.getEntityData();
+        if (!canBeApplied(event.getEntityLiving()))
+            return;
 
-        int hits = data.getInteger("celenegil_armor_hits");
+        EntityPlayer entity = ((EntityPlayer) event.getEntityLiving());
+        ExtraFilledDataBundle data = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilArmorBundle;
 
-        if (hits > 5)
+        int hits = data.getExtraInt("hits");
+
+        if (hits > 4)
         {
             entity.clearActivePotions();
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
@@ -75,31 +73,31 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
                 enemy.motionZ += motionVec.z * 1.5;
             });
 
-            data.setInteger("celenegil_armor_hits", 0);
+            data.setExtra("hits", 0);
 
             for (int i = 0; i < 60; i++)
                 spawnParticle(entity.world, entityPos, 4F, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D);
         }
         else
         {
-            data.setInteger("celenegil_armor_hits", hits + 1);
-            bundle.setExtra(new NBTTagByte((byte) 1));
+            data.setExtra("hits", hits + 1);
+            data.setExtra("inactive", false);
         }
     }
 
     @Override
     public void onStep(World world, EntityPlayer player, int maxSteps, int step)
     {
-        ExtraFilledDataBundle<NBTTagByte> bundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilArmorBundle;
+        ExtraFilledDataBundle bundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilArmorBundle;
 
-        if (step == 1 && bundle.getExtra().getByte() > 0)
+        if (step == 1 && !bundle.getExtraBool("inactive"))
         {
-            bundle.setExtra(new NBTTagByte((byte) 0));
+            bundle.setExtra("inactive", true);
         }
 
-        if (step == 3 && bundle.getExtra().getByte() == 0)
+        if (step == 3 && bundle.getExtraBool("inactive"))
         {
-            player.getEntityData().setInteger("celenegil_armor_hits", 0);
+            bundle.setExtra("hits", 0);
         }
     }
 }

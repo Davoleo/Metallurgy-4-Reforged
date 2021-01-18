@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
@@ -40,7 +40,7 @@ public class EffectDataProvider implements ICapabilitySerializable<NBTBase> {
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
-        return capability == PLAYER_EFFECT_DATA_CAPABILITY ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
+        return capability.equals(PLAYER_EFFECT_DATA_CAPABILITY) ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
     }
 
     @Override

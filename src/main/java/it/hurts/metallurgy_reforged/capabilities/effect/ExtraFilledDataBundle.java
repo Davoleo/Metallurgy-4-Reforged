@@ -9,50 +9,81 @@
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
-import net.minecraft.nbt.NBTBase;
+import it.hurts.metallurgy_reforged.util.NBTUtils;
 import net.minecraft.nbt.NBTTagCompound;
 
-import javax.annotation.Nonnull;
+import java.util.function.Predicate;
 
-// TODO: 16/01/2021 I don't like this at all, I'll have to think of a better way of implementing this soon
-public abstract class ExtraFilledDataBundle<E extends NBTBase> extends ProgressiveDataBundle {
+public class ExtraFilledDataBundle extends ProgressiveDataBundle {
 
-    private E extraVariable;
+    private NBTTagCompound extra = new NBTTagCompound();
+    private final Predicate<ExtraFilledDataBundle> isInProgress;
 
-    public ExtraFilledDataBundle(String key, int currentStep, int maxSteps, @Nonnull E extraVariable)
+    public ExtraFilledDataBundle(String key, int currentStep, int maxSteps, Predicate<ExtraFilledDataBundle> isInProgress)
     {
         super(key, currentStep, maxSteps);
-        this.extraVariable = extraVariable;
+        this.isInProgress = isInProgress;
     }
 
     @Override
     public void toNBT(NBTTagCompound compound)
     {
         super.toNBT(compound);
-        if (extraVariable != null)
-            compound.setTag(key + "_extra", extraVariable);
+        NBTUtils.injectCompound(prefixKey + "_extra_", compound, extra);
+        //compound.setTag(prefixKey + "_extra", extra);
     }
 
     @Override
     public void fromNBT(NBTTagCompound compound)
     {
         super.fromNBT(compound);
-        extraVariable = (E) compound.getTag(key + "_extra");
+        extra = NBTUtils.ejectCompound(prefixKey + "_extra_", compound);
+        //extra = compound.getCompoundTag(prefixKey + "_extra");
     }
 
     @Override
-    public abstract boolean isEffectInProgress();
-
-    @Nonnull
-    public E getExtra()
+    public boolean isEffectInProgress()
     {
-        if (extraVariable == null)
-            return (E) new NBTTagCompound();
-        return extraVariable;
+        return isInProgress.test(this);
     }
 
-    public void setExtra(@Nonnull E extraVariable)
+    public String getExtraString(String key)
     {
-        this.extraVariable = extraVariable;
+        return extra.getString(key);
+    }
+
+    public int getExtraInt(String key)
+    {
+        return extra.getInteger(key);
+    }
+
+    public boolean getExtraBool(String key)
+    {
+        return extra.getBoolean(key);
+    }
+
+    public void setExtra(String key, String value)
+    {
+        extra.setString(key, value);
+    }
+
+    public void setExtra(String key, int value)
+    {
+        extra.setInteger(key, value);
+    }
+
+    public void setExtra(String key, float value)
+    {
+        extra.setFloat(key, value);
+    }
+
+    public void setExtra(String key, boolean value)
+    {
+        extra.setBoolean(key, value);
+    }
+
+    public void clearExtras()
+    {
+        extra = new NBTTagCompound();
     }
 }

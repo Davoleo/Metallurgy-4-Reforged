@@ -11,8 +11,6 @@ package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.nbt.NBTTagByte;
-import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +22,8 @@ public class PlayerEffectData {
 
     public PlayerEffectData()
     {
-        effectBundles.put(carmotToolBundle.getKey(), carmotToolBundle);
-        effectBundles.put(celenegilToolBundle.getKey(), celenegilToolBundle);
+        effectBundles.put(carmotToolBundle.getPrefixKey(), carmotToolBundle);
+        effectBundles.put(celenegilToolBundle.getPrefixKey(), celenegilToolBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -50,24 +48,12 @@ public class PlayerEffectData {
     public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4);
 
     //Celenegil Armor
-    public ExtraFilledDataBundle<NBTTagByte> celenegilArmorBundle =
-            new ExtraFilledDataBundle<NBTTagByte>("celenegil_armor", 0, 3, new NBTTagByte((byte) 0)) {
-                @Override
-                public boolean isEffectInProgress()
-                {
-                    return getExtra().getByte() > 0;
-                }
-            };
+    public ExtraFilledDataBundle celenegilArmorBundle =
+            new ExtraFilledDataBundle("celenegil_armor", 0, 3, (bundle) -> bundle.getExtraBool("active"));
 
     //Celenegil Tools ----------------------------------------
-    public ExtraFilledDataBundle<NBTTagCompound> celenegilToolBundle =
-            new ExtraFilledDataBundle<NBTTagCompound>("celenegil_tool", 0, 3, new NBTTagCompound()) {
-                @Override
-                public boolean isEffectInProgress()
-                {
-                    return getExtra().getInteger("broken_blocks") != 0;
-                }
-            };
+    public ExtraFilledDataBundle celenegilToolBundle =
+            new ExtraFilledDataBundle("celenegil_tool", 0, 3, bundle -> bundle.getExtraInt("broken_blocks") != 0);
 
     // Krik Armor --------------------------------------------
     private int krikHeight;

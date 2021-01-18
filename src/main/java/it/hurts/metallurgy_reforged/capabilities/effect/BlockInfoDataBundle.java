@@ -66,7 +66,7 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
     {
         super.toNBT(compound);
         if (pos != null)
-            compound.setLong(key + "_pos", pos.toLong());
+            compound.setLong(prefixKey + "_pos", pos.toLong());
     }
 
     @Override
@@ -74,8 +74,8 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
     {
         super.fromNBT(compound);
 
-        if (compound.hasKey(key + "_pos"))
-            pos = BlockPos.fromLong(compound.getLong(key + "_pos"));
+        if (compound.hasKey(prefixKey + "_pos"))
+            pos = BlockPos.fromLong(compound.getLong(prefixKey + "_pos"));
         else
             pos = null;
     }
