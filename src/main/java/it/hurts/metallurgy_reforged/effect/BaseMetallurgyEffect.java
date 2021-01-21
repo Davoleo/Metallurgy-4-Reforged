@@ -22,6 +22,7 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,6 +45,7 @@ public abstract class BaseMetallurgyEffect {
     public final String name;
     protected Metal metal;
     //Contains the itemStack of the active tool (empty if it's not a tool effect)
+    @Deprecated
     protected ItemStack toolStack = ItemStack.EMPTY;
 
     public BaseMetallurgyEffect(Metal metal)
@@ -199,6 +201,10 @@ public abstract class BaseMetallurgyEffect {
         PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), targetPoint);
     }
 
+    public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
+    {
+
+    }
 
     public Metal getMetal()
     {

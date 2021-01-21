@@ -84,6 +84,9 @@ public class EffectsConfig {
     @Config.Name("Perseverance")
     @Config.Comment("After being attacked five times over a short period, all the enemies are knocked back away from the player and the player receives a very short regen buff and all negative effects are cleared.")
     public static boolean celenegilEffectArmor = true;
+    @Config.Name("Glory Seeker")
+    @Config.Comment("On right click, Grants a small damage buff to the weapon damage but when you damage an entity without killing it, it'll go on a short cooldown while it will give the player some short speed and strength buff if they manage to kill the entity")
+    public static boolean celenegilEffectWeapon = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")

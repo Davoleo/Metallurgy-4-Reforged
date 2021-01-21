@@ -115,8 +115,10 @@ public class MetallurgyEffects {
     //Celenegil Tools (Escalation)
     public static final CelenegilToolEffect celenegilToolEffect = new CelenegilToolEffect();
 
-    //Celenegil Armor (Resistence)
-    public static final BaseMetallurgyEffect celenegilEffect = new CelenegilArmorEffect();
+    //Celenegil Armor (Perseverance)
+    public static final CelenegilArmorEffect celenegilArmorEffect = new CelenegilArmorEffect();
+
+    public static final CelenegilWeaponEffect celenegilWeaponEffect = new CelenegilWeaponEffect();
 
     //Ceruclase Sword (Chance to slow enemies on hit)
     public static final BaseMetallurgyEffect ceruclaseEffect =
