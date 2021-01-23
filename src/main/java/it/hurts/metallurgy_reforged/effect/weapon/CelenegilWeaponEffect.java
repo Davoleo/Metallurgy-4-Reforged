@@ -22,7 +22,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
@@ -42,20 +42,32 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
     }
 
     @SubscribeEvent
-    public void playerAttack(LivingHurtEvent event)
+    public void playerAttack(LivingDamageEvent event)
     {
         if (event.getSource().getTrueSource() instanceof EntityLivingBase)
         {
-
             EntityLivingBase entity = (EntityLivingBase) event.getSource().getTrueSource();
             if (!canBeApplied(entity))
                 return;
 
+            if (entity instanceof EntityPlayer)
+            {
+                float cooldown = ((EntityPlayer) entity).getCooldownTracker().getCooldown(entity.getHeldItemMainhand().getItem(), 0);
+                if (cooldown > 0)
+                {
+                    event.setCanceled(true);
+                    return;
+                }
+            }
+
+            if (entity.getHeldItemMainhand().getTagCompound() == null)
+                entity.getHeldItemMainhand().setTagCompound(new NBTTagCompound());
+
             if (entity.getHeldItemMainhand().getTagCompound().getBoolean("glory_seeker"))
             {
+                //Slight damage buff (ignores any kind of protection)
                 event.setAmount(event.getAmount() * 1.25F);
 
-                // FIXME: 21/01/2021 This is not right as it doesn't take potion armor or absorption hearts in account
                 if (event.getEntityLiving().getHealth() - event.getAmount() <= 0)
                 {
                     entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 160, 0));
@@ -64,7 +76,7 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
                 else
                 {
                     if (entity instanceof EntityPlayer)
-                        ((EntityPlayer) entity).getCooldownTracker().setCooldown(entity.getHeldItemMainhand().getItem(), 80);
+                        ((EntityPlayer) entity).getCooldownTracker().setCooldown(entity.getHeldItemMainhand().getItem(), 100);
                 }
             }
         }
