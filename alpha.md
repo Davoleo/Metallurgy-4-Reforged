@@ -1,0 +1,60 @@
+### 1.3.0-alpha.1
+
+- New Effect System: most of the old effects have been moved/reworked to be thematic (details below | names and
+  description are also WIP)
+    - **Adamantine: The Living Metal**
+        - **Symbiosis I _(Any Equipment)_**: Eating food regenerates equipment durability, not eating any food slowly
+          destroys equipment. Durability repair amount depends on how many food points the item gives. Durability
+          decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
+        - **Symbiosis II _(Armor)_**: Receiving fatal damage will cause one of the armor pieces to sacrifice itself.
+          Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full
+          set)
+    - **Amordrine: The Angelic Metal**
+        - **Skyhigh _(Armor)_**: Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is
+          wearing
+        - **Soulbound _(Any Equipment)_**: Items that have this effect are kept in your inventory after death
+        - **Divine Grace _(Weapons)_**: Bonus Damage depending on target's health,the more the target has the less
+          health the more damage the weapon does (up to 200% damage boost)
+    - **Angmallen: The Alchemical Metal**
+        - **Transmute _(Pickaxe)_**: Mining an ore sometimes drops another ore of +1/-1/+0 harvest level (50% chance)
+        - **Reactive II _(Weapons)_**: Deals Bonus Damage to armored enemies
+        - **Reactive III _(Armor)_**: Plays a sound sometimes when you're near some rare ore, every armor piece
+          increases the chance to detect rare ores
+    - **Astral Silver: The Star Metal**
+        - **Starlight _(Armor)_**: Gives Night Vision and Speed during night time or in the End if the player has the
+          sky above their head depending on how many armor pieces are worn
+        - **Extraterrestrial I _(Waeapons)_**: 45% more damage if the player is in another dimension
+        - **Extraterrestrail II _(Tools)_**: Increased speed when breaking blocks in dimensions that aren't the
+          Overworld
+    - **Atlarus: The Wind Metal**
+        - **Whirlwind _(Armor)_**: A whirlwind will save you from taking fall damage pushing you in a random direction
+        - **Gust of Wind _(Weapons)_**: A strong gust of wind pushes enemies away from you and breaks leaves and vines
+          in a range of 5 blocks around you
+        - **Wind Scythe _(Hoe)_**: Wind helps you remove bushes and crops around you
+    - **Black Steel: The Fortress Metal**
+        - **Mountain I (Armor)**: Receiving damage sometimes grants resistance but also slowness, at the same time. (
+          Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can
+          stack up to 3 times, chance based)
+        - **Mountain II _(Weapons)_**: Tools & weapons act like armor, for example holding a black steel sword while
+          getting attacked will damage the sword but absorb a small portion of the damage.
+    - **Brass: The Reverbing Metal**
+    - **Carmot: The Clockwork Metal**
+        - **Autonomous _(Tools)_**: Harvesting a block will mine surrounding blocks of the same type in a spheric range
+        - **Power User _(Armor)_**: You can comsume and use items faster depending on how many armor pieces you wear; if
+          you wear a full set you also get a Haste III buff
+    - **Celenegil: The Exalted Metal**
+        - **Escalation _(Tools)_**: Continuously breaking blocks without stopping doesn't use durability and increases
+          mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks
+          mined)
+        - **Perseverance _(Armor)_**: After being attacked five times over a short period, all the enemies are knocked
+          back away from the player and the player receives a very short regen buff and all negative effects are
+          cleared.
+        - **Glory Seeker _(Weapons)_**: On right click, Grants a small damage buff to the weapon damage but when you
+          damage an entity without killing it, it'll go on a short cooldown while it will give the player some short
+          speed and strength buff if they manage to kill the entity
+    - **Ceruclase: The Frost Metal**
+        - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
+
+- This update also features reworked textures for armor and tools by our beloved artist matpac :)
+- New Custom tooltips that show more information about effects!
+- A lot of balance changes to allow for a better experience of the mod without further tweaks

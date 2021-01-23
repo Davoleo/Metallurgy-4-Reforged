@@ -1285,7 +1285,7 @@ tooltip.metallurgy.effect.atlarus_weapon.name=Gust of Wind
 tooltip.metallurgy.effect.atlarus_hoe.name=Wind Scythe
 tooltip.metallurgy.effect.black_steel_armor.name=Mountain I
 tooltip.metallurgy.effect.black_steel_weapon.name=Mountain II
-tooltip.metallurgy.effect.carmot_tool.name=Cadence
+tooltip.metallurgy.effect.carmot_tool.name=Autonomous
 tooltip.metallurgy.effect.carmot_armor.name=Power User
 tooltip.metallurgy.effect.celenegil_tool.name=Escalation
 tooltip.metallurgy.effect.celenegil_armor.name=Perseverance
@@ -1308,14 +1308,14 @@ tooltip.metallurgy.effect.astral_silver_tool.desc=Increased speed when breaking 
 tooltip.metallurgy.effect.atlarus_armor.desc=A whirlwind will save you from taking fall damage pushing you in a random direction
 tooltip.metallurgy.effect.atlarus_weapon.desc=A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you
 tooltip.metallurgy.effect.atlarus_hoe.desc=Wind helps you remove bushes and crops around you
-tooltip.metallurgy.effect.black_steel_armor.desc=Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.
+tooltip.metallurgy.effect.black_steel_armor.desc=Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.)
 tooltip.metallurgy.effect.black_steel_weapon.desc=Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
-tooltip.metallurgy.effect.carmot_tool.desc=Mining  a block will mine surrounding blocks of the same type in a spheric range
+tooltip.metallurgy.effect.carmot_tool.desc=Harvesting a block will mine surrounding blocks of the same type in a spheric range
 tooltip.metallurgy.effect.carmot_armor.desc=You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff
 tooltip.metallurgy.effect.celenegil_tool.desc=Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)
 tooltip.metallurgy.effect.celenegil_armor.desc=After being attacked five times over a short period, all the enemies are knocked back away from the player and the player receives a very short regen buff and all negative effects are cleared.
 tooltip.metallurgy.effect.celenegil_weapon.desc=On right click, Grants a small damage buff to the weapon damage but when you damage an entity without killing it, it'll go on a short cooldown while it will give the player some short speed and strength buff if they manage to kill the entity
-tooltip.metallurgy.effect.ceruclase_weapon.desc=Has a chance to completely freeze an enemy in place on hit.
+tooltip.metallurgy.effect.ceruclase_weapon.desc=Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
