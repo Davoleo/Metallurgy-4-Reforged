@@ -20,9 +20,7 @@ import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -120,9 +118,8 @@ public class MetallurgyEffects {
 
     public static final CelenegilWeaponEffect celenegilWeaponEffect = new CelenegilWeaponEffect();
 
-    //Ceruclase Sword (Chance to slow enemies on hit)
-    public static final BaseMetallurgyEffect ceruclaseEffect =
-            new WeaponHitChanceEffect(ModMetals.CERUCLASE, 75, () -> new PotionEffect(MobEffects.SLOWNESS, 40, 20));
+    //Ceruclase Sword (Chance to freeze enemies in place)
+    public static final BaseMetallurgyEffect ceruclaseEffect = new CeruclaseWeaponEffect();
 
     //Deep Iron Pickaxe (Faster mining underwater)
     public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
