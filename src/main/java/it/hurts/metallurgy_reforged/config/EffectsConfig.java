@@ -94,6 +94,9 @@ public class EffectsConfig {
     @Config.Name("Blizzard")
     @Config.Comment("Mobs are slowed, fatigued and weakened the closer they get to you, both players and entities are extinguished if they were on fire")
     public static boolean ceruclaseEffectArmor = true;
+    @Config.Name("Cold Snap")
+    @Config.Comment("Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)")
+    public static boolean ceruclaseEffectTool = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
