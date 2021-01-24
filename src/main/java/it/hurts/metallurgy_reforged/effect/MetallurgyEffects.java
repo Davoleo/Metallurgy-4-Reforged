@@ -118,8 +118,11 @@ public class MetallurgyEffects {
 
     public static final CelenegilWeaponEffect celenegilWeaponEffect = new CelenegilWeaponEffect();
 
-    //Ceruclase Sword (Chance to freeze enemies in place)
-    public static final BaseMetallurgyEffect ceruclaseEffect = new CeruclaseWeaponEffect();
+    //Ceruclase Sword [Flash Freeze] (Chance to freeze enemies in place)
+    public static final CeruclaseWeaponEffect ceruclaseWeaponEffect = new CeruclaseWeaponEffect();
+
+    //Ceruclase Armor (Blizzard)
+    public static final CeruclaseArmorEffect ceruclaseArmorEffect = new CeruclaseArmorEffect();
 
     //Deep Iron Pickaxe (Faster mining underwater)
     public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
