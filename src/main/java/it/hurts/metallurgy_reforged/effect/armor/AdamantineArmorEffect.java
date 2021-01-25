@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
@@ -45,7 +45,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
 
     /**
-     * If the player has Adamantine armor they have a chance to survive death with an armor piece sacrificing itself
+     * If the player is wearing Adamantine armor they have a chance to survive death with an armor piece sacrificing itself
      *
      * @param event Fired when the player is about to die
      */
@@ -62,6 +62,14 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
             EntityEquipmentSlot randomArmorSlot = EntityEquipmentSlot.values()[2 + Utils.random.nextInt(4)];
 
             ItemStack armorPiece = entity.getItemStackFromSlot(randomArmorSlot);
+
+            if (entity instanceof EntityPlayerMP)
+            {
+                // if any of the piece is on cooldown the effect is cancelled
+                if (((EntityPlayerMP) entity).getCooldownTracker().getCooldown(armorPiece.getItem(), 0) != 0)
+                    return;
+            }
+
             //Check whether the itemStack inside the random slot is an Adamantine armor piece
             if (ItemUtils.isMadeOfMetal(metal, armorPiece.getItem()))
             {
@@ -78,6 +86,9 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
                 if (entity instanceof EntityPlayerMP)
                 {
+                    System.out.println("Setto il cooldown");
+                    //Set cooldown on the remaining armor pieces
+                    entity.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) entity).getCooldownTracker().setCooldown(stack.getItem(), 100));
                     //Send a packet to emit particles and render the Totem item overlay
                     PacketRenderDeathProtection packet = new PacketRenderDeathProtection(entity, armorPiece);
                     //This criteria needs to be triggered in order to the totem overlay to work
