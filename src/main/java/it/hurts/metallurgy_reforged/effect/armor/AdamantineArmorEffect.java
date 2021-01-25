@@ -86,7 +86,6 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
                 if (entity instanceof EntityPlayerMP)
                 {
-                    System.out.println("Setto il cooldown");
                     //Set cooldown on the remaining armor pieces
                     entity.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) entity).getCooldownTracker().setCooldown(stack.getItem(), 100));
                     //Send a packet to emit particles and render the Totem item overlay

@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -66,6 +67,9 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
                 EntityPlayer player = event.getPlayer();
 
                 BlockInfoDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+                if (effectBundle.isEffectInProgress())
+                    return;
+
                 //Initializes the progressive effect
                 effectBundle.setPos(event.getPos());
                 effectBundle.setState(event.getState());
@@ -75,7 +79,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
+    public void onStep(World world, EntityLivingBase player, int maxSteps, int step)
     {
         BlockInfoDataBundle blockBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
 

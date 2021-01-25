@@ -14,18 +14,18 @@ import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public abstract class ProgressiveEffectsHandler {
 
     @SubscribeEvent
-    public static void onLivingUpdate(TickEvent.PlayerTickEvent event)
+    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
     {
 
-        if (event.phase == TickEvent.PlayerTickEvent.Phase.START && event.player.ticksExisted % 10 == 0)
+        if (event.getEntityLiving().ticksExisted % 10 == 0)
         {
-            PlayerEffectData data = event.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+            PlayerEffectData data = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
             MetallurgyEffects.effects.forEach(effect -> {
                 if (effect instanceof IProgressiveEffect)
@@ -35,7 +35,7 @@ public abstract class ProgressiveEffectsHandler {
                     ProgressiveDataBundle bundle = data.effectBundles.get(key);
                     if (bundle != null && bundle.isEffectInProgress())
                     {
-                        ((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getMaxSteps(), bundle.getCurrentStep());
+                        ((IProgressiveEffect) effect).onStep(event.getEntityLiving().world, event.getEntityLiving(), bundle.getMaxSteps(), bundle.getCurrentStep());
                         bundle.incrementStep();
                     }
                 }

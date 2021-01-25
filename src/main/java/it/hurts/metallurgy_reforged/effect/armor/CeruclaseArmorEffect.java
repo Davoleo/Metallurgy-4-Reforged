@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -51,41 +51,25 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 
         EntityLivingBase armored = event.getEntityLiving();
 
-        if (armored.ticksExisted % 20 != 0)
-            return;
-
         BlockPos pos = armored.getPosition();
         AxisAlignedBB box = new AxisAlignedBB(pos.getX() - RADIUS, pos.getY() - (RADIUS / 2D), pos.getZ() - RADIUS,
                 pos.getX() + RADIUS, pos.getY() + (RADIUS / 2D), pos.getZ() + RADIUS);
 
-        armored.world.getEntitiesWithinAABB(EntityLivingBase.class, box)
+        armored.world.getEntitiesWithinAABB(EntityLivingBase.class, box,
+                entity -> armored instanceof EntityPlayer ? entity instanceof EntityLiving : entity instanceof EntityPlayer)
                 .forEach(entity -> {
-                    if (!(entity instanceof EntityPlayer))
-                    {
-                        double distance = entity.getPosition().getDistance(pos.getX(), pos.getY(), pos.getZ());
-                        if (distance < 3)
-                        {
-                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 3));
-                            entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 40, 3));
-                        }
-                        else if (distance < 5)
-                        {
-                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 2));
-                            entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 40, 2));
-                        }
-                        else if (distance < 8)
-                        {
-                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-                            entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 40, 1));
-                        }
-                        else
-                        {
-                            entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 0));
-                            entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 40, 0));
-                        }
+                    double distance = entity.getPosition().getDistance(pos.getX(), pos.getY(), pos.getZ());
 
-                        Utils.repeat(8, () -> spawnParticle(entity, 2, 5));
+                    //We're going to check in a circular radius instead of a square
+                    if (distance <= RADIUS)
+                    {
+                        // MATH > MathHelper
+                        int amplifier = (int) Math.round((10 - distance) / 4);
+                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
+                        entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
                     }
+
+                    spawnParticle(entity, 2, 5);
 
                     //Every second 50% chance to extinguish an entity that is on fire
                     if ((entity.getLastDamageSource() == DamageSource.IN_FIRE || entity.getLastDamageSource() == DamageSource.ON_FIRE) && armored.getRNG().nextBoolean())

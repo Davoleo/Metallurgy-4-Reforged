@@ -103,7 +103,6 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
 
         if (event instanceof LivingEntityUseItemEvent.Tick && Math.random() < level)
         {
-
             event.setDuration(duration - 1);
 
             EntityLivingBase entity = event.getEntityLiving();

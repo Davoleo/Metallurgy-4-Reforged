@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -83,7 +84,7 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
+    public void onStep(World world, EntityLivingBase player, int maxSteps, int step)
     {
         ExtraFilledDataBundle data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle;
         boolean inactive = data.getExtraBool("inactive");

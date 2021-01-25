@@ -30,7 +30,6 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
@@ -208,10 +207,9 @@ public class RegistrationHandler {
         if (event.getObject() instanceof EntityLivingBase)
             event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
-        if (event.getObject() instanceof EntityPlayer)
-        {
+        if (event.getObject() instanceof EntityLivingBase)
             event.addCapability(KRIK_EFFECT_CAPABILITY, new EffectDataProvider());
-        }
+
         if (event.getObject() instanceof EntityEnderman)
             event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
     }
