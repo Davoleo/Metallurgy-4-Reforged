@@ -128,6 +128,9 @@ public class MetallurgyEffects {
     //Ceruclase Tools (Cold Snap)
     public static final CeruclaseToolEffect ceruclaseToolEffect = new CeruclaseToolEffect();
 
+    //Damascus Steel Weapons (Brilliance)
+    public static final DamascusSteelWeaponEffect damascusSteelWeaponEffect = new DamascusSteelWeaponEffect();
+
     //Deep Iron Pickaxe (Faster mining underwater)
     public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
 

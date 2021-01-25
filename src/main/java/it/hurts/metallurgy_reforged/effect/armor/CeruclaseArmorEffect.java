@@ -46,7 +46,7 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void extinguishAndSlow(LivingEvent.LivingUpdateEvent event)
     {
-        if (getLevel(event.getEntityLiving()) == 1)
+        if (getLevel(event.getEntityLiving()) != 1)
             return;
 
         EntityLivingBase armored = event.getEntityLiving();
