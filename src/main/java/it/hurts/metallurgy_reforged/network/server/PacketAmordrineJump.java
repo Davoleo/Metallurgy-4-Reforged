@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network.server;
@@ -64,12 +64,14 @@ public class PacketAmordrineJump implements IMessage {
 				{
 					capability.setAmordrineJumps(currentJumps + 1);
 					player.jump();
+					player.motionY += 0.15;
 					player.velocityChanged = true;
 					player.fallDistance = 0;
 					player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ENDERDRAGON_FLAP, SoundCategory.PLAYERS, 0.5F, 2F);
 					AxisAlignedBB playerBox = player.getEntityBoundingBox();
 					AxisAlignedBB feetBox = new AxisAlignedBB(playerBox.minX, playerBox.minY, playerBox.minZ, playerBox.maxX, playerBox.minY, playerBox.maxZ).grow(0.7D, 0D, 0.7D);
 
+					System.out.println(((Math.random() - 0.5) * 0.5));
 					return new PacketAttachEmitter(feetBox,
 							0, -0.03D, 0,
 							ModMetals.AMORDRINE.getStats().getColorHex(),

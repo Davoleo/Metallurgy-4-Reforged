@@ -51,7 +51,11 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
         if (event.getEntity() instanceof EntityPlayer) {
             PlayerEffectData capability = event.getEntity().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
             if (capability != null) {
-                if (event.getEntity().onGround && capability.getAmordrineJumps() > 0) {
+                if (capability.getAmordrineJumps() > 0)
+                    event.getEntityLiving().fallDistance = 0;
+
+                if (event.getEntity().onGround && capability.getAmordrineJumps() > 0)
+                {
                     capability.resetAmordrineJumps();
                 }
             }
