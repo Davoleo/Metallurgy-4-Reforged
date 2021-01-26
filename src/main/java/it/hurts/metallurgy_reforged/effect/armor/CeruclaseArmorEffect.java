@@ -29,7 +29,7 @@ import javax.annotation.Nonnull;
 
 public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 
-    private final int RADIUS = 10;
+    private final int RADIUS = 8;
 
     public CeruclaseArmorEffect()
     {
@@ -46,7 +46,9 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void extinguishAndSlow(LivingEvent.LivingUpdateEvent event)
     {
-        if (getLevel(event.getEntityLiving()) != 1)
+        float level = getLevel(event.getEntityLiving());
+
+        if (level == 0)
             return;
 
         EntityLivingBase armored = event.getEntityLiving();
@@ -58,18 +60,16 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
         armored.world.getEntitiesWithinAABB(EntityLivingBase.class, box,
                 entity -> armored instanceof EntityPlayer ? entity instanceof EntityLiving : entity instanceof EntityPlayer)
                 .forEach(entity -> {
-                    double distance = entity.getPosition().getDistance(pos.getX(), pos.getY(), pos.getZ());
 
-                    //We're going to check in a circular radius instead of a square
-                    if (distance <= RADIUS)
-                    {
-                        // MATH > MathHelper
-                        int amplifier = (int) Math.round((10 - distance) / 4);
-                        entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
-                        entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
-                    }
+                    // MATH > MathHelper
+                    //Old distance-based amplifier
+                    //int amplifier = (int) Math.round((10 - distance) / 4);
+                    // 0 0 1 2
+                    int amplifier = Math.max((int) (4 * level) - 2, 0);
+                    entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
+                    entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
 
-                    spawnParticle(entity, 2, 5);
+                    spawnParticle(entity, 0.85F, 5);
 
                     //Every second 50% chance to extinguish an entity that is on fire
                     if ((entity.getLastDamageSource() == DamageSource.IN_FIRE || entity.getLastDamageSource() == DamageSource.ON_FIRE) && armored.getRNG().nextBoolean())
