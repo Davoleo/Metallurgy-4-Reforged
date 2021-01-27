@@ -12,14 +12,17 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -98,5 +101,13 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
             worldIn.playSound(playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1, newState ? 1 : 0.5F, false);
 
         tool.setTagCompound(toolData);
+    }
+
+    public static void setupModelOverrides()
+    {
+        IItemPropertyGetter condition =
+                (stack, worldIn, entityIn) -> stack.getTagCompound() != null && stack.getTagCompound().getBoolean("glory_seeker") ? 1F : 0F;
+        ModMetals.CELENEGIL.getTool(EnumTools.AXE).addPropertyOverride(new ResourceLocation("active"), condition);
+        ModMetals.CELENEGIL.getTool(EnumTools.SWORD).addPropertyOverride(new ResourceLocation("active"), condition);
     }
 }

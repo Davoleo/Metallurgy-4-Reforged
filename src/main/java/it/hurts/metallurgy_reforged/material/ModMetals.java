@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
@@ -13,6 +13,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.weapon.CelenegilWeaponEffect;
 import it.hurts.metallurgy_reforged.util.Utils;
 
 import java.nio.file.Path;
@@ -110,6 +111,9 @@ public class ModMetals {
         }
 
         playerStats.forEach(MetalStats::createMetal);
+
+        //Setups a special model override for Celenegil Sword and Axe
+        CelenegilWeaponEffect.setupModelOverrides();
     }
 
 }
