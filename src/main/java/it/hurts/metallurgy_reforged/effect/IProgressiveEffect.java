@@ -15,6 +15,6 @@ import net.minecraft.world.World;
 @FunctionalInterface
 public interface IProgressiveEffect {
 
-    void onStep(World world, EntityLivingBase player, int maxSteps, int step);
+    void onStep(World world, EntityLivingBase entity, int maxSteps, int step);
 
 }
