@@ -22,7 +22,9 @@ public class PlayerEffectData {
 
     public PlayerEffectData()
     {
+        effectBundles.put(carmotWeaponBundle.getPrefixKey(), carmotWeaponBundle);
         effectBundles.put(carmotToolBundle.getPrefixKey(), carmotToolBundle);
+        effectBundles.put(celenegilArmorBundle.getPrefixKey(), celenegilArmorBundle);
         effectBundles.put(celenegilToolBundle.getPrefixKey(), celenegilToolBundle);
     }
 
@@ -47,6 +49,10 @@ public class PlayerEffectData {
     //Carmot Tools
     public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4);
 
+    //Carmot Weapons
+    public ExtraFilledDataBundle carmotWeaponBundle =
+            new ExtraFilledDataBundle("carmot_weapon", 0, 3, bundle -> bundle.currentStep > 0);
+
     //Celenegil Armor
     public ExtraFilledDataBundle celenegilArmorBundle =
             new ExtraFilledDataBundle("celenegil_armor", 0, 3, (bundle) -> bundle.getExtraBool("active"));
@@ -68,6 +74,7 @@ public class PlayerEffectData {
         return krikHeight;
     }
 
+    // TODO: 30/01/2021 Move This to the krik effect class
     public static int getKrikMaxLevel(EntityPlayer player)
     {
         int count = 0;

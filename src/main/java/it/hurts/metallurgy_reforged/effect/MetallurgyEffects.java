@@ -110,6 +110,9 @@ public class MetallurgyEffects {
     //Carmot Armor (Power User)
     public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
 
+    //Carmot Weapon (Abattoir)
+    public static final CarmotWeaponEffect carmotWeaponEffect = new CarmotWeaponEffect();
+
     //Celenegil Tools (Escalation)
     public static final CelenegilToolEffect celenegilToolEffect = new CelenegilToolEffect();
 

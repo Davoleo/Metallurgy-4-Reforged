@@ -77,6 +77,9 @@ public class EffectsConfig {
     @Config.Name("Power User")
     @Config.Comment("You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff")
     public static boolean carmotEffectArmor = true;
+    @Config.Name("Abattoir")
+    @Config.Comment("Attacking a mob will also attack mobs of the same type in a radius around the initial strike")
+    public static boolean carmotEffectWeapon = true;
 
     @Config.Name("Escalation")
     @Config.Comment("Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)")
