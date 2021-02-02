@@ -4,11 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.proxy;
 
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
+import it.hurts.metallurgy_reforged.entity.PierknightRenderer;
 import it.hurts.metallurgy_reforged.gui.TooltipRenderHandler;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
@@ -20,6 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -54,6 +57,8 @@ public class ClientProxy implements IProxy {
             return -1;
 
         }, ModItems.oreDetector);
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierknightRenderer.Factory());
     }
 
     @Override

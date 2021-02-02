@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -40,6 +41,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -190,6 +192,12 @@ public class RegistrationHandler {
         ItemUtils.registerCustomItemModel(Item.getItemFromBlock(ModBlocks.chamber), 0);
 
         ModRenderers.registerRenderers();
+    }
+
+    @SubscribeEvent
+    public static void registerEntities(RegistryEvent.Register<EntityEntry> event)
+    {
+        event.getRegistry().register(new EntityEntry(EntityPierKnight.class, Metallurgy.MODID + ":pierknight"));
     }
 
     @SideOnly(Side.CLIENT)

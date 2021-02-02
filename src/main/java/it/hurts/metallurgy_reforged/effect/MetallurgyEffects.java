@@ -131,6 +131,9 @@ public class MetallurgyEffects {
     //Ceruclase Tools (Cold Snap)
     public static final CeruclaseToolEffect ceruclaseToolEffect = new CeruclaseToolEffect();
 
+    //Damascus Steel Armor (Royal Blood)
+    public static final DamascusSteelArmorEffect damascusSteelArmorEffect = new DamascusSteelArmorEffect();
+
     //Damascus Steel Weapons (Brilliance)
     public static final DamascusSteelWeaponEffect damascusSteelWeaponEffect = new DamascusSteelWeaponEffect();
 

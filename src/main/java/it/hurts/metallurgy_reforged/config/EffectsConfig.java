@@ -101,6 +101,9 @@ public class EffectsConfig {
     @Config.Comment("Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)")
     public static boolean ceruclaseEffectTool = true;
 
+    @Config.Name("Royal Blood")
+    @Config.Comment("A minion will be spawned to aid you in your fights against enemies (minion health will scale with the armor count)")
+    public static boolean damascusSteelEffectArmor = true;
     @Config.Name("Brilliance")
     @Config.Comment("Mobs drop significantly more experience.")
     public static boolean damascusSteelEffectWeapon = true;
