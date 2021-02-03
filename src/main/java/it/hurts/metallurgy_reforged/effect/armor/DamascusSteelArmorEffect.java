@@ -11,7 +11,13 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -39,9 +45,28 @@ public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
         if (level == 0)
             return;
 
-        // TODO: 02/02/2021 finish this
-        //event.getEntityLiving().getEntityData()
+        //Get a random slot from the Armor slots (the "2 +" skips main hand and off hand slots)
+        EntityEquipmentSlot randomArmorSlot = EntityEquipmentSlot.values()[2 + Utils.random.nextInt(4)];
+        EntityLivingBase entity = event.getEntityLiving();
 
+        ItemStack armorPiece = entity.getItemStackFromSlot(randomArmorSlot);
+
+        if (entity instanceof EntityPlayerMP)
+        {
+            // if any of the piece is on cooldown the effect is cancelled
+            if (((EntityPlayerMP) entity).getCooldownTracker().getCooldown(armorPiece.getItem(), 0) != 0)
+                return;
+        }
+
+        if (!entity.world.isRemote && event.getSource().getTrueSource() instanceof EntityLivingBase && !entity.getEntityData().hasKey("pier_id"))
+        {
+
+            EntityLivingBase attacker = (EntityLivingBase) event.getSource().getTrueSource();
+            EntityPierKnight pierknight = new EntityPierKnight(entity.world, entity, attacker, (int) (4 * level));
+            entity.setPositionAndUpdate(entity.posX, entity.posY, entity.posZ);
+            entity.world.spawnEntity(pierknight);
+            entity.getEntityData().setUniqueId("pier_id", pierknight.getUniqueID());
+        }
     }
 
 }

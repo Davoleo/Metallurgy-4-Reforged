@@ -36,16 +36,17 @@ import java.util.UUID;
 @SuppressWarnings("Guava")
 public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
 
-    protected static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.OPTIONAL_UNIQUE_ID);
+    private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.OPTIONAL_UNIQUE_ID);
     // ;)))
     private int thickness = 1;
-    // TODO: 02/02/2021 Pier Timer before death
+    private int timeUntilDeath = 20;
 
     public EntityPierKnight(World worldIn)
     {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
         this.experienceValue = 8;
+        this.setCustomNameTag("PierKnight");
     }
 
     public EntityPierKnight(World worldIn, EntityLivingBase owner, EntityLivingBase attacker, int thickness)
@@ -55,6 +56,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         this.dataManager.set(OWNER_UNIQUE_ID, Optional.of(owner.getUniqueID()));
         setAttackTarget(attacker);
         this.thickness = thickness;
+        timeUntilDeath = 20 * 30;
     }
 
     @Override
@@ -119,14 +121,26 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     public void onDeath(@Nonnull DamageSource cause)
     {
         super.onDeath(cause);
-        // TODO: 02/02/2021 remove data about pier from the owner
+        EntityLivingBase owner = (EntityLivingBase) getOwner();
+        if (owner == null)
+            return;
+
+        if (owner.getEntityData().hasKey("pier_id"))
+        {
+            owner.getEntityData().removeTag("pier_id");
+        }
     }
 
     @Override
     public void onUpdate()
     {
-        // TODO: 02/02/2021 implement timer decreasing here
         super.onUpdate();
+
+        //If the time is up (it means the council has decided pier should die)
+        if (--timeUntilDeath <= 0)
+        {
+            this.setDead();
+        }
     }
 
     @Nullable
@@ -164,6 +178,9 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         }
 
         thickness = compound.getInteger("PierThickness");
+
+        if (compound.hasKey("PierLifespan"))
+            timeUntilDeath = compound.getInteger("PierLifespan");
     }
 
     @Override
@@ -177,5 +194,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
             compound.setString("OwnerUUID", this.getOwnerId().toString());
 
         compound.setInteger("PierThickness", thickness);
+
+        compound.setInteger("PierLifespan", timeUntilDeath);
     }
 }

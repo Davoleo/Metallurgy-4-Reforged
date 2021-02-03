@@ -197,7 +197,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     public static void registerEntities(RegistryEvent.Register<EntityEntry> event)
     {
-        event.getRegistry().register(new EntityEntry(EntityPierKnight.class, Metallurgy.MODID + ":pierknight"));
+        event.getRegistry().register(new EntityEntry(EntityPierKnight.class, Metallurgy.MODID + ":pierknight").setRegistryName(Metallurgy.MODID + ":pierknight"));
     }
 
     @SideOnly(Side.CLIENT)
