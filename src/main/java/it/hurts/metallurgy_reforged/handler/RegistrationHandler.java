@@ -42,6 +42,7 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -194,10 +195,14 @@ public class RegistrationHandler {
         ModRenderers.registerRenderers();
     }
 
+
+    private static int entityId = 0;
+
     @SubscribeEvent
     public static void registerEntities(RegistryEvent.Register<EntityEntry> event)
     {
-        event.getRegistry().register(new EntityEntry(EntityPierKnight.class, Metallurgy.MODID + ":pierknight").setRegistryName(Metallurgy.MODID + ":pierknight"));
+        EntityEntry pierknightEntry = EntityEntryBuilder.create().entity(EntityPierKnight.class).name("pierknight").id("pierknight", ++entityId).tracker(160, 3, true).build();
+        event.getRegistry().register(pierknightEntry);
     }
 
     @SideOnly(Side.CLIENT)

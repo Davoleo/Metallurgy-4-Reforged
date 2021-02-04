@@ -63,7 +63,7 @@ public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
 
             EntityLivingBase attacker = (EntityLivingBase) event.getSource().getTrueSource();
             EntityPierKnight pierknight = new EntityPierKnight(entity.world, entity, attacker, (int) (4 * level));
-            entity.setPositionAndUpdate(entity.posX, entity.posY, entity.posZ);
+            pierknight.setPositionAndUpdate(entity.posX, entity.posY, entity.posZ);
             entity.world.spawnEntity(pierknight);
             entity.getEntityData().setUniqueId("pier_id", pierknight.getUniqueID());
         }

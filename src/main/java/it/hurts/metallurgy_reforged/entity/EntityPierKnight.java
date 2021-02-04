@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerAttack;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerWasHurt;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,6 +27,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -55,9 +57,11 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         //Call the generic constructor
         this(worldIn);
         this.dataManager.set(OWNER_UNIQUE_ID, Optional.of(owner.getUniqueID()));
-        setAttackTarget(attacker);
+        this.setAttackTarget(attacker);
         this.thickness = thickness;
-        timeUntilDeath = 20 * 30;
+        this.timeUntilDeath = 20 * 30;
+        this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModMetals.DAMASCUS_STEEL.getTool(EnumTools.SWORD)));
+
     }
 
     @Override
@@ -71,11 +75,11 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(5, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(6, new AIPierKnightFollow(this));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(8, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(9, new EntityAIAttackMelee(this, 1.0D, true));
 
         this.targetTasks.addTask(1, new AIPierOwnerWasHurt(this));
         this.targetTasks.addTask(2, new AIPierOwnerAttack(this));
@@ -89,6 +93,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10 * thickness);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
     @Nullable
@@ -97,6 +102,60 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModMetals.DAMASCUS_STEEL.getTool(EnumTools.SWORD)));
         return super.onInitialSpawn(difficulty, livingdata);
+    }
+
+    @Override
+    public boolean attackEntityAsMob(Entity entityIn)
+    {
+        float f = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
+        int i = 0;
+
+        if (entityIn instanceof EntityLivingBase)
+        {
+            f += EnchantmentHelper.getModifierForCreature(this.getHeldItemMainhand(), ((EntityLivingBase) entityIn).getCreatureAttribute());
+            i += EnchantmentHelper.getKnockbackModifier(this);
+        }
+
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+
+        if (flag)
+        {
+            if (i > 0)
+            {
+                ((EntityLivingBase) entityIn).knockBack(this, (float) i * 0.5F, (double) MathHelper.sin(this.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(this.rotationYaw * 0.017453292F)));
+                this.motionX *= 0.6D;
+                this.motionZ *= 0.6D;
+            }
+
+            int j = EnchantmentHelper.getFireAspectModifier(this);
+
+            if (j > 0)
+            {
+                entityIn.setFire(j * 4);
+            }
+
+            if (entityIn instanceof EntityPlayer)
+            {
+                EntityPlayer entityplayer = (EntityPlayer) entityIn;
+                ItemStack itemstack = this.getHeldItemMainhand();
+                ItemStack itemstack1 = entityplayer.isHandActive() ? entityplayer.getActiveItemStack() : ItemStack.EMPTY;
+
+                if (!itemstack.isEmpty() && !itemstack1.isEmpty() && itemstack.getItem().canDisableShield(itemstack, itemstack1, entityplayer, this) && itemstack1.getItem().isShield(itemstack1, entityplayer))
+                {
+                    float f1 = 0.25F + (float) EnchantmentHelper.getEfficiencyModifier(this) * 0.05F;
+
+                    if (this.rand.nextFloat() < f1)
+                    {
+                        entityplayer.getCooldownTracker().setCooldown(itemstack1.getItem(), 100);
+                        this.world.setEntityState(entityplayer, (byte) 30);
+                    }
+                }
+            }
+
+            this.applyEnchantments(this, entityIn);
+        }
+
+        return flag;
     }
 
     @Nonnull
@@ -132,13 +191,14 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         }
     }
 
-    @Override
-    public void onUpdate()
+    public void onLivingUpdate()
     {
-        super.onUpdate();
+        super.onLivingUpdate();
+
+        this.updateArmSwingProgress();
 
         //If the time is up (it means the council has decided pier should die)
-        if (--timeUntilDeath <= 0)
+        if (!world.isRemote && --timeUntilDeath <= 0)
         {
             this.setDead();
         }

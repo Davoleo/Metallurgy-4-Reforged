@@ -42,6 +42,8 @@ public class ClientProxy implements IProxy {
         MinecraftForge.EVENT_BUS.register(HUDHandler.class);
         MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
         ModItems.brassKnuckles.initTEISR();
+        RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierknightRenderer.Factory());
+
     }
 
     @Override
@@ -58,7 +60,6 @@ public class ClientProxy implements IProxy {
 
         }, ModItems.oreDetector);
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierknightRenderer.Factory());
     }
 
     @Override
