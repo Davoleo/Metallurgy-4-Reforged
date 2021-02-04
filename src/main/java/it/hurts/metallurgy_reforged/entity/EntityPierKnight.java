@@ -10,6 +10,8 @@
 package it.hurts.metallurgy_reforged.entity;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.Streams;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierKnightFollow;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerAttack;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerWasHurt;
@@ -19,6 +21,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -41,27 +44,31 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
 
     private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.OPTIONAL_UNIQUE_ID);
     // ;)))
-    private int thickness = 1;
+    private static final DataParameter<Byte> THICKNESS = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BYTE);
+    protected static final DataParameter<Boolean> IS_PUTIN = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BOOLEAN);
     private int timeUntilDeath = 20;
 
     public EntityPierKnight(World worldIn)
     {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
-        this.experienceValue = 8;
         this.setCustomNameTag("PierKnight");
     }
 
-    public EntityPierKnight(World worldIn, EntityLivingBase owner, EntityLivingBase attacker, int thickness)
+    public EntityPierKnight(World worldIn, EntityLivingBase owner, EntityLivingBase attacker, byte thickness)
     {
         //Call the generic constructor
         this(worldIn);
         this.dataManager.set(OWNER_UNIQUE_ID, Optional.of(owner.getUniqueID()));
         this.setAttackTarget(attacker);
-        this.thickness = thickness;
         this.timeUntilDeath = 20 * 30;
         this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModMetals.DAMASCUS_STEEL.getTool(EnumTools.SWORD)));
+        setThickness(thickness);
 
+        @SuppressWarnings("UnstableApiUsage")
+        boolean isPutin = Streams.stream(owner.getArmorInventoryList())
+                .anyMatch(item -> item.getDisplayName().toLowerCase().contains("putin"));
+        this.dataManager.set(IS_PUTIN, isPutin);
     }
 
     @Override
@@ -69,6 +76,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         super.entityInit();
         this.dataManager.register(OWNER_UNIQUE_ID, Optional.absent());
+        this.dataManager.register(THICKNESS, (byte) 1);
+        this.dataManager.register(IS_PUTIN, false);
     }
 
     @Override
@@ -92,7 +101,6 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10 * thickness);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
@@ -100,12 +108,13 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     @Override
     public IEntityLivingData onInitialSpawn(@Nonnull DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
+        setThickness(dataManager.get(THICKNESS));
         setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModMetals.DAMASCUS_STEEL.getTool(EnumTools.SWORD)));
         return super.onInitialSpawn(difficulty, livingdata);
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn)
+    public boolean attackEntityAsMob(@Nonnull Entity entityIn)
     {
         float f = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
         int i = 0;
@@ -185,9 +194,11 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         if (owner == null)
             return;
 
-        if (owner.getEntityData().hasKey("pier_id"))
+        if (owner.getEntityData().getBoolean("has_pier"))
         {
-            owner.getEntityData().removeTag("pier_id");
+            owner.getEntityData().setBoolean("has_pier", false);
+            //Set the armor on cooldown
+            owner.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) owner).getCooldownTracker().setCooldown(stack.getItem(), 200));
         }
     }
 
@@ -198,10 +209,37 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         this.updateArmSwingProgress();
 
         //If the time is up (it means the council has decided pier should die)
-        if (!world.isRemote && --timeUntilDeath <= 0)
+        if (!world.isRemote)
         {
-            this.setDead();
+            if (this.getAttackTarget() == null)
+                timeUntilDeath--;
+
+
+            boolean canPierExist = MetallurgyEffects.damascusSteelArmorEffect.canBeApplied((EntityLivingBase) getOwner());
+            if (timeUntilDeath <= 0 || !canPierExist)
+            {
+                this.attackEntityFrom(DamageSource.GENERIC, Integer.MAX_VALUE);
+            }
         }
+    }
+
+    @Override
+    public void setAttackTarget(@Nullable EntityLivingBase entitylivingbaseIn)
+    {
+        timeUntilDeath = 600;
+        super.setAttackTarget(entitylivingbaseIn);
+    }
+
+    @Override
+    protected boolean canDespawn()
+    {
+        return false;
+    }
+
+    public void setThickness(byte thickness)
+    {
+        this.dataManager.set(THICKNESS, thickness);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10 * dataManager.get(THICKNESS));
     }
 
     @Nullable
@@ -238,10 +276,13 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
             dataManager.set(OWNER_UNIQUE_ID, thing);
         }
 
-        thickness = compound.getInteger("PierThickness");
+        setThickness(compound.getByte("PierThickness"));
 
         if (compound.hasKey("PierLifespan"))
             timeUntilDeath = compound.getInteger("PierLifespan");
+
+        dataManager.set(IS_PUTIN, compound.getBoolean("WidePutin"));
+
     }
 
     @Override
@@ -254,8 +295,10 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         else
             compound.setString("OwnerUUID", this.getOwnerId().toString());
 
-        compound.setInteger("PierThickness", thickness);
+        compound.setByte("PierThickness", this.dataManager.get(THICKNESS));
 
         compound.setInteger("PierLifespan", timeUntilDeath);
+
+        compound.setBoolean("WidePutin", dataManager.get(IS_PUTIN));
     }
 }

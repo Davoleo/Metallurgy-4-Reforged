@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.entity;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraft.client.model.ModelPlayer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -31,6 +32,15 @@ public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
         super(renderManager, new ModelPlayer(0, false), 0.5F);
         this.addLayer(new LayerHeldItem(this));
         this.addLayer(new LayerArrow(this));
+    }
+
+    @Override
+    protected void preRenderCallback(@Nonnull EntityPierKnight entitylivingbaseIn, float partialTickTime)
+    {
+        if (entitylivingbaseIn.getDataManager().get(EntityPierKnight.IS_PUTIN))
+            GlStateManager.scale(3, 1, 1);
+
+        super.preRenderCallback(entitylivingbaseIn, partialTickTime);
     }
 
     @Nullable
