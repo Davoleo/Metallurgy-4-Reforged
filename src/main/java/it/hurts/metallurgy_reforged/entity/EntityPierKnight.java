@@ -11,7 +11,8 @@ package it.hurts.metallurgy_reforged.entity;
 
 import com.google.common.base.Optional;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierKnightFollow;
-import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerHurt;
+import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerAttack;
+import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerWasHurt;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
 import net.minecraft.entity.*;
@@ -76,8 +77,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(8, new EntityAIWander(this, 1.0D));
 
-        this.targetTasks.addTask(1, new AIPierKnightFollow(this));
-        this.targetTasks.addTask(2, new AIPierOwnerHurt(this));
+        this.targetTasks.addTask(1, new AIPierOwnerWasHurt(this));
+        this.targetTasks.addTask(2, new AIPierOwnerAttack(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
         super.initEntityAI();
     }

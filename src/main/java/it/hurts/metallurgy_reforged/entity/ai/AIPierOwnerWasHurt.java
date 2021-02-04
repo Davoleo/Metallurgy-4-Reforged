@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: AIPierOwnerHurt
+ = Class: AIPierOwnerWasHurt
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -13,13 +13,13 @@ import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
-public class AIPierOwnerHurt extends EntityAITarget {
+public class AIPierOwnerWasHurt extends EntityAITarget {
 
     EntityPierKnight pierKnight;
     EntityLivingBase attacker;
     private int timestamp;
 
-    public AIPierOwnerHurt(EntityPierKnight pier)
+    public AIPierOwnerWasHurt(EntityPierKnight pier)
     {
         super(pier, false);
         this.pierKnight = pier;
