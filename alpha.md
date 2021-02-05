@@ -52,9 +52,17 @@
         - **Glory Seeker _(Weapons)_**: On right click, Grants a small damage buff to the weapon damage but when you
           damage an entity without killing it, it'll go on a short cooldown while it will give the player some short
           speed and strength buff if they manage to kill the entity
-    - **Ceruclase: The Frost Metal**
-        - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
+  - **Ceruclase: The Frost Metal**
+      - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
+      - **Cold-snap _(Tools)_**: Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)
+      - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both
+        players and entities are extinguished if they were on fire.
+  - **Damascus Steel - The Regal metal**
+      - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you
+        take damage (minion health will scale with the armor count)
+      - **Brilliance I _(Weapons)_**: Mobs drop significantly more experience.
+      - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
 
-- This update also features reworked textures for armor and tools by our beloved artist matpac :)
+- This update also features reworked textures for armor and tools by our beloved artist matpac (although they're still
+  WIP so you might see armor and tool sets that differs a lot in theme) :)
 - New Custom tooltips that show more information about effects!
-- A lot of balance changes to allow for a better experience of the mod without further tweaks

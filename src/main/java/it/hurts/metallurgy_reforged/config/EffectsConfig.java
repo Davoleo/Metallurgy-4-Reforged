@@ -95,14 +95,14 @@ public class EffectsConfig {
     @Config.Comment("Has a chance to completely freeze an enemy in place on hit.")
     public static boolean ceruclaseEffectWeapon = true;
     @Config.Name("Blizzard")
-    @Config.Comment("Mobs are slowed, fatigued and weakened the closer they get to you, both players and entities are extinguished if they were on fire")
+    @Config.Comment("Mobs are slowed, fatigued and weakened depending on how much armor you wear, both players and entities are extinguished if they were on fire.")
     public static boolean ceruclaseEffectArmor = true;
     @Config.Name("Cold Snap")
     @Config.Comment("Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)")
     public static boolean ceruclaseEffectTool = true;
 
     @Config.Name("Royal Blood")
-    @Config.Comment("A minion will be spawned to aid you in your fights against enemies (minion health will scale with the armor count)")
+    @Config.Comment("A minion will be spawned to aid you in your fights against enemies as soon as you take damage (minion health will scale with the armor count)")
     public static boolean damascusSteelEffectArmor = true;
     @Config.Name("Brilliance I")
     @Config.Comment("Mobs drop significantly more experience.")
