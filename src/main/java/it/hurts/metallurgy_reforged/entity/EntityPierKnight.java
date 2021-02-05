@@ -52,7 +52,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
-        this.setCustomNameTag("PierKnight");
+        //this.setCustomNameTag("PierKnight");
     }
 
     public EntityPierKnight(World worldIn, EntityLivingBase owner, EntityLivingBase attacker, byte thickness)

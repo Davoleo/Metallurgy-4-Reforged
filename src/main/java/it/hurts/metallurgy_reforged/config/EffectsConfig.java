@@ -104,9 +104,12 @@ public class EffectsConfig {
     @Config.Name("Royal Blood")
     @Config.Comment("A minion will be spawned to aid you in your fights against enemies (minion health will scale with the armor count)")
     public static boolean damascusSteelEffectArmor = true;
-    @Config.Name("Brilliance")
+    @Config.Name("Brilliance I")
     @Config.Comment("Mobs drop significantly more experience.")
     public static boolean damascusSteelEffectWeapon = true;
+    @Config.Name("Brilliance II")
+    @Config.Comment("Mining ores sometimes grants a bit of experience depending on the harvest level.")
+    public static boolean damascusSteelEffectPickaxe = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")

@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
+import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
@@ -58,84 +59,69 @@ public class MetallurgyEffects {
 
     //Symbiosis (I)
     public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
-
     //Symbiosis (II)
     public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
 
     //Sky-High
     public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
-
     //Soulbound
     public static final AmordrineEffect amordrineEffect = new AmordrineEffect();
-
     //Coup de grâce
     public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
 
     //Reactive II
     public static final AngmallenWeaponEffect angmallenWeaponEffect = new AngmallenWeaponEffect();
-
     //Transmute
     public static final AngmallenPickaxeEffect angmallenPickaxeEffect = new AngmallenPickaxeEffect();
-
     //Reactive III
     public static final AngmallenArmorEffect angmallenArmorEffect = new AngmallenArmorEffect();
 
     //Starlight
     public static final AstralSilverArmorEffect astralSilverArmorEffect = new AstralSilverArmorEffect();
-
     //Extraterrestrial I
     public static final AstralSilverWeaponEffect astralSilverWeaponEffect = new AstralSilverWeaponEffect();
-
     //Extraterrestrial II
     public static final AstralSilverToolEffect astralSilverToolEffect = new AstralSilverToolEffect();
 
     //Whirlwind
     public static final AtlarusArmorEffect atlarusArmorEffect = new AtlarusArmorEffect();
-
     //Wind Scythe
     public static final AtlarusHoeEffect atlarusHoeEffect = new AtlarusHoeEffect();
-
     //Gust of Wind
     public static final AtlarusWeaponEffect atlarusWeaponEffect = new AtlarusWeaponEffect();
 
     //Mountain I
     public static final BlackSteelArmorEffect blackSteelArmorEffect = new BlackSteelArmorEffect();
-
     //Mountain II
     public static final BlackSteelWeaponEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
 
     //Carmot Tool Effect (Cadence)
     public static final CarmotToolEffect carmotToolEffect = new CarmotToolEffect();
-
     //Carmot Armor (Power User)
     public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
-
     //Carmot Weapon (Abattoir)
     public static final CarmotWeaponEffect carmotWeaponEffect = new CarmotWeaponEffect();
 
     //Celenegil Tools (Escalation)
     public static final CelenegilToolEffect celenegilToolEffect = new CelenegilToolEffect();
-
     //Celenegil Armor (Perseverance)
     public static final CelenegilArmorEffect celenegilArmorEffect = new CelenegilArmorEffect();
-
     //Celenegil Weapons (Glory Seeker)
     public static final CelenegilWeaponEffect celenegilWeaponEffect = new CelenegilWeaponEffect();
 
     //Ceruclase Sword [Flash Freeze] (Chance to freeze enemies in place)
     public static final CeruclaseWeaponEffect ceruclaseWeaponEffect = new CeruclaseWeaponEffect();
-
     //Ceruclase Armor (Blizzard)
     public static final CeruclaseArmorEffect ceruclaseArmorEffect = new CeruclaseArmorEffect();
-
     //Ceruclase Tools (Cold Snap)
     public static final CeruclaseToolEffect ceruclaseToolEffect = new CeruclaseToolEffect();
 
     //Damascus Steel Armor (Royal Blood)
     public static final DamascusSteelArmorEffect damascusSteelArmorEffect = new DamascusSteelArmorEffect();
-
     //Damascus Steel Weapons (Brilliance)
     public static final DamascusSteelWeaponEffect damascusSteelWeaponEffect = new DamascusSteelWeaponEffect();
+    //Damascus Steel Pickaxe (Brilliance II)
+    public static final DamascusSteelPickaxeEffect damascusSteelPickaxeEffect = new DamascusSteelPickaxeEffect();
 
     //Deep Iron Pickaxe (Faster mining underwater)
     public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
