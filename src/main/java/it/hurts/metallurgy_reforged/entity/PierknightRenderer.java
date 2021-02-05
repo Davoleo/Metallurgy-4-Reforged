@@ -35,6 +35,42 @@ public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
     }
 
     @Override
+    public void doRender(@Nonnull EntityPierKnight entity, double x, double y, double z, float entityYaw, float partialTicks)
+    {
+
+        float time = entity.deathTime > 0 ? entity.deathTime : entity.vanishTime;
+
+        float alpha = 1F - (partialTicks + time) / 40.0F;
+        if (alpha > 1.0F)
+            alpha = 1.0F;
+
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+        GlStateManager.alphaFunc(516, 0.003921569F);
+        GlStateManager.color(1.0F, 1.0F, 1.0F, alpha);
+
+
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
+
+        GlStateManager.disableBlend();
+        GlStateManager.alphaFunc(516, 0.1F);
+
+
+    }
+
+    @Override
+    protected boolean setBrightness(@Nonnull EntityPierKnight entitylivingbaseIn, float partialTicks, boolean combineTextures)
+    {
+        return entitylivingbaseIn.deathTime <= 0 && super.setBrightness(entitylivingbaseIn, partialTicks, combineTextures);
+    }
+
+    @Override
+    protected float getDeathMaxRotation(@Nonnull EntityPierKnight entityLivingBaseIn)
+    {
+        return 0F;
+    }
+
+    @Override
     protected void preRenderCallback(@Nonnull EntityPierKnight entitylivingbaseIn, float partialTickTime)
     {
         if (entitylivingbaseIn.getDataManager().get(EntityPierKnight.IS_PUTIN))

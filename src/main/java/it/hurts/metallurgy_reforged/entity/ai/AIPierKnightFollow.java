@@ -54,6 +54,10 @@ public class AIPierKnightFollow extends EntityAIBase {
         {
             return false;
         }
+        else if (this.follower.getAttackTarget() != null)
+        {
+            return false;
+        }
         else if (entity instanceof EntityPlayer && ((EntityPlayer) entity).isSpectator())
         {
             return false;
