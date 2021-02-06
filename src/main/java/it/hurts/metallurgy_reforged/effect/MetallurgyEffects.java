@@ -123,6 +123,8 @@ public class MetallurgyEffects {
     //Damascus Steel Pickaxe (Brilliance II)
     public static final DamascusSteelPickaxeEffect damascusSteelPickaxeEffect = new DamascusSteelPickaxeEffect();
 
+    //Deep Iron Armor (Aquatic)
+    public static final DeepIronArmorEffect deepIronArmorEffect = new DeepIronArmorEffect();
     //Deep Iron Pickaxe (Faster mining underwater)
     public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
 

@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block.fluid;
@@ -36,9 +36,9 @@ public class FluidBlockTar extends BlockFluidClassic {
     public void onEntityCollision(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Entity entityIn)
     {
         super.onEntityCollision(worldIn, pos, state, entityIn);
-        entityIn.motionX *= 0.2D;
-        entityIn.motionY *= 0.2D;
-        entityIn.motionZ *= 0.2D;
+        entityIn.motionX *= 0.25D;
+        entityIn.motionY *= 0.25D;
+        entityIn.motionZ *= 0.25D;
     }
 
     /**
