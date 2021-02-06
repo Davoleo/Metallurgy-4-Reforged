@@ -17,6 +17,8 @@ import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerAttack;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerWasHurt;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.EnumTools;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -30,10 +32,13 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,6 +52,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     private static final DataParameter<Byte> THICKNESS = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BYTE);
     protected static final DataParameter<Boolean> IS_PUTIN = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BOOLEAN);
     private int timeUntilDeath = 20;
+
+    protected int vanishTime = 40;
 
     public EntityPierKnight(World worldIn)
     {
@@ -84,16 +91,15 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(5, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(6, new AIPierKnightFollow(this));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         this.tasks.addTask(8, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(9, new EntityAIAttackMelee(this, 1.0D, true));
 
         this.targetTasks.addTask(1, new AIPierOwnerWasHurt(this));
         this.targetTasks.addTask(2, new AIPierOwnerAttack(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
-        super.initEntityAI();
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
     }
 
     @Override
@@ -180,6 +186,27 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         return false;
     }
 
+
+    @Override
+    protected void onDeathUpdate()
+    {
+        ++this.deathTime;
+
+        playVanishParticle(this, false);
+        playVanishParticle(getOwner(), true);
+
+        if (this.deathTime >= 40)
+        {
+            this.setDead();
+        }
+    }
+
+    @Override
+    public boolean isAIDisabled()
+    {
+        return this.vanishTime > 0 || super.isAIDisabled();
+    }
+
     @Override
     public boolean canBeLeashedTo(@Nonnull EntityPlayer player)
     {
@@ -211,7 +238,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         //If the time is up (it means the council has decided pier should die)
         if (!world.isRemote)
         {
-            if (this.getAttackTarget() == null)
+            if (this.vanishTime == 0 && this.getAttackTarget() == null)
                 timeUntilDeath--;
 
 
@@ -221,7 +248,47 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
                 this.attackEntityFrom(DamageSource.GENERIC, Integer.MAX_VALUE);
             }
         }
+
+        if (vanishTime > 0)
+        {
+            playVanishParticle(this, true);
+            playVanishParticle(getOwner(), false);
+
+            vanishTime--;
+        }
+
     }
+
+    public void playVanishParticle(Entity entity, boolean in)
+    {
+        if (world.isRemote)
+            return;
+        if (entity == null)
+            return;
+
+        for (int i = 0; i < 8; ++i)
+        {
+            double particleX = entity.posX + (this.rand.nextDouble() - 0.5D) * (double) entity.width;
+            double particleY = entity.posY + this.rand.nextDouble() * (double) entity.height;
+            double particleZ = entity.posZ + (this.rand.nextDouble() - 0.5D) * (double) entity.width;
+
+            Vec3d center = entity.getEntityBoundingBox().getCenter();
+            Vec3d particleVec = new Vec3d(particleX, particleY, particleZ);
+
+            Vec3d motion;
+            if (in)
+                motion = center.subtract(particleVec).scale(0.1D);
+            else
+                motion = particleVec.subtract(center).scale(0.2D);
+
+            PacketSpawnVanillaParticles packet = new PacketSpawnVanillaParticles(EnumParticleTypes.SMOKE_NORMAL.getParticleID(), (float) particleX, (float) particleY, (float) particleZ, (float) motion.x, (float) motion.y, (float) motion.z);
+
+            NetworkRegistry.TargetPoint point = new NetworkRegistry.TargetPoint(world.provider.getDimension(), particleX, particleY, particleZ, 64D);
+            PacketManager.network.sendToAllTracking(packet, point);
+            //   world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, particleX, particleY, particleZ, motion.x, motion.y, motion.z);
+        }
+    }
+
 
     @Override
     public void setAttackTarget(@Nullable EntityLivingBase entitylivingbaseIn)
@@ -283,6 +350,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
 
         dataManager.set(IS_PUTIN, compound.getBoolean("WidePutin"));
 
+        this.vanishTime = compound.getInteger("VanishTime");
     }
 
     @Override
@@ -290,9 +358,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         super.writeEntityToNBT(compound);
 
-        if (this.getOwnerId() == null)
-            compound.setString("OwnerUUID", "");
-        else
+
+        if (this.getOwnerId() != null)
             compound.setString("OwnerUUID", this.getOwnerId().toString());
 
         compound.setByte("PierThickness", this.dataManager.get(THICKNESS));
@@ -300,5 +367,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         compound.setInteger("PierLifespan", timeUntilDeath);
 
         compound.setBoolean("WidePutin", dataManager.get(IS_PUTIN));
+
+        compound.setInteger("VanishTime", this.vanishTime);
     }
 }
