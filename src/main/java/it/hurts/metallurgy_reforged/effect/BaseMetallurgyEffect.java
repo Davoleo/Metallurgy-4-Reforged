@@ -25,13 +25,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -44,9 +41,6 @@ public abstract class BaseMetallurgyEffect {
 
     public final String name;
     protected Metal metal;
-    //Contains the itemStack of the active tool (empty if it's not a tool effect)
-    @Deprecated
-    protected ItemStack toolStack = ItemStack.EMPTY;
 
     public BaseMetallurgyEffect(Metal metal)
     {
@@ -58,16 +52,21 @@ public abstract class BaseMetallurgyEffect {
             MetallurgyEffects.effects.add(this);
     }
 
-    public boolean isEnabled() {
+    public boolean isEnabled()
+    {
         if (metal == null)
             return false;
-        else {
+        else
+        {
             String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
 
-            try {
+            try
+            {
                 Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
                 return enabledField.getBoolean(EffectsConfig.class);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
+            }
+            catch (NoSuchFieldException | IllegalAccessException e)
+            {
                 Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
                 //e.printStackTrace();
                 return true;
@@ -75,23 +74,25 @@ public abstract class BaseMetallurgyEffect {
         }
     }
 
+
     /**
      * @return The category of tools the effect is applied to
      */
     @Nonnull
     public abstract EnumEffectCategory getCategory();
 
-    public float getLevel(EntityLivingBase entity) {
+    public float getLevel(EntityLivingBase entity)
+    {
         if (entity == null)
             return 0;
 
         EnumEffectCategory category = getCategory();
 
-        Item mainItem = entity.getHeldItemMainhand().getItem();
-        Item offItem = entity.getHeldItemOffhand().getItem();
+        Item toolItem = entity.getHeldItemMainhand().getItem();
 
-        if (category == EnumEffectCategory.ALL) {
-            if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, mainItem) || ItemUtils.isMadeOfMetal(metal, offItem))
+        if (category == EnumEffectCategory.ALL)
+        {
+            if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, toolItem))
                 return 1;
             return 0;
         }
@@ -102,24 +103,13 @@ public abstract class BaseMetallurgyEffect {
         }
         else
         {
-            for (EnumHand hand : EnumHand.values())
+            if (ItemUtils.isMadeOfMetal(metal, toolItem))
             {
-                Item handItem = entity.getHeldItem(hand).getItem();
-                if (ItemUtils.isMadeOfMetal(metal, handItem))
+                if (toolItem instanceof IToolEffect)
                 {
-                    //In case the player has a non tool item in the hand
-                    if (!(handItem instanceof IToolEffect))
-                        return 0;
-
-                    IToolEffect tool = ((IToolEffect) handItem);
+                    IToolEffect tool = ((IToolEffect) toolItem);
                     if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
-                    {
-                        if (tool.getMetalStats().getName().equals(metal.toString()))
-                        {
-                            this.toolStack = entity.getHeldItem(hand);
-                            return 1;
-                        }
-                    }
+                        return 1;
                 }
             }
         }
@@ -127,24 +117,16 @@ public abstract class BaseMetallurgyEffect {
         return 0;
     }
 
-    public boolean canBeApplied(EntityLivingBase entity) {
+    public boolean canBeApplied(EntityLivingBase entity)
+    {
         return getLevel(entity) > 0;
-    }
-
-    /**
-     * @return the entity which should have the equip metal depending on the event
-     * @see it.hurts.metallurgy_reforged.effect.weapon.AmordrineWeaponEffect
-     */
-    public EntityLivingBase getEquipUserFromEvent(Event event) {
-        if (event instanceof LivingEvent)
-            return ((LivingEvent) event).getEntityLiving();
-        return null;
     }
 
     /**
      * @return A pair of Strings, the first containing the effect name and the second containing its description
      */
-    public Pair<String, String> getTooltip() {
+    public Pair<String, String> getTooltip()
+    {
         String format = FontColor.encodeColor(metal.getStats().getColorHex());
         String description = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
         return ImmutablePair.of(format + name, description);

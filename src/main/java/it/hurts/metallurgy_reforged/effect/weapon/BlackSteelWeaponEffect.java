@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.weapon;
@@ -41,9 +41,8 @@ public class BlackSteelWeaponEffect extends BaseMetallurgyEffect {
         if (!canBeApplied(entity))
             return;
 
-        System.out.println(this.toolStack);
         float absorbedDamage = event.getAmount() * 0.5F;
-        this.toolStack.damageItem((int) (absorbedDamage * 10), entity);
+        entity.getHeldItemMainhand().damageItem((int) (absorbedDamage * 10), entity);
         event.setAmount(event.getAmount() - absorbedDamage);
 
         if (!entity.world.isRemote)

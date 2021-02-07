@@ -53,9 +53,11 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
             if (!canBeApplied(entity))
                 return;
 
+            ItemStack weapon = entity.getHeldItemMainhand();
+
             if (entity instanceof EntityPlayer)
             {
-                float cooldown = ((EntityPlayer) entity).getCooldownTracker().getCooldown(entity.getHeldItemMainhand().getItem(), 0);
+                float cooldown = ((EntityPlayer) entity).getCooldownTracker().getCooldown(weapon.getItem(), 0);
                 if (cooldown > 0)
                 {
                     event.setCanceled(true);
@@ -63,10 +65,10 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
                 }
             }
 
-            if (entity.getHeldItemMainhand().getTagCompound() == null)
-                entity.getHeldItemMainhand().setTagCompound(new NBTTagCompound());
+            if (weapon.getTagCompound() == null)
+                weapon.setTagCompound(new NBTTagCompound());
 
-            if (entity.getHeldItemMainhand().getTagCompound().getBoolean("glory_seeker"))
+            if (weapon.getTagCompound().getBoolean("glory_seeker"))
             {
                 //Slight damage buff (ignores any kind of protection)
                 event.setAmount(event.getAmount() * 1.25F);
@@ -79,7 +81,7 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
                 else
                 {
                     if (entity instanceof EntityPlayer)
-                        ((EntityPlayer) entity).getCooldownTracker().setCooldown(entity.getHeldItemMainhand().getItem(), 100);
+                        ((EntityPlayer) entity).getCooldownTracker().setCooldown(weapon.getItem(), 100);
                 }
             }
         }
