@@ -75,7 +75,7 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
                 attacked.posX - 2, attacked.posY - 2, attacked.posZ - 2,
                 attacked.posX + 2, attacked.posY + 2, attacked.posZ + 2
         )).forEach(entity -> {
-            System.out.println(entity.getPosition());
+
             if (entity != attacked)
             {
                 entity.attackEntityFrom(DamageSource.GENERIC, data.getExtraInt("amount"));

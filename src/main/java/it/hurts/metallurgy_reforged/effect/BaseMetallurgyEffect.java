@@ -137,6 +137,9 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(Entity entity, float scale, int level)
     {
+        if (entity.world.isRemote)
+            return;
+
         double x = entity.posX + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
         double y = entity.posY + Utils.random.nextDouble() * (double) entity.height;
         double z = entity.posZ + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
@@ -151,6 +154,9 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(World world, BlockPos pos, float scale, int level, double motionX, double motionY, double motionZ)
     {
+        if (world.isRemote)
+            return;
+
         AxisAlignedBB box = world.getBlockState(pos).getBoundingBox(world, pos);
 
         double width = box.maxX - box.minX;
@@ -170,6 +176,9 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float scale, int level)
     {
+        if (world.isRemote)
+            return;
+
         NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
         PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, motionX, motionY, motionZ, metal.getStats().getColorHex(), scale, level), targetPoint);
     }
@@ -179,6 +188,9 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(World world, double x, double y, double z, float scale, int level)
     {
+        if (world.isRemote)
+            return;
+
         NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
         PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), targetPoint);
     }

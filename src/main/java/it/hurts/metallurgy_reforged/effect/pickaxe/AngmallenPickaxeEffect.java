@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.pickaxe;
@@ -15,13 +15,11 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
@@ -40,18 +38,13 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.PICKAXE;
     }
 
-    @Override
-    public EntityLivingBase getEquipUserFromEvent(Event event) {
-        return ((BlockEvent.HarvestDropsEvent) event).getHarvester();
-    }
-
     /**
      * handles 1/2 Chance to transmute the harvested ore into something else
      */
     @SubscribeEvent
     public void transmuteOre(BlockEvent.HarvestDropsEvent event) {
 
-        if (!canBeApplied(getEquipUserFromEvent(event)))
+        if (!canBeApplied(event.getHarvester()))
             return;
 
         if (!event.getWorld().isRemote && event.getState().getBlock() instanceof BlockOre) {

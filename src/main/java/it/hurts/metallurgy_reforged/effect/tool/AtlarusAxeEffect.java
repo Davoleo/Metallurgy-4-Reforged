@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
@@ -96,7 +96,6 @@ public class AtlarusAxeEffect extends BaseMetallurgyEffect {
                 if (world.isRemote) {
                     Random random = new Random();
                     Vec3d particleVec = player.getLookVec().scale(1.3D);
-                    // world.spawnParticle(EnumParticleTypes.CLOUD, eyePosition.x, eyePosition.y, eyePosition.z, particleVec.x, particleVec.y, particleVec.z);
 
                     for (int j = 0; j < 170; ++j)
                     {

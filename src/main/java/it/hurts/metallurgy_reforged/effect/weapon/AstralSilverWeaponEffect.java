@@ -50,7 +50,6 @@ public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
             {
                 event.setAmount(originalAMount * 1.45F);
 
-                if (!world.isRemote)
                     for (int i = 0; i < 10; i++)
                         spawnParticle(event.getEntity(), 1.5f, 10);
             }

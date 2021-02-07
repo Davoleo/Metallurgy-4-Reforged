@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.all;
@@ -15,13 +15,11 @@ import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
@@ -40,14 +38,6 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ALL;
     }
 
-    @Override
-    public EntityLivingBase getEquipUserFromEvent(Event event) {
-        if (event instanceof PlayerDropsEvent) {
-            return ((PlayerDropsEvent) event).getEntityPlayer();
-        }
-
-        return super.getEquipUserFromEvent(event);
-    }
 
     @SubscribeEvent
     public void bindEquipmentToCorpse(PlayerDropsEvent event) {
@@ -55,7 +45,7 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
         if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
             return;
 
-        EntityPlayer player = (EntityPlayer) getEquipUserFromEvent(event);
+        EntityPlayer player = event.getEntityPlayer();
 
         ListIterator<EntityItem> dropIterator = event.getDrops().listIterator();
 

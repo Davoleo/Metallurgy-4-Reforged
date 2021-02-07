@@ -125,8 +125,10 @@ public class MetallurgyEffects {
 
     //Deep Iron Armor (Aquatic)
     public static final DeepIronArmorEffect deepIronArmorEffect = new DeepIronArmorEffect();
-    //Deep Iron Pickaxe (Faster mining underwater)
-    public static final BaseMetallurgyEffect deepIronPickaxeEffect = new DeepIronPickaxeEffect();
+    //Deep Iron Tool (Diver)
+    public static final BaseMetallurgyEffect deepIronToolEffect = new DeepIronToolEffect();
+    //Deep Iron Weapon (Diver)
+    public static final BaseMetallurgyEffect deepIronWeaponEffect = new DeepIronWeaponEffect();
 
     //Deep Iron Sword
     //public static final BaseMetallurgyEffect deepIronSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.DEEP_IRON);
