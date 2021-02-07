@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.capabilities.entity;
@@ -18,6 +18,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("ConstantConditions")
 public class EntityDataProvider implements ICapabilitySerializable<NBTBase> {
 
     @CapabilityInject(EntityData.class)
@@ -33,7 +34,7 @@ public class EntityDataProvider implements ICapabilitySerializable<NBTBase> {
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
-        return capability.equals(ENTITY_DATA_CAPABILITY);
+        return capability == ENTITY_DATA_CAPABILITY;
     }
 
     @Nullable

@@ -18,6 +18,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("ConstantConditions")
 public class EffectDataProvider implements ICapabilitySerializable<NBTBase> {
 
     @CapabilityInject(PlayerEffectData.class)
@@ -33,14 +34,14 @@ public class EffectDataProvider implements ICapabilitySerializable<NBTBase> {
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
     {
-        return capability.equals(PLAYER_EFFECT_DATA_CAPABILITY);
+        return capability == PLAYER_EFFECT_DATA_CAPABILITY;
     }
 
     @Nullable
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
     {
-        return capability.equals(PLAYER_EFFECT_DATA_CAPABILITY) ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
+        return capability == PLAYER_EFFECT_DATA_CAPABILITY ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
     }
 
     @Override

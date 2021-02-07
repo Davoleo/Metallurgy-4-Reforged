@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.capabilities.punch;
@@ -22,6 +22,7 @@ import javax.annotation.Nonnull;
  * <p>
  * This class is responsible for providing a capability.
  */
+@SuppressWarnings("ConstantConditions")
 public class PunchEffectProvider implements ICapabilitySerializable<NBTBase> {
 
     @CapabilityInject(IPunchEffect.class)
@@ -37,7 +38,7 @@ public class PunchEffectProvider implements ICapabilitySerializable<NBTBase> {
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, EnumFacing facing)
     {
-        return capability.equals(PUNCH_EFFECT_CAP);
+        return capability == PUNCH_EFFECT_CAP;
     }
 
     @Override

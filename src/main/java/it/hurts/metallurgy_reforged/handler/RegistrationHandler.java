@@ -50,7 +50,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RegistrationHandler {
 
     public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
-    public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
+    public static final ResourceLocation EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "effects");
     public static final ResourceLocation ENTITY_DATA_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "entity_data");
 
     @SubscribeEvent
@@ -218,10 +218,10 @@ public class RegistrationHandler {
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
         if (event.getObject() instanceof EntityLivingBase)
+        {
             event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
-
-        if (event.getObject() instanceof EntityLivingBase)
-            event.addCapability(KRIK_EFFECT_CAPABILITY, new EffectDataProvider());
+            event.addCapability(EFFECT_CAPABILITY, new EffectDataProvider());
+        }
 
         if (event.getObject() instanceof EntityEnderman)
             event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
