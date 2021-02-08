@@ -46,7 +46,7 @@ public abstract class BaseMetallurgyEffect {
     {
         this.metal = metal;
 
-        this.name = Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name");
+        this.name = metal != null ? Utils.localize("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name") : "";
 
         if (isEnabled())
             MetallurgyEffects.effects.add(this);

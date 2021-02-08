@@ -25,13 +25,15 @@ import java.util.stream.StreamSupport;
 
 public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
 
-    public AngmallenWeaponEffect() {
+    public AngmallenWeaponEffect()
+    {
         super(ModMetals.ANGMALLEN);
     }
 
     @Nonnull
     @Override
-    public EnumEffectCategory getCategory() {
+    public EnumEffectCategory getCategory()
+    {
         return EnumEffectCategory.WEAPON;
     }
 
