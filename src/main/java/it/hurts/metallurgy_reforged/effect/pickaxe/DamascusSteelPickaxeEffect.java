@@ -37,17 +37,23 @@ public class DamascusSteelPickaxeEffect extends BaseMetallurgyEffect {
     }
 
     @SubscribeEvent
-    public void onOreBroken(BlockEvent.HarvestDropsEvent event)
+    public void onOreBroken(BlockEvent.BreakEvent event)
     {
         if (Utils.random.nextBoolean())
         {
             Block ore = event.getState().getBlock();
-            boolean isOre = Arrays.stream(OreDictionary.getOreIDs(new ItemStack(ore)))
+            ItemStack oreStack = new ItemStack(ore);
+
+            //Should avoid crash on OreDictionary#getOreIDs(ItemStack) cause apparently a new ItemStack can be empty sometimes
+            if (oreStack.isEmpty())
+                return;
+
+            boolean isOre = Arrays.stream(OreDictionary.getOreIDs(oreStack))
                     .mapToObj(OreDictionary::getOreName)
                     .anyMatch(oreName -> oreName.startsWith("ore"));
 
             if (isOre)
-                ore.dropXpOnBlockBreak(event.getWorld(), event.getPos(), ore.getHarvestLevel(event.getState()) + 1);
+                event.setExpToDrop(event.getExpToDrop() + ore.getHarvestLevel(event.getState()) + 1);
             //Drops an amount of experience equals to the harvest level + 1
         }
     }
