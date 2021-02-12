@@ -384,7 +384,8 @@
       "harvest_level": 4,
       "enchantability": 30,
       "durability": 1800,
-      "damage": 5.0
+      "damage": 5.0,
+      "reach_distance": 3
     }
   },
   {

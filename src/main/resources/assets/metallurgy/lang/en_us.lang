@@ -1300,6 +1300,7 @@ tooltip.metallurgy.effect.damascus_steel_pickaxe.name=Brilliance II
 tooltip.metallurgy.effect.deep_iron_armor.name=Aquatic
 tooltip.metallurgy.effect.deep_iron_tool.name=Diver
 tooltip.metallurgy.effect.deep_iron_weapon.name=Diver
+tooltip.metallurgy.effect.desichalkos_tool.name=Wormhole
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
 #Effect Descriptions
@@ -1334,6 +1335,7 @@ tooltip.metallurgy.effect.damascus_steel_pickaxe.desc=Mining ores sometimes gran
 tooltip.metallurgy.effect.deep_iron_armor.desc=Grants Water Breathing and improved Mobility in water depending on how many armor pieces are worn (it also grants night vision with 2 or more armor pieces).
 tooltip.metallurgy.effect.deep_iron_tool.desc=Improved tool harvest speed when underwater (3 times the normal underwater speed)
 tooltip.metallurgy.effect.deep_iron_weapon.desc=Enhanced weapon damage when underwater (+3 hearts of damage)
+tooltip.metallurgy.effect.desichalkos_tool.desc=Tool Reach is 3 blocks higher than normal (Metal trait) - Block Drops are teleported to the player inventory directly
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
