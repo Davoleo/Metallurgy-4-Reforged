@@ -133,6 +133,10 @@ public class MetallurgyEffects {
     //Desichalkos Tools (Wormhole)
     public static final DesichalkosToolEffect desichalkosToolEffect = new DesichalkosToolEffect();
 
+    //Desichalkos Tools (Nullifier)
+    public static final DesichalkosWeaponEffect desichalkosWeaponEffect = new DesichalkosWeaponEffect();
+
+
     //Deep Iron Sword
     //public static final BaseMetallurgyEffect deepIronSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.DEEP_IRON);
 
