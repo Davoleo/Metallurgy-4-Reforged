@@ -126,9 +126,12 @@ public class MetallurgyEffects {
     //Deep Iron Armor (Aquatic)
     public static final DeepIronArmorEffect deepIronArmorEffect = new DeepIronArmorEffect();
     //Deep Iron Tool (Diver)
-    public static final BaseMetallurgyEffect deepIronToolEffect = new DeepIronToolEffect();
+    public static final DeepIronToolEffect deepIronToolEffect = new DeepIronToolEffect();
     //Deep Iron Weapon (Diver)
-    public static final BaseMetallurgyEffect deepIronWeaponEffect = new DeepIronWeaponEffect();
+    public static final DeepIronWeaponEffect deepIronWeaponEffect = new DeepIronWeaponEffect();
+
+    //Desichalkos Tools (Wormhole)
+    public static final DesichalkosToolEffect desichalkosToolEffect = new DesichalkosToolEffect();
 
     //Deep Iron Sword
     //public static final BaseMetallurgyEffect deepIronSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.DEEP_IRON);
@@ -138,7 +141,7 @@ public class MetallurgyEffects {
     //Desichalcos Trade Armor Effect
     //public static final DesichalkosArmorEffect desichalkosArmorEffect = new DesichalkosArmorEffect();
 
-    //Etherium Armor
+    //Etherium Armoru
     public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();
 
     //Eximite Armor

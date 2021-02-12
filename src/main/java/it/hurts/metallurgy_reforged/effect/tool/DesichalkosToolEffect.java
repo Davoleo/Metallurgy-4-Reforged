@@ -40,9 +40,7 @@ public class DesichalkosToolEffect extends BaseMetallurgyEffect {
 
         // TODO: 12/02/2021 Maybe implement Reach distance upgrade here
 
-        //Add drops to the inventory
-        event.getDrops().forEach(stack -> event.getHarvester().addItemStackToInventory(stack));
-        //Clear entity item drops
-        event.getDrops().clear();
+        //Add drops to the inventory and remove them from the list if they cannot be added
+        event.getDrops().removeIf(stack -> event.getHarvester().addItemStackToInventory(stack));
     }
 }
