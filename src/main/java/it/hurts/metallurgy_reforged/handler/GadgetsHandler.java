@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.item.gadget.shield.ItemLemuriteShield;
 import it.hurts.metallurgy_reforged.item.gadget.shield.ItemShieldBase;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -46,6 +47,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -238,7 +240,7 @@ public class GadgetsHandler {
 		if (detector.isEmpty())
 			return;
 
-		List<Metal> metalList = ItemOreDetector.getDetectorMetals(detector);
+		final List<Metal> metalList = ItemOreDetector.getDetectorMetals(detector);
 
 		if (metalList.isEmpty())
 			return;
@@ -254,16 +256,13 @@ public class GadgetsHandler {
 			for (BlockPos blockPos : posList)
 			{
 				IBlockState state = world.getBlockState(blockPos);
-				Metal metal = null;
+				Metal mToCheck = ItemUtils.getMetalFromOreDictStack(new ItemStack(state.getBlock()));
+				if (mToCheck == null)
+					continue;
 
-				for (Metal m : metalList)
-				{
-					if (state.getBlock() == m.getOre())
-					{
-						metal = m;
-						break;
-					}
-				}
+				Metal metal = null;
+				if (metalList.contains(mToCheck))
+					metal = mToCheck;
 
 				if (metal != null)
 				{
@@ -458,19 +457,33 @@ public class GadgetsHandler {
 	@SubscribeEvent
 	public static void disableAI(LivingSetAttackTargetEvent event)
 	{
-		EntityLiving mob = ((EntityLiving) event.getEntityLiving());
-		EntityLivingBase target = event.getTarget();
-
-		if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+		if (event.getEntityLiving() instanceof EntityLiving)
 		{
-			mob.setAttackTarget(null);
+			EntityLiving mob = (EntityLiving) event.getEntityLiving();
+			EntityLivingBase target = event.getTarget();
+
+			if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			{
+				mob.setAttackTarget(null);
+			}
 		}
+	}
+
+	/**
+	 * Disables player visibility to AIs so that mobs won't try to target the player again while they still have the shield on
+	 */
+	@SubscribeEvent
+	public static void disablePlayerVisibility(PlayerEvent.Visibility event)
+	{
+		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
+			event.modifyVisibility(0);
 	}
 
 	// Lemurite shield section END
 
 	@SubscribeEvent
-	public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+	public static void onEquipmentChange(LivingEquipmentChangeEvent event)
+	{
 		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
 			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
 	}

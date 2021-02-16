@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "EEL",
+    "E  ",
+    "EER"
+  ],
+  "key": {
+    "E": {
+      "type": "forge:ore_dict",
+      "ore": "ingotElectrum"
+    },
+    "L": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "metallurgy:electrum_magnet"
+  }
+}

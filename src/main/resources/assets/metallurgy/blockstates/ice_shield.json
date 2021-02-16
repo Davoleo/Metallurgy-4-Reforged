@@ -11,6 +11,9 @@
     },
     "age=3": {
       "model": "frosted_ice_3"
+    },
+    "inventory": {
+      "model": "frosted_ice_0"
     }
   }
 }

@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
@@ -42,20 +42,18 @@ public class PlatinumArmorEffect extends ArmorPotionEffect {
 	public void onPlayerTick(EntityPlayer player)
 	{
 		if (EventUtils.isEntityWearingArmor(player, metal)) {
-			if (player.world.getTotalWorldTime() % 220 == 0) {
-				PotionEffect effect = new PotionEffect(MobEffects.NIGHT_VISION, 400, 0, false, false);
-				effect.setPotionDurationMax(true);
+			if (player.world.getTotalWorldTime() % 40 == 0)
+			{
+				PotionEffect effect = new PotionEffect(MobEffects.NIGHT_VISION, 280, 0, false, false);
 				player.addPotionEffect(effect);
+				player.addTag("platinum_effect");
 			}
-			player.addTag("platinum_effect");
 		}
 		else if (player.getTags().contains("platinum_effect"))
 		{
 			player.removeTag("platinum_effect");
-			if (player.isPotionActive(MobEffects.NIGHT_VISION) && player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11 * 20))
-			{
+			if (player.isPotionActive(MobEffects.NIGHT_VISION))
 				player.removePotionEffect(MobEffects.NIGHT_VISION);
-			}
 		}
 	}
 

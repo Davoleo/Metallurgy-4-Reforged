@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block.gadget;
@@ -33,7 +33,6 @@ import java.util.Random;
 
 public class BlockIceShield extends BlockBreakable {
 
-
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 3);
 
 	public BlockIceShield()
@@ -45,7 +44,6 @@ public class BlockIceShield extends BlockBreakable {
 		this.setLightOpacity(3);
 		this.setSoundType(SoundType.GLASS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
-
 	}
 
 	public int getMetaFromState(IBlockState state) {
