@@ -52,16 +52,27 @@
         - **Glory Seeker _(Weapons)_**: On right click, Grants a small damage buff to the weapon damage but when you
           damage an entity without killing it, it'll go on a short cooldown while it will give the player some short
           speed and strength buff if they manage to kill the entity
-  - **Ceruclase: The Frost Metal**
-      - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
-      - **Cold-snap _(Tools)_**: Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)
-      - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both
-        players and entities are extinguished if they were on fire.
-  - **Damascus Steel - The Regal metal**
-      - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you
-        take damage (minion health will scale with the armor count)
-      - **Brilliance I _(Weapons)_**: Mobs drop significantly more experience.
-      - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
+    - **Ceruclase: The Frost Metal**
+        - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
+        - **Cold-snap _(Tools)_**: Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)
+        - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both
+          players and entities are extinguished if they were on fire.
+    - **Damascus Steel - The Regal Metal**
+        - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you
+          take damage (minion health will scale with the armor count)
+        - **Brilliance I _(Weapons)_**: Mobs drop significantly more experience.
+        - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest
+          level.
+    - **Deep Iron - The Oceanic Metal**
+        - **Aquatic _(armor)_**: Grants Water Breathing and improved Mobility in water depending on how many armor
+          pieces are worn (it also grants night vision with 2 or more armor pieces).
+        - **Diver _(tools)_**: Improved tool harvest speed when underwater (3 times the normal underwater speed)
+        - **Diver _(weapons)_**: Enhanced weapon damage when underwater (+3 hearts of damage)
+    - **Desichalkos - The Void Metal**
+        - **Wormhole _(tools)_**: Tool Reach is 3 blocks higher than normal (Metal trait) - Block Drops are teleported
+          to the player inventory directly
+        - **Nullifier _(weapons)_**: When attacking, the damage is dealt straight to the opponent's health bar,
+          unaffected by armor or any resistance the opponent might have.
 
 - This update also features reworked textures for armor and tools by our beloved artist matpac (although they're still
   WIP so you might see armor and tool sets that differs a lot in theme) :)

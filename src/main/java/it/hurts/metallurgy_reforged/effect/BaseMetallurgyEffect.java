@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
 import it.hurts.metallurgy_reforged.render.font.FontColor;
@@ -24,8 +25,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -198,6 +201,19 @@ public abstract class BaseMetallurgyEffect {
     public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
 
+    }
+
+    /**
+     * Setup tool model overrides to support states in effects
+     *
+     * @param condition if it returns 1 the alternative state model will load, if it returns 0 the regular state model will load
+     */
+    protected void setupModelOverrides(IItemPropertyGetter condition)
+    {
+        for (EnumTools tool : getCategory().getTools())
+        {
+            metal.getTool(tool).addPropertyOverride(new ResourceLocation("active"), condition);
+        }
     }
 
     public Metal getMetal()

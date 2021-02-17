@@ -13,7 +13,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
-import it.hurts.metallurgy_reforged.effect.weapon.CelenegilWeaponEffect;
 import it.hurts.metallurgy_reforged.util.Utils;
 
 import java.nio.file.Path;
@@ -111,9 +110,6 @@ public class ModMetals {
         }
 
         playerStats.forEach(MetalStats::createMetal);
-
-        //Setups a special model override for Celenegil Sword and Axe
-        CelenegilWeaponEffect.setupModelOverrides();
     }
 
 }

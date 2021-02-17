@@ -136,16 +136,10 @@ public class MetallurgyEffects {
     //Desichalkos Tools (Nullifier)
     public static final DesichalkosWeaponEffect desichalkosWeaponEffect = new DesichalkosWeaponEffect();
 
+    //Electrum Weapons (Magnet)
+    public static ElectrumWeaponEffect electrumWeaponEffect = new ElectrumWeaponEffect();
 
-    //Deep Iron Sword
-    //public static final BaseMetallurgyEffect deepIronSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.DEEP_IRON);
-
-    //public static final DesichalkosSwordEffect desichalkosSwordEffect = new DesichalkosSwordEffect();
-
-    //Desichalcos Trade Armor Effect
-    //public static final DesichalkosArmorEffect desichalkosArmorEffect = new DesichalkosArmorEffect();
-
-    //Etherium Armoru
+    //Etherium Armor
     public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();
 
     //Eximite Armor
