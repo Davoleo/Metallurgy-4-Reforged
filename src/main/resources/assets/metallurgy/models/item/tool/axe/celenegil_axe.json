@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "metallurgy:items/tools/celenegil_axe"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "metallurgy:item/tool/celenegil_axe_active"
+    }
+  ]
 }
