@@ -406,7 +406,8 @@
       "toughness": 3.0
     },
     "tool_stats": {
-      "efficiency": 14.0,
+      "__comment": "Previously 14 (lowered for debug purposes)",
+      "efficiency": 8.0,
       "harvest_level": 2,
       "enchantability": 30,
       "durability": 70,

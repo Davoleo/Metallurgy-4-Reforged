@@ -39,7 +39,7 @@ public class DamascusSteelPickaxeEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void onOreBroken(BlockEvent.BreakEvent event)
     {
-        if (canBeApplied(event.getPlayer()))
+        if (!canBeApplied(event.getPlayer()))
             return;
 
         if (Utils.random.nextBoolean())

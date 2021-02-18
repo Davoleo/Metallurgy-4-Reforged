@@ -12,6 +12,8 @@ package it.hurts.metallurgy_reforged.config;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraftforge.common.config.Config;
 
+//Variables are accessed through reflections most of the times
+@SuppressWarnings("unused")
 @Config.LangKey("config.metallurgy.category.armor_effects")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_roster")
 @Config.RequiresMcRestart
@@ -131,6 +133,9 @@ public class EffectsConfig {
     @Config.Name("Magnet")
     @Config.Comment("Activating the effect with a right click on the weapon will cause entities in line of sight of the player to be moved towards the player.")
     public static boolean electrumEffectWeapon = true;
+    @Config.Name("Voltage Control")
+    @Config.Comment("Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.")
+    public static boolean electrumEffectTool = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
