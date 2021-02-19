@@ -11,4 +11,7 @@
         <option name="FINALLY_ON_NEW_LINE" value="true"/>
         <option name="SPACE_WITHIN_ARRAY_INITIALIZER_BRACES" value="true"/>
     </codeStyleSettings>
+    <codeStyleSettings language="Markdown">
+        <option name="RIGHT_MARGIN" value="500"/>
+    </codeStyleSettings>
 </code_scheme>

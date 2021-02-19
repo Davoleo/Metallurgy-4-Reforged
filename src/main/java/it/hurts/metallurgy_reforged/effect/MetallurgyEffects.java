@@ -139,6 +139,8 @@ public class MetallurgyEffects {
     public static ElectrumWeaponEffect electrumWeaponEffect = new ElectrumWeaponEffect();
     //Electrum Tools (Voltage Control)
     public static ElectrumToolEffect electrumToolEffect = new ElectrumToolEffect();
+    //Electrum Armor (Static)
+    public static ElectrumArmorEffect electrumArmorEffect = new ElectrumArmorEffect();
 
     //Etherium Armor
     public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();

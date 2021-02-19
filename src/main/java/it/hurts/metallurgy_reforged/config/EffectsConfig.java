@@ -136,6 +136,9 @@ public class EffectsConfig {
     @Config.Name("Voltage Control")
     @Config.Comment("Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.")
     public static boolean electrumEffectTool = true;
+    @Config.Name("Static")
+    @Config.Comment("Receiving damages charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.")
+    public static boolean electrumEffectArmor = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")

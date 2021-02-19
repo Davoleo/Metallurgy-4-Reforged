@@ -3,76 +3,54 @@
 - New Effect System: most of the old effects have been moved/reworked to be thematic (details below | names and
   description are also WIP)
     - **Adamantine: The Living Metal**
-        - **Symbiosis I _(Any Equipment)_**: Eating food regenerates equipment durability, not eating any food slowly
-          destroys equipment. Durability repair amount depends on how many food points the item gives. Durability
-          decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
-        - **Symbiosis II _(Armor)_**: Receiving fatal damage will cause one of the armor pieces to sacrifice itself.
-          Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full
-          set)
+        - **Symbiosis I _(Any Equipment)_**: Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
+        - **Symbiosis II _(Armor)_**: Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full set)
     - **Amordrine: The Angelic Metal**
-        - **Skyhigh _(Armor)_**: Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is
-          wearing
+        - **Skyhigh _(Armor)_**: Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing
         - **Soulbound _(Any Equipment)_**: Items that have this effect are kept in your inventory after death
-        - **Divine Grace _(Weapons)_**: Bonus Damage depending on target's health,the more the target has the less
-          health the more damage the weapon does (up to 200% damage boost)
+        - **Divine Grace _(Weapons)_**: Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200% damage boost)
     - **Angmallen: The Alchemical Metal**
         - **Transmute _(Pickaxe)_**: Mining an ore sometimes drops another ore of +1/-1/+0 harvest level (50% chance)
         - **Reactive II _(Weapons)_**: Deals Bonus Damage to armored enemies
-        - **Reactive III _(Armor)_**: Plays a sound sometimes when you're near some rare ore, every armor piece
-          increases the chance to detect rare ores
+        - **Reactive III _(Armor)_**: Plays a sound sometimes when you're near some rare ore, every armor piece increases the chance to detect rare ores
     - **Astral Silver: The Star Metal**
-        - **Starlight _(Armor)_**: Gives Night Vision and Speed during night time or in the End if the player has the
-          sky above their head depending on how many armor pieces are worn
+        - **Starlight _(Armor)_**: Gives Night Vision and Speed during night time or in the End if the player has the sky above their head depending on how many armor pieces are worn
         - **Extraterrestrial I _(Waeapons)_**: 45% more damage if the player is in another dimension
-        - **Extraterrestrail II _(Tools)_**: Increased speed when breaking blocks in dimensions that aren't the
-          Overworld
+        - **Extraterrestrail II _(Tools)_**: Increased speed when breaking blocks in dimensions that aren't the Overworld
     - **Atlarus: The Wind Metal**
         - **Whirlwind _(Armor)_**: A whirlwind will save you from taking fall damage pushing you in a random direction
-        - **Gust of Wind _(Weapons)_**: A strong gust of wind pushes enemies away from you and breaks leaves and vines
-          in a range of 5 blocks around you
+        - **Gust of Wind _(Weapons)_**: A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you
         - **Wind Scythe _(Hoe)_**: Wind helps you remove bushes and crops around you
     - **Black Steel: The Fortress Metal**
-        - **Mountain I (Armor)**: Receiving damage sometimes grants resistance but also slowness, at the same time. (
-          Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can
-          stack up to 3 times, chance based)
-        - **Mountain II _(Weapons)_**: Tools & weapons act like armor, for example holding a black steel sword while
-          getting attacked will damage the sword but absorb a small portion of the damage.
+        - **Mountain I (Armor)**: Receiving damage sometimes grants resistance but also slowness, at the same time. (Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based)
+        - **Mountain II _(Weapons)_**: Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
     - **Brass: The Reverbing Metal**
     - **Carmot: The Clockwork Metal**
         - **Autonomous _(Tools)_**: Harvesting a block will mine surrounding blocks of the same type in a spheric range
-        - **Power User _(Armor)_**: You can comsume and use items faster depending on how many armor pieces you wear; if
-          you wear a full set you also get a Haste III buff
+        - **Power User _(Armor)_**: You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff
     - **Celenegil: The Exalted Metal**
-        - **Escalation _(Tools)_**: Continuously breaking blocks without stopping doesn't use durability and increases
-          mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks
-          mined)
-        - **Perseverance _(Armor)_**: After being attacked five times over a short period, all the enemies are knocked
-          back away from the player and the player receives a very short regen buff and all negative effects are
-          cleared.
-        - **Glory Seeker _(Weapons)_**: On right click, Grants a small damage buff to the weapon damage but when you
-          damage an entity without killing it, it'll go on a short cooldown while it will give the player some short
-          speed and strength buff if they manage to kill the entity
+        - **Escalation _(Tools)_**: Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)
+        - **Perseverance _(Armor)_**: After being attacked five times over a short period, all the enemies are knocked back away from the player and the player receives a very short regen buff and all negative effects are cleared.
+        - **Glory Seeker _(Weapons)_**: On right click, Grants a small damage buff to the weapon damage but when you damage an entity without killing it, it'll go on a short cooldown while it will give the player some short speed and strength buff if they manage to kill the entity
     - **Ceruclase: The Frost Metal**
         - **Flash Freeze _(Weapons)_**: Has a 75% chance to completely freeze an enemy in place on hit for 3 seconds.
         - **Cold-snap _(Tools)_**: Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)
-        - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both
-          players and entities are extinguished if they were on fire.
+        - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both players and entities are extinguished if they were on fire.
     - **Damascus Steel - The Regal Metal**
-        - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you
-          take damage (minion health will scale with the armor count)
+        - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you take damage (minion health will scale with the armor count)
         - **Brilliance I _(Weapons)_**: Mobs drop significantly more experience.
-        - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest
-          level.
+        - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
     - **Deep Iron - The Oceanic Metal**
-        - **Aquatic _(armor)_**: Grants Water Breathing and improved Mobility in water depending on how many armor
-          pieces are worn (it also grants night vision with 2 or more armor pieces).
+        - **Aquatic _(armor)_**: Grants Water Breathing and improved Mobility in water depending on how many armor pieces are worn (it also grants night vision with 2 or more armor pieces).
         - **Diver _(tools)_**: Improved tool harvest speed when underwater (3 times the normal underwater speed)
         - **Diver _(weapons)_**: Enhanced weapon damage when underwater (+3 hearts of damage)
     - **Desichalkos - The Void Metal**
-        - **Wormhole _(tools)_**: Tool Reach is 3 blocks higher than normal (Metal trait) - Block Drops are teleported
-          to the player inventory directly
-        - **Nullifier _(weapons)_**: When attacking, the damage is dealt straight to the opponent's health bar,
-          unaffected by armor or any resistance the opponent might have.
+        - **Wormhole _(tools)_**: Tool Reach is 3 blocks higher than normal (Metal trait) - Block Drops are teleported to the player inventory directly
+        - **Nullifier _(weapons)_**: When attacking, the damage is dealt straight to the opponent's health bar, unaffected by armor or any resistance the opponent might have.
+    - **Electrum - The Lightning Metal**
+        - **Magnet _(weapons)_**: Activating the effect with a right click on the weapon will cause entities in line of sight of the player to be moved towards the player.
+        - **Voltage Control _(tools)_**: Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.
+        - **Static _(armor)_**: Receiving damage charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.
 
 - This update also features reworked textures for armor and tools by our beloved artist matpac (although they're still
   WIP so you might see armor and tool sets that differs a lot in theme) :)
