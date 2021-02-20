@@ -54,8 +54,6 @@ public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
 
         GlStateManager.disableBlend();
         GlStateManager.alphaFunc(516, 0.1F);
-
-
     }
 
     @Override

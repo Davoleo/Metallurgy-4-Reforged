@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
-@FunctionalInterface
 public interface IProgressiveEffect {
 
     void onStep(World world, EntityLivingBase entity, int maxSteps, int step);

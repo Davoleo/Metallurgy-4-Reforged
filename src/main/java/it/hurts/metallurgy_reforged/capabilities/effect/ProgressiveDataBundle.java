@@ -18,6 +18,7 @@ public class ProgressiveDataBundle {
     protected final int maxSteps;
     protected String prefixKey;
     protected int currentStep;
+    protected boolean paused = false;
 
     public ProgressiveDataBundle(String prefixKey, int currentStep, int maxSteps)
     {
@@ -43,7 +44,7 @@ public class ProgressiveDataBundle {
 
     public boolean isEffectInProgress()
     {
-        return currentStep > 0;
+        return currentStep > 0 && !paused;
     }
 
     public void incrementStep()
@@ -52,6 +53,11 @@ public class ProgressiveDataBundle {
             currentStep++;
         else
             resetProgress();
+    }
+
+    public void setPaused(boolean paused)
+    {
+        this.paused = paused;
     }
 
     public void resetProgress()
@@ -63,11 +69,13 @@ public class ProgressiveDataBundle {
     public void toNBT(NBTTagCompound compound)
     {
         compound.setInteger(prefixKey + "_current_step", currentStep);
+        compound.setBoolean(prefixKey + "_paused", paused);
     }
 
     @OverridingMethodsMustInvokeSuper
     public void fromNBT(NBTTagCompound compound)
     {
         currentStep = compound.getInteger(prefixKey + "_current_step");
+        paused = compound.getBoolean(prefixKey + "_paused");
     }
 }

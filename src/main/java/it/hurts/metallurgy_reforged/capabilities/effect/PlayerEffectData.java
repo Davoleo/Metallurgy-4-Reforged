@@ -26,6 +26,7 @@ public class PlayerEffectData {
         effectBundles.put(carmotToolBundle.getPrefixKey(), carmotToolBundle);
         effectBundles.put(celenegilArmorBundle.getPrefixKey(), celenegilArmorBundle);
         effectBundles.put(celenegilToolBundle.getPrefixKey(), celenegilToolBundle);
+        effectBundles.put(etheriumArmorBundle.getPrefixKey(), etheriumArmorBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -60,6 +61,10 @@ public class PlayerEffectData {
     //Celenegil Tools ----------------------------------------
     public ExtraFilledDataBundle celenegilToolBundle =
             new ExtraFilledDataBundle("celenegil_tool", 0, 3, bundle -> bundle.getExtraInt("broken_blocks") != 0);
+
+    //Etherium Armor -----------------------------------------
+    public ProgressiveDataBundle etheriumArmorBundle =
+            new ProgressiveDataBundle("etherium_armor", 0, 30);
 
     // Krik Armor --------------------------------------------
     private int krikHeight;
