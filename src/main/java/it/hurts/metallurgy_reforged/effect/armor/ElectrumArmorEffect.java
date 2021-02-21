@@ -52,7 +52,8 @@ public class ElectrumArmorEffect extends BaseMetallurgyEffect {
 
             //Add Items that support the Energy Capability to a list
             player.inventory.mainInventory.forEach(stack -> {
-                if (stack.hasCapability(CapabilityEnergy.ENERGY, null))
+                IEnergyStorage itemCap = stack.getCapability(CapabilityEnergy.ENERGY, null);
+                if (itemCap != null && itemCap.canReceive())
                 {
                     energyStacks.add(stack);
                 }
@@ -66,13 +67,11 @@ public class ElectrumArmorEffect extends BaseMetallurgyEffect {
             float energy = (1 - (player.getHealth() - event.getAmount()) / player.getMaxHealth()) * maxEnergy;
             float distributedEnergy = energy / energyStacks.size();
 
+            // TODO: 21/02/2021 Maybe add support for partial energy recharge
             energyStacks.forEach(stack -> {
                 IEnergyStorage storage = stack.getCapability(CapabilityEnergy.ENERGY, null);
                 assert storage != null;
-                if (storage.canReceive())
-                {
-                    storage.receiveEnergy(MathHelper.ceil(distributedEnergy), false);
-                }
+                storage.receiveEnergy(MathHelper.ceil(distributedEnergy), false);
             });
         }
     }
