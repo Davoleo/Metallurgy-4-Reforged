@@ -37,6 +37,11 @@ public class ProgressiveDataBundle {
         return currentStep;
     }
 
+    public void setCurrentStep(int currentStep)
+    {
+        this.currentStep = currentStep;
+    }
+
     public int getMaxSteps()
     {
         return maxSteps;
