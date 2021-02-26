@@ -146,6 +146,8 @@ public class MetallurgyEffects {
 
     //Etherium Armor
     public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();
+    //Etherium Weapons
+    public static EtheriumWeaponEffect etheriumWeaponEffect = new EtheriumWeaponEffect();
 
     //Eximite Armor
     //public static final BaseMetallurgyEffect eximiteEffect = new EximiteArmorEffect();

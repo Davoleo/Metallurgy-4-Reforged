@@ -1307,6 +1307,7 @@ tooltip.metallurgy.effect.electrum_weapon.name=Magnet
 tooltip.metallurgy.effect.electrum_tool.name=Voltage Control
 tooltip.metallurgy.effect.electrum_armor.name=Static
 tooltip.metallurgy.effect.etherium_armor.name=Ethereal
+tooltip.metallurgy.effect.etherium_weapon.name=Siphon
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
 #Effect Descriptions
@@ -1348,6 +1349,7 @@ tooltip.metallurgy.effect.electrum_weapon.desc=Activating the effect with a righ
 tooltip.metallurgy.effect.electrum_tool.desc=Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.
 tooltip.metallurgy.effect.electrum_armor.desc=Receiving damage charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.
 tooltip.metallurgy.effect.etherium_armor.desc=Allows the player to clip through walls when sneaking for at most 15 seconds after which the player remains stuck in the wall
+tooltip.metallurgy.effect.etherium_weapon.desc=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn’t stack).
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
