@@ -27,6 +27,10 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
         instance.effectBundles.values().forEach(bundle -> bundle.toNBT(tag));
         tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
         tag.setInteger("krik_height", instance.getKrikHeight());
+
+        tag.setInteger("timeWithoutDamage", instance.desichalkosTimeWithoutTakingDamage);
+        tag.setInteger("absorbLevel", instance.desichalkosAbsorbLevel);
+
         return tag;
     }
 
@@ -38,6 +42,9 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
         instance.effectBundles.values().forEach(bundle -> bundle.fromNBT(tag));
         instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
         instance.setKrikHeight(tag.getInteger("krik_height"));
+
+        instance.desichalkosTimeWithoutTakingDamage = tag.getInteger("timeWithoutDamage");
+        instance.desichalkosAbsorbLevel = tag.getInteger("absorbLevel");
     }
 
 }

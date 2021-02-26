@@ -9,7 +9,7 @@
 
 package it.hurts.metallurgy_reforged.capabilities.entity;
 
-import it.hurts.metallurgy_reforged.effect.armor.DesichalkosArmorEffect;
+import it.hurts.metallurgy_reforged.effect.armor.OldDesichalkosArmorEffect;
 import net.minecraft.block.state.IBlockState;
 
 import java.util.Random;
@@ -25,8 +25,8 @@ public class EntityData {
         Random random = new Random();
         if (random.nextInt(4) == 0 && !initialized)
         {
-            System.out.println(DesichalkosArmorEffect.borrowableBlocks.length);
-            this.snatchableBlock = DesichalkosArmorEffect.borrowableBlocks[random.nextInt(DesichalkosArmorEffect.borrowableBlocks.length)];
+            System.out.println(OldDesichalkosArmorEffect.borrowableBlocks.length);
+            this.snatchableBlock = OldDesichalkosArmorEffect.borrowableBlocks[random.nextInt(OldDesichalkosArmorEffect.borrowableBlocks.length)];
             this.initialized = true;
         }
     }

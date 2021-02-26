@@ -134,6 +134,8 @@ public class MetallurgyEffects {
     public static final DesichalkosToolEffect desichalkosToolEffect = new DesichalkosToolEffect();
     //Desichalkos Tools (Nullifier)
     public static final DesichalkosWeaponEffect desichalkosWeaponEffect = new DesichalkosWeaponEffect();
+    //Desichalkos Armor (Orb)
+    public static final DesichalkosArmorEffect desichalkosArmorEffect = new DesichalkosArmorEffect();
 
     //Electrum Weapons (Magnet)
     public static ElectrumWeaponEffect electrumWeaponEffect = new ElectrumWeaponEffect();

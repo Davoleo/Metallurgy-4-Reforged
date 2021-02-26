@@ -62,6 +62,11 @@ public class PlayerEffectData {
     public ExtraFilledDataBundle celenegilToolBundle =
             new ExtraFilledDataBundle("celenegil_tool", 0, 3, bundle -> bundle.getExtraInt("broken_blocks") != 0);
 
+    //Desichalkos Armor
+    public int desichalkosAbsorbLevel = 0;
+    public int desichalkosTimeWithoutTakingDamage = 200;
+
+
     //Etherium Armor -----------------------------------------
     public ProgressiveDataBundle etheriumArmorBundle =
             new ProgressiveDataBundle("etherium_armor", 0, 30);

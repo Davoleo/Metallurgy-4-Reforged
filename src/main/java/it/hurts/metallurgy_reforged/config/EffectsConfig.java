@@ -130,6 +130,10 @@ public class EffectsConfig {
     @Config.Comment("When attacking, the damage is dealt straight to the opponent's health bar, unaffected by armor or any resistance the opponent might have. ")
     public static boolean desichalkosEffectWeapon = true;
 
+    @Config.Name("Orb")
+    @Config.Comment("The wearer can fully absorb X instances of damage (X scales with armor) without taking damage, the “Layers” regenerate one at a time every 7 seconds after the last time the wearer took damage.")
+    public static boolean desichalkosEffectArmor = true;
+
     @Config.Name("Magnet")
     @Config.Comment("Activating the effect with a right click on the weapon will cause entities in line of sight of the player to be moved towards the player.")
     public static boolean electrumEffectWeapon = true;
