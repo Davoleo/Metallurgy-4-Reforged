@@ -53,12 +53,10 @@ public class PlayerEffectData {
     //Carmot Weapons
     public ExtraFilledDataBundle carmotWeaponBundle =
             new ExtraFilledDataBundle("carmot_weapon", 0, 3, bundle -> bundle.currentStep > 0);
-
     //Celenegil Armor
     public ExtraFilledDataBundle celenegilArmorBundle =
             new ExtraFilledDataBundle("celenegil_armor", 0, 3, (bundle) -> bundle.getExtraBool("active"));
-
-    //Celenegil Tools ----------------------------------------
+    //Celenegil Tools
     public ExtraFilledDataBundle celenegilToolBundle =
             new ExtraFilledDataBundle("celenegil_tool", 0, 3, bundle -> bundle.getExtraInt("broken_blocks") != 0);
 
@@ -66,12 +64,11 @@ public class PlayerEffectData {
     public int desichalkosAbsorbLevel = 0;
     public int desichalkosTimeWithoutTakingDamage = 200;
 
-
-    //Etherium Armor -----------------------------------------
+    //Etherium Armor
     public ProgressiveDataBundle etheriumArmorBundle =
             new ProgressiveDataBundle("etherium_armor", 0, 30);
 
-    // Krik Armor --------------------------------------------
+    // Krik Armor
     private int krikHeight;
 
     public void setKrikHeight(int height)

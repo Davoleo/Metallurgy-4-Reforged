@@ -1,3 +1,12 @@
+/*==============================================================================
+ = Class: DesichalkosArmorEffect
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2021.
+ =============================================================================*/
+
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
@@ -60,8 +69,6 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void onHurt(LivingHurtEvent event)
     {
-
-
         PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
         if (effectData == null)
