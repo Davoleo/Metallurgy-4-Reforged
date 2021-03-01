@@ -150,7 +150,9 @@ public class MetallurgyEffects {
     public static EtheriumWeaponEffect etheriumWeaponEffect = new EtheriumWeaponEffect();
 
     //Eximite Armor
-    public static final BaseMetallurgyEffect eximiteEffect = new EximiteArmorEffect();
+    public static final BaseMetallurgyEffect eximiteArmorEffect = new EximiteArmorEffect();
+    //Eximite Weapon
+    public static final BaseMetallurgyEffect eximiteWeaponEffect = new EximiteWeaponEffect();
 
     //Haderoth Armor
     //public static final BaseMetallurgyEffect haderothEffect = new HaderothArmorEffect();

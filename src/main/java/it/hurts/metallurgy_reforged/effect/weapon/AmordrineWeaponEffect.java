@@ -35,7 +35,6 @@ public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void onMobAttacked(LivingHurtEvent event)
     {
-
         Entity attacker = event.getSource().getTrueSource();
 
         if (event.getSource().getTrueSource() instanceof EntityLivingBase)
