@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network.client;
@@ -61,7 +61,7 @@ public class PacketRenderDeathProtection implements IMessage {
                 //Get the RGB colors of Adamantine
                 float[] colors = ModMetals.ADAMANTINE.getStats().getColorRGBValues();
                 //Instantiate and start a Particle Ore Emitter
-                client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, message.entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
+                client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, message.entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
 
                 //If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
                 if (message.entity == client.player) {

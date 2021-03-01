@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.particle;
@@ -33,13 +33,14 @@ public class ParticleOre extends Particle {
 	private int textureIndex = 0;
 	private final int level;
 	private final float particleOreScale;
+	private final boolean dynamic;
 
 	/**
 	 * @param level value from 1 to 10, it specifies the texture progression of this particle,the higher it is , the more detailed the texture gets
 	 */
-	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double motionX, double motionY, double motionZ, float scale, float red, float green, float blue, int level)
+	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double motionX, double motionY, double motionZ, float scale, float red, float green, float blue, boolean dynamic, int level)
 	{
-		this(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue, level);
+		this(worldIn, xCoordIn, yCoordIn, zCoordIn, scale, red, green, blue, dynamic, level);
 		this.motionX = motionX;
 		this.motionY = motionY;
 		this.motionZ = motionZ;
@@ -48,7 +49,7 @@ public class ParticleOre extends Particle {
 	/**
 	 * particle with random direction
 	 */
-	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, int level)
+	public ParticleOre(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, float scale, float red, float green, float blue, boolean dynamic, int level)
 	{
 		super(worldIn, xCoordIn, yCoordIn, zCoordIn, 0.0D, 0.0D, 0.0D);
 		this.particleMaxAge = (int) (40 * 0.8D + Math.random() * 0.4D);
@@ -73,7 +74,10 @@ public class ParticleOre extends Particle {
 		this.motionX *= 0.10000000149011612D;
 		this.motionY *= 0.10000000149011612D;
 		this.motionZ *= 0.10000000149011612D;
-		this.setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[0].toString()));
+
+		this.setParticleTexture(Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(TEXTURES[dynamic ? 0 : level].toString()));
+
+		this.dynamic = dynamic;
 	}
 
 	public void setMotionMultiplier(float motion)
@@ -126,9 +130,8 @@ public class ParticleOre extends Particle {
 			this.motionZ *= 0.699999988079071D;
 		}
 		int tickStep = (particleMaxAge / 7);
-		if (particleAge % tickStep == 0)
+		if (dynamic && particleAge % tickStep == 0)
 		{
-
 			textureIndex++;
 
 			if (textureIndex > level)

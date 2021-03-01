@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.all;
@@ -98,8 +98,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
                     player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 0.3F, 0.8F);
 
                     for (int i = 0; i < 6; i++)
-                        spawnParticle(player, 1F, 1);
-
+                        spawnParticle(player, 1F, true, 1);
                 }
             }
         }

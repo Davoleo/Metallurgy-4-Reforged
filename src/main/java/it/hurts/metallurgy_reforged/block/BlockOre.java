@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block;
@@ -142,7 +142,7 @@ public class BlockOre extends Block {
             {
                 int harvestLevel = this.getHarvestLevel(this.getDefaultState());
                 if (harvestLevel > 1)
-                    Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, color[0], color[1], color[2], (int) (((harvestLevel - 2F) / 5F) * 9F)));
+                    Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, color[0], color[1], color[2], true, (int) (((harvestLevel - 2F) / 5F) * 9F)));
             }
         }
     }

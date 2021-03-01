@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network.client;
@@ -30,24 +30,25 @@ public class PacketSpawnOreParticles implements IMessage {
 	private double motionY;
 	private double motionZ;
 
-	private boolean hasMotion = false;
+	private boolean dynamic;
 
+	private boolean hasMotion = false;
 
 	public PacketSpawnOreParticles()
 	{
 		//Mandatory Packet Constructor
 	}
 
-	public PacketSpawnOreParticles(double x, double y, double z, double motionX, double motionY, double motionZ, int color, float scale, int level)
+	public PacketSpawnOreParticles(double x, double y, double z, double motionX, double motionY, double motionZ, int color, float scale, boolean dynamic, int level)
 	{
-		this(x, y, z, color, scale, level);
+		this(x, y, z, color, scale, dynamic, level);
 		this.hasMotion = true;
 		this.motionX = motionX;
 		this.motionY = motionY;
 		this.motionZ = motionZ;
 	}
 
-	public PacketSpawnOreParticles(double x, double y, double z, int color, float scale, int level)
+	public PacketSpawnOreParticles(double x, double y, double z, int color, float scale, boolean dynamic, int level)
 	{
 		this.x = x;
 		this.y = y;
@@ -55,6 +56,7 @@ public class PacketSpawnOreParticles implements IMessage {
 		this.color = color;
 		this.scale = scale;
 		this.level = level;
+		this.dynamic = dynamic;
 	}
 
 	@Override
@@ -65,6 +67,7 @@ public class PacketSpawnOreParticles implements IMessage {
 		z = buf.readDouble();
 		color = buf.readInt();
 		scale = buf.readFloat();
+		dynamic = buf.readBoolean();
 		level = buf.readInt();
 
 		hasMotion = buf.readBoolean();
@@ -84,6 +87,7 @@ public class PacketSpawnOreParticles implements IMessage {
 		buf.writeDouble(z);
 		buf.writeInt(color);
 		buf.writeFloat(scale);
+		buf.writeBoolean(dynamic);
 		buf.writeInt(level);
 
 		buf.writeBoolean(hasMotion);
@@ -108,9 +112,9 @@ public class PacketSpawnOreParticles implements IMessage {
 				ParticleOre particleOre;
 
 				if (message.hasMotion)
-					particleOre = new ParticleOre(minecraft.world, message.x, message.y, message.z, message.motionX, message.motionY, message.motionZ, message.scale, rgb[0], rgb[1], rgb[2], message.level);
+					particleOre = new ParticleOre(minecraft.world, message.x, message.y, message.z, message.motionX, message.motionY, message.motionZ, message.scale, rgb[0], rgb[1], rgb[2], message.dynamic, message.level);
 				else
-					particleOre = new ParticleOre(minecraft.world, message.x, message.y, message.z, message.scale, rgb[0], rgb[1], rgb[2], message.level);
+					particleOre = new ParticleOre(minecraft.world, message.x, message.y, message.z, message.scale, rgb[0], rgb[1], rgb[2], message.dynamic, message.level);
 
 				minecraft.effectRenderer.addEffect(particleOre);
 			});

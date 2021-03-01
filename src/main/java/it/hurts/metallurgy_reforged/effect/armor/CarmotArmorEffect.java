@@ -114,7 +114,7 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
                 //Maybe a 2 cycles for?
                 ClientProxy.client.effectRenderer.addEffect(
                         new ParticleOre(entity.world, entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
-                                0.4F, rgb[0], rgb[1], rgb[2], 5));
+                                0.4F, rgb[0], rgb[1], rgb[2], true, 5));
             }
         }
     }

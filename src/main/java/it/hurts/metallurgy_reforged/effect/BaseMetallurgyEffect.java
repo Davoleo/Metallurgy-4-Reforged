@@ -138,7 +138,7 @@ public abstract class BaseMetallurgyEffect {
     /**
      * spawn ore particles randomly on a entity
      */
-    protected void spawnParticle(Entity entity, float scale, int level)
+    protected void spawnParticle(Entity entity, float scale, boolean dynamic, int level)
     {
         if (entity.world.isRemote)
             return;
@@ -147,15 +147,15 @@ public abstract class BaseMetallurgyEffect {
         double y = entity.posY + Utils.random.nextDouble() * (double) entity.height;
         double z = entity.posZ + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
 
-        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), entity);
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), entity);
         if (entity instanceof EntityPlayerMP)
-            PacketManager.network.sendTo(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), (EntityPlayerMP) entity);
+            PacketManager.network.sendTo(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), (EntityPlayerMP) entity);
     }
 
     /**
      * spawn ore particles randomly on block position
      */
-    protected void spawnParticle(World world, BlockPos pos, float scale, int level, double motionX, double motionY, double motionZ)
+    protected void spawnParticle(World world, BlockPos pos, float scale, boolean dynamic, int level, double motionX, double motionY, double motionZ)
     {
         if (world.isRemote)
             return;
@@ -171,31 +171,31 @@ public abstract class BaseMetallurgyEffect {
         double x = pos.getX() + box.minX - border + (width + border * 2) * Utils.random.nextDouble();
         double y = pos.getY() + box.minY - border + (height + border * 2) * Utils.random.nextDouble();
         double z = pos.getZ() + box.minZ - border + (depth + border * 2) * Utils.random.nextDouble();
-        spawnParticle(world, x, y, z, motionX, motionY, motionZ, scale, level);
+        spawnParticle(world, x, y, z, motionX, motionY, motionZ, scale, dynamic, level);
     }
 
     /**
      * spawn ore particles in a specific point with a custom motion
      */
-    protected void spawnParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float scale, int level)
+    protected void spawnParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float scale, boolean dynamic, int level)
     {
         if (world.isRemote)
             return;
 
         NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
-        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, motionX, motionY, motionZ, metal.getStats().getColorHex(), scale, level), targetPoint);
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, motionX, motionY, motionZ, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
     }
 
     /**
      * spawn ore particles in a specific point with random motion (like redstone particles)
      */
-    protected void spawnParticle(World world, double x, double y, double z, float scale, int level)
+    protected void spawnParticle(World world, double x, double y, double z, float scale, boolean dynamic, int level)
     {
         if (world.isRemote)
             return;
 
         NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
-        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, level), targetPoint);
+        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
     }
 
     public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)

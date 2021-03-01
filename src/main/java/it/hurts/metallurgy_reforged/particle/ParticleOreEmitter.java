@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.particle;
@@ -20,26 +20,27 @@ public class ParticleOreEmitter extends ParticleOre {
 	private int age;
 	private final int lifetime;
 	private final int level;
+	private final boolean dynamic;
 
 	private boolean hasMotion = false;
 
 
-	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, int lifetime, float red, float green, float blue, int level)
+	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, int lifetime, float red, float green, float blue, boolean dynamic, int level)
 	{
-		super(worldIn, box.getCenter().x, box.getCenter().y, box.getCenter().z, 1F, red, green, blue, 5);
-		attachedBox = box;
+		super(worldIn, box.getCenter().x, box.getCenter().y, box.getCenter().z, 1F, red, green, blue, dynamic, 5);
+		this.attachedBox = box;
 		this.lifetime = lifetime;
 		this.level = level;
+		this.dynamic = dynamic;
 	}
 
-	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, double motionX, double motionY, double motionZ, int lifetime, float red, float green, float blue, int level)
+	public ParticleOreEmitter(World worldIn, AxisAlignedBB box, double motionX, double motionY, double motionZ, int lifetime, float red, float green, float blue, boolean dynamic, int level)
 	{
-		this(worldIn, box, lifetime, red, green, blue, level);
+		this(worldIn, box, lifetime, red, green, blue, dynamic, level);
 		this.motionX = motionX;
 		this.motionY = motionY;
 		this.motionZ = motionZ;
 		this.hasMotion = true;
-
 	}
 
 	@Override
@@ -53,9 +54,9 @@ public class ParticleOreEmitter extends ParticleOre {
 			ParticleOre particle;
 
 			if (hasMotion)
-				particle = new ParticleOre(world, x, y, z, motionX, motionY, motionZ, rand.nextFloat() + 0.5F, this.particleRed, this.particleGreen, this.particleBlue, this.level);
+				particle = new ParticleOre(world, x, y, z, motionX, motionY, motionZ, rand.nextFloat() + 0.5F, particleRed, particleGreen, particleBlue, dynamic, level);
 			else
-				particle = new ParticleOre(world, x, y, z, rand.nextFloat() + 0.5F, this.particleRed, this.particleGreen, this.particleBlue, this.level);
+				particle = new ParticleOre(world, x, y, z, rand.nextFloat() + 0.5F, particleRed, particleGreen, particleBlue, dynamic, level);
 
 			Minecraft.getMinecraft().effectRenderer.addEffect(particle);
 		}

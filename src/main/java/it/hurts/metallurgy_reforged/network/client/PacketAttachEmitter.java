@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network.client;
@@ -28,6 +28,7 @@ public class PacketAttachEmitter implements IMessage {
     private float scale;
     private int level;
     private int lifetime;
+    private boolean dynamic;
 
     private double motionX;
     private double motionY;
@@ -39,16 +40,16 @@ public class PacketAttachEmitter implements IMessage {
         //Mandatory Packet Constructor
     }
 
-    public PacketAttachEmitter(AxisAlignedBB aabb, double motionX, double motionY, double motionZ, int color, float scale, int level, int lifetime)
+    public PacketAttachEmitter(AxisAlignedBB aabb, double motionX, double motionY, double motionZ, int color, float scale, boolean dynamic, int level, int lifetime)
     {
-        this(aabb, color, scale, level, lifetime);
+        this(aabb, color, scale, dynamic, level, lifetime);
         this.hasMotion = true;
         this.motionX = motionX;
         this.motionY = motionY;
         this.motionZ = motionZ;
     }
 
-    public PacketAttachEmitter(AxisAlignedBB aabb, int color, float scale, int level, int lifetime)
+    public PacketAttachEmitter(AxisAlignedBB aabb, int color, float scale, boolean dynamic, int level, int lifetime)
     {
         x1 = aabb.minX;
         x2 = aabb.maxX;
@@ -59,6 +60,7 @@ public class PacketAttachEmitter implements IMessage {
         this.color = color;
         this.scale = scale;
         this.level = level;
+        this.dynamic = dynamic;
         this.lifetime = lifetime;
     }
 
@@ -72,6 +74,7 @@ public class PacketAttachEmitter implements IMessage {
         z2 = buf.readDouble();
         color = buf.readInt();
         scale = buf.readFloat();
+        dynamic = buf.readBoolean();
         level = buf.readInt();
         lifetime = buf.readInt();
 
@@ -94,6 +97,7 @@ public class PacketAttachEmitter implements IMessage {
         buf.writeDouble(z2);
         buf.writeInt(color);
         buf.writeFloat(scale);
+        buf.writeBoolean(dynamic);
         buf.writeInt(level);
         buf.writeInt(lifetime);
 
@@ -118,9 +122,9 @@ public class PacketAttachEmitter implements IMessage {
                 AxisAlignedBB box = new AxisAlignedBB(message.x1, message.y1, message.z1, message.x2, message.y2, message.z2);
                 ParticleOreEmitter particleOre;
                 if (message.hasMotion)
-                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.motionX, message.motionY, message.motionZ, message.lifetime, rgb[0], rgb[1], rgb[2], message.level);
+                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.motionX, message.motionY, message.motionZ, message.lifetime, rgb[0], rgb[1], rgb[2], message.dynamic, message.level);
                 else
-                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.lifetime, rgb[0], rgb[1], rgb[2], message.level);
+                    particleOre = new ParticleOreEmitter(minecraft.world, box, message.lifetime, rgb[0], rgb[1], rgb[2], message.dynamic, message.level);
 
                 minecraft.effectRenderer.addEffect(particleOre);
             });
