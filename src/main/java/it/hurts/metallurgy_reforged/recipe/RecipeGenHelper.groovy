@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe
@@ -72,6 +72,10 @@ class RecipeGenHelper {
                 subdir = "item/dust/"
                 break
 
+            case "bucket":
+                subdir = "item/compat/"
+                break
+
             default:
                 subdir = ""
                 break
@@ -83,6 +87,7 @@ class RecipeGenHelper {
         def findLeading = /(?m)^((\s{4})+)/
         def prettyObj = JsonOutput.prettyPrint(jsonObj).replaceAll(findLeading, shrinkSpaces)
         def file = new File(RecipeJsonGenerator.RECIPES_DIR_PATH + subdir + type + "_" + metal + ".json")
+        file.parentFile.mkdir()
         file.createNewFile()
         file.write(prettyObj)
     }
