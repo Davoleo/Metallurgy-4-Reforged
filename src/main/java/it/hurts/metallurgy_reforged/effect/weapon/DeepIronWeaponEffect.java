@@ -45,7 +45,7 @@ public class DeepIronWeaponEffect extends BaseMetallurgyEffect {
             if (entity.isInWater())
             {
                 event.setAmount(event.getAmount() + 6);
-                Utils.repeat(5, () -> spawnParticle(event.getEntityLiving(), 0.6F, 5));
+                Utils.repeat(5, () -> spawnParticle(event.getEntityLiving(), 0.6F, false, 5));
             }
         }
     }

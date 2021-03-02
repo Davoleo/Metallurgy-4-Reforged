@@ -49,7 +49,7 @@ public class BlackSteelWeaponEffect extends BaseMetallurgyEffect {
         {
             entity.world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.7F, 0.7F);
             for (int i = 0; i < 10; i++)
-                spawnParticle(entity, 3F, 9);
+                spawnParticle(entity, 3F, true, 9);
         }
     }
 }

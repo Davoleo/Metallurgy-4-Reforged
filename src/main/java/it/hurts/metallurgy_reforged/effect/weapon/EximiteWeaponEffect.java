@@ -47,9 +47,7 @@ public class EximiteWeaponEffect extends BaseMetallurgyEffect {
                 //constant 150% damage boost
                 event.setAmount(event.getAmount() * 1.5F);
                 for (int i = 0; i < 15; i++)
-                {
-                    spawnParticle(event.getEntityLiving(), 2F, 6);
-                }
+                    spawnParticle(event.getEntityLiving(), 2F, true, 6);
             }
         }
     }

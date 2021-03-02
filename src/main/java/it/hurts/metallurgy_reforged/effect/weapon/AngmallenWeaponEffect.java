@@ -56,7 +56,7 @@ public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
             if (hasArmor)
             {
                 event.setAmount(event.getAmount() * 1.75F);
-                Utils.repeat(10, () -> spawnParticle(event.getEntityLiving(), 1.5f, 9));
+                Utils.repeat(10, () -> spawnParticle(event.getEntityLiving(), 1.5f, true, 9));
             }
         }
     }

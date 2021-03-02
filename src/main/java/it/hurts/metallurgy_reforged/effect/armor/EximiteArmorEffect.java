@@ -51,7 +51,7 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
             EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ, 16, 16, e -> 1.0, player -> getLevel(player) < 1);
             shulker.setAttackTarget(newTarget);
 
-            Utils.repeat(20, () -> spawnParticle(shulker, 4F, 3));
+            Utils.repeat(20, () -> spawnParticle(shulker, 4F, false, 3));
         }
     }
 }

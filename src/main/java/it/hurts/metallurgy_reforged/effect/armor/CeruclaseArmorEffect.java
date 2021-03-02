@@ -69,7 +69,7 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
                     entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
                     entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
 
-                    spawnParticle(entity, 0.85F, 5);
+                    spawnParticle(entity, 0.85F, false, 5);
 
                     //Every second 50% chance to extinguish an entity that is on fire
                     if ((entity.getLastDamageSource() == DamageSource.IN_FIRE || entity.getLastDamageSource() == DamageSource.ON_FIRE) && armored.getRNG().nextBoolean())

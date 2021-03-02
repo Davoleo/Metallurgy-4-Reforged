@@ -79,7 +79,7 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
             data.setExtra("hits", 0);
 
             Utils.repeat(60,
-                    () -> spawnParticle(entity.world, entityPos, 4F, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D));
+                    () -> spawnParticle(entity.world, entityPos, 4F, true, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D));
         }
         else
         {

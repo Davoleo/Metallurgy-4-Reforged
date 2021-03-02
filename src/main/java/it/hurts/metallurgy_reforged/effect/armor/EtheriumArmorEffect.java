@@ -110,7 +110,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
                 collisions.forEach(aabb -> {
                     BlockPos pos = new BlockPos(aabb.minX, aabb.minY, aabb.minZ);
                     Utils.repeat(5,
-                            () -> spawnParticle(entity.world, pos, 0.75F, 0, 0, 0, 0)
+                            () -> spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0)
                     );
                 });
             }

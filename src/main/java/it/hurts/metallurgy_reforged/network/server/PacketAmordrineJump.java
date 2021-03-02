@@ -74,9 +74,9 @@ public class PacketAmordrineJump implements IMessage {
                     //todo reworked effect
                     //System.out.println(((Math.random() - 0.5) * 0.5));
                     return new PacketAttachEmitter(feetBox,
-                            0, -0.03D, 0,
-                            ModMetals.AMORDRINE.getStats().getColorHex(),
-                            1, 4 - currentJumps, 10);
+							0, -0.03D, 0,
+							ModMetals.AMORDRINE.getStats().getColorHex(),
+							1, false, 4 - currentJumps, 10);
 
                 }
 			}

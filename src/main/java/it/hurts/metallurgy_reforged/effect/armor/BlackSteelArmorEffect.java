@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.armor;
@@ -62,7 +62,7 @@ public class BlackSteelArmorEffect extends BaseMetallurgyEffect {
                 {
                     entity.world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.7F, 0.7F);
                     for (int i = 0; i < 10; i++)
-                        spawnParticle(entity, 3F, 9);
+                        spawnParticle(entity, 3F, true, 9);
                 }
             }
         }

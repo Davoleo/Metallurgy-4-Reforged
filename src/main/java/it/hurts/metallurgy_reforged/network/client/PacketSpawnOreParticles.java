@@ -104,7 +104,6 @@ public class PacketSpawnOreParticles implements IMessage {
 		@Override
 		public IMessage onMessage(PacketSpawnOreParticles message, MessageContext ctx)
 		{
-
 			Minecraft minecraft = Minecraft.getMinecraft();
 
 			minecraft.addScheduledTask(() -> {

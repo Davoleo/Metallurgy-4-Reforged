@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: AngmallenWeaponEffect
+ = Class: DesichalkosWeaponEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -52,7 +52,7 @@ public class DesichalkosWeaponEffect extends BaseMetallurgyEffect {
             e.setAbsorptionAmount(e.getAbsorptionAmount() - event.getAmount());
 
 
-            Utils.repeat(30, () -> spawnParticle(e, 2F, 9));
+            Utils.repeat(30, () -> spawnParticle(e, 2F, true, 9));
 
             event.setAmount(0.0F);
 

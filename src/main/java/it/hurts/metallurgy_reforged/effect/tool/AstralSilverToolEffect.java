@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
@@ -38,7 +38,7 @@ public class AstralSilverToolEffect extends BaseMetallurgyEffect {
         if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1) {
             event.setNewSpeed(event.getOriginalSpeed() * 2);
             for (int i = 0; i < 2; i++)
-                spawnParticle(event.getEntity().world, event.getPos(), 1F, Utils.random.nextInt(6), 0, 0, 0);
+                spawnParticle(event.getEntity().world, event.getPos(), 1F, true, Utils.random.nextInt(6), 0, 0, 0);
         }
     }
 }

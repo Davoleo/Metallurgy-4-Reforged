@@ -49,7 +49,7 @@ public class DamascusSteelWeaponEffect extends BaseMetallurgyEffect {
             //Set the dropped experience to be either (base * 2 + 2) or (base * 3 + 2)
             event.setDroppedExperience(event.getDroppedExperience() * 3 + 2);
 
-            Utils.repeat(6, () -> spawnParticle(event.getEntityLiving(), 2F, 9));
+            Utils.repeat(6, () -> spawnParticle(event.getEntityLiving(), 2F, true, 9));
         }
     }
 }

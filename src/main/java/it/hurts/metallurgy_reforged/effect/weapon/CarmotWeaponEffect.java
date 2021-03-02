@@ -75,14 +75,11 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
                 attacked.posX - 2, attacked.posY - 2, attacked.posZ - 2,
                 attacked.posX + 2, attacked.posY + 2, attacked.posZ + 2
         )).forEach(entity -> {
-
             if (entity != attacked)
             {
                 entity.attackEntityFrom(DamageSource.GENERIC, data.getExtraInt("amount"));
                 for (int i = 0; i < 5; i++)
-                {
-                    spawnParticle(entity, 1.5F, 3);
-                }
+                    spawnParticle(entity, 1.5F, true, 3);
             }
         });
     }

@@ -62,6 +62,7 @@ public class EtheriumWeaponEffect extends BaseMetallurgyEffect {
             }
             else
             {
+                // TODO: 02/03/2021 Fix Absorption hearts not being refilled when the effect is still active
                 if (!livingAttacker.isPotionActive(MobEffects.ABSORPTION))
                     livingAttacker.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 1200, 0));
             }
@@ -73,7 +74,7 @@ public class EtheriumWeaponEffect extends BaseMetallurgyEffect {
                 double r2 = -0.3 + Utils.random.nextFloat() * 0.5;
                 double r3 = -0.3 + Utils.random.nextFloat() * 0.5;
                 spawnParticle(attacker.world, targetVec.x + r1, targetVec.y + r2, targetVec.z + r3,
-                        motionVec.x * 0.2, motionVec.y * 0.2, motionVec.z * 0.2, 2F, 2);
+                        motionVec.x * 0.2, motionVec.y * 0.2, motionVec.z * 0.2, 2F, true, 2);
             });
         }
     }

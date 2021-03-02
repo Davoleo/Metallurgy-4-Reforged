@@ -51,7 +51,6 @@ public class ElectrumWeaponEffect extends BaseMetallurgyEffect {
     @Override
     public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
-
         ItemStack toolStack = playerIn.getHeldItem(handIn);
 
         if (worldIn.isRemote)
@@ -107,7 +106,7 @@ public class ElectrumWeaponEffect extends BaseMetallurgyEffect {
                 double unitX = targetToPlayer.x * i / (double) density;
                 double unitY = targetToPlayer.y * i / (double) density;
                 double unitZ = targetToPlayer.z * i / (double) density;
-                spawnParticle(playerIn.world, playerIn.posX + unitX, playerIn.posY + playerIn.getEyeHeight() + unitY, playerIn.posZ + unitZ, 1.5F, 3);
+                spawnParticle(playerIn.world, playerIn.posX + unitX, playerIn.posY + playerIn.getEyeHeight() + unitY, playerIn.posZ + unitZ, 1.5F, true, 3);
             }
 
             playerIn.getCooldownTracker().setCooldown(toolStack.getItem(), 120);

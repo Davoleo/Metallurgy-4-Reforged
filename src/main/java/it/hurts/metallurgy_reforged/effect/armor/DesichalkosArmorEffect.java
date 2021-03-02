@@ -60,7 +60,7 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
         else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < maxLevelLayers)
         {
             event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
-            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, 2));
+            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, 2));
 
             effectData.desichalkosAbsorbLevel += 1;
         }
@@ -78,7 +78,7 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
         {
             event.setCanceled(true);
 
-            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, effectData.desichalkosAbsorbLevel * 2));
+            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2));
             effectData.desichalkosAbsorbLevel -= 1;
 
             event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
