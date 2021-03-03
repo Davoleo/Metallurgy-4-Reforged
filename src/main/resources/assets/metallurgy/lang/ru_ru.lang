@@ -251,6 +251,7 @@ tile.metallurgy.striped_road_block.name=Полосатая дорога
 tile.metallurgy.charcoal_block.name=Блок древесного угля
 tile.metallurgy.bitumen_block.name=Блок асфальта
 tile.metallurgy.sulfur_block.name=Блок серы
+tile.metallurgy.ice_shield.name=Ледяной щит
 
 tile.metallurgy.bimetal_structure_block.name=Би-металлическая структура
 
@@ -779,57 +780,57 @@ item.metallurgy.zinc_nugget.name=Цинковый самородок
 effect.metallurgy.punch_effect_tired=§4Ты слишком устал! Перекуси чем-то сначала!
 
 #FluidBlocks
-tile.metallurgy.liquid_adamantine.name=Жидкий адаматит
-tile.metallurgy.liquid_alduorite.name=Жидкий альдуорит
-tile.metallurgy.liquid_amordrine.name=Жидкий амордрин
-tile.metallurgy.liquid_angmallen.name=Жидкий ангмаллен
-tile.metallurgy.liquid_astral_silver.name=Жидкое астральное серебро
-tile.metallurgy.liquid_atlarus.name=Жидкий атларус
-tile.metallurgy.liquid_black_steel.name=Жидкая черная сталь
-tile.metallurgy.liquid_brass.name=Жидкая латунь
-tile.metallurgy.liquid_bronze.name=Жидкая бронза
-tile.metallurgy.liquid_carmot.name=Жидкий кармот
-tile.metallurgy.liquid_celenegil.name=Жидкий целенгил
-tile.metallurgy.liquid_ceruclase.name=Жидкий церуклаз
-tile.metallurgy.liquid_copper.name=Жидкая медь
-tile.metallurgy.liquid_damascus_steel.name=Жидкая дамасская сталь
-tile.metallurgy.liquid_deep_iron.name=Жидкое глубинное железо
-tile.metallurgy.liquid_desichalkos.name=Жидкий дезичалк
-tile.metallurgy.liquid_electrum.name=Жидкий электрум
-tile.metallurgy.liquid_etherium.name=Жидкий этериум
-tile.metallurgy.liquid_eximite.name=Жидкий экзимит
-tile.metallurgy.liquid_haderoth.name=Жидкий хадерот
-tile.metallurgy.liquid_hepatizon.name=Жидкий гепатизон
-tile.metallurgy.liquid_ignatius.name=Жидкий игнатиус
-tile.metallurgy.liquid_infuscolium.name=Жидкий инфусколий
-tile.metallurgy.liquid_inolashite.name=Жидкий инолашит
-tile.metallurgy.liquid_kalendrite.name=Жидкий календрит
-tile.metallurgy.liquid_krik.name=Жидкий крик
-tile.metallurgy.liquid_lemurite.name=Жидкий лемурит
-tile.metallurgy.liquid_lutetium.name=Жидкий лютеций
-tile.metallurgy.liquid_manganese.name=Жидкий марганец
-tile.metallurgy.liquid_meutoite.name=Жидкий меутоит
-tile.metallurgy.liquid_midasium.name=Жидкий мидасий
-tile.metallurgy.liquid_mithril.name=Жидкий мифрил
-tile.metallurgy.liquid_orichalcum.name=Жидкий орихалк
-tile.metallurgy.liquid_osmium.name=Жидкий осмий
-tile.metallurgy.liquid_oureclase.name=Жидкий ореклаз
-tile.metallurgy.liquid_platinum.name=Жидкая платина
-tile.metallurgy.liquid_prometheum.name=Жидкий прометеум
-tile.metallurgy.liquid_quicksilver.name=Жидкая ртуть
-tile.metallurgy.liquid_rubracium.name=Жидкий рубракий
-tile.metallurgy.liquid_sanguinite.name=Жидкий сангвинит
-tile.metallurgy.liquid_shadow_iron.name=Жидкое теневое железо
-tile.metallurgy.liquid_shadow_steel.name=Жидкая теневая сталь
-tile.metallurgy.liquid_silver.name=Жидкое серебро
-tile.metallurgy.liquid_steel.name=Жидкая сталь
-tile.metallurgy.liquid_tar.name=Жидкий деготь
-tile.metallurgy.liquid_tartarite.name=Жидкий тартарит
-tile.metallurgy.liquid_thermite.name=Жидкий термит
-tile.metallurgy.liquid_tin.name=Жидкое олово
-tile.metallurgy.liquid_vulcanite.name=Жидкий вулканит
-tile.metallurgy.liquid_vyroxeres.name=Жидкий вироксерес
-tile.metallurgy.liquid_zinc.name=Жидкий цинк
+tile.metallurgy.molten_adamantine.name=Жидкий адаматит
+tile.metallurgy.molten_alduorite.name=Жидкий альдуорит
+tile.metallurgy.molten_amordrine.name=Жидкий амордрин
+tile.metallurgy.molten_angmallen.name=Жидкий ангмаллен
+tile.metallurgy.molten_astral_silver.name=Жидкое астральное серебро
+tile.metallurgy.molten_atlarus.name=Жидкий атларус
+tile.metallurgy.molten_black_steel.name=Жидкая черная сталь
+tile.metallurgy.molten_brass.name=Жидкая латунь
+tile.metallurgy.molten_bronze.name=Жидкая бронза
+tile.metallurgy.molten_carmot.name=Жидкий кармот
+tile.metallurgy.molten_celenegil.name=Жидкий целенгил
+tile.metallurgy.molten_ceruclase.name=Жидкий церуклаз
+tile.metallurgy.molten_copper.name=Жидкая медь
+tile.metallurgy.molten_damascus_steel.name=Жидкая дамасская сталь
+tile.metallurgy.molten_deep_iron.name=Жидкое глубинное железо
+tile.metallurgy.molten_desichalkos.name=Жидкий дезичалк
+tile.metallurgy.molten_electrum.name=Жидкий электрум
+tile.metallurgy.molten_etherium.name=Жидкий этериум
+tile.metallurgy.molten_eximite.name=Жидкий экзимит
+tile.metallurgy.molten_haderoth.name=Жидкий хадерот
+tile.metallurgy.molten_hepatizon.name=Жидкий гепатизон
+tile.metallurgy.molten_ignatius.name=Жидкий игнатиус
+tile.metallurgy.molten_infuscolium.name=Жидкий инфусколий
+tile.metallurgy.molten_inolashite.name=Жидкий инолашит
+tile.metallurgy.molten_kalendrite.name=Жидкий календрит
+tile.metallurgy.molten_krik.name=Жидкий крик
+tile.metallurgy.molten_lemurite.name=Жидкий лемурит
+tile.metallurgy.molten_lutetium.name=Жидкий лютеций
+tile.metallurgy.molten_manganese.name=Жидкий марганец
+tile.metallurgy.molten_meutoite.name=Жидкий меутоит
+tile.metallurgy.molten_midasium.name=Жидкий мидасий
+tile.metallurgy.molten_mithril.name=Жидкий мифрил
+tile.metallurgy.molten_orichalcum.name=Жидкий орихалк
+tile.metallurgy.molten_osmium.name=Жидкий осмий
+tile.metallurgy.molten_oureclase.name=Жидкий ореклаз
+tile.metallurgy.molten_platinum.name=Жидкая платина
+tile.metallurgy.molten_prometheum.name=Жидкий прометеум
+tile.metallurgy.molten_quicksilver.name=Жидкая ртуть
+tile.metallurgy.molten_rubracium.name=Жидкий рубракий
+tile.metallurgy.molten_sanguinite.name=Жидкий сангвинит
+tile.metallurgy.molten_shadow_iron.name=Жидкое теневое железо
+tile.metallurgy.molten_shadow_steel.name=Жидкая теневая сталь
+tile.metallurgy.molten_silver.name=Жидкое серебро
+tile.metallurgy.molten_steel.name=Жидкая сталь
+tile.metallurgy.molten_tar.name=Жидкий деготь
+tile.metallurgy.molten_tartarite.name=Жидкий тартарит
+tile.metallurgy.molten_thermite.name=Жидкий термит
+tile.metallurgy.molten_tin.name=Жидкое олово
+tile.metallurgy.molten_vulcanite.name=Жидкий вулканит
+tile.metallurgy.molten_vyroxeres.name=Жидкий вироксерес
+tile.metallurgy.molten_zinc.name=Жидкий цинк
 
 #Fluids
 fluid.adamantine=Жидкий адаматит
@@ -883,8 +884,8 @@ fluid.vyroxeres=Жидкий вироксерес
 fluid.zinc=Жидкий цинк
 
 #Fluids (Special)
-fluid.Жидкий_thermite=Жидкий Термит
-fluid.Жидкий_tar=Жидкий Деготь
+fluid.molten_thermite=Жидкий Термит
+fluid.molten_tar=Жидкий Деготь
 
 #Ingots
 item.metallurgy.adamantine_ingot.name=Слиток адаматита
@@ -950,6 +951,7 @@ item.metallurgy.ceruclase_shield.name=Церуклазевый щит
 item.metallurgy.zinc_buckler.name=Цинковый баклер
 item.metallurgy.vulcanite_buckler.name=Вулканитовый баклер
 item.metallurgy.orichalcum_buckler.name=Орихалковый баклер
+item.metallurgy.electrum_magnet.name=Электрумовый магнит
 
 #Items
 item.metallurgy.tar.name=Деготь
@@ -1300,6 +1302,12 @@ tooltip.metallurgy.potash_fertilizer=§6Искуственный эффект к
 tooltip.metallurgy.phosphorus_lamp=§7Отрицает появление монстров в зоне 16х8х16 вокруг себя, немного светится
 tooltip.metallurgy.thermite=§cРаботает как топливо аналогичное углю (наилучше работает с машинами металлургии - 200% эффективности!) [проверьте JEI для подробной информации]
 tooltip.metallurgy.clear_detector_warning=§4Внимание: это очистит все активные материалы в детекторе руды
+tooltip.metallurgy.etherium_goggles=§4Носите их в слоте шлема чтобы видеть блоки связанные с редстоуном сквозь стены
+tooltip.metallurgy.electrum_magnet=§eПритягивает предметы на земле(имеет 3 режима)
+tooltip.metallurgy.electrum_magnet_mode=§fРежим:
+tooltip.metallurgy.electrum_magnet_disabled=§7Выключен
+tooltip.metallurgy.electrum_magnet_metal_only=§eТолько металлы
+tooltip.metallurgy.electrum_magnet_enabled=§fВключен
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( } {{cmon think of something better Davoleo D:<(ru_transl)}} ]
 #Axes
