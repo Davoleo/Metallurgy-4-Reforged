@@ -73,6 +73,7 @@ class RecipeGenHelper {
                 break
 
             case "bucket":
+            case "midasium_to_gold":
                 subdir = "item/compat/"
                 break
 

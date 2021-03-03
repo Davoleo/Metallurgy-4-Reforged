@@ -578,8 +578,27 @@ class RecipeJsonGenerator {
                 ]
         ]
 
+        def midasiumToGold = [
+                type       : "forge:ore_shapeless",
+                ingredients: [
+                        [
+                                type: "forge:ore_dict",
+                                ore : "dustMidasium"
+                        ],
+                        [
+                                type: "forge:ore_dict",
+                                ore : "dust$pascalMetal"
+                        ]
+                ],
+                result     : [
+                        item : "metallurgy:gold_dust",
+                        count: 2
+                ]
+        ]
+
         RecipeGenHelper.writeJson("ingot_shapeless", metal, ingotObj)
         RecipeGenHelper.writeJson("nugget_shapeless", metal, nuggetObj)
+        RecipeGenHelper.writeJson("midasium_to_gold", metal, midasiumToGold)
     }
 
     private static void generateAlloyRecipes(List<RecipeGenHelper.Stack> alloy) {
