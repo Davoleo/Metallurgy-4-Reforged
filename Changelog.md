@@ -1,8 +1,14 @@
+### 1.2.5
+
+- Vanilla Buckets can be now made of any metal that you can also use to make tools ([#300](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/300))
+- Fix Crash (NPE) when using Desichalkos Sword Effect and Malisis Core is installed ([#311](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/311))
+- Metal dusts can now be paired with Midasium dust in a crafting table to create Gold ([#300](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/300))
+- Updates and Fixes to Russian Translation ([#310](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/310))
+
 ### 1.2.4
 
 - Metal Detector now detects oredicted variants of Metallurgy ores
-- Fix crash and buggy enemies AI in multiplayer when using Lemurite
-  Shield ([#307](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/307))
+- Fix crash and buggy enemies AI in multiplayer when using Lemurite Shield ([#307](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/307))
 - Fixed Ignatius Pickaxe effect (it now drops nuggets correctly)
 - Fixed Ignatius Shovel and Axe effect:
 	- Fixed buggy spawning of entity items that glitched inside blocks
@@ -37,8 +43,7 @@
 
 - :sparkles: Mob now have a chance to spawn with random Metallurgy equipment ([#284](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/284))
 - :dart: Atlarus and Vulcanite Armor effects now works on mobs
-- :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base
-  blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
+- :sparkles: You can now use Metallurgy Metal blocks of metals that have an ore harvest level greater than 1 as base blocks for Beacon Structures ([#294](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/294))
 - :sparkles: NEW GADGET - Brass Knuckles: Really Fast Attack speed and low damage level ([#267](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/267))
 - :bento: Add Localized name and recipe to Etherium Goggles
 - :balance_scale: Reworked Decorative metal blocks recipes to be more balanced (buff) and to avoid recipe conflicts with vanilla

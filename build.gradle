@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 apply plugin: 'maven-publish'
 
-version = "1.2.4"
+version = "${mod_version}"
 group = "it.hurts.metallurgy_reforged"
 archivesBaseName = "Metallurgy-4-Reforged"
 
@@ -21,9 +21,12 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2847"
+    version = "${minecraft_version}-${forge_version}"
     runDir = "run"
 	mappings = "snapshot_20180814"
+
+    //replace "@VERSION@", project.version
+    //replaceIn "Metallurgy.java"
 }
 
 repositories {
