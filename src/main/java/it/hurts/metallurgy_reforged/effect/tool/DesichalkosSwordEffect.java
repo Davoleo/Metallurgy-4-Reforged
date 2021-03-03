@@ -75,7 +75,7 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
 				RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos,
 						false, true, true);
 
-				if (result != null)
+				if (result != null && result.typeOfHit != RayTraceResult.Type.MISS)
 				{
 					BlockPos pos = result.getBlockPos();
 
