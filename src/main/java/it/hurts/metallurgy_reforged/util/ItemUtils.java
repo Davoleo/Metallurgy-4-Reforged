@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
@@ -41,7 +41,6 @@ import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ItemUtils {
 
@@ -87,18 +86,20 @@ public class ItemUtils {
     {
         if (!effects.isEmpty())
         {
-            AtomicBoolean anyEnabled = new AtomicBoolean(false);
-            effects.forEach(effect -> {
+            boolean allDisabled = effects.stream().allMatch(effect -> {
                 if (effect.isEnabled())
                 {
-                    anyEnabled.set(true);
                     tooltip.add(effect.getTooltip().getLeft());
                     if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                         tooltip.add(effect.getTooltip().getRight());
+
+                    return false;
                 }
+
+                return true;
             });
 
-            if (anyEnabled.get() && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+            if (!allDisabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                 tooltip.add(Utils.localize("tooltip.metallurgy.press_ctrl"));
         }
     }
