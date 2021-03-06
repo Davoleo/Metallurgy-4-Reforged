@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
@@ -81,12 +81,12 @@ public abstract class SpawnHandler {
         {
             GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText())).setColor(TextFormatting.BLUE);
 
-            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
+            event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.1")));
 
-            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
+            event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.3")));
             event.player.sendMessage(GITHUB_REPO);
 
-            event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
+            event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.4")));
         }
     }
 

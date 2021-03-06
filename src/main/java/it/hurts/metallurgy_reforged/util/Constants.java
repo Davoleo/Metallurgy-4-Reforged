@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
@@ -32,11 +32,11 @@ public class Constants {
     public static final String METAL_GOLD = "gold";
 
     //Localized
-    public static final String BITUMEN = Utils.localize("tooltip.metallurgy.bitumen");
-    public static final String GAUNTLET_EFFECT_DISABLED = Utils.localize("tooltip.metallurgy.gauntlet_effect_disabled");
-    public static final String POTASH_FERTILIZER = Utils.localize("tooltip.metallurgy.potash_fertilizer");
-    public static final String PHOSPHORUS_LAMP = Utils.localize("tooltip.metallurgy.phosphorus_lamp");
-    public static final String THERMITE_DUST = Utils.localize("tooltip.metallurgy.thermite");
+    public static final String BITUMEN = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.bitumen");
+    public static final String GAUNTLET_EFFECT_DISABLED = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.gauntlet_effect_disabled");
+    public static final String POTASH_FERTILIZER = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.potash_fertilizer");
+    public static final String PHOSPHORUS_LAMP = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.phosphorus_lamp");
+    public static final String THERMITE_DUST = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.thermite");
 
     //Enchantments
     public static final Enchantment[] GAUNTLET_ENCHANTMENTS = {

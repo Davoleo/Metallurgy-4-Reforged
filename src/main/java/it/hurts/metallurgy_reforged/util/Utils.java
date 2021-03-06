@@ -115,9 +115,11 @@ public class Utils {
         return maxPercent - (light * maxPercent / 14F);
     }
 
-    public static String localize(String unlocalized)
+    public static String localizeEscapingCustomSequences(String unlocalized)
     {
-        return new TextComponentTranslation(unlocalized).getFormattedText().replace("<PC>", "%");
+        String translation = new TextComponentTranslation(unlocalized).getFormattedText();
+        translation = translation.replace("<PC>", "%").replace("<NL>", "\n");
+        return translation;
     }
 
     //CULO, CULO CUULO, CULO, CULO CULO CULO
