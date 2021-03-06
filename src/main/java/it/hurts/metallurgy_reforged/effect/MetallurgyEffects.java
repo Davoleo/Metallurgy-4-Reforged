@@ -155,7 +155,9 @@ public class MetallurgyEffects {
     public static final EximiteWeaponEffect eximiteWeaponEffect = new EximiteWeaponEffect();
 
     //Haderoth Armor
-    public static final BaseMetallurgyEffect haderothEffect = new HaderothArmorEffect();
+    public static final HaderothArmorEffect haderothArmorEffect = new HaderothArmorEffect();
+    //Haderoth Weapon
+    public static final HaderothWeaponEffect haderothWeaponEffect = new HaderothWeaponEffect();
 
     //Ignatius Tool (Smelt Harvested Items)
     public static final BaseMetallurgyEffect ignatiusToolEffect = new IgnatiusToolEffect();
