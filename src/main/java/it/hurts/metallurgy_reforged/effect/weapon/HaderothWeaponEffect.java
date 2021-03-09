@@ -27,8 +27,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static it.hurts.metallurgy_reforged.Metallurgy.logger;
-
 public class HaderothWeaponEffect extends BaseMetallurgyEffect {
 
     public HaderothWeaponEffect()
@@ -69,7 +67,7 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
                 }
             }
 
-            logger.info("Entity Type: {} | Kill Count: {}", compound.getString("killed_type"), compound.getInteger("kill_count"));
+            //logger.info("Entity Type: {} | Kill Count: {}", compound.getString("killed_type"), compound.getInteger("kill_count"));
             toolStack.setTagCompound(compound);
         }
     }
