@@ -11,6 +11,8 @@ package it.hurts.metallurgy_reforged.util;
 
 import net.minecraft.nbt.NBTTagCompound;
 
+import javax.annotation.Nonnull;
+
 public class NBTUtils {
 
     /**
@@ -20,7 +22,7 @@ public class NBTUtils {
      * @param host      the host tag that will be injected with the other compound
      * @param injected  the compound that will be injected
      */
-    public static void injectCompound(String prefixKey, NBTTagCompound host, NBTTagCompound injected)
+    public static void injectCompound(String prefixKey, @Nonnull NBTTagCompound host, @Nonnull NBTTagCompound injected)
     {
         injected.getKeySet().forEach(key -> host.setTag(prefixKey + key, injected.getTag(key)));
     }

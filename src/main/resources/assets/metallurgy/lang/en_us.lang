@@ -1312,6 +1312,7 @@ tooltip.metallurgy.effect.eximite_armor.name=End Domestic
 tooltip.metallurgy.effect.eximite_weapon.name=Outworlder
 tooltip.metallurgy.effect.haderoth_armor.name=Adaptability
 tooltip.metallurgy.effect.haderoth_weapon.name=Apex
+tooltip.metallurgy.effect.haderoth_all.name=Metamorph
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
 #Effect Descriptions
@@ -1356,7 +1357,7 @@ tooltip.metallurgy.effect.etherium_armor.desc=Allows the player to clip through 
 tooltip.metallurgy.effect.etherium_weapon.desc=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn’t stack).
 tooltip.metallurgy.effect.eximite_armor.desc=Shulkers become neutral, but you're not immune to the effect of lingering bullets.
 tooltip.metallurgy.effect.eximite_weapon.desc=Grants bonus damage and a looting effect to mobs in the End.
-tooltip.metallurgy.effect.haderoth_armor.desc=Each armor piece gives has a different: <NL>helmet: immunity to hunger effect, <NL>chestplate: fire resistence, <NL>leggings: immunity to slowness effect, <NL>boots: immunity to levitation effect
+tooltip.metallurgy.effect.haderoth_armor.desc=ONLY ACTIVE AFTER THE ARMOR IS REBORN<NL> Each armor piece gives has a different: <NL>helmet: immunity to hunger effect, <NL>chestplate: fire resistence, <NL>leggings: immunity to slowness effect, <NL>boots: immunity to levitation effect
 tooltip.metallurgy.effect.haderoth_weapon.desc=Killing the same mob over and over again grants bonus damage, but killing a different one resets it
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 

@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect;
 
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
+import it.hurts.metallurgy_reforged.effect.all.HaderothEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
@@ -52,7 +53,7 @@ public class MetallurgyEffects {
                 MetallurgyEffects.effects.stream()
                         .filter(eff -> eff.getCategory() == EnumEffectCategory.ARMOR || eff.getCategory() == EnumEffectCategory.ALL)
                         .filter(eff -> eff.metal.toString().equals(metalStats.getName()))
-                        .forEach(armor::setEffect);
+                        .forEach(armor::addEffect);
             }
         }
     }
@@ -158,6 +159,8 @@ public class MetallurgyEffects {
     public static final HaderothArmorEffect haderothArmorEffect = new HaderothArmorEffect();
     //Haderoth Weapon
     public static final HaderothWeaponEffect haderothWeaponEffect = new HaderothWeaponEffect();
+    //Haderoth
+    public static final HaderothEffect haderothEffect = new HaderothEffect();
 
     //Ignatius Tool (Smelt Harvested Items)
     public static final BaseMetallurgyEffect ignatiusToolEffect = new IgnatiusToolEffect();

@@ -46,7 +46,7 @@ import java.util.Set;
 
 public class ItemAxeBase extends ItemAxe implements IToolEffect {
 
-    private Set<BaseMetallurgyEffect> effects = new HashSet<>();
+    private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
     private Enchantment enchantment = null;
     private int enchantmentLevel = -1;
 

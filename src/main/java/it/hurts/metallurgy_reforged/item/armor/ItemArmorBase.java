@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.armor;
@@ -28,6 +28,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -41,7 +42,7 @@ import java.util.Set;
 
 public class ItemArmorBase extends ItemArmor {
 
-    private Set<BaseMetallurgyEffect> effects = new HashSet<>();
+    private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
     private Enchantment enchantment;
     private int enchantmentLevel;
 
@@ -54,7 +55,7 @@ public class ItemArmorBase extends ItemArmor {
         this.metalStats = metalStats;
     }
 
-    public void setEffect(BaseMetallurgyEffect effect)
+    public void addEffect(BaseMetallurgyEffect effect)
     {
         this.effects.add(effect);
     }
@@ -78,6 +79,20 @@ public class ItemArmorBase extends ItemArmor {
             return new ItemStack(metal.getIngot());
         else
             return ItemStack.EMPTY;
+    }
+
+    @Override
+    public int getMaxDamage(@Nonnull ItemStack stack)
+    {
+        NBTTagCompound compound = stack.getTagCompound();
+
+        if (compound != null && compound.hasKey("durability_boost"))
+        {
+            float dBoost = compound.getFloat("durability_boost");
+            return (int) (dBoost * super.getMaxDamage(stack));
+        }
+
+        return super.getMaxDamage(stack);
     }
 
     @SideOnly(Side.CLIENT)

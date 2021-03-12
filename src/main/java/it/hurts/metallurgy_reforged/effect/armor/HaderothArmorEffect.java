@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -45,7 +46,8 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
         {
             if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
             {
-                if (entity.getItemStackFromSlot(slot).getItem() == metal.getArmorPiece(slot))
+                final ItemStack stack = entity.getItemStackFromSlot(slot);
+                if (stack.getItem() == metal.getArmorPiece(slot) && stack.getTagCompound() != null && stack.getTagCompound().hasKey("reborn"))
                 {
                     switch (slot)
                     {
