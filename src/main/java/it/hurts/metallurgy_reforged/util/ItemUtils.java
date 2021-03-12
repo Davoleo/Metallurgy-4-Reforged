@@ -86,20 +86,21 @@ public class ItemUtils {
     {
         if (!effects.isEmpty())
         {
-            boolean allDisabled = effects.stream().allMatch(effect -> {
+            boolean anyEnabled = false;
+
+            for (BaseMetallurgyEffect effect : effects)
+            {
                 if (effect.isEnabled())
                 {
+                    //System.out.println(effect.getTooltip().getLeft());
                     tooltip.add(effect.getTooltip().getLeft());
                     if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                         tooltip.add(effect.getTooltip().getRight());
-
-                    return false;
+                    anyEnabled = true;
                 }
+            }
 
-                return true;
-            });
-
-            if (!allDisabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+            if (anyEnabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
                 tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_ctrl"));
         }
     }
