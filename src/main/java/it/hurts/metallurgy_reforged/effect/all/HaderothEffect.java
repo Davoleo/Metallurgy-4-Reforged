@@ -15,7 +15,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.NBTUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -25,22 +25,22 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.UseHoeEvent;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
-import java.util.function.Supplier;
 
 public class HaderothEffect extends BaseMetallurgyEffect {
 
-    private final Supplier<AttributeModifier> ARMOR_MODIFIER_SUPPLIER = () -> new AttributeModifier("Haderoth Armor Buff", 9F, 0);
-    private final Supplier<AttributeModifier> ARMOR_TOUGHNESS_MODIFIER_SUPPLIER = () -> new AttributeModifier("Haderoth Armor Buff", 7F, 0);
+    private final AttributeModifier PROTECTION_MODIFIER = new AttributeModifier("Haderoth Armor Protection Buff", 9F, 0);
+    private final AttributeModifier TOUGHNESS_MODIFIER = new AttributeModifier("Haderoth Armor Toughness Buff", 7F, 0);
+    private final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier("Haderoth Weapon Attack Buff", 9F, 0);
+    private final AttributeModifier AXE_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth attack speed restore", 1.1F, 0);
+    private final AttributeModifier SWORD_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth Attack speed Restore", 1.6F, 0);
 
     private final NBTTagCompound rebornCompound = new NBTTagCompound();
 
@@ -50,6 +50,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
         rebornCompound.setBoolean("reborn", true);
         //Increases the maxdamage by 200
         rebornCompound.setFloat("durability_boost", 10F);
+        rebornCompound.setFloat("attack_boost", 2F);
     }
 
     @Nonnull
@@ -67,56 +68,82 @@ public class HaderothEffect extends BaseMetallurgyEffect {
         return Math.max(armor / 4F, hand);
     }
 
-    private void applyContinuousMetamorphosis(Event event)
+    @SubscribeEvent
+    public void applyItemMetamorphosis(PlayerDestroyItemEvent event)
     {
-        ItemStack tool = null;
-        EntityPlayer player = null;
-
-        if (event instanceof BlockEvent.BreakEvent)
+        ItemStack stack = event.getOriginal();
+        if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
         {
-            tool = ((BlockEvent.BreakEvent) event).getPlayer().getHeldItemMainhand();
-            player = ((BlockEvent.BreakEvent) event).getPlayer();
-        }
-        else if (event instanceof PlayerEvent)
-        {
-            tool = ((PlayerEvent) event).getEntityLiving().getHeldItemMainhand();
-            player = ((PlayerEvent) event).getEntityPlayer();
-        }
+            if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn"))
+                return;
 
-        if (tool == null || getLevel(player) < 5)
-            return;
+            //Copy the old stack
+            ItemStack newItem = stack.copy();
 
-        if (Utils.random.nextInt(25) == 0)
-        {
-            tool.getItem().setMaxDamage(tool.getMaxDamage() + 3);
+            //Set the reborn compound (increase durability)
+            if (newItem.getTagCompound() == null)
+                newItem.setTagCompound(rebornCompound);
+            else
+                NBTUtils.injectCompound("", newItem.getTagCompound(), rebornCompound);
 
+            //Restore full stack durability
+            newItem.setItemDamage(0);
+
+            //Apply Attack damage buff if the item is part of the WEAPON category
+            //if (stack.getItem().getClass() == EnumTools.AXE.getToolClass() || stack.getItem().getClass() == EnumTools.SWORD.getToolClass()) {
+            //    newItem.addAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), ATTACK_DAMAGE_MODIFIER, EntityEquipmentSlot.MAINHAND);
+            //    //Should restore the original attack speed
+            //    newItem.addAttributeModifier(
+            //            SharedMonsterAttributes.ATTACK_SPEED.getName(),
+            //            stack.getItem() instanceof ItemAxeBase ? AXE_ATTACK_SPEED_MODIFIER : SWORD_ATTACK_SPEED_MODIFIER,
+            //            EntityEquipmentSlot.MAINHAND);
+            //    newItem.getAttributeModifiers(EntityEquipmentSlot.MAINHAND).clear();
+            //}
+
+            //Set new tool to the main hand (the hand should be empty or containing the old tool in theory)
+            event.getEntityPlayer().setHeldItem(EnumHand.MAIN_HAND, newItem);
+
+            event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().getPosition(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.75F, 1.25F);
         }
     }
 
     @SubscribeEvent
-    public void applyHoeMetamorphosis(UseHoeEvent event)
+    public void applyWeaponAttackBoost(LivingHurtEvent event)
     {
+        Entity source = event.getSource().getImmediateSource();
+        if (source instanceof EntityLivingBase)
+        {
+            EntityLivingBase attacker = ((EntityLivingBase) source);
+            if (getLevel(attacker) < 5)
+                return;
 
+            NBTTagCompound weaponData = attacker.getHeldItemMainhand().getTagCompound();
+            if (weaponData != null && weaponData.getBoolean("reborn"))
+            {
+                event.setAmount(event.getAmount() + weaponData.getFloat("attack_boost"));
+            }
+        }
     }
 
     @SubscribeEvent
-    public void applyToolMetamorphosis(BlockEvent.BreakEvent event)
+    public void applyToolEfficiencyBoost(PlayerEvent.BreakSpeed event)
     {
+        EntityPlayer player = event.getEntityPlayer();
 
-    }
+        if (getLevel(player) == 5)
+        {
+            ItemStack toolStack = player.getHeldItemMainhand();
 
-    @SubscribeEvent
-    public void applyWeaponMetamorphosis(AttackEntityEvent event)
-    {
-
+            if (toolStack.getTagCompound() != null && toolStack.getTagCompound().getBoolean("reborn"))
+                event.setNewSpeed(event.getOriginalSpeed() * 2F);
+        }
     }
 
     @SubscribeEvent
     public void applyArmorMetamorphosis(LivingHurtEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
-        float level = getLevel(entity);
-        if (level == 0)
+        if (!canBeApplied(entity))
             return;
 
         //The damage applied is computed by dividing the pure damage amount by 4
@@ -126,7 +153,6 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 
         for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
         {
-
             if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
             {
                 ItemStack stack = entity.getItemStackFromSlot(slot);
@@ -142,8 +168,8 @@ public class HaderothEffect extends BaseMetallurgyEffect {
                     ItemStack newPiece = stack.copy();
 
                     //Apply armor buff I guess
-                    newPiece.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), ARMOR_MODIFIER_SUPPLIER.get(), slot);
-                    newPiece.addAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), ARMOR_TOUGHNESS_MODIFIER_SUPPLIER.get(), slot);
+                    newPiece.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), PROTECTION_MODIFIER, slot);
+                    newPiece.addAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), TOUGHNESS_MODIFIER, slot);
 
                     if (newPiece.getTagCompound() == null)
                         newPiece.setTagCompound(rebornCompound);

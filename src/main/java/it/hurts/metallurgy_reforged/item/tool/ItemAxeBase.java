@@ -30,6 +30,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -75,6 +76,20 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
     public void addEffect(BaseMetallurgyEffect effect)
     {
         this.effects.add(effect);
+    }
+
+    @Override
+    public int getMaxDamage(@Nonnull ItemStack stack)
+    {
+        NBTTagCompound compound = stack.getTagCompound();
+
+        if (compound != null && compound.hasKey("durability_boost"))
+        {
+            float dBoost = compound.getFloat("durability_boost");
+            return (int) (dBoost * super.getMaxDamage(stack));
+        }
+
+        return super.getMaxDamage(stack);
     }
 
     public ItemAxeBase setEnchanted(Enchantment enchantment, int enchantmentLevel)

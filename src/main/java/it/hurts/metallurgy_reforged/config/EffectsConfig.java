@@ -14,7 +14,7 @@ import net.minecraftforge.common.config.Config;
 
 //Variables are accessed through reflections most of the times
 @SuppressWarnings("unused")
-@Config.LangKey("config.metallurgy.category.armor_effects")
+@Config.LangKey("config.metallurgy.category.effects")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_roster")
 @Config.RequiresMcRestart
 public class EffectsConfig {
@@ -165,7 +165,7 @@ public class EffectsConfig {
     @Config.Comment("Killing the same mob over and over again grants bonus damage, but killing a different one resets it")
     public static boolean haderothEffectWeapon = true;
     @Config.Name("Metamorph")
-    @Config.Comment("")
+    @Config.Comment("Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; \n Armor pieces will be reborn with higher durability and protection and toughness values (adaptability will be enabled as well); \n All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.")
     public static boolean haderothEffectAll = true;
 
     @Config.Name("Weight-Controlled Flight")

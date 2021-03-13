@@ -626,7 +626,7 @@ tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
 tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
 
 #Config
-config.metallurgy.category.armor_effects=Armor Effects
+config.metallurgy.category.armor_effects=Effects
 config.metallurgy.category.general=General
 config.metallurgy.category.registry=Registry
 config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
@@ -1359,6 +1359,7 @@ tooltip.metallurgy.effect.eximite_armor.desc=Shulkers become neutral, but you're
 tooltip.metallurgy.effect.eximite_weapon.desc=Grants bonus damage and a looting effect to mobs in the End.
 tooltip.metallurgy.effect.haderoth_armor.desc=ONLY ACTIVE AFTER THE ARMOR IS REBORN<NL> Each armor piece gives has a different: <NL>helmet: immunity to hunger effect, <NL>chestplate: fire resistence, <NL>leggings: immunity to slowness effect, <NL>boots: immunity to levitation effect
 tooltip.metallurgy.effect.haderoth_weapon.desc=Killing the same mob over and over again grants bonus damage, but killing a different one resets it
+tooltip.metallurgy.effect.haderoth_all.desc=Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; <NL> Armor pieces will be reborn with higher durability and protection and toughness values (adaptability will be enabled as well); <NL> All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
