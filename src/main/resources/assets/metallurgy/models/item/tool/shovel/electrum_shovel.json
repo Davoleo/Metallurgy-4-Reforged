@@ -8,7 +8,7 @@
       "predicate": {
         "active": 1
       },
-      "model": "metallurgy:item/tool/electrum_shovel_active"
+      "model": "metallurgy:item/tool/shovel/electrum_shovel_active"
     }
   ]
 }

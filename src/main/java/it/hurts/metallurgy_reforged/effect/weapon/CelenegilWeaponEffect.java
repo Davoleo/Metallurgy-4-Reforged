@@ -34,7 +34,7 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
     {
         super(ModMetals.CELENEGIL);
         IItemPropertyGetter condition =
-                (stack, worldIn, entityIn) -> stack.getTagCompound() != null && stack.getTagCompound().getBoolean("active") ? 1F : 0F;
+                (stack, worldIn, entityIn) -> stack.getTagCompound() != null && stack.getTagCompound().getBoolean("glory_seeker") ? 1F : 0F;
         setupModelOverrides(condition);
     }
 

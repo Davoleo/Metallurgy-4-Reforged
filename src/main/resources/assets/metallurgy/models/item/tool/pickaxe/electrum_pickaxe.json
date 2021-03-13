@@ -8,7 +8,7 @@
       "predicate": {
         "active": 1
       },
-      "model": "metallurgy:item/tool/electrum_pickaxe_active"
+      "model": "metallurgy:item/tool/pickaxe/electrum_pickaxe_active"
     }
   ]
 }
