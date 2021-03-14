@@ -13,9 +13,8 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
-import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -134,20 +133,13 @@ public class ItemUtils {
      *
      * @param metal the metal the item could be made of
      * @param item  the item to check
-     *              TODO Implement the other metal items
      */
     public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item)
     {
-
-        if (item instanceof ItemArmorBase)
+        if (item instanceof IMetalItem)
         {
-            ItemArmorBase armor = ((ItemArmorBase) item);
+            IMetalItem armor = ((IMetalItem) item);
             return armor.getMetalStats().getName().equals(metal.toString());
-        }
-        else if (item instanceof IToolEffect)
-        {
-            IToolEffect tool = ((IToolEffect) item);
-            return tool.getMetalStats().getName().equals(metal.toString());
         }
 
         return false;
@@ -173,16 +165,17 @@ public class ItemUtils {
      */
     public static Metal getMetalFromItem(Item item)
     {
-        if (item instanceof ItemMetal)
+        if (item instanceof IMetalItem)
         {
-            ItemMetal metalItem = ((ItemMetal) item);
+            IMetalItem metalItem = ((IMetalItem) item);
             return ModMetals.metalMap.get(metalItem.getMetalStats().getName());
         }
 
         if (item instanceof ItemBlock)
-        {
             return BlockUtils.getMetalFromBlock(((ItemBlock) item).getBlock());
-        }
+
+        if (item instanceof ItemArmorBase)
+            return ModMetals.metalMap.get(((ItemArmorBase) item).getMetalStats().getName());
 
         return null;
     }
