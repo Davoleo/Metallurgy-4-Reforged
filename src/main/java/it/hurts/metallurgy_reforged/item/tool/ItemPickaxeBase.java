@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -87,6 +88,17 @@ public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
         }
 
         return super.getMaxDamage(stack);
+    }
+
+    @Override
+    public int getHarvestLevel(ItemStack stack, @Nonnull String toolClass, @Nullable EntityPlayer player, @Nullable IBlockState blockState)
+    {
+        NBTTagCompound data = stack.getTagCompound();
+
+        if (data != null && data.hasKey("harvest_boost"))
+            return super.getHarvestLevel(stack, toolClass, player, blockState) + data.getInteger("harvest_boost");
+
+        return super.getHarvestLevel(stack, toolClass, player, blockState);
     }
 
     public void setEnchanted(Enchantment enchantment, int enchantmentLevel)

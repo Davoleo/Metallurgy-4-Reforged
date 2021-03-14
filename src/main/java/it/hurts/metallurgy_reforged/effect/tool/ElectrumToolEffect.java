@@ -70,9 +70,7 @@ public class ElectrumToolEffect extends BaseMetallurgyEffect {
             if (toolName.contains(toolClasses[i].getName()))
             {
                 //switch between increased / regular harvest level
-                final int newHarvestLevel = metal.getStats().getToolStats().getHarvestLevel() + (newState ? 1 : 0);
-                //FIXME : Can be exploited
-                toolStack.getItem().setHarvestLevel(toolClasses[i].getName(), newHarvestLevel);
+                toolData.setInteger("harvest_boost", newState ? 1 : 0);
             }
         }
 

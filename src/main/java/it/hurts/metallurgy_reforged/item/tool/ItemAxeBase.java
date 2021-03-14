@@ -92,6 +92,17 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
         return super.getMaxDamage(stack);
     }
 
+    @Override
+    public int getHarvestLevel(ItemStack stack, @Nonnull String toolClass, @Nullable EntityPlayer player, @Nullable IBlockState blockState)
+    {
+        NBTTagCompound data = stack.getTagCompound();
+
+        if (data != null && data.hasKey("harvest_boost"))
+            return super.getHarvestLevel(stack, toolClass, player, blockState) + data.getInteger("harvest_boost");
+
+        return super.getHarvestLevel(stack, toolClass, player, blockState);
+    }
+
     public ItemAxeBase setEnchanted(Enchantment enchantment, int enchantmentLevel)
     {
         this.enchantment = enchantment;
