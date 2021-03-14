@@ -42,15 +42,18 @@ public class HaderothEffect extends BaseMetallurgyEffect {
     private final AttributeModifier AXE_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth attack speed restore", 1.1F, 0);
     private final AttributeModifier SWORD_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth Attack speed Restore", 1.6F, 0);
 
-    private final NBTTagCompound rebornCompound = new NBTTagCompound();
+    private final NBTTagCompound rebornCompound;
 
     public HaderothEffect()
     {
         super(ModMetals.HADEROTH);
+        rebornCompound = new NBTTagCompound();
         rebornCompound.setBoolean("reborn", true);
         //Increases the maxdamage by 200
         rebornCompound.setFloat("durability_boost", 10F);
         rebornCompound.setFloat("attack_boost", 2F);
+        // TODO: 14/03/2021 Maybe...?
+        //setupModelOverrides((stack, worldIn, entityIn) -> stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn") ? 1F : 0F);
     }
 
     @Nonnull

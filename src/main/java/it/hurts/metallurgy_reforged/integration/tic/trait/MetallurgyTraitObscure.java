@@ -40,8 +40,7 @@ public class MetallurgyTraitObscure extends AbstractTrait implements IMetallurgy
     public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective)
     {
 
-        //TODO Work on this one Davoleo
-        //ItemHandlerHelper.giveItemToPlayer((EntityPlayer) player, new ItemStack(state.getBlock().getItemDropped(state, random, 1)));
+        //((EntityPlayer) player).inventory.addItemStackToInventory(new ItemStack(state.getBlock().getItemDropped(state, random, 1)));
 
         for (int i = 0; i < 100; ++i)
             world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + random.nextDouble(), pos.getY(), pos.getZ() + random.nextDouble(), 0, 0.05, 0);

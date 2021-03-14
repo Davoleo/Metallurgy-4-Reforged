@@ -43,7 +43,6 @@ public class ClientProxy implements IProxy {
         MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
         ModItems.brassKnuckles.initTEISR();
         RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierknightRenderer.Factory());
-
     }
 
     @Override
@@ -65,7 +64,6 @@ public class ClientProxy implements IProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event)
     {
-
         //Load custom Font Renderer
         IReloadableResourceManager resourceManager = (IReloadableResourceManager) client.getResourceManager();
 

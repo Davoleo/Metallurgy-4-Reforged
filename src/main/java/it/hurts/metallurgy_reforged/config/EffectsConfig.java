@@ -165,7 +165,7 @@ public class EffectsConfig {
     @Config.Comment("Killing the same mob over and over again grants bonus damage, but killing a different one resets it")
     public static boolean haderothEffectWeapon = true;
     @Config.Name("Metamorph")
-    @Config.Comment("Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; \n Armor pieces will be reborn with higher durability and protection and toughness values (adaptability will be enabled as well); \n All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.")
+    @Config.Comment("Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; <NL> Armor pieces will be reborn with higher durability and protection and toughness values; <NL> All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.<NL> (all the other Haderoth effects are enabled after items are reborn, if you disable this the effects will work out of the box).")
     public static boolean haderothEffectAll = true;
 
     @Config.Name("Weight-Controlled Flight")

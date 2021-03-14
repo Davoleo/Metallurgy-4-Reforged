@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 
@@ -36,10 +38,23 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.ARMOR;
     }
 
+    @Override
+    public Pair<String, String> getTooltip()
+    {
+        Pair<String, String> tooltip = super.getTooltip();
+        if (!MetallurgyEffects.haderothEffect.isEnabled())
+        {
+            int firstBreak = tooltip.getRight().indexOf("\n");
+            String trimmed = tooltip.getRight().substring(firstBreak + 1);
+            tooltip.setValue(trimmed);
+        }
+
+        return tooltip;
+    }
+
     @SubscribeEvent
     public void buffWearer(LivingEvent.LivingUpdateEvent event)
     {
-
         EntityLivingBase entity = event.getEntityLiving();
 
         for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
@@ -47,7 +62,12 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
             if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
             {
                 final ItemStack stack = entity.getItemStackFromSlot(slot);
-                if (stack.getItem() == metal.getArmorPiece(slot) && stack.getTagCompound() != null && stack.getTagCompound().hasKey("reborn"))
+
+                //If the main effect is enabled and the armor has not been reborn yet -> terminate adaptability effect
+                if (MetallurgyEffects.haderothEffect.isEnabled() && (stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
+                    return;
+
+                if (stack.getItem() == metal.getArmorPiece(slot))
                 {
                     switch (slot)
                     {

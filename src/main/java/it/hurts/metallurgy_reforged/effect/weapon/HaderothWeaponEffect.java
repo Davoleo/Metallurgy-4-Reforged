@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
@@ -23,6 +24,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -41,6 +43,21 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.WEAPON;
     }
 
+    @Override
+    public Pair<String, String> getTooltip()
+    {
+        Pair<String, String> tooltip = super.getTooltip();
+        if (!MetallurgyEffects.haderothEffect.isEnabled())
+        {
+            int firstBreak = tooltip.getRight().indexOf("\n");
+            String trimmed = tooltip.getRight().substring(firstBreak + 1);
+            tooltip.setValue(trimmed);
+        }
+
+        return tooltip;
+    }
+
+
     @SubscribeEvent
     public void handleKillStreak(LivingDeathEvent event)
     {
@@ -49,8 +66,13 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
         {
             ItemStack toolStack = ((EntityLivingBase) source).getHeldItemMainhand();
             NBTTagCompound compound = toolStack.getTagCompound();
+
             if (compound == null)
                 compound = new NBTTagCompound();
+
+            //If the main effect is active, Apex should only be enabled if the item is reborn
+            if (MetallurgyEffects.haderothEffect.isEnabled() && !compound.getBoolean("reborn"))
+                return;
 
             ResourceLocation targetRegName = getMobType(event.getEntity());
             if (targetRegName != null)
@@ -88,7 +110,7 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
                 if (killCount > 0 && targetType != null && toolData.getString("killed_type").equals(targetType.toString()))
                 {
                     // TODO: 06/03/2021 Balance: Might be a bit to strong
-                    event.setAmount(event.getAmount() * (killCount * 1.25F));
+                    event.setAmount(Math.min(event.getAmount() + (killCount), 20F));
                     Utils.repeat(15, () -> spawnParticle(event.getEntity(), 2F, true, 5));
                 }
             }
