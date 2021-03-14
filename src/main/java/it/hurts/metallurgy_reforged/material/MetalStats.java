@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
@@ -67,7 +67,7 @@ public class MetalStats {
         BlockOre ore = null;
         if (oreHarvest >= 0)
         {
-            ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance);
+            ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance, this);
         }
 
         FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());

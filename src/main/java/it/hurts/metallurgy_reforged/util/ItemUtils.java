@@ -138,8 +138,9 @@ public class ItemUtils {
     {
         if (item instanceof IMetalItem)
         {
-            IMetalItem armor = ((IMetalItem) item);
-            return armor.getMetalStats().getName().equals(metal.toString());
+            MetalStats itemStats = ((IMetalItem) item).getMetalStats();
+            if (itemStats != null)
+                return itemStats.getName().equals(metal.toString());
         }
 
         return false;
@@ -167,8 +168,9 @@ public class ItemUtils {
     {
         if (item instanceof IMetalItem)
         {
-            IMetalItem metalItem = ((IMetalItem) item);
-            return ModMetals.metalMap.get(metalItem.getMetalStats().getName());
+            MetalStats metalStats = ((IMetalItem) item).getMetalStats();
+            if (metalStats != null)
+                return ModMetals.metalMap.get(metalStats.getName());
         }
 
         if (item instanceof ItemBlock)

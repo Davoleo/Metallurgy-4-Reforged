@@ -4,12 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.block.BlockOre;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -20,25 +21,37 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-public class ItemBlockOre extends ItemBlock {
+public class ItemBlockOre extends ItemBlock implements IMetalItem {
 
-    public ItemBlockOre(BlockOre block) {
+    public ItemBlockOre(BlockOre block)
+    {
         super(block);
     }
 
+    @Nullable
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public MetalStats getMetalStats()
+    {
+        return ((BlockOre) block).getMetalStats();
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack stack)
+    {
         return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("transmuted");
     }
 
     @Nonnull
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
         ItemStack oreStack = player.getHeldItem(hand);
-        if (oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("transmuted")) {
+        if (oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("transmuted"))
+        {
             return EnumActionResult.FAIL;
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);

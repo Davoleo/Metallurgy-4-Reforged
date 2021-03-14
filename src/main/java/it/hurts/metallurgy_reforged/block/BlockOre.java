@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
@@ -41,11 +42,18 @@ public class BlockOre extends Block {
 
     //Optional custom drops for blocks
     private List<Drop> customDrops;
+    private MetalStats metal;
 
-    public BlockOre(String name, float hardness, int harvestLevel, float blastResistance)
+    public BlockOre(String name, float hardness, int harvestLevel, float blastResistance, MetalStats metal)
     {
         super(Material.ROCK);
         BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, Constants.Tools.PICKAXE, harvestLevel);
+        this.metal = metal;
+    }
+
+    public MetalStats getMetalStats()
+    {
+        return metal;
     }
 
     public BlockOre setDrops(Drop... drops)
