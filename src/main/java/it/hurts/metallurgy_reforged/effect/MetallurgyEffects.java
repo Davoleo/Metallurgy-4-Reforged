@@ -164,6 +164,8 @@ public class MetallurgyEffects {
 
     //Hepatizon Weapon
     public static final HepatizonWeaponEffect hepatizonWeaponEffect = new HepatizonWeaponEffect();
+    //Hepatizon Armor
+    public static final HepatizonArmorEffect hepatizonArmorEffect = new HepatizonArmorEffect();
 
     //Ignatius Tool (Smelt Harvested Items)
     public static final BaseMetallurgyEffect ignatiusToolEffect = new IgnatiusToolEffect();

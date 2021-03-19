@@ -1314,6 +1314,7 @@ tooltip.metallurgy.effect.haderoth_armor.name=Adaptability
 tooltip.metallurgy.effect.haderoth_weapon.name=Apex
 tooltip.metallurgy.effect.haderoth_all.name=Metamorph
 tooltip.metallurgy.effect.hepatizon_weapon.name=Disarm
+tooltip.metallurgy.effect.hepatizon_armor.name=Cloak & Dagger
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
 
 #Effect Descriptions
@@ -1362,6 +1363,7 @@ tooltip.metallurgy.effect.haderoth_armor.desc=ONLY ACTIVE AFTER THE ARMOR IS REB
 tooltip.metallurgy.effect.haderoth_weapon.desc=ONLY ACTIVE AFTER THE WEAPON IS REBORN<NL>Killing the same mob over and over again grants bonus damage, but killing a different one resets it
 tooltip.metallurgy.effect.haderoth_all.desc=Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; <NL> Armor pieces will be reborn with higher durability and protection and toughness values; <NL> All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.<NL> (all the other Haderoth effects are enabled after items are reborn).
 tooltip.metallurgy.effect.hepatizon_weapon.desc=When attacking you have a chance to rob the enemy of some of their equipment.
+tooltip.metallurgy.effect.hepatizon_armor.desc=Grants AI invisibility outside of a certain radius depending on how much armor you're wearing.
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
 
 #Other Tooltips
