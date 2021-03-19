@@ -4,13 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -115,8 +116,20 @@ public class ModBlocks {
 		miscBlocks.add(oreSulfur);
 		miscBlocks.add(orePotash);
 		miscBlocks.add(orePhosphorite);
-		Collections.addAll(miscBlocks, engravedGoldBlock, largeGoldBricks, goldBricks, goldCrystal, goldHazardBlock, goldReinforcedGlass);
-		Collections.addAll(miscBlocks, engravedIronBlock, largeIronBricks, ironBricks, ironCrystal, ironHazardBlock, ironReinforcedGlass);
+
+		if (RegistrationConfig.categoryBlocks.enableEngravedMetalBlocks)
+			Collections.addAll(miscBlocks, engravedGoldBlock, engravedIronBlock);
+		if (RegistrationConfig.categoryBlocks.enableLargeBricksMetalBlocks)
+			Collections.addAll(miscBlocks, largeGoldBricks, largeIronBricks);
+		if (RegistrationConfig.categoryBlocks.enableBricksMetalBlocks)
+			Collections.addAll(miscBlocks, goldBricks, ironBricks);
+		if (RegistrationConfig.categoryBlocks.enableCrystalMetalBlocks)
+			Collections.addAll(miscBlocks, goldCrystal, ironCrystal);
+		if (RegistrationConfig.categoryBlocks.enableHazardMetalBlocks)
+			Collections.addAll(miscBlocks, goldHazardBlock, ironHazardBlock);
+		if (RegistrationConfig.categoryBlocks.enableReinforcedGlassBlocks)
+			Collections.addAll(miscBlocks, goldReinforcedGlass, ironReinforcedGlass);
+
 		miscBlocks.add(structureBlock);
 
 		miscBlocks.add(iceShield);
