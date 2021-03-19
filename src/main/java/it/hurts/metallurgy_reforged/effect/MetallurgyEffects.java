@@ -162,6 +162,9 @@ public class MetallurgyEffects {
     //Haderoth
     public static final HaderothEffect haderothEffect = new HaderothEffect();
 
+    //Hepatizon Weapon
+    public static final HepatizonWeaponEffect hepatizonWeaponEffect = new HepatizonWeaponEffect();
+
     //Ignatius Tool (Smelt Harvested Items)
     public static final BaseMetallurgyEffect ignatiusToolEffect = new IgnatiusToolEffect();
 
