@@ -39,7 +39,7 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
     }
 
     /**
-     * handles 1/2 Chance to transmute the harvested ore into something else
+     * handles 30% Chance to transmute the harvested ore into something else
      */
     @SubscribeEvent
     public void transmuteOre(BlockEvent.HarvestDropsEvent event) {
@@ -48,7 +48,8 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
             return;
 
         if (!event.getWorld().isRemote && event.getState().getBlock() instanceof BlockOre) {
-            if (Utils.random.nextBoolean()) {
+            if (Utils.random.nextInt(10) < 3)
+            {
                 event.getDrops().clear();
                 ItemStack stack = getRandomOreStack((BlockOre) event.getState().getBlock());
                 NBTTagCompound compound = new NBTTagCompound();
