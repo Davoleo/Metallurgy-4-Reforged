@@ -13,6 +13,7 @@ import com.google.common.collect.Sets;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.event.world.BlockEvent;
@@ -38,8 +39,19 @@ public class IgnatiusToolEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
     {
+        boolean hadEffect = false;
+
         if (event.getHarvester() != null && canBeApplied(event.getHarvester()))
-            dropSmeltedItems(event.getDrops(), event.getFortuneLevel());
+            hadEffect = dropSmeltedItems(event.getDrops(), event.getFortuneLevel());
+
+        if (hadEffect)
+        {
+            Utils.repeat(10, () -> {
+                float f1 = (Utils.random.nextFloat() / 16F) - 0.03125F;
+                float f2 = (Utils.random.nextFloat() / 16F) - 0.03125F;
+                spawnParticle(event.getWorld(), event.getPos(), 2F, true, 3, f1, 0.02, f2);
+            });
+        }
     }
 
     public boolean dropSmeltedItems(List<ItemStack> drops, int fortune)
