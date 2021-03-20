@@ -4,24 +4,23 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
+import com.google.common.collect.Sets;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
-import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Set;
 
 public class IgnatiusToolEffect extends BaseMetallurgyEffect {
 
@@ -36,63 +35,40 @@ public class IgnatiusToolEffect extends BaseMetallurgyEffect {
         return EnumEffectCategory.TOOL;
     }
 
+    @SubscribeEvent
     public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
     {
-        if (event.getHarvester().getHeldItemMainhand().getItem().equals(metal.getTool(EnumTools.AXE)))
-        {
-            dropSmeltedItems(event);
-        }
+        if (event.getHarvester() != null && canBeApplied(event.getHarvester()))
+            dropSmeltedItems(event.getDrops(), event.getFortuneLevel());
     }
 
-    private void dropSmeltedItems(BlockEvent.HarvestDropsEvent event)
+    public boolean dropSmeltedItems(List<ItemStack> drops, int fortune)
     {
-        World world = event.getWorld();
-        BlockPos pos = event.getPos();
+        //0.25 | 0.5 | 0.75 | 1 depending on the fortune level
+        float fortuneLevelChance = (fortune + 1) / 4F;
+        Set<ItemStack> newDrops = Sets.newHashSet();
 
-        for (ItemStack drop : event.getDrops())
+        //If a random double value from 0 to 1 (exclusive) is lower than the chance value
+        if (Math.random() < fortuneLevelChance)
         {
-            ItemStack smeltedItem = FurnaceRecipes.instance().getSmeltingResult(drop);
-
-            if (!smeltedItem.isEmpty())
+            for (ItemStack drop : drops)
             {
-                switch (event.getFortuneLevel())
-                {
-                    //25% chance
-                    case 0:
-                        if (Utils.random.nextInt(4) == 0)
-                        {
-                            event.setDropChance(0);
-                            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-                        }
-                        break;
-
-                    //50% chance
-                    case 1:
-                        if (Utils.random.nextInt(2) == 0)
-                        {
-                            event.setDropChance(0);
-                            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-                        }
-                        break;
-
-                    //75% chance
-                    case 2:
-                        if (Utils.random.nextInt(4) != 0)
-                        {
-                            event.setDropChance(0);
-                            world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-                        }
-                        break;
-
-                    //100% chance
-                    case 3:
-                    default:
-                        event.setDropChance(0);
-                        world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), smeltedItem));
-                        break;
-                }
+                //Get the smelted result itemstack (EMPTY if the stack can't be smelted)
+                ItemStack smeltedItem = FurnaceRecipes.instance().getSmeltingResult(drop);
+                //Set the count of the smelted stack to be the same of the old drop
+                smeltedItem.setCount(drop.getCount());
+                //Add it to the set (can't edit the original List when looping over it)
+                newDrops.add(smeltedItem.isEmpty() ? drop : smeltedItem);
             }
+
+            //Remove all the old drops and add the new ones
+            drops.clear();
+            drops.addAll(newDrops);
+
+            return true;
         }
+
+        return false;
     }
 
 }
