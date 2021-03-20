@@ -171,6 +171,8 @@ public class MetallurgyEffects {
     public static final IgnatiusToolEffect ignatiusToolEffect = new IgnatiusToolEffect();
     //Ignatius Weapon (Molten Core)
     public static final IgnatiusWeaponEffect ignatiusWeaponEffect = new IgnatiusWeaponEffect();
+    //Ignatius Armor (Hot-Blooded)
+    public static final IgnatiusArmorEffect ignatiusArmorEffect = new IgnatiusArmorEffect();
 
     //Ignatius Sword (25% chance Fire Aspect (5 seconds))
     //public static final BaseMetallurgyEffect ignatiusSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.IGNATIUS);

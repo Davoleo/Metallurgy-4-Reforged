@@ -45,7 +45,9 @@ public class IgnatiusWeaponEffect extends BaseMetallurgyEffect {
 
         //If auto-smelt was applied -> replace all the stacks of the entity items with the smelted ones
         if (hadEffect)
+        {
             for (int i = 0; i < dropStacks.size(); i++)
                 event.getDrops().get(i).setItem(dropStacks.get(i));
+        }
     }
 }

@@ -27,6 +27,7 @@ public class PlayerEffectData {
         effectBundles.put(celenegilArmorBundle.getPrefixKey(), celenegilArmorBundle);
         effectBundles.put(celenegilToolBundle.getPrefixKey(), celenegilToolBundle);
         effectBundles.put(etheriumArmorBundle.getPrefixKey(), etheriumArmorBundle);
+        effectBundles.put(ignatiusArmorBundle.getPrefixKey(), ignatiusArmorBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -65,8 +66,10 @@ public class PlayerEffectData {
     public int desichalkosTimeWithoutTakingDamage = 200;
 
     //Etherium Armor
-    public ProgressiveDataBundle etheriumArmorBundle =
-            new ProgressiveDataBundle("etherium_armor", 0, 30);
+    public ProgressiveDataBundle etheriumArmorBundle = new ProgressiveDataBundle("etherium_armor", 0, 30);
+
+    //Ignatius Armor
+    public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 120);
 
     // Krik Armor
     private int krikHeight;
