@@ -167,8 +167,10 @@ public class MetallurgyEffects {
     //Hepatizon Armor
     public static final HepatizonArmorEffect hepatizonArmorEffect = new HepatizonArmorEffect();
 
-    //Ignatius Tool (Smelt Harvested Items)
-    public static final BaseMetallurgyEffect ignatiusToolEffect = new IgnatiusToolEffect();
+    //Ignatius Tool (Molten Core)
+    public static final IgnatiusToolEffect ignatiusToolEffect = new IgnatiusToolEffect();
+    //Ignatius Weapon (Molten Core)
+    public static final IgnatiusWeaponEffect ignatiusWeaponEffect = new IgnatiusWeaponEffect();
 
     //Ignatius Sword (25% chance Fire Aspect (5 seconds))
     //public static final BaseMetallurgyEffect ignatiusSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.IGNATIUS);
