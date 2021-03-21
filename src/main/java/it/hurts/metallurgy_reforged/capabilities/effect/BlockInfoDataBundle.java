@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import jline.internal.Nullable;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 
@@ -33,9 +34,9 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
     }
 
     @Override
-    public void resetProgress()
+    public void resetProgress(EntityPlayer player)
     {
-        super.resetProgress();
+        super.resetProgress(player);
         pos = null;
     }
 
@@ -59,6 +60,12 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
     public void setPos(BlockPos pos)
     {
         this.pos = pos;
+    }
+
+    @Override
+    public byte getType()
+    {
+        return 1;
     }
 
     @Override

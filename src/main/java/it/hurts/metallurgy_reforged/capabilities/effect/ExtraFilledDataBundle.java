@@ -47,6 +47,17 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
         return isInProgress.test(this);
     }
 
+    public NBTTagCompound getExtras()
+    {
+        return extra;
+    }
+
+    public void setExtras(NBTTagCompound compound)
+    {
+        this.extra = compound;
+    }
+
+    // ---------- Extra Data Methods ----------
     public String getExtraString(String key)
     {
         return extra.getString(key);
@@ -60,6 +71,11 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
     public boolean getExtraBool(String key)
     {
         return extra.getBoolean(key);
+    }
+
+    public float getExtraFloat(String key)
+    {
+        return extra.getFloat(key);
     }
 
     public void setExtra(String key, String value)
@@ -85,5 +101,11 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
     public void clearExtras()
     {
         extra = new NBTTagCompound();
+    }
+
+    @Override
+    public byte getType()
+    {
+        return 2;
     }
 }

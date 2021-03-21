@@ -42,25 +42,22 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityLivingBase entity, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
     {
         ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).ignatiusArmorBundle;
 
         if (!entity.isInLava())
-            bundle.resetProgress();
+            bundle.resetProgress(entity);
 
         // TODO: 20/03/2021 Fix server/Client progress desync
         //currentStep >= (0.25 | 0.5 | 0.75 | 1) * 120
         int lavaImmunityTimespan = (int) (getLevel(entity) * maxSteps);
         if (step >= lavaImmunityTimespan)
         {
-            bundle.resetProgress();
-            if (entity instanceof EntityPlayer)
-            {
-                entity.getArmorInventoryList().forEach(
-                        piece -> ((EntityPlayer) entity).getCooldownTracker().setCooldown(piece.getItem(), 200)
-                );
-            }
+            bundle.resetProgress(entity);
+            entity.getArmorInventoryList().forEach(
+                    piece -> entity.getCooldownTracker().setCooldown(piece.getItem(), 200)
+            );
         }
 
         System.out.println("Current Step: " + step);
@@ -87,13 +84,14 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
             }
 
             //Kickstart the timer
-            bundle.incrementStep();
+            bundle.incrementStep(entity instanceof EntityPlayer ? ((EntityPlayer) entity) : null);
             event.setCanceled(true);
         }
 
         if (source == DamageSource.IN_FIRE || source == DamageSource.ON_FIRE || (source == DamageSource.LAVA && bundle.isEffectInProgress()))
         {
-            event.getEntityLiving().heal(event.getAmount());
+            if (source != DamageSource.ON_FIRE)
+                event.getEntityLiving().heal(event.getAmount());
             event.setCanceled(true);
         }
     }

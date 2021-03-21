@@ -9,11 +9,11 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public interface IProgressiveEffect {
 
-    void onStep(World world, EntityLivingBase entity, int maxSteps, int step);
+    void onStep(World world, EntityPlayer entity, int maxSteps, int step);
 
 }

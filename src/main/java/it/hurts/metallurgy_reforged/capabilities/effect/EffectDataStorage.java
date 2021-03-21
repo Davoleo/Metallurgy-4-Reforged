@@ -26,10 +26,11 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
 
         instance.effectBundles.values().forEach(bundle -> bundle.toNBT(tag));
         tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
-        tag.setInteger("krik_height", instance.getKrikHeight());
 
-        tag.setInteger("timeWithoutDamage", instance.desichalkosTimeWithoutTakingDamage);
-        tag.setInteger("absorbLevel", instance.desichalkosAbsorbLevel);
+        tag.setInteger("desichalkos_armor_time_without_damage", instance.desichalkosTimeWithoutTakingDamage);
+        tag.setInteger("desichalkos_armor_absorb_level", instance.desichalkosAbsorbLevel);
+
+        tag.setInteger("krik_height", instance.getKrikHeight());
 
         return tag;
     }
@@ -41,10 +42,11 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
 
         instance.effectBundles.values().forEach(bundle -> bundle.fromNBT(tag));
         instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
-        instance.setKrikHeight(tag.getInteger("krik_height"));
 
-        instance.desichalkosTimeWithoutTakingDamage = tag.getInteger("timeWithoutDamage");
-        instance.desichalkosAbsorbLevel = tag.getInteger("absorbLevel");
+        instance.desichalkosTimeWithoutTakingDamage = tag.getInteger("desichalkos_armor_time_without_damage");
+        instance.desichalkosAbsorbLevel = tag.getInteger("desichalkos_armor_absorb_level");
+
+        instance.setKrikHeight(tag.getInteger("krik_height"));
     }
 
 }

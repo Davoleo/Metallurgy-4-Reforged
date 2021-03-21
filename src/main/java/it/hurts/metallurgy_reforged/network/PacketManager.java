@@ -4,16 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.network.client.PacketAttachEmitter;
-import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
+import it.hurts.metallurgy_reforged.network.client.*;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
@@ -39,6 +36,7 @@ public class PacketManager {
         network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, id++, Side.CLIENT);
         network.registerMessage(PacketSpawnOreParticles.Handler.class, PacketSpawnOreParticles.class, id++, Side.CLIENT);
         network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
+        network.registerMessage(PacketSyncEffectBundle.Handler.class, PacketSyncEffectBundle.class, id++, Side.CLIENT);
     }
 
 }

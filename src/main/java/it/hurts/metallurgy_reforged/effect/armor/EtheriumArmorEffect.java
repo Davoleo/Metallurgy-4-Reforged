@@ -17,7 +17,6 @@ import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -34,9 +33,6 @@ import java.util.List;
 
 public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    private int clientStep;
-    private int serverStep;
-
     public EtheriumArmorEffect()
     {
         super(ModMetals.ETHERIUM);
@@ -50,7 +46,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityLivingBase entity, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
     {
         //System.out.println(step);
 
@@ -58,7 +54,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
         if (step == maxSteps)
         {
             entity.noClip = false;
-            entity.getArmorInventoryList().forEach(stack -> ((EntityPlayer) entity).getCooldownTracker().setCooldown(stack.getItem(), 400));
+            entity.getArmorInventoryList().forEach(stack -> entity.getCooldownTracker().setCooldown(stack.getItem(), 400));
         }
     }
 
@@ -67,14 +63,14 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
     {
         if (event.getEntityLiving() instanceof EntityPlayer)
         {
-            EntityLivingBase entity = event.getEntityLiving();
+            EntityPlayer entity = (EntityPlayer) event.getEntityLiving();
 
             if (!canBeApplied(entity))
                 return;
 
             for (ItemStack piece : entity.getArmorInventoryList())
             {
-                if (!piece.isEmpty() && ((EntityPlayer) entity).getCooldownTracker().getCooldown(piece.getItem(), 0) != 0)
+                if (!piece.isEmpty() && entity.getCooldownTracker().getCooldown(piece.getItem(), 0) != 0)
                     return;
             }
 
@@ -85,24 +81,12 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
             {
                 //Resume the timer
                 if (!bundle.isEffectInProgress())
-                    bundle.setPaused(false);
+                    bundle.setPaused(false, entity);
 
                 //If the timer is still stopped:
                 //Kick-start the timer
                 if (!bundle.isEffectInProgress())
-                    bundle.incrementStep();
-
-                //Handle step desync
-                //Yeah, this is probably the worst thing one could ever do,
-                //but I don't want to mess with packets for such a minor detail
-                //This Could also be the cause of issues in multiplayer if multiple players are using this effect at the same time
-                if (entity.world.isRemote)
-                    clientStep = bundle.getCurrentStep();
-                else
-                    serverStep = bundle.getCurrentStep();
-
-                if (clientStep != serverStep && entity.world.isRemote)
-                    bundle.setCurrentStep(serverStep);
+                    bundle.incrementStep(entity);
 
                 entity.noClip = true;
                 entity.motionY = 0D;
@@ -116,7 +100,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
             }
             else
             {
-                bundle.setPaused(true);
+                bundle.setPaused(true, entity);
             }
         }
     }

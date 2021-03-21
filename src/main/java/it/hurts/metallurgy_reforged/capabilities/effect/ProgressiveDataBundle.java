@@ -9,8 +9,13 @@
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketSyncEffectBundle;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 
+import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class ProgressiveDataBundle {
@@ -27,6 +32,12 @@ public class ProgressiveDataBundle {
         this.maxSteps = maxSteps;
     }
 
+    private void sync(@Nullable EntityPlayer player)
+    {
+        if (player != null && !player.world.isRemote && player instanceof EntityPlayerMP)
+            PacketManager.network.sendTo(new PacketSyncEffectBundle(prefixKey, this), (EntityPlayerMP) player);
+    }
+
     public String getPrefixKey()
     {
         return prefixKey;
@@ -37,9 +48,15 @@ public class ProgressiveDataBundle {
         return currentStep;
     }
 
-    public void setCurrentStep(int currentStep)
+    public boolean isPaused()
+    {
+        return paused;
+    }
+
+    public void setCurrentStep(int currentStep, @Nullable EntityPlayerMP player)
     {
         this.currentStep = currentStep;
+        sync(player);
     }
 
     public int getMaxSteps()
@@ -52,22 +69,31 @@ public class ProgressiveDataBundle {
         return currentStep > 0 && !paused;
     }
 
-    public void incrementStep()
+    public void incrementStep(EntityPlayer player)
     {
         if (currentStep < maxSteps)
             currentStep++;
         else
-            resetProgress();
+            resetProgress(player);
+
+        sync(player);
     }
 
-    public void setPaused(boolean paused)
+    public void setPaused(boolean paused, EntityPlayer player)
     {
         this.paused = paused;
+        sync(player);
     }
 
-    public void resetProgress()
+    public void resetProgress(EntityPlayer player)
     {
         currentStep = 0;
+        sync(player);
+    }
+
+    public byte getType()
+    {
+        return 0;
     }
 
     @OverridingMethodsMustInvokeSuper
