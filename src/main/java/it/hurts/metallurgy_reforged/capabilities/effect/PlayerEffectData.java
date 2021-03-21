@@ -69,7 +69,7 @@ public class PlayerEffectData {
     public ProgressiveDataBundle etheriumArmorBundle = new ProgressiveDataBundle("etherium_armor", 0, 30);
 
     //Ignatius Armor
-    public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 120);
+    public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 40);
 
     // Krik Armor
     private int krikHeight;

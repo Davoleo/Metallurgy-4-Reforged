@@ -18,8 +18,10 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -50,7 +52,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
             bundle.resetProgress(entity);
 
         // TODO: 20/03/2021 Fix server/Client progress desync
-        //currentStep >= (0.25 | 0.5 | 0.75 | 1) * 120
+        //currentStep >= (0.25 | 0.5 | 0.75 | 1) * 40
         int lavaImmunityTimespan = (int) (getLevel(entity) * maxSteps);
         if (step >= lavaImmunityTimespan)
         {
@@ -106,7 +108,13 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
         //if fire resistance is not active and the entity is either under the rain or underwater deal damage
         if (entity.isWet() && !entity.isPotionActive(MobEffects.FIRE_RESISTANCE))
         {
-            entity.attackEntityFrom(DamageSource.DROWN, 1F);
+            if (entity.ticksExisted % 10 == 0)
+            {
+                entity.attackEntityFrom(DamageSource.GENERIC, 1F);
+                entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.5F, 1F, false);
+            }
+
+            spawnParticle(entity, 5F, true, 5);
         }
     }
 
