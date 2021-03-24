@@ -70,7 +70,7 @@ public abstract class BaseMetallurgyEffect {
             }
             catch (NoSuchFieldException | IllegalAccessException e)
             {
-                Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE | THERE'S SOMETHING WRONG WITH EFFECT CONFIG NAMES, GO FIX IT DAVOLEO");
+                Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE THERE'S SOMETHING WRONG WITH " + camelMetal + " EFFECTS CONFIG VARIABLE NAMES, GO FIX IT DAVOLEO!");
                 //e.printStackTrace();
                 return true;
             }

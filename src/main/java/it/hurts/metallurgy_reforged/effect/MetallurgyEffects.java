@@ -174,6 +174,9 @@ public class MetallurgyEffects {
     //Ignatius Armor (Hot-Blooded)
     public static final IgnatiusArmorEffect ignatiusArmorEffect = new IgnatiusArmorEffect();
 
+    //Inolashite Weapon (Time Cleave)
+    public static final InolashiteWeaponEffect inolashiteWeaponEffect = new InolashiteWeaponEffect();
+
     //Ignatius Sword (25% chance Fire Aspect (5 seconds))
     //public static final BaseMetallurgyEffect ignatiusSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.IGNATIUS);
 

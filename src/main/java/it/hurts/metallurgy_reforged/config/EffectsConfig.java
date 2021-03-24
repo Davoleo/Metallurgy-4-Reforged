@@ -185,6 +185,10 @@ public class EffectsConfig {
     @Config.Comment("Fire and lava heals you proportionally to the damage it would otherwise deal, but water and rain damages you as if it were lava and fire; <NL>The effect of Fire Protection is inverted, to protect water damage")
     public static boolean ignatiusEffectArmor = true;
 
+    @Config.Name("Time Cleave")
+    @Config.Comment("When attacking, sometimes an extra attack can occur, the player will swing his arm twice in quick succession.")
+    public static boolean inolashiteEffectWeapon = true;
+
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
     public static boolean krikEffectArmor = true;
