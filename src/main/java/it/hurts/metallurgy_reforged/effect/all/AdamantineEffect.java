@@ -85,7 +85,10 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
                 if (player.ticksExisted % secondsWait == 0)
                 {
                     List<ItemStack> equipList = EventUtils.getEquipmentList(metal, player);
-                    ItemStack randomEquip = equipList.get(Math.max(1, Utils.random.nextInt(equipList.size())));
+                    if (equipList.isEmpty())
+                        return;
+
+                    ItemStack randomEquip = equipList.get(Utils.random.nextInt(equipList.size()));
 
                     randomEquip.setItemDamage(randomEquip.getItemDamage() + 2);
 
