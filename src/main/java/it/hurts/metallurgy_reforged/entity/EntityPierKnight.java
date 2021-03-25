@@ -23,7 +23,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -225,7 +224,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         {
             owner.getEntityData().setBoolean("has_pier", false);
             //Set the armor on cooldown
-            owner.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) owner).getCooldownTracker().setCooldown(stack.getItem(), 200));
+            if (owner instanceof EntityPlayer)
+                owner.getArmorInventoryList().forEach(stack -> ((EntityPlayer) owner).getCooldownTracker().setCooldown(stack.getItem(), 200));
         }
     }
 
