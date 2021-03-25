@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
@@ -75,7 +75,6 @@ public class EventUtils {
 
     public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
     {
-
         final List<ItemStack> equip = new ArrayList<>();
 
         for (ItemStack stack : entity.getEquipmentAndArmor())
@@ -91,7 +90,6 @@ public class EventUtils {
 
     public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
     {
-
         final List<ItemStack> equip = new ArrayList<>();
 
         for (ItemStack stack : entity.getEquipmentAndArmor())
@@ -108,7 +106,6 @@ public class EventUtils {
     @Nullable
     public static Metal getRandomMetalBasedOnDifficulty(World world)
     {
-
         //Some math Reminders
         //(1 * 1 - 0) * 5 = 5;
         //(2 * 2 - 1) * 5 = 15;

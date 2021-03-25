@@ -9,20 +9,24 @@
 
 package it.hurts.metallurgy_reforged.effect.weapon;
 
+import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
 
-public class InolashiteWeaponEffect extends BaseMetallurgyEffect {
+public class InolashiteWeaponEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
     public InolashiteWeaponEffect()
     {
@@ -37,41 +41,44 @@ public class InolashiteWeaponEffect extends BaseMetallurgyEffect {
     }
 
     @SubscribeEvent
-    public void doubleHit(TickEvent.PlayerTickEvent event)
+    public void doubleHit(LivingDamageEvent event)
     {
-        EntityPlayer attacker = event.player;
-        if (!canBeApplied(attacker) || event.phase != TickEvent.Phase.START)
-            return;
+        Entity entity = event.getSource().getImmediateSource();
 
-        if (attacker.getCooledAttackStrength(0) > 0.6)
+        if (entity instanceof EntityPlayer)
         {
-            EntityLivingBase lastAttackedEntity = attacker.getLastAttackedEntity();
-            if (lastAttackedEntity != null)
-            {
+            EntityPlayer attacker = ((EntityPlayer) entity);
+            if (!canBeApplied(attacker))
+                return;
 
-                IAttributeInstance attackSpeed = attacker.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-                double originalBaseSpeed = attackSpeed.getBaseValue();
-
-                //Instantly recover from weapon cooldown
-                attackSpeed.setBaseValue(1000);
-
-                lastAttackedEntity.hurtResistantTime = 0;
-                //Attack the last attacked entity with the current item
-                attacker.attackTargetEntityWithCurrentItem(lastAttackedEntity);
-                attacker.setLastAttackedEntity(null);
-
-                //Reset the original base attack speed
-                attackSpeed.setBaseValue(originalBaseSpeed);
-
-                if (!attacker.world.isRemote)
-                {
-                    //Reset and restart swing animation
-                    attacker.isSwingInProgress = false;
-                    attacker.swingProgress = 0;
-                    attacker.swingProgressInt = 0;
-                    attacker.swingArm(EnumHand.MAIN_HAND);
-                }
-            }
+            ProgressiveDataBundle bundle = getEffectCapability(attacker).inolashiteWeaponBundle;
+            bundle.incrementStep(attacker);
         }
+    }
+
+    @Override
+    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
+    {
+        IAttributeInstance attackSpeed = entity.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+        double originalBaseSpeed = attackSpeed.getBaseValue();
+
+        //Instantly recover from weapon cooldown
+        attackSpeed.setBaseValue(1000);
+        EntityLivingBase lastAttackedEntity = entity.getLastAttackedEntity();
+
+        if (lastAttackedEntity != null)
+        {
+            lastAttackedEntity.hurtResistantTime = 0;
+            //Attack the last attacked entity with the current item
+            entity.attackTargetEntityWithCurrentItem(lastAttackedEntity);
+        }
+
+        //Reset the original base attack speed
+        attackSpeed.setBaseValue(originalBaseSpeed);
+
+        //Reset and restart swing animation
+        entity.isSwingInProgress = false;
+        entity.swingProgressInt = -1;
+        entity.swingArm(EnumHand.MAIN_HAND);
     }
 }

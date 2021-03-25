@@ -23,19 +23,20 @@ public abstract class ProgressiveEffectsHandler {
     @SubscribeEvent
     public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
     {
-        if (!event.getEntity().world.isRemote && event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().ticksExisted % 10 == 0)
+        if (event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().ticksExisted % 10 == 0)
         {
             PlayerEffectData data = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
             MetallurgyEffects.effects.forEach(effect -> {
                 if (effect instanceof IProgressiveEffect)
                 {
-
                     String key = effect.getMetal().toString() + '_' + effect.getCategory().toString();
 
                     ProgressiveDataBundle bundle = data.effectBundles.get(key);
+
                     if (bundle != null && bundle.isEffectInProgress())
                     {
+                        //LOGGER.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
                         ((IProgressiveEffect) effect).onStep(event.getEntityLiving().world, ((EntityPlayer) event.getEntityLiving()), bundle.getMaxSteps(), bundle.getCurrentStep());
 
                         //Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed

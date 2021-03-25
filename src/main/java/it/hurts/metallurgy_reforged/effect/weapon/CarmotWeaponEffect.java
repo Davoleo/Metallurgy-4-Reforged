@@ -44,9 +44,9 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
     public void chainAttack(LivingHurtEvent event)
     {
         Entity tSource = event.getSource().getTrueSource();
-        if (tSource instanceof EntityLivingBase)
+        if (tSource instanceof EntityPlayer)
         {
-            EntityLivingBase attacker = ((EntityLivingBase) tSource);
+            EntityPlayer attacker = ((EntityPlayer) tSource);
             if (!canBeApplied(attacker))
                 return;
 
@@ -56,7 +56,7 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
             int id = attacked.getEntityId();
             data.setExtra("id", id);
             data.setExtra("amount", event.getAmount());
-            data.incrementStep(attacker instanceof EntityPlayer ? ((EntityPlayer) attacker) : null);
+            data.incrementStep(attacker);
         }
     }
 

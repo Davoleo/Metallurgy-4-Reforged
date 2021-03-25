@@ -28,6 +28,7 @@ public class PlayerEffectData {
         effectBundles.put(celenegilToolBundle.getPrefixKey(), celenegilToolBundle);
         effectBundles.put(etheriumArmorBundle.getPrefixKey(), etheriumArmorBundle);
         effectBundles.put(ignatiusArmorBundle.getPrefixKey(), ignatiusArmorBundle);
+        effectBundles.put(inolashiteWeaponBundle.getPrefixKey(), inolashiteWeaponBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -72,7 +73,7 @@ public class PlayerEffectData {
     public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 40);
 
     //Inolashite Weapon
-    public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_armor", 0, 1, bundle -> bundle.currentStep > 0);
+    public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_weapon", 0, 1, bundle -> bundle.currentStep > 0);
 
     // Krik Armor
     private int krikHeight;

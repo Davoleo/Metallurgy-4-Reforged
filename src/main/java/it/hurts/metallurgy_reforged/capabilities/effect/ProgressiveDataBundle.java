@@ -76,6 +76,8 @@ public class ProgressiveDataBundle {
         else
             resetProgress(player);
 
+        //Debug Log
+        //LOGGER.info(getPrefixKey() + ": Current Step " + getCurrentStep() + " Paused: " + isPaused());
         sync(player);
     }
 
