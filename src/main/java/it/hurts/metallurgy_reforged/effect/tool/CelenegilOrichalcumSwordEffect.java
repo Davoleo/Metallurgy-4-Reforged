@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
@@ -54,19 +54,18 @@ public class CelenegilOrichalcumSwordEffect extends BaseMetallurgyEffect {
 		Item orichalcumSword = null;
 
 		if (ModMetals.CELENEGIL != null)
-			celenegilSword = ModMetals.DEEP_IRON.getTool(EnumTools.SWORD);
+			celenegilSword = ModMetals.CELENEGIL.getTool(EnumTools.SWORD);
 		if (ModMetals.ORICHALCUM != null)
-			orichalcumSword = ModMetals.SHADOW_STEEL.getTool(EnumTools.SWORD);
+			orichalcumSword = ModMetals.ORICHALCUM.getTool(EnumTools.SWORD);
 
 		if (isEligibleForEffect(killer, celenegilSword))
 		{
-
-			killer.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0, false, false));
-			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
+			killer.addPotionEffect(new PotionEffect(MobEffects.SPEED, 140, 0));
+			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0));
 		}
 
 		if (isEligibleForEffect(killer, orichalcumSword))
-			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0, false, false));
+			killer.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 140, 0));
 	}
 
 	private boolean isEligibleForEffect(EntityPlayer player, Item sword)
