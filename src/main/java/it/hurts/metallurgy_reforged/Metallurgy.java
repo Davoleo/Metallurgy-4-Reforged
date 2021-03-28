@@ -19,6 +19,7 @@ import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectCallable;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
@@ -90,6 +91,7 @@ public class Metallurgy {
 
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
 		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+		WorldGenerationConfig.proofCheckBiomes();
 		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
 		logger.info("World generation successful!");
 
