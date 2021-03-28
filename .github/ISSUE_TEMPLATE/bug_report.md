@@ -15,11 +15,8 @@ assignees: ''
 **To Reproduce:**
 <!-- Chronological Steps to reproduce the bug in an ordered list -->
 1. First Step
-2. First Step
-3. First Step
-
-**Expected behavior:**
-<!-- A clear and concise description of what you expected to happen. -->
+2. Second Step
+3. Third Step
 
 ***
 
