@@ -1,4 +1,4 @@
-//AVAILABLE FROM 0.2.3 AND ON
+//AVAILABLE FROM 0.2.3 ONWARDS
 
 import mods.metallurgyreforged.Crusher;
 import mods.metallurgyreforged.Alloyer;
@@ -39,7 +39,7 @@ Alloyer.removeRecipe(<metallurgy:tartarite_ingot>);
 
 
 
-//AVAILABLE from 0.3.0 and on
+//AVAILABLE from 0.3.0 onwards
 //Adds a new Sublimation Recipe to the Sublimation Chamber   -
 //SublimationChamber.addRecipe(IItemStack input, IPotion output, int tickDuration, int amplifier);
 SublimationChamber.addRecipe(<metallurgy:tar> * 32, <potion:minecraft:slowness>, 300, 1);

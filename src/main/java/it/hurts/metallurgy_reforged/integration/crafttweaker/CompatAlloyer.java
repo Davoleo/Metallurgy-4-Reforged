@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.crafttweaker;
@@ -36,17 +36,17 @@ public class CompatAlloyer {
 
 	public static class Add implements IAction {
 
-		private IIngredient input1;
-		private IIngredient input2;
-		private IItemStack output;
-		private float xp;
+		private final IIngredient input1;
+		private final IIngredient input2;
+		private final IItemStack output;
+		private final float xp;
 
-		Add(IIngredient input1, IIngredient input2, IItemStack output)
+		private Add(IIngredient input1, IIngredient input2, IItemStack output)
 		{
 			this(input1, input2, output, 0F);
 		}
 
-		Add(IIngredient input1, IIngredient input2, IItemStack output, float xp)
+		private Add(IIngredient input1, IIngredient input2, IItemStack output, float xp)
 		{
 			this.input1 = input1;
 			this.input2 = input2;
@@ -82,9 +82,9 @@ public class CompatAlloyer {
 
 	private static class Remove implements IAction {
 
-		private IItemStack output;
+		private final IItemStack output;
 
-		Remove(IItemStack output)
+		private Remove(IItemStack output)
 		{
 			this.output = output;
 		}
