@@ -54,7 +54,7 @@ public class BaseOreSpawn implements IOreSpawn {
 				if (world.getBiome(pos).getRegistryName().equals(biome))
 					return true;
 		}
-		return true;
+		return false;
 	}
 
 }
