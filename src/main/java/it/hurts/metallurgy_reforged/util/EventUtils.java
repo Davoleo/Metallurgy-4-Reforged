@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
@@ -19,8 +19,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class EventUtils {
 
@@ -78,6 +76,12 @@ public class EventUtils {
 		return count;
 	}
 
+	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()
+			.filter(metal -> metal != null && metal.hasArmorSet())
+			.toArray(Metal[]::new);
+	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
+
+
 	@Nullable
 	public static Metal getRandomMetalBasedOnDifficulty(World world)
 	{
@@ -107,16 +111,8 @@ public class EventUtils {
 				break;
 		}
 
-		Random random = new Random();
-
-		if ((random.nextFloat() * 100) < chance)
-		{
-			Metal[] metalllarray = ModMetals.metalMap.values().stream()
-					.filter(metal -> metal != null && metal.hasArmorSet())
-					.toArray(Metal[]::new);
-			int metalIndex = random.nextInt(metalllarray.length);
+		if ((Utils.random.nextFloat() * 100) < chance)
 			return metalllarray[metalIndex];
-		}
 
 		return null;
 	}
