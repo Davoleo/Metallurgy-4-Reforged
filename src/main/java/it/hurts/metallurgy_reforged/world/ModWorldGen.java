@@ -156,7 +156,7 @@ public class ModWorldGen implements IWorldGenerator {
 
 				BlockPos pos = new BlockPos(x, y, z);
 
-				Metallurgy.logger.info("Trying to Generate: " + block.getRegistryName().toString());
+				//Metallurgy.logger.info("Trying to Generate: " + block.getRegistryName().toString());
 				if (oreSpawn.canOreSpawn(world, pos, world.getBlockState(pos), random))
 					generator.generate(world, random, pos);
 			}

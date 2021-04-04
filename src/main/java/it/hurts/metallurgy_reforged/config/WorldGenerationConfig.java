@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/worldgen", category = "ore_generation")
 public class WorldGenerationConfig {
 
+	@Deprecated
 	public static void proofCheckBiomes()
 	{
 		Field[] categories = WorldGenerationConfig.class.getFields();

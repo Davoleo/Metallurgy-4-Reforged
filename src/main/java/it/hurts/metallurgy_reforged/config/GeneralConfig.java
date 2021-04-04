@@ -111,8 +111,6 @@ public class GeneralConfig {
 		{
 			if (eventArgs.getModID().equals(Metallurgy.MODID))
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
-
-			WorldGenerationConfig.proofCheckBiomes();
 		}
 
 	}
