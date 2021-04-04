@@ -4,17 +4,21 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.model;
 
+import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 @MethodsReturnNonnullByDefault
 public class AlloySample {
@@ -81,7 +85,19 @@ public class AlloySample {
 
 	public boolean hasFallenBack()
 	{
-		return fallbackStack != ItemStack.EMPTY;
+		return !fallbackStack.isEmpty();
+	}
+
+	/**
+	 * @return either a list of stacks that have the ingotMetal oredict key<br>
+	 * or a singleton list made of the fallback stack<br>
+	 */
+	public List<ItemStack> getOredictedStacks()
+	{
+		if (hasFallenBack())
+			return Collections.singletonList(fallbackStack);
+		else
+			return OreDictionary.getOres("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 	}
 
 	/**
