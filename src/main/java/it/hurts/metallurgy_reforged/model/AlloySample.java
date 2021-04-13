@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.model;
 
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -44,9 +43,8 @@ public class AlloySample {
 
 	public AlloySample(ItemStack oreDictStack, int amount)
 	{
-		metal = ItemUtils.getMetalFromOreDictStack(oreDictStack);
-		if (metal == null)
-			this.fallbackStack = oreDictStack;
+		metal = null;
+		this.fallbackStack = oreDictStack;
 		this.amount = amount;
 		this.isOriginal = false;
 	}
