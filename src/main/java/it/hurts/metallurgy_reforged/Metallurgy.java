@@ -54,19 +54,19 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
 
-	public static final String MODID = "metallurgy";
-	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.2.5";
+    public static final String MODID = "metallurgy";
+    public static final String NAME = "Metallurgy 4: Reforged";
+    public static final String VERSION = "1.2.6";
 
-	public static Logger logger;
+    public static Logger logger;
 
-	public static String materialConfig;
-	public static String enderIOAlloyRecipes;
+    public static String materialConfig;
+    public static String enderIOAlloyRecipes;
 
-	@Mod.Instance(MODID)
-	public static Metallurgy instance;
+    @Mod.Instance(MODID)
+    public static Metallurgy instance;
 
-	@SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
+    @SidedProxy(serverSide = "it.hurts.metallurgy_reforged.proxy.ServerProxy", clientSide = "it.hurts.metallurgy_reforged.proxy.ClientProxy")
 	public static IProxy proxy;
 
 	static

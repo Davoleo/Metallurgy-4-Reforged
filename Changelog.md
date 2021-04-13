@@ -1,3 +1,12 @@
+### 1.2.6
+
+- Iron and Gold Decorative blocks are now unregistered when disabling a specific block types ([#316](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/316))
+- Fixed Celenegil and Orichalcum effects being applied to Deep Iron and Shadow steel instead ([#319](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/319))
+- Improved random mob metallurgy equipment generation performance
+- Fixed JEI Alloyer Recipes displaying wrong information when you changed some ingredients' oredict names ([#317](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/317))
+- Fixed Forge errors spam in log caused by broken JSON recipes when disabling registration of items and blocks in the mod ([#322](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/322))
+- Fixed faulty CT integration that automatically converted other mods' materials to their metallurgy equivalents when adding custom recipes ([#318](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/318))
+
 ### 1.2.5
 
 - Vanilla Buckets can be now made of any metal that you can also use to make tools ([#300](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/300))
