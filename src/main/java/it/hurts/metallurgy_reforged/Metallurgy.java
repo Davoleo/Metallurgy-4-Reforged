@@ -13,9 +13,6 @@ import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataStorage;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectCallable;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectStorage;
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
@@ -136,13 +133,13 @@ public class Metallurgy {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         logger.info("GUIs have been registered!");
 
-        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), new PunchEffectCallable());
+        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), PunchEffect::new);
         logger.info("Punch effect capability Registered");
 
         CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), PlayerEffectData::new);
         logger.info("Metallurgy Effects capability Registered");
 
-        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
+        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), EntityData::new);
         logger.info("Entity Data capability Registered");
 
 

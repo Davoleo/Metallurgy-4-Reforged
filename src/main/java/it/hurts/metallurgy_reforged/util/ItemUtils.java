@@ -39,10 +39,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class ItemUtils {
 
@@ -81,6 +78,29 @@ public class ItemUtils {
 			return valid;
 		}
 		return false;
+	}
+
+	public static void buildTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects)
+	{
+		if (!effects.isEmpty())
+		{
+			boolean anyEnabled = false;
+
+			for (BaseMetallurgyEffect effect : effects)
+			{
+				if (effect.isEnabled())
+				{
+					//System.out.println(effect.getTooltip().getLeft());
+					tooltip.add(effect.getTooltip().getLeft());
+					if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+						tooltip.add(effect.getTooltip().getRight());
+					anyEnabled = true;
+				}
+			}
+
+			if (anyEnabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+				tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_ctrl"));
+		}
 	}
 
 	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
@@ -127,15 +147,33 @@ public class ItemUtils {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Metallurgy.MODID + ":" + subdir + (!subdir.equals("") ? "/" : "") + item.getRegistryName().getPath(), "inventory"));
 	}
 
-    /**
-     * Gets the instance of a Metal from an Item
-     *
-     * @param item An Item instance
-     * @return The metal the parameter item is made of (null if it isn't made of any metal)
-     */
-    public static Metal getMetalFromItem(Item item)
-    {
-        if (item instanceof IMetalItem)
+	/**
+	 * Checks if an item is made of a specific metal
+	 *
+	 * @param metal the metal the item could be made of
+	 * @param item  the item to check
+	 */
+	public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item)
+	{
+		if (item instanceof IMetalItem)
+		{
+			MetalStats itemStats = ((IMetalItem) item).getMetalStats();
+			if (itemStats != null)
+				return itemStats.getName().equals(metal.toString());
+		}
+
+		return false;
+	}
+
+	/**
+	 * Gets the instance of a Metal from an Item
+	 *
+	 * @param item An Item instance
+	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
+	 */
+	public static Metal getMetalFromItem(Item item)
+	{
+		if (item instanceof IMetalItem)
         {
             MetalStats metalStats = ((IMetalItem) item).getMetalStats();
             if (metalStats != null)

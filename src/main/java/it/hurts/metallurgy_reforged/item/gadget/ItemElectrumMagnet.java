@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget;
@@ -67,17 +67,17 @@ public class ItemElectrumMagnet extends ItemExtra {
             Status status = Status.byOrdinal(stack.getTagCompound().getInteger("status"));
 
             tooltip.add("§eAttracts dropped items on the ground (Has 3 different modes)");
-            String statusString = Utils.localize("tooltip.metallurgy.electrum_magnet_mode") + " ";
+            String statusString = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_mode") + " ";
 
             switch (status) {
                 case DISABLED:
-                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_disabled");
+                    statusString += Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_disabled");
                     break;
                 case METAL_ONLY:
-                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_metal_only");
+                    statusString += Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_metal_only");
                     break;
                 case ENABLED:
-                    statusString += Utils.localize("tooltip.metallurgy.electrum_magnet_enabled");
+                    statusString += Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_enabled");
                     break;
             }
 

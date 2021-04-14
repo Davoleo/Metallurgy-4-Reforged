@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class EventUtils {
 
@@ -59,22 +58,18 @@ public class EventUtils {
 	}
 
 	/**
-	 * @param player EntityPlayer
-	 * @param armor  An array with all armor pieces
-	 *
+	 * @param entity EntityLivingBase
+	 * @param metal  The metal you need to count the number of armor piece of
 	 * @return The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityPlayer player, Item[] armor)
+	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
 	{
-		NonNullList<ItemStack> armorList = player.inventory.armorInventory;
-
 		int count = 0;
-		//Reverse for loop because armorList contains armor stacks in reverse order (index 0 are boots)
-		for (int i = 0; i < armorList.size(); i++)
-		{
-			if (armorList.get(3 - i).getItem().equals(armor[i]))
-				count++;
-		}
+
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+				if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
+					count++;
 
 		return count;
 	}
