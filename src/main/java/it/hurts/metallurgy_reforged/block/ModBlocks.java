@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
+import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
@@ -102,23 +103,35 @@ public class ModBlocks {
     public static BlockMetal goldHazardBlock = new BlockMetal(Constants.METAL_GOLD, BlockTypes.HAZARD_BLOCK);
     public static BlockMetal goldReinforcedGlass = new BlockMetal(Constants.METAL_GOLD, BlockTypes.GLASS);
 
-    //Other Blocks Initialization
-    static
-    {
-        //Initialize Bitumen, Charcoal and Sulfur Blocks
-        BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
-        BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
-        BlockUtils.initBlock(blockSulfur, "sulfur_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
-        miscBlocks.add(blockBitumen);
-        miscBlocks.add(blockCharcoal);
-        miscBlocks.add(blockSulfur);
-        miscBlocks.add(oreTar);
-        miscBlocks.add(oreSulfur);
-        miscBlocks.add(orePotash);
-        miscBlocks.add(orePhosphorite);
-        Collections.addAll(miscBlocks, engravedGoldBlock, largeGoldBricks, goldBricks, goldCrystal, goldHazardBlock, goldReinforcedGlass);
-        Collections.addAll(miscBlocks, engravedIronBlock, largeIronBricks, ironBricks, ironCrystal, ironHazardBlock, ironReinforcedGlass);
-        miscBlocks.add(structureBlock);
+	//Other Blocks Initialization
+	static
+	{
+		//Initialize Bitumen, Charcoal and Sulfur Blocks
+		BlockUtils.initBlock(blockBitumen, "bitumen_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
+		BlockUtils.initBlock(blockCharcoal, "charcoal_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
+		BlockUtils.initBlock(blockSulfur, "sulfur_block", MetallurgyTabs.tabBlock, 3F, Constants.BlastResistance.MID_TIER, "p", 1);
+		miscBlocks.add(blockBitumen);
+		miscBlocks.add(blockCharcoal);
+		miscBlocks.add(blockSulfur);
+		miscBlocks.add(oreTar);
+		miscBlocks.add(oreSulfur);
+		miscBlocks.add(orePotash);
+		miscBlocks.add(orePhosphorite);
+
+		if (RegistrationConfig.categoryBlocks.enableEngravedMetalBlocks)
+			Collections.addAll(miscBlocks, engravedGoldBlock, engravedIronBlock);
+		if (RegistrationConfig.categoryBlocks.enableLargeBricksMetalBlocks)
+			Collections.addAll(miscBlocks, largeGoldBricks, largeIronBricks);
+		if (RegistrationConfig.categoryBlocks.enableBricksMetalBlocks)
+			Collections.addAll(miscBlocks, goldBricks, ironBricks);
+		if (RegistrationConfig.categoryBlocks.enableCrystalMetalBlocks)
+			Collections.addAll(miscBlocks, goldCrystal, ironCrystal);
+		if (RegistrationConfig.categoryBlocks.enableHazardMetalBlocks)
+			Collections.addAll(miscBlocks, goldHazardBlock, ironHazardBlock);
+		if (RegistrationConfig.categoryBlocks.enableReinforcedGlassBlocks)
+			Collections.addAll(miscBlocks, goldReinforcedGlass, ironReinforcedGlass);
+
+		miscBlocks.add(structureBlock);
 
         miscBlocks.add(iceShield);
     }

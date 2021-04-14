@@ -16,19 +16,18 @@ import java.util.Random;
 
 public class EntityData {
 
-    public boolean wasSnatched = false;
-    public IBlockState snatchableBlock = null;
-    public boolean initialized = false;
+	public boolean wasSnatched = false;
+	public IBlockState snatchableBlock = null;
+	public boolean initialized = false;
 
-    public void initEnderman()
-    {
-        Random random = new Random();
-        if (random.nextInt(4) == 0 && !initialized)
-        {
-            System.out.println(OldDesichalkosArmorEffect.borrowableBlocks.length);
-            this.snatchableBlock = OldDesichalkosArmorEffect.borrowableBlocks[random.nextInt(OldDesichalkosArmorEffect.borrowableBlocks.length)];
-            this.initialized = true;
-        }
-    }
+	public void initEnderman()
+	{
+		Random random = new Random();
+		if (random.nextInt(4) == 0 && !initialized)
+		{
+			this.snatchableBlock = OldDesichalkosArmorEffect.borrowableBlocks[random.nextInt(DesichalkosArmorEffect.borrowableBlocks.length)];
+			this.initialized = true;
+		}
+	}
 
 }

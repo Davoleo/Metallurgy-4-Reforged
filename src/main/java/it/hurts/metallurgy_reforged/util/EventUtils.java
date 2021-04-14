@@ -25,53 +25,64 @@ import java.util.Random;
 
 public class EventUtils {
 
-    /**
-     * @param entity The entity who is wearing the armor
-     * @param metal  The metal the armor is made of
-     * @return whether a player is wearing the complete armor set
-     */
-    public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
-    {
-        boolean fullArmored = true;
+	/**
+	 * @param entity The entity who is wearing the armor
+	 * @param metal  The metal the armor is made of
+	 *
+	 * @return whether a player is wearing the complete armor set
+	 */
+	public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
+	{
+		boolean fullArmored = true;
 
-        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-        {
-            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
-            {
-                fullArmored = false;
-            }
-        }
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+		{
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
+			{
+				fullArmored = false;
+			}
+		}
 
-        return fullArmored;
-    }
+		return fullArmored;
+	}
 
-    /**
-     * @param player     The player who may be wearing the armor piece
-     * @param slot       The slot in which the player may be wearing a specific armor piece
-     * @param armorEquip The armor item the player may be wearing in the specified slot
-     * @return whether the player is wearing a specific armor item in a specific Equipment Slot
-     */
-    public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
-    {
-        return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
-    }
+	/**
+	 * @param player     The player who may be wearing the armor piece
+	 * @param slot       The slot in which the player may be wearing a specific armor piece
+	 * @param armorEquip The armor item the player may be wearing in the specified slot
+	 *
+	 * @return whether the player is wearing a specific armor item in a specific Equipment Slot
+	 */
+	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
+	{
+		return player.inventory.armorInventory.get(slot.getIndex()).getItem() == armorEquip;
+	}
 
-    /**
-     * @param entity EntityLivingBase
-     * @param metal  The metal you need to count the number of armor piece of
-     * @return The number of pieces of armor worn by the player
-     */
-    public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
-    {
-        int count = 0;
+	/**
+	 * @param player EntityPlayer
+	 * @param armor  An array with all armor pieces
+	 *
+	 * @return The number of pieces of armor worn by the player
+	 */
+	public static int getArmorPiecesCount(EntityPlayer player, Item[] armor)
+	{
+		NonNullList<ItemStack> armorList = player.inventory.armorInventory;
 
-        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-                if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
-                    count++;
+		int count = 0;
+		//Reverse for loop because armorList contains armor stacks in reverse order (index 0 are boots)
+		for (int i = 0; i < armorList.size(); i++)
+		{
+			if (armorList.get(3 - i).getItem().equals(armor[i]))
+				count++;
+		}
 
-        return count;
-    }
+		return count;
+	}
+
+	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()
+			.filter(metal -> metal != null && metal.hasArmorSet())
+			.toArray(Metal[]::new);
+	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
 
     public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
     {
@@ -131,18 +142,10 @@ public class EventUtils {
                 break;
         }
 
-        Random random = new Random();
+		if ((Utils.random.nextFloat() * 100) < chance)
+			return metalllarray[metalIndex];
 
-        if ((random.nextFloat() * 100) < chance)
-        {
-            Metal[] metalllarray = ModMetals.metalMap.values().stream()
-                    .filter(metal -> metal != null && metal.hasArmorSet())
-                    .toArray(Metal[]::new);
-            int metalIndex = random.nextInt(metalllarray.length);
-            return metalllarray[metalIndex];
-        }
-
-        return null;
-    }
+		return null;
+	}
 
 }

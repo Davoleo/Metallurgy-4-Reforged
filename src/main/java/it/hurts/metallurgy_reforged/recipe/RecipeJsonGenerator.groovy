@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe
@@ -43,7 +43,8 @@ class RecipeJsonGenerator {
             hazard_block    : ["ICI", "CDC", "ICI"],
             reinforced_glass: ["IGI", "GDG", "IGI"],
 
-            ingot           : ["NNN", "NNN", "NNN"]
+            ingot           : ["NNN", "NNN", "NNN"],
+            bucket          : ["I I", " I "]
     ]
 
     static def markers = [
@@ -362,11 +363,27 @@ class RecipeJsonGenerator {
                     ]
             ]
 
+            //vanilla buckets (can be made of metals that have tools)
+            def bucketObj = [
+                    type   : "forge:ore_shaped",
+                    pattern: shapedPatterns["bucket"],
+                    key    : [
+                            "I": [
+                                    type: "forge:ore_dict",
+                                    ore : "ingot$pascalName"
+                            ]
+                    ],
+                    result : [
+                            item: "minecraft:bucket"
+                    ]
+            ]
+
             RecipeGenHelper.writeJson("axe", metal, axeObj)
             RecipeGenHelper.writeJson("hoe", metal, hoeObj)
             RecipeGenHelper.writeJson("pickaxe", metal, pickaxeObj)
             RecipeGenHelper.writeJson("shovel", metal, shovelObj)
             RecipeGenHelper.writeJson("sword", metal, swordObj)
+            RecipeGenHelper.writeJson("bucket", metal, bucketObj)
         }
 
         //----------------- BLOCKS -----------------------
@@ -561,8 +578,27 @@ class RecipeJsonGenerator {
                 ]
         ]
 
+        def midasiumToGold = [
+                type       : "forge:ore_shapeless",
+                ingredients: [
+                        [
+                                type: "forge:ore_dict",
+                                ore : "dustMidasium"
+                        ],
+                        [
+                                type: "forge:ore_dict",
+                                ore : "dust$pascalMetal"
+                        ]
+                ],
+                result     : [
+                        item : "metallurgy:gold_dust",
+                        count: 2
+                ]
+        ]
+
         RecipeGenHelper.writeJson("ingot_shapeless", metal, ingotObj)
         RecipeGenHelper.writeJson("nugget_shapeless", metal, nuggetObj)
+        RecipeGenHelper.writeJson("midasium_to_gold", metal, midasiumToGold)
     }
 
     private static void generateAlloyRecipes(List<RecipeGenHelper.Stack> alloy) {

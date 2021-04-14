@@ -251,6 +251,7 @@ tile.metallurgy.striped_road_block.name=Striped Road
 tile.metallurgy.charcoal_block.name=Block of Charcoal
 tile.metallurgy.bitumen_block.name=Bitumen Block
 tile.metallurgy.sulfur_block.name=Sulfur Block
+tile.metallurgy.ice_shield.name=Ice Shield
 
 tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
 
@@ -950,6 +951,7 @@ item.metallurgy.ceruclase_shield.name=Ceruclase Shield
 item.metallurgy.zinc_buckler.name=Zinc Buckler
 item.metallurgy.vulcanite_buckler.name=Vulcanite Buckler
 item.metallurgy.orichalcum_buckler.name=Orichalcum Buckler
+item.metallurgy.electrum_magnet.name=Electrum Magnet
 
 #Items
 item.metallurgy.tar.name=Tar
@@ -1381,6 +1383,12 @@ tooltip.metallurgy.potash_fertilizer=§6Artificial bone meal effect :D
 tooltip.metallurgy.phosphorus_lamp=§7Denies mob spawning in an area of 16x8x16 blocks around it (gives a faint light)
 tooltip.metallurgy.thermite=§cActs as a fuel with the same strength of coal (works best in metallurgy machines 2x efficiency!) [check JEI for more information]
 tooltip.metallurgy.clear_detector_warning=§4Warning: this will clear all the active materials in the ore detector
+tooltip.metallurgy.etherium_goggles=§4Wear them in your helmet slot to see redstone related blocks and circuits behind walls
+tooltip.metallurgy.electrum_magnet=§eAttracts dropped items on the ground (Has 3 different modes)
+tooltip.metallurgy.electrum_magnet_mode=§fMode:
+tooltip.metallurgy.electrum_magnet_disabled=§7Disabled
+tooltip.metallurgy.electrum_magnet_metal_only=§eMetal Items Only
+tooltip.metallurgy.electrum_magnet_enabled=§fEnabled
 tooltip.metallurgy.press_ctrl=Press §f[CTRL]§7 to expand
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]

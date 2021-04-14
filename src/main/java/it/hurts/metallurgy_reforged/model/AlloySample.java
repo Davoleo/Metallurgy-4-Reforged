@@ -4,103 +4,117 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.model;
 
+import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 @MethodsReturnNonnullByDefault
 public class AlloySample {
 
-    private final Metal metal;
-    private ItemStack fallbackStack = ItemStack.EMPTY;
-    private final int amount;
-    private final boolean isOriginal;
-    private float xp = -1F;
+	private final Metal metal;
+	private ItemStack fallbackStack = ItemStack.EMPTY;
+	private final int amount;
+	private final boolean isOriginal;
+	private float xp = -1F;
 
-    public AlloySample(Metal metal, int amount, float xp)
-    {
-        this.metal = metal;
-        this.amount = amount;
-        this.xp = xp;
-        this.isOriginal = true;
-    }
+	public AlloySample(Metal metal, int amount, float xp)
+	{
+		this.metal = metal;
+		this.amount = amount;
+		this.xp = xp;
+		this.isOriginal = true;
+	}
 
-    public AlloySample(Metal metal, int amount)
-    {
-        this(metal, amount, -1F);
-    }
+	public AlloySample(Metal metal, int amount)
+	{
+		this(metal, amount, -1F);
+	}
 
-    public AlloySample(ItemStack oreDictStack, int amount)
-    {
-        metal = ItemUtils.getMetalFromOreDictStack(oreDictStack);
-        if (metal == null)
-            this.fallbackStack = oreDictStack;
-        this.amount = amount;
-        this.isOriginal = false;
-    }
+	public AlloySample(ItemStack oreDictStack, int amount)
+	{
+		metal = null;
+		this.fallbackStack = oreDictStack;
+		this.amount = amount;
+		this.isOriginal = false;
+	}
 
-    @Nullable
-    public Metal getMetal()
-    {
-        return metal;
-    }
+	@Nullable
+	public Metal getMetal()
+	{
+		return metal;
+	}
 
-    public int getAmount()
-    {
-        return amount;
-    }
+	public int getAmount()
+	{
+		return amount;
+	}
 
-    public boolean isOriginal()
-    {
-        return isOriginal;
-    }
+	public boolean isOriginal()
+	{
+		return isOriginal;
+	}
 
-    public float getXp()
-    {
-        return xp;
-    }
+	public float getXp()
+	{
+		return xp;
+	}
 
-    public boolean hasXp()
-    {
-        return xp != -1F;
-    }
+	public boolean hasXp()
+	{
+		return xp != -1F;
+	}
 
-    public AlloySample setXp(float xp)
-    {
-        this.xp = xp;
-        return this;
-    }
+	public AlloySample setXp(float xp)
+	{
+		this.xp = xp;
+		return this;
+	}
 
-    public boolean hasFallenBack()
-    {
-        return fallbackStack != ItemStack.EMPTY;
-    }
+	public boolean hasFallenBack()
+	{
+		return !fallbackStack.isEmpty();
+	}
 
-    /**
-     * @return either an ingot stack of the provided metal<br>
-     * or the fallbackStack provided in the constructor<br>
-     * if a metal was disabled it'll return an empty itemstack
-     */
-    public ItemStack getStack()
-    {
-        //The second condition is important when metals are disabled in materials.json (it'll return an empty itemStack)
-        if (hasFallenBack() || metal == null)
-            return fallbackStack;
+	/**
+	 * @return either a list of stacks that have the ingotMetal oredict key<br>
+	 * or a singleton list made of the fallback stack<br>
+	 */
+	public List<ItemStack> getOredictedStacks()
+	{
+		if (hasFallenBack())
+			return Collections.singletonList(fallbackStack);
+		else
+			return OreDictionary.getOres("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+	}
 
-        return new ItemStack(metal.getIngot(), amount);
-    }
+	/**
+	 * @return either an ingot stack of the provided metal<br>
+	 * or the fallbackStack provided in the constructor<br>
+	 * if a metal was disabled it'll return an empty itemstack
+	 */
+	public ItemStack getStack()
+	{
+		//The second condition is important when metals are disabled in materials.json (it'll return an empty itemStack)
+		if (hasFallenBack() || metal == null)
+			return fallbackStack;
 
-    public ItemStack getFallbackStack()
-    {
-        return fallbackStack;
-    }
+		return new ItemStack(metal.getIngot(), amount);
+	}
+
+	public ItemStack getFallbackStack()
+	{
+		return fallbackStack;
+	}
 
 }

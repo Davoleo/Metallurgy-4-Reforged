@@ -4,20 +4,51 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.config;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import java.lang.reflect.Field;
 
 @Config.LangKey("config.metallurgy.category.worldgen")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/worldgen", category = "ore_generation")
 public class WorldGenerationConfig {
 
-    //	Subclass Category
-    public static SubCategoryRarity rarity = new SubCategoryRarity();
+	@Deprecated
+	public static void proofCheckBiomes()
+	{
+		Field[] categories = WorldGenerationConfig.class.getFields();
+
+		for (Field category : categories)
+		{
+			try
+			{
+				Object catObj = category.get(null);
+				String[] biomes = (String[]) catObj.getClass().getDeclaredField("biomes").get(catObj);
+
+				for (String biome : biomes)
+				{
+					if (!ForgeRegistries.BIOMES.containsKey(new ResourceLocation(biome)))
+					{
+						Metallurgy.logger.warn("The biome '" + biome + "' declared in the world generation config doesn't exist!");
+					}
+				}
+			}
+			catch (IllegalAccessException | NoSuchFieldException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+
+	//	Subclass Category
+	public static SubCategoryRarity rarity = new SubCategoryRarity();
 
     //OverWorld ores
     public static CategoryAdamantine adamantine = new CategoryAdamantine();

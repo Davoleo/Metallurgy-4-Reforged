@@ -43,21 +43,22 @@ public class ModItems {
     public static ItemBase dustThermite = new ItemExtra("thermite_dust", MetallurgyTabs.tabDust).setTooltip(Constants.THERMITE_DUST);
     public static ItemBase phosphorus = new ItemExtra("phosphorus", MetallurgyTabs.tabDust);
 
-    //Gadgets
-    public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();
-    public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");
-    public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
-    public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
-    public static ItemOreDetector oreDetector = new ItemOreDetector();
-    public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
-    public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
-    //Shields
-    public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
-    //public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
-    public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
-    public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
-    public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();
-    public static ItemOrichalcumBuckler orichalcumBuckler = new ItemOrichalcumBuckler();
+	//Gadgets
+	public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();
+	public static ItemIgnatiusLighter flintAndIgnatius = new ItemIgnatiusLighter("flint_and_ignatius");
+	public static ItemVulcaniteLighter flintAndVulcanite = new ItemVulcaniteLighter("flint_and_vulcanite");
+	public static ItemGauntlet gauntlet = new ItemGauntlet("rubracium_gauntlet");
+	public static ItemOreDetector oreDetector = new ItemOreDetector();
+	public static ItemEtheriumMonocle etheriumMonocle = new ItemEtheriumMonocle();
+	public static ItemKnuckles brassKnuckles = new ItemKnuckles("brass_knuckles");
+	public static ItemElectrumMagnet electrumMagnet = new ItemElectrumMagnet();
+	//Shields
+	public static ItemLemuriteShield invisibilityShield = new ItemLemuriteShield();
+	//public static ItemSanguiniteShield witherShield = new ItemSanguiniteShield();
+	public static ItemZincBuckler zincBuckler = new ItemZincBuckler();
+	public static ItemVulcaniteBuckler explosiveBuckler = new ItemVulcaniteBuckler();
+	public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();
+	public static ItemOrichalcumBuckler orichalcumBuckler = new ItemOrichalcumBuckler();
 
     //Wiki Link Item ------------------------------------------------
     public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {

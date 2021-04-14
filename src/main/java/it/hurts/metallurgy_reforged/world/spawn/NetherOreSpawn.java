@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 /* -----------------------------------
@@ -19,14 +19,13 @@ package it.hurts.metallurgy_reforged.world.spawn;
 import com.google.common.base.Predicate;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
 
 public class NetherOreSpawn extends BaseOreSpawn {
 
-    public NetherOreSpawn(Biome[] biomes)
-    {
-        super(null, biomes);
-    }
+	public NetherOreSpawn(ResourceLocation[] biomes)
+	{
+		super(null, biomes);
+	}
 
     @SuppressWarnings("Guava")
     @Override

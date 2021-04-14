@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.effect.tool;
@@ -58,32 +58,38 @@ public class DesichalkosSwordEffect extends BaseMetallurgyEffect {
                 RayTraceResult result = world.rayTraceBlocks(eyePosition, targetPos,
                         false, true, true);
 
-                if (result != null) {
-                    BlockPos pos = result.getBlockPos();
+				if (result != null && result.typeOfHit != RayTraceResult.Type.MISS)
+				{
+					BlockPos pos = result.getBlockPos();
 
-                    switch (result.sideHit) {
-                        case WEST:
-                            this.teleport(player, pos.getX() - 1, pos.getY(), pos.getZ());
-                            break;
-                        case EAST:
-                            this.teleport(player, pos.getX() + 1, pos.getY(), pos.getZ());
-                            break;
-                        case NORTH:
-                            this.teleport(player, pos.getX(), pos.getY(), pos.getZ() - 1);
-                            break;
-                        case SOUTH:
-                            this.teleport(player, pos.getX(), pos.getY(), pos.getZ() + 1);
-                            break;
-                        case UP:
-                            this.teleport(player, pos.getX(), pos.getY() + 1, pos.getZ());
-                            break;
-                        case DOWN:
-                            this.teleport(player, pos.getX(), pos.getY() - player.height, pos.getZ());
-                            break;
-                    }
-                } else {
-                    this.teleport(player, targetPos.x, player.getPosition().getY(), targetPos.z);
-                }
+					switch (result.sideHit)
+					{
+						case WEST:
+							this.teleport(player, pos.getX() - 1, pos.getY(), pos.getZ());
+							break;
+						case EAST:
+							this.teleport(player, pos.getX() + 1, pos.getY(), pos.getZ());
+							break;
+						case NORTH:
+							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() - 1);
+							break;
+						case SOUTH:
+							this.teleport(player, pos.getX(), pos.getY(), pos.getZ() + 1);
+							break;
+						case UP:
+							this.teleport(player, pos.getX(), pos.getY() + 1, pos.getZ());
+							break;
+						case DOWN:
+							this.teleport(player, pos.getX(), pos.getY() - player.height, pos.getZ());
+							break;
+						default:
+							break;
+					}
+				}
+				else
+				{
+					this.teleport(player, targetPos.x, player.getPosition().getY(), targetPos.z);
+				}
 
                 player.swingArm(event.getHand());
 

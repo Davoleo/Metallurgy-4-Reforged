@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.world;
@@ -29,7 +29,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.logging.log4j.Level;
 
 import java.util.ArrayDeque;
@@ -157,23 +156,21 @@ public class ModWorldGen implements IWorldGenerator {
 
                 BlockPos pos = new BlockPos(x, y, z);
 
-                if (oreSpawn.canOreSpawn(world, pos, world.getBlockState(pos), random))
-                    generator.generate(world, random, pos);
-            }
-        }
-    }
+				//Metallurgy.logger.info("Trying to Generate: " + block.getRegistryName().toString());
+				if (oreSpawn.canOreSpawn(world, pos, world.getBlockState(pos), random))
+					generator.generate(world, random, pos);
+			}
+		}
+	}
 
-    public static Biome[] convertStringToBiome(String[] biomesResource)
-    {
-        Biome[] biomes = new Biome[biomesResource.length];
-        for (int i = 0; i < biomesResource.length; i++)
-        {
-            biomes[i] = ForgeRegistries.BIOMES.getValue(new ResourceLocation(biomesResource[i]));
-            if (biomes[i] == null)
-                Metallurgy.logger.error(Metallurgy.NAME + " Invalid biome resource location : " + biomesResource[i] + "!");
-        }
-        return biomes;
-    }
+	public static ResourceLocation[] convertStringToBiome(String[] biomesResource)
+	{
+		ResourceLocation[] resLocations = new ResourceLocation[biomesResource.length];
+		for (int i = 0; i < biomesResource.length; i++)
+			resLocations[i] = new ResourceLocation(biomesResource[i]);
+
+		return resLocations;
+	}
 
     //Retrogen data save & load
     @SubscribeEvent

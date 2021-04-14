@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
@@ -14,10 +14,13 @@ import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
@@ -82,5 +85,11 @@ public class OreDictHandler {
         else if (itemOrBlock instanceof Item)
             OreDictionary.registerOre(oreName, (Item) itemOrBlock);
     }
+
+	public static NonNullList<ItemStack> getOredictedStacksFromMetalAndPrefix(String prefix, Metal metal)
+	{
+		String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString());
+		return OreDictionary.getOres(prefix + camelMetal);
+	}
 
 }
