@@ -77,26 +77,26 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-        logger = event.getModLog();
-        logger.info(NAME + " is entering pre-initialization!");
+		logger = event.getModLog();
+		logger.info(NAME + " is entering pre-initialization!");
 
-        materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
-        enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
+		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
+		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
 
-        ModMetals.init();
+		ModMetals.init();
 
-        ModRecipes.checkForUnboundRecipes();
-        logger.info("JSON Recipes have been enabled/disabled depending on the registered mod content!");
+		//ModRecipes.checkForUnboundRecipes();
+		//logger.info("JSON Recipes have been enabled/disabled depending on the registered mod content!");
 
-        ModFluids.registerFluids();
-        logger.info("Fluid registration complete!");
+		ModFluids.registerFluids();
+		logger.info("Fluid registration complete!");
 
-        GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
-        MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
-        MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
-        logger.info("World generation successful!");
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
+		logger.info("World generation successful!");
 
-        SubEvent.init();
+		SubEvent.init();
 
 		TileEntityHandler.registerTileEntities();
 		logger.info("Tile Entities Registered!");
