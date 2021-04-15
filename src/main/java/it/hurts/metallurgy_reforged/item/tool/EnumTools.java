@@ -18,9 +18,9 @@ public enum EnumTools {
 	SHOVEL("shovel", ItemShovelBase.class, RegistrationConfig.categoryItems.enableMetalShovels),
 	SWORD("sword", ItemSwordBase.class, RegistrationConfig.categoryItems.enableMetalSwords);
 
-	private String name;
-	private Class<?> toolClass;
-	private boolean isEnabled;
+	private final String name;
+	private final Class<?> toolClass;
+	private final boolean isEnabled;
 
 	EnumTools(String name, Class<?> toolClass, boolean enabled)
 	{
