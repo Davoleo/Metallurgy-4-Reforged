@@ -212,58 +212,82 @@ class RecipeJsonGenerator {
             //-------------------------- ARMOR ----------------------------------            
             //helmet
             def helmetObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["helmet"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "item/armor_set"
+                            }
+                    ],
+                    pattern   : shapedPatterns["helmet"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_helmet"
                     ]
             ]
 
             //chestplate
             def chestplateObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["chestplate"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "item/armor_set"
+                            }
+                    ],
+                    pattern   : shapedPatterns["chestplate"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_chestplate"
                     ]
             ]
             //leggings
             def leggingsObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["leggings"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "item/armor_set"
+                            }
+                    ],
+                    pattern   : shapedPatterns["leggings"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_leggings"
                     ]
             ]
             //boots
             def bootsObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["boots"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "item/armor_set"
+                            }
+                    ],
+                    pattern   : shapedPatterns["boots"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_boots"
                     ]
             ]
@@ -279,9 +303,15 @@ class RecipeJsonGenerator {
 
             //axe
             def axeObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["axe"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "tool/axe"
+                            }
+                    ],
+                    pattern   : shapedPatterns["axe"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
@@ -290,15 +320,21 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_axe"
                     ]
             ]
             //hoe
             def hoeObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["hoe"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "tool/hoe"
+                            }
+                    ],
+                    pattern   : shapedPatterns["hoe"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
@@ -307,15 +343,21 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_hoe"
                     ]
             ]
             //pickaxe
             def pickaxeObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["pickaxe"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "tool/pickaxe"
+                            }
+                    ],
+                    pattern   : shapedPatterns["pickaxe"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
@@ -324,15 +366,21 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_pickaxe"
                     ]
             ]
             //shovel
             def shovelObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["shovel"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "tool/shovel"
+                            }
+                    ],
+                    pattern   : shapedPatterns["shovel"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
@@ -341,15 +389,21 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_shovel"
                     ]
             ]
             //sword
             def swordObj = [
-                    type   : "forge:ore_shaped",
-                    pattern: shapedPatterns["sword"],
-                    key    : [
+                    type      : "forge:ore_shaped",
+                    conditions: [
+                            {
+                                type: "metallurgy:registry_condition"
+                                depends_on: "tool/sword"
+                            }
+                    ],
+                    pattern   : shapedPatterns["sword"],
+                    key       : [
                             "I": [
                                     type: "forge:ore_dict",
                                     ore : "ingot$pascalName"
@@ -358,7 +412,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_sword"
                     ]
             ]
@@ -388,22 +442,34 @@ class RecipeJsonGenerator {
 
         //----------------- BLOCKS -----------------------
         def blockObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.block,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/block"
+                        }
+                ],
+                pattern   : shapedPatterns.block,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
                         ]
                 ],
-                result : [
+                result    : [
                         item: "metallurgy:${metal}_block"
                 ]
         ]
         def engravedObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.engraved_block,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/engraved_block"
+                        }
+                ],
+                pattern   : shapedPatterns.engraved_block,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -422,9 +488,15 @@ class RecipeJsonGenerator {
                 ]
         ]
         def crystalsObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.crystals,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/crystals"
+                        }
+                ],
+                pattern   : shapedPatterns.crystals,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -443,9 +515,15 @@ class RecipeJsonGenerator {
                 ]
         ]
         def bricksObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.bricks,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/bricks"
+                        }
+                ],
+                pattern   : shapedPatterns.bricks,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -454,15 +532,21 @@ class RecipeJsonGenerator {
                                 item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
-                result : [
+                result    : [
                         item : "metallurgy:${metal}_bricks",
                         count: 48
                 ]
         ]
         def largeBricksObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.large_bricks,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/large_bricks"
+                        }
+                ],
+                pattern   : shapedPatterns.large_bricks,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -481,9 +565,15 @@ class RecipeJsonGenerator {
                 ]
         ]
         def hazardBlocksObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.hazard_block,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/hazard_block"
+                        }
+                ],
+                pattern   : shapedPatterns.hazard_block,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -501,9 +591,15 @@ class RecipeJsonGenerator {
                 ]
         ]
         def reinforcedGlassObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.reinforced_glass,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/reinforced_glass"
+                        }
+                ],
+                pattern   : shapedPatterns.reinforced_glass,
+                key       : [
                         "I": [
                                 type: "forge:ore_dict",
                                 ore : "ingot$pascalName"
@@ -523,15 +619,21 @@ class RecipeJsonGenerator {
 
         // -------------------------- INGOT -------------------------
         def ingotObj = [
-                type   : "forge:ore_shaped",
-                pattern: shapedPatterns.ingot,
-                key    : [
+                type      : "forge:ore_shaped",
+                conditions: [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "item/nugget"
+                        }
+                ],
+                pattern   : shapedPatterns.ingot,
+                key       : [
                         "N": [
                                 type: "forge:ore_dict",
                                 ore : "nugget$pascalName"
                         ]
                 ],
-                result : [
+                result    : [
                         item: "metallurgy:${metal}_ingot"
                 ]
         ]
@@ -552,6 +654,12 @@ class RecipeJsonGenerator {
 
         def ingotObj = [
                 type       : "forge:ore_shapeless",
+                conditions : [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "block/block"
+                        }
+                ],
                 ingredients: [
                         [
                                 type: "forge:ore_dict",
@@ -566,6 +674,12 @@ class RecipeJsonGenerator {
 
         def nuggetObj = [
                 type       : "forge:ore_shapeless",
+                conditions : [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "item/nugget"
+                        }
+                ],
                 ingredients: [
                         [
                                 type: "forge:ore_dict",
@@ -580,6 +694,12 @@ class RecipeJsonGenerator {
 
         def midasiumToGold = [
                 type       : "forge:ore_shapeless",
+                conditions : [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "item/dust"
+                        }
+                ],
                 ingredients: [
                         [
                                 type: "forge:ore_dict",
@@ -615,6 +735,12 @@ class RecipeJsonGenerator {
 
         def alloyRecipeObj = [
                 type       : "forge:ore_shapeless",
+                conditions : [
+                        {
+                            type: "metallurgy:registry_condition"
+                            depends_on: "item/dust"
+                        }
+                ],
                 ingredients: ingredients,
                 result     : [
                         item : "metallurgy:${alloy.get(2).name}_dust",
