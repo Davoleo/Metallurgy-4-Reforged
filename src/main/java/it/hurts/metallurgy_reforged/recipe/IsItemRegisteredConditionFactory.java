@@ -48,7 +48,8 @@ public class IsItemRegisteredConditionFactory implements IConditionFactory {
             }
 
             //if we're still here the only item type that is left are armor sets
-            return () -> RegistrationConfig.categoryItems.enableMetalArmorSets;
+            if (dependsOn.equals("armor_set"))
+                return () -> RegistrationConfig.categoryItems.enableMetalArmorSets;
         }
         else if (dependsOn.startsWith("tool/"))
         {
