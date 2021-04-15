@@ -5,6 +5,12 @@
     "NIN",
     "IDI"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/crystals"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",

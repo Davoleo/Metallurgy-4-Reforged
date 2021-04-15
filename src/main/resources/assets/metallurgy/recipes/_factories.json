@@ -5,5 +5,12 @@
   "ingredients": {
     "metal": "it.hurts.metallurgy_reforged.recipe.IngredientMetal$Factory"
   },
-  "_comment": "Classes: Ingredient, IIngredientFactory, ShapedOreRecipe, IRecipeFactory"
+  "conditions": {
+    "registry_condition": "it.hurts.metallurgy_reforged.recipe.IsItemRegisteredConditionFactory"
+  },
+  "_comment": {
+    "ingredient_classes": ["Ingredient", "IIngredientFactory"],
+    "recipe_classes": ["ShapedOreRecipe", "IRecipeFactory"],
+    "condition_classes": ["IsItemRegisteredConditionFactory", "IConditionFactory"]
+  }
 }

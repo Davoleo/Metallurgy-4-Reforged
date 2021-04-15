@@ -5,6 +5,12 @@
     "CDC",
     "ICI"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/hazard_block"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",

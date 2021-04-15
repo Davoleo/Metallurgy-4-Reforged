@@ -5,6 +5,12 @@
     "BCB",
     "SFS"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/block"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",

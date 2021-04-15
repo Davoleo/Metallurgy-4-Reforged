@@ -5,6 +5,12 @@
     "BDB",
     "IBI"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/large_bricks"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",
