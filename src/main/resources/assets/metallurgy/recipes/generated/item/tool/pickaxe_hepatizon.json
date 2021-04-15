@@ -1,5 +1,11 @@
 {
   "type": "forge:ore_shaped",
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "tool/pickaxe"
+    }
+  ],
   "pattern": [
     "III",
     " S ",

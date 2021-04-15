@@ -53,6 +53,7 @@ public class IsItemRegisteredConditionFactory implements IConditionFactory {
         }
         else if (dependsOn.startsWith("tool/"))
         {
+            dependsOn = dependsOn.replaceFirst("tool/", "");
             for (EnumTools tool : EnumTools.values())
             {
                 if (dependsOn.equals(tool.getName()))

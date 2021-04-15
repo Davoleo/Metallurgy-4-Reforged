@@ -33,7 +33,9 @@ public class ModRecipes {
 	 * Called during pre-init (before json recipes are actually loaded)
 	 *
 	 * @see net.minecraftforge.common.crafting.CraftingHelper#loadRecipes(ModContainer)
+	 * @deprecated Won't work when the mod is packaged in a zipped jar archive
 	 */
+	@Deprecated
 	@SuppressWarnings({ "JavadocReference", "ConstantConditions" })
 	public static void checkForUnboundRecipes()
 	{
