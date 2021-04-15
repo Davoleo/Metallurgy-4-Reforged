@@ -48,12 +48,13 @@ public class BaseOreSpawn implements IOreSpawn {
 	 */
 	private static boolean isInBiome(World world, BlockPos pos, ResourceLocation[] biomes)
 	{
-		if (biomes.length != 0)
-		{
-			for (ResourceLocation biome : biomes)
-				if (world.getBiome(pos).getRegistryName().equals(biome))
-					return true;
-		}
+		if (biomes.length == 0)
+			return true;
+
+		for (ResourceLocation biome : biomes)
+			if (world.getBiome(pos).getRegistryName().equals(biome))
+				return true;
+
 		return false;
 	}
 
