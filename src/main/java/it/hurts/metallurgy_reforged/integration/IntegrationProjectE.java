@@ -4,16 +4,16 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration;
 
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import moze_intel.projecte.api.ProjectEAPI;
 import net.minecraft.block.Block;

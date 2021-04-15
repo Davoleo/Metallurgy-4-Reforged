@@ -5,6 +5,12 @@
     "GDG",
     "IGI"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/reinforced_glass"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",

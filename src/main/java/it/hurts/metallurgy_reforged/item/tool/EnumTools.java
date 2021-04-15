@@ -7,10 +7,9 @@
  = Copyright (c) 2018-2021.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.model;
+package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
-import it.hurts.metallurgy_reforged.item.tool.*;
 
 import javax.annotation.Nullable;
 

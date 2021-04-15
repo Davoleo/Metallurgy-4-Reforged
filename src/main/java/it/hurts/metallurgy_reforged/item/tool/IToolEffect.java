@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.item.tool;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.material.MetalStats;
-import it.hurts.metallurgy_reforged.model.EnumTools;
 
 public interface IToolEffect extends IMetalItem {
 

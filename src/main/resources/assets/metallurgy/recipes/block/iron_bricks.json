@@ -5,6 +5,12 @@
     "IDI",
     "III"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/bricks"
+    }
+  ],
   "key": {
     "I": {
       "type": "forge:ore_dict",
