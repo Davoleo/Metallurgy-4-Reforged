@@ -1,5 +1,11 @@
 {
   "type": "forge:ore_shaped",
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/hazard_block"
+    }
+  ],
   "pattern": [
     "ICI",
     "CDC",

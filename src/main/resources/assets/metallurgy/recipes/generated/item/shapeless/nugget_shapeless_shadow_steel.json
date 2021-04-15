@@ -1,5 +1,11 @@
 {
   "type": "forge:ore_shapeless",
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "item/nugget"
+    }
+  ],
   "ingredients": [
     {
       "type": "forge:ore_dict",

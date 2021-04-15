@@ -567,10 +567,10 @@ class RecipeJsonGenerator {
         def hazardBlocksObj = [
                 type      : "forge:ore_shaped",
                 conditions: [
-                        {
-                            type: "metallurgy:registry_condition"
-                            depends_on: "block/hazard_block"
-                        }
+                        [
+                                type      : "metallurgy:registry_condition",
+                                depends_on: "block/hazard_block"
+                        ]
                 ],
                 pattern   : shapedPatterns.hazard_block,
                 key       : [
