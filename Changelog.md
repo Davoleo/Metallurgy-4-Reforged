@@ -1,10 +1,17 @@
+### 1.2.7
+
+- Fixed Forge errors spam in log caused by broken JSON recipes when disabling registration of items and blocks in the mod ([#322](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/322))
+- Fixed ore generation biome filters in config files ([#323](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/323))
+- Fixed a crash that occured when a non-player entity tried to use Lemurite Shield ([#325](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/325))
+- Improved the look of Creative tabs when mod content is disabled via the registry.cfg config file
+- *Also check out 1.2.6 changelog as that version was marked as beta because of the ore-gen bug*
+
 ### 1.2.6
 
 - Iron and Gold Decorative blocks are now unregistered when disabling a specific block types ([#316](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/316))
 - Fixed Celenegil and Orichalcum effects being applied to Deep Iron and Shadow steel instead ([#319](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/319))
 - Improved random mob metallurgy equipment generation performance
 - Fixed JEI Alloyer Recipes displaying wrong information when you changed some ingredients' oredict names ([#317](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/317))
-- Fixed Forge errors spam in log caused by broken JSON recipes when disabling registration of items and blocks in the mod ([#322](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/322))
 - Fixed faulty CT integration that automatically converted other mods' materials to their metallurgy equivalents when adding custom recipes ([#318](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/318))
 
 ### 1.2.5
