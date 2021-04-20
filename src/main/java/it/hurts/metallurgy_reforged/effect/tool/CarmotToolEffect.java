@@ -10,11 +10,11 @@
 package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.BlockInfoDataBundle;
-import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,16 +56,10 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
                 return;
 
             Item tool = event.getPlayer().getHeldItemMainhand().getItem();
-            String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
-            if (blockToolClass == null || tool.getRegistryName().getPath().contains(blockToolClass))
+
+            if (EventUtils.canHarvest(tool, event.getState()))
             {
-                //check passed because axe is contained in pickaxe
-                if (blockToolClass != null && blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
-                    return;
-
-                EntityPlayer player = event.getPlayer();
-
-                BlockInfoDataBundle effectBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+                BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(event.getPlayer(), metal, getCategory());
                 if (effectBundle.isEffectInProgress())
                     return;
 
@@ -80,7 +74,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     @Override
     public void onStep(World world, EntityPlayer player, int maxSteps, int step)
     {
-        BlockInfoDataBundle blockBundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotToolBundle;
+        BlockInfoDataBundle blockBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
 
         BlockPos pos = blockBundle.getPos();
         IBlockState state = blockBundle.getState();

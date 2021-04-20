@@ -51,6 +51,9 @@ public class InolashiteWeaponEffect extends BaseMetallurgyEffect implements IPro
             if (!canBeApplied(attacker))
                 return;
 
+            attacker.isSwingInProgress = true;
+            attacker.swingProgressInt = 4;
+
             ProgressiveDataBundle bundle = getEffectCapability(attacker).inolashiteWeaponBundle;
             bundle.incrementStep(attacker);
         }
@@ -71,14 +74,11 @@ public class InolashiteWeaponEffect extends BaseMetallurgyEffect implements IPro
             lastAttackedEntity.hurtResistantTime = 0;
             //Attack the last attacked entity with the current item
             entity.attackTargetEntityWithCurrentItem(lastAttackedEntity);
+
+            entity.swingArm(EnumHand.MAIN_HAND);
         }
 
         //Reset the original base attack speed
         attackSpeed.setBaseValue(originalBaseSpeed);
-
-        //Reset and restart swing animation
-        entity.isSwingInProgress = false;
-        entity.swingProgressInt = -1;
-        entity.swingArm(EnumHand.MAIN_HAND);
     }
 }

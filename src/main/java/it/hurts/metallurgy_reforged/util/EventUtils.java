@@ -9,9 +9,11 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import jline.internal.Nullable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -74,14 +76,36 @@ public class EventUtils {
 		return count;
 	}
 
+	/**
+	 * @param tool  The item tool you're using to harvest the block
+	 * @param block The Block you're harvesting
+	 * @return whether you can harvest a certain block with a specific tool
+	 */
+	public static boolean canHarvest(Item tool, IBlockState block)
+	{
+		EnumTools toolType = EnumTools.byInstance(tool);
+		String blockToolClass = block.getBlock().getHarvestTool(block);
+
+		if (blockToolClass == null)
+			return true;
+
+		if (toolType == null)
+			return false;
+
+		if (!blockToolClass.equals(toolType.getName()))
+			return false;
+
+		return tool.canHarvestBlock(block);
+	}
+
 	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()
 			.filter(metal -> metal != null && metal.hasArmorSet())
 			.toArray(Metal[]::new);
 	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
 
-    public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
-    {
-        final List<ItemStack> equip = new ArrayList<>();
+	public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
+	{
+		final List<ItemStack> equip = new ArrayList<>();
 
         for (ItemStack stack : entity.getEquipmentAndArmor())
         {

@@ -176,6 +176,8 @@ public class MetallurgyEffects {
 
     //Inolashite Weapon (Time Cleave)
     public static final InolashiteWeaponEffect inolashiteWeaponEffect = new InolashiteWeaponEffect();
+    //Inolashite Tool (Time Walk)
+    public static final InolashiteToolEffect inolashiteToolEffect = new InolashiteToolEffect();
 
     //Ignatius Sword (25% chance Fire Aspect (5 seconds))
     //public static final BaseMetallurgyEffect ignatiusSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.IGNATIUS);
