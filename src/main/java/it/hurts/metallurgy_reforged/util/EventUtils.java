@@ -16,6 +16,7 @@ import jline.internal.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -81,10 +82,13 @@ public class EventUtils {
 	 * @param block The Block you're harvesting
 	 * @return whether you can harvest a certain block with a specific tool
 	 */
-	public static boolean canHarvest(Item tool, IBlockState block)
+	public static boolean canHarvest(ItemStack tool, IBlockState block)
 	{
-		EnumTools toolType = EnumTools.byInstance(tool);
+		EnumTools toolType = EnumTools.byInstance(tool.getItem());
 		String blockToolClass = block.getBlock().getHarvestTool(block);
+
+		if (block.getBlock() == Blocks.BEDROCK)
+			return false;
 
 		if (blockToolClass == null)
 			return true;
@@ -95,7 +99,7 @@ public class EventUtils {
 		if (!blockToolClass.equals(toolType.getName()))
 			return false;
 
-		return tool.canHarvestBlock(block);
+		return block.getBlock().getHarvestLevel(block) <= tool.getItem().getHarvestLevel(tool, toolType.getName(), null, block);
 	}
 
 	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()

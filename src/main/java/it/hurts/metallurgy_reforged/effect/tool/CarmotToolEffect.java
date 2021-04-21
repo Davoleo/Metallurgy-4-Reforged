@@ -19,7 +19,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -55,9 +54,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
             if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), event.getPlayer()))
                 return;
 
-            Item tool = event.getPlayer().getHeldItemMainhand().getItem();
-
-            if (EventUtils.canHarvest(tool, event.getState()))
+            if (EventUtils.canHarvest(event.getPlayer().getHeldItemMainhand(), event.getState()))
             {
                 BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(event.getPlayer(), metal, getCategory());
                 if (effectBundle.isEffectInProgress())

@@ -24,6 +24,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.EnumSkyBlock;
@@ -113,6 +114,13 @@ public class Utils {
 
         //14 is the max Light possible
         return maxPercent - (light * maxPercent / 14F);
+    }
+
+    public static double angle(Vec3d first, Vec3d second)
+    {
+        double dot = first.dotProduct(second);
+        double lengthProd = first.length() * second.length();
+        return Math.acos(dot / lengthProd);
     }
 
     public static String localizeEscapingCustomSequences(String unlocalized)
