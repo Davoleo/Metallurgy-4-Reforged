@@ -19,6 +19,8 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Sent to Players tracking the player that is resurrected and to the Resurrected player itself
@@ -27,44 +29,50 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
  */
 public class PacketRenderDeathProtection implements IMessage {
 
-    private Entity entity;
+    private int entity;
     private ItemStack stack;
 
-    public PacketRenderDeathProtection() {
+    public PacketRenderDeathProtection()
+    {
         //Mandatory Empty Constructor
     }
 
-    public PacketRenderDeathProtection(Entity entity, ItemStack stack) {
-        this.entity = entity;
+    public PacketRenderDeathProtection(int entityId, ItemStack stack)
+    {
+        this.entity = entityId;
         this.stack = stack;
     }
 
     @Override
-    public void fromBytes(ByteBuf buf) {
+    public void fromBytes(ByteBuf buf)
+    {
         stack = ByteBufUtils.readItemStack(buf);
-        entity = Minecraft.getMinecraft().world.getEntityByID(buf.readInt());
+        entity = buf.readInt();
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         ByteBufUtils.writeItemStack(buf, stack);
-        buf.writeInt(entity.getEntityId());
+        buf.writeInt(entity);
     }
 
     public static class Handler implements IMessageHandler<PacketRenderDeathProtection, IMessage> {
+        @SideOnly(Side.CLIENT)
         @Override
         public IMessage onMessage(PacketRenderDeathProtection message, MessageContext ctx) {
 
             Minecraft client = Minecraft.getMinecraft();
 
             Minecraft.getMinecraft().addScheduledTask(() -> {
+                Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entity);
                 //Get the RGB colors of Adamantine
                 float[] colors = ModMetals.ADAMANTINE.getStats().getColorRGBValues();
                 //Instantiate and start a Particle Ore Emitter
-                client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, message.entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
+                client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
 
                 //If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
-                if (message.entity == client.player) {
+                if (entity == client.player)
+                {
                     client.entityRenderer.displayItemActivation(message.stack);
                 }
 

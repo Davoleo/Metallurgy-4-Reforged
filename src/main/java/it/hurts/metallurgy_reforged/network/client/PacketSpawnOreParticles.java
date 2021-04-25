@@ -15,6 +15,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 
@@ -100,7 +102,7 @@ public class PacketSpawnOreParticles implements IMessage {
 	}
 
 	public static class Handler implements IMessageHandler<PacketSpawnOreParticles, IMessage> {
-
+		@SideOnly(Side.CLIENT)
 		@Override
 		public IMessage onMessage(PacketSpawnOreParticles message, MessageContext ctx)
 		{

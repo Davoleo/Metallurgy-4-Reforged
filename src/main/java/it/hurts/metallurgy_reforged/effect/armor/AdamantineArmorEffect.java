@@ -89,7 +89,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
                     //Set cooldown on the remaining armor pieces
                     entity.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) entity).getCooldownTracker().setCooldown(stack.getItem(), 100));
                     //Send a packet to emit particles and render the Totem item overlay
-                    PacketRenderDeathProtection packet = new PacketRenderDeathProtection(entity, armorPiece);
+                    PacketRenderDeathProtection packet = new PacketRenderDeathProtection(entity.getEntityId(), armorPiece);
                     //This criteria needs to be triggered in order to the totem overlay to work
                     CriteriaTriggers.USED_TOTEM.trigger(((EntityPlayerMP) entity), armorPiece);
 
