@@ -36,7 +36,7 @@ repositories {
     //location of the maven that hosts JEI & TCon
 	maven {
 		name = "Progwml6 maven"
-		url = "http://dvs1.progwml6.com/files/maven"
+		url = "https://dvs1.progwml6.com/files/maven"
 	}
   
     //JEI maven fallback
@@ -48,7 +48,7 @@ repositories {
     //Jared's Maven Repository (CraftTweaker)
     maven {
         name = 'jared maven'
-        url "http://maven.blamejared.com/"
+        url "https://maven.blamejared.com/"
     }
 
     maven {
@@ -56,7 +56,7 @@ repositories {
         url = "https://www.cursemaven.com"
     }
 
-    //CurseForge maven as a final fallback
+    //CurseForge maven as a final fallback (shouldn't be used at all as of this commit)
     maven {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven/"
@@ -88,7 +88,7 @@ dependencies {
 	implementation 'slimeknights.mantle:Mantle:1.12-1.3.3.56'
     implementation 'slimeknights:TConstruct:1.12.2-2.13.0.184'
 
-    compileOnly 'constructs-armory:conarm:1.12.2:1.2.5.9'
+    compileOnly 'curse.maven:constructs_armory_1.2.5.10-287683:3174535'
 
     //Industrial Foregoing
     compileOnly 'curse.maven:industrialforegoing_api-266515:2745323'
@@ -98,14 +98,14 @@ dependencies {
     //compileOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.586'
 
     //ProjectE
-    compileOnly 'projecte:ProjectE:1.12.2:PE1.4.1'
+    compileOnly 'curse.maven:projecte_1.4.1-226410:2702991'
 
     //Silent's Gems
-    compileOnly 'silent-lib:SilentLib:1.12.2:3.0.14+168'
-    compileOnly 'silents-gems:SilentsGems:1.12.2:2.8.22+327'
+    compileOnly 'curse.maven:silent_lib_3.0.14+168-242998:2851111'
+    compileOnly 'curse.maven:silents_gems_2.8.22+237-220311:2804966'
 
     //Immersive Engineering
-    compileOnly 'immersive-engineering:ImmersiveEngineering:0.12:98'
+    compileOnly 'curse.maven:immersive_engineering_0.12_98-231951:2974106'
 }
 
 processResources {
