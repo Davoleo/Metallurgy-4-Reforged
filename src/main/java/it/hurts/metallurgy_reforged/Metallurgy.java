@@ -142,7 +142,6 @@ public class Metallurgy {
         CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), EntityData::new);
         logger.info("Entity Data capability Registered");
 
-
         proxy.preInit(event);
     }
 
@@ -190,6 +189,7 @@ public class Metallurgy {
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		proxy.postInit(event);
 		logger.info(NAME + " is entering post-initialization!");
 
 		PacketManager.init();
