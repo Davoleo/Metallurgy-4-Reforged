@@ -12,8 +12,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.particle.ParticleOre;
-import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -107,14 +105,12 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
 
             EntityLivingBase entity = event.getEntityLiving();
             Vec3d halvedLookVec = entity.getLookVec().scale(0.5);
-            float[] rgb = metal.getStats().getColorRGBValues();
 
             if (entity.world.isRemote)
             {
                 //Maybe a 2 cycles for?
-                ClientProxy.client.effectRenderer.addEffect(
-                        new ParticleOre(entity.world, entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
-                                0.4F, rgb[0], rgb[1], rgb[2], true, 5));
+                spawnParticle(entity.world, entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
+                        0.4F, true, 5);
             }
         }
     }
