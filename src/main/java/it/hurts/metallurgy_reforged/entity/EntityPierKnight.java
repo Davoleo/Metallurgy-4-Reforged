@@ -38,6 +38,8 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -191,8 +193,11 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         ++this.deathTime;
 
-        playVanishParticle(this, false);
-        playVanishParticle(getOwner(), true);
+        if (world.isRemote)
+        {
+            playVanishParticle(this, false);
+            playVanishParticle(getOwner(), true);
+        }
 
         if (this.deathTime >= 40)
         {
@@ -251,18 +256,20 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
 
         if (vanishTime > 0)
         {
-            playVanishParticle(this, true);
-            playVanishParticle(getOwner(), false);
+            if (world.isRemote)
+            {
+                playVanishParticle(this, true);
+                playVanishParticle(getOwner(), false);
+            }
 
             vanishTime--;
         }
 
     }
 
+    @SideOnly(Side.CLIENT)
     public void playVanishParticle(Entity entity, boolean in)
     {
-        if (world.isRemote)
-            return;
         if (entity == null)
             return;
 
