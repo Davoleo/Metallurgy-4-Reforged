@@ -7,7 +7,7 @@
   "for more information about editing this file read the related page on our wiki on github: https://github.com/Davoleo/Metallurgy-4-Reforged/wiki",
   {
     "name": "adamantine",
-    "hardness": 15.0,
+    "hardness": 11.0,
     "blast_resistance": 15.0,
     "ore_harvest_level": 6,
     "color": "A31D1D",
@@ -20,19 +20,27 @@
       ],
       "enchantability": 8,
       "durability": 36,
-      "toughness": 3.5
+      "toughness": 3.5,
+      "max_health" : 5.0,
+      "knockback_resistance" : 4.0,
+      "movement_speed" : 3.0
     },
     "tool_stats": {
       "efficiency": 10.0,
       "harvest_level": 6,
       "enchantability": 22,
       "durability": 1550,
-      "damage": 5.0
+      "damage": 5.0,
+      "max_health" : 5.0,
+      "movement_speed" : 0.05,
+      "attack_damage" : 20.0,
+      "attack_speed" : 4.0,
+      "reach_distance" : 2.0
     }
   },
   {
     "name": "alduorite",
-    "hardness": 10.0,
+    "hardness": 5.0,
     "blast_resistance": 10.0,
     "ore_harvest_level": 5,
     "color": "9294BE"
@@ -89,7 +97,7 @@
   },
   {
     "name": "astral_silver",
-    "hardness": 10.0,
+    "hardness": 3.5,
     "blast_resistance": 10.0,
     "ore_harvest_level": 3,
     "color": "1D52A3",
@@ -114,20 +122,22 @@
   },
   {
     "name": "atlarus",
-    "hardness": 10.0,
+    "hardness": 8.3,
     "blast_resistance": 15.0,
     "ore_harvest_level": 6,
     "color": "DABC23",
     "armor_stats": {
       "damage_reduction": [
         4,
-        3,
-        3,
+        4,
+        4,
         4
       ],
       "enchantability": 2,
       "durability": 35,
-      "toughness": 3.5
+      "toughness": 3.3,
+      "movement_speed" : 0.01,
+      "knockback_resistance" : -0.4
     },
     "tool_stats": {
       "efficiency": 10.0,
@@ -145,21 +155,22 @@
     "color": "2F2F2F",
     "armor_stats": {
       "damage_reduction": [
+        1,
+        2,
         3,
-        5,
-        6,
-        3
+        2
       ],
-      "enchantability": 17,
-      "durability": 50,
-      "toughness": 4.0
+      "enchantability": 2,
+      "durability": 21,
+      "toughness": 6.5,
+      "movement_speed" : -0.006
     },
     "tool_stats": {
-      "efficiency": 8.0,
+      "efficiency": 6.5,
       "harvest_level": 3,
-      "enchantability": 17,
-      "durability": 500,
-      "damage": 3.0
+      "enchantability": 2,
+      "durability": 976,
+      "damage": 2.9
     }
   },
   {
@@ -176,15 +187,18 @@
         2
       ],
       "enchantability": 18,
-      "durability": 15,
-      "toughness": 4.0
+      "durability": 14,
+      "toughness": 3.0,
+      "movement_speed" : -0.01,
+      "knockback_resistance" : 0.2
     },
     "tool_stats": {
-      "efficiency": 10.0,
+      "efficiency": 6.8,
       "harvest_level": 2,
-      "enchantability": 18,
-      "durability": 15,
-      "damage": 2.0
+      "enchantability": 8,
+      "durability": 895,
+      "damage": 2.4,
+      "reach_distance": -1
     }
   },
   {
@@ -205,16 +219,16 @@
       "toughness": 2.0
     },
     "tool_stats": {
-      "efficiency": 6.0,
+      "efficiency": 7.0,
       "harvest_level": 2,
-      "enchantability": 9,
-      "durability": 250,
-      "damage": 2.0
+      "enchantability": 16,
+      "durability": 224,
+      "damage": 2.2
     }
   },
   {
     "name": "carmot",
-    "hardness": 10.0,
+    "hardness": 3.8,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
     "color": "C39C69",
@@ -225,16 +239,17 @@
         5,
         2
       ],
-      "enchantability": 7,
-      "durability": 28,
+      "enchantability": 10,
+      "durability": 12,
       "toughness": 0.0
     },
     "tool_stats": {
-      "efficiency": 12.0,
+      "efficiency": 5.2,
       "harvest_level": 4,
-      "enchantability": 40,
-      "durability": 500,
-      "damage": 2.0
+      "enchantability": 5,
+      "durability": 254,
+      "damage": 1.5,
+      "reach_distance": -2
     }
   },
   {
@@ -255,16 +270,16 @@
       "toughness": 0.0
     },
     "tool_stats": {
-      "efficiency": 14.0,
+      "efficiency": 8.2,
       "harvest_level": 5,
-      "enchantability": 50,
-      "durability": 1600,
-      "damage": 4.0
+      "enchantability": 22,
+      "durability": 340,
+      "damage": 4.6
     }
   },
   {
     "name": "ceruclase",
-    "hardness": 10.0,
+    "hardness": 3.6,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
     "color": "578A99",
@@ -280,24 +295,24 @@
       "toughness": 0.0
     },
     "tool_stats": {
-      "efficiency": 7.0,
+      "efficiency": 8.6,
       "harvest_level": 4,
-      "enchantability": 18,
-      "durability": 500,
-      "damage": 4.0
+      "enchantability": 16,
+      "durability": 143,
+      "damage": 3.5
     }
   },
   {
     "name": "copper",
-    "hardness": 10.0,
+    "hardness": 2.1,
     "blast_resistance": 6.0,
     "ore_harvest_level": 1,
     "color": "E5770A",
     "armor_stats": {
       "damage_reduction": [
+        1,
         2,
         3,
-        2,
         1
       ],
       "enchantability": 50,
@@ -305,11 +320,12 @@
       "toughness": 0.0
     },
     "tool_stats": {
-      "efficiency": 5.0,
+      "efficiency": 5.40,
       "harvest_level": 2,
       "enchantability": 5,
-      "durability": 180,
-      "damage": 0.5
+      "durability": 145,
+      "damage": 1.2,
+      "attack_speed" : 0.4
     }
   },
   {
@@ -339,7 +355,7 @@
   },
   {
     "name": "deep_iron",
-    "hardness": 10.0,
+    "hardness": 3.1,
     "blast_resistance": 10.0,
     "ore_harvest_level": 1,
     "color": "2D394F",
@@ -440,7 +456,7 @@
   },
   {
     "name": "eximite",
-    "hardness": 10.0,
+    "hardness": 4.7,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
     "color": "5E4191",
@@ -515,7 +531,7 @@
   },
   {
     "name": "ignatius",
-    "hardness": 10.0,
+    "hardness": 3.5,
     "blast_resistance": 6.0,
     "ore_harvest_level": 3,
     "color": "D05631",
@@ -540,7 +556,7 @@
   },
   {
     "name": "infuscolium",
-    "hardness": 10.0,
+    "hardness": 3.2,
     "blast_resistance": 10.0,
     "ore_harvest_level": 2,
     "color": "6A3359"
@@ -572,7 +588,7 @@
   },
   {
     "name": "kalendrite",
-    "hardness": 10.0,
+    "hardness": 4.1,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
     "color": "9941DD",
@@ -622,14 +638,14 @@
   },
   {
     "name": "lemurite",
-    "hardness": 10.0,
+    "hardness": 5.5,
     "blast_resistance": 6.0,
     "ore_harvest_level": 5,
     "color": "D0D0D0"
   },
   {
     "name": "lutetium",
-    "hardness": 10.0,
+    "hardness": 5.2,
     "blast_resistance": 15.0,
     "ore_harvest_level": 5,
     "color": "777221",
@@ -647,21 +663,21 @@
   },
   {
     "name": "manganese",
-    "hardness": 10.0,
+    "hardness": 3.2,
     "blast_resistance": 10.0,
     "ore_harvest_level": 2,
     "color": "B46C79"
   },
   {
     "name": "meutoite",
-    "hardness": 10.0,
+    "hardness": 3.6,
     "blast_resistance": 15.0,
     "ore_harvest_level": 5,
     "color": "332E38"
   },
   {
     "name": "midasium",
-    "hardness": 10.0,
+    "hardness": 3.9,
     "blast_resistance": 10.0,
     "ore_harvest_level": 4,
     "color": "D5862A",
@@ -686,7 +702,7 @@
   },
   {
     "name": "mithril",
-    "hardness": 10.0,
+    "hardness": 5.5,
     "blast_resistance": 15.0,
     "ore_harvest_level": 5,
     "color": "6ACBC8",
@@ -711,7 +727,7 @@
   },
   {
     "name": "orichalcum",
-    "hardness": 10.0,
+    "hardness": 5.0,
     "blast_resistance": 20.0,
     "ore_harvest_level": 4,
     "color": "95B26D",
@@ -736,25 +752,27 @@
   },
   {
     "name": "osmium",
-    "hardness": 10.0,
+    "hardness": 4.0,
     "blast_resistance": 20.0,
     "ore_harvest_level": 2,
     "color": "717393",
     "armor_stats": {
       "damage_reduction": [
-        4,
         5,
-        5,
-        4
+        6,
+        6,
+        5
       ],
-      "enchantability": 17,
-      "durability": 100,
-      "toughness": 3.0
+      "enchantability": 8,
+      "durability": 5,
+      "toughness": 3.5,
+      "movement_speed" : -0.01,
+      "knockback_resistance" : 1.0
     }
   },
   {
     "name": "oureclase",
-    "hardness": 10.0,
+    "hardness": 4.0,
     "blast_resistance": 15.0,
     "ore_harvest_level": 3,
     "color": "C05B4A",
@@ -779,7 +797,7 @@
   },
   {
     "name": "platinum",
-    "hardness": 10.0,
+    "hardness": 3.3,
     "blast_resistance": 15.0,
     "ore_harvest_level": 3,
     "color": "7193D4",
@@ -804,7 +822,7 @@
   },
   {
     "name": "prometheum",
-    "hardness": 10.0,
+    "hardness": 3.0,
     "blast_resistance": 10.0,
     "ore_harvest_level": 1,
     "color": "377732",
@@ -823,8 +841,8 @@
       "efficiency": 4.0,
       "harvest_level": 2,
       "enchantability": 16,
-      "durability": 200,
-      "damage": 5.0
+      "durability": 221,
+      "damage": 2.2
     }
   },
   {
@@ -854,14 +872,14 @@
   },
   {
     "name": "rubracium",
-    "hardness": 10.0,
+    "hardness": 8.9,
     "blast_resistance": 10.0,
     "ore_harvest_level": 3,
     "color": "B83F56"
   },
   {
     "name": "sanguinite",
-    "hardness": 10.0,
+    "hardness": 5.5,
     "blast_resistance": 20.0,
     "ore_harvest_level": 5,
     "color": "541D1D",
@@ -886,7 +904,7 @@
   },
   {
     "name": "shadow_iron",
-    "hardness": 10.0,
+    "hardness": 4.2,
     "blast_resistance": 6.0,
     "ore_harvest_level": 3,
     "color": "473D40",
@@ -936,7 +954,7 @@
   },
   {
     "name": "silver",
-    "hardness": 10.0,
+    "hardness": 2.5,
     "blast_resistance": 10.0,
     "ore_harvest_level": 2,
     "color": "CDD3D3",
@@ -952,11 +970,11 @@
       "toughness": 2.1
     },
     "tool_stats": {
-      "efficiency": 15.0,
+      "efficiency": 10.5,
       "harvest_level": 2,
       "enchantability": 20,
-      "durability": 25,
-      "damage": 5.0
+      "durability": 64,
+      "damage": 3.7
     }
   },
   {
@@ -977,11 +995,11 @@
       "toughness": 4.0
     },
     "tool_stats": {
-      "efficiency": 8.0,
+      "efficiency": 6.4,
       "harvest_level": 3,
       "enchantability": 18,
       "durability": 750,
-      "damage": 7.0
+      "damage": 2.3
     }
   },
   {
@@ -1011,7 +1029,7 @@
   },
   {
     "name": "tin",
-    "hardness": 10.0,
+    "hardness": 2.5,
     "blast_resistance": 6.0,
     "ore_harvest_level": 1,
     "color": "A9A295"
@@ -1043,7 +1061,7 @@
   },
   {
     "name": "vyroxeres",
-    "hardness": 10.0,
+    "hardness": 4.3,
     "blast_resistance": 15.0,
     "ore_harvest_level": 5,
     "color": "2BFF00",
@@ -1068,7 +1086,7 @@
   },
   {
     "name": "zinc",
-    "hardness": 10.0,
+    "hardness": 2.5,
     "blast_resistance": 10.0,
     "ore_harvest_level": 2,
     "color": "CACE84"
