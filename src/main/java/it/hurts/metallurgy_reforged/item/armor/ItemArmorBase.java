@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.item.armor;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -40,7 +41,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ItemArmorBase extends ItemArmor {
+public class ItemArmorBase extends ItemArmor implements IMetalItem {
 
     private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
     private Enchantment enchantment;
