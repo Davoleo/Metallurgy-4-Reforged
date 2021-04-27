@@ -280,8 +280,8 @@ public class Utils {
 
     public static String capitalize(String string)
     {
-        String up = string.substring(0, 1);
-        return string.replaceFirst(up, up.toUpperCase());
+        char uppercased = Character.toUpperCase(string.charAt(0));
+        return string.replace(string.charAt(0), uppercased);
     }
 
     public static Path getPath(String resource)
