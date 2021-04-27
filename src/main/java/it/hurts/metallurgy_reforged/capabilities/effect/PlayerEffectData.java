@@ -50,30 +50,30 @@ public class PlayerEffectData {
     }
 
     //Carmot Tools
-    public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4);
+    public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 0, 4, 20);
 
     //Carmot Weapons
     public ExtraFilledDataBundle carmotWeaponBundle =
-            new ExtraFilledDataBundle("carmot_weapon", 0, 3, bundle -> bundle.currentStep > 0);
+            new ExtraFilledDataBundle("carmot_weapon", 0, 3, 10, bundle -> bundle.currentStep > 0);
     //Celenegil Armor
     public ExtraFilledDataBundle celenegilArmorBundle =
-            new ExtraFilledDataBundle("celenegil_armor", 0, 3, (bundle) -> bundle.getExtraBool("active"));
+            new ExtraFilledDataBundle("celenegil_armor", 0, 3, 10, (bundle) -> bundle.getExtraBool("active"));
     //Celenegil Tools
     public ExtraFilledDataBundle celenegilToolBundle =
-            new ExtraFilledDataBundle("celenegil_tool", 0, 3, bundle -> bundle.getExtraInt("broken_blocks") != 0);
+            new ExtraFilledDataBundle("celenegil_tool", 0, 3, 10, bundle -> bundle.getExtraInt("broken_blocks") != 0);
 
     //Desichalkos Armor
     public int desichalkosAbsorbLevel = 0;
     public int desichalkosTimeWithoutTakingDamage = 200;
 
     //Etherium Armor
-    public ProgressiveDataBundle etheriumArmorBundle = new ProgressiveDataBundle("etherium_armor", 0, 30);
+    public ProgressiveDataBundle etheriumArmorBundle = new ProgressiveDataBundle("etherium_armor", 0, 30, 10);
 
     //Ignatius Armor
-    public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 40);
+    public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 0, 40, 10);
 
     //Inolashite Weapon
-    public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_weapon", 0, 1, bundle -> bundle.currentStep > 0);
+    public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_weapon", 0, 1, 10, bundle -> bundle.currentStep > 0);
 
     // Krik Armor
     private int krikHeight;

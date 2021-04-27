@@ -32,6 +32,7 @@ public class PacketSyncEffectBundle implements IMessage {
 
     private String prefixKey;
     private int step;
+    private long timestamp;
     private boolean paused;
 
     @Nullable
@@ -52,6 +53,7 @@ public class PacketSyncEffectBundle implements IMessage {
 
         this.prefixKey = prefixKey;
         this.step = bundle.getCurrentStep();
+        this.timestamp = bundle.getPrevStepTime();
         this.paused = bundle.isPaused();
 
         if (bundle.getType() == 1)
@@ -66,6 +68,7 @@ public class PacketSyncEffectBundle implements IMessage {
         prefixKey = ByteBufUtils.readUTF8String(buf);
 
         step = buf.readInt();
+        timestamp = buf.readLong();
         paused = buf.readBoolean();
 
         if (bundleType == 1)
@@ -81,6 +84,7 @@ public class PacketSyncEffectBundle implements IMessage {
         ByteBufUtils.writeUTF8String(buf, prefixKey);
 
         buf.writeInt(step);
+        buf.writeLong(timestamp);
         buf.writeBoolean(paused);
 
         if (blockPos != null && bundleType == 1)
@@ -99,8 +103,8 @@ public class PacketSyncEffectBundle implements IMessage {
             minecraft.addScheduledTask(() -> {
                 ProgressiveDataBundle bundle = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(message.prefixKey);
                 //Passing null as the player since I don't need things to synchronize on the client, we're already on the client here
-                if (bundle.getCurrentStep() != message.step)
-                    bundle.setCurrentStep(message.step, null);
+                if (bundle.getCurrentStep() != message.step || bundle.getPrevStepTime() != message.timestamp)
+                    bundle.setCurrentStep(message.step, message.timestamp, null);
 
                 if (bundle.isPaused() != message.paused)
                     bundle.setPaused(message.paused, null);

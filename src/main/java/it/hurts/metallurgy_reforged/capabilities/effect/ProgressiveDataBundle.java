@@ -20,16 +20,21 @@ import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class ProgressiveDataBundle {
 
+    public final int STEP_TICK_DELAY;
     protected final int maxSteps;
+
     protected String prefixKey;
     protected int currentStep;
     protected boolean paused = false;
 
-    public ProgressiveDataBundle(String prefixKey, int currentStep, int maxSteps)
+    protected long timestamp = -1;
+
+    public ProgressiveDataBundle(String prefixKey, int currentStep, int maxSteps, int stepTickDelay)
     {
         this.prefixKey = prefixKey;
         this.currentStep = currentStep;
         this.maxSteps = maxSteps;
+        this.STEP_TICK_DELAY = stepTickDelay;
     }
 
     private void sync(@Nullable EntityPlayer player)
@@ -48,14 +53,20 @@ public class ProgressiveDataBundle {
         return currentStep;
     }
 
+    public long getPrevStepTime()
+    {
+        return timestamp;
+    }
+
     public boolean isPaused()
     {
         return paused;
     }
 
-    public void setCurrentStep(int currentStep, @Nullable EntityPlayerMP player)
+    public void setCurrentStep(int currentStep, long timestamp, @Nullable EntityPlayerMP player)
     {
         this.currentStep = currentStep;
+        this.timestamp = timestamp;
         sync(player);
     }
 
@@ -72,7 +83,10 @@ public class ProgressiveDataBundle {
     public void incrementStep(EntityPlayer player)
     {
         if (currentStep < maxSteps)
+        {
             currentStep++;
+            timestamp = player.world.getTotalWorldTime();
+        }
         else
             resetProgress(player);
 
@@ -89,6 +103,7 @@ public class ProgressiveDataBundle {
 
     public void resetProgress(EntityPlayer player)
     {
+        timestamp = -1;
         currentStep = 0;
         sync(player);
     }

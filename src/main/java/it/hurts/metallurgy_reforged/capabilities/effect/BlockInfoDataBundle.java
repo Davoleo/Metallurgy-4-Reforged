@@ -20,9 +20,9 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
     private BlockPos pos;
     private IBlockState state;
 
-    public BlockInfoDataBundle(String key, BlockPos pos, IBlockState state, int currentStep, int maxSteps)
+    public BlockInfoDataBundle(String key, BlockPos pos, IBlockState state, int currentStep, int maxSteps, int stepDelay)
     {
-        super(key, currentStep, maxSteps);
+        super(key, currentStep, maxSteps, stepDelay);
         this.pos = pos;
         this.state = state;
     }

@@ -9,42 +9,46 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
+import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public abstract class ProgressiveEffectsHandler {
 
     @SubscribeEvent
-    public static void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
+    public static void onLivingUpdate(TickEvent.PlayerTickEvent event)
     {
-        if (event.getEntityLiving() instanceof EntityPlayer && event.getEntityLiving().ticksExisted % 10 == 0)
-        {
-            PlayerEffectData data = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+        if (event.phase != TickEvent.Phase.START)
+            return;
 
-            MetallurgyEffects.effects.forEach(effect -> {
-                if (effect instanceof IProgressiveEffect)
+        PlayerEffectData data = event.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+
+        MetallurgyEffects.effects.forEach(effect -> {
+
+            if (effect instanceof IProgressiveEffect)
+            {
+                String key = effect.getMetal().toString() + '_' + effect.getCategory();
+
+                ProgressiveDataBundle bundle = data.effectBundles.get(key);
+
+                if (bundle != null && bundle.isEffectInProgress())
                 {
-                    String key = effect.getMetal().toString() + '_' + effect.getCategory().toString();
-
-                    ProgressiveDataBundle bundle = data.effectBundles.get(key);
-
-                    if (bundle != null && bundle.isEffectInProgress())
+                    if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + bundle.STEP_TICK_DELAY)
                     {
-                        //LOGGER.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
-                        ((IProgressiveEffect) effect).onStep(event.getEntityLiving().world, ((EntityPlayer) event.getEntityLiving()), bundle.getMaxSteps(), bundle.getCurrentStep());
+                        Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
+                        ((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getMaxSteps(), bundle.getCurrentStep());
 
                         //Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed
                         if (bundle.isEffectInProgress())
-                            bundle.incrementStep(((EntityPlayer) event.getEntityLiving()));
+                            bundle.incrementStep(event.player);
                     }
                 }
-            });
-        }
+            }
+        });
     }
 }
