@@ -61,7 +61,7 @@ public class MetalStats {
         BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
         for (int i = 0; i < BlockTypes.values().length; i++)
         {
-            blocks[i] = new BlockMetal(this, BlockTypes.values()[i], hardness);
+            blocks[i] = new BlockMetal(this, BlockTypes.values()[i], i == BlockTypes.BLOCK.ordinal() ? 5.0F : 2.0F);
         }
 
         BlockOre ore = null;
