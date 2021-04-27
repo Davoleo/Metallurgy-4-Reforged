@@ -46,24 +46,32 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     @SubscribeEvent
     public void harvestBlocks(BlockEvent.BreakEvent event)
     {
-        if (!canBeApplied(event.getPlayer()))
+        final EntityPlayer player = event.getPlayer();
+        if (!canBeApplied(player))
             return;
 
         if (!event.getWorld().isRemote)
         {
-            if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), event.getPlayer()))
+            if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), player))
                 return;
 
-            if (EventUtils.canHarvest(event.getPlayer().getHeldItemMainhand(), event.getState()))
+            if (EventUtils.canHarvest(player.getHeldItemMainhand(), event.getState()))
             {
-                BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(event.getPlayer(), metal, getCategory());
+                BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
                 if (effectBundle.isEffectInProgress())
+                {
+                    event.setCanceled(true);
                     return;
+                }
 
                 //Initializes the progressive effect
                 effectBundle.setPos(event.getPos());
                 effectBundle.setState(event.getState());
-                effectBundle.incrementStep(event.getPlayer());
+                effectBundle.incrementStep(player);
+
+                //Cooldown for the whole effect
+                int cooldown = (effectBundle.getMaxSteps() - event.getState().getBlock().getHarvestLevel(event.getState())) * effectBundle.STEP_TICK_DELAY;
+                player.getCooldownTracker().setCooldown(player.getHeldItemMainhand().getItem(), cooldown);
             }
         }
     }
@@ -79,6 +87,12 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
         if (pos == null || state == null)
             return;
 
+        if (step > maxSteps - state.getBlock().getHarvestLevel(state))
+        {
+            blockBundle.resetProgress(player);
+            return;
+        }
+
         if (!world.isRemote)
         {
             for (int x = -step - 1; x < step + 1; x++)
@@ -93,7 +107,10 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
                         if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
                         {
                             if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
+                            {
                                 world.destroyBlock(blockPos, true);
+                                player.getHeldItemMainhand().damageItem(1, player);
+                            }
                         }
                     }
                 }
