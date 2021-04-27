@@ -412,21 +412,21 @@
     "color": "EFEF57",
     "armor_stats": {
       "damage_reduction": [
-        3,
+        2,
+        4,
         5,
-        6,
-        2
+        3
       ],
-      "enchantability": 30,
-      "durability": 51,
-      "toughness": 3.0
+      "enchantability": 21,
+      "durability": 32,
+      "toughness": 1.0
     },
     "tool_stats": {
-      "efficiency": 14.0,
-      "harvest_level": 3,
-      "enchantability": 30,
-      "durability": 70,
-      "damage": 2.0
+      "efficiency": 11.0,
+      "harvest_level": 2,
+      "enchantability": 21,
+      "durability": 300,
+      "damage": 2.7
     }
   },
   {
