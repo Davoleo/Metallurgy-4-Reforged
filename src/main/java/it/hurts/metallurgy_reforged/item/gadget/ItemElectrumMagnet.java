@@ -151,10 +151,15 @@ public class ItemElectrumMagnet extends ItemExtra {
         }
     }
 
-    boolean isMetal(ItemStack input) {
+    boolean isMetal(@Nonnull ItemStack input)
+    {
+        if (input.isEmpty())
+            return false;
+
         int[] ids = OreDictionary.getOreIDs(input);
 
-        for (int id : ids) {
+        for (int id : ids)
+        {
             String ore = OreDictionary.getOreName(id);
             return ore.contains("ingot") || ore.contains("dust") || ore.contains("ore");
         }
