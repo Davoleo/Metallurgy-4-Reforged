@@ -779,6 +779,9 @@ item.metallurgy.zinc_nugget.name=Zinc Nugget
 #Effect
 effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!
 
+# Entities
+entity.pierknight.name=PierKnight
+
 #FluidBlocks
 tile.metallurgy.molten_adamantine.name=Molten Adamantine
 tile.metallurgy.molten_alduorite.name=Molten Alduorite
