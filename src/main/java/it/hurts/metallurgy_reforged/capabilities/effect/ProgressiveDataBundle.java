@@ -15,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 
@@ -36,6 +37,11 @@ public class ProgressiveDataBundle {
         this.STEP_TICK_DELAY = stepTickDelay;
     }
 
+    /**
+     * If the player arg is not null sends a packet to the player client to update values on his side
+     *
+     * @param player player to sync with or null
+     */
     private void sync(@Nullable EntityPlayer player)
     {
         if (player != null && !player.world.isRemote && player instanceof EntityPlayerMP)
@@ -57,6 +63,17 @@ public class ProgressiveDataBundle {
         return timestamp;
     }
 
+    /**
+     * Doesn't call {@link ProgressiveDataBundle#sync(EntityPlayer)} hence it should be called both on server and client sides
+     */
+    public void updateTimeStamp(@Nonnull EntityPlayer player)
+    {
+        timestamp = player.world.getTotalWorldTime();
+    }
+
+    /**
+     * @return Whether the effect was set as paused
+     */
     public boolean isPaused()
     {
         return paused;
@@ -73,34 +90,55 @@ public class ProgressiveDataBundle {
         return maxSteps;
     }
 
+    /**
+     * @return whether this effect should be considered "in progress"
+     */
     public boolean isEffectInProgress()
     {
         return currentStep > 0 && !paused;
     }
 
+    /**
+     * Increments {@code currentStep} if it's below {@code maxSteps};<br>
+     * Updates the {@code timestamp}
+     * If this method is called when {@code currentStep} >= than {@code maxSteps} the effect is reset
+     *
+     * @param player the player these changes needs to be synced with or null in case we're already on the client
+     */
     public void incrementStep(EntityPlayer player)
     {
         if (currentStep == 0)
-            timestamp = player.world.getTotalWorldTime();
+            updateTimeStamp(player);
 
         if (currentStep < maxSteps)
         {
             currentStep++;
+            sync(player);
         }
         else
             resetProgress(player);
 
         //Debug Log
         //LOGGER.info(getPrefixKey() + ": Current Step " + getCurrentStep() + " Paused: " + isPaused());
-        sync(player);
     }
 
+    /**
+     * Sets whether this effect should be paused or not
+     *
+     * @param paused true or falls to set paused or !paused
+     * @param player the player this change needs to be synced with or null in case we're already on the client
+     */
     public void setPaused(boolean paused, EntityPlayer player)
     {
         this.paused = paused;
         sync(player);
     }
 
+    /**
+     * Resets the effect internal state so that it can start from the beginning again later
+     *
+     * @param player the player this change needs to be synced with or null in case we're already on the client
+     */
     public void resetProgress(EntityPlayer player)
     {
         timestamp = -1;
@@ -108,22 +146,35 @@ public class ProgressiveDataBundle {
         sync(player);
     }
 
+    /**
+     * TODO Maybe introduce an ENUM or CONSTANTS for this
+     *
+     * @return a type identifier that differs between the base bundle class and the children classes
+     */
     public byte getType()
     {
         return 0;
     }
 
+    /**
+     * Serializes data into the NBT (on capability data save on the server)
+     */
     @OverridingMethodsMustInvokeSuper
     public void toNBT(NBTTagCompound compound)
     {
         compound.setInteger(prefixKey + "_current_step", currentStep);
+        compound.setLong(prefixKey + "_timestamp", timestamp);
         compound.setBoolean(prefixKey + "_paused", paused);
     }
 
+    /**
+     * Deserializes data from the NBT (on capability data load on the server)
+     */
     @OverridingMethodsMustInvokeSuper
     public void fromNBT(NBTTagCompound compound)
     {
         currentStep = compound.getInteger(prefixKey + "_current_step");
+        timestamp = compound.getLong(prefixKey + "_timestamp");
         paused = compound.getBoolean(prefixKey + "_paused");
     }
 }
