@@ -19,9 +19,9 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
     private NBTTagCompound extra = new NBTTagCompound();
     private final Predicate<ExtraFilledDataBundle> isInProgress;
 
-    public ExtraFilledDataBundle(String key, int currentStep, int maxSteps, int stepDelay, Predicate<ExtraFilledDataBundle> isInProgress)
+    public ExtraFilledDataBundle(String key, int maxSteps, int stepDelay, Predicate<ExtraFilledDataBundle> isInProgress)
     {
-        super(key, currentStep, maxSteps, stepDelay);
+        super(key, maxSteps, stepDelay);
         this.isInProgress = isInProgress;
     }
 

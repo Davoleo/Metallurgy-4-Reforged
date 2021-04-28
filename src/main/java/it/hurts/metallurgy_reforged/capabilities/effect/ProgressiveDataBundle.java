@@ -24,15 +24,14 @@ public class ProgressiveDataBundle {
     protected final int maxSteps;
 
     protected String prefixKey;
-    protected int currentStep;
+    protected int currentStep = 0;
     protected boolean paused = false;
 
     protected long timestamp = -1;
 
-    public ProgressiveDataBundle(String prefixKey, int currentStep, int maxSteps, int stepTickDelay)
+    public ProgressiveDataBundle(String prefixKey, int maxSteps, int stepTickDelay)
     {
         this.prefixKey = prefixKey;
-        this.currentStep = currentStep;
         this.maxSteps = maxSteps;
         this.STEP_TICK_DELAY = stepTickDelay;
     }
@@ -63,10 +62,9 @@ public class ProgressiveDataBundle {
         return paused;
     }
 
-    public void setCurrentStep(int currentStep, long timestamp, @Nullable EntityPlayerMP player)
+    public void setCurrentStep(int currentStep, @Nullable EntityPlayerMP player)
     {
         this.currentStep = currentStep;
-        this.timestamp = timestamp;
         sync(player);
     }
 
@@ -82,10 +80,12 @@ public class ProgressiveDataBundle {
 
     public void incrementStep(EntityPlayer player)
     {
+        if (currentStep == 0)
+            timestamp = player.world.getTotalWorldTime();
+
         if (currentStep < maxSteps)
         {
             currentStep++;
-            timestamp = player.world.getTotalWorldTime();
         }
         else
             resetProgress(player);
