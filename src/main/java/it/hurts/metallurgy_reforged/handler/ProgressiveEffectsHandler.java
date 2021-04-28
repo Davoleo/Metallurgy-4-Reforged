@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.handler;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
@@ -38,9 +37,9 @@ public abstract class ProgressiveEffectsHandler {
 
                 if (bundle != null && bundle.isEffectInProgress())
                 {
-                    if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + bundle.STEP_TICK_DELAY)
+                    if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + ((long) bundle.STEP_TICK_DELAY * bundle.getCurrentStep()))
                     {
-                        Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
+                        //Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
                         ((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getMaxSteps(), bundle.getCurrentStep());
 
                         //Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed

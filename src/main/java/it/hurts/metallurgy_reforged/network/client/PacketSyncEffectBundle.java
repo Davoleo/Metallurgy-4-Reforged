@@ -103,8 +103,11 @@ public class PacketSyncEffectBundle implements IMessage {
             minecraft.addScheduledTask(() -> {
                 ProgressiveDataBundle bundle = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(message.prefixKey);
                 //Passing null as the player since I don't need things to synchronize on the client, we're already on the client here
-                if (bundle.getCurrentStep() != message.step || bundle.getPrevStepTime() != message.timestamp)
-                    bundle.setCurrentStep(message.step, message.timestamp, null);
+                if (bundle.getCurrentStep() != message.step)
+                    bundle.setCurrentStep(message.step, null);
+
+                if (bundle.getPrevStepTime() == -1)
+                    bundle.updateTimeStamp(minecraft.player);
 
                 if (bundle.isPaused() != message.paused)
                     bundle.setPaused(message.paused, null);
