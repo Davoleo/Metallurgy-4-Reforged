@@ -50,7 +50,7 @@ public class PlayerEffectData {
     }
 
     //Carmot Tools
-    public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 4, 20);
+    public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 3, 14);
 
     //Carmot Weapons
     public ExtraFilledDataBundle carmotWeaponBundle =
