@@ -23,7 +23,7 @@ compileJava {
 minecraft {
     version = "${minecraft_version}-${forge_version}"
     runDir = "run"
-	mappings = "snapshot_20180814"
+	mappings = "stable_39"
 
     //replace "@VERSION@", project.version
     //replaceIn "Metallurgy.java"
