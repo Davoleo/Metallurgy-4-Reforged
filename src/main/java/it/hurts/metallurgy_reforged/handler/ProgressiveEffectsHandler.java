@@ -44,7 +44,11 @@ public abstract class ProgressiveEffectsHandler {
 
                         //Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed
                         if (bundle.isEffectInProgress())
-                            bundle.incrementStep(null); //Step synchronization should not happen unless it's the kickstart step (if nonnull things break)
+                        {
+                            //Step synchronization should not happen unless it's the kickstart step (if nonnull things break)
+                            bundle.incrementStep(null);
+                            bundle.updateTimeStamp(event.player);
+                        }
                     }
                 }
             }

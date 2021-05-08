@@ -21,6 +21,8 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.material.ToolStats;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
@@ -30,6 +32,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -253,6 +257,20 @@ public class ItemUtils {
 		}
 
 		return null;
+	}
+
+	public static void removeEnchantment(Enchantment enchantment, ItemStack item)
+	{
+		int enchLevel = EnchantmentHelper.getEnchantmentLevel(enchantment, item);
+		if (enchLevel > 0)
+		{
+			final Iterator<NBTBase> enchantIter = item.getEnchantmentTagList().iterator();
+			while (enchantIter.hasNext())
+			{
+				if (Enchantment.getEnchantmentByID(((NBTTagCompound) enchantIter.next()).getShort("id")) == enchantment)
+					enchantIter.remove();
+			}
+		}
 	}
 
 }

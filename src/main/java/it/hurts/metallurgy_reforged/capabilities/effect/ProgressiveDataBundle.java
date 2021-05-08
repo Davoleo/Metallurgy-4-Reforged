@@ -137,9 +137,9 @@ public class ProgressiveDataBundle {
      *
      * @param player the player these changes needs to be synced with or null in case we're already on the client
      */
-    public void incrementStep(EntityPlayer player)
+    public void incrementStep(@Nullable EntityPlayer player)
     {
-        if (currentStep == 0)
+        if (player != null && currentStep == 0)
             updateTimeStamp(player);
 
         if (currentStep < maxSteps)
@@ -168,7 +168,6 @@ public class ProgressiveDataBundle {
 
     /**
      * TODO Maybe introduce an ENUM or CONSTANTS for this
-     *
      * @return a type identifier that differs between the base bundle class and the children classes
      */
     public byte getType()
