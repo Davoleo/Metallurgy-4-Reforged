@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -34,6 +35,8 @@ public class PacketSyncEffectBundle implements IMessage {
     private int step;
     private long timestamp;
     private boolean paused;
+
+    private ItemStack effectStack;
 
     @Nullable
     private NBTTagCompound extras;
@@ -56,6 +59,8 @@ public class PacketSyncEffectBundle implements IMessage {
         this.timestamp = bundle.getPrevStepTime();
         this.paused = bundle.isPaused();
 
+        this.effectStack = bundle.getEffectStack();
+
         if (bundle.getType() == 1)
             this.blockPos = ((BlockInfoDataBundle) bundle).getPos();
         else if (bundle.getType() == 2)
@@ -70,6 +75,8 @@ public class PacketSyncEffectBundle implements IMessage {
         step = buf.readInt();
         timestamp = buf.readLong();
         paused = buf.readBoolean();
+
+        effectStack = ByteBufUtils.readItemStack(buf);
 
         if (bundleType == 1)
             blockPos = BlockPos.fromLong(buf.readLong());
@@ -86,6 +93,8 @@ public class PacketSyncEffectBundle implements IMessage {
         buf.writeInt(step);
         buf.writeLong(timestamp);
         buf.writeBoolean(paused);
+
+        ByteBufUtils.writeItemStack(buf, effectStack);
 
         if (blockPos != null && bundleType == 1)
             buf.writeLong(blockPos.toLong());
@@ -108,6 +117,9 @@ public class PacketSyncEffectBundle implements IMessage {
 
                 if (bundle.getPrevStepTime() == -1)
                     bundle.updateTimeStamp(minecraft.player);
+
+                if (bundle.getEffectStack().isEmpty())
+                    bundle.setEffectStack(message.effectStack, null);
 
                 if (bundle.isPaused() != message.paused)
                     bundle.setPaused(message.paused, null);

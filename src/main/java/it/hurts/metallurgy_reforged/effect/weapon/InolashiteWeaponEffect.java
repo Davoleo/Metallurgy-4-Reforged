@@ -19,6 +19,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -61,7 +62,7 @@ public class InolashiteWeaponEffect extends BaseMetallurgyEffect implements IPro
     }
 
     @Override
-    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
     {
         IAttributeInstance attackSpeed = entity.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
         double originalBaseSpeed = attackSpeed.getBaseValue();

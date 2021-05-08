@@ -46,7 +46,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
     {
         //System.out.println(step);
 

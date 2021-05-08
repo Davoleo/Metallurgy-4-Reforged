@@ -14,11 +14,12 @@ import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.material.Metal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public interface IProgressiveEffect {
 
-    void onStep(World world, EntityPlayer entity, int maxSteps, int step);
+    void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step);
 
     default ProgressiveDataBundle getBundle(EntityPlayer attached, Metal metal, EnumEffectCategory category)
     {

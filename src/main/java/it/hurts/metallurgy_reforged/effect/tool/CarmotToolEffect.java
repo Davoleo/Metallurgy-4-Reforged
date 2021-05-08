@@ -19,10 +19,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -67,6 +66,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
                 //Initializes the progressive effect
                 effectBundle.setPos(event.getPos());
                 effectBundle.setState(event.getState());
+                effectBundle.setEffectStack(player.getHeldItemMainhand(), player);
                 effectBundle.incrementStep(player);
 
                 //Cooldown for the whole effect
@@ -77,7 +77,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer player, ItemStack effectStack, int maxSteps, int step)
     {
         BlockInfoDataBundle blockBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
 
@@ -87,7 +87,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
         if (pos == null || state == null)
             return;
 
-        if (step > maxSteps - Math.max(0,state.getBlock().getHarvestLevel(state) - 1))
+        if (step > maxSteps - Math.max(0, state.getBlock().getHarvestLevel(state) - 1))
         {
             blockBundle.resetProgress(player);
             return;
@@ -109,7 +109,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
                             if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
                             {
                                 world.destroyBlock(blockPos, true);
-                                player.getHeldItemMainhand().damageItem(1, player);
+                                effectStack.damageItem(1, player);
                             }
                         }
                     }
@@ -118,36 +118,6 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
 
             float pitch = ((8 - step) / 6F);
             world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.BLOCKS, 1.5F, pitch);
-        }
-    }
-
-    @Deprecated
-    private Vec3i roundVector(Vec3d vector)
-    {
-
-        double absX = Math.abs(vector.x);
-        double absY = Math.abs(vector.y);
-        double absZ = Math.abs(vector.z);
-
-        if (absX > 0.75)
-            return new Vec3i(Math.signum(vector.x), 0, 0);
-        else if (absY > 0.75)
-            return new Vec3i(0, Math.signum(vector.y), 0);
-        else if (absZ > 0.75)
-            return new Vec3i(0, 0, Math.signum(vector.z));
-        else
-        {
-            if (absX + absY > 0.75)
-                return new Vec3i(Math.signum(vector.x), Math.signum(vector.y), 0);
-            else if (absX + absZ > 0.75)
-                return new Vec3i(Math.signum(vector.x), 0, Math.signum(vector.z));
-            else if (absY + absZ > 0.75)
-                return new Vec3i(0, Math.signum(vector.y), Math.signum(vector.z));
-
-            else
-            {
-                return new Vec3i(Math.signum(vector.x), Math.signum(vector.y), Math.signum(vector.z));
-            }
         }
     }
 }

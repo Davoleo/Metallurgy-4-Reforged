@@ -83,9 +83,9 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer player, ItemStack effectStack, int maxSteps, int step)
     {
-        ExtraFilledDataBundle data = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilToolBundle;
+        ExtraFilledDataBundle data = (ExtraFilledDataBundle) getBundle(player, metal, getCategory());
         boolean inactive = data.getExtraBool("inactive");
 
         //on step one the effect is flagged as inactive (this flag is removed if the player mines another block)

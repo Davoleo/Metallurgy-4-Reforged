@@ -44,7 +44,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
     }
 
     @Override
-    public void onStep(World world, EntityPlayer entity, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
     {
         ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).ignatiusArmorBundle;
 
@@ -62,7 +62,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
             );
         }
 
-        System.out.println("Current Step: " + step);
+        //System.out.println("Current Step: " + step);
     }
 
     @SubscribeEvent

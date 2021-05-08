@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -88,7 +89,7 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
     }
 
     @Override
-    public void onStep(World world, EntityPlayer player, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer player, ItemStack effectStack, int maxSteps, int step)
     {
         ExtraFilledDataBundle bundle = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).celenegilArmorBundle;
 

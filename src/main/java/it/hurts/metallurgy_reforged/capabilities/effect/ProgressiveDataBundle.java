@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSyncEffectBundle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import javax.annotation.Nonnull;
@@ -29,6 +30,8 @@ public class ProgressiveDataBundle {
     protected boolean paused = false;
 
     protected long timestamp = -1;
+
+    protected ItemStack effectStack = ItemStack.EMPTY;
 
     public ProgressiveDataBundle(String prefixKey, int maxSteps, int stepTickDelay)
     {
@@ -64,6 +67,19 @@ public class ProgressiveDataBundle {
     }
 
     /**
+     * @return Whether the effect was set as paused
+     */
+    public boolean isPaused()
+    {
+        return paused;
+    }
+
+    public ItemStack getEffectStack()
+    {
+        return effectStack;
+    }
+
+    /**
      * Doesn't call {@link ProgressiveDataBundle#sync(EntityPlayer)} hence it should be called both on server and client sides
      */
     public void updateTimeStamp(@Nonnull EntityPlayer player)
@@ -72,16 +88,32 @@ public class ProgressiveDataBundle {
     }
 
     /**
-     * @return Whether the effect was set as paused
+     * @param player the player this change needs to be synced with or null in case we're already on the client
      */
-    public boolean isPaused()
-    {
-        return paused;
-    }
-
     public void setCurrentStep(int currentStep, @Nullable EntityPlayerMP player)
     {
         this.currentStep = currentStep;
+        sync(player);
+    }
+
+    /**
+     * @param player the player this change needs to be synced with or null in case we're already on the client
+     */
+    public void setEffectStack(ItemStack effectStack, @Nullable EntityPlayer player)
+    {
+        this.effectStack = effectStack;
+        sync(player);
+    }
+
+    /**
+     * Sets whether this effect should be paused or not
+     *
+     * @param paused true or falls to set paused or !paused
+     * @param player the player this change needs to be synced with or null in case we're already on the client
+     */
+    public void setPaused(boolean paused, @Nullable EntityPlayer player)
+    {
+        this.paused = paused;
         sync(player);
     }
 
@@ -120,18 +152,6 @@ public class ProgressiveDataBundle {
 
         //Debug Log
         //LOGGER.info(getPrefixKey() + ": Current Step " + getCurrentStep() + " Paused: " + isPaused());
-    }
-
-    /**
-     * Sets whether this effect should be paused or not
-     *
-     * @param paused true or falls to set paused or !paused
-     * @param player the player this change needs to be synced with or null in case we're already on the client
-     */
-    public void setPaused(boolean paused, EntityPlayer player)
-    {
-        this.paused = paused;
-        sync(player);
     }
 
     /**

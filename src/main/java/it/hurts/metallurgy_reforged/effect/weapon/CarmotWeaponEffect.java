@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -61,7 +62,7 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
     }
 
     @Override
-    public void onStep(World world, EntityPlayer attacker, int maxSteps, int step)
+    public void onStep(World world, EntityPlayer attacker, ItemStack effectStack, int maxSteps, int step)
     {
         ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
         int attackedId = data.getExtraInt("id");
