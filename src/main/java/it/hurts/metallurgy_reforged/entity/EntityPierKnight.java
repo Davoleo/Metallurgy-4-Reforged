@@ -22,6 +22,7 @@ import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -179,6 +180,13 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     public EnumHandSide getPrimaryHand()
     {
         return EnumHandSide.RIGHT;
+    }
+
+    @Nullable
+    @Override
+    public EntityItem entityDropItem(@Nonnull ItemStack stack, float offsetY)
+    {
+        return null;
     }
 
     @Override
