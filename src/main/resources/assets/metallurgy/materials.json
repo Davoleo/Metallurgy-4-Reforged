@@ -361,24 +361,24 @@
     "hardness": 3.1,
     "blast_resistance": 10.0,
     "ore_harvest_level": 1,
-    "color": "2D394F",
+    "color": "436182",
     "armor_stats": {
       "damage_reduction": [
-        2,
+        1,
+        3,
         4,
-        5,
         2
       ],
-      "enchantability": 1,
-      "durability": 38,
-      "toughness": 0.0
+      "enchantability": 20,
+      "durability": 15,
+      "toughness": 1.0
     },
     "tool_stats": {
-      "efficiency": 6.0,
+      "efficiency": 6.2,
       "harvest_level": 2,
-      "enchantability": 14,
-      "durability": 250,
-      "damage": 1.5
+      "enchantability": 19,
+      "durability": 230,
+      "damage": 1.7
     }
   },
   {
