@@ -95,7 +95,12 @@ public class AlloySample {
 		if (hasFallenBack())
 			return Collections.singletonList(fallbackStack);
 		else
-			return OreDictionary.getOres("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+		{
+			List<ItemStack> stacks = OreDictionary.getOres("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+			stacks.forEach(stack -> stack.setCount(getAmount()));
+			return stacks;
+		}
+
 	}
 
 	/**
