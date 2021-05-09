@@ -27,6 +27,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -123,6 +124,19 @@ public abstract class BaseMetallurgyEffect {
     public boolean canBeApplied(EntityLivingBase entity)
     {
         return getLevel(entity) > 0;
+    }
+
+    protected ItemStack getArmorRepr(EntityLivingBase entity)
+    {
+
+        if (getCategory() == EnumEffectCategory.ARMOR)
+        {
+            for (ItemStack stack : entity.getArmorInventoryList())
+                if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+                    return stack;
+        }
+
+        return ItemStack.EMPTY;
     }
 
     /**

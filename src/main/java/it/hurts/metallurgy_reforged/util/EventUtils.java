@@ -114,9 +114,7 @@ public class EventUtils {
         for (ItemStack stack : entity.getEquipmentAndArmor())
         {
             if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-            {
                 equip.add(stack);
-            }
         }
 
         return equip;

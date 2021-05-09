@@ -87,7 +87,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
         if (pos == null || state == null)
             return;
 
-        if (step > maxSteps - Math.max(0, state.getBlock().getHarvestLevel(state) - 1))
+        if (step > maxSteps - Math.max(0, state.getBlock().getHarvestLevel(state) - 1) || effectStack.isEmpty())
         {
             blockBundle.resetProgress(player);
             return;

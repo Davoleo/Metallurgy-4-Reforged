@@ -9,11 +9,14 @@
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
+import com.google.common.collect.Queues;
+import it.hurts.metallurgy_reforged.effect.armor.InolashiteArmorEffect;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 
 public class PlayerEffectData {
 
@@ -29,6 +32,7 @@ public class PlayerEffectData {
         effectBundles.put(etheriumArmorBundle.getPrefixKey(), etheriumArmorBundle);
         effectBundles.put(ignatiusArmorBundle.getPrefixKey(), ignatiusArmorBundle);
         effectBundles.put(inolashiteWeaponBundle.getPrefixKey(), inolashiteWeaponBundle);
+        effectBundles.put(inolashiteArmorBundle.getPrefixKey(), inolashiteArmorBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -74,6 +78,10 @@ public class PlayerEffectData {
 
     //Inolashite Weapon
     public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_weapon", 1, 10, bundle -> bundle.currentStep > 0);
+
+    //Inolashite Armor
+    public ExtraFilledDataBundle inolashiteArmorBundle = new ExtraFilledDataBundle("inolashite_armor", 1, 10, bundle -> bundle.currentStep > 0);
+    public Queue<InolashiteArmorEffect.WarpData> inolashiteWarpData = Queues.newArrayBlockingQueue(8 * 4);
 
     // Krik Armor
     private int krikHeight;
