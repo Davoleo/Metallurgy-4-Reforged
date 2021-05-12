@@ -1,0 +1,21 @@
+/*==============================================================================
+ = Class: alternative_fg_repository
+ = This class is part of Metallurgy 4: Reforged
+ = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
+ = This code is licensed under GNU GPLv3
+ = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
+ = Copyright (c) 2018-2021.
+ =============================================================================*/
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://jitpack.io' }
+        maven { url = 'https://maven.minecraftforge.net' }
+    }
+    dependencies {
+        classpath('com.github.DStrand1:ForgeGradle:FG_2.3-SNAPSHOT') {
+            changing = true
+        }
+    }
+}
