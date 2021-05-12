@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic.material;
@@ -25,6 +25,7 @@ public class TiCMaterial extends Material {
 		this.setCastable(true);
 		this.addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 		this.setRepresentativeItem("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+		this.setRenderInfo(TiCMaterials.renderInfos.get(metal));
 		TiCMaterials.addMaterialStats(metal, this);
 	}
 
