@@ -1,0 +1,222 @@
+{
+  "adamantine": {
+    "shinyness": 0.4,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "alduorite": {
+    "shinyness": 0.3,
+    "brightness": 0.25,
+    "hueshift": 0.0
+  },
+  "amordrine": {
+    "shinyness": 0.2,
+    "brightness": 0.25,
+    "hueshift": 0.0
+  },
+  "angmallen": {
+    "shinyness": 0.3,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "astral_silver": {
+    "shinyness": 0.15,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "atlarus": {
+    "shinyness": 0.2,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "black_steel": {
+    "shinyness": 0.4,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "brass": {
+    "shinyness": 0.2,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "bronze": {
+    "shinyness": 0.2,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "carmot": {
+    "shinyness": 0.25,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "celenegil": {
+    "shinyness": 0.35,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "ceruclase": {
+    "shinyness": 0.2,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "copper": {
+    "shinyness": 0.25,
+    "brightness": 0.25,
+    "hueshift": 0.0
+  },
+  "damascus_steel": {
+    "shinyness": 0.3,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "deep_iron": {
+    "shinyness": 0.2,
+    "brightness": 0.15,
+    "hueshift": 0.0
+  },
+  "desichalkos": {
+    "shinyness": 0.2,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "electrum": {
+    "shinyness": 0.4,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "etherium": {
+    "shinyness": 0.5,
+    "brightness": 0.2,
+    "hueshift": -0.1
+  },
+  "eximite": {
+    "shinyness": 0.15,
+    "brightness": 0.15,
+    "hueshift": 0.0
+  },
+  "haderoth": {
+    "shinyness": 0.1,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "hepatizon": {
+    "shinyness": 0.05,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "ignatius": {
+    "shinyness": 0.45,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "infuscolium": {
+    "shinyness": 0.4,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "inolashite": {
+    "shinyness": 0.3,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "kalendrite": {
+    "shinyness": 0.2,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "krik": {
+    "shinyness": 0.3,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "lutetium": {
+    "shinyness": 0.1,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "midasium": {
+    "shinyness": 0.45,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "mithril": {
+    "shinyness": 0.45,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "orichalcum": {
+    "shinyness": 0.4,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "osmium": {
+    "shinyness": 0.05,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "oureclase": {
+    "shinyness": 0.15,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "platinum": {
+    "shinyness": 0.2,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "prometheum": {
+    "shinyness": 0.05,
+    "brightness": 0.1,
+    "hueshift": 0.0
+  },
+  "quicksilver": {
+    "shinyness": 0.3,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "rubracium": {
+    "shinyness": 0.2,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "sanguinite": {
+    "shinyness": 0.1,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "shadow_iron": {
+    "shinyness": 0.05,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "shadow_steel": {
+    "shinyness": 0.1,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "silver": {
+    "shinyness": 0.0,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "steel": {
+    "shinyness": 0.0,
+    "brightness": 0.0,
+    "hueshift": 0.0
+  },
+  "tartarite": {
+    "shinyness": 0.5,
+    "brightness": 0.3,
+    "hueshift": 0.0
+  },
+  "vulcanite": {
+    "shinyness": 0.4,
+    "brightness": 0.2,
+    "hueshift": 0.0
+  },
+  "vyroxeres": {
+    "shinyness": 0.4,
+    "brightness": 0.4,
+    "hueshift": 0.0
+  }
+}
