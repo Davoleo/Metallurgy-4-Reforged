@@ -48,7 +48,7 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 
     private void addScrollQueue(WarpData newItem, Queue<WarpData> queue, int backtrackExtension)
     {
-        while (!queue.isEmpty() && backtrackExtension * 4 == queue.size())
+        while (!queue.isEmpty() && backtrackExtension * 4 <= queue.size())
             queue.poll();
 
         queue.add(newItem);
@@ -73,6 +73,9 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
             WarpData data = new WarpData(player.getPosition(), player.getHealth(), player.getFoodStats());
             addScrollQueue(data, warpQueue, backTrackExtension);
             //Metallurgy.logger.info(warpQueue.toString());
+            //Debug Visual Effect Representation
+            //for (WarpData warpData : warpQueue)
+            //    spawnParticle(player.world, warpData.position.getX(), warpData.position.getY(), warpData.position.getZ(), 8, false, 4);
         }
 
         //Don't spawn particles if the effect is on cooldown
@@ -122,7 +125,7 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
         data.deserializeNBT(((ExtraFilledDataBundle) getBundle(entity, metal, getCategory())).getExtras());
 
         //Restore original position health and food stats
-        entity.setPosition(data.position.getX(), data.position.getY(), data.position.getZ());
+        entity.setPosition(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
         entity.setHealth(data.health);
         entity.getFoodStats().addStats(data.hungerStats.getFoodLevel(), data.hungerStats.getSaturationLevel());
 
