@@ -181,8 +181,8 @@ public class MetallurgyEffects {
     //Inolashite Armor (Warp)
     public static final InolashiteArmorEffect inolashiteArmorEffect = new InolashiteArmorEffect();
 
-    //Ignatius Sword (25% chance Fire Aspect (5 seconds))
-    //public static final BaseMetallurgyEffect ignatiusSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.IGNATIUS);
+    //Kalendrite Armor (Tranquil)
+    public static final KalendriteArmorEffect kalendriteArmorEffect = new KalendriteArmorEffect();
 
     //Krik effect
     public static final BaseMetallurgyEffect krikEffect = new KrikArmorEffect();
