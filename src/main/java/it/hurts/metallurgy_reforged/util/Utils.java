@@ -146,9 +146,39 @@ public class Utils {
         return randomEffectsList.length;
     }
 
+    /**
+     * @deprecated use {@link net.minecraft.util.math.MathHelper#rgb(int, int, int)}
+     */
+    @Deprecated
     public static int intColorFromRGB(int r, int g, int b)
     {
         return ((255 << 24) + r * 65536 + g * 256 + b);
+    }
+
+    /**
+     * Gets int RGB Components out of a int color code and either returns them in a new array or fills an existing one
+     *
+     * @param hex     the color code
+     * @param results The array that needs to be filled (null otherwise)
+     * @return the array filled with rgb color components
+     * @apiNote Ignores Alpha in ARGB Colors
+     */
+    public static float[] getRGBComponents(int hex, float[] results)
+    {
+        int red = (hex >> 16) & 0xFF;
+        int green = (hex >> 8) & 0xFF;
+        int blue = hex & 0xFF;
+
+        float[] array;
+        if (results != null)
+            array = results;
+        else
+            array = new float[3];
+
+        array[0] = red / 255F;
+        array[1] = green / 255F;
+        array[2] = blue / 255F;
+        return array;
     }
 
     @SideOnly(Side.CLIENT)

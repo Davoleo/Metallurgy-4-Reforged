@@ -184,6 +184,9 @@ public class MetallurgyEffects {
     //Kalendrite Armor (Tranquil)
     public static final KalendriteArmorEffect kalendriteArmorEffect = new KalendriteArmorEffect();
 
+    //Kalendrite Tool (Restoration)
+    public static final KalendriteToolEffect kalendriteToolEffect = new KalendriteToolEffect();
+
     //Krik effect
     public static final BaseMetallurgyEffect krikEffect = new KrikArmorEffect();
 

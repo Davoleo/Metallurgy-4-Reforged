@@ -11,14 +11,13 @@ package it.hurts.metallurgy_reforged.network.client;
 
 import io.netty.buffer.ByteBuf;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.awt.*;
 
 public class PacketSpawnOreParticles implements IMessage {
 
@@ -102,14 +101,16 @@ public class PacketSpawnOreParticles implements IMessage {
 	}
 
 	public static class Handler implements IMessageHandler<PacketSpawnOreParticles, IMessage> {
+		private float[] rgb = new float[3];
+
 		@SideOnly(Side.CLIENT)
 		@Override
 		public IMessage onMessage(PacketSpawnOreParticles message, MessageContext ctx)
 		{
 			Minecraft minecraft = Minecraft.getMinecraft();
+			Utils.getRGBComponents(message.color, rgb);
 
 			minecraft.addScheduledTask(() -> {
-				float[] rgb = new Color(message.color).getColorComponents(null);
 				ParticleOre particleOre;
 
 				if (message.hasMotion)

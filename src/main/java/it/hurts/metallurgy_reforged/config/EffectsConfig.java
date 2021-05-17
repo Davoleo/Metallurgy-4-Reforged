@@ -197,6 +197,9 @@ public class EffectsConfig {
     @Config.Name("Tranquil")
     @Config.Comment("If the player has not received any damage for the past 10 seconds and they don't have full hp, they gain a regeneration buff.")
     public static boolean kalendriteEffectArmor = true;
+    @Config.Name("Restoration")
+    @Config.Comment("Breaking blocks restores half a heart but tools lose more durability the lower the user's health is.")
+    public static boolean kalendriteEffectTool = true;
 
     @Config.Name("Weight-Controlled Flight")
     @Config.Comment("Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.")
