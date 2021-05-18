@@ -17,7 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketUpdateHealth;
-import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -48,7 +47,6 @@ public class KalendriteToolEffect extends BaseMetallurgyEffect {
 
         if (player.getHealth() < player.getMaxHealth())
         {
-
             int durabilityDelta = Math.round((player.getMaxHealth() - player.getHealth()) / 2);
 
             ItemStack toolStack = event.getPlayer().getHeldItemMainhand();
@@ -64,9 +62,7 @@ public class KalendriteToolEffect extends BaseMetallurgyEffect {
                 //ClientProxy.client.getConnection().getPlayerInfo(player.getName()).setHealthBlinkTime(ClientProxy.client.ingameGUI.getUpdateCounter() + 10);
             }
 
-            Vec3d halvedLookVec = player.getLookVec().scale(0.5);
-            Utils.repeat(8, () -> spawnParticle(player.world, player.posX + halvedLookVec.x, player.posY + 1.1F, player.posZ + halvedLookVec.z,
-                    0.8F, true, 5));
+            Utils.repeat(16, () -> spawnParticle(player, 2.5F, true, 5));
         }
 
     }

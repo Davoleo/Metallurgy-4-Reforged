@@ -210,12 +210,13 @@ public abstract class BaseMetallurgyEffect {
      */
     protected void spawnParticle(World world, double x, double y, double z, float scale, boolean dynamic, int level)
     {
-        // FIXME: 17/05/2021 Particles not spawning for some reason
         if (world.isRemote)
             ClientProxy.client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, rgbComponents[0], rgbComponents[1], rgbComponents[2], scale, dynamic, level));
-
-        NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
-        PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
+        else
+        {
+            NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
+            PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
+        }
     }
 
     public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
