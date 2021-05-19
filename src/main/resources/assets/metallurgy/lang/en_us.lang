@@ -1329,6 +1329,7 @@ tooltip.metallurgy.effect.inolashite_armor.name=Warp
 tooltip.metallurgy.effect.kalendrite_armor.name=Tranquil
 tooltip.metallurgy.effect.kalendrite_tool.name=Restoration
 tooltip.metallurgy.effect.krik_armor.name=Weight-Controlled Flight
+tooltip.metallurgy.effect.krik_tool.name=Krik-Drives
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.desc=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1386,6 +1387,7 @@ tooltip.metallurgy.effect.inolashite_armor.desc=Shift + Jump will teleport the p
 tooltip.metallurgy.effect.kalendrite_armor.desc=If the player has not received any damage for the past 10 seconds and they don't have full hp, they gain a regeneration buff.
 tooltip.metallurgy.effect.kalendrite_tool.desc=Breaking blocks restores half a heart but tools lose more durability the lower the user's health is.
 tooltip.metallurgy.effect.krik_armor.desc=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
+tooltip.metallurgy.effect.krik_tool.desc=Activating the item launches the player in the general direction of where they are looking and deals weapon damage to mobs that were passed.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
