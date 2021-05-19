@@ -41,8 +41,8 @@ public class BlackSteelWeaponEffect extends BaseMetallurgyEffect {
         if (!canBeApplied(entity))
             return;
 
-        float absorbedDamage = event.getAmount() * 0.5F;
-        entity.getHeldItemMainhand().damageItem((int) (absorbedDamage * 10), entity);
+        float absorbedDamage = event.getAmount() * 0.25F;
+        entity.getHeldItemMainhand().damageItem((int) (absorbedDamage * 2), entity);
         event.setAmount(event.getAmount() - absorbedDamage);
 
         if (!entity.world.isRemote)
