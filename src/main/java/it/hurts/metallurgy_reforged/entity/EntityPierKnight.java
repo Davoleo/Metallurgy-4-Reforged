@@ -255,7 +255,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
                 timeUntilDeath--;
 
 
-            boolean canPierExist = MetallurgyEffects.damascusSteelArmorEffect.canBeApplied((EntityLivingBase) getOwner());
+            boolean canPierExist = MetallurgyEffects.DAMASCUS_STEEL_ARMOR_EFFECT.canBeApplied((EntityLivingBase) getOwner());
             if (timeUntilDeath <= 0 || !canPierExist)
             {
                 this.attackEntityFrom(DamageSource.GENERIC, Integer.MAX_VALUE);

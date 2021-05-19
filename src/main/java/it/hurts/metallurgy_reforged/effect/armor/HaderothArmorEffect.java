@@ -42,7 +42,7 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
     public Pair<String, String> getTooltip()
     {
         Pair<String, String> tooltip = super.getTooltip();
-        if (!MetallurgyEffects.haderothEffect.isEnabled())
+        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
         {
             int firstBreak = tooltip.getRight().indexOf("\n");
             String trimmed = tooltip.getRight().substring(firstBreak + 1);
@@ -57,7 +57,7 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
     {
         EntityLivingBase entity = event.getEntityLiving();
 
-        if (!MetallurgyEffects.haderothEffect.isEnabled())
+        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
             return;
 
         entity.getArmorInventoryList().forEach(stack -> {

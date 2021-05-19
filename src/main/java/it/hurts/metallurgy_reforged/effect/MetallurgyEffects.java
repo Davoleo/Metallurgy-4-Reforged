@@ -59,135 +59,135 @@ public class MetallurgyEffects {
     }
 
     //Symbiosis (I)
-    public static final AdamantineEffect adamantineEffect = new AdamantineEffect();
+    public static final AdamantineEffect ADAMANTINE_EFFECT = new AdamantineEffect();
     //Symbiosis (II)
-    public static final AdamantineArmorEffect adamantineArmorEffect = new AdamantineArmorEffect();
+    public static final AdamantineArmorEffect ADAMANTINE_ARMOR_EFFECT = new AdamantineArmorEffect();
 
     //Sky-High
-    public static final AmordrineArmorEffect amordrineArmorEffect = new AmordrineArmorEffect();
+    public static final AmordrineArmorEffect AMORDRINE_ARMOR_EFFECT = new AmordrineArmorEffect();
     //Soulbound
-    public static final AmordrineEffect amordrineEffect = new AmordrineEffect();
+    public static final AmordrineEffect AMORDRINE_EFFECT = new AmordrineEffect();
     //Coup de grâce
-    public static final AmordrineWeaponEffect amordrineWeaponEffect = new AmordrineWeaponEffect();
+    public static final AmordrineWeaponEffect AMORDRINE_WEAPON_EFFECT = new AmordrineWeaponEffect();
 
     //Reactive II
-    public static final AngmallenWeaponEffect angmallenWeaponEffect = new AngmallenWeaponEffect();
+    public static final AngmallenWeaponEffect ANGMALLEN_WEAPON_EFFECT = new AngmallenWeaponEffect();
     //Transmute
-    public static final AngmallenPickaxeEffect angmallenPickaxeEffect = new AngmallenPickaxeEffect();
+    public static final AngmallenPickaxeEffect ANGMALLEN_PICKAXE_EFFECT = new AngmallenPickaxeEffect();
     //Reactive III
-    public static final AngmallenArmorEffect angmallenArmorEffect = new AngmallenArmorEffect();
+    public static final AngmallenArmorEffect ANGMALLEN_ARMOR_EFFECT = new AngmallenArmorEffect();
 
     //Starlight
-    public static final AstralSilverArmorEffect astralSilverArmorEffect = new AstralSilverArmorEffect();
+    public static final AstralSilverArmorEffect ASTRAL_SILVER_ARMOR_EFFECT = new AstralSilverArmorEffect();
     //Extraterrestrial I
-    public static final AstralSilverWeaponEffect astralSilverWeaponEffect = new AstralSilverWeaponEffect();
+    public static final AstralSilverWeaponEffect ASTRAL_SILVER_WEAPON_EFFECT = new AstralSilverWeaponEffect();
     //Extraterrestrial II
-    public static final AstralSilverToolEffect astralSilverToolEffect = new AstralSilverToolEffect();
+    public static final AstralSilverToolEffect ASTRAL_SILVER_TOOL_EFFECT = new AstralSilverToolEffect();
 
     //Whirlwind
-    public static final AtlarusArmorEffect atlarusArmorEffect = new AtlarusArmorEffect();
+    public static final AtlarusArmorEffect ATLARUS_ARMOR_EFFECT = new AtlarusArmorEffect();
     //Wind Scythe
-    public static final AtlarusHoeEffect atlarusHoeEffect = new AtlarusHoeEffect();
+    public static final AtlarusHoeEffect ATLARUS_HOE_EFFECT = new AtlarusHoeEffect();
     //Gust of Wind
-    public static final AtlarusWeaponEffect atlarusWeaponEffect = new AtlarusWeaponEffect();
+    public static final AtlarusWeaponEffect ATLARUS_WEAPON_EFFECT = new AtlarusWeaponEffect();
 
     //Mountain I
-    public static final BlackSteelArmorEffect blackSteelArmorEffect = new BlackSteelArmorEffect();
+    public static final BlackSteelArmorEffect BLACK_STEEL_ARMOR_EFFECT = new BlackSteelArmorEffect();
     //Mountain II
-    public static final BlackSteelWeaponEffect blackSteelWeaponEffect = new BlackSteelWeaponEffect();
+    public static final BlackSteelWeaponEffect BLACK_STEEL_WEAPON_EFFECT = new BlackSteelWeaponEffect();
 
     //Carmot Tool Effect (Cadence)
-    public static final CarmotToolEffect carmotToolEffect = new CarmotToolEffect();
+    public static final CarmotToolEffect CARMOT_TOOL_EFFECT = new CarmotToolEffect();
     //Carmot Armor (Power User)
-    public static final CarmotArmorEffect carmotArmorEffect = new CarmotArmorEffect();
+    public static final CarmotArmorEffect CARMOT_ARMOR_EFFECT = new CarmotArmorEffect();
     //Carmot Weapon (Abattoir)
-    public static final CarmotWeaponEffect carmotWeaponEffect = new CarmotWeaponEffect();
+    public static final CarmotWeaponEffect CARMOT_WEAPON_EFFECT = new CarmotWeaponEffect();
 
     //Celenegil Tools (Escalation)
-    public static final CelenegilToolEffect celenegilToolEffect = new CelenegilToolEffect();
+    public static final CelenegilToolEffect CELENEGIL_TOOL_EFFECT = new CelenegilToolEffect();
     //Celenegil Armor (Perseverance)
-    public static final CelenegilArmorEffect celenegilArmorEffect = new CelenegilArmorEffect();
+    public static final CelenegilArmorEffect CELENEGIL_ARMOR_EFFECT = new CelenegilArmorEffect();
     //Celenegil Weapons (Glory Seeker)
-    public static final CelenegilWeaponEffect celenegilWeaponEffect = new CelenegilWeaponEffect();
+    public static final CelenegilWeaponEffect CELENEGIL_WEAPON_EFFECT = new CelenegilWeaponEffect();
 
     //Ceruclase Sword [Flash Freeze] (Chance to freeze enemies in place)
     public static final CeruclaseWeaponEffect ceruclaseWeaponEffect = new CeruclaseWeaponEffect();
     //Ceruclase Armor (Blizzard)
-    public static final CeruclaseArmorEffect ceruclaseArmorEffect = new CeruclaseArmorEffect();
+    public static final CeruclaseArmorEffect CERUCLASE_ARMOR_EFFECT = new CeruclaseArmorEffect();
     //Ceruclase Tools (Cold Snap)
-    public static final CeruclaseToolEffect ceruclaseToolEffect = new CeruclaseToolEffect();
+    public static final CeruclaseToolEffect CERUCLASE_TOOL_EFFECT = new CeruclaseToolEffect();
 
     //Damascus Steel Armor (Royal Blood)
-    public static final DamascusSteelArmorEffect damascusSteelArmorEffect = new DamascusSteelArmorEffect();
+    public static final DamascusSteelArmorEffect DAMASCUS_STEEL_ARMOR_EFFECT = new DamascusSteelArmorEffect();
     //Damascus Steel Weapons (Brilliance)
-    public static final DamascusSteelWeaponEffect damascusSteelWeaponEffect = new DamascusSteelWeaponEffect();
+    public static final DamascusSteelWeaponEffect DAMASCUS_STEEL_WEAPON_EFFECT = new DamascusSteelWeaponEffect();
     //Damascus Steel Pickaxe (Brilliance II)
-    public static final DamascusSteelPickaxeEffect damascusSteelPickaxeEffect = new DamascusSteelPickaxeEffect();
+    public static final DamascusSteelPickaxeEffect DAMASCUS_STEEL_PICKAXE_EFFECT = new DamascusSteelPickaxeEffect();
 
     //Deep Iron Armor (Aquatic)
-    public static final DeepIronArmorEffect deepIronArmorEffect = new DeepIronArmorEffect();
+    public static final DeepIronArmorEffect DEEP_IRON_ARMOR_EFFECT = new DeepIronArmorEffect();
     //Deep Iron Tool (Diver)
-    public static final DeepIronToolEffect deepIronToolEffect = new DeepIronToolEffect();
+    public static final DeepIronToolEffect DEEP_IRON_TOOL_EFFECT = new DeepIronToolEffect();
     //Deep Iron Weapon (Diver)
-    public static final DeepIronWeaponEffect deepIronWeaponEffect = new DeepIronWeaponEffect();
+    public static final DeepIronWeaponEffect DEEP_IRON_WEAPON_EFFECT = new DeepIronWeaponEffect();
 
     //Desichalkos Tools (Wormhole)
-    public static final DesichalkosToolEffect desichalkosToolEffect = new DesichalkosToolEffect();
+    public static final DesichalkosToolEffect DESICHALKOS_TOOL_EFFECT = new DesichalkosToolEffect();
     //Desichalkos Tools (Nullifier)
-    public static final DesichalkosWeaponEffect desichalkosWeaponEffect = new DesichalkosWeaponEffect();
+    public static final DesichalkosWeaponEffect DESICHALKOS_WEAPON_EFFECT = new DesichalkosWeaponEffect();
     //Desichalkos Armor (Orb)
-    public static final DesichalkosArmorEffect desichalkosArmorEffect = new DesichalkosArmorEffect();
+    public static final DesichalkosArmorEffect DESICHALKOS_ARMOR_EFFECT = new DesichalkosArmorEffect();
 
     //Electrum Weapons (Magnet)
-    public static ElectrumWeaponEffect electrumWeaponEffect = new ElectrumWeaponEffect();
+    public static final ElectrumWeaponEffect ELECTRUM_WEAPON_EFFECT = new ElectrumWeaponEffect();
     //Electrum Tools (Voltage Control)
-    public static ElectrumToolEffect electrumToolEffect = new ElectrumToolEffect();
+    public static final ElectrumToolEffect ELECTRUM_TOOL_EFFECT = new ElectrumToolEffect();
     //Electrum Armor (Static)
-    public static ElectrumArmorEffect electrumArmorEffect = new ElectrumArmorEffect();
+    public static final ElectrumArmorEffect ELECTRUM_ARMOR_EFFECT = new ElectrumArmorEffect();
 
     //Etherium Armor
-    public static EtheriumArmorEffect etheriumArmorEffect = new EtheriumArmorEffect();
+    public static final EtheriumArmorEffect ETHERIUM_ARMOR_EFFECT = new EtheriumArmorEffect();
     //Etherium Weapons
-    public static EtheriumWeaponEffect etheriumWeaponEffect = new EtheriumWeaponEffect();
+    public static final EtheriumWeaponEffect ETHERIUM_WEAPON_EFFECT = new EtheriumWeaponEffect();
 
     //Eximite Armor
-    public static final EximiteArmorEffect eximiteArmorEffect = new EximiteArmorEffect();
+    public static final EximiteArmorEffect EXIMITE_ARMOR_EFFECT = new EximiteArmorEffect();
     //Eximite Weapon
-    public static final EximiteWeaponEffect eximiteWeaponEffect = new EximiteWeaponEffect();
+    public static final EximiteWeaponEffect EXIMITE_WEAPON_EFFECT = new EximiteWeaponEffect();
 
     //Haderoth Armor
-    public static final HaderothArmorEffect haderothArmorEffect = new HaderothArmorEffect();
+    public static final HaderothArmorEffect HADEROTH_ARMOR_EFFECT = new HaderothArmorEffect();
     //Haderoth Weapon
-    public static final HaderothWeaponEffect haderothWeaponEffect = new HaderothWeaponEffect();
+    public static final HaderothWeaponEffect HADEROTH_WEAPON_EFFECT = new HaderothWeaponEffect();
     //Haderoth
-    public static final HaderothEffect haderothEffect = new HaderothEffect();
+    public static final HaderothEffect HADEROTH_EFFECT = new HaderothEffect();
 
     //Hepatizon Weapon
-    public static final HepatizonWeaponEffect hepatizonWeaponEffect = new HepatizonWeaponEffect();
+    public static final HepatizonWeaponEffect HEPATIZON_WEAPON_EFFECT = new HepatizonWeaponEffect();
     //Hepatizon Armor
-    public static final HepatizonArmorEffect hepatizonArmorEffect = new HepatizonArmorEffect();
+    public static final HepatizonArmorEffect HEPATIZON_ARMOR_EFFECT = new HepatizonArmorEffect();
 
     //Ignatius Tool (Molten Core)
-    public static final IgnatiusToolEffect ignatiusToolEffect = new IgnatiusToolEffect();
+    public static final IgnatiusToolEffect IGNATIUS_TOOL_EFFECT = new IgnatiusToolEffect();
     //Ignatius Weapon (Molten Core)
-    public static final IgnatiusWeaponEffect ignatiusWeaponEffect = new IgnatiusWeaponEffect();
+    public static final IgnatiusWeaponEffect IGNATIUS_WEAPON_EFFECT = new IgnatiusWeaponEffect();
     //Ignatius Armor (Hot-Blooded)
-    public static final IgnatiusArmorEffect ignatiusArmorEffect = new IgnatiusArmorEffect();
+    public static final IgnatiusArmorEffect IGNATIUS_ARMOR_EFFECT = new IgnatiusArmorEffect();
 
     //Inolashite Weapon (Time Cleave)
-    public static final InolashiteWeaponEffect inolashiteWeaponEffect = new InolashiteWeaponEffect();
+    public static final InolashiteWeaponEffect INOLASHITE_WEAPON_EFFECT = new InolashiteWeaponEffect();
     //Inolashite Tool (Time Walk)
-    public static final InolashiteToolEffect inolashiteToolEffect = new InolashiteToolEffect();
+    public static final InolashiteToolEffect INOLASHITE_TOOL_EFFECT = new InolashiteToolEffect();
     //Inolashite Armor (Warp)
-    public static final InolashiteArmorEffect inolashiteArmorEffect = new InolashiteArmorEffect();
+    public static final InolashiteArmorEffect INOLASHITE_ARMOR_EFFECT = new InolashiteArmorEffect();
 
     //Kalendrite Armor (Tranquil)
-    public static final KalendriteArmorEffect kalendriteArmorEffect = new KalendriteArmorEffect();
+    public static final KalendriteArmorEffect KALENDRITE_ARMOR_EFFECT = new KalendriteArmorEffect();
     //Kalendrite Tool (Restoration)
-    public static final KalendriteToolEffect kalendriteToolEffect = new KalendriteToolEffect();
+    public static final KalendriteToolEffect KALENDRITE_TOOL_EFFECT = new KalendriteToolEffect();
 
     //Krik Armor effect (Weight-Controlled Flight)
-    public static final KrikArmorEffect krikArmorEffect = new KrikArmorEffect();
+    public static final KrikArmorEffect KRIK_ARMOR_EFFECT = new KrikArmorEffect();
     //Krik Tool effect (Krik-Drives)
     public static final KrikToolEffect KRIK_TOOL_EFFECT = new KrikToolEffect();
     //Krik Weapon Effect (Flak)

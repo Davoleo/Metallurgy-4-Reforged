@@ -47,7 +47,7 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
     public Pair<String, String> getTooltip()
     {
         Pair<String, String> tooltip = super.getTooltip();
-        if (!MetallurgyEffects.haderothEffect.isEnabled())
+        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
         {
             int firstBreak = tooltip.getRight().indexOf("\n");
             String trimmed = tooltip.getRight().substring(firstBreak + 1);
@@ -71,7 +71,7 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
                 compound = new NBTTagCompound();
 
             //If the main effect is active, Apex should only be enabled if the item is reborn
-            if (MetallurgyEffects.haderothEffect.isEnabled() && !compound.getBoolean("reborn"))
+            if (MetallurgyEffects.HADEROTH_EFFECT.isEnabled() && !compound.getBoolean("reborn"))
                 return;
 
             ResourceLocation targetRegName = getMobType(event.getEntity());

@@ -50,7 +50,7 @@ public class IgnatiusWeaponEffect extends BaseMetallurgyEffect {
 
             //Map Entity Items drops to ItemStacks and manipulate them with the function from the other effect
             List<ItemStack> dropStacks = event.getDrops().stream().map(EntityItem::getItem).collect(Collectors.toList());
-            boolean hadEffect = MetallurgyEffects.ignatiusToolEffect.dropSmeltedItems(dropStacks, event.getLootingLevel());
+            boolean hadEffect = MetallurgyEffects.IGNATIUS_TOOL_EFFECT.dropSmeltedItems(dropStacks, event.getLootingLevel());
 
             //If auto-smelt was applied -> replace all the stacks of the entity items with the smelted ones
             if (hadEffect)
