@@ -45,13 +45,14 @@ public class KrikToolEffect extends BaseMetallurgyEffect {
         if (playerIn.getCooldownTracker().getCooldown(tool.getItem(), 0) > 0)
             return;
 
-        Vec3d vec = playerIn.getLookVec().scale(2.5);
-        playerIn.motionX += vec.x;
+        Vec3d vec = playerIn.getLookVec().scale(1.2);
+        playerIn.motionX += vec.x * 1.7; //total scale 2.04
         playerIn.motionY += vec.y;
-        playerIn.motionZ += vec.z;
+        playerIn.motionZ += vec.z * 1.7;
         playerIn.velocityChanged = true;
 
+        playerIn.getHeldItemMainhand().damageItem((int) 2, playerIn);
         worldIn.playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.PLAYERS, 1.25F, 0.65F);
-        playerIn.getCooldownTracker().setCooldown(tool.getItem(), 30);
+        playerIn.getCooldownTracker().setCooldown(tool.getItem(), 36);
     }
 }
