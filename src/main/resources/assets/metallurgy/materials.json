@@ -21,21 +21,14 @@
       "enchantability": 8,
       "durability": 36,
       "toughness": 3.5,
-      "max_health" : 5.0,
-      "knockback_resistance" : 4.0,
-      "movement_speed" : 3.0
+      "max_health" : 20.0
     },
     "tool_stats": {
       "efficiency": 10.0,
       "harvest_level": 6,
       "enchantability": 22,
-      "durability": 1550,
-      "damage": 5.0,
-      "max_health" : 5.0,
-      "movement_speed" : 0.05,
-      "attack_damage" : 20.0,
-      "attack_speed" : 4.0,
-      "reach_distance" : 2.0
+      "durability": 2943,
+      "damage": 5.0
     }
   },
   {
@@ -66,7 +59,7 @@
       "efficiency": 14.0,
       "harvest_level": 4,
       "enchantability": 50,
-      "durability": 500,
+      "durability": 1430,
       "damage": 4.0
     }
   },
@@ -302,7 +295,8 @@
       "harvest_level": 4,
       "enchantability": 16,
       "durability": 143,
-      "damage": 3.5
+      "damage": 3.5,
+      "attack_speed" : -0.1
     }
   },
   {
@@ -404,7 +398,8 @@
       "enchantability": 25,
       "durability": 1430,
       "damage": 3.4,
-      "reach_distance": 3
+      "reach_distance": 3,
+      "attack_speed" : -0.2
     }
   },
   {
@@ -574,20 +569,21 @@
     "armor_stats": {
       "damage_reduction": [
         3,
-        5,
+        6,
         7,
         4
       ],
-      "enchantability": 25,
-      "durability": 70,
-      "toughness": 4.0
+      "enchantability": 22,
+      "durability": 31,
+      "toughness": 2.7
     },
     "tool_stats": {
-      "efficiency": 8.0,
+      "efficiency": 5.9,
       "harvest_level": 6,
-      "enchantability": 25,
-      "durability": 900,
-      "damage": 4.0
+      "enchantability": 22,
+      "durability": 998,
+      "damage": 6.0,
+      "attack_speed" : -0.4
     }
   },
   {
@@ -598,20 +594,20 @@
     "color": "9941DD",
     "armor_stats": {
       "damage_reduction": [
+        3,
         4,
         5,
-        6,
-        4
+        3
       ],
-      "enchantability": 20,
-      "durability": 40,
-      "toughness": 3.0
+      "enchantability": 16,
+      "durability": 18,
+      "toughness": 2.7
     },
     "tool_stats": {
-      "efficiency": 8.0,
+      "efficiency": 8.1,
       "harvest_level": 4,
-      "enchantability": 20,
-      "durability": 1000,
+      "enchantability": 19,
+      "durability": 342,
       "damage": 4.0
     }
   },
@@ -637,7 +633,7 @@
       "harvest_level": 6,
       "enchantability": 17,
       "durability": 350,
-      "damage": 7.0
+      "damage": 5.2
     }
   },
   {
