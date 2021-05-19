@@ -12,11 +12,11 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -57,39 +57,37 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
     {
         EntityLivingBase entity = event.getEntityLiving();
 
-        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-        {
-            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+        if (!MetallurgyEffects.haderothEffect.isEnabled())
+            return;
+
+        entity.getArmorInventoryList().forEach(stack -> {
+            //If the main effect is enabled and the armor has not been reborn yet -> terminate adaptability effect
+            if ((stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
+                return;
+
+            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
             {
-                final ItemStack stack = entity.getItemStackFromSlot(slot);
-
-                //If the main effect is enabled and the armor has not been reborn yet -> terminate adaptability effect
-                if (MetallurgyEffects.haderothEffect.isEnabled() && (stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
-                    return;
-
-                if (stack.getItem() == metal.getArmorPiece(slot))
+                ItemArmorBase haderothArmorPiece = ((ItemArmorBase) stack.getItem());
+                switch (haderothArmorPiece.armorType)
                 {
-                    switch (slot)
-                    {
-                        case HEAD:
-                            if (entity.isPotionActive(MobEffects.HUNGER))
-                                entity.removePotionEffect(MobEffects.HUNGER);
-                            break;
-                        case CHEST:
-                            if (entity.ticksExisted % 40 == 0)
-                                entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
-                            break;
-                        case LEGS:
-                            if (entity.isPotionActive(MobEffects.SLOWNESS))
-                                entity.removePotionEffect(MobEffects.SLOWNESS);
-                            break;
-                        case FEET:
-                            if (entity.isPotionActive(MobEffects.LEVITATION))
-                                entity.removePotionEffect(MobEffects.LEVITATION);
-                            break;
-                    }
+                    case HEAD:
+                        if (entity.isPotionActive(MobEffects.HUNGER))
+                            entity.removePotionEffect(MobEffects.HUNGER);
+                        break;
+                    case CHEST:
+                        if (entity.ticksExisted % 40 == 0)
+                            entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
+                        break;
+                    case LEGS:
+                        if (entity.isPotionActive(MobEffects.SLOWNESS))
+                            entity.removePotionEffect(MobEffects.SLOWNESS);
+                        break;
+                    case FEET:
+                        if (entity.isPotionActive(MobEffects.LEVITATION))
+                            entity.removePotionEffect(MobEffects.LEVITATION);
+                        break;
                 }
             }
-        }
+        });
     }
 }
