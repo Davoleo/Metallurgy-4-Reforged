@@ -130,6 +130,11 @@ public class Utils {
         return translation;
     }
 
+    public static String localizeWithParameters(String unlocalized, Object... params)
+    {
+        return new TextComponentTranslation(unlocalized, params).getFormattedText();
+    }
+
     //CULO, CULO CUULO, CULO, CULO CULO CULO
     public static String localizeIgnoreFormat(String unlocalized)
     {

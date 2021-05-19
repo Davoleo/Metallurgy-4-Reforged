@@ -1405,6 +1405,9 @@ tooltip.metallurgy.electrum_magnet_disabled=§7Disabled
 tooltip.metallurgy.electrum_magnet_metal_only=§eMetal Items Only
 tooltip.metallurgy.electrum_magnet_enabled=§fEnabled
 tooltip.metallurgy.press_ctrl=Press §f[CTRL]§7 to expand
+tooltip.metallurgy.press_shift=Press §f[SHIFT]§7 to expand
+tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
+tooltip.metallurgy.stats.durability=Durability: %s
 
 #Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
 #Axes

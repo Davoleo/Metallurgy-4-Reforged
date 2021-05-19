@@ -118,7 +118,8 @@ public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
     @Override
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
     {
-        ItemUtils.buildTooltip(tooltip, effects);
+        ItemUtils.buildStatsTooltip(tooltip, EnumTools.PICKAXE, this.metalStats.getToolStats(), stack);
+        ItemUtils.buildEffectTooltip(tooltip, effects);
     }
 
     @Nonnull

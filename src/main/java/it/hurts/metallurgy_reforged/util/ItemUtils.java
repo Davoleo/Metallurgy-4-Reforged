@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -35,6 +36,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -84,7 +86,8 @@ public class ItemUtils {
 		return false;
 	}
 
-	public static void buildTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects)
+	@SideOnly(Side.CLIENT)
+	public static void buildEffectTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects)
 	{
 		if (!effects.isEmpty())
 		{
@@ -104,6 +107,52 @@ public class ItemUtils {
 
 			if (anyEnabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
 				tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_ctrl"));
+		}
+	}
+
+	private enum HarvestLevelFormatting {
+		_1("★", TextFormatting.RED),
+		_2("★★", TextFormatting.RED),
+		_3("★★★", TextFormatting.GOLD),
+		_4("★★★★", TextFormatting.YELLOW),
+		_5("★★★★★", TextFormatting.DARK_GREEN),
+		_6("★★★★★★", TextFormatting.AQUA),
+		_7("★★★★★★★", TextFormatting.LIGHT_PURPLE);
+
+		String stars;
+		TextFormatting format;
+
+		HarvestLevelFormatting(String stars, TextFormatting format)
+		{
+			this.stars = stars;
+			this.format = format;
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static void buildStatsTooltip(List<String> tooltip, EnumTools toolType, ToolStats stats, ItemStack toolStack)
+	{
+		if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+			tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_shift"));
+		else
+		{
+			if (toolType == EnumTools.PICKAXE)
+			{
+				int harvest = stats.getHarvestLevel();
+				HarvestLevelFormatting harvestFormatting = HarvestLevelFormatting.values()[harvest - 1];
+				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.harvest_level", harvestFormatting.format + harvestFormatting.stars));
+			}
+
+			int maxDurability = stats.getMaxUses();
+			float useRatio = (toolStack.getMaxDamage() - toolStack.getItemDamage()) / (float) maxDurability;
+			TextFormatting color;
+			if (useRatio < 0.33F)
+				color = TextFormatting.RED;
+			else if (useRatio < 0.66)
+				color = TextFormatting.YELLOW;
+			else
+				color = TextFormatting.GREEN;
+			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", color + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
 		}
 	}
 

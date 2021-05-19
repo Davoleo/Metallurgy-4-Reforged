@@ -121,7 +121,8 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
     @Override
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
     {
-        ItemUtils.buildTooltip(tooltip, effects);
+        ItemUtils.buildStatsTooltip(tooltip, EnumTools.AXE, this.metalStats.getToolStats(), stack);
+        ItemUtils.buildEffectTooltip(tooltip, effects);
     }
 
     @Override
