@@ -114,7 +114,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
         if (!entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
         {
             net.minecraft.client.renderer.GlStateManager.setFog(net.minecraft.client.renderer.GlStateManager.FogMode.EXP2);
-            net.minecraft.client.renderer.GlStateManager.setFogDensity(0.025F);
+            net.minecraft.client.renderer.GlStateManager.setFogDensity(0.25F);
             //This doesn't work kek
             //float[] colorComps = metal.getStats().getColorRGBValues();
             //net.minecraft.client.renderer.GlStateManager.color(colorComps[0], colorComps[1], colorComps[2]);
