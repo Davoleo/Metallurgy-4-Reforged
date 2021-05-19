@@ -186,10 +186,12 @@ public class MetallurgyEffects {
     //Kalendrite Tool (Restoration)
     public static final KalendriteToolEffect kalendriteToolEffect = new KalendriteToolEffect();
 
-    //Krik effect (Weight-Controlled Flight)
+    //Krik Armor effect (Weight-Controlled Flight)
     public static final KrikArmorEffect krikArmorEffect = new KrikArmorEffect();
-
+    //Krik Tool effect (Krik-Drives)
     public static final KrikToolEffect KRIK_TOOL_EFFECT = new KrikToolEffect();
+    //Krik Weapon Effect (Flak)
+    public static final KrikWeaponEffect KRIK_WEAPON_EFFECT = new KrikWeaponEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

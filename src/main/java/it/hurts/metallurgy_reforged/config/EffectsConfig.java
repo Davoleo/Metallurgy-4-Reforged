@@ -207,6 +207,9 @@ public class EffectsConfig {
     @Config.Name("Krik-Drives")
     @Config.Comment("Activating the item launches the player in the general direction of where they are looking.")
     public static boolean krikEffectTool = true;
+    @Config.Name("Flak")
+    @Config.Comment("Deals double damage to airborne entities and gives a short levitation debuff.")
+    public static boolean krikEffectWeapon = true;
 
     private EffectsConfig()
     {

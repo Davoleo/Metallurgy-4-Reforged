@@ -61,7 +61,7 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
             return;
 
         entity.getArmorInventoryList().forEach(stack -> {
-            //If the main effect is enabled and the armor has not been reborn yet -> terminate adaptability effect
+            //If the the armor has not been reborn yet -> terminate adaptability effect
             if ((stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
                 return;
 
