@@ -4,13 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.render.BrassKnucklesTEISR;
 import it.hurts.metallurgy_reforged.util.Constants;
@@ -63,8 +64,8 @@ public class ItemKnuckles extends ItemExtra {
 
 		if (slot == EntityEquipmentSlot.MAINHAND)
 		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", 1D, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Knuckles Speed modifier", 16D, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Knuckles Damage modifier", GadgetsConfig.BrassKnuckles.attackDamage, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Knuckles Speed modifier", GadgetsConfig.BrassKnuckles.attackSpeed, 0));
 		}
 		return multimap;
 	}

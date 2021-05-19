@@ -631,6 +631,8 @@ config.metallurgy.category.armor_effects=Armor Effects
 config.metallurgy.category.general=General
 config.metallurgy.category.registry=Registry
 config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
+config.metallurgy.category.phosphorus_lamp=Phosphorus Lamp
+config.metallurgy.category.brass_knuckles=Brass Knuckles
 config.metallurgy.category.tool_effects=Tool Effects
 config.metallurgy.category.worldgen=World Generation
 
