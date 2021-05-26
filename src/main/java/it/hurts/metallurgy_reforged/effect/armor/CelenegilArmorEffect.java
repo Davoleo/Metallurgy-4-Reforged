@@ -52,6 +52,7 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
             return;
 
         // TODO: 25/01/2021 Make this modular
+        float level = getLevel(event.getEntityLiving());
         if (!canBeApplied(event.getEntityLiving()))
             return;
 
@@ -63,7 +64,7 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
         if (hits > 4)
         {
             entity.clearActivePotions();
-            entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+            entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (20 + 80 * level), 1));
 
             BlockPos entityPos = entity.getPosition();
             entity.world.getEntitiesWithinAABBExcludingEntity(entity,
