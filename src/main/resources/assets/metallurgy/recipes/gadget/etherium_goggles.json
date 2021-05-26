@@ -1,27 +1,15 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "EBB",
-    "GEG",
-    "EBB"
-  ],
-  "conditions": [
-    {
-      "type": "metallurgy:registry_condition",
-      "depends_on": "block/reinforced_glass"
-    }
+    "RER"
   ],
   "key": {
     "E": {
       "type": "forge:ore_dict",
       "ore": "ingotEtherium"
     },
-    "B": {
-      "type": "forge:ore_dict",
-      "ore": "ingotBlackSteel"
-    },
-    "G": {
-      "item": "metallurgy:etherium_reinforced_glass"
+    "R": {
+    	"item": "minecraft:redstone"
     }
   },
   "result": {
