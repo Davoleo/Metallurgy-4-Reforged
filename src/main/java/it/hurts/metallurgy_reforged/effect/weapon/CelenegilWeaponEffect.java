@@ -72,7 +72,7 @@ public class CelenegilWeaponEffect extends BaseMetallurgyEffect {
             if (weapon.getTagCompound().getBoolean("glory_seeker"))
             {
                 //Slight damage buff (ignores any kind of protection)
-                event.setAmount(event.getAmount() * 1.25F);
+                event.setAmount(event.getAmount() * 1.35F);
 
                 if (event.getEntityLiving().getHealth() - event.getAmount() <= 0)
                 {
