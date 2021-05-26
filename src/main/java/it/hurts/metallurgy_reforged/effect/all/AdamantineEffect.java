@@ -78,7 +78,7 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
         {
             float foodLevelPercentage = player.getFoodStats().getFoodLevel() / 20F;
 
-            if (foodLevelPercentage < 1)
+            if (foodLevelPercentage < 0.85)
             {
                 int secondsWait = (1 + MathHelper.floor(6 * foodLevelPercentage)) * 20;
 
