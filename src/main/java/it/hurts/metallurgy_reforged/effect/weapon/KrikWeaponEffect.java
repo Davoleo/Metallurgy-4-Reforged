@@ -51,7 +51,7 @@ public class KrikWeaponEffect extends BaseMetallurgyEffect {
                     spawnParticle(event.getEntityLiving(), 2.5F, false, 4);
             }
 
-            event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 40));
+            event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 25));
         }
     }
 }
