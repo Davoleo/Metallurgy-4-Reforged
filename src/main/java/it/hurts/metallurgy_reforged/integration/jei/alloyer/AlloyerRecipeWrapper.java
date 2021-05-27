@@ -9,7 +9,7 @@
 
 package it.hurts.metallurgy_reforged.integration.jei.alloyer;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.model.AlloySample;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
@@ -47,10 +47,10 @@ public class AlloyerRecipeWrapper implements IRecipeWrapper {
 
 		for (Table.Cell<AlloySample, AlloySample, AlloySample> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
-			List<ItemStack> inputList1 = entry.getRowKey().getOredictedStacks();
-			List<ItemStack> inputList2 = entry.getColumnKey().getOredictedStacks();
+			List<ItemStack> inputList1 = ImmutableList.copyOf(entry.getRowKey().getOredictedStacks());
+			List<ItemStack> inputList2 = ImmutableList.copyOf(entry.getColumnKey().getOredictedStacks());
 
-			List<List<ItemStack>> inputs = Lists.newArrayList(inputList1, inputList2);
+			List<List<ItemStack>> inputs = ImmutableList.of(inputList1, inputList2);
 			recipes.add(new AlloyerRecipeWrapper(inputs, entry.getValue().getStack()));
 		}
 

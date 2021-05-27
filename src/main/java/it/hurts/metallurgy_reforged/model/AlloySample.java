@@ -9,15 +9,15 @@
 
 package it.hurts.metallurgy_reforged.model;
 
-import com.google.common.base.CaseFormat;
+import it.hurts.metallurgy_reforged.handler.OreDictHandler;
 import it.hurts.metallurgy_reforged.material.Metal;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @MethodsReturnNonnullByDefault
 public class AlloySample {
@@ -96,9 +96,9 @@ public class AlloySample {
 			return Collections.singletonList(fallbackStack);
 		else
 		{
-			List<ItemStack> stacks = OreDictionary.getOres("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
-			stacks.forEach(stack -> stack.setCount(getAmount()));
-			return stacks;
+			List<ItemStack> copyList = OreDictHandler.INGOTS_CACHE.get(getMetal()).stream().map(ItemStack::copy).collect(Collectors.toList());
+			copyList.forEach(stack -> stack.setCount(this.getAmount()));
+			return copyList;
 		}
 
 	}

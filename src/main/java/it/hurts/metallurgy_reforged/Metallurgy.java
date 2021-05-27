@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
+import it.hurts.metallurgy_reforged.handler.OreDictHandler;
 import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
 import it.hurts.metallurgy_reforged.integration.IntegrationEnderIO;
 import it.hurts.metallurgy_reforged.integration.IntegrationIF;
@@ -198,6 +199,8 @@ public class Metallurgy {
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
 			IntegrationTIC.postInit();
 		logger.info("Tinker's alloy recipes loaded");
+
+		OreDictHandler.populateOredictCache();
 
 		logger.info(NAME + " has been completely loaded");
 	}
