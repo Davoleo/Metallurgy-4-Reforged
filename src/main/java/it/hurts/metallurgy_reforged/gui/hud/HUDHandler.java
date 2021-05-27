@@ -54,7 +54,7 @@ public class HUDHandler {
             }
         }
 
-        if (EventUtils.getArmorPiecesCount(player, ModMetals.KRIK) > 0)
+        if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK))
         {
             KrikArmorHUD.render(event, minecraft);
         }

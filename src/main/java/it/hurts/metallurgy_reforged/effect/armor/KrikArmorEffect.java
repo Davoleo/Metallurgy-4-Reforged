@@ -48,7 +48,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
     public void livingUpdate(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
-        if (!canBeApplied(player))
+        if (getLevel(player) < 1)
             return;
 
         final int STEP = 255 / 27;
@@ -75,7 +75,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 
     @SubscribeEvent
     public void cancelFall(LivingFallEvent event) {
-        if (canBeApplied(event.getEntityLiving()) && event.getEntityLiving() instanceof EntityPlayer)
+        if (getLevel(event.getEntityLiving()) == 1 && event.getEntityLiving() instanceof EntityPlayer)
             event.setCanceled(true);
     }
 
@@ -84,8 +84,10 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
      */
     @SideOnly(Side.CLIENT)
     public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
-        if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor) {
-            if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+        if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor)
+        {
+            if (Keyboard.isKeyDown(Keyboard.KEY_UP))
+            {
                 if (capability != null && capability.getKrikHeight() < getKrikMaxLevel(player))
                 {
                     PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));

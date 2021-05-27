@@ -30,10 +30,9 @@ public class EventUtils {
 	/**
 	 * @param entity The entity who is wearing the armor
 	 * @param metal  The metal the armor is made of
-	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
-	public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
+	public static boolean isWearingFullArmorSet(EntityLivingBase entity, Metal metal)
 	{
 		boolean fullArmored = true;
 
