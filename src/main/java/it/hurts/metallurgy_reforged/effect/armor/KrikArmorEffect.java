@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -55,7 +56,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
         PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
         if (capability != null) {
-            int maxLevel = PlayerEffectData.getKrikMaxLevel(player);
+            int maxLevel = getKrikMaxLevel(player);
             int level = capability.getKrikHeight();
 
             if (level <= maxLevel) {
@@ -85,14 +86,17 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
     public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
         if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor) {
             if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-                if (capability != null && capability.getKrikHeight() < PlayerEffectData.getKrikMaxLevel(player)) {
+                if (capability != null && capability.getKrikHeight() < getKrikMaxLevel(player))
+                {
                     PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
                     capability.setKrikHeight(capability.getKrikHeight() + 1);
                 }
             }
 
-            if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-                if (capability != null && capability.getKrikHeight() > 0) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
+            {
+                if (capability != null && capability.getKrikHeight() > 0)
+                {
                     PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
                     capability.setKrikHeight(capability.getKrikHeight() - 1);
                     //System.out.println(capability.getHeight());
@@ -101,4 +105,17 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
         }
     }
 
+    public static int getKrikMaxLevel(EntityPlayer player)
+    {
+        int count = 0;
+
+        for (int i = 9; i < 36; i++)
+        {
+            Slot k = new Slot(player.inventory, i, 0, 0);
+            if (!k.getHasStack())
+                count++;
+        }
+
+        return count;
+    }
 }

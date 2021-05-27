@@ -40,9 +40,7 @@ public class EventUtils {
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
 			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
-			{
 				fullArmored = false;
-			}
 		}
 
 		return fullArmored;

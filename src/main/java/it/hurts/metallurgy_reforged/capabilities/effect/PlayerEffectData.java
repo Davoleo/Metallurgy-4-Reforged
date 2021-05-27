@@ -11,8 +11,6 @@ package it.hurts.metallurgy_reforged.capabilities.effect;
 
 import com.google.common.collect.Queues;
 import it.hurts.metallurgy_reforged.effect.armor.InolashiteArmorEffect;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -94,21 +92,6 @@ public class PlayerEffectData {
     public int getKrikHeight()
     {
         return krikHeight;
-    }
-
-    // TODO: 30/01/2021 Move This to the krik effect class
-    public static int getKrikMaxLevel(EntityPlayer player)
-    {
-        int count = 0;
-
-        for (int i = 9; i < 36; i++)
-        {
-            Slot k = new Slot(player.inventory, i, 0, 0);
-            if (!k.getHasStack())
-                count++;
-        }
-
-        return count;
     }
 
 }
