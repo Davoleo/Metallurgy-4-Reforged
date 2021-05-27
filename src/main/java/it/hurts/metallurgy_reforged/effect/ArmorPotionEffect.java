@@ -39,7 +39,7 @@ public class ArmorPotionEffect extends BaseMetallurgyEffect {
         if (event instanceof LivingEvent.LivingUpdateEvent) {
             boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
 
-            if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
+            if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && refreshEffect)
                 event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
         }
     }

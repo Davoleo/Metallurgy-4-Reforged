@@ -37,12 +37,12 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
         {
             boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
 
-            if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && isFireDamage)
+            if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && isFireDamage)
             {
                 event.setCanceled(true);
             }
         }
-        if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
+        if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
         {
             event.getEntityLiving().extinguish();
         }

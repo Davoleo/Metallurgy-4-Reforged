@@ -46,7 +46,7 @@ public class HaderothArmorEffectOld extends BaseMetallurgyEffect {
         World world = event.getWorld();
         EntityPlayer player = ((EntityPlayer) event.getEntity());
         AxisAlignedBB playerBB = event.getAabb();
-        if (EventUtils.isEntityWearingArmor(player, metal))
+        if (EventUtils.isWearingFullArmorSet(player, metal))
         {
             if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA))
             {

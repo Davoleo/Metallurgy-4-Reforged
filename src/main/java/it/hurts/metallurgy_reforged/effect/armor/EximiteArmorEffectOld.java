@@ -46,7 +46,7 @@ public class EximiteArmorEffectOld extends BaseMetallurgyEffect {
                 EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
                 if (target instanceof EntityPlayer)
                 {
-                    if (EventUtils.isEntityWearingArmor(target, metal))
+                    if (EventUtils.isWearingFullArmorSet(target, metal))
                     {
                         ((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
                     }

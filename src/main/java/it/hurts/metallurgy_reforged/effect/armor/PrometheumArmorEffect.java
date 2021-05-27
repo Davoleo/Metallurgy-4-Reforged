@@ -37,7 +37,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect {
         if (event instanceof LivingEvent.LivingUpdateEvent) {
             EntityLivingBase entity = event.getEntityLiving();
 
-            if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
+            if (EventUtils.isWearingFullArmorSet(entity, metal) && entity.isPotionActive(MobEffects.POISON))
                 entity.removePotionEffect(MobEffects.POISON);
         }
     }
