@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.gui.hud;
@@ -54,7 +54,7 @@ public class HUDHandler {
             }
         }
 
-        if (EventUtils.isEntityWearingArmor(player, ModMetals.KRIK))
+        if (EventUtils.getArmorPiecesCount(player, ModMetals.KRIK) > 0)
         {
             KrikArmorHUD.render(event, minecraft);
         }
