@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic;
@@ -13,6 +13,7 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterial;
@@ -92,7 +93,7 @@ public class IntegrationTIC {
 			}
 		});
 
-		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, 400));
+		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, GadgetsConfig.ThermiteDust.temperature));
 		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
 	}
 

@@ -76,4 +76,14 @@ public class GadgetsConfig {
         public static double attackSpeed = 16;
 
     }
+
+    @Config.LangKey("config.metallurgy.category.thermite_dust")
+    @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "thermite_dust")
+    public static class ThermiteDust {
+
+        @Config.Name("Thermite Fuel Temperature")
+        @Config.Comment("The Temperature of thermite when used as a fluid fuel for Tinkers' Construct")
+        public static int temperature = 400;
+
+    }
 }
