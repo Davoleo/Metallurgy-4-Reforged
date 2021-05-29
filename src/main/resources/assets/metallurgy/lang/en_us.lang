@@ -1457,3 +1457,5 @@ util.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged
 util.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
 util.world_join_message.4=You can disable this message from the mod configuration
+
+message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
