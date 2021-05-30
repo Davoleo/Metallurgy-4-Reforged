@@ -163,8 +163,6 @@ public class AtlarusHoeEffect extends BaseMetallurgyEffect {
     @SubscribeEvent
     public void livingEvent(LivingEquipmentChangeEvent event)
     {
-
-
         ItemStack to = event.getTo();
         if (to.getItem() == metal.getTool(EnumTools.HOE) && event.getFrom().getItem() != metal.getTool(EnumTools.HOE))
         {

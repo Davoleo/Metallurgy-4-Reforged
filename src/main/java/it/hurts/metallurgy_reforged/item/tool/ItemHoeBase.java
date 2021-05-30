@@ -20,7 +20,9 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
@@ -37,7 +39,7 @@ import java.util.Set;
 
 public class ItemHoeBase extends ItemHoe implements IToolEffect {
 
-    private Set<BaseMetallurgyEffect> effects = new HashSet<>();
+    private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
     private final MetalStats metalStats;
 
     public ItemHoeBase(ToolMaterial material, MetalStats metalStats)
@@ -100,6 +102,21 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
         Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
         ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
         return multimap;
+    }
+
+    @Override
+    public int getItemEnchantability(@Nonnull ItemStack stack)
+    {
+        return metalStats.getToolStats().getToolMagic();
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
+    {
+        if (enchantment == Enchantments.FORTUNE)
+            return true;
+        else
+            return super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override

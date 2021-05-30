@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.all.HaderothEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
+import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.*;
@@ -192,6 +193,9 @@ public class MetallurgyEffects {
     public static final KrikToolEffect KRIK_TOOL_EFFECT = new KrikToolEffect();
     //Krik Weapon Effect (Flak)
     public static final KrikWeaponEffect KRIK_WEAPON_EFFECT = new KrikWeaponEffect();
+
+    //Midasium Hoe Effect (Midas)
+    public static final MidasiumHoeEffect MIDASIUM_HOE_EFFECT = new MidasiumHoeEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
