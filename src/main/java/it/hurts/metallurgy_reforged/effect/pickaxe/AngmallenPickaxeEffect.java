@@ -14,7 +14,6 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -73,11 +72,12 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
     private ItemStack getRandomOreStack(BlockOre ore) {
         //Loop over the metal map and filter for the right ores via Streams
         List<ItemStack> oresDropList = ModMetals.metalMap.values().stream().filter(mettle -> {
-            if (ore == mettle.getOre())
+            if (mettle.isAlloy() || ore == mettle.getOre())
                 return false;
+
             int level = mettle.getStats().getOreHarvest();
-            IBlockState state = ore.getDefaultState();
-            return level >= ore.getHarvestLevel(state) - 1 && level <= ore.getHarvestLevel(state) + 1;
+            int blockHarvestLevel = ore.getHarvestLevel(ore.getDefaultState());
+            return level >= blockHarvestLevel - 1 && level <= blockHarvestLevel + 1;
         }).map(mettle -> new ItemStack(mettle.getOre())).collect(Collectors.toList());
         // Map metals to ore itemStacks and collect all of them into a list
 

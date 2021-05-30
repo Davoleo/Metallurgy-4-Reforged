@@ -35,7 +35,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -60,26 +59,27 @@ public class Utils {
             MobEffects.REGENERATION
     };
 
-    private static Map<TextFormatting, Color> minecraftColors = new HashMap<>();
+    @Deprecated
+    private static final Map<TextFormatting, Integer> minecraftColors = new HashMap<>();
 
     static
     {
-        minecraftColors.put(TextFormatting.BLACK, new Color(0x000000));
-        minecraftColors.put(TextFormatting.DARK_BLUE, new Color(0x0000AA));
-        minecraftColors.put(TextFormatting.DARK_GREEN, new Color(0x00AA00));
-        minecraftColors.put(TextFormatting.DARK_AQUA, new Color(0x00AAAA));
-        minecraftColors.put(TextFormatting.DARK_RED, new Color(0xAA0000));
-        minecraftColors.put(TextFormatting.DARK_PURPLE, new Color(0xAA00AA));
-        minecraftColors.put(TextFormatting.GOLD, new Color(0xFFAA00));
-        //minecraftColors.put(TextFormatting.GRAY, new Color(0xAAAAAA));
-        minecraftColors.put(TextFormatting.DARK_GRAY, new Color(0x555555));
-        minecraftColors.put(TextFormatting.BLUE, new Color(0x5555FF));
-        minecraftColors.put(TextFormatting.GREEN, new Color(0x55FF55));
-        minecraftColors.put(TextFormatting.AQUA, new Color(0x55FFFF));
-        minecraftColors.put(TextFormatting.RED, new Color(0xFF5555));
-        minecraftColors.put(TextFormatting.LIGHT_PURPLE, new Color(0xFF55FF));
-        minecraftColors.put(TextFormatting.YELLOW, new Color(0xFFFF55));
-        minecraftColors.put(TextFormatting.WHITE, new Color(0xFFFFFF));
+        minecraftColors.put(TextFormatting.BLACK, 0x000000);
+        minecraftColors.put(TextFormatting.DARK_BLUE, 0x0000AA);
+        minecraftColors.put(TextFormatting.DARK_GREEN, 0x00AA00);
+        minecraftColors.put(TextFormatting.DARK_AQUA, 0x00AAAA);
+        minecraftColors.put(TextFormatting.DARK_RED, 0xAA0000);
+        minecraftColors.put(TextFormatting.DARK_PURPLE, 0xAA00AA);
+        minecraftColors.put(TextFormatting.GOLD, 0xFFAA00);
+        //minecraftColors.put(TextFormatting.GRAY, 0xAAAAAA);
+        minecraftColors.put(TextFormatting.DARK_GRAY, 0x555555);
+        minecraftColors.put(TextFormatting.BLUE, 0x5555FF);
+        minecraftColors.put(TextFormatting.GREEN, 0x55FF55);
+        minecraftColors.put(TextFormatting.AQUA, 0x55FFFF);
+        minecraftColors.put(TextFormatting.RED, 0xFF5555);
+        minecraftColors.put(TextFormatting.LIGHT_PURPLE, 0xFF55FF);
+        minecraftColors.put(TextFormatting.YELLOW, 0xFFFF55);
+        minecraftColors.put(TextFormatting.WHITE, 0xFFFFFF);
     }
 
     public static void giveExperience(EntityPlayer player, float experience)
@@ -197,32 +197,6 @@ public class Utils {
         bufferbuilder.pos((x + width), (y), 1D).tex(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
         bufferbuilder.pos((x), (y), 1D).tex(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
         tessellator.draw();
-    }
-
-    public static TextFormatting getSimilarMinecraftColor(Color color)
-    {
-
-        TextFormatting nearestColor = null;
-        double minDistance = Integer.MAX_VALUE;
-
-        for (Map.Entry<TextFormatting, Color> entry : minecraftColors.entrySet())
-        {
-            Color mcColor = entry.getValue();
-
-            double newDistance = Math.sqrt(
-                    Math.pow(color.getRed() - mcColor.getRed(), 2)
-                            + Math.pow(color.getGreen() - mcColor.getGreen(), 2)
-                            + Math.pow(color.getBlue() - mcColor.getBlue(), 2)
-            );
-
-            if (newDistance < minDistance)
-            {
-                minDistance = newDistance;
-                nearestColor = entry.getKey();
-            }
-        }
-
-        return nearestColor;
     }
 
     /**
