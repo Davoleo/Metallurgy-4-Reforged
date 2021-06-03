@@ -54,7 +54,7 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
 
     public ItemAxeBase(ToolMaterial material, MetalStats metalStats)
     {
-        super(material, material.getAttackDamage() + 4, -2.5F - (material.getAttackDamage() / 10));
+        super(material, ( material.getAttackDamage() * 1.25F ) + 3.0F, -2.5F - (material.getAttackDamage() / 10));
         ItemUtils.initItem(this, metalStats.getName() + "_axe", MetallurgyTabs.tabTool);
         this.metalStats = metalStats;
     }
