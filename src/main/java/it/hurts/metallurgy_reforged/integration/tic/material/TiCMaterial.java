@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.integration.tic.material;
 
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
+import net.minecraftforge.fml.common.thread.SidedThreadGroups;
 import slimeknights.tconstruct.library.materials.Material;
 
 public class TiCMaterial extends Material {
@@ -21,11 +22,14 @@ public class TiCMaterial extends Material {
 	{
 		super(metal.toString(), metal.getMolten().getColor(), false);
 		this.metal = metal;
+
 		this.setFluid(metal.getMolten());
 		this.setCastable(true);
 		this.addCommonItems(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
 		this.setRepresentativeItem("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
-		this.setRenderInfo(TiCMaterials.renderInfos.get(metal));
+		if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.CLIENT)
+			this.setRenderInfo(TiCMaterials.renderInfos.get(metal));
+
 		TiCMaterials.addMaterialStats(metal, this);
 	}
 

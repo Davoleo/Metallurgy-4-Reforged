@@ -18,6 +18,8 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.material.ToolStats;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.util.JsonUtils;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
@@ -70,21 +72,22 @@ public class TiCMaterials {
             TiCMaterials.registerStat(material, stat);
     }
 
-	private static final String TINKER_RENDER_INFO_PATH = "/assets/tconstruct/metallurgy_renders.json";
-	static Map<Metal, MaterialRenderInfo.Metal> renderInfos = new HashMap<>();
+    private static final String TINKER_RENDER_INFO_PATH = "/assets/tconstruct/metallurgy_renders.json";
 
-	//Initialise renderInfos
-	static
-	{
-		try
-		{
-			Gson gson = new GsonBuilder().create();
-			JsonObject renderObj = JsonUtils.fromJson(gson, Files.newBufferedReader(Utils.getPath(TINKER_RENDER_INFO_PATH)), JsonObject.class);
+    static Map<Metal, MaterialRenderInfo.Metal> renderInfos = new HashMap<>();
 
-			ModMetals.metalMap.forEach((name, metal) -> {
-				if (metal.hasToolSet())
-				{
-					JsonObject parametersObj = JsonUtils.getJsonObject(renderObj, metal.toString());
+    @SideOnly(Side.CLIENT)
+    public static void initializeRenderInfos()
+    {
+        try
+        {
+            Gson gson = new GsonBuilder().create();
+            JsonObject renderObj = JsonUtils.fromJson(gson, Files.newBufferedReader(Utils.getPath(TINKER_RENDER_INFO_PATH)), JsonObject.class);
+
+            ModMetals.metalMap.forEach((name, metal) -> {
+                if (metal.hasToolSet())
+                {
+                    JsonObject parametersObj = JsonUtils.getJsonObject(renderObj, metal.toString());
 					float shinyness = JsonUtils.getFloat(parametersObj, "shinyness");
 					float brightness = JsonUtils.getFloat(parametersObj, "brightness");
 					float hueshift = JsonUtils.getFloat(parametersObj, "hueshift");
