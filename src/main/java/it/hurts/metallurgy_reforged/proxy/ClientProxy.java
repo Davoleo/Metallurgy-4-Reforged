@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.proxy;
@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.handler.KeyboardHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.ModChecker;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +28,9 @@ public class ClientProxy implements IProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
+		if (ModChecker.isTConLoaded)
+			it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
+
 		MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 		ModItems.brassKnuckles.initTEISR();

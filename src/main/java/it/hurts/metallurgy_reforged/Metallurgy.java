@@ -79,6 +79,7 @@ public class Metallurgy {
 	{
 		logger = event.getModLog();
 		logger.info(NAME + " is entering pre-initialization!");
+		proxy.preInit(event);
 
 		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
 		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
@@ -143,9 +144,6 @@ public class Metallurgy {
 
         CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), new EntityDataCallable());
         logger.info("Entity Data capability Registered");
-
-
-        proxy.preInit(event);
     }
 
 	@Mod.EventHandler

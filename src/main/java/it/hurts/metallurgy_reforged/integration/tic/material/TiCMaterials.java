@@ -18,6 +18,8 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.material.ToolStats;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.util.JsonUtils;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
@@ -71,10 +73,11 @@ public class TiCMaterials {
 	}
 
 	private static final String TINKER_RENDER_INFO_PATH = "/assets/tconstruct/metallurgy_renders.json";
+
 	static Map<Metal, MaterialRenderInfo.Metal> renderInfos = new HashMap<>();
 
-	//Initialise renderInfos
-	static
+	@SideOnly(Side.CLIENT)
+	public static void initializeRenderInfos()
 	{
 		try
 		{
