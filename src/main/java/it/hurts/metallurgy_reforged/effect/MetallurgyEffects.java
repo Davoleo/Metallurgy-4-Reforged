@@ -196,6 +196,8 @@ public class MetallurgyEffects {
 
     //Midasium Hoe Effect (Midas)
     public static final MidasiumHoeEffect MIDASIUM_HOE_EFFECT = new MidasiumHoeEffect();
+    //Midasium Weapon Effect (Greed)
+    public static final MidasiumWeaponEffect MIDASIUM_WEAPON_EFFECT = new MidasiumWeaponEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

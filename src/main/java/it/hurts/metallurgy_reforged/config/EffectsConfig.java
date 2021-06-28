@@ -214,6 +214,9 @@ public class EffectsConfig {
     @Config.Name("Midas (Midasium hoe)")
     @Config.LangKey("tooltip.metallurgy.effect.midasium_hoe")
     public static boolean midasiumEffectHoe = true;
+    @Config.Name("Greed (Midasium Weapon)")
+    @Config.LangKey("tooltip.metallurgy.effect.midasium_weapon")
+    public static boolean midasiumEffectWeapon = true;
 
     private EffectsConfig()
     {

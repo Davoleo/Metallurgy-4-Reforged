@@ -51,7 +51,7 @@ public abstract class BaseMetallurgyEffect {
     public BaseMetallurgyEffect(Metal metal)
     {
         this.metal = metal;
-        this.name = metal != null ? Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".name") : "";
+        this.name = metal != null ? Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString()) : "";
 
         rgbComponents = metal != null ? Utils.getRGBComponents(metal.getStats().getColorHex(), null) : null;
 
@@ -148,7 +148,7 @@ public abstract class BaseMetallurgyEffect {
     public Pair<String, String> getTooltip()
     {
         String format = FontColor.encodeColor(metal.getStats().getColorHex());
-        String description = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".desc");
+        String description = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory().toString() + ".tooltip");
         return ImmutablePair.of(format + name, description);
     }
 
