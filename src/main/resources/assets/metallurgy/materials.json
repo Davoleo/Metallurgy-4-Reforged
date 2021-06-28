@@ -155,8 +155,7 @@
       ],
       "enchantability": 2,
       "durability": 21,
-      "toughness": 6.5,
-      "movement_speed" : -0.04
+      "toughness": 6.5
     },
     "tool_stats": {
       "efficiency": 6.5,
@@ -164,6 +163,7 @@
       "enchantability": 2,
       "durability": 976,
       "attack_speed" : -0.6,
+      "movement_speed" : -0.01,
       "damage": 3.9
     }
   },
@@ -330,7 +330,7 @@
     "hardness": 10.0,
     "blast_resistance": 20.0,
     "ore_harvest_level": -1,
-    "color": "75663D",
+    "color": "C4BCAA",
     "armor_stats": {
       "damage_reduction": [
         3,
@@ -450,7 +450,8 @@
       "harvest_level": 6,
       "enchantability": 30,
       "durability": 750,
-      "damage": 8.0,
+      "damage": 6.0,
+      "attack_speed" : -0.4,
       "reach_distance": 1
     }
   },
@@ -459,24 +460,25 @@
     "hardness": 4.7,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
-    "color": "5E4191",
+    "color": "58B396",
     "armor_stats": {
       "damage_reduction": [
+        3,
         4,
-        5,
-        6,
-        4
+        4,
+        3
       ],
       "enchantability": 25,
-      "durability": 100,
-      "toughness": 5.0
+      "durability": 21,
+      "toughness": 3.3
     },
     "tool_stats": {
-      "efficiency": 8.0,
+      "efficiency": 7.8,
       "harvest_level": 5,
       "enchantability": 25,
-      "durability": 1000,
-      "damage": 4.0
+      "durability": 789,
+      "damage": 3.9,
+      "reach_distance": 1
     }
   },
   {
@@ -538,20 +540,20 @@
     "armor_stats": {
       "damage_reduction": [
         2,
-        5,
-        6,
+        3,
+        4,
         2
       ],
-      "enchantability": 15,
-      "durability": 24,
-      "toughness": 0.0
+      "enchantability": 17,
+      "durability": 12,
+      "toughness": 0.4
     },
     "tool_stats": {
-      "efficiency": 4.0,
+      "efficiency": 3.8,
       "harvest_level": 4,
-      "enchantability": 15,
-      "durability": 200,
-      "damage": 3.0
+      "enchantability": 17,
+      "durability": 169,
+      "damage": 2.2
     }
   },
   {
