@@ -322,4 +322,24 @@ public class ItemUtils {
 		}
 	}
 
+	/**
+	 * Doesn't take NBT into account (will erase any NBT Tag / meta information that was previously written to the stack)
+	 * TODO: Work on improving this
+	 *
+	 * @param itemStackList the list to be compacted
+	 */
+	public static void compactStackList(List<ItemStack> itemStackList)
+	{
+		Map<Item, Integer> map = new HashMap<>();
+		itemStackList.forEach(stack -> {
+			final Item item = stack.getItem();
+			if (map.containsKey(item))
+				map.put(item, map.get(item) + stack.getCount());
+			else
+				map.put(item, stack.getCount());
+		});
+		itemStackList.clear();
+		map.forEach((item, count) -> itemStackList.add(new ItemStack(item, count)));
+	}
+
 }
