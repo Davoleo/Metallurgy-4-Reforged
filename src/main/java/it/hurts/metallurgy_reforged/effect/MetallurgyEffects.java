@@ -202,7 +202,10 @@ public class MetallurgyEffects {
     //Midasium Tool Effect (Greed)
     public static final MidasiumToolEffect MIDASIUM_TOOL_EFFECT = new MidasiumToolEffect();
 
+    //Mithril Pickaxe Effect (Multiply)
     public static final MithrilPickaxeEffect MITHRIL_PICKAXE_EFFECT = new MithrilPickaxeEffect();
+    //Mithril Pickaxe Effect (Magic aspect)
+    public static final MithrilWeaponEffect MITHRIL_WEAPON_EFFECT = new MithrilWeaponEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

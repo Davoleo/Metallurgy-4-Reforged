@@ -27,7 +27,7 @@ public class KrikArmorHUD {
     {
         ScaledResolution resolution = event.getResolution();
 
-        int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).getKrikHeight();
+        int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).krikHeight;
         int maxLevel = KrikArmorEffect.getKrikMaxLevel(minecraft.player);
 
         //System.out.println(playerYLevel + " | " +  maxLevel);
