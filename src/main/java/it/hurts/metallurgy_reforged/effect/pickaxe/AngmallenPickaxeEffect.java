@@ -12,11 +12,11 @@ package it.hurts.metallurgy_reforged.effect.pickaxe;
 import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -51,9 +51,7 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
             {
                 event.getDrops().clear();
                 ItemStack stack = getRandomOreStack((BlockOre) event.getState().getBlock());
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setBoolean("transmuted", true);
-                stack.setTagCompound(compound);
+                ItemBlockOre.setLocked(stack, true);
                 event.getDrops().add(stack);
                 event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1F, 1F);
 

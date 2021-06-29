@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
+import it.hurts.metallurgy_reforged.effect.pickaxe.MithrilPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
@@ -200,6 +201,8 @@ public class MetallurgyEffects {
     public static final MidasiumWeaponEffect MIDASIUM_WEAPON_EFFECT = new MidasiumWeaponEffect();
     //Midasium Tool Effect (Greed)
     public static final MidasiumToolEffect MIDASIUM_TOOL_EFFECT = new MidasiumToolEffect();
+
+    public static final MithrilPickaxeEffect MITHRIL_PICKAXE_EFFECT = new MithrilPickaxeEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
