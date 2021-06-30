@@ -31,6 +31,7 @@ public class PlayerEffectData {
         effectBundles.put(ignatiusArmorBundle.getPrefixKey(), ignatiusArmorBundle);
         effectBundles.put(inolashiteWeaponBundle.getPrefixKey(), inolashiteWeaponBundle);
         effectBundles.put(inolashiteArmorBundle.getPrefixKey(), inolashiteArmorBundle);
+        effectBundles.put(mithrilWeaponBundle.getPrefixKey(), mithrilWeaponBundle);
     }
 
     //Amordrine Armor ----------------------------------------
@@ -82,16 +83,8 @@ public class PlayerEffectData {
     public Queue<InolashiteArmorEffect.WarpData> inolashiteWarpData = Queues.newArrayBlockingQueue(8 * 4);
 
     // Krik Armor
-    private int krikHeight;
+    public int krikHeight;
 
-    public void setKrikHeight(int height)
-    {
-        this.krikHeight = height;
-    }
-
-    public int getKrikHeight()
-    {
-        return krikHeight;
-    }
-
+    //Mithril Weapons
+    public ProgressiveDataBundle mithrilWeaponBundle = new ProgressiveDataBundle("mithril_weapon", 1, 20);
 }

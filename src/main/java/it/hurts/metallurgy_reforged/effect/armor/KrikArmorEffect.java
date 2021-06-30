@@ -57,7 +57,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 
         if (capability != null) {
             int maxLevel = getKrikMaxLevel(player);
-            int level = capability.getKrikHeight();
+            int level = capability.krikHeight;
 
             if (level <= maxLevel) {
                 if (player.posY < level * STEP) {
@@ -66,7 +66,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
                     player.motionY = 0;
                 }
             } else {
-                capability.setKrikHeight(maxLevel);
+                capability.krikHeight = maxLevel;
             }
         }
 
@@ -88,19 +88,19 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
         {
             if (Keyboard.isKeyDown(Keyboard.KEY_UP))
             {
-                if (capability != null && capability.getKrikHeight() < getKrikMaxLevel(player))
+                if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
                 {
                     PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
-                    capability.setKrikHeight(capability.getKrikHeight() + 1);
+                    capability.krikHeight += 1;
                 }
             }
 
             if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
             {
-                if (capability != null && capability.getKrikHeight() > 0)
+                if (capability != null && capability.krikHeight > 0)
                 {
                     PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
-                    capability.setKrikHeight(capability.getKrikHeight() - 1);
+                    capability.krikHeight -= 1;
                     //System.out.println(capability.getHeight());
                 }
             }

@@ -13,13 +13,16 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.weapon.MidasiumWeaponEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MidasiumToolEffect extends BaseMetallurgyEffect {
 
@@ -41,22 +44,34 @@ public class MidasiumToolEffect extends BaseMetallurgyEffect {
         if (!canBeApplied(event.getHarvester()))
             return;
 
+        System.out.println("CALLED");
+
+        List<ItemStack> drops = event.getDrops();
+        Block theBlock = event.getState().getBlock();
+        if (drops.contains(new ItemStack(theBlock)))
+            return;
+
         //Looting level + 1 * 30 is the % at which the effect should take effect (obviously clamped at 100%)
         int chanceModifier = event.getFortuneLevel() + 1;
         float chance = Math.min(chanceModifier * 0.3F, 1);
 
         if (Math.random() <= chance)
         {
-            final List<MidasiumWeaponEffect.StackWrapperImpl> wrappers =
-                    event.getDrops().stream().map(MidasiumWeaponEffect.StackWrapperImpl::new).collect(Collectors.toList());
+            ItemUtils.compactStackList(drops);
+            List<ItemStack> newDrops = new ArrayList<>();
 
-            boolean wasApplied = MidasiumWeaponEffect.applyGreedEffect(wrappers, event.getFortuneLevel());
+            for (ItemStack drop : drops)
+            {
+                MidasiumWeaponEffect.StackWrapperImpl stackWrapper = new MidasiumWeaponEffect.StackWrapperImpl(drop);
+                MidasiumWeaponEffect.applyGreedEffect(stackWrapper, event.getFortuneLevel());
+                newDrops.add(stackWrapper.getItem());
+            }
 
-            if (wasApplied)
-                Utils.repeat(event.getDrops().size(), () -> {
-                    double f = Math.random();
-                    spawnParticle(event.getWorld(), event.getPos(), 1F, true, 5, f * 0.1 - 0.05, f * 0.1 - 0.05, f * 0.1 - 0.05);
-                });
+            drops.clear();
+            drops.addAll(newDrops);
+            Utils.repeat(drops.size(), () ->
+                    spawnParticle(event.getWorld(), event.getPos(), 1F, true, 5,
+                            Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05));
         }
     }
 }

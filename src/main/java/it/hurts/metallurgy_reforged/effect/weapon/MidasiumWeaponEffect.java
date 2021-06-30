@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -22,7 +21,6 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
 
@@ -44,13 +42,16 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
         Entity sourceEnt = event.getSource().getImmediateSource();
         if (sourceEnt instanceof EntityLivingBase && canBeApplied((EntityLivingBase) sourceEnt))
         {
-            if (applyGreedEffect(event.getDrops(), event.getLootingLevel()))
+            //Looting level + 1 * 30 is the % at which the effect should take effect (obviously clamped at 100%)
+            int chanceModifier = event.getLootingLevel() + 1;
+            float chance = Math.min(chanceModifier * 0.3F, 1);
+
+            if (Math.random() <= chance)
             {
-                Utils.repeat(event.getDrops().size(), () -> {
-                    double f = Math.random();
-                    spawnParticle(event.getEntity().world, event.getEntity().getPosition(), 1F, true, 5,
-                            (double) (f * 0.1 - 0.05), (double) (f * 0.1 - 0.05), (double) (f * 0.1 - 0.05));
-                });
+                event.getDrops().forEach(drop -> applyGreedEffect(drop, event.getLootingLevel()));
+
+                spawnParticle(event.getEntity().world, event.getEntity().getPosition(), 1F, true, 5,
+                        Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05);
             }
         }
     }
@@ -85,33 +86,18 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
         }
     }
 
-    public static boolean applyGreedEffect(List<? extends EntityItem> stacks, int fortuneLootingLevel)
+    public static void applyGreedEffect(EntityItem drop, int fortuneLootingLevel)
     {
-        //Looting level + 1 * 30 is the % at which the effect should take effect (obviously clamped at 100%)
-        int chanceModifier = fortuneLootingLevel + 1;
-        float chance = Math.min(chanceModifier * 0.3F, 1);
-
-        if (Math.random() <= chance)
+        //5% chance of turning all the drops into gold
+        if (Math.random() <= 0.5)
+            drop.setItem(new ItemStack(Items.GOLD_INGOT, drop.getItem().getCount()));
+        else
         {
-            stacks.forEach(drop -> {
-
-                //5% chance of turning all the drops into gold
-                if (Math.random() <= 0.05)
-                    drop.setItem(new ItemStack(Items.GOLD_INGOT, drop.getItem().getCount()));
-                else
-                {
-                    //looting / looting + 1 chance of increasing drop count by 2 instead of 1 (based on Vanilla Looting)
-
-                    float doubleIncreaseChance = (float) fortuneLootingLevel / fortuneLootingLevel + 1;
-                    ItemStack dropStack = drop.getItem();
-                    int increaseAmount = Math.random() <= doubleIncreaseChance ? 1 : 2;
-                    dropStack.setCount(dropStack.getCount() + increaseAmount);
-                }
-            });
-
-            return true;
+            //looting / looting + 1 chance of increasing drop count by 2 instead of 1 (based on Vanilla Looting)
+            float doubleIncreaseChance = (float) fortuneLootingLevel / fortuneLootingLevel + 1;
+            ItemStack dropStack = drop.getItem();
+            int increaseAmount = Math.random() <= doubleIncreaseChance ? 1 : 2;
+            dropStack.setCount(dropStack.getCount() + increaseAmount);
         }
-
-        return false;
     }
 }

@@ -1334,6 +1334,8 @@ tooltip.metallurgy.effect.krik_weapon=Flak
 tooltip.metallurgy.effect.midasium_hoe=Midas
 tooltip.metallurgy.effect.midasium_weapon=Greed
 tooltip.metallurgy.effect.midasium_tool=Greed
+tooltip.metallurgy.effect.mithril_pickaxe=Multiply
+tooltip.metallurgy.effect.mithril_weapon=Magic Aspect
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1396,6 +1398,8 @@ tooltip.metallurgy.effect.krik_weapon.tooltip=Deals double damage to airborne en
 tooltip.metallurgy.effect.midasium_hoe.tooltip=Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and nuggets) instead.
 tooltip.metallurgy.effect.midasium_weapon.tooltip=Chance based looting effect that stacks with the looting enchantment. All drops have a small chance to be turned into gold ingots.
 tooltip.metallurgy.effect.midasium_tool.tooltip=Chance based fortune effect that stacks with the fortune enchantment. All drops have a small chance to be turned into gold ingots.
+tooltip.metallurgy.effect.mithril_pickaxe.tooltip=Breaking ore sometimes drops an additional ore along with the one mined. Effect chance scales with Fortune Enchantment
+tooltip.metallurgy.effect.mithril_weapon.tooltip=Deals additional magic damage 1 second after the last entity was attacked
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

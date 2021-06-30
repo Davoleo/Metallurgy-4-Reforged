@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.material.MetalStats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -42,7 +43,25 @@ public class ItemBlockOre extends ItemBlock implements IMetalItem {
     @Override
     public boolean hasEffect(ItemStack stack)
     {
-        return stack.getTagCompound() != null && stack.getTagCompound().getBoolean("transmuted");
+        return isLocked(stack);
+    }
+
+    public static boolean isLocked(ItemStack oreStack)
+    {
+        return oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("locked");
+    }
+
+    public static void setLocked(ItemStack oreStack, boolean locked)
+    {
+        NBTTagCompound oreData = oreStack.getTagCompound();
+
+        if (oreData == null)
+            oreData = new NBTTagCompound();
+
+        if (oreData.getBoolean("locked") != locked)
+            oreData.setBoolean("locked", locked);
+
+        oreStack.setTagCompound(oreData);
     }
 
     @Nonnull
@@ -50,7 +69,7 @@ public class ItemBlockOre extends ItemBlock implements IMetalItem {
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         ItemStack oreStack = player.getHeldItem(hand);
-        if (oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("transmuted"))
+        if (hasEffect(oreStack))
         {
             return EnumActionResult.FAIL;
         }

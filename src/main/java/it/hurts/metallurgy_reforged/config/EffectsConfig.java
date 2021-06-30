@@ -221,6 +221,13 @@ public class EffectsConfig {
     @Config.LangKey("tooltip.metallurgy.effect.midasium_tool")
     public static boolean midasiumEffectTool = true;
 
+    @Config.Name("Multiply (Mithril Pickaxe)")
+    @Config.LangKey("tooltip.metallurgy.effect.mithril_pickaxe")
+    public static boolean mithrilEffectPickaxe = true;
+    @Config.Name("Magic Aspect (Mithril Weapon)")
+    @Config.LangKey("tooltip.metallurgy.effect.mithril_weapon")
+    public static boolean mithrilEffectWeapon = true;
+
     private EffectsConfig()
     {
     }
