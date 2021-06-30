@@ -17,9 +17,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
+@SideOnly(Side.CLIENT)
 public class ParticleOre extends Particle {
 
 	private static final ResourceLocation[] TEXTURES = new ResourceLocation[10];
@@ -89,7 +92,6 @@ public class ParticleOre extends Particle {
 
 	public void renderParticle(@Nonnull BufferBuilder buffer, @Nonnull Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
 	{
-
 		float scaleStartTimeStamp = this.particleMaxAge * 0.7F;
 
 		float currentAge = ((float) this.particleAge + partialTicks);

@@ -17,10 +17,12 @@ import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.particle.ParticleOre;
 import it.hurts.metallurgy_reforged.render.font.ModFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -34,6 +36,11 @@ public class ClientProxy implements IProxy {
 
     public static ModFontRenderer fontRenderer;
     public static Minecraft client = Minecraft.getMinecraft();
+
+    public static void clientSpawnParticle(World world, double x, double y, double z, float scale, float red, float green, float blue, boolean dynamic, int level)
+    {
+        client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, scale, red, green, blue, dynamic, level));
+    }
 
     @Override
     public void preInit(FMLPreInitializationEvent e)
