@@ -206,13 +206,30 @@ public class ItemUtils {
 	 * @param metal the metal the item could be made of
 	 * @param item  the item to check
 	 */
-	public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item)
+	@SafeVarargs
+	public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item, Class<? extends IMetalItem>... filters)
 	{
 		if (item instanceof IMetalItem)
 		{
 			MetalStats itemStats = ((IMetalItem) item).getMetalStats();
 			if (itemStats != null)
-				return itemStats.getName().equals(metal.toString());
+			{
+				if (itemStats.getName().equals(metal.toString()))
+				{
+					if (filters.length == 0)
+						return true;
+					else
+					{
+						for (Class<? extends IMetalItem> clazz : filters)
+						{
+							if (clazz.isInstance(item))
+								return true;
+						}
+					}
+				}
+				else
+					return false;
+			}
 		}
 
 		return false;
