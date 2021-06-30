@@ -687,21 +687,22 @@
     "color": "D5862A",
     "armor_stats": {
       "damage_reduction": [
-        3,
-        3,
+        4,
+        4,
         5,
-        2
+        4
       ],
-      "enchantability": 35,
-      "durability": 16,
-      "toughness": 4.0
+      "enchantability": 28,
+      "durability": 14,
+      "toughness": 2.0
     },
     "tool_stats": {
-      "efficiency": 10.0,
+      "efficiency": 7.0,
       "harvest_level": 4,
-      "enchantability": 35,
-      "durability": 100,
-      "damage": 7.0
+      "enchantability": 28,
+      "durability": 89,
+      "attack_speed" : -0.3,
+      "damage": 2.6
     }
   },
   {
