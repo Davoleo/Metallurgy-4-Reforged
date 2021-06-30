@@ -42,9 +42,8 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
         Entity sourceEnt = event.getSource().getImmediateSource();
         if (sourceEnt instanceof EntityLivingBase && canBeApplied((EntityLivingBase) sourceEnt))
         {
-            //Looting level + 1 * 30 is the % at which the effect should take effect (obviously clamped at 100%)
-            int chanceModifier = event.getLootingLevel() + 1;
-            float chance = Math.min(chanceModifier * 0.3F, 1);
+            //Looting level + 1 * 25 is the % at which the effect should take effect
+            float chance = (event.getLootingLevel() + 1) * 0.3F;
 
             if (Math.random() <= chance)
             {
@@ -88,8 +87,8 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
 
     public static void applyGreedEffect(EntityItem drop, int fortuneLootingLevel)
     {
-        //5% chance of turning all the drops into gold
-        if (Math.random() <= 0.5)
+        //7% + 1% (per enchantment level) chance of turning all the drops into gold
+        if (Math.random() <= 0.07 + (fortuneLootingLevel * 0.01))
             drop.setItem(new ItemStack(Items.GOLD_INGOT, drop.getItem().getCount()));
         else
         {

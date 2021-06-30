@@ -323,23 +323,48 @@ public class ItemUtils {
 	}
 
 	/**
-	 * Doesn't take NBT into account (will erase any NBT Tag / meta information that was previously written to the stack)
-	 * TODO: Work on improving this
+	 * Compacts ItemStacks in a list merging stacks with the same item and META<br>
+	 * Resulting itemstack will have:
+	 * <ul>
+	 * <li>the sum of all the sizes as size</li>
+	 * <li>NBT Tag compound which is a merged result of all the NBT compounds</li>
+	 * </ul>
 	 *
 	 * @param itemStackList the list to be compacted
 	 */
-	public static void compactStackList(List<ItemStack> itemStackList)
+	public static List<ItemStack> compactStackList(List<ItemStack> itemStackList)
 	{
-		Map<Item, Integer> map = new HashMap<>();
+		List<ItemStack> newList = new ArrayList<>(itemStackList.size());
 		itemStackList.forEach(stack -> {
-			final Item item = stack.getItem();
-			if (map.containsKey(item))
-				map.put(item, map.get(item) + stack.getCount());
-			else
-				map.put(item, stack.getCount());
+			boolean wasFound = false;
+			for (ItemStack cachedStack : newList)
+			{
+				if (ItemStack.areItemsEqual(stack, cachedStack))
+				{
+					cachedStack.setCount(cachedStack.getCount() + stack.getCount());
+
+					//If they both have NBT -> merge the NBT Data
+					if (cachedStack.getTagCompound() != null && stack.getTagCompound() != null)
+					{
+						cachedStack.getTagCompound().merge(stack.getTagCompound());
+					}
+					else if (stack.getTagCompound() != null)
+					{
+						//If only the new stack has NBT data set that to the cached stack
+						cachedStack.setTagCompound(stack.getTagCompound());
+					}
+					wasFound = true;
+					break;
+				}
+			}
+
+			if (!wasFound)
+			{
+				newList.add(stack);
+			}
 		});
-		itemStackList.clear();
-		map.forEach((item, count) -> itemStackList.add(new ItemStack(item, count)));
+
+		return newList;
 	}
 
 }
