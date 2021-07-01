@@ -533,27 +533,28 @@
   },
   {
     "name": "ignatius",
-    "hardness": 3.5,
+    "hardness": 3.2,
     "blast_resistance": 6.0,
     "ore_harvest_level": 3,
-    "color": "D05631",
+    "color": "FD9663",
     "armor_stats": {
       "damage_reduction": [
         2,
-        3,
-        4,
+        2,
+        2,
         2
       ],
-      "enchantability": 17,
-      "durability": 12,
-      "toughness": 0.4
+      "enchantability": 11,
+      "durability": 5,
+      "toughness": 0.2
     },
     "tool_stats": {
-      "efficiency": 3.8,
+      "efficiency": 3.6,
       "harvest_level": 4,
-      "enchantability": 17,
-      "durability": 169,
-      "damage": 2.2
+      "enchantability": 11,
+      "durability": 89,
+      "attack_speed" : -0.1,
+      "damage": 2.1
     }
   },
   {
