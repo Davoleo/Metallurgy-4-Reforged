@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect;
 import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
 import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
 import it.hurts.metallurgy_reforged.effect.all.HaderothEffect;
+import it.hurts.metallurgy_reforged.effect.all.MithrilEffect;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
@@ -188,24 +189,26 @@ public class MetallurgyEffects {
     //Kalendrite Tool (Restoration)
     public static final KalendriteToolEffect KALENDRITE_TOOL_EFFECT = new KalendriteToolEffect();
 
-    //Krik Armor effect (Weight-Controlled Flight)
+    //Krik Armor (Weight-Controlled Flight)
     public static final KrikArmorEffect KRIK_ARMOR_EFFECT = new KrikArmorEffect();
-    //Krik Tool effect (Krik-Drives)
+    //Krik Tool (Krik-Drives)
     public static final KrikToolEffect KRIK_TOOL_EFFECT = new KrikToolEffect();
-    //Krik Weapon Effect (Flak)
+    //Krik Weapon (Flak)
     public static final KrikWeaponEffect KRIK_WEAPON_EFFECT = new KrikWeaponEffect();
 
-    //Midasium Hoe Effect (Midas)
+    //Midasium Hoe (Midas)
     public static final MidasiumHoeEffect MIDASIUM_HOE_EFFECT = new MidasiumHoeEffect();
-    //Midasium Weapon Effect (Greed)
+    //Midasium Weapon (Greed)
     public static final MidasiumWeaponEffect MIDASIUM_WEAPON_EFFECT = new MidasiumWeaponEffect();
-    //Midasium Tool Effect (Greed)
+    //Midasium Tool (Greed)
     public static final MidasiumToolEffect MIDASIUM_TOOL_EFFECT = new MidasiumToolEffect();
 
-    //Mithril Pickaxe Effect (Multiply)
+    //Mithril Pickaxe (Multiply)
     public static final MithrilPickaxeEffect MITHRIL_PICKAXE_EFFECT = new MithrilPickaxeEffect();
-    //Mithril Pickaxe Effect (Magic aspect)
+    //Mithril Pickaxe (Magic aspect)
     public static final MithrilWeaponEffect MITHRIL_WEAPON_EFFECT = new MithrilWeaponEffect();
+    //Mithril (Arcane)
+    public static final MithrilEffect MITHRIL_EFFECT = new MithrilEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

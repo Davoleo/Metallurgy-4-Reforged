@@ -15,6 +15,8 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import jline.internal.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -155,15 +157,36 @@ public class EventUtils {
             case 2:
                 chance = 10;
                 break;
-            case 3:
-                chance = 20;
-                break;
-        }
+			case 3:
+				chance = 20;
+				break;
+		}
 
 		if ((Utils.random.nextFloat() * 100) < chance)
 			return metalllarray[metalIndex];
 
 		return null;
+	}
+
+	/**
+	 * Based on {@link ModifiableAttributeInstance#computeValue()}
+	 *
+	 * @return base value modified with the attribute modifier
+	 */
+	@SuppressWarnings("JavadocReference")
+	public static double applyAttributeModifier(double base, AttributeModifier modifier)
+	{
+		switch (modifier.getOperation())
+		{
+			case 0:
+				return base + modifier.getAmount();
+			case 1:
+				return base + base * modifier.getAmount();
+			case 2:
+				return base * (1D + modifier.getAmount());
+			default:
+				return base;
+		}
 	}
 
 }

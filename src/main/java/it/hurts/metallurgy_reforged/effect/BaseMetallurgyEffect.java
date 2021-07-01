@@ -98,7 +98,7 @@ public abstract class BaseMetallurgyEffect {
 
         if (category == EnumEffectCategory.ALL)
         {
-            if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, toolItem))
+            if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class))
                 return 1;
             return 0;
         }

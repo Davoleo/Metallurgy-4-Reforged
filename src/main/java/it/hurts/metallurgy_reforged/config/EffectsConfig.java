@@ -227,6 +227,9 @@ public class EffectsConfig {
     @Config.Name("Magic Aspect (Mithril Weapon)")
     @Config.LangKey("tooltip.metallurgy.effect.mithril_weapon")
     public static boolean mithrilEffectWeapon = true;
+    @Config.Name("Arcane (Mithril Items)")
+    @Config.LangKey("tooltip.metallurgy.effect.mithril_all")
+    public static boolean mithrilEffectAll = true;
 
     private EffectsConfig()
     {
