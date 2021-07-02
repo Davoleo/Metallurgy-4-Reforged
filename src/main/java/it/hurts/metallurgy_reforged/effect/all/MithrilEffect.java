@@ -30,6 +30,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.UUID;
+import java.util.function.BiFunction;
+import java.util.function.IntFunction;
 
 public class MithrilEffect extends BaseMetallurgyEffect {
 
@@ -63,22 +65,17 @@ public class MithrilEffect extends BaseMetallurgyEffect {
             applyCombatBuffs(stack, stack.getEnchantmentTagList().tagCount(), stack.getItem() instanceof ItemArmorBase);
     }
 
-    // TODO: 01/07/2021 For some reason, the first protection upgrade increases it by 2 instead of 1 (find out why and fix it)
     private static final UUID PROTECTION_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111033DB5CF");
-
-    private AttributeModifier generateProtectionModifier(EntityEquipmentSlot slot, int level)
-    {
-        final int originalProtection = metal.getStats().getArmorStats().getDamageReduction()[3 - slot.getIndex()];
+    private final BiFunction<EntityEquipmentSlot, Integer, AttributeModifier> generateProtectionModifier = (slot, level) -> {
+        final int originalProtection = metal.getStats().getArmorStats().getDamageReduction()[slot.getIndex()];
         return new AttributeModifier(PROTECTION_UUID, "MITHRIL_Armor_Protection_Buff", originalProtection + (level), 0);
-    }
+    };
 
     private static final UUID TOUGHNESS_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111133DB5CF");
-
-    private AttributeModifier generateToughnessModifier(int level)
-    {
+    private final IntFunction<AttributeModifier> generateToughnessModifier = level -> {
         float armorToughness = metal.getStats().getArmorStats().getToughness();
         return new AttributeModifier(TOUGHNESS_UUID, "MITHRIL_Armor_Toughness_Buff", armorToughness + (level * 0.5F), 0);
-    }
+    };
 
     private static final UUID ATTACK_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111233DB5CF");
     private final AttributeModifier[] ATTACK_MODIFIERS = {
@@ -125,7 +122,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
             EntityEquipmentSlot slot = EntityLiving.getSlotForItemStack(stackRef);
             if (armor)
             {
-                NBTTagCompound protMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateProtectionModifier(slot, boostLevel));
+                NBTTagCompound protMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateProtectionModifier.apply(slot, boostLevel));
                 protMod.setString("AttributeName", SharedMonsterAttributes.ARMOR.getName());
                 protMod.setString("Slot", slot.getName());
                 if (protectionIndex == -1)
@@ -133,7 +130,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
                 else
                     serializedModifiers.set(protectionIndex, protMod);
 
-                NBTTagCompound toughMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateToughnessModifier(boostLevel));
+                NBTTagCompound toughMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateToughnessModifier.apply(boostLevel));
                 toughMod.setString("AttributeName", SharedMonsterAttributes.ARMOR_TOUGHNESS.getName());
                 toughMod.setString("Slot", slot.getName());
                 if (toughnessIndex == -1)
