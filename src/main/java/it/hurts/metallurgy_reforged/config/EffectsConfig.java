@@ -231,6 +231,10 @@ public class EffectsConfig {
     @Config.LangKey("tooltip.metallurgy.effect.mithril_all")
     public static boolean mithrilEffectAll = true;
 
+    @Config.Name("Champion (Orichalcum Items)")
+    @Config.LangKey("tooltip.metallurgy.effect.orichalcum_all")
+    public static boolean orichalcumEffectAll = true;
+
     private EffectsConfig()
     {
     }

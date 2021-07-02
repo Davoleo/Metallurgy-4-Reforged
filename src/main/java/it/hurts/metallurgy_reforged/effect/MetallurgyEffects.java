@@ -9,10 +9,7 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
-import it.hurts.metallurgy_reforged.effect.all.AdamantineEffect;
-import it.hurts.metallurgy_reforged.effect.all.AmordrineEffect;
-import it.hurts.metallurgy_reforged.effect.all.HaderothEffect;
-import it.hurts.metallurgy_reforged.effect.all.MithrilEffect;
+import it.hurts.metallurgy_reforged.effect.all.*;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
@@ -209,6 +206,9 @@ public class MetallurgyEffects {
     public static final MithrilWeaponEffect MITHRIL_WEAPON_EFFECT = new MithrilWeaponEffect();
     //Mithril (Arcane)
     public static final MithrilEffect MITHRIL_EFFECT = new MithrilEffect();
+
+    //Orichalcum (Champion)
+    public static final OrichalcumEffect ORICHALCUM_EFFECT = new OrichalcumEffect();
 
     //Prometheum Armor (No potion, need to implement a new Effect)
     //public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
