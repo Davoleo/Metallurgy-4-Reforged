@@ -235,6 +235,10 @@ public class EffectsConfig {
     @Config.LangKey("tooltip.metallurgy.effect.orichalcum_all")
     public static boolean orichalcumEffectAll = true;
 
+    @Config.Name("Berserker (Orichalcum Armor)")
+    @Config.LangKey("tooltip.metallurgy.effect.orichalcum_armor")
+    public static boolean orichalcumEffectArmor = true;
+
     private EffectsConfig()
     {
     }
