@@ -4,13 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
+import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
 import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -24,13 +25,14 @@ public class PacketManager {
 
 	//PostInit: Register Packets
 	public static void init()
-	{
-		//Client2Server
-		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
-		network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
+    {
+        //Client2Server
+        network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
+        network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
 
-		//Server2Client
-		network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, 4, Side.CLIENT);
-	}
+        //Server2Client
+        network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, 4, Side.CLIENT);
+        network.registerMessage(PacketStartStopAmbienceSound.Handler.class, PacketStartStopAmbienceSound.class, 5, Side.CLIENT);
+    }
 
 }

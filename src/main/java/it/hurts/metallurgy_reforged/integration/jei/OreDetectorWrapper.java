@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.jei;
@@ -38,23 +38,23 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 	@Override
 	public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IIngredients ingredients)
 	{
-		List<ItemStack> outputs = Lists.newArrayList();
-		//Set the inputs
-		List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-		for (int i = 1; i <= inputs.size(); i++)
-			recipeLayout.getItemStacks().set(i, inputs.get(i - 1));
+        List<ItemStack> outputs = Lists.newArrayList();
+        //Set the inputs
+        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
+        for (int i = 1; i <= inputs.size(); i++)
+            recipeLayout.getItemStacks().set(i, inputs.get(i - 1));
 
-		ItemStack detector = new ItemStack(ModItems.oreDetector);
+        ItemStack detector = new ItemStack(ModItems.ORE_DETECTOR);
 
-		if (size != 0)
-		{
-			for (int i = 0; i < inputs.get(1).size(); i++)
-			{
-				List<ItemStack> currentRecipeIngots = Lists.newArrayList();
+        if (size != 0)
+        {
+            for (int i = 0; i < inputs.get(1).size(); i++)
+            {
+                List<ItemStack> currentRecipeIngots = Lists.newArrayList();
 
-				//skipping the first cycle because the first slot is taken by the ore detector
-				for (int j = 1; j <= size; j++)
-				{
+                //skipping the first cycle because the first slot is taken by the ore detector
+                for (int j = 1; j <= size; j++)
+                {
 					currentRecipeIngots.add(inputs.get(j).get(i));
 				}
 
@@ -63,16 +63,16 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 			}
 		}
 		else
-		{
-			recipeLayout.getItemStacks().addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
-				if (!input)
-				{
-					tooltip.add(Utils.localize("tooltip.metallurgy.clear_detector_warning"));
-				}
-			});
+        {
+            recipeLayout.getItemStacks().addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
+                if (!input)
+                {
+                    tooltip.add(Utils.localize("tooltip.metallurgy.clear_detector_warning"));
+                }
+            });
 
-			outputs.add(new ItemStack(ModItems.oreDetector));
-		}
+            outputs.add(new ItemStack(ModItems.ORE_DETECTOR));
+        }
 
 		//Setting the outputs (0 is the output slot id)
 		recipeLayout.getItemStacks().set(0, outputs);
@@ -82,22 +82,22 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 
 	@Override
 	public void getIngredients(@Nonnull IIngredients ingredients)
-	{
-		//The List of the 9 Lists of possible itemstacks of the recipe
-		List<List<ItemStack>> inputs = Lists.newArrayList();
+    {
+        //The List of the 9 Lists of possible itemstacks of the recipe
+        List<List<ItemStack>> inputs = Lists.newArrayList();
 
-		//Add the detector item in the first slot
-		inputs.add(Collections.singletonList(new ItemStack(ModItems.oreDetector)));
+        //Add the detector item in the first slot
+        inputs.add(Collections.singletonList(new ItemStack(ModItems.ORE_DETECTOR)));
 
-		if (size != 0)
-		{
-			List<ItemStack> metalCombs = Lists.newArrayList();
-			ModMetals.metalMap.forEach((name, metal) -> {
-				if (!metal.isAlloy())
-				{
-					metalCombs.add(new ItemStack(metal.getIngot()));
-				}
-			});
+        if (size != 0)
+        {
+            List<ItemStack> metalCombs = Lists.newArrayList();
+            ModMetals.metalMap.forEach((name, metal) -> {
+                if (!metal.isAlloy())
+                {
+                    metalCombs.add(new ItemStack(metal.getIngot()));
+                }
+            });
 
 			for (int i = 0; i < size; i++)
 			{

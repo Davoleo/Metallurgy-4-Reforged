@@ -23,16 +23,17 @@ import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -102,9 +103,7 @@ public class RegistrationHandler {
 		});
 
 		//Misc Items
-		ModItems.extraItems.forEach(item -> {
-			event.getRegistry().register(item);
-		});
+		ModItems.extraItems.forEach(item -> event.getRegistry().register(item));
 
 		//Init OreDictionary (Register keys)
 		OreDictHandler.init();
@@ -193,6 +192,13 @@ public class RegistrationHandler {
 		ModRenderers.registerRenderers();
 	}
 
+	@SubscribeEvent
+	public static void registerSounds(RegistryEvent.Register<SoundEvent> register)
+	{
+		ModSounds.LIST.forEach(event -> register.getRegistry().register(event));
+		Metallurgy.logger.info(Metallurgy.NAME + ": " + ModSounds.LIST.size() + " Sounds have been registered!");
+	}
+
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onModelBake(ModelBakeEvent event)
@@ -203,10 +209,9 @@ public class RegistrationHandler {
 	}
 
 	@SubscribeEvent
-	public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
+	public static void attachCapability(AttachCapabilitiesEvent<EntityLivingBase> event)
 	{
-		if (event.getObject() instanceof EntityLivingBase)
-			event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
+		event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
 		if (event.getObject() instanceof EntityPlayer)
 		{

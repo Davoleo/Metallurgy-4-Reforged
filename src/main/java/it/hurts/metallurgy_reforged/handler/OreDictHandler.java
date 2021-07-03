@@ -38,37 +38,37 @@ public class OreDictHandler {
 			if (RegistrationConfig.categoryItems.enableMetalNuggets)
 				OreDictionary.registerOre("nugget" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getNugget());
 
-			//Blocks
-			if (!metal.isAlloy())
-				OreDictionary.registerOre("ore" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getOre());
+            //Blocks
+            if (!metal.isAlloy())
+                OreDictionary.registerOre("ore" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getOre());
 
-			if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
-				OreDictionary.registerOre("block" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getBlock(BlockTypes.BLOCK));
-		});
+            if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
+                OreDictionary.registerOre("block" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getBlock(BlockTypes.BLOCK));
+        });
 
-		//Additional oreDict values
-		//Make Tar behave like a slimeball
-		OreDictionary.registerOre("slimeball", ModItems.tar);
+        //Additional oreDict values
+        //Make Tar behave like a slimeball
+        OreDictionary.registerOre("slimeball", ModItems.TAR);
 
-		//Other Misc Item OreDict Keys
-		OreDictionary.registerOre("dustGold", ModItems.dustGold);
-		OreDictionary.registerOre("dustIron", ModItems.dustIron);
-		OreDictionary.registerOre("dustBitumen", ModItems.bitumen);
-		OreDictionary.registerOre("globTar", ModItems.tar);
-		OreDictionary.registerOre("dustPotash", ModItems.potash);
-		OreDictionary.registerOre("dustSulfur", ModItems.sulfur);
-		OreDictionary.registerOre("dustThermite", ModItems.dustThermite);
-		OreDictionary.registerOre("dustPhosphorus", ModItems.phosphorus);
+        //Other Misc Item OreDict Keys
+        OreDictionary.registerOre("dustGold", ModItems.GOLD_DUST);
+        OreDictionary.registerOre("dustIron", ModItems.IRON_DUST);
+        OreDictionary.registerOre("dustBitumen", ModItems.BITUMEN);
+        OreDictionary.registerOre("globTar", ModItems.TAR);
+        OreDictionary.registerOre("dustPotash", ModItems.POTASH);
+        OreDictionary.registerOre("dustSulfur", ModItems.SULFUR);
+        OreDictionary.registerOre("dustThermite", ModItems.THERMITE_DUST);
+        OreDictionary.registerOre("dustPhosphorus", ModItems.PHOSPHORUS);
 
-		//Misc Blocks
-		OreDictionary.registerOre("oreSulfur", ModBlocks.oreSulfur);
-		OreDictionary.registerOre("orePhosphorus", ModBlocks.orePhosphorite);
-		OreDictionary.registerOre("oreTar", ModBlocks.oreTar);
-		OreDictionary.registerOre("orePotash", ModBlocks.orePotash);
-		OreDictionary.registerOre("blockCharcoal", ModBlocks.blockCharcoal);
-		OreDictionary.registerOre("blockBitumen", ModBlocks.blockBitumen);
-		OreDictionary.registerOre("blockSulfur", ModBlocks.blockSulfur);
-	}
+        //Misc Blocks
+        OreDictionary.registerOre("oreSulfur", ModBlocks.oreSulfur);
+        OreDictionary.registerOre("orePhosphorus", ModBlocks.orePhosphorite);
+        OreDictionary.registerOre("oreTar", ModBlocks.oreTar);
+        OreDictionary.registerOre("orePotash", ModBlocks.orePotash);
+        OreDictionary.registerOre("blockCharcoal", ModBlocks.blockCharcoal);
+        OreDictionary.registerOre("blockBitumen", ModBlocks.blockBitumen);
+        OreDictionary.registerOre("blockSulfur", ModBlocks.blockSulfur);
+    }
 
 	public static void initOreDict(IForgeRegistryEntry.Impl<?> itemOrBlock)
 	{

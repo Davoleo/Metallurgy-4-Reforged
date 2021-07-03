@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.tileentity;
@@ -13,7 +13,10 @@ import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockChamber;
 import it.hurts.metallurgy_reforged.container.ContainerNull;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -32,11 +35,13 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -280,12 +285,24 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 					this.activeTime = 1;
 					this.setState(true);
 					this.setPotionEffect(potionEffect);
+					world.playSound(null, pos, ModSounds.SUBLIMATION_CHAMBER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
 				}
 				else
 				{
 					if (this.activeTime < potionEffect.getDuration())
 					{
 						this.activeTime++;
+
+						if (!world.isRemote)
+						{
+							if (activeTime == 30 || activeTime % 300 == 30)
+							{
+								PacketManager.network.sendToAllAround(
+										new PacketStartStopAmbienceSound(ModSounds.SUBLIMATION_CHAMBER_AMBIENCE, SoundCategory.BLOCKS, pos),
+										new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+								);
+							}
+						}
 
 						int range = 6;
 
@@ -327,9 +344,16 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 				this.setInventorySlotContents(FUEL_SLOT, item1);
 			}
 		}
-		else if (!affectedPlayers.isEmpty())
+		else
 		{
-			this.clearEffect();
+			if (!world.isRemote)
+				PacketManager.network.sendToAllAround(
+						new PacketStartStopAmbienceSound(pos),
+						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+				);
+
+			if (!affectedPlayers.isEmpty())
+				this.clearEffect();
 		}
 	}
 
@@ -458,19 +482,25 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		return super.getCapability(capability, facing);
 	}
 
+	//Get a new packet (on the server to send on the client) after notifyBlockupdate is called
+	//Calls getUpdateTag to enrich this packet with custom informatio
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket()
 	{
 		return new SPacketUpdateTileEntity(this.pos, 1, this.getUpdateTag());
 	}
 
+	//Enrich packet with TE data
 	@Override
 	@Nonnull
 	public NBTTagCompound getUpdateTag()
 	{
-		return this.writeToNBT(new NBTTagCompound());
+		NBTTagCompound compound = new NBTTagCompound();
+		this.writeChamberToNBT(compound);
+		return compound;
 	}
 
+	//On the client the the data is unwrapped and parsed
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
 	{

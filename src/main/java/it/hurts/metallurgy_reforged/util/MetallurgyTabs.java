@@ -88,22 +88,22 @@ public class MetallurgyTabs extends CreativeTabs {
 
 		switch (type)
 		{
-			case 0:
-				return new ItemStack(firstAvailableMetal.get().getArmorPiece(EntityEquipmentSlot.CHEST));
-			case 1:
-				return new ItemStack(firstAvailableMetal.get().getBlock(firstEnabledBlockType.get()));
-			case 2:
-				return new ItemStack(RegistrationConfig.categoryItems.enableMetalDusts ? firstAvailableMetal.get().getDust() : ModItems.phosphorus);
-			case 3:
-				return FluidUtil.getFilledBucket(firstAvailableMetal.get().getMolten().getFluidStack());
-			case 4:
-				return new ItemStack(firstAvailableMetal.get().getIngot());
-			case 5:
-				return new ItemStack(firstAvailableMetal.get().getNugget());
-			case 7:
-				return ModMetals.ADAMANTINE != null ? new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre())) : ItemStack.EMPTY;
-			case 8:
-				return new ItemStack(firstAvailableMetal.get().getTool(firstEnabledToolType.get()));
+            case 0:
+                return new ItemStack(firstAvailableMetal.get().getArmorPiece(EntityEquipmentSlot.CHEST));
+            case 1:
+                return new ItemStack(firstAvailableMetal.get().getBlock(firstEnabledBlockType.get()));
+            case 2:
+                return new ItemStack(RegistrationConfig.categoryItems.enableMetalDusts ? firstAvailableMetal.get().getDust() : ModItems.PHOSPHORUS);
+            case 3:
+                return FluidUtil.getFilledBucket(firstAvailableMetal.get().getMolten().getFluidStack());
+            case 4:
+                return new ItemStack(firstAvailableMetal.get().getIngot());
+            case 5:
+                return new ItemStack(firstAvailableMetal.get().getNugget());
+            case 7:
+                return ModMetals.ADAMANTINE != null ? new ItemStack(Objects.requireNonNull(ModMetals.ADAMANTINE.getOre())) : ItemStack.EMPTY;
+            case 8:
+                return new ItemStack(firstAvailableMetal.get().getTool(firstEnabledToolType.get()));
 			default:
 				return ItemStack.EMPTY;
 		}

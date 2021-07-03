@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.tileentity;
@@ -13,7 +13,10 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -31,11 +34,13 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -67,6 +72,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	private int alloyingTime;
 
 	private boolean isPoweredByThermite;
+
+	private int ambienceTick;
 
 	public static boolean isItemFuel(ItemStack fuel)
 	{
@@ -203,6 +210,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
 
+		this.ambienceTick = compound.getInteger("ambience_tick");
+
 		if (compound.hasKey("custom_name", 8))
 			this.setCustomName(compound.getString("custom_name"));
 	}
@@ -220,6 +229,8 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		compound.setShort("total_burn_time", (short) this.totalBurnTime);
 
 		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+
+		compound.setInteger("ambience_tick", ambienceTick);
 
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
@@ -291,6 +302,9 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			if (canAlloy())
 			{
+				if (this.ambienceTick == 0)
+					world.playSound(null, pos, ModSounds.ALLOYER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
+
 				//When the alloyer is powered by thermite
 				if (isPoweredByThermite)
 				{
@@ -302,12 +316,36 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 					alloyingTime++;
 				}
 
+				//Handles ambience sound loop
+				this.ambienceTick++;
+
+				//After 4.5 seconds OR every 18.5 seconds from the offset start
+				if (!world.isRemote)
+				{
+					if (ambienceTick == 90 || ambienceTick % 370 == 90)
+					{
+						PacketManager.network.sendToAllAround(
+								new PacketStartStopAmbienceSound(ModSounds.ALLOYER_AMBIENCE, SoundCategory.BLOCKS, pos),
+								new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+						);
+					}
+				}
+
 				if (alloyingTime >= TOTAL_ALLOYING_TIME)
 				{
 					alloyItem();
 					this.alloyingTime = 0;
 					markDirty();
 				}
+			}
+			else if (!world.isRemote && alloyingTime == 0 && ambienceTick != 0)
+			{
+				ambienceTick = 0;
+				//Stop
+				PacketManager.network.sendToAllAround(
+						new PacketStartStopAmbienceSound(pos),
+						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+				);
 			}
 		}
 		else
@@ -317,7 +355,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			if (!fuelStack.isEmpty() && canAlloy())
 			{
-				this.isPoweredByThermite = fuelStack.getItem() == ModItems.dustThermite;
+				this.isPoweredByThermite = fuelStack.getItem() == ModItems.THERMITE_DUST;
 				this.burnTime = getItemBurnTime(fuelStack);
 				this.totalBurnTime = this.burnTime;
 				fuelStack.shrink(1);
@@ -434,6 +472,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			input1.shrink(AlloyerRecipes.getInstance().getItemQuantity(result, input1));
 			input2.shrink(AlloyerRecipes.getInstance().getItemQuantity(result, input2));
+			world.playSound(null, pos, ModSounds.ALLOYER_IMPACT, SoundCategory.BLOCKS, 1F, 1F);
 		}
 	}
 

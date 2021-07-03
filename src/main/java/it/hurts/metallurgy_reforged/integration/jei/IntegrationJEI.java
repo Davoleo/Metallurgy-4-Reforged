@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.jei;
@@ -63,30 +63,30 @@ public class IntegrationJEI implements IModPlugin {
 		//Maps the area you need to click in to view all the machine Recipes
 		registry.addRecipeClickArea(GuiCrusher.class, 93, 32, 7, 33, CRUSHER);
 
-		//Alloyer Compat
-		registry.addRecipes(AlloyerRecipeWrapper.getRecipeInputs(), ALLOYER);
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.alloyer), ALLOYER);
-		registry.addRecipeClickArea(GuiAlloyer.class, 40, 32, 7, 33, ALLOYER);
+        //Alloyer Compat
+        registry.addRecipes(AlloyerRecipeWrapper.getRecipeInputs(), ALLOYER);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.alloyer), ALLOYER);
+        registry.addRecipeClickArea(GuiAlloyer.class, 40, 32, 7, 33, ALLOYER);
 
-		//Sublimation Chamber Compat
-		registry.addRecipes(ChamberRecipeWrapper.getRecipeInputs(), SUBLIMATION_CHAMBER);
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.chamber), SUBLIMATION_CHAMBER);
+        //Sublimation Chamber Compat
+        registry.addRecipes(ChamberRecipeWrapper.getRecipeInputs(), SUBLIMATION_CHAMBER);
+        registry.addRecipeCatalyst(new ItemStack(ModBlocks.chamber), SUBLIMATION_CHAMBER);
 
-		registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
-		registry.addIngredientInfo(new ItemStack(ModItems.tar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
-		registry.addIngredientInfo(new ItemStack(ModItems.bitumen), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
-		registry.addIngredientInfo(new ItemStack(ModItems.invisibilityShield), VanillaTypes.ITEM, "description.jei_compat.invisibility_shield");
-		registry.addIngredientInfo(new ItemStack(ModItems.dustThermite), VanillaTypes.ITEM, "description.jei_compat.thermite");
-		registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
+        registry.addIngredientInfo(new ItemStack(ModBlocks.oreTar), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.TAR), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.BITUMEN), VanillaTypes.ITEM, "description.jei_compat.tar_processing");
+        registry.addIngredientInfo(new ItemStack(ModItems.INVISIBILITY_SHIELD), VanillaTypes.ITEM, "description.jei_compat.invisibility_shield");
+        registry.addIngredientInfo(new ItemStack(ModItems.THERMITE_DUST), VanillaTypes.ITEM, "description.jei_compat.thermite");
+        registry.addIngredientInfo(ModFluids.THERMITE.getFluidStack(), VanillaTypes.FLUID, "description.jei_compat.thermite");
 
-		List<ItemStack> krikArmor = new ArrayList<>();
+        List<ItemStack> krikArmor = new ArrayList<>();
 
-		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-		{
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-			{
-				krikArmor.add(new ItemStack(ModMetals.KRIK.getArmorPiece(slot)));
-			}
+        for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+        {
+            if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+            {
+                krikArmor.add(new ItemStack(ModMetals.KRIK.getArmorPiece(slot)));
+            }
 		}
 
 		registry.addIngredientInfo(krikArmor, VanillaTypes.ITEM, "description.jei_compat.krik_armor");

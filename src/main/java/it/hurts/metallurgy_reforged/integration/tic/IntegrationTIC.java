@@ -83,19 +83,19 @@ public class IntegrationTIC {
 				//Add custom traits to TiCon Tools
 				SetTinkerTraits.addTraits(metal, m);
 
-				//Add molten fluid cast to ingots, blocks, nuggets and so on...
-				if (m.getFluid() == null)
-					m.setFluid(metal.getMolten());
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
+                //Add molten fluid cast to ingots, blocks, nuggets and so on...
+                if (m.getFluid() == null)
+                    m.setFluid(metal.getMolten());
+                TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
 
-				//register different Tool parts for each material
-				TinkerSmeltery.registerToolpartMeltingCasting(m);
-			}
-		});
+                //register different Tool parts for each material
+                TinkerSmeltery.registerToolpartMeltingCasting(m);
+            }
+        });
 
-		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, GadgetsConfig.ThermiteDust.temperature));
-		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
-	}
+        TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.THERMITE_DUST, 1000), ModFluids.THERMITE, GadgetsConfig.ThermiteDust.temperature));
+        TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
+    }
 
 	public static void postInit()
 	{

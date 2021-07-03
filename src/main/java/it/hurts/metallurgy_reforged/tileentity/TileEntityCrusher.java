@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.tileentity;
@@ -14,7 +14,10 @@ import it.hurts.metallurgy_reforged.block.BlockAlloyer;
 import it.hurts.metallurgy_reforged.block.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.item.ModItems;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -32,11 +35,13 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -67,6 +72,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	public static final int TOTAL_CRUSHING_TIME = 140;
 
 	private boolean isPoweredByThermite;
+
+	private int ambienceTick;
 
 	public static boolean isItemFuel(ItemStack fuel)
 	{
@@ -208,6 +215,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
 
+		this.ambienceTick = compound.getInteger("ambience_tick");
+
 		if (compound.hasKey("custom_name", 8))
 			this.setCustomName(compound.getString("custom_name"));
 
@@ -226,6 +235,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		compound.setInteger("crush_time", (short) this.crushTime);
 
 		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+
+		compound.setInteger("ambience_tick", ambienceTick);
 
 		ItemStackHelper.saveAllItems(compound, this.inventory);
 
@@ -292,6 +303,8 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 			if (canCrush())
 			{
+				if (this.ambienceTick == 0)
+					world.playSound(null, pos, ModSounds.CRUSHER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
 
 				if (!isPoweredByThermite)
 				{
@@ -303,12 +316,36 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 					this.crushTime = Math.min(this.crushTime += 2, TOTAL_CRUSHING_TIME);
 				}
 
+				//Handles ambience sound loop
+				this.ambienceTick++;
+
+				//After 6 seconds OR every 16.5 seconds from the offset start
+				if (!world.isRemote)
+				{
+					if (ambienceTick == 120 || ambienceTick % 330 == 120)
+					{
+						PacketManager.network.sendToAllAround(
+								new PacketStartStopAmbienceSound(ModSounds.CRUSHER_AMBIENCE, SoundCategory.BLOCKS, pos),
+								new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+						);
+					}
+				}
+
 				if (crushTime >= TOTAL_CRUSHING_TIME)
 				{
 					crushItem();
 					this.crushTime = 0;
 					markDirty();
 				}
+			}
+			else if (!world.isRemote && crushTime == 0 && ambienceTick != 0)
+			{
+				ambienceTick = 0;
+				//Stop
+				PacketManager.network.sendToAllAround(
+						new PacketStartStopAmbienceSound(pos),
+						new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+				);
 			}
 		}
 		else
@@ -318,7 +355,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 			if (!fuelStack.isEmpty() && canCrush())
 			{
-				this.isPoweredByThermite = fuelStack.getItem() == ModItems.dustThermite;
+				this.isPoweredByThermite = fuelStack.getItem() == ModItems.THERMITE_DUST;
 				this.burnTime = getItemBurnTime(fuelStack);
 				this.totalBurnTime = this.burnTime;
 				fuelStack.shrink(1);
@@ -454,6 +491,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 				output2.grow(recipeResult.getCount());
 
 			input.shrink(1);
+			world.playSound(null, pos, ModSounds.CRUSHER_IMPACT, SoundCategory.BLOCKS, 1F, 1F);
 		}
 	}
 

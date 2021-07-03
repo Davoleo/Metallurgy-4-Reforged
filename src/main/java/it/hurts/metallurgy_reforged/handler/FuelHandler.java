@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
@@ -22,14 +22,14 @@ public class FuelHandler {
 	@SubscribeEvent
 	public static void registerFuels(FurnaceFuelBurnTimeEvent event)
 	{
-		ItemStack item = event.getItemStack();
+        ItemStack item = event.getItemStack();
 
-		if (item.getItem().equals(ModItems.tar))
-			event.setBurnTime(800);
-		if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
-			event.setBurnTime(16000);
-		if (item.getItem().equals(ModItems.dustThermite))
-			event.setBurnTime(GeneralConfig.thermiteFuelValue * 200);
-	}
+        if (item.getItem().equals(ModItems.TAR))
+            event.setBurnTime(800);
+        if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
+            event.setBurnTime(16000);
+        if (item.getItem().equals(ModItems.THERMITE_DUST))
+            event.setBurnTime(GeneralConfig.thermiteFuelValue * 200);
+    }
 
 }

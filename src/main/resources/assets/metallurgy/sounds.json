@@ -1,0 +1,67 @@
+{
+  "alloyer_ambience": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.alloyer_ambience",
+    "sounds": [
+      {
+        "name": "metallurgy:alloyer_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "alloyer_impact": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.alloyer_impact",
+    "sounds": [
+      "metallurgy:alloyer_impact"
+    ]
+  },
+  "alloyer_windup": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.alloyer_windup",
+    "sounds": [
+      "metallurgy:alloyer_windup"
+    ]
+  },
+  "crusher_ambience": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.crusher_ambience",
+    "sounds": [
+      {
+        "name": "metallurgy:crusher_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "crusher_impact": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.crusher_impact",
+    "sounds": [
+      "metallurgy:crusher_impact"
+    ]
+  },
+  "crusher_windup": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.crusher_windup",
+    "sounds": [
+      "metallurgy:crusher_windup"
+    ]
+  },
+  "sublimation_chamber_ambience": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.sublimation_chamber_ambience",
+    "sounds": [
+      {
+        "name": "metallurgy:sublimation_chamber_ambience",
+        "stream": true
+      }
+    ]
+  },
+  "sublimation_chamber_windup": {
+    "category": "block",
+    "subtitle": "metallurgy.subtitle.sublimation_chamber_windup",
+    "sounds": [
+      "metallurgy:sublimation_chamber_windup"
+    ]
+  }
+}
