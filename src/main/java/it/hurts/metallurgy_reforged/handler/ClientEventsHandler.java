@@ -22,16 +22,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ClientEventsHandler {
 
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public static void onKeyInput(InputEvent.KeyInputEvent event)
-    {
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void onKeyInput(InputEvent.KeyInputEvent event)
+	{
+		EntityPlayer player = Minecraft.getMinecraft().player;
+		PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-        AmordrineArmorEffect.onPlayerJump(player);
+		AmordrineArmorEffect.onPlayerJump(player);
 
-        KrikArmorEffect.changeKrikLevel(player, capability);
-    }
+		KrikArmorEffect.changeKrikLevel(player, capability);
+	}
 
 }

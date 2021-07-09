@@ -25,68 +25,68 @@ import javax.annotation.Nonnull;
 
 public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 
-    public DesichalkosArmorEffect()
-    {
-        super(ModMetals.DESICHALKOS);
-    }
+	public DesichalkosArmorEffect()
+	{
+		super(ModMetals.DESICHALKOS);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @SubscribeEvent
-    public void updateTimeWithoutDamage(LivingEvent.LivingUpdateEvent event)
-    {
+	@SubscribeEvent
+	public void updateTimeWithoutDamage(LivingEvent.LivingUpdateEvent event)
+	{
 
-        float level = getLevel(event.getEntityLiving());
-        if (level == 0.0F)
-            return;
+		float level = getLevel(event.getEntityLiving());
+		if (level == 0.0F)
+			return;
 
-        PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+		PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-        if (effectData == null)
-            return;
+		if (effectData == null)
+			return;
 
-        int maxLevelLayers = (int) (level * 4);
+		int maxLevelLayers = (int) (level * 4);
 
-        if (effectData.desichalkosAbsorbLevel > maxLevelLayers)
-            effectData.desichalkosAbsorbLevel = maxLevelLayers;
+		if (effectData.desichalkosAbsorbLevel > maxLevelLayers)
+			effectData.desichalkosAbsorbLevel = maxLevelLayers;
 
-        if (effectData.desichalkosTimeWithoutTakingDamage < 200)
-            effectData.desichalkosTimeWithoutTakingDamage += 1;
-        else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < maxLevelLayers)
-        {
-            event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
-            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, 2));
+		if (effectData.desichalkosTimeWithoutTakingDamage < 200)
+			effectData.desichalkosTimeWithoutTakingDamage += 1;
+		else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < maxLevelLayers)
+		{
+			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
+			Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, 2));
 
-            effectData.desichalkosAbsorbLevel += 1;
-        }
-    }
+			effectData.desichalkosAbsorbLevel += 1;
+		}
+	}
 
-    @SubscribeEvent
-    public void onHurt(LivingHurtEvent event)
-    {
-        PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+	@SubscribeEvent
+	public void onHurt(LivingHurtEvent event)
+	{
+		PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-        if (effectData == null)
-            return;
+		if (effectData == null)
+			return;
 
-        if (effectData.desichalkosAbsorbLevel > 0)
-        {
-            event.setCanceled(true);
+		if (effectData.desichalkosAbsorbLevel > 0)
+		{
+			event.setCanceled(true);
 
-            Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2));
-            effectData.desichalkosAbsorbLevel -= 1;
+			Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2));
+			effectData.desichalkosAbsorbLevel -= 1;
 
-            event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
-        }
+			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
+		}
 
-        effectData.desichalkosTimeWithoutTakingDamage = 0;
+		effectData.desichalkosTimeWithoutTakingDamage = 0;
 
 
-    }
+	}
 
 }

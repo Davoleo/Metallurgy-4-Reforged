@@ -35,47 +35,47 @@ import java.util.List;
 
 public class TinkerMetals {
 
-    public static List<MetallurgyTiCStats> metalStatsList = new ArrayList<>();
+	public static List<MetallurgyTiCStats> metalStatsList = new ArrayList<>();
 
-    public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE,
-            new HeadMaterialStats(600, 14F, 5, 4),
-            new HandleMaterialStats(0.55F, 215),
-            new ExtraMaterialStats(40));
+	public static MetallurgyTiCStats ALDUORITE = new MetallurgyTiCStats(ModMetals.ALDUORITE,
+			new HeadMaterialStats(600, 14F, 5, 4),
+			new HandleMaterialStats(0.55F, 215),
+			new ExtraMaterialStats(40));
 
-    public static MetallurgyTiCStats INFUSCOLIUM = new MetallurgyTiCStats(ModMetals.INFUSCOLIUM,
-            new HeadMaterialStats(180, 25F, 6, 3),
-            new HandleMaterialStats(0.45F, 190),
-            new ExtraMaterialStats(15),
-            new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12F, 6 / 12F));
+	public static MetallurgyTiCStats INFUSCOLIUM = new MetallurgyTiCStats(ModMetals.INFUSCOLIUM,
+			new HeadMaterialStats(180, 25F, 6, 3),
+			new HandleMaterialStats(0.45F, 190),
+			new ExtraMaterialStats(15),
+			new BowMaterialStats((float) (Math.sqrt(2)), 25 / 12F, 6 / 12F));
 
-    public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM,
-            new HandleMaterialStats(0.75F, 300),
-            new ExtraMaterialStats(47));
+	public static MetallurgyTiCStats RUBRACIUM = new MetallurgyTiCStats(ModMetals.RUBRACIUM,
+			new HandleMaterialStats(0.75F, 300),
+			new ExtraMaterialStats(47));
 
-    public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM,
-            new HeadMaterialStats(300, 10F, 4, 3),
-            new HandleMaterialStats(0.60F, 200),
-            new ExtraMaterialStats(30));
+	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM,
+			new HeadMaterialStats(300, 10F, 4, 3),
+			new HandleMaterialStats(0.60F, 200),
+			new ExtraMaterialStats(30));
 
-    public static MetallurgyTiCStats TARTARITE = new MetallurgyTiCStats(ModMetals.TARTARITE,
-            new HeadMaterialStats(400, 16F, 10F, 8),
-            MetallurgyTiCStats.getHandleA(ModMetals.TARTARITE),
-            MetallurgyTiCStats.getExtraA(ModMetals.TARTARITE));
+	public static MetallurgyTiCStats TARTARITE = new MetallurgyTiCStats(ModMetals.TARTARITE,
+			new HeadMaterialStats(400, 16F, 10F, 8),
+			MetallurgyTiCStats.getHandleA(ModMetals.TARTARITE),
+			MetallurgyTiCStats.getExtraA(ModMetals.TARTARITE));
 
-    public static MetallurgyTiCStats PLATINUM = new MetallurgyTiCStats(ModMetals.PLATINUM,
-            MetallurgyTiCStats.getHeadA(ModMetals.PLATINUM),
-            new ExtraMaterialStats(157),
-            new HandleMaterialStats(1.11F, 45));
+	public static MetallurgyTiCStats PLATINUM = new MetallurgyTiCStats(ModMetals.PLATINUM,
+			MetallurgyTiCStats.getHeadA(ModMetals.PLATINUM),
+			new ExtraMaterialStats(157),
+			new HandleMaterialStats(1.11F, 45));
 
-    @Nullable
-    public static MetallurgyTiCStats getMetal(Metal metal)
-    {
-        for (MetallurgyTiCStats stat : metalStatsList)
-        {
-            if (stat.metal.equals(metal))
-                return stat;
-        }
-        return null;
-    }
+	@Nullable
+	public static MetallurgyTiCStats getMetal(Metal metal)
+	{
+		for (MetallurgyTiCStats stat : metalStatsList)
+		{
+			if (stat.metal.equals(metal))
+				return stat;
+		}
+		return null;
+	}
 
 }

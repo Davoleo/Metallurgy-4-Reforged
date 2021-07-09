@@ -19,49 +19,49 @@ import javax.annotation.Nullable;
 public interface IPunchEffect {
 
 
-    //set entity integer "hit_ticks" which indicates the knockback time of the mob
+	//set entity integer "hit_ticks" which indicates the knockback time of the mob
 
-    void setPunchingPlayer(EntityPlayer pl);
+	void setPunchingPlayer(EntityPlayer pl);
 
-    @Nullable
-    EntityPlayer getPunchingPlayer(World world);
+	@Nullable
+	EntityPlayer getPunchingPlayer(World world);
 
-    void setDelayHit(int delay);
+	void setDelayHit(int delay);
 
-    int getDelayHit();
+	int getDelayHit();
 
-    void setHitTicks(int ticks);
+	void setHitTicks(int ticks);
 
-    int getHitTicks();
+	int getHitTicks();
 
-    void addHitTicks();
+	void addHitTicks();
 
-    boolean isAIDisabled();
+	boolean isAIDisabled();
 
-    void setNoAI(boolean ai);
+	void setNoAI(boolean ai);
 
-    void endEffect(EntityLivingBase entity);
+	void endEffect(EntityLivingBase entity);
 
-    void setKnockbackTicks(int ticks);
+	void setKnockbackTicks(int ticks);
 
-    int getKnockbackTicks();
+	int getKnockbackTicks();
 
-    void addKnockbackTicks();
+	void addKnockbackTicks();
 
-    // void setKnockbackMotionVec(Vec3d vec);
+	// void setKnockbackMotionVec(Vec3d vec);
 
-    Vec3d getKnockbackMotionVec();
+	Vec3d getKnockbackMotionVec();
 
-    void setRotYawPlayer(float yaw);
+	void setRotYawPlayer(float yaw);
 
-    void setRotPitchPlayer(float pitch);
+	void setRotPitchPlayer(float pitch);
 
-    float getRotYawPlayer();
+	float getRotYawPlayer();
 
-    float getRotPitchPlayer();
+	float getRotPitchPlayer();
 
-    boolean isGauntletUserDead();
+	boolean isGauntletUserDead();
 
-    void setGauntletUserDead();
+	void setGauntletUserDead();
 
 }

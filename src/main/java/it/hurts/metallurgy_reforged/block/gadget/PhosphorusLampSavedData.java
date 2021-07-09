@@ -24,7 +24,7 @@ public class PhosphorusLampSavedData extends WorldSavedData {
 
     private static final String DATA_NAME = Metallurgy.MODID + "_PhosphorusLampRange";
 
-    private List<BlockPos> lamps = Lists.newArrayList();
+    private final List<BlockPos> lamps = Lists.newArrayList();
 
     public PhosphorusLampSavedData()
     {

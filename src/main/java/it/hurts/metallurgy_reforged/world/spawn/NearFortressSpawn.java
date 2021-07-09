@@ -18,30 +18,30 @@ import java.util.Random;
 
 public class NearFortressSpawn extends NetherOreSpawn {
 
-    public NearFortressSpawn()
-    {
-        super(null);
-    }
+	public NearFortressSpawn()
+	{
+		super(null);
+	}
 
-    @Override
-    public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
-    {
-        return true;
-    }
+	@Override
+	public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
+	{
+		return true;
+	}
 
-    @Override
-    public int getRarity(World world, int chunkX, int chunkZ, int originalRarity)
-    {
-        BlockPos pos = new BlockPos(chunkX * 16, world.getSeaLevel(), chunkZ * 16);
+	@Override
+	public int getRarity(World world, int chunkX, int chunkZ, int originalRarity)
+	{
+		BlockPos pos = new BlockPos(chunkX * 16, world.getSeaLevel(), chunkZ * 16);
 
-        BlockPos blockpos = world.findNearestStructure("Fortress", pos, false);
+		BlockPos blockpos = world.findNearestStructure("Fortress", pos, false);
 
-        if (blockpos != null && blockpos.getDistance(pos.getX(), pos.getY(), pos.getZ()) < 90)
-        {
-            return ModWorldGen.COMMON;
-        }
+		if (blockpos != null && blockpos.getDistance(pos.getX(), pos.getY(), pos.getZ()) < 90)
+		{
+			return ModWorldGen.COMMON;
+		}
 
-        return originalRarity;
-    }
+		return originalRarity;
+	}
 
 }

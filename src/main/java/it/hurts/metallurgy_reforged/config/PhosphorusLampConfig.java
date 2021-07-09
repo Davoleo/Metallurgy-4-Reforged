@@ -15,12 +15,12 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "phosphorus_lamp")
 public class PhosphorusLampConfig {
 
-    @Config.Name("Lantern entity collision")
-    @Config.Comment("Set this to false to disable entity collisions with lantern")
-    public static boolean enableLanternCollision = true;
+	@Config.Name("Lantern entity collision")
+	@Config.Comment("Set this to false to disable entity collisions with lantern")
+	public static boolean enableLanternCollision = true;
 
-    @Config.Name("Phosphorus Lantern Light Level")
-    @Config.Comment("Sets how bright the lantern should be")
-    public static int lanternLightLevel = 8;
+	@Config.Name("Phosphorus Lantern Light Level")
+	@Config.Comment("Sets how bright the lantern should be")
+	public static int lanternLightLevel = 8;
 
 }

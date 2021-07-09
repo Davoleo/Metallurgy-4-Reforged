@@ -24,12 +24,12 @@ public class SmallIslandsSpawn extends BaseOreSpawn {
 		super(ModWorldGen.DEFAULT_END_BLOCK, biomes);
 	}
 
-    @Override
-    public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
-    {
-        if (Math.abs(pos.getX()) >= 700 || Math.abs(pos.getZ()) >= 700)
-            return super.canOreSpawn(world, pos, state, random);
-        return false;
-    }
+	@Override
+	public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
+	{
+		if (Math.abs(pos.getX()) >= 700 || Math.abs(pos.getZ()) >= 700)
+			return super.canOreSpawn(world, pos, state, random);
+		return false;
+	}
 
 }

@@ -9,7 +9,7 @@
       "ore": "ingotEtherium"
     },
     "R": {
-    	"item": "minecraft:redstone"
+      "item": "minecraft:redstone"
     }
   },
   "result": {

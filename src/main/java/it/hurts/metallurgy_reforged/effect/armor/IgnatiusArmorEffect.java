@@ -32,105 +32,105 @@ import javax.annotation.Nonnull;
 
 public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    private static final DamageSource WATER_DAMAGE = new DamageSource("waterDamage") {
-        @Nonnull
-        @Override
-        public ITextComponent getDeathMessage(@Nonnull EntityLivingBase entityLivingBaseIn)
-        {
-            return new TextComponentTranslation("message.metallurgy.water_damage_death", entityLivingBaseIn.getDisplayName());
-        }
-    }.setDamageBypassesArmor();
+	private static final DamageSource WATER_DAMAGE = new DamageSource("waterDamage") {
+		@Nonnull
+		@Override
+		public ITextComponent getDeathMessage(@Nonnull EntityLivingBase entityLivingBaseIn)
+		{
+			return new TextComponentTranslation("message.metallurgy.water_damage_death", entityLivingBaseIn.getDisplayName());
+		}
+	}.setDamageBypassesArmor();
 
-    public IgnatiusArmorEffect()
-    {
-        super(ModMetals.IGNATIUS);
-    }
+	public IgnatiusArmorEffect()
+	{
+		super(ModMetals.IGNATIUS);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
-    {
-        ProgressiveDataBundle bundle = getBundle(entity, metal, getCategory());
+	@Override
+	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
+	{
+		ProgressiveDataBundle bundle = getBundle(entity, metal, getCategory());
 
-        if (!entity.isInLava())
-            bundle.resetProgress(entity);
+		if (!entity.isInLava())
+			bundle.resetProgress(entity);
 
-        //currentStep >= (0.25 | 0.5 | 0.75 | 1) * 40
-        int lavaImmunityTimespan = (int) (getLevel(entity) * maxSteps);
-        if (step >= lavaImmunityTimespan)
-        {
-            bundle.resetProgress(entity);
-            entity.getArmorInventoryList().forEach(
-                    piece -> entity.getCooldownTracker().setCooldown(piece.getItem(), 200)
-            );
-        }
+		//currentStep >= (0.25 | 0.5 | 0.75 | 1) * 40
+		int lavaImmunityTimespan = (int) (getLevel(entity) * maxSteps);
+		if (step >= lavaImmunityTimespan)
+		{
+			bundle.resetProgress(entity);
+			entity.getArmorInventoryList().forEach(
+					piece -> entity.getCooldownTracker().setCooldown(piece.getItem(), 200)
+			);
+		}
 
-        //System.out.println("Current Step: " + step);
-    }
+		//System.out.println("Current Step: " + step);
+	}
 
-    @SubscribeEvent
-    public void lavaBath(LivingAttackEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
+	@SubscribeEvent
+	public void lavaBath(LivingAttackEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
 
-        if (!canBeApplied(entity))
-            return;
+		if (!canBeApplied(entity))
+			return;
 
-        DamageSource source = event.getSource();
-        //If the entity is not a player bundle becomes null
-        ProgressiveDataBundle bundle = null;
-        if (entity instanceof EntityPlayer)
-            bundle = getBundle(((EntityPlayer) entity), metal, getCategory());
+		DamageSource source = event.getSource();
+		//If the entity is not a player bundle becomes null
+		ProgressiveDataBundle bundle = null;
+		if (entity instanceof EntityPlayer)
+			bundle = getBundle(((EntityPlayer) entity), metal, getCategory());
 
-        if (bundle == null || (!bundle.isEffectInProgress() && source == DamageSource.LAVA))
-        {
-            if (entity instanceof EntityPlayer)
-            {
-                ItemStack armorpiece = entity.getArmorInventoryList().iterator().next();
-                if (((EntityPlayer) entity).getCooldownTracker().getCooldown(armorpiece.getItem(), 0) > 0)
-                    return;
+		if (bundle == null || (!bundle.isEffectInProgress() && source == DamageSource.LAVA))
+		{
+			if (entity instanceof EntityPlayer)
+			{
+				ItemStack armorpiece = entity.getArmorInventoryList().iterator().next();
+				if (((EntityPlayer) entity).getCooldownTracker().getCooldown(armorpiece.getItem(), 0) > 0)
+					return;
 
-                //Kickstart the timer
-                //The bundle SHOULDN'T EVER be null if we're here
-                assert bundle != null;
-                bundle.incrementStep(((EntityPlayer) entity));
-            }
+				//Kickstart the timer
+				//The bundle SHOULDN'T EVER be null if we're here
+				assert bundle != null;
+				bundle.incrementStep(((EntityPlayer) entity));
+			}
 
-            event.setCanceled(true);
-        }
+			event.setCanceled(true);
+		}
 
-        if (source == DamageSource.IN_FIRE || source == DamageSource.ON_FIRE || (source == DamageSource.LAVA && (bundle == null || bundle.isEffectInProgress())))
-        {
-            if (source != DamageSource.ON_FIRE)
-                event.getEntityLiving().heal(event.getAmount());
-            event.setCanceled(true);
-        }
-    }
+		if (source == DamageSource.IN_FIRE || source == DamageSource.ON_FIRE || (source == DamageSource.LAVA && (bundle == null || bundle.isEffectInProgress())))
+		{
+			if (source != DamageSource.ON_FIRE)
+				event.getEntityLiving().heal(event.getAmount());
+			event.setCanceled(true);
+		}
+	}
 
-    @SubscribeEvent
-    public void dealWaterDamage(LivingEvent.LivingUpdateEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
-        if (!canBeApplied(entity))
-            return;
+	@SubscribeEvent
+	public void dealWaterDamage(LivingEvent.LivingUpdateEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!canBeApplied(entity))
+			return;
 
-        //if fire resistance is not active and the entity is either under the rain or underwater deal damage
-        if (entity.isWet() && !entity.isPotionActive(MobEffects.FIRE_RESISTANCE))
-        {
-            if (entity.ticksExisted % 10 == 0)
-            {
-                entity.attackEntityFrom(WATER_DAMAGE, 1F);
-                entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.5F, 1F, false);
-            }
+		//if fire resistance is not active and the entity is either under the rain or underwater deal damage
+		if (entity.isWet() && !entity.isPotionActive(MobEffects.FIRE_RESISTANCE))
+		{
+			if (entity.ticksExisted % 10 == 0)
+			{
+				entity.attackEntityFrom(WATER_DAMAGE, 1F);
+				entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.5F, 1F, false);
+			}
 
-            spawnParticle(entity, 5F, true, 5);
-        }
-    }
+			spawnParticle(entity, 5F, true, 5);
+		}
+	}
 
 }

@@ -17,24 +17,24 @@ import java.util.Set;
 
 public class WorldUtils {
 
-    public static Set<BlockPos> getAllColliding(Vec3d start, Vec3d target)
-    {
-        Set<BlockPos> list = Sets.newLinkedHashSet();
-        Vec3d directionVec = target.subtract(start);
-        double length = directionVec.length();
-        final double xBit = directionVec.x / (10 * length);
-        final double yBit = directionVec.y / (10 * length);
-        final double zBit = directionVec.z / (10 * length);
+	public static Set<BlockPos> getAllColliding(Vec3d start, Vec3d target)
+	{
+		Set<BlockPos> list = Sets.newLinkedHashSet();
+		Vec3d directionVec = target.subtract(start);
+		double length = directionVec.length();
+		final double xBit = directionVec.x / (10 * length);
+		final double yBit = directionVec.y / (10 * length);
+		final double zBit = directionVec.z / (10 * length);
 
-        for (int i = 1; i <= length * 10; i++)
-        {
-            double x = start.x + xBit * i;
-            double y = start.y + yBit * i;
-            double z = start.z + zBit * i;
-            list.add(new BlockPos(x, y, z));
-        }
+		for (int i = 1; i <= length * 10; i++)
+		{
+			double x = start.x + xBit * i;
+			double y = start.y + yBit * i;
+			double z = start.z + zBit * i;
+			list.add(new BlockPos(x, y, z));
+		}
 
-        return list;
-    }
+		return list;
+	}
 
 }

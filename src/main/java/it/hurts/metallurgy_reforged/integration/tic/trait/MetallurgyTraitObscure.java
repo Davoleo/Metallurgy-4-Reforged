@@ -25,33 +25,33 @@ import javax.annotation.Nullable;
 
 public class MetallurgyTraitObscure extends AbstractTrait implements IMetallurgyTrait {
 
-    public MetallurgyTraitObscure()
-    {
-        super("obscure_trait", TextFormatting.BLACK);
-    }
+	public MetallurgyTraitObscure()
+	{
+		super("obscure_trait", TextFormatting.BLACK);
+	}
 
-    @Override
-    public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
-    {
-        target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 2, false, true));
-    }
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
+	{
+		target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 30, 2, false, true));
+	}
 
-    @Override
-    public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective)
-    {
+	@Override
+	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective)
+	{
 
-        //((EntityPlayer) player).inventory.addItemStackToInventory(new ItemStack(state.getBlock().getItemDropped(state, random, 1)));
+		//((EntityPlayer) player).inventory.addItemStackToInventory(new ItemStack(state.getBlock().getItemDropped(state, random, 1)));
 
-        for (int i = 0; i < 100; ++i)
-            world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + random.nextDouble(), pos.getY(), pos.getZ() + random.nextDouble(), 0, 0.05, 0);
-    }
+		for (int i = 0; i < 100; ++i)
+			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + random.nextDouble(), pos.getY(), pos.getZ() + random.nextDouble(), 0, 0.05, 0);
+	}
 
-    @Override
-    public void register(String name, @Nullable String tooltip)
-    {
-        Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
-        if (tooltip != null)
-            Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
-    }
+	@Override
+	public void register(String name, @Nullable String tooltip)
+	{
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
+		if (tooltip != null)
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
+	}
 
 }

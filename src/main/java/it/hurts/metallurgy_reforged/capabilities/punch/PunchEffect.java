@@ -20,154 +20,154 @@ import java.util.UUID;
 
 public class PunchEffect implements IPunchEffect {
 
-    private int hit_ticks = 0;
-    private int knockbackTicks = 0;
-    private int delayFromHit = 0;
-    private boolean hasNoAI = true;
-    private UUID plUUID = null;
-    private float rotYaw = 0F;
-    private float rotPitch = 0F;
-    private boolean isGauntletUserDead = false;
+	private int hit_ticks = 0;
+	private int knockbackTicks = 0;
+	private int delayFromHit = 0;
+	private boolean hasNoAI = true;
+	private UUID plUUID = null;
+	private float rotYaw = 0F;
+	private float rotPitch = 0F;
+	private boolean isGauntletUserDead = false;
 
-    @Override
-    public void setHitTicks(int ticks)
-    {
-        this.hit_ticks = ticks;
-    }
+	@Override
+	public void setHitTicks(int ticks)
+	{
+		this.hit_ticks = ticks;
+	}
 
-    @Override
-    public int getHitTicks()
-    {
-        return hit_ticks;
-    }
+	@Override
+	public int getHitTicks()
+	{
+		return hit_ticks;
+	}
 
-    @Override
-    public void addHitTicks()
-    {
-        this.hit_ticks++;
-    }
+	@Override
+	public void addHitTicks()
+	{
+		this.hit_ticks++;
+	}
 
-    @Override
-    public void endEffect(EntityLivingBase entity)
-    {
-        this.setKnockbackTicks(0);
-        this.setHitTicks(0);
-        entity.noClip = false;
-    }
+	@Override
+	public void endEffect(EntityLivingBase entity)
+	{
+		this.setKnockbackTicks(0);
+		this.setHitTicks(0);
+		entity.noClip = false;
+	}
 
-    @Override
-    public void setKnockbackTicks(int ticks)
-    {
-        knockbackTicks = ticks;
-    }
+	@Override
+	public void setKnockbackTicks(int ticks)
+	{
+		knockbackTicks = ticks;
+	}
 
-    @Override
-    public int getKnockbackTicks()
-    {
-        return knockbackTicks;
-    }
+	@Override
+	public int getKnockbackTicks()
+	{
+		return knockbackTicks;
+	}
 
-    @Override
-    public void addKnockbackTicks()
-    {
-        knockbackTicks += 1;
-    }
+	@Override
+	public void addKnockbackTicks()
+	{
+		knockbackTicks += 1;
+	}
 
-    @Override
-    public void setDelayHit(int delay)
-    {
-        delayFromHit = delay;
-    }
+	@Override
+	public void setDelayHit(int delay)
+	{
+		delayFromHit = delay;
+	}
 
-    @Override
-    public int getDelayHit()
-    {
-        return delayFromHit;
-    }
+	@Override
+	public int getDelayHit()
+	{
+		return delayFromHit;
+	}
 
-    @Override
-    public void setPunchingPlayer(EntityPlayer pl)
-    {
-        this.plUUID = pl == null ? null : pl.getUniqueID();
-    }
+	@Override
+	public void setPunchingPlayer(EntityPlayer pl)
+	{
+		this.plUUID = pl == null ? null : pl.getUniqueID();
+	}
 
-    @Override
-    @Nullable
-    public EntityPlayer getPunchingPlayer(World world)
-    {
-        return this.plUUID != null ? world.getPlayerEntityByUUID(plUUID) : null;
-    }
+	@Override
+	@Nullable
+	public EntityPlayer getPunchingPlayer(World world)
+	{
+		return this.plUUID != null ? world.getPlayerEntityByUUID(plUUID) : null;
+	}
 
-    //public void setKnockbackMotionVec(Vec3d vec) {
-    //	this.vec3dMotion = vec;
-    //}
+	//public void setKnockbackMotionVec(Vec3d vec) {
+	//	this.vec3dMotion = vec;
+	//}
 
-    @Override
-    public Vec3d getKnockbackMotionVec()
-    {
-        float yaw = this.getRotYawPlayer();
-        float pitch = this.getRotPitchPlayer();
+	@Override
+	public Vec3d getKnockbackMotionVec()
+	{
+		float yaw = this.getRotYawPlayer();
+		float pitch = this.getRotPitchPlayer();
 
-        double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-        double y = -MathHelper.sin(pitch * 0.017453292F);
-        double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
-        double f = MathHelper.sqrt(x * x + y * y + z * z);
-        double velocity = this.getHitTicks() > 10 ? 2D : 1D;
-        x = x / f;
-        y = y / f;
-        z = z / f;
-        x = x * velocity;
-        y = y * velocity;
-        z = z * velocity;
-        return new Vec3d(x, y, z);
-    }
+		double x = -MathHelper.sin(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+		double y = -MathHelper.sin(pitch * 0.017453292F);
+		double z = MathHelper.cos(yaw * 0.017453292F) * MathHelper.cos(pitch * 0.017453292F);
+		double f = MathHelper.sqrt(x * x + y * y + z * z);
+		double velocity = this.getHitTicks() > 10 ? 2D : 1D;
+		x = x / f;
+		y = y / f;
+		z = z / f;
+		x = x * velocity;
+		y = y * velocity;
+		z = z * velocity;
+		return new Vec3d(x, y, z);
+	}
 
-    @Override
-    public boolean isAIDisabled()
-    {
-        return this.hasNoAI;
-    }
+	@Override
+	public boolean isAIDisabled()
+	{
+		return this.hasNoAI;
+	}
 
-    @Override
-    public void setNoAI(boolean ai)
-    {
-        this.hasNoAI = ai;
-    }
+	@Override
+	public void setNoAI(boolean ai)
+	{
+		this.hasNoAI = ai;
+	}
 
-    @Override
-    public void setRotYawPlayer(float yaw)
-    {
-        this.rotYaw = yaw;
-    }
+	@Override
+	public void setRotYawPlayer(float yaw)
+	{
+		this.rotYaw = yaw;
+	}
 
-    @Override
-    public void setRotPitchPlayer(float pitch)
-    {
-        this.rotPitch = pitch;
-    }
+	@Override
+	public void setRotPitchPlayer(float pitch)
+	{
+		this.rotPitch = pitch;
+	}
 
-    @Override
-    public float getRotYawPlayer()
-    {
-        return this.rotYaw;
-    }
+	@Override
+	public float getRotYawPlayer()
+	{
+		return this.rotYaw;
+	}
 
-    @Override
-    public float getRotPitchPlayer()
-    {
-        return this.rotPitch;
-    }
+	@Override
+	public float getRotPitchPlayer()
+	{
+		return this.rotPitch;
+	}
 
-    @Override
-    public boolean isGauntletUserDead()
-    {
-        return isGauntletUserDead;
-    }
+	@Override
+	public boolean isGauntletUserDead()
+	{
+		return isGauntletUserDead;
+	}
 
-    @Override
-    public void setGauntletUserDead()
-    {
-        this.isGauntletUserDead = true;
-    }
+	@Override
+	public void setGauntletUserDead()
+	{
+		this.isGauntletUserDead = true;
+	}
 
 }

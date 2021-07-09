@@ -21,7 +21,7 @@
       "enchantability": 8,
       "durability": 36,
       "toughness": 3.5,
-      "max_health" : 20.0
+      "max_health": 20.0
     },
     "tool_stats": {
       "efficiency": 10.0,
@@ -129,8 +129,8 @@
       "enchantability": 2,
       "durability": 35,
       "toughness": 3.3,
-      "movement_speed" : 0.01,
-      "knockback_resistance" : -0.4
+      "movement_speed": 0.01,
+      "knockback_resistance": -0.4
     },
     "tool_stats": {
       "efficiency": 10.0,
@@ -162,8 +162,8 @@
       "harvest_level": 3,
       "enchantability": 2,
       "durability": 976,
-      "attack_speed" : -0.6,
-      "movement_speed" : -0.01,
+      "attack_speed": -0.6,
+      "movement_speed": -0.01,
       "damage": 3.9
     }
   },
@@ -183,8 +183,8 @@
       "enchantability": 18,
       "durability": 14,
       "toughness": 3.0,
-      "movement_speed" : -0.01,
-      "knockback_resistance" : 0.2
+      "movement_speed": -0.01,
+      "knockback_resistance": 0.2
     },
     "tool_stats": {
       "efficiency": 6.8,
@@ -192,7 +192,7 @@
       "enchantability": 8,
       "durability": 895,
       "damage": 3.2,
-      "attack_speed" : -0.5,
+      "attack_speed": -0.5,
       "reach_distance": -1
     }
   },
@@ -244,7 +244,7 @@
       "enchantability": 6,
       "durability": 854,
       "damage": 1.4,
-      "attack_speed" : -0.4,
+      "attack_speed": -0.4,
       "reach_distance": -2
     }
   },
@@ -296,7 +296,7 @@
       "enchantability": 16,
       "durability": 143,
       "damage": 3.5,
-      "attack_speed" : -0.1
+      "attack_speed": -0.1
     }
   },
   {
@@ -322,7 +322,7 @@
       "enchantability": 5,
       "durability": 145,
       "damage": 1.2,
-      "attack_speed" : 0.4
+      "attack_speed": 0.4
     }
   },
   {
@@ -399,7 +399,7 @@
       "durability": 1430,
       "damage": 3.4,
       "reach_distance": 3,
-      "attack_speed" : -0.2
+      "attack_speed": -0.2
     }
   },
   {
@@ -424,7 +424,7 @@
       "harvest_level": 2,
       "enchantability": 17,
       "durability": 366,
-      "attack_speed" : 0.3,
+      "attack_speed": 0.3,
       "damage": 2.7
     }
   },
@@ -451,7 +451,7 @@
       "enchantability": 30,
       "durability": 750,
       "damage": 6.0,
-      "attack_speed" : -0.4,
+      "attack_speed": -0.4,
       "reach_distance": 1
     }
   },
@@ -553,7 +553,7 @@
       "harvest_level": 4,
       "enchantability": 11,
       "durability": 89,
-      "attack_speed" : -0.1,
+      "attack_speed": -0.1,
       "damage": 2.1
     }
   },
@@ -587,7 +587,7 @@
       "enchantability": 22,
       "durability": 998,
       "damage": 6.0,
-      "attack_speed" : -0.4
+      "attack_speed": -0.4
     }
   },
   {
@@ -637,7 +637,7 @@
       "harvest_level": 6,
       "enchantability": 17,
       "durability": 955,
-      "attack_speed" : 0.3,
+      "attack_speed": 0.3,
       "damage": 3.5
     }
   },
@@ -702,7 +702,7 @@
       "harvest_level": 4,
       "enchantability": 28,
       "durability": 89,
-      "attack_speed" : -0.3,
+      "attack_speed": -0.3,
       "damage": 2.6
     }
   },
@@ -772,8 +772,8 @@
       "enchantability": 8,
       "durability": 5,
       "toughness": 3.5,
-      "movement_speed" : -0.01,
-      "knockback_resistance" : 1.0
+      "movement_speed": -0.01,
+      "knockback_resistance": 1.0
     }
   },
   {
@@ -980,7 +980,7 @@
       "harvest_level": 2,
       "enchantability": 19,
       "durability": 63,
-      "attack_speed" : 0.2,
+      "attack_speed": 0.2,
       "damage": 3.4
     }
   },

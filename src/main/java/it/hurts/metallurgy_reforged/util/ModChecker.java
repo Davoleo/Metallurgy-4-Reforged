@@ -13,25 +13,25 @@ import net.minecraftforge.fml.common.Loader;
 
 public class ModChecker {
 
-    public static boolean isTConLoaded;
-    public static boolean isConarmLoaded;
-    public static boolean isIFLoaded;
-    public static boolean isProjectELoaded;
-    public static boolean isCraftTweakerLoaded;
-    public static boolean isSilentGemsLoaded;
-    public static boolean isNetherExLoaded;
-    public static boolean isEnderIOLoaded;
+	public static boolean isTConLoaded;
+	public static boolean isConarmLoaded;
+	public static boolean isIFLoaded;
+	public static boolean isProjectELoaded;
+	public static boolean isCraftTweakerLoaded;
+	public static boolean isSilentGemsLoaded;
+	public static boolean isNetherExLoaded;
+	public static boolean isEnderIOLoaded;
 
-    static
-    {
-        ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
-        ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
-        ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
-        ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
-        ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
-        ModChecker.isSilentGemsLoaded = Loader.isModLoaded("silentgems");
-        ModChecker.isNetherExLoaded = Loader.isModLoaded("netherex");
-        ModChecker.isEnderIOLoaded = Loader.isModLoaded("enderio");
-    }
+	static
+	{
+		ModChecker.isTConLoaded = Loader.isModLoaded("tconstruct");
+		ModChecker.isConarmLoaded = Loader.isModLoaded("conarm");
+		ModChecker.isIFLoaded = Loader.isModLoaded("industrialforegoing");
+		ModChecker.isProjectELoaded = Loader.isModLoaded("projecte");
+		ModChecker.isCraftTweakerLoaded = Loader.isModLoaded("crafttweaker");
+		ModChecker.isSilentGemsLoaded = Loader.isModLoaded("silentgems");
+		ModChecker.isNetherExLoaded = Loader.isModLoaded("netherex");
+		ModChecker.isEnderIOLoaded = Loader.isModLoaded("enderio");
+	}
 
 }

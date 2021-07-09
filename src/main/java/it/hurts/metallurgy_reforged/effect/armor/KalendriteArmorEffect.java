@@ -25,61 +25,62 @@ import javax.annotation.Nonnull;
 
 public class KalendriteArmorEffect extends BaseMetallurgyEffect {
 
-    public KalendriteArmorEffect()
-    {
-        super(ModMetals.KALENDRITE);
-    }
+	public KalendriteArmorEffect()
+	{
+		super(ModMetals.KALENDRITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @SubscribeEvent
-    public void registerDamageTimestamp(LivingDamageEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
+	@SubscribeEvent
+	public void registerDamageTimestamp(LivingDamageEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
 
-        if (!canBeApplied(entity))
-            return;
+		if (!canBeApplied(entity))
+			return;
 
 
-        ItemStack armorStack = getArmorRepr(entity);
-        NBTTagCompound armorData = armorStack.getTagCompound();
+		ItemStack armorStack = getArmorRepr(entity);
+		NBTTagCompound armorData = armorStack.getTagCompound();
 
-        if (armorData != null && entity.isPotionActive(MobEffects.REGENERATION))
-            entity.removePotionEffect(MobEffects.REGENERATION);
+		if (armorData != null && entity.isPotionActive(MobEffects.REGENERATION))
+			entity.removePotionEffect(MobEffects.REGENERATION);
 
-        if (armorData == null)
-            armorData = new NBTTagCompound();
+		if (armorData == null)
+			armorData = new NBTTagCompound();
 
-        armorData.setLong("damage_timestamp", entity.world.getTotalWorldTime());
-        armorStack.setTagCompound(armorData);
-    }
+		armorData.setLong("damage_timestamp", entity.world.getTotalWorldTime());
+		armorStack.setTagCompound(armorData);
+	}
 
-    @SubscribeEvent
-    public void regenHealth(LivingEvent.LivingUpdateEvent event)
-    {
-        final EntityLivingBase entity = event.getEntityLiving();
-        int level = (int) (getLevel(entity) * 4);
-        if (level == 0 || entity.ticksExisted % 4 != 0)
-            return;
+	@SubscribeEvent
+	public void regenHealth(LivingEvent.LivingUpdateEvent event)
+	{
+		final EntityLivingBase entity = event.getEntityLiving();
+		int level = (int) (getLevel(entity) * 4);
+		if (level == 0 || entity.ticksExisted % 4 != 0)
+			return;
 
-        NBTTagCompound armorData = getArmorRepr(entity).getTagCompound();
+		NBTTagCompound armorData = getArmorRepr(entity).getTagCompound();
 
-        if (armorData != null && armorData.hasKey("damage_timestamp"))
-        {
-            long delta = entity.world.getTotalWorldTime() - armorData.getLong("damage_timestamp");
-            //2^(6 - 1..4) * 20 = 32..4 seconds * 20 = amount in ticks
-            int delay = (int) (Math.pow(2, 6 - level) * 20);
-            if (delta >= delay)
-            {
-                //noinspection ConstantConditions
-                if (!entity.isPotionActive(MobEffects.REGENERATION) || entity.getActivePotionEffect(MobEffects.REGENERATION).getDuration() <= 200)
-                    entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 410, level - 1));
-            }
-        }
-    }
+		if (armorData != null && armorData.hasKey("damage_timestamp"))
+		{
+			long delta = entity.world.getTotalWorldTime() - armorData.getLong("damage_timestamp");
+			//2^(6 - 1..4) * 20 = 32..4 seconds * 20 = amount in ticks
+			int delay = (int) (Math.pow(2, 6 - level) * 20);
+			if (delta >= delay)
+			{
+				//noinspection ConstantConditions
+				if (!entity.isPotionActive(MobEffects.REGENERATION) || entity.getActivePotionEffect(MobEffects.REGENERATION).getDuration() <= 200)
+					entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 410, level - 1));
+			}
+		}
+	}
+
 }

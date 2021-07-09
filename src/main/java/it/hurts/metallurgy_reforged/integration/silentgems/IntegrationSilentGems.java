@@ -14,14 +14,14 @@ import net.silentchaos512.gems.api.tool.part.ToolPartRegistry;
 
 public class IntegrationSilentGems {
 
-    public static void init()
-    {
-        ModMetals.metalMap.forEach((name, metal) -> {
-            if (metal.hasToolSet())
-            {
-                ToolPartRegistry.putPart(new MetallurgyToolPart(new MetallurgyPartProperties(metal.getStats(), metal.getIngot())));
-            }
-        });
-    }
+	public static void init()
+	{
+		ModMetals.metalMap.forEach((name, metal) -> {
+			if (metal.hasToolSet())
+			{
+				ToolPartRegistry.putPart(new MetallurgyToolPart(new MetallurgyPartProperties(metal.getStats(), metal.getIngot())));
+			}
+		});
+	}
 
 }

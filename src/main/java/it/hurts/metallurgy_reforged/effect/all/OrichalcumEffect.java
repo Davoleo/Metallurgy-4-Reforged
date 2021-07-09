@@ -59,4 +59,5 @@ public class OrichalcumEffect extends BaseMetallurgyEffect {
             });
         }
     }
+
 }

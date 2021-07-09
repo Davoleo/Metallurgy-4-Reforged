@@ -29,19 +29,19 @@ import java.util.List;
 
 public class ModItems {
 
-    public static List<ItemExtra> extraItems = new ArrayList<>();
+	public static List<ItemExtra> extraItems = new ArrayList<>();
 
-    //Vanilla dust
-    public static ItemBase dustGold = new ItemExtra("gold_dust", MetallurgyTabs.tabDust);
-    public static ItemBase dustIron = new ItemExtra("iron_dust", MetallurgyTabs.tabDust);
+	//Vanilla dust
+	public static ItemBase dustGold = new ItemExtra("gold_dust", MetallurgyTabs.tabDust);
+	public static ItemBase dustIron = new ItemExtra("iron_dust", MetallurgyTabs.tabDust);
 
-    //Metallurgy dusts
-    public static ItemBase bitumen = new ItemExtra("bitumen", MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
-    public static ItemBase tar = new ItemExtra("tar", MetallurgyTabs.tabDust);
-    public static ItemBase potash = new ItemExtra("potash", MetallurgyTabs.tabDust);
-    public static ItemBase sulfur = new ItemExtra("sulfur_dust", MetallurgyTabs.tabDust);
-    public static ItemBase dustThermite = new ItemExtra("thermite_dust", MetallurgyTabs.tabDust).setTooltip(Constants.THERMITE_DUST);
-    public static ItemBase phosphorus = new ItemExtra("phosphorus", MetallurgyTabs.tabDust);
+	//Metallurgy dusts
+	public static ItemBase bitumen = new ItemExtra("bitumen", MetallurgyTabs.tabDust).setTooltip(Constants.BITUMEN);
+	public static ItemBase tar = new ItemExtra("tar", MetallurgyTabs.tabDust);
+	public static ItemBase potash = new ItemExtra("potash", MetallurgyTabs.tabDust);
+	public static ItemBase sulfur = new ItemExtra("sulfur_dust", MetallurgyTabs.tabDust);
+	public static ItemBase dustThermite = new ItemExtra("thermite_dust", MetallurgyTabs.tabDust).setTooltip(Constants.THERMITE_DUST);
+	public static ItemBase phosphorus = new ItemExtra("phosphorus", MetallurgyTabs.tabDust);
 
 	//Gadgets
 	public static ItemPotashFertilizer dustPotash = new ItemPotashFertilizer();
@@ -60,18 +60,18 @@ public class ModItems {
 	public static ItemCeruclaseShield ceruclaseShield = new ItemCeruclaseShield();
 	public static ItemOrichalcumBuckler orichalcumBuckler = new ItemOrichalcumBuckler();
 
-    //Wiki Link Item ------------------------------------------------
-    public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {
-        @Override
-        public ActionResult<ItemStack> onItemRightClick(World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
-        {
-            if (worldIn.isRemote)
-            {
-                TextComponentString link = new TextComponentString("https://github.com/Davoleo/Metallurgy-4-Reforged/wiki");
-                playerIn.sendMessage(link.setStyle(link.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Davoleo/Metallurgy-4-Reforged/wiki")).setColor(TextFormatting.BLUE)));
-            }
-            return super.onItemRightClick(worldIn, playerIn, handIn);
-        }
-    };
+	//Wiki Link Item ------------------------------------------------
+	public static ItemBase wiki = new ItemExtra("wiki", MetallurgyTabs.tabSpecial) {
+		@Override
+		public ActionResult<ItemStack> onItemRightClick(World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
+		{
+			if (worldIn.isRemote)
+			{
+				TextComponentString link = new TextComponentString("https://github.com/Davoleo/Metallurgy-4-Reforged/wiki");
+				playerIn.sendMessage(link.setStyle(link.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Davoleo/Metallurgy-4-Reforged/wiki")).setColor(TextFormatting.BLUE)));
+			}
+			return super.onItemRightClick(worldIn, playerIn, handIn);
+		}
+	};
 
 }

@@ -16,96 +16,97 @@ import java.util.function.Predicate;
 
 public class ExtraFilledDataBundle extends ProgressiveDataBundle {
 
-    private NBTTagCompound extra = new NBTTagCompound();
-    private final Predicate<ExtraFilledDataBundle> isInProgress;
+	private NBTTagCompound extra = new NBTTagCompound();
+	private final Predicate<ExtraFilledDataBundle> isInProgress;
 
-    public ExtraFilledDataBundle(String key, int maxSteps, int stepDelay, Predicate<ExtraFilledDataBundle> isInProgress)
-    {
-        super(key, maxSteps, stepDelay);
-        this.isInProgress = isInProgress;
-    }
+	public ExtraFilledDataBundle(String key, int maxSteps, int stepDelay, Predicate<ExtraFilledDataBundle> isInProgress)
+	{
+		super(key, maxSteps, stepDelay);
+		this.isInProgress = isInProgress;
+	}
 
-    @Override
-    public void toNBT(NBTTagCompound compound)
-    {
-        super.toNBT(compound);
-        NBTUtils.injectCompound(prefixKey + "_extra_", compound, extra);
-        //compound.setTag(prefixKey + "_extra", extra);
-    }
+	@Override
+	public void toNBT(NBTTagCompound compound)
+	{
+		super.toNBT(compound);
+		NBTUtils.injectCompound(prefixKey + "_extra_", compound, extra);
+		//compound.setTag(prefixKey + "_extra", extra);
+	}
 
-    @Override
-    public void fromNBT(NBTTagCompound compound)
-    {
-        super.fromNBT(compound);
-        extra = NBTUtils.ejectCompound(prefixKey + "_extra_", compound);
-        //extra = compound.getCompoundTag(prefixKey + "_extra");
-    }
+	@Override
+	public void fromNBT(NBTTagCompound compound)
+	{
+		super.fromNBT(compound);
+		extra = NBTUtils.ejectCompound(prefixKey + "_extra_", compound);
+		//extra = compound.getCompoundTag(prefixKey + "_extra");
+	}
 
-    @Override
-    public boolean isEffectInProgress()
-    {
-        return isInProgress.test(this);
-    }
+	@Override
+	public boolean isEffectInProgress()
+	{
+		return isInProgress.test(this);
+	}
 
-    public NBTTagCompound getExtras()
-    {
-        return extra;
-    }
+	public NBTTagCompound getExtras()
+	{
+		return extra;
+	}
 
-    public void setExtras(NBTTagCompound compound)
-    {
-        this.extra = compound;
-    }
+	public void setExtras(NBTTagCompound compound)
+	{
+		this.extra = compound;
+	}
 
-    // ---------- Extra Data Methods ----------
-    public String getExtraString(String key)
-    {
-        return extra.getString(key);
-    }
+	// ---------- Extra Data Methods ----------
+	public String getExtraString(String key)
+	{
+		return extra.getString(key);
+	}
 
-    public int getExtraInt(String key)
-    {
-        return extra.getInteger(key);
-    }
+	public int getExtraInt(String key)
+	{
+		return extra.getInteger(key);
+	}
 
-    public boolean getExtraBool(String key)
-    {
-        return extra.getBoolean(key);
-    }
+	public boolean getExtraBool(String key)
+	{
+		return extra.getBoolean(key);
+	}
 
-    public float getExtraFloat(String key)
-    {
-        return extra.getFloat(key);
-    }
+	public float getExtraFloat(String key)
+	{
+		return extra.getFloat(key);
+	}
 
-    public void setExtra(String key, String value)
-    {
-        extra.setString(key, value);
-    }
+	public void setExtra(String key, String value)
+	{
+		extra.setString(key, value);
+	}
 
-    public void setExtra(String key, int value)
-    {
-        extra.setInteger(key, value);
-    }
+	public void setExtra(String key, int value)
+	{
+		extra.setInteger(key, value);
+	}
 
-    public void setExtra(String key, float value)
-    {
-        extra.setFloat(key, value);
-    }
+	public void setExtra(String key, float value)
+	{
+		extra.setFloat(key, value);
+	}
 
-    public void setExtra(String key, boolean value)
-    {
-        extra.setBoolean(key, value);
-    }
+	public void setExtra(String key, boolean value)
+	{
+		extra.setBoolean(key, value);
+	}
 
-    public void clearExtras()
-    {
-        extra = new NBTTagCompound();
-    }
+	public void clearExtras()
+	{
+		extra = new NBTTagCompound();
+	}
 
-    @Override
-    public byte getType()
-    {
-        return 2;
-    }
+	@Override
+	public byte getType()
+	{
+		return 2;
+	}
+
 }

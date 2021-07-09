@@ -25,58 +25,58 @@ import javax.annotation.Nonnull;
 
 public class EtheriumWeaponEffect extends BaseMetallurgyEffect {
 
-    public EtheriumWeaponEffect()
-    {
-        super(ModMetals.ETHERIUM);
-    }
+	public EtheriumWeaponEffect()
+	{
+		super(ModMetals.ETHERIUM);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void extraDamage(LivingDamageEvent event)
-    {
-        Entity attacker = event.getSource().getImmediateSource();
-        if (!(attacker instanceof EntityLivingBase))
-            return;
+	@SubscribeEvent
+	public void extraDamage(LivingDamageEvent event)
+	{
+		Entity attacker = event.getSource().getImmediateSource();
+		if (!(attacker instanceof EntityLivingBase))
+			return;
 
-        EntityLivingBase livingAttacker = ((EntityLivingBase) attacker);
+		EntityLivingBase livingAttacker = ((EntityLivingBase) attacker);
 
-        if (!canBeApplied(livingAttacker))
-            return;
+		if (!canBeApplied(livingAttacker))
+			return;
 
-        //33% chance
-        if (Utils.random.nextInt(3) < 1)
-        {
-            //Original + 2..4
-            float augment = 2 + Utils.random.nextInt(3);
-            event.setAmount(event.getAmount() + augment);
+		//33% chance
+		if (Utils.random.nextInt(3) < 1)
+		{
+			//Original + 2..4
+			float augment = 2 + Utils.random.nextInt(3);
+			event.setAmount(event.getAmount() + augment);
 
-            if (livingAttacker.getHealth() < livingAttacker.getMaxHealth())
-            {
-                livingAttacker.heal(augment);
-            }
-            else
-            {
-                // TODO: 02/03/2021 Fix Absorption hearts not being refilled when the effect is still active
-                if (!livingAttacker.isPotionActive(MobEffects.ABSORPTION))
-                    livingAttacker.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 1200, 0));
-            }
+			if (livingAttacker.getHealth() < livingAttacker.getMaxHealth())
+			{
+				livingAttacker.heal(augment);
+			}
+			else
+			{
+				// TODO: 02/03/2021 Fix Absorption hearts not being refilled when the effect is still active
+				if (!livingAttacker.isPotionActive(MobEffects.ABSORPTION))
+					livingAttacker.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 1200, 0));
+			}
 
-            Vec3d targetVec = event.getEntityLiving().getPositionVector().add(0, event.getEntityLiving().height / 2, 0);
-            Vec3d motionVec = targetVec.subtractReverse(livingAttacker.getPositionVector().add(0, event.getEntityLiving().height / 2, 0)).normalize();
-            Utils.repeat(15, () -> {
-                double r1 = -0.3 + Utils.random.nextFloat() * 0.5;
-                double r2 = -0.3 + Utils.random.nextFloat() * 0.5;
-                double r3 = -0.3 + Utils.random.nextFloat() * 0.5;
-                spawnParticle(attacker.world, targetVec.x + r1, targetVec.y + r2, targetVec.z + r3,
-                        motionVec.x * 0.2, motionVec.y * 0.2, motionVec.z * 0.2, 2F, true, 2);
-            });
-        }
-    }
+			Vec3d targetVec = event.getEntityLiving().getPositionVector().add(0, event.getEntityLiving().height / 2, 0);
+			Vec3d motionVec = targetVec.subtractReverse(livingAttacker.getPositionVector().add(0, event.getEntityLiving().height / 2, 0)).normalize();
+			Utils.repeat(15, () -> {
+				double r1 = -0.3 + Utils.random.nextFloat() * 0.5;
+				double r2 = -0.3 + Utils.random.nextFloat() * 0.5;
+				double r3 = -0.3 + Utils.random.nextFloat() * 0.5;
+				spawnParticle(attacker.world, targetVec.x + r1, targetVec.y + r2, targetVec.z + r3,
+						motionVec.x * 0.2, motionVec.y * 0.2, motionVec.z * 0.2, 2F, true, 2);
+			});
+		}
+	}
 
 }

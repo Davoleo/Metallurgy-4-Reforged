@@ -19,9 +19,9 @@ public enum ItemTypes {
     DUST("dust", MetallurgyTabs.tabDust, RegistrationConfig.categoryItems.enableMetalDusts),
     NUGGET("nugget", MetallurgyTabs.tabNugget, RegistrationConfig.categoryItems.enableMetalNuggets);
 
-    private String name;
-    private CreativeTabs tab;
-    private boolean isEnabled;
+    private final String name;
+    private final CreativeTabs tab;
+    private final boolean isEnabled;
 
     ItemTypes(String name, CreativeTabs tab, boolean isEnabled)
     {

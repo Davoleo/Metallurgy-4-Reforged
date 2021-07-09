@@ -15,50 +15,50 @@ import net.minecraft.entity.ai.EntityAITarget;
 
 public class AIPierOwnerWasHurt extends EntityAITarget {
 
-    EntityPierKnight pierKnight;
-    EntityLivingBase attacker;
-    private int timestamp;
+	EntityPierKnight pierKnight;
+	EntityLivingBase attacker;
+	private int timestamp;
 
-    public AIPierOwnerWasHurt(EntityPierKnight pier)
-    {
-        super(pier, false);
-        this.pierKnight = pier;
-        this.setMutexBits(1);
-    }
+	public AIPierOwnerWasHurt(EntityPierKnight pier)
+	{
+		super(pier, false);
+		this.pierKnight = pier;
+		this.setMutexBits(1);
+	}
 
-    /**
-     * Returns whether the EntityAIBase should begin execution.
-     */
-    public boolean shouldExecute()
-    {
-        EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierKnight.getOwner();
+	/**
+	 * Returns whether the EntityAIBase should begin execution.
+	 */
+	public boolean shouldExecute()
+	{
+		EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierKnight.getOwner();
 
-        if (entitylivingbase == null)
-        {
-            return false;
-        }
-        else
-        {
-            this.attacker = entitylivingbase.getRevengeTarget();
-            int i = entitylivingbase.getRevengeTimer();
-            return i != this.timestamp && this.isSuitableTarget(this.attacker, false);
-        }
-    }
+		if (entitylivingbase == null)
+		{
+			return false;
+		}
+		else
+		{
+			this.attacker = entitylivingbase.getRevengeTarget();
+			int i = entitylivingbase.getRevengeTimer();
+			return i != this.timestamp && this.isSuitableTarget(this.attacker, false);
+		}
+	}
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
-    public void startExecuting()
-    {
-        this.pierKnight.setAttackTarget(this.attacker);
-        EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierKnight.getOwner();
+	/**
+	 * Execute a one shot task or start executing a continuous task
+	 */
+	public void startExecuting()
+	{
+		this.pierKnight.setAttackTarget(this.attacker);
+		EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierKnight.getOwner();
 
-        if (entitylivingbase != null)
-        {
-            this.timestamp = entitylivingbase.getRevengeTimer();
-        }
+		if (entitylivingbase != null)
+		{
+			this.timestamp = entitylivingbase.getRevengeTimer();
+		}
 
-        super.startExecuting();
-    }
+		super.startExecuting();
+	}
 
 }

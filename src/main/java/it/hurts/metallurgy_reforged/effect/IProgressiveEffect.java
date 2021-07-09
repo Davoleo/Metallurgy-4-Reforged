@@ -19,17 +19,17 @@ import net.minecraft.world.World;
 
 public interface IProgressiveEffect {
 
-    void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step);
+	void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step);
 
-    default ProgressiveDataBundle getBundle(EntityPlayer attached, Metal metal, EnumEffectCategory category)
-    {
-        String prefixKey = metal.toString() + '_' + category.toString();
-        return attached.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(prefixKey);
-    }
+	default ProgressiveDataBundle getBundle(EntityPlayer attached, Metal metal, EnumEffectCategory category)
+	{
+		String prefixKey = metal.toString() + '_' + category.toString();
+		return attached.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(prefixKey);
+	}
 
-    default PlayerEffectData getEffectCapability(EntityPlayer attached)
-    {
-        return attached.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
-    }
+	default PlayerEffectData getEffectCapability(EntityPlayer attached)
+	{
+		return attached.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+	}
 
 }

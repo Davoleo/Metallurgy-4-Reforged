@@ -23,42 +23,42 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HUDHandler {
 
-    @SubscribeEvent
-    public static void renderOverlay(RenderGameOverlayEvent.Post event)
-    {
+	@SubscribeEvent
+	public static void renderOverlay(RenderGameOverlayEvent.Post event)
+	{
 
-        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL)
-            return;
+		if (event.getType() != RenderGameOverlayEvent.ElementType.ALL)
+			return;
 
-        if (ModMetals.KRIK == null)
-            return;
+		if (ModMetals.KRIK == null)
+			return;
 
-        Minecraft minecraft = Minecraft.getMinecraft();
-        if (minecraft.currentScreen instanceof GuiChat)
-            return;
+		Minecraft minecraft = Minecraft.getMinecraft();
+		if (minecraft.currentScreen instanceof GuiChat)
+			return;
 
-        RayTraceResult rayTrace = minecraft.objectMouseOver;
-        if (rayTrace == null)
-            return;
+		RayTraceResult rayTrace = minecraft.objectMouseOver;
+		if (rayTrace == null)
+			return;
 
-        EntityPlayer player = minecraft.player;
+		EntityPlayer player = minecraft.player;
 
-        if (rayTrace.typeOfHit == RayTraceResult.Type.BLOCK)
-        {
-            IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
-            Block block = state.getBlock();
+		if (rayTrace.typeOfHit == RayTraceResult.Type.BLOCK)
+		{
+			IBlockState state = minecraft.world.getBlockState(rayTrace.getBlockPos());
+			Block block = state.getBlock();
 
-            if (block == ModBlocks.chamber)
-            {
-                SublimationChamberHUD.render(event, minecraft, rayTrace.getBlockPos());
-            }
-        }
+			if (block == ModBlocks.chamber)
+			{
+				SublimationChamberHUD.render(event, minecraft, rayTrace.getBlockPos());
+			}
+		}
 
-        if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK))
-        {
-            KrikArmorHUD.render(event, minecraft);
-        }
+		if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK))
+		{
+			KrikArmorHUD.render(event, minecraft);
+		}
 
-    }
+	}
 
 }

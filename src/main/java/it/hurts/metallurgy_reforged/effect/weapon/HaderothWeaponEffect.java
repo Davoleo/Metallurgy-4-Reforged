@@ -31,105 +31,106 @@ import javax.annotation.Nullable;
 
 public class HaderothWeaponEffect extends BaseMetallurgyEffect {
 
-    public HaderothWeaponEffect()
-    {
-        super(ModMetals.HADEROTH);
-    }
+	public HaderothWeaponEffect()
+	{
+		super(ModMetals.HADEROTH);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @Override
-    public Pair<String, String> getTooltip()
-    {
-        Pair<String, String> tooltip = super.getTooltip();
-        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
-        {
-            int firstBreak = tooltip.getRight().indexOf("\n");
-            String trimmed = tooltip.getRight().substring(firstBreak + 1);
-            tooltip.setValue(trimmed);
-        }
+	@Override
+	public Pair<String, String> getTooltip()
+	{
+		Pair<String, String> tooltip = super.getTooltip();
+		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
+		{
+			int firstBreak = tooltip.getRight().indexOf("\n");
+			String trimmed = tooltip.getRight().substring(firstBreak + 1);
+			tooltip.setValue(trimmed);
+		}
 
-        return tooltip;
-    }
+		return tooltip;
+	}
 
 
-    @SubscribeEvent
-    public void handleKillStreak(LivingDeathEvent event)
-    {
-        Entity source = event.getSource().getImmediateSource();
-        if (source instanceof EntityLivingBase && canBeApplied((EntityLivingBase) source))
-        {
-            ItemStack toolStack = ((EntityLivingBase) source).getHeldItemMainhand();
-            NBTTagCompound compound = toolStack.getTagCompound();
+	@SubscribeEvent
+	public void handleKillStreak(LivingDeathEvent event)
+	{
+		Entity source = event.getSource().getImmediateSource();
+		if (source instanceof EntityLivingBase && canBeApplied((EntityLivingBase) source))
+		{
+			ItemStack toolStack = ((EntityLivingBase) source).getHeldItemMainhand();
+			NBTTagCompound compound = toolStack.getTagCompound();
 
-            if (compound == null)
-                compound = new NBTTagCompound();
+			if (compound == null)
+				compound = new NBTTagCompound();
 
-            //If the main effect is active, Apex should only be enabled if the item is reborn
-            if (MetallurgyEffects.HADEROTH_EFFECT.isEnabled() && !compound.getBoolean("reborn"))
-                return;
+			//If the main effect is active, Apex should only be enabled if the item is reborn
+			if (MetallurgyEffects.HADEROTH_EFFECT.isEnabled() && !compound.getBoolean("reborn"))
+				return;
 
-            ResourceLocation targetRegName = getMobType(event.getEntity());
-            if (targetRegName != null)
-            {
-                String killedType = compound.getString("killed_type");
-                if (killedType.equals(targetRegName.toString()))
-                {
-                    compound.setInteger("kill_count", compound.getInteger("kill_count") + 1);
-                }
-                else
-                {
-                    compound.setInteger("kill_count", 1);
-                    compound.setString("killed_type", targetRegName.toString());
-                }
-            }
+			ResourceLocation targetRegName = getMobType(event.getEntity());
+			if (targetRegName != null)
+			{
+				String killedType = compound.getString("killed_type");
+				if (killedType.equals(targetRegName.toString()))
+				{
+					compound.setInteger("kill_count", compound.getInteger("kill_count") + 1);
+				}
+				else
+				{
+					compound.setInteger("kill_count", 1);
+					compound.setString("killed_type", targetRegName.toString());
+				}
+			}
 
-            //logger.info("Entity Type: {} | Kill Count: {}", compound.getString("killed_type"), compound.getInteger("kill_count"));
-            toolStack.setTagCompound(compound);
-        }
-    }
+			//logger.info("Entity Type: {} | Kill Count: {}", compound.getString("killed_type"), compound.getInteger("kill_count"));
+			toolStack.setTagCompound(compound);
+		}
+	}
 
-    @SubscribeEvent
-    public void applyEffectModifier(LivingHurtEvent event)
-    {
-        Entity source = event.getSource().getImmediateSource();
+	@SubscribeEvent
+	public void applyEffectModifier(LivingHurtEvent event)
+	{
+		Entity source = event.getSource().getImmediateSource();
 
-        if (source instanceof EntityLivingBase && canBeApplied((EntityLivingBase) source))
-        {
-            NBTTagCompound toolData = ((EntityLivingBase) source).getHeldItemMainhand().getTagCompound();
+		if (source instanceof EntityLivingBase && canBeApplied((EntityLivingBase) source))
+		{
+			NBTTagCompound toolData = ((EntityLivingBase) source).getHeldItemMainhand().getTagCompound();
 
-            if (toolData != null)
-            {
-                ResourceLocation targetType = getMobType(event.getEntity());
-                int killCount = toolData.getInteger("kill_count");
-                if (killCount > 0 && targetType != null && toolData.getString("killed_type").equals(targetType.toString()))
-                {
-                    // TODO: 06/03/2021 Balance: Might be a bit to strong
-                    event.setAmount(Math.min(event.getAmount() + (killCount), 20F));
-                    Utils.repeat(15, () -> spawnParticle(event.getEntity(), 2F, true, 5));
-                }
-            }
-        }
-    }
+			if (toolData != null)
+			{
+				ResourceLocation targetType = getMobType(event.getEntity());
+				int killCount = toolData.getInteger("kill_count");
+				if (killCount > 0 && targetType != null && toolData.getString("killed_type").equals(targetType.toString()))
+				{
+					// TODO: 06/03/2021 Balance: Might be a bit to strong
+					event.setAmount(Math.min(event.getAmount() + (killCount), 20F));
+					Utils.repeat(15, () -> spawnParticle(event.getEntity(), 2F, true, 5));
+				}
+			}
+		}
+	}
 
-    /**
-     * @return The Registry name of the entity (null if invalid or some other edge case)
-     */
-    @Nullable
-    private ResourceLocation getMobType(Entity entity)
-    {
-        ResourceLocation targetRegName = null;
-        for (EntityEntry entry : ForgeRegistries.ENTITIES)
-        {
-            if (entry.getEntityClass() == entity.getClass())
-                targetRegName = ForgeRegistries.ENTITIES.getKey(entry);
-        }
+	/**
+	 * @return The Registry name of the entity (null if invalid or some other edge case)
+	 */
+	@Nullable
+	private ResourceLocation getMobType(Entity entity)
+	{
+		ResourceLocation targetRegName = null;
+		for (EntityEntry entry : ForgeRegistries.ENTITIES)
+		{
+			if (entry.getEntityClass() == entity.getClass())
+				targetRegName = ForgeRegistries.ENTITIES.getKey(entry);
+		}
 
-        return targetRegName;
-    }
+		return targetRegName;
+	}
+
 }

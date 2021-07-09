@@ -15,6 +15,6 @@ import net.minecraft.item.crafting.IRecipe;
 
 public interface IRecipeMetal extends IRecipe {
 
-    ItemStack getOutputFromMetal(Metal metal);
+	ItemStack getOutputFromMetal(Metal metal);
 
 }

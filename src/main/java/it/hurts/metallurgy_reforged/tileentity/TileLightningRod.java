@@ -13,6 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileLightningRod extends TileEntity /*implements ITickable*/ {
 
-    //    private int delay = 0;
-    //    private boolean isActive;
+	//    private int delay = 0;
+	//    private boolean isActive;
 }

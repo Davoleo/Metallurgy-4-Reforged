@@ -21,81 +21,81 @@ import net.minecraftforge.fluids.FluidUtil;
 
 public class FluidMolten extends Fluid {
 
-    protected Fluid fluid = this;
-    protected static final Material material = Material.LAVA;
-    private int mapColor = 0xFFFFFFFF;
-    private float overlayAlpha = 0.2F;
-    private static final SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
-    private static final SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
-    private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
-    private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
+	protected Fluid fluid = this;
+	protected static final Material material = Material.LAVA;
+	private int mapColor = 0xFFFFFFFF;
+	private float overlayAlpha = 0.2F;
+	private static final SoundEvent emptySound = SoundEvents.ITEM_BUCKET_EMPTY_LAVA;
+	private static final SoundEvent fillSound = SoundEvents.ITEM_BUCKET_FILL_LAVA;
+	private final static ResourceLocation default_still = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_still");
+	private final static ResourceLocation default_flowing = new ResourceLocation(Metallurgy.MODID, "blocks/molten_metal_flow");
 
-    public FluidMolten(String name, int mapColor, int temperature)
-    {
-        super(name, default_still, default_flowing);
-        this.setDensity(800);
-        this.setGaseous(false);
-        this.setLuminosity(9);
-        this.setViscosity(4000);
-        this.setTemperature(temperature);
-        this.setColor(mapColor);
-    }
+	public FluidMolten(String name, int mapColor, int temperature)
+	{
+		super(name, default_still, default_flowing);
+		this.setDensity(800);
+		this.setGaseous(false);
+		this.setLuminosity(9);
+		this.setViscosity(4000);
+		this.setTemperature(temperature);
+		this.setColor(mapColor);
+	}
 
-    public int getColor()
-    {
-        return mapColor;
-    }
+	public int getColor()
+	{
+		return mapColor;
+	}
 
-    public FluidMolten setColor(int mapColor)
-    {
-        this.mapColor = mapColor;
-        return this;
-    }
+	public FluidMolten setColor(int mapColor)
+	{
+		this.mapColor = mapColor;
+		return this;
+	}
 
-    public float getAlpha()
-    {
-        return overlayAlpha;
-    }
+	public float getAlpha()
+	{
+		return overlayAlpha;
+	}
 
-    public FluidMolten setAlpha(float overlayAlpha)
-    {
-        this.overlayAlpha = overlayAlpha;
-        return this;
-    }
+	public FluidMolten setAlpha(float overlayAlpha)
+	{
+		this.overlayAlpha = overlayAlpha;
+		return this;
+	}
 
-    @Override
-    public SoundEvent getEmptySound()
-    {
-        return emptySound;
-    }
+	@Override
+	public SoundEvent getEmptySound()
+	{
+		return emptySound;
+	}
 
-    @Override
-    public SoundEvent getFillSound()
-    {
-        return fillSound;
-    }
+	@Override
+	public SoundEvent getFillSound()
+	{
+		return fillSound;
+	}
 
-    public Material getMaterial()
-    {
-        return material;
-    }
+	public Material getMaterial()
+	{
+		return material;
+	}
 
-    @Override
-    public boolean doesVaporize(FluidStack fluidStack)
-    {
-        if (block == null)
-            return false;
-        return block.getDefaultState().getMaterial() == getMaterial();
-    }
+	@Override
+	public boolean doesVaporize(FluidStack fluidStack)
+	{
+		if (block == null)
+			return false;
+		return block.getDefaultState().getMaterial() == getMaterial();
+	}
 
-    public FluidStack getFluidStack()
-    {
-        return new FluidStack(this, 1);
-    }
+	public FluidStack getFluidStack()
+	{
+		return new FluidStack(this, 1);
+	}
 
-    public ItemStack getBucket()
-    {
-        return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
-    }
+	public ItemStack getBucket()
+	{
+		return FluidUtil.getFilledBucket(new FluidStack(this.getFluidStack(), 1));
+	}
 
 }

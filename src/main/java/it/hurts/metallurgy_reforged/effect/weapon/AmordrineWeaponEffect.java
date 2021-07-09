@@ -22,35 +22,37 @@ import javax.annotation.Nonnull;
 
 public class AmordrineWeaponEffect extends BaseMetallurgyEffect {
 
-    public AmordrineWeaponEffect() {
-        super(ModMetals.AMORDRINE);
-    }
+	public AmordrineWeaponEffect()
+	{
+		super(ModMetals.AMORDRINE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void onMobAttacked(LivingHurtEvent event)
-    {
-        Entity attacker = event.getSource().getTrueSource();
+	@SubscribeEvent
+	public void onMobAttacked(LivingHurtEvent event)
+	{
+		Entity attacker = event.getSource().getTrueSource();
 
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase)
-        {
-            if (!canBeApplied(((EntityLivingBase) attacker)))
-                return;
+		if (event.getSource().getTrueSource() instanceof EntityLivingBase)
+		{
+			if (!canBeApplied(((EntityLivingBase) attacker)))
+				return;
 
-            //Higher Percentage means lower entity life
-            float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
-            float originalAMount = event.getAmount();
-            event.setAmount(originalAMount + originalAMount * percentage * 2);
+			//Higher Percentage means lower entity life
+			float percentage = 1F - event.getEntityLiving().getHealth() / event.getEntityLiving().getMaxHealth();
+			float originalAMount = event.getAmount();
+			event.setAmount(originalAMount + originalAMount * percentage * 2);
 
-            if (!event.getEntity().world.isRemote)
-                for (int i = 0; i < 25; i++)
-                    spawnParticle(event.getEntityLiving(), 1F + percentage * 2F, true, MathHelper.floor(percentage * 9));
-        }
-    }
+			if (!event.getEntity().world.isRemote)
+				for (int i = 0; i < 25; i++)
+					spawnParticle(event.getEntityLiving(), 1F + percentage * 2F, true, MathHelper.floor(percentage * 9));
+		}
+	}
 
 }

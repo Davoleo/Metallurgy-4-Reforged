@@ -32,6 +32,7 @@ public class EventUtils {
 	/**
 	 * @param entity The entity who is wearing the armor
 	 * @param metal  The metal the armor is made of
+	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
 	public static boolean isWearingFullArmorSet(EntityLivingBase entity, Metal metal)
@@ -62,6 +63,7 @@ public class EventUtils {
 	/**
 	 * @param entity EntityLivingBase
 	 * @param metal  The metal you need to count the number of armor piece of
+	 *
 	 * @return The number of pieces of armor worn by the player
 	 */
 	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
@@ -79,6 +81,7 @@ public class EventUtils {
 	/**
 	 * @param tool  The item tool you're using to harvest the block
 	 * @param block The Block you're harvesting
+	 *
 	 * @return whether you can harvest a certain block with a specific tool
 	 */
 	public static boolean canHarvest(ItemStack tool, IBlockState block)
@@ -110,53 +113,53 @@ public class EventUtils {
 	{
 		final List<ItemStack> equip = new ArrayList<>();
 
-        for (ItemStack stack : entity.getEquipmentAndArmor())
-        {
-            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-                equip.add(stack);
-        }
+		for (ItemStack stack : entity.getEquipmentAndArmor())
+		{
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+				equip.add(stack);
+		}
 
-        return equip;
-    }
+		return equip;
+	}
 
-    public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
-    {
-        final List<ItemStack> equip = new ArrayList<>();
+	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
+	{
+		final List<ItemStack> equip = new ArrayList<>();
 
-        for (ItemStack stack : entity.getEquipmentAndArmor())
-        {
-            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-            {
-                equip.add(stack);
-            }
-        }
+		for (ItemStack stack : entity.getEquipmentAndArmor())
+		{
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+			{
+				equip.add(stack);
+			}
+		}
 
-        return equip.get(Utils.random.nextInt(equip.size()));
-    }
+		return equip.get(Utils.random.nextInt(equip.size()));
+	}
 
-    @Nullable
-    public static Metal getRandomMetalBasedOnDifficulty(World world)
-    {
-        //Some math Reminders
-        //(1 * 1 - 0) * 5 = 5;
-        //(2 * 2 - 1) * 5 = 15;
-        //(3 * 3 - 2) * 5 = 35;
-        //(3^0) * 5 = 5 - 5 * difficulty + 1 = 0;
-        //(3^1) * 5 = 15 - 5 * difficulty + 1 = 5;
-        //(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
-        //(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
-        float chance = 0;
-        switch (world.getDifficulty().getId())
-        {
-            case 0:
-                chance = 0;
-                break;
-            case 1:
-                chance = 5;
-                break;
-            case 2:
-                chance = 10;
-                break;
+	@Nullable
+	public static Metal getRandomMetalBasedOnDifficulty(World world)
+	{
+		//Some math Reminders
+		//(1 * 1 - 0) * 5 = 5;
+		//(2 * 2 - 1) * 5 = 15;
+		//(3 * 3 - 2) * 5 = 35;
+		//(3^0) * 5 = 5 - 5 * difficulty + 1 = 0;
+		//(3^1) * 5 = 15 - 5 * difficulty + 1 = 5;
+		//(3^2) * 5 = 45 - 5 * difficulty + 1 = 15;
+		//(3^3) * 5 = 135 - 5 * difficulty + 1  = 30;
+		float chance = 0;
+		switch (world.getDifficulty().getId())
+		{
+			case 0:
+				chance = 0;
+				break;
+			case 1:
+				chance = 5;
+				break;
+			case 2:
+				chance = 10;
+				break;
 			case 3:
 				chance = 20;
 				break;

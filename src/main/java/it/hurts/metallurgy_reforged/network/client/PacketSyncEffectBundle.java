@@ -29,109 +29,112 @@ import javax.annotation.Nullable;
 
 public class PacketSyncEffectBundle implements IMessage {
 
-    private byte bundleType;
+	private byte bundleType;
 
-    private String prefixKey;
-    private int step;
-    private long timestamp;
-    private boolean paused;
+	private String prefixKey;
+	private int step;
+	private long timestamp;
+	private boolean paused;
 
-    private ItemStack effectStack;
+	private ItemStack effectStack;
 
-    @Nullable
-    private NBTTagCompound extras;
+	@Nullable
+	private NBTTagCompound extras;
 
-    @Nullable
-    private BlockPos blockPos;
+	@Nullable
+	private BlockPos blockPos;
 
-    @SuppressWarnings("unused")
-    public PacketSyncEffectBundle()
-    {
-        //Mandatory Empty Constructor
-    }
+	@SuppressWarnings("unused")
+	public PacketSyncEffectBundle()
+	{
+		//Mandatory Empty Constructor
+	}
 
-    public PacketSyncEffectBundle(String prefixKey, ProgressiveDataBundle bundle)
-    {
-        this.bundleType = bundle.getType();
+	public PacketSyncEffectBundle(String prefixKey, ProgressiveDataBundle bundle)
+	{
+		this.bundleType = bundle.getType();
 
-        this.prefixKey = prefixKey;
-        this.step = bundle.getCurrentStep();
-        this.timestamp = bundle.getPrevStepTime();
-        this.paused = bundle.isPaused();
+		this.prefixKey = prefixKey;
+		this.step = bundle.getCurrentStep();
+		this.timestamp = bundle.getPrevStepTime();
+		this.paused = bundle.isPaused();
 
-        this.effectStack = bundle.getEffectStack();
+		this.effectStack = bundle.getEffectStack();
 
-        if (bundle.getType() == 1)
-            this.blockPos = ((BlockInfoDataBundle) bundle).getPos();
-        else if (bundle.getType() == 2)
-            this.extras = ((ExtraFilledDataBundle) bundle).getExtras();
-    }
+		if (bundle.getType() == 1)
+			this.blockPos = ((BlockInfoDataBundle) bundle).getPos();
+		else if (bundle.getType() == 2)
+			this.extras = ((ExtraFilledDataBundle) bundle).getExtras();
+	}
 
-    @Override
-    public void fromBytes(ByteBuf buf)
-    {
-        prefixKey = ByteBufUtils.readUTF8String(buf);
+	@Override
+	public void fromBytes(ByteBuf buf)
+	{
+		prefixKey = ByteBufUtils.readUTF8String(buf);
 
-        step = buf.readInt();
-        timestamp = buf.readLong();
-        paused = buf.readBoolean();
+		step = buf.readInt();
+		timestamp = buf.readLong();
+		paused = buf.readBoolean();
 
-        effectStack = ByteBufUtils.readItemStack(buf);
+		effectStack = ByteBufUtils.readItemStack(buf);
 
-        if (bundleType == 1)
-            blockPos = BlockPos.fromLong(buf.readLong());
+		if (bundleType == 1)
+			blockPos = BlockPos.fromLong(buf.readLong());
 
-        if (bundleType == 2)
-            extras = ByteBufUtils.readTag(buf);
-    }
+		if (bundleType == 2)
+			extras = ByteBufUtils.readTag(buf);
+	}
 
-    @Override
-    public void toBytes(ByteBuf buf)
-    {
-        ByteBufUtils.writeUTF8String(buf, prefixKey);
+	@Override
+	public void toBytes(ByteBuf buf)
+	{
+		ByteBufUtils.writeUTF8String(buf, prefixKey);
 
-        buf.writeInt(step);
-        buf.writeLong(timestamp);
-        buf.writeBoolean(paused);
+		buf.writeInt(step);
+		buf.writeLong(timestamp);
+		buf.writeBoolean(paused);
 
-        ByteBufUtils.writeItemStack(buf, effectStack);
+		ByteBufUtils.writeItemStack(buf, effectStack);
 
-        if (blockPos != null && bundleType == 1)
-            buf.writeLong(blockPos.toLong());
+		if (blockPos != null && bundleType == 1)
+			buf.writeLong(blockPos.toLong());
 
-        if (extras != null && bundleType == 2)
-            ByteBufUtils.writeTag(buf, extras);
-    }
+		if (extras != null && bundleType == 2)
+			ByteBufUtils.writeTag(buf, extras);
+	}
 
-    public static class Handler implements IMessageHandler<PacketSyncEffectBundle, IMessage> {
-        @SideOnly(Side.CLIENT)
-        @Override
-        public IMessage onMessage(PacketSyncEffectBundle message, MessageContext ctx)
-        {
-            Minecraft minecraft = Minecraft.getMinecraft();
-            minecraft.addScheduledTask(() -> {
-                ProgressiveDataBundle bundle = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(message.prefixKey);
-                //Passing null as the player since I don't need things to synchronize on the client, we're already on the client here
-                if (bundle.getCurrentStep() != message.step)
-                    bundle.setCurrentStep(message.step, null);
+	public static class Handler implements IMessageHandler<PacketSyncEffectBundle, IMessage> {
 
-                if (bundle.getPrevStepTime() == -1)
-                    bundle.updateTimeStamp(minecraft.player);
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IMessage onMessage(PacketSyncEffectBundle message, MessageContext ctx)
+		{
+			Minecraft minecraft = Minecraft.getMinecraft();
+			minecraft.addScheduledTask(() -> {
+				ProgressiveDataBundle bundle = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).effectBundles.get(message.prefixKey);
+				//Passing null as the player since I don't need things to synchronize on the client, we're already on the client here
+				if (bundle.getCurrentStep() != message.step)
+					bundle.setCurrentStep(message.step, null);
 
-                if (bundle.getEffectStack().isEmpty())
-                    bundle.setEffectStack(message.effectStack, null);
+				if (bundle.getPrevStepTime() == -1)
+					bundle.updateTimeStamp(minecraft.player);
 
-                if (bundle.isPaused() != message.paused)
-                    bundle.setPaused(message.paused, null);
+				if (bundle.getEffectStack().isEmpty())
+					bundle.setEffectStack(message.effectStack, null);
 
-                if (message.bundleType == 1 && message.blockPos != ((BlockInfoDataBundle) bundle).getPos())
-                    ((BlockInfoDataBundle) bundle).setPos(message.blockPos);
+				if (bundle.isPaused() != message.paused)
+					bundle.setPaused(message.paused, null);
 
-                if (message.bundleType == 2 && message.extras != ((ExtraFilledDataBundle) bundle).getExtras())
-                    ((ExtraFilledDataBundle) bundle).setExtras(message.extras);
-            });
+				if (message.bundleType == 1 && message.blockPos != ((BlockInfoDataBundle) bundle).getPos())
+					((BlockInfoDataBundle) bundle).setPos(message.blockPos);
 
-            return null;
-        }
-    }
+				if (message.bundleType == 2 && message.extras != ((ExtraFilledDataBundle) bundle).getExtras())
+					((ExtraFilledDataBundle) bundle).setExtras(message.extras);
+			});
+
+			return null;
+		}
+
+	}
+
 }

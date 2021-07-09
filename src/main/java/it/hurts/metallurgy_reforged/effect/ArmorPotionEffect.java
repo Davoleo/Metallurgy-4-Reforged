@@ -21,9 +21,10 @@ import javax.annotation.Nonnull;
 public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
     private final Potion potion;
-    private int amplifier;
+    private final int amplifier;
 
-    public ArmorPotionEffect(Metal metal, Potion potion, int amplifier) {
+    public ArmorPotionEffect(Metal metal, Potion potion, int amplifier)
+    {
         super(metal);
         this.potion = potion;
         this.amplifier = amplifier;
@@ -31,12 +32,15 @@ public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
     @Nonnull
     @Override
-    public EnumEffectCategory getCategory() {
+    public EnumEffectCategory getCategory()
+    {
         return EnumEffectCategory.ARMOR;
     }
 
-    public void livingEvent(LivingEvent event) {
-        if (event instanceof LivingEvent.LivingUpdateEvent) {
+    public void livingEvent(LivingEvent event)
+    {
+        if (event instanceof LivingEvent.LivingUpdateEvent)
+        {
             boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
 
             if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && refreshEffect)

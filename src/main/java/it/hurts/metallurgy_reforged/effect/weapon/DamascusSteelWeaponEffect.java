@@ -21,35 +21,36 @@ import javax.annotation.Nonnull;
 
 public class DamascusSteelWeaponEffect extends BaseMetallurgyEffect {
 
-    public DamascusSteelWeaponEffect()
-    {
-        super(ModMetals.DAMASCUS_STEEL);
-    }
+	public DamascusSteelWeaponEffect()
+	{
+		super(ModMetals.DAMASCUS_STEEL);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    /**
-     * Mobs drop significantly more experience
-     */
-    @SubscribeEvent
-    public void onKill(LivingExperienceDropEvent event)
-    {
-        //Won't change xp drop if a player is killed
-        if (event.getEntityLiving() instanceof EntityPlayer)
-            return;
+	/**
+	 * Mobs drop significantly more experience
+	 */
+	@SubscribeEvent
+	public void onKill(LivingExperienceDropEvent event)
+	{
+		//Won't change xp drop if a player is killed
+		if (event.getEntityLiving() instanceof EntityPlayer)
+			return;
 
-        //Only if the required weapons are in hand
-        if (canBeApplied(event.getAttackingPlayer()))
-        {
-            //Set the dropped experience to be either (base * 2 + 2) or (base * 3 + 2)
-            event.setDroppedExperience(event.getDroppedExperience() * 3 + 2);
+		//Only if the required weapons are in hand
+		if (canBeApplied(event.getAttackingPlayer()))
+		{
+			//Set the dropped experience to be either (base * 2 + 2) or (base * 3 + 2)
+			event.setDroppedExperience(event.getDroppedExperience() * 3 + 2);
 
-            Utils.repeat(6, () -> spawnParticle(event.getEntityLiving(), 2F, true, 9));
-        }
-    }
+			Utils.repeat(6, () -> spawnParticle(event.getEntityLiving(), 2F, true, 9));
+		}
+	}
+
 }

@@ -41,15 +41,17 @@ public class ItemElectrumMagnet extends ItemExtra {
         METAL_ONLY,
         ENABLED;
 
-        public static Status byOrdinal(int id) {
+        public static Status byOrdinal(int id)
+        {
             return Status.values()[id];
         }
     }
 
     private static final int RADIUS = 6;
-    private Status status;
+    private final Status status;
 
-    public ItemElectrumMagnet() {
+    public ItemElectrumMagnet()
+    {
         super("electrum_magnet", MetallurgyTabs.tabSpecial, "gadget");
         this.status = Status.DISABLED;
 
@@ -62,14 +64,17 @@ public class ItemElectrumMagnet extends ItemExtra {
     }
 
     @Override
-    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
-        if (stack.getTagCompound() != null) {
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+    {
+        if (stack.getTagCompound() != null)
+        {
             Status status = Status.byOrdinal(stack.getTagCompound().getInteger("status"));
 
             tooltip.add("§eAttracts dropped items on the ground (Has 3 different modes)");
             String statusString = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_mode") + " ";
 
-            switch (status) {
+            switch (status)
+            {
                 case DISABLED:
                     statusString += Utils.localizeEscapingCustomSequences("tooltip.metallurgy.electrum_magnet_disabled");
                     break;
@@ -86,22 +91,26 @@ public class ItemElectrumMagnet extends ItemExtra {
     }
 
     @Override
-    public boolean hasEffect(ItemStack stack) {
+    public boolean hasEffect(ItemStack stack)
+    {
         return stack.getTagCompound() != null && stack.getTagCompound().getInteger("status") > 1;
     }
 
     @Nonnull
     @Override
-    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn) {
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
+    {
         ItemStack magnet = playerIn.getHeldItem(handIn);
-        if (playerIn.isSneaking() && magnet.getTagCompound() != null) {
+        if (playerIn.isSneaking() && magnet.getTagCompound() != null)
+        {
             NBTTagCompound compound = magnet.getTagCompound();
             //If there's no status integer the method returns 0 which is the index of the DISABLED status
             int status = compound.getInteger("status");
 
             if (status < 2)
                 compound.setInteger("status", ++status);
-            else {
+            else
+            {
                 status = 0;
                 compound.setInteger("status", 0);
             }
@@ -114,7 +123,8 @@ public class ItemElectrumMagnet extends ItemExtra {
 
     @SuppressWarnings("Guava")
     @Override
-    public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected) {
+    public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
+    {
         if (stack.getTagCompound() == null)
             stack.setTagCompound(new NBTTagCompound());
 
@@ -125,7 +135,8 @@ public class ItemElectrumMagnet extends ItemExtra {
                 entityIn.posX + RADIUS, entityIn.posY + RADIUS, entityIn.posZ + RADIUS
         );
 
-        if (status.ordinal() > 0) {
+        if (status.ordinal() > 0)
+        {
             List<EntityItem> entItems;
             Predicate<EntityItem> predicate = null;
 
@@ -134,7 +145,8 @@ public class ItemElectrumMagnet extends ItemExtra {
 
             entItems = worldIn.getEntitiesWithinAABB(EntityItem.class, box, predicate);
 
-            if (!worldIn.isRemote) {
+            if (!worldIn.isRemote)
+            {
                 entItems.forEach(item -> {
                     //Item : 10 3 10 | 0 3 0
                     //Player : 0 3 0 | -10 3 -10
@@ -166,4 +178,5 @@ public class ItemElectrumMagnet extends ItemExtra {
 
         return false;
     }
+
 }

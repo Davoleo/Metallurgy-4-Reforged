@@ -13,8 +13,8 @@ import it.hurts.metallurgy_reforged.material.MetalStats;
 
 public class ItemMetal extends ItemBase implements IMetalItem {
 
-    private ItemTypes type;
-    private MetalStats metal;
+    private final ItemTypes type;
+    private final MetalStats metal;
 
     public ItemMetal(MetalStats metal, ItemTypes type)
     {

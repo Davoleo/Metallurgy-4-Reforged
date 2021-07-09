@@ -23,30 +23,30 @@ import javax.annotation.Nullable;
 
 public class MetallurgyTraitKingDice extends AbstractTrait implements IMetallurgyTrait {
 
-    public MetallurgyTraitKingDice()
-    {
-        super("king_dice_trait", TextFormatting.WHITE);
-    }
+	public MetallurgyTraitKingDice()
+	{
+		super("king_dice_trait", TextFormatting.WHITE);
+	}
 
-    @Override
-    public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
-    {
-        target.addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
-    }
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
+	{
+		target.addPotionEffect(new PotionEffect(Utils.getRandomEffect(), 80, 0));
+	}
 
-    @Override
-    public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective)
-    {
-        //		TODO Aggiungere la possibilit� di aggiungere al player effetti positivi, o negativi, randomicamente.
-        //		Si potrebbe eliminare questo metodo
-    }
+	@Override
+	public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective)
+	{
+		//		TODO Aggiungere la possibilit� di aggiungere al player effetti positivi, o negativi, randomicamente.
+		//		Si potrebbe eliminare questo metodo
+	}
 
-    @Override
-    public void register(String name, @Nullable String tooltip)
-    {
-        Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
-        if (tooltip != null)
-            Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
-    }
+	@Override
+	public void register(String name, @Nullable String tooltip)
+	{
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
+		if (tooltip != null)
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
+	}
 
 }

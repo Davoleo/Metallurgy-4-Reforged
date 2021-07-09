@@ -23,44 +23,45 @@ import javax.annotation.Nonnull;
 
 public class EximiteWeaponEffect extends BaseMetallurgyEffect {
 
-    public EximiteWeaponEffect()
-    {
-        super(ModMetals.EXIMITE);
-    }
+	public EximiteWeaponEffect()
+	{
+		super(ModMetals.EXIMITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void increaseAttackDamageInTheEnd(LivingHurtEvent event)
-    {
-        Entity attacker = event.getSource().getTrueSource();
+	@SubscribeEvent
+	public void increaseAttackDamageInTheEnd(LivingHurtEvent event)
+	{
+		Entity attacker = event.getSource().getTrueSource();
 
-        if (attacker instanceof EntityLivingBase && canBeApplied(((EntityLivingBase) attacker)))
-        {
-            if (event.getEntityLiving().dimension == 1)
-            {
-                //constant 150% damage boost
-                event.setAmount(event.getAmount() * 1.5F);
-                for (int i = 0; i < 15; i++)
-                    spawnParticle(event.getEntityLiving(), 2F, true, 6);
-            }
-        }
-    }
+		if (attacker instanceof EntityLivingBase && canBeApplied(((EntityLivingBase) attacker)))
+		{
+			if (event.getEntityLiving().dimension == 1)
+			{
+				//constant 150% damage boost
+				event.setAmount(event.getAmount() * 1.5F);
+				for (int i = 0; i < 15; i++)
+					spawnParticle(event.getEntityLiving(), 2F, true, 6);
+			}
+		}
+	}
 
-    @SubscribeEvent
-    public void increaseLootInTheEnd(LivingDropsEvent event)
-    {
-        if (event.getEntityLiving().dimension == 1)
-        {
-            event.getDrops().forEach(item -> {
-                //Drop count can increase of 0, 1 or 2 items
-                item.getItem().setCount(item.getItem().getCount() + Utils.random.nextInt(3));
-            });
-        }
-    }
+	@SubscribeEvent
+	public void increaseLootInTheEnd(LivingDropsEvent event)
+	{
+		if (event.getEntityLiving().dimension == 1)
+		{
+			event.getDrops().forEach(item -> {
+				//Drop count can increase of 0, 1 or 2 items
+				item.getItem().setCount(item.getItem().getCount() + Utils.random.nextInt(3));
+			});
+		}
+	}
+
 }

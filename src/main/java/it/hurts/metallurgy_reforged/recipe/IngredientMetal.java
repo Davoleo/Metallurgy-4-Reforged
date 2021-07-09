@@ -27,62 +27,62 @@ import javax.annotation.Nullable;
 
 public class IngredientMetal extends Ingredient {
 
-    /**
-     * Can be: ingot, dust, nugget, block
-     */
-    String type;
+	/**
+	 * Can be: ingot, dust, nugget, block
+	 */
+	String type;
 
-    public IngredientMetal(String ingredientType)
-    {
-        super(0);
-        type = ingredientType;
-    }
+	public IngredientMetal(String ingredientType)
+	{
+		super(0);
+		type = ingredientType;
+	}
 
-    @Override
-    public boolean apply(@Nullable ItemStack craftingStack)
-    {
-        if (craftingStack == null || craftingStack.isEmpty())
-            return false;
+	@Override
+	public boolean apply(@Nullable ItemStack craftingStack)
+	{
+		if (craftingStack == null || craftingStack.isEmpty())
+			return false;
 
-        return isMetal(type, craftingStack);
-    }
+		return isMetal(type, craftingStack);
+	}
 
-    private boolean isMetal(String type, ItemStack stack)
-    {
-        int[] ids = OreDictionary.getOreIDs(stack);
+	private boolean isMetal(String type, ItemStack stack)
+	{
+		int[] ids = OreDictionary.getOreIDs(stack);
 
-        for (int id : ids)
-        {
-            String ore = OreDictionary.getOreName(id);
+		for (int id : ids)
+		{
+			String ore = OreDictionary.getOreName(id);
 
-            if (ore.startsWith(type))
-            {
-                String snakeOre = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, ore);
-                String[] snakeArray = snakeOre.split("_");
-                String metalName = String.join("_", ArrayUtils.removeElement(snakeArray, snakeArray[0]));
-                return ModMetals.metalMap.containsKey(metalName);
-            }
-        }
+			if (ore.startsWith(type))
+			{
+				String snakeOre = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, ore);
+				String[] snakeArray = snakeOre.split("_");
+				String metalName = String.join("_", ArrayUtils.removeElement(snakeArray, snakeArray[0]));
+				return ModMetals.metalMap.containsKey(metalName);
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public NonNullList<ItemStack> getOreDictStacks(Metal metal)
-    {
-        return OreDictionary.getOres(type + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), false);
-    }
+	public NonNullList<ItemStack> getOreDictStacks(Metal metal)
+	{
+		return OreDictionary.getOres(type + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), false);
+	}
 
-    @SuppressWarnings("unused")
-    public static class Factory implements IIngredientFactory {
+	@SuppressWarnings("unused")
+	public static class Factory implements IIngredientFactory {
 
-        @Nonnull
-        @Override
-        public Ingredient parse(JsonContext context, JsonObject json)
-        {
-            String type = JsonUtils.getString(json, "item_type");
-            return new IngredientMetal(type);
-        }
+		@Nonnull
+		@Override
+		public Ingredient parse(JsonContext context, JsonObject json)
+		{
+			String type = JsonUtils.getString(json, "item_type");
+			return new IngredientMetal(type);
+		}
 
-    }
+	}
 
 }

@@ -17,16 +17,19 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class TooltipRenderHandler {
 
-    @SubscribeEvent
-    public static void tooltipRenderColor(RenderTooltipEvent.Color event) {
-        Item item = event.getStack().getItem();
-        Metal metal = ItemUtils.getMetalFromItem(item);
-        if (metal != null) {
-            int color = metal.getStats().getColorHex();
-            //Move the alpha channel 6 digits (24 / 4) to the left and add the rgb color to it
-            int argb = (0xFF << 24) + color;
-            event.setBorderStart(argb);
-            event.setBorderEnd(argb);
-        }
-    }
+	@SubscribeEvent
+	public static void tooltipRenderColor(RenderTooltipEvent.Color event)
+	{
+		Item item = event.getStack().getItem();
+		Metal metal = ItemUtils.getMetalFromItem(item);
+		if (metal != null)
+		{
+			int color = metal.getStats().getColorHex();
+			//Move the alpha channel 6 digits (24 / 4) to the left and add the rgb color to it
+			int argb = (0xFF << 24) + color;
+			event.setBorderStart(argb);
+			event.setBorderEnd(argb);
+		}
+	}
+
 }

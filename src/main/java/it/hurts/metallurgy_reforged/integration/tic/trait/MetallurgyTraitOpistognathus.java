@@ -27,63 +27,63 @@ import java.util.UUID;
 
 public class MetallurgyTraitOpistognathus extends AbstractTrait implements IMetallurgyTrait {
 
-    public static final UUID DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID = UUID.fromString("8bfd3581-6559-468f-a5a5-66c46ff7b70c");
+	public static final UUID DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID = UUID.fromString("8bfd3581-6559-468f-a5a5-66c46ff7b70c");
 
-    public MetallurgyTraitOpistognathus()
-    {
-        super("opistognathus_trait", TextFormatting.DARK_AQUA);
-    }
+	public MetallurgyTraitOpistognathus()
+	{
+		super("opistognathus_trait", TextFormatting.DARK_AQUA);
+	}
 
-    @Override
-    public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event)
-    {
-        if (event.getEntity().isInWater()
-                && MetallurgyTinkerTraits.isMetallurgyTrait(event.getEntityPlayer(), "opistognathus"))
-            event.setNewSpeed(event.getOriginalSpeed() * 3);
-    }
+	@Override
+	public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event)
+	{
+		if (event.getEntity().isInWater()
+				&& MetallurgyTinkerTraits.isMetallurgyTrait(event.getEntityPlayer(), "opistognathus"))
+			event.setNewSpeed(event.getOriginalSpeed() * 3);
+	}
 
-    @Override
-    public void register(String name, @Nullable String tooltip)
-    {
-        Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
-        if (tooltip != null)
-            Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
-    }
+	@Override
+	public void register(String name, @Nullable String tooltip)
+	{
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
+		if (tooltip != null)
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
+	}
 
-    @Override
-    public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected)
-    {
-        IAttributeInstance instance;
+	@Override
+	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected)
+	{
+		IAttributeInstance instance;
 
-        if (entity instanceof EntityPlayer)
-        {
-            EntityPlayer player = (EntityPlayer) entity;
-            instance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+		if (entity instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer) entity;
+			instance = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
 
-            if (isSelected && MetallurgyTinkerTraits.isMetallurgyTrait(player, "opistognathus"))
-            {
-                AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
+			if (isSelected && MetallurgyTinkerTraits.isMetallurgyTrait(player, "opistognathus"))
+			{
+				AttributeModifier deep_iron_trait_modifier = new AttributeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID, "Deep Iron SwordTrait Modifier", 2.7, 0);
 
-                if (player.isInWater() && instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) == null)
-                {
+				if (player.isInWater() && instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) == null)
+				{
 
-                    instance.applyModifier(deep_iron_trait_modifier);
+					instance.applyModifier(deep_iron_trait_modifier);
 
-                }
-                else
-                {
-                    if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null && !player.isInWater())
-                    {
-                        instance.removeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID);
-                    }
-                }
-            }
-            else
-            {
-                if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null)
-                    instance.removeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID);
-            }
-        }
-    }
+				}
+				else
+				{
+					if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null && !player.isInWater())
+					{
+						instance.removeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID);
+					}
+				}
+			}
+			else
+			{
+				if (instance.getModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID) != null)
+					instance.removeModifier(DEEP_IRON_SWORD_TRAIT_MODIFIER_UUID);
+			}
+		}
+	}
 
 }

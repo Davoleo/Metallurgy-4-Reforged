@@ -27,18 +27,18 @@ public class NetherOreSpawn extends BaseOreSpawn {
 		super(null, biomes);
 	}
 
-    @SuppressWarnings("Guava")
-    @Override
-    public Predicate<IBlockState> getBlockPredicate()
-    {
-        return (blockState) -> {
-            ResourceLocation block = blockState.getBlock().getRegistryName();
-            return block.equals(new ResourceLocation("minecraft", "netherrack")) ||
-                    block.equals(new ResourceLocation("netherex", "gloomy_netherrack")) ||
-                    block.equals(new ResourceLocation("netherex", "lively_netherrack")) ||
-                    block.equals(new ResourceLocation("netherex", "fiery_netherrack")) ||
-                    block.equals(new ResourceLocation("netherex", "icy_netherrack"));
-        };
-    }
+	@SuppressWarnings("Guava")
+	@Override
+	public Predicate<IBlockState> getBlockPredicate()
+	{
+		return (blockState) -> {
+			ResourceLocation block = blockState.getBlock().getRegistryName();
+			return block.equals(new ResourceLocation("minecraft", "netherrack")) ||
+					block.equals(new ResourceLocation("netherex", "gloomy_netherrack")) ||
+					block.equals(new ResourceLocation("netherex", "lively_netherrack")) ||
+					block.equals(new ResourceLocation("netherex", "fiery_netherrack")) ||
+					block.equals(new ResourceLocation("netherex", "icy_netherrack"));
+		};
+	}
 
 }

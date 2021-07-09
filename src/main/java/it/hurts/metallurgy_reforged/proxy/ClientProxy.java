@@ -30,54 +30,55 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class ClientProxy implements IProxy {
 
-    public static ModFontRenderer fontRenderer;
-    public static Minecraft client = Minecraft.getMinecraft();
+	public static ModFontRenderer fontRenderer;
+	public static Minecraft client = Minecraft.getMinecraft();
 
-    public static void clientSpawnParticle(World world, double x, double y, double z, float scale, float red, float green, float blue, boolean dynamic, int level)
-    {
-        client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, scale, red, green, blue, dynamic, level));
-    }
+	public static void clientSpawnParticle(World world, double x, double y, double z, float scale, float red, float green, float blue, boolean dynamic, int level)
+	{
+		client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, scale, red, green, blue, dynamic, level));
+	}
 
-    @Override
-    public void preInit(FMLPreInitializationEvent e)
-    {
-        if (ModChecker.isTConLoaded)
-            it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
+	@Override
+	public void preInit(FMLPreInitializationEvent e)
+	{
+		if (ModChecker.isTConLoaded)
+			it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
 
-        MinecraftForge.EVENT_BUS.register(HUDHandler.class);
-        ModItems.brassKnuckles.initTEISR();
-    }
+		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+		ModItems.brassKnuckles.initTEISR();
+	}
 
-    @Override
-    public void init(FMLInitializationEvent event)
-    {
-        client.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-            List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
+	@Override
+	public void init(FMLInitializationEvent event)
+	{
+		client.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
 
-            if (tintIndex < metals.size())
-            {
-                return metals.get(tintIndex).getStats().getColorHex();
-            }
-            return -1;
+			if (tintIndex < metals.size())
+			{
+				return metals.get(tintIndex).getStats().getColorHex();
+			}
+			return -1;
 
-        }, ModItems.oreDetector);
+		}, ModItems.oreDetector);
 
-    }
+	}
 
-    @Override
-    public void postInit(FMLPostInitializationEvent event)
-    {
-        //Load custom Font Renderer
-        IReloadableResourceManager resourceManager = (IReloadableResourceManager) client.getResourceManager();
+	@Override
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		//Load custom Font Renderer
+		IReloadableResourceManager resourceManager = (IReloadableResourceManager) client.getResourceManager();
 
-        fontRenderer = new ModFontRenderer(client.gameSettings,
-                new ResourceLocation("textures/font/ascii.png"), client.renderEngine);
+		fontRenderer = new ModFontRenderer(client.gameSettings,
+				new ResourceLocation("textures/font/ascii.png"), client.renderEngine);
 
-        if (client.gameSettings.language != null)
-        {
-            fontRenderer.setUnicodeFlag(client.getLanguageManager().isCurrentLocaleUnicode() || client.gameSettings.forceUnicodeFont);
-            fontRenderer.setBidiFlag(client.getLanguageManager().isCurrentLanguageBidirectional());
-        }
-        resourceManager.registerReloadListener(fontRenderer);
-    }
+		if (client.gameSettings.language != null)
+		{
+			fontRenderer.setUnicodeFlag(client.getLanguageManager().isCurrentLocaleUnicode() || client.gameSettings.forceUnicodeFont);
+			fontRenderer.setBidiFlag(client.getLanguageManager().isCurrentLanguageBidirectional());
+		}
+		resourceManager.registerReloadListener(fontRenderer);
+	}
+
 }

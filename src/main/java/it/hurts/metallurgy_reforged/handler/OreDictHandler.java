@@ -28,88 +28,88 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class OreDictHandler {
 
-    public static final Multimap<Metal, ItemStack> INGOTS_CACHE = HashMultimap.create();
+	public static final Multimap<Metal, ItemStack> INGOTS_CACHE = HashMultimap.create();
 
-    public static void init()
-    {
-        ModMetals.metalMap.forEach((name, metal) -> {
+	public static void init()
+	{
+		ModMetals.metalMap.forEach((name, metal) -> {
 
-            String pascalMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name);
+			String pascalMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name);
 
-            //Items
-            if (RegistrationConfig.categoryItems.enableMetalDusts)
-                OreDictionary.registerOre("dust" + pascalMetal, metal.getDust());
+			//Items
+			if (RegistrationConfig.categoryItems.enableMetalDusts)
+				OreDictionary.registerOre("dust" + pascalMetal, metal.getDust());
 
-            INGOTS_CACHE.put(metal, new ItemStack(metal.getIngot()));
-            OreDictionary.registerOre("ingot" + pascalMetal, metal.getIngot());
+			INGOTS_CACHE.put(metal, new ItemStack(metal.getIngot()));
+			OreDictionary.registerOre("ingot" + pascalMetal, metal.getIngot());
 
-            if (RegistrationConfig.categoryItems.enableMetalNuggets)
-                OreDictionary.registerOre("nugget" + pascalMetal, metal.getNugget());
+			if (RegistrationConfig.categoryItems.enableMetalNuggets)
+				OreDictionary.registerOre("nugget" + pascalMetal, metal.getNugget());
 
-            //Blocks
-            if (!metal.isAlloy())
-                OreDictionary.registerOre("ore" + pascalMetal, metal.getOre());
+			//Blocks
+			if (!metal.isAlloy())
+				OreDictionary.registerOre("ore" + pascalMetal, metal.getOre());
 
-            if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
-                OreDictionary.registerOre("block" + pascalMetal, metal.getBlock(BlockTypes.BLOCK));
-        });
+			if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
+				OreDictionary.registerOre("block" + pascalMetal, metal.getBlock(BlockTypes.BLOCK));
+		});
 
-        //Additional oreDict values
-        //Make Tar behave like a slimeball
-        OreDictionary.registerOre("slimeball", ModItems.tar);
+		//Additional oreDict values
+		//Make Tar behave like a slimeball
+		OreDictionary.registerOre("slimeball", ModItems.tar);
 
-        //Other Misc Item OreDict Keys
-        OreDictionary.registerOre("dustGold", ModItems.dustGold);
-        OreDictionary.registerOre("dustIron", ModItems.dustIron);
-        OreDictionary.registerOre("dustBitumen", ModItems.bitumen);
-        OreDictionary.registerOre("globTar", ModItems.tar);
-        OreDictionary.registerOre("dustPotash", ModItems.potash);
-        OreDictionary.registerOre("dustSulfur", ModItems.sulfur);
-        OreDictionary.registerOre("dustThermite", ModItems.dustThermite);
-        OreDictionary.registerOre("dustPhosphorus", ModItems.phosphorus);
+		//Other Misc Item OreDict Keys
+		OreDictionary.registerOre("dustGold", ModItems.dustGold);
+		OreDictionary.registerOre("dustIron", ModItems.dustIron);
+		OreDictionary.registerOre("dustBitumen", ModItems.bitumen);
+		OreDictionary.registerOre("globTar", ModItems.tar);
+		OreDictionary.registerOre("dustPotash", ModItems.potash);
+		OreDictionary.registerOre("dustSulfur", ModItems.sulfur);
+		OreDictionary.registerOre("dustThermite", ModItems.dustThermite);
+		OreDictionary.registerOre("dustPhosphorus", ModItems.phosphorus);
 
-        //Misc Blocks
-        OreDictionary.registerOre("oreSulfur", ModBlocks.oreSulfur);
-        OreDictionary.registerOre("orePhosphorus", ModBlocks.orePhosphorite);
-        OreDictionary.registerOre("oreTar", ModBlocks.oreTar);
-        OreDictionary.registerOre("orePotash", ModBlocks.orePotash);
-        OreDictionary.registerOre("blockCharcoal", ModBlocks.blockCharcoal);
-        OreDictionary.registerOre("blockBitumen", ModBlocks.blockBitumen);
-        OreDictionary.registerOre("blockSulfur", ModBlocks.blockSulfur);
-    }
+		//Misc Blocks
+		OreDictionary.registerOre("oreSulfur", ModBlocks.oreSulfur);
+		OreDictionary.registerOre("orePhosphorus", ModBlocks.orePhosphorite);
+		OreDictionary.registerOre("oreTar", ModBlocks.oreTar);
+		OreDictionary.registerOre("orePotash", ModBlocks.orePotash);
+		OreDictionary.registerOre("blockCharcoal", ModBlocks.blockCharcoal);
+		OreDictionary.registerOre("blockBitumen", ModBlocks.blockBitumen);
+		OreDictionary.registerOre("blockSulfur", ModBlocks.blockSulfur);
+	}
 
-    public static void initOreDict(IForgeRegistryEntry.Impl<?> itemOrBlock)
-    {
-        String[] words = itemOrBlock.getRegistryName().getPath().split("_");
-        String oreName = "ore";
-        for (String word : words)
-        {
-            if (!"ore".equals(word))
-                oreName = oreName.concat(Utils.capitalize(word));
-        }
+	public static void initOreDict(IForgeRegistryEntry.Impl<?> itemOrBlock)
+	{
+		String[] words = itemOrBlock.getRegistryName().getPath().split("_");
+		String oreName = "ore";
+		for (String word : words)
+		{
+			if (!"ore".equals(word))
+				oreName = oreName.concat(Utils.capitalize(word));
+		}
 
-        if (itemOrBlock instanceof Block)
-            OreDictionary.registerOre(oreName, (Block) itemOrBlock);
-        else if (itemOrBlock instanceof Item)
-            OreDictionary.registerOre(oreName, (Item) itemOrBlock);
-    }
+		if (itemOrBlock instanceof Block)
+			OreDictionary.registerOre(oreName, (Block) itemOrBlock);
+		else if (itemOrBlock instanceof Item)
+			OreDictionary.registerOre(oreName, (Item) itemOrBlock);
+	}
 
-    public static void populateOredictCache()
-    {
-        ModMetals.metalMap.forEach((name, metal) -> {
-            NonNullList<ItemStack> otherOres = OreDictionary.getOres(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
-            otherOres.removeIf(stack -> stack.getItem().equals(metal.getIngot()));
-            if (!otherOres.isEmpty())
-            {
-                INGOTS_CACHE.putAll(metal, otherOres);
-            }
-        });
-    }
+	public static void populateOredictCache()
+	{
+		ModMetals.metalMap.forEach((name, metal) -> {
+			NonNullList<ItemStack> otherOres = OreDictionary.getOres(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
+			otherOres.removeIf(stack -> stack.getItem().equals(metal.getIngot()));
+			if (!otherOres.isEmpty())
+			{
+				INGOTS_CACHE.putAll(metal, otherOres);
+			}
+		});
+	}
 
-    public static NonNullList<ItemStack> getOredictedStacksFromMetalAndPrefix(String prefix, Metal metal)
-    {
-        String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString());
-        return OreDictionary.getOres(prefix + camelMetal);
-    }
+	public static NonNullList<ItemStack> getOredictedStacksFromMetalAndPrefix(String prefix, Metal metal)
+	{
+		String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString());
+		return OreDictionary.getOres(prefix + camelMetal);
+	}
 
 }

@@ -24,45 +24,45 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait {
 
-    private int level;
+	private final int level;
 
-    public TraitStrongly(int level)
-    {
-        super("strongly", String.valueOf(level), 0xffffff, 2, level);
-        this.level = level;
-    }
+	public TraitStrongly(int level)
+	{
+		super("strongly", String.valueOf(level), 0xffffff, 2, level);
+		this.level = level;
+	}
 
-    public int getLevel()
-    {
-        return level;
-    }
+	public int getLevel()
+	{
+		return level;
+	}
 
-    @SubscribeEvent
-    public void onArmorTick(PlayerTickEvent event)
-    {
-        if (hasValidStregthTrait(event.player))
-            event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
-    }
+	@SubscribeEvent
+	public void onArmorTick(PlayerTickEvent event)
+	{
+		if (hasValidStregthTrait(event.player))
+			event.player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 40, level, false, false));
+	}
 
-    private boolean hasValidStregthTrait(EntityPlayer player)
-    {
-        for (ItemStack armorPiece : player.getArmorInventoryList())
-        {
-            if (ToolHelper.isBroken(armorPiece))
-                continue;
+	private boolean hasValidStregthTrait(EntityPlayer player)
+	{
+		for (ItemStack armorPiece : player.getArmorInventoryList())
+		{
+			if (ToolHelper.isBroken(armorPiece))
+				continue;
 
-            NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
-            for (int i = 0; i < traits.tagCount(); i++)
-            {
-                String id = traits.getStringTagAt(i);
-                ITrait trait = TinkerRegistry.getTrait(id);
+			NBTTagList traits = TagUtil.getTraitsTagList(armorPiece);
+			for (int i = 0; i < traits.tagCount(); i++)
+			{
+				String id = traits.getStringTagAt(i);
+				ITrait trait = TinkerRegistry.getTrait(id);
 
-                if (trait instanceof TraitStrongly)
-                    return true;
-            }
-        }
+				if (trait instanceof TraitStrongly)
+					return true;
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
 }

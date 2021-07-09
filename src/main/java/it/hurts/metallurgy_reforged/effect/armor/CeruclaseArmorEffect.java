@@ -29,57 +29,57 @@ import javax.annotation.Nonnull;
 
 public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 
-    private final int RADIUS = 8;
+	private final int RADIUS = 8;
 
-    public CeruclaseArmorEffect()
-    {
-        super(ModMetals.CERUCLASE);
-    }
+	public CeruclaseArmorEffect()
+	{
+		super(ModMetals.CERUCLASE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @SubscribeEvent
-    public void extinguishAndSlow(LivingEvent.LivingUpdateEvent event)
-    {
-        float level = getLevel(event.getEntityLiving());
+	@SubscribeEvent
+	public void extinguishAndSlow(LivingEvent.LivingUpdateEvent event)
+	{
+		float level = getLevel(event.getEntityLiving());
 
-        if (level == 0)
-            return;
+		if (level == 0)
+			return;
 
-        EntityLivingBase armored = event.getEntityLiving();
+		EntityLivingBase armored = event.getEntityLiving();
 
-        BlockPos pos = armored.getPosition();
-        AxisAlignedBB box = new AxisAlignedBB(pos.getX() - RADIUS, pos.getY() - (RADIUS / 2D), pos.getZ() - RADIUS,
-                pos.getX() + RADIUS, pos.getY() + (RADIUS / 2D), pos.getZ() + RADIUS);
+		BlockPos pos = armored.getPosition();
+		AxisAlignedBB box = new AxisAlignedBB(pos.getX() - RADIUS, pos.getY() - (RADIUS / 2D), pos.getZ() - RADIUS,
+				pos.getX() + RADIUS, pos.getY() + (RADIUS / 2D), pos.getZ() + RADIUS);
 
-        armored.world.getEntitiesWithinAABB(EntityLivingBase.class, box,
-                entity -> armored instanceof EntityPlayer ? entity instanceof EntityLiving : entity instanceof EntityPlayer)
-                .forEach(entity -> {
+		armored.world.getEntitiesWithinAABB(EntityLivingBase.class, box,
+				entity -> armored instanceof EntityPlayer ? entity instanceof EntityLiving : entity instanceof EntityPlayer)
+				.forEach(entity -> {
 
-                    // MATH > MathHelper
-                    //Old distance-based amplifier
-                    //int amplifier = (int) Math.round((10 - distance) / 4);
-                    // 0 0 1 2
-                    int amplifier = Math.max((int) (4 * level) - 2, 0);
-                    entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
-                    entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
+					// MATH > MathHelper
+					//Old distance-based amplifier
+					//int amplifier = (int) Math.round((10 - distance) / 4);
+					// 0 0 1 2
+					int amplifier = Math.max((int) (4 * level) - 2, 0);
+					entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
+					entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
 
-                    spawnParticle(entity, 0.85F, false, 5);
+					spawnParticle(entity, 0.85F, false, 5);
 
-                    //Every second 50% chance to extinguish an entity that is on fire
-                    if ((entity.getLastDamageSource() == DamageSource.IN_FIRE || entity.getLastDamageSource() == DamageSource.ON_FIRE) && armored.getRNG().nextBoolean())
-                    {
-                        entity.extinguish();
-                        armored.world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.AMBIENT, 1, 1);
-                    }
-                });
+					//Every second 50% chance to extinguish an entity that is on fire
+					if ((entity.getLastDamageSource() == DamageSource.IN_FIRE || entity.getLastDamageSource() == DamageSource.ON_FIRE) && armored.getRNG().nextBoolean())
+					{
+						entity.extinguish();
+						armored.world.playSound(null, entity.getPosition(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.AMBIENT, 1, 1);
+					}
+				});
 
 
-    }
+	}
 
 }

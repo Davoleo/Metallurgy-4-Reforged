@@ -22,37 +22,37 @@ import java.util.List;
 
 public class CrusherRecipeWrapper implements IRecipeWrapper {
 
-    private final ItemStack input;
-    private final ItemStack output;
+	private final ItemStack input;
+	private final ItemStack output;
 
-    public CrusherRecipeWrapper(ItemStack input, ItemStack output)
-    {
-        this.input = input;
-        this.output = output;
-    }
+	public CrusherRecipeWrapper(ItemStack input, ItemStack output)
+	{
+		this.input = input;
+		this.output = output;
+	}
 
-    public static List<CrusherRecipeWrapper> getRecipeInputs()
-    {
-        ArrayList<CrusherRecipeWrapper> recipes = new ArrayList<>();
+	public static List<CrusherRecipeWrapper> getRecipeInputs()
+	{
+		ArrayList<CrusherRecipeWrapper> recipes = new ArrayList<>();
 
-        CrusherRecipes.getInstance().getRecipeMap().forEach((input, output) -> {
-            recipes.add(new CrusherRecipeWrapper(input, output));
-        });
+		CrusherRecipes.getInstance().getRecipeMap().forEach((input, output) -> {
+			recipes.add(new CrusherRecipeWrapper(input, output));
+		});
 
-        return recipes;
-    }
+		return recipes;
+	}
 
-    @Override
-    public void getIngredients(@Nonnull IIngredients ingredients)
-    {
-        ingredients.setInput(VanillaTypes.ITEM, input);
-        ingredients.setOutput(VanillaTypes.ITEM, output);
-    }
+	@Override
+	public void getIngredients(@Nonnull IIngredients ingredients)
+	{
+		ingredients.setInput(VanillaTypes.ITEM, input);
+		ingredients.setOutput(VanillaTypes.ITEM, output);
+	}
 
-    @Override
-    public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
-    {
-        return false;
-    }
+	@Override
+	public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int mouseButton)
+	{
+		return false;
+	}
 
 }

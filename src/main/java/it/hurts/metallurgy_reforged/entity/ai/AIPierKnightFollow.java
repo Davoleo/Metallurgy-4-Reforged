@@ -127,7 +127,7 @@ public class AIPierKnightFollow extends EntityAIBase {
                         {
                             if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.isTeleportFriendlyBlock(i, j, k, l, i1))
                             {
-                                this.follower.setLocationAndAngles((double) ((float) (i + l) + 0.5F), (double) k, (double) ((float) (j + i1) + 0.5F), this.follower.rotationYaw, this.follower.rotationPitch);
+                                this.follower.setLocationAndAngles((float) (i + l) + 0.5F, k, (float) (j + i1) + 0.5F, this.follower.rotationYaw, this.follower.rotationPitch);
                                 this.pierPathFinder.clearPath();
                                 return;
                             }
@@ -144,4 +144,5 @@ public class AIPierKnightFollow extends EntityAIBase {
         IBlockState iblockstate = this.world.getBlockState(blockpos);
         return iblockstate.getBlockFaceShape(this.world, blockpos, EnumFacing.DOWN) == BlockFaceShape.SOLID && iblockstate.canEntitySpawn(this.follower) && this.world.isAirBlock(blockpos.up()) && this.world.isAirBlock(blockpos.up(2));
     }
+
 }

@@ -20,40 +20,40 @@ import javax.annotation.Nonnull;
 
 public class CeruclaseToolEffect extends BaseMetallurgyEffect {
 
-    public CeruclaseToolEffect()
-    {
-        super(ModMetals.CERUCLASE);
-    }
+	public CeruclaseToolEffect()
+	{
+		super(ModMetals.CERUCLASE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.TOOL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.TOOL;
+	}
 
-    @SubscribeEvent
-    public void instaMine(PlayerEvent.BreakSpeed event)
-    {
-        if (!canBeApplied(event.getEntityPlayer()))
-            return;
+	@SubscribeEvent
+	public void instaMine(PlayerEvent.BreakSpeed event)
+	{
+		if (!canBeApplied(event.getEntityPlayer()))
+			return;
 
-        if (event.getState().getBlock().getHarvestLevel(event.getState()) == 0)
-        {
+		if (event.getState().getBlock().getHarvestLevel(event.getState()) == 0)
+		{
 
-            Item tool = event.getEntityPlayer().getHeldItemMainhand().getItem();
-            String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
+			Item tool = event.getEntityPlayer().getHeldItemMainhand().getItem();
+			String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
 
-            if (blockToolClass != null && tool.getRegistryName().getPath().contains(blockToolClass))
-            {
+			if (blockToolClass != null && tool.getRegistryName().getPath().contains(blockToolClass))
+			{
 
-                //check passed because axe is contained in pickaxe
-                if (blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
-                    return;
+				//check passed because axe is contained in pickaxe
+				if (blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
+					return;
 
-                event.setNewSpeed(100);
-            }
-        }
-    }
+				event.setNewSpeed(100);
+			}
+		}
+	}
 
 }

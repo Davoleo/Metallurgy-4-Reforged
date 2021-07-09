@@ -74,8 +74,8 @@ public class Metallurgy {
 	}
 
 	@Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		logger = event.getModLog();
 		logger.info(NAME + " is entering pre-initialization!");
 		proxy.preInit(event);
@@ -120,47 +120,47 @@ public class Metallurgy {
 			logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
 		}
 
-        if (ModChecker.isCraftTweakerLoaded)
-        {
-            IntegrationCT.preInit();
-            logger.info("CraftTweaker Compatibility module has been pre-initialized");
-        }
+		if (ModChecker.isCraftTweakerLoaded)
+		{
+			IntegrationCT.preInit();
+			logger.info("CraftTweaker Compatibility module has been pre-initialized");
+		}
 
-        if (ModChecker.isSilentGemsLoaded)
-        {
-            IntegrationSilentGems.init();
-            logger.info("CraftTweaker Compatibility module has been initialized");
-        }
+		if (ModChecker.isSilentGemsLoaded)
+		{
+			IntegrationSilentGems.init();
+			logger.info("CraftTweaker Compatibility module has been initialized");
+		}
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-        logger.info("GUIs have been registered!");
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		logger.info("GUIs have been registered!");
 
-        CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), PunchEffect::new);
-        logger.info("Punch effect capability Registered");
+		CapabilityManager.INSTANCE.register(IPunchEffect.class, new PunchEffectStorage(), PunchEffect::new);
+		logger.info("Punch effect capability Registered");
 
-        CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), PlayerEffectData::new);
-        logger.info("Metallurgy Effects capability Registered");
+		CapabilityManager.INSTANCE.register(PlayerEffectData.class, new EffectDataStorage(), PlayerEffectData::new);
+		logger.info("Metallurgy Effects capability Registered");
 
-        CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), EntityData::new);
-        logger.info("Entity Data capability Registered");
-    }
+		CapabilityManager.INSTANCE.register(EntityData.class, new EntityDataStorage(), EntityData::new);
+		logger.info("Entity Data capability Registered");
+	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
-    {
-        proxy.init(event);
-        logger.info(NAME + " is entering initialization!");
-        ModRecipes.initFurnaceRecipes();
-        logger.info("Furnace Recipes loaded!");
+	{
+		proxy.init(event);
+		logger.info(NAME + " is entering initialization!");
+		ModRecipes.initFurnaceRecipes();
+		logger.info("Furnace Recipes loaded!");
 
-        if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
-        {
-            IntegrationTIC.init();
-            logger.info("Tinkers' Construct Compatibility module has been initialized");
+		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		{
+			IntegrationTIC.init();
+			logger.info("Tinkers' Construct Compatibility module has been initialized");
 
-            if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
-            {
-                IntegrationCArmory.init();
+			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+			{
+				IntegrationCArmory.init();
 				logger.info("Construct's Armory Compatibility module has been initialized");
 			}
 		}

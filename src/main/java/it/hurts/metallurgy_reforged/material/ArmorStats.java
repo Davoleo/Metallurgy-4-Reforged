@@ -11,68 +11,68 @@ package it.hurts.metallurgy_reforged.material;
 
 public class ArmorStats {
 
-    private final int[] damageReduction;
-    private final int enchantability;
-    private final int durability;
-    private final float toughness;
+	private final int[] damageReduction;
+	private final int enchantability;
+	private final int durability;
+	private final float toughness;
 
-    private double maxHealth;
-    private double knockbackResistance;
-    private double movementSpeed;
+	private double maxHealth;
+	private double knockbackResistance;
+	private double movementSpeed;
 
-    public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)
-    {
-        this.damageReduction = damageReduction;
-        this.enchantability = enchantability;
-        this.durability = durability;
-        this.toughness = toughness;
+	public ArmorStats(int[] damageReduction, int enchantability, int durability, float toughness)
+	{
+		this.damageReduction = damageReduction;
+		this.enchantability = enchantability;
+		this.durability = durability;
+		this.toughness = toughness;
 
-        this.maxHealth = 0;
-        this.knockbackResistance = 0;
-        this.movementSpeed = 0;
-    }
+		this.maxHealth = 0;
+		this.knockbackResistance = 0;
+		this.movementSpeed = 0;
+	}
 
-    public void setAttributes(double maxHealth, double knockbackResistance, double movementSpeed)
-    {
-        this.maxHealth = maxHealth;
-        this.knockbackResistance = knockbackResistance;
-        this.movementSpeed = movementSpeed;
-    }
+	public void setAttributes(double maxHealth, double knockbackResistance, double movementSpeed)
+	{
+		this.maxHealth = maxHealth;
+		this.knockbackResistance = knockbackResistance;
+		this.movementSpeed = movementSpeed;
+	}
 
-    public double getMaxHealth()
-    {
-        return maxHealth;
-    }
+	public double getMaxHealth()
+	{
+		return maxHealth;
+	}
 
-    public double getKnockbackResistance()
-    {
-        return knockbackResistance;
-    }
+	public double getKnockbackResistance()
+	{
+		return knockbackResistance;
+	}
 
-    public double getMovementSpeed()
-    {
-        return movementSpeed;
-    }
+	public double getMovementSpeed()
+	{
+		return movementSpeed;
+	}
 
-    public int[] getDamageReduction()
-    {
-        return damageReduction;
-    }
+	public int[] getDamageReduction()
+	{
+		return damageReduction;
+	}
 
-    //Armor Enchantability
-    public int getEnchantability()
-    {
-        return enchantability;
-    }
+	//Armor Enchantability
+	public int getEnchantability()
+	{
+		return enchantability;
+	}
 
-    public int getDurability()
-    {
-        return durability;
-    }
+	public int getDurability()
+	{
+		return durability;
+	}
 
-    public float getToughness()
-    {
-        return toughness;
-    }
+	public float getToughness()
+	{
+		return toughness;
+	}
 
 }

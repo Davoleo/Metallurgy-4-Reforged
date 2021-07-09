@@ -29,52 +29,58 @@ import javax.annotation.Nonnull;
 public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 
 
-    public AmordrineArmorEffect() {
-        super(ModMetals.AMORDRINE);
-    }
+	public AmordrineArmorEffect()
+	{
+		super(ModMetals.AMORDRINE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    /**
-     * after x jumps, the cooldown should be reset when on ground, This is to make jump possible again
-     */
-    @SubscribeEvent
-    public void resetJumpCount(LivingEvent.LivingUpdateEvent event) {
-        if (!canBeApplied(event.getEntityLiving()))
-            return;
+	/**
+	 * after x jumps, the cooldown should be reset when on ground, This is to make jump possible again
+	 */
+	@SubscribeEvent
+	public void resetJumpCount(LivingEvent.LivingUpdateEvent event)
+	{
+		if (!canBeApplied(event.getEntityLiving()))
+			return;
 
-        if (event.getEntity() instanceof EntityPlayer) {
-            PlayerEffectData capability = event.getEntity().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
-            if (capability != null) {
-                if (capability.getAmordrineJumps() > 0)
-                    event.getEntityLiving().fallDistance = 0;
+		if (event.getEntity() instanceof EntityPlayer)
+		{
+			PlayerEffectData capability = event.getEntity().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+			if (capability != null)
+			{
+				if (capability.getAmordrineJumps() > 0)
+					event.getEntityLiving().fallDistance = 0;
 
-                if (event.getEntity().onGround && capability.getAmordrineJumps() > 0)
-                {
-                    capability.resetAmordrineJumps();
-                }
-            }
-        }
-    }
+				if (event.getEntity().onGround && capability.getAmordrineJumps() > 0)
+				{
+					capability.resetAmordrineJumps();
+				}
+			}
+		}
+	}
 
-    /**
-     * Called in {@link ClientEventsHandler}
-     */
-    @SideOnly(Side.CLIENT)
-    public static void onPlayerJump(EntityPlayer player) {
+	/**
+	 * Called in {@link ClientEventsHandler}
+	 */
+	@SideOnly(Side.CLIENT)
+	public static void onPlayerJump(EntityPlayer player)
+	{
 
-        final int jumps = EventUtils.getArmorPiecesCount(player, ModMetals.AMORDRINE);
+		final int jumps = EventUtils.getArmorPiecesCount(player, ModMetals.AMORDRINE);
 
-        if (net.minecraft.client.Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed() && jumps > 0 && !player.onGround)
-        {
-            PacketAmordrineJump packet = new PacketAmordrineJump(jumps);
-            PacketManager.network.sendToServer(packet);
-        }
-    }
+		if (net.minecraft.client.Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed() && jumps > 0 && !player.onGround)
+		{
+			PacketAmordrineJump packet = new PacketAmordrineJump(jumps);
+			PacketManager.network.sendToServer(packet);
+		}
+	}
 
 }

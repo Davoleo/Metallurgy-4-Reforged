@@ -139,7 +139,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         {
             if (i > 0)
             {
-                ((EntityLivingBase) entityIn).knockBack(this, (float) i * 0.5F, (double) MathHelper.sin(this.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(this.rotationYaw * 0.017453292F)));
+                ((EntityLivingBase) entityIn).knockBack(this, (float) i * 0.5F, MathHelper.sin(this.rotationYaw * 0.017453292F), -MathHelper.cos(this.rotationYaw * 0.017453292F));
                 this.motionX *= 0.6D;
                 this.motionZ *= 0.6D;
             }
@@ -385,4 +385,5 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
 
         compound.setInteger("VanishTime", this.vanishTime);
     }
+
 }

@@ -75,4 +75,5 @@ public class MidasiumToolEffect extends BaseMetallurgyEffect {
                             Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05));
         }
     }
+
 }

@@ -20,25 +20,30 @@ import javax.annotation.Nonnull;
 
 public class AstralSilverToolEffect extends BaseMetallurgyEffect {
 
-    public AstralSilverToolEffect() {
-        super(ModMetals.ASTRAL_SILVER);
-    }
+	public AstralSilverToolEffect()
+	{
+		super(ModMetals.ASTRAL_SILVER);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.TOOL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.TOOL;
+	}
 
-    @SubscribeEvent
-    public void handleBreakSpeed(PlayerEvent.BreakSpeed event) {
-        if (!canBeApplied(event.getEntityPlayer()))
-            return;
+	@SubscribeEvent
+	public void handleBreakSpeed(PlayerEvent.BreakSpeed event)
+	{
+		if (!canBeApplied(event.getEntityPlayer()))
+			return;
 
-        if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1) {
-            event.setNewSpeed(event.getOriginalSpeed() * 2);
-            for (int i = 0; i < 2; i++)
-                spawnParticle(event.getEntity().world, event.getPos(), 1F, true, Utils.random.nextInt(6), 0, 0, 0);
-        }
-    }
+		if (event.getEntityPlayer().dimension != 0 && event.getEntityPlayer().inventory.getDestroySpeed(event.getState()) > 1)
+		{
+			event.setNewSpeed(event.getOriginalSpeed() * 2);
+			for (int i = 0; i < 2; i++)
+				spawnParticle(event.getEntity().world, event.getPos(), 1F, true, Utils.random.nextInt(6), 0, 0, 0);
+		}
+	}
+
 }

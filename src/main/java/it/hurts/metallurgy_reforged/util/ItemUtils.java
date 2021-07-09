@@ -239,16 +239,17 @@ public class ItemUtils {
 	 * Gets the instance of a Metal from an Item
 	 *
 	 * @param item An Item instance
+	 *
 	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
 	public static Metal getMetalFromItem(Item item)
 	{
 		if (item instanceof IMetalItem)
-        {
-            MetalStats metalStats = ((IMetalItem) item).getMetalStats();
-            if (metalStats != null)
-                return ModMetals.metalMap.get(metalStats.getName());
-        }
+		{
+			MetalStats metalStats = ((IMetalItem) item).getMetalStats();
+			if (metalStats != null)
+				return ModMetals.metalMap.get(metalStats.getName());
+		}
 
 		if (item instanceof ItemBlock)
 		{

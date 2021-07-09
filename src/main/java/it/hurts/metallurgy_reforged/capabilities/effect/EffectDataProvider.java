@@ -21,40 +21,40 @@ import javax.annotation.Nullable;
 @SuppressWarnings("ConstantConditions")
 public class EffectDataProvider implements ICapabilitySerializable<NBTBase> {
 
-    @CapabilityInject(PlayerEffectData.class)
-    public static final Capability<PlayerEffectData> PLAYER_EFFECT_DATA_CAPABILITY = null;
+	@CapabilityInject(PlayerEffectData.class)
+	public static final Capability<PlayerEffectData> PLAYER_EFFECT_DATA_CAPABILITY = null;
 
-    private final PlayerEffectData instance;
+	private final PlayerEffectData instance;
 
-    public EffectDataProvider()
-    {
-        this.instance = PLAYER_EFFECT_DATA_CAPABILITY != null ? PLAYER_EFFECT_DATA_CAPABILITY.getDefaultInstance() : new PlayerEffectData();
-    }
+	public EffectDataProvider()
+	{
+		this.instance = PLAYER_EFFECT_DATA_CAPABILITY != null ? PLAYER_EFFECT_DATA_CAPABILITY.getDefaultInstance() : new PlayerEffectData();
+	}
 
-    @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
-    {
-        return capability == PLAYER_EFFECT_DATA_CAPABILITY;
-    }
+	@Override
+	public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing)
+	{
+		return capability == PLAYER_EFFECT_DATA_CAPABILITY;
+	}
 
-    @Nullable
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
-    {
-        return capability == PLAYER_EFFECT_DATA_CAPABILITY ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
-    }
+	@Nullable
+	@Override
+	public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing)
+	{
+		return capability == PLAYER_EFFECT_DATA_CAPABILITY ? PLAYER_EFFECT_DATA_CAPABILITY.cast(this.instance) : null;
+	}
 
-    @Override
-    public NBTBase serializeNBT()
-    {
-        return PLAYER_EFFECT_DATA_CAPABILITY != null ? PLAYER_EFFECT_DATA_CAPABILITY.getStorage().writeNBT(PLAYER_EFFECT_DATA_CAPABILITY, this.instance, null) : null;
-    }
+	@Override
+	public NBTBase serializeNBT()
+	{
+		return PLAYER_EFFECT_DATA_CAPABILITY != null ? PLAYER_EFFECT_DATA_CAPABILITY.getStorage().writeNBT(PLAYER_EFFECT_DATA_CAPABILITY, this.instance, null) : null;
+	}
 
-    @Override
-    public void deserializeNBT(NBTBase nbt)
-    {
-        if (PLAYER_EFFECT_DATA_CAPABILITY != null)
-            PLAYER_EFFECT_DATA_CAPABILITY.getStorage().readNBT(PLAYER_EFFECT_DATA_CAPABILITY, this.instance, null, nbt);
-    }
+	@Override
+	public void deserializeNBT(NBTBase nbt)
+	{
+		if (PLAYER_EFFECT_DATA_CAPABILITY != null)
+			PLAYER_EFFECT_DATA_CAPABILITY.getStorage().readNBT(PLAYER_EFFECT_DATA_CAPABILITY, this.instance, null, nbt);
+	}
 
 }

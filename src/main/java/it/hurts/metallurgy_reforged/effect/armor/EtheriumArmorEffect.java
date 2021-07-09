@@ -33,91 +33,92 @@ import java.util.List;
 
 public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public EtheriumArmorEffect()
-    {
-        super(ModMetals.ETHERIUM);
-    }
+	public EtheriumArmorEffect()
+	{
+		super(ModMetals.ETHERIUM);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
-    {
-        //System.out.println(step);
+	@Override
+	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
+	{
+		//System.out.println(step);
 
-        //Timer Expires
-        if (step == maxSteps)
-        {
-            entity.noClip = false;
-            entity.getArmorInventoryList().forEach(stack -> entity.getCooldownTracker().setCooldown(stack.getItem(), 400));
-        }
-    }
+		//Timer Expires
+		if (step == maxSteps)
+		{
+			entity.noClip = false;
+			entity.getArmorInventoryList().forEach(stack -> entity.getCooldownTracker().setCooldown(stack.getItem(), 400));
+		}
+	}
 
-    @SubscribeEvent
-    public void livingEvent(LivingEvent.LivingUpdateEvent event)
-    {
-        if (event.getEntityLiving() instanceof EntityPlayer)
-        {
-            EntityPlayer entity = (EntityPlayer) event.getEntityLiving();
+	@SubscribeEvent
+	public void livingEvent(LivingEvent.LivingUpdateEvent event)
+	{
+		if (event.getEntityLiving() instanceof EntityPlayer)
+		{
+			EntityPlayer entity = (EntityPlayer) event.getEntityLiving();
 
-            if (!canBeApplied(entity))
-                return;
+			if (!canBeApplied(entity))
+				return;
 
-            for (ItemStack piece : entity.getArmorInventoryList())
-            {
-                if (!piece.isEmpty() && entity.getCooldownTracker().getCooldown(piece.getItem(), 0) != 0)
-                    return;
-            }
+			for (ItemStack piece : entity.getArmorInventoryList())
+			{
+				if (!piece.isEmpty() && entity.getCooldownTracker().getCooldown(piece.getItem(), 0) != 0)
+					return;
+			}
 
-            ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).etheriumArmorBundle;
+			ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).etheriumArmorBundle;
 
-            final List<AxisAlignedBB> collisions = entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().grow(0.1D, 0, 0.1D));
-            if (entity.isSneaking() && !collisions.isEmpty())
-            {
-                //Resume the timer
-                if (!bundle.isEffectInProgress())
-                    bundle.setPaused(false, entity);
+			final List<AxisAlignedBB> collisions = entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().grow(0.1D, 0, 0.1D));
+			if (entity.isSneaking() && !collisions.isEmpty())
+			{
+				//Resume the timer
+				if (!bundle.isEffectInProgress())
+					bundle.setPaused(false, entity);
 
-                //If the timer is still stopped:
-                //Kick-start the timer
-                if (!bundle.isEffectInProgress())
-                    bundle.incrementStep(entity);
+				//If the timer is still stopped:
+				//Kick-start the timer
+				if (!bundle.isEffectInProgress())
+					bundle.incrementStep(entity);
 
-                entity.noClip = true;
-                entity.motionY = 0D;
+				entity.noClip = true;
+				entity.motionY = 0D;
 
-                collisions.forEach(aabb -> {
-                    BlockPos pos = new BlockPos(aabb.minX, aabb.minY, aabb.minZ);
-                    Utils.repeat(5,
-                            () -> spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0)
-                    );
-                });
-            }
-            else
-            {
-                bundle.setPaused(true, entity);
-            }
-        }
-    }
+				collisions.forEach(aabb -> {
+					BlockPos pos = new BlockPos(aabb.minX, aabb.minY, aabb.minZ);
+					Utils.repeat(5,
+							() -> spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0)
+					);
+				});
+			}
+			else
+			{
+				bundle.setPaused(true, entity);
+			}
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public void setupFogWhileInsideBlocks(EntityViewRenderEvent.RenderFogEvent event)
-    {
-        Entity entity = event.getEntity();
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void setupFogWhileInsideBlocks(EntityViewRenderEvent.RenderFogEvent event)
+	{
+		Entity entity = event.getEntity();
 
-        if (!entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
-        {
-            net.minecraft.client.renderer.GlStateManager.setFog(net.minecraft.client.renderer.GlStateManager.FogMode.EXP2);
-            net.minecraft.client.renderer.GlStateManager.setFogDensity(0.25F);
-            //This doesn't work kek
-            //float[] colorComps = metal.getStats().getColorRGBValues();
-            //net.minecraft.client.renderer.GlStateManager.color(colorComps[0], colorComps[1], colorComps[2]);
-        }
-    }
+		if (!entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
+		{
+			net.minecraft.client.renderer.GlStateManager.setFog(net.minecraft.client.renderer.GlStateManager.FogMode.EXP2);
+			net.minecraft.client.renderer.GlStateManager.setFogDensity(0.25F);
+			//This doesn't work kek
+			//float[] colorComps = metal.getStats().getColorRGBValues();
+			//net.minecraft.client.renderer.GlStateManager.color(colorComps[0], colorComps[1], colorComps[2]);
+		}
+	}
+
 }

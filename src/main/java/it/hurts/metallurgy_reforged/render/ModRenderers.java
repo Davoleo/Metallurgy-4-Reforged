@@ -16,10 +16,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModRenderers {
 
-    @SideOnly(Side.CLIENT)
-    public static void registerRenderers()
-    {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChamber.class, new SublimationChamberTESR());
-    }
+	@SideOnly(Side.CLIENT)
+	public static void registerRenderers()
+	{
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChamber.class, new SublimationChamberTESR());
+	}
 
 }

@@ -34,149 +34,151 @@ import java.util.Queue;
 
 public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public InolashiteArmorEffect()
-    {
-        super(ModMetals.INOLASHITE);
-    }
+	public InolashiteArmorEffect()
+	{
+		super(ModMetals.INOLASHITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    private void addScrollQueue(WarpData newItem, Queue<WarpData> queue, int backtrackExtension)
-    {
-        while (!queue.isEmpty() && backtrackExtension * 4 <= queue.size())
-            queue.poll();
+	private void addScrollQueue(WarpData newItem, Queue<WarpData> queue, int backtrackExtension)
+	{
+		while (!queue.isEmpty() && backtrackExtension * 4 <= queue.size())
+			queue.poll();
 
-        queue.add(newItem);
-    }
+		queue.add(newItem);
+	}
 
-    @SubscribeEvent
-    public void recallLoop(TickEvent.PlayerTickEvent event)
-    {
+	@SubscribeEvent
+	public void recallLoop(TickEvent.PlayerTickEvent event)
+	{
 
-        // In seconds (should be multiplied by 4 to get the actual number of warpDatas)
-        int backTrackExtension = (int) (getLevel(event.player) * 8);
+		// In seconds (should be multiplied by 4 to get the actual number of warpDatas)
+		int backTrackExtension = (int) (getLevel(event.player) * 8);
 
-        if (event.phase != TickEvent.Phase.START || backTrackExtension == 0)
-            return;
+		if (event.phase != TickEvent.Phase.START || backTrackExtension == 0)
+			return;
 
-        EntityPlayer player = event.player;
+		EntityPlayer player = event.player;
 
-        if (player.ticksExisted % 5 == 0)
-        {
-            Queue<WarpData> warpQueue = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).inolashiteWarpData;
+		if (player.ticksExisted % 5 == 0)
+		{
+			Queue<WarpData> warpQueue = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).inolashiteWarpData;
 
-            WarpData data = new WarpData(player.getPosition(), player.getHealth(), player.getFoodStats());
-            addScrollQueue(data, warpQueue, backTrackExtension);
-            //Metallurgy.logger.info(warpQueue.toString());
-            //Debug Visual Effect Representation
-            //for (WarpData warpData : warpQueue)
-            //    spawnParticle(player.world, warpData.position.getX(), warpData.position.getY(), warpData.position.getZ(), 8, false, 4);
-        }
+			WarpData data = new WarpData(player.getPosition(), player.getHealth(), player.getFoodStats());
+			addScrollQueue(data, warpQueue, backTrackExtension);
+			//Metallurgy.logger.info(warpQueue.toString());
+			//Debug Visual Effect Representation
+			//for (WarpData warpData : warpQueue)
+			//    spawnParticle(player.world, warpData.position.getX(), warpData.position.getY(), warpData.position.getZ(), 8, false, 4);
+		}
 
-        //Don't spawn particles if the effect is on cooldown
-        float cooldown = player.getCooldownTracker().getCooldown(getArmorRepr(player).getItem(), 0);
-        if (cooldown > 0)
-            return;
+		//Don't spawn particles if the effect is on cooldown
+		float cooldown = player.getCooldownTracker().getCooldown(getArmorRepr(player).getItem(), 0);
+		if (cooldown > 0)
+			return;
 
-        if (player.isSneaking() && player.ticksExisted % 2 == 0 && !player.world.isRemote)
-        {
-            for (double i = 0; i < Math.PI * 2; i += (Math.PI / 10D))
-                spawnParticle(player.world, player.posX + Math.sin(i), player.posY + 2, player.posZ + Math.cos(i), 1, true, 4);
-        }
-    }
+		if (player.isSneaking() && player.ticksExisted % 2 == 0 && !player.world.isRemote)
+		{
+			for (double i = 0; i < Math.PI * 2; i += (Math.PI / 10D))
+				spawnParticle(player.world, player.posX + Math.sin(i), player.posY + 2, player.posZ + Math.cos(i), 1, true, 4);
+		}
+	}
 
-    @SubscribeEvent
-    public void triggerWarp(LivingEvent.LivingJumpEvent event)
-    {
+	@SubscribeEvent
+	public void triggerWarp(LivingEvent.LivingJumpEvent event)
+	{
 
-        //Trigger Warp effect and set data
-        if (event.getEntityLiving() instanceof EntityPlayer && canBeApplied(event.getEntityLiving()) && event.getEntityLiving().isSneaking())
-        {
-            EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
+		//Trigger Warp effect and set data
+		if (event.getEntityLiving() instanceof EntityPlayer && canBeApplied(event.getEntityLiving()) && event.getEntityLiving().isSneaking())
+		{
+			EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
 
-            //If armor is on cooldown don't trigger the effect
-            if (player.getCooldownTracker().getCooldown(getArmorRepr(event.getEntityLiving()).getItem(), 0) > 0)
-                return;
+			//If armor is on cooldown don't trigger the effect
+			if (player.getCooldownTracker().getCooldown(getArmorRepr(event.getEntityLiving()).getItem(), 0) > 0)
+				return;
 
-            //Set the first
-            PlayerEffectData capability = getEffectCapability(player);
-            if (!capability.inolashiteWarpData.isEmpty())
-            {
-                capability.inolashiteArmorBundle.setExtras(capability.inolashiteWarpData.element().serializeNBT());
-                capability.inolashiteArmorBundle.incrementStep(player);
-            }
+			//Set the first
+			PlayerEffectData capability = getEffectCapability(player);
+			if (!capability.inolashiteWarpData.isEmpty())
+			{
+				capability.inolashiteArmorBundle.setExtras(capability.inolashiteWarpData.element().serializeNBT());
+				capability.inolashiteArmorBundle.incrementStep(player);
+			}
 
-            //Set armor on cooldown after jumping
-            //int cooldown = (getLevel(player) > 0.5F ? 32 : 16) * 20;
-            int level = (int) (getLevel(player) * 4);
-            int cooldown = (int) (Math.pow(2, 7 - level) * 20);
-            for (ItemArmorBase armor : metal.getArmorSet())
-                player.getCooldownTracker().setCooldown(armor, cooldown);
-        }
-    }
+			//Set armor on cooldown after jumping
+			//int cooldown = (getLevel(player) > 0.5F ? 32 : 16) * 20;
+			int level = (int) (getLevel(player) * 4);
+			int cooldown = (int) (Math.pow(2, 7 - level) * 20);
+			for (ItemArmorBase armor : metal.getArmorSet())
+				player.getCooldownTracker().setCooldown(armor, cooldown);
+		}
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
-    {
-        WarpData data = new WarpData();
-        data.deserializeNBT(((ExtraFilledDataBundle) getBundle(entity, metal, getCategory())).getExtras());
+	@Override
+	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
+	{
+		WarpData data = new WarpData();
+		data.deserializeNBT(((ExtraFilledDataBundle) getBundle(entity, metal, getCategory())).getExtras());
 
-        //Restore original position health and food stats
-        entity.setPosition(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
-        entity.setHealth(data.health);
-        entity.getFoodStats().addStats(data.hungerStats.getFoodLevel(), data.hungerStats.getSaturationLevel());
+		//Restore original position health and food stats
+		entity.setPosition(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
+		entity.setHealth(data.health);
+		entity.getFoodStats().addStats(data.hungerStats.getFoodLevel(), data.hungerStats.getSaturationLevel());
 
-        Utils.repeat(25, () -> spawnParticle(entity, 1, true, 4));
-    }
+		Utils.repeat(25, () -> spawnParticle(entity, 1, true, 4));
+	}
 
-    public static class WarpData implements INBTSerializable<NBTTagCompound> {
+	public static class WarpData implements INBTSerializable<NBTTagCompound> {
 
-        private BlockPos position;
-        private float health;
-        private FoodStats hungerStats;
+		private BlockPos position;
+		private float health;
+		private FoodStats hungerStats;
 
-        public WarpData()
-        {
-        }
+		public WarpData()
+		{
+		}
 
-        public WarpData(BlockPos position, float health, FoodStats hungerStats)
-        {
-            this.position = position;
-            this.health = health;
-            this.hungerStats = hungerStats;
-        }
+		public WarpData(BlockPos position, float health, FoodStats hungerStats)
+		{
+			this.position = position;
+			this.health = health;
+			this.hungerStats = hungerStats;
+		}
 
-        @Override
-        public NBTTagCompound serializeNBT()
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setLong("pos", position.toLong());
-            compound.setFloat("health", health);
-            compound.setInteger("food_level", hungerStats.getFoodLevel());
-            compound.setFloat("saturation", hungerStats.getSaturationLevel());
-            return compound;
-        }
+		@Override
+		public NBTTagCompound serializeNBT()
+		{
+			NBTTagCompound compound = new NBTTagCompound();
+			compound.setLong("pos", position.toLong());
+			compound.setFloat("health", health);
+			compound.setInteger("food_level", hungerStats.getFoodLevel());
+			compound.setFloat("saturation", hungerStats.getSaturationLevel());
+			return compound;
+		}
 
-        @Override
-        public void deserializeNBT(NBTTagCompound nbt)
-        {
-            this.position = BlockPos.fromLong(nbt.getLong("pos"));
-            this.health = nbt.getFloat("health");
-            FoodStats food = new FoodStats();
-            food.addStats(nbt.getInteger("food_level"), nbt.getFloat("saturation"));
-            this.hungerStats = food;
-        }
+		@Override
+		public void deserializeNBT(NBTTagCompound nbt)
+		{
+			this.position = BlockPos.fromLong(nbt.getLong("pos"));
+			this.health = nbt.getFloat("health");
+			FoodStats food = new FoodStats();
+			food.addStats(nbt.getInteger("food_level"), nbt.getFloat("saturation"));
+			this.hungerStats = food;
+		}
 
 
-        @Override
-        public String toString()
-        {
-            return "WarpData:" + position;
-        }
-    }
+		@Override
+		public String toString()
+		{
+			return "WarpData:" + position;
+		}
+
+	}
+
 }

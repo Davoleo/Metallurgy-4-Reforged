@@ -21,32 +21,33 @@ import javax.annotation.Nonnull;
 
 public class DeepIronWeaponEffect extends BaseMetallurgyEffect {
 
-    public DeepIronWeaponEffect()
-    {
-        super(ModMetals.DEEP_IRON);
-    }
+	public DeepIronWeaponEffect()
+	{
+		super(ModMetals.DEEP_IRON);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void onEntityAttacked(LivingHurtEvent event)
-    {
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase)
-        {
-            EntityLivingBase entity = (EntityLivingBase) event.getSource().getTrueSource();
-            if (!canBeApplied(entity))
-                return;
+	@SubscribeEvent
+	public void onEntityAttacked(LivingHurtEvent event)
+	{
+		if (event.getSource().getTrueSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase entity = (EntityLivingBase) event.getSource().getTrueSource();
+			if (!canBeApplied(entity))
+				return;
 
-            if (entity.isInWater())
-            {
-                event.setAmount(event.getAmount() + 6);
-                Utils.repeat(5, () -> spawnParticle(event.getEntityLiving(), 0.6F, false, 5));
-            }
-        }
-    }
+			if (entity.isInWater())
+			{
+				event.setAmount(event.getAmount() + 6);
+				Utils.repeat(5, () -> spawnParticle(event.getEntityLiving(), 0.6F, false, 5));
+			}
+		}
+	}
+
 }

@@ -29,59 +29,60 @@ import javax.annotation.Nonnull;
 
 public class InolashiteWeaponEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public InolashiteWeaponEffect()
-    {
-        super(ModMetals.INOLASHITE);
-    }
+	public InolashiteWeaponEffect()
+	{
+		super(ModMetals.INOLASHITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void doubleHit(LivingDamageEvent event)
-    {
-        Entity entity = event.getSource().getImmediateSource();
+	@SubscribeEvent
+	public void doubleHit(LivingDamageEvent event)
+	{
+		Entity entity = event.getSource().getImmediateSource();
 
-        if (entity instanceof EntityPlayer)
-        {
-            EntityPlayer attacker = ((EntityPlayer) entity);
-            if (!canBeApplied(attacker))
-                return;
+		if (entity instanceof EntityPlayer)
+		{
+			EntityPlayer attacker = ((EntityPlayer) entity);
+			if (!canBeApplied(attacker))
+				return;
 
-            ProgressiveDataBundle bundle = getEffectCapability(attacker).inolashiteWeaponBundle;
+			ProgressiveDataBundle bundle = getEffectCapability(attacker).inolashiteWeaponBundle;
 
-            if (!bundle.isEffectInProgress())
-            {
-                bundle.incrementStep(attacker);
-            }
-        }
-    }
+			if (!bundle.isEffectInProgress())
+			{
+				bundle.incrementStep(attacker);
+			}
+		}
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
-    {
-        IAttributeInstance attackSpeed = entity.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
-        double originalBaseSpeed = attackSpeed.getBaseValue();
+	@Override
+	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
+	{
+		IAttributeInstance attackSpeed = entity.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
+		double originalBaseSpeed = attackSpeed.getBaseValue();
 
-        //Instantly recover from weapon cooldown
-        attackSpeed.setBaseValue(1000);
-        EntityLivingBase lastAttackedEntity = entity.getLastAttackedEntity();
+		//Instantly recover from weapon cooldown
+		attackSpeed.setBaseValue(1000);
+		EntityLivingBase lastAttackedEntity = entity.getLastAttackedEntity();
 
-        if (lastAttackedEntity != null)
-        {
-            lastAttackedEntity.hurtResistantTime = 0;
-            //Attack the last attacked entity with the current item
-            entity.attackTargetEntityWithCurrentItem(lastAttackedEntity);
-        }
+		if (lastAttackedEntity != null)
+		{
+			lastAttackedEntity.hurtResistantTime = 0;
+			//Attack the last attacked entity with the current item
+			entity.attackTargetEntityWithCurrentItem(lastAttackedEntity);
+		}
 
-        //Can't put this inside of the if check because apparently lastAttackedEntity's always false on the client
-        entity.swingArm(EnumHand.MAIN_HAND);
+		//Can't put this inside of the if check because apparently lastAttackedEntity's always false on the client
+		entity.swingArm(EnumHand.MAIN_HAND);
 
-        //Reset the original base attack speed
-        attackSpeed.setBaseValue(originalBaseSpeed);
-    }
+		//Reset the original base attack speed
+		attackSpeed.setBaseValue(originalBaseSpeed);
+	}
+
 }

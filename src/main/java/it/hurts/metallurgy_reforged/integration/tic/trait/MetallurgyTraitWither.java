@@ -21,24 +21,24 @@ import javax.annotation.Nullable;
 
 public class MetallurgyTraitWither extends AbstractTrait implements IMetallurgyTrait {
 
-    public MetallurgyTraitWither()
-    {
-        super("wither_trait", TextFormatting.BLACK);
-    }
+	public MetallurgyTraitWither()
+	{
+		super("wither_trait", TextFormatting.BLACK);
+	}
 
-    @Override
-    public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
-    {
-        if ((int) (Math.random() * 100) <= 20)
-            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 30, 1, false, true));
-    }
+	@Override
+	public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit)
+	{
+		if ((int) (Math.random() * 100) <= 20)
+			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 30, 1, false, true));
+	}
 
-    @Override
-    public void register(String name, @Nullable String tooltip)
-    {
-        Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
-        if (tooltip != null)
-            Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
-    }
+	@Override
+	public void register(String name, @Nullable String tooltip)
+	{
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
+		if (tooltip != null)
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
+	}
 
 }

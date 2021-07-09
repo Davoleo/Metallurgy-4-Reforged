@@ -20,26 +20,26 @@ import javax.annotation.Nonnull;
 
 public class DeepIronToolEffect extends BaseMetallurgyEffect {
 
-    public DeepIronToolEffect()
-    {
-        super(ModMetals.DEEP_IRON);
-    }
+	public DeepIronToolEffect()
+	{
+		super(ModMetals.DEEP_IRON);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.TOOL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.TOOL;
+	}
 
-    @SubscribeEvent
-    public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
-    {
-        if (!canBeApplied(event.getEntityPlayer()))
-            return;
+	@SubscribeEvent
+	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
+	{
+		if (!canBeApplied(event.getEntityPlayer()))
+			return;
 
-        if (event.getEntityPlayer().isInWater())
-            event.setNewSpeed(event.getOriginalSpeed() * 3);
-    }
+		if (event.getEntityPlayer().isInWater())
+			event.setNewSpeed(event.getOriginalSpeed() * 3);
+	}
 
 }

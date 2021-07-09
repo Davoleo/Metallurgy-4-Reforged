@@ -47,7 +47,7 @@ public class ItemArmorBase extends ItemArmor implements IMetalItem {
     private Enchantment enchantment;
     private int enchantmentLevel;
 
-    private MetalStats metalStats;
+    private final MetalStats metalStats;
 
     public ItemArmorBase(ArmorMaterial material, EntityEquipmentSlot slot, MetalStats metalStats)
     {

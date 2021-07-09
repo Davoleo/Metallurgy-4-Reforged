@@ -20,27 +20,28 @@ import javax.annotation.Nonnull;
 
 public class DesichalkosToolEffect extends BaseMetallurgyEffect {
 
-    public DesichalkosToolEffect()
-    {
-        super(ModMetals.DESICHALKOS);
-    }
+	public DesichalkosToolEffect()
+	{
+		super(ModMetals.DESICHALKOS);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.TOOL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.TOOL;
+	}
 
-    @SubscribeEvent(priority = EventPriority.LOW)
-    public void onBlockDrop(BlockEvent.HarvestDropsEvent event)
-    {
-        if (!canBeApplied(event.getHarvester()))
-            return;
+	@SubscribeEvent(priority = EventPriority.LOW)
+	public void onBlockDrop(BlockEvent.HarvestDropsEvent event)
+	{
+		if (!canBeApplied(event.getHarvester()))
+			return;
 
-        // TODO: 12/02/2021 Maybe implement Reach distance upgrade here
+		// TODO: 12/02/2021 Maybe implement Reach distance upgrade here
 
-        //Add drops to the inventory and remove them from the list if they cannot be added
-        event.getDrops().removeIf(stack -> event.getHarvester().addItemStackToInventory(stack));
-    }
+		//Add drops to the inventory and remove them from the list if they cannot be added
+		event.getDrops().removeIf(stack -> event.getHarvester().addItemStackToInventory(stack));
+	}
+
 }

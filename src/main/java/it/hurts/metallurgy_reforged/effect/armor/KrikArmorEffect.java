@@ -33,91 +33,104 @@ import javax.annotation.Nonnull;
 public class KrikArmorEffect extends BaseMetallurgyEffect {
 
 
-    public KrikArmorEffect() {
-        super(ModMetals.KRIK);
-    }
+	public KrikArmorEffect()
+	{
+		super(ModMetals.KRIK);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
-
-
-    @SubscribeEvent
-    public void livingUpdate(TickEvent.PlayerTickEvent event) {
-        EntityPlayer player = event.player;
-
-        if (getLevel(player) < 1)
-            return;
-
-        final int STEP = 255 / 27;
-
-        PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
-
-        if (capability != null) {
-            int maxLevel = getKrikMaxLevel(player);
-            int level = capability.krikHeight;
-
-            if (level <= maxLevel) {
-                if (player.posY < level * STEP) {
-                    player.motionY = 0.4;
-                } else if (Math.round(player.posY) == level * STEP) {
-                    player.motionY = 0;
-                }
-            } else {
-                capability.krikHeight = maxLevel;
-            }
-        }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    }
+	@SubscribeEvent
+	public void livingUpdate(TickEvent.PlayerTickEvent event)
+	{
+		EntityPlayer player = event.player;
 
-    @SubscribeEvent
-    public void cancelFall(LivingFallEvent event) {
-        if (getLevel(event.getEntityLiving()) == 1 && event.getEntityLiving() instanceof EntityPlayer)
-            event.setCanceled(true);
-    }
+		if (getLevel(player) < 1)
+			return;
 
-    /**
-     * Called in {@link ClientEventsHandler}
-     */
-    @SideOnly(Side.CLIENT)
-    public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability) {
-        if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor)
-        {
-            if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-            {
-                if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
-                {
-                    PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
-                    capability.krikHeight += 1;
-                }
-            }
+		final int STEP = 255 / 27;
 
-            if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
-            {
-                if (capability != null && capability.krikHeight > 0)
-                {
-                    PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
-                    capability.krikHeight -= 1;
-                    //System.out.println(capability.getHeight());
-                }
-            }
-        }
-    }
+		PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-    public static int getKrikMaxLevel(EntityPlayer player)
-    {
-        int count = 0;
+		if (capability != null)
+		{
+			int maxLevel = getKrikMaxLevel(player);
+			int level = capability.krikHeight;
 
-        for (int i = 9; i < 36; i++)
-        {
-            Slot k = new Slot(player.inventory, i, 0, 0);
-            if (!k.getHasStack())
-                count++;
-        }
+			if (level <= maxLevel)
+			{
+				if (player.posY < level * STEP)
+				{
+					player.motionY = 0.4;
+				}
+				else if (Math.round(player.posY) == level * STEP)
+				{
+					player.motionY = 0;
+				}
+			}
+			else
+			{
+				capability.krikHeight = maxLevel;
+			}
+		}
 
-        return count;
-    }
+
+	}
+
+	@SubscribeEvent
+	public void cancelFall(LivingFallEvent event)
+	{
+		if (getLevel(event.getEntityLiving()) == 1 && event.getEntityLiving() instanceof EntityPlayer)
+			event.setCanceled(true);
+	}
+
+	/**
+	 * Called in {@link ClientEventsHandler}
+	 */
+	@SideOnly(Side.CLIENT)
+	public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability)
+	{
+		if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor)
+		{
+			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
+			{
+				if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
+				{
+					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
+					capability.krikHeight += 1;
+				}
+			}
+
+			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
+			{
+				if (capability != null && capability.krikHeight > 0)
+				{
+					PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
+					capability.krikHeight -= 1;
+					//System.out.println(capability.getHeight());
+				}
+			}
+		}
+	}
+
+	public static int getKrikMaxLevel(EntityPlayer player)
+	{
+		int count = 0;
+
+		for (int i = 9; i < 36; i++)
+		{
+			Slot k = new Slot(player.inventory, i, 0, 0);
+			if (!k.getHasStack())
+				count++;
+		}
+
+		return count;
+	}
+
 }

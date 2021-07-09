@@ -22,34 +22,35 @@ import javax.annotation.Nonnull;
 
 public class BlackSteelWeaponEffect extends BaseMetallurgyEffect {
 
-    public BlackSteelWeaponEffect()
-    {
-        super(ModMetals.BLACK_STEEL);
-    }
+	public BlackSteelWeaponEffect()
+	{
+		super(ModMetals.BLACK_STEEL);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void onEntityHurtEvent(LivingHurtEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
-        if (!canBeApplied(entity))
-            return;
+	@SubscribeEvent
+	public void onEntityHurtEvent(LivingHurtEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!canBeApplied(entity))
+			return;
 
-        float absorbedDamage = event.getAmount() * 0.25F;
-        entity.getHeldItemMainhand().damageItem((int) (absorbedDamage * 2), entity);
-        event.setAmount(event.getAmount() - absorbedDamage);
+		float absorbedDamage = event.getAmount() * 0.25F;
+		entity.getHeldItemMainhand().damageItem((int) (absorbedDamage * 2), entity);
+		event.setAmount(event.getAmount() - absorbedDamage);
 
-        if (!entity.world.isRemote)
-        {
-            entity.world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.7F, 0.7F);
-            for (int i = 0; i < 10; i++)
-                spawnParticle(entity, 3F, true, 9);
-        }
-    }
+		if (!entity.world.isRemote)
+		{
+			entity.world.playSound(null, entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.7F, 0.7F);
+			for (int i = 0; i < 10; i++)
+				spawnParticle(entity, 3F, true, 9);
+		}
+	}
+
 }

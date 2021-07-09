@@ -15,20 +15,23 @@ import java.util.function.Consumer;
 
 public class EventHandler<E extends Event> {
 
-    private final Consumer<E> delegate;
-    private final Class<E> eClass;
+	private final Consumer<E> delegate;
+	private final Class<E> eClass;
 
-    public EventHandler(Consumer<E> delegate, Class<E> eClass) {
-        this.delegate = delegate;
-        this.eClass = eClass;
-    }
+	public EventHandler(Consumer<E> delegate, Class<E> eClass)
+	{
+		this.delegate = delegate;
+		this.eClass = eClass;
+	}
 
-    public Consumer<E> getDelegate() {
-        return delegate;
-    }
+	public Consumer<E> getDelegate()
+	{
+		return delegate;
+	}
 
-    public boolean equalsEvent(Event event) {
-        return event.getClass().equals(eClass);
-    }
+	public boolean equalsEvent(Event event)
+	{
+		return event.getClass().equals(eClass);
+	}
 
 }

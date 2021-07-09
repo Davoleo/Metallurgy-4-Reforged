@@ -18,35 +18,35 @@ import javax.annotation.Nullable;
 
 public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> {
 
-    @Nullable
-    @Override
-    public NBTBase writeNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side)
-    {
-        NBTTagCompound tag = new NBTTagCompound();
+	@Nullable
+	@Override
+	public NBTBase writeNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side)
+	{
+		NBTTagCompound tag = new NBTTagCompound();
 
-        instance.effectBundles.values().forEach(bundle -> bundle.toNBT(tag));
-        tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
+		instance.effectBundles.values().forEach(bundle -> bundle.toNBT(tag));
+		tag.setInteger("amordrine_jumps", instance.getAmordrineJumps());
 
-        tag.setInteger("desichalkos_armor_time_without_damage", instance.desichalkosTimeWithoutTakingDamage);
-        tag.setInteger("desichalkos_armor_absorb_level", instance.desichalkosAbsorbLevel);
+		tag.setInteger("desichalkos_armor_time_without_damage", instance.desichalkosTimeWithoutTakingDamage);
+		tag.setInteger("desichalkos_armor_absorb_level", instance.desichalkosAbsorbLevel);
 
-        tag.setInteger("krik_height", instance.krikHeight);
+		tag.setInteger("krik_height", instance.krikHeight);
 
-        return tag;
-    }
+		return tag;
+	}
 
-    @Override
-    public void readNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side, NBTBase nbt)
-    {
-        NBTTagCompound tag = ((NBTTagCompound) nbt);
+	@Override
+	public void readNBT(Capability<PlayerEffectData> capability, PlayerEffectData instance, EnumFacing side, NBTBase nbt)
+	{
+		NBTTagCompound tag = ((NBTTagCompound) nbt);
 
-        instance.effectBundles.values().forEach(bundle -> bundle.fromNBT(tag));
-        instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
+		instance.effectBundles.values().forEach(bundle -> bundle.fromNBT(tag));
+		instance.setAmordrineJumps(tag.getInteger("amordrine_jumps"));
 
-        instance.desichalkosTimeWithoutTakingDamage = tag.getInteger("desichalkos_armor_time_without_damage");
-        instance.desichalkosAbsorbLevel = tag.getInteger("desichalkos_armor_absorb_level");
+		instance.desichalkosTimeWithoutTakingDamage = tag.getInteger("desichalkos_armor_time_without_damage");
+		instance.desichalkosAbsorbLevel = tag.getInteger("desichalkos_armor_absorb_level");
 
-        instance.krikHeight = tag.getInteger("krik_height");
-    }
+		instance.krikHeight = tag.getInteger("krik_height");
+	}
 
 }

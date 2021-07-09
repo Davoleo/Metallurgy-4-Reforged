@@ -28,51 +28,52 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class ItemBlockOre extends ItemBlock implements IMetalItem {
 
-    public ItemBlockOre(BlockOre block)
-    {
-        super(block);
-    }
+	public ItemBlockOre(BlockOre block)
+	{
+		super(block);
+	}
 
-    @Nullable
-    @Override
-    public MetalStats getMetalStats()
-    {
-        return ((BlockOre) block).getMetalStats();
-    }
+	@Nullable
+	@Override
+	public MetalStats getMetalStats()
+	{
+		return ((BlockOre) block).getMetalStats();
+	}
 
-    @Override
-    public boolean hasEffect(ItemStack stack)
-    {
-        return isLocked(stack);
-    }
+	@Override
+	public boolean hasEffect(ItemStack stack)
+	{
+		return isLocked(stack);
+	}
 
-    public static boolean isLocked(ItemStack oreStack)
-    {
-        return oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("locked");
-    }
+	public static boolean isLocked(ItemStack oreStack)
+	{
+		return oreStack.getTagCompound() != null && oreStack.getTagCompound().getBoolean("locked");
+	}
 
-    public static void setLocked(ItemStack oreStack, boolean locked)
-    {
-        NBTTagCompound oreData = oreStack.getTagCompound();
+	public static void setLocked(ItemStack oreStack, boolean locked)
+	{
+		NBTTagCompound oreData = oreStack.getTagCompound();
 
-        if (oreData == null)
-            oreData = new NBTTagCompound();
+		if (oreData == null)
+			oreData = new NBTTagCompound();
 
-        if (oreData.getBoolean("locked") != locked)
-            oreData.setBoolean("locked", locked);
+		if (oreData.getBoolean("locked") != locked)
+			oreData.setBoolean("locked", locked);
 
-        oreStack.setTagCompound(oreData);
-    }
+		oreStack.setTagCompound(oreData);
+	}
 
-    @Nonnull
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        ItemStack oreStack = player.getHeldItem(hand);
-        if (hasEffect(oreStack))
-        {
-            return EnumActionResult.FAIL;
-        }
-        return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-    }
+	@Nonnull
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		ItemStack oreStack = player.getHeldItem(hand);
+		if (hasEffect(oreStack))
+		{
+			return EnumActionResult.FAIL;
+		}
+		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+	}
+
 }

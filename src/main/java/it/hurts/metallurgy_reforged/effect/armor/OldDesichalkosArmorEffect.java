@@ -30,65 +30,65 @@ import javax.annotation.Nonnull;
 @Deprecated
 public class OldDesichalkosArmorEffect extends BaseMetallurgyEffect {
 
-    public static final IBlockState[] borrowableBlocks = {};
-    //Arrays.stream(EffectsConfig.desichalkosEndermenBlocks)
-    //.map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
-    //.filter(Objects::nonNull)
-    //.map(Block::getDefaultState)
-    //.toArray(IBlockState[]::new);
+	public static final IBlockState[] borrowableBlocks = { };
+	//Arrays.stream(EffectsConfig.desichalkosEndermenBlocks)
+	//.map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
+	//.filter(Objects::nonNull)
+	//.map(Block::getDefaultState)
+	//.toArray(IBlockState[]::new);
 
-    public OldDesichalkosArmorEffect()
-    {
-        super(ModMetals.DESICHALKOS);
-    }
+	public OldDesichalkosArmorEffect()
+	{
+		super(ModMetals.DESICHALKOS);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
-
-
-    public void onEntityEnteringChunk(Entity entity)
-    {
-        if (entity instanceof EntityEnderman)
-        {
-            EntityData entityData = entity.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
-            if (entityData != null)
-                entityData.initEnderman();
-            ((EntityEnderman) entity).tasks.addTask(12, new AIEndermanPlayerSteal((EntityEnderman) entity));
-        }
-    }
-
-    public void onPlayerInteract(PlayerInteractEvent event)
-    {
-        EntityPlayer player = event.getEntityPlayer();
-        if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isWearingFullArmorSet(player, metal))
-        {
-            Entity target = ((PlayerInteractEvent.EntityInteract) event).getTarget();
-
-            if (target instanceof EntityEnderman)
-            {
-                EntityEnderman enderman = (EntityEnderman) target;
-                if (enderman.getHeldBlockState() != null)
-                {
-                    if (!player.world.isRemote)
-                    {
-                        ItemStack snatchedBlock = new ItemStack(enderman.getHeldBlockState().getBlock());
-                        if (!player.inventory.addItemStackToInventory(snatchedBlock))
-                            player.dropItem(snatchedBlock, false, false);
-                        enderman.setHeldBlockState(null);
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-                        EntityData data = enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
-                        if (data != null)
-                            data.wasSnatched = true;
-                        player.world.playSound(null, enderman.posX, enderman.posY, enderman.posZ, SoundEvents.ENTITY_ENDERMEN_HURT, SoundCategory.HOSTILE, 2F, 1.3F);
-                    }
-                }
-            }
-        }
-    }
+	public void onEntityEnteringChunk(Entity entity)
+	{
+		if (entity instanceof EntityEnderman)
+		{
+			EntityData entityData = entity.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
+			if (entityData != null)
+				entityData.initEnderman();
+			((EntityEnderman) entity).tasks.addTask(12, new AIEndermanPlayerSteal((EntityEnderman) entity));
+		}
+	}
+
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isWearingFullArmorSet(player, metal))
+		{
+			Entity target = ((PlayerInteractEvent.EntityInteract) event).getTarget();
+
+			if (target instanceof EntityEnderman)
+			{
+				EntityEnderman enderman = (EntityEnderman) target;
+				if (enderman.getHeldBlockState() != null)
+				{
+					if (!player.world.isRemote)
+					{
+						ItemStack snatchedBlock = new ItemStack(enderman.getHeldBlockState().getBlock());
+						if (!player.inventory.addItemStackToInventory(snatchedBlock))
+							player.dropItem(snatchedBlock, false, false);
+						enderman.setHeldBlockState(null);
+
+
+						EntityData data = enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
+						if (data != null)
+							data.wasSnatched = true;
+						player.world.playSound(null, enderman.posX, enderman.posY, enderman.posZ, SoundEvents.ENTITY_ENDERMEN_HURT, SoundCategory.HOSTILE, 2F, 1.3F);
+					}
+				}
+			}
+		}
+	}
 
 }

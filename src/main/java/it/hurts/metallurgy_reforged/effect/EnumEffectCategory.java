@@ -12,25 +12,28 @@ package it.hurts.metallurgy_reforged.effect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 
 public enum EnumEffectCategory {
-    TOOL(EnumTools.AXE, EnumTools.PICKAXE, EnumTools.SHOVEL),
-    ARMOR(),
-    WEAPON(EnumTools.AXE, EnumTools.SWORD),
-    ALL(EnumTools.AXE, EnumTools.PICKAXE, EnumTools.HOE, EnumTools.SHOVEL, EnumTools.SWORD),
-    HOE(EnumTools.HOE),
-    PICKAXE(EnumTools.PICKAXE);
+	TOOL(EnumTools.AXE, EnumTools.PICKAXE, EnumTools.SHOVEL),
+	ARMOR(),
+	WEAPON(EnumTools.AXE, EnumTools.SWORD),
+	ALL(EnumTools.AXE, EnumTools.PICKAXE, EnumTools.HOE, EnumTools.SHOVEL, EnumTools.SWORD),
+	HOE(EnumTools.HOE),
+	PICKAXE(EnumTools.PICKAXE);
 
-    private final EnumTools[] tools;
+	private final EnumTools[] tools;
 
-    EnumEffectCategory(EnumTools... tools) {
-        this.tools = tools;
-    }
+	EnumEffectCategory(EnumTools... tools)
+	{
+		this.tools = tools;
+	}
 
-    public EnumTools[] getTools() {
-        return tools;
-    }
+	public EnumTools[] getTools()
+	{
+		return tools;
+	}
 
-    @Override
-    public String toString() {
-        return name().toLowerCase();
-    }
+	@Override
+	public String toString()
+	{
+		return name().toLowerCase();
+	}
 }

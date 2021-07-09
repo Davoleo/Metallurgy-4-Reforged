@@ -22,33 +22,34 @@ import javax.annotation.Nonnull;
 
 public class CeruclaseWeaponEffect extends BaseMetallurgyEffect {
 
-    public CeruclaseWeaponEffect()
-    {
-        super(ModMetals.CERUCLASE);
-    }
+	public CeruclaseWeaponEffect()
+	{
+		super(ModMetals.CERUCLASE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void onAttack(LivingHurtEvent event)
-    {
+	@SubscribeEvent
+	public void onAttack(LivingHurtEvent event)
+	{
 
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase)
-        {
-            EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getTrueSource());
+		if (event.getSource().getTrueSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getTrueSource());
 
-            if (!canBeApplied(attacker))
-                return;
+			if (!canBeApplied(attacker))
+				return;
 
-            if (attacker.getRNG().nextInt(100) < 75)
-            {
-                event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 1000));
-            }
-        }
-    }
+			if (attacker.getRNG().nextInt(100) < 75)
+			{
+				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 1000));
+			}
+		}
+	}
+
 }

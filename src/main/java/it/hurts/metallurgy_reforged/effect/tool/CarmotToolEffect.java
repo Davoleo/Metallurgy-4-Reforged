@@ -30,94 +30,95 @@ import javax.annotation.Nonnull;
 
 public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public CarmotToolEffect()
-    {
-        super(ModMetals.CARMOT);
-    }
+	public CarmotToolEffect()
+	{
+		super(ModMetals.CARMOT);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.TOOL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.TOOL;
+	}
 
-    @SubscribeEvent
-    public void harvestBlocks(BlockEvent.BreakEvent event)
-    {
-        final EntityPlayer player = event.getPlayer();
-        if (!canBeApplied(player))
-            return;
+	@SubscribeEvent
+	public void harvestBlocks(BlockEvent.BreakEvent event)
+	{
+		final EntityPlayer player = event.getPlayer();
+		if (!canBeApplied(player))
+			return;
 
-        if (!event.getWorld().isRemote)
-        {
-            if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), player))
-                return;
+		if (!event.getWorld().isRemote)
+		{
+			if (!event.getState().getBlock().canHarvestBlock(event.getWorld(), event.getPos(), player))
+				return;
 
-            if (EventUtils.canHarvest(player.getHeldItemMainhand(), event.getState()))
-            {
-                BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
-                if (effectBundle.isEffectInProgress())
-                {
-                    event.setCanceled(true);
-                    return;
-                }
+			if (EventUtils.canHarvest(player.getHeldItemMainhand(), event.getState()))
+			{
+				BlockInfoDataBundle effectBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
+				if (effectBundle.isEffectInProgress())
+				{
+					event.setCanceled(true);
+					return;
+				}
 
-                //Initializes the progressive effect
-                effectBundle.setPos(event.getPos());
-                effectBundle.setState(event.getState());
-                effectBundle.setEffectStack(player.getHeldItemMainhand(), player);
-                effectBundle.incrementStep(player);
+				//Initializes the progressive effect
+				effectBundle.setPos(event.getPos());
+				effectBundle.setState(event.getState());
+				effectBundle.setEffectStack(player.getHeldItemMainhand(), player);
+				effectBundle.incrementStep(player);
 
-                //Cooldown for the whole effect
-                int cooldown = (effectBundle.getMaxSteps() - event.getState().getBlock().getHarvestLevel(event.getState())) * effectBundle.STEP_TICK_DELAY;
-                player.getCooldownTracker().setCooldown(player.getHeldItemMainhand().getItem(), cooldown);
-            }
-        }
-    }
+				//Cooldown for the whole effect
+				int cooldown = (effectBundle.getMaxSteps() - event.getState().getBlock().getHarvestLevel(event.getState())) * effectBundle.STEP_TICK_DELAY;
+				player.getCooldownTracker().setCooldown(player.getHeldItemMainhand().getItem(), cooldown);
+			}
+		}
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer player, ItemStack effectStack, int maxSteps, int step)
-    {
-        BlockInfoDataBundle blockBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
+	@Override
+	public void onStep(World world, EntityPlayer player, ItemStack effectStack, int maxSteps, int step)
+	{
+		BlockInfoDataBundle blockBundle = (BlockInfoDataBundle) getBundle(player, metal, getCategory());
 
-        BlockPos pos = blockBundle.getPos();
-        IBlockState state = blockBundle.getState();
+		BlockPos pos = blockBundle.getPos();
+		IBlockState state = blockBundle.getState();
 
-        if (pos == null || state == null)
-            return;
+		if (pos == null || state == null)
+			return;
 
-        if (step > maxSteps - Math.max(0, state.getBlock().getHarvestLevel(state) - 1) || effectStack.isEmpty())
-        {
-            blockBundle.resetProgress(player);
-            return;
-        }
+		if (step > maxSteps - Math.max(0, state.getBlock().getHarvestLevel(state) - 1) || effectStack.isEmpty())
+		{
+			blockBundle.resetProgress(player);
+			return;
+		}
 
-        if (!world.isRemote)
-        {
-            for (int x = -step - 1; x < step + 1; x++)
-            {
-                for (int y = -step - 1; y < step + 1; y++)
-                {
-                    for (int z = -step - 1; z < step + 1; z++)
-                    {
-                        BlockPos blockPos = pos.add(x, y, z);
-                        IBlockState blockState = world.getBlockState(blockPos);
+		if (!world.isRemote)
+		{
+			for (int x = -step - 1; x < step + 1; x++)
+			{
+				for (int y = -step - 1; y < step + 1; y++)
+				{
+					for (int z = -step - 1; z < step + 1; z++)
+					{
+						BlockPos blockPos = pos.add(x, y, z);
+						IBlockState blockState = world.getBlockState(blockPos);
 
-                        if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
-                        {
-                            if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
-                            {
-                                world.destroyBlock(blockPos, true);
-                                effectStack.damageItem(1, player);
-                            }
-                        }
-                    }
-                }
-            }
+						if (Math.ceil(blockPos.getDistance(pos.getX(), pos.getY(), pos.getZ())) == step)
+						{
+							if (Block.isEqualTo(blockState.getBlock(), state.getBlock()))
+							{
+								world.destroyBlock(blockPos, true);
+								effectStack.damageItem(1, player);
+							}
+						}
+					}
+				}
+			}
 
-            float pitch = ((8 - step) / 6F);
-            world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.BLOCKS, 1.5F, pitch);
-        }
-    }
+			float pitch = ((8 - step) / 6F);
+			world.playSound(null, pos, SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.BLOCKS, 1.5F, pitch);
+		}
+	}
+
 }

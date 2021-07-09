@@ -22,36 +22,37 @@ import javax.annotation.Nonnull;
 
 public class KrikWeaponEffect extends BaseMetallurgyEffect {
 
-    public KrikWeaponEffect()
-    {
-        super(ModMetals.KRIK);
-    }
+	public KrikWeaponEffect()
+	{
+		super(ModMetals.KRIK);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void applyDoubleDamageAndLevitation(LivingHurtEvent event)
-    {
-        if (event.getSource().getImmediateSource() instanceof EntityLivingBase)
-        {
-            EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getTrueSource());
+	@SubscribeEvent
+	public void applyDoubleDamageAndLevitation(LivingHurtEvent event)
+	{
+		if (event.getSource().getImmediateSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getTrueSource());
 
-            if (!canBeApplied(attacker))
-                return;
+			if (!canBeApplied(attacker))
+				return;
 
-            if (!event.getEntityLiving().onGround)
-            {
-                event.setAmount(event.getAmount() * 2);
-                for (int i = 0; i < 8; i++)
-                    spawnParticle(event.getEntityLiving(), 2.5F, false, 4);
-            }
+			if (!event.getEntityLiving().onGround)
+			{
+				event.setAmount(event.getAmount() * 2);
+				for (int i = 0; i < 8; i++)
+					spawnParticle(event.getEntityLiving(), 2.5F, false, 4);
+			}
 
-            event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 25));
-        }
-    }
+			event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 25));
+		}
+	}
+
 }

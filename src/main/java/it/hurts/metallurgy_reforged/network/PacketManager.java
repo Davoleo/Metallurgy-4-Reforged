@@ -20,23 +20,24 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketManager {
 
-    //Metallurgy Network Channel
-    public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
-    private static int id = 0;
+	//Metallurgy Network Channel
+	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
+	private static int id = 0;
 
-    //PostInit: Register Packets
-    public static void init() {
-        //Client2Server
-        network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, id++, Side.SERVER);
-        network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, id++, Side.SERVER);
-        network.registerMessage(PacketAmordrineJump.Handler.class, PacketAmordrineJump.class, id++, Side.SERVER);
+	//PostInit: Register Packets
+	public static void init()
+	{
+		//Client2Server
+		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, id++, Side.SERVER);
+		network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, id++, Side.SERVER);
+		network.registerMessage(PacketAmordrineJump.Handler.class, PacketAmordrineJump.class, id++, Side.SERVER);
 
-        //Server2Client
-        network.registerMessage(PacketSpawnVanillaParticles.Handler.class, PacketSpawnVanillaParticles.class, id++, Side.CLIENT);
-        network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, id++, Side.CLIENT);
-        network.registerMessage(PacketSpawnOreParticles.Handler.class, PacketSpawnOreParticles.class, id++, Side.CLIENT);
-        network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
-        network.registerMessage(PacketSyncEffectBundle.Handler.class, PacketSyncEffectBundle.class, id++, Side.CLIENT);
-    }
+		//Server2Client
+		network.registerMessage(PacketSpawnVanillaParticles.Handler.class, PacketSpawnVanillaParticles.class, id++, Side.CLIENT);
+		network.registerMessage(PacketRenderDeathProtection.Handler.class, PacketRenderDeathProtection.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSpawnOreParticles.Handler.class, PacketSpawnOreParticles.class, id++, Side.CLIENT);
+		network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSyncEffectBundle.Handler.class, PacketSyncEffectBundle.class, id++, Side.CLIENT);
+	}
 
 }

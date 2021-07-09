@@ -24,34 +24,35 @@ import javax.annotation.Nonnull;
 @Deprecated
 public class EximiteArmorEffectOld extends BaseMetallurgyEffect {
 
-    public EximiteArmorEffectOld()
-    {
-        super(ModMetals.EXIMITE);
-    }
+	public EximiteArmorEffectOld()
+	{
+		super(ModMetals.EXIMITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    public void livingEvent(LivingEvent event)
-    {
-        if (event instanceof LivingSetAttackTargetEvent)
-        {
-            if (event.getEntityLiving() instanceof EntityEnderman)
-            {
-                EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
-                if (target instanceof EntityPlayer)
-                {
-                    if (EventUtils.isWearingFullArmorSet(target, metal))
-                    {
-                        ((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
-                    }
-                }
-            }
-        }
-    }
+	public void livingEvent(LivingEvent event)
+	{
+		if (event instanceof LivingSetAttackTargetEvent)
+		{
+			if (event.getEntityLiving() instanceof EntityEnderman)
+			{
+				EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
+				if (target instanceof EntityPlayer)
+				{
+					if (EventUtils.isWearingFullArmorSet(target, metal))
+					{
+						((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
+					}
+				}
+			}
+		}
+	}
+
 }

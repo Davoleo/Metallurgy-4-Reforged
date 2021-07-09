@@ -24,38 +24,42 @@ import javax.annotation.Nonnull;
 @Deprecated
 public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 
-    public ShadowSteelArmorEffect() {
-        super(ModMetals.SHADOW_STEEL);
-    }
+	public ShadowSteelArmorEffect()
+	{
+		super(ModMetals.SHADOW_STEEL);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    public void livingEvent(LivingEvent livingEvent) {
-        if (livingEvent instanceof LivingHurtEvent) {
+	public void livingEvent(LivingEvent livingEvent)
+	{
+		if (livingEvent instanceof LivingHurtEvent)
+		{
 
-            LivingHurtEvent event = ((LivingHurtEvent) livingEvent);
+			LivingHurtEvent event = ((LivingHurtEvent) livingEvent);
 
-            Entity entity = event.getEntity();
+			Entity entity = event.getEntity();
 
-            if (entity instanceof EntityPlayer)
-            {
-                EntityPlayer player = ((EntityPlayer) entity);
+			if (entity instanceof EntityPlayer)
+			{
+				EntityPlayer player = ((EntityPlayer) entity);
 
-                if (EventUtils.isWearingFullArmorSet(player, metal))
-                {
-                    float amount = event.getAmount();
-                    //Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
-                    amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
-                    event.setAmount(amount);
-                }
-            }
-        }
+				if (EventUtils.isWearingFullArmorSet(player, metal))
+				{
+					float amount = event.getAmount();
+					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
+					amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
+					event.setAmount(amount);
+				}
+			}
+		}
 
-    }
+	}
 
 }

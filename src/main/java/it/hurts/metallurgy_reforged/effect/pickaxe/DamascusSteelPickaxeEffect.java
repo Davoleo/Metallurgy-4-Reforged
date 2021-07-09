@@ -24,41 +24,41 @@ import java.util.Arrays;
 
 public class DamascusSteelPickaxeEffect extends BaseMetallurgyEffect {
 
-    public DamascusSteelPickaxeEffect()
-    {
-        super(ModMetals.DAMASCUS_STEEL);
-    }
+	public DamascusSteelPickaxeEffect()
+	{
+		super(ModMetals.DAMASCUS_STEEL);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.PICKAXE;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.PICKAXE;
+	}
 
-    @SubscribeEvent
-    public void onOreBroken(BlockEvent.BreakEvent event)
-    {
-        if (!canBeApplied(event.getPlayer()))
-            return;
+	@SubscribeEvent
+	public void onOreBroken(BlockEvent.BreakEvent event)
+	{
+		if (!canBeApplied(event.getPlayer()))
+			return;
 
-        if (Utils.random.nextBoolean())
-        {
-            Block ore = event.getState().getBlock();
-            ItemStack oreStack = new ItemStack(ore);
+		if (Utils.random.nextBoolean())
+		{
+			Block ore = event.getState().getBlock();
+			ItemStack oreStack = new ItemStack(ore);
 
-            //Should avoid crash on OreDictionary#getOreIDs(ItemStack) cause apparently a new ItemStack can be empty sometimes
-            if (oreStack.isEmpty())
-                return;
+			//Should avoid crash on OreDictionary#getOreIDs(ItemStack) cause apparently a new ItemStack can be empty sometimes
+			if (oreStack.isEmpty())
+				return;
 
-            boolean isOre = Arrays.stream(OreDictionary.getOreIDs(oreStack))
-                    .mapToObj(OreDictionary::getOreName)
-                    .anyMatch(oreName -> oreName.startsWith("ore"));
+			boolean isOre = Arrays.stream(OreDictionary.getOreIDs(oreStack))
+					.mapToObj(OreDictionary::getOreName)
+					.anyMatch(oreName -> oreName.startsWith("ore"));
 
-            if (isOre)
-                event.setExpToDrop(event.getExpToDrop() + ore.getHarvestLevel(event.getState()) + 1);
-            //Drops an amount of experience equals to the harvest level + 1
-        }
-    }
+			if (isOre)
+				event.setExpToDrop(event.getExpToDrop() + ore.getHarvestLevel(event.getState()) + 1);
+			//Drops an amount of experience equals to the harvest level + 1
+		}
+	}
 
 }

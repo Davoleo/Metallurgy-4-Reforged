@@ -13,6 +13,6 @@ import it.hurts.metallurgy_reforged.material.MetalStats;
 
 public interface IMetalItem {
 
-    MetalStats getMetalStats();
+	MetalStats getMetalStats();
 
 }

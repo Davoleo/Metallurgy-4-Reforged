@@ -19,27 +19,28 @@ import javax.annotation.Nonnull;
 
 public class HepatizonArmorEffect extends BaseMetallurgyEffect {
 
-    public HepatizonArmorEffect()
-    {
-        super(ModMetals.HEPATIZON);
-    }
+	public HepatizonArmorEffect()
+	{
+		super(ModMetals.HEPATIZON);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @SubscribeEvent
-    public void decreasePlayerVisibility(PlayerEvent.Visibility event)
-    {
-        float level = getLevel(event.getEntityPlayer());
+	@SubscribeEvent
+	public void decreasePlayerVisibility(PlayerEvent.Visibility event)
+	{
+		float level = getLevel(event.getEntityPlayer());
 
-        if (level == 0)
-            return;
+		if (level == 0)
+			return;
 
-        event.modifyVisibility(1 - (level / 1.25));
-        //System.out.println(event.getVisibilityModifier());
-    }
+		event.modifyVisibility(1 - (level / 1.25));
+		//System.out.println(event.getVisibilityModifier());
+	}
+
 }

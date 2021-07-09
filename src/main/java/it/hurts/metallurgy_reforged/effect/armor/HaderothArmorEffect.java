@@ -26,68 +26,69 @@ import javax.annotation.Nonnull;
 
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
-    public HaderothArmorEffect()
-    {
-        super(ModMetals.HADEROTH);
-    }
+	public HaderothArmorEffect()
+	{
+		super(ModMetals.HADEROTH);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @Override
-    public Pair<String, String> getTooltip()
-    {
-        Pair<String, String> tooltip = super.getTooltip();
-        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
-        {
-            int firstBreak = tooltip.getRight().indexOf("\n");
-            String trimmed = tooltip.getRight().substring(firstBreak + 1);
-            tooltip.setValue(trimmed);
-        }
+	@Override
+	public Pair<String, String> getTooltip()
+	{
+		Pair<String, String> tooltip = super.getTooltip();
+		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
+		{
+			int firstBreak = tooltip.getRight().indexOf("\n");
+			String trimmed = tooltip.getRight().substring(firstBreak + 1);
+			tooltip.setValue(trimmed);
+		}
 
-        return tooltip;
-    }
+		return tooltip;
+	}
 
-    @SubscribeEvent
-    public void buffWearer(LivingEvent.LivingUpdateEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
+	@SubscribeEvent
+	public void buffWearer(LivingEvent.LivingUpdateEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
 
-        if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
-            return;
+		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
+			return;
 
-        entity.getArmorInventoryList().forEach(stack -> {
-            //If the the armor has not been reborn yet -> terminate adaptability effect
-            if ((stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
-                return;
+		entity.getArmorInventoryList().forEach(stack -> {
+			//If the the armor has not been reborn yet -> terminate adaptability effect
+			if ((stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
+				return;
 
-            if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-            {
-                ItemArmorBase haderothArmorPiece = ((ItemArmorBase) stack.getItem());
-                switch (haderothArmorPiece.armorType)
-                {
-                    case HEAD:
-                        if (entity.isPotionActive(MobEffects.HUNGER))
-                            entity.removePotionEffect(MobEffects.HUNGER);
-                        break;
-                    case CHEST:
-                        if (entity.ticksExisted % 40 == 0)
-                            entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
-                        break;
-                    case LEGS:
-                        if (entity.isPotionActive(MobEffects.SLOWNESS))
-                            entity.removePotionEffect(MobEffects.SLOWNESS);
-                        break;
-                    case FEET:
-                        if (entity.isPotionActive(MobEffects.LEVITATION))
-                            entity.removePotionEffect(MobEffects.LEVITATION);
-                        break;
-                }
-            }
-        });
-    }
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+			{
+				ItemArmorBase haderothArmorPiece = ((ItemArmorBase) stack.getItem());
+				switch (haderothArmorPiece.armorType)
+				{
+					case HEAD:
+						if (entity.isPotionActive(MobEffects.HUNGER))
+							entity.removePotionEffect(MobEffects.HUNGER);
+						break;
+					case CHEST:
+						if (entity.ticksExisted % 40 == 0)
+							entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
+						break;
+					case LEGS:
+						if (entity.isPotionActive(MobEffects.SLOWNESS))
+							entity.removePotionEffect(MobEffects.SLOWNESS);
+						break;
+					case FEET:
+						if (entity.isPotionActive(MobEffects.LEVITATION))
+							entity.removePotionEffect(MobEffects.LEVITATION);
+						break;
+				}
+			}
+		});
+	}
+
 }

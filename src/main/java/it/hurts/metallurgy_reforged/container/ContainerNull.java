@@ -18,17 +18,17 @@ import javax.annotation.Nonnull;
 
 public class ContainerNull extends Container {
 
-    @Override
-    public boolean canInteractWith(@Nonnull EntityPlayer playerIn)
-    {
-        return true;
-    }
+	@Override
+	public boolean canInteractWith(@Nonnull EntityPlayer playerIn)
+	{
+		return true;
+	}
 
-    @Nonnull
-    @Override
-    public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player)
-    {
-        return null;
-    }
+	@Nonnull
+	@Override
+	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player)
+	{
+		return null;
+	}
 
 }

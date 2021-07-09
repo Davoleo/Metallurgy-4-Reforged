@@ -17,41 +17,41 @@ import net.minecraft.potion.Potion;
 
 public class IntegrationCT {
 
-    public static void preInit()
-    {
+	public static void preInit()
+	{
 
-        CraftTweakerAPI.registerClass(CompatCrusher.class);
-        CraftTweakerAPI.registerClass(CompatAlloyer.class);
-        CraftTweakerAPI.registerClass(CompatSublimationChamber.class);
+		CraftTweakerAPI.registerClass(CompatCrusher.class);
+		CraftTweakerAPI.registerClass(CompatAlloyer.class);
+		CraftTweakerAPI.registerClass(CompatSublimationChamber.class);
 
-    }
+	}
 
-    public static ItemStack toStack(IItemStack iStack)
-    {
-        if (iStack == null)
-            return ItemStack.EMPTY;
-        return (ItemStack) iStack.getInternal();
-    }
+	public static ItemStack toStack(IItemStack iStack)
+	{
+		if (iStack == null)
+			return ItemStack.EMPTY;
+		return (ItemStack) iStack.getInternal();
+	}
 
-    public static ItemStack[] toStacks(IItemStack[] iStacks)
-    {
-        if (iStacks == null)
-        {
-            return new ItemStack[0];
-        }
-        ItemStack[] ret = new ItemStack[iStacks.length];
-        for (int i = 0; i < iStacks.length; i++)
-        {
-            ret[i] = toStack(iStacks[i]);
-        }
-        return ret;
-    }
+	public static ItemStack[] toStacks(IItemStack[] iStacks)
+	{
+		if (iStacks == null)
+		{
+			return new ItemStack[0];
+		}
+		ItemStack[] ret = new ItemStack[iStacks.length];
+		for (int i = 0; i < iStacks.length; i++)
+		{
+			ret[i] = toStack(iStacks[i]);
+		}
+		return ret;
+	}
 
-    public static Potion getInternalPotion(IPotion effect)
-    {
-        if (effect == null)
-            return null;
-        return (Potion) effect.getInternal();
-    }
+	public static Potion getInternalPotion(IPotion effect)
+	{
+		if (effect == null)
+			return null;
+		return (Potion) effect.getInternal();
+	}
 
 }

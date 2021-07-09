@@ -18,8 +18,8 @@ import java.util.Random;
 public class Drop {
 
     //private fields
-    private ItemStack item;
-    private float chance;
+    private final ItemStack item;
+    private final float chance;
 
     //constructors
     public Drop(Block block, int percentage)

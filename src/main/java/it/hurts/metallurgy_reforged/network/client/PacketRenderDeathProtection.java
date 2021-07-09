@@ -29,56 +29,61 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class PacketRenderDeathProtection implements IMessage {
 
-    private int entity;
-    private ItemStack stack;
+	private int entity;
+	private ItemStack stack;
 
-    public PacketRenderDeathProtection()
-    {
-        //Mandatory Empty Constructor
-    }
+	public PacketRenderDeathProtection()
+	{
+		//Mandatory Empty Constructor
+	}
 
-    public PacketRenderDeathProtection(int entityId, ItemStack stack)
-    {
-        this.entity = entityId;
-        this.stack = stack;
-    }
+	public PacketRenderDeathProtection(int entityId, ItemStack stack)
+	{
+		this.entity = entityId;
+		this.stack = stack;
+	}
 
-    @Override
-    public void fromBytes(ByteBuf buf)
-    {
-        stack = ByteBufUtils.readItemStack(buf);
-        entity = buf.readInt();
-    }
+	@Override
+	public void fromBytes(ByteBuf buf)
+	{
+		stack = ByteBufUtils.readItemStack(buf);
+		entity = buf.readInt();
+	}
 
-    @Override
-    public void toBytes(ByteBuf buf) {
-        ByteBufUtils.writeItemStack(buf, stack);
-        buf.writeInt(entity);
-    }
+	@Override
+	public void toBytes(ByteBuf buf)
+	{
+		ByteBufUtils.writeItemStack(buf, stack);
+		buf.writeInt(entity);
+	}
 
-    public static class Handler implements IMessageHandler<PacketRenderDeathProtection, IMessage> {
-        @SideOnly(Side.CLIENT)
-        @Override
-        public IMessage onMessage(PacketRenderDeathProtection message, MessageContext ctx) {
+	public static class Handler implements IMessageHandler<PacketRenderDeathProtection, IMessage> {
 
-            Minecraft client = Minecraft.getMinecraft();
+		@SideOnly(Side.CLIENT)
+		@Override
+		public IMessage onMessage(PacketRenderDeathProtection message, MessageContext ctx)
+		{
 
-            Minecraft.getMinecraft().addScheduledTask(() -> {
-                Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entity);
-                //Get the RGB colors of Adamantine
-                float[] colors = ModMetals.ADAMANTINE.getStats().getColorRGBValues();
-                //Instantiate and start a Particle Ore Emitter
-                client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
+			Minecraft client = Minecraft.getMinecraft();
 
-                //If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
-                if (entity == client.player)
-                {
-                    client.entityRenderer.displayItemActivation(message.stack);
-                }
+			Minecraft.getMinecraft().addScheduledTask(() -> {
+				Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entity);
+				//Get the RGB colors of Adamantine
+				float[] colors = ModMetals.ADAMANTINE.getStats().getColorRGBValues();
+				//Instantiate and start a Particle Ore Emitter
+				client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
 
-            });
+				//If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
+				if (entity == client.player)
+				{
+					client.entityRenderer.displayItemActivation(message.stack);
+				}
 
-            return null;
-        }
-    }
+			});
+
+			return null;
+		}
+
+	}
+
 }

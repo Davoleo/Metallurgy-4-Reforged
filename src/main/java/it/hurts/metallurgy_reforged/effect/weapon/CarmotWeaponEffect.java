@@ -29,60 +29,61 @@ import javax.annotation.Nonnull;
 
 public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
-    public CarmotWeaponEffect()
-    {
-        super(ModMetals.CARMOT);
-    }
+	public CarmotWeaponEffect()
+	{
+		super(ModMetals.CARMOT);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void chainAttack(LivingHurtEvent event)
-    {
-        Entity tSource = event.getSource().getTrueSource();
-        if (tSource instanceof EntityPlayer)
-        {
-            EntityPlayer attacker = ((EntityPlayer) tSource);
-            if (!canBeApplied(attacker))
-                return;
+	@SubscribeEvent
+	public void chainAttack(LivingHurtEvent event)
+	{
+		Entity tSource = event.getSource().getTrueSource();
+		if (tSource instanceof EntityPlayer)
+		{
+			EntityPlayer attacker = ((EntityPlayer) tSource);
+			if (!canBeApplied(attacker))
+				return;
 
-            EntityLivingBase attacked = event.getEntityLiving();
+			EntityLivingBase attacked = event.getEntityLiving();
 
-            ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
-            int id = attacked.getEntityId();
-            data.setExtra("id", id);
-            data.setExtra("amount", event.getAmount());
-            data.incrementStep(attacker);
-        }
-    }
+			ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
+			int id = attacked.getEntityId();
+			data.setExtra("id", id);
+			data.setExtra("amount", event.getAmount());
+			data.incrementStep(attacker);
+		}
+	}
 
-    @Override
-    public void onStep(World world, EntityPlayer attacker, ItemStack effectStack, int maxSteps, int step)
-    {
-        ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
-        int attackedId = data.getExtraInt("id");
-        //Should only be an EntityLivingBase anyways
-        EntityLivingBase attacked = (EntityLivingBase) world.getEntityByID(attackedId);
+	@Override
+	public void onStep(World world, EntityPlayer attacker, ItemStack effectStack, int maxSteps, int step)
+	{
+		ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
+		int attackedId = data.getExtraInt("id");
+		//Should only be an EntityLivingBase anyways
+		EntityLivingBase attacked = (EntityLivingBase) world.getEntityByID(attackedId);
 
-        //The entity was already removed from the world for some reason
-        if (attacked == null)
-            return;
+		//The entity was already removed from the world for some reason
+		if (attacked == null)
+			return;
 
-        attacker.world.getEntitiesWithinAABB(attacked.getClass(), new AxisAlignedBB(
-                attacked.posX - 2, attacked.posY - 2, attacked.posZ - 2,
-                attacked.posX + 2, attacked.posY + 2, attacked.posZ + 2
-        )).forEach(entity -> {
-            if (entity != attacked)
-            {
-                entity.attackEntityFrom(DamageSource.GENERIC, data.getExtraInt("amount"));
-                for (int i = 0; i < 5; i++)
-                    spawnParticle(entity, 1.5F, true, 3);
-            }
-        });
-    }
+		attacker.world.getEntitiesWithinAABB(attacked.getClass(), new AxisAlignedBB(
+				attacked.posX - 2, attacked.posY - 2, attacked.posZ - 2,
+				attacked.posX + 2, attacked.posY + 2, attacked.posZ + 2
+		)).forEach(entity -> {
+			if (entity != attacked)
+			{
+				entity.attackEntityFrom(DamageSource.GENERIC, data.getExtraInt("amount"));
+				for (int i = 0; i < 5; i++)
+					spawnParticle(entity, 1.5F, true, 3);
+			}
+		});
+	}
+
 }

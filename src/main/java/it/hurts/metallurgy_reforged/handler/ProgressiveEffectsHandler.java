@@ -19,39 +19,40 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public abstract class ProgressiveEffectsHandler {
 
-    @SubscribeEvent
-    public static void onLivingUpdate(TickEvent.PlayerTickEvent event)
-    {
-        if (event.phase != TickEvent.Phase.START)
-            return;
+	@SubscribeEvent
+	public static void onLivingUpdate(TickEvent.PlayerTickEvent event)
+	{
+		if (event.phase != TickEvent.Phase.START)
+			return;
 
-        PlayerEffectData data = event.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+		PlayerEffectData data = event.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-        MetallurgyEffects.effects.forEach(effect -> {
+		MetallurgyEffects.effects.forEach(effect -> {
 
-            if (effect instanceof IProgressiveEffect)
-            {
-                String key = effect.getMetal().toString() + '_' + effect.getCategory();
+			if (effect instanceof IProgressiveEffect)
+			{
+				String key = effect.getMetal().toString() + '_' + effect.getCategory();
 
-                ProgressiveDataBundle bundle = data.effectBundles.get(key);
+				ProgressiveDataBundle bundle = data.effectBundles.get(key);
 
-                if (bundle != null && bundle.isEffectInProgress())
-                {
-                    if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + ((long) bundle.STEP_TICK_DELAY * bundle.getCurrentStep()))
-                    {
-                        //Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
-                        ((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getEffectStack(), bundle.getMaxSteps(), bundle.getCurrentStep());
+				if (bundle != null && bundle.isEffectInProgress())
+				{
+					if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + ((long) bundle.STEP_TICK_DELAY * bundle.getCurrentStep()))
+					{
+						//Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
+						((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getEffectStack(), bundle.getMaxSteps(), bundle.getCurrentStep());
 
-                        //Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed
-                        if (bundle.isEffectInProgress())
-                        {
-                            //Step synchronization should not happen unless it's the kickstart step (if nonnull things break)
-                            bundle.incrementStep(null);
-                            bundle.updateTimeStamp(event.player);
-                        }
-                    }
-                }
-            }
-        });
-    }
+						//Check if the effect was reset on the last step call to avoid looping and restarting the effect when not needed
+						if (bundle.isEffectInProgress())
+						{
+							//Step synchronization should not happen unless it's the kickstart step (if nonnull things break)
+							bundle.incrementStep(null);
+							bundle.updateTimeStamp(event.player);
+						}
+					}
+				}
+			}
+		});
+	}
+
 }

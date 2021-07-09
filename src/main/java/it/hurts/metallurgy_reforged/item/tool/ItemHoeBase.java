@@ -39,102 +39,102 @@ import java.util.Set;
 
 public class ItemHoeBase extends ItemHoe implements IToolEffect {
 
-    private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
-    private final MetalStats metalStats;
+	private final Set<BaseMetallurgyEffect> effects = new HashSet<>();
+	private final MetalStats metalStats;
 
-    public ItemHoeBase(ToolMaterial material, MetalStats metalStats)
-    {
-        super(material);
-        this.metalStats = metalStats;
-        ItemUtils.initItem(this, metalStats.getName() + "_hoe", MetallurgyTabs.tabTool);
-    }
+	public ItemHoeBase(ToolMaterial material, MetalStats metalStats)
+	{
+		super(material);
+		this.metalStats = metalStats;
+		ItemUtils.initItem(this, metalStats.getName() + "_hoe", MetallurgyTabs.tabTool);
+	}
 
-    private ItemStack getRepairStack()
-    {
-        Metal metal = ModMetals.metalMap.get(metalStats.getName());
+	private ItemStack getRepairStack()
+	{
+		Metal metal = ModMetals.metalMap.get(metalStats.getName());
 
-        if (metal != null)
-            return new ItemStack(metal.getIngot());
-        else
-            return ItemStack.EMPTY;
-    }
+		if (metal != null)
+			return new ItemStack(metal.getIngot());
+		else
+			return ItemStack.EMPTY;
+	}
 
-    @Override
-    public int getMaxDamage(@Nonnull ItemStack stack)
-    {
-        NBTTagCompound compound = stack.getTagCompound();
+	@Override
+	public int getMaxDamage(@Nonnull ItemStack stack)
+	{
+		NBTTagCompound compound = stack.getTagCompound();
 
-        if (compound != null && compound.hasKey("durability_boost"))
-        {
-            float dBoost = compound.getFloat("durability_boost");
-            return (int) (dBoost * super.getMaxDamage(stack));
-        }
+		if (compound != null && compound.hasKey("durability_boost"))
+		{
+			float dBoost = compound.getFloat("durability_boost");
+			return (int) (dBoost * super.getMaxDamage(stack));
+		}
 
-        return super.getMaxDamage(stack);
-    }
+		return super.getMaxDamage(stack);
+	}
 
-    @Override
-    public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
-    {
-        return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
-    }
+	@Override
+	public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
+	{
+		return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
-    {
-        ItemUtils.buildStatsTooltip(tooltip, EnumTools.HOE, this.metalStats.getToolStats(), stack);
-        ItemUtils.buildEffectTooltip(tooltip, effects);
-    }
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+	{
+		ItemUtils.buildStatsTooltip(tooltip, EnumTools.HOE, this.metalStats.getToolStats(), stack);
+		ItemUtils.buildEffectTooltip(tooltip, effects);
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Nullable
-    @Override
-    public FontRenderer getFontRenderer(@Nonnull ItemStack stack)
-    {
-        return ClientProxy.fontRenderer;
-    }
+	@SideOnly(Side.CLIENT)
+	@Nullable
+	@Override
+	public FontRenderer getFontRenderer(@Nonnull ItemStack stack)
+	{
+		return ClientProxy.fontRenderer;
+	}
 
-    @Nonnull
-    @Override
-    public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
-    {
-        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
-        ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
-        return multimap;
-    }
+	@Nonnull
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(@Nonnull EntityEquipmentSlot equipmentSlot)
+	{
+		Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+		ItemUtils.setToolAttributes(equipmentSlot, multimap, metalStats);
+		return multimap;
+	}
 
-    @Override
-    public int getItemEnchantability(@Nonnull ItemStack stack)
-    {
-        return metalStats.getToolStats().getToolMagic();
-    }
+	@Override
+	public int getItemEnchantability(@Nonnull ItemStack stack)
+	{
+		return metalStats.getToolStats().getToolMagic();
+	}
 
-    @Override
-    public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
-    {
-        if (enchantment == Enchantments.FORTUNE)
-            return true;
-        else
-            return super.canApplyAtEnchantingTable(stack, enchantment);
-    }
+	@Override
+	public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment)
+	{
+		if (enchantment == Enchantments.FORTUNE)
+			return true;
+		else
+			return super.canApplyAtEnchantingTable(stack, enchantment);
+	}
 
-    @Override
-    public MetalStats getMetalStats()
-    {
-        return this.metalStats;
-    }
+	@Override
+	public MetalStats getMetalStats()
+	{
+		return this.metalStats;
+	}
 
-    @Override
-    public EnumTools getToolClass()
-    {
-        return EnumTools.HOE;
-    }
+	@Override
+	public EnumTools getToolClass()
+	{
+		return EnumTools.HOE;
+	}
 
-    @Override
-    public void addEffect(BaseMetallurgyEffect effect)
-    {
-        effects.add(effect);
-    }
+	@Override
+	public void addEffect(BaseMetallurgyEffect effect)
+	{
+		effects.add(effect);
+	}
 
 }

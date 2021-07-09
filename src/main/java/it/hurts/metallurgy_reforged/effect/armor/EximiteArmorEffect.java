@@ -23,35 +23,36 @@ import javax.annotation.Nonnull;
 
 public class EximiteArmorEffect extends BaseMetallurgyEffect {
 
-    public EximiteArmorEffect()
-    {
-        super(ModMetals.EXIMITE);
-    }
+	public EximiteArmorEffect()
+	{
+		super(ModMetals.EXIMITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    // TODO: 28/02/2021 Consider investigating more on potion effect immunity
-    @SubscribeEvent
-    public void onShulkerAttack(LivingSetAttackTargetEvent event)
-    {
+	// TODO: 28/02/2021 Consider investigating more on potion effect immunity
+	@SubscribeEvent
+	public void onShulkerAttack(LivingSetAttackTargetEvent event)
+	{
 
-        if (getLevel(event.getTarget()) < 1)
-            return;
+		if (getLevel(event.getTarget()) < 1)
+			return;
 
-        EntityLivingBase entity = event.getEntityLiving();
-        if (entity instanceof EntityShulker)
-        {
-            EntityShulker shulker = ((EntityShulker) entity);
+		EntityLivingBase entity = event.getEntityLiving();
+		if (entity instanceof EntityShulker)
+		{
+			EntityShulker shulker = ((EntityShulker) entity);
 
-            EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ, 16, 16, e -> 1.0, player -> getLevel(player) < 1);
-            shulker.setAttackTarget(newTarget);
+			EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ, 16, 16, e -> 1.0, player -> getLevel(player) < 1);
+			shulker.setAttackTarget(newTarget);
 
-            Utils.repeat(20, () -> spawnParticle(shulker, 4F, false, 3));
-        }
-    }
+			Utils.repeat(20, () -> spawnParticle(shulker, 4F, false, 3));
+		}
+	}
+
 }

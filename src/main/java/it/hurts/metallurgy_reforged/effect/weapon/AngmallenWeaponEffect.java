@@ -25,39 +25,40 @@ import java.util.stream.StreamSupport;
 
 public class AngmallenWeaponEffect extends BaseMetallurgyEffect {
 
-    public AngmallenWeaponEffect()
-    {
-        super(ModMetals.ANGMALLEN);
-    }
+	public AngmallenWeaponEffect()
+	{
+		super(ModMetals.ANGMALLEN);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
-
-
-    @SubscribeEvent
-    public void buffDamage(LivingHurtEvent event)
-    {
-
-        if (event.getSource().getTrueSource() instanceof EntityLivingBase)
-        {
-            EntityLivingBase entity = (EntityLivingBase) event.getSource().getTrueSource();
-            if (!canBeApplied(entity))
-                return;
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
 
-            Spliterator<ItemStack> spliterator = event.getEntityLiving().getArmorInventoryList().spliterator();
-            boolean hasArmor = StreamSupport.stream(spliterator, false).anyMatch(stack -> stack.getItem() instanceof ItemArmor);
+	@SubscribeEvent
+	public void buffDamage(LivingHurtEvent event)
+	{
 
-            //Increase damage by 75% if the enemy has a piece of armor
-            if (hasArmor)
-            {
-                event.setAmount(event.getAmount() * 1.75F);
-                Utils.repeat(10, () -> spawnParticle(event.getEntityLiving(), 1.5f, true, 9));
-            }
-        }
-    }
+		if (event.getSource().getTrueSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase entity = (EntityLivingBase) event.getSource().getTrueSource();
+			if (!canBeApplied(entity))
+				return;
+
+
+			Spliterator<ItemStack> spliterator = event.getEntityLiving().getArmorInventoryList().spliterator();
+			boolean hasArmor = StreamSupport.stream(spliterator, false).anyMatch(stack -> stack.getItem() instanceof ItemArmor);
+
+			//Increase damage by 75% if the enemy has a piece of armor
+			if (hasArmor)
+			{
+				event.setAmount(event.getAmount() * 1.75F);
+				Utils.repeat(10, () -> spawnParticle(event.getEntityLiving(), 1.5f, true, 9));
+			}
+		}
+	}
+
 }

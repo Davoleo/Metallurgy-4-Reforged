@@ -28,53 +28,63 @@ import java.util.ListIterator;
 public class AmordrineEffect extends BaseMetallurgyEffect {
 
 
-    public AmordrineEffect() {
-        super(ModMetals.AMORDRINE);
-    }
+	public AmordrineEffect()
+	{
+		super(ModMetals.AMORDRINE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ALL;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ALL;
+	}
 
 
-    @SubscribeEvent
-    public void bindEquipmentToCorpse(PlayerDropsEvent event) {
+	@SubscribeEvent
+	public void bindEquipmentToCorpse(PlayerDropsEvent event)
+	{
 
-        if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
-            return;
+		if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+			return;
 
-        EntityPlayer player = event.getEntityPlayer();
+		EntityPlayer player = event.getEntityPlayer();
 
-        ListIterator<EntityItem> dropIterator = event.getDrops().listIterator();
+		ListIterator<EntityItem> dropIterator = event.getDrops().listIterator();
 
-        while (dropIterator.hasNext()) {
-            EntityItem dropEntity = dropIterator.next();
-            ItemStack item = dropEntity.getItem();
-            if (ItemUtils.isMadeOfMetal(metal, item.getItem())) {
-                if (item.getItem() instanceof ItemArmorBase || item.getItem() instanceof IToolEffect) {
-                    player.addItemStackToInventory(item);
-                    dropIterator.remove();
-                }
-            }
-        }
-    }
+		while (dropIterator.hasNext())
+		{
+			EntityItem dropEntity = dropIterator.next();
+			ItemStack item = dropEntity.getItem();
+			if (ItemUtils.isMadeOfMetal(metal, item.getItem()))
+			{
+				if (item.getItem() instanceof ItemArmorBase || item.getItem() instanceof IToolEffect)
+				{
+					player.addItemStackToInventory(item);
+					dropIterator.remove();
+				}
+			}
+		}
+	}
 
-    @SubscribeEvent
-    public void copyEquipmentToNewEntity(PlayerEvent.Clone event) {
-        if (event.isCanceled())
-            return;
+	@SubscribeEvent
+	public void copyEquipmentToNewEntity(PlayerEvent.Clone event)
+	{
+		if (event.isCanceled())
+			return;
 
-        if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
-            return;
+		if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
+			return;
 
-        if (event.isWasDeath()) {
-            event.getOriginal().inventory.mainInventory.forEach(stack -> {
-                if (ItemUtils.isMadeOfMetal(metal, stack.getItem())) {
-                    event.getEntityPlayer().addItemStackToInventory(stack);
-                }
-            });
-        }
-    }
+		if (event.isWasDeath())
+		{
+			event.getOriginal().inventory.mainInventory.forEach(stack -> {
+				if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+				{
+					event.getEntityPlayer().addItemStackToInventory(stack);
+				}
+			});
+		}
+	}
+
 }

@@ -22,38 +22,38 @@ import javax.annotation.Nonnull;
 
 public class AstralSilverWeaponEffect extends BaseMetallurgyEffect {
 
-    public AstralSilverWeaponEffect()
-    {
-        super(ModMetals.ASTRAL_SILVER);
-    }
+	public AstralSilverWeaponEffect()
+	{
+		super(ModMetals.ASTRAL_SILVER);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.WEAPON;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.WEAPON;
+	}
 
-    @SubscribeEvent
-    public void onMobAttacked(LivingHurtEvent event)
-    {
-        Entity attacker = event.getSource().getImmediateSource();
-        if (attacker instanceof EntityLivingBase)
-        {
+	@SubscribeEvent
+	public void onMobAttacked(LivingHurtEvent event)
+	{
+		Entity attacker = event.getSource().getImmediateSource();
+		if (attacker instanceof EntityLivingBase)
+		{
 
-            if (!canBeApplied(((EntityLivingBase) attacker)))
-                return;
+			if (!canBeApplied(((EntityLivingBase) attacker)))
+				return;
 
-            float originalAMount = event.getAmount();
-            World world = event.getEntity().world;
-            if (world.provider.getDimension() != 0)
-            {
-                event.setAmount(originalAMount * 1.45F);
+			float originalAMount = event.getAmount();
+			World world = event.getEntity().world;
+			if (world.provider.getDimension() != 0)
+			{
+				event.setAmount(originalAMount * 1.45F);
 
-                    for (int i = 0; i < 10; i++)
-                        spawnParticle(event.getEntity(), 1.5f, true, 9);
-            }
-        }
-    }
+				for (int i = 0; i < 10; i++)
+					spawnParticle(event.getEntity(), 1.5f, true, 9);
+			}
+		}
+	}
 
 }

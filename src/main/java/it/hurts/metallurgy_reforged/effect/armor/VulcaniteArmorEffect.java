@@ -21,31 +21,34 @@ import javax.annotation.Nonnull;
 @Deprecated
 public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 
-    public VulcaniteArmorEffect() {
-        super(ModMetals.VULCANITE);
-    }
+	public VulcaniteArmorEffect()
+	{
+		super(ModMetals.VULCANITE);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    public void livingEvent(LivingEvent event) {
-        if (event instanceof LivingAttackEvent)
-        {
-            boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
+	public void livingEvent(LivingEvent event)
+	{
+		if (event instanceof LivingAttackEvent)
+		{
+			boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
 
-            if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && isFireDamage)
-            {
-                event.setCanceled(true);
-            }
-        }
-        if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
-        {
-            event.getEntityLiving().extinguish();
-        }
-    }
+			if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && isFireDamage)
+			{
+				event.setCanceled(true);
+			}
+		}
+		if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
+		{
+			event.getEntityLiving().extinguish();
+		}
+	}
 
 }

@@ -28,34 +28,34 @@ import java.util.List;
 @Deprecated
 public class MetalRecipeWrapper implements IRecipeWrapper {
 
-    private Metal metal;
-    protected IRecipeMetal recipe;
-    private IJeiHelpers helper;
+	private final Metal metal;
+	protected IRecipeMetal recipe;
+	private final IJeiHelpers helper;
 
-    public MetalRecipeWrapper(Metal metal, IRecipeMetal recipe, IJeiHelpers helper)
-    {
-        this.metal = metal;
-        this.recipe = recipe;
-        this.helper = helper;
-    }
+	public MetalRecipeWrapper(Metal metal, IRecipeMetal recipe, IJeiHelpers helper)
+	{
+		this.metal = metal;
+		this.recipe = recipe;
+		this.helper = helper;
+	}
 
-    @Override
-    public void getIngredients(@Nonnull IIngredients ingredients)
-    {
-        //Get the inputs of the recipe
-        NonNullList<Ingredient> inputs = recipe.getIngredients();
+	@Override
+	public void getIngredients(@Nonnull IIngredients ingredients)
+	{
+		//Get the inputs of the recipe
+		NonNullList<Ingredient> inputs = recipe.getIngredients();
 
-        List<List<ItemStack>> inputStacks = new ArrayList<>();
+		List<List<ItemStack>> inputStacks = new ArrayList<>();
 
-        inputs.forEach(ingredient -> {
-            if (ingredient instanceof IngredientMetal)
-                inputStacks.add(((IngredientMetal) ingredient).getOreDictStacks(metal));
-            else
-                inputStacks.add(helper.getStackHelper().toItemStackList(ingredient));
-        });
+		inputs.forEach(ingredient -> {
+			if (ingredient instanceof IngredientMetal)
+				inputStacks.add(((IngredientMetal) ingredient).getOreDictStacks(metal));
+			else
+				inputStacks.add(helper.getStackHelper().toItemStackList(ingredient));
+		});
 
-        ingredients.setInputLists(VanillaTypes.ITEM, inputStacks);
-        ingredients.setOutput(VanillaTypes.ITEM, recipe.getOutputFromMetal(metal));
-    }
+		ingredients.setInputLists(VanillaTypes.ITEM, inputStacks);
+		ingredients.setOutput(VanillaTypes.ITEM, recipe.getOutputFromMetal(metal));
+	}
 
 }

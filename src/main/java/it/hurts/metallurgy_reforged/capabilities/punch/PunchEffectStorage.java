@@ -21,25 +21,25 @@ import net.minecraftforge.common.capabilities.Capability.IStorage;
  */
 public class PunchEffectStorage implements IStorage<IPunchEffect> {
 
-    @Override
-    public NBTBase writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side)
-    {
+	@Override
+	public NBTBase writeNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side)
+	{
 
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setInteger("ticks", instance.getHitTicks());
-        tag.setBoolean("hasAiDisabled", instance.isAIDisabled());
-        tag.setInteger("knockbackTicks", instance.getKnockbackTicks());
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setInteger("ticks", instance.getHitTicks());
+		tag.setBoolean("hasAiDisabled", instance.isAIDisabled());
+		tag.setInteger("knockbackTicks", instance.getKnockbackTicks());
 
-        return tag;
-    }
+		return tag;
+	}
 
-    @Override
-    public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side, NBTBase nbt)
-    {
-        NBTTagCompound tag = (NBTTagCompound) nbt;
-        instance.setHitTicks(tag.getInteger("ticks"));
-        instance.setNoAI(tag.getBoolean("hasAiDisabled"));
-        instance.setKnockbackTicks(tag.getInteger("knockbackTicks"));
-    }
+	@Override
+	public void readNBT(Capability<IPunchEffect> capability, IPunchEffect instance, EnumFacing side, NBTBase nbt)
+	{
+		NBTTagCompound tag = (NBTTagCompound) nbt;
+		instance.setHitTicks(tag.getInteger("ticks"));
+		instance.setNoAI(tag.getBoolean("hasAiDisabled"));
+		instance.setKnockbackTicks(tag.getInteger("knockbackTicks"));
+	}
 
 }

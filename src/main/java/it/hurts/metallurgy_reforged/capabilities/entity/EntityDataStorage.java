@@ -19,27 +19,27 @@ import javax.annotation.Nullable;
 
 public class EntityDataStorage implements Capability.IStorage<EntityData> {
 
-    @Nullable
-    @Override
-    public NBTBase writeNBT(Capability<EntityData> capability, EntityData instance, EnumFacing side)
-    {
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setBoolean("hasTraded", instance.wasSnatched);
-        if (instance.snatchableBlock != null)
-            tag.setInteger("tradeBlockID", Block.getStateId(instance.snatchableBlock));
-        tag.setBoolean("initialized", instance.initialized);
+	@Nullable
+	@Override
+	public NBTBase writeNBT(Capability<EntityData> capability, EntityData instance, EnumFacing side)
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setBoolean("hasTraded", instance.wasSnatched);
+		if (instance.snatchableBlock != null)
+			tag.setInteger("tradeBlockID", Block.getStateId(instance.snatchableBlock));
+		tag.setBoolean("initialized", instance.initialized);
 
-        return tag;
-    }
+		return tag;
+	}
 
-    @Override
-    public void readNBT(Capability<EntityData> capability, EntityData instance, EnumFacing side, NBTBase nbt)
-    {
-        NBTTagCompound tag = (NBTTagCompound) nbt;
-        instance.wasSnatched = tag.getBoolean("hasTraded");
-        if (tag.hasKey("tradeBlockID"))
-            instance.snatchableBlock = Block.getStateById(tag.getInteger("tradeBlockID"));
-        instance.initialized = tag.getBoolean("initialized");
-    }
+	@Override
+	public void readNBT(Capability<EntityData> capability, EntityData instance, EnumFacing side, NBTBase nbt)
+	{
+		NBTTagCompound tag = (NBTTagCompound) nbt;
+		instance.wasSnatched = tag.getBoolean("hasTraded");
+		if (tag.hasKey("tradeBlockID"))
+			instance.snatchableBlock = Block.getStateById(tag.getInteger("tradeBlockID"));
+		instance.initialized = tag.getBoolean("initialized");
+	}
 
 }

@@ -31,187 +31,187 @@ import java.awt.*;
 
 public class MetalStats {
 
-    //Name of the material in snake_case
-    private final String name;
+	//Name of the material in snake_case
+	private final String name;
 
-    //Block Properties
-    private final float hardness;
-    private final float blockBlastResistance;
+	//Block Properties
+	private final float hardness;
+	private final float blockBlastResistance;
 
-    //Ore Properties
-    private final int oreHarvest;
+	//Ore Properties
+	private final int oreHarvest;
 
-    //Color
-    private final int color;
+	//Color
+	private final int color;
 
-    private final ArmorStats armor;
-    private final ToolStats tool;
+	private final ArmorStats armor;
+	private final ToolStats tool;
 
-    private ItemTool.ToolMaterial toolMaterial;
-    private ItemArmor.ArmorMaterial armorMaterial;
+	private ItemTool.ToolMaterial toolMaterial;
+	private ItemArmor.ArmorMaterial armorMaterial;
 
-    public void createMetal()
-    {
-        //name should be in format [snake_case], oreName should be in format [camelCase]
+	public void createMetal()
+	{
+		//name should be in format [snake_case], oreName should be in format [camelCase]
 
-        ItemMetal dust = new ItemMetal(this, ItemTypes.DUST);
-        ItemMetal ingot = new ItemMetal(this, ItemTypes.INGOT);
-        ItemMetal nugget = new ItemMetal(this, ItemTypes.NUGGET);
+		ItemMetal dust = new ItemMetal(this, ItemTypes.DUST);
+		ItemMetal ingot = new ItemMetal(this, ItemTypes.INGOT);
+		ItemMetal nugget = new ItemMetal(this, ItemTypes.NUGGET);
 
-        BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
-        for (int i = 0; i < BlockTypes.values().length; i++)
-        {
-            blocks[i] = new BlockMetal(this, BlockTypes.values()[i], i == BlockTypes.BLOCK.ordinal() ? 5.0F : 2.0F);
-        }
+		BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
+		for (int i = 0; i < BlockTypes.values().length; i++)
+		{
+			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], i == BlockTypes.BLOCK.ordinal() ? 5.0F : 2.0F);
+		}
 
-        BlockOre ore = null;
-        if (oreHarvest >= 0)
-        {
-            ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance, this);
-        }
+		BlockOre ore = null;
+		if (oreHarvest >= 0)
+		{
+			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance, this);
+		}
 
-        FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());
+		FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());
 
-        ItemArmorBase[] armorPieces = null;
-        Item[] tools = null;
+		ItemArmorBase[] armorPieces = null;
+		Item[] tools = null;
 
-        if (armor != null)
-        {
-            ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
-            ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, this);
-            ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, this);
-            ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, this);
-            ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, this);
+		if (armor != null)
+		{
+			ItemArmor.ArmorMaterial armorMaterial = createArmorMaterial();
+			ItemArmorBase helmet = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.HEAD, this);
+			ItemArmorBase chestplate = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.CHEST, this);
+			ItemArmorBase leggings = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.LEGS, this);
+			ItemArmorBase boots = new ItemArmorBase(armorMaterial, EntityEquipmentSlot.FEET, this);
 
-            armorPieces = new ItemArmorBase[]{ helmet, chestplate, leggings, boots };
-        }
+			armorPieces = new ItemArmorBase[]{helmet, chestplate, leggings, boots};
+		}
 
-        if (tool != null)
-        {
-            Item.ToolMaterial toolMaterial = createToolMaterial();
-            ItemAxeBase axe = new ItemAxeBase(toolMaterial, this);
-            ItemHoeBase hoe = new ItemHoeBase(toolMaterial, this);
-            ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, this);
-            ItemShovelBase shovel = new ItemShovelBase(toolMaterial, this);
-            ItemSwordBase sword = new ItemSwordBase(toolMaterial, this);
+		if (tool != null)
+		{
+			Item.ToolMaterial toolMaterial = createToolMaterial();
+			ItemAxeBase axe = new ItemAxeBase(toolMaterial, this);
+			ItemHoeBase hoe = new ItemHoeBase(toolMaterial, this);
+			ItemPickaxeBase pickaxe = new ItemPickaxeBase(toolMaterial, this);
+			ItemShovelBase shovel = new ItemShovelBase(toolMaterial, this);
+			ItemSwordBase sword = new ItemSwordBase(toolMaterial, this);
 
-            tools = new Item[]{ axe, hoe, pickaxe, shovel, sword };
-        }
+			tools = new Item[]{axe, hoe, pickaxe, shovel, sword};
+		}
 
-        new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
-    }
+		new Metal(this, ingot, dust, nugget, ore, blocks, moltenFluid, tools, armorPieces);
+	}
 
-    private int automaticTemperature()
-    {
-        float output = 1000F;
-        if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
-        {
-            output = blockBlastResistance * 60f;
-        }
-        else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
-        {
-            output = blockBlastResistance * 36F;
-        }
-        return Math.round(output);
-    }
+	private int automaticTemperature()
+	{
+		float output = 1000F;
+		if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
+		{
+			output = blockBlastResistance * 60f;
+		}
+		else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
+		{
+			output = blockBlastResistance * 36F;
+		}
+		return Math.round(output);
+	}
 
-    /**
-     * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
-     * @param hardness        the time it takes to break a block made of this metal
-     * @param blastResistance the resistance to explosions of the metal block
-     * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
-     * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
-     * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
-     * @param color           The representative color of the metal
-     */
-    public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
-    {
-        this.name = name;
-        this.hardness = hardness;
-        this.blockBlastResistance = blastResistance;
-        this.armor = armor;
-        this.tool = tool;
-        this.oreHarvest = oreHarvest;
-        this.color = color;
-    }
+	/**
+	 * @param name            name of the metal - snake_case all lowercase with underlines separating words (ex: dark_steel)
+	 * @param hardness        the time it takes to break a block made of this metal
+	 * @param blastResistance the resistance to explosions of the metal block
+	 * @param armor           the ArmorStats instance representing this metal's stats, or null if there is no armor
+	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
+	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
+	 * @param color           The representative color of the metal
+	 */
+	public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
+	{
+		this.name = name;
+		this.hardness = hardness;
+		this.blockBlastResistance = blastResistance;
+		this.armor = armor;
+		this.tool = tool;
+		this.oreHarvest = oreHarvest;
+		this.color = color;
+	}
 
-    public String getName()
-    {
-        return name;
-    }
+	public String getName()
+	{
+		return name;
+	}
 
-    public float getHardness()
-    {
-        return hardness;
-    }
+	public float getHardness()
+	{
+		return hardness;
+	}
 
-    /**
-     * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
-     */
-    public int getOreHarvest()
-    {
-        return oreHarvest;
-    }
+	/**
+	 * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
+	 */
+	public int getOreHarvest()
+	{
+		return oreHarvest;
+	}
 
-    public float getBlockBlastResistance()
-    {
-        return blockBlastResistance;
-    }
+	public float getBlockBlastResistance()
+	{
+		return blockBlastResistance;
+	}
 
-    @Nullable
-    public ArmorStats getArmorStats()
-    {
-        return armor;
-    }
+	@Nullable
+	public ArmorStats getArmorStats()
+	{
+		return armor;
+	}
 
-    @Nullable
-    public ToolStats getToolStats()
-    {
-        return tool;
-    }
+	@Nullable
+	public ToolStats getToolStats()
+	{
+		return tool;
+	}
 
-    public ItemTool.ToolMaterial getToolMaterial()
-    {
-        return toolMaterial;
-    }
+	public ItemTool.ToolMaterial getToolMaterial()
+	{
+		return toolMaterial;
+	}
 
-    public ItemArmor.ArmorMaterial getArmorMaterial()
-    {
-        return armorMaterial;
-    }
+	public ItemArmor.ArmorMaterial getArmorMaterial()
+	{
+		return armorMaterial;
+	}
 
-    public int getColorHex()
-    {
-        return color;
-    }
+	public int getColorHex()
+	{
+		return color;
+	}
 
-    public long getColorIntWithAlpha()
-    {
-        String colorWoAlpha = Integer.toHexString(color);
-        String colorWAlpha = "0xff" + colorWoAlpha;
-        return Long.decode(colorWAlpha);
-    }
+	public long getColorIntWithAlpha()
+	{
+		String colorWoAlpha = Integer.toHexString(color);
+		String colorWAlpha = "0xff" + colorWoAlpha;
+		return Long.decode(colorWAlpha);
+	}
 
-    public float[] getColorRGBValues()
-    {
-        Color rgb = new Color(color);
-        return rgb.getRGBColorComponents(null);
-    }
+	public float[] getColorRGBValues()
+	{
+		Color rgb = new Color(color);
+		return rgb.getRGBColorComponents(null);
+	}
 
-    private ItemArmor.ArmorMaterial createArmorMaterial()
-    {
-        if (armor == null)
-            throw new UnsupportedOperationException("No Armor Stats Loaded");
+	private ItemArmor.ArmorMaterial createArmorMaterial()
+	{
+		if (armor == null)
+			throw new UnsupportedOperationException("No Armor Stats Loaded");
 
-        return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getEnchantability(), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, armor.getToughness());
-    }
+		return armorMaterial = EnumHelper.addArmorMaterial(this.getName(), Metallurgy.MODID + ":" + this.getName(), armor.getDurability(), armor.getDamageReduction(), armor.getEnchantability(), SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, armor.getToughness());
+	}
 
-    private Item.ToolMaterial createToolMaterial()
-    {
-        if (tool == null)
-            throw new UnsupportedOperationException("No Tool Stats Loaded");
+	private Item.ToolMaterial createToolMaterial()
+	{
+		if (tool == null)
+			throw new UnsupportedOperationException("No Tool Stats Loaded");
 
-        return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
-    }
+		return toolMaterial = EnumHelper.addToolMaterial(this.getName(), tool.getHarvestLevel(), tool.getMaxUses(), tool.getEfficiency(), tool.getDamage(), tool.getToolMagic());
+	}
 
 }

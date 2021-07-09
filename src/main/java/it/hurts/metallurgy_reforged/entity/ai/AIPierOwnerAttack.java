@@ -15,46 +15,47 @@ import net.minecraft.entity.ai.EntityAITarget;
 
 public class AIPierOwnerAttack extends EntityAITarget {
 
-    EntityPierKnight pierknight;
-    EntityLivingBase attacker;
-    private int timestamp;
+	EntityPierKnight pierknight;
+	EntityLivingBase attacker;
+	private int timestamp;
 
-    public AIPierOwnerAttack(EntityPierKnight pier)
-    {
-        super(pier, false);
-        this.pierknight = pier;
-        this.setMutexBits(1);
-    }
+	public AIPierOwnerAttack(EntityPierKnight pier)
+	{
+		super(pier, false);
+		this.pierknight = pier;
+		this.setMutexBits(1);
+	}
 
-    public boolean shouldExecute()
-    {
-        EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierknight.getOwner();
+	public boolean shouldExecute()
+	{
+		EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierknight.getOwner();
 
-        if (entitylivingbase == null)
-        {
-            return false;
-        }
-        else
-        {
-            this.attacker = entitylivingbase.getLastAttackedEntity();
-            int i = entitylivingbase.getLastAttackedEntityTime();
-            return i != this.timestamp && this.isSuitableTarget(this.attacker, false);
-        }
-    }
+		if (entitylivingbase == null)
+		{
+			return false;
+		}
+		else
+		{
+			this.attacker = entitylivingbase.getLastAttackedEntity();
+			int i = entitylivingbase.getLastAttackedEntityTime();
+			return i != this.timestamp && this.isSuitableTarget(this.attacker, false);
+		}
+	}
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
-    public void startExecuting()
-    {
-        this.taskOwner.setAttackTarget(this.attacker);
-        EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierknight.getOwner();
+	/**
+	 * Execute a one shot task or start executing a continuous task
+	 */
+	public void startExecuting()
+	{
+		this.taskOwner.setAttackTarget(this.attacker);
+		EntityLivingBase entitylivingbase = (EntityLivingBase) this.pierknight.getOwner();
 
-        if (entitylivingbase != null)
-        {
-            this.timestamp = entitylivingbase.getLastAttackedEntityTime();
-        }
+		if (entitylivingbase != null)
+		{
+			this.timestamp = entitylivingbase.getLastAttackedEntityTime();
+		}
 
-        super.startExecuting();
-    }
+		super.startExecuting();
+	}
+
 }

@@ -22,81 +22,81 @@ import static it.hurts.metallurgy_reforged.recipe.CrusherRecipes.getInstance;
 @ZenClass("mods.metallurgyreforged.Crusher")
 public class CompatCrusher {
 
-    @ZenMethod
-    public static void addRecipe(IIngredient input, IItemStack output)
-    {
-        CraftTweakerAPI.apply(new Add(input, output));
-    }
+	@ZenMethod
+	public static void addRecipe(IIngredient input, IItemStack output)
+	{
+		CraftTweakerAPI.apply(new Add(input, output));
+	}
 
-    @ZenMethod
-    public static void addRecipe(IIngredient input, IItemStack output, float xp)
-    {
-        CraftTweakerAPI.apply(new Add(input, output, xp));
-    }
+	@ZenMethod
+	public static void addRecipe(IIngredient input, IItemStack output, float xp)
+	{
+		CraftTweakerAPI.apply(new Add(input, output, xp));
+	}
 
-    private static class Add implements IAction {
+	private static class Add implements IAction {
 
-        private IIngredient input;
-        private IItemStack output;
-        private float xp;
+		private final IIngredient input;
+		private final IItemStack output;
+		private final float xp;
 
-        Add(IIngredient input, IItemStack output)
-        {
-            this(input, output, 0F);
-        }
+		Add(IIngredient input, IItemStack output)
+		{
+			this(input, output, 0F);
+		}
 
-        Add(IIngredient input, IItemStack output, float xp)
-        {
-            this.input = input;
-            this.output = output;
-            this.xp = xp;
-        }
+		Add(IIngredient input, IItemStack output, float xp)
+		{
+			this.input = input;
+			this.output = output;
+			this.xp = xp;
+		}
 
-        @Override
-        public void apply()
-        {
-            ItemStack[] inputStacks = IntegrationCT.toStacks(input.getItemArray());
-            ItemStack outputStack = IntegrationCT.toStack(output);
+		@Override
+		public void apply()
+		{
+			ItemStack[] inputStacks = IntegrationCT.toStacks(input.getItemArray());
+			ItemStack outputStack = IntegrationCT.toStack(output);
 
-            for (ItemStack inputStack : inputStacks)
-                getInstance().addCrushingRecipe(inputStack, outputStack, xp);
-        }
+			for (ItemStack inputStack : inputStacks)
+				getInstance().addCrushingRecipe(inputStack, outputStack, xp);
+		}
 
-        @Override
-        public String describe()
-        {
-            return "Adding Metallurgy-Reforged Crusher Recipe for " + output.getDisplayName();
-        }
+		@Override
+		public String describe()
+		{
+			return "Adding Metallurgy-Reforged Crusher Recipe for " + output.getDisplayName();
+		}
 
-    }
+	}
 
-    @ZenMethod
-    public static void removeRecipe(IItemStack output)
-    {
-        CraftTweakerAPI.apply(new Remove(output));
-    }
+	@ZenMethod
+	public static void removeRecipe(IItemStack output)
+	{
+		CraftTweakerAPI.apply(new Remove(output));
+	}
 
-    private static class Remove implements IAction {
+	private static class Remove implements IAction {
 
-        private IItemStack output;
+		private final IItemStack output;
 
-        Remove(IItemStack output)
-        {
-            this.output = output;
-        }
+		Remove(IItemStack output)
+		{
+			this.output = output;
+		}
 
-        @Override
-        public void apply()
-        {
-            getInstance().removeCrushingRecipe(IntegrationCT.toStack(output));
-        }
+		@Override
+		public void apply()
+		{
+			getInstance().removeCrushingRecipe(IntegrationCT.toStack(output));
+		}
 
-        @Override
-        public String describe()
-        {
-            return "Removing Metallurgy-Reforged Crusher Recipe for " + output.getDisplayName();
-        }
+		@Override
+		public String describe()
+		{
+			return "Removing Metallurgy-Reforged Crusher Recipe for " + output.getDisplayName();
+		}
 
-    }
+	}
 
 }

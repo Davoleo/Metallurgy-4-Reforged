@@ -51,8 +51,9 @@ public class KrikToolEffect extends BaseMetallurgyEffect {
         playerIn.motionZ += vec.z * 1.7;
         playerIn.velocityChanged = true;
 
-        playerIn.getHeldItemMainhand().damageItem((int) 2, playerIn);
+        playerIn.getHeldItemMainhand().damageItem(2, playerIn);
         worldIn.playSound(null, playerIn.getPosition(), SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.PLAYERS, 1.25F, 0.65F);
         playerIn.getCooldownTracker().setCooldown(tool.getItem(), 36);
     }
+
 }

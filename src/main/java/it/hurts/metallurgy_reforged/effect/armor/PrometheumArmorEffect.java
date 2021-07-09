@@ -22,24 +22,28 @@ import javax.annotation.Nonnull;
 @Deprecated
 public class PrometheumArmorEffect extends BaseMetallurgyEffect {
 
-    public PrometheumArmorEffect() {
-        super(ModMetals.PROMETHEUM);
-    }
+	public PrometheumArmorEffect()
+	{
+		super(ModMetals.PROMETHEUM);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
 
-    public void livingEvent(LivingEvent event) {
-        if (event instanceof LivingEvent.LivingUpdateEvent) {
-            EntityLivingBase entity = event.getEntityLiving();
+	public void livingEvent(LivingEvent event)
+	{
+		if (event instanceof LivingEvent.LivingUpdateEvent)
+		{
+			EntityLivingBase entity = event.getEntityLiving();
 
-            if (EventUtils.isWearingFullArmorSet(entity, metal) && entity.isPotionActive(MobEffects.POISON))
-                entity.removePotionEffect(MobEffects.POISON);
-        }
-    }
+			if (EventUtils.isWearingFullArmorSet(entity, metal) && entity.isPotionActive(MobEffects.POISON))
+				entity.removePotionEffect(MobEffects.POISON);
+		}
+	}
 
 }

@@ -27,55 +27,55 @@ import java.util.List;
 
 public class ChamberRecipeWrapper implements IRecipeWrapper {
 
-    private ItemStack input;
-    private PotionEffect effect;
+	private final ItemStack input;
+	private final PotionEffect effect;
 
-    public ChamberRecipeWrapper(ItemStack input, PotionEffect effect)
-    {
-        this.input = input;
-        this.effect = effect;
-    }
+	public ChamberRecipeWrapper(ItemStack input, PotionEffect effect)
+	{
+		this.input = input;
+		this.effect = effect;
+	}
 
-    public ItemStack getInput()
-    {
-        return input;
-    }
+	public ItemStack getInput()
+	{
+		return input;
+	}
 
-    public static List<ChamberRecipeWrapper> getRecipeInputs()
-    {
-        ArrayList<ChamberRecipeWrapper> recipes = new ArrayList<>();
+	public static List<ChamberRecipeWrapper> getRecipeInputs()
+	{
+		ArrayList<ChamberRecipeWrapper> recipes = new ArrayList<>();
 
-        SublimationRecipes.getInstance().recipesMap().forEach((input, effect) -> {
-            recipes.add(new ChamberRecipeWrapper(input, effect));
-        });
+		SublimationRecipes.getInstance().recipesMap().forEach((input, effect) -> {
+			recipes.add(new ChamberRecipeWrapper(input, effect));
+		});
 
-        return recipes;
-    }
+		return recipes;
+	}
 
-    @Override
-    public void getIngredients(IIngredients ingredients)
-    {
-        ingredients.setInput(VanillaTypes.ITEM, input);
-    }
+	@Override
+	public void getIngredients(IIngredients ingredients)
+	{
+		ingredients.setInput(VanillaTypes.ITEM, input);
+	}
 
-    @Override
-    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
-    {
-        Metal metal = ItemUtils.getMetalFromItem(input.getItem());
-        int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
+	@Override
+	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY)
+	{
+		Metal metal = ItemUtils.getMetalFromItem(input.getItem());
+		int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
 
-        GlStateManager.pushMatrix();
-        minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);
-        Utils.drawTexturedModalRect(106, 27, effect.getPotion().getStatusIconIndex() % 8 * 18, 198 + effect.getPotion().getStatusIconIndex() / 8 * 18, 18, 18);
-        minecraft.fontRenderer.drawString(effect.getDuration() / 20 + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds") + " | " + Utils.localizeIgnoreFormat(effect.getEffectName()), 5, 5, color);
+		GlStateManager.pushMatrix();
+		minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);
+		Utils.drawTexturedModalRect(106, 27, effect.getPotion().getStatusIconIndex() % 8 * 18, 198 + effect.getPotion().getStatusIconIndex() / 8 * 18, 18, 18);
+		minecraft.fontRenderer.drawString(effect.getDuration() / 20 + " " + Utils.localizeIgnoreFormat("gui.jei_compat.sublimation_chamber.seconds") + " | " + Utils.localizeIgnoreFormat(effect.getEffectName()), 5, 5, color);
 
-        GlStateManager.popMatrix();
+		GlStateManager.popMatrix();
 
-        //Meh, Tooltip looks ugly :(
-        //if ((mouseX > 100 && mouseX < 130) && (mouseY > 20 && mouseY < 50))
-        //{
-        //	GuiUtils.drawHoveringText(Collections.singletonList(effect.getPotion().getName()), mouseX, mouseY, recipeWidth, recipeHeight, 100, minecraft.fontRenderer);
-        //}
-    }
+		//Meh, Tooltip looks ugly :(
+		//if ((mouseX > 100 && mouseX < 130) && (mouseY > 20 && mouseY < 50))
+		//{
+		//	GuiUtils.drawHoveringText(Collections.singletonList(effect.getPotion().getName()), mouseX, mouseY, recipeWidth, recipeHeight, 100, minecraft.fontRenderer);
+		//}
+	}
 
 }

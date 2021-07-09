@@ -26,63 +26,69 @@ import javax.annotation.Nonnull;
 
 public class AngmallenArmorEffect extends BaseMetallurgyEffect {
 
-    private final int RADIUS = 4;
+	private final int RADIUS = 4;
 
-    public AngmallenArmorEffect() {
-        super(ModMetals.ANGMALLEN);
-    }
+	public AngmallenArmorEffect()
+	{
+		super(ModMetals.ANGMALLEN);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory() {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    /**
-     * check for nearby rare ores and make a sound if there are any in a range of 4 blocks
-     */
-    @SubscribeEvent
-    public void detectNearbyOres(TickEvent.PlayerTickEvent event) {
+	/**
+	 * check for nearby rare ores and make a sound if there are any in a range of 4 blocks
+	 */
+	@SubscribeEvent
+	public void detectNearbyOres(TickEvent.PlayerTickEvent event)
+	{
 
-        EntityPlayer player = event.player;
+		EntityPlayer player = event.player;
 
-        if (!canBeApplied(player))
-            return;
+		if (!canBeApplied(player))
+			return;
 
-        if (player.world.isRemote && player.ticksExisted % 20 == 0) {
-            if (player.getRNG().nextFloat() < getLevel(player) * 0.4) {
-                BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
-                if (rareOrePos != null)
-                    player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 0.75F, 1, true);
-            }
-        }
+		if (player.world.isRemote && player.ticksExisted % 20 == 0)
+		{
+			if (player.getRNG().nextFloat() < getLevel(player) * 0.4)
+			{
+				BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
+				if (rareOrePos != null)
+					player.world.playSound(rareOrePos.getX(), rareOrePos.getY(), rareOrePos.getZ(), SoundEvents.BLOCK_NOTE_BELL, SoundCategory.PLAYERS, 0.75F, 1, true);
+			}
+		}
 
-    }
+	}
 
-    private BlockPos getRareOrePos(World world, BlockPos playerPos) {
+	private BlockPos getRareOrePos(World world, BlockPos playerPos)
+	{
 
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        BlockPos nearestPos = null;
+		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+		BlockPos nearestPos = null;
 
-        for (int x = -RADIUS; x < RADIUS; x++)
-        {
-            for (int y = -RADIUS; y < RADIUS; y++)
-            {
-                for (int z = -RADIUS; z < RADIUS; z++)
-                {
+		for (int x = -RADIUS; x < RADIUS; x++)
+		{
+			for (int y = -RADIUS; y < RADIUS; y++)
+			{
+				for (int z = -RADIUS; z < RADIUS; z++)
+				{
 
-                    pos.setPos(playerPos.getX() + x, playerPos.getY() + y, playerPos.getZ() + z);
-                    IBlockState state = world.getBlockState(pos);
-                    if (state.getBlock() instanceof BlockOre && state.getBlock().getHarvestLevel(state) > 3)
-                    {
-                        if (nearestPos == null || pos.distanceSq(playerPos) < nearestPos.distanceSq(playerPos))
-                            nearestPos = pos.toImmutable();
-                    }
-                }
-            }
-        }
+					pos.setPos(playerPos.getX() + x, playerPos.getY() + y, playerPos.getZ() + z);
+					IBlockState state = world.getBlockState(pos);
+					if (state.getBlock() instanceof BlockOre && state.getBlock().getHarvestLevel(state) > 3)
+					{
+						if (nearestPos == null || pos.distanceSq(playerPos) < nearestPos.distanceSq(playerPos))
+							nearestPos = pos.toImmutable();
+					}
+				}
+			}
+		}
 
-        return nearestPos;
-    }
+		return nearestPos;
+	}
 
 }

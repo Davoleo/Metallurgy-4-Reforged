@@ -101,7 +101,8 @@ public class PacketSpawnOreParticles implements IMessage {
 	}
 
 	public static class Handler implements IMessageHandler<PacketSpawnOreParticles, IMessage> {
-		private float[] rgb = new float[3];
+
+		private final float[] rgb = new float[3];
 
 		@SideOnly(Side.CLIENT)
 		@Override

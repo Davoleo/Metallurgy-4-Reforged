@@ -42,7 +42,7 @@ public class BlockOre extends Block {
 
     //Optional custom drops for blocks
     private List<Drop> customDrops;
-    private MetalStats metal;
+    private final MetalStats metal;
 
     public BlockOre(String name, float hardness, int harvestLevel, float blastResistance, MetalStats metal)
     {

@@ -25,55 +25,55 @@ import javax.annotation.Nonnull;
 
 public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 
-    public ItemVulcaniteLighter(String name)
-    {
-        super(name);
-        setMaxDamage(500);
-    }
+	public ItemVulcaniteLighter(String name)
+	{
+		super(name);
+		setMaxDamage(500);
+	}
 
-    @Nonnull
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        BlockPos blockPos = pos.offset(facing);
-        ItemStack lighter = player.getHeldItem(hand);
+	@Nonnull
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		BlockPos blockPos = pos.offset(facing);
+		ItemStack lighter = player.getHeldItem(hand);
 
-        if (!player.isSneaking())
-            if (!player.canPlayerEdit(blockPos, facing, lighter))
-            {
-                return EnumActionResult.FAIL;
-            }
-            else
-            {
-                worldIn.playSound(player, blockPos, SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.BLOCKS, 1.0F, 2F);
+		if (!player.isSneaking())
+			if (!player.canPlayerEdit(blockPos, facing, lighter))
+			{
+				return EnumActionResult.FAIL;
+			}
+			else
+			{
+				worldIn.playSound(player, blockPos, SoundEvents.ENTITY_GHAST_SHOOT, SoundCategory.BLOCKS, 1.0F, 2F);
 
-                createFire(worldIn, blockPos, player);
+				createFire(worldIn, blockPos, player);
 
-                if (!player.isCreative())
-                    lighter.damageItem(1, player);
+				if (!player.isCreative())
+					lighter.damageItem(1, player);
 
-                return EnumActionResult.SUCCESS;
-            }
-        else
-        {
-            ItemStack item = player.getHeldItem(hand);
+				return EnumActionResult.SUCCESS;
+			}
+		else
+		{
+			ItemStack item = player.getHeldItem(hand);
 
-            if (player.canPlayerEdit(blockPos, facing, item) && worldIn.mayPlace(Blocks.LAVA, blockPos, false, facing, player))
-            {
-                worldIn.playSound(player, blockPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
-                IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, blockPos, facing, hitX, hitY, hitZ, 0, player, hand);
-                worldIn.setBlockState(blockPos, state);
-                state.getBlock().neighborChanged(state, worldIn, blockPos, state.getBlock(), pos);
+			if (player.canPlayerEdit(blockPos, facing, item) && worldIn.mayPlace(Blocks.LAVA, blockPos, false, facing, player))
+			{
+				worldIn.playSound(player, blockPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
+				IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, blockPos, facing, hitX, hitY, hitZ, 0, player, hand);
+				worldIn.setBlockState(blockPos, state);
+				state.getBlock().neighborChanged(state, worldIn, blockPos, state.getBlock(), pos);
 
-                if (!player.isCreative())
-                    player.getCooldownTracker().setCooldown(this, 400);
-                lighter.damageItem(25, player);
+				if (!player.isCreative())
+					player.getCooldownTracker().setCooldown(this, 400);
+				lighter.damageItem(25, player);
 
-                return EnumActionResult.SUCCESS;
-            }
+				return EnumActionResult.SUCCESS;
+			}
 
-            return EnumActionResult.FAIL;
-        }
-    }
+			return EnumActionResult.FAIL;
+		}
+	}
 
 }

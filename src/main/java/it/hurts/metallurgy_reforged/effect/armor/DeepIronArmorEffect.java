@@ -22,44 +22,45 @@ import javax.annotation.Nonnull;
 
 public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 
-    public DeepIronArmorEffect()
-    {
-        super(ModMetals.DEEP_IRON);
-    }
+	public DeepIronArmorEffect()
+	{
+		super(ModMetals.DEEP_IRON);
+	}
 
-    @Nonnull
-    @Override
-    public EnumEffectCategory getCategory()
-    {
-        return EnumEffectCategory.ARMOR;
-    }
+	@Nonnull
+	@Override
+	public EnumEffectCategory getCategory()
+	{
+		return EnumEffectCategory.ARMOR;
+	}
 
-    @SubscribeEvent
-    public void underwaterBoost(LivingEvent.LivingUpdateEvent event)
-    {
-        EntityLivingBase entity = event.getEntityLiving();
-        float level = getLevel(entity);
+	@SubscribeEvent
+	public void underwaterBoost(LivingEvent.LivingUpdateEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
+		float level = getLevel(entity);
 
-        if (level > 0 && entity.isInWater())
-        {
-            if (entity.ticksExisted % 30 == 0)
-            {
-                int amplifier = (int) ((level * 4) - 1);
-                entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 0, false, false));
+		if (level > 0 && entity.isInWater())
+		{
+			if (entity.ticksExisted % 30 == 0)
+			{
+				int amplifier = (int) ((level * 4) - 1);
+				entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 0, false, false));
 
-                if (level >= 0.5)
-                    entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, amplifier - 2, false, false));
-            }
+				if (level >= 0.5)
+					entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, amplifier - 2, false, false));
+			}
 
-            entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1 + (level * 4));
-            if (entity.motionY < 0)
-            {
-                entity.motionY -= 0.1 * level;
-            }
-        }
-        else
-        {
-            entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(EntityLivingBase.SWIM_SPEED.getDefaultValue());
-        }
-    }
+			entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1 + (level * 4));
+			if (entity.motionY < 0)
+			{
+				entity.motionY -= 0.1 * level;
+			}
+		}
+		else
+		{
+			entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(EntityLivingBase.SWIM_SPEED.getDefaultValue());
+		}
+	}
+
 }

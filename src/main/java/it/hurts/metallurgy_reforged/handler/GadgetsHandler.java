@@ -311,13 +311,15 @@ public class GadgetsHandler {
 	 */
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public static void onPlayerInput(InputUpdateEvent event) {
+	public static void onPlayerInput(InputUpdateEvent event)
+	{
 		EntityPlayer player = event.getEntityPlayer();
 
 		if (sprintToggleTimer > 0)
 			sprintToggleTimer--;
 
-		if (player.getActiveItemStack().getItem() instanceof ItemBuckler) {
+		if (player.getActiveItemStack().getItem() instanceof ItemBuckler)
+		{
 			MovementInput input = event.getMovementInput();
 			input.moveForward *= 5;
 			input.moveStrafe *= 5;
@@ -378,7 +380,8 @@ public class GadgetsHandler {
 	 * Handles Bucklers going on cooldown after blocking a hit
 	 */
 	@SubscribeEvent
-	public static void onDamageBlocked(LivingHurtEvent event) {
+	public static void onDamageBlocked(LivingHurtEvent event)
+	{
 		//Why did you leave ItHurtsLikeHell, I miss you >_>
 		EntityLivingBase entity = event.getEntityLiving();
 
@@ -391,7 +394,8 @@ public class GadgetsHandler {
 	 * Invokes a method callback when our modded shields block damage
 	 */
 	@SubscribeEvent
-	public static void onDamageBlock(LivingAttackEvent event) {
+	public static void onDamageBlock(LivingAttackEvent event)
+	{
 		EntityLivingBase entity = event.getEntityLiving();
 
 		if (entity.getActiveItemStack().getItem() instanceof ItemShieldBase && canDamageBeBlocked(event.getSource(), entity))
@@ -404,11 +408,14 @@ public class GadgetsHandler {
 	 * @see EntityLivingBase#canBlockDamageSource(DamageSource)
 	 */
 	@SuppressWarnings("JavadocReference")
-	private static boolean canDamageBeBlocked(DamageSource damageSource, EntityLivingBase blockerEntity) {
-		if (!damageSource.isUnblockable()) {
+	private static boolean canDamageBeBlocked(DamageSource damageSource, EntityLivingBase blockerEntity)
+	{
+		if (!damageSource.isUnblockable())
+		{
 			Vec3d damageLocation = damageSource.getDamageLocation();
 
-			if (damageLocation != null) {
+			if (damageLocation != null)
+			{
 				Vec3d entityLook = blockerEntity.getLook(1F);
 
 				//(Entity coords - Damage Location coords).normalized |
@@ -420,9 +427,7 @@ public class GadgetsHandler {
 				//if the damage vec and the look vec are both positive or negative the damage source is behind the player and it doesn't get blocked
 				//if the damage vec and the look vec have different signum the damage source is behind the player and it gets blocked
 				//max: 2 | min -2
-				if (damageToPlayerVec.dotProduct(entityLook) < 0.0D) {
-					return true;
-				}
+				return damageToPlayerVec.dotProduct(entityLook) < 0.0D;
 			}
 		}
 
@@ -438,6 +443,7 @@ public class GadgetsHandler {
 	 * Cancels player render when using a Lemurite shield to become invisible
 	 *
 	 * @param event player render event that we're canceling
+	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent
@@ -452,6 +458,7 @@ public class GadgetsHandler {
 	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
 	 *
 	 * @param event living entities update event we're listening to
+	 *
 	 * @see ItemLemuriteShield
 	 */
 	@SubscribeEvent

@@ -21,27 +21,27 @@ import javax.annotation.Nonnull;
 
 public class BrassKnucklesTEISR extends TileEntityItemStackRenderer {
 
-    public static ItemCameraTransforms.TransformType type = null;
+	public static ItemCameraTransforms.TransformType type = null;
 
-    @Override
-    public void renderByItem(@Nonnull ItemStack itemStackIn)
-    {
-        BrassKnucklesModel model = new BrassKnucklesModel(Minecraft.getMinecraft(), type);
-        EntityPlayerSP pl = Minecraft.getMinecraft().player;
+	@Override
+	public void renderByItem(@Nonnull ItemStack itemStackIn)
+	{
+		BrassKnucklesModel model = new BrassKnucklesModel(Minecraft.getMinecraft(), type);
+		EntityPlayerSP pl = Minecraft.getMinecraft().player;
 
-        if (pl != null && (type == ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND || type == ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND))
-        {
-            float ticks = Minecraft.getMinecraft().isGamePaused() ? 1F : Minecraft.getMinecraft().getRenderPartialTicks();
+		if (pl != null && (type == ItemCameraTransforms.TransformType.FIRST_PERSON_RIGHT_HAND || type == ItemCameraTransforms.TransformType.FIRST_PERSON_LEFT_HAND))
+		{
+			float ticks = Minecraft.getMinecraft().isGamePaused() ? 1F : Minecraft.getMinecraft().getRenderPartialTicks();
 
-            // swing variable, starts from 0 and it resets when is equal to 1
-            float swing = pl.getSwingProgress(ticks);
+			// swing variable, starts from 0 and it resets when is equal to 1
+			float swing = pl.getSwingProgress(ticks);
 
-            float animationTick = MathHelper.sin(swing * (float) Math.PI);
-            GlStateManager.translate(animationTick * 0.8F, 0F, 0F);
-            GlStateManager.rotate(animationTick * -30F, 0F, 0F, 1F);
-        }
+			float animationTick = MathHelper.sin(swing * (float) Math.PI);
+			GlStateManager.translate(animationTick * 0.8F, 0F, 0F);
+			GlStateManager.rotate(animationTick * -30F, 0F, 0F, 1F);
+		}
 
-        model.render(itemStackIn);
-    }
+		model.render(itemStackIn);
+	}
 
 }
