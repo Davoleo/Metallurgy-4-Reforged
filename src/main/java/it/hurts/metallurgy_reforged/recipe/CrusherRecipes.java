@@ -31,7 +31,7 @@ public class CrusherRecipes {
 	private final Map<ItemStack, ItemStack> crushingList = Maps.newHashMap();
 	private final Map<ItemStack, Float> experienceList = Maps.newHashMap();
 
-	private static List<ItemStack> stackBlacklist = new ArrayList<>();
+	private static final List<ItemStack> stackBlacklist = new ArrayList<>();
 
 	public static CrusherRecipes getInstance()
 	{

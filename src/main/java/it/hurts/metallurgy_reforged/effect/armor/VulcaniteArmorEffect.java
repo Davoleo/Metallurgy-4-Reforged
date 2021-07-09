@@ -9,17 +9,17 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
+@Deprecated
 public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 
 	public VulcaniteArmorEffect()
@@ -27,44 +27,26 @@ public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.VULCANITE);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.vulcaniteArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-
-	}
-
-	@Override
 	public void livingEvent(LivingEvent event)
 	{
 		if (event instanceof LivingAttackEvent)
 		{
 			boolean isFireDamage = ((LivingAttackEvent) event).getSource().isFireDamage();
 
-			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && isFireDamage)
+			if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && isFireDamage)
 			{
 				event.setCanceled(true);
 			}
 		}
-		if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
+		if (event instanceof LivingEvent.LivingUpdateEvent && EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && event.getEntityLiving().isBurning())
 		{
 			event.getEntityLiving().extinguish();
 		}

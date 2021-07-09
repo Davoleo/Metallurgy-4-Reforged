@@ -10,14 +10,15 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 
-public interface IToolEffect {
+public interface IToolEffect extends IMetalItem {
 
 	MetalStats getMetalStats();
 
 	EnumTools getToolClass();
 
-	void setEffect(BaseMetallurgyEffect effect);
+	void addEffect(BaseMetallurgyEffect effect);
 
 }

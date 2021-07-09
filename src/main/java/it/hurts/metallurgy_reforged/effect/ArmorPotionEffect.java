@@ -16,49 +16,37 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
-public abstract class ArmorPotionEffect extends BaseMetallurgyEffect {
+@Deprecated
+public class ArmorPotionEffect extends BaseMetallurgyEffect {
 
-	private final Potion potion;
-	private int amplifier;
+    private final Potion potion;
+    private final int amplifier;
 
-	public ArmorPotionEffect(Metal metal, Potion potion, int amplifier)
-	{
-		super(metal);
-		this.potion = potion;
-		this.amplifier = amplifier;
-	}
+    public ArmorPotionEffect(Metal metal, Potion potion, int amplifier)
+    {
+        super(metal);
+        this.potion = potion;
+        this.amplifier = amplifier;
+    }
 
-	@Override
-	public boolean isEnabled()
-	{
-		return super.isEnabled();
-	}
+    @Nonnull
+    @Override
+    public EnumEffectCategory getCategory()
+    {
+        return EnumEffectCategory.ARMOR;
+    }
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
+    public void livingEvent(LivingEvent event)
+    {
+        if (event instanceof LivingEvent.LivingUpdateEvent)
+        {
+            boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (event instanceof LivingEvent.LivingUpdateEvent)
-		{
-			boolean refreshEffect = event.getEntityLiving().world.getTotalWorldTime() % 40 == 0;
-
-			if (EventUtils.isEntityWearingArmor(event.getEntityLiving(), metal) && refreshEffect)
-				event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
-		}
-	}
+            if (EventUtils.isWearingFullArmorSet(event.getEntityLiving(), metal) && refreshEffect)
+                event.getEntityLiving().addPotionEffect(new PotionEffect(potion, 60, amplifier, false, false));
+        }
+    }
 
 }

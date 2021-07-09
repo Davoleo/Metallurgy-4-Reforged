@@ -4,14 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.network.server;
 
 import io.netty.buffer.ByteBuf;
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -51,14 +51,14 @@ public class PacketEditPlayerLevel implements IMessage {
 		{
 
 			EntityPlayer player = ctx.getServerHandler().player;
-			IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
+			PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
 			if (capability != null)
 			{
 				if (message.increase)
-					capability.setHeight(capability.getHeight() + 1);
+					capability.krikHeight += 1;
 				else
-					capability.setHeight(capability.getHeight() - 1);
+					capability.krikHeight -= 1;
 			}
 
 			return null;

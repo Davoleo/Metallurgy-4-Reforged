@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
@@ -20,8 +20,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
+@Deprecated
 public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 
 	public ShadowSteelArmorEffect()
@@ -29,26 +30,14 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.SHADOW_STEEL);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.shadowSteelArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
 	public void livingEvent(LivingEvent livingEvent)
 	{
 		if (livingEvent instanceof LivingHurtEvent)
@@ -62,7 +51,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 			{
 				EntityPlayer player = ((EntityPlayer) entity);
 
-				if (EventUtils.isEntityWearingArmor(player, metal))
+				if (EventUtils.isWearingFullArmorSet(player, metal))
 				{
 					float amount = event.getAmount();
 					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness

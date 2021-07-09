@@ -4,14 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.gui.hud;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.effect.armor.KrikArmorEffect;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -27,8 +27,8 @@ public class KrikArmorHUD {
 	{
 		ScaledResolution resolution = event.getResolution();
 
-		int playerYLevel = minecraft.player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null).getHeight();
-		int maxLevel = KrikEffect.getMaxLevel(minecraft.player);
+		int playerYLevel = minecraft.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).krikHeight;
+		int maxLevel = KrikArmorEffect.getKrikMaxLevel(minecraft.player);
 
 		//System.out.println(playerYLevel + " | " +  maxLevel);
 

@@ -9,16 +9,23 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import jline.internal.Nullable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventUtils {
 
@@ -28,16 +35,14 @@ public class EventUtils {
 	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
-	public static boolean isEntityWearingArmor(EntityLivingBase entity, Metal metal)
+	public static boolean isWearingFullArmorSet(EntityLivingBase entity, Metal metal)
 	{
 		boolean fullArmored = true;
 
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
 		{
 			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR && entity.getItemStackFromSlot(slot).getItem() != metal.getArmorPiece(slot))
-			{
 				fullArmored = false;
-			}
 		}
 
 		return fullArmored;
@@ -56,24 +61,47 @@ public class EventUtils {
 	}
 
 	/**
-	 * @param player EntityPlayer
-	 * @param armor  An array with all armor pieces
+	 * @param entity EntityLivingBase
+	 * @param metal  The metal you need to count the number of armor piece of
 	 *
 	 * @return The number of pieces of armor worn by the player
 	 */
-	public static int getArmorPiecesCount(EntityPlayer player, Item[] armor)
+	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
 	{
-		NonNullList<ItemStack> armorList = player.inventory.armorInventory;
-
 		int count = 0;
-		//Reverse for loop because armorList contains armor stacks in reverse order (index 0 are boots)
-		for (int i = 0; i < armorList.size(); i++)
-		{
-			if (armorList.get(3 - i).getItem().equals(armor[i]))
-				count++;
-		}
+
+		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
+				if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
+					count++;
 
 		return count;
+	}
+
+	/**
+	 * @param tool  The item tool you're using to harvest the block
+	 * @param block The Block you're harvesting
+	 *
+	 * @return whether you can harvest a certain block with a specific tool
+	 */
+	public static boolean canHarvest(ItemStack tool, IBlockState block)
+	{
+		EnumTools toolType = EnumTools.byInstance(tool.getItem());
+		String blockToolClass = block.getBlock().getHarvestTool(block);
+
+		if (block.getBlock() == Blocks.BEDROCK)
+			return false;
+
+		if (blockToolClass == null)
+			return true;
+
+		if (toolType == null)
+			return false;
+
+		if (!blockToolClass.equals(toolType.getName()))
+			return false;
+
+		return block.getBlock().getHarvestLevel(block) <= tool.getItem().getHarvestLevel(tool, toolType.getName(), null, block);
 	}
 
 	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()
@@ -81,11 +109,37 @@ public class EventUtils {
 			.toArray(Metal[]::new);
 	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
 
+	public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
+	{
+		final List<ItemStack> equip = new ArrayList<>();
+
+		for (ItemStack stack : entity.getEquipmentAndArmor())
+		{
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+				equip.add(stack);
+		}
+
+		return equip;
+	}
+
+	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
+	{
+		final List<ItemStack> equip = new ArrayList<>();
+
+		for (ItemStack stack : entity.getEquipmentAndArmor())
+		{
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+			{
+				equip.add(stack);
+			}
+		}
+
+		return equip.get(Utils.random.nextInt(equip.size()));
+	}
 
 	@Nullable
 	public static Metal getRandomMetalBasedOnDifficulty(World world)
 	{
-
 		//Some math Reminders
 		//(1 * 1 - 0) * 5 = 5;
 		//(2 * 2 - 1) * 5 = 15;
@@ -115,6 +169,27 @@ public class EventUtils {
 			return metalllarray[metalIndex];
 
 		return null;
+	}
+
+	/**
+	 * Based on {@link ModifiableAttributeInstance#computeValue()}
+	 *
+	 * @return base value modified with the attribute modifier
+	 */
+	@SuppressWarnings("JavadocReference")
+	public static double applyAttributeModifier(double base, AttributeModifier modifier)
+	{
+		switch (modifier.getOperation())
+		{
+			case 0:
+				return base + modifier.getAmount();
+			case 1:
+				return base + base * modifier.getAmount();
+			case 2:
+				return base * (1D + modifier.getAmount());
+			default:
+				return base;
+		}
 	}
 
 }

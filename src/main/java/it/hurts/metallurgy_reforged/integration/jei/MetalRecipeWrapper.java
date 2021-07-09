@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.jei;
@@ -24,11 +24,13 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: 26/05/2021 Remove
+@Deprecated
 public class MetalRecipeWrapper implements IRecipeWrapper {
 
-	private Metal metal;
+	private final Metal metal;
 	protected IRecipeMetal recipe;
-	private IJeiHelpers helper;
+	private final IJeiHelpers helper;
 
 	public MetalRecipeWrapper(Metal metal, IRecipeMetal recipe, IJeiHelpers helper)
 	{
@@ -47,13 +49,9 @@ public class MetalRecipeWrapper implements IRecipeWrapper {
 
 		inputs.forEach(ingredient -> {
 			if (ingredient instanceof IngredientMetal)
-			{
 				inputStacks.add(((IngredientMetal) ingredient).getOreDictStacks(metal));
-			}
 			else
-			{
 				inputStacks.add(helper.getStackHelper().toItemStackList(ingredient));
-			}
 		});
 
 		ingredients.setInputLists(VanillaTypes.ITEM, inputStacks);

@@ -2,21 +2,13 @@
   "type": "forge:ore_shaped",
   "pattern": [
     "AAA",
-    "SCS",
-    "SFS"
+    "AFA",
+    "AAA"
   ],
   "key": {
     "A": {
       "type": "forge:ore_dict",
-      "ore": "ingotAtlarus"
-    },
-    "S": {
-      "type": "forge:ore_dict",
-      "ore": "ingotSteel"
-    },
-    "C": {
-      "type": "forge:ore_dict",
-      "ore": "blockCopper"
+      "ore": "ingotOsmium"
     },
     "F": {
       "item": "minecraft:furnace"

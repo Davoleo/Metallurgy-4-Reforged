@@ -59,9 +59,9 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	private static final int[] slotsTop = Slots.INPUT_SLOT.slots();
 	private static final int[] slotsBottom = Slots.OUTPUT_SLOT.slots();
 	private static final int[] slotsSides = Slots.FUEL_SLOT.slots();
-	private IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
-	private IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
-	private IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
+	private final IItemHandler handlerTop = new SidedInvWrapper(this, EnumFacing.UP);
+	private final IItemHandler handlerBottom = new SidedInvWrapper(this, EnumFacing.DOWN);
+	private final IItemHandler handlerSide = new SidedInvWrapper(this, EnumFacing.WEST);
 	private NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
 
 	private String customName;
@@ -514,14 +514,16 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	 */
 	@Override
 	public void openInventory(@Nonnull EntityPlayer player)
-	{}
+	{
+	}
 
 	/**
 	 * Server side stuff when you close the GUI
 	 */
 	@Override
 	public void closeInventory(@Nonnull EntityPlayer player)
-	{}
+	{
+	}
 
 	/**
 	 * Only called when stacks are inserted using automated methods (i.e. hopper)

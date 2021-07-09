@@ -9,67 +9,231 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
+import com.google.common.base.CaseFormat;
+import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
+import it.hurts.metallurgy_reforged.proxy.ClientProxy;
+import it.hurts.metallurgy_reforged.render.font.FontColor;
+import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
-import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.GetCollisionBoxesEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.Nullable;
-import java.util.List;
+import javax.annotation.Nonnull;
+import java.lang.reflect.Field;
 
 public abstract class BaseMetallurgyEffect {
 
+	public final String name;
 	protected Metal metal;
 
 	public BaseMetallurgyEffect(Metal metal)
 	{
 		this.metal = metal;
+		this.name = metal != null ? Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal + "_" + getCategory()) : "";
+
+		rgbComponents = metal != null ? Utils.getRGBComponents(metal.getStats().getColorHex(), null) : null;
 
 		if (isEnabled())
-		{
 			MetallurgyEffects.effects.add(this);
+	}
+
+	public boolean isEnabled()
+	{
+		if (metal == null)
+			return false;
+		else
+		{
+			String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
+
+			try
+			{
+				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
+				return enabledField.getBoolean(EffectsConfig.class);
+			}
+			catch (NoSuchFieldException | IllegalAccessException e)
+			{
+				Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE THERE'S SOMETHING WRONG WITH " + camelMetal + " EFFECTS CONFIG VARIABLE NAMES, GO FIX IT DAVOLEO!");
+				//e.printStackTrace();
+				return true;
+			}
 		}
 	}
 
-	//TODO Maybe look for metal config reference automatically
-	public boolean isEnabled()
+
+	/**
+	 * @return The category of tools the effect is applied to
+	 */
+	@Nonnull
+	public abstract EnumEffectCategory getCategory();
+
+	public float getLevel(EntityLivingBase entity)
 	{
-		return metal != null;
-	}
+		if (entity == null)
+			return 0;
 
-	public abstract boolean isToolEffect();
+		EnumEffectCategory category = getCategory();
 
-	@Nullable
-	public abstract EnumTools getToolClass();
+		Item toolItem = entity.getHeldItemMainhand().getItem();
 
-	public String getTooltip()
-	{
-
-		if (isToolEffect())
+		if (category == EnumEffectCategory.ALL)
 		{
-			if (getToolClass() != null)
-			{
-				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_" + getToolClass().getName() + "_effect");
-			}
-			else
-			{
-				return Utils.localize("tooltip.metallurgy." + metal.toString() + "_tool_effect");
-			}
+			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class))
+				return 1;
+			return 0;
+		}
+
+		if (category == EnumEffectCategory.ARMOR)
+		{
+			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
 		}
 		else
 		{
-			return Utils.localize("tooltip.metallurgy." + metal.toString() + "_armor_effect");
+			if (ItemUtils.isMadeOfMetal(metal, toolItem))
+			{
+				if (toolItem instanceof IToolEffect)
+				{
+					IToolEffect tool = ((IToolEffect) toolItem);
+					if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
+						return 1;
+				}
+			}
+		}
+
+		return 0;
+	}
+
+	public boolean canBeApplied(EntityLivingBase entity)
+	{
+		return getLevel(entity) > 0;
+	}
+
+	protected ItemStack getArmorRepr(EntityLivingBase entity)
+	{
+
+		if (getCategory() == EnumEffectCategory.ARMOR)
+		{
+			for (ItemStack stack : entity.getArmorInventoryList())
+				if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+					return stack;
+		}
+
+		return ItemStack.EMPTY;
+	}
+
+	/**
+	 * @return A pair of Strings, the first containing the effect name and the second containing its description
+	 */
+	public Pair<String, String> getTooltip()
+	{
+		String format = FontColor.encodeColor(metal.getStats().getColorHex());
+		String description = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.effect." + metal.toString() + "_" + getCategory() + ".tooltip");
+		return ImmutablePair.of(format + name, description);
+	}
+
+	private final float[] rgbComponents;
+
+	/**
+	 * spawn ore particles randomly on a entity
+	 */
+	protected void spawnParticle(Entity entity, float scale, boolean dynamic, int level)
+	{
+		if (entity.world.isRemote)
+			return;
+
+		double x = entity.posX + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
+		double y = entity.posY + Utils.random.nextDouble() * (double) entity.height;
+		double z = entity.posZ + (Utils.random.nextDouble() - 0.5D) * (double) entity.width;
+
+		PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), entity);
+		if (entity instanceof EntityPlayerMP)
+			PacketManager.network.sendTo(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), (EntityPlayerMP) entity);
+	}
+
+	/**
+	 * spawn ore particles randomly on block position
+	 */
+	protected void spawnParticle(World world, BlockPos pos, float scale, boolean dynamic, int level, double motionX, double motionY, double motionZ)
+	{
+		if (world.isRemote)
+			return;
+
+		AxisAlignedBB box = world.getBlockState(pos).getBoundingBox(world, pos);
+
+		double width = box.maxX - box.minX;
+		double height = box.maxY - box.minY;
+		double depth = box.maxZ - box.minZ;
+
+		double border = 0.15D;
+
+		double x = pos.getX() + box.minX - border + (width + border * 2) * Utils.random.nextDouble();
+		double y = pos.getY() + box.minY - border + (height + border * 2) * Utils.random.nextDouble();
+		double z = pos.getZ() + box.minZ - border + (depth + border * 2) * Utils.random.nextDouble();
+		spawnParticle(world, x, y, z, motionX, motionY, motionZ, scale, dynamic, level);
+	}
+
+	/**
+	 * spawn ore particles in a specific point with a custom motion
+	 */
+	protected void spawnParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float scale, boolean dynamic, int level)
+	{
+		if (world.isRemote)
+			return;
+
+		NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
+		PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, motionX, motionY, motionZ, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
+	}
+
+	/**
+	 * spawn ore particles in a specific point with random motion (like redstone particles)
+	 */
+	protected void spawnParticle(World world, double x, double y, double z, float scale, boolean dynamic, int level)
+	{
+		if (world.isRemote)
+			ClientProxy.clientSpawnParticle(world, x, y, z, rgbComponents[0], rgbComponents[1], rgbComponents[2], scale, dynamic, level);
+		else
+		{
+			NetworkRegistry.TargetPoint targetPoint = new NetworkRegistry.TargetPoint(world.provider.getDimension(), x, y, z, 64D);
+			PacketManager.network.sendToAllTracking(new PacketSpawnOreParticles(x, y, z, metal.getStats().getColorHex(), scale, dynamic, level), targetPoint);
+		}
+	}
+
+	public void rightClickHandler(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
+	{
+
+	}
+
+	/**
+	 * Setup tool model overrides to support states in effects
+	 *
+	 * @param condition if it returns 1 the alternative state model will load, if it returns 0 the regular state model will load
+	 */
+	protected void setupModelOverrides(IItemPropertyGetter condition)
+	{
+		for (EnumTools tool : getCategory().getTools())
+		{
+			metal.getTool(tool).addPropertyOverride(new ResourceLocation("active"), condition);
 		}
 	}
 
@@ -78,38 +242,9 @@ public abstract class BaseMetallurgyEffect {
 		return metal;
 	}
 
-	public void onPlayerTick(EntityPlayer player)
-	{ }
-
-	@SideOnly(Side.CLIENT)
-	public void onEntitiesRender(EntityLivingBase entity, RenderLivingBase<EntityLivingBase> renderer, float partialRenderTicks, double x, double y, double z)
-	{ }
-
-	public void onEntityEnteringChunk(Entity entity)
-	{ }
-
-	public void onBlockHarvested(BlockEvent.HarvestDropsEvent event)
-	{ }
-
-	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
-	{ }
-
-	public void onPlayerAttack(EntityPlayer attacker, Entity target)
-	{ }
-
-	public void onPlayerKill(EntityPlayer killer, EntityLivingBase killedEntity)
-	{ }
-
-	public void onEntityKillDrop(List<EntityItem> drops, EntityPlayer killer)
-	{ }
-
-	public void onPlayerInteract(PlayerInteractEvent event)
-	{ }
-
-	public void onPlayerCollision(GetCollisionBoxesEvent event)
-	{ }
-
-	public void livingEvent(LivingEvent event)
-	{ }
+	public final String getName()
+	{
+		return name;
+	}
 
 }

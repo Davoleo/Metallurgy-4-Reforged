@@ -10,6 +10,9 @@
 package it.hurts.metallurgy_reforged.item.tool;
 
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
+import net.minecraft.item.Item;
+
+import javax.annotation.Nullable;
 
 public enum EnumTools {
 	AXE("axe", ItemAxeBase.class, RegistrationConfig.categoryItems.enableMetalAxes),
@@ -42,5 +45,17 @@ public enum EnumTools {
 	public boolean isEnabled()
 	{
 		return isEnabled;
+	}
+
+	@Nullable
+	public static EnumTools byInstance(Item tool)
+	{
+		for (EnumTools type : EnumTools.values())
+		{
+			if (type.getToolClass().isInstance(tool))
+				return type;
+		}
+
+		return null;
 	}
 }

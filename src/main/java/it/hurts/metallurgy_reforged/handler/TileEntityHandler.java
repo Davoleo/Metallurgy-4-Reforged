@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileEntityHandler {
+public abstract class TileEntityHandler {
 
 	public static void registerTileEntities()
 	{

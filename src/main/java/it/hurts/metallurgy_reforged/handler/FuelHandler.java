@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class FuelHandler {
+public abstract class FuelHandler {
 
 	@SubscribeEvent
 	public static void registerFuels(FurnaceFuelBurnTimeEvent event)

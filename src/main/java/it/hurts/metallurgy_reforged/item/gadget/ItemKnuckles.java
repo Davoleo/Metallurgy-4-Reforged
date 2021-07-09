@@ -13,7 +13,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
-import it.hurts.metallurgy_reforged.render.BrassKnucklesTEISR;
+import it.hurts.metallurgy_reforged.render.knuckles.BrassKnucklesTEISR;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -30,7 +30,8 @@ import java.util.List;
 
 public class ItemKnuckles extends ItemExtra {
 
-	public ItemKnuckles(String name) {
+	public ItemKnuckles(String name)
+	{
 		super(name, MetallurgyTabs.tabSpecial, "gadget");
 
 		setMaxStackSize(1);
@@ -38,13 +39,15 @@ public class ItemKnuckles extends ItemExtra {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void initTEISR() {
+	public void initTEISR()
+	{
 		this.setTileEntityItemStackRenderer(new BrassKnucklesTEISR());
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean hasEffect(@Nonnull ItemStack stack) {
+	public boolean hasEffect(@Nonnull ItemStack stack)
+	{
 		return super.hasEffect(stack) || stack.hasTagCompound() && stack.getTagCompound().getBoolean("hasEffect");
 	}
 

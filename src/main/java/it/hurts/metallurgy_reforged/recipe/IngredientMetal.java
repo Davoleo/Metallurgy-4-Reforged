@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe;
@@ -69,7 +69,7 @@ public class IngredientMetal extends Ingredient {
 
 	public NonNullList<ItemStack> getOreDictStacks(Metal metal)
 	{
-		return OreDictionary.getOres(type + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()));
+		return OreDictionary.getOres(type + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), false);
 	}
 
 	@SuppressWarnings("unused")

@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget;
@@ -33,15 +33,20 @@ public class ItemEtheriumMonocle extends ItemExtra {
 	}
 
 	@Override
-	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) {
-		if (stack.getItem() == this && entity instanceof EntityPlayer) {
+	public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity)
+	{
+		if (stack.getItem() == this && entity instanceof EntityPlayer)
+		{
 			return armorType == EntityEquipmentSlot.HEAD;
-		} else
+		}
+		else
 			return false;
 	}
 
 	@Override
-	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
-		tooltip.add(Utils.localize("tooltip.metallurgy.etherium_goggles"));
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+	{
+		tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.etherium_goggles"));
 	}
+
 }

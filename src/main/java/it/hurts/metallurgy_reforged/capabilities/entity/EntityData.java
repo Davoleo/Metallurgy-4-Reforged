@@ -4,12 +4,12 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.capabilities.entity;
 
-import it.hurts.metallurgy_reforged.effect.armor.DesichalkosArmorEffect;
+import it.hurts.metallurgy_reforged.effect.armor.OldDesichalkosArmorEffect;
 import net.minecraft.block.state.IBlockState;
 
 import java.util.Random;
@@ -25,7 +25,7 @@ public class EntityData {
 		Random random = new Random();
 		if (random.nextInt(4) == 0 && !initialized)
 		{
-			this.snatchableBlock = DesichalkosArmorEffect.borrowableBlocks[random.nextInt(DesichalkosArmorEffect.borrowableBlocks.length)];
+			this.snatchableBlock = OldDesichalkosArmorEffect.borrowableBlocks[random.nextInt(OldDesichalkosArmorEffect.borrowableBlocks.length)];
 			this.initialized = true;
 		}
 	}

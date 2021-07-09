@@ -30,10 +30,10 @@ public enum ItemTypes {
 		this.isEnabled = isEnabled;
 	}
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
 	public CreativeTabs getTab()
 	{
