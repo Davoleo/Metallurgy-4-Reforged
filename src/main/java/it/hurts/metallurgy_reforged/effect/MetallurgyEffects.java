@@ -227,6 +227,9 @@ public class MetallurgyEffects {
 	//Shadow Steel Sword
 	//public static final BaseMetallurgyEffect shadowSteelSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.SHADOW_STEEL);
 
+    //Orichalcum Armor (Berserker)
+    public static final BaseMetallurgyEffect orichalcumArmorEffect = new OrichalcumArmorEffect();
+
 	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
 	public static final BaseMetallurgyEffect vulcaniteEffect = new VulcaniteArmorEffect();
 

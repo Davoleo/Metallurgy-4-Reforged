@@ -1338,6 +1338,7 @@ tooltip.metallurgy.effect.mithril_pickaxe=Multiply
 tooltip.metallurgy.effect.mithril_weapon=Magic Aspect
 tooltip.metallurgy.effect.mithril_all=Arcane
 tooltip.metallurgy.effect.orichalcum_all=Champion
+tooltip.metallurgy.effect.orichalcum_armor=Berserker
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1404,6 +1405,7 @@ tooltip.metallurgy.effect.mithril_pickaxe.tooltip=Breaking ore sometimes drops a
 tooltip.metallurgy.effect.mithril_weapon.tooltip=Deals additional magic damage 1 second after the last entity was attacked
 tooltip.metallurgy.effect.mithril_all.tooltip=The more enchantments the item has the better it performs. (damage for weapons, mining speed for tools and more protection from armor)
 tooltip.metallurgy.effect.orichalcum_all.tooltip=Killing monsters restores durability to Orichalcum Items (Amount is equal to the max health of the killed monster)
+tooltip.metallurgy.effect.orichalcum_armor.tooltip=Killing a mob grants a strength buff, level of which is equal to the count of every other remaining hostile mob around the wearer. (Max Potion Level: 6) (Armor scales the radius and duration of the bonus)
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
