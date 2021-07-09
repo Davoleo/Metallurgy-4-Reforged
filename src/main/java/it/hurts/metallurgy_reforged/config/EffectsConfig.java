@@ -234,10 +234,13 @@ public class EffectsConfig {
 	@Config.Name("Champion (Orichalcum Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.orichalcum_all")
 	public static boolean orichalcumEffectAll = true;
+	@Config.Name("Berserker (Orichalcum Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.orichalcum_armor")
+	public static boolean orichalcumEffectArmor = true;
 
-    @Config.Name("Berserker (Orichalcum Armor)")
-    @Config.LangKey("tooltip.metallurgy.effect.orichalcum_armor")
-    public static boolean orichalcumEffectArmor = true;
+	@Config.Name("Crushing (Oureclase Pickaxe)")
+	@Config.LangKey("tooltip.metallurgy.effect.oureclase_pickaxe")
+	public static boolean oureclaseEffectPickaxe = true;
 
 	private EffectsConfig()
 	{

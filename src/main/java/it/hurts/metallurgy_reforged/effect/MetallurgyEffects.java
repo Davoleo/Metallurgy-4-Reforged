@@ -16,14 +16,13 @@ import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.MithrilPickaxeEffect;
+import it.hurts.metallurgy_reforged.effect.pickaxe.OureclasePickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.ArrayUtils;
@@ -211,6 +210,11 @@ public class MetallurgyEffects {
 
 	//Orichalcum (Champion)
 	public static final OrichalcumEffect ORICHALCUM_EFFECT = new OrichalcumEffect();
+	//Orichalcum Armor (Berserker)
+	public static final OrichalcumArmorEffect ORICHALCUM_ARMOR_EFFECT = new OrichalcumArmorEffect();
+
+	//Oureclase Pickaxe (Crushing)
+	public static final OureclasePickaxeEffect OURECLASE_PICKAXE_EFFECT = new OureclasePickaxeEffect();
 
 	//Prometheum Armor (No potion, need to implement a new Effect)
 	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
@@ -228,9 +232,6 @@ public class MetallurgyEffects {
 
 	//Shadow Steel Sword
 	//public static final BaseMetallurgyEffect shadowSteelSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.SHADOW_STEEL);
-
-    //Orichalcum Armor (Berserker)
-    public static final BaseMetallurgyEffect orichalcumArmorEffect = new OrichalcumArmorEffect();
 
 	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
 	public static final BaseMetallurgyEffect vulcaniteEffect = new VulcaniteArmorEffect();

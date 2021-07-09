@@ -26,6 +26,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import java.util.Arrays;
+
 public class OreDictHandler {
 
 	public static final Multimap<Metal, ItemStack> INGOTS_CACHE = HashMultimap.create();
@@ -110,6 +112,11 @@ public class OreDictHandler {
 	{
 		String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString());
 		return OreDictionary.getOres(prefix + camelMetal);
+	}
+
+	public static boolean containsPrefix(ItemStack stack, String prefix)
+	{
+		return Arrays.stream(OreDictionary.getOreIDs(stack)).anyMatch(id -> OreDictionary.getOreName(id).startsWith(prefix));
 	}
 
 }
