@@ -26,6 +26,8 @@ public abstract class ProgressiveEffectsHandler {
 			return;
 
 		PlayerEffectData data = event.player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+		if (data == null)
+			return;
 
 		MetallurgyEffects.effects.forEach(effect -> {
 
