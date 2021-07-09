@@ -44,7 +44,6 @@ public class ClientProxy implements IProxy {
         if (ModChecker.isTConLoaded)
             it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
 
-        MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
         MinecraftForge.EVENT_BUS.register(HUDHandler.class);
         ModItems.BRASS_KNUCKLES.initTEISR();
     }

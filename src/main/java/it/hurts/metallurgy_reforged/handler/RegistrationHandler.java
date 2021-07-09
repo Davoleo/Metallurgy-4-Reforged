@@ -22,7 +22,6 @@ import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.render.knuckles.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.sound.ModSounds;

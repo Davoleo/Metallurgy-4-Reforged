@@ -93,7 +93,7 @@ public class MetallurgyTabs extends CreativeTabs {
 			case 1:
 				return new ItemStack(firstAvailableMetal.get().getBlock(firstEnabledBlockType.get()));
 			case 2:
-				return new ItemStack(RegistrationConfig.categoryItems.enableMetalDusts ? firstAvailableMetal.get().getDust() : ModItems.phosphorus);
+				return new ItemStack(RegistrationConfig.categoryItems.enableMetalDusts ? firstAvailableMetal.get().getDust() : ModItems.PHOSPHORUS);
 			case 3:
 				return FluidUtil.getFilledBucket(firstAvailableMetal.get().getMolten().getFluidStack());
 			case 4:
