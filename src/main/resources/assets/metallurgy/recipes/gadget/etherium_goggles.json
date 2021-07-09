@@ -3,6 +3,12 @@
   "pattern": [
     "RER"
   ],
+  "conditions": [
+    {
+      "type": "metallurgy:registry_condition",
+      "depends_on": "block/reinforced_glass"
+    }
+  ],
   "key": {
     "E": {
       "type": "forge:ore_dict",

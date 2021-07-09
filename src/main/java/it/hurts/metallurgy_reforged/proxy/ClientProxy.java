@@ -41,27 +41,27 @@ public class ClientProxy implements IProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
-		if (ModChecker.isTConLoaded)
-			it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
+        if (ModChecker.isTConLoaded)
+            it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
 
-		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
-		ModItems.brassKnuckles.initTEISR();
-	}
+        MinecraftForge.EVENT_BUS.register(KeyboardHandler.class);
+        MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+        ModItems.BRASS_KNUCKLES.initTEISR();
+    }
 
 	@Override
 	public void init(FMLInitializationEvent event)
 	{
-		client.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
-			List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+            List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
 
-			if (tintIndex < metals.size())
-			{
-				return metals.get(tintIndex).getStats().getColorHex();
-			}
-			return -1;
+            if (tintIndex < metals.size())
+            {
+                return metals.get(tintIndex).getStats().getColorHex();
+            }
+            return -1;
 
-		}, ModItems.oreDetector);
-
+        }, ModItems.ORE_DETECTOR);
 	}
 
 	@Override

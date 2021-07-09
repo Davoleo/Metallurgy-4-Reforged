@@ -38,11 +38,16 @@ public abstract class SpawnHandler {
 		if (GeneralConfig.mobsThatCanHaveEquipment.length == 0)
 			return;
 
+		Entity entity = event.getEntity();
+
+		//For some reason an implementation of Entity in Flansmod returns null instead of empty lists | that's why I'm proofchecking against null
+		//noinspection ConstantConditions
+		if (entity.getArmorInventoryList() == null || entity.getHeldEquipment() == null)
+			return;
+
 		//If the entity already has something as equipment or armor
 		if (event.getEntity().getEquipmentAndArmor().iterator().hasNext())
 			return;
-
-		Entity entity = event.getEntity();
 
 		boolean isEntityValid = Arrays.stream(GeneralConfig.mobsThatCanHaveEquipment).anyMatch(entityId -> {
 			EntityEntry entry = EntityRegistry.getEntry(entity.getClass());

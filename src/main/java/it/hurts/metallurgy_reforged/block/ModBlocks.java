@@ -37,14 +37,14 @@ public class ModBlocks {
 	public static List<Block> miscBlocks = new ArrayList<>();
 
 	//Mod Blocks with a custom drop
-	public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
-			.setDrops(new Drop(new ItemStack(ModItems.sulfur, 4), 1F));
-	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
-			.setDrops(new Drop(ModItems.phosphorus, 3, 1F));
-	public static BlockOre oreTar = new BlockOre("tar_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
-			.setDrops(new Drop(ModItems.tar, 2, 1F), new Drop(ModItems.bitumen, 2, 0.5F));
-	public static BlockOre orePotash = new BlockOre("potash_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
-			.setDrops(new Drop(ModItems.potash, 3, 1F));
+    public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
+            .setDrops(new Drop(new ItemStack(ModItems.SULFUR, 4), 1F));
+    public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
+            .setDrops(new Drop(ModItems.PHOSPHORUS, 3, 1F));
+    public static BlockOre oreTar = new BlockOre("tar_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
+            .setDrops(new Drop(ModItems.TAR, 2, 1F), new Drop(ModItems.BITUMEN, 2, 0.5F));
+    public static BlockOre orePotash = new BlockOre("potash_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
+            .setDrops(new Drop(ModItems.POTASH, 3, 1F));
 
 	//Bitumen, Charcoal and Sulfur Blocks
 	public static Block blockBitumen = new Block(Material.ROCK);

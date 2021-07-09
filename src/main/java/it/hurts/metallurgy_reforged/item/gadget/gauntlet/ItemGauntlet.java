@@ -4,14 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import it.hurts.metallurgy_reforged.config.GauntletConfig;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
@@ -41,7 +41,7 @@ public class ItemGauntlet extends ItemExtra {
 	public ItemGauntlet(String name)
 	{
 		super(name, MetallurgyTabs.tabSpecial, "gadget");
-		this.setMaxDamage(GauntletConfig.gauntletMaxDamage);
+		this.setMaxDamage(GadgetsConfig.Gauntlet.gauntletMaxDamage);
 		this.setNoRepair();
 		this.setMaxStackSize(1);
 	}
@@ -69,8 +69,8 @@ public class ItemGauntlet extends ItemExtra {
 
 		if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
 		{
-			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet Damage modifier", GauntletConfig.gauntletAttackDamage, 0));
-			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Gauntlet Speed modifier", GauntletConfig.gauntletAttackSpeed, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Gauntlet Damage modifier", GadgetsConfig.Gauntlet.gauntletAttackDamage, 0));
+			multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Gauntlet Speed modifier", GadgetsConfig.Gauntlet.gauntletAttackSpeed, 0));
 		}
 		return multimap;
 	}

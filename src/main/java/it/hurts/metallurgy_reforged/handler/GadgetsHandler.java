@@ -141,20 +141,20 @@ public class GadgetsHandler {
 	@SuppressWarnings("deprecation")
 	public static void renderRedstoneComponentsThroughBlocks(RenderWorldLastEvent event)
 	{
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		World world = Minecraft.getMinecraft().world;
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        World world = Minecraft.getMinecraft().world;
 
-		if (player == null || !EventUtils.isPlayerWearingSpecificArmorPiece(player, EntityEquipmentSlot.HEAD, ModItems.etheriumMonocle))
-			return;
+        if (player == null || !EventUtils.isPlayerWearingSpecificArmorPiece(player, EntityEquipmentSlot.HEAD, ModItems.ETHERIUM_MONOCLE))
+            return;
 
-		BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
+        BlockPos playerPos = new BlockPos(player.getPositionEyes(event.getPartialTicks()));
 
-		final int RADIUS = 8;
+        final int RADIUS = 8;
 
-		Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
+        Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
 
-		List<BlockPos> sortedPositions = StreamSupport.stream(posList.spliterator(), false).sorted((o1, o2) ->
-		{
+        List<BlockPos> sortedPositions = StreamSupport.stream(posList.spliterator(), false).sorted((o1, o2) ->
+        {
 			double d1 = playerPos.distanceSq(o1);
 			double d2 = playerPos.distanceSq(o2);
 			if (d1 == d2)
@@ -232,10 +232,10 @@ public class GadgetsHandler {
 
 		ItemStack detector = ItemStack.EMPTY;
 		for (EnumHand hand : EnumHand.values())
-		{
-			if (player.getHeldItem(hand).getItem() == ModItems.oreDetector)
-				detector = player.getHeldItem(hand);
-		}
+        {
+            if (player.getHeldItem(hand).getItem() == ModItems.ORE_DETECTOR)
+                detector = player.getHeldItem(hand);
+        }
 
 		if (detector.isEmpty())
 			return;
@@ -449,10 +449,10 @@ public class GadgetsHandler {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void invisibilityEffect(RenderPlayerEvent.Pre event)
-	{
-		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-			event.setCanceled(true);
-	}
+    {
+        if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.INVISIBILITY_SHIELD))
+            event.setCanceled(true);
+    }
 
 	/**
 	 * Handles Mob AI Disabling when using a Lemurite shield to become invisible
@@ -465,15 +465,15 @@ public class GadgetsHandler {
 	public static void disableAI(LivingSetAttackTargetEvent event)
 	{
 		if (event.getEntityLiving() instanceof EntityLiving)
-		{
-			EntityLiving mob = (EntityLiving) event.getEntityLiving();
-			EntityLivingBase target = event.getTarget();
+        {
+            EntityLiving mob = (EntityLiving) event.getEntityLiving();
+            EntityLivingBase target = event.getTarget();
 
-			if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-			{
-				mob.setAttackTarget(null);
-			}
-		}
+            if (target instanceof EntityPlayer && target.getActiveItemStack().getItem().equals(ModItems.INVISIBILITY_SHIELD))
+            {
+                mob.setAttackTarget(null);
+            }
+        }
 	}
 
 	/**
@@ -481,18 +481,18 @@ public class GadgetsHandler {
 	 */
 	@SubscribeEvent
 	public static void disablePlayerVisibility(PlayerEvent.Visibility event)
-	{
-		if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.invisibilityShield))
-			event.modifyVisibility(0);
-	}
+    {
+        if (event.getEntityPlayer().getActiveItemStack().getItem().equals(ModItems.INVISIBILITY_SHIELD))
+            event.modifyVisibility(0);
+    }
 
 	// Lemurite shield section END
 
 	@SubscribeEvent
 	public static void onEquipmentChange(LivingEquipmentChangeEvent event)
-	{
-		if (event.getFrom().getItem() == ModItems.ceruclaseShield)
-			ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
-	}
+    {
+        if (event.getFrom().getItem() == ModItems.CERUCLASE_SHIELD)
+            ItemCeruclaseShield.removeTagAndShield(event.getEntity().world, event.getEntity());
+    }
 
 }

@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.shield;
@@ -86,7 +86,7 @@ public class ItemCeruclaseShield extends ItemShieldBase {
 		{
 			manageShield(world, new BlockPos.MutableBlockPos(pos), true);
 			if (entity instanceof EntityPlayer)
-				((EntityPlayer) entity).getCooldownTracker().setCooldown(ModItems.ceruclaseShield, 140);
+                ((EntityPlayer) entity).getCooldownTracker().setCooldown(ModItems.CERUCLASE_SHIELD, 140);
 		}
 	}
 

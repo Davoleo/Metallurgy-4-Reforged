@@ -4,12 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
@@ -18,9 +20,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public abstract class TileEntityHandler {
@@ -30,6 +35,22 @@ public abstract class TileEntityHandler {
 		GameRegistry.registerTileEntity(TileEntityCrusher.class, new ResourceLocation(Metallurgy.MODID + ":crusher"));
 		GameRegistry.registerTileEntity(TileEntityAlloyer.class, new ResourceLocation(Metallurgy.MODID + ":alloyer"));
 		GameRegistry.registerTileEntity(TileEntityChamber.class, new ResourceLocation(Metallurgy.MODID + ":sublimation_chamber"));
+	}
+
+	@SubscribeEvent()
+	public static void cleanupRemovedTileSounds(BlockEvent.BreakEvent event)
+	{
+		if (event.isCanceled())
+			return;
+
+		if (!event.getWorld().isRemote)
+		{
+			BlockPos pos = event.getPos();
+			PacketManager.network.sendToAllAround(
+					new PacketStartStopAmbienceSound(pos),
+					new NetworkRegistry.TargetPoint(event.getWorld().provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 64)
+			);
+		}
 	}
 
 	@SubscribeEvent

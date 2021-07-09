@@ -86,24 +86,24 @@ public class IntegrationProjectE {
 
 	public static void init()
 	{
-		//Other Items
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.dustIron, 256L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.dustGold, 2048L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.potash, 128L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.dustPotash, 256L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.phosphorus, 128L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.bitumen, 256L);
-		ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.tar, 128L);
+        //Other Items
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.IRON_DUST, 256L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.GOLD_DUST, 2048L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.POTASH, 128L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.DUST_POTASH, 256L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.PHOSPHORUS, 128L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.BITUMEN, 256L);
+        ProjectEAPI.getEMCProxy().registerCustomEMC(ModItems.TAR, 128L);
 
-		ModMetals.metalMap.forEach((s, metal) -> {
-			long baseValue = emcMap.get(metal.toString());
+        ModMetals.metalMap.forEach((s, metal) -> {
+            long baseValue = emcMap.get(metal.toString());
 
-			//Debug Print
-			//System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
+            //Debug Print
+            //System.out.println(metal.toString() + " --- " + emcMap.keySet().contains(metal.toString()));
+            ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getIngot(), emcMap.get(metal.toString()));
 
-			//Nuggets and Dusts
-			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), baseValue);
+            //Nuggets and Dusts
+            ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getDust(), baseValue);
 			ProjectEAPI.getEMCProxy().registerCustomEMC(metal.getNugget(), baseValue / 9);
 
 			//Blocks

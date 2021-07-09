@@ -101,5 +101,4 @@ public class TiCMaterials {
 			e.printStackTrace();
 		}
 	}
-
 }

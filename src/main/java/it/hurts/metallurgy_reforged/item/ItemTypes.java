@@ -15,33 +15,33 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public enum ItemTypes {
 
-    INGOT("ingot", MetallurgyTabs.tabIngot, true),
-    DUST("dust", MetallurgyTabs.tabDust, RegistrationConfig.categoryItems.enableMetalDusts),
-    NUGGET("nugget", MetallurgyTabs.tabNugget, RegistrationConfig.categoryItems.enableMetalNuggets);
+	INGOT("ingot", MetallurgyTabs.tabIngot, true),
+	DUST("dust", MetallurgyTabs.tabDust, RegistrationConfig.categoryItems.enableMetalDusts),
+	NUGGET("nugget", MetallurgyTabs.tabNugget, RegistrationConfig.categoryItems.enableMetalNuggets);
 
-    private final String name;
-    private final CreativeTabs tab;
-    private final boolean isEnabled;
+	private String name;
+	private CreativeTabs tab;
+	private boolean isEnabled;
 
-    ItemTypes(String name, CreativeTabs tab, boolean isEnabled)
-    {
-        this.name = name;
-        this.tab = tab;
-        this.isEnabled = isEnabled;
-    }
+	ItemTypes(String name, CreativeTabs tab, boolean isEnabled)
+	{
+		this.name = name;
+		this.tab = tab;
+		this.isEnabled = isEnabled;
+	}
 
     public String getName()
     {
         return name;
     }
 
-    public CreativeTabs getTab()
-    {
-        return tab;
-    }
+	public CreativeTabs getTab()
+	{
+		return tab;
+	}
 
-    public boolean isEnabled()
-    {
-        return isEnabled;
-    }
+	public boolean isEnabled()
+	{
+		return isEnabled;
+	}
 }

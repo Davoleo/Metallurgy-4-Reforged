@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
@@ -31,18 +31,18 @@ public class GauntletEquipHandler {
 
 		if (entity instanceof EntityPlayerMP && event.getSlot().getSlotType() == EntityEquipmentSlot.Type.HAND)
 		{
-			EntityPlayerMP player = (EntityPlayerMP) entity;
-			EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
+            EntityPlayerMP player = (EntityPlayerMP) entity;
+            EntityEquipmentSlot oppositeSlot = event.getSlot() == EntityEquipmentSlot.OFFHAND ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND;
 
-			if (newStack.getItem() == ModItems.gauntlet && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
-			{
-				ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
-				player.setItemStackToSlot(oppositeSlot, offStack);
+            if (newStack.getItem() == ModItems.GAUNTLET && player.getItemStackFromSlot(oppositeSlot) == ItemStack.EMPTY)
+            {
+                ItemStack offStack = newStack.getCount() > 1 ? newStack.splitStack(1) : getOtherGauntlet(player, newStack);
+                player.setItemStackToSlot(oppositeSlot, offStack);
 
-				//Sync the client with the server
-				player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
-			}
-		}
+                //Sync the client with the server
+                player.connection.sendPacket(new SPacketEntityEquipment(player.getEntityId(), oppositeSlot, offStack));
+            }
+        }
 	}
 
 	protected static ItemStack getOtherGauntlet(EntityPlayerMP player, ItemStack firstGauntlet)
@@ -86,10 +86,10 @@ public class GauntletEquipHandler {
 	}
 
 	public static boolean isWearingGauntlet(EntityLivingBase pl)
-	{
-		ItemStack mainHand = pl.getHeldItemMainhand();
-		ItemStack offHand = pl.getHeldItemOffhand();
-		return offHand.getItem().equals(ModItems.gauntlet) && mainHand.getItem().equals(ModItems.gauntlet);
-	}
+    {
+        ItemStack mainHand = pl.getHeldItemMainhand();
+        ItemStack offHand = pl.getHeldItemOffhand();
+        return offHand.getItem().equals(ModItems.GAUNTLET) && mainHand.getItem().equals(ModItems.GAUNTLET);
+    }
 
 }

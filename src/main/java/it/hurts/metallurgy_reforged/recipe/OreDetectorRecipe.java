@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe;
@@ -44,29 +44,29 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 
 		if (this.input.size() == 1)
 		{
-			return new ItemStack(ModItems.oreDetector);
-		}
+            return new ItemStack(ModItems.ORE_DETECTOR);
+        }
 
 		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			Metal otherMetal = ItemUtils.getMetalFromOreDictStack(stack);
-			if (otherMetal != null)
-			{
-				if (otherMetal == metalModel || otherMetal.isAlloy())
-					return ItemStack.EMPTY;
+            if (otherMetal != null)
+            {
+                if (otherMetal == metalModel || otherMetal.isAlloy())
+                    return ItemStack.EMPTY;
 
-				inputs.add(stack);
-				metalModel = otherMetal;
-			}
-			else if (stack.getItem() == ModItems.oreDetector)
-			{
-				//set the output of the recipe depending if the detector already has some metals
-				if (!ItemOreDetector.getDetectorMetals(stack).isEmpty())
-					return ItemStack.EMPTY;
-				else
-					output = stack.copy();
-			}
+                inputs.add(stack);
+                metalModel = otherMetal;
+            }
+            else if (stack.getItem() == ModItems.ORE_DETECTOR)
+            {
+                //set the output of the recipe depending if the detector already has some metals
+                if (!ItemOreDetector.getDetectorMetals(stack).isEmpty())
+                    return ItemStack.EMPTY;
+                else
+                    output = stack.copy();
+            }
 		}
 
 		if (metalModel == null)

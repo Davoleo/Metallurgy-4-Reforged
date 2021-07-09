@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.recipe;
@@ -41,28 +41,28 @@ public class CrusherRecipes {
 	private CrusherRecipes()
 	{
 		ModMetals.metalMap.forEach((name, m) -> {
-			if (m.getOre() != null)
-			{
-				// 1 Ore => 2 Dust
-				addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
-			}
-			// 1 Ingot => 1 Dust
-			addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
-		});
+            if (m.getOre() != null)
+            {
+                // 1 Ore => 2 Dust
+                addCrushingRecipe(new ItemStack(m.getOre(), 1), new ItemStack(m.getDust(), 2), 0.75F);
+            }
+            // 1 Ingot => 1 Dust
+            addCrushingRecipe(new ItemStack(m.getIngot()), new ItemStack(m.getDust()), 0.0F);
+        });
 
-		//Ore2Dust
-		addCrushingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ModItems.dustGold, 2), 0.75F);
-		addCrushingRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(ModItems.dustIron, 2), 0.75F);
-		addCrushingRecipe(new ItemStack(ModBlocks.oreTar), new ItemStack(ModItems.tar, 4), 0.75F);
-		addCrushingRecipe(new ItemStack(ModBlocks.orePhosphorite), new ItemStack(ModItems.phosphorus, 4), 0.75F);
-		addCrushingRecipe(new ItemStack(ModBlocks.orePotash), new ItemStack(ModItems.potash, 4), 0.75F);
-		addCrushingRecipe(new ItemStack(ModBlocks.oreSulfur), new ItemStack(ModItems.sulfur, 4), 0.75F);
-		addCrushingRecipe(new ItemStack(ModItems.potash), new ItemStack(ModItems.dustPotash), 1F);
+        //Ore2Dust
+        addCrushingRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(ModItems.GOLD_DUST, 2), 0.75F);
+        addCrushingRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(ModItems.IRON_DUST, 2), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.oreTar), new ItemStack(ModItems.TAR, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePhosphorite), new ItemStack(ModItems.PHOSPHORUS, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.orePotash), new ItemStack(ModItems.POTASH, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModBlocks.oreSulfur), new ItemStack(ModItems.SULFUR, 4), 0.75F);
+        addCrushingRecipe(new ItemStack(ModItems.POTASH), new ItemStack(ModItems.DUST_POTASH), 1F);
 
-		//Ingot2Dust
-		addCrushingRecipe(new ItemStack(Items.GOLD_INGOT), new ItemStack(ModItems.dustGold), 0.0F);
-		addCrushingRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.dustIron), 0.0F);
-	}
+        //Ingot2Dust
+        addCrushingRecipe(new ItemStack(Items.GOLD_INGOT), new ItemStack(ModItems.GOLD_DUST), 0.0F);
+        addCrushingRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.IRON_DUST), 0.0F);
+    }
 
 	public void addCrushingRecipe(ItemStack input, ItemStack result, float experience)
 	{

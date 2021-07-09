@@ -4,13 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block.gadget;
 
 import it.hurts.metallurgy_reforged.block.BlockOrientable;
-import it.hurts.metallurgy_reforged.config.PhosphorusLampConfig;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.block.Block;
@@ -161,9 +161,9 @@ public class BlockPhosphorusLamp extends BlockOrientable {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess blockAccess, BlockPos pos)
-	{
-		return PhosphorusLampConfig.lanternLightLevel;
-	}
+    {
+        return GadgetsConfig.PhosphorusLamp.lanternLightLevel;
+    }
 
 	//    @SideOnly(Side.CLIENT)
 	//    private boolean checkLightPollution(BlockPos pos)
@@ -248,15 +248,15 @@ public class BlockPhosphorusLamp extends BlockOrientable {
 	@Nullable
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos)
-	{
-		if (PhosphorusLampConfig.enableLanternCollision)
-		{
-			return getBoundingBox(blockState, worldIn, pos);
-		}
-		else
-		{
-			return null;
-		}
-	}
+    {
+        if (GadgetsConfig.PhosphorusLamp.enableLanternCollision)
+        {
+            return getBoundingBox(blockState, worldIn, pos);
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 }

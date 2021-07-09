@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic;
@@ -13,6 +13,7 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterial;
@@ -82,19 +83,19 @@ public class IntegrationTIC {
 				//Add custom traits to TiCon Tools
 				SetTinkerTraits.addTraits(metal, m);
 
-				//Add molten fluid cast to ingots, blocks, nuggets and so on...
-				if (m.getFluid() == null)
-					m.setFluid(metal.getMolten());
-				TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
+                //Add molten fluid cast to ingots, blocks, nuggets and so on...
+                if (m.getFluid() == null)
+                    m.setFluid(metal.getMolten());
+                TinkerSmeltery.registerOredictMeltingCasting(m.getFluid(), CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
 
-				//register different Tool parts for each material
-				TinkerSmeltery.registerToolpartMeltingCasting(m);
-			}
-		});
+                //register different Tool parts for each material
+                TinkerSmeltery.registerToolpartMeltingCasting(m);
+            }
+        });
 
-		TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.dustThermite, 1000), ModFluids.THERMITE, 400));
-		TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
-	}
+        TinkerRegistry.registerMelting(new MeltingRecipe(RecipeMatch.of(ModItems.THERMITE_DUST, 1000), ModFluids.THERMITE, GadgetsConfig.ThermiteDust.temperature));
+        TinkerRegistry.registerTableCasting(new BucketCastingRecipe(Items.BUCKET));
+    }
 
 	public static void postInit()
 	{

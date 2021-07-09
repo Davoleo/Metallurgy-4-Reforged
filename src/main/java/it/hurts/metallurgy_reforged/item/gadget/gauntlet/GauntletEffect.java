@@ -4,14 +4,14 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.gauntlet;
 
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
-import it.hurts.metallurgy_reforged.config.GauntletConfig;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -42,7 +42,7 @@ public class GauntletEffect {
 			{
 				FoodStats foodStats = pl.getFoodStats();
 
-				int doubleFoodModifier = GauntletConfig.gauntletHungerModifier * 2;
+				int doubleFoodModifier = GadgetsConfig.Gauntlet.gauntletHungerModifier * 2;
 
 
 				if (foodStats.getFoodLevel() >= doubleFoodModifier || pl.isCreative())
@@ -84,7 +84,7 @@ public class GauntletEffect {
 						else
 						{
 							int foodLevel = foodStats.getFoodLevel();
-							foodStats.addStats(1, -GauntletConfig.gauntletHungerModifier);
+							foodStats.addStats(1, -GadgetsConfig.Gauntlet.gauntletHungerModifier);
 							foodStats.setFoodLevel(foodLevel);
 						}
 					}
@@ -148,7 +148,7 @@ public class GauntletEffect {
 						entity.world.spawnParticle(EnumParticleTypes.CLOUD, entity.posX + (rand.nextDouble() - 0.5D) * ((double) entity.width * 1.5D), entity.posY + rand.nextDouble() * ((double) entity.height * 1.5D), entity.posZ + (rand.nextDouble() - 0.5D) * ((double) entity.width * 1.5D), 0.0D, 0.0D, 0.0D);
 
 					AxisAlignedBB axisalignedbb = entity.getEntityBoundingBox().grow(0.4D, 0.4D, 0.4D);
-					if (!entity.isDead && !GauntletConfig.disableBlockGriefing)
+					if (!entity.isDead && !GadgetsConfig.Gauntlet.disableBlockGriefing)
 					{
 						//destroy blocks and damage the punched entity (the damage is based from block's hardness
 						for (double i = axisalignedbb.minX; i < axisalignedbb.maxX; i += 0.1D)
@@ -168,8 +168,8 @@ public class GauntletEffect {
 											if (!entity.world.isRemote)
 												entity.world.destroyBlock(pos, true);
 											entity.hurtResistantTime = 4;
-											if (GauntletConfig.gauntletBlockDamageModifier != 0)
-												entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), (float) GauntletConfig.gauntletBlockDamageModifier);
+											if (GadgetsConfig.Gauntlet.gauntletBlockDamageModifier != 0)
+												entity.attackEntityFrom(DamageSource.causeMobDamage(entity.getLastAttackedEntity()), (float) GadgetsConfig.Gauntlet.gauntletBlockDamageModifier);
 										}
 									}
 								}
