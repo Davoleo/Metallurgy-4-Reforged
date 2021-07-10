@@ -72,7 +72,7 @@ public abstract class TileEntityHandler {
 				{
 					ItemStack metalStack = chamber.getStackInSlot(TileEntityChamber.METAL_SLOT);
 
-					if (!metalStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(metalStack)) && !chamber.isActive())
+					if (!metalStack.isEmpty() && (handStack.isEmpty() || handStack.isItemEqualIgnoreDurability(metalStack)) && !chamber.hasEffectStarted())
 					{
 						int i = handStack.getMaxStackSize() - handStack.getCount();
 						ItemStack copyStack = metalStack.splitStack(i);

@@ -49,6 +49,7 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class TileEntityChamber extends TileEntityLockable implements ITickable, ISidedInventory {
@@ -280,7 +281,8 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 		{
 			if (potionEffect != null)
 			{
-				if (!this.isActive())
+				//First time kickstart
+				if (!this.hasEffectStarted())
 				{
 					this.activeTime = 1;
 					this.setState(true);
@@ -289,13 +291,20 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 				}
 				else
 				{
+					//Resume after fuel pause
+					if (!getState())
+					{
+						this.setState(true);
+						world.playSound(null, pos, ModSounds.SUBLIMATION_CHAMBER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
+					}
+
 					if (this.activeTime < potionEffect.getDuration())
 					{
 						this.activeTime++;
 
 						if (!world.isRemote)
 						{
-							if (activeTime == 30 || activeTime % 300 == 30)
+							if (fuelTime > 0 && (activeTime == 30 || activeTime % 300 == 30))
 							{
 								PacketManager.network.sendToAllAround(
 										new PacketStartStopAmbienceSound(ModSounds.SUBLIMATION_CHAMBER_AMBIENCE, SoundCategory.BLOCKS, pos),
@@ -313,7 +322,9 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 						{
 							if (!player.isPotionActive(potionEffect.getPotion()))
 							{
-								player.addPotionEffect(new PotionEffect(potionEffect.getPotion(), potionEffect.getDuration() - this.activeTime));
+								if (!world.isRemote)
+									player.addPotionEffect(new PotionEffect(potionEffect.getPotion(), potionEffect.getDuration() - this.activeTime));
+
 								UUID uuid = player.getUniqueID();
 								if (!this.affectedPlayers.contains(uuid))
 									this.affectedPlayers.add(uuid);
@@ -354,15 +365,21 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 			if (!affectedPlayers.isEmpty())
 				this.clearEffect();
+
+			setState(false);
 		}
 	}
 
 
-	public boolean isActive()
+	public boolean hasEffectStarted()
 	{
 		return this.activeTime > 0;
 	}
 
+	public boolean getState()
+	{
+		return this.world.getBlockState(pos).getValue(BlockChamber.ACTIVE);
+	}
 
 	public void setState(boolean active)
 	{
@@ -373,16 +390,15 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	@Override
 	public NBTTagCompound writeToNBT(@Nonnull NBTTagCompound compound)
 	{
-
 		super.writeToNBT(compound);
 		this.writeChamberToNBT(compound);
 
 		NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < this.affectedPlayers.size(); ++i)
+		for (UUID affectedPlayer : this.affectedPlayers)
 		{
 			NBTTagCompound nbttagcompound = new NBTTagCompound();
-			nbttagcompound.setUniqueId("playerUUID", this.affectedPlayers.get(i));
+			nbttagcompound.setUniqueId("playerUUID", affectedPlayer);
 			nbttaglist.appendTag(nbttagcompound);
 		}
 
@@ -444,10 +460,9 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 
 	public void clearEffect()
 	{
-
 		if (!world.isRemote && this.potionEffect != null)
 		{
-			for (WorldServer worldServer : world.getMinecraftServer().worlds)
+			for (WorldServer worldServer : Objects.requireNonNull(world.getMinecraftServer()).worlds)
 			{
 				for (UUID uuid : this.affectedPlayers)
 				{
@@ -496,13 +511,13 @@ public class TileEntityChamber extends TileEntityLockable implements ITickable, 
 	public NBTTagCompound getUpdateTag()
 	{
 		NBTTagCompound compound = new NBTTagCompound();
-		this.writeChamberToNBT(compound);
+		this.writeToNBT(compound);
 		return compound;
 	}
 
 	//On the client the the data is unwrapped and parsed
 	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
+	public void onDataPacket(@Nonnull NetworkManager net, SPacketUpdateTileEntity pkt)
 	{
 		NBTTagCompound tag = pkt.getNbtCompound();
 		readChamberFromNBT(tag);
