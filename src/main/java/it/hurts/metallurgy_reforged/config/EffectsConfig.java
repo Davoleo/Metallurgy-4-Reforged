@@ -241,6 +241,9 @@ public class EffectsConfig {
 	@Config.Name("Crushing (Oureclase Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.oureclase_pickaxe")
 	public static boolean oureclaseEffectPickaxe = true;
+	@Config.Name("Pulverize (Oureclase Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.oureclase_weapon")
+	public static boolean oureclaseEffectWeapon = true;
 
 	private EffectsConfig()
 	{
