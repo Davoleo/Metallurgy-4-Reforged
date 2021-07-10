@@ -84,7 +84,7 @@ public class SublimationChamberHUD {
 
 				minecraft.getTextureManager().bindTexture(GuiContainer.INVENTORY_BACKGROUND);
 				Utils.drawTexturedModalRect(x + 30, y - 10, 141, 166, 24, 24);
-				Utils.drawTexturedModalRect(x + 33, y - 8, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
+				Utils.drawTexturedModalRect(x + 33, y - 7, effectIndex % 8 * 18, 198 + effectIndex / 8 * 18, 18, 18);
 
 				Metal metal = ItemUtils.getMetalFromItem(metalStack.getItem());
 				int color = metal != null ? metal.getStats().getColorHex() : 0xFFFFFF;
