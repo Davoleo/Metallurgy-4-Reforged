@@ -1,6 +1,8 @@
 ### 1.2.9
 
 - Added Machine Sounds (Thanks to @acemagex#5483 for the epic sounds!)
+- Offset sublimation chamber HUD effect texture by one
+- Improved Sublimation chamber state handling when fuel finishes
 
 ### 1.2.8
 
