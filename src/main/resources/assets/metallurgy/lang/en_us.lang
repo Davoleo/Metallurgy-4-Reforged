@@ -1022,6 +1022,16 @@ tile.metallurgy.crusher.name=§cCrusher
 tile.metallurgy.alloyer.name=§9Alloyer
 tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
 
+#Subtitles
+metallurgy.subtitle.alloyer_ambience=Alloyer Working
+metallurgy.subtitle.alloyer_impact=Alloyer Alloys
+metallurgy.subtitle.alloyer_windup=Alloyer Starts
+metallurgy.subtitle.crusher_ambience=Crusher Working
+metallurgy.subtitle.crusher_impact=Crusher Crushes
+metallurgy.subtitle.crusher_windup=Crusher Starts
+metallurgy.subtitle.sublimation_chamber_ambience=Sublimation Chamber Sublimates Metal
+metallurgy.subtitle.sublimation_chamber_windup=Sublimation Chamber Starts
+
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscure
 modifier.obscure_trait.desc=Blinds your enemy for some time
