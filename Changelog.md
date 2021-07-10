@@ -1,7 +1,13 @@
+### 1.2.9
+
+- Added Machine Sounds (Thanks to @acemagex#5483 for the epic sounds!)
+
 ### 1.2.8
 
-- Added a config option to tweak the temperature of fluid Thermite  ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315))
-- Fixed an exception that caused Flans Mod entities to be invisible when added to the world ([#327](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/327))
+- Added a config option to tweak the temperature of fluid
+  Thermite  ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315))
+- Fixed an exception that caused Flans Mod entities to be invisible when added to the
+  world ([#327](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/327))
 - Added config options to tweak attack damage and attack speed of brass knuckles
 - Improved Tinkers' Render info parameters for metals (should make tinkers' integrated textures look a bit better)
 - Fixed a crash caused by Electrum Magnet when trying to attract empty item stacks
