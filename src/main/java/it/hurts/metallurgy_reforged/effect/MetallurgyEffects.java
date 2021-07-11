@@ -217,6 +217,8 @@ public class MetallurgyEffects {
 	public static final OureclasePickaxeEffect OURECLASE_PICKAXE_EFFECT = new OureclasePickaxeEffect();
 	//Oureclase Weapon (Pulverize)
 	public static final OureclaseWeaponEffect OURECLASE_WEAPON_EFFECT = new OureclaseWeaponEffect();
+	//Oureclase Armor
+	public static final OureclaseArmorEffect OURECLASE_ARMOR_EFFECT = new OureclaseArmorEffect();
 
 	//Prometheum Armor (No potion, need to implement a new Effect)
 	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

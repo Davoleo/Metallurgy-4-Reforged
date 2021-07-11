@@ -1353,6 +1353,7 @@ tooltip.metallurgy.effect.orichalcum_all=Champion
 tooltip.metallurgy.effect.orichalcum_armor=Berserker
 tooltip.metallurgy.effect.oureclase_pickaxe=Crushing
 tooltip.metallurgy.effect.oureclase_weapon=Pulverize
+tooltip.metallurgy.effect.oureclase_armor=Stampede
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1422,6 +1423,7 @@ tooltip.metallurgy.effect.orichalcum_all.tooltip=Killing monsters restores durab
 tooltip.metallurgy.effect.orichalcum_armor.tooltip=Killing a mob grants a strength buff, level of which is equal to the count of every other remaining hostile mob around the wearer. (Max Potion Level: 6) (Armor scales the radius and duration of the bonus)
 tooltip.metallurgy.effect.oureclase_pickaxe.tooltip=Mining ores drops 1 dust of that metal instead of the ore.
 tooltip.metallurgy.effect.oureclase_weapon.tooltip=Deals 2x the original damage to enemies with full health.
+tooltip.metallurgy.effect.oureclase_armor.tooltip=Sprinting slightly damages and knocks back nearby entities.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
