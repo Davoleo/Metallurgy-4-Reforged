@@ -13,7 +13,6 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -111,7 +110,9 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
 				{
 					// TODO: 06/03/2021 Balance: Might be a bit to strong
 					event.setAmount(Math.min(event.getAmount() + (killCount), 20F));
-					Utils.repeat(15, () -> spawnParticle(event.getEntity(), 2F, true, 5));
+
+					for (int i = 0; i < 15; i++)
+						spawnParticle(event.getEntity(), 2F, true, 5);
 				}
 			}
 		}

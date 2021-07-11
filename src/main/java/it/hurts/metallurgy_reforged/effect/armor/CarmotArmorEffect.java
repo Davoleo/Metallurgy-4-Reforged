@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -120,8 +119,10 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
 			if (entity.world.isRemote)
 			{
 				//Maybe a 2 cycles for?
-				Utils.repeat(2, () -> spawnParticle(entity.world, entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
-						0.4F, true, 5));
+				for (int i = 0; i < 2; i++)
+					spawnParticle(entity.world,
+							entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
+							0.4F, true, 5);
 			}
 		}
 	}

@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -46,7 +45,8 @@ public class OureclaseWeaponEffect extends BaseMetallurgyEffect {
 			if (event.getEntityLiving().getHealth() == event.getEntityLiving().getMaxHealth())
 			{
 				event.setAmount(event.getAmount() * 2);
-				Utils.repeat(10, () -> spawnParticle(event.getEntity(), 3F, false, 5));
+				for (int i = 0; i < 10; i++)
+					spawnParticle(event.getEntity(), 3F, false, 5);
 			}
 		}
 	}

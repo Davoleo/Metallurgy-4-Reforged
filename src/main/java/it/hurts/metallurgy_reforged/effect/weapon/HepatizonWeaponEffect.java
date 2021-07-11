@@ -13,7 +13,6 @@ import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -76,7 +75,8 @@ public class HepatizonWeaponEffect extends BaseMetallurgyEffect {
 				//Drop the item that was stored in it
 				attacked.entityDropItem(randomEquip, attacked.height / 2);
 
-				Utils.repeat(10, () -> spawnParticle(attacked, 2.5F, false, 3));
+				for (int i = 0; i < 10; i++)
+					spawnParticle(attacked, 2.5F, false, 3);
 			}
 		}
 	}

@@ -17,7 +17,6 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -131,7 +130,8 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 		entity.setHealth(data.health);
 		entity.getFoodStats().addStats(data.hungerStats.getFoodLevel(), data.hungerStats.getSaturationLevel());
 
-		Utils.repeat(25, () -> spawnParticle(entity, 1, true, 4));
+		for (int i = 0; i < 25; i++)
+			spawnParticle(entity, 1, true, 4);
 	}
 
 	public static class WarpData implements INBTSerializable<NBTTagCompound> {

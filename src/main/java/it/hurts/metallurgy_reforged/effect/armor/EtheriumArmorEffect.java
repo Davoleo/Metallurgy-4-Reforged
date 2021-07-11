@@ -14,11 +14,8 @@ import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -95,9 +92,8 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 				collisions.forEach(aabb -> {
 					BlockPos pos = new BlockPos(aabb.minX, aabb.minY, aabb.minZ);
-					Utils.repeat(5,
-							() -> spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0)
-					);
+					for (int i = 0; i < 5; i++)
+						spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0);
 				});
 			}
 			else

@@ -69,13 +69,15 @@ public class EtheriumWeaponEffect extends BaseMetallurgyEffect {
 
 			Vec3d targetVec = event.getEntityLiving().getPositionVector().add(0, event.getEntityLiving().height / 2, 0);
 			Vec3d motionVec = targetVec.subtractReverse(livingAttacker.getPositionVector().add(0, event.getEntityLiving().height / 2, 0)).normalize();
-			Utils.repeat(15, () -> {
+
+			for (int i = 0; i < 15; i++)
+			{
 				double r1 = -0.3 + Utils.random.nextFloat() * 0.5;
 				double r2 = -0.3 + Utils.random.nextFloat() * 0.5;
 				double r3 = -0.3 + Utils.random.nextFloat() * 0.5;
 				spawnParticle(attacker.world, targetVec.x + r1, targetVec.y + r2, targetVec.z + r3,
 						motionVec.x * 0.2, motionVec.y * 0.2, motionVec.z * 0.2, 2F, true, 2);
-			});
+			}
 		}
 	}
 

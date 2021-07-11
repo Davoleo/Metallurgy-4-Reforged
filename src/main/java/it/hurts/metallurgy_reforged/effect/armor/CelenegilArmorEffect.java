@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -79,8 +78,8 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
 
 			data.setExtra("hits", 0);
 
-			Utils.repeat(60,
-					() -> spawnParticle(entity.world, entityPos, 4F, true, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D));
+			for (int i = 0; i < 60; i++)
+				spawnParticle(entity.world, entityPos, 4F, true, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D);
 		}
 		else
 		{

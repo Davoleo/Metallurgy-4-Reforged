@@ -106,12 +106,13 @@ public class MidasiumHoeEffect extends BaseMetallurgyEffect {
 				drops.clear();
 				drops.addAll(goldDrops);
 
-				Utils.repeat(10, () -> {
+				for (int i = 0; i < 10; i++)
+				{
 					double d1 = (Utils.random.nextDouble() - 0.5) * 0.15;
 					double d2 = (Utils.random.nextDouble() - 0.5) * 0.15;
 					double d3 = (Utils.random.nextDouble() - 0.5) * 0.15;
 					spawnParticle(event.getWorld(), event.getPos(), 2, true, 3, d1, d2, d3);
-				});
+				}
 				event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_NOTE_CHIME, SoundCategory.BLOCKS, 1F, 1F);
 			}
 		}

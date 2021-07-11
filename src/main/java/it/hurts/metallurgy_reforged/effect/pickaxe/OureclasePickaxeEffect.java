@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.world.BlockEvent;
@@ -73,7 +72,8 @@ public class OureclasePickaxeEffect extends BaseMetallurgyEffect {
 			//if the set is not empty add all the dust items to the drop list -> play sound and spawn particles
 			event.getDrops().addAll(dusts);
 			event.getWorld().playSound(null, event.getPos(), ModSounds.CRUSHER_IMPACT, SoundCategory.BLOCKS, 0.8F, 1.2F);
-			Utils.repeat(5, () -> spawnParticle(event.getWorld(), event.getPos(), 3F, false, 5, 0, 0, 0));
+			for (int i = 0; i < 5; i++)
+				spawnParticle(event.getWorld(), event.getPos(), 3F, false, 5, 0, 0, 0);
 		}
 	}
 

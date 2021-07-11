@@ -58,11 +58,12 @@ public class IgnatiusWeaponEffect extends BaseMetallurgyEffect {
 				for (int i = 0; i < dropStacks.size(); i++)
 					event.getDrops().get(i).setItem(dropStacks.get(i));
 
-				Utils.repeat(15, () -> {
+				for (int i = 0; i < 15; i++)
+				{
 					float f1 = (Utils.random.nextFloat() / 16F) - 0.03125F;
 					float f2 = (Utils.random.nextFloat() / 16F) - 0.03125F;
 					spawnParticle(event.getEntity().world, event.getEntity().getPosition(), 2F, true, 3, f1, 0.04, f2);
-				});
+				}
 			}
 		}
 	}

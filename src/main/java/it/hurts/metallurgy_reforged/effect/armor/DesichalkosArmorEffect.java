@@ -12,17 +12,8 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.entity.ai.AIEndermanPlayerSteal;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -68,7 +59,8 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 		else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < maxLevelLayers)
 		{
 			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
-			Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, 2));
+			for (int i = 0; i < 30; i++)
+				spawnParticle(event.getEntityLiving(), 3F, true, 2);
 
 			effectData.desichalkosAbsorbLevel += 1;
 		}
@@ -86,7 +78,8 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 		{
 			event.setCanceled(true);
 
-			Utils.repeat(30, () -> spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2));
+			for (int i = 0; i < 30; i++)
+				spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2);
 			effectData.desichalkosAbsorbLevel -= 1;
 
 			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);

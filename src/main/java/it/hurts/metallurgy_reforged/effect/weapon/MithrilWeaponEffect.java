@@ -15,7 +15,6 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -81,12 +80,13 @@ public class MithrilWeaponEffect extends BaseMetallurgyEffect implements IProgre
 					//30% of the original weapon damage (underclamped at 1) as MAGIC DAMAGE
 					target.attackEntityFrom(DamageSource.MAGIC, Math.max(1, attackDamage));
 					//Particles exploding from the torso of the enemy (magical damage repr)
-					Utils.repeat(10, () -> {
+					for (int i = 0; i < 10; i++)
+					{
 						double r1 = (Math.random() * 0.15) - 0.075;
 						double r2 = (Math.random() * 0.15) - 0.075;
 						double r3 = (Math.random() * 0.15) - 0.075;
 						spawnParticle(world, target.posX, target.posY + (0.6 * target.height), target.posZ, r1, r2, r3, 2, true, 6);
-					});
+					}
 				}
 			}
 		}

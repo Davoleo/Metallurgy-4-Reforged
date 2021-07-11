@@ -359,12 +359,4 @@ public class Utils {
 		return false;
 	}
 
-	public static void repeat(int times, Runnable function)
-	{
-		for (int i = 0; i < times; i++)
-		{
-			function.run();
-		}
-	}
-
 }

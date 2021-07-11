@@ -13,7 +13,6 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.Vec3d;
@@ -53,8 +52,10 @@ public class OrichalcumEffect extends BaseMetallurgyEffect {
 
                     Vec3d halvedLookVec = sourceEnt.getLookVec().scale(0.5);
                     //Maybe a 2 cycles for?
-                    Utils.repeat(2, () -> spawnParticle(sourceEnt.world,
-                            sourceEnt.posX + halvedLookVec.x, sourceEnt.posY + 1.1F, sourceEnt.posZ + halvedLookVec.z, 0.4F, true, 5));
+                    for (int i = 0; i < 2; i++)
+                        spawnParticle(sourceEnt.world,
+                                sourceEnt.posX + halvedLookVec.x, sourceEnt.posY + 1.1F, sourceEnt.posZ + halvedLookVec.z,
+                                0.4F, true, 5);
                 }
             });
         }

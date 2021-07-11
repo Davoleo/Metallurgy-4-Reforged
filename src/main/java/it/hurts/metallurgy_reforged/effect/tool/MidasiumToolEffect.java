@@ -14,7 +14,6 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.weapon.MidasiumWeaponEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -70,9 +69,9 @@ public class MidasiumToolEffect extends BaseMetallurgyEffect {
                 drops.add(stackWrapper.getItem());
             }
 
-            Utils.repeat(drops.size(), () ->
-                    spawnParticle(event.getWorld(), event.getPos(), 1F, true, 5,
-                            Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05));
+            for (int i = 0; i < drops.size(); i++)
+                spawnParticle(event.getWorld(), event.getPos(), 1F, true, 5,
+                        Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05);
         }
     }
 

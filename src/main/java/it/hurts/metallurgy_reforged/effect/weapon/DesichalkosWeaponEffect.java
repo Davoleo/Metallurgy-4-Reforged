@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -52,7 +51,8 @@ public class DesichalkosWeaponEffect extends BaseMetallurgyEffect {
 			e.setAbsorptionAmount(e.getAbsorptionAmount() - event.getAmount());
 
 
-			Utils.repeat(30, () -> spawnParticle(e, 2F, true, 9));
+			for (int i = 0; i < 30; i++)
+				spawnParticle(e, 2F, true, 9);
 
 			event.setAmount(0.0F);
 

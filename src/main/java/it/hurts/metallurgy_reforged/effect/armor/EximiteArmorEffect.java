@@ -11,10 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.player.EntityPlayer;
@@ -53,7 +50,8 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 			EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ, 16, 16, e -> 1.0, player -> getLevel(player) < 1);
 			shulker.setAttackTarget(newTarget);
 
-			Utils.repeat(20, () -> spawnParticle(shulker, 4F, false, 3));
+			for (int i = 0; i < 20; i++)
+				spawnParticle(shulker, 4F, false, 3);
 		}
 	}
 

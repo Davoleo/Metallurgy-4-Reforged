@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.weapon;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -45,7 +44,8 @@ public class DeepIronWeaponEffect extends BaseMetallurgyEffect {
 			if (entity.isInWater())
 			{
 				event.setAmount(event.getAmount() + 6);
-				Utils.repeat(5, () -> spawnParticle(event.getEntityLiving(), 0.6F, false, 5));
+				for (int i = 0; i < 5; i++)
+					spawnParticle(event.getEntityLiving(), 0.6F, false, 5);
 			}
 		}
 	}

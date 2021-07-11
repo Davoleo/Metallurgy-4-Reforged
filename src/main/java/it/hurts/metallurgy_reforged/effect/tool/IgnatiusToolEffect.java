@@ -47,11 +47,12 @@ public class IgnatiusToolEffect extends BaseMetallurgyEffect {
 
 		if (hadEffect)
 		{
-			Utils.repeat(10, () -> {
+			for (int i = 0; i < 10; i++)
+			{
 				float f1 = (Utils.random.nextFloat() / 16F) - 0.03125F;
 				float f2 = (Utils.random.nextFloat() / 16F) - 0.03125F;
 				spawnParticle(event.getWorld(), event.getPos(), 2F, true, 3, f1, 0.02, f2);
-			});
+			}
 		}
 	}
 
