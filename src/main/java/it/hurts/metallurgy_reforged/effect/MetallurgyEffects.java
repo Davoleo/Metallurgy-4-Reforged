@@ -222,6 +222,8 @@ public class MetallurgyEffects {
 
 	//Platinum Armor (Purification)
 	public static final PlatinumArmorEffect PLATINUM_ARMOR_EFFECT = new PlatinumArmorEffect();
+	//Platinum Weapon (Cathartic Strike)
+	public static final PlatinumWeaponEffect PLATINUM_WEAPON_EFFECT = new PlatinumWeaponEffect();
 
 	//Prometheum Armor (No potion, need to implement a new Effect)
 	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

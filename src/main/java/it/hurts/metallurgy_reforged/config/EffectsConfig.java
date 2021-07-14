@@ -251,6 +251,9 @@ public class EffectsConfig {
 	@Config.Name("Purification (Platinum Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.platinum_armor")
 	public static boolean platinumEffectArmor = true;
+	@Config.Name("Cathartic Strike (Platinum Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.platinum_weapon")
+	public static boolean platinumEffectWeapon = true;
 
 	private EffectsConfig()
 	{
