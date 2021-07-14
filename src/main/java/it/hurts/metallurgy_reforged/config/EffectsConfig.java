@@ -244,9 +244,13 @@ public class EffectsConfig {
 	@Config.Name("Pulverize (Oureclase Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.oureclase_weapon")
 	public static boolean oureclaseEffectWeapon = true;
-	@Config.Name("Stampede")
+	@Config.Name("Stampede (Oureclase Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.oureclase_armor")
 	public static boolean oureclaseEffectArmor = true;
+
+	@Config.Name("Purification (Platinum Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.platinum_armor")
+	public static boolean platinumEffectArmor = true;
 
 	private EffectsConfig()
 	{

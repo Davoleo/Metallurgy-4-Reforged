@@ -42,8 +42,10 @@ public class OureclaseWeaponEffect extends BaseMetallurgyEffect {
 			if (!canBeApplied(((EntityLivingBase) sourceEnt)))
 				return;
 
+			//If the enemy has full health
 			if (event.getEntityLiving().getHealth() == event.getEntityLiving().getMaxHealth())
 			{
+				//Double the amount of damage
 				event.setAmount(event.getAmount() * 2);
 				for (int i = 0; i < 10; i++)
 					spawnParticle(event.getEntity(), 3F, false, 5);

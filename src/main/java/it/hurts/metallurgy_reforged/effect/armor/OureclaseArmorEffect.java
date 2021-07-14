@@ -72,9 +72,7 @@ public class OureclaseArmorEffect extends BaseMetallurgyEffect {
 			});
 
 			if (!entitiesNearby.isEmpty())
-			{
 				wearer.world.playSound(null, wearer.getPosition(), ModSounds.CRUSHER_IMPACT, SoundCategory.PLAYERS, 0.4F, 1);
-			}
 		}
 	}
 

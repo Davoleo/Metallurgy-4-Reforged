@@ -1354,6 +1354,7 @@ tooltip.metallurgy.effect.orichalcum_armor=Berserker
 tooltip.metallurgy.effect.oureclase_pickaxe=Crushing
 tooltip.metallurgy.effect.oureclase_weapon=Pulverize
 tooltip.metallurgy.effect.oureclase_armor=Stampede
+tooltip.metallurgy.effect.platinum_armor=Purification
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1372,8 +1373,8 @@ tooltip.metallurgy.effect.atlarus_weapon.tooltip=A strong gust of wind pushes en
 tooltip.metallurgy.effect.atlarus_hoe.tooltip=Wind helps you remove bushes and crops around you
 tooltip.metallurgy.effect.black_steel_armor.tooltip=Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.)
 tooltip.metallurgy.effect.black_steel_weapon.tooltip=Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
-tooltip.metallurgy.effect.carmot_tool.tooltip=Harvesting a block will mine surrounding blocks of the same type in a spheric range
-tooltip.metallurgy.effect.carmot_armor.tooltip=You can comsume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff
+tooltip.metallurgy.effect.carmot_tool.tooltip=Harvesting a block will mine surrounding blocks of the same type in a spherical range
+tooltip.metallurgy.effect.carmot_armor.tooltip=You can consume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff
 tooltip.metallurgy.effect.carmot_weapon.tooltip=Attacking a mob will also attack mobs of the same type in a radius around the initial strike
 tooltip.metallurgy.effect.celenegil_tool.tooltip=Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)
 tooltip.metallurgy.effect.celenegil_armor.tooltip=After being attacked five times over a short period, all the enemies are knocked back away from the player and the player receives a very short regen buff and all negative effects are cleared.
@@ -1394,10 +1395,10 @@ tooltip.metallurgy.effect.electrum_weapon.tooltip=Activating the effect with a r
 tooltip.metallurgy.effect.electrum_tool.tooltip=Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.
 tooltip.metallurgy.effect.electrum_armor.tooltip=Receiving damage charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.
 tooltip.metallurgy.effect.etherium_armor.tooltip=Allows the player to clip through walls when sneaking for at most 15 seconds after which the player remains stuck in the wall
-tooltip.metallurgy.effect.etherium_weapon.tooltip=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn’t stack).
+tooltip.metallurgy.effect.etherium_weapon.tooltip=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn't stack).
 tooltip.metallurgy.effect.eximite_armor.tooltip=Shulkers become neutral, but you're not immune to the effect of lingering bullets.
 tooltip.metallurgy.effect.eximite_weapon.tooltip=Grants bonus damage and a looting effect to mobs in the End.
-tooltip.metallurgy.effect.haderoth_armor.tooltip=ONLY ACTIVE AFTER THE ARMOR IS REBORN<NL>Each armor piece gives has a different: <NL>helmet: immunity to hunger effect, <NL>chestplate: fire resistence, <NL>leggings: immunity to slowness effect, <NL>boots: immunity to levitation effect
+tooltip.metallurgy.effect.haderoth_armor.tooltip=ONLY ACTIVE AFTER THE ARMOR IS REBORN<NL>Each armor piece gives has a different: <NL>helmet: immunity to hunger effect, <NL>chestplate: fire resistance, <NL>leggings: immunity to slowness effect, <NL>boots: immunity to levitation effect
 tooltip.metallurgy.effect.haderoth_weapon.tooltip=ONLY ACTIVE AFTER THE WEAPON IS REBORN<NL>Killing the same mob over and over again grants bonus damage, but killing a different one resets it
 tooltip.metallurgy.effect.haderoth_all.tooltip=Items have a second life, once they reach 0 durability they're replaced by a new and better version of themselves; <NL> Armor pieces will be reborn with higher durability and protection and toughness values; <NL> All items will will be reborn higher durability and increased efficiency when breaking blocks, weapons also get a 1 heart permanent bonus damage.<NL> (all the other Haderoth effects are enabled after items are reborn).
 tooltip.metallurgy.effect.hepatizon_weapon.tooltip=When attacking you have a chance to rob the enemy of some of their equipment.
@@ -1424,6 +1425,7 @@ tooltip.metallurgy.effect.orichalcum_armor.tooltip=Killing a mob grants a streng
 tooltip.metallurgy.effect.oureclase_pickaxe.tooltip=Mining ores drops 1 dust of that metal instead of the ore.
 tooltip.metallurgy.effect.oureclase_weapon.tooltip=Deals 2x the original damage to enemies with full health.
 tooltip.metallurgy.effect.oureclase_armor.tooltip=Sprinting slightly damages and knocks back nearby entities.
+tooltip.metallurgy.effect.platinum_armor.tooltip=Purifies negative effects like Weakness, Slowness and Poison to their positive counterparts.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

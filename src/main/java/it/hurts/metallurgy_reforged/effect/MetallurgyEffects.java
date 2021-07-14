@@ -220,6 +220,9 @@ public class MetallurgyEffects {
 	//Oureclase Armor
 	public static final OureclaseArmorEffect OURECLASE_ARMOR_EFFECT = new OureclaseArmorEffect();
 
+	//Platinum Armor (Purification)
+	public static final PlatinumArmorEffect PLATINUM_ARMOR_EFFECT = new PlatinumArmorEffect();
+
 	//Prometheum Armor (No potion, need to implement a new Effect)
 	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
 
