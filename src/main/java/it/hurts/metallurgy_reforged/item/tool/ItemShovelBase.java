@@ -127,9 +127,7 @@ public class ItemShovelBase extends ItemSpade implements IToolEffect {
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
         if (!this.effects.isEmpty())
-        {
             effects.forEach(effect -> effect.rightClickHandler(worldIn, playerIn, handIn));
-        }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 

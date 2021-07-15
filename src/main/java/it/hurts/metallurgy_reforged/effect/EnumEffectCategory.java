@@ -17,7 +17,8 @@ public enum EnumEffectCategory {
 	WEAPON(EnumTools.AXE, EnumTools.SWORD),
 	ALL(EnumTools.AXE, EnumTools.PICKAXE, EnumTools.HOE, EnumTools.SHOVEL, EnumTools.SWORD),
 	HOE(EnumTools.HOE),
-	PICKAXE(EnumTools.PICKAXE);
+	PICKAXE(EnumTools.PICKAXE),
+	SWORD(EnumTools.SWORD);
 
 	private final EnumTools[] tools;
 

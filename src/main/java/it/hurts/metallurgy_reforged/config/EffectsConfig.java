@@ -254,6 +254,9 @@ public class EffectsConfig {
 	@Config.Name("Cathartic Strike (Platinum Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.platinum_weapon")
 	public static boolean platinumEffectWeapon = true;
+	@Config.Name("Flawless (Platinum Items (except armor))")
+	@Config.LangKey("tooltip.metallurgy.effect.platinum_all")
+	public static boolean platinumEffectAll = true;
 
 	private EffectsConfig()
 	{

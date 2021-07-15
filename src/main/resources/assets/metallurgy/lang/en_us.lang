@@ -1356,6 +1356,7 @@ tooltip.metallurgy.effect.oureclase_weapon=Pulverize
 tooltip.metallurgy.effect.oureclase_armor=Stampede
 tooltip.metallurgy.effect.platinum_armor=Purification
 tooltip.metallurgy.effect.platinum_weapon=Cathartic Strike
+tooltip.metallurgy.effect.platinum_all=Flawless
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1428,6 +1429,7 @@ tooltip.metallurgy.effect.oureclase_weapon.tooltip=Deals 2x the original damage 
 tooltip.metallurgy.effect.oureclase_armor.tooltip=Sprinting slightly damages and knocks back nearby entities.
 tooltip.metallurgy.effect.platinum_armor.tooltip=Purifies negative effects like Weakness, Slowness and Poison to their positive counterparts.
 tooltip.metallurgy.effect.platinum_weapon.tooltip=Extra cathartic damage will be dealt to undead enemies as well as setting them on fire.
+tooltip.metallurgy.effect.platinum_all.tooltip=This tool is unbreakable
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

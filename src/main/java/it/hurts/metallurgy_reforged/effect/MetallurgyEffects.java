@@ -27,6 +27,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.annotation.Nonnull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -224,6 +225,31 @@ public class MetallurgyEffects {
 	public static final PlatinumArmorEffect PLATINUM_ARMOR_EFFECT = new PlatinumArmorEffect();
 	//Platinum Weapon (Cathartic Strike)
 	public static final PlatinumWeaponEffect PLATINUM_WEAPON_EFFECT = new PlatinumWeaponEffect();
+	//Platinum (Flawless) [All items except armor]
+	public static final PlatinumEffect PLATINUM_ALL_WEAPON_EFFECT = new PlatinumEffect() {
+		@Nonnull
+		@Override
+		public EnumEffectCategory getCategory()
+		{
+			return EnumEffectCategory.SWORD;
+		}
+	};
+	public static final PlatinumEffect PLATINUM_ALL_HOE_EFFECT = new PlatinumEffect() {
+		@Nonnull
+		@Override
+		public EnumEffectCategory getCategory()
+		{
+			return EnumEffectCategory.HOE;
+		}
+	};
+	public static final PlatinumEffect PLATINUM_ALL_TOOL_EFFECT = new PlatinumEffect() {
+		@Nonnull
+		@Override
+		public EnumEffectCategory getCategory()
+		{
+			return EnumEffectCategory.TOOL;
+		}
+	};
 
 	//Prometheum Armor (No potion, need to implement a new Effect)
 	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();

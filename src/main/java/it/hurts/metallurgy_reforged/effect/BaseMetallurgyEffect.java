@@ -14,7 +14,6 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
@@ -80,7 +79,6 @@ public abstract class BaseMetallurgyEffect {
 			}
 		}
 	}
-
 
 	/**
 	 * @return The category of tools the effect is applied to

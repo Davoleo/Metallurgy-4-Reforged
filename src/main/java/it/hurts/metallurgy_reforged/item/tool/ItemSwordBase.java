@@ -105,7 +105,7 @@ public class ItemSwordBase extends ItemSword implements IToolEffect {
     }
 
     @Override
-    public boolean getIsRepairable(ItemStack toRepair, @Nonnull ItemStack repair)
+    public boolean getIsRepairable(@Nonnull ItemStack toRepair, @Nonnull ItemStack repair)
     {
         return (GeneralConfig.enableAnvilToolRepair && ItemUtils.equalsWildcard(getRepairStack(), repair)) || super.getIsRepairable(toRepair, repair);
     }
@@ -123,9 +123,7 @@ public class ItemSwordBase extends ItemSword implements IToolEffect {
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
         if (!this.effects.isEmpty())
-        {
             effects.forEach(effect -> effect.rightClickHandler(worldIn, playerIn, handIn));
-        }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 

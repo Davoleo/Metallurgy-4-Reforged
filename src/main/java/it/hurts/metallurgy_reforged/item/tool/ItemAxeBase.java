@@ -126,7 +126,7 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving)
+	public boolean onBlockDestroyed(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull IBlockState state, @Nonnull BlockPos pos, @Nonnull EntityLivingBase entityLiving)
 	{
 		return super.onBlockDestroyed(stack, worldIn, state, pos, entityLiving);
 	}
@@ -136,9 +136,7 @@ public class ItemAxeBase extends ItemAxe implements IToolEffect {
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
 		if (!this.effects.isEmpty())
-		{
 			effects.forEach(effect -> effect.rightClickHandler(worldIn, playerIn, handIn));
-		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
