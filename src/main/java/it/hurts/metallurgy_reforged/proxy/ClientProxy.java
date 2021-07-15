@@ -9,6 +9,9 @@
 
 package it.hurts.metallurgy_reforged.proxy;
 
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
+import it.hurts.metallurgy_reforged.entity.PierknightRenderer;
+import it.hurts.metallurgy_reforged.gui.TooltipRenderHandler;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
@@ -21,6 +24,7 @@ import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -41,12 +45,14 @@ public class ClientProxy implements IProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
-        if (ModChecker.isTConLoaded)
-            it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
+		if (ModChecker.isTConLoaded)
+			it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
 
-        MinecraftForge.EVENT_BUS.register(HUDHandler.class);
-        ModItems.BRASS_KNUCKLES.initTEISR();
-    }
+		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
+		MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
+		ModItems.BRASS_KNUCKLES.initTEISR();
+		RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierknightRenderer.Factory());
+	}
 
 	@Override
 	public void init(FMLInitializationEvent event)

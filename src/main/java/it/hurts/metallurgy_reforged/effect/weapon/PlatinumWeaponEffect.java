@@ -1,5 +1,5 @@
 /*==============================================================================
- = Class: OureclaseWeaponEffect
+ = Class: PlatinumWeaponEffect
  = This class is part of Metallurgy 4: Reforged
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
@@ -19,11 +19,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 
-public class OureclaseWeaponEffect extends BaseMetallurgyEffect {
+public class PlatinumWeaponEffect extends BaseMetallurgyEffect {
 
-	public OureclaseWeaponEffect()
+	public PlatinumWeaponEffect()
 	{
-		super(ModMetals.OURECLASE);
+		super(ModMetals.PLATINUM);
 	}
 
 	@Nonnull
@@ -34,7 +34,7 @@ public class OureclaseWeaponEffect extends BaseMetallurgyEffect {
 	}
 
 	@SubscribeEvent
-	public void doubleDamage(LivingHurtEvent event)
+	public void buffUndeadDamage(LivingHurtEvent event)
 	{
 		Entity sourceEnt = event.getSource().getImmediateSource();
 		if (sourceEnt instanceof EntityLivingBase)
@@ -42,13 +42,15 @@ public class OureclaseWeaponEffect extends BaseMetallurgyEffect {
 			if (!canBeApplied(((EntityLivingBase) sourceEnt)))
 				return;
 
-			//If the enemy has full health
-			if (event.getEntityLiving().getHealth() == event.getEntityLiving().getMaxHealth())
+			EntityLivingBase target = event.getEntityLiving();
+			if (target.isEntityUndead())
 			{
-				//Double the amount of damage
-				event.setAmount(event.getAmount() * 2);
-				for (int i = 0; i < 10; i++)
-					spawnParticle(event.getEntity(), 3F, false, 5);
+				event.setAmount(event.getAmount() + 4F);
+				target.setFire(4);
+				for (int i = 0; i < 20; i++)
+					spawnParticle(target.world, target.posX, target.posY + target.getEyeHeight(), target.posZ,
+							(Math.random() * 0.125) - 0.0625, (Math.random() * 0.125) - 0.0625, (Math.random() * 0.125) - 0.0625,
+							1.3F, true, 6);
 			}
 		}
 	}
