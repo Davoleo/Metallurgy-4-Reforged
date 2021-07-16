@@ -258,6 +258,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.platinum_all")
 	public static boolean platinumEffectAll = true;
 
+	@Config.Name("Freyr (Prometheum Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.prometheum_armor")
+	public static boolean prometheumEffectArmor = true;
+
 	private EffectsConfig()
 	{
 	}

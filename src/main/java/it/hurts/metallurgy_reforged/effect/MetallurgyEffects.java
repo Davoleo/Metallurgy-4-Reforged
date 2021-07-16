@@ -251,8 +251,8 @@ public class MetallurgyEffects {
 		}
 	};
 
-	//Prometheum Armor (No potion, need to implement a new Effect)
-	//public static final BaseMetallurgyEffect prometheumEffect = new PrometheumArmorEffect();
+	//Prometheum Armor (Freyr)
+	public static final PrometheumArmorEffect PROMETHEUM_ARMOR_EFFECT = new PrometheumArmorEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();

@@ -28,7 +28,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import javax.annotation.Nonnull;
 
 @Deprecated
-public class OldDesichalkosArmorEffect extends BaseMetallurgyEffect {
+public class DesichalkosArmorEffectOld extends BaseMetallurgyEffect {
 
 	public static final IBlockState[] borrowableBlocks = { };
 	//Arrays.stream(EffectsConfig.desichalkosEndermenBlocks)
@@ -37,7 +37,7 @@ public class OldDesichalkosArmorEffect extends BaseMetallurgyEffect {
 	//.map(Block::getDefaultState)
 	//.toArray(IBlockState[]::new);
 
-	public OldDesichalkosArmorEffect()
+	public DesichalkosArmorEffectOld()
 	{
 		super(ModMetals.DESICHALKOS);
 	}
