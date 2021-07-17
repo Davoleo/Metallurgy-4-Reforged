@@ -46,6 +46,9 @@ public abstract class PlatinumEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void onItemEquipped(LivingEquipmentChangeEvent event)
 	{
+		if (!canBeApplied(event.getEntityLiving()))
+			return;
+
 		ItemStack stack = event.getTo();
 		NBTTagCompound compound = stack.getTagCompound();
 		if (compound == null)
