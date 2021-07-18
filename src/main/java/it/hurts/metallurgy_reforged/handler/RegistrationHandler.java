@@ -29,7 +29,7 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -222,7 +222,7 @@ public class RegistrationHandler {
 	}
 
 	@SubscribeEvent
-	public static void attachCapability(AttachCapabilitiesEvent<EntityLivingBase> event)
+	public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
 	{
 		event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
