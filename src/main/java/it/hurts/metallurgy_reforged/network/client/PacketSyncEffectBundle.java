@@ -126,7 +126,7 @@ public class PacketSyncEffectBundle implements IMessage {
 					bundle.setPaused(message.paused, null);
 
 				if (message.bundleType == 1 && message.blockPos != ((BlockInfoDataBundle) bundle).getPos())
-					((BlockInfoDataBundle) bundle).setPos(message.blockPos);
+					((BlockInfoDataBundle) bundle).setBlockInfo(message.blockPos, null);
 
 				if (message.bundleType == 2 && message.extras != ((ExtraFilledDataBundle) bundle).getExtras())
 					((ExtraFilledDataBundle) bundle).setExtras(message.extras);

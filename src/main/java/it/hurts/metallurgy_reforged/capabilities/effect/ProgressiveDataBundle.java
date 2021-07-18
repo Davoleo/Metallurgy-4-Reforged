@@ -22,7 +22,7 @@ import javax.annotation.OverridingMethodsMustInvokeSuper;
 
 public class ProgressiveDataBundle {
 
-	public final int STEP_TICK_DELAY;
+	public final int stepTickDelay;
 	protected final int maxSteps;
 
 	protected String prefixKey;
@@ -37,7 +37,7 @@ public class ProgressiveDataBundle {
 	{
 		this.prefixKey = prefixKey;
 		this.maxSteps = maxSteps;
-		this.STEP_TICK_DELAY = stepTickDelay;
+		this.stepTickDelay = stepTickDelay;
 	}
 
 	/**

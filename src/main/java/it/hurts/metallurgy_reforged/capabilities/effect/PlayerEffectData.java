@@ -32,6 +32,7 @@ public class PlayerEffectData {
 		effectBundles.put(inolashiteWeaponBundle.getPrefixKey(), inolashiteWeaponBundle);
 		effectBundles.put(inolashiteArmorBundle.getPrefixKey(), inolashiteArmorBundle);
 		effectBundles.put(mithrilWeaponBundle.getPrefixKey(), mithrilWeaponBundle);
+		effectBundles.put(prometheumArmorBundle.getPrefixKey(), prometheumArmorBundle);
 	}
 
 	//Amordrine Armor ----------------------------------------
@@ -53,7 +54,7 @@ public class PlayerEffectData {
 	}
 
 	//Carmot Tools
-	public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", null, null, 3, 14);
+	public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", 3, 14);
 
 	//Carmot Weapons
 	public ExtraFilledDataBundle carmotWeaponBundle =
@@ -87,5 +88,8 @@ public class PlayerEffectData {
 
 	//Mithril Weapons
 	public ProgressiveDataBundle mithrilWeaponBundle = new ProgressiveDataBundle("mithril_weapon", 1, 20);
+
+	//Prometheum Armor
+	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
 
 }

@@ -46,15 +46,15 @@ public class WorldUtils {
 
 	public static List<BlockPos> getBlocksWithinRadius(World world, BlockPos pos, float xradius, float yradius, float zradius, Block... blocks)
 	{
-		return getBlocksWithinRadius(world, pos, xradius, yradius, zradius, blockPos -> ArrayUtils.contains(blocks, world.getBlockState(blockPos)));
+		return getBlocksWithinRadius(pos, xradius, yradius, zradius, blockPos -> ArrayUtils.contains(blocks, world.getBlockState(blockPos)));
 	}
 
 	public static List<BlockPos> getBlocksWithinRadius(World world, BlockPos pos, float xradius, float yradius, float zradius, Block block)
 	{
-		return getBlocksWithinRadius(world, pos, xradius, yradius, zradius, (test) -> world.getBlockState(test).getBlock() == block);
+		return getBlocksWithinRadius(pos, xradius, yradius, zradius, (test) -> world.getBlockState(test).getBlock() == block);
 	}
 
-	public static List<BlockPos> getBlocksWithinRadius(World world, BlockPos pos, float xradius, float yradius, float zradius, Predicate<BlockPos> comparison)
+	public static List<BlockPos> getBlocksWithinRadius(BlockPos pos, float xradius, float yradius, float zradius, Predicate<BlockPos> comparison)
 	{
 		List<BlockPos> blockList = new ArrayList<>();
 		for (int x = (int) -xradius; x <= xradius; x++)

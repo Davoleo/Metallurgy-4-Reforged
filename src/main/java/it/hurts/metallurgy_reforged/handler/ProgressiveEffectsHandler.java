@@ -39,7 +39,7 @@ public abstract class ProgressiveEffectsHandler {
 
 				if (bundle != null && bundle.isEffectInProgress())
 				{
-					if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + ((long) bundle.STEP_TICK_DELAY * bundle.getCurrentStep()))
+					if (event.player.world.getTotalWorldTime() >= bundle.getPrevStepTime() + ((long) bundle.stepTickDelay * bundle.getCurrentStep()))
 					{
 						//Metallurgy.logger.info(bundle.getPrefixKey() + ": Current Step " + bundle.getCurrentStep());
 						((IProgressiveEffect) effect).onStep(event.player.world, event.player, bundle.getEffectStack(), bundle.getMaxSteps(), bundle.getCurrentStep());

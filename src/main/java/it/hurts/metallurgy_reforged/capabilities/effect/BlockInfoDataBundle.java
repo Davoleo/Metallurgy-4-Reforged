@@ -14,23 +14,28 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
-public class BlockInfoDataBundle extends ProgressiveDataBundle {
+public class BlockInfoDataBundle extends ExtraFilledDataBundle {
 
 	private BlockPos pos;
+
+	/**
+	 * !Not synced with the client!
+	 **/
 	private IBlockState state;
 
-	public BlockInfoDataBundle(String key, BlockPos pos, IBlockState state, int maxSteps, int stepDelay)
+	public BlockInfoDataBundle(String key, int maxSteps, int stepDelay)
 	{
-		super(key, maxSteps, stepDelay);
-		this.pos = pos;
-		this.state = state;
+		super(key, maxSteps, stepDelay, null);
+		this.pos = null;
+		this.state = null;
 	}
 
 	@Override
 	public boolean isEffectInProgress()
 	{
-		return super.isEffectInProgress() && pos != null;
+		return currentStep > 0 && !paused && pos != null;
 	}
 
 	@Override
@@ -46,20 +51,17 @@ public class BlockInfoDataBundle extends ProgressiveDataBundle {
 		return state;
 	}
 
-	public void setState(IBlockState state)
-	{
-		this.state = state;
-	}
-
 	@Nullable
 	public BlockPos getPos()
 	{
 		return pos;
 	}
 
-	public void setPos(BlockPos pos)
+	public void setBlockInfo(BlockPos pos, IBlockState state)
 	{
 		this.pos = pos;
+		if (FMLCommonHandler.instance().getEffectiveSide().isServer())
+			this.state = state;
 	}
 
 	@Override
