@@ -133,7 +133,7 @@ public class ProgressiveDataBundle {
 	/**
 	 * Increments {@code currentStep} if it's below {@code maxSteps};<br>
 	 * Updates the {@code timestamp}
-	 * If this method is called when {@code currentStep} >= than {@code maxSteps} the effect is reset
+	 * If this method is called when {@code currentStep >=} than {@code maxSteps} the effect is reset
 	 *
 	 * @param player the player these changes needs to be synced with or null in case we're already on the client
 	 */

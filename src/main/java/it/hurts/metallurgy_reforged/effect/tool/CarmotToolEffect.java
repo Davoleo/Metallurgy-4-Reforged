@@ -64,8 +64,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
 				}
 
 				//Initializes the progressive effect
-				effectBundle.setPos(event.getPos());
-				effectBundle.setState(event.getState());
+				effectBundle.setBlockInfo(event.getPos(), event.getState());
 				effectBundle.setEffectStack(player.getHeldItemMainhand(), player);
 				effectBundle.incrementStep(player);
 

@@ -14,13 +14,23 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.WorldUtils;
+import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
@@ -49,8 +59,11 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 
 		if (!bundle.isEffectInProgress() && event.player.isSneaking())
 		{
-			bundle.setExtra("sneaking", event.player.isSneaking());
-			bundle.incrementStep(event.player);
+			if (event.player.getCooldownTracker().getCooldown(getArmorRepr(event.player).getItem(), 0) == 0)
+			{
+				bundle.setExtra("sneaking", event.player.isSneaking());
+				bundle.incrementStep(event.player);
+			}
 		}
 	}
 
@@ -58,39 +71,49 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
 	{
 		ExtraFilledDataBundle bundle = getEffectCapability(entity).prometheumArmorBundle;
+		boolean sneaking = bundle.getExtraBool("sneaking");
 
-		System.out.println(step);
-
-		/*
-		if (bundle.getExtraBool("sneaking") && !entity.isSneaking() == (step % 2 != 0))
+		if (step % 2 != 0)
+			bundle.setExtra("sneaking", entity.isSneaking());
+		else if (entity.isSneaking() != sneaking)
 		{
-			bundle.resetProgress(entity);
-			return;
-		}
-		else
-			System.out.println("In Time!!");
-
-
-		if (step == maxSteps) {
 			List<BlockPos> growables = WorldUtils.getBlocksWithinRadius(entity.getPosition(), 3, 1, 3,
 					pos -> entity.world.getBlockState(pos).getBlock() instanceof IGrowable);
+			Collections.shuffle(growables);
+
+			final AtomicBoolean grassWasBoneMealed = new AtomicBoolean(false);
 
 			growables.forEach(pos -> {
-				if (entity.isSprinting() && entity.world.getBlockState(pos).getBlock() != Blocks.GRASS)
+				float chance = getLevel(entity) * 0.75F;
+				if (Math.random() < chance)
 				{
-					float chance = getLevel(entity) * 0.75F;
-					if (Math.random() < chance)
+					if (!grassWasBoneMealed.get() || world.getBlockState(pos).getBlock() != Blocks.GRASS)
 					{
+
 						if (ItemDye.applyBonemeal(ItemStack.EMPTY, entity.world, pos))
 						{
 							entity.world.playEvent(2005, pos, 0);
-							entity.getArmorInventoryList().forEach(armorStack -> armorStack.setItemDamage(armorStack.getItemDamage() + 2));
+							entity.getArmorInventoryList().forEach(armorStack -> {
+								if (ItemUtils.isMadeOfMetal(metal, armorStack.getItem()))
+									armorStack.setItemDamage(armorStack.getItemDamage() + 2);
+							});
 						}
+
+						if (world.getBlockState(pos).getBlock() == Blocks.GRASS)
+							grassWasBoneMealed.set(true);
 					}
 				}
 			});
 		}
-		 */
+
+		if (step == maxSteps)
+		{
+			entity.getArmorInventoryList().forEach(stack -> {
+				Item armorItem = stack.getItem();
+				if (ItemUtils.isMadeOfMetal(metal, armorItem))
+					entity.getCooldownTracker().setCooldown(armorItem, 300);
+			});
+		}
 	}
 
 }

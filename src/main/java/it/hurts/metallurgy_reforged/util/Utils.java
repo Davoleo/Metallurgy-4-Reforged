@@ -161,13 +161,13 @@ public class Utils {
 	}
 
 	/**
-	 * Gets int RGB Components out of a int color code and either returns them in a new array or fills an existing one
+	 * Gets int RGB Components out of a int color code and either returns them in a new array or fills an existing one<br>
+	 * Note: Ignores Alpha in ARGB Colors
 	 *
 	 * @param hex     the color code
 	 * @param results The array that needs to be filled (null otherwise)
 	 *
 	 * @return the array filled with rgb color components
-	 * @apiNote Ignores Alpha in ARGB Colors
 	 */
 	public static float[] getRGBComponents(int hex, float[] results)
 	{
