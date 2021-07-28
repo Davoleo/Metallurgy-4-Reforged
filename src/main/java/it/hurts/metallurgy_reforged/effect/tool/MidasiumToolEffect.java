@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -43,17 +44,21 @@ public class MidasiumToolEffect extends BaseMetallurgyEffect {
         if (!canBeApplied(event.getHarvester()))
             return;
 
-        System.out.println("CALLED");
-
         List<ItemStack> drops = event.getDrops();
         Block theBlock = event.getState().getBlock();
+
 
         //Means the block drops itself -> The effect shouldn't take place
         for (ItemStack drop : drops)
         {
-            if (drop.getItem().equals(Item.getItemFromBlock(theBlock)))
+            //Can't be bothered to create a RayTraceResult for the getPickBlock method sorry (I'll use the deprecated insensitive getItem version)
+            if (drop.getItem().equals(Item.getItemFromBlock(theBlock))
+                    || drop.isItemEqual(theBlock.getItem(event.getWorld(), event.getPos(), event.getState()))
+                    || drop.getItem() instanceof ItemBlock)
                 return;
         }
+
+        System.out.println("Will Be duped");
 
         //Looting level + 1 * 25 is the % at which the effect should take effect
         float chance = (event.getFortuneLevel() + 1) * 0.25F;
