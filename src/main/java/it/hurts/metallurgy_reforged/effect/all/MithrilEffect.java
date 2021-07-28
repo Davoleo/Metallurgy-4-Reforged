@@ -95,8 +95,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 		if (delta != 0)
 		{
 			final int oldBoostLevel = stackData.getInteger("arcane_boost");
-			int boostLevel = oldBoostLevel;
-			boostLevel += delta;
+			final int boostLevel = oldBoostLevel + delta;
 			stackData.setInteger("arcane_boost", MathHelper.clamp(boostLevel, 0, 5));
 
 			//Check if the tool already has Attribute modifiers (should always have, but just in case if they don't we create a new empty TagList)
