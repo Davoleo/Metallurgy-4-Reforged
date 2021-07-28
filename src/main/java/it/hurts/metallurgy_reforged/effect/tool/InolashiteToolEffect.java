@@ -50,7 +50,7 @@ public class InolashiteToolEffect extends BaseMetallurgyEffect {
 		if (!canBeApplied(player))
 			return;
 
-		int range = 7;
+		int range = 6;
 
 		ItemStack tool = player.getHeldItem(hand);
 
@@ -121,7 +121,7 @@ public class InolashiteToolEffect extends BaseMetallurgyEffect {
 		player.swingArm(hand);
 
 		world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
-		player.getCooldownTracker().setCooldown(tool.getItem(), 20 * 15);
+		player.getCooldownTracker().setCooldown(tool.getItem(), 20 * 10);
 	}
 
 	private void teleport(EntityPlayer player, double x, double y, double z)
