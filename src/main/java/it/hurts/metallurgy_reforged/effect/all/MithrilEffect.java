@@ -78,14 +78,12 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	};
 
 	private static final UUID ATTACK_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111233DB5CF");
-	private final AttributeModifier[] ATTACK_MODIFIERS = {
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 0F, 0),
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 1F, 0),
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 2F, 0),
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 3F, 0),
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 4F, 0),
-			new AttributeModifier(ATTACK_UUID, "MITHRIL_Efficiency_Buff", 5F, 0),
-			};
+	private final IntFunction<AttributeModifier> generateAttackModifier = level -> {
+		final float attack = metal.getStats().getToolStats().getDamage() + 3F + level;
+		return new AttributeModifier(ATTACK_UUID, "MITHRIL_Attack_Buff", attack, 0);
+	};
+	private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"),
+			"MITHRIL_Attack_Speed_Restore", -2.4000000953674316D, 0);
 
 	private void applyCombatBuffs(ItemStack stackRef, int enchantments, boolean armor)
 	{
@@ -101,12 +99,15 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 			boostLevel += delta;
 			stackData.setInteger("arcane_boost", MathHelper.clamp(boostLevel, 0, 5));
 
+			//Check if the tool already has Attribute modifiers (should always have, but just in case if they don't we create a new empty TagList)
 			if (!stackData.hasKey("AttributeModifiers", 9))
 				stackData.setTag("AttributeModifiers", new NBTTagList());
 
+			//Get indexes of existing attribute modifiers in NBT
 			int protectionIndex = -1;
 			int toughnessIndex = -1;
 			int attackIndex = -1;
+			int attackSpeedIndex = -1;
 			NBTTagList serializedModifiers = stackData.getTagList("AttributeModifiers", 10);
 			for (int i = 0; i < serializedModifiers.tagCount(); i++)
 			{
@@ -117,6 +118,8 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 					toughnessIndex = i;
 				else if (modifier.getID().equals(ATTACK_UUID))
 					attackIndex = i;
+				else if (modifier.getID().equals(ATTACK_SPEED_MODIFIER.getID()))
+					attackSpeedIndex = i;
 			}
 
 			EntityEquipmentSlot slot = EntityLiving.getSlotForItemStack(stackRef);
@@ -137,19 +140,24 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 					serializedModifiers.appendTag(toughMod);
 				else
 					serializedModifiers.set(toughnessIndex, toughMod);
-
-				//stackRef.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), PROTECTION_MODIFIERS[boostLevel], armorSlot);
-				//stackRef.addAttributeModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), TOUGHNESS_MODIFIERS[boostLevel], armorSlot);
 			}
 			else
 			{
-				NBTTagCompound attackMod = SharedMonsterAttributes.writeAttributeModifierToNBT(ATTACK_MODIFIERS[boostLevel]);
+				NBTTagCompound attackMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateAttackModifier.apply(boostLevel));
 				attackMod.setString("AttributeName", SharedMonsterAttributes.ATTACK_DAMAGE.getName());
 				attackMod.setString("Slot", slot.getName());
 				if (attackIndex == -1)
 					serializedModifiers.appendTag(attackMod);
 				else
 					serializedModifiers.set(attackIndex, attackMod);
+
+				NBTTagCompound attackSpeedMod = SharedMonsterAttributes.writeAttributeModifierToNBT(ATTACK_SPEED_MODIFIER);
+				attackSpeedMod.setString("AttributeName", SharedMonsterAttributes.ATTACK_SPEED.getName());
+				attackSpeedMod.setString("Slot", slot.getName());
+				if (attackSpeedIndex == -1)
+					serializedModifiers.appendTag(attackSpeedMod);
+				else
+					serializedModifiers.set(attackSpeedIndex, attackSpeedMod);
 			}
 		}
 	}
@@ -157,6 +165,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void applyEfficiencyBuff(PlayerEvent.BreakSpeed event)
 	{
+		// TODO: 28/07/2021 Feedback
 		ItemStack tool = event.getEntityPlayer().getHeldItemMainhand();
 		if (ItemUtils.isMadeOfMetal(metal, tool.getItem(), IToolEffect.class))
 		{
