@@ -95,7 +95,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 							entity.world.playEvent(2005, pos, 0);
 							entity.getArmorInventoryList().forEach(armorStack -> {
 								if (ItemUtils.isMadeOfMetal(metal, armorStack.getItem()))
-									armorStack.setItemDamage(armorStack.getItemDamage() + 2);
+									armorStack.damageItem(2, entity);
 							});
 						}
 
