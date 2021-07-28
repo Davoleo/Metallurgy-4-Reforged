@@ -11,7 +11,10 @@ package it.hurts.metallurgy_reforged.util;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
@@ -33,7 +36,6 @@ import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import java.io.File;
 import java.io.IOException;
@@ -198,29 +200,6 @@ public class Utils {
 		bufferbuilder.pos((x + width), (y), 1D).tex(((float) (textureX + width) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
 		bufferbuilder.pos((x), (y), 1D).tex(((float) (textureX) * 0.00390625F), ((float) (textureY) * 0.00390625F)).endVertex();
 		tessellator.draw();
-	}
-
-	/**
-	 * @param context The parsing context
-	 * @param json    The recipe's JSON object
-	 *
-	 * @return A NonNullList containing the ingredients specified in the JSON object
-	 * @author Choonster
-	 * <p>
-	 * Parse the input of a shapeless recipe.
-	 * <p>
-	 * Adapted from {@link ShapelessOreRecipe#factory}.
-	 */
-	public static NonNullList<Ingredient> parseShapelessRecipe(final JsonContext context, final JsonObject json)
-	{
-		final NonNullList<Ingredient> ingredients = NonNullList.create();
-		for (final JsonElement element : JsonUtils.getJsonArray(json, "ingredients"))
-			ingredients.add(CraftingHelper.getIngredient(element, context));
-
-		if (ingredients.isEmpty())
-			throw new JsonParseException("No ingredients for shapeless recipe");
-
-		return ingredients;
 	}
 
 	/**
