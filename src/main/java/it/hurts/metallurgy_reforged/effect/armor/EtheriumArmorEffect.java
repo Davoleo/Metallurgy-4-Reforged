@@ -16,6 +16,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -109,13 +110,16 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 	{
 		Entity entity = event.getEntity();
 
-		if (!entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
+		if (entity instanceof EntityLivingBase && canBeApplied(((EntityLivingBase) entity)))
 		{
-			net.minecraft.client.renderer.GlStateManager.setFog(net.minecraft.client.renderer.GlStateManager.FogMode.EXP2);
-			net.minecraft.client.renderer.GlStateManager.setFogDensity(0.25F);
-			//This doesn't work kek
-			//float[] colorComps = metal.getStats().getColorRGBValues();
-			//net.minecraft.client.renderer.GlStateManager.color(colorComps[0], colorComps[1], colorComps[2]);
+			if (!entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
+			{
+				net.minecraft.client.renderer.GlStateManager.setFog(net.minecraft.client.renderer.GlStateManager.FogMode.EXP2);
+				net.minecraft.client.renderer.GlStateManager.setFogDensity(0.25F);
+				//This doesn't work kek
+				//float[] colorComps = metal.getStats().getColorRGBValues();
+				//net.minecraft.client.renderer.GlStateManager.color(colorComps[0], colorComps[1], colorComps[2]);
+			}
 		}
 	}
 
