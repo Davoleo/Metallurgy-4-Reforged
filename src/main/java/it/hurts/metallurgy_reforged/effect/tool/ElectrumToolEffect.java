@@ -98,7 +98,7 @@ public class ElectrumToolEffect extends BaseMetallurgyEffect {
 		if (toolStack.getTagCompound() != null && toolStack.getTagCompound().getBoolean("voltage_control"))
 		{
 			//Increase Item damage of 3 units (the remaining 1 durability should be removed by the game)
-			toolStack.setItemDamage(toolStack.getItemDamage() + 3);
+			toolStack.setItemDamage(toolStack.getItemDamage() + 4);
 		}
 	}
 
@@ -114,7 +114,7 @@ public class ElectrumToolEffect extends BaseMetallurgyEffect {
 		//Increase tool efficiency if voltage control is active
 		if (toolStack.getTagCompound() != null && toolStack.getTagCompound().getBoolean("voltage_control"))
 		{
-			event.setNewSpeed(event.getOriginalSpeed() * 3);
+			event.setNewSpeed(event.getOriginalSpeed() * 4);
 		}
 	}
 
