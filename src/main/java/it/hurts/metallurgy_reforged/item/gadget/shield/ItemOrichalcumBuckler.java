@@ -20,7 +20,7 @@ public class ItemOrichalcumBuckler extends ItemBuckler {
 
 	public ItemOrichalcumBuckler()
 	{
-		super("orichalcum_buckler", 823, 30);
+		super("orichalcum_buckler", 413, 30);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class ItemOrichalcumBuckler extends ItemBuckler {
 		if (damageSource.getImmediateSource() != damageSource.getTrueSource() && damageSource.getTrueSource() instanceof EntityLivingBase)
 		{
 			EntityLivingBase blockedEntity = ((EntityLivingBase) damageSource.getTrueSource());
-			blockedEntity.attackEntityFrom(damageSource, amount * 1.5F);
+			blockedEntity.attackEntityFrom(damageSource, amount * 1.45F);
 
 			Vec3d playerLook = player.getLookVec().scale(2);
 			blockedEntity.attemptTeleport(player.posX + playerLook.x, player.posY + 2, player.posZ + playerLook.z);
