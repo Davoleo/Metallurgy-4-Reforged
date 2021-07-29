@@ -20,6 +20,7 @@ import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
@@ -27,14 +28,20 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemOreDetector extends ItemExtra {
 
 	public static int indexColor;
+
+	@SideOnly(Side.CLIENT)
+	private boolean[] leds = new boolean[3];
 
 	public ItemOreDetector()
 	{
@@ -62,16 +69,23 @@ public class ItemOreDetector extends ItemExtra {
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
 
-		if (getMaxDamage(stack) > 0)
+		if (playerIn.getCooldownTracker().getCooldown(this, 0) == 0)
 		{
-			if (stack.getItemDamage() >= getMaxDamage(stack))
+			playerIn.playSound(SoundEvents.BLOCK_LEVER_CLICK, 1.25F, 1.5F);
+			//Detector will detect ores while on cooldown
+			playerIn.getCooldownTracker().setCooldown(this, 100);
+
+			if (getMaxDamage(stack) > 0)
 			{
-				ItemStack copy = new ItemStack(this);
-				playerIn.setHeldItem(handIn, copy);
-			}
-			else
-			{
-				stack.damageItem(1, playerIn);
+				if (stack.getItemDamage() >= getMaxDamage(stack))
+				{
+					ItemStack copy = new ItemStack(this);
+					playerIn.setHeldItem(handIn, copy);
+				}
+				else
+				{
+					stack.damageItem(1, playerIn);
+				}
 			}
 		}
 
@@ -121,6 +135,28 @@ public class ItemOreDetector extends ItemExtra {
 
 		return Utils.intColorFromRGB(r, g, b);
 	}
+
+	//Model Highlight ------------------------
+
+	@SideOnly(Side.CLIENT)
+	public void setLEDs(boolean[] vals)
+	{
+		this.leds = vals;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean isLEDLit(int index)
+	{
+		return leds[index];
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void resetLEDs()
+	{
+		Arrays.fill(leds, false);
+	}
+
+	//Stack Utilities ------------------------
 
 	public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
 	{

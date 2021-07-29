@@ -56,6 +56,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -65,7 +66,7 @@ public class GadgetsHandler {
 	@SideOnly(Side.CLIENT)
 	private static MovementInput inputCheck;
 
-	public static long ticks = 0;
+	public static long clientTicks = 0;
 
 	private static double prevFactor = 0;
 	public static double prevFactorToUse = 0;
@@ -82,10 +83,10 @@ public class GadgetsHandler {
 	{
 		if (event.phase == TickEvent.Phase.START)
 		{
-			ticks++;
+			clientTicks++;
 
 			//METAL DETECTOR SECTION -----------------------------
-			double radiant = Math.toRadians(GadgetsHandler.ticks + Minecraft.getMinecraft().getRenderPartialTicks());
+			double radiant = Math.toRadians(GadgetsHandler.clientTicks + Minecraft.getMinecraft().getRenderPartialTicks());
 			double factor = ((Math.sin(radiant * 6) + 1.0F) * 0.5D);
 			double factorToUse = factor - prevFactor >= 0 ? factor : 1 - factor;
 
@@ -96,9 +97,9 @@ public class GadgetsHandler {
 			prevFactorToUse = factorToUse;
 			//--------------------------------------------------------
 
-			if (ticks >= Long.MAX_VALUE)
+			if (clientTicks >= Long.MAX_VALUE)
 			{
-				ticks = 0;
+				clientTicks = 0;
 			}
 		}
 	}
@@ -245,13 +246,18 @@ public class GadgetsHandler {
 		if (metalList.isEmpty())
 			return;
 
-		if (Minecraft.getMinecraft().gameSettings.keyBindUseItem.isKeyDown())
+		float cooldown = player.getCooldownTracker().getCooldown(detector.getItem(), event.getPartialTicks());
+		if (cooldown > 0.2)
 		{
 			World world = Minecraft.getMinecraft().world;
 			BlockPos playerPos = player.getPosition();
 			final int RADIUS = 6;
 
 			Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
+
+			//Used in the detector model to make the leds go brrrr
+			boolean[] litOres = new boolean[3];
+			Arrays.fill(litOres, false);
 
 			for (BlockPos blockPos : posList)
 			{
@@ -261,8 +267,15 @@ public class GadgetsHandler {
 					continue;
 
 				Metal metal = null;
-				if (metalList.contains(mToCheck))
-					metal = mToCheck;
+				for (int i = 0; i < metalList.size(); i++)
+				{
+					if (metalList.get(i) == mToCheck)
+					{
+						metal = mToCheck;
+						//Metal was found led should go brrr
+						litOres[i] = true;
+					}
+				}
 
 				if (metal != null)
 				{
@@ -294,7 +307,10 @@ public class GadgetsHandler {
 					GlStateManager.popMatrix();
 				}
 			}
+			ModItems.ORE_DETECTOR.setLEDs(litOres);
 		}
+		else
+			ModItems.ORE_DETECTOR.resetLEDs();
 	}
 
 

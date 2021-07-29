@@ -39,12 +39,23 @@ public class ClientProxy implements IProxy {
 	@Override
 	public void init(FMLInitializationEvent event)
 	{
+		//Metal Detector Model metal colors
         Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
             List<Metal> metals = ItemOreDetector.getDetectorMetals(stack);
 
             if (tintIndex < metals.size())
             {
-                return metals.get(tintIndex).getStats().getColorHex();
+	            int color = metals.get(tintIndex).getStats().getColorHex();
+
+	            if (ModItems.ORE_DETECTOR.isLEDLit(tintIndex))
+	            {
+		            if (Minecraft.getMinecraft().world.getTotalWorldTime() % 10 > 4)
+			            return color ^ 0xFFFFFF;
+		            else
+			            return color;
+	            }
+	            else
+		            return color;
             }
             return -1;
 
