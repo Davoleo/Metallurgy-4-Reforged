@@ -1,18 +1,18 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "TPT",
-    "P P",
-    "TPT"
+    "TZT",
+    "Z Z",
+    "TZT"
   ],
   "key": {
     "T": {
       "type": "forge:ore_dict",
       "ore": "ingotTin"
     },
-    "P": {
+    "Z": {
       "type": "forge:ore_dict",
-      "ore": "ingotPrometheum"
+      "ore": "ingotZinc"
     }
   },
   "result": {
