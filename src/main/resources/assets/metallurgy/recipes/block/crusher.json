@@ -1,17 +1,27 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "OOO",
-    "OFO",
-    "OOO"
+    "OPO",
+    "OBO",
+    "SFS"
   ],
   "key": {
     "O": {
       "type": "forge:ore_dict",
       "ore": "ingotOureclase"
     },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSteel"
+    },
     "F": {
       "item": "minecraft:furnace"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "B": {
+      "item": "metallurgy:bimetal_structure_block"
     }
   },
   "result": {
