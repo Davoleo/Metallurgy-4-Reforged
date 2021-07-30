@@ -1,5 +1,5 @@
 [
-  "These Strings will be ignored by the parser",
+  "These Strings will be ignored by the parser (They will serve as comments)",
   "Editing this file won't have any effect on restart if the related configuration option in general.cfg is disabled",
   "Enabling the config option means that this file will never be overwritten by the mod anymore",
   "(hence no updates from us to the default material.json will be overwritten to your custom version)",

@@ -26,6 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,6 +69,9 @@ public class ItemOreDetector extends ItemExtra {
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
+
+		ItemOreDetector.getDetectorMetals(stack).forEach(metal ->
+				playerIn.sendMessage(new TextComponentString(metal.toString() + ": " + metal.getStats().getTemperature())));
 
 		if (playerIn.getCooldownTracker().getCooldown(this, 0) == 0)
 		{
