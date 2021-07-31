@@ -69,7 +69,7 @@ public class CarmotToolEffect extends BaseMetallurgyEffect implements IProgressi
 				effectBundle.incrementStep(player);
 
 				//Cooldown for the whole effect
-				int cooldown = (effectBundle.getMaxSteps() - Math.max( 0, event.getState().getBlock().getHarvestLevel(event.getState())-2 ) ) * effectBundle.stepTickDelay;
+				int cooldown = (effectBundle.getMaxSteps() - Math.max( 0, event.getState().getBlock().getHarvestLevel(event.getState())-2 ) + 3) * effectBundle.stepTickDelay;
 				player.getCooldownTracker().setCooldown(player.getHeldItemMainhand().getItem(), cooldown);
 			}
 		}
