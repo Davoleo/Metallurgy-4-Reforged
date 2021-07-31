@@ -72,8 +72,8 @@ public class KalendriteArmorEffect extends BaseMetallurgyEffect {
 		if (armorData != null && armorData.hasKey("damage_timestamp"))
 		{
 			long delta = entity.world.getTotalWorldTime() - armorData.getLong("damage_timestamp");
-			//2^(6 - 1..4) * 20 = 32..4 seconds * 20 = amount in ticks
-			int delay = (int) (Math.pow(2, 6 - level) * 20);
+			//2^(5 - 1..4) * 20 = 16..2 seconds * 20 = amount in ticks
+			int delay = (int) (Math.pow(2, 5 - level) * 20);
 			if (delta >= delay)
 			{
 				//noinspection ConstantConditions
