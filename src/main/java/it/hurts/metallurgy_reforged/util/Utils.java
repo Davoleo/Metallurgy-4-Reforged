@@ -112,7 +112,7 @@ public class Utils {
 		//get light emitted by a block(like a torch)
 		float lightBlock = Math.min(pl.world.getLightFor(EnumSkyBlock.BLOCK, pos), 14);
 		//get the light based on the lightSky and the lightBlock
-		float light = lightSky <= lightBlock ? lightBlock : lightSky;
+		float light = Math.max(lightSky, lightBlock);
 
 		//14 is the max Light possible
 		return maxPercent - (light * maxPercent / 14F);

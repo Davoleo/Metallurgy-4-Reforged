@@ -66,7 +66,6 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 					//int amplifier = (int) Math.round((10 - distance) / 4);
 					// 0 0 1 2
 					int amplifier = Math.max((int) (4 * level) - 2, 0);
-					entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, amplifier));
 					entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, amplifier));
 					entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
 

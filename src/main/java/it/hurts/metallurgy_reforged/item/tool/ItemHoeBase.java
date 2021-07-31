@@ -21,6 +21,7 @@ import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -85,6 +86,12 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
 	{
 		ItemUtils.buildStatsTooltip(tooltip, EnumTools.HOE, this.metalStats.getToolStats(), stack);
 		ItemUtils.buildEffectTooltip(tooltip, effects);
+	}
+
+	@Override
+	public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
+	{
+		effects.forEach(effect -> effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected));
 	}
 
 	@SideOnly(Side.CLIENT)

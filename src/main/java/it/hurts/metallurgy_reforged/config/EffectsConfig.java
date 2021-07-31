@@ -238,6 +238,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.orichalcum_armor")
 	public static boolean orichalcumEffectArmor = true;
 
+	@Config.Name("Titan (Osmium Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.osmium_armor")
+	public static boolean osmiumEffectArmor = true;
+
 	@Config.Name("Crushing (Oureclase Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.oureclase_pickaxe")
 	public static boolean oureclaseEffectPickaxe = true;
@@ -261,6 +265,9 @@ public class EffectsConfig {
 	@Config.Name("Freyr (Prometheum Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.prometheum_armor")
 	public static boolean prometheumEffectArmor = true;
+	@Config.Name("Photosynthesis (Prometheum Items)")
+	@Config.LangKey("tooltip.metallurgy.effect.prometheum_all")
+	public static boolean prometheumEffectAll = true;
 
 	private EffectsConfig()
 	{

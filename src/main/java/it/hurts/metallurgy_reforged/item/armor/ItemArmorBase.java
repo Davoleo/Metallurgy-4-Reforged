@@ -24,6 +24,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -94,6 +95,12 @@ public class ItemArmorBase extends ItemArmor implements IMetalItem {
         }
 
         return super.getMaxDamage(stack);
+    }
+
+    @Override
+    public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
+    {
+        effects.forEach(effect -> effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected));
     }
 
     @SideOnly(Side.CLIENT)
