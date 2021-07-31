@@ -256,6 +256,8 @@ public class MetallurgyEffects {
 
 	//Prometheum Armor (Freyr)
 	public static final PrometheumArmorEffect PROMETHEUM_ARMOR_EFFECT = new PrometheumArmorEffect();
+	//Prometheum (Photosynthesis)
+	public static final PrometheumEffect PROMETHEUM_EFFECT = new PrometheumEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();

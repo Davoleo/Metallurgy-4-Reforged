@@ -265,6 +265,9 @@ public class EffectsConfig {
 	@Config.Name("Freyr (Prometheum Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.prometheum_armor")
 	public static boolean prometheumEffectArmor = true;
+	@Config.Name("Photosynthesis (Prometheum Items)")
+	@Config.LangKey("tooltip.metallurgy.effect.prometheum_all")
+	public static boolean prometheumEffectAll = true;
 
 	private EffectsConfig()
 	{

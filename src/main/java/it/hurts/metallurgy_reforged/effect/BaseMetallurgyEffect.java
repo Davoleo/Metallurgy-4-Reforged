@@ -222,6 +222,11 @@ public abstract class BaseMetallurgyEffect {
 
 	}
 
+	public void inventoryTick(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
+	{
+
+	}
+
 	/**
 	 * Setup tool model overrides to support states in effects
 	 *
