@@ -214,6 +214,9 @@ public class MetallurgyEffects {
 	//Orichalcum Armor (Berserker)
 	public static final OrichalcumArmorEffect ORICHALCUM_ARMOR_EFFECT = new OrichalcumArmorEffect();
 
+	//Osmium Armor (Titan)
+	public static final OsmiumArmorEffect OSMIUM_ARMOR_EFFECT = new OsmiumArmorEffect();
+
 	//Oureclase Pickaxe (Crushing)
 	public static final OureclasePickaxeEffect OURECLASE_PICKAXE_EFFECT = new OureclasePickaxeEffect();
 	//Oureclase Weapon (Pulverize)
@@ -253,6 +256,8 @@ public class MetallurgyEffects {
 
 	//Prometheum Armor (Freyr)
 	public static final PrometheumArmorEffect PROMETHEUM_ARMOR_EFFECT = new PrometheumArmorEffect();
+	//Prometheum (Photosynthesis)
+	public static final PrometheumEffect PROMETHEUM_EFFECT = new PrometheumEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();

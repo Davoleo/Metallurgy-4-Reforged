@@ -23,6 +23,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -129,6 +130,12 @@ public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
         if (!this.effects.isEmpty())
             effects.forEach(effect -> effect.rightClickHandler(worldIn, playerIn, handIn));
         return super.onItemRightClick(worldIn, playerIn, handIn);
+    }
+
+    @Override
+    public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
+    {
+        effects.forEach(effect -> effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected));
     }
 
     @SideOnly(Side.CLIENT)
