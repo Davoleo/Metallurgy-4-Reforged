@@ -50,7 +50,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 		rebornCompound = new NBTTagCompound();
 		rebornCompound.setBoolean("reborn", true);
 		//Increases the maxdamage by 200
-		rebornCompound.setFloat("durability_boost", 10F);
+		rebornCompound.setFloat("durability_boost", 25F);
 		rebornCompound.setFloat("attack_boost", 2F);
 		// TODO: 14/03/2021 Maybe...?
 		//setupModelOverrides((stack, worldIn, entityIn) -> stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn") ? 1F : 0F);
