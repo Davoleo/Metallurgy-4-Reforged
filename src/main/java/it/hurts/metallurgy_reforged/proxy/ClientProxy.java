@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import it.hurts.metallurgy_reforged.entity.PierknightRenderer;
 import it.hurts.metallurgy_reforged.gui.TooltipRenderHandler;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
+import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -48,6 +49,7 @@ public class ClientProxy implements IProxy {
 		if (ModChecker.isTConLoaded)
 			it.hurts.metallurgy_reforged.integration.tic.material.TiCMaterials.initializeRenderInfos();
 
+		MinecraftForge.EVENT_BUS.register(ClientEventsHandler.class);
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 		MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
 		ModItems.BRASS_KNUCKLES.initTEISR();

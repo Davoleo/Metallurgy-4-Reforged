@@ -73,7 +73,6 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 	@SideOnly(Side.CLIENT)
 	public static void onPlayerJump(EntityPlayer player)
 	{
-
 		final int jumps = EventUtils.getArmorPiecesCount(player, ModMetals.AMORDRINE);
 
 		if (net.minecraft.client.Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed() && jumps > 0 && !player.onGround)
