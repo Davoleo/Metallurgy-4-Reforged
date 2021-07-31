@@ -39,7 +39,7 @@ public class KrikWeaponEffect extends BaseMetallurgyEffect {
 	{
 		if (event.getSource().getImmediateSource() instanceof EntityLivingBase)
 		{
-			EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getTrueSource());
+			EntityLivingBase attacker = ((EntityLivingBase) event.getSource().getImmediateSource());
 
 			if (!canBeApplied(attacker))
 				return;
