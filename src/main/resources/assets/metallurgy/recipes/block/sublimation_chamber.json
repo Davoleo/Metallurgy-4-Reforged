@@ -1,8 +1,8 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "ITI",
-    "BCB",
+    "VPV",
+    "VBV",
     "SFS"
   ],
   "conditions": [
@@ -12,26 +12,22 @@
     }
   ],
   "key": {
-    "I": {
+    "V": {
       "type": "forge:ore_dict",
-      "ore": "ingotAdamantine"
+      "ore": "ingotVyroxeres"
     },
-    "T": {
-      "item": "minecraft:iron_trapdoor"
-    },
-    "C": {
-      "item": "minecraft:cauldron"
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSteel"
     },
     "F": {
       "item": "minecraft:furnace"
     },
-    "S": {
-      "type": "forge:ore_dict",
-      "ore": "blockSteel"
+    "P": {
+      "item": "minecraft:brewing_stand"
     },
     "B": {
-      "type": "forge:ore_dict",
-      "ore": "blockAdamantine"
+      "item": "metallurgy:bimetal_structure_block"
     }
   },
   "result": {

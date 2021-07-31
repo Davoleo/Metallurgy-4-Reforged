@@ -1,9 +1,8 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "LIB",
-    "  B",
-    "LIB"
+    "L L",
+    "III"
   ],
   "conditions": [
     {
@@ -15,10 +14,6 @@
     "I": {
       "type": "forge:ore_dict",
       "ore": "ingotRubracium"
-    },
-    "B": {
-      "type": "forge:ore_dict",
-      "ore": "blockRubracium"
     },
     "L": {
       "item": "minecraft:leather"
