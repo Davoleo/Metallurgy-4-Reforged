@@ -214,6 +214,9 @@ public class MetallurgyEffects {
 	//Orichalcum Armor (Berserker)
 	public static final OrichalcumArmorEffect ORICHALCUM_ARMOR_EFFECT = new OrichalcumArmorEffect();
 
+	//Osmium Armor (Titan)
+	public static final OsmiumArmorEffect OSMIUM_ARMOR_EFFECT = new OsmiumArmorEffect();
+
 	//Oureclase Pickaxe (Crushing)
 	public static final OureclasePickaxeEffect OURECLASE_PICKAXE_EFFECT = new OureclasePickaxeEffect();
 	//Oureclase Weapon (Pulverize)
