@@ -41,7 +41,9 @@ public class OsmiumArmorEffect extends BaseMetallurgyEffect {
 	public void reverseKnockback(LivingDamageEvent event)
 	{
 		EntityLivingBase armored = event.getEntityLiving();
-		if (!canBeApplied(armored))
+		float level = getLevel(armored);
+
+		if (level == 0)
 			return;
 
 		Entity attacker = event.getSource().getImmediateSource();
@@ -49,15 +51,15 @@ public class OsmiumArmorEffect extends BaseMetallurgyEffect {
 		if (attacker instanceof EntityLivingBase)
 		{
 			//From EntityLivingBase
-			double xDiff = attacker.posX - armored.posX;
-			double zDiff = attacker.posZ - armored.posZ;
+			double xDiff = armored.posX - attacker.posX;
+			double zDiff = armored.posZ - attacker.posZ;
 
 			while (xDiff * xDiff + zDiff * zDiff < 1.0E-4D)
 			{
 				zDiff = (Math.random() - Math.random()) * 0.01D;
 				xDiff = (Math.random() - Math.random()) * 0.01D;
 			}
-			((EntityLivingBase) attacker).knockBack(armored, 0.4F, xDiff, zDiff);
+			((EntityLivingBase) attacker).knockBack(armored, 0.3F * 4 * level, xDiff, zDiff);
 		}
 	}
 
