@@ -86,8 +86,8 @@ public class MidasiumHoeEffect extends BaseMetallurgyEffect {
 		if (canBeApplied(player) && state.getBlock() instanceof BlockCrops)
 		{
 
-			//50% chance
-			if (Utils.random.nextBoolean())
+			float chance = 0.35F + (event.getFortuneLevel() * 0.15F); // 0.35 -> 0.50 -> 0.65 -> 0.80
+			if (Math.random() <= chance)
 			{
 				BlockCrops crops = (BlockCrops) state.getBlock();
 				List<ItemStack> drops = event.getDrops();
