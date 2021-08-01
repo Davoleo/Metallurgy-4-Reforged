@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.effect.all.*;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
+import it.hurts.metallurgy_reforged.effect.hoe.PrometheumHoeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
 import it.hurts.metallurgy_reforged.effect.pickaxe.MithrilPickaxeEffect;
@@ -258,6 +259,8 @@ public class MetallurgyEffects {
 	public static final PrometheumArmorEffect PROMETHEUM_ARMOR_EFFECT = new PrometheumArmorEffect();
 	//Prometheum (Photosynthesis)
 	public static final PrometheumEffect PROMETHEUM_EFFECT = new PrometheumEffect();
+	//Prometheum Hoe (Harvest)
+	public static final PrometheumHoeEffect PROMETHEUM_HOE_EFFECT = new PrometheumHoeEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();

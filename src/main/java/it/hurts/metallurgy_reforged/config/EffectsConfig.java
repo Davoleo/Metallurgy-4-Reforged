@@ -268,6 +268,9 @@ public class EffectsConfig {
 	@Config.Name("Photosynthesis (Prometheum Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.prometheum_all")
 	public static boolean prometheumEffectAll = true;
+	@Config.Name("Harvest (Prometheum Hoe)")
+	@Config.LangKey("tooltip.metallurgy.effect.prometheum_hoe")
+	public static boolean prometheumEffectHoe = true;
 
 	private EffectsConfig()
 	{
