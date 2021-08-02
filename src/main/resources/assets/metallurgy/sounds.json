@@ -87,7 +87,7 @@
   },
   "metal_detector_ping": {
     "category": "player",
-    "subtitle": "metallurgy.subtitle.sublimation_chamber_windup",
+    "subtitle": "metallurgy.subtitle.metal_detector_ping",
     "sounds": [
       "metallurgy:gadgets/metal_detector_ping"
     ]
