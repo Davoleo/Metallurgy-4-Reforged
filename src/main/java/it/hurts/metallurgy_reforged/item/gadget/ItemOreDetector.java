@@ -15,12 +15,12 @@ import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
@@ -75,7 +75,7 @@ public class ItemOreDetector extends ItemExtra {
 
 		if (playerIn.getCooldownTracker().getCooldown(this, 0) == 0)
 		{
-			playerIn.playSound(SoundEvents.BLOCK_LEVER_CLICK, 1.25F, 1.5F);
+			playerIn.playSound(ModSounds.METAL_DETECTOR_PING, 1F, 1F);
 			//Detector will detect ores while on cooldown
 			playerIn.getCooldownTracker().setCooldown(this, 100);
 

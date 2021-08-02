@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.handler.KeyboardHandler;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ModChecker;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
@@ -49,6 +50,9 @@ public class ClientProxy implements IProxy {
 
 	            if (ModItems.ORE_DETECTOR.isLEDLit(tintIndex))
 	            {
+		            if (Minecraft.getMinecraft().world.getTotalWorldTime() % 10 == 5)
+			            Minecraft.getMinecraft().player.playSound(ModSounds.METAL_DETECTOR_BEEPS[tintIndex], 1.25F, 1F);
+
 		            if (Minecraft.getMinecraft().world.getTotalWorldTime() % 10 > 4)
 			            return color ^ 0xFFFFFF;
 		            else

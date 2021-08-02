@@ -12,14 +12,13 @@ package it.hurts.metallurgy_reforged.sound;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.util.registry.RegistrySimple;
 
 public class ModSounds {
 
-    public static final List<SoundEvent> LIST = new ArrayList<>();
+    public static final RegistrySimple<ResourceLocation, SoundEvent> REGISTRY = new RegistrySimple<>();
 
+    //Machines ---
     public static SoundEvent ALLOYER_AMBIENCE;
     public static SoundEvent ALLOYER_IMPACT;
     public static SoundEvent ALLOYER_WINDUP;
@@ -31,6 +30,10 @@ public class ModSounds {
     public static SoundEvent SUBLIMATION_CHAMBER_AMBIENCE;
     public static SoundEvent SUBLIMATION_CHAMBER_WINDUP;
 
+    //Gadgets ---
+    public static SoundEvent METAL_DETECTOR_PING;
+    public static SoundEvent[] METAL_DETECTOR_BEEPS = new SoundEvent[3];
+
     static
     {
         ALLOYER_AMBIENCE = buildSoundEvent("alloyer_ambience");
@@ -41,13 +44,17 @@ public class ModSounds {
         CRUSHER_WINDUP = buildSoundEvent("crusher_windup");
         SUBLIMATION_CHAMBER_AMBIENCE = buildSoundEvent("sublimation_chamber_ambience");
         SUBLIMATION_CHAMBER_WINDUP = buildSoundEvent("sublimation_chamber_windup");
+
+        METAL_DETECTOR_PING = buildSoundEvent("metal_detector_ping");
+        for (int i = 0; i < 3; i++)
+            METAL_DETECTOR_BEEPS[i] = buildSoundEvent("metal_detector_beep_" + (i + 1));
     }
 
-    public static SoundEvent buildSoundEvent(String name)
+    private static SoundEvent buildSoundEvent(String name)
     {
         ResourceLocation location = new ResourceLocation(Metallurgy.MODID, name);
         SoundEvent event = new SoundEvent(location).setRegistryName(location);
-        LIST.add(event);
+        REGISTRY.putObject(location, event);
         return event;
     }
 

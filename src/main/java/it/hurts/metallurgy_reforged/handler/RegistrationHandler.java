@@ -195,8 +195,8 @@ public class RegistrationHandler {
 	@SubscribeEvent
 	public static void registerSounds(RegistryEvent.Register<SoundEvent> register)
 	{
-		ModSounds.LIST.forEach(event -> register.getRegistry().register(event));
-		Metallurgy.logger.info(Metallurgy.NAME + ": " + ModSounds.LIST.size() + " Sounds have been registered!");
+		ModSounds.REGISTRY.forEach(event -> register.getRegistry().register(event));
+		Metallurgy.logger.info(Metallurgy.NAME + ": " + ModSounds.REGISTRY.getKeys().size() + " Sounds have been registered!");
 	}
 
 	@SideOnly(Side.CLIENT)
