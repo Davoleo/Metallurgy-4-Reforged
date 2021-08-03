@@ -31,7 +31,11 @@ minecraft {
 
 repositories {
 
-    jcenter()
+    //Maven central repository (Groovy)
+    maven {
+        url 'https://repo.maven.apache.org/maven2'
+        name 'Maven Central'
+    }
 
     //location of the maven that hosts JEI & TCon
 	maven {
@@ -76,7 +80,7 @@ dependencies {
     //compile = same as api, don't use
     //runtime = same as runtimeOnly, don't use
 
-    implementation('org.codehaus.groovy:groovy-all:2.5.7')
+    implementation('org.codehaus.groovy:groovy-all:3.0.8')
 
     //Compile against the JEI API but do not include it at runtime
     compileOnly 'mezz.jei:jei_1.12.2:4.15.+:api'
