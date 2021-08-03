@@ -1028,6 +1028,8 @@ metallurgy.subtitle.crusher_impact=Crusher Crushes
 metallurgy.subtitle.crusher_windup=Crusher Starts
 metallurgy.subtitle.sublimation_chamber_ambience=Sublimation Chamber Sublimates Metal
 metallurgy.subtitle.sublimation_chamber_windup=Sublimation Chamber Starts
+metallurgy.subtitle.metal_detector_ping=Metal Detector Scans the Area
+metallurgy.subtitle.metal_detector_beep=Metal Detector Beeps
 
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Obscure
