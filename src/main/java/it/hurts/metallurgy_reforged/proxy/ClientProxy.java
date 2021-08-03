@@ -51,7 +51,7 @@ public class ClientProxy implements IProxy {
 	            if (ModItems.ORE_DETECTOR.isLEDLit(tintIndex))
 	            {
 		            if (Minecraft.getMinecraft().world.getTotalWorldTime() % 10 == 5)
-			            Minecraft.getMinecraft().player.playSound(ModSounds.METAL_DETECTOR_BEEPS[tintIndex], 1.25F, 1F);
+			            Minecraft.getMinecraft().player.playSound(ModSounds.METAL_DETECTOR_BEEPS[tintIndex], 1F, 1F);
 
 		            if (Minecraft.getMinecraft().world.getTotalWorldTime() % 10 > 4)
 			            return color ^ 0xFFFFFF;
