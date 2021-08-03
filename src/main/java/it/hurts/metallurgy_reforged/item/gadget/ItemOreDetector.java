@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.handler.GadgetsHandler;
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.client.util.ITooltipFlag;
@@ -27,14 +28,20 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemOreDetector extends ItemExtra {
 
 	public static int indexColor;
+
+	//Updated on client-side only
+	private boolean[] leds = new boolean[3];
 
 	public ItemOreDetector()
 	{
@@ -62,16 +69,27 @@ public class ItemOreDetector extends ItemExtra {
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
 
-		if (getMaxDamage(stack) > 0)
+		//Sends contained metals in chat (DEBUG PURPOSES)
+		//ItemOreDetector.getDetectorMetals(stack).forEach(metal ->
+		//		playerIn.sendMessage(new TextComponentString(metal.toString() + ": " + metal.getStats().getTemperature())));
+
+		if (playerIn.getCooldownTracker().getCooldown(this, 0) == 0)
 		{
-			if (stack.getItemDamage() >= getMaxDamage(stack))
+			playerIn.playSound(ModSounds.METAL_DETECTOR_PING, 1F, 1F);
+			//Detector will detect ores while on cooldown
+			playerIn.getCooldownTracker().setCooldown(this, 100);
+
+			if (getMaxDamage(stack) > 0)
 			{
-				ItemStack copy = new ItemStack(this);
-				playerIn.setHeldItem(handIn, copy);
-			}
-			else
-			{
-				stack.damageItem(1, playerIn);
+				if (stack.getItemDamage() >= getMaxDamage(stack))
+				{
+					ItemStack copy = new ItemStack(this);
+					playerIn.setHeldItem(handIn, copy);
+				}
+				else
+				{
+					stack.damageItem(1, playerIn);
+				}
 			}
 		}
 
@@ -121,6 +139,28 @@ public class ItemOreDetector extends ItemExtra {
 
 		return MathHelper.rgb(r, g, b);
 	}
+
+	//Model Highlight ------------------------
+
+	@SideOnly(Side.CLIENT)
+	public void setLEDs(boolean[] vals)
+	{
+		this.leds = vals;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean isLEDLit(int index)
+	{
+		return leds[index];
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void resetLEDs()
+	{
+		Arrays.fill(leds, false);
+	}
+
+	//Stack Utilities ------------------------
 
 	public static void addIngotsToDetector(ItemStack detector, List<ItemStack> ingots)
 	{

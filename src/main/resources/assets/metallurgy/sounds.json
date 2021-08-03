@@ -4,7 +4,7 @@
     "subtitle": "metallurgy.subtitle.alloyer_ambience",
     "sounds": [
       {
-        "name": "metallurgy:alloyer_ambience",
+        "name": "metallurgy:machines/alloyer_ambience",
         "stream": true
       }
     ]
@@ -13,14 +13,14 @@
     "category": "block",
     "subtitle": "metallurgy.subtitle.alloyer_impact",
     "sounds": [
-      "metallurgy:alloyer_impact"
+      "metallurgy:machines/alloyer_impact"
     ]
   },
   "alloyer_windup": {
     "category": "block",
     "subtitle": "metallurgy.subtitle.alloyer_windup",
     "sounds": [
-      "metallurgy:alloyer_windup"
+      "metallurgy:machines/alloyer_windup"
     ]
   },
   "crusher_ambience": {
@@ -28,7 +28,7 @@
     "subtitle": "metallurgy.subtitle.crusher_ambience",
     "sounds": [
       {
-        "name": "metallurgy:crusher_ambience",
+        "name": "metallurgy:machines/crusher_ambience",
         "stream": true
       }
     ]
@@ -37,14 +37,14 @@
     "category": "block",
     "subtitle": "metallurgy.subtitle.crusher_impact",
     "sounds": [
-      "metallurgy:crusher_impact"
+      "metallurgy:machines/crusher_impact"
     ]
   },
   "crusher_windup": {
     "category": "block",
     "subtitle": "metallurgy.subtitle.crusher_windup",
     "sounds": [
-      "metallurgy:crusher_windup"
+      "metallurgy:machines/crusher_windup"
     ]
   },
   "sublimation_chamber_ambience": {
@@ -52,7 +52,7 @@
     "subtitle": "metallurgy.subtitle.sublimation_chamber_ambience",
     "sounds": [
       {
-        "name": "metallurgy:sublimation_chamber_ambience",
+        "name": "metallurgy:machines/sublimation_chamber_ambience",
         "stream": true
       }
     ]
@@ -61,7 +61,35 @@
     "category": "block",
     "subtitle": "metallurgy.subtitle.sublimation_chamber_windup",
     "sounds": [
-      "metallurgy:sublimation_chamber_windup"
+      "metallurgy:machines/sublimation_chamber_windup"
+    ]
+  },
+  "metal_detector_beep_1": {
+    "category": "player",
+    "subtitle": "metallurgy.subtitle.metal_detector_beep",
+    "sounds": [
+      "metallurgy:gadgets/metal_detector_beep_1"
+    ]
+  },
+  "metal_detector_beep_2": {
+    "category": "player",
+    "subtitle": "metallurgy.subtitle.metal_detector_beep",
+    "sounds": [
+      "metallurgy:gadgets/metal_detector_beep_2"
+    ]
+  },
+  "metal_detector_beep_3": {
+    "category": "player",
+    "subtitle": "metallurgy.subtitle.metal_detector_beep",
+    "sounds": [
+      "metallurgy:gadgets/metal_detector_beep_3"
+    ]
+  },
+  "metal_detector_ping": {
+    "category": "player",
+    "subtitle": "metallurgy.subtitle.metal_detector_ping",
+    "sounds": [
+      "metallurgy:gadgets/metal_detector_ping"
     ]
   }
 }

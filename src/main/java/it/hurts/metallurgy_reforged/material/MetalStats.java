@@ -27,8 +27,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.common.util.EnumHelper;
 
-import java.awt.*;
-
 public class MetalStats {
 
 	//Name of the material in snake_case
@@ -43,6 +41,8 @@ public class MetalStats {
 
 	//Color
 	private final int color;
+
+	private final int temperature;
 
 	private final ArmorStats armor;
 	private final ToolStats tool;
@@ -123,8 +123,9 @@ public class MetalStats {
 	 * @param tool            the ToolStats instance representing this metal's stats, or null if there are no tools
 	 * @param oreHarvest      the harvest level of the metal ore or -1 if no ore should be generated
 	 * @param color           The representative color of the metal
+	 * @param temperature     The temperature of the molten version of the metal (if negative value is passed temperature is computed automatically)
 	 */
-	public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color)
+	public MetalStats(String name, float hardness, float blastResistance, ArmorStats armor, ToolStats tool, int oreHarvest, int color, int temperature)
 	{
 		this.name = name;
 		this.hardness = hardness;
@@ -133,6 +134,7 @@ public class MetalStats {
 		this.tool = tool;
 		this.oreHarvest = oreHarvest;
 		this.color = color;
+		this.temperature = temperature > 0 ? temperature : automaticTemperature();
 	}
 
 	public String getName()
@@ -194,8 +196,18 @@ public class MetalStats {
 
 	public float[] getColorRGBValues()
 	{
-		Color rgb = new Color(color);
-		return rgb.getRGBColorComponents(null);
+		float[] rgb = new float[3];
+		//Shift (8 * rgb_index bits) to the right, and take the right-most byte via bit-wise AND
+		//Divide 0..255 range by 255F to get a float 0..1 and add it to the right place in the rgb array
+		rgb[0] = (color >> 16 & 0xFF) / 255F;
+		rgb[1] = (color >> 8 & 0xFF) / 255F;
+		rgb[2] = (color & 0xFF) / 255F;
+		return rgb;
+	}
+
+	public int getTemperature()
+	{
+		return temperature;
 	}
 
 	private ItemArmor.ArmorMaterial createArmorMaterial()

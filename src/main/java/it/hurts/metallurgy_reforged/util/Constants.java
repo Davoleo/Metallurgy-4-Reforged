@@ -25,7 +25,7 @@ public class Constants {
 	//Metal
 	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
 			new ArmorStats(new int[4], 0, 0, 0),
-			new ToolStats(0, 0, 0, 0, 0), 0, 0);
+			new ToolStats(0, 0, 0, 0, 0), 0, 0, -1);
 
 	//Vanilla Metals
 	public static final String METAL_IRON = "iron";

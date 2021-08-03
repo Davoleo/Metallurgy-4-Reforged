@@ -85,11 +85,12 @@ public class JsonMaterialHelper {
 		float blockBlastResistance = JsonUtils.getFloat(metalObj, "blast_resistance", defaultStat.getHardness());
 		int oreHarvest = JsonUtils.getInt(metalObj, "ore_harvest_level", defaultStat.getOreHarvest());
 		int color = Integer.parseInt(JsonUtils.getString(metalObj, "color", String.valueOf(defaultStat.getColorHex())), 16);
+		int temperature = JsonUtils.getInt(metalObj, "temperature", defaultStat.getTemperature());
 
 		ArmorStats armorStats = getArmorStats(metalObj, defaultStat.getArmorStats());
 		ToolStats toolStats = getToolStats(metalObj, defaultStat.getToolStats());
 
-		return new MetalStats(name, hardness, blockBlastResistance, armorStats, toolStats, oreHarvest, color);
+		return new MetalStats(name, hardness, blockBlastResistance, armorStats, toolStats, oreHarvest, color, temperature);
 	}
 
 	private static MetalStats getMetalStatsByName(String name, Set<MetalStats> defaultStats) throws JsonSyntaxException
