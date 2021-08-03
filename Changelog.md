@@ -1,3 +1,18 @@
+### 1.2.10
+
+- Fix crash when wearing certain armor sets ([#332](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/332))
+- [Armor Chroma](https://www.curseforge.com/minecraft/mc-mods/armor-chroma) Integration (custom armor HUD)
+- `materials.json` config now supports custom molten metal
+  temperatures ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315) also check
+  out [this thread comment](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315#issuecomment-889904106))
+- Fixed a bug that didn't allow cleaning detector via the cleaning recipe if it's durability was less than the max
+  durability
+- Reworked Metal Detector:
+	- You can now just click instead of having to hold right click for ores to show up
+	- Ores remain highlighted for a short period of time while the detector goes on cool-down
+	- New Sounds providing feedback on different cases!
+	- LEDs on the detector now flash when the detector is scanning the area and finds ores nearby
+
 ### 1.2.9
 
 - Added Machine Sounds (Thanks to @acemagex#5483 for the epic sounds!)
@@ -6,10 +21,8 @@
 
 ### 1.2.8
 
-- Added a config option to tweak the temperature of fluid
-  Thermite  ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315))
-- Fixed an exception that caused Flans Mod entities to be invisible when added to the
-  world ([#327](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/327))
+- Added a config option to tweak the temperature of fluid Thermite  ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315))
+- Fixed an exception that caused Flans Mod entities to be invisible when added to the world ([#327](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/327))
 - Added config options to tweak attack damage and attack speed of brass knuckles
 - Improved Tinkers' Render info parameters for metals (should make tinkers' integrated textures look a bit better)
 - Fixed a crash caused by Electrum Magnet when trying to attract empty item stacks
