@@ -1363,6 +1363,7 @@ tooltip.metallurgy.effect.platinum_all=Flawless
 tooltip.metallurgy.effect.prometheum_armor=Freyr
 tooltip.metallurgy.effect.prometheum_all=Photosynthesis
 tooltip.metallurgy.effect.prometheum_hoe=Harvest
+tooltip.metallurgy.effect.quicksilver_weapon=Sleight of blade
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1439,7 +1440,8 @@ tooltip.metallurgy.effect.platinum_weapon.tooltip=Extra cathartic damage will be
 tooltip.metallurgy.effect.platinum_all.tooltip=This tool is unbreakable
 tooltip.metallurgy.effect.prometheum_armor.tooltip=Sprinting affects nearby crops and grass growth giving it a boost at the cost of a bit of armor durability.
 tooltip.metallurgy.effect.prometheum_all.tooltip=Item durability regenerates slowly overtime when under direct sunlight.
-tooltip.metallurgy.effect.prometheum_hoe.tooltip=When harvested with this hoe: leaves, crops and grass drops are increased
+tooltip.metallurgy.effect.prometheum_hoe.tooltip=When harvested with this hoe: leaves, crops and grass drops are increased.
+tooltip.metallurgy.effect.quicksilver_weapon.tooltip=On every successful attack you're launched through the enemy damaging them more.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

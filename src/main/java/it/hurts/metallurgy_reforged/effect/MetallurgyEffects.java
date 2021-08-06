@@ -262,6 +262,9 @@ public class MetallurgyEffects {
 	//Prometheum Hoe (Harvest)
 	public static final PrometheumHoeEffect PROMETHEUM_HOE_EFFECT = new PrometheumHoeEffect();
 
+	//Quicksilver Weapons (Sleight of blade)
+	public static final QuicksilverWeaponEffect QUICKSILVER_WEAPON_EFFECT = new QuicksilverWeaponEffect();
+
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
 

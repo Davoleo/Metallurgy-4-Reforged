@@ -33,6 +33,7 @@ public class PlayerEffectData {
 		effectBundles.put(inolashiteArmorBundle.getPrefixKey(), inolashiteArmorBundle);
 		effectBundles.put(mithrilWeaponBundle.getPrefixKey(), mithrilWeaponBundle);
 		effectBundles.put(prometheumArmorBundle.getPrefixKey(), prometheumArmorBundle);
+		effectBundles.put(quicksilverWeaponBundle.getPrefixKey(), quicksilverWeaponBundle);
 	}
 
 	//Amordrine Armor ----------------------------------------
@@ -77,7 +78,7 @@ public class PlayerEffectData {
 	public ProgressiveDataBundle ignatiusArmorBundle = new ProgressiveDataBundle("ignatius_armor", 40, 10);
 
 	//Inolashite Weapon
-	public ExtraFilledDataBundle inolashiteWeaponBundle = new ExtraFilledDataBundle("inolashite_weapon", 1, 10, bundle -> bundle.currentStep > 0);
+	public ProgressiveDataBundle inolashiteWeaponBundle = new ProgressiveDataBundle("inolashite_weapon", 1, 10);
 
 	//Inolashite Armor
 	public ExtraFilledDataBundle inolashiteArmorBundle = new ExtraFilledDataBundle("inolashite_armor", 1, 10, bundle -> bundle.currentStep > 0);
@@ -91,5 +92,7 @@ public class PlayerEffectData {
 
 	//Prometheum Armor
 	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
+
+	public ProgressiveDataBundle quicksilverWeaponBundle = new ProgressiveDataBundle("quicksilver_weapon", 4, 5);
 
 }

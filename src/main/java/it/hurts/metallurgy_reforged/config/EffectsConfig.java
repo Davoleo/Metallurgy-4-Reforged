@@ -272,6 +272,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.prometheum_hoe")
 	public static boolean prometheumEffectHoe = true;
 
+	@Config.Name("Sleight of blade (Quicksilver Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_weapon")
+	public static boolean quicksilverEffectWeapon = true;
+
 	private EffectsConfig()
 	{
 	}
