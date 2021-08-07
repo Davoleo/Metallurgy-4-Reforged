@@ -69,7 +69,7 @@ public abstract class BaseMetallurgyEffect {
 			try
 			{
 				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
-				return enabledField.getBoolean(EffectsConfig.class);
+				return !enabledField.isAccessible() || enabledField.getBoolean(EffectsConfig.class);
 			}
 			catch (NoSuchFieldException | IllegalAccessException e)
 			{

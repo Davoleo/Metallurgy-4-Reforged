@@ -872,14 +872,16 @@
       ],
       "enchantability": 50,
       "durability": 165,
-      "toughness": 0.0
+      "toughness": 0.0,
+      "movement_speed": 0.02
     },
     "tool_stats": {
       "efficiency": 14.0,
       "harvest_level": 3,
       "enchantability": 20,
       "durability": 1100,
-      "damage": 7.0
+      "damage": 7.0,
+      "movement_speed": 0.01
     }
   },
   {

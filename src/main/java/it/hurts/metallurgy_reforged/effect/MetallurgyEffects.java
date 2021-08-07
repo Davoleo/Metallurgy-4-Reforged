@@ -264,6 +264,21 @@ public class MetallurgyEffects {
 
 	//Quicksilver Weapons (Sleight of blade)
 	public static final QuicksilverWeaponEffect QUICKSILVER_WEAPON_EFFECT = new QuicksilverWeaponEffect();
+	//Quicksilver (Light)
+	public static final BaseMetallurgyEffect QUICKSILVER_EFFECT = new BaseMetallurgyEffect(ModMetals.QUICKSILVER) {
+		@Nonnull
+		@Override
+		public EnumEffectCategory getCategory()
+		{
+			return EnumEffectCategory.ALL;
+		}
+
+		@Override
+		public boolean isEnabled()
+		{
+			return ModMetals.QUICKSILVER != null;
+		}
+	};
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
