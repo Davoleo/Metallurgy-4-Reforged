@@ -93,6 +93,6 @@ public class PlayerEffectData {
 	//Prometheum Armor
 	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
 
-	public ProgressiveDataBundle quicksilverWeaponBundle = new ProgressiveDataBundle("quicksilver_weapon", 4, 5);
+	public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
 
 }
