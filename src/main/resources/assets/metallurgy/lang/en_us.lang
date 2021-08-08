@@ -1365,6 +1365,7 @@ tooltip.metallurgy.effect.prometheum_all=Photosynthesis
 tooltip.metallurgy.effect.prometheum_hoe=Harvest
 tooltip.metallurgy.effect.quicksilver_weapon=Sleight of blade
 tooltip.metallurgy.effect.quicksilver_all=Light
+tooltip.metallurgy.effect.quicksilver_tool=Tailwind
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1444,6 +1445,7 @@ tooltip.metallurgy.effect.prometheum_all.tooltip=Item durability regenerates slo
 tooltip.metallurgy.effect.prometheum_hoe.tooltip=When harvested with this hoe: leaves, crops and grass drops are increased.
 tooltip.metallurgy.effect.quicksilver_weapon.tooltip=On every successful attack you're launched through the enemy damaging them more.
 tooltip.metallurgy.effect.quicksilver_all.tooltip=Equipping this item gives you a speed boost.
+tooltip.metallurgy.effect.quicksilver_tool.tooltip=Mining speed will remain the same over any block independently from harvest level or block hardness
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

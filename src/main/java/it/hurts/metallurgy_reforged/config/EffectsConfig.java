@@ -275,6 +275,9 @@ public class EffectsConfig {
 	@Config.Name("Sleight of blade (Quicksilver Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_weapon")
 	public static boolean quicksilverEffectWeapon = true;
+	@Config.Name("Tailwind (Quicksilver Tools)")
+	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_tool")
+	public static boolean quicksilverEffectTool = true;
 
 	private EffectsConfig()
 	{

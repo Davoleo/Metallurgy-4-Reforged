@@ -279,6 +279,8 @@ public class MetallurgyEffects {
 			return ModMetals.QUICKSILVER != null;
 		}
 	};
+	//Quicksilver Tools (Tailwind)
+	public static final QuicksilverToolEffect QUICKSILVER_TOOL_EFFECT = new QuicksilverToolEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
