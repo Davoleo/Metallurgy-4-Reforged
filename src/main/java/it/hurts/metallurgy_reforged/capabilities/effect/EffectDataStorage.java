@@ -32,6 +32,8 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
 
 		tag.setInteger("krik_height", instance.krikHeight);
 
+		tag.setInteger("quicksilver_armor_step", instance.quicksilverArmorStep);
+
 		return tag;
 	}
 
@@ -47,6 +49,8 @@ public class EffectDataStorage implements Capability.IStorage<PlayerEffectData> 
 		instance.desichalkosAbsorbLevel = tag.getInteger("desichalkos_armor_absorb_level");
 
 		instance.krikHeight = tag.getInteger("krik_height");
+
+		instance.quicksilverArmorStep = tag.getInteger("quicksilver_armor_step");
 	}
 
 }

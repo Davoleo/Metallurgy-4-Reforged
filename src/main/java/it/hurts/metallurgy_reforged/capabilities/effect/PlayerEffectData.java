@@ -56,10 +56,10 @@ public class PlayerEffectData {
 
 	//Carmot Tools
 	public BlockInfoDataBundle carmotToolBundle = new BlockInfoDataBundle("carmot_tool", 3, 11);
-
 	//Carmot Weapons
 	public ExtraFilledDataBundle carmotWeaponBundle =
 			new ExtraFilledDataBundle("carmot_weapon", 3, 10, bundle -> bundle.currentStep > 0);
+
 	//Celenegil Armor
 	public ExtraFilledDataBundle celenegilArmorBundle =
 			new ExtraFilledDataBundle("celenegil_armor", 3, 10, (bundle) -> bundle.getExtraBool("active"));
@@ -79,7 +79,6 @@ public class PlayerEffectData {
 
 	//Inolashite Weapon
 	public ProgressiveDataBundle inolashiteWeaponBundle = new ProgressiveDataBundle("inolashite_weapon", 1, 10);
-
 	//Inolashite Armor
 	public ExtraFilledDataBundle inolashiteArmorBundle = new ExtraFilledDataBundle("inolashite_armor", 1, 10, bundle -> bundle.currentStep > 0);
 	public Queue<InolashiteArmorEffect.WarpData> inolashiteWarpData = Queues.newArrayBlockingQueue(8 * 4);
@@ -93,6 +92,9 @@ public class PlayerEffectData {
 	//Prometheum Armor
 	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
 
+	//Quicksilver Weapons
 	public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
+	//Quicksilver Armor
+	public int quicksilverArmorStep = 0;
 
 }

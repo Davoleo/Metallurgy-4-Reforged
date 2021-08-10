@@ -78,6 +78,11 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
 		return extra.getFloat(key);
 	}
 
+	public double getExtraDouble(String key)
+	{
+		return extra.getFloat(key);
+	}
+
 	public void setExtra(String key, String value)
 	{
 		extra.setString(key, value);
@@ -91,6 +96,11 @@ public class ExtraFilledDataBundle extends ProgressiveDataBundle {
 	public void setExtra(String key, float value)
 	{
 		extra.setFloat(key, value);
+	}
+
+	public void setExtra(String key, double value)
+	{
+		extra.setDouble(key, value);
 	}
 
 	public void setExtra(String key, boolean value)

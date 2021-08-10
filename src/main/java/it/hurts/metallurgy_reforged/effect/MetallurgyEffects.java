@@ -281,6 +281,8 @@ public class MetallurgyEffects {
 	};
 	//Quicksilver Tools (Tailwind)
 	public static final QuicksilverToolEffect QUICKSILVER_TOOL_EFFECT = new QuicksilverToolEffect();
+	//Quicksilver Armor (Acceleration)
+	public static final QuicksilverArmorEffect QUICKSILVER_ARMOR_EFFECT = new QuicksilverArmorEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
