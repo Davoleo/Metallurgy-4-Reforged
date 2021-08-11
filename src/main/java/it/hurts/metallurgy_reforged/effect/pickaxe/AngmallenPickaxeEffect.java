@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
@@ -74,16 +75,25 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 	 */
 	private ItemStack getRandomOreStack(BlockOre ore)
 	{
+		int blockHarvestLevel = ore.getHarvestLevel(ore.getDefaultState());
+
 		//Loop over the metal map and filter for the right ores via Streams
 		List<ItemStack> oresDropList = ModMetals.metalMap.values().stream().filter(mettle -> {
 			if (mettle.isAlloy() || ore == mettle.getOre())
 				return false;
 
 			int level = mettle.getStats().getOreHarvest();
-			int blockHarvestLevel = ore.getHarvestLevel(ore.getDefaultState());
 			return level >= blockHarvestLevel - 1 && level <= blockHarvestLevel + 1;
 		}).map(mettle -> new ItemStack(mettle.getOre())).collect(Collectors.toList());
 		// Map metals to ore itemStacks and collect all of them into a list
+
+		//Add Iron and/or Gold if the level is correct
+		final int ironHarvestLevel = 1;
+		final int goldHarvestLevel = 2;
+		if (ironHarvestLevel >= blockHarvestLevel - 1 && ironHarvestLevel <= blockHarvestLevel + 1)
+			oresDropList.add(new ItemStack(Blocks.IRON_ORE));
+		if (goldHarvestLevel >= blockHarvestLevel - 1 && goldHarvestLevel <= blockHarvestLevel + 1)
+			oresDropList.add(new ItemStack(Blocks.GOLD_ORE));
 
 		return oresDropList.get(Utils.random.nextInt(oresDropList.size()));
 	}
