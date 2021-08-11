@@ -278,6 +278,9 @@ public class EffectsConfig {
 	@Config.Name("Tailwind (Quicksilver Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_tool")
 	public static boolean quicksilverEffectTool = true;
+	@Config.Name("Acceleration (Quicksilver Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_armor")
+	public static boolean quicksilverEffectArmor = true;
 
 	@Config.Name("Deceitful (Sanguinite Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_all")
