@@ -279,6 +279,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.quicksilver_tool")
 	public static boolean quicksilverEffectTool = true;
 
+	@Config.Name("Deceitful (Sanguinite Items)")
+	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_all")
+	public static boolean sanguiniteEffectAll = true;
+
 	private EffectsConfig()
 	{
 	}

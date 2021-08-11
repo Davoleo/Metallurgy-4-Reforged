@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.item.EntityItem;
@@ -23,7 +24,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
-import java.util.ListIterator;
+import javax.annotation.Nullable;
+import java.util.Iterator;
 
 public class AmordrineEffect extends BaseMetallurgyEffect {
 
@@ -48,20 +50,30 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
 		if (event.getEntityPlayer().getEntityWorld().getGameRules().getBoolean("keepInventory"))
 			return;
 
-		EntityPlayer player = event.getEntityPlayer();
+		Iterator<EntityItem> dropIterator = event.getDrops().iterator();
+		removeItemsFromDrops(metal, event.getEntityPlayer(), dropIterator);
+	}
 
-		ListIterator<EntityItem> dropIterator = event.getDrops().listIterator();
-
-		while (dropIterator.hasNext())
+	/**
+	 * Removes armor and tools made of a specific metal from a player's drop list
+	 *
+	 * @param metal    The metal the items should be made of
+	 * @param player   null if the items should not be added back to a player's inventory
+	 * @param dropIter the iterator of entity drops
+	 */
+	protected static void removeItemsFromDrops(Metal metal, @Nullable EntityPlayer player, Iterator<EntityItem> dropIter)
+	{
+		while (dropIter.hasNext())
 		{
-			EntityItem dropEntity = dropIterator.next();
+			EntityItem dropEntity = dropIter.next();
 			ItemStack item = dropEntity.getItem();
 			if (ItemUtils.isMadeOfMetal(metal, item.getItem()))
 			{
 				if (item.getItem() instanceof ItemArmorBase || item.getItem() instanceof IToolEffect)
 				{
-					player.addItemStackToInventory(item);
-					dropIterator.remove();
+					if (player != null)
+						player.addItemStackToInventory(item);
+					dropIter.remove();
 				}
 			}
 		}
