@@ -93,8 +93,8 @@ public class PlayerEffectData {
 	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
 
 	//Quicksilver Weapons
-	public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
-	//Quicksilver Armor
-	public int quicksilverArmorStep = 0;
+    public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
+    //Quicksilver Armor
+    public int quicksilverTick = 0;
 
 }
