@@ -17,7 +17,7 @@ public class IntegrationIF {
 
 	public static void preInit()
 	{
-		LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "ore.json"));
+		LaserDrillEntry.addOreFile(new ResourceLocation(Metallurgy.MODID, "industrial_foregoing_laser_stats.json"));
 		Metallurgy.logger.info("Metallurgy ore are added to Laser Drill recipes");
 	}
 
