@@ -285,6 +285,9 @@ public class EffectsConfig {
 	@Config.Name("Deceitful (Sanguinite Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_all")
 	public static boolean sanguiniteEffectAll = true;
+	@Config.Name("Devour (Sanguinite Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_weapon")
+	public static boolean sanguiniteEffectWeapon = true;
 
 	private EffectsConfig()
 	{

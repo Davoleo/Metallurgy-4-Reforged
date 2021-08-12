@@ -286,6 +286,8 @@ public class MetallurgyEffects {
 
 	//Sanguinite (Deceitful)
 	public static final SanguiniteEffect SANGUINITE_EFFECT = new SanguiniteEffect();
+	//Sanguinite (Devour)
+	public static final SanguiniteWeaponEffect SANGUINITE_WEAPON_EFFECT = new SanguiniteWeaponEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
