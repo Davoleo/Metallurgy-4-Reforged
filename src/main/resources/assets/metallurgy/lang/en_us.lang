@@ -1369,6 +1369,7 @@ tooltip.metallurgy.effect.quicksilver_tool=Tailwind
 tooltip.metallurgy.effect.quicksilver_armor=Acceleration
 tooltip.metallurgy.effect.sanguinite_all=Deceitful
 tooltip.metallurgy.effect.sanguinite_weapon=Devour
+tooltip.metallurgy.effect.sanguinite_tool=Blood Tap
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1452,6 +1453,7 @@ tooltip.metallurgy.effect.quicksilver_tool.tooltip=Mining speed will remain the 
 tooltip.metallurgy.effect.quicksilver_armor.tooltip=Sprinting will allow you to build up momentum once full speed is reached you'll be able to run on liquids but you will sink as soon as you stop or slow down.
 tooltip.metallurgy.effect.sanguinite_all.tooltip=This item will disappear completely after death.
 tooltip.metallurgy.effect.sanguinite_weapon.tooltip=You deal more damage as you grow hungry, killing enemies appeases your hunger depending on the max health of the enemy but also makes you hungry for more.
+tooltip.metallurgy.effect.sanguinite_tool.tooltip=Activating the tool will exchange some of you life for increased harvest speed and level also restoring a bit of durability
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore

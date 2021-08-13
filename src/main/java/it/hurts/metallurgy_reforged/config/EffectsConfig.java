@@ -288,6 +288,9 @@ public class EffectsConfig {
 	@Config.Name("Devour (Sanguinite Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_weapon")
 	public static boolean sanguiniteEffectWeapon = true;
+	@Config.Name("Blood Tap (Sanguinite Tools)")
+	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_tool")
+	public static boolean sanguiniteEffectTool = true;
 
 	private EffectsConfig()
 	{
