@@ -29,6 +29,8 @@ minecraft {
     //replaceIn "Metallurgy.java"
 }
 
+apply from: 'test.gradle'
+
 repositories {
 
     //Maven central repository (Groovy)

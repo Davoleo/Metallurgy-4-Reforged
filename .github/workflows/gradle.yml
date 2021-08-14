@@ -8,23 +8,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
-      - name: Build with Gradle
+          distribution: adopt-openj9
+          java-version: 8
+      - name: Build & Compile
         run: |
           chmod +x gradlew
-          ./gradlew build --stacktrace
-      - name: Send Webhook Notification
-        if: always()
-        env:
-          JOB_STATUS: ${{ job.status }}
-          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
-          HOOK_OS_NAME: ${{ runner.os }}
-          WORKFLOW_NAME: ${{ github.workflow }}
-        run: |
-          git clone https://github.com/DiscordHooks/github-actions-discord-webhook.git webhook
-          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
-        shell: bash
+          ./gradlew setupCiWorkspace
+          ./gradlew build --stacktrace --refresh-dependencies
+      - name: Test Server
+        run:
+          ./gradlew testServer nogui
+
+
+#      - name: Send Webhook Notification
+#        if: always()
+#        env:
+#          JOB_STATUS: ${{ job.status }}
+#          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+#          HOOK_OS_NAME: ${{ runner.os }}
+#          WORKFLOW_NAME: ${{ github.workflow }}
+#        run: |
+#          git clone https://github.com/DiscordHooks/github-actions-discord-webhook.git webhook
+#          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
+#        shell: bash
