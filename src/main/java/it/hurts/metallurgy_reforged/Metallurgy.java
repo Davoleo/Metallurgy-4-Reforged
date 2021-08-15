@@ -54,8 +54,6 @@ import net.minecraftforge.fml.server.FMLServerHandler;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
@@ -212,7 +210,7 @@ public class Metallurgy {
 	}
 
 	@Mod.EventHandler
-	public void serverLoaded(FMLServerStartedEvent event) throws IOException, URISyntaxException
+	public void serverLoaded(FMLServerStartedEvent event)
 	{
 		boolean isDevEnv = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 		File ciFile = new File("../ci_env");
