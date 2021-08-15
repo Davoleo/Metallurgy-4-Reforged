@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 buildscript {
     repositories {
         jcenter()
@@ -28,8 +30,6 @@ minecraft {
     //replace "@VERSION@", project.version
     //replaceIn "Metallurgy.java"
 }
-
-apply from: 'test.gradle'
 
 repositories {
 
@@ -143,6 +143,15 @@ sourceJar {
 clean {
     delete 'output'
     delete 'mcmodsrepo'
+}
+
+//Used to stop the server just after it's started correctly if we're in a CI Environment
+setupCiWorkspace {
+    doFirst {
+        File ciEnvFile = new File(projectDir.getPath() + File.separatorChar + "ci_env")
+        if (!ciEnvFile.exists())
+            Files.createFile(ciEnvFile.toPath())
+    }
 }
 
 /*==============================================================================

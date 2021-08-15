@@ -21,7 +21,7 @@ jobs:
           ./gradlew build --stacktrace --refresh-dependencies
       - name: Test Server
         run:
-          ./gradlew testServer nogui
+          ./gradlew runServer
 
 
 #      - name: Send Webhook Notification
