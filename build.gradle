@@ -155,10 +155,9 @@ tasks.register('setupCiEnv', { task ->
         if (!ciEnvFile.exists())
             Files.createFile(ciEnvFile.toPath())
 
-        File eula = new File("${projectDir.getPath()}/run/eula.txt")
+        File eula = new File("${projectDir.getPath()}/run")
         eula.mkdir()
-        eula.createNewFile()
-        FileWriter writer = new FileWriter(eula)
+        FileWriter writer = new FileWriter("${eula.getPath()}/eula.txt")
         writer.write("eula=true")
         writer.close()
     }
