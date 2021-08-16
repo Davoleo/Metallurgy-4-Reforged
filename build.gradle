@@ -146,13 +146,23 @@ clean {
 }
 
 //Used to stop the server just after it's started correctly if we're in a CI Environment
-setupCiWorkspace {
+tasks.register('setupCiEnv', { task ->
+    task.group = 'build setup'
+    task.description = 'setups files to run CI Tests'
+
     doFirst {
         File ciEnvFile = new File(projectDir.getPath() + File.separatorChar + "ci_env")
         if (!ciEnvFile.exists())
             Files.createFile(ciEnvFile.toPath())
+
+        File eula = new File("${projectDir.getPath()}/run/eula.txt")
+        eula.mkdir()
+        eula.createNewFile()
+        FileWriter writer = new FileWriter(eula)
+        writer.write("eula=true")
+        writer.close()
     }
-}
+})
 
 /*==============================================================================
  = Class: build

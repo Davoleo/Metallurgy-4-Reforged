@@ -14,15 +14,17 @@ jobs:
         with:
           distribution: adopt-openj9
           java-version: 8
+      - name: Change Gradlew file permissions
+        run: chmod +x gradlew
+      - name: Setup Workspace
+        run: ./gradlew setupDecompWorkspace
       - name: Build & Compile
-        run: |
-          chmod +x gradlew
-          ./gradlew setupCiWorkspace
-          ./gradlew build --stacktrace --refresh-dependencies
+        run: ./gradlew build --stacktrace
+      - name: Setup CI Environment
+        run: ./gradlew setupCiEnv
       - name: Test Server
         run:
           ./gradlew runServer
-
 
 #      - name: Send Webhook Notification
 #        if: always()
