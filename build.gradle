@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 buildscript {
     repositories {
         jcenter()
@@ -142,6 +144,24 @@ clean {
     delete 'output'
     delete 'mcmodsrepo'
 }
+
+//Used to stop the server just after it's started correctly if we're in a CI Environment
+tasks.register('setupCiEnv', { task ->
+    task.group = 'build setup'
+    task.description = 'setups files to run CI Tests'
+
+    doFirst {
+        File ciEnvFile = new File(projectDir.getPath() + File.separatorChar + "ci_env")
+        if (!ciEnvFile.exists())
+            Files.createFile(ciEnvFile.toPath())
+
+        File eula = new File("${projectDir.getPath()}/run")
+        eula.mkdir()
+        FileWriter writer = new FileWriter("${eula.getPath()}/eula.txt")
+        writer.write("eula=true")
+        writer.close()
+    }
+})
 
 /*==============================================================================
  = Class: build

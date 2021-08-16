@@ -38,6 +38,7 @@ import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.util.SubEvent;
 import it.hurts.metallurgy_reforged.world.ModWorldGen;
 import it.hurts.metallurgy_reforged.world.WorldTickHandler;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -46,9 +47,13 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.server.FMLServerHandler;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
 
 @Mod(modid = Metallurgy.MODID, name = Metallurgy.NAME, version = Metallurgy.VERSION, dependencies = "required-after:forge@[14.23.5.2768,)", acceptedMinecraftVersions = "[1.12.2]")
 public class Metallurgy {
@@ -202,6 +207,15 @@ public class Metallurgy {
 		OreDictHandler.populateOredictCache();
 
 		logger.info(NAME + " has been completely loaded");
+	}
+
+	@Mod.EventHandler
+	public void serverLoaded(FMLServerStartedEvent event)
+	{
+		boolean isDevEnv = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+		File ciFile = new File("../ci_env");
+		if (isDevEnv && ciFile.exists())
+			FMLServerHandler.instance().getServer().stopServer();
 	}
 
 }
