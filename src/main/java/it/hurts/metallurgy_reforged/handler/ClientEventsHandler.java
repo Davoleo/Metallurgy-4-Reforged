@@ -13,8 +13,11 @@ import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.armor.AmordrineArmorEffect;
 import it.hurts.metallurgy_reforged.effect.armor.KrikArmorEffect;
+import it.hurts.metallurgy_reforged.effect.armor.SanguiniteArmorEffect;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -32,6 +35,13 @@ public abstract class ClientEventsHandler {
 		AmordrineArmorEffect.onPlayerJump(player);
 
 		KrikArmorEffect.changeKrikLevel(player, capability);
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void onEntityRender(RenderLivingEvent<EntityLivingBase> event)
+	{
+		SanguiniteArmorEffect.renderLivingCorpse(event.getEntity(), event.getX(), event.getY(), event.getZ());
 	}
 
 }

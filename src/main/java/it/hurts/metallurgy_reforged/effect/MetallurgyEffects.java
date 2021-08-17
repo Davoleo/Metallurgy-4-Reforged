@@ -290,6 +290,8 @@ public class MetallurgyEffects {
 	public static final SanguiniteWeaponEffect SANGUINITE_WEAPON_EFFECT = new SanguiniteWeaponEffect();
 	//Sanguinite Tools (Blood Tap)
 	public static final SanguiniteToolEffect SANGUINITE_TOOL_EFFECT = new SanguiniteToolEffect();
+	//Sanguinite Armor (Necromastery)
+	public static final SanguiniteArmorEffect SANGUINITE_ARMOR_EFFECT = new SanguiniteArmorEffect();
 
 	//Increase the speed of item action
 	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();

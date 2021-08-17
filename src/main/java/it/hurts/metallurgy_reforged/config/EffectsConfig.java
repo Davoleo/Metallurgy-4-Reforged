@@ -291,6 +291,9 @@ public class EffectsConfig {
 	@Config.Name("Blood Tap (Sanguinite Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_tool")
 	public static boolean sanguiniteEffectTool = true;
+	@Config.Name("Necromastery (Sanguinite Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_tool")
+	public static boolean sanguiniteEffectArmor = true;
 
 	private EffectsConfig()
 	{
