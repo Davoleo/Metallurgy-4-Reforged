@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -38,7 +39,7 @@ public class SanguiniteWeaponEffect extends BaseMetallurgyEffect {
 		return EnumEffectCategory.WEAPON;
 	}
 
-	private void devour(DamageSource source, AtomicDouble damageOrMaxHealth, boolean deathEvent)
+	private void devour(EntityLivingBase target, DamageSource source, AtomicDouble damageOrMaxHealth, boolean deathEvent)
 	{
 		Entity sourceEnt = source.getImmediateSource();
 
@@ -53,6 +54,8 @@ public class SanguiniteWeaponEffect extends BaseMetallurgyEffect {
 				//BERRY CRAZY (https://youtu.be/bI2-ioFv3UA)
 				int voracityLevel = 20 - attacker.getFoodStats().getFoodLevel();
 				damageOrMaxHealth.set(Math.min(damageOrMaxHealth.get() + voracityLevel, 20));
+				for (int i = 0; i < 10; i++)
+					spawnParticle(target, 2F, true, 6);
 			}
 			else
 			{
@@ -67,16 +70,14 @@ public class SanguiniteWeaponEffect extends BaseMetallurgyEffect {
 	public void devourHit(LivingHurtEvent event)
 	{
 		AtomicDouble amount = new AtomicDouble(event.getAmount());
-		devour(event.getSource(), amount, false);
+		devour(event.getEntityLiving(), event.getSource(), amount, false);
 		event.setAmount(amount.floatValue());
-		for (int i = 0; i < 10; i++)
-			spawnParticle(event.getEntity(), 2F, true, 6);
 	}
 
 	@SubscribeEvent
 	public void devourKill(LivingDeathEvent event)
 	{
-		devour(event.getSource(), new AtomicDouble(event.getEntityLiving().getMaxHealth()), true);
+		devour(event.getEntityLiving(), event.getSource(), new AtomicDouble(event.getEntityLiving().getMaxHealth()), true);
 	}
 
 }
