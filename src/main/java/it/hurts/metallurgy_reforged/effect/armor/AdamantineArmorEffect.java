@@ -11,16 +11,13 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.client.PacketRenderDeathProtection;
+import it.hurts.metallurgy_reforged.network.client.PacketAdamantineRenderDeathProtection;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -95,7 +92,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 					//Set cooldown on the remaining armor pieces
 					entity.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) entity).getCooldownTracker().setCooldown(stack.getItem(), 100));
 					//Send a packet to emit particles and render the Totem item overlay
-					PacketRenderDeathProtection packet = new PacketRenderDeathProtection(entity.getEntityId(), armorPiece);
+					PacketAdamantineRenderDeathProtection packet = new PacketAdamantineRenderDeathProtection(entity.getEntityId(), armorPiece);
 					//This criteria needs to be triggered in order to the totem overlay to work
 					CriteriaTriggers.USED_TOTEM.trigger(((EntityPlayerMP) entity), armorPiece);
 

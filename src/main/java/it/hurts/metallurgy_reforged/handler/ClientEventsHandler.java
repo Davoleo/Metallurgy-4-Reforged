@@ -39,7 +39,7 @@ public abstract class ClientEventsHandler {
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void onEntityRender(RenderLivingEvent<EntityLivingBase> event)
+	public static void onEntityRender(RenderLivingEvent.Pre<EntityLivingBase> event)
 	{
 		SanguiniteArmorEffect.renderLivingCorpse(event.getEntity(), event.getX(), event.getY(), event.getZ());
 	}

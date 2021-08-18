@@ -15,10 +15,9 @@ import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
+import it.hurts.metallurgy_reforged.network.server.PacketKrikEditPlayerLevel;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -103,7 +102,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 			{
 				if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
 				{
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(true));
+					PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(true));
 					capability.krikHeight += 1;
 				}
 			}
@@ -112,7 +111,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 			{
 				if (capability != null && capability.krikHeight > 0)
 				{
-					PacketManager.network.sendToServer(new PacketEditPlayerLevel(false));
+					PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(false));
 					capability.krikHeight -= 1;
 					//System.out.println(capability.getHeight());
 				}

@@ -106,4 +106,13 @@ public class Constants {
 		}
 	}
 
+	public enum NBTType {
+		ENTITY_DATA;
+
+		public static NBTType byId(int id)
+		{
+			return NBTType.values()[id];
+		}
+	}
+
 }

@@ -17,17 +17,17 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketEditPlayerLevel implements IMessage {
+public class PacketKrikEditPlayerLevel implements IMessage {
 
 	public boolean increase;
 
 	@SuppressWarnings("unused")
-	public PacketEditPlayerLevel()
+	public PacketKrikEditPlayerLevel()
 	{
 		//Mandatory Empty Default Constructor
 	}
 
-	public PacketEditPlayerLevel(boolean increase)
+	public PacketKrikEditPlayerLevel(boolean increase)
 	{
 		this.increase = increase;
 	}
@@ -44,10 +44,10 @@ public class PacketEditPlayerLevel implements IMessage {
 		buf.writeBoolean(increase);
 	}
 
-	public static class Handler implements IMessageHandler<PacketEditPlayerLevel, IMessage> {
+	public static class Handler implements IMessageHandler<PacketKrikEditPlayerLevel, IMessage> {
 
 		@Override
-		public IMessage onMessage(PacketEditPlayerLevel message, MessageContext ctx)
+		public IMessage onMessage(PacketKrikEditPlayerLevel message, MessageContext ctx)
 		{
 
 			EntityPlayer player = ctx.getServerHandler().player;

@@ -13,9 +13,12 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketSanguiniteEntityState;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -54,6 +57,48 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 		return EnumEffectCategory.ARMOR;
 	}
 
+	/**
+	 * Drops entity items and xp
+	 *
+	 * @param killedEntity the entity that is dropping
+	 * @param killer       the entity that caused the drop
+	 * @param source       the source through which the {@code killer} caused the drop
+	 *
+	 * @throws InvocationTargetException if the methods to drop cannot be invoked
+	 * @throws IllegalAccessException    if the methods to drop cannot be accessed
+	 */
+	private void dropXPAndItems(EntityLivingBase killedEntity, EntityLivingBase killer, DamageSource source) throws InvocationTargetException, IllegalAccessException
+	{
+		//Get XP to Drop
+		int xp = (int) getExperiencePoints.invoke(killedEntity, killer);
+
+		//Drop XP
+		while (xp > 0)
+		{
+			int xpSlice = EntityXPOrb.getXPSplit(xp);
+			xp -= xpSlice;
+			killer.world.spawnEntity(new EntityXPOrb(killer.world, killedEntity.posX, killedEntity.posY, killedEntity.posZ, xpSlice));
+		}
+
+		killedEntity.captureDrops = true;
+		killedEntity.capturedDrops.clear();
+
+		if (killer.world.getGameRules().getBoolean("doMobLoot"))
+		{
+			int looting = ForgeHooks.getLootingLevel(killedEntity, killer, source);
+			dropLoot.invoke(killedEntity, true, looting, source);
+		}
+
+		killedEntity.captureDrops = false;
+
+		for (EntityItem item : killedEntity.capturedDrops)
+		{
+			//Creating a new entityItem so it doesn't affect the other drops?
+			EntityItem dropEnt = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
+			item.world.spawnEntity(dropEnt);
+		}
+	}
+
 	@SubscribeEvent
 	public void reviveEnemyCorpse(LivingDeathEvent event)
 	{
@@ -83,37 +128,18 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 				killedEntity.ticksExisted = 0;
 				//Sets entity to be rendered shaking and red
 				killedEntity.getEntityData().setInteger("corpse_state", 1);
+				PacketSanguiniteEntityState packet = new PacketSanguiniteEntityState(killedEntity.getEntityId(), 1);
+				PacketManager.network.sendToAllTracking(packet, killedEntity);
+
+				//Cancel death and set health and invulnerability
+				event.setCanceled(true);
+				killedEntity.setHealth(10F);
+				killedEntity.setEntityInvulnerable(true);
+				((EntityLiving) killedEntity).setNoAI(true);
 
 				try
 				{
-					//Get XP to Drop
-					int xp = (int) getExperiencePoints.invoke(killedEntity, killer);
-
-					//Drop XP
-					while (xp > 0)
-					{
-						int xpSlice = EntityXPOrb.getXPSplit(xp);
-						xp -= xpSlice;
-						killer.world.spawnEntity(new EntityXPOrb(killer.world, killedEntity.posX, killedEntity.posY, killedEntity.posZ, xpSlice));
-					}
-
-					killedEntity.captureDrops = true;
-					killedEntity.capturedDrops.clear();
-
-					if (killer.world.getGameRules().getBoolean("doMobLoot"))
-					{
-						int looting = ForgeHooks.getLootingLevel(killedEntity, killer, event.getSource());
-						dropLoot.invoke(killedEntity, true, looting, event.getSource());
-					}
-
-					killedEntity.captureDrops = false;
-
-					for (EntityItem item : killedEntity.capturedDrops)
-					{
-						//Creating a new entityItem so it doesn't affect the other drops?
-						EntityItem dropEnt = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
-						item.world.spawnEntity(dropEnt);
-					}
+					dropXPAndItems(killedEntity, killer, event.getSource());
 				}
 				catch (InvocationTargetException | IllegalAccessException e)
 				{
@@ -128,25 +154,32 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 	public void updateCorpseStates(LivingEvent.LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		if (!entity.getEntityData().hasKey("corpse_state"))
-			return;
 
-		if (entity.getEntityData().getInteger("corpse_state") == 1)
+		int corpseState = entity.getEntityData().getInteger("corpse_state");
+
+		switch (corpseState)
 		{
-			if (entity.deathTime == 19)
-			{
-				entity.setHealth(10F);
-				entity.getEntityData().setInteger("corpse_state", 2);
-			}
-		}
-		else if (entity.getEntityData().getInteger("corpse_state") == 2)
-		{
-			entity.deathTime -= 2;
-			entity.deathTime = Math.max(entity.deathTime, 0);
-		}
+			case 0:
+			default:
+				return;
+			case 1:
+				entity.deathTime++;
 
-		System.out.println(entity.getName() + " : " + entity.deathTime);
+				if (entity.deathTime == 19)
+					entity.getEntityData().setInteger("corpse_state", 2);
+				return;
+			case 2:
+				entity.deathTime--;
 
+				if (entity.deathTime == 0)
+				{
+					entity.setEntityInvulnerable(false);
+					((EntityLiving) entity).setNoAI(false);
+					entity.getEntityData().setInteger("corpse_state", 0);
+				}
+				return;
+			case 3:
+		}
 
 		//Visual Particle feedback
 		//double d2 = this.rand.nextGaussian() * 0.02D;
@@ -155,21 +188,25 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 		//this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d2, d0, d1);
 	}
 
-	private static final float[] OVERLAY = new float[]{84 / 255F, 14 / 255F, 14 / 255F};
+	private static final float[] OVERLAY = new float[]{100 / 255F, 25 / 255F, 25 / 255F};
 
 	@SideOnly(Side.CLIENT)
 	public static void renderLivingCorpse(EntityLivingBase entity, double x, double y, double z)
 	{
-		if (entity.getEntityData().getInteger("corpse_state") == 0)
+		int corpseState = entity.getEntityData().getInteger("corpse_state");
+
+		if (corpseState < 2)
 			return;
 
+		GlStateManager.pushMatrix();
 		//COLORED CORPSE
 		GlStateManager.color(OVERLAY[0], OVERLAY[1], OVERLAY[2], 1F);
 
 		//SHAKING CORPSE
-		double deltaX = Utils.random.nextGaussian() * 0.02D;
-		double deltaZ = Utils.random.nextGaussian() * 0.02D;
+		double deltaX = Utils.random.nextGaussian() * 0.01D;
+		double deltaZ = Utils.random.nextGaussian() * 0.01D;
 		GlStateManager.translate(x + deltaX, y, z + deltaZ);
+		GlStateManager.popMatrix();
 	}
 
 }

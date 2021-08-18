@@ -27,17 +27,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *
  * @see it.hurts.metallurgy_reforged.effect.armor.AdamantineArmorEffect
  */
-public class PacketRenderDeathProtection implements IMessage {
+public class PacketAdamantineRenderDeathProtection implements IMessage {
 
 	private int entity;
 	private ItemStack stack;
 
-	public PacketRenderDeathProtection()
+	public PacketAdamantineRenderDeathProtection()
 	{
 		//Mandatory Empty Constructor
 	}
 
-	public PacketRenderDeathProtection(int entityId, ItemStack stack)
+	public PacketAdamantineRenderDeathProtection(int entityId, ItemStack stack)
 	{
 		this.entity = entityId;
 		this.stack = stack;
@@ -57,11 +57,11 @@ public class PacketRenderDeathProtection implements IMessage {
 		buf.writeInt(entity);
 	}
 
-	public static class Handler implements IMessageHandler<PacketRenderDeathProtection, IMessage> {
+	public static class Handler implements IMessageHandler<PacketAdamantineRenderDeathProtection, IMessage> {
 
 		@SideOnly(Side.CLIENT)
 		@Override
-		public IMessage onMessage(PacketRenderDeathProtection message, MessageContext ctx)
+		public IMessage onMessage(PacketAdamantineRenderDeathProtection message, MessageContext ctx)
 		{
 
 			Minecraft client = Minecraft.getMinecraft();
