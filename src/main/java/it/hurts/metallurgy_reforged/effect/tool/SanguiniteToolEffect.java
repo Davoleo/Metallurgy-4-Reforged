@@ -69,13 +69,15 @@ public class SanguiniteToolEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void boostHarvest(PlayerEvent.BreakSpeed event)
 	{
-		ItemStack toolStack = event.getEntityPlayer().getHeldItemMainhand();
+		final EntityPlayer player = event.getEntityPlayer();
+		ItemStack toolStack = player.getHeldItemMainhand();
 		NBTTagCompound toolData = toolStack.getTagCompound();
 
-		if (event.getEntityPlayer().getCooldownTracker().getCooldown(toolStack.getItem(), 0) > 0)
+		if (player.getCooldownTracker().getCooldown(toolStack.getItem(), 0) > 0)
 		{
 			event.setNewSpeed(event.getOriginalSpeed() * 1.75F);
-			spawnParticle(event.getEntityPlayer(), 2F, true, 4);
+			spawnParticle(player.world, event.getPos(), 2F, true, 4,
+					Math.random() * 0.5 - 0.25, Math.random() * 0.5 - 0.25, Math.random() * 0.5 - 0.25);
 		}
 		else if (toolData != null)
 			toolData.setInteger("harvest_boost", 0);
