@@ -35,7 +35,7 @@ public abstract class PlatinumEffect extends BaseMetallurgyEffect {
 	 * Only check for non-wearable items instead of all items
 	 */
 	@Override
-	public float getLevel(EntityLivingBase entity)
+	public int getLevel(EntityLivingBase entity)
 	{
 		return ItemUtils.isMadeOfMetal(metal, entity.getHeldItemMainhand().getItem(), IToolEffect.class) ? 1 : 0;
 	}

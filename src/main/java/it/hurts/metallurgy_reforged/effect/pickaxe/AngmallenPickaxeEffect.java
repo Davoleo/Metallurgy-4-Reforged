@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 
 public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
@@ -50,12 +52,17 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 		if (!canBeApplied(event.getHarvester()))
 			return;
 
-		if (!event.getWorld().isRemote && event.getState().getBlock() instanceof BlockOre)
+		Block block = event.getState().getBlock();
+
+		if (!event.getWorld().isRemote && block instanceof BlockOre)
 		{
 			if (Utils.random.nextInt(10) < 3)
 			{
 				event.getDrops().clear();
-				ItemStack stack = getRandomOreStack((BlockOre) event.getState().getBlock());
+				ItemStack stack = getRandomOreStack((BlockOre) event.getState().getBlock(), hLevel -> {
+					int blockHL = block.getHarvestLevel(event.getState());
+					return hLevel >= blockHL - 1 && hLevel <= blockHL + 1;
+				});
 				ItemBlockOre.setLocked(stack, true);
 				event.getDrops().add(stack);
 				event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1F, 1F);
@@ -73,26 +80,22 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 	 *
 	 * @return a BlockOre ItemStack
 	 */
-	private ItemStack getRandomOreStack(BlockOre ore)
+	static ItemStack getRandomOreStack(BlockOre ore, IntPredicate harvestLevelCondition)
 	{
-		int blockHarvestLevel = ore.getHarvestLevel(ore.getDefaultState());
-
 		//Loop over the metal map and filter for the right ores via Streams
 		List<ItemStack> oresDropList = ModMetals.metalMap.values().stream().filter(mettle -> {
 			if (mettle.isAlloy() || ore == mettle.getOre())
 				return false;
 
 			int level = mettle.getStats().getOreHarvest();
-			return level >= blockHarvestLevel - 1 && level <= blockHarvestLevel + 1;
+			return harvestLevelCondition.test(level);
 		}).map(mettle -> new ItemStack(mettle.getOre())).collect(Collectors.toList());
 		// Map metals to ore itemStacks and collect all of them into a list
 
 		//Add Iron and/or Gold if the level is correct
-		final int ironHarvestLevel = 1;
-		final int goldHarvestLevel = 2;
-		if (ironHarvestLevel >= blockHarvestLevel - 1 && ironHarvestLevel <= blockHarvestLevel + 1)
+		if (harvestLevelCondition.test(1))
 			oresDropList.add(new ItemStack(Blocks.IRON_ORE));
-		if (goldHarvestLevel >= blockHarvestLevel - 1 && goldHarvestLevel <= blockHarvestLevel + 1)
+		if (harvestLevelCondition.test(2))
 			oresDropList.add(new ItemStack(Blocks.GOLD_ORE));
 
 		return oresDropList.get(Utils.random.nextInt(oresDropList.size()));

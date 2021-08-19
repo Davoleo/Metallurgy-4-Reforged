@@ -14,10 +14,7 @@ import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.MidasiumHoeEffect;
 import it.hurts.metallurgy_reforged.effect.hoe.PrometheumHoeEffect;
-import it.hurts.metallurgy_reforged.effect.pickaxe.AngmallenPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.pickaxe.DamascusSteelPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.pickaxe.MithrilPickaxeEffect;
-import it.hurts.metallurgy_reforged.effect.pickaxe.OureclasePickaxeEffect;
+import it.hurts.metallurgy_reforged.effect.pickaxe.*;
 import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
@@ -293,8 +290,8 @@ public class MetallurgyEffects {
 	//Sanguinite Armor (Necromastery)
 	public static final SanguiniteArmorEffect SANGUINITE_ARMOR_EFFECT = new SanguiniteArmorEffect();
 
-	//Increase the speed of item action
-	//public static final BaseMetallurgyEffect quicksilverEffect = new QuicksilverArmorEffect();
+	//Shadow Iron Pickaxe (Incompatible)
+	public static final ShadowIronPickaxeEffect SHADOW_IRON_PICKAXE_EFFECT = new ShadowIronPickaxeEffect();
 
 	//Shadow Steel Armor
 	//public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowSteelArmorEffect();

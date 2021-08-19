@@ -295,6 +295,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.sanguinite_tool")
 	public static boolean sanguiniteEffectArmor = true;
 
+	@Config.Name("Incompatible (Shadow Iron Pickaxe)")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_pickaxe")
+	public static boolean shadowIronEffectPickaxe = true;
+
 	private EffectsConfig()
 	{
 	}

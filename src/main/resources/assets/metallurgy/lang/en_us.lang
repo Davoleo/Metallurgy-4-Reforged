@@ -1371,6 +1371,7 @@ tooltip.metallurgy.effect.sanguinite_all=Deceitful
 tooltip.metallurgy.effect.sanguinite_weapon=Devour
 tooltip.metallurgy.effect.sanguinite_tool=Blood Tap
 tooltip.metallurgy.effect.sanguinite_armor=Necromastery
+tooltip.metallurgy.effect.shadow_iron_pickaxe=Incompatible
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1456,6 +1457,7 @@ tooltip.metallurgy.effect.sanguinite_all.tooltip=This item will disappear comple
 tooltip.metallurgy.effect.sanguinite_weapon.tooltip=You deal more damage as you grow hungry, killing enemies appeases your hunger depending on the max health of the enemy but also makes you hungry for more.
 tooltip.metallurgy.effect.sanguinite_tool.tooltip=Activating the tool will exchange some of you life for increased harvest speed and level also restoring a bit of durability
 tooltip.metallurgy.effect.sanguinite_armor.tooltip=Killing a hostile mob might revive its corpse with lower health allowing it to be killed again for more drops and experience.
+tooltip.metallurgy.effect.shadow_iron_pickaxe.tooltip=Mining Shadow Iron ore will sometimes drop a different ore.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
