@@ -301,6 +301,9 @@ public class EffectsConfig {
 	@Config.Name("Chaos Crit")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_weapon")
 	public static boolean shadowIronEffectWeapon = true;
+	@Config.Name("Broken Evasion")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_armor")
+	public static boolean shadowIronEffectArmor = true;
 
 	private EffectsConfig()
 	{
