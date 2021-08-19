@@ -292,6 +292,8 @@ public class MetallurgyEffects {
 
 	//Shadow Iron Pickaxe (Incompatible)
 	public static final ShadowIronPickaxeEffect SHADOW_IRON_PICKAXE_EFFECT = new ShadowIronPickaxeEffect();
+	//Shadow Iron Weapons (Chaos Crit)
+	public static final ShadowIronWeaponEffect SHADOW_IRON_WEAPON_EFFECT = new ShadowIronWeaponEffect();
 
 	//Shadow Steel Armor
 	//public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowSteelArmorEffect();

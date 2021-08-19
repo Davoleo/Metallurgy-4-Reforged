@@ -298,6 +298,9 @@ public class EffectsConfig {
 	@Config.Name("Incompatible (Shadow Iron Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_pickaxe")
 	public static boolean shadowIronEffectPickaxe = true;
+	@Config.Name("Chaos Crit")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_weapon")
+	public static boolean shadowIronEffectWeapon = true;
 
 	private EffectsConfig()
 	{
