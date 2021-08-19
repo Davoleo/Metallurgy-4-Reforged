@@ -46,7 +46,7 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void extinguishAndSlow(LivingEvent.LivingUpdateEvent event)
 	{
-		float level = getLevel(event.getEntityLiving());
+		int level = getLevel(event.getEntityLiving());
 
 		if (level == 0)
 			return;
@@ -65,7 +65,7 @@ public class CeruclaseArmorEffect extends BaseMetallurgyEffect {
 					//Old distance-based amplifier
 					//int amplifier = (int) Math.round((10 - distance) / 4);
 					// 0 0 1 2
-					int amplifier = Math.max((int) (4 * level) - 2, 0);
+					int amplifier = Math.max(level - 2, 0);
 					entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 10, amplifier));
 					entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, amplifier));
 

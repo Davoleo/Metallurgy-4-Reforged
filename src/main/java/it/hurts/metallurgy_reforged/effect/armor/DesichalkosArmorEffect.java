@@ -40,8 +40,8 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 	public void updateTimeWithoutDamage(LivingEvent.LivingUpdateEvent event)
 	{
 
-		float level = getLevel(event.getEntityLiving());
-		if (level == 0.0F)
+		int level = getLevel(event.getEntityLiving());
+		if (level == 0)
 			return;
 
 		PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
@@ -49,14 +49,12 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 		if (effectData == null)
 			return;
 
-		int maxLevelLayers = (int) (level * 4);
-
-		if (effectData.desichalkosAbsorbLevel > maxLevelLayers)
-			effectData.desichalkosAbsorbLevel = maxLevelLayers;
+		if (effectData.desichalkosAbsorbLevel > level)
+			effectData.desichalkosAbsorbLevel = level;
 
 		if (effectData.desichalkosTimeWithoutTakingDamage < 200)
 			effectData.desichalkosTimeWithoutTakingDamage += 1;
-		else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < maxLevelLayers)
+		else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < level)
 		{
 			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
 			for (int i = 0; i < 30; i++)

@@ -84,7 +84,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 			final AtomicBoolean grassWasBoneMealed = new AtomicBoolean(false);
 
 			growables.forEach(pos -> {
-				float chance = getLevel(entity) * 0.75F;
+				float chance = getLevel(entity) * 0.25F * 0.75F;
 				if (Math.random() < chance)
 				{
 					if (!grassWasBoneMealed.get() || world.getBlockState(pos).getBlock() != Blocks.GRASS)

@@ -54,7 +54,7 @@ public class AngmallenArmorEffect extends BaseMetallurgyEffect {
 
 		if (player.world.isRemote && player.ticksExisted % 20 == 0)
 		{
-			if (player.getRNG().nextFloat() < getLevel(player) * 0.4)
+			if (player.getRNG().nextFloat() < getLevel(player) * 0.25F * 0.4)
 			{
 				BlockPos rareOrePos = getRareOrePos(player.world, player.getPosition());
 				if (rareOrePos != null)

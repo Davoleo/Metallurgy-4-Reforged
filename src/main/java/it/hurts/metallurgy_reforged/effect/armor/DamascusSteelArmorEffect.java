@@ -40,7 +40,7 @@ public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void spawnPier(LivingDamageEvent event)
 	{
-		float level = getLevel(event.getEntityLiving());
+		int level = getLevel(event.getEntityLiving());
 
 		if (level == 0)
 			return;
@@ -62,7 +62,7 @@ public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
 		{
 
 			EntityLivingBase attacker = (EntityLivingBase) event.getSource().getTrueSource();
-			EntityPierKnight pierknight = new EntityPierKnight(entity.world, entity, attacker, (byte) (4 * level));
+			EntityPierKnight pierknight = new EntityPierKnight(entity.world, entity, attacker, (byte) level);
 			pierknight.setPositionAndUpdate(entity.posX, entity.posY, entity.posZ);
 			entity.world.spawnEntity(pierknight);
 			entity.getEntityData().setBoolean("has_pier", true);

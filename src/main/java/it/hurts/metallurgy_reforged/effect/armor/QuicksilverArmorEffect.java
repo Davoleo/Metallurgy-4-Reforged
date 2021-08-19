@@ -64,12 +64,10 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
         //From 1 to 4
         float level = getLevel(event.player);
         //Max Ticks for the level
-        float maxStep = Math.round(Math.max(8 * (1F - level), 0.5F) * 20);
-
-        float armorAmount = level * 4;
+        float maxStep = Math.round(Math.max(8 * (1F - (level / 4F)), 0.5F) * 20);
 
         //5/2 * n^2 + 5/2 * n
-        float speedMultiplier = (2.5F * armorAmount * armorAmount + 2.5F * armorAmount) * 0.01F;
+        float speedMultiplier = (2.5F * level * level + 2.5F * level) * 0.01F;
 
         double speed = Math.pow(event.player.posX - event.player.prevPosX, 2) + Math.pow(event.player.posZ - event.player.prevPosZ, 2);
         //apa.quicksilverArmorStep max 3 levels
@@ -108,8 +106,8 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
         if (!(entity instanceof EntityPlayer))
             return;
 
-        float level = getLevel((EntityLivingBase) entity);
-        if (level == 0.0F)
+        int level = getLevel((EntityLivingBase) entity);
+        if (level == 0)
             return;
 
         PlayerEffectData capa = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
@@ -117,13 +115,10 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
             return;
 
         //Max Ticks for the level
-        float maxStep = Math.round(Math.max(8 * (1F - level), 0.5F) * 20);
+        float maxStep = Math.round(Math.max(8 * (1F - (level / 4F)), 0.5F) * 20);
 
         if (capa.quicksilverTick < maxStep)
             return;
-
-        float armorAmount = level * 4;
-
 
         BlockPos.PooledMutableBlockPos minPos = BlockPos.PooledMutableBlockPos.retain(playerBB.minX + 0.001D, playerBB.minY + 0.001D, playerBB.minZ + 0.001D);
         BlockPos.PooledMutableBlockPos maxPos = BlockPos.PooledMutableBlockPos.retain(playerBB.maxX - 0.001D, playerBB.maxY - 0.001D, playerBB.maxZ - 0.001D);
@@ -140,7 +135,7 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
                         pos.setPos(i, j, k);
                         IBlockState state = world.getBlockState(pos);
 
-                        boolean canWalkOnLava = state.getMaterial() == Material.LAVA && armorAmount > 2;
+                        boolean canWalkOnLava = state.getMaterial() == Material.LAVA && level > 2;
 
                         if (state.getMaterial() == Material.WATER || canWalkOnLava)
                         {

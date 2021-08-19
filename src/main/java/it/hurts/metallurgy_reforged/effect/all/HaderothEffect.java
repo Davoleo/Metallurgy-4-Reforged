@@ -64,11 +64,11 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	}
 
 	@Override
-	public float getLevel(EntityLivingBase entity)
+	public int getLevel(EntityLivingBase entity)
 	{
 		int armor = EventUtils.getArmorPiecesCount(entity, metal);
-		int hand = ItemUtils.isMadeOfMetal(metal, entity.getHeldItemMainhand().getItem()) ? 5 : -1;
-		return Math.max(armor / 4F, hand);
+		int hand = ItemUtils.isMadeOfMetal(metal, entity.getHeldItemMainhand().getItem()) ? 10 : -1;
+		return Math.max(armor, hand);
 	}
 
 	@SubscribeEvent
@@ -117,7 +117,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 		if (source instanceof EntityLivingBase)
 		{
 			EntityLivingBase attacker = ((EntityLivingBase) source);
-			if (getLevel(attacker) < 5)
+			if (getLevel(attacker) < 10)
 				return;
 
 			NBTTagCompound weaponData = attacker.getHeldItemMainhand().getTagCompound();
@@ -133,7 +133,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
-		if (getLevel(player) == 5)
+		if (getLevel(player) == 10)
 		{
 			ItemStack toolStack = player.getHeldItemMainhand();
 

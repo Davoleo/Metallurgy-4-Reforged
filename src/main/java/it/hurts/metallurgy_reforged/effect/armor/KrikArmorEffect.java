@@ -51,7 +51,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	{
 		EntityPlayer player = event.player;
 
-		if (getLevel(player) < 1)
+		if (getLevel(player) < 4)
 			return;
 
 		final int STEP = 255 / 27;
@@ -86,7 +86,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void cancelFall(LivingFallEvent event)
 	{
-		if (getLevel(event.getEntityLiving()) == 1 && event.getEntityLiving() instanceof EntityPlayer)
+		if (getLevel(event.getEntityLiving()) == 4 && event.getEntityLiving() instanceof EntityPlayer)
 			event.setCanceled(true);
 	}
 

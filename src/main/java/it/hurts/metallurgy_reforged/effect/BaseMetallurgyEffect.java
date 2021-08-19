@@ -86,7 +86,7 @@ public abstract class BaseMetallurgyEffect {
 	@Nonnull
 	public abstract EnumEffectCategory getCategory();
 
-	public float getLevel(EntityLivingBase entity)
+	public int getLevel(EntityLivingBase entity)
 	{
 		if (entity == null)
 			return 0;
@@ -97,14 +97,14 @@ public abstract class BaseMetallurgyEffect {
 
 		if (category == EnumEffectCategory.ALL)
 		{
-			if (EventUtils.getArmorPiecesCount(entity, metal) > 0 || ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class))
-				return 1;
-			return 0;
+			int level = ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class) ? 10 : 0;
+			level += EventUtils.getArmorPiecesCount(entity, metal);
+			return level;
 		}
 
 		if (category == EnumEffectCategory.ARMOR)
 		{
-			return EventUtils.getArmorPiecesCount(entity, metal) * 0.25F;
+			return EventUtils.getArmorPiecesCount(entity, metal);
 		}
 		else
 		{
@@ -114,7 +114,7 @@ public abstract class BaseMetallurgyEffect {
 				{
 					IToolEffect tool = ((IToolEffect) toolItem);
 					if (ArrayUtils.contains(category.getTools(), tool.getToolClass()))
-						return 1;
+						return 10;
 				}
 			}
 		}

@@ -63,7 +63,7 @@ public class KalendriteArmorEffect extends BaseMetallurgyEffect {
 	public void regenHealth(LivingEvent.LivingUpdateEvent event)
 	{
 		final EntityLivingBase entity = event.getEntityLiving();
-		int level = (int) (getLevel(entity) * 4);
+		int level = getLevel(entity);
 		if (level == 0 || entity.ticksExisted % 4 != 0)
 			return;
 

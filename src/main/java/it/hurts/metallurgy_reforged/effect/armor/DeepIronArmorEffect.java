@@ -10,10 +10,8 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -40,24 +38,22 @@ public class DeepIronArmorEffect extends BaseMetallurgyEffect {
 	public void underwaterBoost(LivingEvent.LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		float level = getLevel(entity);
+		int level = getLevel(entity);
 
 		if (level > 0 && entity.isInWater())
 		{
 			if (entity.ticksExisted % 30 == 0)
 			{
-				int amplifier = (int) ((level * 4) - 1);
+				int amplifier = level - 1;
 				entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 0, false, false));
 
-				if (level >= 0.5)
+				if (level >= 2)
 					entity.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 230, amplifier - 2, false, false));
 			}
 
-			entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1 + (level * 4));
+			entity.getEntityAttribute(EntityLivingBase.SWIM_SPEED).setBaseValue(1 + level);
 			if (entity.motionY < 0)
-			{
-				entity.motionY -= 0.1 * level;
-			}
+				entity.motionY -= 0.1 * 0.25 * level;
 		}
 		else
 		{

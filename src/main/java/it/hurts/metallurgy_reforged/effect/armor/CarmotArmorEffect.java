@@ -55,7 +55,7 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void livingTick(LivingEvent.LivingUpdateEvent event)
 	{
-		if (getLevel(event.getEntityLiving()) == 1)
+		if (getLevel(event.getEntityLiving()) == 4)
 		{
 			if (event.getEntityLiving().ticksExisted % 40 == 0)
 			{
@@ -109,7 +109,7 @@ public class CarmotArmorEffect extends BaseMetallurgyEffect {
 
 		int duration = event.getDuration();
 
-		if (event instanceof LivingEntityUseItemEvent.Tick && Math.random() < level)
+		if (event instanceof LivingEntityUseItemEvent.Tick && Math.random() < level / 4F)
 		{
 			event.setDuration(duration - 1);
 

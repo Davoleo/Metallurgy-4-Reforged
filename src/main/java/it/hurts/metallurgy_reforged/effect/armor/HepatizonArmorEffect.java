@@ -34,12 +34,12 @@ public class HepatizonArmorEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void decreasePlayerVisibility(PlayerEvent.Visibility event)
 	{
-		float level = getLevel(event.getEntityPlayer());
+		int level = getLevel(event.getEntityPlayer());
 
 		if (level == 0)
 			return;
 
-		event.modifyVisibility(1 - (level / 1.25));
+		event.modifyVisibility(1 - (level / 4.0 / 1.25));
 		//System.out.println(event.getVisibilityModifier());
 	}
 

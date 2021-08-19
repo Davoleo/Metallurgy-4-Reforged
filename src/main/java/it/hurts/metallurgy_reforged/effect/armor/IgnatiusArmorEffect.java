@@ -62,7 +62,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 			bundle.resetProgress(entity);
 
 		//currentStep >= (0.25 | 0.5 | 0.75 | 1) * 40
-		int lavaImmunityTimespan = (int) (getLevel(entity) * maxSteps);
+		int lavaImmunityTimespan = (getLevel(entity) * (maxSteps / 10));
 		if (step >= lavaImmunityTimespan)
 		{
 			bundle.resetProgress(entity);

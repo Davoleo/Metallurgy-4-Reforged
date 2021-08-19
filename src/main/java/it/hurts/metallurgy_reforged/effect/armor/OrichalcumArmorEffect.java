@@ -36,7 +36,7 @@ public class OrichalcumArmorEffect extends BaseMetallurgyEffect {
         {
             EntityLivingBase attacker = (EntityLivingBase) entity;
 
-            float level = getLevel(attacker);
+            int level = getLevel(attacker);
             if (level == 0)
                 return;
 
@@ -45,10 +45,8 @@ public class OrichalcumArmorEffect extends BaseMetallurgyEffect {
                 //strength can be given only if the bearer kills an hostile mob.
                 if (((EntityLiving) event.getEntityLiving()).getAttackTarget() == attacker)
                 {
-                    int armorCount = (int) (level * 4);
-
                     //min radius 5 max 14, with a 3 increase per amplification level
-                    int radius = 2 + armorCount * 3;
+                    int radius = 2 + level * 3;
 
                     AxisAlignedBB searchBox = new AxisAlignedBB(attacker.getPosition()).grow(radius);
 
@@ -60,7 +58,7 @@ public class OrichalcumArmorEffect extends BaseMetallurgyEffect {
                         //capped at 6( five because amplifiers start at 0)
                         int amplifier = Math.min(totalMobs - 1, 5);
                         //potion time from min 2 to max 8 seconds.
-                        int buffTime = armorCount * 2 * 20;
+                        int buffTime = level * 2 * 20;
                         attacker.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, buffTime, amplifier));
 
                     }

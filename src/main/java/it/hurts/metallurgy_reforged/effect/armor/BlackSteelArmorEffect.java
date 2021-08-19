@@ -52,7 +52,7 @@ public class BlackSteelArmorEffect extends BaseMetallurgyEffect {
 			//amp can be -1 to 2
 			//you get a new effect amplifier for each armor piece
 			//For example if you wear two pieces: level = 2 & effect Amps can increase up to 1
-			if (level * 4 > resistanceAmp && resistanceAmp <= 2)
+			if (level > resistanceAmp && resistanceAmp <= 2)
 			{
 				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, resistanceAmp + 1));
 				entity.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, resistanceAmp + 1));

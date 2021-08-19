@@ -58,7 +58,7 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 	{
 
 		// In seconds (should be multiplied by 4 to get the actual number of warpDatas)
-		int backTrackExtension = (int) (getLevel(event.player) * 8);
+		int backTrackExtension = getLevel(event.player) * 2;
 
 		if (event.phase != TickEvent.Phase.START || backTrackExtension == 0)
 			return;
@@ -112,7 +112,7 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 
 			//Set armor on cooldown after jumping
 			//int cooldown = (getLevel(player) > 0.5F ? 32 : 16) * 20;
-			int level = (int) (getLevel(player) * 4);
+			int level = getLevel(player);
 			int cooldown = (int) (Math.pow(2, 7 - level) * 20);
 			for (ItemArmorBase armor : metal.getArmorSet())
 				player.getCooldownTracker().setCooldown(armor, cooldown);

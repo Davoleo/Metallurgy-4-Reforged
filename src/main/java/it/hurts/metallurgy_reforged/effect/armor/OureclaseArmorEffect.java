@@ -46,8 +46,7 @@ public class OureclaseArmorEffect extends BaseMetallurgyEffect {
 	public void damageAndKnockBack(LivingEvent.LivingUpdateEvent event)
 	{
 		EntityLivingBase wearer = event.getEntityLiving();
-		float levelF = getLevel(wearer);
-		int armorCount = (int) (levelF * 4);
+		int armorCount = getLevel(wearer);
 
 		if (armorCount == 0)
 			return;

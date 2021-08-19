@@ -110,7 +110,7 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 		{
 			EntityPlayer killer = ((EntityPlayer) sourceEnt);
 
-			float level = getLevel(killer);
+			int level = getLevel(killer);
 			if (level == 0)
 				return;
 
@@ -119,7 +119,7 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 			final EntityLivingBase killedEntity = event.getEntityLiving();
 
 			//If the killed mob is hostile
-			if (killedEntity instanceof IMob && Math.random() <= level)
+			if (killedEntity instanceof IMob && Math.random() <= level / 4F)
 			{
 				if (killedEntity.getEntityData().getInteger("corpse_state") > 0)
 					return;

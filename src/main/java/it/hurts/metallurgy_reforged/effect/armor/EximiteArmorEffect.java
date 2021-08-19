@@ -39,7 +39,7 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 	public void onShulkerAttack(LivingSetAttackTargetEvent event)
 	{
 
-		if (getLevel(event.getTarget()) < 1)
+		if (getLevel(event.getTarget()) < 4)
 			return;
 
 		EntityLivingBase entity = event.getEntityLiving();
@@ -47,7 +47,8 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 		{
 			EntityShulker shulker = ((EntityShulker) entity);
 
-			EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ, 16, 16, e -> 1.0, player -> getLevel(player) < 1);
+			EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ,
+					16, 16, e -> 1.0, player -> getLevel(player) < 4);
 			shulker.setAttackTarget(newTarget);
 
 			for (int i = 0; i < 20; i++)

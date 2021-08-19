@@ -48,7 +48,7 @@ public class PlatinumArmorEffect extends BaseMetallurgyEffect {
 	public void purifyEffects(LivingEvent.LivingUpdateEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		float level = getLevel(entity) * 2;
+		float level = getLevel(entity) / 2F;
 		if (level == 0)
 			return;
 

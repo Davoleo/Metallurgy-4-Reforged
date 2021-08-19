@@ -43,7 +43,7 @@ public class ElectrumArmorEffect extends BaseMetallurgyEffect {
 		if (event.getEntityLiving() instanceof EntityPlayer)
 		{
 			EntityPlayer player = ((EntityPlayer) event.getEntityLiving());
-			float level = getLevel(player);
+			int level = getLevel(player);
 
 			if (level == 0)
 				return;
@@ -60,8 +60,8 @@ public class ElectrumArmorEffect extends BaseMetallurgyEffect {
 			});
 
 			// max energy is 7000 + 0..3 * 3000
-			//with 0..3 being dependant on how much armor the player is wearing
-			final int maxEnergy = 7000 + ((int) (level * 4 - 1) * 3000);
+			//with 0..3 depending on how much armor the player is wearing
+			final int maxEnergy = 7000 + (level - 1) * 3000;
 
 			//Energy proportional to the the health remaining after the pure amount of damage is taken away
 			float energy = (1 - (player.getHealth() - event.getAmount()) / player.getMaxHealth()) * maxEnergy;
