@@ -34,6 +34,7 @@ public class PlayerEffectData {
 		effectBundles.put(mithrilWeaponBundle.getPrefixKey(), mithrilWeaponBundle);
 		effectBundles.put(prometheumArmorBundle.getPrefixKey(), prometheumArmorBundle);
 		effectBundles.put(quicksilverWeaponBundle.getPrefixKey(), quicksilverWeaponBundle);
+		effectBundles.put(shadowSteelArmorBundle.getPrefixKey(), shadowSteelArmorBundle);
 	}
 
 	//Amordrine Armor ----------------------------------------
@@ -93,8 +94,10 @@ public class PlayerEffectData {
 	public ExtraFilledDataBundle prometheumArmorBundle = new ExtraFilledDataBundle("prometheum_armor", 8, 5, bundle -> bundle.currentStep > 0);
 
 	//Quicksilver Weapons
-    public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
-    //Quicksilver Armor
-    public int quicksilverTick = 0;
+	public ExtraFilledDataBundle quicksilverWeaponBundle = new ExtraFilledDataBundle("quicksilver_weapon", 11, 1, bundle -> bundle.currentStep > 0);
+	//Quicksilver Armor
+	public int quicksilverTick = 0;
+
+	public ExtraFilledDataBundle shadowSteelArmorBundle = new ExtraFilledDataBundle("shadow_steel_armor", 4, 20, bundle -> bundle.currentStep > 0);
 
 }

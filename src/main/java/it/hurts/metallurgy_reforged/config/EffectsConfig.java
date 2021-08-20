@@ -308,6 +308,9 @@ public class EffectsConfig {
 	@Config.Name("Umbral-synthesis (Shadow Steel Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_all")
 	public static boolean shadowSteelEffectAll = true;
+	@Config.Name("Eclipse (Shadow Steel Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_armor")
+	public static boolean shadowSteelEffectArmor = true;
 
 	private EffectsConfig()
 	{

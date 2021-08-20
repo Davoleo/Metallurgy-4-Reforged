@@ -1375,6 +1375,7 @@ tooltip.metallurgy.effect.shadow_iron_pickaxe=Incompatible
 tooltip.metallurgy.effect.shadow_iron_weapon=Chaos Crit
 tooltip.metallurgy.effect.shadow_iron_armor=Broken Evasion
 tooltip.metallurgy.effect.shadow_steel_all=Umbral-synthesis
+tooltip.metallurgy.effect.shadow_steel_armor=Eclipse
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1464,6 +1465,7 @@ tooltip.metallurgy.effect.shadow_iron_pickaxe.tooltip=Mining Shadow Iron ore wil
 tooltip.metallurgy.effect.shadow_iron_weapon.tooltip=Attacks occasionally become critical hits dealing random increased damage up to more than 3 times the base attack value.
 tooltip.metallurgy.effect.shadow_iron_armor.tooltip=Has a chance of absorbing attack damage completely at the cost of durability from one of the armor pieces
 tooltip.metallurgy.effect.shadow_steel_all.tooltip=(WIP DESC) This item regenerates durability in the darkness, regen speed is relative to the darkness level
+tooltip.metallurgy.effect.shadow_steel_armor.tooltip=Whether if you're attacked in light or in darkness you either blind and damage enemies with fire or evade anymore damage and gain speed boost for a few seconds
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
