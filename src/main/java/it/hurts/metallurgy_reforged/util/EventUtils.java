@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import jline.internal.Nullable;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
@@ -22,6 +23,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -190,6 +193,25 @@ public class EventUtils {
 			default:
 				return base;
 		}
+	}
+
+	/**
+	 * @param maxClamp is the float value to clamp-lerp to
+	 */
+	public static float getDarknessLevel(Entity entity, float maxClamp)
+	{
+		BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+		//check if it is day
+		boolean isDay = entity.world.provider.isDaytime();
+		//get sky light level,if it is night the light will be 0
+		int lightSky = Math.min(isDay ? entity.world.getLightFor(EnumSkyBlock.SKY, pos) : 0, 14);
+		//get light emitted by a block(like a torch)
+		int lightBlock = Math.min(entity.world.getLightFor(EnumSkyBlock.BLOCK, pos), 14);
+		//get the light based on the lightSky and the lightBlock
+		int light = Math.max(lightSky, lightBlock);
+
+		//14 is the max Light possible
+		return maxClamp - (light * maxClamp / 14F);
 	}
 
 }

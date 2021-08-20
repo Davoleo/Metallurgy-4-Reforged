@@ -14,7 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -62,7 +62,7 @@ public class DeepIronShadowSteelWeaponEffect extends BaseMetallurgyEffect {
 			if (metal == ModMetals.SHADOW_STEEL)
 			{
 
-				float percentage = Utils.getLightArmorPercentage(player, 50F);
+				float percentage = EventUtils.getDarknessLevel(player, 50F);
 				//calculate the Speed to add to the sword
 				double added_speed = attackSpeedInstance.getBaseValue() * percentage / 100F;
 				//the modifier UUID

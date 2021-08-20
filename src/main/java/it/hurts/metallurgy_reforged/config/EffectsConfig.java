@@ -298,12 +298,16 @@ public class EffectsConfig {
 	@Config.Name("Incompatible (Shadow Iron Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_pickaxe")
 	public static boolean shadowIronEffectPickaxe = true;
-	@Config.Name("Chaos Crit")
+	@Config.Name("Chaos Crit (Shadow Iron Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_weapon")
 	public static boolean shadowIronEffectWeapon = true;
-	@Config.Name("Broken Evasion")
+	@Config.Name("Broken Evasion (Shadow Iron Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_iron_armor")
 	public static boolean shadowIronEffectArmor = true;
+
+	@Config.Name("Umbral-synthesis (Shadow Steel Items)")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_all")
+	public static boolean shadowSteelEffectAll = true;
 
 	private EffectsConfig()
 	{

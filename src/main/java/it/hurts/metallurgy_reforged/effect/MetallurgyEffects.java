@@ -297,6 +297,8 @@ public class MetallurgyEffects {
 	//Shadow Iron Armor (Broken Evasion)
 	public static final ShadowIronArmorEffect SHADOW_IRON_ARMOR_EFFECT = new ShadowIronArmorEffect();
 
+	public static final ShadowSteelEffect SHADOW_STEEL_EFFECT = new ShadowSteelEffect();
+
 	//Shadow Steel Armor
 	//public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowSteelArmorEffect();
 

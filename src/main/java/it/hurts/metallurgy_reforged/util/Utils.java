@@ -26,11 +26,9 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.JsonContext;
 import net.minecraftforge.fml.relauncher.Side;
@@ -99,23 +97,6 @@ public class Utils {
 			player.world.spawnEntity(new EntityXPOrb(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, j));
 		}
 
-	}
-
-	//maxPercent is the max percentage that the player can reach when they're in complete darkness
-	public static float getLightArmorPercentage(EntityPlayer pl, float maxPercent)
-	{
-		BlockPos pos = new BlockPos(pl.posX, pl.posY, pl.posZ);
-		//check if it is day
-		boolean isDay = (pl.world.getWorldTime() % 23300) <= 12800;
-		//get sky light level,if it is night the light will be 0
-		float lightSky = Math.min(isDay ? pl.world.getLightFor(EnumSkyBlock.SKY, pos) : 0F, 14F);
-		//get light emitted by a block(like a torch)
-		float lightBlock = Math.min(pl.world.getLightFor(EnumSkyBlock.BLOCK, pos), 14);
-		//get the light based on the lightSky and the lightBlock
-		float light = Math.max(lightSky, lightBlock);
-
-		//14 is the max Light possible
-		return maxPercent - (light * maxPercent / 14F);
 	}
 
 	public static double angle(Vec3d first, Vec3d second)

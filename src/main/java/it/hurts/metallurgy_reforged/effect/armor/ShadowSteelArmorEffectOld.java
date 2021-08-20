@@ -11,10 +11,8 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -23,9 +21,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import javax.annotation.Nonnull;
 
 @Deprecated
-public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
+public class ShadowSteelArmorEffectOld extends BaseMetallurgyEffect {
 
-	public ShadowSteelArmorEffect()
+	public ShadowSteelArmorEffectOld()
 	{
 		super(ModMetals.SHADOW_STEEL);
 	}
@@ -55,7 +53,7 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect {
 				{
 					float amount = event.getAmount();
 					//Decrease the damage amount of 75% of the original damage in case the player is in complete darkness
-					amount -= Utils.getLightArmorPercentage(player, 0.75F) * amount;
+					amount -= EventUtils.getDarknessLevel(player, 0.75F) * amount;
 					event.setAmount(amount);
 				}
 			}

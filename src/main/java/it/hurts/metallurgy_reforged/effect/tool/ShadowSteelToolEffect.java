@@ -13,7 +13,7 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -41,7 +41,7 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 
 		if (isShadowSteelTool(player.getHeldItemMainhand().getItem()))
 		{
-			float percentage = Utils.getLightArmorPercentage(player, 100F);
+			float percentage = EventUtils.getDarknessLevel(player, 100F);
 			float speed = event.getNewSpeed() * percentage / 40F;
 			event.setNewSpeed(event.getOriginalSpeed() + speed);
 		}
