@@ -127,15 +127,20 @@ public class ItemPickaxeBase extends ItemPickaxe implements IToolEffect {
     @Override
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
     {
-        if (!this.effects.isEmpty())
-            effects.forEach(effect -> effect.rightClickHandler(worldIn, playerIn, handIn));
+        effects.forEach(effect -> {
+            if (effect.isEnabled())
+                effect.rightClickHandler(worldIn, playerIn, handIn);
+        });
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
     @Override
     public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
     {
-        effects.forEach(effect -> effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected));
+        effects.forEach(effect -> {
+            if (effect.isEnabled())
+                effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+        });
     }
 
     @SideOnly(Side.CLIENT)

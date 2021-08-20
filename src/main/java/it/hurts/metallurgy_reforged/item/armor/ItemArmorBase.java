@@ -100,7 +100,10 @@ public class ItemArmorBase extends ItemArmor implements IMetalItem {
     @Override
     public void onUpdate(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
     {
-        effects.forEach(effect -> effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected));
+        effects.forEach(effect -> {
+            if (effect.isEnabled())
+                effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+        });
     }
 
     @SideOnly(Side.CLIENT)
