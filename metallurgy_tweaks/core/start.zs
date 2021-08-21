@@ -13,8 +13,8 @@ var thermalExpansion = false as bool;
 var tinkersConstruct = false as bool;
 var projectE = false as bool;
 var mekanism = false as bool;
-var activateThermalOptionalScripts = scripts.metallurgyTweaksConfig.activateThermalOptionalScripts;
 
+// ---- Metallurgy ----
 if(loadedMods has "metallurgy")
 {
 	print("Metallurgy has been detected!");
@@ -29,6 +29,8 @@ else
 	print("-------------------------------------------------------------------------------------");
 	metallurgy = false;
 }
+
+// ---- ModTweaker ----
 if(loadedMods has "modtweaker" & metallurgy == true)
 {
 	print("ModTweaker has been detected! Mod support for the following detected mods will be active.");
@@ -44,6 +46,8 @@ else if(metallurgy == true)
 	print("------------------------------------------------------------------------------------");
 	modTweaker = false;
 }
+
+// ---- Chisel ----
 if(loadedMods has "chisel" & modTweaker == true)
 {
 	print("Chisel has been detected! compatibility script will load.");
@@ -56,21 +60,12 @@ else if(metallurgy == true & modTweaker == true)
 	print("---------------------------------------------------------------------");
 	chisel = false;
 }
+
+// ---- Thermal Expansion ----
 if(loadedMods has "thermalexpansion" & modTweaker == true)
 {
 	print("Thermal Expansion has been detected! it's mod support script will activate.");
-	print("checking ''metallurgyTweaksConfig'' for user configuration...");
 	thermalExpansion = true;
-	if(activateThermalOptionalScripts == true)
-	{
-		print("activateThermalOptionalScripts is set to true!");
-		print("''thermalConfigRelatedScript'' script will activate.");
-	}
-	else if(activateThermalOptionalScripts == false)
-	{
-		print("activateThermalOptionalScripts is set to false!");
-		print("''thermalConfigRelatedScript'' script won't activate.");
-	}
 }
 else if(metallurgy == true & modTweaker == true)
 {
@@ -79,6 +74,8 @@ else if(metallurgy == true & modTweaker == true)
 	print("--------------------------------------------------------------------------------");
 	thermalExpansion = false;
 }
+
+// ---- Tinkers' Construct ----
 if(loadedMods has "tconstruct" & modTweaker == true)
 {
 	print("Tinkers' Construct has been detected! compatibility script will load.");
@@ -91,18 +88,8 @@ else if(metallurgy == true & modTweaker == true)
 	print("---------------------------------------------------------------------------------");
 	tinkersConstruct = false;
 }
-if(loadedMods has "projecte" & modTweaker == true)
-{
-	print("ProjectE has been detected!");
-	print("At the moment, there are no projectE scripts, however, make sure to download the Optional Config file in the curseforge site! or else EMC values won't match!");
-	projectE = true;
-}
-else if(metallurgy == true)
-{
-	print("---------------------------------------------------------------------------------");
-	print("ProjectE has not been detected! compatibility script won't be loaded.");
-	print("---------------------------------------------------------------------------------");
-}
+
+// ---- Mekanism ----
 if(loadedMods has "mekanism")
 {
 	print("Mekanism has been detected! compatibility script will load.");
@@ -113,13 +100,4 @@ else if(metallurgy == true)
 	print("---------------------------------------------------------------------------------");
 	print("Mekanism has not been detected! compatibility script won't be loaded.");
 	print("---------------------------------------------------------------------------------");
-}
-if(modTweaker == true & metallurgy == true)
-{
-	print("Mod detection finished, please check above to see which scripts will be loaded and which won't.");
-	print("Next script: metallurgyTweaksGlobalVariables.zs");
-}
-else if(modTweaker == false & metallurgy == false)
-{
-	print("There has been a fatal error during the mod detection, please read above for troubleshooting.");
 }
