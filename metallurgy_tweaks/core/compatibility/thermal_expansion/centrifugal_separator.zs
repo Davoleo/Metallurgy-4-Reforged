@@ -1,4 +1,4 @@
-#priority 89
+#priority 85
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
 
 import mods.thermalexpansion.Centrifuge;
@@ -9,9 +9,8 @@ import crafttweaker.oredict.IOreDictEntry;
 import crafttweaker.oredict.IOreDict;
 
 print("---------------------------------------------------------------------------------------------");
-print("This script allows you to use the Centrifugal Separator to separate Metallurgy's metal dusts!");
-print("Make sure to check the recipe book or JEI to know the recipes!");
-print("All rights reserved unless stated otherwise.");
+print("This script allows you to use the Centrifugal Separator to separate Metallurgy's alloy dusts!");
+print("These scripts are licensed under GNU GPLv3.");
 print("---------------------------------------------------------------------------------------------");
 print("Proceeding to add Centrifugal Separator Recipes...");
 
@@ -29,18 +28,14 @@ val dustArray4Component2 = [<metallurgy:manganese_dust>,<metallurgy:deep_iron_du
 
 for i in 0 .. dustArray2.length
 {
-	mods.thermalexpansion.Centrifuge.addRecipe([(dustArray2Component1[i]), dustArray2Component2[i]], dustArray2[i], null, 4000);
+	Centrifuge.addRecipe([(dustArray2Component1[i]), dustArray2Component2[i]], dustArray2[i], null, 4000);
 }
 for i in 0 .. dustArray3.length
 {
-	mods.thermalexpansion.Centrifuge.addRecipe([(dustArray3Component1[i] * 2), dustArray3Component2[i]], dustArray3[i], null, 6000);
+	Centrifuge.addRecipe([(dustArray3Component1[i] * 2), dustArray3Component2[i]], dustArray3[i], null, 6000);
 }
 for i in 0 .. dustArray4.length
 {
-	mods.thermalexpansion.Centrifuge.addRecipe([(dustArray4Component1[i]), dustArray4Component2[i] * 3], dustArray4[i], null, 8000);
+	Centrifuge.addRecipe([(dustArray4Component1[i]), dustArray4Component2[i] * 3], dustArray4[i], null, 8000);
 }
 print("Success!");
-print("Proceeding to next script...");
-
-
-

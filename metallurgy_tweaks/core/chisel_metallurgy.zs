@@ -1,15 +1,15 @@
-#priority 95
+#priority 97
 #modloaded metallurgy chisel crafttweaker modtweaker
 import crafttweaker.item.IItemStack;
 import crafttweaker.oredict.IOreDictEntry;
 import mods.chisel.Carving as chisel;
 print("----------------------------------------------------------------------------------------------------------------------");
 print("Thank you for installing Chisel! This script will create new chisel variants to create metallurgy's decoration blocks.");
-print("All rights reserved unless stated otherwise.");
+print("These scripts are licensed under GNU GPLv3.");
 print("-----------------------------------------------------------------------------------------------------------------------");
 print("Proceeding to create the new chisel variants for metallurgy's metal blocks...");
 { //Amordrine
-	val amordrineArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.amordrineBlocks;
+	val amordrineArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.amordrineBlocks;
 	chisel.addGroup("amordrine");
 	for amordrineBlocks in amordrineArray
 	{
@@ -17,7 +17,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Haderoth
-	val haderothArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.haderothBlocks;
+	val haderothArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.haderothBlocks;
 	chisel.addGroup("haderoth");
 	for haderothBlocks in haderothArray
 	{
@@ -25,7 +25,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Alduorite
-	val alduoriteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.alduoriteBlocks;
+	val alduoriteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.alduoriteBlocks;
 	chisel.addGroup("alduorite");
 	for alduoriteBlocks in alduoriteArray
 	{
@@ -33,7 +33,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Platinum
-	val platinumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.platinumBlocks;
+	val platinumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.platinumBlocks;
 	chisel.addGroup("platinum");
 	for platinumBlocks in platinumArray
 	{
@@ -41,7 +41,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Vulcanite
-	val vulcaniteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.vulcaniteBlocks;
+	val vulcaniteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.vulcaniteBlocks;
 	chisel.addGroup("vulcanite");
 	for vulcaniteBlocks in vulcaniteArray
 	{
@@ -49,7 +49,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Tin
-	val tinArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.tinBlocks;
+	val tinArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.tinBlocks;
 	chisel.addGroup("tin");
 	for tinBlocks in tinArray
 	{
@@ -57,7 +57,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Ignatius
-	val ignatiusArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.ignatiusBlocks;
+	val ignatiusArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.ignatiusBlocks;
 	chisel.addGroup("ignatius");
 	for ignatiusBlocks in ignatiusArray
 	{
@@ -65,7 +65,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Zinc
-	val zincArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.zincBlocks;
+	val zincArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.zincBlocks;
 	chisel.addGroup("zinc");
 	for zincBlocks in zincArray
 	{
@@ -73,7 +73,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Etherium
-	val etheriumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.etheriumBlocks;
+	val etheriumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.etheriumBlocks;
 	chisel.addGroup("etherium");
 	for etheriumBlocks in etheriumArray
 	{
@@ -81,7 +81,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Quicksilver
-	val quicksilverArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.quicksilverBlocks;
+	val quicksilverArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.quicksilverBlocks;
 	chisel.addGroup("quicksilver");
 	for quicksilverBlocks in quicksilverArray
 	{
@@ -89,7 +89,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Brass
-	val brassArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.brassBlocks;
+	val brassArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.brassBlocks;
 	chisel.addGroup("brass");
 	for brassBlocks in brassArray
 	{
@@ -97,7 +97,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //AstralSilver
-	val astralSilverArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.astralSilverBlocks;
+	val astralSilverArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.astralSilverBlocks;
 	chisel.addGroup("astralSilver");
 	for astralSilverBlocks in astralSilverArray
 	{
@@ -105,7 +105,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Hepatizon
-	val hepatizonArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.hepatizonBlocks;
+	val hepatizonArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.hepatizonBlocks;
 	chisel.addGroup("hepatizon");
 	for hepatizonBlocks in hepatizonArray
 	{
@@ -113,7 +113,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Bronze
-	val bronzeArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.bronzeBlocks;
+	val bronzeArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.bronzeBlocks;
 	chisel.addGroup("bronze");
 	for bronzeBlocks in bronzeArray
 	{
@@ -121,7 +121,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Lemurite
-	val lemuriteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.lemuriteBlocks;
+	val lemuriteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.lemuriteBlocks;
 	chisel.addGroup("lemurite");
 	for lemuriteBlocks in lemuriteArray
 	{
@@ -129,7 +129,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Sanguinite
-	val sanguiniteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.sanguiniteBlocks;
+	val sanguiniteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.sanguiniteBlocks;
 	chisel.addGroup("sanguinite");
 	for sanguiniteBlocks in sanguiniteArray
 	{
@@ -137,7 +137,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Eximite
-	val eximiteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.eximiteBlocks;
+	val eximiteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.eximiteBlocks;
 	chisel.addGroup("eximite");
 	for eximiteBlocks in eximiteArray
 	{
@@ -145,7 +145,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Silver
-	val silverArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.silverBlocks;
+	val silverArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.silverBlocks;
 	chisel.addGroup("silver");
 	for silverBlocks in silverArray
 	{
@@ -153,7 +153,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Desichalkos
-	val desichalkosArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.desichalkosBlocks;
+	val desichalkosArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.desichalkosBlocks;
 	chisel.addGroup("desichalkos");
 	for desichalkosBlocks in desichalkosArray
 	{
@@ -161,7 +161,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Celenegil
-	val celenegilArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.celenegilBlocks;
+	val celenegilArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.celenegilBlocks;
 	chisel.addGroup("celenegil");
 	for celenegilBlocks in celenegilArray
 	{
@@ -169,7 +169,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Steel
-	val steelArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.steelBlocks;
+	val steelArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.steelBlocks;
 	chisel.addGroup("steel");
 	for steelBlocks in steelArray
 	{
@@ -177,7 +177,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //ShadowIron
-	val shadowIronArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.shadowIronBlocks;
+	val shadowIronArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.shadowIronBlocks;
 	chisel.addGroup("shadowIron");
 	for shadowIronBlocks in shadowIronArray
 	{
@@ -185,7 +185,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Carmot
-	val carmotArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.carmotBlocks;
+	val carmotArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.carmotBlocks;
 	chisel.addGroup("carmot");
 	for carmotBlocks in carmotArray
 	{
@@ -193,7 +193,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Mithril
-	val mithrilArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.mithrilBlocks;
+	val mithrilArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.mithrilBlocks;
 	chisel.addGroup("mithril");
 	for mithrilBlocks in mithrilArray
 	{
@@ -201,7 +201,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Ceruclase
-	val ceruclaseArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.ceruclaseBlocks;
+	val ceruclaseArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.ceruclaseBlocks;
 	chisel.addGroup("ceruclase");
 	for ceruclaseBlocks in ceruclaseArray
 	{
@@ -209,7 +209,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //DeepIron
-	val deepIronArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.deepIronBlocks;
+	val deepIronArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.deepIronBlocks;
 	chisel.addGroup("deepIron");
 	for deepIronBlocks in deepIronArray
 	{
@@ -217,7 +217,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Angmallen
-	val angmallenArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.angmallenBlocks;
+	val angmallenArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.angmallenBlocks;
 	chisel.addGroup("angmallen");
 	for angmallenBlocks in angmallenArray
 	{
@@ -225,7 +225,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Manganese
-	val manganeseArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.manganeseBlocks;
+	val manganeseArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.manganeseBlocks;
 	chisel.addGroup("manganese");
 	for manganeseBlocks in manganeseArray
 	{
@@ -233,7 +233,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Kalendrite
-	val kalendriteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.kalendriteBlocks;
+	val kalendriteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.kalendriteBlocks;
 	chisel.addGroup("kalendrite");
 	for kalendriteBlocks in kalendriteArray
 	{
@@ -241,7 +241,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //DamascusSteel
-	val damascusSteelArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.damascusSteelBlocks;
+	val damascusSteelArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.damascusSteelBlocks;
 	chisel.addGroup("damascusSteel");
 	for damascusSteelBlocks in damascusSteelArray
 	{
@@ -249,7 +249,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Prometheum
-	val prometheumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.prometheumBlocks;
+	val prometheumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.prometheumBlocks;
 	chisel.addGroup("prometheum");
 	for prometheumBlocks in prometheumArray
 	{
@@ -257,7 +257,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Copper
-	val copperArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.copperBlocks;
+	val copperArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.copperBlocks;
 	chisel.addGroup("copper");
 	for copperBlocks in copperArray
 	{
@@ -265,7 +265,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Adamantine
-	val adamantineArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.adamantineBlocks;
+	val adamantineArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.adamantineBlocks;
 	chisel.addGroup("adamantine");
 	for adamantineBlocks in adamantineArray
 	{
@@ -273,7 +273,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Electrum
-	val electrumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.electrumBlocks;
+	val electrumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.electrumBlocks;
 	chisel.addGroup("electrum");
 	for electrumBlocks in electrumArray
 	{
@@ -281,7 +281,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Tartarite
-	val tartariteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.tartariteBlocks;
+	val tartariteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.tartariteBlocks;
 	chisel.addGroup("tartarite");
 	for tartariteBlocks in tartariteArray
 	{
@@ -289,7 +289,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Atlarus
-	val atlarusArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.atlarusBlocks;
+	val atlarusArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.atlarusBlocks;
 	chisel.addGroup("atlarus");
 	for atlarusBlocks in atlarusArray
 	{
@@ -297,7 +297,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //BlackSteel
-	val blackSteelArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.blackSteelBlocks;
+	val blackSteelArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.blackSteelBlocks;
 	chisel.addGroup("blackSteel");
 	for blackSteelBlocks in blackSteelArray
 	{
@@ -305,7 +305,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Vyroxeres
-	val vyroxeresArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.vyroxeresBlocks;
+	val vyroxeresArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.vyroxeresBlocks;
 	chisel.addGroup("vyroxeres");
 	for vyroxeresBlocks in vyroxeresArray
 	{
@@ -313,7 +313,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Lutetium
-	val lutetiumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.lutetiumBlocks;
+	val lutetiumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.lutetiumBlocks;
 	chisel.addGroup("lutetium");
 	for lutetiumBlocks in lutetiumArray
 	{
@@ -321,7 +321,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Osmium
-	val osmiumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.osmiumBlocks;
+	val osmiumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.osmiumBlocks;
 	chisel.addGroup("osmium");
 	for osmiumBlocks in osmiumArray
 	{
@@ -329,7 +329,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Oureclase
-	val oureclaseArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.oureclaseBlocks;
+	val oureclaseArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.oureclaseBlocks;
 	chisel.addGroup("oureclase");
 	for oureclaseBlocks in oureclaseArray
 	{
@@ -337,7 +337,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Inolashite
-	val inolashiteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.inolashiteBlocks;
+	val inolashiteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.inolashiteBlocks;
 	chisel.addGroup("inolashite");
 	for inolashiteBlocks in inolashiteArray
 	{
@@ -345,7 +345,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Meutoite
-	val meutoiteArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.meutoiteBlocks;
+	val meutoiteArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.meutoiteBlocks;
 	chisel.addGroup("meutoite");
 	for meutoiteBlocks in meutoiteArray
 	{
@@ -353,7 +353,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Orichalcum
-	val orichalcumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.orichalcumBlocks;
+	val orichalcumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.orichalcumBlocks;
 	chisel.addGroup("orichalcum");
 	for orichalcumBlocks in orichalcumArray
 	{
@@ -361,7 +361,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Infuscolium
-	val infuscoliumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.infuscoliumBlocks;
+	val infuscoliumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.infuscoliumBlocks;
 	chisel.addGroup("infuscolium");
 	for infuscoliumBlocks in infuscoliumArray
 	{
@@ -369,7 +369,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Midasium
-	val midasiumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.midasiumBlocks;
+	val midasiumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.midasiumBlocks;
 	chisel.addGroup("midasium");
 	for midasiumBlocks in midasiumArray
 	{
@@ -377,7 +377,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //ShadowSteel
-	val shadowSteelArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.shadowSteelBlocks;
+	val shadowSteelArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.shadowSteelBlocks;
 	chisel.addGroup("shadowSteel");
 	for shadowSteelBlocks in shadowSteelArray
 	{
@@ -385,7 +385,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Krik
-	val krikArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.krikBlocks;
+	val krikArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.krikBlocks;
 	chisel.addGroup("krik");
 	for krikBlocks in krikArray
 	{
@@ -393,7 +393,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Rubracium
-	val rubraciumArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.rubraciumBlocks;
+	val rubraciumArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.rubraciumBlocks;
 	chisel.addGroup("rubracium");
 	for rubraciumBlocks in rubraciumArray
 	{
@@ -401,7 +401,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Iron
-	val ironArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.ironDecorBlocks;
+	val ironArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.ironDecorBlocks;
 	chisel.addGroup("iron_decor");
 	for ironBlocks in ironArray
 	{
@@ -409,7 +409,7 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 { //Gold
-	val goldArray = scripts.MetallurgyTweaks.metallurgyTweaksGlobalVariables.goldDecorBlocks;
+	val goldArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.goldDecorBlocks;
 	chisel.addGroup("gold_decor");
 	for goldBlocks in goldArray
 	{
@@ -417,11 +417,3 @@ print("Proceeding to create the new chisel variants for metallurgy's metal block
 	}
 }
 print("Success!");
-if(loadedMods has "thermalexpansion")
-{
-	print("Since Thermal Expansion is installed, the next script will modify certain aspects to create compatibilities between the two mods.");
-}
-else if(loadedMods has "tconstruct")
-{
-	print("Since Tinkers' Construct is installed, the next script will modify certain aspects to create compatibilities between the two mods.");
-}
