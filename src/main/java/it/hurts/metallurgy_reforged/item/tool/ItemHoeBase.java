@@ -85,7 +85,7 @@ public class ItemHoeBase extends ItemHoe implements IToolEffect {
 	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
 	{
 		ItemUtils.buildStatsTooltip(tooltip, EnumTools.HOE, this.metalStats.getToolStats(), stack);
-		ItemUtils.buildEffectTooltip(tooltip, effects);
+		ItemUtils.buildEffectTooltip(tooltip, effects, stack, EnumTools.HOE);
 	}
 
 	@Override

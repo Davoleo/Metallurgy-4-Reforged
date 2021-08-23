@@ -35,7 +35,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(ProgressiveEffectsHandler.class);
 
 		//Loads all Effect Handlers
-		MetallurgyEffects.effects.forEach(effect -> {
+		MetallurgyEffects.effects.values().forEach(effect -> {
 			if (effect.isEnabled())
 				MinecraftForge.EVENT_BUS.register(effect);
 		});

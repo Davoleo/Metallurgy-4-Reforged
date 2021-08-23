@@ -120,7 +120,7 @@ public class ItemShovelBase extends ItemSpade implements IToolEffect {
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
     {
         ItemUtils.buildStatsTooltip(tooltip, EnumTools.SHOVEL, this.metalStats.getToolStats(), stack);
-        ItemUtils.buildEffectTooltip(tooltip, effects);
+        ItemUtils.buildEffectTooltip(tooltip, effects, stack, EnumTools.SHOVEL);
     }
 
     @Nonnull

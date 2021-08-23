@@ -67,7 +67,7 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
 		{
 			EntityItem dropEntity = dropIter.next();
 			ItemStack item = dropEntity.getItem();
-			if (ItemUtils.isMadeOfMetal(metal, item.getItem()))
+			if (ItemUtils.isMadeOfMetal(metal, item.getItem()) || TartariteEffect.getParagonMetal(item) == metal)
 			{
 				if (item.getItem() instanceof ItemArmorBase || item.getItem() instanceof IToolEffect)
 				{
@@ -91,7 +91,7 @@ public class AmordrineEffect extends BaseMetallurgyEffect {
 		if (event.isWasDeath())
 		{
 			event.getOriginal().inventory.mainInventory.forEach(stack -> {
-				if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+				if (ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal)
 				{
 					event.getEntityPlayer().addItemStackToInventory(stack);
 				}

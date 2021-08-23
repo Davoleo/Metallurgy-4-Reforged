@@ -29,7 +29,7 @@ public abstract class ProgressiveEffectsHandler {
 		if (data == null)
 			return;
 
-		MetallurgyEffects.effects.forEach(effect -> {
+		MetallurgyEffects.effects.values().forEach(effect -> {
 
 			if (effect instanceof IProgressiveEffect)
 			{

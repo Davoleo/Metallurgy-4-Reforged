@@ -312,6 +312,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_armor")
 	public static boolean shadowSteelEffectArmor = true;
 
+	@Config.Name("Paragon absorb")
+	@Config.LangKey("tooltip.metallurgy.effect.tartarite_all")
+	public static boolean tartariteEffectAll = true;
+
 	private EffectsConfig()
 	{
 	}

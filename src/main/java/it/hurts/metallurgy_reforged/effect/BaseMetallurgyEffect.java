@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect;
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -41,6 +42,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 public abstract class BaseMetallurgyEffect {
 
@@ -55,7 +57,7 @@ public abstract class BaseMetallurgyEffect {
 		rgbComponents = metal != null ? Utils.getRGBComponents(metal.getStats().getColorHex(), null) : null;
 
 		if (isEnabled())
-			MetallurgyEffects.effects.add(this);
+			MetallurgyEffects.effects.put(Objects.requireNonNull(metal), getCategory(), this);
 	}
 
 	public boolean isEnabled()
@@ -104,11 +106,17 @@ public abstract class BaseMetallurgyEffect {
 
 		if (category == EnumEffectCategory.ARMOR)
 		{
-			return EventUtils.getArmorPiecesCount(entity, metal);
+			int originalPieces = EventUtils.getArmorPiecesCount(entity, metal);
+			for (ItemStack armorStack : entity.getArmorInventoryList())
+			{
+				if (TartariteEffect.getParagonMetal(armorStack) == metal)
+					originalPieces += 2;
+			}
+			return originalPieces;
 		}
 		else
 		{
-			if (ItemUtils.isMadeOfMetal(metal, toolItem))
+			if (ItemUtils.isMadeOfMetal(metal, toolItem) || TartariteEffect.getParagonMetal(entity.getHeldItemMainhand()) == metal)
 			{
 				if (toolItem instanceof IToolEffect)
 				{

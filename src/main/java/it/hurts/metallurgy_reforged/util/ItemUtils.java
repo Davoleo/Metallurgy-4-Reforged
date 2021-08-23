@@ -13,6 +13,9 @@ import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
@@ -45,6 +48,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.*;
 
 public class ItemUtils {
@@ -87,7 +91,7 @@ public class ItemUtils {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static void buildEffectTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects)
+	public static void buildEffectTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects, ItemStack stack, @Nullable EnumTools toolType)
 	{
 		if (!effects.isEmpty())
 		{
@@ -103,6 +107,24 @@ public class ItemUtils {
 						tooltip.add(effect.getTooltip().getRight());
 					anyEnabled = true;
 				}
+			}
+
+			Metal paragon = TartariteEffect.getParagonMetal(stack);
+			if (paragon != null)
+			{
+				MetallurgyEffects.effects.row(paragon).forEach((category, effect) -> {
+
+					boolean allEffect = category == EnumEffectCategory.ALL;
+					boolean armorEffect = category == EnumEffectCategory.ARMOR && toolType == null;
+					boolean toolEffect = ArrayUtils.contains(category.getTools(), toolType);
+
+					if (allEffect || armorEffect || toolEffect)
+					{
+						tooltip.add(effect.getTooltip().getLeft());
+						if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+							tooltip.add(effect.getTooltip().getRight());
+					}
+				});
 			}
 
 			if (anyEnabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
@@ -143,8 +165,8 @@ public class ItemUtils {
 				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.harvest_level", harvestFormatting.format + harvestFormatting.stars));
 			}
 
-			int maxDurability = stats.getMaxUses();
-			float useRatio = (toolStack.getMaxDamage() - toolStack.getItemDamage()) / (float) maxDurability;
+			int maxDurability = toolStack.getMaxDamage();
+			float useRatio = (maxDurability - toolStack.getItemDamage()) / (float) maxDurability;
 			TextFormatting color;
 			if (useRatio < 0.33F)
 				color = TextFormatting.RED;
@@ -242,6 +264,7 @@ public class ItemUtils {
 	 *
 	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
+	@Nullable
 	public static Metal getMetalFromItem(Item item)
 	{
 		if (item instanceof IMetalItem)

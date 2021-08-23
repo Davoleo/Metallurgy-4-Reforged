@@ -9,6 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import it.hurts.metallurgy_reforged.effect.all.*;
 import it.hurts.metallurgy_reforged.effect.armor.*;
 import it.hurts.metallurgy_reforged.effect.hoe.AtlarusHoeEffect;
@@ -19,6 +21,7 @@ import it.hurts.metallurgy_reforged.effect.tool.*;
 import it.hurts.metallurgy_reforged.effect.weapon.*;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
+import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.item.Item;
@@ -26,12 +29,10 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MetallurgyEffects {
 
-	public static Set<BaseMetallurgyEffect> effects = new HashSet<>();
+	public static Table<Metal, EnumEffectCategory, BaseMetallurgyEffect> effects = HashBasedTable.create();
 
 	public static void initTooltips()
 	{
@@ -41,7 +42,7 @@ public class MetallurgyEffects {
 			{
 				IToolEffect tool = ((IToolEffect) item);
 				MetalStats metalStats = tool.getMetalStats();
-				MetallurgyEffects.effects.stream()
+				MetallurgyEffects.effects.values().stream()
 						.filter(eff -> ArrayUtils.contains(eff.getCategory().getTools(), tool.getToolClass()) && metalStats.getName().equals(eff.metal.toString()))
 						.forEach(tool::addEffect);
 			}
@@ -50,7 +51,7 @@ public class MetallurgyEffects {
 				ItemArmorBase armor = ((ItemArmorBase) item);
 				MetalStats metalStats = armor.getMetalStats();
 
-				MetallurgyEffects.effects.stream()
+				MetallurgyEffects.effects.values().stream()
 						.filter(eff -> eff.getCategory() == EnumEffectCategory.ARMOR || eff.getCategory() == EnumEffectCategory.ALL)
 						.filter(eff -> eff.metal.toString().equals(metalStats.getName()))
 						.forEach(armor::addEffect);
@@ -302,16 +303,8 @@ public class MetallurgyEffects {
 	//Shadow Steel Armor (Eclipse)
 	public static final ShadowSteelArmorEffect SHADOW_STEEL_ARMOR_EFFECT = new ShadowSteelArmorEffect();
 
-	//Shadow Steel Armor
-	//public static final BaseMetallurgyEffect shadowSteelArmorEffect = new ShadowSteelArmorEffect();
-
-	//Shadow Steel Axe
-	//Shadow Steel Pickaxe
-	//Shadow Steel Shovel
-	//public static final BaseMetallurgyEffect shadowSteelToolEffect = new ShadowSteelToolEffect();
-
-	//Shadow Steel Sword
-	//public static final BaseMetallurgyEffect shadowSteelSwordEffect = new DeepIronShadowSteelWeaponEffect(ModMetals.SHADOW_STEEL);
+	//Tartarite (Paragon absorb)
+	public static final TartariteEffect TARTARITE_EFFECT = new TartariteEffect();
 
 	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
 	public static final BaseMetallurgyEffect vulcaniteEffect = new VulcaniteArmorEffect();

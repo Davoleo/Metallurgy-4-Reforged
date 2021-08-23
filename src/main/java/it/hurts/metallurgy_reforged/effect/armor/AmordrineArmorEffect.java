@@ -13,11 +13,11 @@ import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -73,7 +73,7 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 	@SideOnly(Side.CLIENT)
 	public static void onPlayerJump(EntityPlayer player)
 	{
-		final int jumps = EventUtils.getArmorPiecesCount(player, ModMetals.AMORDRINE);
+		final int jumps = MetallurgyEffects.AMORDRINE_ARMOR_EFFECT.getLevel(player);
 
 		if (net.minecraft.client.Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed() && jumps > 0 && !player.onGround)
 		{
