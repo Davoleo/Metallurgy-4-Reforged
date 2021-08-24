@@ -35,6 +35,7 @@ public class PlayerEffectData {
 		effectBundles.put(prometheumArmorBundle.getPrefixKey(), prometheumArmorBundle);
 		effectBundles.put(quicksilverWeaponBundle.getPrefixKey(), quicksilverWeaponBundle);
 		effectBundles.put(shadowSteelArmorBundle.getPrefixKey(), shadowSteelArmorBundle);
+		effectBundles.put(vulcaniteWeaponBundle.getPrefixKey(), vulcaniteWeaponBundle);
 	}
 
 	//Amordrine Armor ----------------------------------------
@@ -99,5 +100,7 @@ public class PlayerEffectData {
 	public int quicksilverTick = 0;
 
 	public ExtraFilledDataBundle shadowSteelArmorBundle = new ExtraFilledDataBundle("shadow_steel_armor", 4, 20, bundle -> bundle.currentStep > 0);
+
+	public ProgressiveDataBundle vulcaniteWeaponBundle = new ProgressiveDataBundle("vulcanite_weapon", 5, 20);
 
 }

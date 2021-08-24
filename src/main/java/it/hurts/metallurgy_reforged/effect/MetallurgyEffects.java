@@ -306,10 +306,7 @@ public class MetallurgyEffects {
 	//Tartarite (Paragon absorb)
 	public static final TartariteEffect TARTARITE_EFFECT = new TartariteEffect();
 
-	//Vulcanite Armor (Fire Immunity) //Removes Fire Render
-	public static final BaseMetallurgyEffect vulcaniteEffect = new VulcaniteArmorEffect();
-
-	//Vulcanite Sword (50% chance Fire Aspect (5 seconds))
-	public static final BaseMetallurgyEffect vulcaniteSwordEffect = new VulcaniteIgnatiusSwordEffect(ModMetals.VULCANITE);
+	//Vulcanite Weapons (Fuse)
+	public static final VulcaniteWeaponEffect VULCANITE_WEAPON_EFFECT = new VulcaniteWeaponEffect();
 
 }

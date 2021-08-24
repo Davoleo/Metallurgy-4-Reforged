@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -20,9 +19,9 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import javax.annotation.Nonnull;
 
 @Deprecated
-public class VulcaniteArmorEffect extends BaseMetallurgyEffect {
+public class VulcaniteArmorEffectOld extends BaseMetallurgyEffect {
 
-	public VulcaniteArmorEffect()
+	public VulcaniteArmorEffectOld()
 	{
 		super(ModMetals.VULCANITE);
 	}

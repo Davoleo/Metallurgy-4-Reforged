@@ -312,9 +312,13 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_armor")
 	public static boolean shadowSteelEffectArmor = true;
 
-	@Config.Name("Paragon absorb")
+	@Config.Name("Paragon absorb (Tartarite Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.tartarite_all")
 	public static boolean tartariteEffectAll = true;
+
+	@Config.Name("Fuse (Vulcanite Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.vulcanite_weapon")
+	public static boolean vulcaniteEffectWeapon = true;
 
 	private EffectsConfig()
 	{
