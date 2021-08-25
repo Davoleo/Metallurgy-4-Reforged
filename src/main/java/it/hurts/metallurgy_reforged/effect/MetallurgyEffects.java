@@ -309,4 +309,7 @@ public class MetallurgyEffects {
 	//Vulcanite Weapons (Fuse)
 	public static final VulcaniteWeaponEffect VULCANITE_WEAPON_EFFECT = new VulcaniteWeaponEffect();
 
+	//Vyroxeres Weapons (Toxin)
+	public static final VyroxeresWeaponEffect VYROXERES_WEAPON_EFFECT = new VyroxeresWeaponEffect();
+
 }

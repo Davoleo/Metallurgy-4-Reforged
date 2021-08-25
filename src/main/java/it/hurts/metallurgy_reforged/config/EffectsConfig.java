@@ -320,6 +320,10 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.vulcanite_weapon")
 	public static boolean vulcaniteEffectWeapon = true;
 
+	@Config.Name("Toxin (Vyroxeres Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.vyroxeres_weapon")
+	public static boolean vyroxeresEffectWeapon = true;
+
 	private EffectsConfig()
 	{
 	}
