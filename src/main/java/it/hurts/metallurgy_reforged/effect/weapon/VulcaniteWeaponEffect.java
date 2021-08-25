@@ -51,8 +51,9 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 		if (step == maxSteps)
 		{
 			float currentCooldown = entity.getCooldownTracker().getCooldown(entity.getHeldItemMainhand().getItem(), 0);
-			float explosionPower = (110 - currentCooldown) * 0.005F;
-			world.createExplosion(entity, entity.posX, entity.posY + entity.height / 2, entity.posZ, explosionPower, false);
+			float explosionPower = 0.6F;
+			//float explosionPower = Math.max(0.25F, 2.75F - currentCooldown / 40);
+			world.createExplosion(null, entity.posX, entity.posY + 0.65, entity.posZ, explosionPower, false);
 
 			//Reset Effect
 			if (entity.getHeldItemMainhand().getTagCompound() != null)
@@ -117,8 +118,15 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 				float currentCooldown = attacker instanceof EntityPlayer ?
 						((EntityPlayer) attacker).getCooldownTracker().getCooldown(attacker.getHeldItemMainhand().getItem(), 0) :
 						100F;
-				float explosionPower = (110 - currentCooldown) * 0.01F;
-				attacker.world.createExplosion(attacker, target.posX, target.posY + target.height / 2, target.posZ, explosionPower, false);
+
+				float explosionPower = 0.85F + (1F - currentCooldown) * 0.5F;
+				System.out.println("Cool: " + currentCooldown + " EXP: " + explosionPower);
+				attacker.world.createExplosion(attacker, target.posX, target.posY, target.posZ, explosionPower, false);
+				//Knock entity back
+				target.knockBack(attacker, 2F, attacker.posX - target.posX, attacker.posZ - target.posZ);
+
+				//Knock-back attacker
+				//attacker.knockBack(target, 1F, target.posX - attacker.posX, target.posZ - attacker.posZ);
 			}
 		}
 	}

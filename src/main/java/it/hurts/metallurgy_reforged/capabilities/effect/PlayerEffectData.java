@@ -101,6 +101,6 @@ public class PlayerEffectData {
 
 	public ExtraFilledDataBundle shadowSteelArmorBundle = new ExtraFilledDataBundle("shadow_steel_armor", 4, 20, bundle -> bundle.currentStep > 0);
 
-	public ProgressiveDataBundle vulcaniteWeaponBundle = new ProgressiveDataBundle("vulcanite_weapon", 5, 20);
+	public ProgressiveDataBundle vulcaniteWeaponBundle = new ProgressiveDataBundle("vulcanite_weapon", 6, 20);
 
 }
