@@ -112,19 +112,6 @@ public class EventUtils {
 			.toArray(Metal[]::new);
 	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
 
-	public static List<ItemStack> getEquipmentList(Metal metal, EntityLivingBase entity)
-	{
-		final List<ItemStack> equip = new ArrayList<>();
-
-		for (ItemStack stack : entity.getEquipmentAndArmor())
-		{
-			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-				equip.add(stack);
-		}
-
-		return equip;
-	}
-
 	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
 	{
 		final List<ItemStack> equip = new ArrayList<>();

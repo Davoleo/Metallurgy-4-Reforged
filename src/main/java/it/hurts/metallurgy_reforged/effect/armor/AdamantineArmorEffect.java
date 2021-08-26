@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketAdamantineRenderDeathProtection;
@@ -74,7 +75,7 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 			}
 
 			//Check whether the itemStack inside the random slot is an Adamantine armor piece
-			if (ItemUtils.isMadeOfMetal(metal, armorPiece.getItem()))
+			if (ItemUtils.isMadeOfMetal(metal, armorPiece.getItem()) || TartariteEffect.getParagonMetal(armorPiece) == metal)
 			{
 				//Remove armor piece from the slot
 				entity.setItemStackToSlot(randomArmorSlot, ItemStack.EMPTY);
