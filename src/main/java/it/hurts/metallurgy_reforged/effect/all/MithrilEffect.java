@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.IntBiFunction;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -30,7 +31,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.UUID;
-import java.util.function.BiFunction;
 import java.util.function.IntFunction;
 
 public class MithrilEffect extends BaseMetallurgyEffect {
@@ -66,8 +66,8 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	}
 
 	private static final UUID PROTECTION_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111033DB5CF");
-	private final BiFunction<EntityEquipmentSlot, Integer, AttributeModifier> generateProtectionModifier = (slot, level) -> {
-		final int originalProtection = metal.getStats().getArmorStats().getDamageReduction()[slot.getIndex()];
+	private final IntBiFunction<AttributeModifier> generateProtectionModifier = (slotIndex, level) -> {
+		final int originalProtection = metal.getStats().getArmorStats().getDamageReduction()[slotIndex];
 		return new AttributeModifier(PROTECTION_UUID, "MITHRIL_Armor_Protection_Buff", originalProtection + (level), 0);
 	};
 
@@ -124,7 +124,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 			EntityEquipmentSlot slot = EntityLiving.getSlotForItemStack(stackRef);
 			if (armor)
 			{
-				NBTTagCompound protMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateProtectionModifier.apply(slot, boostLevel));
+				NBTTagCompound protMod = SharedMonsterAttributes.writeAttributeModifierToNBT(generateProtectionModifier.apply(slot.getIndex(), boostLevel));
 				protMod.setString("AttributeName", SharedMonsterAttributes.ARMOR.getName());
 				protMod.setString("Slot", slot.getName());
 				if (protectionIndex == -1)

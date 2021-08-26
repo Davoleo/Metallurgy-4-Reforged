@@ -323,6 +323,9 @@ public class EffectsConfig {
 	@Config.Name("Toxin (Vyroxeres Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.vyroxeres_weapon")
 	public static boolean vyroxeresEffectWeapon = true;
+	@Config.Name("Dissolve (Vyroxeres Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.vyroxeres_armor")
+	public static boolean vyroxeresEffectArmor = true;
 
 	private EffectsConfig()
 	{

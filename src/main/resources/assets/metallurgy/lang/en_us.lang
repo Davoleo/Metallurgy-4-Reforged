@@ -1379,6 +1379,7 @@ tooltip.metallurgy.effect.shadow_steel_armor=Eclipse
 tooltip.metallurgy.effect.tartarite_all=Paragon absorb
 tooltip.metallurgy.effect.vulcanite_weapon=Fuse
 tooltip.metallurgy.effect.vyroxeres_weapon=Toxin
+tooltip.metallurgy.effect.vyroxeres_armor=Dissolve
 
 #Effect Descriptions
 tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
@@ -1472,6 +1473,7 @@ tooltip.metallurgy.effect.shadow_steel_armor.tooltip=Whether if you're attacked 
 tooltip.metallurgy.effect.tartarite_all.tooltip=Surrounding the item with 4 blocks of another metal will allow it to absorb its effects in an increased ratio while also increasing item durability.
 tooltip.metallurgy.effect.vulcanite_weapon.tooltip=Right clicking the weapon ignites it, and on the next strike within 5 seconds will create an explosion whose strength depends on how much time is left on the fuse, if 5 seconds run out before you attack any enemy the explosion will affect the user.
 tooltip.metallurgy.effect.vyroxeres_weapon.tooltip=Poisons the target on every hit, if the target is already poisoned, the level of poison debuff increases.
+tooltip.metallurgy.effect.vyroxeres_armor.tooltip=Additional Damage Reduction for every active potion effect on the user.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
@@ -1490,54 +1492,10 @@ tooltip.metallurgy.press_ctrl=Press §f[CTRL]§7 to expand
 tooltip.metallurgy.press_shift=Press §f[SHIFT]§7 to expand
 tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
 tooltip.metallurgy.stats.durability=Durability: %s
-
-#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
-#Axes
-tooltip.metallurgy.atlarus_axe_effect=§eRight Click to break any type of leaves in range of the gust of wind
-tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
-
-#Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
-tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
-
-#Shields
-tooltip.metallurgy.ceruclase_shield=§3(W.I.P.) When activated, creates an icy sphere around the player and cushions a portion of the fall damage. The ice is destroyed after withdrawing the shield.
-tooltip.metallurgy.lemurite_shield=§fWhile active, makes the player completely invisible to most entities (including other players).
-tooltip.metallurgy.orichalcum_buckler=Upgraded buckler. §2When attacked by a ranged enemy, reflects 1.5x of the damage to the attacker and teleports them to be within melee reach.
-tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a melee enemy, creates a small explosion that knocks them back.
-tooltip.metallurgy.zinc_buckler=A generic buckler, a lighter and more durable alternative to the normal shield. While active, does not hinder the players movement speed but has a cooldown after each block. 
-
-#Shovel
-tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
-
-#Swords
-tooltip.metallurgy.atlarus_sword_effect=§ePushes any nearby entity away from the player on right-click
-tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
-tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
-tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
-tooltip.metallurgy.desichalkos_sword_effect=§5Allows the player to teleport in the direction they're looking
-tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
-tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
-tooltip.metallurgy.midasium_sword_effect=§6Duplication
-tooltip.metallurgy.mithril_sword_effect=§bMakes the target glow
-tooltip.metallurgy.orichalcum_sword_effect=§2Your kills make you feel Strong
-tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
-tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
-tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness
-tooltip.metallurgy.tartarite_sword_effect=§8Wither II
-tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
-tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
-
-#Hoe
-tooltip.metallurgy.atlarus_hoe_effect=§eRight Click to break grass blocks around the player
-
-#Tools
-tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
+message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
 
 #Utils
 util.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged
 util.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
 util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
 util.world_join_message.4=You can disable this message from the mod configuration
-
-message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor

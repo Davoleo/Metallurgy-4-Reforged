@@ -311,5 +311,7 @@ public class MetallurgyEffects {
 
 	//Vyroxeres Weapons (Toxin)
 	public static final VyroxeresWeaponEffect VYROXERES_WEAPON_EFFECT = new VyroxeresWeaponEffect();
+	//Vyroxeres Armor (Dissolve)
+	public static final VyroxeresArmorEffect VYROXERES_ARMOR_EFFECT = new VyroxeresArmorEffect();
 
 }
