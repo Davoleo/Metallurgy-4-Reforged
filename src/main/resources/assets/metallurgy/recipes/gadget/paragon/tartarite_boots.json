@@ -7,7 +7,8 @@
   ],
   "key": {
     "I": {
-      "item": "metallurgy:tartarite_boots"
+      "item": "metallurgy:tartarite_boots",
+      "data": 32767
     },
     "M": {
       "type": "metallurgy:metal",

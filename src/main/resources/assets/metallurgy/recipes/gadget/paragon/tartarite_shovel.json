@@ -7,7 +7,8 @@
   ],
   "key": {
     "I": {
-      "item": "metallurgy:tartarite_shovel"
+      "item": "metallurgy:tartarite_shovel",
+      "data": 32767
     },
     "M": {
       "type": "metallurgy:metal",
