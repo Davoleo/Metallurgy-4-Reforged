@@ -31,6 +31,22 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 	public TartariteEffect()
 	{
 		super(ModMetals.TARTARITE);
+		setupModelOverrides((stack, worldIn, entityIn) -> {
+			if (stack.getTagCompound() == null)
+				return 0F;
+
+			Metal paragonMetal = getParagonMetal(stack);
+			if (paragonMetal == null)
+				return 0F;
+
+			switch (paragonMetal.toString())
+			{
+				case "celenegil":
+					return stack.getTagCompound().getBoolean("glory_seeker") ? 1F : 0F;
+			}
+
+			return 0F;
+		});
 	}
 
 	@Nonnull
