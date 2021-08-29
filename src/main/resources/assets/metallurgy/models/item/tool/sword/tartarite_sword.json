@@ -8,7 +8,7 @@
       "predicate": {
         "active": 1
       },
-      "model": "metallurgy:item/tool/axe/tartarite_sword_active"
+      "model": "metallurgy:item/tool/sword/tartarite_sword_active"
     }
   ]
 }
