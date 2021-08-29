@@ -12,7 +12,6 @@ package it.hurts.metallurgy_reforged.effect.all;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.NBTUtils;
 import net.minecraft.entity.Entity;
@@ -66,16 +65,14 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	@Override
 	public int getLevel(EntityLivingBase entity)
 	{
-		int armor = EventUtils.getArmorPiecesCount(entity, metal);
-		int hand = ItemUtils.isMadeOfMetal(metal, entity.getHeldItemMainhand().getItem()) ? 10 : -1;
-		return Math.max(armor, hand);
+		return super.getLevel(entity);
 	}
 
 	@SubscribeEvent
 	public void applyItemMetamorphosis(PlayerDestroyItemEvent event)
 	{
 		ItemStack stack = event.getOriginal();
-		if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+		if (ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal)
 		{
 			if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn"))
 				return;
@@ -133,7 +130,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
-		if (getLevel(player) == 10)
+		if (getLevel(player) >= 10)
 		{
 			ItemStack toolStack = player.getHeldItemMainhand();
 
@@ -146,7 +143,8 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	public void applyArmorMetamorphosis(LivingHurtEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		if (!canBeApplied(entity))
+		//The rest is higher than 0 if any armor piece is worn (otherwise we return out)
+		if (getLevel(entity) % 10 == 0)
 			return;
 
 		//The damage applied is computed by dividing the pure damage amount by 4
@@ -165,7 +163,7 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 					continue;
 
 				//Check if the item would break | This doesn't take Unbreakable into account
-				if (stack.getItem() instanceof ItemArmor && stack.getItemDamage() + damage >= stack.getMaxDamage())
+				if (stack.getItem() instanceof ItemArmor && stack.getItemDamage() + damage * 3 >= stack.getMaxDamage())
 				{
 					//Copy the old itemstack
 					ItemStack newPiece = stack.copy();

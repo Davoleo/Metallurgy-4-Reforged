@@ -99,8 +99,17 @@ public abstract class BaseMetallurgyEffect {
 
 		if (category == EnumEffectCategory.ALL)
 		{
-			int level = ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class) ? 10 : 0;
+			int level = 0;
+
+			if (ItemUtils.isMadeOfMetal(metal, toolItem, IToolEffect.class) || TartariteEffect.getParagonMetal(entity.getHeldItemMainhand()) == metal)
+				level += 10;
+
 			level += EventUtils.getArmorPiecesCount(entity, metal);
+			for (ItemStack armorStack : entity.getArmorInventoryList())
+			{
+				if (TartariteEffect.getParagonMetal(armorStack) == metal)
+					level += 2;
+			}
 			return level;
 		}
 
