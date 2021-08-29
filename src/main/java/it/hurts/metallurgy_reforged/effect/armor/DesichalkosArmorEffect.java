@@ -77,7 +77,7 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 			event.setCanceled(true);
 
 			for (int i = 0; i < 30; i++)
-				spawnParticle(event.getEntityLiving(), 3F, true, effectData.desichalkosAbsorbLevel * 2);
+				spawnParticle(event.getEntityLiving(), 3F, true, Math.min(effectData.desichalkosAbsorbLevel * 2, 9));
 			effectData.desichalkosAbsorbLevel -= 1;
 
 			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
