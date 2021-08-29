@@ -39,6 +39,11 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 		if (!MetallurgyEffects.TARTARITE_EFFECT.isEnabled())
 			return ItemStack.EMPTY;
 
+		ItemStack tartariteItem = craftInv.getStackInSlot(4);
+		//If tartarite item already has a paragon metal
+		if (tartariteItem.getTagCompound() != null && tartariteItem.getTagCompound().hasKey("paragon"))
+			return ItemStack.EMPTY;
+
 		//Check if the metal matches on top center slot
 		Metal metal = ItemUtils.getMetalFromItem(craftInv.getStackInSlot(1).getItem());
 		assert metal != null;
