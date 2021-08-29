@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "metallurgy:items/tools/tartarite_shovel"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "metallurgy:item/tool/pickaxe/tartarite_shovel_active"
+    }
+  ]
 }

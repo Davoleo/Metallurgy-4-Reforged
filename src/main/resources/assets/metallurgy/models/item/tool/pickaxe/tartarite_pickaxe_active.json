@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "metallurgy:items/tools/tartarite_pickaxe_active"
+  }
+}
