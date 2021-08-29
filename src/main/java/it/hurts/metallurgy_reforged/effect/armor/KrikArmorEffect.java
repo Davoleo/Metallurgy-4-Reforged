@@ -69,7 +69,7 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 				{
 					player.motionY = 0.4;
 				}
-				else if (Math.round(player.posY) == level * STEP)
+				else if (Math.round(player.posY) == (long) level * STEP)
 				{
 					player.motionY = 0;
 				}

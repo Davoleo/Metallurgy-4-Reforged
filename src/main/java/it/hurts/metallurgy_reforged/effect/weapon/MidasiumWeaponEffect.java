@@ -63,7 +63,6 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
 
 	}
 
-	@SuppressWarnings("EntityConstructor")
 	public static class StackWrapperImpl extends EntityItem implements StackWrapper {
 
 		private ItemStack item;
