@@ -20,6 +20,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -51,8 +52,10 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 		EntityLivingBase entity = event.getEntityLiving();
 		if (food instanceof ItemFood)
 		{
-			Spliterator<ItemStack> equiperator = entity.getEquipmentAndArmor().spliterator();
-			StreamSupport.stream(equiperator, false)
+			//Venti: EHE! XP
+			//PAIMON: EHE te nandayo! (￣^￣)
+			Spliterator<ItemStack> equiperator2000 = entity.getEquipmentAndArmor().spliterator();
+			StreamSupport.stream(equiperator2000, false)
 					.filter(equip -> equip.getItemDamage() > 0 &&
 							(ItemUtils.isMadeOfMetal(metal, equip.getItem()) || TartariteEffect.getParagonMetal(equip) == metal))
 					.forEach(stack -> {
@@ -64,6 +67,26 @@ public class AdamantineEffect extends BaseMetallurgyEffect {
 								entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.PLAYERS, 0.5F, 3F, false);
 						}
 					});
+
+			if (entity instanceof EntityPlayer)
+			{
+				final NonNullList<ItemStack> inventory = ((EntityPlayer) entity).inventory.mainInventory;
+				for (int i = 0; i < inventory.size(); i++)
+				{
+					if (i == ((EntityPlayer) entity).inventory.currentItem)
+						continue;
+
+					ItemStack stack = inventory.get(i);
+
+					if ((ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal) && stack.getItemDamage() != 0)
+					{
+						if (!entity.world.isRemote)
+							stack.setItemDamage(Math.max(stack.getItemDamage() - ((ItemFood) food).getHealAmount(stack) * 2, 0));
+						else
+							entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.PLAYERS, 0.5F, 3F, false);
+					}
+				}
+			}
 		}
 	}
 
