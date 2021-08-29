@@ -45,7 +45,6 @@ public class KalendriteArmorEffect extends BaseMetallurgyEffect {
 		if (!canBeApplied(entity))
 			return;
 
-
 		ItemStack armorStack = getArmorRepr(entity);
 		NBTTagCompound armorData = armorStack.getTagCompound();
 
@@ -73,7 +72,7 @@ public class KalendriteArmorEffect extends BaseMetallurgyEffect {
 		{
 			long delta = entity.world.getTotalWorldTime() - armorData.getLong("damage_timestamp");
 			//2^(5 - 1..4) * 20 = 16..2 seconds * 20 = amount in ticks
-			int delay = (int) (Math.pow(2, 5 - level) * 20);
+			int delay = 20 << 5 - level;
 			if (delta >= delay)
 			{
 				//noinspection ConstantConditions
