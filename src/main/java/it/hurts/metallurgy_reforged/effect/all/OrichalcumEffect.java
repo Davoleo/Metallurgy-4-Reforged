@@ -45,7 +45,7 @@ public class OrichalcumEffect extends BaseMetallurgyEffect {
                 return;
 
             sourceEnt.getEquipmentAndArmor().forEach(equip -> {
-                if (ItemUtils.isMadeOfMetal(metal, equip.getItem()))
+                if (ItemUtils.isMadeOfMetal(metal, equip.getItem()) || TartariteEffect.getParagonMetal(equip) == metal)
                 {
                     int newDurability = equip.getItemDamage() - (int) event.getEntityLiving().getMaxHealth();
                     equip.setItemDamage(newDurability);

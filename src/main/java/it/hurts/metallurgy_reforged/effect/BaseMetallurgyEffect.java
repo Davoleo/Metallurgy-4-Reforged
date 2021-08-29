@@ -239,6 +239,9 @@ public abstract class BaseMetallurgyEffect {
 
 	}
 
+	/**
+	 * Called every tick on items that have this effect and are in a player's mainInventory
+	 */
 	public void inventoryTick(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull Entity entityIn, int itemSlot, boolean isSelected)
 	{
 

@@ -37,7 +37,14 @@ public abstract class PlatinumEffect extends BaseMetallurgyEffect {
 	@Override
 	public int getLevel(EntityLivingBase entity)
 	{
-		return ItemUtils.isMadeOfMetal(metal, entity.getHeldItemMainhand().getItem(), IToolEffect.class) ? 1 : 0;
+		ItemStack tool = entity.getHeldItemMainhand();
+
+		if (tool.getItem() instanceof IToolEffect)
+		{
+			if (ItemUtils.isMadeOfMetal(metal, tool.getItem(), IToolEffect.class) || TartariteEffect.getParagonMetal(tool) == metal)
+				return 1;
+		}
+		return 0;
 	}
 
 	/**
