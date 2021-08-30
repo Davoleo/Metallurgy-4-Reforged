@@ -12,13 +12,13 @@ print("Proceeding to add Induction Smelter Recipes...");
 val sand = <ore:sand>.firstItem;
 val slag = <thermalfoundation:material:864>;
 
-val toolsMap = scripts.metallurgy_tweaks.metallurgy_tweaks_global.toolsMap;
+val tools = scripts.metallurgy_tweaks.metallurgy_tweaks_global.toolsMap;
 
 //Metallurgy Metals
-for metal in toolsMap.keys {
+for metal in tools.keys {
     val ingot = itemUtils.getItem("metallurgy:" + metal + "_ingot");
 
-    for tool in toolsMap[metal] {
+    for tool in tools[metal] {
         InductionSmelter.addRecipe(ingot, sand, tool, 6000, slag, 10);
     }
     InductionSmelter.addRecipe(ingot * 2, sand, itemUtils.getItem("metallurgy:" + metal + "_helmet"), 6000, slag, 15);

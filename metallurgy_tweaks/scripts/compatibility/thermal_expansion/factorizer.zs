@@ -12,20 +12,12 @@ print("Proceeding to create new factorizer combine & split recipes...");
 val ingotArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.ingots;
 val blockArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.metalBlocks;
 
-for i in 0 .. ingotArray.length
-{
-	for items in blockArray[i].items
-	{
-		Factorizer.addRecipeCombine(ingotArray[i] * 9, items);
-	}
+for i in 0 .. ingotArray.length {
+	Factorizer.addRecipeCombine(ingotArray[i] * 9, blockArray[i]);
 }
 print("Combine Recipes: Success!");
 
-for i in 0 .. ingotArray.length
-{
-	for block in blockArray[i].items
-	{
-		Factorizer.addRecipeSplit(block, ingotArray[i] * 4);
-	}
+for i in 0 .. ingotArray.length {
+	Factorizer.addRecipeSplit(blockArray[i], ingotArray[i] * 9);
 }
 print("Split Recipes: Success!");

@@ -11,14 +11,14 @@ print("-------------------------------------------------------------------------
 
 print("Proceeding to add Bitumen & Thermite dust as Steam Dynamo Fuels...");
 {
-	mods.thermalexpansion.SteamDynamo.removeFuel(<ore:dustThermite>.firstItem);
-	mods.thermalexpansion.SteamDynamo.addFuel(<ore:dustThermite>.firstItem, 24000);
+	SteamDynamo.removeFuel(<ore:dustThermite>.firstItem);
+	SteamDynamo.addFuel(<ore:dustThermite>.firstItem, 24000);
 	furnace.setFuel(<metallurgy:bitumen>, 3200);
 }
 print("Success!");
 
 print("Proceeding to add Molten Thermite as Magmatic Dynamo fuel...");
 {
-	mods.thermalexpansion.MagmaticDynamo.addFuel(<liquid:molten_thermite>, 295440);
+	MagmaticDynamo.addFuel(<liquid:molten_thermite>, 295440);
 }
 print("Success!");
