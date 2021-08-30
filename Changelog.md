@@ -1,3 +1,8 @@
+### 1.2.11
+
+- Compressed Machine Sounds (mod size almost halved!)
+- Implement Metallurgy Tweaks by Nebby natively under GPLv3
+
 ### 1.2.10
 
 - Fix crash when wearing certain armor sets ([#332](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/332))
