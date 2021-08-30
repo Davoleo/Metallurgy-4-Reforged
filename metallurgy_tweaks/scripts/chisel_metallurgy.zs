@@ -24,13 +24,13 @@ for metal in decoMap.keys {
 val ironArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.ironDecorBlocks;
 chisel.addGroup("IronDecor");
 for ironBlocks in ironArray {
-    chisel.addVariation("iron_decor", ironBlocks);
+    chisel.addVariation("IronDecor", ironBlocks);
 }
 
 //Gold
 val goldArray = scripts.metallurgy_tweaks.metallurgy_tweaks_global.goldDecorBlocks;
 chisel.addGroup("GoldDecor");
 for goldBlocks in goldArray {
-    chisel.addVariation("gold_decor", goldBlocks);
+    chisel.addVariation("IronDecor", goldBlocks);
 }
 print("Success!");

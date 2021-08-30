@@ -35,7 +35,7 @@ for i in 0 .. snakeMetals.length {
     ] as IItemStack[];
 }
 
-val toolsMap as IItemStack[][string] = {} as IItemStack[][string];
+static toolsMap as IItemStack[][string] = {} as IItemStack[][string];
 for toolMetal in toolMetals {
     toolsMap[toolMetal] = [
         itemUtils.getItem("metallurgy:" + toolMetal + "_axe"),
