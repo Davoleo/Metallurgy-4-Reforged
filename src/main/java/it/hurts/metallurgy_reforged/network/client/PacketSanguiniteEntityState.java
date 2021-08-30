@@ -55,7 +55,10 @@ public class PacketSanguiniteEntityState implements IMessage {
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
 				Entity entity = Minecraft.getMinecraft().world.getEntityByID(message.entityId);
 				if (entity != null)
+				{
 					entity.getEntityData().setInteger("corpse_state", message.state);
+					entity.ticksExisted = 0;
+				}
 			});
 			return null;
 		}
