@@ -10,6 +10,7 @@ print("-------------------------------------------------------------------------
 print("This special script handles optional tweaks for Thermal Expansion, you can find these tweaks in ''metallurgyTweaksConfig.zs''!");
 print("These scripts are licensed under GNU GPLv3.");
 print("------------------------------------------------------------------------------------------------------------------------------");
+
 print("Proceeding to check Config vaules...");
 if (removeThermalToolsArmor == true)
 {

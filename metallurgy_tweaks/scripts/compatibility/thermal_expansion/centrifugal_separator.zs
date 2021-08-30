@@ -2,11 +2,6 @@
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
 
 import mods.thermalexpansion.Centrifuge;
-import crafttweaker.item.IItemStack;
-import crafttweaker.item.WeightedItemStack;
-import crafttweaker.liquid.ILiquidStack;
-import crafttweaker.oredict.IOreDictEntry;
-import crafttweaker.oredict.IOreDict;
 
 print("---------------------------------------------------------------------------------------------");
 print("This script allows you to use the Centrifugal Separator to separate Metallurgy's alloy dusts!");

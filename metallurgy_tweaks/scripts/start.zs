@@ -1,4 +1,5 @@
 #priority 100
+
 print("-----------------------------------------------------------------------------------------------------");
 print("Metallurgy Tweaks is now loading!");
 print("This first script will detect which mods are installed and activate the respective addons...");
