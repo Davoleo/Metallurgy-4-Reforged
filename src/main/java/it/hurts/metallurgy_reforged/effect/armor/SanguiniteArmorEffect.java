@@ -17,12 +17,12 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSanguiniteEntityState;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -36,14 +36,14 @@ import java.lang.reflect.Method;
 public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 
     private final Method getExperiencePoints;
-//    private final Method dropLoot;
+    private final Method dropLoot;
 
     public SanguiniteArmorEffect()
     {
         super(ModMetals.SANGUINITE);
 
         getExperiencePoints = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_70693_a", int.class, EntityPlayer.class);
-        //  dropLoot = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_184610_a", void.class, boolean.class, int.class, DamageSource.class);
+        dropLoot = ObfuscationReflectionHelper.findMethod(EntityLivingBase.class, "func_184610_a", void.class, boolean.class, int.class, DamageSource.class);
     }
 
     @Nonnull
@@ -74,36 +74,34 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
             xp -= xpSlice;
             killer.world.spawnEntity(new EntityXPOrb(killer.world, killedEntity.posX, killedEntity.posY, killedEntity.posZ, xpSlice));
         }
+    }
 
-        /*
-        killedEntity.captureDrops = true;
-        killedEntity.capturedDrops.clear();
+    @SubscribeEvent
+    public void dropCorpseLoot(LivingDeathEvent event)
+    {
 
-        if (killer.world.getGameRules().getBoolean("doMobLoot"))
+        if (event.getEntityLiving().getEntityData().getInteger("corpse_state") == 2)
         {
-            int looting = ForgeHooks.getLootingLevel(killedEntity, killer, source);
-            dropLoot.invoke(killedEntity, true, looting, source);
+            if (event.getEntityLiving().world.getGameRules().getBoolean("doMobLoot"))
+            {
+                int looting = ForgeHooks.getLootingLevel(event.getEntityLiving(), event.getSource().getTrueSource(), event.getSource());
+                try
+                {
+                    dropLoot.invoke(event.getEntityLiving(), true, looting, event.getSource());
+                }
+                catch (IllegalAccessException | InvocationTargetException e)
+                {
+                    Metallurgy.logger.error("Error while dropping corpse Drops (Necromastery Effect Error)");
+                    e.printStackTrace();
+                }
+            }
         }
-
-        killedEntity.captureDrops = false;
-
-        for (EntityItem item : killedEntity.capturedDrops)
-        {
-            //Creating a new entityItem so it doesn't affect the other drops?
-            EntityItem dropEnt = new EntityItem(item.world, item.posX, item.posY, item.posZ, item.getItem());
-            item.world.spawnEntity(dropEnt);
-        }
-        */
     }
 
     @SubscribeEvent
     public void updateCorpseStates(LivingEvent.LivingUpdateEvent event)
     {
         EntityLivingBase entity = event.getEntityLiving();
-
-        if (!(entity instanceof IMob))
-            return;
-
 
         int corpseState = entity.getEntityData().getInteger("corpse_state");
 
@@ -115,19 +113,11 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
         {
             if (entity.deathTime == 16)
             {
-                DamageSource lastDamage = entity.getLastDamageSource();
-                if (lastDamage == null)
-                    return;
 
-                //True source so it works with ranged weapons as well
-                // (we're currently working on an armor effect)
-                Entity sourceEnt = lastDamage.getTrueSource();
-
-                if (sourceEnt instanceof EntityPlayer)
+                if (entity.getAttackingEntity() instanceof EntityPlayer)
                 {
-                    EntityPlayer killer = ((EntityPlayer) sourceEnt);
 
-                    int level = getLevel(killer);
+                    int level = getLevel(entity.getAttackingEntity());
                     if (level == 0)
                         return;
 
@@ -139,11 +129,11 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
 
                     try
                     {
-                        dropXPAndItems(entity, killer, lastDamage);
+                        dropXPAndItems(entity, entity.getAttackingEntity(), entity.getLastDamageSource());
                     }
                     catch (InvocationTargetException | IllegalAccessException e)
                     {
-                        Metallurgy.logger.error("Error while dropping pre-corpse Experience & Drops (Necromastery Effect Error)");
+                        Metallurgy.logger.error("Error while dropping pre-corpse Experience (Necromastery Effect Error)");
                         e.printStackTrace();
                     }
                 }
@@ -159,19 +149,10 @@ public class SanguiniteArmorEffect extends BaseMetallurgyEffect {
         }
         else
         {
-            entity.isDead = false;
-            entity.setHealth(entity.getMaxHealth());
+            entity.setHealth(entity.getMaxHealth() * 0.4F);
             entity.getEntityData().setInteger("corpse_state", 2);
-            //PacketSanguiniteEntityState packet = new PacketSanguiniteEntityState(entity.getEntityId(), 2);
-            //PacketManager.network.sendToAllTracking(packet, entity);
+            entity.deathTime = 0;
         }
-
-
-        //Visual Particle feedback
-        //double d2 = this.rand.nextGaussian() * 0.02D;
-        //double d0 = this.rand.nextGaussian() * 0.02D;
-        //double d1 = this.rand.nextGaussian() * 0.02D;
-        //this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d2, d0, d1);
     }
 
     private static final float[] OVERLAY = new float[]{ 100 / 255F, 25 / 255F, 25 / 255F };
