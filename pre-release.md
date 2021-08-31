@@ -1,4 +1,4 @@
-## Current Alpha: 1.3.0-alpha.2
+## Current Alpha: 1.3.0-beta.1
 
 ### Features
 
@@ -71,16 +71,100 @@
     - **Molten Core _(tools)_**: Auto-smelts block drops if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
     - **Hot-Blooded _(armor)_**: Fire and lava heals you proportionally to the damage it would otherwise deal, but water and rain damages you as if it were lava and fire; <NL>The effect of Fire Protection is inverted, to protect water damage
   - **Inolashite - The Time Metal**
-    - **Time Cleave _(weapons)_**: When attacking, sometimes an extra attack can occur, the player will swing his arm twice in quick succession.
-    - **Time Blink _(tools)_**: Upon activation, transports the player 7 blocks in the direction they are looking breaking all the blocks the tool can break that get in the way
-    - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor is worn
+    - **Time Cleave _(weapons)_**: When attacking, sometimes an extra attack can occur, the player will swing his arm
+      twice in quick succession.
+    - **Time Blink _(tools)_**: Upon activation, transports the player 7 blocks in the direction they are looking
+      breaking all the blocks the tool can break that get in the way
+    - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor
+      is worn
   - **Kalendrite - The Healing Metal**
-    - **Restoration _(tools)_**: Breaking blocks restores half a heart but tools lose more durability the lower the user's health is.
-    - **Tranquil _(armor)_**: If the player has not received any damage for the past 10 seconds and they don't have full hp, they gain a regeneration buff.
+    - **Restoration _(tools)_**: Breaking blocks restores half a heart but tools lose more durability the lower the
+      user's health is.
+    - **Tranquil _(armor)_**: If the player has not received any damage for the past 10 seconds and they don't have full
+      hp, they gain a regeneration buff.
   - **Krik - The Gravity Control Metal**
     - **Flak _(weapons)_**: Deals double damage to airborne entities and gives a short levitation debuff.
-    - **Krik-Drives _(tools)_**: Activating the item launches the player in the general direction of where they are looking.
-    - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor is worn
+    - **Krik-Drives _(tools)_**: Activating the item launches the player in the general direction of where they are
+      looking.
+    - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor
+      is worn
+  - **Midasium - The Metal of Greed**
+    - **Midas III _(hoe)_**: Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and
+      nuggets) instead.
+    - **Greed _(weapons)_**: Chance based looting effect that stacks with the looting enchantment. All drops have a
+      small chance to be turned into gold ingots.
+    - **Greed _(tools)_**: Chance based fortune effect that stacks with the fortune enchantment. All drops have a small
+      chance to be turned into gold ingots.
+  - **Mithril - The Magical Metal**
+    - **Multiply _(pickaxe)_**: Breaking ore sometimes drops an additional ore along with the one mined. Effect chance
+      scales with Fortune Enchantment.
+    - **Arcane _(any equipment)_**: The more enchantments the item has the better it performs. (damage for weapons,
+      mining speed for tools and more protection from armor)
+    - **Magic Aspect _(weapons)_**: Deals additional magic damage 1 second after the last entity was attacked
+  - **Orichalcum - The War Metal**
+    - **Berserker _(armor)_**: Killing a mob grants a strength buff, level of which is equal to the count of every other
+      remaining hostile mob around the wearer. (Max Potion Level: 6) (Armor scales the radius and duration of the bonus)
+    - **Champion _(any equipment)_**: Killing monsters restores durability to Orichalcum Items (Amount is equal to the
+      max health of the killed monster)
+  - **Osmium - Extremely Heavy Metal**
+    - **Titan _(armor)_**: Enemies are knocked back when they attack you
+  - **Oureclase - The Crushing Metal**
+    - **Crush _(pickaxe)_**: Mining ores drops 1 dust of that metal instead of the ore.
+    - **Stampede _(armor)_**: Sprinting slightly damages and knocks back nearby entities.
+    - **Pulverize _(weapons)_**: Deals 2x the original damage to enemies with full health.
+  - **Platinum - The Pure Metal**
+    - **Purification _(armor)_**: Purifies negative effects like Weakness, Slowness and Poison to their positive
+      counterparts.
+    - **Cathartic Strike _(weapons)_**: Extra cathartic damage will be dealt to undead enemies as well as setting them
+      on fire.
+    - **Unbreakable _(any equipment)_**: This tool is unbreakable
+  - **Prometheum - The Floral Metal**
+    - **Freyr _(armor)_**: Sprinting affects nearby crops and grass growth giving it a boost at the cost of a bit of
+      armor durability.
+    - **Harvest II _(hoe)_**: When harvested with this hoe: leaves, crops and grass drops are increased.
+    - **Photosynthesis _(any equipment)_**: Item durability regenerates slowly overtime when under direct sunlight.
+  - **Quicksilver - The Swift Metal**
+    - **Sleight of Blade _(weapons)_**: On every successful attack you're launched through the enemy damaging them more.
+    - **Acceleration _(armor)_**: Sprinting will allow you to build up momentum, once full speed is reached you'll be
+      able to run on liquids, but you will sink as soon as you stop or slow down.
+    - **Tailwind _(tools)_**: Mining speed will remain the same over any block independently from harvest level or block
+      hardness
+    - **Light _(any equipment)_**: Equipping this item gives you a speed boost.
+  - **Sanguinite - The Demonic Metal**
+    - **Deceitful _(any equipment)_**: This item will disappear completely after death.
+    - **Devour _(weapons)_**: You deal more damage as you grow hungry, killing enemies appeases your hunger depending on
+      the max health of the enemy but also makes you hungry for more.
+    - **Blood Tap _(tools)_**: Activating the tool will exchange some of your life for increased harvest speed and level
+      also restoring a bit of durability
+    - **Necromastery _(armor)_**: Killing a hostile mob might revive its corpse with lower health allowing it to be
+      killed again for more drops and experience.
+  - **Shadow Iron - Incomplete Metal**
+    - **Chaos Crit _(weapons)_**: Attacks occasionally become critical hits dealing random increased damage up to more
+      than 3 times the base attack value.
+    - **Incompatible _(pickaxe)_**: Mining Shadow Iron ore will sometimes drop a different ore.
+    - **Broken Evasion _(tools)_**: Has a chance of absorbing attack damage completely at the cost of durability from
+      one of the armor pieces
+  - **Shadow Steel - Light Absorbing Metal**
+    - **Umbral-synthesis _(any equipment)_**: (WIP DESC) This item regenerates durability in the darkness, regen speed
+      is relative to the darkness level
+    - **Eclipse _(armor)_**: Whether if you're attacked in light or in darkness you either blind and damage enemies with
+      fire or evade anymore damage and gain speed boost for a few seconds
+    - **Harmony _(weapons)_**: This weapon hits faster in the dark and stronger in the light.
+  - **Tartarite - The Paragon of Metals**
+    - **Paragon Absorb _(any equipment)_**: Surrounding the item with 4 blocks of another metal will allow it to absorb
+      its effects in an increased ratio while also increasing item durability.
+  - **Vulcanite - The Explosive Metal**
+    - **Fissure _(tools)_**: Breaking a block has a chance of breaking another one adjacent to it, chance scales with
+      fortune.
+    - **Explosion _(armor)_**: Receiving damage causes explosions that damage all the entities around the player as well
+      as setting them on fire.
+    - **Fuse _(weapons)_**: Right clicking the weapon ignites it, and on the next strike within 5 seconds will create an
+      explosion whose strength depends on how much time is left on the fuse, if 5 seconds run out before you attack any
+      enemy the explosion will affect the user.
+  - **Vyroxeres - Venomous Metal**
+    - **Toxin _(weapons)_**: Poisons the target on every hit, if the target is already poisoned, the level of poison
+      debuff increases.
+    - **Dissolve _(armor)_**: Additional Damage Reduction for every active potion effect on the user.
 
 ### Balance Changes:
 
