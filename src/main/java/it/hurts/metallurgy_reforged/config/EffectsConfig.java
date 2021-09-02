@@ -311,6 +311,9 @@ public class EffectsConfig {
 	@Config.Name("Eclipse (Shadow Steel Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_armor")
 	public static boolean shadowSteelEffectArmor = true;
+	@Config.Name("Harmony (Shadow Steel Weapons)")
+	@Config.LangKey("tooltip.metallurgy.effect.shadow_steel_weapon")
+	public static boolean shadowSteelEffectWeapon = true;
 
 	@Config.Name("Paragon absorb (Tartarite Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.tartarite_all")

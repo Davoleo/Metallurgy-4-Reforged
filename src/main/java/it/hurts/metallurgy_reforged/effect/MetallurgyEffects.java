@@ -302,6 +302,8 @@ public class MetallurgyEffects {
 	public static final ShadowSteelEffect SHADOW_STEEL_EFFECT = new ShadowSteelEffect();
 	//Shadow Steel Armor (Eclipse)
 	public static final ShadowSteelArmorEffect SHADOW_STEEL_ARMOR_EFFECT = new ShadowSteelArmorEffect();
+	//Shadow Steel Weapons (Harmony)
+	public static final ShadowSteelWeaponEffect SHADOW_STEEL_WEAPON_EFFECT = new ShadowSteelWeaponEffect();
 
 	//Tartarite (Paragon absorb)
 	public static final TartariteEffect TARTARITE_EFFECT = new TartariteEffect();
