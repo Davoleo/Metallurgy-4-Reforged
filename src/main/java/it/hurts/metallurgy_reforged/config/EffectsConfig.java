@@ -325,6 +325,9 @@ public class EffectsConfig {
 	@Config.Name("Fissure (Vulcanite Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.vulcanite_tool")
 	public static boolean vulcaniteEffectTool = true;
+	@Config.Name("Explosion (Vulcanite Armor)")
+	@Config.LangKey("tooltip.metallurgy.effect.vulcanite_armor")
+	public static boolean vulcaniteEffectArmor = true;
 
 	@Config.Name("Toxin (Vyroxeres Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.vyroxeres_weapon")

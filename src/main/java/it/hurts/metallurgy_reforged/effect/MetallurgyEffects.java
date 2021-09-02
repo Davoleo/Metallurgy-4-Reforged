@@ -312,6 +312,8 @@ public class MetallurgyEffects {
 	public static final VulcaniteWeaponEffect VULCANITE_WEAPON_EFFECT = new VulcaniteWeaponEffect();
 	//Vulcanite Tools (Fissure)
 	public static final VulcaniteToolEffect VULCANITE_TOOL_EFFECT = new VulcaniteToolEffect();
+	//Vulcanite Armor (Explosion)
+	public static final VulcaniteArmorEffect VULCANITE_ARMOR_EFFECT = new VulcaniteArmorEffect();
 
 	//Vyroxeres Weapons (Toxin)
 	public static final VyroxeresWeaponEffect VYROXERES_WEAPON_EFFECT = new VyroxeresWeaponEffect();

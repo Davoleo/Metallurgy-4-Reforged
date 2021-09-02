@@ -1477,7 +1477,7 @@ tooltip.metallurgy.effect.shadow_steel_weapon.tooltip=This weapon hits faster in
 tooltip.metallurgy.effect.tartarite_all.tooltip=Surrounding the item with 4 blocks of another metal will allow it to absorb its effects in an increased ratio while also increasing item durability.
 tooltip.metallurgy.effect.vulcanite_weapon.tooltip=Right clicking the weapon ignites it, and on the next strike within 5 seconds will create an explosion whose strength depends on how much time is left on the fuse, if 5 seconds run out before you attack any enemy the explosion will affect the user.
 tooltip.metallurgy.effect.vulcanite_tool.tooltip=Breaking a block has a chance of breaking another one adjacent to it, chance scales with fortune.
-tooltip.metallurgy.effect.vulcanite_armor.tooltip=Receiving damage causes explosions that damage all the entities around the player as well as setting them on fire.
+tooltip.metallurgy.effect.vulcanite_armor.tooltip=Receiving damage causes explosions that damage all the entities around the player damage scales with armor level, when more than 2 pieces are worn explosions also cause fire in the area around and the user is given 10 seconds of fire resistance.
 tooltip.metallurgy.effect.vyroxeres_weapon.tooltip=Poisons the target on every hit, if the target is already poisoned, the level of poison debuff increases.
 tooltip.metallurgy.effect.vyroxeres_armor.tooltip=Additional Damage Reduction for every active potion effect on the user.
 

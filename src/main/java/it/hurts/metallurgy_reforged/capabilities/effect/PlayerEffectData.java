@@ -37,6 +37,7 @@ public class PlayerEffectData {
 		effectBundles.put(shadowSteelArmorBundle.getPrefixKey(), shadowSteelArmorBundle);
 		effectBundles.put(shadowSteelWeaponBundle.getPrefixKey(), shadowSteelWeaponBundle);
 		effectBundles.put(vulcaniteWeaponBundle.getPrefixKey(), vulcaniteWeaponBundle);
+		effectBundles.put(vulcaniteArmorBundle.getPrefixKey(), vulcaniteArmorBundle);
 	}
 
 	//Amordrine Armor ----------------------------------------
@@ -105,5 +106,8 @@ public class PlayerEffectData {
 	public ProgressiveDataBundle shadowSteelWeaponBundle = new ProgressiveDataBundle("shadow_steel_weapon", 2, 20);
 
 	public ProgressiveDataBundle vulcaniteWeaponBundle = new ProgressiveDataBundle("vulcanite_weapon", 6, 20);
+
+	public ExtraFilledDataBundle vulcaniteArmorBundle =
+			new ExtraFilledDataBundle("vulcanite_armor", 3, 10, (bundle) -> bundle.getExtraBool("active"));
 
 }
