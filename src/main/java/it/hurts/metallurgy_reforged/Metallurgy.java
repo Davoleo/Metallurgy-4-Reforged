@@ -34,6 +34,7 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.proxy.IProxy;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import it.hurts.metallurgy_reforged.recipe.ModRecipes;
+import it.hurts.metallurgy_reforged.util.MetallurgyTweaks;
 import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.util.SubEvent;
 import it.hurts.metallurgy_reforged.world.ModWorldGen;
@@ -84,6 +85,9 @@ public class Metallurgy {
 		logger = event.getModLog();
 		logger.info(NAME + " is entering pre-initialization!");
 		proxy.preInit(event);
+
+		MetallurgyTweaks.init(event.getModConfigurationDirectory().toPath().resolve("../"));
+		MetallurgyTweaks.get().install();
 
 		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
 		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";

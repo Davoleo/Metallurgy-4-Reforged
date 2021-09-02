@@ -2,3 +2,6 @@
 # Add any extra files or paths here to make git stop saying they
 # are changed when only line endings change.
 src/main/resources/assets/metallurgy/recipes/**/*.json text eol=lf
+
+# Gradle
+*.gradle linguist-detectable

@@ -93,6 +93,10 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableEnderIOAlloyConfig = false;
 
+	@Config.Name("Enable Metallurgy Tweaks Scripts replacing")
+	@Config.Comment("Loads the scripts from the jar and copies them into CraftTweakers scripts folder, this option should be enabled to receive updates for Metallurgy Tweaks, but may be disabled if you want to tweak Metallurgy Tweaks config file without it getting replaced")
+	public static boolean enableMetallurgyTweaksUpdateReplace = true;
+
 	@Config.Name("Mob that can spawn equipped")
 	@Config.Comment("A list of mob ids that can spawn with metallurgy armor and/or tools")
 	public static String[] mobsThatCanHaveEquipment = {

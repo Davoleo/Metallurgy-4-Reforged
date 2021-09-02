@@ -30,5 +30,5 @@ mcmodsrepo/
 # enderIO's recipes XML Schema
 src/main/resources/assets/metallurgy/recipes/enderio_recipes_schema.xsd
 
-# Metallurgy Tweaks
+# Metallurgy Tweaks intermediate zip file
 /metallurgy_tweaks/metallurgy_tweaks.zip
