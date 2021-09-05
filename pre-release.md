@@ -1,4 +1,4 @@
-## Current Alpha: 1.3.0-beta.1
+## Current Release: 1.3.0-beta.1
 
 ### Features
 
@@ -170,7 +170,7 @@
 
 - **Adamantine**:
   - Updated the color hex value.
-  - Increased ore hardness from 5 to 11.
+  - Increased ore hardness from 5 to 11.5.
   - Added new attribute to armor, Max Health, which is equal to 20.
   - Increased tool durability from 1550 to 2943.
 
@@ -189,17 +189,22 @@
   - Increased armor enchantability from 18 to 32.
   - Decreased armor durability from 30 to 8.
   - Increased tool enchantability from 30 to 32.
-  - Decreased tool durability from 300 to 187.
-  - Decreased tool damage from 3 to 2.8.
+  - Decreased tool durability from 300 to 153.
+  - Decreased tool damage from 3 to 2.7.
   - Increased tool efficiency from 7 to 7.2.
 
 - **Astral Silver**:
-  - Increased ore hardness from 3 to 3.5.
+  - Increased ore hardness from 3 to 3.7.
   - Decreased ore harvest level from 4 to 3.
+  - Increased armor enchantability from 9 to 36.
+  - Increased tool enchantability from 30 to 36.
+  - Decreased tool durability from 350 to 323.
+  - Increased tool damage from 2 to 2.8.
+  - Decreased tool efficiency from 12 to 11.2.
 
 - **Atlarus**:
   - Updated the color hex value.
-  - Increased ore hardness from 3 to 8.3.
+  - Increased ore hardness from 3 to 9.3.
   - Rescaled armor damage reduction from 4/3/3/4 to 4/4/4/4.
   - Decreased armor toughness from 3.5 to 3.3.
   - Added new attribute to armor, Knockback Resistance, which is equal to -0.4.
@@ -210,13 +215,12 @@
   - Increased ore hardness from 3 to 10.
   - Rescaled armor damage reduction from 3/5/6/3 to 1/2/3/2.
   - Decreased armor enchantability from 17 to 2.
-  - Decreased armor durability from 50 to 21.
+  - Decreased armor durability from 50 to 11.
   - Increased armor toughness from 4 to 6.5.
-  - Added new attribute to armor, Movement Speed, which is equal to -0.04.
-  - Decreased tool enchantability from 17 to 2.
+  - Decreased tool enchantability from 17 to 11.
   - Increased tool durability from 500 to 976.
   - Increased tool damage from 3 to 3.9.
-  - Decreased tool efficiency from 8 to 6.5.
+  - Decreased tool efficiency from 8 to 6.6.
   - Added new attribute to tools, Attack Speed, which is equal to -0.6.
 
 - **Brass**:
@@ -241,26 +245,28 @@
   - Increased tool efficiency from 6 to 7.
 
 - **Carmot**:
-  - Increased ore hardness from 3 to 3.8.
-  - Increased armor enchantability from 7 to 10.
+  - Increased ore hardness from 3 to 4.8.
+  - Increased ore harvest level from 4 to 5.
+  - Rescaled armor damage reduction from 2/4/5/2 to 3/4/5/3.
   - Decreased armor durability from 28 to 12.
-  - Decreased tool enchantability from 40 to 6.
-  - Increased tool durability from 500 to 854.
+  - Increased armor toughness from 0 to 1.
+  - Decreased tool enchantability from 40 to 7.
+  - Decreased tool durability from 500 to 414.
   - Decreased tool damage from 2 to 1.4.
   - Decreased tool efficiency from 12 to 4.9.
-  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
-  - Added new attribute to tools, Reach Distance, which is equal to -2.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.3.
+  - Added new attribute to tools, Reach Distance, which is equal to -1.
 
 - **Celenegil**:
   - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
-  - Rescaled armor damage reduction from 4/6/7/5 to 3/4/6/3.
-  - Decreased armor enchantability from 50 to 24.
-  - Decreased armor durability from 160 to 50.
+  - Rescaled armor damage reduction from 4/6/7/5 to 3/4/6/4.
+  - Decreased armor enchantability from 50 to 23.
+  - Decreased armor durability from 160 to 42.
   - Increased armor toughness from 0 to 5.
-  - Decreased tool enchantability from 50 to 22.
-  - Decreased tool durability from 1600 to 340.
-  - Increased tool damage from 4 to 4.6.
+  - Decreased tool enchantability from 50 to 23.
+  - Decreased tool durability from 1600 to 521.
+  - Increased tool damage from 4 to 4.8.
   - Decreased tool efficiency from 14 to 8.2.
 
 - **Ceruclase**:
@@ -273,15 +279,21 @@
   - Added new attribute to tools, Attack Speed, which is equal to -0.1.
 
 - **Copper**:
-  - Decreased ore hardness from 3 to 2.1.
-  - Rescaled armor damage reduction from 2/3/2/1 to 1/2/3/1.
-  - Decreased tool durability from 180 to 145.
+  - Decreased ore hardness from 3 to 2.2.
+  - Rescaled armor damage reduction from 2/3/2/1 to 1/2/3/2.
+  - Decreased armor enchantability from 50 to 25.
+  - Increased armor toughness from 0 to 0.3.
+  - Increased tool enchantability from 5 to 25.
+  - Decreased tool durability from 180 to 95.
   - Decreased tool damage from 2 to 1.2.
-  - Increased tool efficiency from 5 to 5.4.
+  - Increased tool efficiency from 5 to 6.9.
   - Added new attribute to tools, Attack Speed, which is equal to 0.4.
 
 - **Damascus Steel**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
+  - Decreased armor durability from 50 to 23.
+  - Increased tool durability from 500 to 932.
   - Decreased tool damage from 3 to 2.
 
 - **Deep Iron**:
@@ -300,12 +312,13 @@
 - **Desichalkos**:
   - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
-  - Rescaled armor damage reduction from 4/5/7/4 to 3/4/6/3.
-  - Decreased armor durability from 180 to 70.
+  - Rescaled armor damage reduction from 4/5/7/4 to 3/4/5/4.
+  - Decreased armor enchantability from 30 to 21.
+  - Decreased armor durability from 180 to 112.
   - Decreased armor toughness from 3 to 2.6.
-  - Decreased tool enchantability from 30 to 25.
-  - Decreased tool durability from 1800 to 1430.
-  - Decreased tool damage from 5 to 3.4.
+  - Decreased tool enchantability from 30 to 21.
+  - Increased tool durability from 1800 to 2232.
+  - Decreased tool damage from 5 to 3.7.
   - Decreased tool efficiency from 8 to 7.9.
   - Added new attribute to tools, Attack Speed, which is equal to -0.2.
   - Added new attribute to tools, Reach Distance, which is equal to 3.
@@ -319,7 +332,7 @@
   - Decreased tool enchantability from 30 to 17.
   - Increased tool durability from 70 to 366.
   - Increased tool damage from 2 to 2.7.
-  - Decreased tool efficiency from 14 to 8.9.
+  - Decreased tool efficiency from 14 to 7.9.
   - Added new attribute to tools, Attack Speed, which is equal to 0.3.
 
 - **Etherium**:
@@ -327,11 +340,23 @@
   - Increased ore hardness from 3 to 10.
   - Decreased armor enchantability from 45 to 30.
   - Decreased tool enchantability from 35 to 30.
+  - Decreased tool damage from 8 to 6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
   - Added new attribute to tools, Reach Distance, which is equal to 1.
 
 - **Eximite**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 4.7.
   - Increased ore harvest level from 3 to 4.
+  - Rescaled armor damage reduction from 4/5/6/4 to 3/4/4/3.
+  - Increased armor enchantability from 25 to 28.
+  - Decreased armor durability from 100 to 21.
+  - Decreased armor toughness from 5 to 3.3.
+  - Increased tool enchantability from 25 to 28.
+  - Decreased tool durability from 1000 to 789.
+  - Increased tool damage from 4 to 4.9.
+  - Decreased tool efficiency from 8 to 7.8.
+  - Added new attribute to tools, Reach Distance, which is equal to 1.
 
 - **Haderoth**:
   - Increased ore hardness from 3 to 10.
@@ -339,41 +364,68 @@
   - Decreased tool durability from 1250 to 80.
 
 - **Hepatizon**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 3/3/4/2 to 3/4/4/3.
+  - Increased armor enchantability from 22 to 29.
+  - Decreased armor durability from 57 to 28.
+  - Decreased armor toughness from 2 to 1.
+  - Increased tool enchantability from 22 to 29.
+  - Increased tool durability from 300 to 761.
+  - Increased tool damage from 2 to 4.2.
+  - Decreased tool efficiency from 8 to 6.6.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.2.
 
 - **Ignatius**:
-  - Increased ore hardness from 3 to 3.5.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 3.2.
   - Increased ore harvest level from 1 to 3.
+  - Rescaled armor damage reduction from 2/5/6/2 to 2/2/2/2.
+  - Decreased armor enchantability from 15 to 11.
+  - Decreased armor durability from 24 to 5.
+  - Increased armor toughness from 0 to 0.2.
+  - Decreased tool enchantability from 15 to 11.
+  - Decreased tool durability from 200 to 89.
+  - Decreased tool damage from 3 to 2.1.
+  - Decreased tool efficiency from 4 to 3.6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.1.
 
 - **Infuscolium**:
   - Increased ore hardness from 3 to 3.2.
 
 - **Inolashite**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
   - Rescaled armor damage reduction from 3/5/7/4 to 3/6/7/4.
   - Decreased armor enchantability from 25 to 22.
   - Decreased armor durability from 70 to 31.
-  - Decreased armor toughness from 4 to 2.7.
+  - Decreased armor toughness from 4 to 0.7.
   - Decreased tool enchantability from 25 to 22.
-  - Increased tool durability from 900 to 998.
+  - Increased tool durability from 900 to 1028.
   - Increased tool damage from 4 to 6.
-  - Decreased tool efficiency from 8 to 5.9.
+  - Decreased tool efficiency from 8 to 7.2.
   - Added new attribute to tools, Attack Speed, which is equal to -0.4.
 
 - **Kalendrite**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 4.1.
-  - Rescaled armor damage reduction from 4/5/6/4 to 3/4/5/3.
+  - Rescaled armor damage reduction from 4/5/6/4 to 1/2/2/1.
   - Decreased armor enchantability from 20 to 16.
-  - Decreased armor durability from 40 to 18.
-  - Decreased armor toughness from 3 to 2.7.
+  - Decreased armor durability from 40 to 15.
+  - Added new attribute to armor, Max Health, which is equal to 8.
   - Decreased tool enchantability from 20 to 19.
-  - Decreased tool durability from 1000 to 342.
+  - Decreased tool durability from 1000 to 212.
   - Increased tool efficiency from 8 to 8.1.
 
 - **Krik**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
-  - Increased tool durability from 350 to 955.
-  - Decreased tool damage from 7 to 3.5.
+  - Rescaled armor damage reduction from 2/4/3/1 to 1/2/3/2.
+  - Decreased armor durability from 45 to 25.
+  - Decreased armor toughness from 9 to 2.
+  - Increased tool durability from 350 to 1652.
+  - Decreased tool damage from 7 to 4.1.
+  - Increased tool efficiency from 5 to 8.
   - Added new attribute to tools, Attack Speed, which is equal to 0.3.
 
 - **Lemurite**:
@@ -394,18 +446,31 @@
   - Increased ore harvest level from 4 to 5.
 
 - **Midasium**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 3.9.
   - Increased ore harvest level from 3 to 4.
+  - Rescaled armor damage reduction from 3/3/5/2 to 4/4/5/4.
+  - Decreased armor enchantability from 35 to 28.
+  - Decreased armor durability from 16 to 14.
+  - Decreased armor toughness from 4 to 2.
+  - Decreased tool enchantability from 35 to 28.
+  - Decreased tool durability from 100 to 89.
+  - Decreased tool damage from 7 to 2.6.
+  - Decreased tool efficiency from 10 to 7.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.3.
 
 - **Mithril**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 5.5.
   - Increased ore harvest level from 4 to 5.
 
 - **Orichalcum**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 5.
   - Decreased ore harvest level from 5 to 4.
 
 - **Osmium**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 4.
   - Rescaled armor damage reduction from 4/5/5/4 to 5/6/6/5.
   - Decreased armor enchantability from 17 to 8.
@@ -415,40 +480,83 @@
   - Added new attribute to armor, Movement Speed, which is equal to -0.01.
 
 - **Oureclase**:
-  - Increased ore hardness from 3 to 4.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 5.5.
+  - Rescaled armor damage reduction from 3/6/5/4 to 4/6/5/3.
+  - Increased armor enchantability from 2 to 16.
+  - Increased armor durability from 28 to 36.
+  - Increased armor toughness from 1.5 to 2.5.
+  - Added new attribute to armor, Knockback Resistance, which is equal to 0.88.
+  - Decreased tool enchantability from 18 to 16.
+  - Decreased tool durability from 750 to 198.
+  - Decreased tool damage from 6 to 4.1.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
 
 - **Platinum**:
-  - Increased ore hardness from 3 to 3.3.
-  - Increased ore harvest level from 2 to 3.
+  - Increased ore hardness from 3 to 3.4.
+  - Increased ore harvest level from 2 to 4.
+  - Rescaled armor damage reduction from 3/5/6/3 to 3/4/4/3.
+  - Increased armor enchantability from 12 to 30.
+  - Increased armor durability from 17 to 20.
+  - Decreased armor toughness from 0.5 to 0.
+  - Added new attribute to armor, Max Health, which is equal to 8.
+  - Decreased tool enchantability from 50 to 30.
+  - Increased tool durability from 250 to 998.
+  - Decreased tool damage from 5 to 3.
+  - Decreased tool efficiency from 16 to 13.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.2.
 
 - **Prometheum**:
-  - Increased tool durability from 200 to 221.
-  - Decreased tool damage from 5 to 2.2.
+  - Updated the color hex value.
+  - Decreased ore hardness from 3 to 2.9.
+  - Rescaled armor damage reduction from 1/2/3/2 to 1/2/2/1.
+  - Increased armor enchantability from 11 to 14.
+  - Decreased armor durability from 30 to 15.
+  - Decreased tool enchantability from 16 to 14.
+  - Decreased tool durability from 200 to 121.
+  - Decreased tool damage from 5 to 2.4.
+  - Increased tool efficiency from 4 to 4.2.
 
 - **Quicksilver**:
   - Increased ore hardness from 3 to 10.
+  - Added new attribute to armor, Movement Speed, which is equal to 0.04.
+  - Decreased tool damage from 7 to 2.5.
+  - Added new attribute to tools, Attack Speed, which is equal to 1.3.
+  - Added new attribute to tools, Reach Distance, which is equal to 2.
 
 - **Rubracium**:
-  - Increased ore hardness from 3 to 8.9.
+  - Increased ore hardness from 3 to 8.5.
   - Decreased ore harvest level from 4 to 3.
 
 - **Sanguinite**:
   - Increased ore hardness from 3 to 5.5.
   - Decreased ore harvest level from 6 to 5.
+  - Added new attribute to armor, Max Health, which is equal to -10.
 
 - **Shadow Iron**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 4.2.
   - Increased ore harvest level from 1 to 3.
+  - Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
+  - Increased armor enchantability from 3 to 9.
+  - Decreased armor toughness from 4 to 2.
+  - Added new attribute to armor, Knockback Resistance, which is equal to -0.5.
+  - Increased tool enchantability from 3 to 9.
+  - Decreased tool durability from 300 to 118.
+  - Increased tool damage from 6 to 6.8.
+  - Increased tool efficiency from 5 to 6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.2.
 
 - **Shadow Steel**:
+  - Updated the color hex value.
   - Increased ore hardness from 3 to 10.
   - Decreased armor enchantability from 5 to 3.
 
 - **Silver**:
-  - Decreased ore hardness from 3 to 2.5.
+  - Decreased ore hardness from 3 to 2.9.
   - Increased ore harvest level from 1 to 2.
   - Decreased tool enchantability from 20 to 19.
-  - Increased tool durability from 25 to 63.
+  - Increased tool durability from 25 to 75.
   - Decreased tool damage from 5 to 3.4.
   - Decreased tool efficiency from 15 to 11.2.
   - Added new attribute to tools, Attack Speed, which is equal to 0.2.
@@ -474,8 +582,8 @@
   - Increased ore harvest level from 4 to 5.
 
 - **Zinc**:
-  - Decreased ore hardness from 3 to 2.5.
-  - Increased ore harvest level from 1 to 2.
+  - Decreased ore hardness from 3 to 2.
+
 
 
 - This update also features reworked textures for armor and tools by our artist matpac (although they're still WIP so you might see armor and tool sets that differs a lot in theme) :)
