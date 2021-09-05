@@ -4,27 +4,27 @@
 
 - New Effect System: most of the old effects have been moved/reworked to be thematic
   - **Adamantine: The Living Metal**
-    - **Symbiosis I _(Any Equipment)_**: Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
-    - **Symbiosis II _(Armor)_**: Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full set)
+    - **Inclusions _(Any Equipment)_**: Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
+    - **Symbiosis _(Armor)_**: Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25% (with a maximum of 100% when wearing full set)
   - **Amordrine: The Angelic Metal**
     - **Skyhigh _(Armor)_**: Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing
     - **Soulbound _(Any Equipment)_**: Items that have this effect are kept in your inventory after death
     - **Divine Grace _(Weapons)_**: Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200% damage boost)
   - **Angmallen: The Alchemical Metal**
     - **Transmute _(Pickaxe)_**: Mining an ore sometimes drops another ore of +1/-1/+0 harvest level (50% chance)
-    - **Reactive II _(Weapons)_**: Deals Bonus Damage to armored enemies
-    - **Reactive III _(Armor)_**: Plays a sound sometimes when you're near some rare ore, every armor piece increases the chance to detect rare ores
+    - **Reactive I _(Weapons)_**: Deals Bonus Damage to armored enemies
+    - **Reactive II _(Armor)_**: Plays a sound sometimes when you're near some rare ore, every armor piece increases the chance to detect rare ores
   - **Astral Silver: The Star Metal**
     - **Starlight _(Armor)_**: Gives Night Vision and Speed during night time or in the End if the player has the sky above their head depending on how many armor pieces are worn
-    - **Extraterrestrial I _(Waeapons)_**: 45% more damage if the player is in another dimension
-    - **Extraterrestrail II _(Tools)_**: Increased speed when breaking blocks in dimensions that aren't the Overworld
+    - **Extraterrestrial _(Waeapons)_**: 45% more damage if the player is in another dimension
+    - **Extraterrestrail _(Tools)_**: Increased speed when breaking blocks in dimensions that aren't the Overworld
   - **Atlarus: The Wind Metal**
     - **Whirlwind _(Armor)_**: A whirlwind will save you from taking fall damage pushing you in a random direction
     - **Gust of Wind _(Weapons)_**: A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you
     - **Wind Scythe _(Hoe)_**: Wind helps you remove bushes and crops around you
   - **Black Steel: The Fortress Metal**
-    - **Mountain I (Armor)**: Receiving damage sometimes grants resistance but also slowness, at the same time. (Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based)
-    - **Mountain II _(Weapons)_**: Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
+    - **Reinforcement _(Armor)_**: Receiving damage sometimes grants resistance but also slowness, at the same time. (Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based)
+    - **Mountain _(Weapons)_**: Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
   - **Brass: The Reverbing Metal**
   - **Carmot: The Clockwork Metal**
     - **Autonomous _(Tools)_**: Harvesting a block will mine surrounding blocks of the same type in a spheric range
@@ -39,8 +39,8 @@
     - **Blizzard _(Armor)_**: Mobs are slowed, fatigued and weakened depending on how much armor you wear, both players and entities are extinguished if they were on fire.
   - **Damascus Steel - The Regal Metal**
     - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you take damage (minion health will scale with the armor count)
-    - **Brilliance I _(Weapons)_**: Mobs drop significantly more experience.
-    - **Brilliance II _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
+    - **Brilliance _(Weapons)_**: Mobs drop significantly more experience.
+    - **Brilliance _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
   - **Deep Iron - The Oceanic Metal**
     - **Aquatic _(armor)_**: Grants Water Breathing and improved Mobility in water depending on how many armor pieces are worn (it also grants night vision with 2 or more armor pieces).
     - **Diver _(tools)_**: Improved tool harvest speed when underwater (3 times the normal underwater speed)
@@ -73,7 +73,7 @@
   - **Inolashite - The Time Metal**
     - **Time Cleave _(weapons)_**: When attacking, sometimes an extra attack can occur, the player will swing his arm
       twice in quick succession.
-    - **Time Blink _(tools)_**: Upon activation, transports the player 7 blocks in the direction they are looking
+    - **Time Leap _(tools)_**: Upon activation, transports the player 7 blocks in the direction they are looking
       breaking all the blocks the tool can break that get in the way
     - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor
       is worn
@@ -89,7 +89,7 @@
     - **Warp _(armor)_**: Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor
       is worn
   - **Midasium - The Metal of Greed**
-    - **Midas III _(hoe)_**: Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and
+    - **Midas Touch _(hoe)_**: Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and
       nuggets) instead.
     - **Greed _(weapons)_**: Chance based looting effect that stacks with the looting enchantment. All drops have a
       small chance to be turned into gold ingots.

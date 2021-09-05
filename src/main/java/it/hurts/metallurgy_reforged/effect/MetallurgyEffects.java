@@ -68,21 +68,21 @@ public class MetallurgyEffects {
 	public static final AmordrineArmorEffect AMORDRINE_ARMOR_EFFECT = new AmordrineArmorEffect();
 	//Soulbound
 	public static final AmordrineEffect AMORDRINE_EFFECT = new AmordrineEffect();
-	//Coup de grâce
+	//Divine Grace
 	public static final AmordrineWeaponEffect AMORDRINE_WEAPON_EFFECT = new AmordrineWeaponEffect();
 
-	//Reactive II
+	//Reactive I
 	public static final AngmallenWeaponEffect ANGMALLEN_WEAPON_EFFECT = new AngmallenWeaponEffect();
 	//Transmute
 	public static final AngmallenPickaxeEffect ANGMALLEN_PICKAXE_EFFECT = new AngmallenPickaxeEffect();
-	//Reactive III
+	//Reactive II
 	public static final AngmallenArmorEffect ANGMALLEN_ARMOR_EFFECT = new AngmallenArmorEffect();
 
 	//Starlight
 	public static final AstralSilverArmorEffect ASTRAL_SILVER_ARMOR_EFFECT = new AstralSilverArmorEffect();
-	//Extraterrestrial I
+	//Astral Silver Weapon Effect (Extraterrestrial)
 	public static final AstralSilverWeaponEffect ASTRAL_SILVER_WEAPON_EFFECT = new AstralSilverWeaponEffect();
-	//Extraterrestrial II
+	//Astral Silver Tool Effect (Extraterrestrial)
 	public static final AstralSilverToolEffect ASTRAL_SILVER_TOOL_EFFECT = new AstralSilverToolEffect();
 
 	//Whirlwind
@@ -92,12 +92,12 @@ public class MetallurgyEffects {
 	//Gust of Wind
 	public static final AtlarusWeaponEffect ATLARUS_WEAPON_EFFECT = new AtlarusWeaponEffect();
 
-	//Mountain I
+	//Reinforcement
 	public static final BlackSteelArmorEffect BLACK_STEEL_ARMOR_EFFECT = new BlackSteelArmorEffect();
-	//Mountain II
+	//Mountain
 	public static final BlackSteelWeaponEffect BLACK_STEEL_WEAPON_EFFECT = new BlackSteelWeaponEffect();
 
-	//Carmot Tool Effect (Cadence)
+	//Carmot Tool Effect (Autonomous)
 	public static final CarmotToolEffect CARMOT_TOOL_EFFECT = new CarmotToolEffect();
 	//Carmot Armor (Power User)
 	public static final CarmotArmorEffect CARMOT_ARMOR_EFFECT = new CarmotArmorEffect();
@@ -122,7 +122,7 @@ public class MetallurgyEffects {
 	public static final DamascusSteelArmorEffect DAMASCUS_STEEL_ARMOR_EFFECT = new DamascusSteelArmorEffect();
 	//Damascus Steel Weapons (Brilliance)
 	public static final DamascusSteelWeaponEffect DAMASCUS_STEEL_WEAPON_EFFECT = new DamascusSteelWeaponEffect();
-	//Damascus Steel Pickaxe (Brilliance II)
+	//Damascus Steel Pickaxe (Brilliance)
 	public static final DamascusSteelPickaxeEffect DAMASCUS_STEEL_PICKAXE_EFFECT = new DamascusSteelPickaxeEffect();
 
 	//Deep Iron Armor (Aquatic)
@@ -177,7 +177,7 @@ public class MetallurgyEffects {
 
 	//Inolashite Weapon (Time Cleave)
 	public static final InolashiteWeaponEffect INOLASHITE_WEAPON_EFFECT = new InolashiteWeaponEffect();
-	//Inolashite Tool (Time Walk)
+	//Inolashite Tool (Time Leap)
 	public static final InolashiteToolEffect INOLASHITE_TOOL_EFFECT = new InolashiteToolEffect();
 	//Inolashite Armor (Warp)
 	public static final InolashiteArmorEffect INOLASHITE_ARMOR_EFFECT = new InolashiteArmorEffect();
@@ -194,7 +194,7 @@ public class MetallurgyEffects {
 	//Krik Weapon (Flak)
 	public static final KrikWeaponEffect KRIK_WEAPON_EFFECT = new KrikWeaponEffect();
 
-	//Midasium Hoe (Midas)
+	//Midasium Hoe (Midas Touch)
 	public static final MidasiumHoeEffect MIDASIUM_HOE_EFFECT = new MidasiumHoeEffect();
 	//Midasium Weapon (Greed)
 	public static final MidasiumWeaponEffect MIDASIUM_WEAPON_EFFECT = new MidasiumWeaponEffect();
@@ -262,7 +262,7 @@ public class MetallurgyEffects {
 
 	//Quicksilver Weapons (Sleight of blade)
 	public static final QuicksilverWeaponEffect QUICKSILVER_WEAPON_EFFECT = new QuicksilverWeaponEffect();
-	//Quicksilver (Light)
+	//Quicksilver (Aerodynamic)
 	public static final BaseMetallurgyEffect QUICKSILVER_EFFECT = new BaseMetallurgyEffect(ModMetals.QUICKSILVER) {
 		@Nonnull
 		@Override

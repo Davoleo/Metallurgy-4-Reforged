@@ -19,10 +19,10 @@ import net.minecraftforge.common.config.Config;
 @Config.RequiresMcRestart
 public class EffectsConfig {
 
-	@Config.Name("Symbiosis I (Adamantine Items)")
+	@Config.Name("Inclusions (Adamantine Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.adamantine_all")
 	public static boolean adamantineEffectAll = true;
-	@Config.Name("Symbiosis II (Adamantine Armor)")
+	@Config.Name("Symbiosis (Adamantine Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.adamantine_armor")
 	public static boolean adamantineEffectArmor = true;
 
@@ -32,17 +32,17 @@ public class EffectsConfig {
 	@Config.Name("Sky-High (Amordrine Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_all")
 	public static boolean amordrineEffectAll = true;
-	@Config.Name("Coup de grâce (Amordrine Weapons)")
+	@Config.Name("Divine Grace (Amordrine Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_weapon")
 	public static boolean amordrineEffectWeapon = true;
 
-	@Config.Name("Reactive II (Angmallen Weapons)")
+	@Config.Name("Reactive I (Angmallen Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.angmallen_weapon")
 	public static boolean angmallenEffectWeapon = true;
 	@Config.Name("Transmute (Angmallen Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.angmallen_pickaxe")
 	public static boolean angmallenEffectPickaxe = true;
-	@Config.Name("Reactive III (Angmallen Armor)")
+	@Config.Name("Reactive II (Angmallen Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.angmallen_armor")
 	public static boolean angmallenEffectArmor = true;
 
@@ -66,14 +66,14 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.atlarus_hoe")
 	public static boolean atlarusEffectHoe = true;
 
-	@Config.Name("Mountain I (Black Steel Armor)")
+	@Config.Name("Reinforcement (Black Steel Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.black_steel_armor")
 	public static boolean blackSteelEffectArmor = true;
-	@Config.Name("Mountain II (Black Steel Weapon)")
+	@Config.Name("Mountain (Black Steel Weapon)")
 	@Config.LangKey("tooltip.metallurgy.effect.black_steel_weapon")
 	public static boolean blackSteelEffectWeapon = true;
 
-	@Config.Name("Cadence (Carmot Tools)")
+	@Config.Name("Autonomous (Carmot Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.carmot_tool")
 	public static boolean carmotEffectTool = true;
 	@Config.Name("Power User (Carmot Armor)")
@@ -106,10 +106,10 @@ public class EffectsConfig {
 	@Config.Name("Royal Blood (Damascus Steel Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.damascus_steel_armor")
 	public static boolean damascusSteelEffectArmor = true;
-	@Config.Name("Brilliance I (Damascus Steel Weapons)")
+	@Config.Name("Brilliance (Damascus Steel Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.damascus_steel_weapon")
 	public static boolean damascusSteelEffectWeapon = true;
-	@Config.Name("Brilliance II (Damascus Steel Pickaxe)")
+	@Config.Name("Brilliance (Damascus Steel Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.damascus_steel_pickaxe")
 	public static boolean damascusSteelEffectPickaxe = true;
 
@@ -187,7 +187,7 @@ public class EffectsConfig {
 	@Config.Name("Time Cleave (Inolashite Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.inolashite_weapon")
 	public static boolean inolashiteEffectWeapon = true;
-	@Config.Name("Time Blink (Inolashite Tools)")
+	@Config.Name("Time Leap (Inolashite Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.inolashite_tool")
 	public static boolean inolashiteEffectTool = true;
 	@Config.Name("Warp (Inolashite Armor)")
@@ -211,7 +211,7 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.krik_weapon")
 	public static boolean krikEffectWeapon = true;
 
-	@Config.Name("Midas (Midasium hoe)")
+	@Config.Name("Midas Touch (Midasium hoe)")
 	@Config.LangKey("tooltip.metallurgy.effect.midasium_hoe")
 	public static boolean midasiumEffectHoe = true;
 	@Config.Name("Greed (Midasium Weapon)")
