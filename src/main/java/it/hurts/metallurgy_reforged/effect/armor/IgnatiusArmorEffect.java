@@ -18,6 +18,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
@@ -25,6 +26,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -79,7 +81,8 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 	{
 		EntityLivingBase entity = event.getEntityLiving();
 
-		if (!canBeApplied(entity))
+		int level = getLevel(entity);
+		if (level == 0)
 			return;
 
 		DamageSource source = event.getSource();
@@ -97,7 +100,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 					return;
 
 				//Kickstart the timer
-				//The bundle SHOULDN'T EVER be null if we're here
+				//The bundle SHOULD NEVER be null if we're here
 				assert bundle != null;
 				bundle.incrementStep(((EntityPlayer) entity));
 			}
@@ -107,8 +110,8 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 		if (source == DamageSource.IN_FIRE || source == DamageSource.ON_FIRE || (source == DamageSource.LAVA && (bundle == null || bundle.isEffectInProgress())))
 		{
-			if (source != DamageSource.ON_FIRE)
-				event.getEntityLiving().heal(event.getAmount());
+			if (source == DamageSource.LAVA && entity.ticksExisted % 25 - (level * 5) == 0)
+				event.getEntityLiving().heal(event.getAmount() * (level / 6F));
 			event.setCanceled(true);
 		}
 	}
@@ -130,6 +133,18 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 			}
 
 			spawnParticle(entity, 5F, true, 5);
+		}
+	}
+
+	@SubscribeEvent
+	public void drinkDamage(LivingEntityUseItemEvent.Finish event)
+	{
+		EnumAction action = event.getItem().getItem().getItemUseAction(event.getItem());
+		if (action == EnumAction.DRINK)
+		{
+			EntityLivingBase entity = event.getEntityLiving();
+			entity.attackEntityFrom(WATER_DAMAGE, 2F);
+			entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.5F, 1F, false);
 		}
 	}
 
