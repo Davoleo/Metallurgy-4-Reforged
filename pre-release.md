@@ -129,7 +129,7 @@
       able to run on liquids, but you will sink as soon as you stop or slow down.
     - **Tailwind _(tools)_**: Mining speed will remain the same over any block independently from harvest level or block
       hardness
-    - **Light _(any equipment)_**: Equipping this item gives you a speed boost.
+    - **Aerodynamic _(any equipment)_**: Equipping this item gives you a speed boost.
   - **Sanguinite - The Demonic Metal**
     - **Deceitful _(any equipment)_**: This item will disappear completely after death.
     - **Devour _(weapons)_**: You deal more damage as you grow hungry, killing enemies appeases your hunger depending on
