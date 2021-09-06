@@ -181,13 +181,7 @@ public class BlockAlloyer extends BlockTileEntity<TileEntityAlloyer> {
 	public int getLightValue(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
 	{
 		if (state.getValue(BURNING))
-		{
 			return 8;
-		}
-		else if (!state.getValue(BURNING))
-		{
-			return 0;
-		}
 		else
 			return 0;
 	}
