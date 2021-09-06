@@ -69,6 +69,9 @@ public class ItemOreDetector extends ItemExtra {
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
 
+		if (getDetectorMetals(stack).isEmpty())
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
+
 		//Sends contained metals in chat (DEBUG PURPOSES)
 		//ItemOreDetector.getDetectorMetals(stack).forEach(metal ->
 		//		playerIn.sendMessage(new TextComponentString(metal.toString() + ": " + metal.getStats().getTemperature())));
