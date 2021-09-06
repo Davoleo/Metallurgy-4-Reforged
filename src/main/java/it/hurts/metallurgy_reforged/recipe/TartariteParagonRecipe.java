@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IRecipeFactory;
 import net.minecraftforge.common.crafting.JsonContext;
@@ -30,6 +31,12 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 	private TartariteParagonRecipe(@Nonnull ItemStack result, CraftingHelper.ShapedPrimer primer)
 	{
 		super(null, result, primer);
+	}
+
+	@Override
+	public boolean matches(@Nonnull InventoryCrafting inv, @Nonnull World world)
+	{
+		return super.matches(inv, world);
 	}
 
 	@Nonnull
@@ -50,6 +57,7 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 
 		ItemStack result = super.getCraftingResult(craftInv);
 
+		result.setItemDamage(tartariteItem.getItemDamage());
 		//Set durability and effects
 		TartariteEffect.setParagon(result, metal);
 
