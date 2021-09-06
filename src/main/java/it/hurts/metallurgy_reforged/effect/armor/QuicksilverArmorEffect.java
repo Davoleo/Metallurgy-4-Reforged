@@ -23,19 +23,24 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import javax.annotation.Nonnull;
 import java.util.UUID;
+import java.util.function.BiPredicate;
 
 public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
 
     private static final UUID SPEED_UUID = UUID.fromString("91AEAB56-376B-1298-935B-2F7F68070635");
+
+    private final BiPredicate<Integer, IBlockState> canWalkOnLava = (level, state) -> state.getMaterial() == Material.LAVA && level > 2;
 
     public QuicksilverArmorEffect()
     {
@@ -69,11 +74,14 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
         //5/2 * n^2 + 5/2 * n
         float speedMultiplier = (2.5F * level * level + 2.5F * level) * 0.01F;
 
-        double speed = Math.pow(event.player.posX - event.player.prevPosX, 2) + Math.pow(event.player.posZ - event.player.prevPosZ, 2);
+        //double deltaX = event.player.posZ - event.player.prevPosZ;
+        //double deltaZ = event.player.posX - event.player.prevPosX;
+        //double speed = Math.pow(deltaX, 2) + Math.pow(deltaZ, 2);
+
         //apa.quicksilverArmorStep max 3 levels
-        if (event.player.isSprinting() && speed >= 0.05D)
+        if (event.player.isSprinting() /*&& speed >= 0.05D*/)
         {
-            if (capa.quicksilverTick <= maxStep)
+            if (capa.quicksilverTick < maxStep)
             {
                 capa.quicksilverTick++;
 
@@ -126,27 +134,37 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
 
         if (world.isAreaLoaded(minPos, maxPos))
         {
-            for (int i = minPos.getX(); i <= maxPos.getX(); ++i)
+            for (int x = minPos.getX(); x <= maxPos.getX(); ++x)
             {
-                for (int j = minPos.getY(); j <= maxPos.getY(); ++j)
+                for (int y = minPos.getY(); y <= maxPos.getY(); ++y)
                 {
-                    for (int k = minPos.getZ(); k <= maxPos.getZ(); ++k)
+                    for (int z = minPos.getZ(); z <= maxPos.getZ(); ++z)
                     {
-                        pos.setPos(i, j, k);
+                        pos.setPos(x, y, z);
                         IBlockState state = world.getBlockState(pos);
 
-                        boolean canWalkOnLava = state.getMaterial() == Material.LAVA && level > 2;
-
-                        if (state.getMaterial() == Material.WATER || canWalkOnLava)
+                        if (state.getMaterial() == Material.WATER || canWalkOnLava.test(level, state))
                         {
                             AxisAlignedBB fluidBox = Block.FULL_BLOCK_AABB.offset(pos);
                             event.getCollisionBoxesList().add(fluidBox);
                         }
-
                     }
                 }
             }
         }
-
     }
+
+    @SubscribeEvent
+    public void cancelLavaDamage(LivingAttackEvent event)
+    {
+        int level = getLevel(event.getEntityLiving());
+        if (event.getSource() != DamageSource.IN_FIRE || level < 3)
+            return;
+
+        int currentTick = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).quicksilverTick;
+        int maxTicks = Math.round(Math.max(8 * (1F - (level / 4F)), 0.5F) * 20);
+        if (currentTick == maxTicks)
+            event.setCanceled(true);
+    }
+
 }
