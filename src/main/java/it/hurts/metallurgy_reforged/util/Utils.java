@@ -35,6 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -152,7 +153,7 @@ public class Utils {
 	 *
 	 * @return the array filled with rgb color components
 	 */
-	public static float[] getRGBComponents(int hex, float[] results)
+	public static float[] getRGBComponents(int hex, @Nullable float[] results)
 	{
 		int red = (hex >> 16) & 0xFF;
 		int green = (hex >> 8) & 0xFF;

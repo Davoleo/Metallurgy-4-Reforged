@@ -32,6 +32,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Random;
 
 public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
@@ -114,20 +115,22 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	//Overrides the information about the items to drop when the block is broken
 	@Nonnull
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	public Item getItemDropped(@Nonnull IBlockState state, @Nonnull Random rand, int fortune)
 	{
 		return Item.getItemFromBlock(ModBlocks.crusher);
 	}
 
 	//Overrides the ItemStack that the player picks up
 	@Nonnull
+	@ParametersAreNonnullByDefault
 	@Override
-	public ItemStack getPickBlock(@Nonnull IBlockState state, @Nonnull RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
 		return new ItemStack(ModBlocks.crusher);
 	}
 
 	//Called when the block is right-clicked by a player
+	@ParametersAreNonnullByDefault
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
@@ -146,7 +149,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	//Overrides the light level of this block
 	//It returns 0 if the Crusher BURNING state is false, it returns 8 if the Crusher BURNING state is true
 	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
+	public int getLightValue(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
 	{
 		if (state.getValue(BURNING))
 		{
@@ -161,8 +164,9 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	}
 
 	//Called serverSide after this block is replaced with another in Chunk, but before the Tile Entity is updated
+	@ParametersAreNonnullByDefault
 	@Override
-	public void breakBlock(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state)
+	public void breakBlock(World world, BlockPos pos, IBlockState state)
 	{
 		if (!keepInventory)
 		{
@@ -199,8 +203,9 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	//Gets the state for when the player places the block
 	//We getOpposite since we want the front of the Block to be directly facing our side
 	@Nonnull
+	@ParametersAreNonnullByDefault
 	@Override
-	public IBlockState getStateForPlacement(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, @Nonnull EntityLivingBase placer, @Nonnull EnumHand hand)
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand)
 	{
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
@@ -208,7 +213,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	//Called by ItemBlocks after a block is set in the world, to allow post-place logic
 	//We getOpposite since we want the front of the Block to be directly facing our side
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	public void onBlockPlacedBy(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
 		worldIn.setBlockState(pos, this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 
@@ -225,14 +230,14 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isFullCube(IBlockState state)
+	public boolean isFullCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isOpaqueCube(IBlockState state)
+	public boolean isOpaqueCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
@@ -242,7 +247,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	@SuppressWarnings("deprecation")
 	@Nonnull
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state)
+	public EnumBlockRenderType getRenderType(@Nonnull IBlockState state)
 	{
 		return EnumBlockRenderType.MODEL;
 	}
@@ -287,7 +292,7 @@ public class BlockCrusher extends BlockTileEntity<TileEntityCrusher> {
 	//Called after the block is set in the Chunk data, but before the Tile Entity is set
 	//Adjusts the rotation at which the block is placed, based on the blocks around the Crusher and the angle of the player while placing the block
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	public void onBlockAdded(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
 	{
 		if (!worldIn.isRemote)
 		{

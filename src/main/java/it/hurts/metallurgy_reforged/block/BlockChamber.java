@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.block;
 import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.recipe.SublimationRecipes;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityChamber;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -34,6 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Random;
 
@@ -63,20 +65,20 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isOpaqueCube(IBlockState state)
+	public boolean isOpaqueCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean isFullCube(IBlockState state)
+	public boolean isFullCube(@Nonnull IBlockState state)
 	{
 		return false;
 	}
 
 	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
+	public int getLightValue(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
 	{
 		if (state.getValue(ACTIVE))
 			return 8;
@@ -84,6 +86,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 			return 0;
 	}
 
+	@ParametersAreNonnullByDefault
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
@@ -138,6 +141,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 
+	@ParametersAreNonnullByDefault
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
 		if (stack.hasTagCompound())
@@ -148,7 +152,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 			{
 				TileEntityChamber chamber = (TileEntityChamber) te;
 				NBTTagCompound tag = stack.getTagCompound();
-				if (tag.hasKey("chamberTags"))
+				if (tag != null && tag.hasKey("chamberTags"))
 					chamber.readChamberFromNBT(tag.getCompoundTag("chamberTags"));
 
 				if (chamber.potionEffect != null)
@@ -188,11 +192,12 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 		super.breakBlock(world, pos, state);
 	}
 
-	public void dropBlockAsItemWithChance(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, float chance, int fortune)
+	public void dropBlockAsItemWithChance(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state, float chance, int fortune)
 	{
 		//The Block shouldn't drop with this method
 	}
 
+	@ParametersAreNonnullByDefault
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
 	{
@@ -217,11 +222,8 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 
 						int c = PotionUtils.getPotionColorFromEffectList(effect);
 
-						double c0 = (double) (c >> 16 & 255) / 255.0D;
-						double c1 = (double) (c >> 8 & 255) / 255.0D;
-						double c2 = (double) (c >> 0 & 255) / 255.0D;
-
-						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, c0, c1, c2);
+						float[] rgb = Utils.getRGBComponents(c, null);
+						worldIn.spawnParticle(EnumParticleTypes.SPELL_MOB, d0 + facing.getXOffset() * 0.5F, d1, d2 + facing.getZOffset() * 0.5F, rgb[0], rgb[1], rgb[2]);
 					}
 				}
 			}
@@ -259,6 +261,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 	}
 
 	//Gets the state from the metadata value
+	@SuppressWarnings("deprecation")
 	@Nonnull
 	@Override
 	public IBlockState getStateFromMeta(int meta)
@@ -322,7 +325,7 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 	}
 
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+	public void onBlockAdded(World worldIn, @Nonnull BlockPos pos, @Nonnull IBlockState state)
 	{
 		if (!worldIn.isRemote)
 		{
