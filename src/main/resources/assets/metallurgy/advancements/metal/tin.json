@@ -12,7 +12,7 @@
     }
   },
   "criteria": {
-    "has_item": {
+    "has_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -22,11 +22,35 @@
           }
         ]
       }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustTin",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "oreTin",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
     }
   },
   "requirements": [
     [
-      "has_item"
+      "has_ingot",
+      "has_dust",
+      "has_ore"
     ]
   ]
 }
