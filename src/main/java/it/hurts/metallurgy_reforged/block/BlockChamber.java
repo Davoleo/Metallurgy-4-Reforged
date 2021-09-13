@@ -19,6 +19,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -29,12 +30,14 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Random;
@@ -228,8 +231,27 @@ public class BlockChamber extends BlockTileEntity<TileEntityChamber> {
 				}
 			}
 		}
+	}
 
+	@ParametersAreNonnullByDefault
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		if (stack.getTagCompound() == null)
+			return;
 
+		NBTTagCompound chamberData = stack.getTagCompound().getCompoundTag("chamberTags");
+
+		//Data: Effect Name and Elapsed time
+		PotionEffect activeEffect = PotionEffect.readCustomPotionEffectFromNBT(chamberData);
+		int timeElapsed = chamberData.getInteger("activeTime") / 20;
+
+		//Format effect name like effect names on potion items
+		TextFormatting format = activeEffect.getPotion().isBadEffect() ? TextFormatting.RED : TextFormatting.BLUE;
+
+		//Add tooltip strings
+		tooltip.add("Active Effect: " + format + Utils.localizeIgnoreFormat(activeEffect.getEffectName()));
+		tooltip.add("Time Elapsed: " + timeElapsed / 60 + ":" + timeElapsed % 60);
 	}
 
 	//Gets the state from how much the block is rotated
