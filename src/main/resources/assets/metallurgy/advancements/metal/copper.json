@@ -1,0 +1,32 @@
+{
+  "parent": "metallurgy:metal/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:copper_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.metal.copper"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.metal.copper.desc"
+    }
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotCopper",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "metallurgy:metal/copper",
+  "display": {
+    "icon": {
+      "item": "metallurgy:silver_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.metal.silver"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.metal.silver.desc"
+    }
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotSilver",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

@@ -39,6 +39,31 @@ material.metallurgy.tartarite.name=Tartarite
 material.metallurgy.vulcanite.name=Vulcanite
 material.metallurgy.vyroxeres.name=Vyroxeres
 
+#Advancements
+advancement.metallurgy.metal.copper=Copper: Is this still 1.12.2?
+advancement.metallurgy.metal.copper.desc=Obtain your first Copper ore.
+advancement.metallurgy.metal.deep_iron=Deep Iron: The Oceanic Metal
+advancement.metallurgy.metal.deep_iron.desc=Venture under an aquatic biome to find and smelt Deep Iron ore.
+advancement.metallurgy.metal.prometheum=Prometheum: The Floral Metal
+advancement.metallurgy.metal.prometheum.desc=Venture into the jungle to find a smelt Prometheum ore.
+advancement.metallurgy.metal.tin=Tin: No, it doesn't contain any food
+advancement.metallurgy.metal.tin.desc=Obtain your first Tin ore, you notice the material is too ductile to make any useful tool out of it alone.
+advancement.metallurgy.metal.zinc=Zinc
+advancement.metallurgy.metal.zinc.desc=Obtain your first Zinc ore, you notice the material is too brittle to make any useful tool out of it alone.
+advancement.metallurgy.metal.osmium=Osmium: Extremely Heavy Metal
+advancement.metallurgy.metal.osmium.desc=Obtain your first Osmium ore, you notice you struggle to carry it around.
+advancement.metallurgy.metal.silver=Silver: Extra damage to Undead mobs is not guaranteed!
+advancement.metallurgy.metal.silver.desc=Obtain your first Silver Ore, its ingot is SHINY!
+advancement.metallurgy.metal.astral_silver=Astral Silver: The Metal of Stars
+advancement.metallurgy.metal.astral_silver.desc=Obtain your first Astral Silver Ore, looking at this metal in the dark shows small sparks of light that align with stars.
+advancement.metallurgy.metal.ignatius=Ignatius: The Metal of Fire
+advancement.metallurgy.metal.ignatius.desc=Obtain your first Ignatius Ore, its ingot is still too hot to handle even after letting it cool down for hours, you're worried about what might happen if you drop it in your wooden house.
+advancement.metallurgy.metal.oureclase=Oureclase: The Crushing Metal
+advancement.metallurgy.metal.oureclase.desc=Venture in the cracks of the underground to find Oureclase ore, its ingot seems unstable and shows a peculiar property: no matter how many times you try to smooth the surface the ingot always crimps and crushes old bonds.
+advancement.metallurgy.metal.shadow_iron=Shadow Iron: The Incomplete Metal
+advancement.metallurgy.metal.shadow_iron.desc=Venture in the highest zones of The Nether to find Shadow Iron Ore, its ingot looks like it's always about to fall into pieces, metal bonds are very weak and you can break them with your bare hands.
+
+
 #Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet
 item.metallurgy.adamantine_chestplate.name=Adamantine Chestplate

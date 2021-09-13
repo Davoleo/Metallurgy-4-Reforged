@@ -1,0 +1,32 @@
+{
+  "parent": "metallurgy:metal/osmium",
+  "display": {
+    "icon": {
+      "item": "metallurgy:oureclase_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.metal.oureclase"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.metal.oureclase.desc"
+    }
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotOureclase",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

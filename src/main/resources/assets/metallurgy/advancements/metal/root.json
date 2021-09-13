@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "metallurgy:wiki"
+    },
+    "title": {
+      "translate": "util.world_join_message.1"
+    },
+    "description": {
+      "translate": "advancement.betterwithmods.desc"
+    },
+    "background": "metallurgy:textures/blocks/carmot_block.png",
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "blockCobblestone",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}
