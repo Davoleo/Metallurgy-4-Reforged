@@ -109,7 +109,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(dataManager.get(THICKNESS) * 2);
     }
 
     @Nullable
@@ -124,8 +124,10 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     @Override
     public boolean attackEntityAsMob(@Nonnull Entity entityIn)
     {
-        float f = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
+        float f = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue();
         int i = 0;
+
+        System.out.println(f);
 
         if (entityIn instanceof EntityLivingBase)
         {
@@ -321,7 +323,8 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     public void setThickness(byte thickness)
     {
         this.dataManager.set(THICKNESS, thickness);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10 * dataManager.get(THICKNESS));
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10 * thickness);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2 * thickness);
     }
 
     @Nullable
