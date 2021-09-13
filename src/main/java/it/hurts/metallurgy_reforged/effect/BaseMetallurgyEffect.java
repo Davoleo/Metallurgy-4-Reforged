@@ -22,6 +22,7 @@ import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.render.font.FontColor;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -45,6 +46,8 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 public abstract class BaseMetallurgyEffect {
+
+	public static boolean pneumaticcraftPatchMessageSent = false;
 
 	public final String name;
 	protected Metal metal;
@@ -94,6 +97,30 @@ public abstract class BaseMetallurgyEffect {
 			return 0;
 
 		EnumEffectCategory category = getCategory();
+
+		//Pneumaticcraft broken Drone patch ---
+		if (ModChecker.isPneumaticCraftLoaded)
+		{
+			try
+			{
+				Class<?> pneuClass = getClass().getClassLoader().loadClass("me.desht.pneumaticcraft.common.util.fakeplayer.DroneFakePlayer");
+				if (pneuClass.isInstance(entity))
+				{
+					if (!pneumaticcraftPatchMessageSent)
+					{
+						Metallurgy.logger.warn("Metallurgy has just bypassed Pneumaticcraft's DroneFakePlayer class to avoid a crash");
+						pneumaticcraftPatchMessageSent = true;
+					}
+					return 0;
+				}
+			}
+			catch (ClassNotFoundException e)
+			{
+				Metallurgy.logger.error("Error while bypassing Pneumaticcraft's Broken DroneFakePlayer class");
+				e.printStackTrace();
+			}
+		}
+		//--------------------------------------
 
 		Item toolItem = entity.getHeldItemMainhand().getItem();
 

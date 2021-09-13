@@ -21,6 +21,7 @@ public class ModChecker {
 	public static boolean isSilentGemsLoaded;
 	public static boolean isNetherExLoaded;
 	public static boolean isEnderIOLoaded;
+	public static boolean isPneumaticCraftLoaded;
 
 	static
 	{
@@ -32,6 +33,7 @@ public class ModChecker {
 		ModChecker.isSilentGemsLoaded = Loader.isModLoaded("silentgems");
 		ModChecker.isNetherExLoaded = Loader.isModLoaded("netherex");
 		ModChecker.isEnderIOLoaded = Loader.isModLoaded("enderio");
+		ModChecker.isPneumaticCraftLoaded = Loader.isModLoaded("pneumaticcraft");
 	}
 
 }
