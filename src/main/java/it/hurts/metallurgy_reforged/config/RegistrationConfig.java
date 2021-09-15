@@ -17,8 +17,10 @@ import net.minecraftforge.common.config.Config;
 public class RegistrationConfig {
 
 	@Config.Name("Blocks")
+	@Config.Comment("§cWARNING! Disabling any of the features here could break some of the mod's content")
 	public static CategoryBlocks categoryBlocks = new CategoryBlocks();
 	@Config.Name("Items")
+	@Config.Comment("§cWARNING! Disabling any of the features here could break some of the mod's content")
 	public static CategoryItems categoryItems = new CategoryItems();
 
 	public static class CategoryBlocks {
