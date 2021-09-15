@@ -1,5 +1,6 @@
 #priority 83
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 //do not modify anything in here, if you want to disable some of these, be sure to check "metallurgyTweaksConfig.zs!"
 import crafttweaker.item.IItemStack;

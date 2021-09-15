@@ -1,5 +1,6 @@
 #priority 99
 #modloaded metallurgy crafttweaker
+#ikwid
 
 import crafttweaker.item.IItemStack;
 import crafttweaker.liquid.ILiquidStack;

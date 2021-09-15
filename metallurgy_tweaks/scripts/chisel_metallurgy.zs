@@ -1,5 +1,6 @@
 #priority 97
 #modloaded metallurgy chisel crafttweaker modtweaker
+#ikwid
 
 import crafttweaker.item.IItemStack;
 import crafttweaker.oredict.IOreDictEntry;

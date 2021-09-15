@@ -1,5 +1,6 @@
 #priority 79
 #modloaded metallurgy mekanism crafttweaker modtweaker
+#ikwid
 
 import mods.mekanism.enrichment as enrichment;
 

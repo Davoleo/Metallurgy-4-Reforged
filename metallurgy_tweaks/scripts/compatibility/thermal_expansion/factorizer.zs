@@ -1,5 +1,6 @@
 #priority 89
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.Factorizer;
 

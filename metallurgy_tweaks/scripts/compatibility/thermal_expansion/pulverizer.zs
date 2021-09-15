@@ -1,5 +1,6 @@
 #priority 86
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.Pulverizer;
 

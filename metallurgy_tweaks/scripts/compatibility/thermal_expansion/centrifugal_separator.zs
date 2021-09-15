@@ -1,5 +1,6 @@
 #priority 85
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.Centrifuge;
 import crafttweaker.item.IItemStack;

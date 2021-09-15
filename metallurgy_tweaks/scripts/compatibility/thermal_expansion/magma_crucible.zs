@@ -1,5 +1,6 @@
 #priority 88
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.Crucible;
 

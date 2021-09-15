@@ -1,5 +1,6 @@
 #priority 84
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.InductionSmelter;
 

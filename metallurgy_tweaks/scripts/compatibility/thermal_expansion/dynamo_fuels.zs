@@ -1,5 +1,6 @@
 #priority 87
 #modloaded metallurgy thermalexpansion crafttweaker modtweaker
+#ikwid
 
 import mods.thermalexpansion.SteamDynamo;
 import mods.thermalexpansion.MagmaticDynamo;

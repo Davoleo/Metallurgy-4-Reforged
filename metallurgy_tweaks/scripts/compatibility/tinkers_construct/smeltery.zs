@@ -1,5 +1,6 @@
 #priority 69
 #modloaded metallurgy tconstruct crafttweaker modtweaker
+#ikwid
 
 import mods.tconstruct.Melting as melting;
 import mods.tconstruct.Casting as casting;

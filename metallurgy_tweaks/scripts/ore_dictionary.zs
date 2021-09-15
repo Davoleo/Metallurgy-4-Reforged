@@ -1,5 +1,6 @@
 #priority 98
 #modloaded metallurgy crafttweaker
+#ikwid
 
 import crafttweaker.item.IItemStack;
 import crafttweaker.oredict.IOreDictEntry;
