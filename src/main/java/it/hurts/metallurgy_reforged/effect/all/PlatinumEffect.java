@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.render.font.FontColor;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
@@ -53,6 +54,9 @@ public abstract class PlatinumEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void onItemEquipped(LivingEquipmentChangeEvent event)
 	{
+		if (event.getSlot() != EntityEquipmentSlot.MAINHAND)
+			return;
+
 		if (!canBeApplied(event.getEntityLiving()))
 			return;
 
