@@ -1,0 +1,134 @@
+@startuml
+left to right direction
+skinparam card {
+    roundCorner 8
+}
+
+
+node root [
+    Start | Tier 1
+    ....
+    root achievement
+]
+
+'Tier 1 achievements [Parent is root]
+card "**Copper**" as Copper
+card "**Deep Iron**" as DeepIron
+card "**Prometheum**" as Prometheum
+card Tin
+card Zinc
+node tier2 [
+    Tier 2
+]
+
+'Tier 1 Links
+root-->Copper
+root-->DeepIron
+root-->Prometheum
+root-->Tin
+root-->Zinc
+root-->tier2
+
+'Tier 2 achievements
+card Angmallen
+card "**Osmium**" as Osmium
+card Silver
+card Infuscolium
+card Manganese
+node tier3 [
+    Tier 3
+]
+
+'Tier 2 Links
+tier2-->Angmallen
+tier2-->Osmium
+tier2-->Silver
+tier2-->Infuscolium
+tier2-->Manganese
+tier2-->tier3
+
+'Tier 3 Cards
+card "Astral Silver" as AstralSilver
+card "**Ignatius**" as Ignatius
+card Oureclase
+card Rubracium
+card "**Shadow Iron**" as ShadowIron
+node tier4 [
+    Tier 4
+]
+
+'Tier 3 Links
+tier3-->AstralSilver
+tier3-->Ignatius
+tier3-->Oureclase
+tier3-->Rubracium
+tier3-->ShadowIron
+tier3-->tier4
+
+'Tier 4 Cards
+card Ceruclase
+card "**Eximite**" as Eximite
+card Kalendrite
+card Midasium
+card Orichalcum
+card Platinum
+card "**Vulcanite**" as Vulcanite
+node tier5 [
+    Tier 5
+]
+
+'Tier 4 Links
+tier4-->Ceruclase
+tier4-->Eximite
+tier4-->Kalendrite
+tier4-->Midasium
+tier4-->Orichalcum
+tier4-->Platinum
+tier4-->Vulcanite
+tier4-->tier5
+
+'Tier 5 Cards
+card Alduorite
+card Carmot
+card Lemurite
+card Lutetium
+card Meutoite
+card Mithril
+card Sanguinite
+card Vyroxeres
+node tier6 [
+    Tier 6
+]
+
+'Tier 5 Links
+tier5-->Alduorite
+tier5-->Carmot
+tier5-->Lemurite
+tier5-->Lutetium
+tier5-->Meutoite
+tier5-->Mithril
+tier5-->Sanguinite
+tier5-->Vyroxeres
+tier5-->tier6
+
+'Tier 6 Cards
+card Atlarus
+card Adamantine
+card "**Tartarite**" as Tartarite
+node tier7 [
+    Tier 7
+]
+
+'Tier 6 Links
+tier6-->Atlarus
+tier6-->Adamantine
+tier6-->Tartarite
+tier6-->tier7
+
+'Tier 7 Cards
+
+
+
+@enduml
+
+

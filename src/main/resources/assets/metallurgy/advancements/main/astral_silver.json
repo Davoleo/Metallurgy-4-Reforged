@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/osmium",
+  "parent": "metallurgy:main/osmium",
   "display": {
     "icon": {
       "item": "metallurgy:astral_silver_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.astral_silver"
+      "translate": "advancement.metallurgy.main.astral_silver"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.astral_silver.desc"
+      "translate": "advancement.metallurgy.main.astral_silver.desc"
     }
   },
   "criteria": {

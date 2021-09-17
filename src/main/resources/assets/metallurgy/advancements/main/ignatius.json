@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/copper",
+  "parent": "metallurgy:main/osmium",
   "display": {
     "icon": {
-      "item": "metallurgy:silver_ingot"
+      "item": "metallurgy:ignatius_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.silver"
+      "translate": "advancement.metallurgy.main.ignatius"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.silver.desc"
+      "translate": "advancement.metallurgy.main.ignatius.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotSilver",
+            "ore": "ingotIgnatius",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustSilver",
+            "ore": "dustIgnatius",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreSilver",
+            "ore": "oreIgnatius",
             "type": "forge:ore_dict"
           }
         ]

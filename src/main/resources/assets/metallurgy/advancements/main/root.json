@@ -3,13 +3,9 @@
     "icon": {
       "item": "metallurgy:wiki"
     },
-    "title": {
-      "translate": "util.world_join_message.1"
-    },
-    "description": {
-      "translate": "advancement.betterwithmods.desc"
-    },
-    "background": "metallurgy:textures/blocks/carmot_block.png",
+    "title": "Metallurgy 4: Reforged",
+    "description": "Bringing \"Mine\" into Minecraft",
+    "background": "metallurgy:textures/blocks/deep_iron_block.png",
     "announce_to_chat": false
   },
   "criteria": {

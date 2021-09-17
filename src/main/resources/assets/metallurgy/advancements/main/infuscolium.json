@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/root",
+  "parent": "metallurgy:main/tier2",
   "display": {
     "icon": {
-      "item": "metallurgy:copper_ingot"
+      "item": "metallurgy:infuscolium_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.copper"
+      "translate": "advancement.metallurgy.main.infuscolium"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.copper.desc"
+      "translate": "advancement.metallurgy.main.infuscolium.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotCopper",
+            "ore": "ingotInfuscolium",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustCopper",
+            "ore": "dustInfuscolium",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreCopper",
+            "ore": "oreInfuscolium",
             "type": "forge:ore_dict"
           }
         ]

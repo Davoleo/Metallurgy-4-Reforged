@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/osmium",
+  "parent": "metallurgy:main/osmium",
   "display": {
     "icon": {
-      "item": "metallurgy:oureclase_ingot"
+      "item": "metallurgy:shadow_iron_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.oureclase"
+      "translate": "advancement.metallurgy.main.shadow_iron"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.oureclase.desc"
+      "translate": "advancement.metallurgy.main.shadow_iron.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotOureclase",
+            "ore": "ingotShadowIron",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustOureclase",
+            "ore": "dustShadowIron",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreOureclase",
+            "ore": "oreShadowIron",
             "type": "forge:ore_dict"
           }
         ]

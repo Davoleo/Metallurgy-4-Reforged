@@ -1,14 +1,16 @@
 {
-  "parent": "metallurgy:metal/root",
+  "parent": "metallurgy:main/root",
   "display": {
     "icon": {
-      "item": "metallurgy:prometheum_ingot"
+      "item": "metallurgy:copper_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
     },
+    "frame": "goal",
     "title": {
-      "translate": "advancement.metallurgy.metal.prometheum"
+      "translate": "advancement.metallurgy.main.tier1"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.prometheum.desc"
+      "translate": "advancement.metallurgy.main.tier1.desc"
     }
   },
   "criteria": {
@@ -17,8 +19,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotPrometheum",
-            "type": "forge:ore_dict"
+            "item": "metallurgy:copper_pickaxe"
           }
         ]
       }
@@ -28,8 +29,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustPrometheum",
-            "type": "forge:ore_dict"
+            "item": "metallurgy:deep_iron_pickaxe"
           }
         ]
       }
@@ -39,8 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "orePrometheum",
-            "type": "forge:ore_dict"
+            "item": "metallurgy:prometheum_pickaxe"
           }
         ]
       }

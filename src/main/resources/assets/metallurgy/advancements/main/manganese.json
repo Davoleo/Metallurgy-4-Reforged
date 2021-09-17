@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/root",
+  "parent": "metallurgy:main/tier2",
   "display": {
     "icon": {
-      "item": "metallurgy:tin_ingot"
+      "item": "metallurgy:manganese_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.tin"
+      "translate": "advancement.metallurgy.main.manganese"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.tin.desc"
+      "translate": "advancement.metallurgy.main.manganese.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotTin",
+            "ore": "ingotManganese",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustTin",
+            "ore": "dustManganese",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreTin",
+            "ore": "oreManganese",
             "type": "forge:ore_dict"
           }
         ]

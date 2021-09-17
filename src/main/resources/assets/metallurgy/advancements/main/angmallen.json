@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/copper",
+  "parent": "metallurgy:main/tier2",
   "display": {
     "icon": {
-      "item": "metallurgy:osmium_ingot"
+      "item": "metallurgy:angmallen_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.osmium"
+      "translate": "advancement.metallurgy.main.astral_silver"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.osmium.desc"
+      "translate": "advancement.metallurgy.main.astral_silver.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotOsmium",
+            "ore": "ingotAngmallen",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,18 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustOsmium",
-            "type": "forge:ore_dict"
-          }
-        ]
-      }
-    },
-    "has_ore": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "ore": "oreOsmium",
+            "ore": "dustAngmallen",
             "type": "forge:ore_dict"
           }
         ]
@@ -49,8 +38,7 @@
   "requirements": [
     [
       "has_ingot",
-      "has_dust",
-      "has_ore"
+      "has_dust"
     ]
   ]
 }

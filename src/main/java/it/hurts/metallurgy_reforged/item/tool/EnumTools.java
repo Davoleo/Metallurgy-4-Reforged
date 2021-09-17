@@ -25,7 +25,7 @@ public enum EnumTools {
 	private final Class<?> toolClass;
 	private final boolean isEnabled;
 
-	EnumTools(String name, Class<?> toolClass, boolean enabled)
+	<T extends Item> EnumTools(String name, Class<T> toolClass, boolean enabled)
 	{
 		this.name = name;
 		this.toolClass = toolClass;
@@ -37,9 +37,10 @@ public enum EnumTools {
 		return name;
 	}
 
-	public Class<?> getToolClass()
+	@SuppressWarnings("unchecked")
+	public <T extends Item> Class<T> getToolClass()
 	{
-		return toolClass;
+		return (Class<T>) toolClass;
 	}
 
 	public boolean isEnabled()

@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/osmium",
+  "parent": "metallurgy:main/root",
   "display": {
     "icon": {
-      "item": "metallurgy:ignatius_ingot"
+      "item": "metallurgy:zinc_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.ignatius"
+      "translate": "advancement.metallurgy.main.zinc"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.ignatius.desc"
+      "translate": "advancement.metallurgy.main.zinc.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotIgnatius",
+            "ore": "ingotZinc",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustIgnatius",
+            "ore": "dustZinc",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreIgnatius",
+            "ore": "oreZinc",
             "type": "forge:ore_dict"
           }
         ]

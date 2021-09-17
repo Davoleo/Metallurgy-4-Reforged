@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:metal/root",
+  "parent": "metallurgy:main/root",
   "display": {
     "icon": {
-      "item": "metallurgy:deep_iron_ingot"
+      "item": "metallurgy:prometheum_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.metal.deep_iron"
+      "translate": "advancement.metallurgy.main.prometheum"
     },
     "description": {
-      "translate": "advancement.metallurgy.metal.deep_iron.desc"
+      "translate": "advancement.metallurgy.main.prometheum.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotDeepIron",
+            "ore": "ingotPrometheum",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustDeepIron",
+            "ore": "dustPrometheum",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreDeepIron",
+            "ore": "orePrometheum",
             "type": "forge:ore_dict"
           }
         ]
