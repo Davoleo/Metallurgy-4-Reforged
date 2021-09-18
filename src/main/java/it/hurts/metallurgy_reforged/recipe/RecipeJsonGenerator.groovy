@@ -177,7 +177,7 @@ class RecipeJsonGenerator {
             ],
             [
                     new RecipeGenHelper.Stack("silver", 1),
-                    new RecipeGenHelper.Stack("mithril", 1),
+                    new RecipeGenHelper.Stack("astral_silver", 1),
                     new RecipeGenHelper.Stack("quicksilver", 2)
             ],
             [

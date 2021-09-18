@@ -98,7 +98,7 @@ public class AlloyerRecipes {
 						new AlloySample(ModMetals.HEPATIZON, 2, 1.25F));
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SILVER, 1),
-						new AlloySample(ModMetals.MITHRIL, 1),
+						new AlloySample(ModMetals.ASTRAL_SILVER, 1),
 						new AlloySample(ModMetals.QUICKSILVER, 2, 1.25F));
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.LUTETIUM, 1),
