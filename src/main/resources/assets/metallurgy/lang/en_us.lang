@@ -40,18 +40,24 @@ material.metallurgy.vulcanite.name=Vulcanite
 material.metallurgy.vyroxeres.name=Vyroxeres
 
 # Advancements
-# Tier 2
-advancement.metallurgy.main.copper=Copper: Is this still 1.12.2?
+# Tier 1
+advancement.metallurgy.main.copper=Copper
 advancement.metallurgy.main.copper.desc=Obtain your first Copper ore.
 advancement.metallurgy.main.deep_iron=Deep Iron: The Oceanic Metal
 advancement.metallurgy.main.deep_iron.desc=Venture under an aquatic biome to find and smelt Deep Iron ore.
 advancement.metallurgy.main.prometheum=Prometheum: The Floral Metal
 advancement.metallurgy.main.prometheum.desc=Venture into the jungle to find a smelt Prometheum ore.
-advancement.metallurgy.main.tin=Tin: No, it doesn't contain any food
+advancement.metallurgy.main.tin=Tin
 advancement.metallurgy.main.tin.desc=Obtain your first Tin ore, you notice the material is too ductile to make any useful tool out of it alone.
 advancement.metallurgy.main.zinc=Zinc
 advancement.metallurgy.main.zinc.desc=Obtain your first Zinc ore, you notice the material is too brittle to make any useful tool out of it alone.
-# Tier 3
+advancement.metallurgy.main.bronze=Bronze
+advancement.metallurgy.main.bronze.desc=Obtain your first batch of Bronze by alloying Tin and Copper in a 1:3 ratio.
+advancement.metallurgy.main.brass=Brass: The Reverbing Metal
+advancement.metallurgy.main.brass.desc=Obtain your first batch of Brass by alloying Zinc and Copper in a 1:3 ratio.
+advancement.metallurgy.main.damascus_steel=Damascus Steel: The Regal Metal
+advancement.metallurgy.main.damascus_steel.desc=Obtain your first batch of Damascus Steel by alloying Iron and Bronze in a 1:2 ratio
+# Tier 2
 advancement.metallurgy.main.osmium=Osmium: Extremely Heavy Metal
 advancement.metallurgy.main.osmium.desc=Obtain your first Osmium ore, you notice you struggle to carry it around.
 advancement.metallurgy.main.silver=Silver: Extra damage to Undead mobs is not guaranteed!
