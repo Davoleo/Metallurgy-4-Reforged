@@ -17,6 +17,11 @@ card "**Deep Iron**" as DeepIron
 card "**Prometheum**" as Prometheum
 card Tin
 card Zinc
+
+card "**Bronze**\n(Tin + Copper)" as Bronze
+card "**Brass**\n(Zinc + Copper)" as Brass
+card "**Damascus Steel**\n(Bronze + Iron)" as DamascusSteel
+
 node tier2 [
     Tier 2
 ]
@@ -27,14 +32,23 @@ root-->DeepIron
 root-->Prometheum
 root-->Tin
 root-->Zinc
+root-->Bronze
+root-->Brass
+Bronze-->DamascusSteel
 root-->tier2
 
 'Tier 2 achievements
-card Angmallen
 card "**Osmium**" as Osmium
 card Silver
 card Infuscolium
 card Manganese
+
+card "Angmallen\n(Iron + Gold)" as Angmallen
+card "**Steel**\n(Iron + Manganese)" as Steel
+card "**Black Steel**\n(Deep Iron + Infuscolium)" as BlackSteel
+card "Electrum\n(Silver + Gold)" as Electrum
+card "Hepatizon\n(Steel + Infuscolium)" as Hepatizon
+
 node tier3 [
     Tier 3
 ]
@@ -45,6 +59,10 @@ tier2-->Osmium
 tier2-->Silver
 tier2-->Infuscolium
 tier2-->Manganese
+tier2-->Steel
+tier2-->BlackSteel
+tier2-->Electrum
+Steel-->Hepatizon
 tier2-->tier3
 
 'Tier 3 Cards
@@ -53,6 +71,9 @@ card "**Ignatius**" as Ignatius
 card Oureclase
 card Rubracium
 card "**Shadow Iron**" as ShadowIron
+
+card "Quicksilver\n(Astral Silver + Silver)" as Quicksilver
+
 node tier4 [
     Tier 4
 ]
@@ -63,6 +84,7 @@ tier3-->Ignatius
 tier3-->Oureclase
 tier3-->Rubracium
 tier3-->ShadowIron
+tier3-->Quicksilver
 tier3-->tier4
 
 'Tier 4 Cards
@@ -73,6 +95,10 @@ card Midasium
 card Orichalcum
 card Platinum
 card "**Vulcanite**" as Vulcanite
+
+card "**Celenegil**\n(Orichalcum + Platinum)" as Celenegil
+card "Amordrine\n(Kalendrite + Platinum)" as Amordrine
+
 node tier5 [
     Tier 5
 ]
@@ -85,6 +111,8 @@ tier4-->Midasium
 tier4-->Orichalcum
 tier4-->Platinum
 tier4-->Vulcanite
+tier4-->Celenegil
+tier4-->Amordrine
 tier4-->tier5
 
 'Tier 5 Cards
@@ -96,6 +124,14 @@ card Meutoite
 card Mithril
 card Sanguinite
 card Vyroxeres
+
+card "**Shadow Steel**\n(Shadow Iron + Lemurite)" as ShadowSteel
+card "**Inolashite**\n(Ceruclase + Alduorite)" as Inolashite
+card "**Haderoth**\n(Mithril + Rubracium)" as Haderoth
+card "**Desichalkos**\n(Eximite + Meutoite)" as Desichalkos
+card "**Krik**\n(Osmium + Lutetium)" as Krik
+card "**Etherium**\n(Sanguinite + Carmot)" as Etherium
+
 node tier6 [
     Tier 6
 ]
@@ -109,12 +145,18 @@ tier5-->Meutoite
 tier5-->Mithril
 tier5-->Sanguinite
 tier5-->Vyroxeres
+tier5-->ShadowSteel
+tier5-->Inolashite
+tier5-->Haderoth
+tier5-->Desichalkos
+tier5-->Krik
+tier5-->Etherium
 tier5-->tier6
 
 'Tier 6 Cards
 card Atlarus
 card Adamantine
-card "**Tartarite**" as Tartarite
+card "**Tartarite**\n(Adamantine + Atlarus)" as Tartarite
 node tier7 [
     Tier 7
 ]
