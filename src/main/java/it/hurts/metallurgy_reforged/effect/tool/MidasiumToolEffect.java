@@ -60,8 +60,8 @@ public class MidasiumToolEffect extends BaseMetallurgyEffect {
 
         //System.out.println("Will Be duped");
 
-        //Looting level + 1 * 25 is the % at which the effect should take effect
-        float chance = (event.getFortuneLevel() + 1) * 0.25F;
+        //Looting level + 1 * 30 is the % at which the effect should take effect
+        float chance = (event.getFortuneLevel() + 1) * 0.3F;
 
         if (Math.random() <= chance)
         {
