@@ -71,7 +71,7 @@ public class MithrilWeaponEffect extends BaseMetallurgyEffect implements IProgre
 				//If the effect item is correct
 				IToolEffect tool = ((IToolEffect) effectStack.getItem());
 				//Damage is 30% of the original weapon damage
-				float attackDamage = tool.getMetalStats().getToolStats().getDamage() / 0.3F;
+				float attackDamage = tool.getMetalStats().getToolStats().getDamage() * 0.3F;
 
 				//Get the last attacked entity and damage it if it's not dead or null
 				EntityLivingBase target = entity.getLastAttackedEntity();
