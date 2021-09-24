@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nonnull;
 
@@ -46,6 +47,24 @@ public class NBTUtils {
 			}
 		});
 		return ejected;
+	}
+
+	/**
+	 * Copy of {@link FluidStack#writeToNBT(NBTTagCompound)} that doesn't crash because of random NPEs on registered fluid names
+	 *
+	 * @param stack the {@link FluidStack} you want to convert to NBT
+	 *
+	 * @return the converted fluid in {@link NBTTagCompound} format
+	 */
+	public static NBTTagCompound writeFluidStackToNBT(FluidStack stack)
+	{
+		NBTTagCompound compound = new NBTTagCompound();
+		compound.setString("FluidName", stack.getFluid().getName());
+		compound.setInteger("Amount", stack.amount);
+		if (stack.tag != null)
+			compound.setTag("Tag", stack.tag);
+
+		return compound;
 	}
 
 }

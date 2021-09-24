@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.config.GeneralConfig;
 
 import java.nio.file.Path;
 
+@Deprecated
 public class MetallurgyTweaks {
 
     private final Path metallurgyTweaksScripts = Utils.getPath("/assets/metallurgy/tweaks/script/");

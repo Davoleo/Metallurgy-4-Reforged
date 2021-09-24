@@ -22,9 +22,7 @@ import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.gui.GuiHandler;
 import it.hurts.metallurgy_reforged.handler.OreDictHandler;
 import it.hurts.metallurgy_reforged.handler.TileEntityHandler;
-import it.hurts.metallurgy_reforged.integration.IntegrationEnderIO;
-import it.hurts.metallurgy_reforged.integration.IntegrationIF;
-import it.hurts.metallurgy_reforged.integration.IntegrationProjectE;
+import it.hurts.metallurgy_reforged.integration.*;
 import it.hurts.metallurgy_reforged.integration.conarm.IntegrationCArmory;
 import it.hurts.metallurgy_reforged.integration.crafttweaker.IntegrationCT;
 import it.hurts.metallurgy_reforged.integration.silentgems.IntegrationSilentGems;
@@ -34,7 +32,6 @@ import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.proxy.IProxy;
 import it.hurts.metallurgy_reforged.recipe.CrusherRecipes;
 import it.hurts.metallurgy_reforged.recipe.ModRecipes;
-import it.hurts.metallurgy_reforged.util.MetallurgyTweaks;
 import it.hurts.metallurgy_reforged.util.ModChecker;
 import it.hurts.metallurgy_reforged.util.SubEvent;
 import it.hurts.metallurgy_reforged.world.ModWorldGen;
@@ -85,9 +82,6 @@ public class Metallurgy {
 		logger = event.getModLog();
 		logger.info(NAME + " is entering pre-initialization!");
 		proxy.preInit(event);
-
-		MetallurgyTweaks.init(event.getModConfigurationDirectory().toPath().resolve("../"));
-		MetallurgyTweaks.get().install();
 
 		materialConfig = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/materials.json";
 		enderIOAlloyRecipes = event.getModConfigurationDirectory().getAbsolutePath() + "/metallurgy_reforged/metallurgy_enderio_alloys.xml";
@@ -181,15 +175,22 @@ public class Metallurgy {
 		}
 
 		if (ModChecker.isEnderIOLoaded)
-		{
 			IntegrationEnderIO.init(enderIOAlloyRecipes);
-		}
 
 		if (GeneralConfig.enableOreDictCrusherRecipes)
 		{
 			CrusherRecipes.registerDefaultOreRecipes();
 			logger.info("Ore Dictionary based Crusher recipe loaded!");
 		}
+
+		if (ModChecker.isChiselLoaded)
+			IntegrationChisel.init();
+
+		if (ModChecker.isTELoaded)
+			IntegrationThermal.init();
+
+		if (ModChecker.isMekanismLoaded)
+			IntegrationMekanism.init();
 
 		MetallurgyEffects.initTooltips();
 	}
