@@ -109,7 +109,7 @@ public class HaderothWeaponEffect extends BaseMetallurgyEffect {
 				if (killCount > 0 && targetType != null && toolData.getString("killed_type").equals(targetType.toString()))
 				{
 					// TODO: 06/03/2021 Balance: Might be a bit to strong
-					event.setAmount(Math.min(event.getAmount() + (killCount), 20F));
+					event.setAmount(Math.min(event.getAmount() + (killCount), 12F));
 
 					for (int i = 0; i < 15; i++)
 						spawnParticle(event.getEntity(), 2F, true, 5);
