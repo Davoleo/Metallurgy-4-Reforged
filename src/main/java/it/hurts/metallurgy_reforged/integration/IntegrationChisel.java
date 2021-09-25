@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class IntegrationChisel {
 
@@ -29,10 +30,8 @@ public class IntegrationChisel {
 
 			for (BlockMetal decoBlock : metal.getBlocks())
 			{
-				if (decoBlock == null || decoBlock.getType() == BlockTypes.BLOCK)
-					continue;
-
-				addChiselVariation(pascalName + "Decor", decoBlock);
+				if (ForgeRegistries.BLOCKS.containsKey(decoBlock.getRegistryName()) && decoBlock.getType() != BlockTypes.BLOCK)
+					addChiselVariation(pascalName + "Decor", decoBlock);
 			}
 		});
 
@@ -53,8 +52,7 @@ public class IntegrationChisel {
 		//Build Chisel Variation Information compound Tag
 		NBTTagCompound variationTag = new NBTTagCompound();
 		variationTag.setString("group", chiselGroup);
-		System.out.println(chiselGroup + " | " + block.getRegistryName().toString());
-		variationTag.setString("block", block.getRegistryName().toString());
+		variationTag.setString("block", String.valueOf(block.getRegistryName()));
 
 		FMLInterModComms.sendMessage(MODID, "add_variation", variationTag);
 	}
