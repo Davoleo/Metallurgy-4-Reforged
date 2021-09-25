@@ -47,26 +47,20 @@ public class IntegrationThermal {
 	{
 		for (Table.Cell<AlloySample, AlloySample, AlloySample> alloyRecipe : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
-			NBTTagCompound centrifugeRecipe = new NBTTagCompound();
-
-			NBTTagCompound inputStackTag = alloyRecipe.getValue().getStack().writeToNBT(new NBTTagCompound());
-			centrifugeRecipe.setTag("input", inputStackTag);
-
-			NBTTagList outputListTag = new NBTTagList();
+			ItemStack inputStack = alloyRecipe.getValue().getStack();
 			NBTTagCompound output1 = alloyRecipe.getRowKey().getStack().writeToNBT(new NBTTagCompound());
-			outputListTag.appendTag(output1);
 			NBTTagCompound output2 = alloyRecipe.getColumnKey().getStack().writeToNBT(new NBTTagCompound());
-			outputListTag.appendTag(output2);
-			centrifugeRecipe.setTag("output", outputListTag);
 
 			int ratio = Math.max(alloyRecipe.getColumnKey().getAmount(), alloyRecipe.getRowKey().getAmount());
-			centrifugeRecipe.setInteger("energy", ratio * 2000 + 4000);
+			int energy = ratio * 2000 + 4000;
+
+			NBTTagCompound centrifugeRecipe = buildRecipeCompound(energy, inputStack, output1, output2);
 
 			FMLInterModComms.sendMessage(EXPANSION_MODID, "addcentrifugerecipe", centrifugeRecipe);
 		}
 	}
 
-	public static void addDynamoFuels()
+	private static void addDynamoFuels()
 	{
 		NBTTagCompound thermiteMolten = new NBTTagCompound();
 		thermiteMolten.setString("fluid", ModFluids.THERMITE.getName());
@@ -74,14 +68,8 @@ public class IntegrationThermal {
 		FMLInterModComms.sendMessage(EXPANSION_MODID, "addmagmaticfuel", thermiteMolten);
 	}
 
-	public static void loadInductionSmelterRecipes()
+	private static void loadInductionSmelterRecipes()
 	{
-		final Item foundationMaterial = ForgeRegistries.ITEMS.getValue(new ResourceLocation(FOUNDATION_MODID, "material"));
-		assert foundationMaterial != null;
-
-		final NBTTagCompound sand = new ItemStack(Blocks.SAND).writeToNBT(new NBTTagCompound());
-		final NBTTagCompound slag = new ItemStack(foundationMaterial, 1, 864).writeToNBT(new NBTTagCompound());
-
 		ModMetals.metalMap.forEach((name, metal) -> {
 			ItemStack ingot = new ItemStack(metal.getIngot());
 
@@ -90,11 +78,6 @@ public class IntegrationThermal {
 				for (ItemArmorBase armorItem : metal.getArmorSet())
 				{
 					ItemStack armorStack = new ItemStack(armorItem);
-
-					NBTTagCompound armorRecycleRecipe = new NBTTagCompound();
-					armorRecycleRecipe.setInteger("energy", 6000);
-					armorRecycleRecipe.setTag("input", sand);
-					armorRecycleRecipe.setTag("input2", armorStack.writeToNBT(new NBTTagCompound()));
 
 					//2 4 3 1 ingots depending on equipment slot
 					// And slag chance calculation
@@ -123,96 +106,101 @@ public class IntegrationThermal {
 
 					//Assert neither count nor chance are -1 at this point
 					assert count != -1;
-
 					ingot.setCount(count);
-					armorRecycleRecipe.setTag("output", ingot.writeToNBT(new NBTTagCompound()));
-					armorRecycleRecipe.setTag("output2", slag);
-					armorRecycleRecipe.setInteger("chance", chance);
+
+					NBTTagCompound armorRecycleRecipe = buildInductionSmelterCompound(6000, armorStack, ingot, chance);
 					FMLInterModComms.sendMessage(EXPANSION_MODID, "addsmelterrecipe", armorRecycleRecipe);
 				}
 			}
 
 			if (metal.hasToolSet())
 			{
+				//Just to be sure
+				ingot.setCount(1);
+
 				for (Item toolItem : metal.getToolSet())
 				{
-					NBTTagCompound toolRecycleRecipe = new NBTTagCompound();
-
-					toolRecycleRecipe.setInteger("energy", 6000);
-					toolRecycleRecipe.setTag("input", sand);
-					toolRecycleRecipe.setTag("input2", new ItemStack(toolItem).writeToNBT(new NBTTagCompound()));
-					toolRecycleRecipe.setTag("output", ingot.writeToNBT(new NBTTagCompound()));
-					toolRecycleRecipe.setTag("output2", slag);
-					toolRecycleRecipe.setInteger("chance", 10);
+					//6000 10
+					NBTTagCompound toolRecycleRecipe = buildInductionSmelterCompound(6000, new ItemStack(toolItem), ingot, 10);
 					FMLInterModComms.sendMessage(EXPANSION_MODID, "addsmelterrecipe", toolRecycleRecipe);
 				}
 			}
 		});
 
-		NBTTagCompound gauntletRecycleRecipe = new NBTTagCompound();
-		gauntletRecycleRecipe.setInteger("energy", 6000);
-		gauntletRecycleRecipe.setTag("input", sand);
-		gauntletRecycleRecipe.setTag("input2", new ItemStack(ModItems.GAUNTLET).writeToNBT(new NBTTagCompound()));
-		gauntletRecycleRecipe.setTag("output", new ItemStack(ModMetals.RUBRACIUM.getIngot(), 2).writeToNBT(new NBTTagCompound()));
-		gauntletRecycleRecipe.setTag("output2", slag);
-		gauntletRecycleRecipe.setInteger("chance", 25);
+		NBTTagCompound gauntletRecycleRecipe = buildInductionSmelterCompound(
+				6000, new ItemStack(ModItems.GAUNTLET), new ItemStack(ModMetals.RUBRACIUM.getIngot(), 2), 10);
 		FMLInterModComms.sendMessage(EXPANSION_MODID, "addsmelterrecipe", gauntletRecycleRecipe);
 
-		NBTTagCompound lemuriteShieldRecycleRecipe = new NBTTagCompound();
-		lemuriteShieldRecycleRecipe.setInteger("energy", 6000);
-		lemuriteShieldRecycleRecipe.setTag("input", sand);
-		lemuriteShieldRecycleRecipe.setTag("input2", new ItemStack(ModItems.INVISIBILITY_SHIELD).writeToNBT(new NBTTagCompound()));
-		lemuriteShieldRecycleRecipe.setTag("output", new ItemStack(ModMetals.LEMURITE.getIngot(), 3).writeToNBT(new NBTTagCompound()));
-		lemuriteShieldRecycleRecipe.setTag("output2", slag);
-		lemuriteShieldRecycleRecipe.setInteger("chance", 25);
+		NBTTagCompound lemuriteShieldRecycleRecipe = buildInductionSmelterCompound(
+				6000, new ItemStack(ModItems.INVISIBILITY_SHIELD), new ItemStack(ModMetals.LEMURITE.getIngot(), 3), 25);
 		FMLInterModComms.sendMessage(EXPANSION_MODID, "addsmelterrecipe", lemuriteShieldRecycleRecipe);
 	}
 
-	public static void loadPulverizerRecipes()
+	private static void loadPulverizerRecipes()
 	{
-		NBTTagCompound fertilizerRecipe = new NBTTagCompound();
-		fertilizerRecipe.setInteger("energy", 4000);
-		fertilizerRecipe.setTag("input", new ItemStack(ModItems.POTASH).writeToNBT(new NBTTagCompound()));
-		fertilizerRecipe.setTag("output", new ItemStack(ModItems.DUST_POTASH).writeToNBT(new NBTTagCompound()));
+		NBTTagCompound fertilizerRecipe = buildRecipeCompound(4000, new ItemStack(ModItems.POTASH), new ItemStack(ModItems.DUST_POTASH).writeToNBT(new NBTTagCompound()));
 		FMLInterModComms.sendMessage(EXPANSION_MODID, "addpulverizerrecipe", fertilizerRecipe);
 	}
 
-	public static void loadCrucibleRecipes()
+	private static void loadCrucibleRecipes()
 	{
 		ModMetals.metalMap.values().forEach(metal -> {
 			FluidStack molten = metal.getMolten().getFluidStack();
 
 			molten.amount = 16;
-			NBTTagCompound meltNugget = new NBTTagCompound();
-			meltNugget.setTag("output", NBTUtils.writeFluidStackToNBT(molten));
-			meltNugget.setInteger("energy", 500);
-			meltNugget.setTag("input", new ItemStack(metal.getNugget()).writeToNBT(new NBTTagCompound()));
+			NBTTagCompound meltNugget = buildRecipeCompound(500, new ItemStack(metal.getNugget()), NBTUtils.writeFluidStackToNBT(molten));
 			FMLInterModComms.sendMessage(EXPANSION_MODID, "addcruciblerecipe", meltNugget);
 
 			molten.amount = 144;
-			NBTTagCompound meltIngot = new NBTTagCompound();
-			meltIngot.setTag("output", NBTUtils.writeFluidStackToNBT(molten));
-			meltIngot.setInteger("energy", 4000);
-			meltIngot.setTag("input", new ItemStack(metal.getIngot()).writeToNBT(new NBTTagCompound()));
+			NBTTagCompound meltIngot = buildRecipeCompound(4000, new ItemStack(metal.getIngot()), NBTUtils.writeFluidStackToNBT(molten));
 			FMLInterModComms.sendMessage(EXPANSION_MODID, "addcruciblerecipe", meltIngot);
 
 			if (!metal.isAlloy())
 			{
 				molten.amount = 288;
-				NBTTagCompound meltOre = new NBTTagCompound();
-				meltOre.setTag("output", NBTUtils.writeFluidStackToNBT(molten));
-				meltOre.setInteger("energy", 8000);
-				meltOre.setTag("input", new ItemStack(metal.getOre()).writeToNBT(new NBTTagCompound()));
+				NBTTagCompound meltOre = buildRecipeCompound(8000, new ItemStack(metal.getOre()), NBTUtils.writeFluidStackToNBT(molten));
 				FMLInterModComms.sendMessage(EXPANSION_MODID, "addcruciblerecipe", meltOre);
 			}
 
 			molten.amount = 1296;
-			NBTTagCompound meltBlock = new NBTTagCompound();
-			meltBlock.setTag("output", NBTUtils.writeFluidStackToNBT(molten));
-			meltBlock.setInteger("energy", 36000);
-			meltBlock.setTag("input", new ItemStack(metal.getBlock(BlockTypes.BLOCK)).writeToNBT(new NBTTagCompound()));
+			NBTTagCompound meltBlock = buildRecipeCompound(36000, new ItemStack(metal.getBlock(BlockTypes.BLOCK)), NBTUtils.writeFluidStackToNBT(molten));
 			FMLInterModComms.sendMessage(EXPANSION_MODID, "addcruciblerecipe", meltBlock);
 		});
+	}
+
+	private static NBTTagCompound buildRecipeCompound(int energy, ItemStack input, NBTTagCompound... outputs)
+	{
+		NBTTagCompound recipe = new NBTTagCompound();
+		recipe.setInteger("energy", energy);
+		recipe.setTag("input", input.writeToNBT(new NBTTagCompound()));
+		if (outputs.length == 1)
+			recipe.setTag("output", input.writeToNBT(new NBTTagCompound()));
+		else if (outputs.length > 1)
+		{
+			NBTTagList outListTag = new NBTTagList();
+			for (NBTTagCompound output : outputs)
+				outListTag.appendTag(output);
+			recipe.setTag("output", outListTag);
+		}
+
+		return recipe;
+	}
+
+	private static final Item FOUNDATION_MATERIAL = ForgeRegistries.ITEMS.getValue(new ResourceLocation(FOUNDATION_MODID, "material"));
+
+	private static final NBTTagCompound SAND = new ItemStack(Blocks.SAND).writeToNBT(new NBTTagCompound());
+	private static final NBTTagCompound SLAG = new ItemStack(FOUNDATION_MATERIAL, 1, 864).writeToNBT(new NBTTagCompound());
+
+	private static NBTTagCompound buildInductionSmelterCompound(int energy, ItemStack mainInput, ItemStack mainOutput, int chance)
+	{
+		NBTTagCompound recipe = new NBTTagCompound();
+		recipe.setInteger("energy", energy);
+		recipe.setTag("input", SAND);
+		recipe.setTag("input2", mainInput.writeToNBT(new NBTTagCompound()));
+		recipe.setTag("output", mainOutput.writeToNBT(new NBTTagCompound()));
+		recipe.setTag("output2", SLAG);
+		recipe.setInteger("chance", chance);
+		return recipe;
 	}
 
 }
