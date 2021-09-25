@@ -1,3 +1,8 @@
+### 1.2.12
+
+- Metallurgy Tweaks are now implemented natively in the mod via IMC (CraftTweaker is not needed anymore)
+- Sublimation Chamber now has a light level of 8 when it's working.
+
 ### 1.2.11
 
 - Compressed Machine Sounds (mod size almost halved!)
@@ -7,8 +12,7 @@
 
 - Fix crash when wearing certain armor sets ([#332](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/332))
 - [Armor Chroma](https://www.curseforge.com/minecraft/mc-mods/armor-chroma) Integration (custom armor HUD)
-- `materials.json` config now supports custom molten metal
-  temperatures ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315) also check
+- `materials.json` config now supports custom molten metal temperatures ([#315](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315) also check
   out [this thread comment](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/315#issuecomment-889904106))
 - Fixed a bug that didn't allow cleaning detector via the cleaning recipe if it's durability was less than the max
   durability
