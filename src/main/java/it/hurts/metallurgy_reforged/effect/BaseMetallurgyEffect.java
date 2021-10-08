@@ -70,8 +70,9 @@ public abstract class BaseMetallurgyEffect {
 		catch (NoSuchFieldException e)
 		{
 			configOption = null;
-			Metallurgy.logger.error("Error While initializing " + camelMetal + " Effect config field! | Please report this on Metallurgy 4: Reforged Github!");
-			e.printStackTrace();
+			//I'm Allowing config options to not exist in special cases like PlatinumEffect or QuicksilverEffect
+			//Metallurgy.logger.error("Error While initializing " + camelMetal + " Effect config field! | Please report this on Metallurgy 4: Reforged Github!");
+			//e.printStackTrace();
 		}
 		this.configOption = configOption;
 
