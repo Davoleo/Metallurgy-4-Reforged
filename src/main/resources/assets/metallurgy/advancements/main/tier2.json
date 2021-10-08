@@ -7,49 +7,23 @@
     },
     "frame": "goal",
     "title": {
-      "translate": "advancement.metallurgy.main.tier1"
+      "translate": "advancement.metallurgy.main.tier2"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.tier1.desc"
+      "translate": "advancement.metallurgy.main.tier2.desc"
     }
   },
   "criteria": {
-    "has_ingot": {
-      "trigger": "minecraft:inventory_changed",
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
       "conditions": {
-        "items": [
-          {
-            "item": "metallurgy:copper_pickaxe"
-          }
-        ]
-      }
-    },
-    "has_dust": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "metallurgy:deep_iron_pickaxe"
-          }
-        ]
-      }
-    },
-    "has_ore": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "metallurgy:prometheum_pickaxe"
-          }
-        ]
+        "level": 2
       }
     }
   },
   "requirements": [
     [
-      "has_ingot",
-      "has_dust",
-      "has_ore"
+      "harvest_tier"
     ]
   ]
 }

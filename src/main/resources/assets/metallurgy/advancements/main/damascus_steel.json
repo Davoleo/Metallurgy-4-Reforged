@@ -1,5 +1,5 @@
 {
-  "parent": "metallurgy:main/root",
+  "parent": "metallurgy:main/bronze",
   "display": {
     "icon": {
       "item": "metallurgy:damascus_steel_ingot"

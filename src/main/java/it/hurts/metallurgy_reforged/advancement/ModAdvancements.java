@@ -9,7 +9,25 @@
 
 package it.hurts.metallurgy_reforged.advancement;
 
+import net.minecraft.advancements.CriteriaTriggers;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class ModAdvancements {
+
+	public static class Triggers {
+
+		static final Set<MetallurgyTrigger<?>> ALL = new HashSet<>();
+
+		public static final HarvestLevelTrigger BREAK_ORE_TIER_TRIGGER = new HarvestLevelTrigger();
+
+	}
+
+	public static void registerTriggers()
+	{
+		Triggers.ALL.forEach(CriteriaTriggers::register);
+	}
 
 	public static void setupTierAdvancementIcons()
 	{

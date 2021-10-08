@@ -9,6 +9,8 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.advancement.HarvestLevelTrigger;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
@@ -23,7 +25,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -34,6 +39,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -62,8 +69,21 @@ public class BlockOre extends Block {
         return this;
     }
 
+    @ParametersAreNonnullByDefault
     @Override
-    public void getDrops(@Nonnull NonNullList<ItemStack> drops, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull IBlockState state, int fortune)
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
+    {
+        if (player instanceof EntityPlayerMP)
+        {
+            HarvestLevelTrigger.Instance wrapper = new HarvestLevelTrigger.Instance(state.getBlock().getHarvestLevel(state));
+            ModAdvancements.Triggers.BREAK_ORE_TIER_TRIGGER.trigger(((EntityPlayerMP) player), wrapper);
+        }
+        super.harvestBlock(worldIn, player, pos, state, te, stack);
+    }
+
+    @ParametersAreNonnullByDefault
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         if (customDrops != null)
         {
@@ -77,6 +97,11 @@ public class BlockOre extends Block {
             super.getDrops(drops, world, pos, state, fortune);
     }
 
+    @Override
+    public boolean canDropFromExplosion(@Nonnull Explosion explosionIn)
+    {
+        return Utils.random.nextInt(4) > 0;
+    }
 
     // VISUAL EFFECTS -----------------------------------------------------------
     @Override
@@ -154,11 +179,4 @@ public class BlockOre extends Block {
             }
         }
     }
-
-    @Override
-    public boolean canDropFromExplosion(@Nonnull Explosion explosionIn)
-    {
-        return Utils.random.nextInt(4) > 0;
-    }
-
 }

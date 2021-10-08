@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged;
 
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataStorage;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
@@ -103,6 +104,9 @@ public class Metallurgy {
 
 		TileEntityHandler.registerTileEntities();
 		logger.info("Tile Entities Registered!");
+
+		ModAdvancements.registerTriggers();
+		logger.info("Metallurgy Advancement Criteria Registered!");
 
 		//checks if tinker is installed
 		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)

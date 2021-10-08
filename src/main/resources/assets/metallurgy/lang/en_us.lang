@@ -57,6 +57,8 @@ advancement.metallurgy.main.brass=Brass: The Reverbing Metal
 advancement.metallurgy.main.brass.desc=Obtain your first batch of Brass by alloying Zinc and Copper in a 1:3 ratio.
 advancement.metallurgy.main.damascus_steel=Damascus Steel: The Regal Metal
 advancement.metallurgy.main.damascus_steel.desc=Obtain your first batch of Damascus Steel by alloying Iron and Bronze in a 1:2 ratio
+advancement.metallurgy.main.tier2=Tier 2
+advancement.metallurgy.main.tier2.desc=Mine a Tier 2 ore using a tier 1 Pickaxe
 # Tier 2
 advancement.metallurgy.main.osmium=Osmium: Extremely Heavy Metal
 advancement.metallurgy.main.osmium.desc=Obtain your first Osmium ore, you notice you struggle to carry it around.
