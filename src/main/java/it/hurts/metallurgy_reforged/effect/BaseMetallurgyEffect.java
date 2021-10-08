@@ -48,6 +48,7 @@ import java.util.Objects;
 public abstract class BaseMetallurgyEffect {
 
 	public static boolean pneumaticcraftPatchMessageSent = false;
+	private final Field configOption;
 
 	public final String name;
 	protected Metal metal;
@@ -59,30 +60,41 @@ public abstract class BaseMetallurgyEffect {
 
 		rgbComponents = metal != null ? Utils.getRGBComponents(metal.getStats().getColorHex(), null) : null;
 
+		String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
+
+		Field configOption;
+		try
+		{
+			configOption = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
+		}
+		catch (NoSuchFieldException e)
+		{
+			configOption = null;
+			Metallurgy.logger.error("Error While initializing " + camelMetal + " Effect config field! | Please report this on Metallurgy 4: Reforged Github!");
+			e.printStackTrace();
+		}
+		this.configOption = configOption;
+
 		if (isEnabled())
 			MetallurgyEffects.effects.put(Objects.requireNonNull(metal), getCategory(), this);
 	}
 
 	public boolean isEnabled()
 	{
-		if (metal == null)
-			return false;
-		else
+		if (metal != null && configOption != null)
 		{
-			String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, metal.toString());
-
 			try
 			{
-				Field enabledField = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
-				return !enabledField.isAccessible() || enabledField.getBoolean(EffectsConfig.class);
+				return !configOption.isAccessible() || configOption.getBoolean(EffectsConfig.class);
 			}
-			catch (NoSuchFieldException | IllegalAccessException e)
+			catch (IllegalAccessException e)
 			{
-				Metallurgy.logger.warn("IF YOU SEE THIS MESSAGE THERE'S SOMETHING WRONG WITH " + camelMetal + " EFFECTS CONFIG VARIABLE NAMES, GO FIX IT DAVOLEO!");
-				//e.printStackTrace();
-				return true;
+				//Should not happen anyways since we check if the field is accessible before
+				e.printStackTrace();
 			}
 		}
+
+		return false;
 	}
 
 	/**
