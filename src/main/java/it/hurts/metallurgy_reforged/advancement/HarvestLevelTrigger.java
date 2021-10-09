@@ -47,7 +47,7 @@ public class HarvestLevelTrigger extends MetallurgyTrigger<HarvestLevelTrigger.I
 		@Override
 		public boolean test(Instance instance)
 		{
-			return instance.level >= level;
+			return instance.level == level;
 		}
 
 	}

@@ -22,6 +22,8 @@ public abstract class BaseCriterionInstance<T extends AbstractCriterionInstance>
 	}
 
 	/**
+	 * Data stored in the instance on which this method is called is data from the JSON advancements files
+	 *
 	 * @param instance information from the game concerning the trigger
 	 *
 	 * @return whether the trigger was accomplished
