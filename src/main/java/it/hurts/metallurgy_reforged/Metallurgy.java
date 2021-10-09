@@ -181,11 +181,11 @@ public class Metallurgy {
 		if (ModChecker.isEnderIOLoaded)
 			IntegrationEnderIO.init(enderIOAlloyRecipes);
 
-		if (GeneralConfig.enableOreDictCrusherRecipes)
-		{
-			CrusherRecipes.registerDefaultOreRecipes();
-			logger.info("Ore Dictionary based Crusher recipe loaded!");
-		}
+	    if (GeneralConfig.enableOreDictCrusherRecipes)
+	    {
+		    CrusherRecipes.registerDefaultOreRecipes();
+		    logger.info("Ore Dictionary based Crusher recipe loaded!");
+	    }
 
 		if (ModChecker.isChiselLoaded)
 			IntegrationChisel.init();

@@ -93,6 +93,8 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableEnderIOAlloyConfig = false;
 
+	@Deprecated
+	@Config.Ignore
 	@Config.Name("Enable Metallurgy Tweaks Scripts replacing")
 	@Config.Comment("Loads the scripts from the jar and copies them into CraftTweakers scripts folder, this option should be enabled to receive updates for Metallurgy Tweaks, but may be disabled if you want to tweak Metallurgy Tweaks config file without it getting replaced")
 	public static boolean enableMetallurgyTweaksUpdateReplace = true;

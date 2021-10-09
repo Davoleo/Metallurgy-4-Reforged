@@ -17,46 +17,46 @@ import java.nio.file.Path;
 @Deprecated
 public class MetallurgyTweaks {
 
-    private final Path metallurgyTweaksScripts = Utils.getPath("/assets/metallurgy/tweaks/script/");
+	private final Path metallurgyTweaksScripts = Utils.getPath("/assets/metallurgy/tweaks/script/");
 
-    private final Path minecraftDir;
+	private final Path minecraftDir;
 
-    private static MetallurgyTweaks instance;
+	private static MetallurgyTweaks instance;
 
-    private MetallurgyTweaks(Path minecraftDir)
-    {
-        this.minecraftDir = minecraftDir;
-    }
+	private MetallurgyTweaks(Path minecraftDir)
+	{
+		this.minecraftDir = minecraftDir;
+	}
 
-    public void install()
-    {
+	public void install()
+	{
 
-        if (ModChecker.isCraftTweakerLoaded)
-        {
-            String scriptFolder = minecraftDir.resolve("scripts").toFile().getAbsolutePath();
+		if (ModChecker.isCraftTweakerLoaded)
+		{
+			String scriptFolder = minecraftDir.resolve("scripts").toFile().getAbsolutePath();
 
-            Path zip = metallurgyTweaksScripts.resolve("metallurgy_tweaks.zip");
-            Path zsConfig = metallurgyTweaksScripts.resolve("metallurgy_tweaks_config.zs");
+			Path zip = metallurgyTweaksScripts.resolve("metallurgy_tweaks.zip");
+			Path zsConfig = metallurgyTweaksScripts.resolve("metallurgy_tweaks_config.zs");
 
-            if (GeneralConfig.enableMetallurgyTweaksUpdateReplace)
-            {
-                Utils.copyFile(zip, scriptFolder.concat('/' + zip.getFileName().toString()), true);
-                Utils.copyFile(zsConfig, scriptFolder.concat('/' + zsConfig.getFileName().toString()), true);
-                Metallurgy.logger.info("Replacing Metallurgy Tweaks!");
-            }
-            else
-                Metallurgy.logger.info("Metallurgy Tweaks replacement is disabled!");
-        }
-    }
+			if (GeneralConfig.enableMetallurgyTweaksUpdateReplace)
+			{
+				Utils.copyFile(zip, scriptFolder.concat('/' + zip.getFileName().toString()), true);
+				Utils.copyFile(zsConfig, scriptFolder.concat('/' + zsConfig.getFileName().toString()), true);
+				Metallurgy.logger.info("Replacing Metallurgy Tweaks!");
+			}
+			else
+				Metallurgy.logger.info("Metallurgy Tweaks replacement is disabled!");
+		}
+	}
 
-    public static void init(Path minecraft)
-    {
-        instance = new MetallurgyTweaks(minecraft);
-    }
+	public static void init(Path minecraft)
+	{
+		instance = new MetallurgyTweaks(minecraft);
+	}
 
-    public static MetallurgyTweaks get()
-    {
-        return instance;
-    }
+	public static MetallurgyTweaks get()
+	{
+		return instance;
+	}
 
 }
