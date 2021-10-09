@@ -5,10 +5,10 @@
       "item": "metallurgy:angmallen_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.astral_silver"
+      "translate": "advancement.metallurgy.main.angmallen"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.astral_silver.desc"
+      "translate": "advancement.metallurgy.main.angmallen.desc"
     }
   },
   "criteria": {

@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:main/tier3",
+  "parent": "metallurgy:main/tier2",
   "display": {
     "icon": {
-      "item": "metallurgy:oureclase_ingot"
+      "item": "metallurgy:steel_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.oureclase"
+      "translate": "advancement.metallurgy.main.steel"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.oureclase.desc"
+      "translate": "advancement.metallurgy.main.steel.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotOureclase",
+            "ore": "ingotSteel",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,18 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustOureclase",
-            "type": "forge:ore_dict"
-          }
-        ]
-      }
-    },
-    "has_ore": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "ore": "oreOureclase",
+            "ore": "dustSteel",
             "type": "forge:ore_dict"
           }
         ]
@@ -49,8 +38,7 @@
   "requirements": [
     [
       "has_ingot",
-      "has_dust",
-      "has_ore"
+      "has_dust"
     ]
   ]
 }
