@@ -47,7 +47,7 @@ card "Angmallen\n(Iron + Gold)" as Angmallen
 card "**Steel**\n(Iron + Manganese)" as Steel
 card "**Black Steel**\n(Deep Iron + Infuscolium)" as BlackSteel
 card "Electrum\n(Silver + Gold)" as Electrum
-card "Hepatizon\n(Steel + Infuscolium)" as Hepatizon
+card "**Hepatizon**\n(Steel + Infuscolium)" as Hepatizon
 
 node tier3 [
     Tier 3

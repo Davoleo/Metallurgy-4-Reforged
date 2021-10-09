@@ -2,13 +2,13 @@
   "parent": "metallurgy:main/tier3",
   "display": {
     "icon": {
-      "item": "metallurgy:ignatius_ingot"
+      "item": "metallurgy:rubracium_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.ignatius"
+      "translate": "advancement.metallurgy.main.rubracium"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.ignatius.desc"
+      "translate": "advancement.metallurgy.main.rubracium.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotIgnatius",
+            "ore": "ingotRubracium",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustIgnatius",
+            "ore": "dustRubracium",
             "type": "forge:ore_dict"
           }
         ]
@@ -39,7 +39,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "oreIgnatius",
+            "ore": "oreRubracium",
             "type": "forge:ore_dict"
           }
         ]

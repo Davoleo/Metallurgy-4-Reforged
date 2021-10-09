@@ -83,12 +83,18 @@ advancement.metallurgy.main.tier3.desc=Mine a Tier 3 ore using a tier 2 Pickaxe
 
 advancement.metallurgy.main.astral_silver=The Metal of Stars
 advancement.metallurgy.main.astral_silver.desc=Obtain your first Astral Silver Ore, looking at this metal in the dark shows small sparks of light that align with stars.
-advancement.metallurgy.main.oureclase=The Crushing Metal
-advancement.metallurgy.main.oureclase.desc=Venture in the cracks of the underground to find Oureclase ore, its ingot seems unstable and shows a peculiar property: no matter how many times you try to smooth the surface the ingot always crimps and crushes old bonds.
-advancement.metallurgy.main.shadow_iron=The Incomplete Metal
-advancement.metallurgy.main.shadow_iron.desc=Venture in the highest zones of The Nether to find Shadow Iron Ore, its ingot looks like it's always about to fall into pieces, metal bonds are very weak and you can break them with your bare hands.
 advancement.metallurgy.main.ignatius=The Metal of Fire
 advancement.metallurgy.main.ignatius.desc=Obtain your first Ignatius Ore, its ingot is still too hot to handle even after letting it cool down for hours, you're worried about what might happen if you drop it in your wooden house.
+advancement.metallurgy.main.oureclase=The Crushing Metal
+advancement.metallurgy.main.oureclase.desc=Venture in the cracks of the underground to find Oureclase ore, its ingot seems unstable and shows a peculiar property: no matter how many times you try to smooth the surface the ingot always crimps and crushes old bonds.
+advancement.metallurgy.main.rubracium=Rubracium
+advancement.metallurgy.main.rubracium.desc=Rubracium Desc
+advancement.metallurgy.main.shadow_iron=The Incomplete Metal
+advancement.metallurgy.main.shadow_iron.desc=Venture in the highest zones of The Nether to find Shadow Iron Ore, its ingot looks like it's always about to fall into pieces, metal bonds are very weak and you can break them with your bare hands.
+advancement.metallurgy.main.quicksilver=The Swift Metal
+advancement.metallurgy.main.quicksilver.desc=Obtain Quicksilver a 1:1 ratio alloy of Silver and Astral Silver, two of the shiniest metals form one that has the power to enhance speed.
+advancement.metallurgy.main.tier4=Tier 4
+advancement.metallurgy.main.tier4.desc=Mine a Tier 4 ore using a tier 3 Pickaxe
 
 # Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet
