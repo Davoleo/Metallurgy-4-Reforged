@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget;
@@ -18,7 +18,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,6 +25,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,6 +68,9 @@ public class ItemOreDetector extends ItemExtra {
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, @Nonnull EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
 		ItemStack stack = playerIn.getHeldItem(handIn);
+
+		if (getDetectorMetals(stack).isEmpty())
+			return new ActionResult<>(EnumActionResult.FAIL, stack);
 
 		//Sends contained metals in chat (DEBUG PURPOSES)
 		//ItemOreDetector.getDetectorMetals(stack).forEach(metal ->
@@ -137,7 +140,7 @@ public class ItemOreDetector extends ItemExtra {
 		int g = (int) (255 * (metalColors[indexTo][1] * factor + metalColors[indexFrom][1] * (1.0 - factor)));
 		int b = (int) (255 * (metalColors[indexTo][2] * factor + metalColors[indexFrom][2] * (1.0 - factor)));
 
-		return Utils.intColorFromRGB(r, g, b);
+		return MathHelper.rgb(r, g, b);
 	}
 
 	//Model Highlight ------------------------

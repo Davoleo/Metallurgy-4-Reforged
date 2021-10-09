@@ -1,25 +1,27 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "AAA",
-    "SCS",
-    "SFS"
+    "OBO",
+    "OSO",
+    "TFT"
   ],
   "key": {
-    "A": {
+    "O": {
       "type": "forge:ore_dict",
-      "ore": "ingotAtlarus"
+      "ore": "ingotOsmium"
     },
-    "S": {
+    "T": {
       "type": "forge:ore_dict",
-      "ore": "ingotSteel"
-    },
-    "C": {
-      "type": "forge:ore_dict",
-      "ore": "blockCopper"
+      "ore": "ingotTin"
     },
     "F": {
       "item": "minecraft:furnace"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "S": {
+      "item": "metallurgy:bimetal_structure_block"
     }
   },
   "result": {

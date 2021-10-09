@@ -9,22 +9,25 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
-import it.hurts.metallurgy_reforged.util.EventUtils;
+import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IProjectile;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 
@@ -33,70 +36,86 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.ATLARUS);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.atlarusArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
+	/**
+	 * prevent fall damage by summoning wind by a random direction
+	 */
+	@SubscribeEvent
+	public void deviateProjectiles(LivingEvent.LivingUpdateEvent event)
 	{
-		return null;
-	}
+		EntityLivingBase entity = event.getEntityLiving();
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (!(event instanceof LivingEvent.LivingUpdateEvent))
+		if (!canBeApplied(entity))
 			return;
 
-		EntityLivingBase entity = event.getEntityLiving();
 		World world = entity.world;
 
-		if (EventUtils.isEntityWearingArmor(entity, metal) && entity.fallDistance >= 4F)
+		AxisAlignedBB effectRange = entity.getEntityBoundingBox().grow(3D);
+
+		if (!world.isRemote)
 		{
-			AxisAlignedBB nearCollitions = entity.getEntityBoundingBox().contract(0, 1.7D, 0).offset(0, -4D, 0);
-			if (world.collidesWithAnyBlock(nearCollitions))
+			List<Entity> list = world.getEntitiesWithinAABBExcludingEntity(entity, effectRange);
+
+			for (Entity e : list)
 			{
-				double motionX = 2D - Math.random() * 4D;
-				double motionZ = 2D - Math.random() * 4D;
+				double velocity = e.getPositionVector().distanceTo(new Vec3d(e.prevPosX, e.prevPosY, e.prevPosZ));
 
-				if (!world.isRemote)
+				if (!e.getEntityBoundingBox().intersects(entity.getEntityBoundingBox().grow(1D)) && (e instanceof IProjectile || velocity >= 0.6))
 				{
-					entity.motionX = motionX;
-					entity.motionZ = motionZ;
-					entity.velocityChanged = true;
 
-					if (world instanceof WorldServer)
+
+					List<Entity> entitiesInPath = world.getEntitiesWithinAABBExcludingEntity(e, e.getEntityBoundingBox().expand(e.motionX, e.motionY, e.motionZ).grow(1.0D));
+					if (entitiesInPath.stream().anyMatch(entity1 -> entity1.getUniqueID().equals(entity.getUniqueID())))
 					{
-						for (int i = 0; i < 15; i++)
-						{
-							double particleX = entity.posX + (Math.random() - 0.5D) * (double) entity.width;
-							double particleY = entity.posY + Math.random() * (double) entity.height;
-							double particleZ = entity.posZ + (Math.random() - 0.5D) * (double) entity.width;
+						shoot(e, -e.motionX, -e.motionY, -e.motionZ, 0.5F, 36F);
+						e.velocityChanged = true;
 
-							PacketSpawnParticles packetSpawnParticles = new PacketSpawnParticles(EnumParticleTypes.CLOUD.getParticleID(),
-									(float) particleX, (float) particleY, (float) particleZ,
-									(float) motionX, -0.25F, (float) motionZ);
+						double particleX = e.posX + (Math.random() - 0.5D) * (double) e.width;
+						double particleY = e.posY + Math.random() * (double) e.height;
+						double particleZ = e.posZ + (Math.random() - 0.5D) * (double) e.width;
 
-							PacketManager.network.sendToAllTracking(packetSpawnParticles,
-									new NetworkRegistry.TargetPoint(world.provider.getDimension(), particleX, particleY, particleZ, 0)
-							);
-						}
+						PacketSpawnVanillaParticles packetSpawnParticles = new PacketSpawnVanillaParticles(EnumParticleTypes.CLOUD.getParticleID(),
+								(float) particleX, (float) particleY, (float) particleZ,
+								(float) e.motionX, (float) e.motionY, (float) e.motionZ);
+
+						for (int i = 0; i < 5; i++)
+							PacketManager.network.sendToAllTracking(packetSpawnParticles, e);
 					}
 				}
-				entity.fallDistance = 0F;
 			}
 
 		}
+
 	}
+
+	private void shoot(Entity entity, double x, double y, double z, float velocity, float inaccuracy)
+	{
+		float f = MathHelper.sqrt(x * x + y * y + z * z);
+		x = x / (double) f;
+		y = y / (double) f;
+		z = z / (double) f;
+		x = x + (1D - entity.world.rand.nextGaussian() * 2D) * 0.252F;
+		y = y + (1D - entity.world.rand.nextGaussian() * 2D) * 0.252F;
+		z = z + (1D - entity.world.rand.nextGaussian() * 2D) * 0.252F;
+		x = x * (double) velocity;
+		y = y * (double) velocity;
+		z = z * (double) velocity;
+		entity.motionX = x;
+		entity.motionY = y;
+		entity.motionZ = z;
+		float f1 = MathHelper.sqrt(x * x + z * z);
+		entity.rotationYaw = (float) (MathHelper.atan2(x, z) * (180D / Math.PI));
+		entity.rotationPitch = (float) (MathHelper.atan2(y, f1) * (180D / Math.PI));
+		entity.prevRotationYaw = entity.rotationYaw;
+		entity.prevRotationPitch = entity.rotationPitch;
+	}
+
 
 }

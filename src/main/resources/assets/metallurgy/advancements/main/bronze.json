@@ -1,0 +1,44 @@
+{
+  "parent": "metallurgy:main/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:bronze_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.bronze"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.bronze.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotBronze",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustBronze",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust"
+    ]
+  ]
+}

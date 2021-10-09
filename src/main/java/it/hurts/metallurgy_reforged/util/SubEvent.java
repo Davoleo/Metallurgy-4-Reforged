@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.util;
 
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
 import it.hurts.metallurgy_reforged.handler.*;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyArmorTraits;
@@ -23,7 +24,6 @@ public class SubEvent {
 	public static void init()
 	{
 		MinecraftForge.EVENT_BUS.register(GadgetsHandler.class);
-		MinecraftForge.EVENT_BUS.register(EffectHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEquipHandler.class);
 		MinecraftForge.EVENT_BUS.register(GauntletEffect.class);
 		MinecraftForge.EVENT_BUS.register(GeneralConfig.ChangeListener.class);
@@ -31,8 +31,14 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(FluidEvents.class);
 		MinecraftForge.EVENT_BUS.register(ModLakeWorldGen.class);
 		MinecraftForge.EVENT_BUS.register(SpawnHandler.class);
-
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
+		MinecraftForge.EVENT_BUS.register(ProgressiveEffectsHandler.class);
+
+		//Loads all Effect Handlers
+		MetallurgyEffects.effects.values().forEach(effect -> {
+			if (effect.isEnabled())
+				MinecraftForge.EVENT_BUS.register(effect);
+		});
 
 		if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
 		{

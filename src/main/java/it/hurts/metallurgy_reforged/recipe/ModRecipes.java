@@ -146,7 +146,7 @@ public class ModRecipes {
 		String newPath = "";
 
 		if (recipe.toString().endsWith(".json") && !enabled)
-			newPath = recipe.toString() + ".disabled";
+			newPath = recipe + ".disabled";
 
 		if (recipe.toString().endsWith(".disabled") && enabled)
 			newPath = recipe.toString().replace(".disabled", "");

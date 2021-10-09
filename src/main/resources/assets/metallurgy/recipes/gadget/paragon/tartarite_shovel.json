@@ -1,0 +1,21 @@
+{
+  "type": "metallurgy:tartarite_paragon_shaped",
+  "pattern": [
+    " M ",
+    "MIM",
+    " M "
+  ],
+  "key": {
+    "I": {
+      "item": "metallurgy:tartarite_shovel",
+      "data": 32767
+    },
+    "M": {
+      "type": "metallurgy:metal",
+      "item_type": "block"
+    }
+  },
+  "result": {
+    "item": "metallurgy:tartarite_shovel"
+  }
+}

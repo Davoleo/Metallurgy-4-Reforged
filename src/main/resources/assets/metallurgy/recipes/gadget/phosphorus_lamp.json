@@ -1,17 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "III",
+    "SSS",
     "BPB",
-    "III"
+    "SSS"
   ],
   "key": {
     "P": {
       "item": "metallurgy:phosphorus"
     },
-    "I": {
+    "S": {
       "type": "forge:ore_dict",
-      "ore": "ingotIron"
+      "ore": "nuggetSteel"
     },
     "B": {
       "item": "minecraft:iron_bars"

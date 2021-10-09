@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "type": "forge:ore_dict",
-      "ore": "dustMithril"
+      "ore": "dustAstralSilver"
     },
     {
       "type": "forge:ore_dict",

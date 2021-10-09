@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.util;
@@ -12,14 +12,21 @@ package it.hurts.metallurgy_reforged.util;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.item.ItemMetal;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
+import it.hurts.metallurgy_reforged.item.IMetalItem;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
+import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.material.ToolStats;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
@@ -29,18 +36,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.ArrayUtils;
+import org.lwjgl.input.Keyboard;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import javax.annotation.Nullable;
+import java.util.*;
 
 public class ItemUtils {
 
@@ -79,6 +88,94 @@ public class ItemUtils {
 			return valid;
 		}
 		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static void buildEffectTooltip(List<String> tooltip, Set<BaseMetallurgyEffect> effects, ItemStack stack, @Nullable EnumTools toolType)
+	{
+		if (!effects.isEmpty())
+		{
+			boolean anyEnabled = false;
+
+			for (BaseMetallurgyEffect effect : effects)
+			{
+				if (effect.isEnabled())
+				{
+					//System.out.println(effect.getTooltip().getLeft());
+					tooltip.add(effect.getTooltip().getLeft());
+					if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+						tooltip.add(effect.getTooltip().getRight());
+					anyEnabled = true;
+				}
+			}
+
+			Metal paragon = TartariteEffect.getParagonMetal(stack);
+			if (paragon != null)
+			{
+				MetallurgyEffects.effects.row(paragon).forEach((category, effect) -> {
+
+					boolean allEffect = category == EnumEffectCategory.ALL;
+					boolean armorEffect = category == EnumEffectCategory.ARMOR && toolType == null;
+					boolean toolEffect = ArrayUtils.contains(category.getTools(), toolType);
+
+					if (allEffect || armorEffect || toolEffect)
+					{
+						tooltip.add(effect.getTooltip().getLeft());
+						if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+							tooltip.add(effect.getTooltip().getRight());
+					}
+				});
+			}
+
+			if (anyEnabled && !Keyboard.isKeyDown(Keyboard.KEY_LCONTROL))
+				tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_ctrl"));
+		}
+	}
+
+	private enum HarvestLevelFormatting {
+		_1("\u2B51", TextFormatting.RED),
+		_2("\u2B51\u2B51", TextFormatting.RED),
+		_3("\u2B51\u2B51\u2B51", TextFormatting.GOLD),
+		_4("\u2B51\u2B51\u2B51\u2B51", TextFormatting.YELLOW),
+		_5("\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.DARK_GREEN),
+		_6("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.AQUA),
+		_7("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.LIGHT_PURPLE);
+
+		String stars;
+		TextFormatting format;
+
+		HarvestLevelFormatting(String stars, TextFormatting format)
+		{
+			this.stars = stars;
+			this.format = format;
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static void buildStatsTooltip(List<String> tooltip, EnumTools toolType, ToolStats stats, ItemStack toolStack)
+	{
+		if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+			tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_shift"));
+		else
+		{
+			if (toolType == EnumTools.PICKAXE)
+			{
+				int harvest = stats.getHarvestLevel();
+				HarvestLevelFormatting harvestFormatting = HarvestLevelFormatting.values()[harvest - 1];
+				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.harvest_level", harvestFormatting.format + harvestFormatting.stars));
+			}
+
+			int maxDurability = toolStack.getMaxDamage();
+			float useRatio = (maxDurability - toolStack.getItemDamage()) / (float) maxDurability;
+			TextFormatting color;
+			if (useRatio < 0.33F)
+				color = TextFormatting.RED;
+			else if (useRatio < 0.66)
+				color = TextFormatting.YELLOW;
+			else
+				color = TextFormatting.GREEN;
+			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", color + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
+		}
 	}
 
 	public static boolean equalsWildcard(ItemStack wild, ItemStack check)
@@ -126,25 +223,55 @@ public class ItemUtils {
 	}
 
 	/**
+	 * Checks if an item is made of a specific metal
+	 *
+	 * @param metal the metal the item could be made of
+	 * @param item  the item to check
+	 */
+	@SafeVarargs
+	public static boolean isMadeOfMetal(Metal metal, @Nonnull Item item, Class<? extends IMetalItem>... filters)
+	{
+		if (item instanceof IMetalItem)
+		{
+			MetalStats itemStats = ((IMetalItem) item).getMetalStats();
+			if (itemStats != null)
+			{
+				if (itemStats.getName().equals(metal.toString()))
+				{
+					if (filters.length == 0)
+						return true;
+					else
+					{
+						for (Class<? extends IMetalItem> clazz : filters)
+						{
+							if (clazz.isInstance(item))
+								return true;
+						}
+					}
+				}
+				else
+					return false;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Gets the instance of a Metal from an Item
-	 * TODO: Add other metal items and blocks
 	 *
 	 * @param item An Item instance
+	 *
 	 * @return The metal the parameter item is made of (null if it isn't made of any metal)
 	 */
+	@Nullable
 	public static Metal getMetalFromItem(Item item)
 	{
-		if (item instanceof ItemMetal)
+		if (item instanceof IMetalItem)
 		{
-			ItemMetal metalItem = ((ItemMetal) item);
-
-			for (Map.Entry<String, Metal> entry : ModMetals.metalMap.entrySet())
-			{
-				if (metalItem.getMetalStats().getName().equals(entry.getKey()))
-				{
-					return entry.getValue();
-				}
-			}
+			MetalStats metalStats = ((IMetalItem) item).getMetalStats();
+			if (metalStats != null)
+				return ModMetals.metalMap.get(metalStats.getName());
 		}
 
 		if (item instanceof ItemBlock)
@@ -220,6 +347,65 @@ public class ItemUtils {
 		}
 
 		return null;
+	}
+
+	public static void removeEnchantment(Enchantment enchantment, ItemStack item)
+	{
+		int enchLevel = EnchantmentHelper.getEnchantmentLevel(enchantment, item);
+		if (enchLevel > 0)
+		{
+			final Iterator<NBTBase> enchantIter = item.getEnchantmentTagList().iterator();
+			while (enchantIter.hasNext())
+			{
+				if (Enchantment.getEnchantmentByID(((NBTTagCompound) enchantIter.next()).getShort("id")) == enchantment)
+					enchantIter.remove();
+			}
+		}
+	}
+
+	/**
+	 * Compacts ItemStacks in a list merging stacks with the same item and META<br>
+	 * Resulting itemstack will have:
+	 * <ul>
+	 * <li>the sum of all the sizes as size</li>
+	 * <li>NBT Tag compound which is a merged result of all the NBT compounds</li>
+	 * </ul>
+	 *
+	 * @param itemStackList the list to be compacted
+	 */
+	public static List<ItemStack> compactStackList(List<ItemStack> itemStackList)
+	{
+		List<ItemStack> newList = new ArrayList<>(itemStackList.size());
+		itemStackList.forEach(stack -> {
+			boolean wasFound = false;
+			for (ItemStack cachedStack : newList)
+			{
+				if (ItemStack.areItemsEqual(stack, cachedStack))
+				{
+					cachedStack.setCount(cachedStack.getCount() + stack.getCount());
+
+					//If they both have NBT -> merge the NBT Data
+					if (cachedStack.getTagCompound() != null && stack.getTagCompound() != null)
+					{
+						cachedStack.getTagCompound().merge(stack.getTagCompound());
+					}
+					else if (stack.getTagCompound() != null)
+					{
+						//If only the new stack has NBT data set that to the cached stack
+						cachedStack.setTagCompound(stack.getTagCompound());
+					}
+					wasFound = true;
+					break;
+				}
+			}
+
+			if (!wasFound)
+			{
+				newList.add(stack);
+			}
+		});
+
+		return newList;
 	}
 
 }

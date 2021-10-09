@@ -63,13 +63,13 @@ public class OreDetectorWrapper implements ICustomCraftingRecipeWrapper {
 			}
 		}
 		else
-        {
-            recipeLayout.getItemStacks().addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
-                if (!input)
-                {
-                    tooltip.add(Utils.localize("tooltip.metallurgy.clear_detector_warning"));
-                }
-            });
+		{
+			recipeLayout.getItemStacks().addTooltipCallback((slotIndex, input, ingredient, tooltip) -> {
+				if (!input)
+				{
+					tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.clear_detector_warning"));
+				}
+			});
 
             outputs.add(new ItemStack(ModItems.ORE_DETECTOR));
         }

@@ -37,11 +37,13 @@ public class ItemSanguiniteShield extends ItemShieldBase {
 	}
 
 	@Override
-    public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
-        if (damageSource.getTrueSource() instanceof EntityLivingBase) {
-            EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
-            target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
-        }
-    }
+	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount)
+	{
+		if (damageSource.getTrueSource() instanceof EntityLivingBase)
+		{
+			EntityLivingBase target = ((EntityLivingBase) damageSource.getTrueSource());
+			target.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 1));
+		}
+	}
 
 }

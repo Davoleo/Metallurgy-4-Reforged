@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.gui;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.container.ContainerAlloyer;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityAlloyer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -47,7 +48,7 @@ public class GuiAlloyer extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		String name = this.alloyer.getDisplayName().getUnformattedText();
-		this.fontRenderer.drawString(name, 10, -22, 16769280);
+		this.fontRenderer.drawString(name, 10, -22, ModMetals.OSMIUM.getStats().getColorHex());
 	}
 
 	//draws the foreground layer of the GUI

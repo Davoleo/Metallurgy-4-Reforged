@@ -163,7 +163,8 @@ public class GauntletEffect {
 									{
 										IBlockState state = entity.world.getBlockState(pos);
 										float hardness = state.getBlockHardness(entity.world, pos);
-										if (hardness >= 0 && (!state.getMaterial().isLiquid()))
+										int blockHarvestLevel = state.getBlock().getHarvestLevel(state);
+										if (hardness >= 0 && (!state.getMaterial().isLiquid()) && blockHarvestLevel < 5)
 										{
 											if (!entity.world.isRemote)
 												entity.world.destroyBlock(pos, true);

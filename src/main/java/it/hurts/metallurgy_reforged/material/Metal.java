@@ -154,9 +154,9 @@ public class Metal {
 	 *
 	 * @return one of the tools in the toolSet
 	 */
-	public Item getTool(EnumTools toolClass)
+	public <T extends Item> T getTool(EnumTools toolClass)
 	{
-		return toolSet[toolClass.ordinal()];
+		return toolClass.<T> getToolClass().cast(toolSet[toolClass.ordinal()]);
 	}
 
 	/**

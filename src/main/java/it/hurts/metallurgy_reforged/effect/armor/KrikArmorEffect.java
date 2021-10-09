@@ -9,95 +9,128 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.capabilities.krik.IKrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffect;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.server.PacketKrikEditPlayerLevel;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraft.inventory.Slot;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 public class KrikArmorEffect extends BaseMetallurgyEffect {
+
 
 	public KrikArmorEffect()
 	{
 		super(ModMetals.KRIK);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.krikArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
+	@SubscribeEvent
+	public void livingUpdate(TickEvent.PlayerTickEvent event)
 	{
-		return null;
-	}
+		EntityPlayer player = event.player;
 
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-		if (EventUtils.isEntityWearingArmor(player, metal))
+		if (getLevel(player) < 4)
+			return;
+
+		final int STEP = 255 / 27;
+
+		PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+
+		if (capability != null)
 		{
-			final int STEP = 255 / 27;
+			int maxLevel = getKrikMaxLevel(player);
+			int level = capability.krikHeight;
 
-			IKrikEffect capability = player.getCapability(KrikEffectProvider.KRIK_EFFECT_CAPABILITY, null);
-
-			if (capability != null)
+			if (level <= maxLevel)
 			{
-				int maxLevel = KrikEffect.getMaxLevel(player);
-				int level = capability.getHeight();
-
-				if (level <= maxLevel)
+				if (player.posY < level * STEP)
 				{
-					if (player.posY < level * STEP)
-					{
-						player.motionY = 0.4;
-					}
-					else if (Math.round(player.posY) == level * STEP)
-					{
-						player.motionY = 0;
-					}
+					player.motionY = 0.4;
 				}
-				else
+				else if (Math.round(player.posY) == (long) level * STEP)
 				{
-					capability.setHeight(maxLevel);
+					player.motionY = 0;
+				}
+			}
+			else
+			{
+				capability.krikHeight = maxLevel;
+			}
+		}
+
+
+	}
+
+	@SubscribeEvent
+	public void cancelFall(LivingFallEvent event)
+	{
+		if (getLevel(event.getEntityLiving()) == 4 && event.getEntityLiving() instanceof EntityPlayer)
+			event.setCanceled(true);
+	}
+
+	/**
+	 * Called in {@link ClientEventsHandler}
+	 */
+	@SideOnly(Side.CLIENT)
+	public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability)
+	{
+		if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor)
+		{
+			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
+			{
+				if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
+				{
+					PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(true));
+					capability.krikHeight += 1;
 				}
 			}
 
+			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
+			{
+				if (capability != null && capability.krikHeight > 0)
+				{
+					PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(false));
+					capability.krikHeight -= 1;
+					//System.out.println(capability.getHeight());
+				}
+			}
 		}
 	}
 
-	@Override
-	public void livingEvent(LivingEvent livingEvent)
+	public static int getKrikMaxLevel(EntityPlayer player)
 	{
-		if (livingEvent instanceof LivingFallEvent)
+		int count = 0;
+
+		for (int i = 9; i < 36; i++)
 		{
-			LivingFallEvent event = ((LivingFallEvent) livingEvent);
-
-			if (event.getEntity() instanceof EntityPlayer)
-			{
-				EntityPlayer player = (EntityPlayer) event.getEntity();
-
-				if (EventUtils.isEntityWearingArmor(player, metal))
-					event.setCanceled(true);
-			}
+			Slot k = new Slot(player.inventory, i, 0, 0);
+			if (!k.getHasStack())
+				count++;
 		}
+
+		return count;
 	}
 
 }

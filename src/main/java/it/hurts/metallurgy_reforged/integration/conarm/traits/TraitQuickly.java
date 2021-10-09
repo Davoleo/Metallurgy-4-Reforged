@@ -4,13 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.conarm.traits;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
-import it.hurts.metallurgy_reforged.effect.armor.QuicksilverArmorEffect;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.integration.conarm.MetallurgyConArmorStats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +33,7 @@ public class TraitQuickly extends AbstractArmorTrait implements IConarmMetallurg
 		{
 			EntityPlayer player = ((EntityPlayer) entity);
 			if (MetallurgyConArmorStats.hasValidArmorTrait(player, "quickly"))
-				QuicksilverArmorEffect.apply(event);
+				MetallurgyEffects.CARMOT_ARMOR_EFFECT.apply(event, 1);
 		}
 	}
 

@@ -1,6 +1,7 @@
 {
   "recipes": {
-    "ore_detector_shapeless": "it.hurts.metallurgy_reforged.recipe.OreDetectorRecipe$Factory"
+    "ore_detector_shapeless": "it.hurts.metallurgy_reforged.recipe.OreDetectorRecipe$Factory",
+    "tartarite_paragon_shaped": "it.hurts.metallurgy_reforged.recipe.TartariteParagonRecipe$Factory"
   },
   "ingredients": {
     "metal": "it.hurts.metallurgy_reforged.recipe.IngredientMetal$Factory"

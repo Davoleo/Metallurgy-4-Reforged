@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.silentgems;
@@ -21,8 +21,8 @@ import java.util.stream.IntStream;
 
 public class MetallurgyPartProperties implements IPartProperties {
 
-	private MetalStats stats;
-	private Item ingot;
+	private final MetalStats stats;
+	private final Item ingot;
 
 	public MetallurgyPartProperties(MetalStats metalStats, Item ingot)
 	{
@@ -38,7 +38,7 @@ public class MetallurgyPartProperties implements IPartProperties {
 	@Override
 	public String getName()
 	{
-		return Utils.localize("material.metallurgy." + stats.getName() + ".name");
+		return Utils.localizeEscapingCustomSequences("material.metallurgy." + stats.getName() + ".name");
 	}
 
 	@Override

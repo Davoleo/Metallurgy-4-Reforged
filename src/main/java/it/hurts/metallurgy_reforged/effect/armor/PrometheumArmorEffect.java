@@ -9,52 +9,110 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.WorldUtils;
+import net.minecraft.block.IGrowable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class PrometheumArmorEffect extends BaseMetallurgyEffect {
+public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
 	public PrometheumArmorEffect()
 	{
 		super(ModMetals.PROMETHEUM);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.prometheumArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
+	@SubscribeEvent
+	public void boneMealNearbyFlora(TickEvent.PlayerTickEvent event)
 	{
-		return false;
-	}
+		if (event.phase != TickEvent.Phase.START)
+			return;
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+		if (!canBeApplied(event.player) || getEffectCapability(event.player) == null)
+			return;
 
-	@Override
-	public void livingEvent(LivingEvent event)
-	{
-		if (event instanceof LivingEvent.LivingUpdateEvent)
+		ExtraFilledDataBundle bundle = getEffectCapability(event.player).prometheumArmorBundle;
+
+		if (!bundle.isEffectInProgress() && event.player.isSneaking())
 		{
-			EntityLivingBase entity = event.getEntityLiving();
+			if (event.player.getCooldownTracker().getCooldown(getArmorRepr(event.player).getItem(), 0) == 0)
+			{
+				bundle.setExtra("sneaking", event.player.isSneaking());
+				bundle.incrementStep(event.player);
+			}
+		}
+	}
 
-			if (EventUtils.isEntityWearingArmor(entity, metal) && entity.isPotionActive(MobEffects.POISON))
-				entity.removePotionEffect(MobEffects.POISON);
+	@Override
+	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
+	{
+		ExtraFilledDataBundle bundle = getEffectCapability(entity).prometheumArmorBundle;
+		boolean sneaking = bundle.getExtraBool("sneaking");
+
+		if (step % 2 != 0)
+			bundle.setExtra("sneaking", entity.isSneaking());
+		else if (entity.isSneaking() != sneaking)
+		{
+			List<BlockPos> growables = WorldUtils.getBlocksWithinRadius(entity.getPosition(), 3, 1, 3,
+					pos -> entity.world.getBlockState(pos).getBlock() instanceof IGrowable);
+			Collections.shuffle(growables);
+
+			final AtomicBoolean grassWasBoneMealed = new AtomicBoolean(false);
+
+			growables.forEach(pos -> {
+				float chance = getLevel(entity) * 0.25F * 0.75F;
+				if (Math.random() < chance)
+				{
+					if (!grassWasBoneMealed.get() || world.getBlockState(pos).getBlock() != Blocks.GRASS)
+					{
+
+						if (ItemDye.applyBonemeal(ItemStack.EMPTY, entity.world, pos))
+						{
+							entity.world.playEvent(2005, pos, 0);
+							entity.getArmorInventoryList().forEach(armorStack -> {
+								if (ItemUtils.isMadeOfMetal(metal, armorStack.getItem()))
+									armorStack.damageItem(2, entity);
+							});
+						}
+
+						if (world.getBlockState(pos).getBlock() == Blocks.GRASS)
+							grassWasBoneMealed.set(true);
+					}
+				}
+			});
+		}
+
+		if (step == maxSteps)
+		{
+			entity.getArmorInventoryList().forEach(stack -> {
+				Item armorItem = stack.getItem();
+				if (ItemUtils.isMadeOfMetal(metal, armorItem))
+					entity.getCooldownTracker().setCooldown(armorItem, 300);
+			});
 		}
 	}
 

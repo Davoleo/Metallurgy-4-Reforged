@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.item.gadget.shield;
@@ -66,15 +66,19 @@ public abstract class ItemShieldBase extends ItemExtra {
 
 	@Nonnull
 	@Override
-	public EnumAction getItemUseAction(@Nonnull ItemStack stack) {
+	public EnumAction getItemUseAction(@Nonnull ItemStack stack)
+	{
 		return EnumAction.BLOCK;
 	}
 
-	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
+	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount)
+	{
 	}
 
 	@Override
-	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn) {
-		tooltip.add(Utils.localize("tooltip.metallurgy." + getRegistryName().getPath()));
+	public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+	{
+		tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy." + getRegistryName().getPath()));
 	}
+
 }

@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "metallurgy:items/tools/tartarite_axe"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "metallurgy:item/tool/axe/tartarite_axe_active"
+    }
+  ]
 }

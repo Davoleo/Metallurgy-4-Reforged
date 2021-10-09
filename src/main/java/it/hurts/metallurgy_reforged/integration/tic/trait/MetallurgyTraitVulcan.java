@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic.trait;
@@ -33,7 +33,7 @@ import java.util.ListIterator;
 
 public class MetallurgyTraitVulcan extends AbstractTraitLeveled implements IMetallurgyTrait {
 
-	private int levels;
+	private final int levels;
 
 	public MetallurgyTraitVulcan(int levels)
 	{
@@ -134,9 +134,9 @@ public class MetallurgyTraitVulcan extends AbstractTraitLeveled implements IMeta
 	@Override
 	public void register(String name, @Nullable String tooltip)
 	{
-		Utils.localize(String.format(LOC_Name, name));
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
 		if (tooltip != null)
-			Utils.localize(String.format(LOC_Name, tooltip));
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
 
 	}
 

@@ -3,17 +3,15 @@
     "modid": "metallurgy",
     "name": "Metallurgy 4: Reforged",
     "description": "The Unofficial Port of Metallurgy 4",
-    "version": "1.2.12",
+    "version": "1.3.0-beta.1",
     "mcversion": "1.12.2",
     "url": "https://github.com/Davoleo/Metallurgy-4-Reforged",
     "updateUrl": "",
     "authorList": [
       "Davoleo",
-      "PierKnight",
-      "Matpac",
-      "ItHurtsLikeHell"
+      "Matpac"
     ],
-    "credits": "Special thanks to the team and to project contributors [carbotaniuman, Matpac, PierKnight]",
+    "credits": "Special thanks to the team and to project contributors [PierKnight, carbotaniuman, ItHurtsLikeHell]",
     "logoFile": "assets/metallurgy/textures/logo.png",
     "screenshots": [],
     "dependencies": []

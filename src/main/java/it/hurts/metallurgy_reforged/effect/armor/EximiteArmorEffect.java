@@ -9,18 +9,16 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 public class EximiteArmorEffect extends BaseMetallurgyEffect {
 
@@ -29,36 +27,33 @@ public class EximiteArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.EXIMITE);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.eximiteArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
+	// TODO: 28/02/2021 Consider investigating more on potion effect immunity
+	@SubscribeEvent
+	public void onShulkerAttack(LivingSetAttackTargetEvent event)
 	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+		if (getLevel(event.getTarget()) < 4)
+			return;
 
-	@Override
-	public void livingEvent(LivingEvent event) {
-		if (event instanceof LivingSetAttackTargetEvent) {
-			if (event.getEntityLiving() instanceof EntityEnderman) {
-				EntityLivingBase target = ((EntityEnderman) event.getEntityLiving()).getAttackTarget();
-				if (target instanceof EntityPlayer) {
-					if (EventUtils.isEntityWearingArmor(target, metal)) {
-						((EntityEnderman) event.getEntityLiving()).setAttackTarget(null);
-					}
-				}
-			}
+		EntityLivingBase entity = event.getEntityLiving();
+		if (entity instanceof EntityShulker)
+		{
+			EntityShulker shulker = ((EntityShulker) entity);
+
+			EntityPlayer newTarget = shulker.world.getNearestAttackablePlayer(shulker.posX, shulker.posY + shulker.getEyeHeight(), shulker.posZ,
+					16, 16, e -> 1.0, player -> getLevel(player) < 4);
+			shulker.setAttackTarget(newTarget);
+
+			for (int i = 0; i < 20; i++)
+				spawnParticle(shulker, 4F, false, 3);
 		}
 	}
+
 }

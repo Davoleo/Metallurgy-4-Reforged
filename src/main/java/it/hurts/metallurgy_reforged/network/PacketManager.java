@@ -10,9 +10,9 @@
 package it.hurts.metallurgy_reforged.network;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnParticles;
-import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;
-import it.hurts.metallurgy_reforged.network.server.PacketEditPlayerLevel;
+import it.hurts.metallurgy_reforged.network.client.*;
+import it.hurts.metallurgy_reforged.network.server.PacketAmordrineJump;
+import it.hurts.metallurgy_reforged.network.server.PacketKrikEditPlayerLevel;
 import it.hurts.metallurgy_reforged.network.server.PacketMovePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -22,17 +22,24 @@ public class PacketManager {
 
 	//Metallurgy Network Channel
 	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(Metallurgy.MODID);
+	private static int id = 0;
 
 	//PostInit: Register Packets
 	public static void init()
-    {
-        //Client2Server
-        network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, 2, Side.SERVER);
-        network.registerMessage(PacketEditPlayerLevel.Handler.class, PacketEditPlayerLevel.class, 3, Side.SERVER);
+	{
+		//Client2Server
+		network.registerMessage(PacketMovePlayer.Handler.class, PacketMovePlayer.class, id++, Side.SERVER);
+		network.registerMessage(PacketKrikEditPlayerLevel.Handler.class, PacketKrikEditPlayerLevel.class, id++, Side.SERVER);
+		network.registerMessage(PacketAmordrineJump.Handler.class, PacketAmordrineJump.class, id++, Side.SERVER);
 
         //Server2Client
-        network.registerMessage(PacketSpawnParticles.Handler.class, PacketSpawnParticles.class, 4, Side.CLIENT);
-        network.registerMessage(PacketStartStopAmbienceSound.Handler.class, PacketStartStopAmbienceSound.class, 5, Side.CLIENT);
-    }
+        network.registerMessage(PacketStartStopAmbienceSound.Handler.class, PacketStartStopAmbienceSound.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSpawnVanillaParticles.Handler.class, PacketSpawnVanillaParticles.class, id++, Side.CLIENT);
+		network.registerMessage(PacketAdamantineRenderDeathProtection.Handler.class, PacketAdamantineRenderDeathProtection.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSpawnOreParticles.Handler.class, PacketSpawnOreParticles.class, id++, Side.CLIENT);
+		network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSyncEffectBundle.Handler.class, PacketSyncEffectBundle.class, id++, Side.CLIENT);
+		network.registerMessage(PacketSanguiniteEntityState.Handler.class, PacketSanguiniteEntityState.class, id++, Side.CLIENT);
+	}
 
 }

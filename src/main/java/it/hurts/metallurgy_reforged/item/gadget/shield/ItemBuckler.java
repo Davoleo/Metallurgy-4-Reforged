@@ -42,20 +42,22 @@ public abstract class ItemBuckler extends ItemShieldBase {
 	public void onUsingTick(@Nonnull ItemStack stack, @Nonnull EntityLivingBase player, int count)
 	{
 		if (count <= 1)
-            setOnCooldown(player);
-    }
+			setOnCooldown(player);
+	}
 
-    @Override
-    public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft) {
-        setOnCooldown(entityLiving);
-    }
+	@Override
+	public void onPlayerStoppedUsing(@Nonnull ItemStack stack, @Nonnull World worldIn, @Nonnull EntityLivingBase entityLiving, int timeLeft)
+	{
+		setOnCooldown(entityLiving);
+	}
 
-    /**
-     * Makes the shield go on cooldown for a standard amount of time
-     */
-    public void setOnCooldown(EntityLivingBase player) {
-        if (player instanceof EntityPlayer)
-            ((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
-    }
+	/**
+	 * Makes the shield go on cooldown for a standard amount of time
+	 */
+	public void setOnCooldown(EntityLivingBase player)
+	{
+		if (player instanceof EntityPlayer)
+			((EntityPlayer) player).getCooldownTracker().setCooldown(this, cooldown);
+	}
 
 }

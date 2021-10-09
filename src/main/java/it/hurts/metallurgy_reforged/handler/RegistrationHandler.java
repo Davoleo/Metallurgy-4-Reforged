@@ -13,16 +13,17 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.block.BlockMetal;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
-import it.hurts.metallurgy_reforged.capabilities.krik.KrikEffectProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.render.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.render.ModRenderers;
+import it.hurts.metallurgy_reforged.render.knuckles.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.block.Block;
@@ -42,6 +43,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -49,7 +52,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RegistrationHandler {
 
 	public static final ResourceLocation PUNCH_EFFECT_CAP = new ResourceLocation(Metallurgy.MODID, "punch_effect");
-	public static final ResourceLocation KRIK_EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "krik_effect");
+	public static final ResourceLocation EFFECT_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "effects");
 	public static final ResourceLocation ENTITY_DATA_CAPABILITY = new ResourceLocation(Metallurgy.MODID, "entity_data");
 
 	@SubscribeEvent
@@ -199,6 +202,16 @@ public class RegistrationHandler {
 		Metallurgy.logger.info(Metallurgy.NAME + ": " + ModSounds.REGISTRY.getKeys().size() + " Sounds have been registered!");
 	}
 
+
+	private static int entityId = 0;
+
+	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityEntry> event)
+	{
+		EntityEntry pierknightEntry = EntityEntryBuilder.create().entity(EntityPierKnight.class).name("pierknight").id("pierknight", ++entityId).tracker(160, 3, true).build();
+		event.getRegistry().register(pierknightEntry);
+	}
+
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onModelBake(ModelBakeEvent event)
@@ -214,9 +227,8 @@ public class RegistrationHandler {
 		event.addCapability(PUNCH_EFFECT_CAP, new PunchEffectProvider());
 
 		if (event.getObject() instanceof EntityPlayer)
-		{
-			event.addCapability(KRIK_EFFECT_CAPABILITY, new KrikEffectProvider());
-		}
+			event.addCapability(EFFECT_CAPABILITY, new EffectDataProvider());
+
 		if (event.getObject() instanceof EntityEnderman)
 			event.addCapability(ENTITY_DATA_CAPABILITY, new EntityDataProvider());
 	}

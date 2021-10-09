@@ -9,52 +9,71 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
-import it.hurts.metallurgy_reforged.effect.ArmorPotionEffect;
+import com.google.common.collect.ImmutableMap;
+import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class PlatinumArmorEffect extends ArmorPotionEffect {
+import javax.annotation.Nonnull;
+import java.util.Map;
+
+public class PlatinumArmorEffect extends BaseMetallurgyEffect {
+
+	private final Map<Potion, Potion> potionPurificationMap = ImmutableMap.of(
+			MobEffects.POISON, MobEffects.REGENERATION,
+			MobEffects.SLOWNESS, MobEffects.SPEED,
+			MobEffects.WEAKNESS, MobEffects.STRENGTH
+	);
 
 	public PlatinumArmorEffect()
 	{
-		super(ModMetals.PLATINUM, null, 0);
+		super(ModMetals.PLATINUM);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.platinumArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public void livingEvent(LivingEvent event)
+	@SubscribeEvent
+	public void purifyEffects(LivingEvent.LivingUpdateEvent event)
 	{
-		//Overwriting the normal potion effect event handling
-		//This effects needs some specific controls to work correctly
-	}
+		EntityLivingBase entity = event.getEntityLiving();
+		float level = getLevel(entity) / 2F;
+		if (level == 0)
+			return;
 
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-		if (EventUtils.isEntityWearingArmor(player, metal)) {
-			if (player.world.getTotalWorldTime() % 40 == 0)
+		potionPurificationMap.forEach((badPotion, goodPotion) -> {
+			PotionEffect potionEffect = entity.getActivePotionEffect(badPotion);
+
+			if (potionEffect != null)
 			{
-				PotionEffect effect = new PotionEffect(MobEffects.NIGHT_VISION, 280, 0, false, false);
-				player.addPotionEffect(effect);
-				player.addTag("platinum_effect");
+				//Duration of the purified effects (50%..200% of the original value depending on the armor level)
+				int newDuration = (int) (level * potionEffect.getDuration());
+				//Remove the negative effect
+				entity.removePotionEffect(badPotion);
+				//Add it's counterpart with the new duration and same amplifier
+				entity.addPotionEffect(new PotionEffect(goodPotion, newDuration, potionEffect.getAmplifier()));
+				//Spawn Particles
+				Vec3d halvedLookVec = entity.getLookVec().scale(0.5);
+				for (int i = 0; i < 2; i++)
+					spawnParticle(entity.world,
+							entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
+							1F, true, 5);
+				for (int i = 0; i < 5; i++)
+					spawnParticle(entity, 1, true, 5);
 			}
-		}
-		else if (player.getTags().contains("platinum_effect"))
-		{
-			player.removeTag("platinum_effect");
-			if (player.isPotionActive(MobEffects.NIGHT_VISION))
-				player.removePotionEffect(MobEffects.NIGHT_VISION);
-		}
+		});
+
 	}
 
 }

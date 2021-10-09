@@ -10,13 +10,19 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
+import java.util.stream.StreamSupport;
 
 public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 
@@ -25,31 +31,37 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.SHADOW_IRON);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
+	@SubscribeEvent
+	public void evadeDamage(LivingHurtEvent event)
 	{
-		return false;
-	}
+		final EntityLivingBase entity = event.getEntityLiving();
+		int level = getLevel(entity);
+		if (level == 0)
+			return;
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-		if (EventUtils.isEntityWearingArmor(player, metal) && player.isPotionActive(MobEffects.BLINDNESS))
+		if (Math.random() < level / 10F)
 		{
-			player.removePotionEffect(MobEffects.BLINDNESS);
+			//noinspection OptionalGetWithoutIsPresent
+			ItemStack pieceToDamage = StreamSupport.stream(entity.getArmorInventoryList().spliterator(), true)
+					.filter(stack -> ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+					.findAny().get();
+
+			pieceToDamage.damageItem(Math.round(event.getAmount()), entity);
+			event.setCanceled(true);
+
+			Vec3d halvedLookVec = entity.getLookVec().scale(0.5);
+			entity.world.playSound(null, entity.getPosition(), SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
+			for (int i = 0; i < 10; i++)
+				spawnParticle(entity.world,
+						entity.posX + halvedLookVec.x, entity.posY + 1.1F, entity.posZ + halvedLookVec.z,
+						1.25F, true, 2);
 		}
 	}
 

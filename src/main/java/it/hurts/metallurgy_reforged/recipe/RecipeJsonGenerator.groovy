@@ -177,7 +177,7 @@ class RecipeJsonGenerator {
             ],
             [
                     new RecipeGenHelper.Stack("silver", 1),
-                    new RecipeGenHelper.Stack("mithril", 1),
+                    new RecipeGenHelper.Stack("astral_silver", 1),
                     new RecipeGenHelper.Stack("quicksilver", 2)
             ],
             [
@@ -320,7 +320,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_axe"
                     ]
             ]
@@ -343,7 +343,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_hoe"
                     ]
             ]
@@ -366,7 +366,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_pickaxe"
                     ]
             ]
@@ -389,7 +389,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_shovel"
                     ]
             ]
@@ -412,7 +412,7 @@ class RecipeJsonGenerator {
                                     item: "minecraft:stick"
                             ]
                     ],
-                    result : [
+                    result    : [
                             item: "metallurgy:${metal}_sword"
                     ]
             ]
@@ -482,7 +482,7 @@ class RecipeJsonGenerator {
                                 data: 3
                         ]
                 ],
-                result : [
+                result: [
                         item : "metallurgy:${metal}_engraved_block",
                         count: 32
                 ]
@@ -509,7 +509,7 @@ class RecipeJsonGenerator {
                                 item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
-                result : [
+                result: [
                         item : "metallurgy:${metal}_crystals",
                         count: 32
                 ]
@@ -532,7 +532,7 @@ class RecipeJsonGenerator {
                                 item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
-                result : [
+                result    : [
                         item : "metallurgy:${metal}_bricks",
                         count: 48
                 ]
@@ -559,7 +559,7 @@ class RecipeJsonGenerator {
                                 data: 0
                         ]
                 ],
-                result : [
+                result: [
                         item : "metallurgy:${metal}_large_bricks",
                         count: 32
                 ]
@@ -585,7 +585,7 @@ class RecipeJsonGenerator {
                                 item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
-                result : [
+                result: [
                         item : "metallurgy:${metal}_hazard_block",
                         count: 32
                 ]
@@ -611,7 +611,7 @@ class RecipeJsonGenerator {
                                 item: "metallurgy:bimetal_structure_block"
                         ]
                 ],
-                result : [
+                result: [
                         item : "metallurgy:${metal}_reinforced_glass",
                         count: 32
                 ]

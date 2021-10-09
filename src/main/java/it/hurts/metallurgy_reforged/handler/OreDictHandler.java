@@ -10,6 +10,8 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import com.google.common.base.CaseFormat;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.block.BlockTypes;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
@@ -24,27 +26,35 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
+import java.util.Arrays;
+
 public class OreDictHandler {
+
+	public static final Multimap<Metal, ItemStack> INGOTS_CACHE = HashMultimap.create();
 
 	public static void init()
 	{
 		ModMetals.metalMap.forEach((name, metal) -> {
+
+			String pascalMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name);
+
 			//Items
 			if (RegistrationConfig.categoryItems.enableMetalDusts)
-				OreDictionary.registerOre("dust" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getDust());
+				OreDictionary.registerOre("dust" + pascalMetal, metal.getDust());
 
-			OreDictionary.registerOre("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getIngot());
+			INGOTS_CACHE.put(metal, new ItemStack(metal.getIngot()));
+			OreDictionary.registerOre("ingot" + pascalMetal, metal.getIngot());
 
 			if (RegistrationConfig.categoryItems.enableMetalNuggets)
-				OreDictionary.registerOre("nugget" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getNugget());
+				OreDictionary.registerOre("nugget" + pascalMetal, metal.getNugget());
 
-            //Blocks
-            if (!metal.isAlloy())
-                OreDictionary.registerOre("ore" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getOre());
+			//Blocks
+			if (!metal.isAlloy())
+				OreDictionary.registerOre("ore" + pascalMetal, metal.getOre());
 
-            if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
-                OreDictionary.registerOre("block" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString()), metal.getBlock(BlockTypes.BLOCK));
-        });
+			if (RegistrationConfig.categoryBlocks.enableRawMetalBlocks)
+				OreDictionary.registerOre("block" + pascalMetal, metal.getBlock(BlockTypes.BLOCK));
+		});
 
         //Additional oreDict values
         //Make Tar behave like a slimeball
@@ -86,10 +96,27 @@ public class OreDictHandler {
 			OreDictionary.registerOre(oreName, (Item) itemOrBlock);
 	}
 
+	public static void populateOredictCache()
+	{
+		ModMetals.metalMap.forEach((name, metal) -> {
+			NonNullList<ItemStack> otherOres = OreDictionary.getOres(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
+			otherOres.removeIf(stack -> stack.getItem().equals(metal.getIngot()));
+			if (!otherOres.isEmpty())
+			{
+				INGOTS_CACHE.putAll(metal, otherOres);
+			}
+		});
+	}
+
 	public static NonNullList<ItemStack> getOredictedStacksFromMetalAndPrefix(String prefix, Metal metal)
 	{
 		String camelMetal = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metal.toString());
 		return OreDictionary.getOres(prefix + camelMetal);
+	}
+
+	public static boolean containsPrefix(ItemStack stack, String prefix)
+	{
+		return Arrays.stream(OreDictionary.getOreIDs(stack)).anyMatch(id -> OreDictionary.getOreName(id).startsWith(prefix));
 	}
 
 }

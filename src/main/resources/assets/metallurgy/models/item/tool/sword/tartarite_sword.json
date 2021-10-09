@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "metallurgy:items/tools/tartarite_sword"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "active": 1
+      },
+      "model": "metallurgy:item/tool/sword/tartarite_sword_active"
+    }
+  ]
 }

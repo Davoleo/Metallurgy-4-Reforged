@@ -1,17 +1,13 @@
-{
+ {
   "type": "forge:ore_shaped",
   "pattern": [
-    "III",
-    "IBI"
+    "I I",
+    "III"
   ],
   "key": {
     "I": {
       "type": "forge:ore_dict",
       "ore": "ingotBrass"
-    },
-    "B": {
-      "type": "forge:ore_dict",
-      "ore": "blockBrass"
     }
   },
   "result": {

@@ -27,8 +27,8 @@ import java.util.List;
 
 public class ChamberRecipeWrapper implements IRecipeWrapper {
 
-	private ItemStack input;
-	private PotionEffect effect;
+	private final ItemStack input;
+	private final PotionEffect effect;
 
 	public ChamberRecipeWrapper(ItemStack input, PotionEffect effect)
 	{
