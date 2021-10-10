@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:main/steel",
+  "parent": "metallurgy:main/tier4",
   "display": {
     "icon": {
-      "item": "metallurgy:hepatizon_ingot"
+      "item": "metallurgy:amordrine_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.hepatizon"
+      "translate": "advancement.metallurgy.main.amordrine"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.hepatizon.desc"
+      "translate": "advancement.metallurgy.main.amordrine.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotHepatizon",
+            "ore": "ingotAmordrine",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustHepatizon",
+            "ore": "dustAmordrine",
             "type": "forge:ore_dict"
           }
         ]

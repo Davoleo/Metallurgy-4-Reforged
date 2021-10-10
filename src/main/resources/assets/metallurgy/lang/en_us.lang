@@ -80,21 +80,42 @@ advancement.metallurgy.main.hepatizon=The Metal of Theft
 advancement.metallurgy.main.hepatizon.desc=Obtain your first batch of Hepatizon by alloying Infuscolium with Steel in a 1:1 Ratio
 advancement.metallurgy.main.tier3=Tier 3
 advancement.metallurgy.main.tier3.desc=Mine a Tier 3 ore using a tier 2 Pickaxe
-
+# Tier 3
 advancement.metallurgy.main.astral_silver=The Metal of Stars
 advancement.metallurgy.main.astral_silver.desc=Obtain your first Astral Silver Ore, looking at this metal in the dark shows small sparks of light that align with stars.
 advancement.metallurgy.main.ignatius=The Metal of Fire
 advancement.metallurgy.main.ignatius.desc=Obtain your first Ignatius Ore, its ingot is still too hot to handle even after letting it cool down for hours, you're worried about what might happen if you drop it in your wooden house.
 advancement.metallurgy.main.oureclase=The Crushing Metal
 advancement.metallurgy.main.oureclase.desc=Venture in the cracks of the underground to find Oureclase ore, its ingot seems unstable and shows a peculiar property: no matter how many times you try to smooth the surface the ingot always crimps and crushes old bonds.
-advancement.metallurgy.main.rubracium=Rubracium
-advancement.metallurgy.main.rubracium.desc=Rubracium Desc
+advancement.metallurgy.main.rubracium=Raw Power Metal
+advancement.metallurgy.main.rubracium.desc=Obtain your first Rubracium Ore, looks like it's too brittle to make anything out of it alone but it seems to have absorbed a lot of unrefined power, from the unstable conditions of certain underground sites.
 advancement.metallurgy.main.shadow_iron=The Incomplete Metal
 advancement.metallurgy.main.shadow_iron.desc=Venture in the highest zones of The Nether to find Shadow Iron Ore, its ingot looks like it's always about to fall into pieces, metal bonds are very weak and you can break them with your bare hands.
 advancement.metallurgy.main.quicksilver=The Swift Metal
 advancement.metallurgy.main.quicksilver.desc=Obtain Quicksilver a 1:1 ratio alloy of Silver and Astral Silver, two of the shiniest metals form one that has the power to enhance speed.
 advancement.metallurgy.main.tier4=Tier 4
 advancement.metallurgy.main.tier4.desc=Mine a Tier 4 ore using a tier 3 Pickaxe
+# Tier 4
+advancement.metallurgy.main.ceruclase=The Frost Metal
+advancement.metallurgy.main.ceruclase.desc=Obtain your first Ceruclase ore, thermal retention is one of its properties, despite being found in the Nether it remains icy as ever, handling it with your bare hands almost causes freezer burns.
+advancement.metallurgy.main.eximite=The Ender Metal
+advancement.metallurgy.main.eximite.desc=Obtain your first Eximite Ore, this metal can only be obtained from the Outer End and has ender properties.
+advancement.metallurgy.main.kalendrite=The Healing Metal
+advancement.metallurgy.main.kalendrite.desc=Obtain your first Kalendrite Ore, this metal has healing properties
+advancement.metallurgy.main.midasium=The Metal of Greed
+advancement.metallurgy.main.midasium.desc=Obtain your first Midasium Ore, has the dangerous power of converting other materials into Gold.
+advancement.metallurgy.main.orichalcum=The War Metal
+advancement.metallurgy.main.orichalcum.desc=Obtain your first batch of Orichalcum, you have the feeling some good weaponry and equipment can be made out of it.
+advancement.metallurgy.main.platinum=The Pure Metal
+advancement.metallurgy.main.platinum.desc=Obtain your first Platinum Ore, even in its raw form it's one of the purest metals you've ever seen.
+advancement.metallurgy.main.vulcanite=The Explosive Metal
+advancement.metallurgy.main.vulcanite.desc=Venture in the most dangerous places in the Nether to mine your first piece of Vulcanite, looks like it's about to explode if you fidget too much with it.
+advancement.metallurgy.main.celenegil=The Exalted Metal
+advancement.metallurgy.main.celenegil.desc=Obtain your first batch of Celenegil by alloying Orichalcum and Platinum in a 1:1 ratio, the new metal stands a league above Orichalcum and provides intense buffs.
+advancement.metallurgy.main.amordrine=The Angelic Metal
+advancement.metallurgy.main.amordrine.desc=Obtain your first batch of Amordrine by alloying Kalendrite and Platinum in a 1:1 ratio, the new metal enhances the healing properties of Kalendrite making its buffs angelic.
+advancement.metallurgy.main.tier5=Tier 5
+advancement.metallurgy.main.tier5.desc=Mine a Tier 5 ore using a tier 4 Pickaxe
 
 # Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet

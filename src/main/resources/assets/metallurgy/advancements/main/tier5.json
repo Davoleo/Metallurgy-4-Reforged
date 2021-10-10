@@ -1,0 +1,29 @@
+{
+  "parent": "metallurgy:main/tier4",
+  "display": {
+    "icon": {
+      "item": "metallurgy:vulcanite_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancement.metallurgy.main.tier5"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tier5.desc"
+    }
+  },
+  "criteria": {
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
+      "conditions": {
+        "level": 5
+      }
+    }
+  },
+  "requirements": [
+    [
+      "harvest_tier"
+    ]
+  ]
+}

@@ -1,14 +1,14 @@
 {
-  "parent": "metallurgy:main/steel",
+  "parent": "metallurgy:main/tier4",
   "display": {
     "icon": {
-      "item": "metallurgy:hepatizon_ingot"
+      "item": "metallurgy:eximite_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.hepatizon"
+      "translate": "advancement.metallurgy.main.eximite"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.hepatizon.desc"
+      "translate": "advancement.metallurgy.main.eximite.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotHepatizon",
+            "ore": "ingotEximite",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,18 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustHepatizon",
+            "ore": "dustEximite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "oreEximite",
             "type": "forge:ore_dict"
           }
         ]
@@ -38,7 +49,8 @@
   "requirements": [
     [
       "has_ingot",
-      "has_dust"
+      "has_dust",
+      "has_ore"
     ]
   ]
 }
