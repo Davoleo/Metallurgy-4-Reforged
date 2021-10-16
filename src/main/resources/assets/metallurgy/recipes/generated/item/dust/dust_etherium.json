@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "type": "forge:ore_dict",
-      "ore": "dustCarmot"
+      "ore": "dustAlduorite"
     },
     {
       "type": "forge:ore_dict",

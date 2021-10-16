@@ -2,7 +2,7 @@
   "parent": "metallurgy:main/tier5",
   "display": {
     "icon": {
-      "item": "metallurgy:vulcanite_pickaxe",
+      "item": "metallurgy:krik_pickaxe",
       "nbt": "{\"tier_showcase\": 0.3}"
     },
     "frame": "goal",

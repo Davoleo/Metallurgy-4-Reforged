@@ -58,7 +58,7 @@ public class AlloyerRecipes {
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.MANGANESE, 2),
-						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance sake
+						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance's sake
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.BRONZE, 2),
@@ -82,7 +82,7 @@ public class AlloyerRecipes {
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.ADAMANTINE, 1),
 						new AlloySample(ModMetals.ATLARUS, 1),
-						new AlloySample(ModMetals.TARTARITE, 1, 1.5F)); //output decreased by one for balance sake
+						new AlloySample(ModMetals.TARTARITE, 1, 1.5F)); //output decreased by one for balance's sake
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.EXIMITE, 1),
 						new AlloySample(ModMetals.MEUTOITE, 1),
@@ -106,7 +106,7 @@ public class AlloyerRecipes {
 						new AlloySample(ModMetals.KRIK, 2, 1.25F));
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SANGUINITE, 1),
-						new AlloySample(ModMetals.CARMOT, 1),
+						new AlloySample(ModMetals.ALDUORITE, 1),
 						new AlloySample(ModMetals.ETHERIUM, 2, 1.25F));
 	}
 

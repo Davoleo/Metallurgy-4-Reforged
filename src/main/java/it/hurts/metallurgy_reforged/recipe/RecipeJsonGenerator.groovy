@@ -187,7 +187,7 @@ class RecipeJsonGenerator {
             ],
             [
                     new RecipeGenHelper.Stack("sanguinite", 1),
-                    new RecipeGenHelper.Stack("carmot", 1),
+                    new RecipeGenHelper.Stack("alduorite", 1),
                     new RecipeGenHelper.Stack("etherium", 2)
             ],
     ]
