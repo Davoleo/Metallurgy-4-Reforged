@@ -117,8 +117,6 @@ advancement.metallurgy.main.amordrine.desc=Obtain your first batch of Amordrine 
 advancement.metallurgy.main.tier5=Tier 5
 advancement.metallurgy.main.tier5.desc=Mine a Tier 5 ore using a tier 4 Pickaxe
 # Tier 5
-advancement.metallurgy.main.alduorite=The Luminous Metal
-advancement.metallurgy.main.alduorite.desc=Obtain your first Alduorite ore, it shines even if it's still raw!
 advancement.metallurgy.main.carmot=Clockwork Metal
 advancement.metallurgy.main.carmot.desc=Obtain your first Carmot Ore, could be used in all kinds of machinery.
 advancement.metallurgy.main.lemurite=The Reflective Metal
@@ -143,10 +141,18 @@ advancement.metallurgy.main.desichalkos=The Void Metal
 advancement.metallurgy.main.desichalkos.desc=Obtain your first batch of Desichalkos by alloying Eximite and Meutoite in a 1:1 ratio, this alloy looks somehow linked to the Void and it's absorbing attributes.
 advancement.metallurgy.main.krik=Gravity Control Metal
 advancement.metallurgy.main.krik.desc=Obtain your first batch of Krik by alloying Lutetium and Osmium in a 1:1 ratio, first analyses suggest this metal is not affected by gravity at all, instead it can manipulate when put under mechanical stress.
-advancement.metallurgy.main.etherium=The Ghost Metal
-advancement.metallurgy.main.etherium.desc=Obtain your first batch of Etherium by alloying Alduorite and Sanguinite in a 1:1 ratio, it looks like a normal metal but gains ethereal properties when stimulated.
 advancement.metallurgy.main.tier6=Tier 6
 advancement.metallurgy.main.tier6.desc=Mine a Tier 6 ore using a tier 5 Pickaxe
+advancement.metallurgy.main.alduorite=The Luminous Metal
+advancement.metallurgy.main.alduorite.desc=Obtain your first Alduorite ore, it shines even if it's still raw!
+advancement.metallurgy.main.etherium=The Ghost Metal
+advancement.metallurgy.main.etherium.desc=Obtain your first batch of Etherium by alloying Alduorite and Sanguinite in a 1:1 ratio, it looks like a normal metal but gains ethereal properties when stimulated.
+advancement.metallurgy.main.adamantine=The Living Metal
+advancement.metallurgy.main.adamantine.desc=Obtain your first piece of Adamantine ore, the first metal ever known to be formed in symbiosis with underground microorganisms.
+advancement.metallurgy.main.atlarus=The Wind Metal
+advancement.metallurgy.main.atlarus.desc=Obtain your first piece of Atlarus Ore, legends say the strong wind currents reigned over the places where this metal first formed.
+advancement.metallurgy.main.tartarite=The Paragon of Metals
+advancement.metallurgy.main.tartarite.desc=Obtain your first batch of Tartarite by alloying Adamantine and Atlarus in a 1:1 ratio, this living metal has the power to absorb powers as soon as it enters in contact with the properties of another metal.
 
 # Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet

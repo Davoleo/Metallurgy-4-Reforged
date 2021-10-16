@@ -4,29 +4,86 @@ skinparam card {
     roundCorner 8
 }
 
+'Cards ---
+'Primitive MEtals
+card Atlarus
+card Adamantine
+card "**Copper**" as Copper
+card "**Deep Iron**" as DeepIron
+card "**Prometheum**" as Prometheum
+card Osmium
+card Silver
+card Infuscolium
+card Manganese
+card "Astral Silver" as AstralSilver
+card "**Ignatius**" as Ignatius
+card Oureclase
+card Rubracium
+card "**Shadow Iron**" as ShadowIron
+card Ceruclase
+card "**Eximite**" as Eximite
+card Kalendrite
+card Midasium
+card Orichalcum
+card Platinum
+card "**Vulcanite**" as Vulcanite
+card Alduorite
+card Carmot
+card Lemurite
+card Lutetium
+card Meutoite
+card Mithril
+card Sanguinite
+card Vyroxeres
+card Tin
+card Zinc
 
+
+'Alloys
+card "Angmallen\n(Iron + Gold)" as Angmallen
+card "**Steel**\n(Iron + Manganese)" as Steel
+card "**Black Steel**\n(Deep Iron + Infuscolium)" as BlackSteel
+card "Electrum\n(Silver + Gold)" as Electrum
+card "**Hepatizon**\n(Steel + Infuscolium)" as Hepatizon
+card "**Bronze**\n(Tin + Copper)" as Bronze
+card "**Brass**\n(Zinc + Copper)" as Brass
+card "**Damascus Steel**\n(Bronze + Iron)" as DamascusSteel
+card "Quicksilver\n(Astral Silver + Silver)" as Quicksilver
+card "**Celenegil**\n(Orichalcum + Platinum)" as Celenegil
+card "Amordrine\n(Kalendrite + Platinum)" as Amordrine
+card "**Shadow Steel**\n(Shadow Iron + Lemurite)" as ShadowSteel
+card "**Inolashite**\n(Ceruclase + Alduorite)" as Inolashite
+card "**Haderoth**\n(Mithril + Rubracium)" as Haderoth
+card "**Desichalkos**\n(Eximite + Meutoite)" as Desichalkos
+card "**Krik**\n(Osmium + Lutetium)" as Krik
+card "**Tartarite**\n(Adamantine + Atlarus)" as Tartarite
+card "Etherium\n(Sanguinite + Alduorite)" as Etherium
+
+
+'Tiers
 node root [
     Start | Tier 1
     ....
     root achievement
 ]
-
-'Tier 1 achievements [Parent is root]
-card "**Copper**" as Copper
-card "**Deep Iron**" as DeepIron
-card "**Prometheum**" as Prometheum
-card Tin
-card Zinc
-
-card "**Bronze**\n(Tin + Copper)" as Bronze
-card "**Brass**\n(Zinc + Copper)" as Brass
-card "**Damascus Steel**\n(Bronze + Iron)" as DamascusSteel
-
 node tier2 [
     Tier 2
 ]
+node tier3 [
+    Tier 3
+]
+node tier4 [
+    Tier 4
+]
+node tier5 [
+    Tier 5
+]
+node tier6 [
+    Tier 6
+]
 
-'Tier 1 Links
+
+'Tier 1 achievements [Parent is root]
 root-->Copper
 root-->DeepIron
 root-->Prometheum
@@ -38,22 +95,6 @@ Bronze-->DamascusSteel
 root-->tier2
 
 'Tier 2 achievements
-card Osmium
-card Silver
-card Infuscolium
-card Manganese
-
-card "Angmallen\n(Iron + Gold)" as Angmallen
-card "**Steel**\n(Iron + Manganese)" as Steel
-card "**Black Steel**\n(Deep Iron + Infuscolium)" as BlackSteel
-card "Electrum\n(Silver + Gold)" as Electrum
-card "**Hepatizon**\n(Steel + Infuscolium)" as Hepatizon
-
-node tier3 [
-    Tier 3
-]
-
-'Tier 2 Links
 tier2-->Angmallen
 tier2-->Osmium
 tier2-->Silver
@@ -65,20 +106,7 @@ tier2-->Electrum
 Steel-->Hepatizon
 tier2-->tier3
 
-'Tier 3 Cards
-card "Astral Silver" as AstralSilver
-card "**Ignatius**" as Ignatius
-card Oureclase
-card Rubracium
-card "**Shadow Iron**" as ShadowIron
-
-card "Quicksilver\n(Astral Silver + Silver)" as Quicksilver
-
-node tier4 [
-    Tier 4
-]
-
-'Tier 3 Links
+'Tier 3 Achievements
 tier3-->AstralSilver
 tier3-->Ignatius
 tier3-->Oureclase
@@ -87,23 +115,7 @@ tier3-->ShadowIron
 tier3-->Quicksilver
 tier3-->tier4
 
-'Tier 4 Cards
-card Ceruclase
-card "**Eximite**" as Eximite
-card Kalendrite
-card Midasium
-card Orichalcum
-card Platinum
-card "**Vulcanite**" as Vulcanite
-
-card "**Celenegil**\n(Orichalcum + Platinum)" as Celenegil
-card "Amordrine\n(Kalendrite + Platinum)" as Amordrine
-
-node tier5 [
-    Tier 5
-]
-
-'Tier 4 Links
+'Tier 4 Achievements
 tier4-->Ceruclase
 tier4-->Eximite
 tier4-->Kalendrite
@@ -115,28 +127,7 @@ tier4-->Celenegil
 tier4-->Amordrine
 tier4-->tier5
 
-'Tier 5 Cards
-card Alduorite
-card Carmot
-card Lemurite
-card Lutetium
-card Meutoite
-card Mithril
-card Sanguinite
-card Vyroxeres
-
-card "**Shadow Steel**\n(Shadow Iron + Lemurite)" as ShadowSteel
-card "**Inolashite**\n(Ceruclase + Alduorite)" as Inolashite
-card "**Haderoth**\n(Mithril + Rubracium)" as Haderoth
-card "**Desichalkos**\n(Eximite + Meutoite)" as Desichalkos
-card "**Krik**\n(Osmium + Lutetium)" as Krik
-
-node tier6 [
-    Tier 6
-]
-
-'Tier 5 Links
-tier5-->Alduorite
+'Tier 5 Achievemets
 tier5-->Carmot
 tier5-->Lemurite
 tier5-->Lutetium
@@ -151,19 +142,12 @@ tier5-->Desichalkos
 tier5-->Krik
 tier5-->tier6
 
-'Tier 6 Cards
-card Atlarus
-card Adamantine
-card "**Tartarite**\n(Adamantine + Atlarus)" as Tartarite
-card "Etherium\n(Sanguinite + Alduorite)" as Etherium
-
-'Tier 6 Links
+'Tier 6 Achievements
+tier6-->Alduorite
 tier6-->Atlarus
 tier6-->Adamantine
 tier6-->Tartarite
 tier6-->Etherium
-
-
 
 @enduml
 
