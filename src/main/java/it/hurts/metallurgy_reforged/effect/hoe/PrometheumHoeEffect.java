@@ -43,6 +43,7 @@ public class PrometheumHoeEffect extends BaseMetallurgyEffect {
 			return;
 
 		Block block = event.getState().getBlock();
+		boolean hadEffect = false;
 
 		if (block instanceof BlockCrops || block instanceof BlockMelon)
 		{
@@ -55,6 +56,7 @@ public class PrometheumHoeEffect extends BaseMetallurgyEffect {
 
 					drop.setCount(drop.getCount() + Math.random() < 0.5F ? 1 : 2);
 					event.setDropChance(1F);
+					hadEffect = true;
 				}
 			}
 
@@ -72,10 +74,16 @@ public class PrometheumHoeEffect extends BaseMetallurgyEffect {
 				for (ItemStack item : drrrrops)
 				{
 					if (event.getWorld().rand.nextFloat() <= event.getDropChance())
+					{
 						Block.spawnAsEntity(event.getWorld(), event.getPos(), item);
+						hadEffect = true;
+					}
 				}
 			}
 		}
+
+		if (hadEffect)
+			harvester.getHeldItemMainhand().damageItem(1, harvester);
 	}
 
 }
