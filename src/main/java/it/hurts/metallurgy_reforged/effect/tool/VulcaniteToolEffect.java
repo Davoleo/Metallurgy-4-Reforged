@@ -17,8 +17,11 @@ import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -49,16 +52,19 @@ public class VulcaniteToolEffect extends BaseMetallurgyEffect {
 		int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, toolStack);
 		if (Math.random() < 0.4 + (0.2 * fortune))
 		{
-			List<BlockPos> list = BlockUtils.getAdjacentPosList(event.getWorld(), event.getPos(), pos -> !event.getWorld().isAirBlock(pos));
+			final World world = event.getWorld();
+			List<BlockPos> list = BlockUtils.getAdjacentPosList(world, event.getPos(), pos -> !world.isAirBlock(pos));
 			if (list.isEmpty())
 				return;
 
 			BlockPos posToBreak = list.get(Utils.random.nextInt(list.size()));
-			if (event.getWorld().getBlockState(posToBreak).getBlock() != Blocks.BEDROCK)
-				event.getWorld().destroyBlock(posToBreak, true);
+			if (world.getBlockState(posToBreak).getBlock() != Blocks.BEDROCK)
+				world.destroyBlock(posToBreak, true);
 
 			for (int i = 0; i < 10; i++)
-				spawnParticle(event.getWorld(), posToBreak, 1.5F, true, 5, 0, 0, 0);
+				spawnParticle(world, posToBreak, 1.5F, true, 5, 0, 0, 0);
+
+			world.playSound(null, posToBreak, SoundEvents.ENTITY_FIREWORK_BLAST, SoundCategory.BLOCKS, 2F, 1.5F);
 		}
 	}
 
