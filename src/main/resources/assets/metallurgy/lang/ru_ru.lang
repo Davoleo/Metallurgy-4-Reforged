@@ -632,6 +632,8 @@ config.metallurgy.category.general=Основное
 config.metallurgy.category.registry=Реестр
 config.metallurgy.category.rubracium_gauntlet=Рубракиевая перчатка
 config.metallurgy.category.tool_effects=Эффекты инструментов
+config.metallurgy.category.phosphorus_lamp=Фосфорная лампа
+config.metallurgy.category.brass_knuckles=Латунный кастет
 config.metallurgy.category.worldgen=Генерация мира
 
 #Construct's Armory Traits
@@ -778,6 +780,9 @@ item.metallurgy.zinc_nugget.name=Цинковый самородок
 
 #Effect
 effect.metallurgy.punch_effect_tired=§4Ты слишком устал! Перекуси чем-то сначала!
+
+# Entities
+entity.pierknight.name=PierKnight
 
 #FluidBlocks
 tile.metallurgy.molten_adamantine.name=Жидкий адаматит
@@ -1016,6 +1021,18 @@ container.alloyer=Сплавщик
 tile.metallurgy.crusher.name=§cДробилка
 tile.metallurgy.alloyer.name=§eСплавщик
 tile.metallurgy.sublimation_chamber.name=§4Сублимационная камера
+
+#Subtitles
+metallurgy.subtitle.alloyer_ambience=Сплавщик работает
+metallurgy.subtitle.alloyer_impact=Сплавщик сплавляет
+metallurgy.subtitle.alloyer_windup=Сплавщик запускается
+metallurgy.subtitle.crusher_ambience=Дробилка работает
+metallurgy.subtitle.crusher_impact=Дробилка дробит
+metallurgy.subtitle.crusher_windup=Дробилка запускается
+metallurgy.subtitle.sublimation_chamber_ambience=Сублимационная камера сублимирует металл
+metallurgy.subtitle.sublimation_chamber_windup=Сублимационная камера запускается
+metallurgy.subtitle.metal_detector_ping=Металлодетектор сканирует местность
+metallurgy.subtitle.metal_detector_beep=Металлодетектор пищит
 
 #Tinkers' Construct Traits
 modifier.obscure_trait.name=Непонятка
@@ -1269,31 +1286,200 @@ item.metallurgy.vyroxeres_shovel.name=Вироксересовая лопата
 item.metallurgy.vyroxeres_sword.name=Вироксересовый меч
 
 #Tooltips
-#Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Полный набор брони: Поглощает опыт восстанавливая голод
-tooltip.metallurgy.amordrine_armor_effect=§dПолный набор брони: Сила II
-tooltip.metallurgy.angmallen_armor_effect=§eПолный набор брони: (WIP) Удача (WIP)
-tooltip.metallurgy.astral_silver_armor_effect=§fПолный набор брони: Прыгучесть
-tooltip.metallurgy.atlarus_armor_effect=§eПолный набор брони: Порыв ветра спасает вас от получения урона от падения.
-tooltip.metallurgy.carmot_armor_effect=§eПолный набор брони: (WIP) Спешка (WIP)
-tooltip.metallurgy.celenegil_armor_effect=§aПолный набор брони: Защита II - Половина набора брони: Защита I
-tooltip.metallurgy.ceruclase_armor_effect=§3Полный набор брони: Замедляет напавшего
-tooltip.metallurgy.deep_iron_armor_effect=§3Полный набор брони: Быстрое Погружение
-tooltip.metallurgy.eximite_armor_effect=§5Полный набор брони: Эндермен не будет вас замечать
-tooltip.metallurgy.kalendrite_armor_effect=§dПолный набор брони: Сила
-tooltip.metallurgy.krik_armor_effect=§2Полный набор брони: Полет контролируемый весом (кнопки |Вверх| и |Вниз|)
-tooltip.metallurgy.lutetium_armor_effect=§6Полный набор брони: Сопротивление отбрасыванию II
-tooltip.metallurgy.mithril_armor_effect=§bПолный набор брони: Заставляет светится
-tooltip.metallurgy.osmium_armor_effect=§9Полный набор брони: Сопротивление отбрасыванию I
-tooltip.metallurgy.platinum_armor_effect=§bПолный набор брони: Ночное зрение
-tooltip.metallurgy.prometheum_armor_effect=§2Полный набор брони: Имунитет к яду
-tooltip.metallurgy.quicksilver_armor_effect=§bПолный набор брони: Быстрые действия
-tooltip.metallurgy.shadow_iron_armor_effect=§8Полный набор брони: Никакой Слепоты
-tooltip.metallurgy.shadow_steel_armor_effect=§8Полный набор брони:Жестче в темноте
-tooltip.metallurgy.vulcanite_armor_effect=§cПолный набор брони: Огнестойкость
-tooltip.metallurgy.etherium_armor_effect=§5Полный набор брони: Позволяет проходить сквозь стены
-tooltip.metallurgy.desichalkos_armor_effect=§5Полный набор брони: Позволяет игроку красть у эндерменов их любимые блоки
-tooltip.metallurgy.haderoth_armor_effect=§7Полный набор брони: Позволяет ходить по лаве
+
+#Effect Names
+tooltip.metallurgy.effect.adamantine_all.name=Симбиоз I
+tooltip.metallurgy.effect.adamantine_armor.name=Симбиоз II
+tooltip.metallurgy.effect.amordrine_armor.name=До небес
+tooltip.metallurgy.effect.amordrine_all.name=Привязка души
+tooltip.metallurgy.effect.amordrine_weapon.name=Божественная милость
+tooltip.metallurgy.effect.angmallen_weapon.name=Реактивный II
+tooltip.metallurgy.effect.angmallen_pickaxe.name=Трансмутация
+tooltip.metallurgy.effect.angmallen_armor.name=Реагирующий III
+tooltip.metallurgy.effect.astral_silver_armor.name=Звездное свечение
+tooltip.metallurgy.effect.astral_silver_weapon.name=Внеземной I
+tooltip.metallurgy.effect.astral_silver_tool.name=Внеземной II
+tooltip.metallurgy.effect.atlarus_armor.name=Смерч
+tooltip.metallurgy.effect.atlarus_weapon.name=Дуновение ветра
+tooltip.metallurgy.effect.atlarus_hoe.name=Ветряная коса
+tooltip.metallurgy.effect.black_steel_armor.name=Горный I
+tooltip.metallurgy.effect.black_steel_weapon.name=Горный II
+tooltip.metallurgy.effect.carmot_tool.name=Автономный
+tooltip.metallurgy.effect.carmot_armor.name=Пользователь силы
+tooltip.metallurgy.effect.carmot_weapon.name=Скотобойня
+tooltip.metallurgy.effect.celenegil_tool.name=Эскалация
+tooltip.metallurgy.effect.celenegil_armor.name=Упорство
+tooltip.metallurgy.effect.celenegil_weapon.name=Искатель славы
+tooltip.metallurgy.effect.ceruclase_weapon.name=Мгновенная заморозка
+tooltip.metallurgy.effect.ceruclase_armor.name=Метель
+tooltip.metallurgy.effect.ceruclase_tool.name=Холодный щелчок
+tooltip.metallurgy.effect.damascus_steel_armor.name=Королевская кровь
+tooltip.metallurgy.effect.damascus_steel_weapon.name=Блеск I
+tooltip.metallurgy.effect.damascus_steel_pickaxe.name=Блеск II
+tooltip.metallurgy.effect.deep_iron_armor.name=Водный
+tooltip.metallurgy.effect.deep_iron_tool.name=Дайвер
+tooltip.metallurgy.effect.deep_iron_weapon.name=Дайвер
+tooltip.metallurgy.effect.desichalkos_tool.name=Червоточина
+tooltip.metallurgy.effect.desichalkos_weapon.name=Нулификатор
+tooltip.metallurgy.effect.desichalkos_armor.name=Сфера
+tooltip.metallurgy.effect.electrum_weapon.name=Магнит
+tooltip.metallurgy.effect.electrum_tool.name=Контроль напряжения
+tooltip.metallurgy.effect.electrum_armor.name=Статичный
+tooltip.metallurgy.effect.etherium_armor.name=Эфирный
+tooltip.metallurgy.effect.etherium_weapon.name=Сифон
+tooltip.metallurgy.effect.eximite_armor.name=Родной Энд
+tooltip.metallurgy.effect.eximite_weapon.name=Внеземной
+tooltip.metallurgy.effect.haderoth_armor.name=Адаптивность
+tooltip.metallurgy.effect.haderoth_weapon.name=Вершина
+tooltip.metallurgy.effect.haderoth_all.name=Метаморф
+tooltip.metallurgy.effect.hepatizon_weapon.name=Обезоруживание
+tooltip.metallurgy.effect.hepatizon_armor.name=Плащ и кинжал
+tooltip.metallurgy.effect.ignatius_tool.name=Раскаленное ядро
+tooltip.metallurgy.effect.ignatius_weapon.name=Раскаленное ядро
+tooltip.metallurgy.effect.ignatius_armor.name=Кипящая кровь
+tooltip.metallurgy.effect.inolashite_weapon.name=Рассечение времени
+tooltip.metallurgy.effect.inolashite_tool.name=Временной скачок
+tooltip.metallurgy.effect.inolashite_armor.name=Скачок
+tooltip.metallurgy.effect.kalendrite_armor.name=Уравновешенный
+tooltip.metallurgy.effect.kalendrite_tool.name=Восстановление
+tooltip.metallurgy.effect.krik_armor.name=Весовой полет
+tooltip.metallurgy.effect.krik_tool.name=Крик-привод
+tooltip.metallurgy.effect.krik_weapon.name=Зенитный огонь
+tooltip.metallurgy.effect.midasium_hoe=Мидас
+tooltip.metallurgy.effect.midasium_weapon=Жадность
+tooltip.metallurgy.effect.midasium_tool=Жадность
+tooltip.metallurgy.effect.mithril_pickaxe=Умножение
+tooltip.metallurgy.effect.mithril_weapon=Магический аспект
+tooltip.metallurgy.effect.mithril_all=Аркана
+tooltip.metallurgy.effect.orichalcum_all=Чемпион
+tooltip.metallurgy.effect.orichalcum_armor=Берсерк
+tooltip.metallurgy.effect.osmium_armor=Титан
+tooltip.metallurgy.effect.oureclase_pickaxe=Дробление
+tooltip.metallurgy.effect.oureclase_weapon=Распыление
+tooltip.metallurgy.effect.oureclase_armor=Давка
+tooltip.metallurgy.effect.platinum_armor=Очищение
+tooltip.metallurgy.effect.platinum_weapon=Катарсический удар
+tooltip.metallurgy.effect.platinum_all=Безупречный
+tooltip.metallurgy.effect.prometheum_armor=Фрейр
+tooltip.metallurgy.effect.prometheum_all=Фотосинтез
+tooltip.metallurgy.effect.prometheum_hoe=Жатва
+tooltip.metallurgy.effect.quicksilver_weapon=Ловкость клинка
+tooltip.metallurgy.effect.quicksilver_all=Легкий
+tooltip.metallurgy.effect.quicksilver_tool=Попутный ветер
+tooltip.metallurgy.effect.quicksilver_armor=Ускорение
+tooltip.metallurgy.effect.sanguinite_all=Лживый
+tooltip.metallurgy.effect.sanguinite_weapon=Пожирающий
+tooltip.metallurgy.effect.sanguinite_tool=Кровавое касание
+tooltip.metallurgy.effect.sanguinite_armor=Некромастер
+tooltip.metallurgy.effect.shadow_iron_pickaxe=Несовместивый
+tooltip.metallurgy.effect.shadow_iron_weapon=Крит хаоса
+tooltip.metallurgy.effect.shadow_iron_armor=Сломанное уклонение
+tooltip.metallurgy.effect.shadow_steel_all=Умбральный синтез
+tooltip.metallurgy.effect.shadow_steel_armor=Затмение
+tooltip.metallurgy.effect.shadow_steel_weapon=Гармония
+tooltip.metallurgy.effect.tartarite_all=Поглощение идеала
+tooltip.metallurgy.effect.vulcanite_weapon=Фитиль
+tooltip.metallurgy.effect.vulcanite_tool=Трещина
+tooltip.metallurgy.effect.vulcanite_armor=Подрыв
+tooltip.metallurgy.effect.vyroxeres_weapon=Токсин
+tooltip.metallurgy.effect.vyroxeres_armor=Растворится
+
+#Effect Descriptions
+tooltip.metallurgy.effect.adamantine_all.desc=Употребление еды восстанавливает прочность, голодание же медленно уничтожает предмет. Величина починки зависит от сытности еды. Прочность убывает с периодичностью от 1 до 6 секунд в зависимости от сытости игрока
+tooltip.metallurgy.effect.adamantine_armor.desc=Получение фатального урона заставит одну из частей брони саморазрушиться спасая этим жизнь игрока. Каждая часть брони увеличивает шанс выжить на 25<PC> (максимум 100<PC> при полном сете) 
+tooltip.metallurgy.effect.amordrine_armor.desc=Дает способность дополнительного прыжка в воздухе. Каждая часть брони дает один дополнительный прыжок .
+tooltip.metallurgy.effect.amordrine_all.desc=Предметы что имеют этот эффект остаются в инвентаре после смерти.
+tooltip.metallurgy.effect.amordrine_weapon.desc=Дополнительный урон в зависимости от здоровья цели, чем меньше здоровья у цели, тем больше урона вы нанесете (дополнительный урон до 200<PC>).
+tooltip.metallurgy.effect.angmallen_weapon.desc=Дополнительный урон по бронированным целям.
+tooltip.metallurgy.effect.angmallen_pickaxe.desc=Добытая руда иногда превращается в другую руду в диапазоне одного уровня добычи (50<PC> шанс) 
+tooltip.metallurgy.effect.angmallen_armor.desc=Иногда проигрывает звук когда ты проходишь возле редкой руды, каждая часть брони увеличивает шанс срабатывания.
+tooltip.metallurgy.effect.astral_silver_armor.desc=Дает ночное зрение и скорость в зависимости от количества надетых частей брони, эффекты накладываются только когда игрок под прямым звездным небом или в энде.
+tooltip.metallurgy.effect.astral_silver_weapon.desc=Дополнительные 45<PC> урона во всех измерениях кроме верхнего мира.
+tooltip.metallurgy.effect.astral_silver_tool.desc=Увеличенная скорость копания во всех измерениях кроме верхнего мира.
+tooltip.metallurgy.effect.atlarus_armor.desc=Смерч спасет вас от получения урона от падения толкнув вас в случайном направлении.
+tooltip.metallurgy.effect.atlarus_weapon.desc=Мощное дуновение ветра отталкивает врагов прочь и срывает листву с лозами на расстоянии 5 блоков вокруг тебя.
+tooltip.metallurgy.effect.atlarus_hoe.desc=Ветер помогает вам убрать кусты и растения вокруг вас.
+tooltip.metallurgy.effect.black_steel_armor.desc=Получение урона иногда накладывает эффекты сопротивления и медлительности. (Эффекты суммируются до 3 уровней)
+tooltip.metallurgy.effect.black_steel_weapon.desc=Инструменты и оружие действуют как броня. Например меч из черной стали в руке при атаке поглотит некоторую часть урона.
+tooltip.metallurgy.effect.carmot_tool.desc=Копание блока также выкопает окружающие его блоки в сферическом радиусе.
+tooltip.metallurgy.effect.carmot_armor.desc=Вы используете предметы быстрее в зависимости от количества надетой брони; Полный набор брони дает эффект спешки III .
+tooltip.metallurgy.effect.carmot_weapon.desc=Атакуя существо вы также будете наносить урон всем существам этого типа в небольшом радиусе .
+tooltip.metallurgy.effect.celenegil_tool.desc=Продолжительное вскапывание блоков без остановки не использует прочность и увеличивает скорость копания. (Сбрасывается после остановки более чем на одну секунду. Эффект неразрушимости накладывается после 5 добытых блоков) 
+tooltip.metallurgy.effect.celenegil_armor.desc=После получения урона 5 раз за небольшой промежуток времени игрок получает недолгий эффект регенерации и он очищается от всех негативных эффектов.
+tooltip.metallurgy.effect.celenegil_weapon.desc=Нажатие на ПКМ дает небольшое увеличение урона. Если вы наносите урон существу не убивая его, эффект уходит на перезарядку, если вы его убиваете то получаете короткие эффекты силы и скорости.
+tooltip.metallurgy.effect.ceruclase_weapon.desc=Имеет шанс 75<PC> полностью заморозить врага на месте на 3 секунды.
+tooltip.metallurgy.effect.ceruclase_armor.desc=Существа замедлены, истощены, и ослаблены в зависимости от количества надетой брони, также существа и игроки тушатся если они горели.
+tooltip.metallurgy.effect.ceruclase_tool.desc=Блоки с уровнем добычи 0 ломаются мгновенно. (земля, песок, дерево)
+tooltip.metallurgy.effect.damascus_steel_armor.desc=Прихвостень будет призван чтобы помочь вам в битве. (Здоровье прихвостня зависит от брони)
+tooltip.metallurgy.effect.damascus_steel_weapon.desc=Из существ выпадает значительно больше опыта.
+tooltip.metallurgy.effect.damascus_steel_pickaxe.desc=Добыча руды иногда дает дополнительный опыт в зависимости от уровня добычи.
+tooltip.metallurgy.effect.deep_iron_armor.desc=Дает подводное дыхание и улучшает подвижность в воде в зависимости от количества надетой брони. (также дает ночное зрение с 2 надетыми частями)
+tooltip.metallurgy.effect.deep_iron_tool.desc=Улучшенная скорость копания под водой. (в 3 раза)
+tooltip.metallurgy.effect.deep_iron_weapon.desc=Увеличенный урон под водой. (+6 урона)
+tooltip.metallurgy.effect.desichalkos_tool.desc=Инструмент достает на 3 блока дальше чем обычно а добытые таким инструментом блоки телепортируються в инвентарь игрока.
+tooltip.metallurgy.effect.desichalkos_weapon.desc=При атаке наносит урон полностью игнорируя броню и статусные эффекты существа.
+tooltip.metallurgy.effect.desichalkos_armor.desc=Носитель может полностью поглотить X количество урона (X увеличивается с броней) без получения урона, а "слои" восстанавливаются каждые 7 секунд после последнего получения урона.
+tooltip.metallurgy.effect.electrum_weapon.desc=Нажав на ПКМ все существа на линии обзора игрока будут притянуты к нему.
+tooltip.metallurgy.effect.electrum_tool.desc=Добыча блоков под активным эффектом (ПКМ) будет потреблять в 10 раз больше прочности но это сделает инструмент намного быстрее и он получит более высокий уровень добычи.
+tooltip.metallurgy.effect.electrum_armor.desc=Получение урона заряжает энергией предметы в инвентаре игрока. Энергия распределяется равномерно между всеми предметами. Количество энергии увеличивается в зависимости от полученного урона и степени его поглощения броней.
+tooltip.metallurgy.effect.etherium_armor.desc=Позволяет на 15 секунд проходить сквозь стены крадущемуся игроку после чего игрок застрянет в стене.
+tooltip.metallurgy.effect.etherium_weapon.desc=При атаке есть шанс нанести больше урона также восстанавливая себе такое же количество здоровья. Если игрок полностью здоров то  он получит эффект поглощения на это же количество здоровья. (эффекты не суммируются)
+tooltip.metallurgy.effect.eximite_armor.desc=Шалкеры нейтральны к вам но это не дает вам иммунитета от их снарядов.
+tooltip.metallurgy.effect.eximite_weapon.desc=Дает бонус к урону и добычи к существам в крае.
+tooltip.metallurgy.effect.haderoth_armor.desc=АКТИВИРОВАТЬ ТОЛЬКО ПОСЛЕ ТОГО КАК БРОНЯ ПЕРЕРОДИТСЯ<NL>Каждая часть брони дает разный эффект: <NL>шлем: иммунитет к эффекту голода, <NL>нагрудник: огнестойкость, <NL>поножи: иммунитет к эффекту замедления, <NL>ботинки: иммунитет к эффекту левитации.
+tooltip.metallurgy.effect.haderoth_weapon.desc=АКТИВИРОВАТЬ ТОЛЬКО ПОСЛЕ ТОГО КАК ОРУЖИЕ ПЕРЕРОДИТСЯ<NL>Убийство одного типа существ увеличивает урон наносимый оружием, но убийство другого существа другого типа сбрасывает бонус.
+tooltip.metallurgy.effect.haderoth_all.desc=Предметы имеют вторую жизнь. После того как они достигнут предела прочности они будут заменены новыми  и улучшенными версиями себя; <NL> Броня переродится с более высокой прочностью и защитой; <NL> Все предметы переродятся с более высокой прочностью и эффективностью, оружие также будет наносить на 2 урона больше.<NL> (все другие эффекты будут активированы после перерождения).
+tooltip.metallurgy.effect.hepatizon_weapon.desc=При атаке есть шанс украсть у противника некоторые его предметы.
+tooltip.metallurgy.effect.hepatizon_armor.desc=Уменьшает способность существ вас замечать на расстоянии. (эффект усиливается при ношении большего количества брони)
+tooltip.metallurgy.effect.ignatius_tool.desc=Автоматически плавит предметы выпавшие с добытого блока если они могут быть переплавлены.<NL>Шанс авто-плавки основан на зачарования удачи
+tooltip.metallurgy.effect.ignatius_weapon.desc=Автоматически плавит предметы выпавшие из существа если они могут быть переплавлены.<NL>Шанс авто-плавки основан на зачарования удачи
+tooltip.metallurgy.effect.ignatius_armor.desc=Огонь и лава исцеляет вас пропорционально нанесенному урону но вода и дождь наносит вам урон как от лавы и огня; <NL>Эффекты огнеупорности инвертированы чтобы защищать от воды.
+tooltip.metallurgy.effect.inolashite_weapon.desc=При атаке иногда возникает дополнительный удар, быстро ударяя второй раз после первого удара.
+tooltip.metallurgy.effect.inolashite_tool.desc=При активации перемещает игрока на 7 блоков в направлении в котором он смотрел ломая все препятствия (пока это позволяет уровень добычи инструмента).
+tooltip.metallurgy.effect.inolashite_armor.desc=Шифт + Прыжок телепортирует игрока назад во времени от 2 до 8 секунд в зависимости от количества одетой брони
+tooltip.metallurgy.effect.kalendrite_armor.desc=Если игрок не получил урона за прошлые 10 секунд и у них не полное здоровье, он получит эффект регенерации.
+tooltip.metallurgy.effect.kalendrite_tool.desc=Вскапывание блоков восстанавливает половину сердца но инструмент теряет тем больше прочности чем меньше у игрока здоровья.
+tooltip.metallurgy.effect.krik_armor.desc=Заставляет вас парить в воздухе на высоте зависящей от степени заполненности вашего инвентаря. Вы можете нажимать стрелочки "Вверх" и "Вниз" чтобы немного регулировать высоту. Также справа снизу на экране появляется индикатор вас, вашей высоты и лимита коррекции
+tooltip.metallurgy.effect.krik_tool.desc=Активация предмета запускает игрока в направлении в котором они смотрели.
+tooltip.metallurgy.effect.krik_weapon.desc=Наносит в два раза больше урона летающим существам и дает небольшой дебафф левитации.
+tooltip.metallurgy.effect.midasium_hoe.tooltip=Собирание урожая такой этой мотыгой будет превращать посевы в золото (слитки, кусочки, пыли).
+tooltip.metallurgy.effect.midasium_weapon.tooltip=Шанс основаный на эффекте добычи сочитается с зачарованием добычи. Все выпадающие вещи имеют шанс превратится в золото.
+tooltip.metallurgy.effect.midasium_tool.tooltip=Шанс основаный на эффекте удачи сочетается с зачарованием удачи. Все выпадающие вещи имеют шанс превратится в золото.
+tooltip.metallurgy.effect.mithril_pickaxe.tooltip=При добыче руды может выпасть дополнительная руда. Растет с зачарованием удачи.
+tooltip.metallurgy.effect.mithril_weapon.tooltip=Наносит дополнительный магический урон на 1 секунду после атаки.
+tooltip.metallurgy.effect.mithril_all.tooltip=Чем больше зачарований имеет предмет тем он лучше работает. (урон оружию, скорость копания инструментам, защита броне)
+tooltip.metallurgy.effect.orichalcum_all.tooltip=Убийство монстров восполняет прочность Орихалковых предметов (Прочность = максимальное здоровье убитого монстра)
+tooltip.metallurgy.effect.orichalcum_armor.tooltip=Убийство монстра накладывает эффект силы, уровень которого ровняется количеству каждого оставшегося враждебного монстра вокруг носителя. (Максимальный уровень: 6) (Броня маштабирует радиус и продолжительность эффекта)
+tooltip.metallurgy.effect.osmium_armor.tooltip=Враги отталкиваются когда атакуют вас.
+tooltip.metallurgy.effect.oureclase_pickaxe.tooltip=Из добытой руды выпадает 1 пыль этой руды вместо... руы...
+tooltip.metallurgy.effect.oureclase_weapon.tooltip=Наносит в 2 раза больше урона противникам с полным здоровьем.
+tooltip.metallurgy.effect.oureclase_armor.tooltip=Бег наносит небольшой урон и отталкивает ближайших существ.
+tooltip.metallurgy.effect.platinum_armor.tooltip=Очищает негативные эффекты такие как слабость, замедление, и отравление на их позитивные аналоги.
+tooltip.metallurgy.effect.platinum_weapon.tooltip=Дополнительный урон катарсисом нежити. А еще это поджигает цель.
+tooltip.metallurgy.effect.platinum_all.tooltip=Этот инструмент неразрушим
+tooltip.metallurgy.effect.prometheum_armor.tooltip=Бег вокруг посевов ускоряет их рост, и рост травы рядом за счет прочности брони.
+tooltip.metallurgy.effect.prometheum_all.tooltip=Прочность предметов медленно восстанавливается под светом солнца. 
+tooltip.metallurgy.effect.prometheum_hoe.tooltip=При сборе этой мотыгой выпадение предметов из листвы, посевов и травы увеличено.
+tooltip.metallurgy.effect.quicksilver_weapon.tooltip=При каждой успешной атаке вас запускают во врага нанося еще урон.
+tooltip.metallurgy.effect.quicksilver_all.tooltip=Экипировка этого предмета накладывает эффект скорости.
+tooltip.metallurgy.effect.quicksilver_tool.tooltip=Скорость добычи остается одной независимо от блока
+tooltip.metallurgy.effect.quicksilver_armor.tooltip=Бег будет набирать скорость. При наборе полной скорости вы сможете бегать по воде, но утонете как только начнете замедлятся.
+tooltip.metallurgy.effect.sanguinite_all.tooltip=Этот предмет испарится после смерти.
+tooltip.metallurgy.effect.sanguinite_weapon.tooltip=Вы наносите больше урона с большим голодом, а убийство врагов утоляет ваш голод но также заставляет вас голодать больше.
+tooltip.metallurgy.effect.sanguinite_tool.tooltip=Активация инструмента обменяет часть вашей жизни на скорость добычи и прочность предмета.
+tooltip.metallurgy.effect.sanguinite_armor.tooltip=Убитое враждебное существо может возродится после смерти с меньшим количеством жизни позволяя убить его снова ради большего количества лута и опыта.
+tooltip.metallurgy.effect.shadow_iron_pickaxe.tooltip=При добыче Теневого железа иногда может выпасть другая руда.
+tooltip.metallurgy.effect.shadow_iron_weapon.tooltip=Имеет рандомные криты.
+tooltip.metallurgy.effect.shadow_iron_armor.tooltip=Имеет шанс поглотить входящую атаку взамен прочности одной из частей брони
+tooltip.metallurgy.effect.shadow_steel_all.tooltip=(WIP) Этот предмет медленно восстанавливает прочность в темноте, скорость восстановления зависит от темноты.
+tooltip.metallurgy.effect.shadow_steel_armor.tooltip=Независимо от того, атакованы ли вы на свету или в темноте, вы ослепляете и наносите урон врагам огнем, или уходите от урона и получаете ускорение на несколько секунд.
+tooltip.metallurgy.effect.shadow_steel_weapon.tooltip=Это оружие бьет быстрее в темноте и сильнее на свету.
+tooltip.metallurgy.effect.tartarite_all.tooltip=Окружение предмета 4 блоками другого металла позволит поглотить их эффекты и также увеличит прочность.
+tooltip.metallurgy.effect.vulcanite_weapon.tooltip=ПКМ поджигает оружие, следующая атака в течение 5 секунд подрывает цель, или по истечению времени вы взрываетесь сами.
+tooltip.metallurgy.effect.vulcanite_tool.tooltip=Ломание блока имеет шанс сломать соседствующий с ним блок. Шанс увеличивается с удачей.
+tooltip.metallurgy.effect.vulcanite_armor.tooltip=Получение урона вызывает взрыв что наносит урон всем существам вокруг игрока. С 2 частями брони также появляется огонь, и игроку дается защита от него на 10 секунд.
+tooltip.metallurgy.effect.vyroxeres_weapon.tooltip=Отравляет цель при каждом ударе, если цель уже отравлена - увеличивает уровень отравления.
+tooltip.metallurgy.effect.vyroxeres_armor.tooltip=Дополнительное снижение урона за каждое активный эффект зелья на игроке.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Приобретается как вторичный материал выпадающий с дегтевой руды.
@@ -1308,53 +1494,16 @@ tooltip.metallurgy.electrum_magnet_mode=§fРежим:
 tooltip.metallurgy.electrum_magnet_disabled=§7Выключен
 tooltip.metallurgy.electrum_magnet_metal_only=§eТолько металлы
 tooltip.metallurgy.electrum_magnet_enabled=§fВключен
-
-#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( } {{cmon think of something better Davoleo D:<(ru_transl)}} ]
-#Axes
-tooltip.metallurgy.atlarus_axe_effect=§eПКМ чтобы сломать любой тип листвы на расстоянии порыва ветра
-tooltip.metallurgy.ignatius_axe_effect=§cИмеет шанс переплавить предмет выпавший с блока
-
-#Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=§1Легкая добыча под водой!
-tooltip.metallurgy.ignatius_pickaxe_effect=§6Случайно сбрасывает один-два самородка руды которую вы выкопали
-
-#Shields
-tooltip.metallurgy.ceruclase_shield=§3(W.I.P.) Создает ледяную сферу вокруг игрока и поглощает некоторую часть урона от падения. Лед сломается если убрать щит.
-tooltip.metallurgy.lemurite_shield=§fПри активации, игрок стает полностью невидимым для большинства существ (включая других игроков).
-tooltip.metallurgy.orichalcum_buckler=Улучшенный баклер. §2Когда атакован в дальнем бою, отражает 1.5х урона атакующему и телепортирует его к вам в радиус ближней атаки.
-tooltip.metallurgy.vulcanite_buckler=Улучшенный баклер. §cКогда атакован в ближнем бою, создает небольшой взрыв что отбрасывает врага.
-tooltip.metallurgy.zinc_buckler=Обычный баклер, как щит, только лучше. Не мешает движениям игрока, но имеет перезарядку после каждой активации. 
-
-#Shovel
-tooltip.metallurgy.ignatius_shovel_effect=§cИмеет шанс переплавить предмет выпавший с блока
-
-#Swords
-tooltip.metallurgy.atlarus_sword_effect=§eТолкает любое ближайшее существо от игрока по ПКМ
-tooltip.metallurgy.celenegil_sword_effect=§aВаши убийства делают вас сильным и быстрым
-tooltip.metallurgy.ceruclase_sword_effect=§3Замедляет цель
-tooltip.metallurgy.deep_iron_sword_effect=§3Увеличивает скорость атаки под водой
-tooltip.metallurgy.desichalkos_sword_effect=§5AПозволяет игроку телепортироваться в направлении своего взгляда
-tooltip.metallurgy.ignatius_sword_effect=§cЗаговор огня I
-tooltip.metallurgy.kalendrite_sword_effect=§dИмеет шанс восполнить здоровье
-tooltip.metallurgy.midasium_sword_effect=§6Умножение
-tooltip.metallurgy.mithril_sword_effect=§bЗаставляет цель светится
-tooltip.metallurgy.orichalcum_sword_effect=§2Ваши убийства делают вас сильным
-tooltip.metallurgy.sanguinite_sword_effect=§4Вампиризм
-tooltip.metallurgy.shadow_iron_sword_effect=§8Ослепляет цель [Затяни твою цель в сети тьмы!]
-tooltip.metallurgy.shadow_steel_sword_effect=§8Скорость атаки прямо пропорциональна темноте
-tooltip.metallurgy.tartarite_sword_effect=§8Иссушение II
-tooltip.metallurgy.vulcanite_sword_effect=§cЗаговор огня II
-tooltip.metallurgy.vyroxeres_sword_effect=§aОтравляет вашу цель
-
-#Hoe
-tooltip.metallurgy.atlarus_hoe_effect=§eПКМ чтобы сломать блоки травы вокруг игрока
-
-#Tools
-tooltip.metallurgy.shadow_steel_tool_effect=§8Скорость копания прямо пропорциональна темноте
+tooltip.metallurgy.press_ctrl=Нажмите §f[CTRL]§7 чтобы показать больше
+tooltip.metallurgy.press_shift=Нажмите §f[SHIFT]§7 чтобы показать больше
+tooltip.metallurgy.stats.harvest_level=Уровень добычи: %s
+tooltip.metallurgy.stats.durability=Прочность: %s
+message.metallurgy.water_damage_death=%s попытался поплавать в огненной броне
 
 #Utils
 util.world_join_message.1=§6§lДобро пожаловать в Металлургию 4: Перековка
-util.world_join_message.3=§6Для большей информации, сообщению о багах или предложениях, вот вам ссылка на github:
+util.world_join_message.3=§6За подробной информацией, сообщению о багах или предложениях идти на github:
 util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=Вы можете выключить это сообщение в конфигах мода
+util.world_join_message.4=Вы можете отключить это сообщение в конфигураци мода
 #ru_lang by gost#0198 and comunity
+#im gonna kill the one who wrote so many tooltips
