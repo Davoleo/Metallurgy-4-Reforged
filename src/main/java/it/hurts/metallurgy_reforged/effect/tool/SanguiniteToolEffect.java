@@ -70,6 +70,9 @@ public class SanguiniteToolEffect extends BaseMetallurgyEffect {
 	public void boostHarvest(PlayerEvent.BreakSpeed event)
 	{
 		final EntityPlayer player = event.getEntityPlayer();
+		if (!canBeApplied(player))
+			return;
+
 		ItemStack toolStack = player.getHeldItemMainhand();
 		NBTTagCompound toolData = toolStack.getTagCompound();
 
