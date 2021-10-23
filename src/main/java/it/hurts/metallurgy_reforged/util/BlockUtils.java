@@ -20,8 +20,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidClassic;
-import org.testng.collections.Lists;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -85,7 +85,7 @@ public class BlockUtils {
 
 	public static List<BlockPos> getAdjacentPosList(IBlockAccess world, BlockPos pos, Predicate<BlockPos> condition)
 	{
-		List<BlockPos> positions = Lists.newArrayList(6);
+		List<BlockPos> positions = Arrays.asList(new BlockPos[6]);
 
 		for (EnumFacing facing : EnumFacing.values())
 		{
