@@ -30,7 +30,7 @@ import java.util.Arrays;
 
 public class OreDictHandler {
 
-	public static final Multimap<Metal, ItemStack> INGOTS_CACHE = HashMultimap.create();
+	public static final Multimap<Metal, ItemStack> ALLOYING_CACHE = HashMultimap.create();
 
 	public static void init()
 	{
@@ -42,7 +42,8 @@ public class OreDictHandler {
 			if (RegistrationConfig.categoryItems.enableMetalDusts)
 				OreDictionary.registerOre("dust" + pascalMetal, metal.getDust());
 
-			INGOTS_CACHE.put(metal, new ItemStack(metal.getIngot()));
+			ALLOYING_CACHE.put(metal, new ItemStack(metal.getIngot()));
+			ALLOYING_CACHE.put(metal, new ItemStack(metal.getDust()));
 			OreDictionary.registerOre("ingot" + pascalMetal, metal.getIngot());
 
 			if (RegistrationConfig.categoryItems.enableMetalNuggets)
@@ -99,12 +100,9 @@ public class OreDictHandler {
 	public static void populateOredictCache()
 	{
 		ModMetals.metalMap.forEach((name, metal) -> {
-			NonNullList<ItemStack> otherOres = OreDictionary.getOres(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, name));
-			otherOres.removeIf(stack -> stack.getItem().equals(metal.getIngot()));
-			if (!otherOres.isEmpty())
-			{
-				INGOTS_CACHE.putAll(metal, otherOres);
-			}
+			//No need to remove metallurgy duplicates as HashMultimap does not store them as it's based on SetMultimap
+			ALLOYING_CACHE.putAll(metal, getOredictedStacksFromMetalAndPrefix("ingot", metal));
+			ALLOYING_CACHE.putAll(metal, getOredictedStacksFromMetalAndPrefix("dust", metal));
 		});
 	}
 

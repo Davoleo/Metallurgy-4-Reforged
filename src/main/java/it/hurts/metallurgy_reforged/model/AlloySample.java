@@ -96,7 +96,7 @@ public class AlloySample {
 			return Collections.singletonList(fallbackStack);
 		else
 		{
-			List<ItemStack> copyList = OreDictHandler.INGOTS_CACHE.get(getMetal()).stream().map(ItemStack::copy).collect(Collectors.toList());
+			List<ItemStack> copyList = OreDictHandler.ALLOYING_CACHE.get(getMetal()).stream().map(ItemStack::copy).collect(Collectors.toList());
 			copyList.forEach(stack -> stack.setCount(this.getAmount()));
 			return copyList;
 		}

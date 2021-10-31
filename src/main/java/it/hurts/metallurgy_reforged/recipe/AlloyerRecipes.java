@@ -12,10 +12,12 @@ package it.hurts.metallurgy_reforged.recipe;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.google.common.collect.Table.Cell;
+import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.AlloySample;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -39,71 +41,105 @@ public class AlloyerRecipes {
 				(new AlloySample(ModMetals.COPPER, 3),
 						new AlloySample(ModMetals.TIN, 1),
 						new AlloySample(ModMetals.BRONZE, 4, 1.75F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SHADOW_IRON, 2),
 						new AlloySample(ModMetals.LEMURITE, 1),
 						new AlloySample(ModMetals.SHADOW_STEEL, 3, 1.5F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.ALDUORITE, 1),
 						new AlloySample(ModMetals.CERUCLASE, 1),
 						new AlloySample(ModMetals.INOLASHITE, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.COPPER, 3),
 						new AlloySample(ModMetals.ZINC, 1),
 						new AlloySample(ModMetals.BRASS, 4, 1.75F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.DEEP_IRON, 3),
 						new AlloySample(ModMetals.INFUSCOLIUM, 1),
 						new AlloySample(ModMetals.BLACK_STEEL, 4, 1.75F));
+
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.MANGANESE, 2),
 						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance's sake
+
+		this.addAlloyRecipe
+				(new AlloySample(new ItemStack(ModItems.IRON_DUST), 1),
+						new AlloySample(ModMetals.MANGANESE, 2),
+						new AlloySample(ModMetals.STEEL, 2, 1.5F)); //output decreased by one for balance's sake
+
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.BRONZE, 2),
 						new AlloySample(ModMetals.DAMASCUS_STEEL, 3, 1.5F));
 		this.addAlloyRecipe
+				(new AlloySample(new ItemStack(ModItems.IRON_DUST), 1),
+						new AlloySample(ModMetals.BRONZE, 2),
+						new AlloySample(ModMetals.DAMASCUS_STEEL, 3, 1.5F));
+
+		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SILVER, 1),
 						new AlloySample(new ItemStack(Items.GOLD_INGOT), 1),
 						new AlloySample(ModMetals.ELECTRUM, 2, 1.25F));
 		this.addAlloyRecipe
+				(new AlloySample(ModMetals.SILVER, 1),
+						new AlloySample(new ItemStack(ModItems.GOLD_DUST), 1),
+						new AlloySample(ModMetals.ELECTRUM, 2, 1.25F));
+
+		this.addAlloyRecipe
 				(new AlloySample(ModMetals.ORICHALCUM, 1),
 						new AlloySample(ModMetals.PLATINUM, 1),
 						new AlloySample(ModMetals.CELENEGIL, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.KALENDRITE, 1),
 						new AlloySample(ModMetals.PLATINUM, 1),
 						new AlloySample(ModMetals.AMORDRINE, 2, 1.25F));
+
 		this.addAlloyRecipe(
 				new AlloySample(ModMetals.MITHRIL, 1),
 				new AlloySample(ModMetals.RUBRACIUM, 2),
 				new AlloySample(ModMetals.HADEROTH, 3, 1.5F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.ADAMANTINE, 1),
 						new AlloySample(ModMetals.ATLARUS, 1),
 						new AlloySample(ModMetals.TARTARITE, 1, 1.5F)); //output decreased by one for balance's sake
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.EXIMITE, 1),
 						new AlloySample(ModMetals.MEUTOITE, 1),
 						new AlloySample(ModMetals.DESICHALKOS, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(new ItemStack(Items.GOLD_INGOT), 1),
 						new AlloySample(new ItemStack(Items.IRON_INGOT), 1),
 						new AlloySample(ModMetals.ANGMALLEN, 2, 1.25F));
+		this.addAlloyRecipe
+				(new AlloySample(new ItemStack(ModItems.GOLD_DUST), 1),
+						new AlloySample(new ItemStack(ModItems.IRON_DUST), 1),
+						new AlloySample(ModMetals.ANGMALLEN, 2, 1.25F));
+
 		//      Original Recipe: [Bronze + Gold] 1:1 = Hepatizon
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.INFUSCOLIUM, 1),
 						new AlloySample(ModMetals.STEEL, 1),
 						new AlloySample(ModMetals.HEPATIZON, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SILVER, 1),
 						new AlloySample(ModMetals.ASTRAL_SILVER, 1),
 						new AlloySample(ModMetals.QUICKSILVER, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.LUTETIUM, 1),
 						new AlloySample(ModMetals.OSMIUM, 1),
 						new AlloySample(ModMetals.KRIK, 2, 1.25F));
+
 		this.addAlloyRecipe
 				(new AlloySample(ModMetals.SANGUINITE, 1),
 						new AlloySample(ModMetals.ALDUORITE, 1),
@@ -174,10 +210,15 @@ public class AlloyerRecipes {
 	{
 		Metal metal = ItemUtils.getMetalFromOreDictStack(stack);
 
-		if (metal != null && !alloySample.hasFallenBack())
-			return metal == alloySample.getMetal();
-		else
+		if (metal == null)
+			return false;
+
+		if (alloySample.hasFallenBack())
 			return compareItemStacks(stack, alloySample.getFallbackStack());
+		else
+		{
+			return Utils.listContains(alloySample.getOredictedStacks(), stack, this::compareItemStacks);
+		}
 	}
 
 	private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
