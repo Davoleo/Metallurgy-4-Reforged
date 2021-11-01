@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierKnightFollow;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerAttack;
 import it.hurts.metallurgy_reforged.entity.ai.AIPierOwnerWasHurt;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
@@ -240,7 +241,9 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
             owner.getEntityData().setBoolean("has_pier", false);
             //Set the armor on cooldown
             if (owner instanceof EntityPlayer)
-                owner.getArmorInventoryList().forEach(stack -> ((EntityPlayer) owner).getCooldownTracker().setCooldown(stack.getItem(), 200));
+                //noinspection ConstantConditions
+                for (ItemArmorBase armorItem : ModMetals.DAMASCUS_STEEL.getArmorSet())
+                    ((EntityPlayer) owner).getCooldownTracker().setCooldown(armorItem, 200);
         }
     }
 

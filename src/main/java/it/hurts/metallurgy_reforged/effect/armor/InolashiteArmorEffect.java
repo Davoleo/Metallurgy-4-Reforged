@@ -114,6 +114,8 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 			//int cooldown = (getLevel(player) > 0.5F ? 32 : 16) * 20;
 			int level = getLevel(player);
 			int cooldown = (int) (Math.pow(2, 7 - level) * 20);
+
+			assert metal.getArmorSet() != null;
 			for (ItemArmorBase armor : metal.getArmorSet())
 				player.getCooldownTracker().setCooldown(armor, cooldown);
 		}

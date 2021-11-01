@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -54,7 +55,10 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 		if (step == maxSteps)
 		{
 			entity.noClip = false;
-			entity.getArmorInventoryList().forEach(stack -> entity.getCooldownTracker().setCooldown(stack.getItem(), 400));
+
+			assert metal.getArmorSet() != null;
+			for (ItemArmorBase armorItem : metal.getArmorSet())
+				entity.getCooldownTracker().setCooldown(armorItem, 400);
 		}
 	}
 
@@ -68,11 +72,8 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 			if (!canBeApplied(entity))
 				return;
 
-			for (ItemStack piece : entity.getArmorInventoryList())
-			{
-				if (!piece.isEmpty() && entity.getCooldownTracker().getCooldown(piece.getItem(), 0) != 0)
-					return;
-			}
+			if (entity.getCooldownTracker().getCooldown(getArmorRepr(entity).getItem(), 0) != 0)
+				return;
 
 			ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).etheriumArmorBundle;
 

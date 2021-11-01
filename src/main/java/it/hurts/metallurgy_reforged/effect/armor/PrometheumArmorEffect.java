@@ -13,13 +13,13 @@ import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.WorldUtils;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -108,11 +108,9 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 
 		if (step == maxSteps)
 		{
-			entity.getArmorInventoryList().forEach(stack -> {
-				Item armorItem = stack.getItem();
-				if (ItemUtils.isMadeOfMetal(metal, armorItem))
-					entity.getCooldownTracker().setCooldown(armorItem, 300);
-			});
+			assert metal.getArmorSet() != null;
+			for (ItemArmorBase armorItem : metal.getArmorSet())
+				entity.getCooldownTracker().setCooldown(armorItem, 300);
 		}
 	}
 

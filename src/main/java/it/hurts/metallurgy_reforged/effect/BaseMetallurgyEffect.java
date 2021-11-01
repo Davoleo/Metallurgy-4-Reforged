@@ -185,7 +185,6 @@ public abstract class BaseMetallurgyEffect {
 
 	protected ItemStack getArmorRepr(EntityLivingBase entity)
 	{
-
 		if (getCategory() == EnumEffectCategory.ARMOR)
 		{
 			for (ItemStack stack : entity.getArmorInventoryList())

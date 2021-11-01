@@ -73,11 +73,9 @@ public class PacketAdamantineRenderDeathProtection implements IMessage {
 				//Instantiate and start a Particle Ore Emitter
 				client.effectRenderer.addEffect(new ParticleOreEmitter(client.world, entity.getEntityBoundingBox(), 40, colors[0], colors[1], colors[2], true, ModMetals.ADAMANTINE.getStats().getOreHarvest() - 2));
 
-				//If the entity in the message is the same one that's just died renders the Totem overlay with the armor piece that was sacrificed
+				//If the entity in the message is the one managed by this client -> render the Totem overlay with the armor piece that was sacrificed
 				if (entity == client.player)
-				{
 					client.entityRenderer.displayItemActivation(message.stack);
-				}
 
 			});
 

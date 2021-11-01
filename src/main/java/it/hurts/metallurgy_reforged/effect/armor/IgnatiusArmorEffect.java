@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -68,9 +69,9 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 		if (step >= lavaImmunityTimespan)
 		{
 			bundle.resetProgress(entity);
-			entity.getArmorInventoryList().forEach(
-					piece -> entity.getCooldownTracker().setCooldown(piece.getItem(), 200)
-			);
+			assert metal.getArmorSet() != null;
+			for (ItemArmorBase armorItem : metal.getArmorSet())
+				entity.getCooldownTracker().setCooldown(armorItem, 200);
 		}
 
 		//System.out.println("Current Step: " + step);
@@ -95,8 +96,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 		{
 			if (entity instanceof EntityPlayer)
 			{
-				ItemStack armorpiece = entity.getArmorInventoryList().iterator().next();
-				if (((EntityPlayer) entity).getCooldownTracker().getCooldown(armorpiece.getItem(), 0) > 0)
+				if (((EntityPlayer) entity).getCooldownTracker().getCooldown(getArmorRepr(entity).getItem(), 0) > 0)
 					return;
 
 				//Kickstart the timer
