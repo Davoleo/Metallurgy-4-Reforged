@@ -128,7 +128,7 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         float f = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue();
         int i = 0;
 
-        System.out.println(f);
+        //System.out.println(f);
 
         if (entityIn instanceof EntityLivingBase)
         {
