@@ -10,6 +10,17 @@
 package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.model.MetalSample;
+import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import org.apache.commons.lang3.tuple.Pair;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemMetal extends ItemBase implements IMetalItem {
 
@@ -31,6 +42,30 @@ public class ItemMetal extends ItemBase implements IMetalItem {
     public MetalStats getMetalStats()
     {
         return metal;
+    }
+
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
+    {
+        if (type == ItemTypes.INGOT)
+        {
+            final int tier;
+            if (metal.getOreHarvest() == -1)
+            {
+                Pair<MetalSample, MetalSample> ingredients = AlloyerRecipes.getInstance().getIngredients(stack);
+                if (ingredients != null && ingredients.getLeft().getMetal() != null && ingredients.getRight().getMetal() != null)
+                    tier = Math.max(ingredients.getLeft().getMetal().getStats().getOreHarvest(), ingredients.getRight().getMetal().getStats().getOreHarvest());
+                else
+                    tier = 1;
+            }
+            else
+                tier = metal.getOreHarvest();
+
+
+            tooltip.add("Tier: " + ItemUtils.HarvestLevelFormatting.values()[tier].format + tier);
+        }
+
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
 }

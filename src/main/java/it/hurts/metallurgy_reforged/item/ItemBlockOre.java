@@ -11,6 +11,8 @@ package it.hurts.metallurgy_reforged.item;
 
 import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.material.MetalStats;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -24,6 +26,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @ParametersAreNonnullByDefault
 public class ItemBlockOre extends ItemBlock implements IMetalItem {
@@ -74,6 +77,18 @@ public class ItemBlockOre extends ItemBlock implements IMetalItem {
 			return EnumActionResult.FAIL;
 		}
 		return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
+		if (getMetalStats() != null)
+		{
+			int tier = getMetalStats().getOreHarvest();
+			assert tier != -1;
+			tooltip.add("Tier: " + ItemUtils.HarvestLevelFormatting.values()[tier].format + tier);
+		}
+		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 
 }

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @MethodsReturnNonnullByDefault
-public class AlloySample {
+public class MetalSample {
 
 	private final Metal metal;
 	private ItemStack fallbackStack = ItemStack.EMPTY;
@@ -28,7 +28,7 @@ public class AlloySample {
 	private final boolean isOriginal;
 	private float xp = -1F;
 
-	public AlloySample(Metal metal, int amount, float xp)
+	public MetalSample(Metal metal, int amount, float xp)
 	{
 		this.metal = metal;
 		this.amount = amount;
@@ -36,12 +36,12 @@ public class AlloySample {
 		this.isOriginal = true;
 	}
 
-	public AlloySample(Metal metal, int amount)
+	public MetalSample(Metal metal, int amount)
 	{
 		this(metal, amount, -1F);
 	}
 
-	public AlloySample(ItemStack oreDictStack, int amount)
+	public MetalSample(ItemStack oreDictStack, int amount)
 	{
 		metal = null;
 		this.fallbackStack = oreDictStack;
@@ -75,7 +75,7 @@ public class AlloySample {
 		return xp != -1F;
 	}
 
-	public AlloySample setXp(float xp)
+	public MetalSample setXp(float xp)
 	{
 		this.xp = xp;
 		return this;

@@ -15,7 +15,7 @@ import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.AlloySample;
+import it.hurts.metallurgy_reforged.model.MetalSample;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.NBTUtils;
 import net.minecraft.entity.EntityLiving;
@@ -45,7 +45,7 @@ public class IntegrationThermal {
 
 	private static void addCentrifugalSeparatorRecipes()
 	{
-		for (Table.Cell<AlloySample, AlloySample, AlloySample> alloyRecipe : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<MetalSample, MetalSample, MetalSample> alloyRecipe : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			ItemStack inputStack = alloyRecipe.getValue().getStack();
 			NBTTagCompound output1 = alloyRecipe.getRowKey().getStack().writeToNBT(new NBTTagCompound());
