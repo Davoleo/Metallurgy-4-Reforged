@@ -32,7 +32,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.IntFunction;
 
@@ -121,7 +120,8 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect implements IPro
 			if (getEffectCapability(entity).shadowSteelArmorBundle.getExtraBool("dark"))
 				entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_UUID);
 
-			for (ItemArmorBase armorP : Objects.requireNonNull(metal.getArmorSet()))
+			assert metal.getArmorSet() != null;
+			for (ItemArmorBase armorP : metal.getArmorSet())
 				entity.getCooldownTracker().setCooldown(armorP, 20 * (30 - 5 * getLevel(entity)));
 		}
 	}

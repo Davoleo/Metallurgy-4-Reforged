@@ -49,7 +49,6 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
 		if (!(event.getEntityLiving() instanceof EntityPlayer))
 			return;
 
-		// TODO: 25/01/2021 Make this modular
 		int level = getLevel(event.getEntityLiving());
 		if (level == 0)
 			return;

@@ -132,7 +132,7 @@ public class ItemUtils {
 		}
 	}
 
-	private enum HarvestLevelFormatting {
+	public enum HarvestLevelFormatting {
 		_1("\u2B51", TextFormatting.RED),
 		_2("\u2B51\u2B51", TextFormatting.RED),
 		_3("\u2B51\u2B51\u2B51", TextFormatting.GOLD),
@@ -141,8 +141,8 @@ public class ItemUtils {
 		_6("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.AQUA),
 		_7("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.LIGHT_PURPLE);
 
-		String stars;
-		TextFormatting format;
+		final String stars;
+		public final TextFormatting format;
 
 		HarvestLevelFormatting(String stars, TextFormatting format)
 		{

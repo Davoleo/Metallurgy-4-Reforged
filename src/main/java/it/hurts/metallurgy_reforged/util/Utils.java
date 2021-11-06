@@ -43,6 +43,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
+import java.util.function.BiPredicate;
 
 public class Utils {
 
@@ -318,6 +319,11 @@ public class Utils {
 		}
 
 		return false;
+	}
+
+	public static <T> boolean listContains(List<T> list, T item, BiPredicate<? super T, ? super T> comparator)
+	{
+		return list.stream().anyMatch(listItem -> comparator.test(listItem, item));
 	}
 
 }

@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketSpawnVanillaParticles;
@@ -95,6 +94,9 @@ public class AtlarusArmorEffect extends BaseMetallurgyEffect {
 
 	}
 
+	/**
+	 * @see net.minecraft.entity.projectile.EntityLlamaSpit#shoot(double, double, double, float, float)
+	 */
 	private void shoot(Entity entity, double x, double y, double z, float velocity, float inaccuracy)
 	{
 		float f = MathHelper.sqrt(x * x + y * y + z * z);

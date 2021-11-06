@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketAdamantineRenderDeathProtection;
@@ -90,15 +91,19 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 
 				if (entity instanceof EntityPlayerMP)
 				{
+					EntityPlayerMP player = ((EntityPlayerMP) entity);
+
 					//Set cooldown on the remaining armor pieces
-					entity.getArmorInventoryList().forEach(stack -> ((EntityPlayerMP) entity).getCooldownTracker().setCooldown(stack.getItem(), 100));
+					assert metal.getArmorSet() != null;
+					for (ItemArmorBase armorItem : metal.getArmorSet())
+						player.getCooldownTracker().setCooldown(armorItem, 100);
 					//Send a packet to emit particles and render the Totem item overlay
 					PacketAdamantineRenderDeathProtection packet = new PacketAdamantineRenderDeathProtection(entity.getEntityId(), armorPiece);
 					//This criteria needs to be triggered in order to the totem overlay to work
-					CriteriaTriggers.USED_TOTEM.trigger(((EntityPlayerMP) entity), armorPiece);
+					CriteriaTriggers.USED_TOTEM.trigger(player, armorPiece);
 
 					//Send two packets to the client (one to self and many to the other players that are watching the entity)
-					PacketManager.network.sendTo(packet, ((EntityPlayerMP) entity));
+					PacketManager.network.sendTo(packet, player);
 					PacketManager.network.sendToAllTracking(packet, entity);
 				}
 
