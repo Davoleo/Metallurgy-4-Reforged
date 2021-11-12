@@ -33,7 +33,7 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 
 	@Nonnull
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	public EnumActionResult onItemUse(EntityPlayer player, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		BlockPos blockPos = pos.offset(facing);
 		ItemStack lighter = player.getHeldItem(hand);
@@ -63,6 +63,7 @@ public class ItemVulcaniteLighter extends ItemIgnatiusLighter {
 				worldIn.playSound(player, blockPos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1, 1);
 				IBlockState state = Blocks.LAVA.getStateForPlacement(worldIn, blockPos, facing, hitX, hitY, hitZ, 0, player, hand);
 				worldIn.setBlockState(blockPos, state);
+				//Trigger Lava flowing
 				state.getBlock().neighborChanged(state, worldIn, blockPos, state.getBlock(), pos);
 
 				if (!player.isCreative())
