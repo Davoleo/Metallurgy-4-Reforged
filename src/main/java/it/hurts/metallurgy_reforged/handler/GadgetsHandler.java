@@ -251,7 +251,7 @@ public class GadgetsHandler {
 		{
 			World world = Minecraft.getMinecraft().world;
 			BlockPos playerPos = player.getPosition();
-			final int RADIUS = 6;
+			final int RADIUS = 8;
 
 			Iterable<BlockPos> posList = BlockPos.getAllInBox(playerPos.add(-RADIUS, -RADIUS, -RADIUS), playerPos.add(RADIUS, RADIUS, RADIUS));
 
