@@ -278,7 +278,7 @@
     "hardness": 4.1,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
-    "color": "578A99",
+    "color": "9ECFD5",
     "armor_stats": {
       "damage_reduction": [
         3,
@@ -862,7 +862,7 @@
     "hardness": 10.0,
     "blast_resistance": 15.0,
     "ore_harvest_level": -1,
-    "color": "72BF9F",
+    "color": "62AAA2",
     "armor_stats": {
       "damage_reduction": [
         3,
@@ -898,7 +898,7 @@
     "hardness": 6.6,
     "blast_resistance": 20.0,
     "ore_harvest_level": 5,
-    "color": "CA5658",
+    "color": "C34F4F",
     "armor_stats": {
       "damage_reduction": [
         4,
@@ -1060,7 +1060,7 @@
     "hardness": 6.4,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
-    "color": "641929",
+    "color": "E45930",
     "armor_stats": {
       "damage_reduction": [
         4,
@@ -1085,7 +1085,7 @@
     "hardness": 4.7,
     "blast_resistance": 15.0,
     "ore_harvest_level": 5,
-    "color": "2BFF00",
+    "color": "5FC83F",
     "armor_stats": {
       "damage_reduction": [
         4,

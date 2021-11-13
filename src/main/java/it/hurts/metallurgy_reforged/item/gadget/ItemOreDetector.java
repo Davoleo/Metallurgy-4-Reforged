@@ -54,13 +54,13 @@ public class ItemOreDetector extends ItemExtra {
 	{
 		List<Metal> metals = getDetectorMetals(stack);
 		for (int i = 0; i < metals.size(); i++)
-			tooltip.add(TextFormatting.DARK_AQUA + "Metal " + i + ": " + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metals.get(i).toString()));
+			tooltip.add(TextFormatting.GRAY + "Metal " + i + ": " + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, metals.get(i).toString()));
 	}
 
 	@Override
 	public int getMaxDamage(@Nonnull ItemStack stack)
 	{
-		return getDetectorMetals(stack).size() * 100;
+		return getDetectorMetals(stack).size() * 25;
 	}
 
 	@Nonnull
