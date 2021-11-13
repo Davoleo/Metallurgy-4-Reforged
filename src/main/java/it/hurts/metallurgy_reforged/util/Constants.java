@@ -12,6 +12,8 @@ package it.hurts.metallurgy_reforged.util;
 import it.hurts.metallurgy_reforged.material.ArmorStats;
 import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ToolStats;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -26,6 +28,23 @@ public class Constants {
 	public static final MetalStats EMPTY_METAL_STATS = new MetalStats("", 0, 0,
 			new ArmorStats(new int[4], 0, 0, 0),
 			new ToolStats(0, 0, 0, 0, 0), 0, 0, -1);
+
+	public static final String[] METAL_NAMES = new String[]{
+			"adamantine", "alduorite", "amordrine", "angmallen", "astral_silver", "atlarus", "black_steel",
+			"brass", "bronze", "carmot", "celenegil", "ceruclase", "copper", "damascus_steel", "deep_iron",
+			"desichalkos", "electrum",
+			"etherium", "eximite", "haderoth", "hepatizon", "ignatius", "infuscolium", "inolashite", "kalendrite",
+			"krik", "lemurite",
+			"lutetium", "manganese", "meutoite", "midasium", "mithril", "orichalcum", "osmium", "oureclase", "platinum",
+			"prometheum",
+			"quicksilver", "rubracium", "sanguinite", "shadow_iron", "shadow_steel", "silver", "steel", "tartarite",
+			"tin", "vulcanite", "vyroxeres", "zinc",
+			};
+	public static final int[] METAL_TIERS = new int[]{
+			6, 6, 4, 2, 3, 6, 2, 1, 1, 5, 4, 4, 1, 1, 1, 5, 2, 6, 4, 5, 2, 3, 2, 6, 4, 5, 5, 6, 2, 5, 4, 5, 4, 2, 3, 4,
+			1, 3, 3, 5, 3, 5, 2, 2, 6, 1, 4, 5, 1,
+			};
+	public static final Object2IntMap<String> TIER_MAP = new Object2IntArrayMap<>(METAL_NAMES, METAL_TIERS, METAL_NAMES.length);
 
 	//Vanilla Metals
 	public static final String METAL_IRON = "iron";
