@@ -103,16 +103,12 @@ public class MetalStats {
 
 	private int automaticTemperature()
 	{
-		float output = 1000F;
-		if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
-		{
-			output = blockBlastResistance * 60f;
-		}
-		else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
-		{
-			output = blockBlastResistance * 36F;
-		}
-		return Math.round(output);
+		int tier = oreHarvest;
+
+		if (tier == -1)
+			tier = Constants.TIER_MAP.get(name);
+
+		return 1000 + tier * 200;
 	}
 
 	/**
