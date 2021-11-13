@@ -27,8 +27,8 @@ public class ModFluids {
     public static List<BlockFluidClassic> fluidBlocks = new ArrayList<>();
 
     //Fluids
-    public static final FluidMolten TAR = ((FluidMolten) new FluidMolten("molten_tar", 0xFF111419, 1000).setLuminosity(0));
-    public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200);
+    public static final FluidMolten TAR = ((FluidMolten) new FluidMolten("molten_tar", 0xFF111419, 400).setLuminosity(0));
+    public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 4000);
 
     //FluidBlocks
     public static FluidBlockTar fluidBlockTar;
