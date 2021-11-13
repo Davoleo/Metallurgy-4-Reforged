@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -35,8 +36,11 @@ public class ItemIgnatiusLighter extends ItemExtra {
 
 	@Nonnull
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	public EnumActionResult onItemUse(EntityPlayer player, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
+		if (!player.isSneaking())
+			return Items.FLINT_AND_STEEL.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+
 		BlockPos blockPos = pos.offset(facing);
 		ItemStack lighter = player.getHeldItem(hand);
 
@@ -49,10 +53,12 @@ public class ItemIgnatiusLighter extends ItemExtra {
 			worldIn.playSound(player, blockPos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
 			if (itemRand.nextBoolean())
+			{
 				createFire(worldIn, blockPos, player);
 
-			if (!player.isCreative())
-				lighter.damageItem(1, player);
+				if (!player.isCreative())
+					lighter.damageItem(5, player);
+			}
 
 			return EnumActionResult.SUCCESS;
 		}
