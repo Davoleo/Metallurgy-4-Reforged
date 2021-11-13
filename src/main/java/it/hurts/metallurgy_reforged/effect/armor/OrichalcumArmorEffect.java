@@ -57,8 +57,8 @@ public class OrichalcumArmorEffect extends BaseMetallurgyEffect {
                     {
                         //capped at 6( five because amplifiers start at 0)
                         int amplifier = Math.min(totalMobs - 1, 5);
-                        //potion time from min 2 to max 8 seconds.
-                        int buffTime = level * 2 * 20;
+                        //potion time from min 3 to max 12 seconds.
+                        int buffTime = level * 3 * 20;
                         attacker.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, buffTime, amplifier));
 
                     }
