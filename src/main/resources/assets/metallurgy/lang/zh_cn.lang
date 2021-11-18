@@ -1,5 +1,6 @@
 #通用金属名
 material.metallurgy.adamantine.name=精金
+material.metallurgy.alduorite.name=神秘蓝金
 material.metallurgy.amordrine.name=魔石
 material.metallurgy.angmallen.name=金铁
 material.metallurgy.astral_silver.name=星银
@@ -20,6 +21,7 @@ material.metallurgy.eximite.name=虚空石
 material.metallurgy.haderoth.name=幻铜
 material.metallurgy.hepatizon.name=魂晶
 material.metallurgy.ignatius.name=伊格内休斯
+material.metallurgy.infuscolium.name=魔金
 material.metallurgy.inolashite.name=暗影秘银
 material.metallurgy.kalendrite.name=幽冥魂石
 material.metallurgy.krik.name=氪里
