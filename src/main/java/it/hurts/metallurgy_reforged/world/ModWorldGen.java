@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.world;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -45,7 +46,8 @@ public class ModWorldGen implements IWorldGenerator {
 	private final int ULTRA_RARE = WorldGenerationConfig.rarity.ultraRareRarity;
 
 	private static final String RETROGEN_NAME = "MetallurgyOreGeneration";
-	public static ModWorldGen instance = new ModWorldGen();
+	public static final ModWorldGen INSTANCE = new ModWorldGen();
+
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
@@ -130,15 +132,20 @@ public class ModWorldGen implements IWorldGenerator {
 		this.generateOre(metal.getOre(), world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, oreSpawn);
 	}
 
-	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, String[] biomesResource)
+	private void generateOre(BlockOre block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, String[] biomesResource)
 	{
 		generateOre(block, world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, new BaseOreSpawn(blockToReplace, convertStringToBiome(biomesResource)));
 	}
 
-	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, IOreSpawn oreSpawn)
+	private void generateOre(BlockOre block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, IOreSpawn oreSpawn)
 	{
-		if (minY < 0 || maxY > 256 || minY > maxY)
-			throw new IllegalArgumentException("Illegal Height Arguments for Biome Specific WorldGenerator");
+		final int heightLimit = world.provider.getActualHeight();
+
+		if (minY < 0 || maxY > heightLimit)
+		{
+			Metallurgy.logger.error("Illegal Height Arguments on Ore Generator for ore: " + block.getRegistryName().getPath() + " | minY: " + minY + " | maxY: " + maxY);
+			return;
+		}
 
 		if (veinSize > 0)
 		{
@@ -151,7 +158,17 @@ public class ModWorldGen implements IWorldGenerator {
 			for (int i = 0; i < oreSpawnRarity; i++)
 			{
 				x = chunkX * 16 + random.nextInt(16);
-				y = minY + random.nextInt(heightdiff);
+				//if min and max Y are not inverted generate ore between the limits
+				if (heightdiff >= 0)
+					y = minY + random.nextInt(heightdiff);
+				else
+				{
+					//otherwise generate it outside the limits
+					if (random.nextBoolean())
+						y = heightLimit - random.nextInt(heightLimit - minY);
+					else
+						y = 1 + random.nextInt(maxY);
+				}
 				z = chunkZ * 16 + random.nextInt(16);
 
 				BlockPos pos = new BlockPos(x, y, z);

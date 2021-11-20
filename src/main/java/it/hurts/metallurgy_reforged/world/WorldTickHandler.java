@@ -46,7 +46,7 @@ public class WorldTickHandler {
 				long xSeed = random.nextLong() >> 2 + 1L;
 				long zSeed = random.nextLong() >> 2 + 1L;
 				random.setSeed(xSeed * c.x + zSeed * c.z ^ worldSeed);
-				ModWorldGen.instance.generateWorld(random, c.x, c.z, world, false);
+				ModWorldGen.INSTANCE.generateWorld(random, c.x, c.z, world, false);
 				chunksToGenerate.put(dimension, chunks);
 			}
 			else if (chunks != null)

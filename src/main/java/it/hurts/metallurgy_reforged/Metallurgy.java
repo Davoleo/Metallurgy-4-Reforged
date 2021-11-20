@@ -96,7 +96,7 @@ public class Metallurgy {
 		logger.info("Fluid registration complete!");
 
 		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
-		MinecraftForge.EVENT_BUS.register(ModWorldGen.instance);
+		MinecraftForge.EVENT_BUS.register(ModWorldGen.INSTANCE);
 		MinecraftForge.EVENT_BUS.register(WorldTickHandler.instance);
 		logger.info("World generation successful!");
 

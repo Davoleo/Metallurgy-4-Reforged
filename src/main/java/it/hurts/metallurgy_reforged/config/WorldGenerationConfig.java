@@ -47,6 +47,9 @@ public class WorldGenerationConfig {
 		}
 	}
 
+	private static final int HEIGHT_LIMIT = 255;
+	private static final int NETHER_HEIGHT_LIMIT = 127;
+
 	//	Subclass Category
 	public static SubCategoryRarity rarity = new SubCategoryRarity();
 
@@ -110,11 +113,11 @@ public class WorldGenerationConfig {
 	public static class CategoryMeutoite {
 
 		@Config.Comment("Meutoite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Meutoite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Meutoite indicative vein size (Set to 0 to disable this ore)")
@@ -130,11 +133,11 @@ public class WorldGenerationConfig {
 	public static class CategoryEximite {
 
 		@Config.Comment("Eximite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Eximite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Eximite indicative vein size (Set to 0 to disable this ore)")
@@ -150,11 +153,11 @@ public class WorldGenerationConfig {
 	public static class CategoryVyroxeres {
 
 		@Config.Comment("Vyroxeres minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Vyroxeres maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 120;
 
 		@Config.Comment("Vyroxeres indicative vein size (Set to 0 to disable this ore)")
@@ -170,11 +173,11 @@ public class WorldGenerationConfig {
 	public static class CategoryVulcanite {
 
 		@Config.Comment("Vulcanite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 27;
 
 		@Config.Comment("Vulcanite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 39;
 
 		@Config.Comment("Vulcanite indicative vein size (Set to 0 to disable this ore)")
@@ -190,11 +193,11 @@ public class WorldGenerationConfig {
 	public static class CategorySanguinite {
 
 		@Config.Comment("Sanguinite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Sanguinite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Sanguinite indicative vein size (Set to 0 to disable this ore)")
@@ -210,12 +213,12 @@ public class WorldGenerationConfig {
 	public static class CategoryShadowIron {
 
 		@Config.Comment("Shadow Iron minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int minY = 113;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int minY = 100;
 
 		@Config.Comment("Shadow Iron maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 123;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int maxY = 30;
 
 		@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -230,12 +233,12 @@ public class WorldGenerationConfig {
 	public static class CategoryMidasium {
 
 		@Config.Comment("Midasium minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 32;
 
 		@Config.Comment("Midasium maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 255;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int maxY = 127;
 
 		@Config.Comment("Midasium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -250,11 +253,11 @@ public class WorldGenerationConfig {
 	public static class CategoryLemurite {
 
 		@Config.Comment("Lemurite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Lemurite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 100;
 
 		@Config.Comment("Lemurite indicative vein size (Set to 0 to disable this ore)")
@@ -270,11 +273,11 @@ public class WorldGenerationConfig {
 	public static class CategoryKalendrite {
 
 		@Config.Comment("Kalendrite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 27;
 
 		@Config.Comment("Kalendrite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 120;
 
 		@Config.Comment("Kalendrite indicative vein size (Set to 0 to disable this ore)")
@@ -290,12 +293,12 @@ public class WorldGenerationConfig {
 	public static class CategoryIgnatius {
 
 		@Config.Comment("Ignatius minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Ignatius maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 255;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int maxY = 127;
 
 		@Config.Comment("Ignatius indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -310,12 +313,12 @@ public class WorldGenerationConfig {
 	public static class CategoryCeruclase {
 
 		@Config.Comment("Ceruclase minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Ceruclase maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 128;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int maxY = 127;
 
 		@Config.Comment("Ceruclase indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -330,12 +333,12 @@ public class WorldGenerationConfig {
 	public static class CategoryAlduorite {
 
 		@Config.Comment("Alduorite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Alduorite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
-		public int maxY = 128;
+		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
+		public int maxY = 127;
 
 		@Config.Comment("Alduorite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -350,11 +353,11 @@ public class WorldGenerationConfig {
 	public static class CategoryPotash {
 
 		@Config.Comment("Potash minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 32;
 
 		@Config.Comment("Potash maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 72;
 
 		@Config.Comment("Potash indicative vein size (Set to 0 to disable this ore)")
@@ -370,11 +373,11 @@ public class WorldGenerationConfig {
 	public static class CategoryPhosphorite {
 
 		@Config.Comment("Phosphorite minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Phosphorite maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 100;
 
 		@Config.Comment("Phosphorite indicative vein size (Set to 0 to disable this ore)")
@@ -390,11 +393,11 @@ public class WorldGenerationConfig {
 	public static class CategorySulfur {
 
 		@Config.Comment("Sulfur minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Sulfur maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 15;
 
 		@Config.Comment("Sulfur indicative vein size (Set to 0 to disable this ore)")
@@ -410,11 +413,11 @@ public class WorldGenerationConfig {
 	public static class CategoryOsmium {
 
 		@Config.Comment("Osmium minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 3;
 
 		@Config.Comment("Osmium maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 10;
 
 		@Config.Comment("Osmium indicative vein size (Set to 0 to disable this ore)")
@@ -430,11 +433,11 @@ public class WorldGenerationConfig {
 	public static class CategoryLutetium {
 
 		@Config.Comment("Lutetium minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 20;
 
 		@Config.Comment("Lutetium maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 50;
 
 		@Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
@@ -450,11 +453,11 @@ public class WorldGenerationConfig {
 	public static class CategoryPlatinum {
 
 		@Config.Comment("Platinum minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Platinum maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 80;
 
 		@Config.Comment("Platinum indicative vein size (Set to 0 to disable this ore)")
@@ -470,11 +473,11 @@ public class WorldGenerationConfig {
 	public static class CategorySilver {
 
 		@Config.Comment("Silver minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Silver maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Silver indicative vein size (Set to 0 to disable this ore)")
@@ -490,11 +493,11 @@ public class WorldGenerationConfig {
 	public static class CategoryAstralSilver {
 
 		@Config.Comment("Astral Silver minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 24;
 
 		@Config.Comment("Astral Silver maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 64;
 
 		@Config.Comment("Astral Silver indicative vein size (Set to 0 to disable this ore)")
@@ -510,11 +513,11 @@ public class WorldGenerationConfig {
 	public static class CategoryOrichalcum {
 
 		@Config.Comment("Orichalcum minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Orichalcum maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Orichalcum indicative vein size (Set to 0 to disable this ore)")
@@ -530,11 +533,11 @@ public class WorldGenerationConfig {
 	public static class CategoryZinc {
 
 		@Config.Comment("Zinc minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Zinc maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Zinc indicative vein size (Set to 0 to disable this ore)")
@@ -550,11 +553,11 @@ public class WorldGenerationConfig {
 	public static class CategoryMithril {
 
 		@Config.Comment("Mithril minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 32;
 
 		@Config.Comment("Mithril maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Mithril indicative vein size (Set to 0 to disable this ore)")
@@ -570,11 +573,11 @@ public class WorldGenerationConfig {
 	public static class CategoryCarmot {
 
 		@Config.Comment("Carmot minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 32;
 
 		@Config.Comment("Carmot maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 64;
 
 		@Config.Comment("Carmot indicative vein size (Set to 0 to disable this ore)")
@@ -590,11 +593,11 @@ public class WorldGenerationConfig {
 	public static class CategoryAtlarus {
 
 		@Config.Comment("Atlarus minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 12;
 
 		@Config.Comment("Atlarus maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 48;
 
 		@Config.Comment("Atlarus indicative vein size (Set to 0 to disable this ore)")
@@ -610,11 +613,11 @@ public class WorldGenerationConfig {
 	public static class CategoryAdamantine {
 
 		@Config.Comment("Adamantine minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Adamantine maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 30;
 
 		@Config.Comment("Adamantine indicative vein size (Set to 0 to disable this ore)")
@@ -630,11 +633,11 @@ public class WorldGenerationConfig {
 	public static class CategoryRubracium {
 
 		@Config.Comment("Rubracium minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 10;
 
 		@Config.Comment("Rubracium maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 40;
 
 		@Config.Comment("Rubracium indicative vein size (Set to 0 to disable this ore)")
@@ -650,11 +653,11 @@ public class WorldGenerationConfig {
 	public static class CategoryInfuscolium {
 
 		@Config.Comment("Infuscolium minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 10;
 
 		@Config.Comment("Infuscolium maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 72;
 
 		@Config.Comment("Infuscolium indicative vein size (Set to 0 to disable this ore)")
@@ -670,11 +673,11 @@ public class WorldGenerationConfig {
 	public static class CategoryOureclase {
 
 		@Config.Comment("Ourseclase minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Ourseclase maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Ourseclase indicative vein size (Set to 0 to disable this ore)")
@@ -690,11 +693,11 @@ public class WorldGenerationConfig {
 	public static class CategoryManganese {
 
 		@Config.Comment("Manganese minimum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Manganese maximum Y level")
-		@Config.RangeInt(min = 0, max = 255)
+		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
 		public int maxY = 128;
 
 		@Config.Comment("Manganese indicative vein size (Set to 0 to disable this ore)")
@@ -710,11 +713,11 @@ public class WorldGenerationConfig {
 	public static class CategoryPrometheum {
 
 		@Config.Comment("Prometheum minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 0;
 
 		@Config.Comment("Prometheum maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 64;
 
 		@Config.Comment("Prometheum indicative vein size (Set to 0 to disable this ore)")
@@ -730,11 +733,11 @@ public class WorldGenerationConfig {
 	public static class CategoryTin {
 
 		@Config.Comment("Tin minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 25;
 
 		@Config.Comment("Tin maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 48;
 
 		@Config.Comment("Tin indicative vein size (Set to 0 to disable this ore)")
@@ -750,11 +753,11 @@ public class WorldGenerationConfig {
 	public static class CategoryDeepIron {
 
 		@Config.Comment("Deep Iron minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 10;
 
 		@Config.Comment("Deep Iron maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 30;
 
 		@Config.Comment("Deep Iron indicative vein size (Set to 0 to disable this ore)")
@@ -777,11 +780,11 @@ public class WorldGenerationConfig {
 	public static class CategoryCopper {
 
 		@Config.Comment("Copper minimum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int minY = 35;
 
 		@Config.Comment("Copper maximum Y level")
-		@Config.RangeInt(min = 2, max = 255)
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
 		public int maxY = 120;
 
 		@Config.Comment("Copper indicative vein size (Set to 0 to disable this ore)")
