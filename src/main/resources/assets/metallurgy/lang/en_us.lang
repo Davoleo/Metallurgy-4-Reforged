@@ -1,5 +1,6 @@
 #Generic Material Names
 material.metallurgy.adamantine.name=Adamantine
+material.metallurgy.alduorite.name=Alduorite
 material.metallurgy.amordrine.name=Amordrine
 material.metallurgy.angmallen.name=Angmallen
 material.metallurgy.astral_silver.name=Astral Silver
@@ -20,6 +21,7 @@ material.metallurgy.eximite.name=Eximite
 material.metallurgy.haderoth.name=Haderoth
 material.metallurgy.hepatizon.name=Hepatizon
 material.metallurgy.ignatius.name=Ignatius
+material.metallurgy.infuscolium.name=Infuscolium
 material.metallurgy.inolashite.name=Inolashite
 material.metallurgy.kalendrite.name=Kalendrite
 material.metallurgy.krik.name=Krik
