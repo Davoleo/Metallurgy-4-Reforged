@@ -10,7 +10,7 @@
 package it.hurts.metallurgy_reforged.handler;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.config.GeneralConfig;
+import it.hurts.metallurgy_reforged.config.GadgetsConfig;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,7 +29,7 @@ public abstract class FuelHandler {
         if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
             event.setBurnTime(16000);
         if (item.getItem().equals(ModItems.THERMITE_DUST))
-            event.setBurnTime(GeneralConfig.thermiteFuelValue * 200);
+	        event.setBurnTime(GadgetsConfig.ThermiteDust.thermiteFuelValue * 200);
     }
 
 }
