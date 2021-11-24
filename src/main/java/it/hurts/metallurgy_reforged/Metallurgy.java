@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataStorage;
 import it.hurts.metallurgy_reforged.capabilities.punch.IPunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffect;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectStorage;
+import it.hurts.metallurgy_reforged.config.ConfigPack;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
@@ -41,6 +42,7 @@ import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -65,6 +67,7 @@ public class Metallurgy {
 
 	public static String materialConfig;
 	public static String enderIOAlloyRecipes;
+	public static ConfigPack configPack;
 
 	@Mod.Instance(MODID)
 	public static Metallurgy instance;
@@ -74,6 +77,10 @@ public class Metallurgy {
 
 	static
 	{
+		configPack = new ConfigPack(Loader.instance().getConfigDir());
+		if (configPack.isNewUpdate())
+			configPack.backupAndResetPack();
+
 		FluidRegistry.enableUniversalBucket();
 	}
 
