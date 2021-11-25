@@ -494,11 +494,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Astral Silver minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 24;
+		public int minY = 40;
 
 		@Config.Comment("Astral Silver maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int maxY = 64;
+		public int maxY = 140;
 
 		@Config.Comment("Astral Silver indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
