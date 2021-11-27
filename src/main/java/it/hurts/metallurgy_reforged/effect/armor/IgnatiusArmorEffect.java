@@ -139,10 +139,13 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 	@SubscribeEvent
 	public void drinkDamage(LivingEntityUseItemEvent.Finish event)
 	{
+		EntityLivingBase entity = event.getEntityLiving();
+		if (!canBeApplied(entity))
+			return;
+
 		EnumAction action = event.getItem().getItem().getItemUseAction(event.getItem());
 		if (action == EnumAction.DRINK)
 		{
-			EntityLivingBase entity = event.getEntityLiving();
 			entity.attackEntityFrom(WATER_DAMAGE, 2F);
 			entity.world.playSound(entity.posX, entity.posY, entity.posZ, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.PLAYERS, 0.5F, 1F, false);
 		}
