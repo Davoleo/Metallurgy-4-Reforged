@@ -11,9 +11,8 @@ package it.hurts.metallurgy_reforged.world.spawn;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.Random;
 
@@ -29,7 +28,7 @@ public class HighChanceYLevelSpawn extends BaseOreSpawn {
 	private final boolean above;
 	private final float chance;
 
-	public HighChanceYLevelSpawn(Block blockToReplace, ResourceLocation[] biomes, int yBound, boolean above, float chance)
+	public HighChanceYLevelSpawn(Block blockToReplace, String[] biomes, int yBound, boolean above, float chance)
 	{
 		super(blockToReplace, biomes);
 		this.yBound = yBound;
@@ -38,10 +37,10 @@ public class HighChanceYLevelSpawn extends BaseOreSpawn {
 	}
 
 	@Override
-	public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
+	public boolean canOreSpawn(Chunk chunk, BlockPos pos, IBlockState state, Random random)
 	{
 		//Checks Biome
-		if (super.canOreSpawn(world, pos, state, random))
+		if (super.canOreSpawn(chunk, pos, state, random))
 			//the ore was generated above or below Y level bound accordingly to the field,
 			//or it's got a 50% chance to spawn
 			return (pos.getY() >= yBound == above) || random.nextFloat() < chance;

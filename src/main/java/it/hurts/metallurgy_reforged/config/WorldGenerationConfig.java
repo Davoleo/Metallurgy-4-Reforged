@@ -634,11 +634,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Rubracium minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 10;
+		public int minY = 0;
 
 		@Config.Comment("Rubracium maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int maxY = 40;
+		public int maxY = 30;
 
 		@Config.Comment("Rubracium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)

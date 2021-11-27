@@ -15,7 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.Random;
 
@@ -24,17 +24,25 @@ public class BaseOreSpawn implements IOreSpawn {
 	private final Block blockToReplace;
 	private final ResourceLocation[] biomes;
 
-	public BaseOreSpawn(Block blockToReplace, ResourceLocation[] biomes)
+	public BaseOreSpawn(Block blockToReplace, String[] biomes)
 	{
 		this.blockToReplace = blockToReplace;
-		this.biomes = biomes;
+		this.biomes = parseBiomes(biomes);
 	}
 
+	private ResourceLocation[] parseBiomes(String[] biomesResource)
+	{
+		ResourceLocation[] resLocations = new ResourceLocation[biomesResource.length];
+		for (int i = 0; i < biomesResource.length; i++)
+			resLocations[i] = new ResourceLocation(biomesResource[i]);
+
+		return resLocations;
+	}
 
 	@Override
-	public boolean canOreSpawn(World world, BlockPos pos, IBlockState state, Random random)
+	public boolean canOreSpawn(Chunk chunk, BlockPos pos, IBlockState state, Random random)
 	{
-		return isInBiome(world, pos, this.biomes);
+		return isInBiome(chunk, pos, this.biomes);
 	}
 
 	@Override
@@ -46,13 +54,13 @@ public class BaseOreSpawn implements IOreSpawn {
 	/**
 	 * returns if the biome in current position is contained in biomes
 	 */
-	private static boolean isInBiome(World world, BlockPos pos, ResourceLocation[] biomes)
+	private static boolean isInBiome(Chunk chunk, BlockPos pos, ResourceLocation[] biomes)
 	{
 		if (biomes.length == 0)
 			return true;
 
 		for (ResourceLocation biome : biomes)
-			if (world.getBiome(pos).getRegistryName().equals(biome))
+			if (chunk.getBiome(pos, chunk.getWorld().getBiomeProvider()).getRegistryName().equals(biome))
 				return true;
 
 		return false;
