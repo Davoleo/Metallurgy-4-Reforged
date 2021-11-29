@@ -258,7 +258,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Lemurite maximum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int maxY = 100;
+		public int maxY = 50;
 
 		@Config.Comment("Lemurite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
@@ -334,7 +334,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Alduorite minimum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int minY = 0;
+		public int minY = 70;
 
 		@Config.Comment("Alduorite maximum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
