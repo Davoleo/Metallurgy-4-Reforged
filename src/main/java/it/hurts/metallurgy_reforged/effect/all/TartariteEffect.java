@@ -105,7 +105,16 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 
 		compound.setString("paragon", metal.toString());
 
-		float durabilityRatio = (tartarStack.getMaxDamage() + metal.getStats().getToolStats().getMaxUses()) / (float) tartarStack.getMaxDamage();
+		int infusedDurability;
+		if (metal.getStats().getToolStats() != null)
+			infusedDurability = metal.getStats().getToolStats().getMaxUses();
+		else
+			infusedDurability = metal.getStats().getArmorStats().getDurability() * 16; // *16 -> Chestplate value
+		//(infusedDurability >= 1000 ? 3000 : 750)
+
+		float durabilityRatio = (
+				((float) tartarStack.getMaxDamage() + infusedDurability)
+						/ (tartarStack.getMaxDamage() - infusedDurability));
 		compound.setFloat("durability_boost", durabilityRatio);
 
 		tartarStack.setTagCompound(compound);
