@@ -124,6 +124,7 @@ public class ItemArmorBase extends ItemArmor implements IMetalItem {
     @Override
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<String> tooltip, @Nonnull ITooltipFlag flagIn)
     {
+        ItemUtils.buildStatsTooltip(tooltip, null, null, stack);
         ItemUtils.buildEffectTooltip(tooltip, effects, stack, null);
     }
 
