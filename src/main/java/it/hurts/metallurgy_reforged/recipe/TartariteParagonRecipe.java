@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.inventory.InventoryCrafting;
@@ -55,6 +56,9 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 		Metal metal = ItemUtils.getMetalFromItem(craftInv.getStackInSlot(1).getItem());
 		assert metal != null;
 
+		if (metal == ModMetals.TARTARITE)
+			return ItemStack.EMPTY;
+
 		ItemStack result = super.getCraftingResult(craftInv);
 
 		result.setItemDamage(tartariteItem.getItemDamage());
@@ -63,6 +67,7 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 
 		return result;
 	}
+
 
 	@Override
 	public boolean isDynamic()
