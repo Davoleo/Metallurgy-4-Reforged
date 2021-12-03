@@ -1057,27 +1057,27 @@
   },
   {
     "name": "vulcanite",
-    "hardness": 6.4,
+    "hardness": 6.5,
     "blast_resistance": 15.0,
     "ore_harvest_level": 4,
     "color": "E45930",
     "armor_stats": {
       "damage_reduction": [
-        4,
+        3,
         6,
-        7,
-        4
+        6,
+        3
       ],
-      "enchantability": 20,
-      "durability": 150,
+      "enchantability": 19,
+      "durability": 111,
       "toughness": 4.0
     },
     "tool_stats": {
-      "efficiency": 10.0,
+      "efficiency": 8.8,
       "harvest_level": 5,
-      "enchantability": 20,
-      "durability": 1500,
-      "damage": 7.0
+      "enchantability": 19,
+      "durability": 712,
+      "damage": 3.8
     }
   },
   {

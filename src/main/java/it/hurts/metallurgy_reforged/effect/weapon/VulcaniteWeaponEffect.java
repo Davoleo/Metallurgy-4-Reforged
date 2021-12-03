@@ -51,7 +51,7 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 		if (step == maxSteps)
 		{
 			float currentCooldown = entity.getCooldownTracker().getCooldown(entity.getHeldItemMainhand().getItem(), 0);
-			float explosionPower = 0.6F;
+			float explosionPower = 0.8F;
 			//float explosionPower = Math.max(0.25F, 2.75F - currentCooldown / 40);
 			world.createExplosion(null, entity.posX, entity.posY + 0.65, entity.posZ, explosionPower, false);
 
@@ -85,8 +85,8 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 		weapon.setTagCompound(data);
 		getBundle(playerIn, metal, getCategory()).incrementStep(null);
 
-		//5 seconds fuse before explosion
-		cooldownTracker.setCooldown(weapon.getItem(), 5 * 20);
+		//2.5 seconds fuse before explosion
+		cooldownTracker.setCooldown(weapon.getItem(), 50);
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 						((EntityPlayer) attacker).getCooldownTracker().getCooldown(attacker.getHeldItemMainhand().getItem(), 0) :
 						100F;
 
-				float explosionPower = 0.85F + (1F - currentCooldown) * 0.5F;
+				float explosionPower = 0.32F + (1F - currentCooldown) * 1.1F;
 				System.out.println("Cool: " + currentCooldown + " EXP: " + explosionPower);
 				attacker.world.createExplosion(attacker, target.posX, target.posY, target.posZ, explosionPower, false);
 				//Knock entity back
