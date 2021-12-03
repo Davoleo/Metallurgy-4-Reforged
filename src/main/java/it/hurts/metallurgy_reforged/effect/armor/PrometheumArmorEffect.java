@@ -110,7 +110,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 		{
 			assert metal.getArmorSet() != null;
 			for (ItemArmorBase armorItem : metal.getArmorSet())
-				entity.getCooldownTracker().setCooldown(armorItem, 300);
+				entity.getCooldownTracker().setCooldown(armorItem, 180);
 		}
 	}
 
