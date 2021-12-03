@@ -120,7 +120,6 @@ public class VulcaniteWeaponEffect extends BaseMetallurgyEffect implements IProg
 						100F;
 
 				float explosionPower = 0.32F + (1F - currentCooldown) * 1.1F;
-				System.out.println("Cool: " + currentCooldown + " EXP: " + explosionPower);
 				attacker.world.createExplosion(attacker, target.posX, target.posY, target.posZ, explosionPower, false);
 				//Knock entity back
 				target.knockBack(attacker, 2F, attacker.posX - target.posX, attacker.posZ - target.posZ);
