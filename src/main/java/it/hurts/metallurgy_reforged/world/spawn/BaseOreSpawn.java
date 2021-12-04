@@ -32,6 +32,9 @@ public class BaseOreSpawn implements IOreSpawn {
 
 	private ResourceLocation[] parseBiomes(String[] biomesResource)
 	{
+		if (biomesResource == null)
+			return new ResourceLocation[0];
+
 		ResourceLocation[] resLocations = new ResourceLocation[biomesResource.length];
 		for (int i = 0; i < biomesResource.length; i++)
 			resLocations[i] = new ResourceLocation(biomesResource[i]);
