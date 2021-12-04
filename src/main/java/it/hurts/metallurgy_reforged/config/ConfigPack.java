@@ -32,6 +32,9 @@ public class ConfigPack {
 		File configPackVer = configDir.toPath().resolve("metallurgy_reforged/config_pack_version").toFile();
 		try
 		{
+			//Make sure parent dirs exist
+			Files.createParentDirs(configPackVer);
+
 			if (configPackVer.createNewFile())
 			{
 				updateConfigPackVersion(configPackVer);
