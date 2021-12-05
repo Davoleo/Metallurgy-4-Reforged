@@ -82,7 +82,7 @@ public class GadgetsConfig {
     public static class ThermiteDust {
 
         @Config.Name("Thermite Fuel Temperature")
-        @Config.Comment("The Temperature of thermite when used as a fluid fuel for Tinkers' Construct")
+        @Config.Comment("The Temperature required to melt thermite in a Tinkers' Construct Smeltery")
         public static int temperature = 400;
 
         @Config.Name("Thermite Fuel Value")
