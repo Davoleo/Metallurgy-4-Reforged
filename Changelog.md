@@ -1,3 +1,30 @@
+## 1.3.0-beta.3
+
+#### Balance Changes
+
+- **Ceruclase**:
+	 - Updated the color hex value.
+
+- **Quicksilver**:
+	 - Updated the color hex value.
+
+- **Sanguinite**:
+	 - Updated the color hex value.
+
+- **Vulcanite**:
+	 - Updated the color hex value.
+	 - Increased ore hardness from 6.4 to 6.5.
+	 - Rescaled armor damage reduction from 4/6/7/4 to 3/6/6/3.
+	 - Decreased armor enchantability from 20 to 19.
+	 - Decreased armor durability from 150 to 111.
+	 - Decreased tool enchantability from 20 to 19.
+	 - Decreased tool durability from 1500 to 712.
+	 - Decreased tool damage from 7 to 3.8.
+	 - Decreased tool efficiency from 10 to 8.8.
+
+- **Vyroxeres**:
+	 - Updated the color hex value.
+
 ## 1.3.0-beta.2
 
 - **Fissure (Vulcanite Tools)**
