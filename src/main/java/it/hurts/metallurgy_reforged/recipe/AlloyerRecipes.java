@@ -238,7 +238,8 @@ public class AlloyerRecipes {
 	{
 		Metal metal = ItemUtils.getMetalFromOreDictStack(stack);
 
-		if (metal == null)
+		//Protect against reg-disabled metals
+		if (metal == null && !alloySample.hasFallenBack())
 			return false;
 
 		if (alloySample.hasFallenBack())
