@@ -191,6 +191,10 @@ public class AlloyerRecipes {
 	@SuppressWarnings("ConstantConditions")
 	public ItemStack getAlloyResult(ItemStack input1, ItemStack input2)
 	{
+		//Short-circuit if any of the slots is empty
+		if (input1.isEmpty() || input2.isEmpty())
+			return ItemStack.EMPTY;
+
 		Optional<Cell<MetalSample, MetalSample, MetalSample>> result =
 				this.alloyingList.cellSet().stream()
 						.filter(cell ->
