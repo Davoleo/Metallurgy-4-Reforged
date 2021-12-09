@@ -50,7 +50,9 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void armorBuffInAnvil(AnvilRepairEvent event)
 	{
-		if (ItemUtils.isMadeOfMetal(metal, event.getItemInput().getItem(), ItemArmorBase.class, IToolEffect.class))
+		boolean isParagonAbsorbed = TartariteEffect.getParagonMetal(event.getItemInput()) == metal;
+
+		if (ItemUtils.isMadeOfMetal(metal, event.getItemInput().getItem(), ItemArmorBase.class, IToolEffect.class) || isParagonAbsorbed)
 		{
 			int outputEnchCount = event.getItemResult().getEnchantmentTagList().tagCount();
 			applyCombatBuffs(event.getItemResult(), outputEnchCount, event.getItemResult().getItem() instanceof ItemArmorBase);
@@ -61,7 +63,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	public void equipmentBuff(LivingEquipmentChangeEvent event)
 	{
 		final ItemStack stack = event.getTo();
-		if (ItemUtils.isMadeOfMetal(metal, stack.getItem(), ItemArmorBase.class, IToolEffect.class))
+		if (ItemUtils.isMadeOfMetal(metal, stack.getItem(), ItemArmorBase.class, IToolEffect.class) || TartariteEffect.getParagonMetal(stack) == metal)
 			applyCombatBuffs(stack, stack.getEnchantmentTagList().tagCount(), stack.getItem() instanceof ItemArmorBase);
 	}
 
@@ -166,7 +168,7 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	{
 		// TODO: 28/07/2021 Feedback
 		ItemStack tool = event.getEntityPlayer().getHeldItemMainhand();
-		if (ItemUtils.isMadeOfMetal(metal, tool.getItem(), IToolEffect.class))
+		if (ItemUtils.isMadeOfMetal(metal, tool.getItem(), IToolEffect.class) || TartariteEffect.getParagonMetal(tool) == metal)
 		{
 			NBTTagCompound toolData = tool.getTagCompound();
 			if (toolData == null)
