@@ -13,6 +13,7 @@ import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
@@ -94,7 +95,7 @@ public class PrometheumArmorEffect extends BaseMetallurgyEffect implements IProg
 						{
 							entity.world.playEvent(2005, pos, 0);
 							entity.getArmorInventoryList().forEach(armorStack -> {
-								if (ItemUtils.isMadeOfMetal(metal, armorStack.getItem()))
+								if (ItemUtils.isMadeOfMetal(metal, armorStack.getItem()) || TartariteEffect.getParagonMetal(armorStack) == metal)
 									armorStack.damageItem(2, entity);
 							});
 						}
