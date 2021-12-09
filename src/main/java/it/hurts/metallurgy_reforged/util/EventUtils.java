@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -118,10 +119,8 @@ public class EventUtils {
 
 		for (ItemStack stack : entity.getEquipmentAndArmor())
 		{
-			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-			{
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal)
 				equip.add(stack);
-			}
 		}
 
 		return equip.get(Utils.random.nextInt(equip.size()));

@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
-import java.util.stream.StreamSupport;
 
 public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 
@@ -48,10 +47,7 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 
 		if (Math.random() < level / 10F)
 		{
-			//noinspection OptionalGetWithoutIsPresent
-			ItemStack pieceToDamage = StreamSupport.stream(entity.getArmorInventoryList().spliterator(), true)
-					.filter(stack -> ItemUtils.isMadeOfMetal(metal, stack.getItem()))
-					.findAny().get();
+			ItemStack pieceToDamage = EventUtils.getRandomEquipmentPiece(metal, entity);
 
 			pieceToDamage.damageItem(Math.round(event.getAmount()), entity);
 			event.setCanceled(true);
