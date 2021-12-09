@@ -62,6 +62,7 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 		Metal metal = getParagonMetal(stack);
 		if (metal == null)
 			return;
+		Map<EnumEffectCategory, BaseMetallurgyEffect> metalEffects = MetallurgyEffects.effects.row(metal);
 
 		EnumTools toolType = EnumTools.byInstance(stack.getItem());
 
@@ -75,6 +76,10 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 		else
 			MetallurgyEffects.effects.get(metal, EnumEffectCategory.ARMOR)
 					.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
+
+		BaseMetallurgyEffect itemEffect = metalEffects.get(EnumEffectCategory.ALL);
+		if (itemEffect != null)
+			itemEffect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
 	}
 
 	@Override
