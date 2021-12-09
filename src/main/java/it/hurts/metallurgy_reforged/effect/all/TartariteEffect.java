@@ -25,6 +25,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Map;
 
 public class TartariteEffect extends BaseMetallurgyEffect {
 
@@ -65,15 +66,14 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 		Map<EnumEffectCategory, BaseMetallurgyEffect> metalEffects = MetallurgyEffects.effects.row(metal);
 
 		EnumTools toolType = EnumTools.byInstance(stack.getItem());
-
 		if (toolType != null)
 		{
-			MetallurgyEffects.effects.row(metal).forEach((category, effect) -> {
+			metalEffects.forEach((category, effect) -> {
 				if (ArrayUtils.contains(category.getTools(), toolType))
 					effect.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
 			});
 		}
-		else
+		else if (metalEffects.get(EnumEffectCategory.ARMOR) != null)
 			MetallurgyEffects.effects.get(metal, EnumEffectCategory.ARMOR)
 					.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
 
