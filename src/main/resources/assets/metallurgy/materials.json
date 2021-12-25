@@ -33,7 +33,7 @@
   },
   {
     "name": "alduorite",
-    "hardness": 5.0,
+    "hardness": 5.3,
     "blast_resistance": 10.0,
     "ore_harvest_level": 6,
     "color": "9294BE"
@@ -1026,7 +1026,7 @@
     "hardness": 10.0,
     "blast_resistance": 20.0,
     "ore_harvest_level": -1,
-    "color": "CA8A32",
+    "color": "EF7823",
     "armor_stats": {
       "damage_reduction": [
         5,
