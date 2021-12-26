@@ -61,7 +61,6 @@ public class WorldGenerationConfig {
 	public static CategoryCopper copper = new CategoryCopper();
 	public static CategoryDeepIron deepIron = new CategoryDeepIron();
 	public static CategoryInfuscolium infuscolium = new CategoryInfuscolium();
-	public static CategoryLutetium lutetium = new CategoryLutetium();
 	public static CategoryManganese manganese = new CategoryManganese();
 	public static CategoryMithril mithril = new CategoryMithril();
 	public static CategoryOureclase oureclase = new CategoryOureclase();
@@ -83,6 +82,7 @@ public class WorldGenerationConfig {
 	public static CategoryIgnatius ignatius = new CategoryIgnatius();
 	public static CategoryKalendrite kalendrite = new CategoryKalendrite();
 	public static CategoryLemurite lemurite = new CategoryLemurite();
+	public static CategoryLutetium lutetium = new CategoryLutetium();
 	public static CategoryMidasium midasium = new CategoryMidasium();
 	public static CategorySanguinite sanguinite = new CategorySanguinite();
 	public static CategoryShadowIron shadowIron = new CategoryShadowIron();
@@ -245,6 +245,26 @@ public class WorldGenerationConfig {
 		public int veinSize = 6;
 
 		@Config.Comment("Midasium biome spawn")
+		@Config.RequiresWorldRestart
+		public String[] biomes = new String[]{ };
+
+	}
+
+	public static class CategoryLutetium {
+
+		@Config.Comment("Lutetium minimum Y level")
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
+		public int minY = 20;
+
+		@Config.Comment("Lutetium maximum Y level")
+		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
+		public int maxY = 50;
+
+		@Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
+		@Config.RangeInt(min = 0)
+		public int veinSize = 4;
+
+		@Config.Comment("Lutetium biome spawn")
 		@Config.RequiresWorldRestart
 		public String[] biomes = new String[]{ };
 
@@ -425,26 +445,6 @@ public class WorldGenerationConfig {
 		public int veinSize = 6;
 
 		@Config.Comment("Osmium biome spawn")
-		@Config.RequiresWorldRestart
-		public String[] biomes = new String[]{ };
-
-	}
-
-	public static class CategoryLutetium {
-
-		@Config.Comment("Lutetium minimum Y level")
-		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
-		public int minY = 20;
-
-		@Config.Comment("Lutetium maximum Y level")
-		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
-		public int maxY = 50;
-
-		@Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
-		@Config.RangeInt(min = 0)
-		public int veinSize = 4;
-
-		@Config.Comment("Lutetium biome spawn")
 		@Config.RequiresWorldRestart
 		public String[] biomes = new String[]{ };
 
