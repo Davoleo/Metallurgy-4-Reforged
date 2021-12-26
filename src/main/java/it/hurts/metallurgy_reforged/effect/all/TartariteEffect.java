@@ -44,6 +44,8 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 			{
 				case "celenegil":
 					return stack.getTagCompound().getBoolean("glory_seeker") ? 1F : 0F;
+				case "electrum":
+					return stack.getTagCompound().getBoolean("voltage_control") ? 1F : 0F;
 			}
 
 			return 0F;
