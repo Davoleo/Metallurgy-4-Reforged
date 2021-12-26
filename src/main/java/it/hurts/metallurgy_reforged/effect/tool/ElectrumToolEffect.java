@@ -11,7 +11,6 @@ package it.hurts.metallurgy_reforged.effect.tool;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -59,20 +58,7 @@ public class ElectrumToolEffect extends BaseMetallurgyEffect {
 
 		boolean newState = !toolData.getBoolean("voltage_control");
 		toolData.setBoolean("voltage_control", newState);
-
-		//Pretty Hacky Check ahead
-		String toolName = toolStack.getItem().getRegistryName().getPath();
-		EnumTools[] toolClasses = getCategory().getTools();
-
-		//Reverse loop over tool classes (pickaxe should be before axe [otherwise pickaxes are treated like axes])
-		for (int i = toolClasses.length - 1; i >= 0; i--)
-		{
-			if (toolName.contains(toolClasses[i].getName()))
-			{
-				//switch between increased / regular harvest level
-				toolData.setInteger("harvest_boost", newState ? 1 : 0);
-			}
-		}
+		toolData.setInteger("harvest_boost", newState ? 1 : 0);
 
 		if (worldIn.isRemote)
 			worldIn.playSound(playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 1, newState ? 1 : 0.5F, false);
