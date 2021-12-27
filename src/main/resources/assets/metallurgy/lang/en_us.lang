@@ -1137,7 +1137,7 @@ container.crusher=Crusher
 container.alloyer=Alloyer
 tile.metallurgy.crusher.name=§cCrusher
 tile.metallurgy.alloyer.name=§9Alloyer
-tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
+tile.metallurgy.sublimation_chamber.name=§2Sublimation Chamber
 
 #Subtitles
 metallurgy.subtitle.alloyer_ambience=Alloyer Working
