@@ -253,11 +253,11 @@ public class WorldGenerationConfig {
 	public static class CategoryLutetium {
 
 		@Config.Comment("Lutetium minimum Y level")
-		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
+		@Config.RangeInt(min = 2, max = NETHER_HEIGHT_LIMIT)
 		public int minY = 20;
 
 		@Config.Comment("Lutetium maximum Y level")
-		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
+		@Config.RangeInt(min = 2, max = NETHER_HEIGHT_LIMIT)
 		public int maxY = 50;
 
 		@Config.Comment("Lutetium indicative vein size (Set to 0 to disable this ore)")
