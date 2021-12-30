@@ -1,18 +1,101 @@
-## 1.3.0-beta.3
+## 1.3.0
+
+### Important Notes and Disclaimers:
+
+- This changelog is the continuation of `1.3.0-beta.2`, if you're coming from `1.2.12`, you might want to read those
+  beta changelogs first.
+- This is a **very big update** which changes many of the default configuration values to better balance them together,
+  this has some consequences:
+	- On the first launch after updating to this version any custom configuration will be reset to the default values.
+	- **However** old configuration files will still be available in `config/metallurgy_reforged/backup_pre-1.3`
+	- From there you'll have 3 options:
+		1. merge your custom configuration into the new default one manually
+		2. restore your custom configuration completely overriding new changes
+		3. play with the new default values
+	- in any case **DO NOT** delete or edit the file called `config_pack_version`, because if you do, you'll cause all
+	  your config files to be reset again and another backup to be created possibly overriding the old backup
+- No registry changes happened during this update so your worlds should be safe switching back and forth between 1.2.x
+  and 1.3.x (however config values might not be safe)
+- The very outdated [wiki](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki) has been updated completely to display
+  correct values as well as new pages with extra information.
+
+### Changes
+
+- Adjusted Advancement Descriptions (as well as root advancement description)
+- Changed Sublimation Chamber recipe to reflect new metal changes
+- Fixed Alloyer Recipes checking (was broken in beta.2)
+- You can now alloy dusts directly in the alloyer and skip the furnace cooking step.
+- Standardize Armor effect cooldowns application so that they won't interfere with other armor effects.
+- Removed a debug log from Damascus Knight attack code.
+- Added Metal Tier information to ores and ingots item tooltips.
+- Shield tooltips displaying general and usage information are back.
+- Reworked Flint and Ignatius
+	- Previously worked like a Flint and Vulcanite with chance based 3x3 area lighting and without the option to create
+	  Lava.
+	- Now flint and ignatius can be used like a normal flint and steel which only lights the block you click
+	- But you can also shift right click which gives you the old behavior of a chance-based 3x3 lit area, this uses up 5
+	  durability instead of 1.
+- Berserker (Orichalcum Armor Effect) Balance Adjustments
+- Metal Detector Tweaks
+	- Radius increased from 6 to 8
+	- Durability decreased from 100 to 25 times the number of loaded metals.
+	- Tooltip showing the loaded metals name now are Gray instead of Dark Aqua
+- Texture Changes
+	- Ceruclase Palette fixes
+	- Sanguinite Texture Overhaul
+	- Rubracium Palette fixes
+	- Vulcanite Texture Overhaul
+	- Vyroxeres Texture Overhaul (includes sublimation chamber textures rework)
+	- Quicksilver Texture Overhaul
+	- Copper Texture consistency fixes
+	- Tartarite Texture Overhaul
+- Inolashite, Krik and Lutetium have been moved to tier 6 (previously tier 5)
+- Adjusted Tar and Thermite Fluid Temperature
+- Adjusted Temperature calculations for all metals
+- Reworked Ore Y Level limits and behaviour when these limits are exceeded
+- Updated Tinkers' Construct Mining Levels localization overrides
+- Fix some Tinkers construct special harvest levels (consistency)
+- Updated Simplified Chinese Translation (([#343](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/343)))
+- Moved Thermite Fuel value config entry to Gadgets Category
+- New config pack system that allows backing up of custom config setups after major updates like this one
+- Ore Generation Tweaks:
+	- Astral Silver Ore:
+		- Now generates between Y 40 and Y 140
+		- It's more common at Y Levels greater than 80
+	- Rubracium Ore: Generates more frequently near lava lakes.
+	- Alduorite Ore: Now only generates at Y levels greater or equal to 70
+	- Lemurite Ore: Now only generates at Y levels lesser or equal to 50
+- Fixed Hot-Blooded (Ignatius Armor Effect) damaging the player when drinking even when they weren't wearing the armor
+- Reworked Durability Calculation on Tartarite Armor to output sane values.
+- Armor tooltips now display Durability!
+- You can't infuse Tartarite items with Tartarite blocks anymore
+- Balanced Fuse (Vulcanite Weapon Effect) values
+- Adjusted Freyr (Prometheum Armor Effect) cooldown
+- Fixed a crash when biome array in worldgen configuration is null
+- Reworked and Balanced Life Steal Tinkers Trait (
+  Sanguinite) (([#344](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/344))
+- Rephrase Fluid Thermite temperature config comment (has created misunderstandings in the past)
+- Improve performances when getting alloy result and one or more input slots are empty.
+- Fixed alloys with ingredients from other mods or vanilla not working
+- Fixed compatibility issues between Paragon Absorb (Tartarite Effect) and Broken Invasion (Shadow Iron Armor)
+- Fixed Paragon Absorb (Tartarite Effect) infusion causing crashes with certain items.
+- Made sure most effects work with Paragon Absorb (Tartarite Effect)
+	- At time of the release of 1.3.0 Arcane has an issue where attack values use mithril base values instead of
+	  tartarite.
+- Fixed Paragon Absorb (Tartarite Effect) not changing state texture when infused with voltage control (Electrum Tools
+  Effect)
+- Updated Sublimation Chamber name color to match texture
 
 #### Balance Changes
 
 - **Ceruclase**:
-	 - Updated the color hex value.
-
+	- Updated the color hex value.
 - **Quicksilver**:
-	 - Updated the color hex value.
-
+	- Updated the color hex value.
 - **Sanguinite**:
-	 - Updated the color hex value.
-
+	- Updated the color hex value.
 - **Vulcanite**:
-	 - Updated the color hex value.
+	- Updated the color hex value.
 	 - Increased ore hardness from 6.4 to 6.5.
 	 - Rescaled armor damage reduction from 4/6/7/4 to 3/6/6/3.
 	 - Decreased armor enchantability from 20 to 19.
@@ -21,7 +104,6 @@
 	 - Decreased tool durability from 1500 to 712.
 	 - Decreased tool damage from 7 to 3.8.
 	 - Decreased tool efficiency from 10 to 8.8.
-
 - **Vyroxeres**:
 	 - Updated the color hex value.
 
