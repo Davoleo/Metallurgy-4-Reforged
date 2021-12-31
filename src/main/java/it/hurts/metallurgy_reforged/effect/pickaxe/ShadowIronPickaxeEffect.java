@@ -45,7 +45,9 @@ public class ShadowIronPickaxeEffect extends BaseMetallurgyEffect {
 			{
 				ItemStack newOre = AngmallenPickaxeEffect.getRandomOreStack(
 						(BlockOre) event.getState().getBlock(),
-						harvestLevel -> harvestLevel > metal.getStats().getOreHarvest()
+
+						// +1 or +0
+						harvestLevel -> harvestLevel >= metal.getStats().getOreHarvest() && harvestLevel <= metal.getStats().getOreHarvest() + 1
 				);
 
 				event.getDrops().clear();
