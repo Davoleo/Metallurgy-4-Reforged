@@ -167,14 +167,39 @@ public class ItemUtils {
 
 			int maxDurability = toolStack.getMaxDamage();
 			float useRatio = (maxDurability - toolStack.getItemDamage()) / (float) maxDurability;
-			TextFormatting color;
+			TextFormatting useColor;
 			if (useRatio < 0.33F)
-				color = TextFormatting.RED;
+				useColor = TextFormatting.RED;
 			else if (useRatio < 0.66)
-				color = TextFormatting.YELLOW;
+				useColor = TextFormatting.YELLOW;
 			else
-				color = TextFormatting.GREEN;
-			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", color + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
+				useColor = TextFormatting.GREEN;
+
+			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", useColor + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
+
+			float efficiency = stats.getEfficiency();
+			TextFormatting speedColor;
+			if (efficiency <= 6.0)
+				speedColor = TextFormatting.DARK_RED;
+			else if (efficiency <= 7.0)
+				speedColor = TextFormatting.RED;
+			else if (efficiency <= 8.0)
+				speedColor = TextFormatting.GOLD;
+			else if (efficiency <= 9.0)
+				speedColor = TextFormatting.YELLOW;
+			else if (efficiency <= 10.0)
+				speedColor = TextFormatting.GREEN;
+			else if (efficiency <= 11.0)
+				speedColor = TextFormatting.DARK_GREEN;
+			else if (efficiency <= 12.0)
+				speedColor = TextFormatting.AQUA;
+			else
+				speedColor = TextFormatting.LIGHT_PURPLE;
+			
+			if (toolType != EnumTools.SWORD)
+			{
+				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.efficiency", speedColor + String.valueOf(efficiency)));
+			}
 		}
 	}
 

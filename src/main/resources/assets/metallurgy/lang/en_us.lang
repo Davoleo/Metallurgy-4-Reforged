@@ -1615,6 +1615,7 @@ tooltip.metallurgy.press_ctrl=Press §f[CTRL]§7 to expand
 tooltip.metallurgy.press_shift=Press §f[SHIFT]§7 to expand
 tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
 tooltip.metallurgy.stats.durability=Durability: %s
+tooltip.metallurgy.stats.efficiency=Efficiency: %s
 message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
 
 #Shield Tooltips
