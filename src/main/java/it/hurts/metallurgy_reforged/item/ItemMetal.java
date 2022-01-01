@@ -62,7 +62,7 @@ public class ItemMetal extends ItemBase implements IMetalItem {
                 tier = metal.getOreHarvest();
 
 
-            tooltip.add("Tier: " + ItemUtils.HarvestLevelFormatting.values()[tier].format + tier);
+            tooltip.add("Tier: " + ItemUtils.ScaleFormatting.values()[tier].format + tier);
         }
 
         super.addInformation(stack, worldIn, tooltip, flagIn);

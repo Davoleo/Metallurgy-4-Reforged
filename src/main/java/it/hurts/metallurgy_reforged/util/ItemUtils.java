@@ -39,6 +39,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -132,8 +133,8 @@ public class ItemUtils {
 		}
 	}
 
-	public enum HarvestLevelFormatting {
-		_1("\u2B51", TextFormatting.RED),
+	public enum ScaleFormatting {
+		_1("\u2B51", TextFormatting.DARK_RED),
 		_2("\u2B51\u2B51", TextFormatting.RED),
 		_3("\u2B51\u2B51\u2B51", TextFormatting.GOLD),
 		_4("\u2B51\u2B51\u2B51\u2B51", TextFormatting.YELLOW),
@@ -144,7 +145,7 @@ public class ItemUtils {
 		final String stars;
 		public final TextFormatting format;
 
-		HarvestLevelFormatting(String stars, TextFormatting format)
+		ScaleFormatting(String stars, TextFormatting format)
 		{
 			this.stars = stars;
 			this.format = format;
@@ -160,8 +161,9 @@ public class ItemUtils {
 		{
 			if (toolType == EnumTools.PICKAXE)
 			{
-				int harvest = stats.getHarvestLevel();
-				HarvestLevelFormatting harvestFormatting = HarvestLevelFormatting.values()[harvest - 1];
+				//Make sure higher harvest levels are clamped to the possible extremes
+				int harvest = MathHelper.clamp(stats.getHarvestLevel(), 1, 7);
+				ScaleFormatting harvestFormatting = ScaleFormatting.values()[harvest - 1];
 				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.harvest_level", harvestFormatting.format + harvestFormatting.stars));
 			}
 
@@ -177,28 +179,15 @@ public class ItemUtils {
 
 			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", useColor + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
 
-			float efficiency = stats.getEfficiency();
-			TextFormatting speedColor;
-			if (efficiency <= 6.0)
-				speedColor = TextFormatting.DARK_RED;
-			else if (efficiency <= 7.0)
-				speedColor = TextFormatting.RED;
-			else if (efficiency <= 8.0)
-				speedColor = TextFormatting.GOLD;
-			else if (efficiency <= 9.0)
-				speedColor = TextFormatting.YELLOW;
-			else if (efficiency <= 10.0)
-				speedColor = TextFormatting.GREEN;
-			else if (efficiency <= 11.0)
-				speedColor = TextFormatting.DARK_GREEN;
-			else if (efficiency <= 12.0)
-				speedColor = TextFormatting.AQUA;
-			else
-				speedColor = TextFormatting.LIGHT_PURPLE;
-			
+			//efficiency levels
+			//... < 6 < 7 < 8 < 9 < 10 < 11 < 12 ...
+			float efficiency = stats.getEfficiency() - 6F;
+			int formattingIndex = MathHelper.ceil(MathHelper.clamp(efficiency, 0, 6));
+			ScaleFormatting efficiencyFormatting = ScaleFormatting.values()[formattingIndex];
+
 			if (toolType != EnumTools.SWORD)
 			{
-				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.efficiency", speedColor + String.valueOf(efficiency)));
+				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.efficiency", efficiencyFormatting.format + String.valueOf(efficiency)));
 			}
 		}
 	}
