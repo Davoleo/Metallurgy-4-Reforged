@@ -39,11 +39,17 @@ public class ShadowSteelEffect extends BaseMetallurgyEffect {
 	{
 		if (entityIn instanceof EntityPlayer)
 		{
-			int ticksBetween = 50 - Math.round(EventUtils.getDarknessLevel(entityIn, 25));
+			int ticksBetween = 75 - Math.round(EventUtils.getDarknessLevel(entityIn, 50));
 
+			//it means get DarknessLevel returned a small number -> There's not enough darkness to regenerate durability (over 50% light level) -> Exit
+			if (ticksBetween > 50)
+				return;
+
+			//exit if on client-side or entity tick counter can't be divided by the amount of ticks between each durability regen (which is based on darkness)
 			if (worldIn.isRemote || entityIn.ticksExisted % ticksBetween != 0)
 				return;
 
+			//if the item is damaged -> regenerate 1 durability
 			if (stack.getItemDamage() > 0)
 				stack.setItemDamage(stack.getItemDamage() - 1);
 		}
