@@ -179,14 +179,14 @@ public class ItemUtils {
 
 			tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.durability", useColor + String.valueOf(toolStack.getMaxDamage() - toolStack.getItemDamage()) + '/' + maxDurability));
 
-			//efficiency levels
-			//... < 6 < 7 < 8 < 9 < 10 < 11 < 12 ...
-			float efficiency = stats.getEfficiency() - 6F;
-			int formattingIndex = MathHelper.ceil(MathHelper.clamp(efficiency, 0, 6));
-			ScaleFormatting efficiencyFormatting = ScaleFormatting.values()[formattingIndex];
-
-			if (toolType != EnumTools.SWORD)
+			if (toolType == EnumTools.PICKAXE || toolType == EnumTools.AXE || toolType == EnumTools.SHOVEL)
 			{
+				float efficiency = stats.getEfficiency();
+				//efficiency levels
+				//... < 6 < 7 < 8 < 9 < 10 < 11 < 12 ...
+				int formattingIndex = MathHelper.ceil(MathHelper.clamp(efficiency - 6, 0, 6));
+				ScaleFormatting efficiencyFormatting = ScaleFormatting.values()[formattingIndex];
+
 				tooltip.add(Utils.localizeWithParameters("tooltip.metallurgy.stats.efficiency", efficiencyFormatting.format + String.valueOf(efficiency)));
 			}
 		}
