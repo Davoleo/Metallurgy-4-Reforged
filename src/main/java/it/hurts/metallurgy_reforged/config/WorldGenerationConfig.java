@@ -314,7 +314,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ignatius minimum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int minY = 0;
+		public int minY = 32;
 
 		@Config.Comment("Ignatius maximum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
@@ -322,7 +322,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ignatius indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 32;
+		public int veinSize = 8;
 
 		@Config.Comment("Ignatius biome spawn")
 		@Config.RequiresWorldRestart
@@ -662,7 +662,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Infuscolium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 6;
+		public int veinSize = 5;
 
 		@Config.Comment("Infuscolium biome spawn")
 		@Config.RequiresWorldRestart
