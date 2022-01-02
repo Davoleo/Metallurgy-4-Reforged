@@ -109,7 +109,7 @@ public class EffectsConfig {
 	@Config.Name("Brilliance (Damascus Steel Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.damascus_steel_weapon")
 	public static boolean damascusSteelEffectWeapon = true;
-	@Config.Name("Brilliance (Damascus Steel Pickaxe)")
+	@Config.Name("Dazzle (Damascus Steel Pickaxe)")
 	@Config.LangKey("tooltip.metallurgy.effect.damascus_steel_pickaxe")
 	public static boolean damascusSteelEffectPickaxe = true;
 
@@ -177,7 +177,7 @@ public class EffectsConfig {
 	@Config.Name("Molten Core (Ignatius Tools)")
 	@Config.LangKey("tooltip.metallurgy.effect.ignatius_tool")
 	public static boolean ignatiusEffectTool = true;
-	@Config.Name("Molten Core (Ignatius Weapons)")
+	@Config.Name("Molten Blade (Ignatius Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.ignatius_weapon")
 	public static boolean ignatiusEffectWeapon = true;
 	@Config.Name("Hot-Blooded (Ignatius Armor)")
@@ -214,7 +214,7 @@ public class EffectsConfig {
 	@Config.Name("Midas Touch (Midasium hoe)")
 	@Config.LangKey("tooltip.metallurgy.effect.midasium_hoe")
 	public static boolean midasiumEffectHoe = true;
-	@Config.Name("Greed (Midasium Weapon)")
+	@Config.Name("Bounty (Midasium Weapon)")
 	@Config.LangKey("tooltip.metallurgy.effect.midasium_weapon")
 	public static boolean midasiumEffectWeapon = true;
 	@Config.Name("Greed (Midasium Tool)")
