@@ -88,14 +88,149 @@
 
 #### Balance Changes
 
+- **Adamantine**:
+	 - Increased armor durability from 36 to 96.
+
+- **Alduorite**:
+	 - Increased ore hardness from 5 to 5.3.
+
+- **Amordrine**:
+	 - Decreased armor enchantability from 50 to 40.
+	 - Increased armor durability from 50 to 55.
+	 - Decreased tool enchantability from 50 to 40.
+	 - Decreased tool durability from 1430 to 1230.
+	 - Decreased tool efficiency from 14 to 13.5.
+
+- **Angmallen**:
+	 - Rescaled armor damage reduction from 3/5/6/3 to 2/3/4/2.
+	 - Increased armor toughness from 0 to 0.5.
+
+- **Astral Silver**:
+	 - Rescaled armor damage reduction from 2/5/6/2 to 2/3/4/3.
+
+- **Atlarus**:
+	 - Increased armor durability from 35 to 55.
+
+- **Black Steel**:
+	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
+	 - Increased armor durability from 11 to 28.
+	 - Added new attribute to tools, Max Health, which is equal to 1.
+
+- **Brass**:
+	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
+
+- **Bronze**:
+	 - Rescaled armor damage reduction from 3/3/4/2 to 2/3/4/3.
+	 - Decreased armor toughness from 2 to 1.
+
+- **Carmot**:
+	 - Increased armor durability from 12 to 19.
+
+- **Celenegil**:
+	 - Rescaled armor damage reduction from 3/4/6/4 to 3/5/6/4.
+	 - Decreased armor toughness from 5 to 4.
+
 - **Ceruclase**:
-	- Updated the color hex value.
+	 - Updated the color hex value.
+	 - Rescaled armor damage reduction from 3/6/5/4 to 3/4/5/4.
+
+- **Copper**:
+	 - Decreased armor toughness from 0.3 to 0.
+
+- **Damascus Steel**:
+	 - Decreased armor toughness from 3 to 0.
+
+- **Deep Iron**:
+
+- **Desichalkos**:
+	 - Decreased armor toughness from 2.6 to 2.5.
+	 - Increased tool efficiency from 7.9 to 8.1.
+
+- **Etherium**:
+	 - Rescaled armor damage reduction from 3/5/6/2 to 3/5/6/4.
+	 - Increased armor durability from 75 to 273.
+	 - Added new attribute to armor, Movement Speed, which is equal to 0.04.
+	 - Increased tool durability from 750 to 4756.
+	 - Increased tool attack speed from -0.4 to -0.3.
+
+- **Eximite**:
+	 - Decreased armor toughness from 3.3 to 3.
+
+- **Haderoth**:
+	 - Rescaled armor damage reduction from 4/5/7/4 to 4/5/6/4.
+
+- **Ignatius**:
+	 - Rescaled armor damage reduction from 2/2/2/2 to 2/3/4/2.
+	 - Increased armor durability from 4 to 5.
+	 - Decreased armor toughness from 0.2 to 0.
+
+- **Inolashite**:
+	 - Rescaled armor damage reduction from 3/6/7/4 to 3/6/7/5.
+	 - Increased armor durability from 31 to 61.
+	 - Increased armor toughness from 0.7 to 1.
+
+- **Kalendrite**:
+
+- **Krik**:
+	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/4/3.
+	 - Increased armor durability from 25 to 36.
+
+- **Mithril**:
+	 - Increased armor toughness from 0 to 2.
+	 - Increased tool durability from 1000 to 1111.
+	 - Decreased tool damage from 7 to 5.5.
+
+- **Orichalcum**:
+	 - Rescaled armor damage reduction from 2/6/7/2 to 2/6/7/4.
+	 - Increased armor enchantability from 4 to 14.
+	 - Increased armor toughness from 1.4 to 1.5.
+	 - Decreased tool damage from 7 to 6.2.
+
+- **Oureclase**:
+	 - Decreased ore hardness from 5.8 to 5.1.
+	 - Increased armor enchantability from 16 to 26.
+	 - Increased tool enchantability from 16 to 26.
+
+- **Platinum**:
+	 - Increased tool damage from 3 to 3.2.
+	 - Decreased tool efficiency from 13 to 9.9.
+
+- **Prometheum**:
+	 - Rescaled armor damage reduction from 1/2/2/1 to 1/2/2/2.
+	 - Increased armor toughness from 0.1 to 0.5.
+	 - Increased tool efficiency from 4.2 to 4.7.
+
 - **Quicksilver**:
-	- Updated the color hex value.
+	 - Updated the color hex value.
+	 - Rescaled armor damage reduction from 3/5/4/5 to 5/5/4/4.
+	 - Increased armor movement speed from 0.04 to 0.08.
+	 - Decreased tool durability from 652 to 452.
+	 - Decreased tool efficiency from 14 to 10.
+	 - Increased tool attack speed from 1.3 to 1.4.
+	 - Decreased tool reach distance from 2 to 1.
+
 - **Sanguinite**:
-	- Updated the color hex value.
+	 - Updated the color hex value.
+
+- **Shadow Iron**:
+	 - Decreased armor durability from 32 to 17.
+	 - Decreased armor toughness from 2 to 0.
+	 - Decreased tool damage from 6.8 to 5.9.
+	 - Increased tool efficiency from 6 to 6.4.
+	 - Decreased tool attack speed from -0.2 to -0.3.
+
+- **Shadow Steel**:
+	 - Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
+	 - Decreased armor durability from 40 to 21.
+	 - Decreased tool durability from 400 to 214.
+	 - Decreased tool damage from 7 to 6.8.
+	 - Increased tool efficiency from 6 to 9.
+
+- **Tartarite**:
+	 - Updated the color hex value.
+
 - **Vulcanite**:
-	- Updated the color hex value.
+	 - Updated the color hex value.
 	 - Increased ore hardness from 6.4 to 6.5.
 	 - Rescaled armor damage reduction from 4/6/7/4 to 3/6/6/3.
 	 - Decreased armor enchantability from 20 to 19.
@@ -104,8 +239,13 @@
 	 - Decreased tool durability from 1500 to 712.
 	 - Decreased tool damage from 7 to 3.8.
 	 - Decreased tool efficiency from 10 to 8.8.
+
 - **Vyroxeres**:
 	 - Updated the color hex value.
+	 - Decreased tool durability from 300 to 287.
+	 - Decreased tool damage from 7 to 6.2.
+	 - Increased tool efficiency from 7 to 7.2.
+
 
 ## 1.3.0-beta.2
 
