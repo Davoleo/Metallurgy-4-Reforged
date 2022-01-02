@@ -214,15 +214,15 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Shadow Iron minimum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int minY = 100;
+		public int minY = 96;
 
 		@Config.Comment("Shadow Iron maximum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int maxY = 30;
+		public int maxY = 32;
 
 		@Config.Comment("Shadow Iron indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 6;
+		public int veinSize = 7;
 
 		@Config.Comment("Shadow Iron biome spawn")
 		@Config.RequiresWorldRestart
@@ -282,7 +282,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Lemurite indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 7;
+		public int veinSize = 6;
 
 		@Config.Comment("Lemurite biome spawn")
 		@Config.RequiresWorldRestart
@@ -318,11 +318,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ignatius maximum Y level")
 		@Config.RangeInt(min = 0, max = NETHER_HEIGHT_LIMIT)
-		public int maxY = 127;
+		public int maxY = 96;
 
 		@Config.Comment("Ignatius indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 10;
+		public int veinSize = 32;
 
 		@Config.Comment("Ignatius biome spawn")
 		@Config.RequiresWorldRestart
@@ -574,15 +574,15 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Carmot minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 32;
+		public int minY = 24;
 
 		@Config.Comment("Carmot maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int maxY = 64;
+		public int maxY = 52;
 
 		@Config.Comment("Carmot indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 6;
+		public int veinSize = 4;
 
 		@Config.Comment("Carmot biome spawn")
 		@Config.RequiresWorldRestart
@@ -594,7 +594,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Atlarus minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 12;
+		public int minY = 22;
 
 		@Config.Comment("Atlarus maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
@@ -602,7 +602,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Atlarus indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 6;
+		public int veinSize = 5;
 
 		@Config.Comment("Atlarus biome spawn")
 		@Config.RequiresWorldRestart
@@ -654,7 +654,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Infuscolium minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 10;
+		public int minY = 18;
 
 		@Config.Comment("Infuscolium maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
@@ -662,7 +662,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Infuscolium indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 7;
+		public int veinSize = 6;
 
 		@Config.Comment("Infuscolium biome spawn")
 		@Config.RequiresWorldRestart
@@ -678,11 +678,11 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Ourseclase maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int maxY = 128;
+		public int maxY = 96;
 
 		@Config.Comment("Ourseclase indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 5;
+		public int veinSize = 6;
 
 		@Config.Comment("Ourseclase biome spawn")
 		@Config.RequiresWorldRestart
@@ -694,7 +694,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Manganese minimum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
-		public int minY = 0;
+		public int minY = 16;
 
 		@Config.Comment("Manganese maximum Y level")
 		@Config.RangeInt(min = 0, max = HEIGHT_LIMIT)
@@ -702,7 +702,7 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Manganese indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 9;
+		public int veinSize = 8;
 
 		@Config.Comment("Manganese biome spawn")
 		@Config.RequiresWorldRestart
@@ -734,15 +734,15 @@ public class WorldGenerationConfig {
 
 		@Config.Comment("Tin minimum Y level")
 		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
-		public int minY = 25;
+		public int minY = 28;
 
 		@Config.Comment("Tin maximum Y level")
 		@Config.RangeInt(min = 2, max = HEIGHT_LIMIT)
-		public int maxY = 48;
+		public int maxY = 50;
 
 		@Config.Comment("Tin indicative vein size (Set to 0 to disable this ore)")
 		@Config.RangeInt(min = 0)
-		public int veinSize = 10;
+		public int veinSize = 8;
 
 		@Config.Comment("Tin biome spawn")
 		@Config.RequiresWorldRestart
@@ -816,7 +816,13 @@ public class WorldGenerationConfig {
 		@Config.Comment("Set the value of rare Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
 		@Config.RequiresMcRestart
 		@Config.RangeInt(min = 1)
-		public int rareRarity = 3;
+		public int rareRarity = 5;
+
+		@Config.Name("Very Rare Ore Rarity")
+		@Config.Comment("Set the value of very rare Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")
+		@Config.RequiresMcRestart
+		@Config.RangeInt(min = 1)
+		public int veryRareRarity = 3;
 
 		@Config.Name("Ultra Rare Ore Rarity")
 		@Config.Comment("Set the value of ultra rare Rarity [ The smaller the value, the rarer it is ] (Don't change if you aren't a dev)")

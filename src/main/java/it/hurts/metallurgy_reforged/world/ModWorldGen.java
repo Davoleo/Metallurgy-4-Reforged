@@ -44,7 +44,8 @@ public class ModWorldGen implements IWorldGenerator {
 	public static final int COMMON = rarity.commonRarity;
 	private static final int UNCOMMON = rarity.uncommonRarity;
 	private static final int RARE = rarity.rareRarity;
-	private static final int ULTRA_RARE = rarity.ultraRareRarity;
+	private static final int VERY_RARE = rarity.veryRareRarity;
+	private static final int ULTRA_VERY_RARE = rarity.ultraRareRarity;
 
 	private static final String RETROGEN_NAME = "MetallurgyOreGeneration";
 	public static final ModWorldGen INSTANCE = new ModWorldGen();
@@ -111,7 +112,7 @@ public class ModWorldGen implements IWorldGenerator {
 				DEFAULT_WORLD_BLOCK, infuscolium.biomes
 		);
 		generateOre(ModMetals.ADAMANTINE, world, random, chunkX, chunkZ,
-				adamantine.veinSize, RARE,
+				adamantine.veinSize, VERY_RARE,
 				adamantine.minY, adamantine.maxY,
 				DEFAULT_WORLD_BLOCK, adamantine.biomes
 		);
@@ -122,17 +123,17 @@ public class ModWorldGen implements IWorldGenerator {
 				new VeinNextToBlockSpawn(DEFAULT_WORLD_BLOCK, rubracium.biomes, ImmutableSet.of(Blocks.LAVA, ModMetals.RUBRACIUM.getOre()))
 		);
 		generateOre(ModMetals.ATLARUS, world, random, chunkX, chunkZ,
-				atlarus.veinSize, RARE,
+				atlarus.veinSize, VERY_RARE,
 				atlarus.minY, atlarus.maxY,
 				DEFAULT_WORLD_BLOCK, atlarus.biomes
 		);
 		generateOre(ModMetals.CARMOT, world, random, chunkX, chunkZ,
-				carmot.veinSize, UNCOMMON,
+				carmot.veinSize, RARE,
 				carmot.minY, carmot.maxY,
 				DEFAULT_WORLD_BLOCK, carmot.biomes
 		);
 		generateOre(ModMetals.MITHRIL, world, random, chunkX, chunkZ,
-				mithril.veinSize, ULTRA_RARE,
+				mithril.veinSize, ULTRA_VERY_RARE,
 				mithril.minY, mithril.maxY,
 				DEFAULT_WORLD_BLOCK, mithril.biomes
 		);
@@ -142,7 +143,7 @@ public class ModWorldGen implements IWorldGenerator {
 				DEFAULT_WORLD_BLOCK, zinc.biomes
 		);
 		generateOre(ModMetals.ORICHALCUM, world, random, chunkX, chunkZ,
-				orichalcum.veinSize, UNCOMMON,
+				orichalcum.veinSize, RARE,
 				orichalcum.minY, orichalcum.maxY,
 				DEFAULT_WORLD_BLOCK, orichalcum.biomes
 		);
@@ -157,7 +158,7 @@ public class ModWorldGen implements IWorldGenerator {
 				DEFAULT_WORLD_BLOCK, silver.biomes
 		);
 		generateOre(ModMetals.PLATINUM, world, random, chunkX, chunkZ,
-				platinum.veinSize, RARE,
+				platinum.veinSize, VERY_RARE,
 				platinum.minY, platinum.maxY,
 				new HighChanceTemperatureSpawn(DEFAULT_WORLD_BLOCK, platinum.biomes, Biome.TempCategory.WARM, UNCOMMON)
 		);
@@ -202,7 +203,7 @@ public class ModWorldGen implements IWorldGenerator {
 				new NetherOreSpawn(lemurite.biomes)
 		);
 		generateOre(ModMetals.LUTETIUM, world, random, chunkX, chunkZ,
-				lutetium.veinSize, RARE,
+				lutetium.veinSize, VERY_RARE,
 				lutetium.minY, lutetium.maxY,
 				new NetherOreSpawn(lutetium.biomes)
 		);
@@ -217,7 +218,7 @@ public class ModWorldGen implements IWorldGenerator {
 				new NetherOreSpawn(vyroxeres.biomes)
 		);
 		generateOre(ModMetals.CERUCLASE, world, random, chunkX, chunkZ,
-				cerucalse.veinSize, RARE,
+				cerucalse.veinSize, VERY_RARE,
 				cerucalse.minY, cerucalse.maxY,
 				new NetherOreSpawn(cerucalse.biomes)
 		);
@@ -227,7 +228,7 @@ public class ModWorldGen implements IWorldGenerator {
 				new NetherOreSpawn(alduorite.biomes)
 		);
 		generateOre(ModMetals.KALENDRITE, world, random, chunkX, chunkZ,
-				kalendrite.veinSize, UNCOMMON,
+				kalendrite.veinSize, RARE,
 				kalendrite.minY, kalendrite.maxY,
 				new NetherOreSpawn(kalendrite.biomes)
 		);
@@ -237,7 +238,7 @@ public class ModWorldGen implements IWorldGenerator {
 				new NetherOreSpawn(vulcanite.biomes)
 		);
 		generateOre(ModMetals.SANGUINITE, world, random, chunkX, chunkZ,
-				sanguinite.veinSize, RARE,
+				sanguinite.veinSize, VERY_RARE,
 				sanguinite.minY, sanguinite.maxY,
 				new NearFortressSpawn()
 		);
@@ -251,7 +252,7 @@ public class ModWorldGen implements IWorldGenerator {
 				new SmallIslandsSpawn(eximite.biomes)
 		);
 		generateOre(ModMetals.MEUTOITE, world, random, chunkX, chunkZ,
-				meutoite.veinSize, COMMON,
+				meutoite.veinSize, RARE,
 				meutoite.minY, meutoite.maxY,
 				DEFAULT_END_BLOCK, meutoite.biomes
 		);
