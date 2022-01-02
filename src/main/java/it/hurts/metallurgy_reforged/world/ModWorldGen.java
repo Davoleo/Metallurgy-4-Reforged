@@ -45,7 +45,7 @@ public class ModWorldGen implements IWorldGenerator {
 	private static final int UNCOMMON = rarity.uncommonRarity;
 	private static final int RARE = rarity.rareRarity;
 	private static final int VERY_RARE = rarity.veryRareRarity;
-	private static final int ULTRA_VERY_RARE = rarity.ultraRareRarity;
+	private static final int ULTRA_RARE = rarity.ultraRareRarity;
 
 	private static final String RETROGEN_NAME = "MetallurgyOreGeneration";
 	public static final ModWorldGen INSTANCE = new ModWorldGen();
@@ -133,7 +133,7 @@ public class ModWorldGen implements IWorldGenerator {
 				DEFAULT_WORLD_BLOCK, carmot.biomes
 		);
 		generateOre(ModMetals.MITHRIL, world, random, chunkX, chunkZ,
-				mithril.veinSize, ULTRA_VERY_RARE,
+				mithril.veinSize, ULTRA_RARE,
 				mithril.minY, mithril.maxY,
 				DEFAULT_WORLD_BLOCK, mithril.biomes
 		);
