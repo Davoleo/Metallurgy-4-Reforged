@@ -40,7 +40,7 @@
   - **Damascus Steel - The Regal Metal**
     - **Royal blood _(Armor)_**: A minion will be spawned to aid you in your fights against enemies as soon as you take damage (minion health will scale with the armor count)
     - **Brilliance _(Weapons)_**: Mobs drop significantly more experience.
-    - **Brilliance _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
+    - **Dazzle _(Pickaxe)_**: Mining ores sometimes grants a bit of experience depending on the harvest level.
   - **Deep Iron - The Oceanic Metal**
     - **Aquatic _(armor)_**: Grants Water Breathing and improved Mobility in water depending on how many armor pieces are worn (it also grants night vision with 2 or more armor pieces).
     - **Diver _(tools)_**: Improved tool harvest speed when underwater (3 times the normal underwater speed)
@@ -67,7 +67,7 @@
     - **Disarm _(weapons)_**: When attacking you have a chance to rob the enemy of some of their equipment.
     - **Cloak & Dagger _(armor)_**: Grants AI invisibility outside of a certain radius depending on how much armor you're wearing.
   - **Ignatius - The Fire Metal**
-    - **Molten Core _(weapons)_**: Auto-smelts entity loot if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
+    - **Molten Blade _(weapons)_**: Auto-smelts entity loot if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
     - **Molten Core _(tools)_**: Auto-smelts block drops if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
     - **Hot-Blooded _(armor)_**: Fire and lava heals you proportionally to the damage it would otherwise deal, but water and rain damages you as if it were lava and fire; <NL>The effect of Fire Protection is inverted, to protect water damage
   - **Inolashite - The Time Metal**
@@ -91,7 +91,7 @@
   - **Midasium - The Metal of Greed**
     - **Midas Touch _(hoe)_**: Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and
       nuggets) instead.
-    - **Greed _(weapons)_**: Chance based looting effect that stacks with the looting enchantment. All drops have a
+    - **Bounty _(weapons)_**: Chance based looting effect that stacks with the looting enchantment. All drops have a
       small chance to be turned into gold ingots.
     - **Greed _(tools)_**: Chance based fortune effect that stacks with the fortune enchantment. All drops have a small
       chance to be turned into gold ingots.
