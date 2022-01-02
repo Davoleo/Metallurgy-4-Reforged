@@ -6,14 +6,14 @@
   beta changelogs first.
 - This is a **very big update** which changes many of the default configuration values to better balance them together,
   this has some consequences:
-	- On the first launch after updating to this version any custom configuration will be reset to the default values.
-	- **However** old configuration files will still be available in `config/metallurgy_reforged/backup_pre-1.3`
-	- From there you'll have 3 options:
-		1. merge your custom configuration into the new default one manually
-		2. restore your custom configuration completely overriding new changes
-		3. play with the new default values
-	- in any case **DO NOT** delete or edit the file called `config_pack_version`, because if you do, you'll cause all
-	  your config files to be reset again and another backup to be created possibly overriding the old backup
+  - On the first launch after updating to this version any custom configuration will be reset to the default values.
+  - **However** old configuration files will still be available in `config/metallurgy_reforged/backup_pre-1.3`
+  - From there you'll have 3 options:
+    1. merge your custom configuration into the new default one manually
+    2. restore your custom configuration completely overriding new changes
+    3. play with the new default values
+  - in any case **DO NOT** delete or edit the file called `config_pack_version`, because if you do, you'll cause all
+    your config files to be reset again and another backup to be created possibly overriding the old backup
 - No registry changes happened during this update so your worlds should be safe switching back and forth between 1.2.x
   and 1.3.x (however config values might not be safe)
 - The very outdated [wiki](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki) has been updated completely to display
@@ -30,25 +30,25 @@
 - Added Metal Tier information to ores and ingots item tooltips.
 - Shield tooltips displaying general and usage information are back.
 - Reworked Flint and Ignatius
-	- Previously worked like a Flint and Vulcanite with chance based 3x3 area lighting and without the option to create
-	  Lava.
-	- Now flint and ignatius can be used like a normal flint and steel which only lights the block you click
-	- But you can also shift right click which gives you the old behavior of a chance-based 3x3 lit area, this uses up 5
-	  durability instead of 1.
+  - Previously worked like a Flint and Vulcanite with chance based 3x3 area lighting and without the option to create
+    Lava.
+  - Now flint and ignatius can be used like a normal flint and steel which only lights the block you click
+  - But you can also shift right click which gives you the old behavior of a chance-based 3x3 lit area, this uses up 5
+    durability instead of 1.
 - Berserker (Orichalcum Armor Effect) Balance Adjustments
 - Metal Detector Tweaks
-	- Radius increased from 6 to 8
-	- Durability decreased from 100 to 25 times the number of loaded metals.
-	- Tooltip showing the loaded metals name now are Gray instead of Dark Aqua
+  - Radius increased from 6 to 8
+  - Durability decreased from 100 to 25 times the number of loaded metals.
+  - Tooltip showing the loaded metals name now are Gray instead of Dark Aqua
 - Texture Changes
-	- Ceruclase Palette fixes
-	- Sanguinite Texture Overhaul
-	- Rubracium Palette fixes
-	- Vulcanite Texture Overhaul
-	- Vyroxeres Texture Overhaul (includes sublimation chamber textures rework)
-	- Quicksilver Texture Overhaul
-	- Copper Texture consistency fixes
-	- Tartarite Texture Overhaul
+  - Ceruclase Palette fixes
+  - Sanguinite Texture Overhaul
+  - Rubracium Palette fixes
+  - Vulcanite Texture Overhaul
+  - Vyroxeres Texture Overhaul (includes sublimation chamber textures rework)
+  - Quicksilver Texture Overhaul
+  - Copper Texture consistency fixes
+  - Tartarite Texture Overhaul
 - Inolashite, Krik and Lutetium have been moved to tier 6 (previously tier 5)
 - Adjusted Tar and Thermite Fluid Temperature
 - Adjusted Temperature calculations for all metals
@@ -59,12 +59,12 @@
 - Moved Thermite Fuel value config entry to Gadgets Category
 - New config pack system that allows backing up of custom config setups after major updates like this one
 - Ore Generation Tweaks:
-	- Astral Silver Ore:
-		- Now generates between Y 40 and Y 140
-		- It's more common at Y Levels greater than 80
-	- Rubracium Ore: Generates more frequently near lava lakes.
-	- Alduorite Ore: Now only generates at Y levels greater or equal to 70
-	- Lemurite Ore: Now only generates at Y levels lesser or equal to 50
+  - Astral Silver Ore:
+    - Now generates between Y 40 and Y 140
+    - It's more common at Y Levels greater than 80
+  - Rubracium Ore: Generates more frequently near lava lakes.
+  - Alduorite Ore: Now only generates at Y levels greater or equal to 70
+  - Lemurite Ore: Now only generates at Y levels lesser or equal to 50
 - Fixed Hot-Blooded (Ignatius Armor Effect) damaging the player when drinking even when they weren't wearing the armor
 - Reworked Durability Calculation on Tartarite Armor to output sane values.
 - Armor tooltips now display Durability!
@@ -80,206 +80,219 @@
 - Fixed compatibility issues between Paragon Absorb (Tartarite Effect) and Broken Invasion (Shadow Iron Armor)
 - Fixed Paragon Absorb (Tartarite Effect) infusion causing crashes with certain items.
 - Made sure most effects work with Paragon Absorb (Tartarite Effect)
-	- At time of the release of 1.3.0 Arcane has an issue where attack values use mithril base values instead of
-	  tartarite.
+  - At time of the release of 1.3.0 Arcane has an issue where attack values use mithril base values instead of
+    tartarite.
 - Fixed Paragon Absorb (Tartarite Effect) not changing state texture when infused with voltage control (Electrum Tools
   Effect)
 - Updated Sublimation Chamber name color to match texture
+- Brilliance (Damascus Steel Pickaxe Effect) has been renamed to Dazzle
+- Molten Core (Ignatius Weapons Effect) has been renamed to Molten Blade
+- Greed (Midasium Weapon Effect) has been renamed to Bounty
+- Symbiosis I (Adamantine Effect) has been renamed to Inclusions
+- New Rarity tier has been added (VERY RARE), and ore rarity categories have been changed
+  accordingly [read the wiki about it](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki/Ores)
+- Fixed Fissure (Vulcanite Tool Effect) Block Breaking (now makes checks if the tool can harvest the block before doing
+  so)
+- Added Efficiency information to tool tooltips
+- Incompabile (Shadow Iron Pickaxe Effect) now only drops ores 1 tier above Shadow Iron
+- Stats tooltip now shouldn't crash anymore if you mess with tool harvest levels and efficiency setting them to extreme
+  values.
+- fixed Umbral-synthesis durability regeneration (now doesn't regenerate anymore in a lit zone).
 
 #### Balance Changes
 
 - **Adamantine**:
-	 - Increased armor durability from 36 to 96.
+  - Increased armor durability from 36 to 96.
 
 - **Alduorite**:
-	 - Increased ore hardness from 5 to 5.3.
+  - Increased ore hardness from 5 to 5.3.
 
 - **Amordrine**:
-	 - Decreased armor enchantability from 50 to 40.
-	 - Increased armor durability from 50 to 55.
-	 - Decreased tool enchantability from 50 to 40.
-	 - Decreased tool durability from 1430 to 1230.
-	 - Decreased tool efficiency from 14 to 13.5.
+  - Decreased armor enchantability from 50 to 40.
+  - Increased armor durability from 50 to 55.
+  - Decreased tool enchantability from 50 to 40.
+  - Decreased tool durability from 1430 to 1230.
+  - Decreased tool efficiency from 14 to 13.5.
 
 - **Angmallen**:
-	 - Rescaled armor damage reduction from 3/5/6/3 to 2/3/4/2.
-	 - Increased armor toughness from 0 to 0.5.
+  - Rescaled armor damage reduction from 3/5/6/3 to 2/3/4/2.
+  - Increased armor toughness from 0 to 0.5.
 
 - **Astral Silver**:
-	 - Rescaled armor damage reduction from 2/5/6/2 to 2/3/4/3.
+  - Rescaled armor damage reduction from 2/5/6/2 to 2/3/4/3.
 
 - **Atlarus**:
-	 - Increased armor durability from 35 to 55.
+  - Increased armor durability from 35 to 55.
 
 - **Black Steel**:
-	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
-	 - Increased armor durability from 11 to 28.
-	 - Added new attribute to tools, Max Health, which is equal to 1.
+  - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
+  - Increased armor durability from 11 to 28.
+  - Added new attribute to tools, Max Health, which is equal to 1.
 
 - **Brass**:
-	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
+  - Rescaled armor damage reduction from 1/2/3/2 to 2/3/3/2.
 
 - **Bronze**:
-	 - Rescaled armor damage reduction from 3/3/4/2 to 2/3/4/3.
-	 - Decreased armor toughness from 2 to 1.
+  - Rescaled armor damage reduction from 3/3/4/2 to 2/3/4/3.
+  - Decreased armor toughness from 2 to 1.
 
 - **Carmot**:
-	 - Increased armor durability from 12 to 19.
+  - Increased armor durability from 12 to 19.
 
 - **Celenegil**:
-	 - Rescaled armor damage reduction from 3/4/6/4 to 3/5/6/4.
-	 - Decreased armor toughness from 5 to 4.
+  - Rescaled armor damage reduction from 3/4/6/4 to 3/5/6/4.
+  - Decreased armor toughness from 5 to 4.
 
 - **Ceruclase**:
-	 - Updated the color hex value.
-	 - Rescaled armor damage reduction from 3/6/5/4 to 3/4/5/4.
+  - Updated the color hex value.
+  - Rescaled armor damage reduction from 3/6/5/4 to 3/4/5/4.
 
 - **Copper**:
-	 - Decreased armor toughness from 0.3 to 0.
+  - Decreased armor toughness from 0.3 to 0.
 
 - **Damascus Steel**:
-	 - Decreased armor toughness from 3 to 0.
+  - Decreased armor toughness from 3 to 0.
 
 - **Deep Iron**:
 
 - **Desichalkos**:
-	 - Decreased armor toughness from 2.6 to 2.5.
-	 - Increased tool efficiency from 7.9 to 8.1.
+  - Decreased armor toughness from 2.6 to 2.5.
+  - Increased tool efficiency from 7.9 to 8.1.
 
 - **Etherium**:
-	 - Rescaled armor damage reduction from 3/5/6/2 to 3/5/6/4.
-	 - Increased armor durability from 75 to 273.
-	 - Added new attribute to armor, Movement Speed, which is equal to 0.04.
-	 - Increased tool durability from 750 to 4756.
-	 - Increased tool attack speed from -0.4 to -0.3.
+  - Rescaled armor damage reduction from 3/5/6/2 to 3/5/6/4.
+  - Increased armor durability from 75 to 273.
+  - Added new attribute to armor, Movement Speed, which is equal to 0.04.
+  - Increased tool durability from 750 to 4756.
+  - Increased tool attack speed from -0.4 to -0.3.
 
 - **Eximite**:
-	 - Decreased armor toughness from 3.3 to 3.
+  - Decreased armor toughness from 3.3 to 3.
 
 - **Haderoth**:
-	 - Rescaled armor damage reduction from 4/5/7/4 to 4/5/6/4.
+  - Rescaled armor damage reduction from 4/5/7/4 to 4/5/6/4.
 
 - **Ignatius**:
-	 - Rescaled armor damage reduction from 2/2/2/2 to 2/3/4/2.
-	 - Increased armor durability from 4 to 5.
-	 - Decreased armor toughness from 0.2 to 0.
+  - Rescaled armor damage reduction from 2/2/2/2 to 2/3/4/2.
+  - Increased armor durability from 4 to 5.
+  - Decreased armor toughness from 0.2 to 0.
 
 - **Inolashite**:
-	 - Rescaled armor damage reduction from 3/6/7/4 to 3/6/7/5.
-	 - Increased armor durability from 31 to 61.
-	 - Increased armor toughness from 0.7 to 1.
+  - Rescaled armor damage reduction from 3/6/7/4 to 3/6/7/5.
+  - Increased armor durability from 31 to 61.
+  - Increased armor toughness from 0.7 to 1.
 
 - **Kalendrite**:
 
 - **Krik**:
-	 - Rescaled armor damage reduction from 1/2/3/2 to 2/3/4/3.
-	 - Increased armor durability from 25 to 36.
+  - Rescaled armor damage reduction from 1/2/3/2 to 2/3/4/3.
+  - Increased armor durability from 25 to 36.
 
 - **Mithril**:
-	 - Increased armor toughness from 0 to 2.
-	 - Increased tool durability from 1000 to 1111.
-	 - Decreased tool damage from 7 to 5.5.
+  - Increased armor toughness from 0 to 2.
+  - Increased tool durability from 1000 to 1111.
+  - Decreased tool damage from 7 to 5.5.
 
 - **Orichalcum**:
-	 - Rescaled armor damage reduction from 2/6/7/2 to 2/6/7/4.
-	 - Increased armor enchantability from 4 to 14.
-	 - Increased armor toughness from 1.4 to 1.5.
-	 - Decreased tool damage from 7 to 6.2.
+  - Rescaled armor damage reduction from 2/6/7/2 to 2/6/7/4.
+  - Increased armor enchantability from 4 to 14.
+  - Increased armor toughness from 1.4 to 1.5.
+  - Decreased tool damage from 7 to 6.2.
 
 - **Oureclase**:
-	 - Decreased ore hardness from 5.8 to 5.1.
-	 - Increased armor enchantability from 16 to 26.
-	 - Increased tool enchantability from 16 to 26.
+  - Decreased ore hardness from 5.8 to 5.1.
+  - Increased armor enchantability from 16 to 26.
+  - Increased tool enchantability from 16 to 26.
 
 - **Platinum**:
-	 - Increased tool damage from 3 to 3.2.
-	 - Decreased tool efficiency from 13 to 9.9.
+  - Increased tool damage from 3 to 3.2.
+  - Decreased tool efficiency from 13 to 9.9.
 
 - **Prometheum**:
-	 - Rescaled armor damage reduction from 1/2/2/1 to 1/2/2/2.
-	 - Increased armor toughness from 0.1 to 0.5.
-	 - Increased tool efficiency from 4.2 to 4.7.
+  - Rescaled armor damage reduction from 1/2/2/1 to 1/2/2/2.
+  - Increased armor toughness from 0.1 to 0.5.
+  - Increased tool efficiency from 4.2 to 4.7.
 
 - **Quicksilver**:
-	 - Updated the color hex value.
-	 - Rescaled armor damage reduction from 3/5/4/5 to 5/5/4/4.
-	 - Increased armor movement speed from 0.04 to 0.08.
-	 - Decreased tool durability from 652 to 452.
-	 - Decreased tool efficiency from 14 to 10.
-	 - Increased tool attack speed from 1.3 to 1.4.
-	 - Decreased tool reach distance from 2 to 1.
+  - Updated the color hex value.
+  - Rescaled armor damage reduction from 3/5/4/5 to 5/5/4/4.
+  - Increased armor movement speed from 0.04 to 0.08.
+  - Decreased tool durability from 652 to 452.
+  - Decreased tool efficiency from 14 to 10.
+  - Increased tool attack speed from 1.3 to 1.4.
+  - Decreased tool reach distance from 2 to 1.
 
 - **Sanguinite**:
-	 - Updated the color hex value.
+  - Updated the color hex value.
 
 - **Shadow Iron**:
-	 - Decreased armor durability from 32 to 17.
-	 - Decreased armor toughness from 2 to 0.
-	 - Decreased tool damage from 6.8 to 5.9.
-	 - Increased tool efficiency from 6 to 6.4.
-	 - Decreased tool attack speed from -0.2 to -0.3.
+  - Decreased armor durability from 32 to 17.
+  - Decreased armor toughness from 2 to 0.
+  - Decreased tool damage from 6.8 to 5.9.
+  - Increased tool efficiency from 6 to 6.4.
+  - Decreased tool attack speed from -0.2 to -0.3.
 
 - **Shadow Steel**:
-	 - Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
-	 - Decreased armor durability from 40 to 21.
-	 - Decreased tool durability from 400 to 214.
-	 - Decreased tool damage from 7 to 6.8.
-	 - Increased tool efficiency from 6 to 9.
+  - Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
+  - Decreased armor durability from 40 to 21.
+  - Decreased tool durability from 400 to 214.
+  - Decreased tool damage from 7 to 6.8.
+  - Increased tool efficiency from 6 to 9.
 
 - **Tartarite**:
-	 - Updated the color hex value.
+  - Updated the color hex value.
 
 - **Vulcanite**:
-	 - Updated the color hex value.
-	 - Increased ore hardness from 6.4 to 6.5.
-	 - Rescaled armor damage reduction from 4/6/7/4 to 3/6/6/3.
-	 - Decreased armor enchantability from 20 to 19.
-	 - Decreased armor durability from 150 to 111.
-	 - Decreased tool enchantability from 20 to 19.
-	 - Decreased tool durability from 1500 to 712.
-	 - Decreased tool damage from 7 to 3.8.
-	 - Decreased tool efficiency from 10 to 8.8.
+  - Updated the color hex value.
+  - Increased ore hardness from 6.4 to 6.5.
+  - Rescaled armor damage reduction from 4/6/7/4 to 3/6/6/3.
+  - Decreased armor enchantability from 20 to 19.
+  - Decreased armor durability from 150 to 111.
+  - Decreased tool enchantability from 20 to 19.
+  - Decreased tool durability from 1500 to 712.
+  - Decreased tool damage from 7 to 3.8.
+  - Decreased tool efficiency from 10 to 8.8.
 
 - **Vyroxeres**:
-	 - Updated the color hex value.
-	 - Decreased tool durability from 300 to 287.
-	 - Decreased tool damage from 7 to 6.2.
-	 - Increased tool efficiency from 7 to 7.2.
+  - Updated the color hex value.
+  - Decreased tool durability from 300 to 287.
+  - Decreased tool damage from 7 to 6.2.
+  - Increased tool efficiency from 7 to 7.2.
 
 
 ## 1.3.0-beta.2
 
 - **Fissure (Vulcanite Tools)**
-	- Fixed Block Breaking (Previously created ghost
-	  blocks) ([#341](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/341))
-	- Added Sound Event when the extra block is broken.
+  - Fixed Block Breaking (Previously created ghost
+    blocks) ([#341](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/341))
+  - Added Sound Event when the extra block is broken.
 - **Voltage Control (Electrum Tools)**
-	- Fixed Harvest Level Boost being reset even if the tool mode is "active"
+  - Fixed Harvest Level Boost being reset even if the tool mode is "active"
 - **Harvest (Prometheum Hoe)**
-	- The Hoe is now damaged when the effect occurs
+  - The Hoe is now damaged when the effect occurs
 - **Freyr (Prometheum Armor)**
-	- Fixed incorrect words in the description of the effect
+  - Fixed incorrect words in the description of the effect
 - **Flawless (Platinum Items)**
-	- Fixed Flawless turning armor and other items unbreakable
+  - Fixed Flawless turning armor and other items unbreakable
 - **Hot-Blooded (Ignatius Armor)**
-	- Nerfed Healing when swimming in lava
-	- Added Instant Damage after drinking anything.
+  - Nerfed Healing when swimming in lava
+  - Added Instant Damage after drinking anything.
 - **Acceleration (Quicksilver Armor)**
-	- Improved overall UX
-	- Removed Damage when running over lava blocks
+  - Improved overall UX
+  - Removed Damage when running over lava blocks
 - **Paragon Absorb (Tartarite Items)**
-	- Items durability is now retained instead of reset to max durability when infusing tartarite with another metal
+  - Items durability is now retained instead of reset to max durability when infusing tartarite with another metal
 - **Royal Blood (Damascus Steel Armor)**
-	- Helper Knight damage has been balanced
+  - Helper Knight damage has been balanced
 - **Magic Aspect (Mithril Weapons)**
-	- Fixed wrong damage calculation
+  - Fixed wrong damage calculation
 - Integration with famous mods like Thermal Expansion and Chisel has now been implemented via IMC (feature from 1.2.12)
 - Sublimation Chamber now has a light level of 8 when active.
 - Updated Russian translations to contain new small translation and effect names and
   descriptions ([#337](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/337))
 - New Feature! :sparkles: **Advancements**
-	- 6 advancements: one for each mining tier
-	- 1 advancement for each metal in the mod with details on the properties and optionally how to find/use the metal
+  - 6 advancements: one for each mining tier
+  - 1 advancement for each metal in the mod with details on the properties and optionally how to find/use the metal
 - Improve performance when checking if effects can be applied (lighter check)
 - Sublimation Chamber now shows the active effect and Elapsed Time in the tooltip when you pick it up as an item.
 - Fixed Log Spam on certain effects that didn't rely on config options to be disabled
@@ -292,78 +305,78 @@
 - **Lutetium has been moved to the Nether**
 - Some Effects have been renamed
 - New Effects:
-	- **Harmony _(Shadow Steel Weapons)_**: This weapon hits faster in the dark and stronger in the light.
-	- **Explosion _(Vulcanite Armor)_**: Receiving damage causes explosions that damage all the entities around the
-	  player as well as setting them on fire.
+  - **Harmony _(Shadow Steel Weapons)_**: This weapon hits faster in the dark and stronger in the light.
+  - **Explosion _(Vulcanite Armor)_**: Receiving damage causes explosions that damage all the entities around the player
+    as well as setting them on fire.
 
 #### Balance Changes
 
 - **Alduorite**:
-	- Increased ore hardness from 5 to 5.3.
-	- Increased ore harvest level from 5 to 6.
+  - Increased ore hardness from 5 to 5.3.
+  - Increased ore harvest level from 5 to 6.
 - **Astral Silver**:
-	- Increased ore hardness from 3.7 to 4.1.
+  - Increased ore hardness from 3.7 to 4.1.
 - **Carmot**:
-	- Increased ore hardness from 4.8 to 5.1.
+  - Increased ore hardness from 4.8 to 5.1.
 - **Ceruclase**:
-	- Increased ore hardness from 3.6 to 4.1.
+  - Increased ore hardness from 3.6 to 4.1.
 - **Copper**:
-	- Increased tool durability from 95 to 120.
-	- Decreased tool efficiency from 6.9 to 6.1.
+  - Increased tool durability from 95 to 120.
+  - Decreased tool efficiency from 6.9 to 6.1.
 - **Damascus Steel**:
-	- Increased armor enchantability from 18 to 27.
-	- Decreased armor durability from 23 to 16.
-	- Increased tool enchantability from 18 to 27.
-	- Decreased tool durability from 932 to 395.
-	- Increased tool damage from 2 to 2.5.
+  - Increased armor enchantability from 18 to 27.
+  - Decreased armor durability from 23 to 16.
+  - Increased tool enchantability from 18 to 27.
+  - Decreased tool durability from 932 to 395.
+  - Increased tool damage from 2 to 2.5.
 - **Ignatius**:
-	- Decreased ore hardness from 3.2 to 3.1.
-	- Decreased armor durability from 5 to 4.
-	- Decreased tool durability from 89 to 71.
+  - Decreased ore hardness from 3.2 to 3.1.
+  - Decreased armor durability from 5 to 4.
+  - Decreased tool durability from 89 to 71.
 - **Kalendrite**:
-	- Increased ore hardness from 4.1 to 4.7.
+  - Increased ore hardness from 4.1 to 4.7.
 - **Lutetium**:
-	- Decreased ore hardness from 5.2 to 5.1.
-	- Increased ore harvest level from 5 to 6.
+  - Decreased ore hardness from 5.2 to 5.1.
+  - Increased ore harvest level from 5 to 6.
 - **Midasium**:
-	- Increased ore hardness from 3.9 to 4.2.
+  - Increased ore hardness from 3.9 to 4.2.
 - **Mithril**:
-	- Increased ore hardness from 5.5 to 6.8.
+  - Increased ore hardness from 5.5 to 6.8.
 - **Orichalcum**:
-	- Increased ore hardness from 5 to 6.1.
+  - Increased ore hardness from 5 to 6.1.
 - **Oureclase**:
-	- Increased ore hardness from 5.5 to 5.8.
+  - Increased ore hardness from 5.5 to 5.8.
 - **Platinum**:
-	- Increased ore hardness from 3.4 to 4.4.
+  - Increased ore hardness from 3.4 to 4.4.
 - **Quicksilver**:
-	- Rescaled armor damage reduction from 4/7/5/4 to 3/5/4/5.
-	- Decreased armor enchantability from 50 to 24.
-	- Decreased armor durability from 165 to 50.
-	- Increased tool enchantability from 20 to 24.
-	- Decreased tool durability from 1100 to 652.
+  - Rescaled armor damage reduction from 4/7/5/4 to 3/5/4/5.
+  - Decreased armor enchantability from 50 to 24.
+  - Decreased armor durability from 165 to 50.
+  - Increased tool enchantability from 20 to 24.
+  - Decreased tool durability from 1100 to 652.
 - **Rubracium**:
-	- Updated the color hex value.
+  - Updated the color hex value.
 - **Sanguinite**:
-	- Updated the color hex value.
-	- Increased ore hardness from 5.5 to 6.6.
-	- Decreased tool durability from 1750 to 666.
+  - Updated the color hex value.
+  - Increased ore hardness from 5.5 to 6.6.
+  - Decreased tool durability from 1750 to 666.
 - **Steel**:
-	- Decreased armor enchantability from 18 to 14.
-	- Decreased armor durability from 40 to 21.
-	- Decreased armor toughness from 4 to 3.
-	- Decreased tool enchantability from 18 to 14.
-	- Decreased tool durability from 750 to 421.
+  - Decreased armor enchantability from 18 to 14.
+  - Decreased armor durability from 40 to 21.
+  - Decreased armor toughness from 4 to 3.
+  - Decreased tool enchantability from 18 to 14.
+  - Decreased tool durability from 750 to 421.
 - **Tartarite**:
-	- Decreased armor enchantability from 20 to 14.
-	- Decreased armor durability from 300 to 298.
-	- Added new attribute to armor, Max Health, which is equal to 10.
-	- Decreased tool enchantability from 25 to 14.
-	- Increased tool durability from 3000 to 3782.
-	- Decreased tool efficiency from 14 to 12.
+  - Decreased armor enchantability from 20 to 14.
+  - Decreased armor durability from 300 to 298.
+  - Added new attribute to armor, Max Health, which is equal to 10.
+  - Decreased tool enchantability from 25 to 14.
+  - Increased tool durability from 3000 to 3782.
+  - Decreased tool efficiency from 14 to 12.
 - **Vulcanite**:
-	- Decreased ore hardness from 10 to 6.4.
+  - Decreased ore hardness from 10 to 6.4.
 - **Vyroxeres**:
-	- Increased ore hardness from 4.3 to 4.7.
+  - Increased ore hardness from 4.3 to 4.7.
 
 ## 1.3.0-beta.1
 
@@ -376,372 +389,372 @@
 #### Balance Changes:
 
 - **Adamantine**:
-	- Updated the color hex value.
-	- Increased ore hardness from 5 to 11.5.
-	- Added new attribute to armor, Max Health, which is equal to 20.
-	- Increased tool durability from 1550 to 2943.
+  - Updated the color hex value.
+  - Increased ore hardness from 5 to 11.5.
+  - Added new attribute to armor, Max Health, which is equal to 20.
+  - Increased tool durability from 1550 to 2943.
 - **Alduorite**:
-	- Increased ore hardness from 3 to 5.
-	- Increased ore harvest level from 3 to 5.
+  - Increased ore hardness from 3 to 5.
+  - Increased ore harvest level from 3 to 5.
 - **Amordrine**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Increased tool durability from 500 to 1430.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Increased tool durability from 500 to 1430.
 - **Angmallen**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Increased armor enchantability from 18 to 32.
-	- Decreased armor durability from 30 to 8.
-	- Increased tool enchantability from 30 to 32.
-	- Decreased tool durability from 300 to 153.
-	- Decreased tool damage from 3 to 2.7.
-	- Increased tool efficiency from 7 to 7.2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Increased armor enchantability from 18 to 32.
+  - Decreased armor durability from 30 to 8.
+  - Increased tool enchantability from 30 to 32.
+  - Decreased tool durability from 300 to 153.
+  - Decreased tool damage from 3 to 2.7.
+  - Increased tool efficiency from 7 to 7.2.
 - **Astral Silver**:
-	- Increased ore hardness from 3 to 3.7.
-	- Decreased ore harvest level from 4 to 3.
-	- Increased armor enchantability from 9 to 36.
-	- Increased tool enchantability from 30 to 36.
-	- Decreased tool durability from 350 to 323.
-	- Increased tool damage from 2 to 2.8.
-	- Decreased tool efficiency from 12 to 11.2.
+  - Increased ore hardness from 3 to 3.7.
+  - Decreased ore harvest level from 4 to 3.
+  - Increased armor enchantability from 9 to 36.
+  - Increased tool enchantability from 30 to 36.
+  - Decreased tool durability from 350 to 323.
+  - Increased tool damage from 2 to 2.8.
+  - Decreased tool efficiency from 12 to 11.2.
 - **Atlarus**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 9.3.
-	- Rescaled armor damage reduction from 4/3/3/4 to 4/4/4/4.
-	- Decreased armor toughness from 3.5 to 3.3.
-	- Added new attribute to armor, Knockback Resistance, which is equal to -0.4.
-	- Added new attribute to armor, Movement Speed, which is equal to 0.01.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 9.3.
+  - Rescaled armor damage reduction from 4/3/3/4 to 4/4/4/4.
+  - Decreased armor toughness from 3.5 to 3.3.
+  - Added new attribute to armor, Knockback Resistance, which is equal to -0.4.
+  - Added new attribute to armor, Movement Speed, which is equal to 0.01.
 - **Black Steel**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 3/5/6/3 to 1/2/3/2.
-	- Decreased armor enchantability from 17 to 2.
-	- Decreased armor durability from 50 to 11.
-	- Increased armor toughness from 4 to 6.5.
-	- Decreased tool enchantability from 17 to 11.
-	- Increased tool durability from 500 to 976.
-	- Increased tool damage from 3 to 3.9.
-	- Decreased tool efficiency from 8 to 6.6.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.6.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 3/5/6/3 to 1/2/3/2.
+  - Decreased armor enchantability from 17 to 2.
+  - Decreased armor durability from 50 to 11.
+  - Increased armor toughness from 4 to 6.5.
+  - Decreased tool enchantability from 17 to 11.
+  - Increased tool durability from 500 to 976.
+  - Increased tool damage from 3 to 3.9.
+  - Decreased tool efficiency from 8 to 6.6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.6.
 - **Brass**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Decreased armor durability from 15 to 14.
-	- Decreased armor toughness from 4 to 3.
-	- Added new attribute to armor, Knockback Resistance, which is equal to 0.2.
-	- Added new attribute to armor, Movement Speed, which is equal to -0.01.
-	- Decreased tool enchantability from 18 to 8.
-	- Increased tool durability from 15 to 895.
-	- Increased tool damage from 2 to 3.2.
-	- Decreased tool efficiency from 10 to 6.8.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.5.
-	- Added new attribute to tools, Reach Distance, which is equal to -1.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Decreased armor durability from 15 to 14.
+  - Decreased armor toughness from 4 to 3.
+  - Added new attribute to armor, Knockback Resistance, which is equal to 0.2.
+  - Added new attribute to armor, Movement Speed, which is equal to -0.01.
+  - Decreased tool enchantability from 18 to 8.
+  - Increased tool durability from 15 to 895.
+  - Increased tool damage from 2 to 3.2.
+  - Decreased tool efficiency from 10 to 6.8.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.5.
+  - Added new attribute to tools, Reach Distance, which is equal to -1.
 - **Bronze**:
-	- Increased ore hardness from 3 to 10.
-	- Increased tool enchantability from 9 to 16.
-	- Decreased tool durability from 250 to 224.
-	- Increased tool damage from 2 to 2.2.
-	- Increased tool efficiency from 6 to 7.
+  - Increased ore hardness from 3 to 10.
+  - Increased tool enchantability from 9 to 16.
+  - Decreased tool durability from 250 to 224.
+  - Increased tool damage from 2 to 2.2.
+  - Increased tool efficiency from 6 to 7.
 - **Carmot**:
-	- Increased ore hardness from 3 to 4.8.
-	- Increased ore harvest level from 4 to 5.
-	- Rescaled armor damage reduction from 2/4/5/2 to 3/4/5/3.
-	- Decreased armor durability from 28 to 12.
-	- Increased armor toughness from 0 to 1.
-	- Decreased tool enchantability from 40 to 7.
-	- Decreased tool durability from 500 to 414.
-	- Decreased tool damage from 2 to 1.4.
-	- Decreased tool efficiency from 12 to 4.9.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.3.
-	- Added new attribute to tools, Reach Distance, which is equal to -1.
+  - Increased ore hardness from 3 to 4.8.
+  - Increased ore harvest level from 4 to 5.
+  - Rescaled armor damage reduction from 2/4/5/2 to 3/4/5/3.
+  - Decreased armor durability from 28 to 12.
+  - Increased armor toughness from 0 to 1.
+  - Decreased tool enchantability from 40 to 7.
+  - Decreased tool durability from 500 to 414.
+  - Decreased tool damage from 2 to 1.4.
+  - Decreased tool efficiency from 12 to 4.9.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.3.
+  - Added new attribute to tools, Reach Distance, which is equal to -1.
 - **Celenegil**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 4/6/7/5 to 3/4/6/4.
-	- Decreased armor enchantability from 50 to 23.
-	- Decreased armor durability from 160 to 42.
-	- Increased armor toughness from 0 to 5.
-	- Decreased tool enchantability from 50 to 23.
-	- Decreased tool durability from 1600 to 521.
-	- Increased tool damage from 4 to 4.8.
-	- Decreased tool efficiency from 14 to 8.2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 4/6/7/5 to 3/4/6/4.
+  - Decreased armor enchantability from 50 to 23.
+  - Decreased armor durability from 160 to 42.
+  - Increased armor toughness from 0 to 5.
+  - Decreased tool enchantability from 50 to 23.
+  - Decreased tool durability from 1600 to 521.
+  - Increased tool damage from 4 to 4.8.
+  - Decreased tool efficiency from 14 to 8.2.
 - **Ceruclase**:
-	- Increased ore hardness from 3 to 3.6.
-	- Increased ore harvest level from 3 to 4.
-	- Decreased tool enchantability from 18 to 16.
-	- Decreased tool durability from 500 to 143.
-	- Decreased tool damage from 4 to 3.5.
-	- Increased tool efficiency from 7 to 8.6.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.1.
+  - Increased ore hardness from 3 to 3.6.
+  - Increased ore harvest level from 3 to 4.
+  - Decreased tool enchantability from 18 to 16.
+  - Decreased tool durability from 500 to 143.
+  - Decreased tool damage from 4 to 3.5.
+  - Increased tool efficiency from 7 to 8.6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.1.
 - **Copper**:
-	- Decreased ore hardness from 3 to 2.2.
-	- Rescaled armor damage reduction from 2/3/2/1 to 1/2/3/2.
-	- Decreased armor enchantability from 50 to 25.
-	- Increased armor toughness from 0 to 0.3.
-	- Increased tool enchantability from 5 to 25.
-	- Decreased tool durability from 180 to 95.
-	- Decreased tool damage from 2 to 1.2.
-	- Increased tool efficiency from 5 to 6.9.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.4.
+  - Decreased ore hardness from 3 to 2.2.
+  - Rescaled armor damage reduction from 2/3/2/1 to 1/2/3/2.
+  - Decreased armor enchantability from 50 to 25.
+  - Increased armor toughness from 0 to 0.3.
+  - Increased tool enchantability from 5 to 25.
+  - Decreased tool durability from 180 to 95.
+  - Decreased tool damage from 2 to 1.2.
+  - Increased tool efficiency from 5 to 6.9.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.4.
 - **Damascus Steel**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Decreased armor durability from 50 to 23.
-	- Increased tool durability from 500 to 932.
-	- Decreased tool damage from 3 to 2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Decreased armor durability from 50 to 23.
+  - Increased tool durability from 500 to 932.
+  - Decreased tool damage from 3 to 2.
 - **Deep Iron**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 3.1.
-	- Decreased ore harvest level from 2 to 1.
-	- Rescaled armor damage reduction from 2/4/5/2 to 1/3/4/2.
-	- Increased armor enchantability from 1 to 20.
-	- Decreased armor durability from 38 to 15.
-	- Increased armor toughness from 0 to 1.
-	- Increased tool enchantability from 14 to 19.
-	- Decreased tool durability from 250 to 230.
-	- Decreased tool damage from 3 to 1.7.
-	- Increased tool efficiency from 6 to 6.2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 3.1.
+  - Decreased ore harvest level from 2 to 1.
+  - Rescaled armor damage reduction from 2/4/5/2 to 1/3/4/2.
+  - Increased armor enchantability from 1 to 20.
+  - Decreased armor durability from 38 to 15.
+  - Increased armor toughness from 0 to 1.
+  - Increased tool enchantability from 14 to 19.
+  - Decreased tool durability from 250 to 230.
+  - Decreased tool damage from 3 to 1.7.
+  - Increased tool efficiency from 6 to 6.2.
 - **Desichalkos**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 4/5/7/4 to 3/4/5/4.
-	- Decreased armor enchantability from 30 to 21.
-	- Decreased armor durability from 180 to 112.
-	- Decreased armor toughness from 3 to 2.6.
-	- Decreased tool enchantability from 30 to 21.
-	- Increased tool durability from 1800 to 2232.
-	- Decreased tool damage from 5 to 3.7.
-	- Decreased tool efficiency from 8 to 7.9.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.2.
-	- Added new attribute to tools, Reach Distance, which is equal to 3.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 4/5/7/4 to 3/4/5/4.
+  - Decreased armor enchantability from 30 to 21.
+  - Decreased armor durability from 180 to 112.
+  - Decreased armor toughness from 3 to 2.6.
+  - Decreased tool enchantability from 30 to 21.
+  - Increased tool durability from 1800 to 2232.
+  - Decreased tool damage from 5 to 3.7.
+  - Decreased tool efficiency from 8 to 7.9.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.2.
+  - Added new attribute to tools, Reach Distance, which is equal to 3.
 - **Electrum**:
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 3/5/6/2 to 2/4/5/3.
-	- Decreased armor enchantability from 30 to 19.
-	- Decreased armor durability from 51 to 32.
-	- Decreased armor toughness from 3 to 1.
-	- Decreased tool enchantability from 30 to 17.
-	- Increased tool durability from 70 to 366.
-	- Increased tool damage from 2 to 2.7.
-	- Decreased tool efficiency from 14 to 7.9.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.3.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 3/5/6/2 to 2/4/5/3.
+  - Decreased armor enchantability from 30 to 19.
+  - Decreased armor durability from 51 to 32.
+  - Decreased armor toughness from 3 to 1.
+  - Decreased tool enchantability from 30 to 17.
+  - Increased tool durability from 70 to 366.
+  - Increased tool damage from 2 to 2.7.
+  - Decreased tool efficiency from 14 to 7.9.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.3.
 - **Etherium**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Decreased armor enchantability from 45 to 30.
-	- Decreased tool enchantability from 35 to 30.
-	- Decreased tool damage from 8 to 6.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.4.
-	- Added new attribute to tools, Reach Distance, which is equal to 1.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Decreased armor enchantability from 45 to 30.
+  - Decreased tool enchantability from 35 to 30.
+  - Decreased tool damage from 8 to 6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
+  - Added new attribute to tools, Reach Distance, which is equal to 1.
 - **Eximite**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 4.7.
-	- Increased ore harvest level from 3 to 4.
-	- Rescaled armor damage reduction from 4/5/6/4 to 3/4/4/3.
-	- Increased armor enchantability from 25 to 28.
-	- Decreased armor durability from 100 to 21.
-	- Decreased armor toughness from 5 to 3.3.
-	- Increased tool enchantability from 25 to 28.
-	- Decreased tool durability from 1000 to 789.
-	- Increased tool damage from 4 to 4.9.
-	- Decreased tool efficiency from 8 to 7.8.
-	- Added new attribute to tools, Reach Distance, which is equal to 1.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 4.7.
+  - Increased ore harvest level from 3 to 4.
+  - Rescaled armor damage reduction from 4/5/6/4 to 3/4/4/3.
+  - Increased armor enchantability from 25 to 28.
+  - Decreased armor durability from 100 to 21.
+  - Decreased armor toughness from 5 to 3.3.
+  - Increased tool enchantability from 25 to 28.
+  - Decreased tool durability from 1000 to 789.
+  - Increased tool damage from 4 to 4.9.
+  - Decreased tool efficiency from 8 to 7.8.
+  - Added new attribute to tools, Reach Distance, which is equal to 1.
 - **Haderoth**:
-	- Increased ore hardness from 3 to 10.
-	- Decreased armor durability from 125 to 5.
-	- Decreased tool durability from 1250 to 80.
+  - Increased ore hardness from 3 to 10.
+  - Decreased armor durability from 125 to 5.
+  - Decreased tool durability from 1250 to 80.
 - **Hepatizon**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 3/3/4/2 to 3/4/4/3.
-	- Increased armor enchantability from 22 to 29.
-	- Decreased armor durability from 57 to 28.
-	- Decreased armor toughness from 2 to 1.
-	- Increased tool enchantability from 22 to 29.
-	- Increased tool durability from 300 to 761.
-	- Increased tool damage from 2 to 4.2.
-	- Decreased tool efficiency from 8 to 6.6.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 3/3/4/2 to 3/4/4/3.
+  - Increased armor enchantability from 22 to 29.
+  - Decreased armor durability from 57 to 28.
+  - Decreased armor toughness from 2 to 1.
+  - Increased tool enchantability from 22 to 29.
+  - Increased tool durability from 300 to 761.
+  - Increased tool damage from 2 to 4.2.
+  - Decreased tool efficiency from 8 to 6.6.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.2.
 - **Ignatius**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 3.2.
-	- Increased ore harvest level from 1 to 3.
-	- Rescaled armor damage reduction from 2/5/6/2 to 2/2/2/2.
-	- Decreased armor enchantability from 15 to 11.
-	- Decreased armor durability from 24 to 5.
-	- Increased armor toughness from 0 to 0.2.
-	- Decreased tool enchantability from 15 to 11.
-	- Decreased tool durability from 200 to 89.
-	- Decreased tool damage from 3 to 2.1.
-	- Decreased tool efficiency from 4 to 3.6.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.1.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 3.2.
+  - Increased ore harvest level from 1 to 3.
+  - Rescaled armor damage reduction from 2/5/6/2 to 2/2/2/2.
+  - Decreased armor enchantability from 15 to 11.
+  - Decreased armor durability from 24 to 5.
+  - Increased armor toughness from 0 to 0.2.
+  - Decreased tool enchantability from 15 to 11.
+  - Decreased tool durability from 200 to 89.
+  - Decreased tool damage from 3 to 2.1.
+  - Decreased tool efficiency from 4 to 3.6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.1.
 - **Infuscolium**:
-	- Increased ore hardness from 3 to 3.2.
+  - Increased ore hardness from 3 to 3.2.
 - **Inolashite**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 3/5/7/4 to 3/6/7/4.
-	- Decreased armor enchantability from 25 to 22.
-	- Decreased armor durability from 70 to 31.
-	- Decreased armor toughness from 4 to 0.7.
-	- Decreased tool enchantability from 25 to 22.
-	- Increased tool durability from 900 to 1028.
-	- Increased tool damage from 4 to 6.
-	- Decreased tool efficiency from 8 to 7.2.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.4.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 3/5/7/4 to 3/6/7/4.
+  - Decreased armor enchantability from 25 to 22.
+  - Decreased armor durability from 70 to 31.
+  - Decreased armor toughness from 4 to 0.7.
+  - Decreased tool enchantability from 25 to 22.
+  - Increased tool durability from 900 to 1028.
+  - Increased tool damage from 4 to 6.
+  - Decreased tool efficiency from 8 to 7.2.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
 - **Kalendrite**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 4.1.
-	- Rescaled armor damage reduction from 4/5/6/4 to 1/2/2/1.
-	- Decreased armor enchantability from 20 to 16.
-	- Decreased armor durability from 40 to 15.
-	- Added new attribute to armor, Max Health, which is equal to 8.
-	- Decreased tool enchantability from 20 to 19.
-	- Decreased tool durability from 1000 to 212.
-	- Increased tool efficiency from 8 to 8.1.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 4.1.
+  - Rescaled armor damage reduction from 4/5/6/4 to 1/2/2/1.
+  - Decreased armor enchantability from 20 to 16.
+  - Decreased armor durability from 40 to 15.
+  - Added new attribute to armor, Max Health, which is equal to 8.
+  - Decreased tool enchantability from 20 to 19.
+  - Decreased tool durability from 1000 to 212.
+  - Increased tool efficiency from 8 to 8.1.
 - **Krik**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Rescaled armor damage reduction from 2/4/3/1 to 1/2/3/2.
-	- Decreased armor durability from 45 to 25.
-	- Decreased armor toughness from 9 to 2.
-	- Increased tool durability from 350 to 1652.
-	- Decreased tool damage from 7 to 4.1.
-	- Increased tool efficiency from 5 to 8.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.3.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Rescaled armor damage reduction from 2/4/3/1 to 1/2/3/2.
+  - Decreased armor durability from 45 to 25.
+  - Decreased armor toughness from 9 to 2.
+  - Increased tool durability from 350 to 1652.
+  - Decreased tool damage from 7 to 4.1.
+  - Increased tool efficiency from 5 to 8.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.3.
 - **Lemurite**:
-	- Increased ore hardness from 3 to 5.5.
-	- Increased ore harvest level from 2 to 5.
+  - Increased ore hardness from 3 to 5.5.
+  - Increased ore harvest level from 2 to 5.
 - **Lutetium**:
-	- Increased ore hardness from 3 to 5.2.
-	- Increased ore harvest level from 4 to 5.
+  - Increased ore hardness from 3 to 5.2.
+  - Increased ore harvest level from 4 to 5.
 - **Manganese**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 3.2.
-	- Decreased ore harvest level from 3 to 2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 3.2.
+  - Decreased ore harvest level from 3 to 2.
 - **Meutoite**:
-	- Increased ore hardness from 3 to 3.6.
-	- Increased ore harvest level from 4 to 5.
+  - Increased ore hardness from 3 to 3.6.
+  - Increased ore harvest level from 4 to 5.
 - **Midasium**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 3.9.
-	- Increased ore harvest level from 3 to 4.
-	- Rescaled armor damage reduction from 3/3/5/2 to 4/4/5/4.
-	- Decreased armor enchantability from 35 to 28.
-	- Decreased armor durability from 16 to 14.
-	- Decreased armor toughness from 4 to 2.
-	- Decreased tool enchantability from 35 to 28.
-	- Decreased tool durability from 100 to 89.
-	- Decreased tool damage from 7 to 2.6.
-	- Decreased tool efficiency from 10 to 7.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.3.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 3.9.
+  - Increased ore harvest level from 3 to 4.
+  - Rescaled armor damage reduction from 3/3/5/2 to 4/4/5/4.
+  - Decreased armor enchantability from 35 to 28.
+  - Decreased armor durability from 16 to 14.
+  - Decreased armor toughness from 4 to 2.
+  - Decreased tool enchantability from 35 to 28.
+  - Decreased tool durability from 100 to 89.
+  - Decreased tool damage from 7 to 2.6.
+  - Decreased tool efficiency from 10 to 7.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.3.
 - **Mithril**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 5.5.
-	- Increased ore harvest level from 4 to 5.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 5.5.
+  - Increased ore harvest level from 4 to 5.
 - **Orichalcum**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 5.
-	- Decreased ore harvest level from 5 to 4.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 5.
+  - Decreased ore harvest level from 5 to 4.
 - **Osmium**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 4.
-	- Rescaled armor damage reduction from 4/5/5/4 to 5/6/6/5.
-	- Decreased armor enchantability from 17 to 8.
-	- Decreased armor durability from 100 to 5.
-	- Increased armor toughness from 3 to 3.5.
-	- Added new attribute to armor, Knockback Resistance, which is equal to 1.
-	- Added new attribute to armor, Movement Speed, which is equal to -0.01.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 4.
+  - Rescaled armor damage reduction from 4/5/5/4 to 5/6/6/5.
+  - Decreased armor enchantability from 17 to 8.
+  - Decreased armor durability from 100 to 5.
+  - Increased armor toughness from 3 to 3.5.
+  - Added new attribute to armor, Knockback Resistance, which is equal to 1.
+  - Added new attribute to armor, Movement Speed, which is equal to -0.01.
 - **Oureclase**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 5.5.
-	- Rescaled armor damage reduction from 3/6/5/4 to 4/6/5/3.
-	- Increased armor enchantability from 2 to 16.
-	- Increased armor durability from 28 to 36.
-	- Increased armor toughness from 1.5 to 2.5.
-	- Added new attribute to armor, Knockback Resistance, which is equal to 0.88.
-	- Decreased tool enchantability from 18 to 16.
-	- Decreased tool durability from 750 to 198.
-	- Decreased tool damage from 6 to 4.1.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.4.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 5.5.
+  - Rescaled armor damage reduction from 3/6/5/4 to 4/6/5/3.
+  - Increased armor enchantability from 2 to 16.
+  - Increased armor durability from 28 to 36.
+  - Increased armor toughness from 1.5 to 2.5.
+  - Added new attribute to armor, Knockback Resistance, which is equal to 0.88.
+  - Decreased tool enchantability from 18 to 16.
+  - Decreased tool durability from 750 to 198.
+  - Decreased tool damage from 6 to 4.1.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.4.
 - **Platinum**:
-	- Increased ore hardness from 3 to 3.4.
-	- Increased ore harvest level from 2 to 4.
-	- Rescaled armor damage reduction from 3/5/6/3 to 3/4/4/3.
-	- Increased armor enchantability from 12 to 30.
-	- Increased armor durability from 17 to 20.
-	- Decreased armor toughness from 0.5 to 0.
-	- Added new attribute to armor, Max Health, which is equal to 8.
-	- Decreased tool enchantability from 50 to 30.
-	- Increased tool durability from 250 to 998.
-	- Decreased tool damage from 5 to 3.
-	- Decreased tool efficiency from 16 to 13.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.2.
+  - Increased ore hardness from 3 to 3.4.
+  - Increased ore harvest level from 2 to 4.
+  - Rescaled armor damage reduction from 3/5/6/3 to 3/4/4/3.
+  - Increased armor enchantability from 12 to 30.
+  - Increased armor durability from 17 to 20.
+  - Decreased armor toughness from 0.5 to 0.
+  - Added new attribute to armor, Max Health, which is equal to 8.
+  - Decreased tool enchantability from 50 to 30.
+  - Increased tool durability from 250 to 998.
+  - Decreased tool damage from 5 to 3.
+  - Decreased tool efficiency from 16 to 13.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.2.
 - **Prometheum**:
-	- Updated the color hex value.
-	- Decreased ore hardness from 3 to 2.9.
-	- Rescaled armor damage reduction from 1/2/3/2 to 1/2/2/1.
-	- Increased armor enchantability from 11 to 14.
-	- Decreased armor durability from 30 to 15.
-	- Decreased tool enchantability from 16 to 14.
-	- Decreased tool durability from 200 to 121.
-	- Decreased tool damage from 5 to 2.4.
-	- Increased tool efficiency from 4 to 4.2.
+  - Updated the color hex value.
+  - Decreased ore hardness from 3 to 2.9.
+  - Rescaled armor damage reduction from 1/2/3/2 to 1/2/2/1.
+  - Increased armor enchantability from 11 to 14.
+  - Decreased armor durability from 30 to 15.
+  - Decreased tool enchantability from 16 to 14.
+  - Decreased tool durability from 200 to 121.
+  - Decreased tool damage from 5 to 2.4.
+  - Increased tool efficiency from 4 to 4.2.
 - **Quicksilver**:
-	- Increased ore hardness from 3 to 10.
-	- Added new attribute to armor, Movement Speed, which is equal to 0.04.
-	- Decreased tool damage from 7 to 2.5.
-	- Added new attribute to tools, Attack Speed, which is equal to 1.3.
-	- Added new attribute to tools, Reach Distance, which is equal to 2.
+  - Increased ore hardness from 3 to 10.
+  - Added new attribute to armor, Movement Speed, which is equal to 0.04.
+  - Decreased tool damage from 7 to 2.5.
+  - Added new attribute to tools, Attack Speed, which is equal to 1.3.
+  - Added new attribute to tools, Reach Distance, which is equal to 2.
 - **Rubracium**:
-	- Increased ore hardness from 3 to 8.5.
-	- Decreased ore harvest level from 4 to 3.
+  - Increased ore hardness from 3 to 8.5.
+  - Decreased ore harvest level from 4 to 3.
 - **Sanguinite**:
-	- Increased ore hardness from 3 to 5.5.
-	- Decreased ore harvest level from 6 to 5.
-	- Added new attribute to armor, Max Health, which is equal to -10.
+  - Increased ore hardness from 3 to 5.5.
+  - Decreased ore harvest level from 6 to 5.
+  - Added new attribute to armor, Max Health, which is equal to -10.
 - **Shadow Iron**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 4.2.
-	- Increased ore harvest level from 1 to 3.
-	- Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
-	- Increased armor enchantability from 3 to 9.
-	- Decreased armor toughness from 4 to 2.
-	- Added new attribute to armor, Knockback Resistance, which is equal to -0.5.
-	- Increased tool enchantability from 3 to 9.
-	- Decreased tool durability from 300 to 118.
-	- Increased tool damage from 6 to 6.8.
-	- Increased tool efficiency from 5 to 6.
-	- Added new attribute to tools, Attack Speed, which is equal to -0.2.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 4.2.
+  - Increased ore harvest level from 1 to 3.
+  - Rescaled armor damage reduction from 4/5/6/3 to 4/5/6/4.
+  - Increased armor enchantability from 3 to 9.
+  - Decreased armor toughness from 4 to 2.
+  - Added new attribute to armor, Knockback Resistance, which is equal to -0.5.
+  - Increased tool enchantability from 3 to 9.
+  - Decreased tool durability from 300 to 118.
+  - Increased tool damage from 6 to 6.8.
+  - Increased tool efficiency from 5 to 6.
+  - Added new attribute to tools, Attack Speed, which is equal to -0.2.
 - **Shadow Steel**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Decreased armor enchantability from 5 to 3.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Decreased armor enchantability from 5 to 3.
 - **Silver**:
-	- Decreased ore hardness from 3 to 2.9.
-	- Increased ore harvest level from 1 to 2.
-	- Decreased tool enchantability from 20 to 19.
-	- Increased tool durability from 25 to 75.
-	- Decreased tool damage from 5 to 3.4.
-	- Decreased tool efficiency from 15 to 11.2.
-	- Added new attribute to tools, Attack Speed, which is equal to 0.2.
+  - Decreased ore hardness from 3 to 2.9.
+  - Increased ore harvest level from 1 to 2.
+  - Decreased tool enchantability from 20 to 19.
+  - Increased tool durability from 25 to 75.
+  - Decreased tool damage from 5 to 3.4.
+  - Decreased tool efficiency from 15 to 11.2.
+  - Added new attribute to tools, Attack Speed, which is equal to 0.2.
 - **Steel**:
-	- Updated the color hex value.
-	- Increased ore hardness from 3 to 10.
-	- Decreased tool damage from 7 to 2.3.
-	- Decreased tool efficiency from 8 to 6.4.
+  - Updated the color hex value.
+  - Increased ore hardness from 3 to 10.
+  - Decreased tool damage from 7 to 2.3.
+  - Decreased tool efficiency from 8 to 6.4.
 - **Tartarite**:
-	- Increased ore hardness from 3 to 10.
+  - Increased ore hardness from 3 to 10.
 - **Tin**:
-	- Decreased ore hardness from 3 to 2.5.
+  - Decreased ore hardness from 3 to 2.5.
 - **Vulcanite**:
-	- Increased ore hardness from 3 to 10.
-	- Decreased ore harvest level from 5 to 4.
+  - Increased ore hardness from 3 to 10.
+  - Decreased ore harvest level from 5 to 4.
 - **Vyroxeres**:
-	- Increased ore hardness from 3 to 4.3.
-	- Increased ore harvest level from 4 to 5.
+  - Increased ore hardness from 3 to 4.3.
+  - Increased ore harvest level from 4 to 5.
 - **Zinc**:
-	- Decreased ore hardness from 3 to 2.
+  - Decreased ore hardness from 3 to 2.
 
 ## 1.2.12
 
@@ -762,10 +775,10 @@
 - Fixed a bug that didn't allow cleaning detector via the cleaning recipe if it's durability was less than the max
   durability
 - Reworked Metal Detector:
-	- You can now just click instead of having to hold right click for ores to show up
-	- Ores remain highlighted for a short period of time while the detector goes on cool-down
-	- New Sounds providing feedback on different cases!
-	- LEDs on the detector now flash when the detector is scanning the area and finds ores nearby
+  - You can now just click instead of having to hold right click for ores to show up
+  - Ores remain highlighted for a short period of time while the detector goes on cool-down
+  - New Sounds providing feedback on different cases!
+  - LEDs on the detector now flash when the detector is scanning the area and finds ores nearby
 
 ## 1.2.9
 
@@ -810,10 +823,10 @@
 - Fix crash and buggy enemies AI in multiplayer when using Lemurite Shield ([#307](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/307))
 - Fixed Ignatius Pickaxe effect (it now drops nuggets correctly)
 - Fixed Ignatius Shovel and Axe effect:
-	- Fixed buggy spawning of entity items that glitched inside blocks
-	- Balanced chance for the autosmelt effect to occur
-	- Temporarily patched a duplication issue with smelted drops
-	- Make the effect work correctly with shovels too
+  - Fixed buggy spawning of entity items that glitched inside blocks
+  - Balanced chance for the autosmelt effect to occur
+  - Temporarily patched a duplication issue with smelted drops
+  - Make the effect work correctly with shovels too
 
 ## 1.2.3
 
@@ -826,9 +839,10 @@
 ## 1.2.2
 
 - New Gadget **Electrum Magnet**
-	- Portable Magnet that attracts dropped items towards the player
-	- Configurable in 3 different ways
-- Fix EMC Exploits introduced with the new Decorative blocks recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
+  - Portable Magnet that attracts dropped items towards the player
+  - Configurable in 3 different ways
+- Fix EMC Exploits introduced with the new Decorative blocks
+  recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
 - Updated Russian Translation ([#303](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/303))
 - Fixed println pollution on when Endermen spawn ([#304](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/304))
 
@@ -848,15 +862,19 @@
 - :balance_scale: Reworked Decorative metal blocks recipes to be more balanced (buff) and to avoid recipe conflicts with vanilla
 - :sparkles: Added a new Block (Bi-Metal Structure) (as of right now it’s used to create decorative blocks, but it also might be used as a machine frames for tile entities)
 - :recycle: Refactor Recipe JSON Files
-- :sparkles: EnderIO Integration for alloy recipes in the alloy smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
-- :sparkles: Bucklers (a new kind of shield lighter and more dynamic) [#164](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/164)
-	- Allows to run and walk at normal speed wile holding it
-	- As well as allowing to hit entities and the air :P
-	- They Go on cooldown after a hit
+- :sparkles: EnderIO Integration for alloy recipes in the alloy
+  smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
+- :sparkles: Bucklers (a new kind of shield lighter and more
+  dynamic) [#164](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/164)
+  - Allows to run and walk at normal speed wile holding it
+  - As well as allowing to hit entities and the air :P
+  - They Go on cooldown after a hit
 - :sparkles: Zinc Buckler (Tier 1) (no effect)
 - :sparkles: Vulcanite Buckler (Tier 2) (creates a small explosion that knockbacks enemies away from you, only damaging melee attackers)
-- :sparkles: Orichalcum Buckler (Tier 2) (reflects 150% of the damage to ranged-attacking entities teleporting them in front of the player at the same time)
-- :sparkles: Ceruclase Shield (Tier 2)  (Creates an icy sphere around the player and cushions a portion of the fall damage when activated. The ice breaks after withdrawing the shield.) 
+- :sparkles: Orichalcum Buckler (Tier 2) (reflects 150% of the damage to ranged-attacking entities teleporting them in
+  front of the player at the same time)
+- :sparkles: Ceruclase Shield (Tier 2)  (Creates an icy sphere around the player and cushions a portion of the fall
+  damage when activated. The ice breaks after withdrawing the shield.)
 - :bug: Fixed Lemurite shield not handling invisibility properly in some cases
 - :bento: Improvements to non-metal textures
 - :bento: Improved old textures of Rubracium Gauntlet and Lemurite Shield (and made Lemurite shield give visual feedback from first person perspective)
@@ -946,18 +964,18 @@
 - Fix inventory rubracium gauntlet check to ignore durability
 - Now every hit damages one of the two rubracium gauntlets instead of both at the same time
 - Implemented new ore gen system which will help to add special conditions when spawning ores
-	- Platinum: Make platinum a bit more abundant in warm zones like jungle or savanna.(@Klazkin idea)
-	- Vulcanite: It spawns only at lava sea level
-	- Eximite: It Spawns only on the small islands (@Luke616 idea)
-	- Shadow iron spawns near the bedrock (top) (@Luke616 idea)
-	- Prometheum spawns only in jungle biome
+  - Platinum: Make platinum a bit more abundant in warm zones like jungle or savanna.(@Klazkin idea)
+  - Vulcanite: It spawns only at lava sea level
+  - Eximite: It Spawns only on the small islands (@Luke616 idea)
+  - Shadow iron spawns near the bedrock (top) (@Luke616 idea)
+  - Prometheum spawns only in jungle biome
 - implemented configurable biome ore spawn
 - ProjectE Alloys EMC Values are not calculated dynamically anymore
 - Fixed Github Issues:
-	- [#248](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/248)
-	- [#94](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/94)
-	- [#257](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/257)
-	- [#256](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/256)
+  - [#248](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/248)
+  - [#94](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/94)
+  - [#257](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/257)
+  - [#256](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/256)
 - New Configuration option to cancel registration of metal items and blocks by type
 
 ## 1.0.0
@@ -973,11 +991,11 @@
 - Now Recipes are created through IRecipeFactory (which basically means that adding recipes for things that are made of 50 different metals is not a problem anymore [one JSON Recipe takes care of the same recipe with all the different metals])
 - Removed Molten Metal Fluid Item-Blocks (now you can directly find Forge Buckets inside the Fluids Creative Tab)
 - Fixed Github Issues:
-	- [#197](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/197)
-	- [#214](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/214)
-	- [#245](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/245)
-	- [#247](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/247)
-	- [#252](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/252)
+  - [#197](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/197)
+  - [#214](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/214)
+  - [#245](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/245)
+  - [#247](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/247)
+  - [#252](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/252)
 - Balance Changes:
 - Buffed Etherium Durability and Efficiency
 
@@ -989,11 +1007,12 @@
 - Fixed an issue with JEI Integration ([#237](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/237))
 
 ## 0.3.2
+
 - Nerf Celenegil Armor Effect ([#221](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/221))
 - Fixed some bugs: ([#230](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/230))
-	- Fixed Particles being registered on the server
-	- Fixed HUD Handler being registered on the server
-	- Fixed Wiki Item Model being loaded on the server
+  - Fixed Particles being registered on the server
+  - Fixed HUD Handler being registered on the server
+  - Fixed Wiki Item Model being loaded on the server
 - Added Missing Entry in the modMaterials Array that caused an IOOB Exception
 
 ## 0.3.1
@@ -1007,7 +1026,7 @@
 - Fixed inverted jei crusher recipes registration ([#211](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/211))
 - Fixed Tool Tooltips getting loaded for every tool class
 - Implemented new Ignatius tool effects ([#210](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/210))
-	- Tools that got new effects: Axe, Shovel, Pickaxe
+  - Tools that got new effects: Axe, Shovel, Pickaxe
 - Italian Mod Localization
 - Excluded every item that isn’t a bow from the Quicksilver armor effect and trait
 - Fixed a bug that blocked the player in middle air with no chance to get back down while wearing Krik Armor
@@ -1025,8 +1044,10 @@
 - Fixed a bug that caused tooltip registration failure ([#195](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/195))
 - Improved Phosphorus Lantern Spawn Block ([#190](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/190))
 - Introducing The Sublimation Chamber
-	- new Machine that allows you to sublimate blocks of some materials giving a certain effect to all the players within its area
-	- the peculiarity of this machine is that it provides you with a long duration effect, so you can keep the effect also when leaving the area
+  - new Machine that allows you to sublimate blocks of some materials giving a certain effect to all the players within
+    its area
+  - the peculiarity of this machine is that it provides you with a long duration effect, so you can keep the effect also
+    when leaving the area
 - Fix molten fluids names to respect conventional naming (Should fix bug of the tinker smeltery not alloying materials)
 - Allow the end user to blacklist tinker materials from being loaded in the config
 - Fix crusher metadata exploit ([#205](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/205))
@@ -1119,23 +1140,23 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 
 
 - Anticipated OreDict initialization (from preInit to “right after items are loaded”)
-	- This fixes some integration issues with mods like JAOPCA or Mekanism
+  - This fixes some integration issues with mods like JAOPCA or Mekanism
 
 - Construct’s Armory Integration
-	- Armor parts
-	- Armor Traits
-		- “Quickly” Trait
-		- “Strongly” Trait
-		- “Resistance” Trait
-		- “Jump Master” Trait
-		- “Cat Eyes” Trait
-		- “Deeply” Trait
-		- “Foodly” Trait
-		- “Prometheum” Trait
-		- “Volcano” Trait
-		- “Strongly II” Trait
-		- “Blindness” Trait
-	- Config entry to disable Integration
+  - Armor parts
+  - Armor Traits
+    - “Quickly” Trait
+    - “Strongly” Trait
+    - “Resistance” Trait
+    - “Jump Master” Trait
+    - “Cat Eyes” Trait
+    - “Deeply” Trait
+    - “Foodly” Trait
+    - “Prometheum” Trait
+    - “Volcano” Trait
+    - “Strongly II” Trait
+    - “Blindness” Trait
+  - Config entry to disable Integration
 
 ## 0.1.1
 - Fixed Alloyer crash when opening the GUI
@@ -1196,11 +1217,11 @@ Tar rework - Krik Armor - Construct’s Armory Integration - Nuggets
 - Fixed a server side crash
 - Mod Integration: Tinkers’ Construct [ Not Final - May be edited ]
 - Added some Custom traits to TiC integration
-	- Obscure Trait
-	- Vulcan Trait [ 0 - 1 - 2 ]
-	- Wither Trait
-	- Life Steal Trait
-	- King Dice Trait
+  - Obscure Trait
+  - Vulcan Trait [ 0 - 1 - 2 ]
+  - Wither Trait
+  - Life Steal Trait
+  - King Dice Trait
 
 ## 0.0.5
 - Fixed Molten Hepatizon color
