@@ -2,13 +2,13 @@
   "parent": "metallurgy:main/tier5",
   "display": {
     "icon": {
-      "item": "metallurgy:inolashite_ingot"
+      "item": "metallurgy:haderoth_ingot"
     },
     "title": {
-      "translate": "advancement.metallurgy.main.inolashite"
+      "translate": "advancement.metallurgy.main.haderoth"
     },
     "description": {
-      "translate": "advancement.metallurgy.main.inolashite.desc"
+      "translate": "advancement.metallurgy.main.haderoth.desc"
     }
   },
   "criteria": {
@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "ingotInolashite",
+            "ore": "ingotHaderoth",
             "type": "forge:ore_dict"
           }
         ]
@@ -28,7 +28,7 @@
       "conditions": {
         "items": [
           {
-            "ore": "dustInolashite",
+            "ore": "dustHaderoth",
             "type": "forge:ore_dict"
           }
         ]
