@@ -52,7 +52,7 @@ public class SanguiniteToolEffect extends BaseMetallurgyEffect {
 		playerIn.attackEntityFrom(DamageSource.WITHER, 6);
 		playerIn.playSound(SoundEvents.ENTITY_ENDERDRAGON_GROWL, 0.75F, 2F);
 
-		int newDurability = Math.min(toolStack.getItemDamage() + 6, toolStack.getMaxDamage());
+		int newDurability = Math.max(toolStack.getItemDamage() - 6, 0);
 		toolStack.setItemDamage(newDurability);
 
 		NBTTagCompound data = toolStack.getTagCompound();
