@@ -64,6 +64,10 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 					return hLevel >= blockHL - 1 && hLevel <= blockHL + 1;
 				});
 				ItemBlockOre.setLocked(stack, true);
+
+				//2 damage points
+				event.getHarvester().getHeldItemMainhand().damageItem(1, event.getHarvester());
+
 				event.getDrops().add(stack);
 				event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1F, 1F);
 
