@@ -49,7 +49,7 @@ public class ShadowIronPickaxeEffect extends BaseMetallurgyEffect {
 						(BlockOre) event.getState().getBlock(),
 
 						// +1 or +0
-						harvestLevel -> harvestLevel >= metal.getStats().getOreHarvest() && harvestLevel <= metal.getStats().getOreHarvest() + 1
+						harvestLevel -> harvestLevel == metal.getStats().getOreHarvest() || harvestLevel == metal.getStats().getOreHarvest() + 1
 				);
 
 				event.getDrops().clear();
