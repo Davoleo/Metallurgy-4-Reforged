@@ -56,7 +56,8 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 
 		if (!event.getWorld().isRemote && block instanceof BlockOre)
 		{
-			if (Utils.random.nextInt(10) < 3)
+			//30% 60% 90% 100% depending on fortune level
+			if (Utils.random.nextInt(10) < (3 + event.getFortuneLevel() * 3))
 			{
 				event.getDrops().clear();
 				ItemStack stack = getRandomOreStack((BlockOre) event.getState().getBlock(), hLevel -> {

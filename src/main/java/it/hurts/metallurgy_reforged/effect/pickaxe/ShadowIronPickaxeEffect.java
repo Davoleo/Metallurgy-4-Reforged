@@ -39,9 +39,11 @@ public class ShadowIronPickaxeEffect extends BaseMetallurgyEffect {
 	@SubscribeEvent
 	public void harvestShadowIron(BlockEvent.HarvestDropsEvent event)
 	{
+		//If the mined ore is Shadow Iron and the pick effect can be applied
 		if (event.getState().getBlock() == metal.getOre() && canBeApplied(event.getHarvester()))
 		{
-			if (Utils.random.nextInt(10) < 3)
+			//30% 60% 90% 100% depending on fortune level
+			if (Utils.random.nextInt(10) < (3 + event.getFortuneLevel() * 3))
 			{
 				ItemStack newOre = AngmallenPickaxeEffect.getRandomOreStack(
 						(BlockOre) event.getState().getBlock(),
