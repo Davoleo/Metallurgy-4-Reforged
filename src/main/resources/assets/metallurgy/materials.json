@@ -84,7 +84,7 @@
       "efficiency": 7.2,
       "harvest_level": 2,
       "enchantability": 32,
-      "durability": 153,
+      "durability": 164,
       "damage": 2.7
     }
   },
@@ -909,6 +909,7 @@
         5
       ],
       "enchantability": 25,
+      "max_health": 4.0,
       "durability": 175,
       "toughness": 4.0
     },
@@ -917,6 +918,8 @@
       "harvest_level": 5,
       "enchantability": 25,
       "durability": 666,
+      "attack_speed": -0.2,
+      "max_health": 2.0,
       "damage": 8.0
     }
   },
@@ -1040,6 +1043,7 @@
       "durability": 298,
       "max_health": 10.0,
       "attack_speed": 0.2,
+      "reach_distance": 1.0,
       "toughness": 6.0
     },
     "tool_stats": {
