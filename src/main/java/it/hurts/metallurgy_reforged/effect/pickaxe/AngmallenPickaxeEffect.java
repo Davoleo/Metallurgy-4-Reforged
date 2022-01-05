@@ -16,7 +16,6 @@ import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
@@ -77,7 +76,9 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 	/**
 	 * Get a random ItemStack from a BlockOre that has an harvest level of -1/+0/+1
 	 *
-	 * @param ore The broken BlockOre
+	 * @param ore                   The broken BlockOre
+	 * @param harvestLevelCondition a predicate returning true if the transmutation should happen and false otherwise,
+	 *                              parameter of the predicate is the harvest level of the different ores
 	 *
 	 * @return a BlockOre ItemStack
 	 */
@@ -93,11 +94,12 @@ public class AngmallenPickaxeEffect extends BaseMetallurgyEffect {
 		}).map(mettle -> new ItemStack(mettle.getOre())).collect(Collectors.toList());
 		// Map metals to ore itemStacks and collect all of them into a list
 
-		//Add Iron and/or Gold if the level is correct
-		if (harvestLevelCondition.test(1))
-			oresDropList.add(new ItemStack(Blocks.IRON_ORE));
-		if (harvestLevelCondition.test(2))
-			oresDropList.add(new ItemStack(Blocks.GOLD_ORE));
+		//Injects Iron and Gold ores into the pool of possible ores to transmute to
+		//DISABLED (probably forever, but keeping it just in case)
+		//if (harvestLevelCondition.test(1))
+		//	oresDropList.add(new ItemStack(Blocks.IRON_ORE));
+		//if (harvestLevelCondition.test(2))
+		//	oresDropList.add(new ItemStack(Blocks.GOLD_ORE));
 
 		return oresDropList.get(Utils.random.nextInt(oresDropList.size()));
 	}
