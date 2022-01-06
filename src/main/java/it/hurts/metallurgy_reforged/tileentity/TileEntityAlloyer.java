@@ -495,14 +495,16 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	 */
 	@Override
 	public void openInventory(@Nonnull EntityPlayer player)
-	{}
+	{
+	}
 
 	/**
 	 * Server side stuff when you close the GUI
 	 */
 	@Override
 	public void closeInventory(@Nonnull EntityPlayer player)
-	{}
+	{
+	}
 
 	/**
 	 * Only called when stacks are inserted using automated methods (i.e. hopper)

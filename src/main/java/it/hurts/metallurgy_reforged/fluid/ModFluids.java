@@ -23,49 +23,49 @@ import java.util.List;
 
 public class ModFluids {
 
-	//Molten FluidBlocks
-	public static List<BlockFluidClassic> fluidBlocks = new ArrayList<>();
+    //Molten FluidBlocks
+    public static List<BlockFluidClassic> fluidBlocks = new ArrayList<>();
 
-	//Fluids
-	public static final FluidMolten TAR = ((FluidMolten) new FluidMolten("molten_tar", 0xFF111419, 1000).setLuminosity(0));
-	public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 3200);
+    //Fluids
+    public static final FluidMolten TAR = ((FluidMolten) new FluidMolten("molten_tar", 0xFF111419, 400).setLuminosity(0));
+    public static final FluidMolten THERMITE = new FluidMolten("molten_thermite", 0xFFC44205, 4000);
 
-	//FluidBlocks
-	public static FluidBlockTar fluidBlockTar;
-	public static BlockFluidClassic fluidBlockThermite;
+    //FluidBlocks
+    public static FluidBlockTar fluidBlockTar;
+    public static BlockFluidClassic fluidBlockThermite;
 
-	public static void registerFluids()
-	{
-		ModMetals.metalMap.forEach((s, metal) -> {
-			FluidRegistry.registerFluid(metal.getMolten());
-			FluidRegistry.addBucketForFluid(metal.getMolten());
+    public static void registerFluids()
+    {
+        ModMetals.metalMap.forEach((s, metal) -> {
+            FluidRegistry.registerFluid(metal.getMolten());
+            FluidRegistry.addBucketForFluid(metal.getMolten());
 
-			if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks)
-			{
-				BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
+            if (RegistrationConfig.categoryBlocks.enableMetalFluidBlocks)
+            {
+                BlockFluidClassic fluidBlock = new BlockFluidClassic(metal.getMolten(), Material.LAVA);
 
-				metal.getMolten().setBlock(fluidBlock);
-				fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal.toString());
-				fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal.toString());
+                metal.getMolten().setBlock(fluidBlock);
+                fluidBlock.setRegistryName(Metallurgy.MODID, "molten_" + metal);
+                fluidBlock.setTranslationKey(Metallurgy.MODID + ".molten_" + metal);
 
-				ModFluids.fluidBlocks.add(fluidBlock);
-			}
-		});
+                ModFluids.fluidBlocks.add(fluidBlock);
+            }
+        });
 
-		//Register Thermite and Tar
-		FluidRegistry.registerFluid(TAR);
-		FluidRegistry.registerFluid(THERMITE);
+        //Register Thermite and Tar
+        FluidRegistry.registerFluid(TAR);
+        FluidRegistry.registerFluid(THERMITE);
 
-		//Add Tar and Thermite Buckets
-		FluidRegistry.addBucketForFluid(TAR);
-		FluidRegistry.addBucketForFluid(THERMITE);
+        //Add Tar and Thermite Buckets
+        FluidRegistry.addBucketForFluid(TAR);
+        FluidRegistry.addBucketForFluid(THERMITE);
 
-		//Initialize Tar FluidBlock
-		fluidBlockTar = new FluidBlockTar(TAR, Material.WATER);
-		fluidBlockThermite = new BlockFluidClassic(THERMITE, Material.LAVA);
+        //Initialize Tar FluidBlock
+        fluidBlockTar = new FluidBlockTar(TAR, Material.WATER);
+        fluidBlockThermite = new BlockFluidClassic(THERMITE, Material.LAVA);
 
-		BlockUtils.initFluidBlock(fluidBlockThermite, "molten_thermite");
-		BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
-	}
+        BlockUtils.initFluidBlock(fluidBlockThermite, "molten_thermite");
+        BlockUtils.initFluidBlock(fluidBlockTar, "molten_tar");
+    }
 
 }

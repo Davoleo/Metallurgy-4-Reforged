@@ -1,6 +1,6 @@
 name: Java CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -8,23 +8,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: Build with Gradle
-      run: |
-        chmod +x gradlew
-        ./gradlew build --stacktrace
-    - name: Send Webhook Notification
-      if: always()
-      env:
-        JOB_STATUS: ${{ job.status }}
-        WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
-        HOOK_OS_NAME: ${{ runner.os }}
-        WORKFLOW_NAME: ${{ github.workflow }}
-      run: |
-        git clone https://github.com/DiscordHooks/github-actions-discord-webhook.git webhook
-        bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
-      shell: bash
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 8
+      - name: Change Gradlew file permissions
+        run: chmod +x gradlew
+      - name: Setup Workspace
+        run: ./gradlew setupDecompWorkspace
+      - name: Build & Compile
+        run: ./gradlew build --stacktrace
+      - name: Setup CI Environment
+        run: ./gradlew setupCiEnv
+      - name: Test Server
+        run:
+          ./gradlew runServer
+
+#      - name: Send Webhook Notification
+#        if: always()
+#        env:
+#          JOB_STATUS: ${{ job.status }}
+#          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+#          HOOK_OS_NAME: ${{ runner.os }}
+#          WORKFLOW_NAME: ${{ github.workflow }}
+#        run: |
+#          git clone https://github.com/DiscordHooks/github-actions-discord-webhook.git webhook
+#          bash webhook/send.sh $JOB_STATUS $WEBHOOK_URL
+#        shell: bash

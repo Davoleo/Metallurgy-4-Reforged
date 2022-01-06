@@ -1,8 +1,8 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "OOO",
-    "SCS",
+    "OPO",
+    "OBO",
     "SFS"
   ],
   "key": {
@@ -12,14 +12,16 @@
     },
     "S": {
       "type": "forge:ore_dict",
-      "ore": "ingotSilver"
-    },
-    "C": {
-      "type": "forge:ore_dict",
-      "ore": "blockCopper"
+      "ore": "ingotSteel"
     },
     "F": {
       "item": "minecraft:furnace"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "B": {
+      "item": "metallurgy:bimetal_structure_block"
     }
   },
   "result": {

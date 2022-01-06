@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.gui;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
+import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.tileentity.TileEntityCrusher;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -40,7 +41,7 @@ public class GuiCrusher extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		String name = this.crusher.getDisplayName().getUnformattedText();
-		this.fontRenderer.drawString(name, 10, -22, 0xFE3F3F);
+		this.fontRenderer.drawString(name, 10, -22, ModMetals.OURECLASE.getStats().getColorHex());
 	}
 
 	@Override

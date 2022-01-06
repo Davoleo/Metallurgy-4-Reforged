@@ -1,0 +1,44 @@
+{
+  "parent": "metallurgy:main/tier6",
+  "display": {
+    "icon": {
+      "item": "metallurgy:tartarite_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.tartarite"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tartarite.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotTartarite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustTartarite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust"
+    ]
+  ]
+}

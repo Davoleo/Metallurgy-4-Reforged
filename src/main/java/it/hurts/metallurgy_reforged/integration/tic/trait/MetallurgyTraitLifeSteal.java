@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.integration.tic.trait;
@@ -17,7 +17,6 @@ import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class MetallurgyTraitLifeSteal extends AbstractTrait implements IMetallurgyTrait {
 
@@ -36,18 +35,14 @@ public class MetallurgyTraitLifeSteal extends AbstractTrait implements IMetallur
 			{
 
 				int luck_level = Math.round(pl.getLuck());
-				//percentage to get healed based on the luck of the player (example: luck 0 = 15%,luck 1 = 20%...)
-				int percentage = 15 + (luck_level * 5);
-				if (new Random().nextInt(100) < percentage)
+				//percentage to get healed based on the luck of the player (example: luck 0 = 20%,luck 1 = 40%...)
+				float chance = 0.20F + (luck_level * 0.20F);
+				if (Math.random() < chance)
 				{
-					//the heal Amount ,that is the 10% of the damage
-					float healAmount = damageDealt * 0.15F;
-					if (pl.getHealth() + healAmount < pl.getMaxHealth())
-					{
-						//set the player health
-						pl.setHealth(pl.getHealth() + healAmount);
-						//						TODO Aggiungere lo spawn di particelle
-					}
+					//the heal Amount ,that is the 40% of the damage
+					float healAmount = damageDealt * 0.40F;
+					if (pl.getHealth() < pl.getMaxHealth())
+						pl.heal(healAmount);
 				}
 			}
 		}
@@ -56,9 +51,9 @@ public class MetallurgyTraitLifeSteal extends AbstractTrait implements IMetallur
 	@Override
 	public void register(String name, @Nullable String tooltip)
 	{
-		Utils.localize(String.format(LOC_Name, name));
+		Utils.localizeEscapingCustomSequences(String.format(LOC_Name, name));
 		if (tooltip != null)
-			Utils.localize(String.format(LOC_Name, tooltip));
+			Utils.localizeEscapingCustomSequences(String.format(LOC_Name, tooltip));
 	}
 
 }

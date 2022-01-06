@@ -1,0 +1,29 @@
+{
+  "parent": "metallurgy:main/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:copper_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancement.metallurgy.main.tier2"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tier2.desc"
+    }
+  },
+  "criteria": {
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
+      "conditions": {
+        "level": 2
+      }
+    }
+  },
+  "requirements": [
+    [
+      "harvest_tier"
+    ]
+  ]
+}

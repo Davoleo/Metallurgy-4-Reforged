@@ -15,7 +15,6 @@ import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -46,28 +45,35 @@ public class BlockIceShield extends BlockBreakable {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AGE, 0));
 	}
 
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(IBlockState state)
+	{
 		return state.getValue(AGE);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Nonnull
-	public IBlockState getStateFromMeta(int meta) {
+	public IBlockState getStateFromMeta(int meta)
+	{
 		return this.getDefaultState().withProperty(AGE, MathHelper.clamp(meta, 0, 3));
 	}
 
 	@Nonnull
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{AGE});
+	protected BlockStateContainer createBlockState()
+	{
+		return new BlockStateContainer(this, AGE);
 	}
 
 	@Override
-	public void updateTick(@Nonnull World worldIn, @Nonnull BlockPos pos, IBlockState state, @Nonnull Random rand) {
+	public void updateTick(@Nonnull World worldIn, @Nonnull BlockPos pos, IBlockState state, @Nonnull Random rand)
+	{
 		int age = state.getValue(AGE);
-		if (age < 3) {
+		if (age < 3)
+		{
 			worldIn.scheduleUpdate(pos, this, 10 + rand.nextInt(11));
 			worldIn.setBlockState(pos, state.withProperty(AGE, age + 1), 2);
-		} else {
+		}
+		else
+		{
 			worldIn.setBlockToAir(pos);
 			worldIn.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 0.15F, 1.25F);
 		}

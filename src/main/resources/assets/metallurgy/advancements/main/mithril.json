@@ -1,0 +1,56 @@
+{
+  "parent": "metallurgy:main/tier5",
+  "display": {
+    "icon": {
+      "item": "metallurgy:mithril_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.mithril"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.mithril.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotMithril",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustMithril",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "oreMithril",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust",
+      "has_ore"
+    ]
+  ]
+}

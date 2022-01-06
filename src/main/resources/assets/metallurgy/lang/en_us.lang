@@ -1,5 +1,6 @@
 #Generic Material Names
 material.metallurgy.adamantine.name=Adamantine
+material.metallurgy.alduorite.name=Alduorite
 material.metallurgy.amordrine.name=Amordrine
 material.metallurgy.angmallen.name=Angmallen
 material.metallurgy.astral_silver.name=Astral Silver
@@ -20,6 +21,7 @@ material.metallurgy.eximite.name=Eximite
 material.metallurgy.haderoth.name=Haderoth
 material.metallurgy.hepatizon.name=Hepatizon
 material.metallurgy.ignatius.name=Ignatius
+material.metallurgy.infuscolium.name=Infuscolium
 material.metallurgy.inolashite.name=Inolashite
 material.metallurgy.kalendrite.name=Kalendrite
 material.metallurgy.krik.name=Krik
@@ -39,7 +41,122 @@ material.metallurgy.tartarite.name=Tartarite
 material.metallurgy.vulcanite.name=Vulcanite
 material.metallurgy.vyroxeres.name=Vyroxeres
 
-#Armors
+# Advancements
+# Tier 1
+advancement.metallurgy.main.copper=Copper
+advancement.metallurgy.main.copper.desc=Obtain your first Copper ore.
+advancement.metallurgy.main.deep_iron=The Oceanic Metal
+advancement.metallurgy.main.deep_iron.desc=Venture under an aquatic biome to find and smelt Deep Iron ore.
+advancement.metallurgy.main.prometheum=The Floral Metal
+advancement.metallurgy.main.prometheum.desc=Venture into the jungle to find a smelt Prometheum ore.
+advancement.metallurgy.main.tin=Tin
+advancement.metallurgy.main.tin.desc=Obtain your first Tin ore, you notice the material is too ductile to make any useful tool out of it alone.
+advancement.metallurgy.main.zinc=Zinc
+advancement.metallurgy.main.zinc.desc=Obtain your first Zinc ore, you notice the material is too brittle to make any useful tool out of it alone.
+advancement.metallurgy.main.bronze=Bronze
+advancement.metallurgy.main.bronze.desc=Obtain your first batch of Bronze by alloying Tin and Copper in a 1:3 ratio.
+advancement.metallurgy.main.brass=The Reverbing Metal
+advancement.metallurgy.main.brass.desc=Obtain your first batch of Brass by alloying Zinc and Copper in a 1:3 ratio.
+advancement.metallurgy.main.damascus_steel=The Regal Metal
+advancement.metallurgy.main.damascus_steel.desc=Obtain your first batch of Damascus Steel by alloying Iron and Bronze in a 1:2 ratio.
+advancement.metallurgy.main.tier2=Tier 2
+advancement.metallurgy.main.tier2.desc=Mine a Tier 2 ore using a tier 1 Pickaxe.
+# Tier 2
+advancement.metallurgy.main.osmium=Extremely Heavy Metal
+advancement.metallurgy.main.osmium.desc=Obtain your first Osmium ore, you notice you struggle to carry it around.
+advancement.metallurgy.main.silver=Silver
+advancement.metallurgy.main.silver.desc=Obtain your first Silver Ore, Extra damage to Undead mobs is not guaranteed!
+advancement.metallurgy.main.infuscolium=Infusion metal
+advancement.metallurgy.main.infuscolium.desc=Obtain your first piece of Infuscolium, seems to have the property of infusing into other metals easily.
+advancement.metallurgy.main.manganese=Manganese
+advancement.metallurgy.main.manganese.desc=Obtain your first Piece of Manganese.
+advancement.metallurgy.main.angmallen=The Alchemical Metal
+advancement.metallurgy.main.angmallen.desc=Obtain your first batch of Angmallen, The Power of Elemental creatures underground seems to have been absorbed by common metal, maybe in this form you can exploit it to your advantage?
+advancement.metallurgy.main.steel=Steel
+advancement.metallurgy.main.steel.desc=Make your first batch of Steel
+advancement.metallurgy.main.black_steel=The Fortress Metal
+advancement.metallurgy.main.black_steel.desc=Obtain your first batch of Black Steel, first thing you notice is how sturdy the ingot is, with a lot of work you can probably make some heavy duty tools and armor with it.
+advancement.metallurgy.main.electrum=The Lightning Metal
+advancement.metallurgy.main.electrum.desc=Obtain your first batch of Electrum, you notice the metal is highly conductive and make sure to handle it properly. You ponder on, what it might be capable of. 
+advancement.metallurgy.main.hepatizon=The Metal of Theft
+advancement.metallurgy.main.hepatizon.desc=Obtain your first batch of Hepatizon by alloying Infuscolium with Steel in a 1:1 Ratio.
+advancement.metallurgy.main.tier3=Tier 3
+advancement.metallurgy.main.tier3.desc=Mine a Tier 3 ore using a tier 2 Pickaxe.
+# Tier 3
+advancement.metallurgy.main.astral_silver=The Metal of Stars
+advancement.metallurgy.main.astral_silver.desc=Obtain your first Astral Silver Ore, looking at this metal in the dark shows small sparks of light that align with stars.
+advancement.metallurgy.main.ignatius=The Metal of Fire
+advancement.metallurgy.main.ignatius.desc=Obtain your first Ignatius Ore, its ingot is still too hot to handle even after letting it cool down for hours, you're worried about what might happen if you drop it in your wooden house.
+advancement.metallurgy.main.oureclase=The Crushing Metal
+advancement.metallurgy.main.oureclase.desc=Venture in the cracks of the underground to find Oureclase ore, its ingot seems unstable and shows a peculiar property: no matter how many times you try to smooth the surface the ingot always crimps and crushes old bonds.
+advancement.metallurgy.main.rubracium=Raw Power Metal
+advancement.metallurgy.main.rubracium.desc=Obtain your first Rubracium Ore. Looks like it's too brittle to make anything out of it alone, but it seems to have absorbed a lot of unrefined power from the unstable conditions of certain underground sites.
+advancement.metallurgy.main.shadow_iron=The Incomplete Metal
+advancement.metallurgy.main.shadow_iron.desc=Venture in the highest zones of The Nether to find Shadow Iron Ore, it looks like it's always about to fall into pieces, metal bonds are very weak and yet chunks of it seem strangely durable.
+advancement.metallurgy.main.quicksilver=The Swift Metal
+advancement.metallurgy.main.quicksilver.desc=Obtain Quicksilver a 1:1 ratio alloy of Silver and Astral Silver, two of the shiniest metals form one, which has the power to enhance speed.
+advancement.metallurgy.main.tier4=Tier 4
+advancement.metallurgy.main.tier4.desc=Mine a Tier 4 ore using a tier 3 Pickaxe.
+# Tier 4
+advancement.metallurgy.main.ceruclase=The Frost Metal
+advancement.metallurgy.main.ceruclase.desc=Obtain your first Ceruclase ore, thermal retention is one of its properties, despite being found in the Nether it remains cold as ever, handling it with your bare hands almost causes freezer burns.
+advancement.metallurgy.main.eximite=The Ender Metal
+advancement.metallurgy.main.eximite.desc=Obtain your first Eximite Ore, this metal can only be obtained from the Outer End and has ender properties.
+advancement.metallurgy.main.kalendrite=The Healing Metal
+advancement.metallurgy.main.kalendrite.desc=Obtain your first Kalendrite Ore, it seems to have some sort of healing properties.
+advancement.metallurgy.main.midasium=The Metal of Greed
+advancement.metallurgy.main.midasium.desc=Obtain your first Midasium Ore, has the dangerous power of converting other materials into Gold.
+advancement.metallurgy.main.orichalcum=The War Metal
+advancement.metallurgy.main.orichalcum.desc=Obtain your first batch of Orichalcum, you have the feeling some good weaponry and equipment can be made out of it.
+advancement.metallurgy.main.platinum=The Pure Metal
+advancement.metallurgy.main.platinum.desc=Obtain your first Platinum Ore, even in its raw form, it is absolutely pure.
+advancement.metallurgy.main.vulcanite=The Explosive Metal
+advancement.metallurgy.main.vulcanite.desc=Venture in the most dangerous places in the Nether to mine your first piece of Vulcanite, looks like it's about to explode if you fidget too much with it.
+advancement.metallurgy.main.celenegil=The Exalted Metal
+advancement.metallurgy.main.celenegil.desc=Obtain your first batch of Celenegil by alloying Orichalcum and Platinum in a 1:1 ratio, the new metal stands a league above Orichalcum and has an aura of pure excellence.
+advancement.metallurgy.main.amordrine=The Angelic Metal
+advancement.metallurgy.main.amordrine.desc=Obtain your first batch of Amordrine by alloying Kalendrite and Platinum in a 1:1 ratio, the new metal seems to draw its strength from a higher power.
+advancement.metallurgy.main.tier5=Tier 5
+advancement.metallurgy.main.tier5.desc=Mine a Tier 5 ore using a tier 4 Pickaxe.
+# Tier 5
+advancement.metallurgy.main.carmot=Clockwork Metal
+advancement.metallurgy.main.carmot.desc=Obtain your first Carmot Ore, the ore resembles scraps of some sort of an ancient machinery.
+advancement.metallurgy.main.lemurite=The Reflective Metal
+advancement.metallurgy.main.lemurite.desc=Obtain your first Lemurite Ore, it is perfectly reflective to the point that you cannot to tell what is its actual shape.
+advancement.metallurgy.main.lutetium=Lutetium
+advancement.metallurgy.main.lutetium.desc=Obtain your first Lutetium Ore
+advancement.metallurgy.main.meutoite=The Mutating Metal
+advancement.metallurgy.main.meutoite.desc=Obtain your first Meutoite Ore, its internal structure is ever-changing.
+advancement.metallurgy.main.mithril=The Magical Metal
+advancement.metallurgy.main.mithril.desc=Obtain your first Mithril Ore, it seems really powerful and has high compatibility with enchantments/magic.
+advancement.metallurgy.main.sanguinite=The Demonic Metal
+advancement.metallurgy.main.sanguinite.desc=Obtain your first piece of Sanguinite Ore, the level of corruption inside this metal is high, but as a tradeoff it is also very powerful.
+advancement.metallurgy.main.vyroxeres=The Venomous Metal
+advancement.metallurgy.main.vyroxeres.desc=Obtain your first piece of Vyroxeres Ore, it is highly acidic, dissolving nearly everything it touches.
+advancement.metallurgy.main.shadow_steel=The Light Harmony Metal
+advancement.metallurgy.main.shadow_steel.desc=Obtain your first batch of Shadow Steel by alloying Shadow Iron and Lemurite in a 2:1 ratio, the alloy has the special property of reacting differently when exposed to light or darkness.
+advancement.metallurgy.main.inolashite=The Time Metal
+advancement.metallurgy.main.inolashite.desc=Obtain your first batch of Inolashite by alloying Alduorite and Ceruclase in a 1:1 ratio, the alloy has the power of affecting timelines stretching, cutting and copying them.
+advancement.metallurgy.main.haderoth=The Shape-Shifting Metal
+advancement.metallurgy.main.haderoth.desc=Obtain your first batch of Shadow Steel by alloying Mithril and Rubracium in a 1:2 ratio, the alloy has the special property of changing shape to adapt to external stimuli.
+advancement.metallurgy.main.desichalkos=The Void Metal
+advancement.metallurgy.main.desichalkos.desc=Obtain your first batch of Desichalkos by alloying Eximite and Meutoite in a 1:1 ratio, this alloy looks somehow linked to the Void and it's absorbing attributes.
+advancement.metallurgy.main.krik=Gravity Control Metal
+advancement.metallurgy.main.krik.desc=Obtain your first batch of Krik by alloying Lutetium and Osmium in a 1:1 ratio, first analyses suggest this metal is not affected by gravity at all, instead it can manipulate when put under mechanical stress.
+advancement.metallurgy.main.tier6=Tier 6
+advancement.metallurgy.main.tier6.desc=Mine a Tier 6 ore using a tier 5 Pickaxe.
+advancement.metallurgy.main.alduorite=The Luminous Metal
+advancement.metallurgy.main.alduorite.desc=Obtain your first Alduorite ore, it shines even if it's still raw!
+advancement.metallurgy.main.etherium=The Ghost Metal
+advancement.metallurgy.main.etherium.desc=Obtain your first batch of Etherium by alloying Alduorite and Sanguinite in a 1:1 ratio, it looks like a normal metal but gains ethereal properties when stimulated.
+advancement.metallurgy.main.adamantine=The Living Metal
+advancement.metallurgy.main.adamantine.desc=Obtain your first piece of Adamantine ore, the first metal ever known to be formed in symbiosis with underground microorganisms.
+advancement.metallurgy.main.atlarus=The Wind Metal
+advancement.metallurgy.main.atlarus.desc=Obtain your first piece of Atlarus Ore, it is light as air. Legends say the strong wind currents reigned over the places where this metal first formed.
+advancement.metallurgy.main.tartarite=The Paragon of Metals
+advancement.metallurgy.main.tartarite.desc=Obtain your first batch of Tartarite by alloying Adamantine and Atlarus in a 1:1 ratio, this living metal has the power to absorb powers as soon as it enters in contact with the properties of another metal.
+
+# Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet
 item.metallurgy.adamantine_chestplate.name=Adamantine Chestplate
 item.metallurgy.adamantine_leggings.name=Adamantine Leggings
@@ -627,7 +744,7 @@ tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
 tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
 
 #Config
-config.metallurgy.category.armor_effects=Armor Effects
+config.metallurgy.category.armor_effects=Effects
 config.metallurgy.category.general=General
 config.metallurgy.category.registry=Registry
 config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
@@ -780,6 +897,9 @@ item.metallurgy.zinc_nugget.name=Zinc Nugget
 
 #Effect
 effect.metallurgy.punch_effect_tired=§4You are too tired! Eat something first!
+
+# Entities
+entity.pierknight.name=PierKnight
 
 #FluidBlocks
 tile.metallurgy.molten_adamantine.name=Molten Adamantine
@@ -1017,7 +1137,7 @@ container.crusher=Crusher
 container.alloyer=Alloyer
 tile.metallurgy.crusher.name=§cCrusher
 tile.metallurgy.alloyer.name=§9Alloyer
-tile.metallurgy.sublimation_chamber.name=§4Sublimation Chamber
+tile.metallurgy.sublimation_chamber.name=§2Sublimation Chamber
 
 #Subtitles
 metallurgy.subtitle.alloyer_ambience=Alloyer Working
@@ -1041,7 +1161,7 @@ modifier.vulcan_trait.desc=Sets your enemy on fire for a certain amount of time 
 modifier.duplication_trait.name=Duplication
 modifier.duplication_trait.desc=Has a chance to duplicate drops
 modifier.life_steal_trait.name=Life Steal
-modifier.life_steal_trait.desc=Has a "luck" based chance to heal by 0.1x of the dealt damage
+modifier.life_steal_trait.desc=Has a Luck based chance to heal 0.4x of the dealt damage
 modifier.wither_trait.name=Wither
 modifier.wither_trait.desc=Applies wither effect on your enemy
 modifier.king_dice_trait.name=King Dice
@@ -1283,31 +1403,200 @@ item.metallurgy.vyroxeres_shovel.name=Vyroxeres Shovel
 item.metallurgy.vyroxeres_sword.name=Vyroxeres Sword
 
 #Tooltips
-#Armor Tooltips
-tooltip.metallurgy.adamantine_armor_effect=§4Full Armor Set: Consumes experience to gain hunger points
-tooltip.metallurgy.amordrine_armor_effect=§dFull Armor Set: Strenght II
-tooltip.metallurgy.angmallen_armor_effect=§eFull Armor Set: (WIP) Luck (WIP)
-tooltip.metallurgy.astral_silver_armor_effect=§fFull Armor Set: Jump Boost
-tooltip.metallurgy.atlarus_armor_effect=§eA gust of wind in a random direction saves you from taking any fall damage
-tooltip.metallurgy.carmot_armor_effect=§eFull Armor Set: (WIP) Haste (WIP)
-tooltip.metallurgy.celenegil_armor_effect=§aFull Armor Set: Resistance II - Half Armor Set: Resistance I
-tooltip.metallurgy.ceruclase_armor_effect=§3Full Armor Set: Slows Attackers
-tooltip.metallurgy.deep_iron_armor_effect=§3Full Armor Set: Fast Diving
-tooltip.metallurgy.eximite_armor_effect=§5Full Armor Set: Endermen won't notice you
-tooltip.metallurgy.kalendrite_armor_effect=§dFull Armor Set: Strenght
-tooltip.metallurgy.krik_armor_effect=§2Full Armor Set: Weight controlled flight (UP and DOWN arrow keys)
-tooltip.metallurgy.lutetium_armor_effect=§6Knockback resistance II
-tooltip.metallurgy.mithril_armor_effect=§bFull Armor Set: Makes entities glow
-tooltip.metallurgy.osmium_armor_effect=§9Knockback resistance I
-tooltip.metallurgy.platinum_armor_effect=§bNight Vision
-tooltip.metallurgy.prometheum_armor_effect=§2Full Armor Set: Poison Immunity
-tooltip.metallurgy.quicksilver_armor_effect=§bFull Armor Set: Faster Action
-tooltip.metallurgy.shadow_iron_armor_effect=§8Full Armor Set: No Blindness
-tooltip.metallurgy.shadow_steel_armor_effect=§8Full Armor Set: Tougher when in the dark
-tooltip.metallurgy.vulcanite_armor_effect=§cFull Armor Set: Fire Immunity
-tooltip.metallurgy.etherium_armor_effect=§5Full Armor Set: gives the ability to go through walls
-tooltip.metallurgy.desichalkos_armor_effect=§5Full Armor Set: Allows the player to steal private precious blocks from endermen
-tooltip.metallurgy.haderoth_armor_effect=§7Full Armor Set: Allows the player to walk on lava
+
+#Effect Names
+tooltip.metallurgy.effect.adamantine_all=Inclusions
+tooltip.metallurgy.effect.adamantine_armor=Symbiosis
+tooltip.metallurgy.effect.amordrine_armor=Sky-High
+tooltip.metallurgy.effect.amordrine_all=Soulbound
+tooltip.metallurgy.effect.amordrine_weapon=Divine Grace
+tooltip.metallurgy.effect.angmallen_weapon=Reactive I
+tooltip.metallurgy.effect.angmallen_pickaxe=Transmute
+tooltip.metallurgy.effect.angmallen_armor=Reactive II
+tooltip.metallurgy.effect.astral_silver_armor=Starlight
+tooltip.metallurgy.effect.astral_silver_weapon=Extraterrestrial
+tooltip.metallurgy.effect.astral_silver_tool=Extraterrastrial
+tooltip.metallurgy.effect.atlarus_armor=Whirlwind
+tooltip.metallurgy.effect.atlarus_weapon=Gust of Wind
+tooltip.metallurgy.effect.atlarus_hoe=Wind Scythe
+tooltip.metallurgy.effect.black_steel_armor=Reinforcement
+tooltip.metallurgy.effect.black_steel_weapon=Mountain
+tooltip.metallurgy.effect.carmot_tool=Autonomous
+tooltip.metallurgy.effect.carmot_armor=Power User
+tooltip.metallurgy.effect.carmot_weapon=Abattoir
+tooltip.metallurgy.effect.celenegil_tool=Escalation
+tooltip.metallurgy.effect.celenegil_armor=Perseverance
+tooltip.metallurgy.effect.celenegil_weapon=Glory Seeker
+tooltip.metallurgy.effect.ceruclase_weapon=Flash Freeze
+tooltip.metallurgy.effect.ceruclase_armor=Blizzard
+tooltip.metallurgy.effect.ceruclase_tool=Cold Snap
+tooltip.metallurgy.effect.damascus_steel_armor=Royal Blood
+tooltip.metallurgy.effect.damascus_steel_weapon=Brilliance
+tooltip.metallurgy.effect.damascus_steel_pickaxe=Dazzle
+tooltip.metallurgy.effect.deep_iron_armor=Aquatic
+tooltip.metallurgy.effect.deep_iron_tool=Diver
+tooltip.metallurgy.effect.deep_iron_weapon=Diver
+tooltip.metallurgy.effect.desichalkos_tool=Wormhole
+tooltip.metallurgy.effect.desichalkos_weapon=Nullifier
+tooltip.metallurgy.effect.desichalkos_armor=Orb
+tooltip.metallurgy.effect.electrum_weapon=Magnet
+tooltip.metallurgy.effect.electrum_tool=Voltage Control
+tooltip.metallurgy.effect.electrum_armor=Static
+tooltip.metallurgy.effect.etherium_armor=Ethereal
+tooltip.metallurgy.effect.etherium_weapon=Siphon
+tooltip.metallurgy.effect.eximite_armor=End Domestic
+tooltip.metallurgy.effect.eximite_weapon=Outworlder
+tooltip.metallurgy.effect.haderoth_armor=Adaptability
+tooltip.metallurgy.effect.haderoth_weapon=Apex
+tooltip.metallurgy.effect.haderoth_all=Metamorph
+tooltip.metallurgy.effect.hepatizon_weapon=Disarm
+tooltip.metallurgy.effect.hepatizon_armor=Cloak & Dagger
+tooltip.metallurgy.effect.ignatius_tool=Molten Core
+tooltip.metallurgy.effect.ignatius_weapon=Molten Blade
+tooltip.metallurgy.effect.ignatius_armor=Hot-Blooded
+tooltip.metallurgy.effect.inolashite_weapon=Time Cleave
+tooltip.metallurgy.effect.inolashite_tool=Time Leap
+tooltip.metallurgy.effect.inolashite_armor=Warp
+tooltip.metallurgy.effect.kalendrite_armor=Tranquil
+tooltip.metallurgy.effect.kalendrite_tool=Restoration
+tooltip.metallurgy.effect.krik_armor=Weight-Controlled Flight
+tooltip.metallurgy.effect.krik_tool=Krik-Drives
+tooltip.metallurgy.effect.krik_weapon=Flak
+tooltip.metallurgy.effect.midasium_hoe=Midas Touch
+tooltip.metallurgy.effect.midasium_weapon=Bounty
+tooltip.metallurgy.effect.midasium_tool=Greed
+tooltip.metallurgy.effect.mithril_pickaxe=Multiply
+tooltip.metallurgy.effect.mithril_weapon=Magic Aspect
+tooltip.metallurgy.effect.mithril_all=Arcane
+tooltip.metallurgy.effect.orichalcum_all=Champion
+tooltip.metallurgy.effect.orichalcum_armor=Berserker
+tooltip.metallurgy.effect.osmium_armor=Titan
+tooltip.metallurgy.effect.oureclase_pickaxe=Crushing
+tooltip.metallurgy.effect.oureclase_weapon=Pulverize
+tooltip.metallurgy.effect.oureclase_armor=Stampede
+tooltip.metallurgy.effect.platinum_armor=Purification
+tooltip.metallurgy.effect.platinum_weapon=Cathartic Strike
+tooltip.metallurgy.effect.platinum_all=Flawless
+tooltip.metallurgy.effect.prometheum_armor=Freyr
+tooltip.metallurgy.effect.prometheum_all=Photosynthesis
+tooltip.metallurgy.effect.prometheum_hoe=Harvest
+tooltip.metallurgy.effect.quicksilver_weapon=Sleight of blade
+tooltip.metallurgy.effect.quicksilver_all=Aerodynamic
+tooltip.metallurgy.effect.quicksilver_tool=Tailwind
+tooltip.metallurgy.effect.quicksilver_armor=Acceleration
+tooltip.metallurgy.effect.sanguinite_all=Deceitful
+tooltip.metallurgy.effect.sanguinite_weapon=Devour
+tooltip.metallurgy.effect.sanguinite_tool=Blood Tap
+tooltip.metallurgy.effect.sanguinite_armor=Necromastery
+tooltip.metallurgy.effect.shadow_iron_pickaxe=Incompatible
+tooltip.metallurgy.effect.shadow_iron_weapon=Chaos Crit
+tooltip.metallurgy.effect.shadow_iron_armor=Broken Evasion
+tooltip.metallurgy.effect.shadow_steel_all=Umbral-synthesis
+tooltip.metallurgy.effect.shadow_steel_armor=Eclipse
+tooltip.metallurgy.effect.shadow_steel_weapon=Harmony
+tooltip.metallurgy.effect.tartarite_all=Paragon absorb
+tooltip.metallurgy.effect.vulcanite_weapon=Fuse
+tooltip.metallurgy.effect.vulcanite_tool=Fissure
+tooltip.metallurgy.effect.vulcanite_armor=Explosion
+tooltip.metallurgy.effect.vyroxeres_weapon=Toxin
+tooltip.metallurgy.effect.vyroxeres_armor=Dissolve
+
+#Effect Descriptions
+tooltip.metallurgy.effect.adamantine_all.tooltip=Eating food regenerates equipment durability, not eating any food slowly destroys equipment. Durability repair amount depends on how many food points the item gives. Durability decreases with a frequence of 1 to 6 seconds depending on how hungry the player is
+tooltip.metallurgy.effect.adamantine_armor.tooltip=Receiving fatal damage will cause one of the armor pieces to sacrifice itself. Every Armor piece will increase the chance of surviving death by 25<PC> (with a maximum of 100<PC> when wearing full set)
+tooltip.metallurgy.effect.amordrine_armor.tooltip=Grants extra jumps (from 1 to 4) depending on how many armor pieces the player is wearing
+tooltip.metallurgy.effect.amordrine_all.tooltip=This item will persist in your inventory after death
+tooltip.metallurgy.effect.amordrine_weapon.tooltip=Bonus Damage depending on target's health,the more the target has the less health the more damage the weapon does (up to 200<PC> damage boost)
+tooltip.metallurgy.effect.angmallen_weapon.tooltip=Deals Bonus Damage to armored enemies
+tooltip.metallurgy.effect.angmallen_pickaxe.tooltip=Mining an ore  sometimes drops another ore of +1/-1/+0 harvest level (50<PC> chance)
+tooltip.metallurgy.effect.angmallen_armor.tooltip=Plays a sound sometimes when you're near some rare ore, every armor piece increases the chance to detect rare ores
+tooltip.metallurgy.effect.astral_silver_armor.tooltip=Gives Night Vision and Speed depending on how many pieces of armor are worn, effects are only applied when the player is directly under the night-sky or in The End.
+tooltip.metallurgy.effect.astral_silver_weapon.tooltip=45<PC> more damage if the player is in another dimension
+tooltip.metallurgy.effect.astral_silver_tool.tooltip=Increased speed when breaking blocks in dimensions that aren't the Overworld
+tooltip.metallurgy.effect.atlarus_armor.tooltip=A whirlwind barrier will deviate any projectile going towards you from a certain distance.
+tooltip.metallurgy.effect.atlarus_weapon.tooltip=A strong gust of wind pushes enemies away from you and breaks leaves and vines in a range of 5 blocks around you
+tooltip.metallurgy.effect.atlarus_hoe.tooltip=Wind helps you remove bushes and crops around you
+tooltip.metallurgy.effect.black_steel_armor.tooltip=Receiving damage sometimes grants resistance but also slowness, at the same time. ( Repeated strikes stack the effect, aka slowness I and resistance I become slowness II and resistance II. Can stack up to 3 times, chance based.)
+tooltip.metallurgy.effect.black_steel_weapon.tooltip=Tools & weapons act like armor, for example holding a black steel sword while getting attacked will damage the sword but absorb a small portion of the damage.
+tooltip.metallurgy.effect.carmot_tool.tooltip=Harvesting a block will mine surrounding blocks of the same type in a spherical range
+tooltip.metallurgy.effect.carmot_armor.tooltip=You can consume and use items faster depending on how many armor pieces you wear; if you wear a full set you also get a Haste III buff
+tooltip.metallurgy.effect.carmot_weapon.tooltip=Attacking a mob will also attack mobs of the same type in a radius around the initial strike
+tooltip.metallurgy.effect.celenegil_tool.tooltip=Continuously breaking blocks without stopping doesn't use durability and increases mining speed. (Resets after pausing for more than a second, the unbreakable effect is enabled after 5 blocks mined)
+tooltip.metallurgy.effect.celenegil_armor.tooltip=After being attacked five times over a short period, all the enemies are knocked back away from the player and the player receives a very short regen buff and all negative effects are cleared.
+tooltip.metallurgy.effect.celenegil_weapon.tooltip=On right click, Grants a small damage buff to the weapon damage but when you damage an entity without killing it, it'll go on a short cooldown while it will give the player some short speed and strength buff if they manage to kill the entity
+tooltip.metallurgy.effect.ceruclase_weapon.tooltip=Has a 75<PC> chance to completely freeze an enemy in place on hit for 3 seconds.
+tooltip.metallurgy.effect.ceruclase_armor.tooltip=Mobs are slowed, fatigued and weakened depending on how much armor you wear, both players and entities are extinguished if they were on fire.
+tooltip.metallurgy.effect.ceruclase_tool.tooltip=Blocks with harvest level of 0 are harvested instantly. (Dirt, sand, Wood)
+tooltip.metallurgy.effect.damascus_steel_armor.tooltip=A minion will be spawned to aid you in your fights against enemies (minion health will scale with the armor count)
+tooltip.metallurgy.effect.damascus_steel_weapon.tooltip=Mobs drop significantly more experience.
+tooltip.metallurgy.effect.damascus_steel_pickaxe.tooltip=Mining ores sometimes grants a bit of experience depending on the harvest level.
+tooltip.metallurgy.effect.deep_iron_armor.tooltip=Grants Water Breathing and improved Mobility in water depending on how many armor pieces are worn (it also grants night vision with 2 or more armor pieces).
+tooltip.metallurgy.effect.deep_iron_tool.tooltip=Improved tool harvest speed when underwater (3 times the normal underwater speed)
+tooltip.metallurgy.effect.deep_iron_weapon.tooltip=Enhanced weapon damage when underwater (+3 hearts of damage)
+tooltip.metallurgy.effect.desichalkos_tool.tooltip=Tool Reach is 3 blocks higher than normal (Metal trait) - Block Drops are teleported to the player inventory directly
+tooltip.metallurgy.effect.desichalkos_weapon.tooltip=When attacking, the damage is dealt straight to the opponent's health bar, unaffected by armor or any resistance the opponent might have.
+tooltip.metallurgy.effect.desichalkos_armor.tooltip=The wearer can fully absorb X instances of damage (X scales with armor) without taking damage, the “Layers” regenerate one at a time every 7 seconds after the last time the wearer took damage.
+tooltip.metallurgy.effect.electrum_weapon.tooltip=Activating the effect with a right click on the weapon will cause entities in line of sight of the player to be moved towards the player.
+tooltip.metallurgy.effect.electrum_tool.tooltip=Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.
+tooltip.metallurgy.effect.electrum_armor.tooltip=Receiving damage charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.
+tooltip.metallurgy.effect.etherium_armor.tooltip=Allows the player to clip through walls when sneaking for at most 15 seconds after which the player remains stuck in the wall
+tooltip.metallurgy.effect.etherium_weapon.tooltip=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn't stack).
+tooltip.metallurgy.effect.eximite_armor.tooltip=Shulkers become neutral, but you're not immune to the effect of lingering bullets.
+tooltip.metallurgy.effect.eximite_weapon.tooltip=Grants bonus damage and a looting effect to mobs in the End.
+tooltip.metallurgy.effect.haderoth_armor.tooltip=§fBecomes active only after Metamorph.<NL>§7Helmet: Immunity to hunger effect.<NL>Chestplate: Permanent Fire resistance.<NL>Leggings: Immunity to slowness effect.<NL>Boots: Immunity to levitation effect.
+tooltip.metallurgy.effect.haderoth_weapon.tooltip=§fBecomes active only after Metamorph.<NL>§7Builds up bonus damage when continually killing mobs of the same type.<NL><NL>§8Bonus damage per kill: +1.0<NL>Maximum bonus damage: +12.0
+tooltip.metallurgy.effect.haderoth_all.tooltip=After breaking once, the item is replaced with a new and better version of itself.<NL>Along with significantly higher durability, the second generation gains bonuses depending on the item type:<NL> Armor: higher protection and toughness values, "Adaptability" effect becomes active.<NL> Weapons: higher damage,  "Apex" effect becomes active.<NL> Tools: higher efficiency when breaking blocks.
+tooltip.metallurgy.effect.hepatizon_weapon.tooltip=When attacking you have a chance to rob the enemy of some of their equipment.
+tooltip.metallurgy.effect.hepatizon_armor.tooltip=Grants AI invisibility outside of a certain radius depending on how much armor you're wearing.
+tooltip.metallurgy.effect.ignatius_tool.tooltip=Auto-smelts block drops if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
+tooltip.metallurgy.effect.ignatius_weapon.tooltip=Auto-smelts entity loot if they can be smelted.<NL>Auto-smelt chance is based on the Fortune enchantment
+tooltip.metallurgy.effect.ignatius_armor.tooltip=Fire and lava heals you proportionally to the damage it would otherwise deal, but water and rain damages you as if it were lava and fire; <NL>The effect of Fire Protection is inverted, to protect water damage.
+tooltip.metallurgy.effect.inolashite_weapon.tooltip=When attacking, sometimes an extra attack can occur, the player will swing his arm twice in quick succession.
+tooltip.metallurgy.effect.inolashite_tool.tooltip=Upon activation, transports the player 7 blocks in the direction they are looking breaking all the blocks in the way (as long as the tool can harvest them).
+tooltip.metallurgy.effect.inolashite_armor.tooltip=Shift + Jump will teleport the player back in time of 2..8 seconds depending on how much armor is worn
+tooltip.metallurgy.effect.kalendrite_armor.tooltip=If the player has not received any damage for the past 10 seconds and they don't have full hp, they gain a regeneration buff.
+tooltip.metallurgy.effect.kalendrite_tool.tooltip=Breaking blocks restores half a heart but tools lose more durability the lower the user's health is.
+tooltip.metallurgy.effect.krik_armor.tooltip=Makes you float at a certain height depending on how much filled your inventory is. You can press the UP arrow or the DOWN arrow to float respectively up and down.  You have a height limit you can't go over while floating, that limit depends on how full your inventory is (excluding the hotbar). There's also an HUD in the bottom-right corner of the screen that shows you, your height level and your limit.
+tooltip.metallurgy.effect.krik_tool.tooltip=Activating the item launches the player in the general direction of where they are looking.
+tooltip.metallurgy.effect.krik_weapon.tooltip=Deals double damage to airborne entities and gives a short levitation debuff.
+tooltip.metallurgy.effect.midasium_hoe.tooltip=Harvesting crops with this hoe will turn the crop drops into gold items (ingots, dusts and nuggets) instead.
+tooltip.metallurgy.effect.midasium_weapon.tooltip=Mobs occasionally drop extra loot, has a small chance to convert all drops into gold ingots.<NL><NL>§8Bonus loot chance: §n30% / 60% / 90% / 100%<NL>Gold chance: §n1%§r / 5% / 12% / 18%<NL>(Scales with Looting enchantment)
+tooltip.metallurgy.effect.midasium_tool.tooltip=Chance based fortune effect that stacks with the fortune enchantment. All drops have a small chance to be turned into gold ingots.
+tooltip.metallurgy.effect.mithril_pickaxe.tooltip=Breaking ore sometimes drops an additional ore along with the one mined. Effect chance scales with Fortune Enchantment
+tooltip.metallurgy.effect.mithril_weapon.tooltip=Deals additional magic damage 1 second after the last entity was attacked
+tooltip.metallurgy.effect.mithril_all.tooltip=The more enchantments the item has the better it performs. (damage for weapons, mining speed for tools and more protection from armor)
+tooltip.metallurgy.effect.orichalcum_all.tooltip=Killing monsters restores durability to Orichalcum Items (Amount is equal to the max health of the killed monster)
+tooltip.metallurgy.effect.orichalcum_armor.tooltip=Killing a mob grants a strength buff, level of which is equal to the count of every other remaining hostile mob around the wearer. (Max Potion Level: 6) (Armor scales the radius and duration of the bonus)
+tooltip.metallurgy.effect.osmium_armor.tooltip=Enemies are knocked back when they attack you
+tooltip.metallurgy.effect.oureclase_pickaxe.tooltip=Mining ores drops 1 dust of that metal instead of the ore.
+tooltip.metallurgy.effect.oureclase_weapon.tooltip=Deals 2x the original damage to enemies with full health.
+tooltip.metallurgy.effect.oureclase_armor.tooltip=Sprinting slightly damages and knocks back nearby entities.
+tooltip.metallurgy.effect.platinum_armor.tooltip=Purifies negative effects like Weakness, Slowness and Poison to their positive counterparts.
+tooltip.metallurgy.effect.platinum_weapon.tooltip=Extra cathartic damage will be dealt to undead enemies as well as setting them on fire.
+tooltip.metallurgy.effect.platinum_all.tooltip=This tool is unbreakable
+tooltip.metallurgy.effect.prometheum_armor.tooltip=Shifting affects nearby crops and grass growth giving it a boost at the cost of a bit of armor durability.
+tooltip.metallurgy.effect.prometheum_all.tooltip=Item durability regenerates slowly overtime when under direct sunlight.
+tooltip.metallurgy.effect.prometheum_hoe.tooltip=When harvested with this hoe: leaves, crops and grass drops are increased.
+tooltip.metallurgy.effect.quicksilver_weapon.tooltip=On every successful attack you're launched through the enemy damaging them more.
+tooltip.metallurgy.effect.quicksilver_all.tooltip=Equipping this item gives you a speed boost.
+tooltip.metallurgy.effect.quicksilver_tool.tooltip=Mining speed will remain the same over any block independently from harvest level or block hardness
+tooltip.metallurgy.effect.quicksilver_armor.tooltip=Sprinting will allow you to build up momentum, once full speed is reached you'll be able to run on liquids, but you will sink as soon as you stop or slow down.
+tooltip.metallurgy.effect.sanguinite_all.tooltip=This item will disappear completely after death.
+tooltip.metallurgy.effect.sanguinite_weapon.tooltip=You deal more damage as you grow hungry, killing enemies appeases your hunger depending on the max health of the enemy but also makes you hungry for more.
+tooltip.metallurgy.effect.sanguinite_tool.tooltip=Activating the tool will exchange some of your life for increased harvest speed and level also restoring a bit of durability
+tooltip.metallurgy.effect.sanguinite_armor.tooltip=Killing a hostile mob might revive its corpse with lower health allowing it to be killed again for more drops and experience.
+tooltip.metallurgy.effect.shadow_iron_pickaxe.tooltip=Mining Shadow Iron ore will sometimes drop a different ore.
+tooltip.metallurgy.effect.shadow_iron_weapon.tooltip=Attacks occasionally become critical hits dealing random increased damage up to more than 3 times the base attack value.
+tooltip.metallurgy.effect.shadow_iron_armor.tooltip=Has a chance of absorbing attack damage completely at the cost of durability from one of the armor pieces
+tooltip.metallurgy.effect.shadow_steel_all.tooltip=(WIP DESC) This item regenerates durability in the darkness, regen speed is relative to the darkness level
+tooltip.metallurgy.effect.shadow_steel_armor.tooltip=Whether if you're attacked in light or in darkness you either blind and damage enemies with fire or evade anymore damage and gain speed boost for a few seconds
+tooltip.metallurgy.effect.shadow_steel_weapon.tooltip=This weapon hits faster in the dark and stronger in the light.
+tooltip.metallurgy.effect.tartarite_all.tooltip=Surrounding the item with 4 blocks of another metal will allow it to absorb its effects in an increased ratio while also increasing item durability.
+tooltip.metallurgy.effect.vulcanite_weapon.tooltip=Right clicking the weapon ignites it, and on the next strike within 5 seconds will create an explosion whose strength depends on how much time is left on the fuse, if 5 seconds run out before you attack any enemy the explosion will affect the user.
+tooltip.metallurgy.effect.vulcanite_tool.tooltip=Breaking a block has a chance of breaking another one adjacent to it, chance scales with fortune.
+tooltip.metallurgy.effect.vulcanite_armor.tooltip=Receiving damage causes explosions that damage all the entities around the player damage scales with armor level, when more than 2 pieces are worn explosions also cause fire in the area around and the user is given 10 seconds of fire resistance.
+tooltip.metallurgy.effect.vyroxeres_weapon.tooltip=Poisons the target on every hit, if the target is already poisoned, the level of poison debuff increases.
+tooltip.metallurgy.effect.vyroxeres_armor.tooltip=Additional Damage Reduction for every active potion effect on the user.
 
 #Other Tooltips
 tooltip.metallurgy.bitumen=§7Obtained as a secondary drop from Tar Ore
@@ -1322,49 +1611,19 @@ tooltip.metallurgy.electrum_magnet_mode=§fMode:
 tooltip.metallurgy.electrum_magnet_disabled=§7Disabled
 tooltip.metallurgy.electrum_magnet_metal_only=§eMetal Items Only
 tooltip.metallurgy.electrum_magnet_enabled=§fEnabled
+tooltip.metallurgy.press_ctrl=Press §f[CTRL]§7 to expand
+tooltip.metallurgy.press_shift=Press §f[SHIFT]§7 to expand
+tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
+tooltip.metallurgy.stats.durability=Durability: %s
+tooltip.metallurgy.stats.efficiency=Efficiency: %s
+message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
 
-#Tool Tooltips [HAHAHAHA "Tool : Tooltips" { not funny Davoleo >:( }]
-#Axes
-tooltip.metallurgy.atlarus_axe_effect=§eRight Click to break any type of leaves in range of the gust of wind
-tooltip.metallurgy.ignatius_axe_effect=§cHas the chance of smelting the block drops
-
-#Pickaxes
-tooltip.metallurgy.deep_iron_pickaxe_effect=§1Lightweight underwater mining!
-tooltip.metallurgy.ignatius_pickaxe_effect=§6Randomly Drops a nugget or two of the ore you're mining
-
-#Shields
-tooltip.metallurgy.ceruclase_shield=§3(W.I.P.) When activated, creates an icy sphere around the player and cushions a portion of the fall damage. The ice is destroyed after withdrawing the shield.
+#Shield Tooltips
+tooltip.metallurgy.ceruclase_shield=§3When activated, creates an icy sphere around the player and cushions a portion of the fall damage. The ice starts to melt after withdrawing the shield.
 tooltip.metallurgy.lemurite_shield=§fWhile active, makes the player completely invisible to most entities (including other players).
 tooltip.metallurgy.orichalcum_buckler=Upgraded buckler. §2When attacked by a ranged enemy, reflects 1.5x of the damage to the attacker and teleports them to be within melee reach.
 tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a melee enemy, creates a small explosion that knocks them back.
 tooltip.metallurgy.zinc_buckler=A generic buckler, a lighter and more durable alternative to the normal shield. While active, does not hinder the players movement speed but has a cooldown after each block. 
-
-#Shovel
-tooltip.metallurgy.ignatius_shovel_effect=§cHas the chance of smelting the block drops
-
-#Swords
-tooltip.metallurgy.atlarus_sword_effect=§ePushes any nearby entity away from the player on right-click
-tooltip.metallurgy.celenegil_sword_effect=§aYour kills make you feel Strong & Quick
-tooltip.metallurgy.ceruclase_sword_effect=§3Slows the target
-tooltip.metallurgy.deep_iron_sword_effect=§3Increase attack speed in water
-tooltip.metallurgy.desichalkos_sword_effect=§5Allows the player to teleport in the direction they're looking
-tooltip.metallurgy.ignatius_sword_effect=§cFire Aspect I
-tooltip.metallurgy.kalendrite_sword_effect=§dHas the chance to regenerate your life
-tooltip.metallurgy.midasium_sword_effect=§6Duplication
-tooltip.metallurgy.mithril_sword_effect=§bMakes the target glow
-tooltip.metallurgy.orichalcum_sword_effect=§2Your kills make you feel Strong
-tooltip.metallurgy.sanguinite_sword_effect=§4Life Steal
-tooltip.metallurgy.shadow_iron_sword_effect=§8Blinds the target [Wraps your enemy into shadow!]
-tooltip.metallurgy.shadow_steel_sword_effect=§8The Attack Speed is directly proportional to Darkness
-tooltip.metallurgy.tartarite_sword_effect=§8Wither II
-tooltip.metallurgy.vulcanite_sword_effect=§cFire Aspect II
-tooltip.metallurgy.vyroxeres_sword_effect=§aPoisons your target
-
-#Hoe
-tooltip.metallurgy.atlarus_hoe_effect=§eRight Click to break grass blocks around the player
-
-#Tools
-tooltip.metallurgy.shadow_steel_tool_effect=§8The Mining Speed is directly proportional to Darkness
 
 #Utils
 util.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "metallurgy:wiki"
+    },
+    "title": "Metallurgy 4: Reforged",
+    "description": "Bringing \"Mine\", back into Minecraft!",
+    "background": "metallurgy:textures/blocks/deep_iron_block.png",
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "cobblestone",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ]
+}

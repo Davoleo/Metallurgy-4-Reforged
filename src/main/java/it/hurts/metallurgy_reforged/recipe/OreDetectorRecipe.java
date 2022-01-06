@@ -24,7 +24,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.IRecipeFactory;
@@ -36,9 +35,9 @@ import javax.annotation.Nonnull;
 @SuppressWarnings("unused")
 public class OreDetectorRecipe extends ShapelessOreRecipe {
 
-	private OreDetectorRecipe(ResourceLocation group, NonNullList<Ingredient> input)
+	private OreDetectorRecipe(NonNullList<Ingredient> input)
 	{
-		super(group, input, ItemStack.EMPTY);
+		super(null, input, ItemStack.EMPTY);
 	}
 
 	private boolean isCleaningRecipe(InventoryCrafting inv)
@@ -134,7 +133,7 @@ public class OreDetectorRecipe extends ShapelessOreRecipe {
 			if (ingredients.isEmpty())
 				throw new JsonParseException("No ingredients for shapeless recipe");
 
-			return new OreDetectorRecipe(null, ingredients);
+			return new OreDetectorRecipe(ingredients);
 		}
 
 	}

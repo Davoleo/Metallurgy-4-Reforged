@@ -21,7 +21,7 @@ import it.hurts.metallurgy_reforged.item.ItemMetal;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.model.AlloySample;
+import it.hurts.metallurgy_reforged.model.MetalSample;
 import it.hurts.metallurgy_reforged.recipe.AlloyerRecipes;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.init.Items;
@@ -99,7 +99,7 @@ public class IntegrationTIC {
 
 	public static void postInit()
 	{
-		for (Table.Cell<AlloySample, AlloySample, AlloySample> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
+		for (Table.Cell<MetalSample, MetalSample, MetalSample> entry : AlloyerRecipes.getInstance().getRecipeTable().cellSet())
 		{
 			FluidStack output = getFluidFromIngot(entry.getValue().getStack());
 			FluidStack input1 = getFluidFromIngot(entry.getRowKey().getStack());

@@ -1,0 +1,29 @@
+{
+  "parent": "metallurgy:main/tier3",
+  "display": {
+    "icon": {
+      "item": "metallurgy:shadow_iron_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancement.metallurgy.main.tier4"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tier4.desc"
+    }
+  },
+  "criteria": {
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
+      "conditions": {
+        "level": 4
+      }
+    }
+  },
+  "requirements": [
+    [
+      "harvest_tier"
+    ]
+  ]
+}

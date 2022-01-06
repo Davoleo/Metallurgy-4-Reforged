@@ -19,13 +19,13 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 
 	public ItemVulcaniteBuckler()
 	{
-		super("vulcanite_buckler", 762, 40);
+		super("vulcanite_buckler", 662, 40);
 	}
 
 	@Override
 	public int getMaxItemUseDuration(@Nonnull ItemStack stack)
 	{
-		return 40;
+		return 50;
 	}
 
 	@Override
@@ -35,13 +35,15 @@ public class ItemVulcaniteBuckler extends ItemBuckler {
 	}
 
 	@Override
-	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount) {
+	public void onDamageBlocked(EntityLivingBase player, DamageSource damageSource, float amount)
+	{
 
 		super.onDamageBlocked(player, damageSource, amount);
 
-		if (damageSource.getImmediateSource() instanceof EntityLivingBase) {
+		if (damageSource.getImmediateSource() instanceof EntityLivingBase)
+		{
 			EntityLivingBase target = ((EntityLivingBase) damageSource.getImmediateSource());
-			target.world.createExplosion(player, target.posX, target.posY, target.posZ, 0.3F, false);
+			target.world.createExplosion(player, target.posX, target.posY, target.posZ, 0.45F, false);
 			target.knockBack(target, 2.5F, player.posX - target.posX, player.posZ - target.posZ);
 		}
 

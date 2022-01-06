@@ -24,7 +24,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitStrongly extends AbstractArmorTraitLeveled implements IConarmMetallurgyTrait {
 
-	private int level;
+	private final int level;
 
 	public TraitStrongly(int level)
 	{

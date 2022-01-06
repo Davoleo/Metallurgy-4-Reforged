@@ -1,0 +1,29 @@
+{
+  "parent": "metallurgy:main/tier5",
+  "display": {
+    "icon": {
+      "item": "metallurgy:krik_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancement.metallurgy.main.tier6"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tier6.desc"
+    }
+  },
+  "criteria": {
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
+      "conditions": {
+        "level": 6
+      }
+    }
+  },
+  "requirements": [
+    [
+      "harvest_tier"
+    ]
+  ]
+}

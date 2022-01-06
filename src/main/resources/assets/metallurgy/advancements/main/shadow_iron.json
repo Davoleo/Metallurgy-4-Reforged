@@ -1,0 +1,56 @@
+{
+  "parent": "metallurgy:main/tier3",
+  "display": {
+    "icon": {
+      "item": "metallurgy:shadow_iron_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.shadow_iron"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.shadow_iron.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotShadowIron",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustShadowIron",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "oreShadowIron",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust",
+      "has_ore"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "metallurgy:item/extended",
   "textures": {
     "layer0": "metallurgy:items/armors/krik_boots"
   }

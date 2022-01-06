@@ -82,8 +82,15 @@ public class GadgetsConfig {
     public static class ThermiteDust {
 
         @Config.Name("Thermite Fuel Temperature")
-        @Config.Comment("The Temperature of thermite when used as a fluid fuel for Tinkers' Construct")
+        @Config.Comment("The Temperature required to melt thermite in a Tinkers' Construct Smeltery")
         public static int temperature = 400;
+
+        @Config.Name("Thermite Fuel Value")
+        @Config.Comment("How many items should 1 thermite item cook in a vanilla furnace (this value is automatically doubled when thermite is used in metallurgy machiens) [default: 8]")
+        @Config.RangeInt(min = 1, max = 64)
+        @Config.SlidingOption
+        @Config.RequiresMcRestart
+        public static int thermiteFuelValue = 8;
 
     }
 }

@@ -4,13 +4,16 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.block;
 
+import it.hurts.metallurgy_reforged.advancement.HarvestLevelTrigger;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
@@ -22,7 +25,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -33,124 +39,144 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class BlockOre extends Block {
 
-	//Optional custom drops for blocks
-	private List<Drop> customDrops;
+    //Optional custom drops for blocks
+    private List<Drop> customDrops;
+    private final MetalStats metal;
 
-	public BlockOre(String name, float hardness, int harvestLevel, float blastResistance)
-	{
-		super(Material.ROCK);
-		BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, Constants.Tools.PICKAXE, harvestLevel);
-	}
+    public BlockOre(String name, float hardness, int harvestLevel, float blastResistance, MetalStats metal)
+    {
+        super(Material.ROCK);
+        BlockUtils.initBlock(this, name, MetallurgyTabs.tabOre, hardness, blastResistance, Constants.Tools.PICKAXE, harvestLevel);
+        this.metal = metal;
+    }
 
-	public BlockOre setDrops(Drop... drops)
-	{
-		this.customDrops = Arrays.asList(drops);
-		return this;
-	}
+    public MetalStats getMetalStats()
+    {
+        return metal;
+    }
 
-	@Override
-	public void getDrops(@Nonnull NonNullList<ItemStack> drops, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, @Nonnull IBlockState state, int fortune)
-	{
-		if (customDrops != null)
-		{
-			for (Drop drop : customDrops)
-			{
-				if (Math.random() <= drop.getChance())
-					drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
-			}
-		}
-		else
-			super.getDrops(drops, world, pos, state, fortune);
-	}
+    public BlockOre setDrops(Drop... drops)
+    {
+        this.customDrops = Arrays.asList(drops);
+        return this;
+    }
 
+    @ParametersAreNonnullByDefault
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
+    {
+        if (player instanceof EntityPlayerMP)
+        {
+            HarvestLevelTrigger.Instance wrapper = new HarvestLevelTrigger.Instance(state.getBlock().getHarvestLevel(state));
+            ModAdvancements.Triggers.BREAK_ORE_TIER_TRIGGER.trigger(((EntityPlayerMP) player), wrapper);
+        }
+        super.harvestBlock(worldIn, player, pos, state, te, stack);
+    }
 
-	// VISUAL EFFECTS -----------------------------------------------------------
-	@Override
-	public int getLightValue(@Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
-	{
-		if (GeneralConfig.enableOreLight)
-		{
-			return this.getHarvestLevel(state) >= 5 ? 5 : super.getLightValue(state, world, pos);
-		}
-		return super.getLightValue(state, world, pos);
-	}
+    @ParametersAreNonnullByDefault
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        if (customDrops != null)
+        {
+            for (Drop drop : customDrops)
+            {
+                if (Math.random() <= drop.getChance())
+                    drops.add(new ItemStack(drop.getItemStack().getItem(), drop.getRandomAmount()));
+            }
+        }
+        else
+            super.getDrops(drops, world, pos, state, fortune);
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void randomDisplayTick(@Nonnull IBlockState stateIn, World worldIn, @Nonnull BlockPos pos, @Nonnull Random rand)
-	{
-		if (worldIn.isRemote && GeneralConfig.enableOreParticles)
-		{
-			spawnParticles(worldIn, pos, rand);
-		}
-	}
+    @Override
+    public boolean canDropFromExplosion(@Nonnull Explosion explosionIn)
+    {
+        return Utils.random.nextInt(4) > 0;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Nonnull
-	@Override
-	public BlockRenderLayer getRenderLayer()
-	{
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
+    // VISUAL EFFECTS -----------------------------------------------------------
+    @Override
+    public int getLightValue(@Nonnull IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos)
+    {
+        if (GeneralConfig.enableOreLight)
+        {
+            return this.getHarvestLevel(state) >= 5 ? 5 : super.getLightValue(state, world, pos);
+        }
+        return super.getLightValue(state, world, pos);
+    }
 
-	/**
-	 * Spawn Ore Block Particles
-	 */
-	@SideOnly(Side.CLIENT)
-	private void spawnParticles(World worldIn, BlockPos pos, Random random)
-	{
-		double d0 = 0.0625D;
-		String metalName = this.getRegistryName().getPath().replace("_ore", "");
-		Metal metal = ModMetals.metalMap.get(metalName);
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(@Nonnull IBlockState stateIn, World worldIn, @Nonnull BlockPos pos, @Nonnull Random rand)
+    {
+        if (worldIn.isRemote && GeneralConfig.enableOreParticles)
+        {
+            spawnParticles(worldIn, pos, rand);
+        }
+    }
 
-		if (metal == null)
-			return;
+    @SideOnly(Side.CLIENT)
+    @Nonnull
+    @Override
+    public BlockRenderLayer getRenderLayer()
+    {
+        return BlockRenderLayer.CUTOUT_MIPPED;
+    }
 
-		float[] color = metal.getStats().getColorRGBValues();
+    /**
+     * Spawn Ore Block Particles
+     */
+    @SideOnly(Side.CLIENT)
+    private void spawnParticles(World worldIn, BlockPos pos, Random random)
+    {
+        double d0 = 0.0625D;
+        String metalName = this.getRegistryName().getPath().replace("_ore", "");
+        Metal metal = ModMetals.metalMap.get(metalName);
 
-		for (int i = 0; i < 6; ++i)
-		{
-			double d1 = (float) pos.getX() + random.nextFloat();
-			double d2 = (float) pos.getY() + random.nextFloat();
-			double d3 = (float) pos.getZ() + random.nextFloat();
+        if (metal == null)
+            return;
 
-			if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
-				d2 = (double) pos.getY() + d0 + 1.0D;
+        float[] color = metal.getStats().getColorRGBValues();
 
-			if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
-				d2 = (double) pos.getY() - d0;
+        for (int i = 0; i < 6; ++i)
+        {
+            double d1 = (float) pos.getX() + random.nextFloat();
+            double d2 = (float) pos.getY() + random.nextFloat();
+            double d3 = (float) pos.getZ() + random.nextFloat();
 
-			if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
-				d3 = (double) pos.getZ() + d0 + 1.0D;
+            if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
+                d2 = (double) pos.getY() + d0 + 1.0D;
 
-			if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
-				d3 = (double) pos.getZ() - d0;
+            if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
+                d2 = (double) pos.getY() - d0;
 
-			if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
-				d1 = (double) pos.getX() + d0 + 1.0D;
+            if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
+                d3 = (double) pos.getZ() + d0 + 1.0D;
 
-			if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
-				d1 = (double) pos.getX() - d0;
+            if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
+                d3 = (double) pos.getZ() - d0;
 
-			if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
-			{
-				int harvestLevel = this.getHarvestLevel(this.getDefaultState());
-				if (harvestLevel > 1)
-					Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, color[0], color[1], color[2], harvestLevel - 2));
-			}
-		}
-	}
+            if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
+                d1 = (double) pos.getX() + d0 + 1.0D;
 
-	@Override
-	public boolean canDropFromExplosion(@Nonnull Explosion explosionIn)
-	{
-		return Utils.random.nextInt(4) > 0;
-	}
+            if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
+                d1 = (double) pos.getX() - d0;
 
+            if (d1 < (double) pos.getX() || d1 > (double) (pos.getX() + 1) || d2 < 0.0D || d2 > (double) (pos.getY() + 1) || d3 < (double) pos.getZ() || d3 > (double) (pos.getZ() + 1))
+            {
+                int harvestLevel = this.getHarvestLevel(this.getDefaultState());
+                if (harvestLevel > 1)
+                    Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(worldIn, d1, d2, d3, 1.5F, color[0], color[1], color[2], true, (int) (((harvestLevel - 2F) / 5F) * 9F)));
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.integration.tic.material;
 
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraftforge.fml.common.thread.SidedThreadGroups;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -36,30 +37,6 @@ public class TiCMaterial extends Material {
 	@Override
 	public String getLocalizedName()
 	{
-		String name = metal.getStats().getName();
-		String[] str = name.split("_");
-		String[] space = space(str.length);
-		name = "";
-		for (int i = 0; i < str.length; i++)
-		{
-			name = name + str[i].substring(0, 1).toUpperCase() + str[i].substring(1) + space[i];
-		}
-		return name;
+		return Utils.localizeIgnoreFormat("material.metallurgy." + metal.toString() + ".name");
 	}
-
-	private String[] space(int len)
-	{
-		String[] str = new String[len];
-		for (int i = 0; i < len; i++)
-		{
-			if (i < len - 1)
-			{
-				str[i] = " ";
-			}
-			else
-				str[i] = "";
-		}
-		return str;
-	}
-
 }

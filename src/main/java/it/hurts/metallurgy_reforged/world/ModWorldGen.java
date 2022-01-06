@@ -9,16 +9,16 @@
 
 package it.hurts.metallurgy_reforged.world;
 
+import com.google.common.collect.ImmutableSet;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.block.BlockOre;
 import it.hurts.metallurgy_reforged.block.ModBlocks;
-import it.hurts.metallurgy_reforged.config.WorldGenerationConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.world.spawn.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
@@ -34,18 +34,22 @@ import org.apache.logging.log4j.Level;
 import java.util.ArrayDeque;
 import java.util.Random;
 
+import static it.hurts.metallurgy_reforged.config.WorldGenerationConfig.*;
+
 public class ModWorldGen implements IWorldGenerator {
 
 	private static final Block DEFAULT_WORLD_BLOCK = Blocks.STONE;
 	public static final Block DEFAULT_END_BLOCK = Blocks.END_STONE;
 
-	public static final int COMMON = WorldGenerationConfig.rarity.commonRarity;
-	public static final int UNCOMMON = WorldGenerationConfig.rarity.uncommonRarity;
-	private final int RARE = WorldGenerationConfig.rarity.rareRarity;
-	private final int ULTRA_RARE = WorldGenerationConfig.rarity.ultraRareRarity;
+	public static final int COMMON = rarity.commonRarity;
+	private static final int UNCOMMON = rarity.uncommonRarity;
+	private static final int RARE = rarity.rareRarity;
+	private static final int VERY_RARE = rarity.veryRareRarity;
+	private static final int ULTRA_RARE = rarity.ultraRareRarity;
 
 	private static final String RETROGEN_NAME = "MetallurgyOreGeneration";
-	public static ModWorldGen instance = new ModWorldGen();
+	public static final ModWorldGen INSTANCE = new ModWorldGen();
+
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
@@ -55,7 +59,7 @@ public class ModWorldGen implements IWorldGenerator {
 
 	void generateWorld(Random random, int chunkX, int chunkZ, World world, boolean newGen)
 	{
-		if (!newGen && !WorldGenerationConfig.retrogen)
+		if (!newGen && !retrogen)
 			return;
 		if (world.provider.isSurfaceWorld())
 			generateOverworld(random, chunkX, chunkZ, world);
@@ -72,54 +76,191 @@ public class ModWorldGen implements IWorldGenerator {
 	//Overworld
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world)
 	{
-		generateOre(ModMetals.COPPER, world, random, chunkX, chunkZ, WorldGenerationConfig.copper.veinSize, COMMON, WorldGenerationConfig.copper.minY, WorldGenerationConfig.copper.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.copper.biomes);
-		generateOre(ModMetals.DEEP_IRON, world, random, chunkX, chunkZ, WorldGenerationConfig.deepIron.veinSize, COMMON, WorldGenerationConfig.deepIron.minY, WorldGenerationConfig.deepIron.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.deepIron.biomes);
-		generateOre(ModMetals.TIN, world, random, chunkX, chunkZ, WorldGenerationConfig.tin.veinSize, COMMON, WorldGenerationConfig.tin.minY, WorldGenerationConfig.tin.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.tin.biomes);
-		generateOre(ModMetals.PROMETHEUM, world, random, chunkX, chunkZ, WorldGenerationConfig.prometheum.veinSize, COMMON, WorldGenerationConfig.prometheum.minY, WorldGenerationConfig.prometheum.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.prometheum.biomes);
-		generateOre(ModMetals.MANGANESE, world, random, chunkX, chunkZ, WorldGenerationConfig.manganese.veinSize, COMMON, WorldGenerationConfig.manganese.minY, WorldGenerationConfig.manganese.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.manganese.biomes);
-		generateOre(ModMetals.OURECLASE, world, random, chunkX, chunkZ, WorldGenerationConfig.oureclase.veinSize, UNCOMMON, WorldGenerationConfig.oureclase.minY, WorldGenerationConfig.oureclase.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.oureclase.biomes);
-		generateOre(ModMetals.INFUSCOLIUM, world, random, chunkX, chunkZ, WorldGenerationConfig.infuscolium.veinSize, UNCOMMON, WorldGenerationConfig.infuscolium.minY, WorldGenerationConfig.infuscolium.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.infuscolium.biomes);
-		generateOre(ModMetals.ADAMANTINE, world, random, chunkX, chunkZ, WorldGenerationConfig.adamantine.veinSize, RARE, WorldGenerationConfig.adamantine.minY, WorldGenerationConfig.adamantine.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.adamantine.biomes);
-		generateOre(ModMetals.RUBRACIUM, world, random, chunkX, chunkZ, WorldGenerationConfig.rubracium.veinSize, UNCOMMON, WorldGenerationConfig.rubracium.minY, WorldGenerationConfig.rubracium.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.rubracium.biomes);
-		generateOre(ModMetals.ATLARUS, world, random, chunkX, chunkZ, WorldGenerationConfig.atlarus.veinSize, RARE, WorldGenerationConfig.atlarus.minY, WorldGenerationConfig.atlarus.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.atlarus.biomes);
-		generateOre(ModMetals.CARMOT, world, random, chunkX, chunkZ, WorldGenerationConfig.carmot.veinSize, UNCOMMON, WorldGenerationConfig.carmot.minY, WorldGenerationConfig.carmot.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.carmot.biomes);
-		generateOre(ModMetals.MITHRIL, world, random, chunkX, chunkZ, WorldGenerationConfig.mithril.veinSize, ULTRA_RARE, WorldGenerationConfig.mithril.minY, WorldGenerationConfig.mithril.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.mithril.biomes);
-		generateOre(ModMetals.ZINC, world, random, chunkX, chunkZ, WorldGenerationConfig.zinc.veinSize, COMMON, WorldGenerationConfig.zinc.minY, WorldGenerationConfig.zinc.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.zinc.biomes);
-		generateOre(ModMetals.ORICHALCUM, world, random, chunkX, chunkZ, WorldGenerationConfig.orichalcum.veinSize, UNCOMMON, WorldGenerationConfig.orichalcum.minY, WorldGenerationConfig.orichalcum.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.orichalcum.biomes);
-		generateOre(ModMetals.ASTRAL_SILVER, world, random, chunkX, chunkZ, WorldGenerationConfig.astralSilver.veinSize, RARE, WorldGenerationConfig.astralSilver.minY, WorldGenerationConfig.astralSilver.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.astralSilver.biomes);
-		generateOre(ModMetals.SILVER, world, random, chunkX, chunkZ, WorldGenerationConfig.silver.veinSize, UNCOMMON, WorldGenerationConfig.silver.minY, WorldGenerationConfig.silver.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.silver.biomes);
-		generateOre(ModMetals.PLATINUM, world, random, chunkX, chunkZ, WorldGenerationConfig.platinum.veinSize, RARE, WorldGenerationConfig.platinum.minY, WorldGenerationConfig.platinum.maxY, new HighChanceTemperatureSpawn(DEFAULT_WORLD_BLOCK, convertStringToBiome(WorldGenerationConfig.platinum.biomes), Biome.TempCategory.WARM, UNCOMMON));
-		generateOre(ModMetals.LUTETIUM, world, random, chunkX, chunkZ, WorldGenerationConfig.lutetium.veinSize, RARE, WorldGenerationConfig.lutetium.minY, WorldGenerationConfig.lutetium.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.lutetium.biomes);
-		generateOre(ModMetals.OSMIUM, world, random, chunkX, chunkZ, WorldGenerationConfig.osmium.veinSize, UNCOMMON, WorldGenerationConfig.osmium.minY, WorldGenerationConfig.osmium.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.osmium.biomes);
-		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ, WorldGenerationConfig.sulfur.veinSize, UNCOMMON, WorldGenerationConfig.sulfur.minY, WorldGenerationConfig.sulfur.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.sulfur.biomes);
-		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ, WorldGenerationConfig.phosphorite.veinSize, UNCOMMON, WorldGenerationConfig.phosphorite.minY, WorldGenerationConfig.phosphorite.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.phosphorite.biomes);
-		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ, WorldGenerationConfig.potash.veinSize, COMMON, WorldGenerationConfig.potash.minY, WorldGenerationConfig.potash.maxY, DEFAULT_WORLD_BLOCK, WorldGenerationConfig.potash.biomes);
+		generateOre(ModMetals.COPPER, world, random, chunkX, chunkZ,
+				copper.veinSize, COMMON,
+				copper.minY, copper.maxY,
+				DEFAULT_WORLD_BLOCK, copper.biomes
+		);
+		generateOre(ModMetals.DEEP_IRON, world, random, chunkX, chunkZ,
+				deepIron.veinSize, COMMON,
+				deepIron.minY, deepIron.maxY,
+				DEFAULT_WORLD_BLOCK, deepIron.biomes
+		);
+		generateOre(ModMetals.TIN, world, random, chunkX, chunkZ,
+				tin.veinSize, COMMON,
+				tin.minY, tin.maxY,
+				DEFAULT_WORLD_BLOCK, tin.biomes
+		);
+		generateOre(ModMetals.PROMETHEUM, world, random, chunkX, chunkZ,
+				prometheum.veinSize, COMMON,
+				prometheum.minY, prometheum.maxY,
+				DEFAULT_WORLD_BLOCK, prometheum.biomes
+		);
+		generateOre(ModMetals.MANGANESE, world, random, chunkX, chunkZ,
+				manganese.veinSize, COMMON,
+				manganese.minY, manganese.maxY,
+				DEFAULT_WORLD_BLOCK, manganese.biomes
+		);
+		generateOre(ModMetals.OURECLASE, world, random, chunkX, chunkZ,
+				oureclase.veinSize, UNCOMMON,
+				oureclase.minY, oureclase.maxY,
+				DEFAULT_WORLD_BLOCK, oureclase.biomes
+		);
+		generateOre(ModMetals.INFUSCOLIUM, world, random, chunkX, chunkZ,
+				infuscolium.veinSize, UNCOMMON,
+				infuscolium.minY, infuscolium.maxY,
+				DEFAULT_WORLD_BLOCK, infuscolium.biomes
+		);
+		generateOre(ModMetals.ADAMANTINE, world, random, chunkX, chunkZ,
+				adamantine.veinSize, VERY_RARE,
+				adamantine.minY, adamantine.maxY,
+				DEFAULT_WORLD_BLOCK, adamantine.biomes
+		);
+		//noinspection ConstantConditions (RUBRACIUM.getOre() can't be null in any case)
+		generateOre(ModMetals.RUBRACIUM, world, random, chunkX, chunkZ,
+				rubracium.veinSize, UNCOMMON,
+				rubracium.minY, rubracium.maxY,
+				new VeinNextToBlockSpawn(DEFAULT_WORLD_BLOCK, rubracium.biomes, ImmutableSet.of(Blocks.LAVA, ModMetals.RUBRACIUM.getOre()))
+		);
+		generateOre(ModMetals.ATLARUS, world, random, chunkX, chunkZ,
+				atlarus.veinSize, VERY_RARE,
+				atlarus.minY, atlarus.maxY,
+				DEFAULT_WORLD_BLOCK, atlarus.biomes
+		);
+		generateOre(ModMetals.CARMOT, world, random, chunkX, chunkZ,
+				carmot.veinSize, RARE,
+				carmot.minY, carmot.maxY,
+				DEFAULT_WORLD_BLOCK, carmot.biomes
+		);
+		generateOre(ModMetals.MITHRIL, world, random, chunkX, chunkZ,
+				mithril.veinSize, ULTRA_RARE,
+				mithril.minY, mithril.maxY,
+				DEFAULT_WORLD_BLOCK, mithril.biomes
+		);
+		generateOre(ModMetals.ZINC, world, random, chunkX, chunkZ,
+				zinc.veinSize, COMMON,
+				zinc.minY, zinc.maxY,
+				DEFAULT_WORLD_BLOCK, zinc.biomes
+		);
+		generateOre(ModMetals.ORICHALCUM, world, random, chunkX, chunkZ,
+				orichalcum.veinSize, RARE,
+				orichalcum.minY, orichalcum.maxY,
+				DEFAULT_WORLD_BLOCK, orichalcum.biomes
+		);
+		generateOre(ModMetals.ASTRAL_SILVER, world, random, chunkX, chunkZ,
+				astralSilver.veinSize, UNCOMMON,
+				astralSilver.minY, astralSilver.maxY,
+				new HighChanceYLevelSpawn(DEFAULT_WORLD_BLOCK, astralSilver.biomes, 80, true, 0.5F)
+		);
+		generateOre(ModMetals.SILVER, world, random, chunkX, chunkZ,
+				silver.veinSize, UNCOMMON,
+				silver.minY, silver.maxY,
+				DEFAULT_WORLD_BLOCK, silver.biomes
+		);
+		generateOre(ModMetals.PLATINUM, world, random, chunkX, chunkZ,
+				platinum.veinSize, VERY_RARE,
+				platinum.minY, platinum.maxY,
+				new HighChanceTemperatureSpawn(DEFAULT_WORLD_BLOCK, platinum.biomes, Biome.TempCategory.WARM, UNCOMMON)
+		);
+		generateOre(ModMetals.OSMIUM, world, random, chunkX, chunkZ,
+				osmium.veinSize, UNCOMMON,
+				osmium.minY, osmium.maxY,
+				DEFAULT_WORLD_BLOCK, osmium.biomes
+		);
+		generateOre(ModBlocks.oreSulfur, world, random, chunkX, chunkZ,
+				sulfur.veinSize, UNCOMMON,
+				sulfur.minY, sulfur.maxY,
+				DEFAULT_WORLD_BLOCK, sulfur.biomes
+		);
+		generateOre(ModBlocks.orePhosphorite, world, random, chunkX, chunkZ,
+				phosphorite.veinSize, UNCOMMON,
+				phosphorite.minY, phosphorite.maxY,
+				DEFAULT_WORLD_BLOCK, phosphorite.biomes
+		);
+		generateOre(ModBlocks.orePotash, world, random, chunkX, chunkZ,
+				potash.veinSize, COMMON,
+				potash.minY, potash.maxY,
+				DEFAULT_WORLD_BLOCK, potash.biomes
+		);
 	}
 
 	//Nether
 	private void generateNether(Random random, int chunkX, int chunkZ, World world)
 	{
-		generateOre(ModMetals.IGNATIUS, world, random, chunkX, chunkZ, WorldGenerationConfig.ignatius.veinSize, COMMON, WorldGenerationConfig.ignatius.minY, WorldGenerationConfig.ignatius.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.ignatius.biomes)));
-		generateOre(ModMetals.SHADOW_IRON, world, random, chunkX, chunkZ, WorldGenerationConfig.shadowIron.veinSize, COMMON, WorldGenerationConfig.shadowIron.minY, WorldGenerationConfig.shadowIron.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.shadowIron.biomes)));
-		generateOre(ModMetals.LEMURITE, world, random, chunkX, chunkZ, WorldGenerationConfig.lemurite.veinSize, COMMON, WorldGenerationConfig.lemurite.minY, WorldGenerationConfig.lemurite.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.lemurite.biomes)));
-		generateOre(ModMetals.MIDASIUM, world, random, chunkX, chunkZ, WorldGenerationConfig.midasium.veinSize, UNCOMMON, WorldGenerationConfig.midasium.minY, WorldGenerationConfig.midasium.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.midasium.biomes)));
-		generateOre(ModMetals.VYROXERES, world, random, chunkX, chunkZ, WorldGenerationConfig.vyroxeres.veinSize, UNCOMMON, WorldGenerationConfig.vyroxeres.minY, WorldGenerationConfig.vyroxeres.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.vyroxeres.biomes)));
-		generateOre(ModMetals.CERUCLASE, world, random, chunkX, chunkZ, WorldGenerationConfig.cerucalse.veinSize, RARE, WorldGenerationConfig.cerucalse.minY, WorldGenerationConfig.cerucalse.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.cerucalse.biomes)));
-		generateOre(ModMetals.ALDUORITE, world, random, chunkX, chunkZ, WorldGenerationConfig.alduorite.veinSize, UNCOMMON, WorldGenerationConfig.alduorite.minY, WorldGenerationConfig.alduorite.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.alduorite.biomes)));
-		generateOre(ModMetals.KALENDRITE, world, random, chunkX, chunkZ, WorldGenerationConfig.kalendrite.veinSize, UNCOMMON, WorldGenerationConfig.kalendrite.minY, WorldGenerationConfig.kalendrite.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.kalendrite.biomes)));
-		generateOre(ModMetals.VULCANITE, world, random, chunkX, chunkZ, WorldGenerationConfig.vulcanite.veinSize, UNCOMMON, WorldGenerationConfig.vulcanite.minY, WorldGenerationConfig.vulcanite.maxY, new NetherOreSpawn(convertStringToBiome(WorldGenerationConfig.vulcanite.biomes)));
-		generateOre(ModMetals.SANGUINITE, world, random, chunkX, chunkZ, WorldGenerationConfig.sanguinite.veinSize, RARE, WorldGenerationConfig.sanguinite.minY, WorldGenerationConfig.sanguinite.maxY, new NearFortressSpawn());
+		generateOre(ModMetals.IGNATIUS, world, random, chunkX, chunkZ,
+				ignatius.veinSize, COMMON,
+				ignatius.minY, ignatius.maxY,
+				new NetherOreSpawn(ignatius.biomes)
+		);
+		generateOre(ModMetals.SHADOW_IRON, world, random, chunkX, chunkZ,
+				shadowIron.veinSize, COMMON,
+				shadowIron.minY, shadowIron.maxY,
+				new NetherOreSpawn(shadowIron.biomes)
+		);
+		generateOre(ModMetals.LEMURITE, world, random, chunkX, chunkZ,
+				lemurite.veinSize, COMMON,
+				lemurite.minY, lemurite.maxY,
+				new NetherOreSpawn(lemurite.biomes)
+		);
+		generateOre(ModMetals.LUTETIUM, world, random, chunkX, chunkZ,
+				lutetium.veinSize, VERY_RARE,
+				lutetium.minY, lutetium.maxY,
+				new NetherOreSpawn(lutetium.biomes)
+		);
+		generateOre(ModMetals.MIDASIUM, world, random, chunkX, chunkZ,
+				midasium.veinSize, UNCOMMON,
+				midasium.minY, midasium.maxY,
+				new NetherOreSpawn(midasium.biomes)
+		);
+		generateOre(ModMetals.VYROXERES, world, random, chunkX, chunkZ,
+				vyroxeres.veinSize, UNCOMMON,
+				vyroxeres.minY, vyroxeres.maxY,
+				new NetherOreSpawn(vyroxeres.biomes)
+		);
+		generateOre(ModMetals.CERUCLASE, world, random, chunkX, chunkZ,
+				cerucalse.veinSize, VERY_RARE,
+				cerucalse.minY, cerucalse.maxY,
+				new NetherOreSpawn(cerucalse.biomes)
+		);
+		generateOre(ModMetals.ALDUORITE, world, random, chunkX, chunkZ,
+				alduorite.veinSize, UNCOMMON,
+				alduorite.minY, alduorite.maxY,
+				new NetherOreSpawn(alduorite.biomes)
+		);
+		generateOre(ModMetals.KALENDRITE, world, random, chunkX, chunkZ,
+				kalendrite.veinSize, RARE,
+				kalendrite.minY, kalendrite.maxY,
+				new NetherOreSpawn(kalendrite.biomes)
+		);
+		generateOre(ModMetals.VULCANITE, world, random, chunkX, chunkZ,
+				vulcanite.veinSize, UNCOMMON,
+				vulcanite.minY, vulcanite.maxY,
+				new NetherOreSpawn(vulcanite.biomes)
+		);
+		generateOre(ModMetals.SANGUINITE, world, random, chunkX, chunkZ,
+				sanguinite.veinSize, VERY_RARE,
+				sanguinite.minY, sanguinite.maxY,
+				new NearFortressSpawn()
+		);
 	}
 
 	private void generateEnd(Random random, int chunkX, int chunkZ, World world)
 	{
-		generateOre(ModMetals.EXIMITE, world, random, chunkX, chunkZ, WorldGenerationConfig.eximite.veinSize, COMMON, WorldGenerationConfig.eximite.minY, WorldGenerationConfig.eximite.maxY, new SmallIslandsSpawn(convertStringToBiome(WorldGenerationConfig.eximite.biomes)));
-		generateOre(ModMetals.MEUTOITE, world, random, chunkX, chunkZ, WorldGenerationConfig.meutoite.veinSize, COMMON, WorldGenerationConfig.meutoite.minY, WorldGenerationConfig.meutoite.maxY, DEFAULT_END_BLOCK, WorldGenerationConfig.meutoite.biomes);
+		generateOre(ModMetals.EXIMITE, world, random, chunkX, chunkZ,
+				eximite.veinSize, COMMON,
+				eximite.minY, eximite.maxY,
+				new SmallIslandsSpawn(eximite.biomes)
+		);
+		generateOre(ModMetals.MEUTOITE, world, random, chunkX, chunkZ,
+				meutoite.veinSize, RARE,
+				meutoite.minY, meutoite.maxY,
+				DEFAULT_END_BLOCK, meutoite.biomes
+		);
 	}
 
 	private void generateOre(Metal metal, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, String[] biomesResource)
 	{
-		this.generateOre(metal, world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, new BaseOreSpawn(blockToReplace, convertStringToBiome(biomesResource)));
+		this.generateOre(metal, world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, new BaseOreSpawn(blockToReplace, biomesResource));
 	}
 
 	private void generateOre(Metal metal, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, IOreSpawn oreSpawn)
@@ -130,15 +271,20 @@ public class ModWorldGen implements IWorldGenerator {
 		this.generateOre(metal.getOre(), world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, oreSpawn);
 	}
 
-	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, String[] biomesResource)
+	private void generateOre(BlockOre block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, Block blockToReplace, String[] biomesResource)
 	{
-		generateOre(block, world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, new BaseOreSpawn(blockToReplace, convertStringToBiome(biomesResource)));
+		generateOre(block, world, random, chunkX, chunkZ, veinSize, rarity, minY, maxY, new BaseOreSpawn(blockToReplace, biomesResource));
 	}
 
-	private void generateOre(Block block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, IOreSpawn oreSpawn)
+	private void generateOre(BlockOre block, World world, Random random, int chunkX, int chunkZ, int veinSize, int rarity, int minY, int maxY, IOreSpawn oreSpawn)
 	{
-		if (minY < 0 || maxY > 256 || minY > maxY)
-			throw new IllegalArgumentException("Illegal Height Arguments for Biome Specific WorldGenerator");
+		final int heightLimit = world.provider.getActualHeight();
+
+		if (minY < 0 || maxY > heightLimit)
+		{
+			Metallurgy.logger.error("Illegal Height Arguments on Ore Generator for ore: " + block.getRegistryName().getPath() + " | minY: " + minY + " | maxY: " + maxY);
+			return;
+		}
 
 		if (veinSize > 0)
 		{
@@ -146,30 +292,31 @@ public class ModWorldGen implements IWorldGenerator {
 			int heightdiff = maxY - minY + 1;
 			int x, y, z;
 
-			int oreSpawnRarity = oreSpawn.getRarity(world, chunkX, chunkZ, rarity);
+			int oreSpawnRarity = oreSpawn.getRarity(world.getChunk(chunkX, chunkZ), rarity);
 
 			for (int i = 0; i < oreSpawnRarity; i++)
 			{
 				x = chunkX * 16 + random.nextInt(16);
-				y = minY + random.nextInt(heightdiff);
+				//if min and max Y are not inverted generate ore between the limits
+				if (heightdiff >= 0)
+					y = minY + random.nextInt(heightdiff);
+				else
+				{
+					//otherwise generate it outside the limits
+					if (random.nextBoolean())
+						y = heightLimit - random.nextInt(heightLimit - minY);
+					else
+						y = 1 + random.nextInt(maxY);
+				}
 				z = chunkZ * 16 + random.nextInt(16);
 
 				BlockPos pos = new BlockPos(x, y, z);
 
 				//Metallurgy.logger.info("Trying to Generate: " + block.getRegistryName().toString());
-				if (oreSpawn.canOreSpawn(world, pos, world.getBlockState(pos), random))
+				if (oreSpawn.canOreSpawn(world.getChunk(chunkX, chunkZ), pos, world.getBlockState(pos), random))
 					generator.generate(world, random, pos);
 			}
 		}
-	}
-
-	public static ResourceLocation[] convertStringToBiome(String[] biomesResource)
-	{
-		ResourceLocation[] resLocations = new ResourceLocation[biomesResource.length];
-		for (int i = 0; i < biomesResource.length; i++)
-			resLocations[i] = new ResourceLocation(biomesResource[i]);
-
-		return resLocations;
 	}
 
 	//Retrogen data save & load
@@ -196,7 +343,7 @@ public class ModWorldGen implements IWorldGenerator {
 			boolean generated = false;
 			if (generated)
 			{
-				if (WorldGenerationConfig.verbose_retrogen)
+				if (verbose_retrogen)
 				{
 					Metallurgy.logger.log(Level.INFO, "Queuing retrogen for chunk: " + coordinates.toString() + ".");
 				}
@@ -204,7 +351,7 @@ public class ModWorldGen implements IWorldGenerator {
 			}
 		}
 		else
-			regen = WorldGenerationConfig.retrogen;
+			regen = retrogen;
 
 		if (regen)
 		{

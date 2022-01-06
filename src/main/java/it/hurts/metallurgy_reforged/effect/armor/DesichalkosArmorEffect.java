@@ -9,103 +9,83 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.capabilities.entity.EntityData;
-import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
+import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
+import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.entity.ai.AIEndermanPlayerSteal;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Objects;
+import javax.annotation.Nonnull;
 
 public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
-
-	public static final IBlockState[] borrowableBlocks = Arrays.stream(ArmorEffectsConfig.desichalkosEndermenBlocks)
-			.map(regName -> ForgeRegistries.BLOCKS.getValue(new ResourceLocation(regName)))
-			.filter(Objects::nonNull)
-			.map(Block::getDefaultState)
-			.toArray(IBlockState[]::new);
 
 	public DesichalkosArmorEffect()
 	{
 		super(ModMetals.DESICHALKOS);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.desichalkosArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
+	@SubscribeEvent
+	public void updateTimeWithoutDamage(LivingEvent.LivingUpdateEvent event)
 	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
+		int level = getLevel(event.getEntityLiving());
+		if (level == 0)
+			return;
 
-	@Override
-	public void onEntityEnteringChunk(Entity entity)
-	{
-		if (entity instanceof EntityEnderman)
+		PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+
+		if (effectData == null)
+			return;
+
+		if (effectData.desichalkosAbsorbLevel > level)
+			effectData.desichalkosAbsorbLevel = level;
+
+		if (effectData.desichalkosTimeWithoutTakingDamage < 200)
+			effectData.desichalkosTimeWithoutTakingDamage += 1;
+		else if (event.getEntity().ticksExisted % 140 == 0 && effectData.desichalkosAbsorbLevel < level)
 		{
-			EntityData entityData = entity.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
-			if (entityData != null)
-				entityData.initEnderman();
-			((EntityEnderman) entity).tasks.addTask(12, new AIEndermanPlayerSteal((EntityEnderman) entity));
+			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 1.3F);
+			for (int i = 0; i < 30; i++)
+				spawnParticle(event.getEntityLiving(), 3F, true, 2);
+
+			effectData.desichalkosAbsorbLevel += 1;
 		}
 	}
 
-	@Override
-	public void onPlayerInteract(PlayerInteractEvent event)
+	@SubscribeEvent
+	public void onHurt(LivingHurtEvent event)
 	{
-		EntityPlayer player = event.getEntityPlayer();
-		if (event instanceof PlayerInteractEvent.EntityInteract && EventUtils.isEntityWearingArmor(player, metal))
+		PlayerEffectData effectData = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+
+		if (effectData == null)
+			return;
+
+		if (effectData.desichalkosAbsorbLevel > 0)
 		{
-			Entity target = ((PlayerInteractEvent.EntityInteract) event).getTarget();
+			event.setCanceled(true);
 
-			if (target instanceof EntityEnderman)
-			{
-				EntityEnderman enderman = (EntityEnderman) target;
-				if (enderman.getHeldBlockState() != null)
-				{
-					if (!player.world.isRemote)
-					{
-						ItemStack snatchedBlock = new ItemStack(enderman.getHeldBlockState().getBlock());
-						if (!player.inventory.addItemStackToInventory(snatchedBlock))
-							player.dropItem(snatchedBlock, false, false);
-						enderman.setHeldBlockState(null);
+			for (int i = 0; i < 30; i++)
+				spawnParticle(event.getEntityLiving(), 3F, true, Math.min(effectData.desichalkosAbsorbLevel * 2, 9));
+			effectData.desichalkosAbsorbLevel -= 1;
 
-
-						EntityData data = enderman.getCapability(EntityDataProvider.ENTITY_DATA_CAPABILITY, null);
-						if (data != null)
-							data.wasSnatched = true;
-						player.world.playSound(null, enderman.posX, enderman.posY, enderman.posZ, SoundEvents.ENTITY_ENDERMEN_HURT, SoundCategory.HOSTILE, 2F, 1.3F);
-					}
-				}
-			}
+			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
 		}
+
+		effectData.desichalkosTimeWithoutTakingDamage = 0;
+
+
 	}
 
 }

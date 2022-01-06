@@ -9,22 +9,21 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.event.world.GetCollisionBoxesEvent;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.commons.lang3.tuple.Pair;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 public class HaderothArmorEffect extends BaseMetallurgyEffect {
 
@@ -33,74 +32,64 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
 		super(ModMetals.HADEROTH);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.haderothArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
 	@Override
-	public boolean isToolEffect()
+	public Pair<String, String> getTooltip()
 	{
-		return false;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
-	public void onPlayerCollision(GetCollisionBoxesEvent event)
-	{
-		World world = event.getWorld();
-		EntityPlayer player = ((EntityPlayer) event.getEntity());
-		AxisAlignedBB playerBB = event.getAabb();
-		if (EventUtils.isEntityWearingArmor(player, metal))
+		Pair<String, String> tooltip = super.getTooltip();
+		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
 		{
-			if (world.isMaterialInBB(playerBB.grow(0.1D), Material.LAVA))
+			int firstBreak = tooltip.getRight().indexOf("\n");
+			String trimmed = tooltip.getRight().substring(firstBreak + 1);
+			tooltip.setValue(trimmed);
+		}
+
+		return tooltip;
+	}
+
+	@SubscribeEvent
+	public void buffWearer(LivingEvent.LivingUpdateEvent event)
+	{
+		EntityLivingBase entity = event.getEntityLiving();
+
+		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
+			return;
+
+		entity.getArmorInventoryList().forEach(stack -> {
+			//If the the armor has not been reborn yet -> terminate adaptability effect
+			if ((stack.getTagCompound() == null || !stack.getTagCompound().getBoolean("reborn")))
+				return;
+
+			if (ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal)
 			{
-				BlockPos.PooledMutableBlockPos minPos = BlockPos.PooledMutableBlockPos.retain(playerBB.minX + 0.001D, playerBB.minY + 0.001D, playerBB.minZ + 0.001D);
-				BlockPos.PooledMutableBlockPos maxPos = BlockPos.PooledMutableBlockPos.retain(playerBB.maxX - 0.001D, playerBB.maxY - 0.001D, playerBB.maxZ - 0.001D);
-				BlockPos.PooledMutableBlockPos pos = BlockPos.PooledMutableBlockPos.retain();
-
-				if (world.isAreaLoaded(minPos, maxPos))
+				ItemArmorBase haderothArmorPiece = ((ItemArmorBase) stack.getItem());
+				switch (haderothArmorPiece.armorType)
 				{
-					for (int i = minPos.getX(); i <= maxPos.getX(); ++i)
-					{
-						for (int j = minPos.getY(); j <= maxPos.getY(); ++j)
-						{
-							for (int k = minPos.getZ(); k <= maxPos.getZ(); ++k)
-							{
-								pos.setPos(i, j, k);
-								IBlockState state = world.getBlockState(pos);
-
-								if (state.getMaterial() == Material.LAVA)
-								{
-									AxisAlignedBB lavaBox = Block.FULL_BLOCK_AABB.offset(pos);
-									event.getCollisionBoxesList().add(lavaBox);
-								}
-
-							}
-						}
-					}
-				}
-				if (world.isRemote)
-				{
-					for (int i = 0; i < 10; i++)
-					{
-						double particleX = player.posX + Math.random() - 0.5D;
-						double particleZ = player.posZ + Math.random() - 0.5D;
-
-						AxisAlignedBB checkBox = new AxisAlignedBB(particleX - 0.05D, player.posY - 0.05D, particleZ - 0.05D, particleX + 0.05D, player.posY + 0.05D, particleZ + 0.05D);
-						if (world.isMaterialInBB(checkBox, Material.LAVA))
-							world.spawnAlwaysVisibleParticle(EnumParticleTypes.FLAME.getParticleID(), particleX, player.posY, particleZ, 0D, -Math.random() * 0.3D, 0D);
-					}
+					case HEAD:
+						if (entity.isPotionActive(MobEffects.HUNGER))
+							entity.removePotionEffect(MobEffects.HUNGER);
+						break;
+					case CHEST:
+						if (entity.ticksExisted % 40 == 0)
+							entity.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
+						break;
+					case LEGS:
+						if (entity.isPotionActive(MobEffects.SLOWNESS))
+							entity.removePotionEffect(MobEffects.SLOWNESS);
+						break;
+					case FEET:
+						if (entity.isPotionActive(MobEffects.LEVITATION))
+							entity.removePotionEffect(MobEffects.LEVITATION);
+						break;
 				}
 			}
-		}
+		});
 	}
 
 }

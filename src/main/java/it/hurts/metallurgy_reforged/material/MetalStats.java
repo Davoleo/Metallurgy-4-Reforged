@@ -4,7 +4,7 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2020.
+ = Copyright (c) 2018-2021.
  =============================================================================*/
 
 package it.hurts.metallurgy_reforged.material;
@@ -61,13 +61,13 @@ public class MetalStats {
 		BlockMetal[] blocks = new BlockMetal[BlockTypes.values().length];
 		for (int i = 0; i < BlockTypes.values().length; i++)
 		{
-			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], hardness);
+			blocks[i] = new BlockMetal(this, BlockTypes.values()[i], i == BlockTypes.BLOCK.ordinal() ? 5.0F : 2.0F);
 		}
 
 		BlockOre ore = null;
 		if (oreHarvest >= 0)
 		{
-			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance);
+			ore = new BlockOre(name + "_ore", hardness, oreHarvest, blockBlastResistance, this);
 		}
 
 		FluidMolten moltenFluid = new FluidMolten(name, ((int) getColorIntWithAlpha()), automaticTemperature());
@@ -103,16 +103,12 @@ public class MetalStats {
 
 	private int automaticTemperature()
 	{
-		float output = 1000F;
-		if (blockBlastResistance == Constants.BlastResistance.LOW_TIER)
-		{
-			output = blockBlastResistance * 60f;
-		}
-		else if (blockBlastResistance != Constants.BlastResistance.UNBREAKABLE_TIER)
-		{
-			output = blockBlastResistance * 36F;
-		}
-		return Math.round(output);
+		int tier = oreHarvest;
+
+		if (tier == -1)
+			tier = Constants.TIER_MAP.get(name);
+
+		return 1000 + tier * 200;
 	}
 
 	/**
@@ -150,25 +146,30 @@ public class MetalStats {
 	/**
 	 * @return the harvest level of the ore related to the block | -1 if the metal is an alloy
 	 */
-	public int getOreHarvest() {
+	public int getOreHarvest()
+	{
 		return oreHarvest;
 	}
 
-	public float getBlockBlastResistance() {
+	public float getBlockBlastResistance()
+	{
 		return blockBlastResistance;
 	}
 
 	@Nullable
-	public ArmorStats getArmorStats() {
+	public ArmorStats getArmorStats()
+	{
 		return armor;
 	}
 
 	@Nullable
-	public ToolStats getToolStats() {
+	public ToolStats getToolStats()
+	{
 		return tool;
 	}
 
-	public ItemTool.ToolMaterial getToolMaterial() {
+	public ItemTool.ToolMaterial getToolMaterial()
+	{
 		return toolMaterial;
 	}
 

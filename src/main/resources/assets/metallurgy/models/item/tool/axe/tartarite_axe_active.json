@@ -1,0 +1,6 @@
+{
+  "parent": "metallurgy:item/extended_handheld",
+  "textures": {
+    "layer0": "metallurgy:items/tools/tartarite_axe_active"
+  }
+}

@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.util.Arrays;
 
-public class SpawnHandler {
+public abstract class SpawnHandler {
 
 	private static final TextComponentString GITHUB_REPO = new TextComponentString(Utils.localizeIgnoreFormat("util.github_repo_url"));
 
@@ -86,12 +86,12 @@ public class SpawnHandler {
 		{
 			GITHUB_REPO.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, GITHUB_REPO.getText())).setColor(TextFormatting.BLUE);
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.1")));
+			event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.1")));
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.3")));
+			event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.3")));
 			event.player.sendMessage(GITHUB_REPO);
 
-			event.player.sendMessage(new TextComponentString(Utils.localize("util.world_join_message.4")));
+			event.player.sendMessage(new TextComponentString(Utils.localizeEscapingCustomSequences("util.world_join_message.4")));
 		}
 	}
 

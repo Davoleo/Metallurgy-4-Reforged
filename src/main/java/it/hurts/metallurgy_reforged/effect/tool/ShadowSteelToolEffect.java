@@ -9,17 +9,18 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
-import it.hurts.metallurgy_reforged.config.ToolEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
+@Deprecated
 public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 
 	public ShadowSteelToolEffect()
@@ -27,33 +28,20 @@ public class ShadowSteelToolEffect extends BaseMetallurgyEffect {
 		super(ModMetals.SHADOW_STEEL);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ToolEffectsConfig.shadowSteelToolSpeedEffect && super.isEnabled();
+		return EnumEffectCategory.TOOL;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return true;
-	}
-
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
-	{
-		return null;
-	}
-
-	@Override
 	public void playerBreakSpeed(PlayerEvent.BreakSpeed event)
 	{
 		EntityPlayer player = event.getEntityPlayer();
 
 		if (isShadowSteelTool(player.getHeldItemMainhand().getItem()))
 		{
-			float percentage = Utils.getLightArmorPercentage(player, 100F);
+			float percentage = EventUtils.getDarknessLevel(player, 100F);
 			float speed = event.getNewSpeed() * percentage / 40F;
 			event.setNewSpeed(event.getOriginalSpeed() + speed);
 		}

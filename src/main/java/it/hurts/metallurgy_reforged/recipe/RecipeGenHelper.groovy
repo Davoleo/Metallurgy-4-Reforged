@@ -84,7 +84,7 @@ class RecipeGenHelper {
 
         def jsonObj = JsonOutput.toJson(obj)
         //Raplace all 4 spaces indentation with 2 spaces indentation
-        def shrinkSpaces = { _, leading, __ -> "${leading.replaceAll('  ',' ')}" }
+        def shrinkSpaces = { _, leading, __ -> "${leading.replaceAll('  ', ' ')}" }
         def findLeading = /(?m)^((\s{4})+)/
         def prettyObj = JsonOutput.prettyPrint(jsonObj).replaceAll(findLeading, shrinkSpaces)
         def file = new File(RecipeJsonGenerator.RECIPES_DIR_PATH + subdir + type + "_" + metal + ".json")

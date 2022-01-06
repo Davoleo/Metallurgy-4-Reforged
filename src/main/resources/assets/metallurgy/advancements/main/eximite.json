@@ -1,0 +1,56 @@
+{
+  "parent": "metallurgy:main/tier4",
+  "display": {
+    "icon": {
+      "item": "metallurgy:eximite_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.eximite"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.eximite.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotEximite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustEximite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "oreEximite",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust",
+      "has_ore"
+    ]
+  ]
+}

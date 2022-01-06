@@ -1,0 +1,44 @@
+{
+  "parent": "metallurgy:main/tier3",
+  "display": {
+    "icon": {
+      "item": "metallurgy:quicksilver_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.quicksilver"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.quicksilver.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotQuicksilver",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustQuicksilver",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust"
+    ]
+  ]
+}

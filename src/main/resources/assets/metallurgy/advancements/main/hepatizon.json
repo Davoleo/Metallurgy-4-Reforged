@@ -1,0 +1,44 @@
+{
+  "parent": "metallurgy:main/steel",
+  "display": {
+    "icon": {
+      "item": "metallurgy:hepatizon_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.hepatizon"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.hepatizon.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotHepatizon",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustHepatizon",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust"
+    ]
+  ]
+}

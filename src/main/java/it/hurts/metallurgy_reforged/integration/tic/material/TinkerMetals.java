@@ -53,12 +53,12 @@ public class TinkerMetals {
 			new ExtraMaterialStats(47));
 
 	public static MetallurgyTiCStats MIDASIUM = new MetallurgyTiCStats(ModMetals.MIDASIUM,
-			new HeadMaterialStats(300, 10F, 4, 3),
+			new HeadMaterialStats(300, 10F, 4, 4),
 			new HandleMaterialStats(0.60F, 200),
 			new ExtraMaterialStats(30));
 
 	public static MetallurgyTiCStats TARTARITE = new MetallurgyTiCStats(ModMetals.TARTARITE,
-			new HeadMaterialStats(400, 16F, 10F, 8),
+			new HeadMaterialStats(400, 16F, 10F, 7),
 			MetallurgyTiCStats.getHandleA(ModMetals.TARTARITE),
 			MetallurgyTiCStats.getExtraA(ModMetals.TARTARITE));
 

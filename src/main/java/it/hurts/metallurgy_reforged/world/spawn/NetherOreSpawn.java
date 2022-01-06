@@ -22,7 +22,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class NetherOreSpawn extends BaseOreSpawn {
 
-	public NetherOreSpawn(ResourceLocation[] biomes)
+	public NetherOreSpawn(String[] biomes)
 	{
 		super(null, biomes);
 	}

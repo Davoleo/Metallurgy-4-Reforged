@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.block;
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
+import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
@@ -36,14 +37,14 @@ public class ModBlocks {
 	public static List<Block> miscBlocks = new ArrayList<>();
 
 	//Mod Blocks with a custom drop
-    public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
-            .setDrops(new Drop(new ItemStack(ModItems.SULFUR, 4), 1F));
-    public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
-            .setDrops(new Drop(ModItems.PHOSPHORUS, 3, 1F));
-    public static BlockOre oreTar = new BlockOre("tar_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
-            .setDrops(new Drop(ModItems.TAR, 2, 1F), new Drop(ModItems.BITUMEN, 2, 0.5F));
-    public static BlockOre orePotash = new BlockOre("potash_ore", 3F, 2, Constants.BlastResistance.MID_TIER)
-            .setDrops(new Drop(ModItems.POTASH, 3, 1F));
+	public static BlockOre oreSulfur = new BlockOre("sulfur_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
+			.setDrops(new Drop(new ItemStack(ModItems.SULFUR, 4), 1F));
+	public static BlockOre orePhosphorite = new BlockOre("phosphorite_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
+			.setDrops(new Drop(ModItems.PHOSPHORUS, 3, 1F));
+	public static BlockOre oreTar = new BlockOre("tar_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
+			.setDrops(new Drop(ModItems.TAR, 2, 1F), new Drop(ModItems.BITUMEN, 2, 0.5F));
+	public static BlockOre orePotash = new BlockOre("potash_ore", 3F, 1, Constants.BlastResistance.MID_TIER, null)
+			.setDrops(new Drop(ModItems.POTASH, 3, 1F));
 
 	//Bitumen, Charcoal and Sulfur Blocks
 	public static Block blockBitumen = new Block(Material.ROCK);
@@ -137,7 +138,10 @@ public class ModBlocks {
 
 	public static ItemBlock createItemBlock(Block block)
 	{
-		return ((ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName()));
+		if (block instanceof BlockOre)
+			return (ItemBlock) new ItemBlockOre((BlockOre) block).setRegistryName(block.getRegistryName());
+
+		return (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 
 }

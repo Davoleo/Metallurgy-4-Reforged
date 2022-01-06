@@ -36,9 +36,9 @@ public class CompatCrusher {
 
 	private static class Add implements IAction {
 
-		private IIngredient input;
-		private IItemStack output;
-		private float xp;
+		private final IIngredient input;
+		private final IItemStack output;
+		private final float xp;
 
 		Add(IIngredient input, IItemStack output)
 		{
@@ -78,7 +78,7 @@ public class CompatCrusher {
 
 	private static class Remove implements IAction {
 
-		private IItemStack output;
+		private final IItemStack output;
 
 		Remove(IItemStack output)
 		{

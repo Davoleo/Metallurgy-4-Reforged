@@ -32,10 +32,10 @@ public class CompatSublimationChamber {
 
 	public static class Add implements IAction {
 
-		private IItemStack input;
-		private IPotion output;
-		private int duration;
-		private int amplifier;
+		private final IItemStack input;
+		private final IPotion output;
+		private final int duration;
+		private final int amplifier;
 
 		public Add(IItemStack input, IPotion output, int duration, int amplifier)
 		{
@@ -72,7 +72,7 @@ public class CompatSublimationChamber {
 
 	public static class Remove implements IAction {
 
-		private IPotion output;
+		private final IPotion output;
 
 		public Remove(IPotion output)
 		{

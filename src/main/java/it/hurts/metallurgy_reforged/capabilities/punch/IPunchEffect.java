@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public interface IPunchEffect {
 
 
-	//set entity integer "hit_ticks" which indicates the knockback time of the mob 
+	//set entity integer "hit_ticks" which indicates the knockback time of the mob
 
 	void setPunchingPlayer(EntityPlayer pl);
 

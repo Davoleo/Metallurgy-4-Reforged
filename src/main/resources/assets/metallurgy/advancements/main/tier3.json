@@ -1,0 +1,29 @@
+{
+  "parent": "metallurgy:main/tier2",
+  "display": {
+    "icon": {
+      "item": "metallurgy:black_steel_pickaxe",
+      "nbt": "{\"tier_showcase\": 0.3}"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancement.metallurgy.main.tier3"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.tier3.desc"
+    }
+  },
+  "criteria": {
+    "harvest_tier": {
+      "trigger": "metallurgy:harvest_level",
+      "conditions": {
+        "level": 3
+      }
+    }
+  },
+  "requirements": [
+    [
+      "harvest_tier"
+    ]
+  ]
+}

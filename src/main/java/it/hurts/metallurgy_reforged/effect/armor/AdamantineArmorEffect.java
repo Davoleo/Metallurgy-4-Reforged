@@ -9,82 +9,110 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
-import it.hurts.metallurgy_reforged.config.ArmorEffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
-import it.hurts.metallurgy_reforged.item.tool.EnumTools;
+import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
+import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.material.ModMetals;
-import it.hurts.metallurgy_reforged.util.EventUtils;
-import net.minecraft.entity.player.EntityPlayer;
+import it.hurts.metallurgy_reforged.network.PacketManager;
+import it.hurts.metallurgy_reforged.network.client.PacketAdamantineRenderDeathProtection;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.Utils;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.network.play.server.SPacketSetExperience;
-import net.minecraft.network.play.server.SPacketSoundEffect;
-import net.minecraft.util.FoodStats;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import javax.annotation.Nullable;
-import java.util.Random;
+import javax.annotation.Nonnull;
 
 public class AdamantineArmorEffect extends BaseMetallurgyEffect {
+
 
 	public AdamantineArmorEffect()
 	{
 		super(ModMetals.ADAMANTINE);
 	}
 
+	@Nonnull
 	@Override
-	public boolean isEnabled()
+	public EnumEffectCategory getCategory()
 	{
-		return ArmorEffectsConfig.adamantineArmorEffect && super.isEnabled();
+		return EnumEffectCategory.ARMOR;
 	}
 
-	@Override
-	public boolean isToolEffect()
-	{
-		return false;
-	}
 
-	@Nullable
-	@Override
-	public EnumTools getToolClass()
+	/**
+	 * If the player is wearing Adamantine armor they have a chance to survive death with an armor piece sacrificing itself
+	 *
+	 * @param event Fired when the player is about to die
+	 */
+	@SubscribeEvent
+	public void onEntityDeath(LivingDeathEvent event)
 	{
-		return null;
-	}
+		EntityLivingBase entity = event.getEntityLiving();
 
-	@Override
-	public void onPlayerTick(EntityPlayer player)
-	{
-		if (!player.world.isRemote && EventUtils.isEntityWearingArmor(player, metal))
+		if (!canBeApplied(entity))
+			return;
+
+		if (!entity.world.isRemote)
 		{
-			FoodStats foodStat = player.getFoodStats();
-			int amount = 2;
-			//quantity experience to remove
-			float removeTot = (float) amount / (float) player.xpBarCap();
-			//check if the player needs food, if he has enough experience and if the tick is a multiple of 20 (which means that the effect will be applied every second)
-			if (player instanceof EntityPlayerMP && player.canEat(false) && (player.experience >= removeTot || player.experienceLevel > 0) && player.ticksExisted % 20 == 0)
+			//Get a random slot from the Armor slots (the "2 +" skips main hand and off hand slots)
+			EntityEquipmentSlot randomArmorSlot = EntityEquipmentSlot.values()[2 + Utils.random.nextInt(4)];
+
+			ItemStack armorPiece = entity.getItemStackFromSlot(randomArmorSlot);
+
+			if (entity instanceof EntityPlayerMP)
 			{
-				EntityPlayerMP mp = (EntityPlayerMP) player;
-				Random rand = new Random();
-				mp.experience -= removeTot;
+				// if any of the piece is on cooldown the effect is cancelled
+				if (((EntityPlayerMP) entity).getCooldownTracker().getCooldown(armorPiece.getItem(), 0) != 0)
+					return;
+			}
 
-				if (mp.experienceTotal - amount >= 0)
-					mp.experienceTotal -= amount;
+			//Check whether the itemStack inside the random slot is an Adamantine armor piece
+			if (ItemUtils.isMadeOfMetal(metal, armorPiece.getItem()) || TartariteEffect.getParagonMetal(armorPiece) == metal)
+			{
+				//Remove armor piece from the slot
+				entity.setItemStackToSlot(randomArmorSlot, ItemStack.EMPTY);
+				//Play Totem of Undying sound
+				entity.world.playSound(null, entity.getPosition(), SoundEvents.ITEM_TOTEM_USE, SoundCategory.PLAYERS, 1, 1);
 
-				if (mp.experience < 0.0F)
+				//Set the player health to half a heart
+				// (if this line is removed the player dies even when cancelling the death event because they have 0 health)
+				entity.setHealth(1F);
+				//Cancel Player Death
+				event.setCanceled(true);
+
+				if (entity instanceof EntityPlayerMP)
 				{
-					mp.experience = 1F - mp.experience;
-					mp.addExperienceLevel(-1);
+					EntityPlayerMP player = ((EntityPlayerMP) entity);
+
+					//Set cooldown on the remaining armor pieces
+					assert metal.getArmorSet() != null;
+					for (ItemArmorBase armorItem : metal.getArmorSet())
+						player.getCooldownTracker().setCooldown(armorItem, 100);
+					//Send a packet to emit particles and render the Totem item overlay
+					PacketAdamantineRenderDeathProtection packet = new PacketAdamantineRenderDeathProtection(entity.getEntityId(), armorPiece);
+					//This criteria needs to be triggered in order to the totem overlay to work
+					CriteriaTriggers.USED_TOTEM.trigger(player, armorPiece);
+
+					//Send two packets to the client (one to self and many to the other players that are watching the entity)
+					PacketManager.network.sendTo(packet, player);
+					PacketManager.network.sendToAllTracking(packet, entity);
 				}
 
-				//add Food Level
-				foodStat.addStats(1, 0.5F);
-				//update experience count on the client side
-				mp.connection.sendPacket(new SPacketSetExperience(mp.experience, mp.experienceTotal, mp.experienceLevel));
-				//play generic eat sound
-				mp.connection.sendPacket(new SPacketSoundEffect(SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.PLAYERS, mp.posX, mp.posY + mp.getEyeHeight(), mp.posZ, 0.3F, (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F));
-
+				//Give absorption and regeneration III to the player so that they don't die instantly after being revived
+				entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 20 * 25, 2));
+				entity.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 60, 1));
 			}
 		}
+
 	}
 
 }

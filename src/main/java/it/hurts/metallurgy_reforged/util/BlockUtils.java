@@ -21,7 +21,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidClassic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 public class BlockUtils {
 
@@ -80,12 +83,18 @@ public class BlockUtils {
 		return null;
 	}
 
-	public static EnumFacing getFreeFacing(IBlockAccess world, BlockPos pos)
+	public static List<BlockPos> getAdjacentPosList(IBlockAccess world, BlockPos pos, Predicate<BlockPos> condition)
 	{
+		List<BlockPos> positions = new ArrayList<>(6);
+
 		for (EnumFacing facing : EnumFacing.values())
-			if (world.isAirBlock(pos.offset(facing)))
-				return facing;
-		return null;
+		{
+			BlockPos offsetPos = pos.offset(facing);
+			if (condition.test(offsetPos))
+				positions.add(offsetPos);
+		}
+
+		return positions;
 	}
 
 }

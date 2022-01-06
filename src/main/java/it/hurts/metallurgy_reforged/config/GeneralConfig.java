@@ -71,13 +71,6 @@ public class GeneralConfig {
 	@Config.RequiresWorldRestart
 	public static boolean enableOreLight = true;
 
-	@Config.Name("Thermite Fuel Value")
-	@Config.Comment("How many items should 1 thermite item cook in a vanilla furnace (this value is automatically doubled when thermite is used in metallurgy machiens) [default: 8]")
-	@Config.RangeInt(min = 1, max = 64)
-	@Config.SlidingOption
-	@Config.RequiresMcRestart
-	public static int thermiteFuelValue = 8;
-
 	@Config.Name("OreDict Crusher Recipes")
 	@Config.Comment("When set to true the mod will load new recipes from the OreDictionary (this could cause some incompatibility issues when removing recipes with CraftTweaker disable this if you see that some recipes are not being removed)")
 	@Config.RequiresMcRestart
@@ -93,6 +86,8 @@ public class GeneralConfig {
 	@Config.RequiresMcRestart
 	public static boolean enableEnderIOAlloyConfig = false;
 
+	@Deprecated
+	@Config.Ignore
 	@Config.Name("Enable Metallurgy Tweaks Scripts replacing")
 	@Config.Comment("Loads the scripts from the jar and copies them into CraftTweakers scripts folder, this option should be enabled to receive updates for Metallurgy Tweaks, but may be disabled if you want to tweak Metallurgy Tweaks config file without it getting replaced")
 	public static boolean enableMetallurgyTweaksUpdateReplace = true;

@@ -1,0 +1,44 @@
+{
+  "parent": "metallurgy:main/tier2",
+  "display": {
+    "icon": {
+      "item": "metallurgy:steel_ingot"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.main.steel"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.main.steel.desc"
+    }
+  },
+  "criteria": {
+    "has_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "ingotSteel",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    },
+    "has_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "ore": "dustSteel",
+            "type": "forge:ore_dict"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot",
+      "has_dust"
+    ]
+  ]
+}

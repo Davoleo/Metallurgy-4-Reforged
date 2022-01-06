@@ -10,32 +10,31 @@
 package it.hurts.metallurgy_reforged.world.spawn;
 
 import net.minecraft.block.Block;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.Chunk;
 
 /**
  * this class permits to spawn an ore more likely in a specific temperature than another one.
  */
 public class HighChanceTemperatureSpawn extends BaseOreSpawn {
 
-    private final Biome.TempCategory tempCategory;
-    private final int newRarity;
+	private final Biome.TempCategory tempCategory;
+	private final int newRarity;
 
 
-    public HighChanceTemperatureSpawn(Block blockToReplace, ResourceLocation[] biomes, Biome.TempCategory tempCategory, int newRarity)
-    {
-        super(blockToReplace, biomes);
-        this.tempCategory = tempCategory;
-        this.newRarity = newRarity;
-    }
+	public HighChanceTemperatureSpawn(Block blockToReplace, String[] biomes, Biome.TempCategory tempCategory, int newRarity)
+	{
+		super(blockToReplace, biomes);
+		this.tempCategory = tempCategory;
+		this.newRarity = newRarity;
+	}
 
 
-    @Override
-    public int getRarity(World world, int chunkX, int chunkZ, int originalRarity)
-    {
+	@Override
+	public int getRarity(Chunk chunk, int originalRarity)
+	{
 
-		for (byte b : world.getChunk(chunkX, chunkZ).getBiomeArray())
+		for (byte b : chunk.getBiomeArray())
 		{
 			Biome biome = Biome.getBiomeForId(b);
 			if (biome != null && getTempCategory(biome) == tempCategory)

@@ -24,43 +24,44 @@ import java.util.function.BooleanSupplier;
 @SuppressWarnings("unused")
 public class IsItemRegisteredConditionFactory implements IConditionFactory {
 
-    @Override
-    public BooleanSupplier parse(JsonContext context, JsonObject json)
-    {
-        String dependsOn = JsonUtils.getString(json, "depends_on");
+	@Override
+	public BooleanSupplier parse(JsonContext context, JsonObject json)
+	{
+		String dependsOn = JsonUtils.getString(json, "depends_on");
 
-        if (dependsOn.startsWith("block/"))
-        {
-            dependsOn = dependsOn.replaceFirst("block/", "");
-            for (BlockTypes type : BlockTypes.values())
-            {
-                if (dependsOn.equals(type.getPrefix()))
-                    return type::isEnabled;
-            }
-        }
-        else if (dependsOn.startsWith("item/"))
-        {
-            dependsOn = dependsOn.replaceFirst("item/", "");
-            for (ItemTypes type : ItemTypes.values())
-            {
-                if (dependsOn.equals(type.getName()))
-                    return type::isEnabled;
-            }
+		if (dependsOn.startsWith("block/"))
+		{
+			dependsOn = dependsOn.replaceFirst("block/", "");
+			for (BlockTypes type : BlockTypes.values())
+			{
+				if (dependsOn.equals(type.getPrefix()))
+					return type::isEnabled;
+			}
+		}
+		else if (dependsOn.startsWith("item/"))
+		{
+			dependsOn = dependsOn.replaceFirst("item/", "");
+			for (ItemTypes type : ItemTypes.values())
+			{
+				if (dependsOn.equals(type.getName()))
+					return type::isEnabled;
+			}
 
-            //if we're still here the only item type that is left are armor sets
-            if (dependsOn.equals("armor_set"))
-                return () -> RegistrationConfig.categoryItems.enableMetalArmorSets;
-        }
-        else if (dependsOn.startsWith("tool/"))
-        {
-            dependsOn = dependsOn.replaceFirst("tool/", "");
-            for (EnumTools tool : EnumTools.values())
-            {
-                if (dependsOn.equals(tool.getName()))
-                    return tool::isEnabled;
-            }
-        }
+			//if we're still here the only item type that is left are armor sets
+			if (dependsOn.equals("armor_set"))
+				return () -> RegistrationConfig.categoryItems.enableMetalArmorSets;
+		}
+		else if (dependsOn.startsWith("tool/"))
+		{
+			dependsOn = dependsOn.replaceFirst("tool/", "");
+			for (EnumTools tool : EnumTools.values())
+			{
+				if (dependsOn.equals(tool.getName()))
+					return tool::isEnabled;
+			}
+		}
 
-        throw new JsonParseException(String.format("Error in %s Recipe conditions are wrong: %s", context.getModId(), '"' + dependsOn + '"'));
-    }
+		throw new JsonParseException(String.format("Error in %s Recipe conditions are wrong: %s", context.getModId(), '"' + dependsOn + '"'));
+	}
+
 }
