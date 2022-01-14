@@ -52,18 +52,6 @@ public class VyroxeresArmorEffect extends BaseMetallurgyEffect {
 		if (event instanceof PotionEvent.PotionApplicableEvent)
 			return;
 
-		String eventType;
-		if (event instanceof PotionEvent.PotionRemoveEvent)
-			eventType = "REMOVAL";
-		else if (event instanceof PotionEvent.PotionExpiryEvent)
-			eventType = "EXPIRY";
-		else if (event instanceof PotionEvent.PotionAddedEvent)
-			eventType = "ADDITION";
-		else
-			eventType = "BRUH, HOW IS THIS POSSIBLE ASLFKJSFKLAJ";
-
-		System.out.println("Event Type: " + eventType);
-
 		EntityLivingBase entity = event.getEntityLiving();
 
 		//Get the protection attribute instance
@@ -112,7 +100,7 @@ public class VyroxeresArmorEffect extends BaseMetallurgyEffect {
 				effects.remove(eventEffect);
 				stacks = calculatePotionStacks(effects);
 			}
-			System.out.println("Remove Event Effect: " + (eventEffect != null ? eventEffect.toString() : "NULL"));
+			//System.out.println("Remove Event Effect: " + (eventEffect != null ? eventEffect.toString() : "NULL"));
 		}
 
 
