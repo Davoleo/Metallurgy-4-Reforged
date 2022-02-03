@@ -66,11 +66,11 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
 	{
 		ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
 		int attackedId = data.getExtraInt("id");
-		//Should only be an EntityLivingBase anyways
-		EntityLivingBase attacked = (EntityLivingBase) world.getEntityByID(attackedId);
 
-		//The entity was already removed from the world for some reason
-		if (attacked == null)
+		Entity attacked = world.getEntityByID(attackedId);
+
+		//The entity was already removed from the world for some reason (null) or is not an EntityLivingBase
+		if (!(attacked instanceof EntityLivingBase))
 			return;
 
 		attacker.world.getEntitiesWithinAABB(attacked.getClass(), new AxisAlignedBB(
