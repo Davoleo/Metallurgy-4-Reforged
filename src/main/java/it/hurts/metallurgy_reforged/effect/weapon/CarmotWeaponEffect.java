@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.effect.weapon;
 
-import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
@@ -53,7 +52,7 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
 
 			EntityLivingBase attacked = event.getEntityLiving();
 
-			ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
+			ExtraFilledDataBundle data = getEffectCapability(attacker).carmotWeaponBundle;
 			int id = attacked.getEntityId();
 			data.setExtra("id", id);
 			data.setExtra("amount", event.getAmount());
@@ -64,7 +63,7 @@ public class CarmotWeaponEffect extends BaseMetallurgyEffect implements IProgres
 	@Override
 	public void onStep(World world, EntityPlayer attacker, ItemStack effectStack, int maxSteps, int step)
 	{
-		ExtraFilledDataBundle data = attacker.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).carmotWeaponBundle;
+		ExtraFilledDataBundle data = getEffectCapability(attacker).carmotWeaponBundle;
 		int attackedId = data.getExtraInt("id");
 
 		Entity attacked = world.getEntityByID(attackedId);
