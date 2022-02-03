@@ -29,7 +29,7 @@ public class EffectsConfig {
 	@Config.Name("Sky-High (Amordrine Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_armor")
 	public static boolean amordrineEffectArmor = true;
-	@Config.Name("Sky-High (Amordrine Items)")
+	@Config.Name("Soulbound (Amordrine Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_all")
 	public static boolean amordrineEffectAll = true;
 	@Config.Name("Divine Grace (Amordrine Weapons)")
