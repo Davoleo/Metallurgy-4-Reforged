@@ -21,6 +21,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nonnull;
@@ -42,15 +43,17 @@ public class HaderothArmorEffect extends BaseMetallurgyEffect {
 	@Override
 	public Pair<String, String> getTooltip()
 	{
-		Pair<String, String> tooltip = super.getTooltip();
-		if (!MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
+
+		if (MetallurgyEffects.HADEROTH_EFFECT.isEnabled())
 		{
+			Pair<String, String> tooltip = MutablePair.of(super.getTooltip().getLeft(), super.getTooltip().getRight());
 			int firstBreak = tooltip.getRight().indexOf("\n");
 			String trimmed = tooltip.getRight().substring(firstBreak + 1);
 			tooltip.setValue(trimmed);
+			return tooltip;
 		}
-
-		return tooltip;
+		else
+			return super.getTooltip();
 	}
 
 	@SubscribeEvent
