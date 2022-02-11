@@ -744,7 +744,7 @@ tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
 tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
 
 #Config
-config.metallurgy.category.armor_effects=Effects
+config.metallurgy.category.effects=Effects
 config.metallurgy.category.general=General
 config.metallurgy.category.registry=Registry
 config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
@@ -752,6 +752,7 @@ config.metallurgy.category.phosphorus_lamp=Phosphorus Lamp
 config.metallurgy.category.brass_knuckles=Brass Knuckles
 config.metallurgy.category.tool_effects=Tool Effects
 config.metallurgy.category.worldgen=World Generation
+config.metallurgy.category.thermite_dust=Thermite
 
 #Construct's Armory Traits
 modifier.blindness_armor.name=Clear Vision
