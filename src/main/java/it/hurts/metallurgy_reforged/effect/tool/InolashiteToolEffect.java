@@ -140,6 +140,7 @@ public class InolashiteToolEffect extends BaseMetallurgyEffect {
 			player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
 		}
 		player.setPositionAndUpdate(x, y, z);
+		player.hurtResistantTime = 20;
 	}
 
 }
