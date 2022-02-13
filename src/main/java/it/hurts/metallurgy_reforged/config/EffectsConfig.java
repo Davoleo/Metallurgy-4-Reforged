@@ -146,6 +146,14 @@ public class EffectsConfig {
 	@Config.Name("Ethereal (Etherium Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.etherium_armor")
 	public static boolean etheriumEffectArmor = true;
+
+	@Config.Name("Ethereal BlackList")
+	@Config.LangKey("tooltip.metallurgy.effect.etherium_armor_blacklist")
+	@Config.RequiresWorldRestart
+	public static String[] etheriumEffectArmorBlacklist = new String[]{};
+	;
+
+
 	@Config.Name("Siphon (Etherium Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.etherium_weapon")
 	public static boolean etheriumEffectWeapon = true;

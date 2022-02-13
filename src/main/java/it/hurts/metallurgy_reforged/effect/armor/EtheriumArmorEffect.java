@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -19,7 +20,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -33,14 +33,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
+
+	private static final Set<String> blockBlacklist;
+
+	static
+	{
+		blockBlacklist = Arrays.stream(EffectsConfig.etheriumEffectArmorBlacklist).collect(Collectors.toSet());
+	}
 
 	public EtheriumArmorEffect()
 	{
 		super(ModMetals.ETHERIUM);
 	}
+
 
 	@Nonnull
 	@Override
@@ -113,7 +124,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 					{
 						pos.setPos(x, y, z);
 
-						if (box.intersects(x, y, z, x + 1D, y + 1D, z + 1D) && entity.world.getBlockState(pos).getBlock() == Blocks.DIAMOND_BLOCK)
+						if (box.intersects(x, y, z, x + 1D, y + 1D, z + 1D) && blockBlacklist.contains(entity.world.getBlockState(pos).getBlock().getRegistryName().toString()))
 						{
 							Vec3d vec = entity.getPositionVector().subtract(x + 0.5D, y + 0.5D, z + 0.5D);
 							double length = vec.length();

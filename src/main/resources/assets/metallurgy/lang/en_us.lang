@@ -1541,6 +1541,7 @@ tooltip.metallurgy.effect.electrum_weapon.tooltip=Activating the effect with a r
 tooltip.metallurgy.effect.electrum_tool.tooltip=Harvesting blocks while the effect is active (right-click) will make the tool use 10x durability but mine significantly faster and gain a higher harvest level.
 tooltip.metallurgy.effect.electrum_armor.tooltip=Receiving damage charges items in the player inventory with Energy. Energy is distributed equally among all items. Energy value scales based on damage received prior to armor reduction calculations.
 tooltip.metallurgy.effect.etherium_armor.tooltip=Allows the player to clip through walls when sneaking for at most 15 seconds after which the player remains stuck in the wall
+tooltip.metallurgy.effect.etherium_armor_blacklist=You can blacklist blocks which players cannot clip through.
 tooltip.metallurgy.effect.etherium_weapon.tooltip=When attacking, sometimes extra damage is dealt and the user regenerates health equal to the extra damage. If the player has full HP they gain an absorption buff for that amount of hp (Absorption doesn't stack).
 tooltip.metallurgy.effect.eximite_armor.tooltip=Shulkers become neutral, but you're not immune to the effect of lingering bullets.
 tooltip.metallurgy.effect.eximite_weapon.tooltip=Grants bonus damage and a looting effect to mobs in the End.
