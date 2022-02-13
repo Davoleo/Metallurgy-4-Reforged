@@ -148,11 +148,8 @@ public class EffectsConfig {
 	public static boolean etheriumEffectArmor = true;
 
 	@Config.Name("Ethereal BlackList")
-	@Config.LangKey("tooltip.metallurgy.effect.etherium_armor_blacklist")
-	@Config.RequiresWorldRestart
+	@Config.Comment("You can blacklist blocks which players cannot clip through.")
 	public static String[] etheriumEffectArmorBlacklist = new String[]{};
-	;
-
 
 	@Config.Name("Siphon (Etherium Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.etherium_weapon")
