@@ -122,6 +122,7 @@ public class InolashiteToolEffect extends BaseMetallurgyEffect {
 
 		world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1, 1);
 		player.getCooldownTracker().setCooldown(tool.getItem(), 20 * 10);
+		player.hurtResistantTime = 20;
 	}
 
 	private void teleport(EntityPlayer player, double x, double y, double z)
@@ -140,7 +141,6 @@ public class InolashiteToolEffect extends BaseMetallurgyEffect {
 			player.world.spawnParticle(EnumParticleTypes.PORTAL, d3, d4, d5, f, f1, f2);
 		}
 		player.setPositionAndUpdate(x, y, z);
-		player.hurtResistantTime = 20;
 	}
 
 }
