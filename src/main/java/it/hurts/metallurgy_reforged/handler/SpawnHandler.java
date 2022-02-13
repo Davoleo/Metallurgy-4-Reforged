@@ -45,9 +45,10 @@ public abstract class SpawnHandler {
 		if (entity.getArmorInventoryList() == null || entity.getHeldEquipment() == null)
 			return;
 
-		//If the entity already has something as equipment or armor
-		if (event.getEntity().getEquipmentAndArmor().iterator().hasNext())
-			return;
+		//check if mob is already equipped
+		for (ItemStack stack : entity.getEquipmentAndArmor())
+			if (!stack.isEmpty())
+				return;
 
 		boolean isEntityValid = Arrays.stream(GeneralConfig.mobsThatCanHaveEquipment).anyMatch(entityId -> {
 			EntityEntry entry = EntityRegistry.getEntry(entity.getClass());

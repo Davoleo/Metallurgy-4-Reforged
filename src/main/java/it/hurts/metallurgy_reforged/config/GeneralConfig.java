@@ -102,6 +102,10 @@ public class GeneralConfig {
 			"minecraft:husk"
 	};
 
+	@Config.Name("Metal equipment spawn blacklist")
+	@Config.Comment("A list of metals which cannot be equipped by mobs. \n Metal names must be written in snake case.")
+	public static String[] metalsThatCannotBeEquipped = {};
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 

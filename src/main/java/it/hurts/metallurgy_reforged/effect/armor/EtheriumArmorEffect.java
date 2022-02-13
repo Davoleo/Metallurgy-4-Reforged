@@ -127,8 +127,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 						if (box.intersects(x, y, z, x + 1D, y + 1D, z + 1D) && blockBlacklist.contains(entity.world.getBlockState(pos).getBlock().getRegistryName().toString()))
 						{
 							Vec3d vec = entity.getPositionVector().subtract(x + 0.5D, y + 0.5D, z + 0.5D);
-							double length = vec.length();
-							double velocity = length * 0.1D;
+							double velocity = 0.1D;
 							Vec3d nor = vec.normalize();
 							entity.velocityChanged = true;
 							entity.motionX += nor.x * velocity;
