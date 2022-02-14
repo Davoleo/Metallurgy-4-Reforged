@@ -95,7 +95,6 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 			AxisAlignedBB box = entity.getEntityBoundingBox().grow(0.1D, 0D, 0.1D);
 
 			List<AxisAlignedBB> collisions = entity.world.getCollisionBoxes(entity, box);
-			System.out.println(collisions);
 			if (!collisions.isEmpty())
 			{
 				//Resume the timer
@@ -126,12 +125,11 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 						if (box.intersects(x, y, z, x + 1D, y + 1D, z + 1D) && blockBlacklist.contains(entity.world.getBlockState(pos).getBlock().getRegistryName().toString()))
 						{
-							Vec3d vec = entity.getPositionVector().subtract(x + 0.5D, y + 0.5D, z + 0.5D);
+							Vec3d vec = entity.getPositionVector().subtract(x + 0.5D, y + 0.5D, z + 0.5D).normalize();
 							double velocity = 0.1D;
-							Vec3d nor = vec.normalize();
 							entity.velocityChanged = true;
-							entity.motionX += nor.x * velocity;
-							entity.motionZ += nor.z * velocity;
+							entity.motionX += vec.x * velocity;
+							entity.motionZ += vec.z * velocity;
 						}
 
 					}
