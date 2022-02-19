@@ -20,7 +20,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.FoodStats;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -128,7 +127,11 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 		data.deserializeNBT(((ExtraFilledDataBundle) getBundle(entity, metal, getCategory())).getExtras());
 
 		//Restore original position health and food stats
-		entity.setPosition(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
+		//It was just setPosition before as we're both on client and server here, but somehow the client acts weirdly and restores the old position
+		//So I'm forcing the position by setting it on the server and then updating the client to be synced
+		if (!world.isRemote)
+			entity.setPositionAndUpdate(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
+
 		entity.setHealth(data.health);
 		int foodDelta = data.foodLevel - entity.getFoodStats().getFoodLevel();
 		float saturationDelta = data.saturation - entity.getFoodStats().getSaturationLevel();
