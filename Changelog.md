@@ -33,6 +33,10 @@
 - Decreased the chance of Vanilla mobs spawning with metallurgy armor in Hard Difficulty (20% -> 15%)
 - Added new config blacklist to specify metals mobs cannot spawn equipped
   with ([#330](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/330))
+- Warp (Inolashite Armor) Effect Fixes:
+  - Fixed crash with AppleCore and Food Stats
+    Overloading ([#349](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/349))
+  - Fixed teleport sometimes failing to success
 
 #### Balance Changes
 
