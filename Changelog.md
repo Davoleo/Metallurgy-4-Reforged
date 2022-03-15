@@ -40,6 +40,60 @@
 
 #### Balance Changes
 
+- **Adamantine**:
+	 - Increased tool efficiency from 10 to 10.5.
+	 
+- **Amordrine**:
+	 - Decreased tool durability from 1230 to 832.
+	 - Decreased tool efficiency from 13.5 to 11.
+
+- **Angmallen**:
+	 - Increased tool durability from 153 to 164.
+
+- **Astral Silver**:
+	 - Increased tool durability from 323 to 523.
+	 - Decreased tool efficiency from 11.2 to 8.5.
+
+- **Atlarus**:
+	 - Increased tool efficiency from 10 to 11.
+	 
+- **Ceruclase**:
+	 - Decreased tool durability from 143 to 103.
+	 - Decreased tool efficiency from 8.6 to 5.
+	 
+- **Desichalkos**:
+	 - Increased tool efficiency from 8.1 to 10.
+
+- **Etherium**:
+	 - Decreased tool durability from 4756 to 2056.
+	 - Decreased tool efficiency from 18 to 16.
+
+- **Hepatizon**:
+	 - Increased tool efficiency from 6.6 to 7.2.
+
+- **Ignatius**:
+	 - Increased tool durability from 71 to 84.
+	 - Increased tool damage from 2.1 to 2.4.
+	 - Increased tool efficiency from 3.6 to 4.
+	 
+- **Krik**:
+	 - Increased tool efficiency from 8 to 9.5.
+	 
+- **Orichalcum**:
+	 - Decreased tool efficiency from 9 to 7.7.
+
+- **Platinum**:
+	 - Decreased tool efficiency from 9.9 to 9.
+
+- **Sanguinite**:
+	 - Added new attribute to armor, Max Health, which is equal to 4.
+	 - Added new attribute to tools, Max Health, which is equal to 2.
+	 - Added new attribute to tools, Attack Speed, which is equal to -0.2.
+	 
+- **Vyroxeres**:
+	 - Increased tool durability from 287 to 487.
+	 - Increased tool efficiency from 7.2 to 11.
+	 
 ## 1.3.0
 
 ### Important Notes and Disclaimers:
