@@ -92,7 +92,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 		if (entity instanceof EntityPlayer)
 			bundle = getBundle(((EntityPlayer) entity), metal, getCategory());
 
-		if (bundle == null || (!bundle.isEffectInProgress() && source == DamageSource.LAVA))
+		if (source == DamageSource.LAVA && (bundle == null || !bundle.isEffectInProgress()))
 		{
 			if (entity instanceof EntityPlayer)
 			{
