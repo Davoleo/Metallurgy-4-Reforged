@@ -1620,7 +1620,7 @@ tooltip.metallurgy.stats.efficiency=Efficiency: %s
 message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
 
 #Shield Tooltips
-tooltip.metallurgy.ceruclase_shield=§3When activated, creates an icy sphere around the player and cushions a portion of the fall damage. The ice starts to melt after withdrawing the shield.
+tooltip.metallurgy.ceruclase_shield=§3When activated, creates an icy sphere around the player and cushions a portion of any incoming fall damage. The ice starts to melt after withdrawing the shield.
 tooltip.metallurgy.lemurite_shield=§fWhile active, makes the player completely invisible to most entities (including other players).
 tooltip.metallurgy.orichalcum_buckler=Upgraded buckler. §2When attacked by a ranged enemy, reflects 1.5x of the damage to the attacker and teleports them to be within melee reach.
 tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a melee enemy, creates a small explosion that knocks them back.
