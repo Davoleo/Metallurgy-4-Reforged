@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -36,7 +37,6 @@ public class EventUtils {
 	/**
 	 * @param entity The entity who is wearing the armor
 	 * @param metal  The metal the armor is made of
-	 *
 	 * @return whether a player is wearing the complete armor set
 	 */
 	public static boolean isWearingFullArmorSet(EntityLivingBase entity, Metal metal)
@@ -56,7 +56,6 @@ public class EventUtils {
 	 * @param player     The player who may be wearing the armor piece
 	 * @param slot       The slot in which the player may be wearing a specific armor piece
 	 * @param armorEquip The armor item the player may be wearing in the specified slot
-	 *
 	 * @return whether the player is wearing a specific armor item in a specific Equipment Slot
 	 */
 	public static boolean isPlayerWearingSpecificArmorPiece(EntityPlayer player, EntityEquipmentSlot slot, Item armorEquip)
@@ -67,7 +66,6 @@ public class EventUtils {
 	/**
 	 * @param entity EntityLivingBase
 	 * @param metal  The metal you need to count the number of armor piece of
-	 *
 	 * @return The number of pieces of armor worn by the player
 	 */
 	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
@@ -85,7 +83,6 @@ public class EventUtils {
 	/**
 	 * @param tool  The item tool you're using to harvest the block
 	 * @param block The Block you're harvesting
-	 *
 	 * @return whether you can harvest a certain block with a specific tool
 	 */
 	public static boolean canHarvest(ItemStack tool, IBlockState block)
@@ -108,10 +105,18 @@ public class EventUtils {
 		return block.getBlock().getHarvestLevel(block) <= tool.getItem().getHarvestLevel(tool, toolType.getName(), null, block);
 	}
 
-	private static final Metal[] metalllarray = ModMetals.metalMap.values().stream()
-			.filter(metal -> metal != null && metal.hasArmorSet())
+	private static final Metal[] metal_array = ModMetals.metalMap.values().stream()
+			.filter(metal -> metal != null && metal.hasArmorSet() && canMetalBeEquippedByMob(metal))
 			.toArray(Metal[]::new);
-	private static final int metalIndex = Utils.random.nextInt(metalllarray.length);
+
+
+	private static boolean canMetalBeEquippedByMob(Metal metal)
+	{
+		for (String metalString : GeneralConfig.metalsThatCannotBeEquipped)
+			if (metal.getStats().getName().equalsIgnoreCase(metalString))
+				return false;
+		return true;
+	}
 
 	public static ItemStack getRandomEquipmentPiece(Metal metal, EntityLivingBase entity)
 	{
@@ -150,12 +155,32 @@ public class EventUtils {
 				chance = 10;
 				break;
 			case 3:
-				chance = 20;
+				chance = 15;
 				break;
 		}
 
 		if ((Utils.random.nextFloat() * 100) < chance)
-			return metalllarray[metalIndex];
+		{
+			/*
+			int targetWeight = Utils.random.nextInt(totale);
+
+			int sumOfWeights = 0;
+
+			Metal pickedMetal = null;
+			int index = 0;
+
+			while(pickedMetal == null && index < metal_array.length)
+			{
+				Metal metal = metal_array[index];
+				sumOfWeights += 6 - metal.getStats().getOreHarvest();
+				if(targetWeight <= sumOfWeights)
+					pickedMetal = metal;
+				++index;
+			}
+			return pickedMetal;
+			*/
+			return metal_array[Utils.random.nextInt(metal_array.length)];
+		}
 
 		return null;
 	}

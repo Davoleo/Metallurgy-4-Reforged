@@ -1,3 +1,99 @@
+## 1.3.1
+
+- Fix Tool Efficiency tooltip number display and conditions
+- Protect Harvest Level tooltip from extreme values (if `materials.json` is edited)
+- Fix Umbral-Synthesis (Shadow Steel Item Effect) working with any light level
+- Renamed some effects that had duplicate names
+- World Generation:
+  - New Rarity Tier between RARE and ULTRA_RARE called `VERY_RARE`
+  - Changed Rarity category values and rarity categories for certain metals
+  - Read [the wiki](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki/Ores) for more information
+- Changed mod logo now reflects the new one which is also displayed on the Curseforge Page
+- Fixed Duplicate Inolashite Metal Advancement
+- Fixed Missing Haderoth Metal Advancement
+- Transmute (Angmallen Pickaxe) and Incompatible (Shadow Iron Pickaxe) effects chances to trigger now scale with Fortune
+  enchantment
+- Fixed Blood Tap (Sanguinite Tool) effect healing tool durability instead of using it up when activating it.
+- Transmute (Angmallen Pickaxe) effect Tweaks:
+  - removed iron and gold ore from the pool of possible ores to transmute to.
+  - Added a double durability usage penalty when Transmute is triggered
+- Rework Dissolve (Vyroxeres Armor) Effect: it now works as intended
+- Fix Armor Metamorphosis (Haderoth Effect) being applied on non-Haderoth items in certain cases.
+- Fixed two cases of unlocalized config category name
+- Fixed a typo in Souldbound's (Amordrine Items effect) config entry (was wrongly named as
+  Sky-High ) ([#347](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/347))
+- Fix Abattoir (Carmot Weapons) effect crash when attacking non-Living or null entities
+- Fix broken disabling config on many effects ([#347](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/347))
+- Fix crash when rendering Adaptability (Haderoth Armor) effect tooltip + fix inverted tooltip logic behaviour
+- Tweaked Broken Evasion (Shadow Iron Armor) effect: increased durability usage when the effect is triggered (usage
+  proportional to max durability)
+- Added 1 Second of Invulnerability to Time Leap (Inolashite Tool) Effect: prevents suffocation damage
+- Ethereal (Etherium Armor Effect): Added a blacklist config of blocks players can't go through while using Etherium
+  Armor ([#330](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/330))
+- Decreased the chance of Vanilla mobs spawning with metallurgy armor in Hard Difficulty (20% -> 15%)
+- Added new config blacklist to specify metals mobs cannot spawn equipped
+  with ([#330](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/330))
+- Warp (Inolashite Armor) Effect Fixes:
+  - Fixed crash with AppleCore and Food Stats
+    Overloading ([#349](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/349))
+  - Fixed teleport sometimes failing to success
+
+#### Balance Changes
+
+- **Adamantine**:
+	 - Increased tool efficiency from 10 to 10.5.
+	 
+- **Amordrine**:
+	 - Decreased tool durability from 1230 to 832.
+	 - Decreased tool efficiency from 13.5 to 11.
+
+- **Angmallen**:
+	 - Increased tool durability from 153 to 164.
+
+- **Astral Silver**:
+	 - Increased tool durability from 323 to 523.
+	 - Decreased tool efficiency from 11.2 to 8.5.
+
+- **Atlarus**:
+	 - Increased tool efficiency from 10 to 11.
+	 
+- **Ceruclase**:
+	 - Decreased tool durability from 143 to 103.
+	 - Decreased tool efficiency from 8.6 to 5.
+	 
+- **Desichalkos**:
+	 - Increased tool efficiency from 8.1 to 10.
+
+- **Etherium**:
+	 - Decreased tool durability from 4756 to 2056.
+	 - Decreased tool efficiency from 18 to 16.
+
+- **Hepatizon**:
+	 - Increased tool efficiency from 6.6 to 7.2.
+
+- **Ignatius**:
+	 - Increased tool durability from 71 to 84.
+	 - Increased tool damage from 2.1 to 2.4.
+	 - Increased tool efficiency from 3.6 to 4.
+	 
+- **Krik**:
+	 - Increased tool efficiency from 8 to 9.5.
+	 
+- **Orichalcum**:
+	 - Decreased tool efficiency from 9 to 7.7.
+
+- **Platinum**:
+	 - Decreased tool efficiency from 9.9 to 9.
+
+- **Sanguinite**:
+	 - Added new attribute to armor, Max Health, which is equal to 4.
+	 - Added new attribute to tools, Max Health, which is equal to 2.
+	 - Added new attribute to tools, Attack Speed, which is equal to -0.2.
+	 
+- **Vyroxeres**:
+	 - Increased tool durability from 287 to 487.
+	 - Increased tool efficiency from 7.2 to 11.
+	 
 ## 1.3.0
 
 ### Important Notes and Disclaimers:
@@ -89,8 +185,7 @@
 - Molten Core (Ignatius Weapons Effect) has been renamed to Molten Blade
 - Greed (Midasium Weapon Effect) has been renamed to Bounty
 - Symbiosis I (Adamantine Effect) has been renamed to Inclusions
-- New Rarity tier has been added (VERY RARE), and ore rarity categories have been changed
-  accordingly [read the wiki about it](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki/Ores)
+- New Rarity tier has been added (VERY RARE), and ore rarity categories have been changed accordingly [read the wiki about it](https://github.com/Davoleo/Metallurgy-4-Reforged/wiki/Ores)
 - Fixed Fissure (Vulcanite Tool Effect) Block Breaking (now makes checks if the tool can harvest the block before doing
   so)
 - Added Efficiency information to tool tooltips
@@ -259,12 +354,10 @@
   - Decreased tool damage from 7 to 6.2.
   - Increased tool efficiency from 7 to 7.2.
 
-
 ## 1.3.0-beta.2
 
 - **Fissure (Vulcanite Tools)**
-  - Fixed Block Breaking (Previously created ghost
-    blocks) ([#341](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/341))
+  - Fixed Block Breaking (Previously created ghost blocks) ([#341](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/341))
   - Added Sound Event when the extra block is broken.
 - **Voltage Control (Electrum Tools)**
   - Fixed Harvest Level Boost being reset even if the tool mode is "active"
@@ -288,8 +381,7 @@
   - Fixed wrong damage calculation
 - Integration with famous mods like Thermal Expansion and Chisel has now been implemented via IMC (feature from 1.2.12)
 - Sublimation Chamber now has a light level of 8 when active.
-- Updated Russian translations to contain new small translation and effect names and
-  descriptions ([#337](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/337))
+- Updated Russian translations to contain new small translation and effect names and descriptions ([#337](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/337))
 - New Feature! :sparkles: **Advancements**
   - 6 advancements: one for each mining tier
   - 1 advancement for each metal in the mod with details on the properties and optionally how to find/use the metal
@@ -298,8 +390,7 @@
 - Fixed Log Spam on certain effects that didn't rely on config options to be disabled
 - Fixed Error in log related to broken Metal Detector's Cleaning recipe
 - Fixed Metal detector activating when no metals have been provided as samples.
-- Patched a crash with Pneumaticcraft's Amadron
-  Drone ([#336](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/336))
+- Patched a crash with Pneumaticcraft's Amadron Drone ([#336](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/336))
 - More Warnings have been added to the Registry config making the user aware of the conflicts it can create.
 - **Quicksilver: Recipe changed** it is now made by alloying Astral Silver and Silver in a 1:1 ratio
 - **Lutetium has been moved to the Nether**
@@ -380,8 +471,7 @@
 
 ## 1.3.0-beta.1
 
-- New Effect System: most of the old effects have been moved/reworked to be
-  thematic [Refer to pre-release.md on the repository for more information]
+- New Effect System: most of the old effects have been moved/reworked to be thematic [Refer to pre-release.md on the repository for more information]
 - This update also features reworked textures for armor and tools by our artist matpac (although they're still WIP so
   you might see armor and tool sets that differs a lot in theme) :)
 - New Custom tooltips that show more information about effects and tool stats!
@@ -841,8 +931,7 @@
 - New Gadget **Electrum Magnet**
   - Portable Magnet that attracts dropped items towards the player
   - Configurable in 3 different ways
-- Fix EMC Exploits introduced with the new Decorative blocks
-  recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
+- Fix EMC Exploits introduced with the new Decorative blocks recipes ([#302](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/302))
 - Updated Russian Translation ([#303](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/303))
 - Fixed println pollution on when Endermen spawn ([#304](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/304))
 
@@ -862,10 +951,8 @@
 - :balance_scale: Reworked Decorative metal blocks recipes to be more balanced (buff) and to avoid recipe conflicts with vanilla
 - :sparkles: Added a new Block (Bi-Metal Structure) (as of right now it’s used to create decorative blocks, but it also might be used as a machine frames for tile entities)
 - :recycle: Refactor Recipe JSON Files
-- :sparkles: EnderIO Integration for alloy recipes in the alloy
-  smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
-- :sparkles: Bucklers (a new kind of shield lighter and more
-  dynamic) [#164](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/164)
+- :sparkles: EnderIO Integration for alloy recipes in the alloy smelter [#295](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/295)
+- :sparkles: Bucklers (a new kind of shield lighter and more dynamic) [#164](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/164)
   - Allows to run and walk at normal speed wile holding it
   - As well as allowing to hit entities and the air :P
   - They Go on cooldown after a hit

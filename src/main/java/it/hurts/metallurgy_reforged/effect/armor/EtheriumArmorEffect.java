@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
+import it.hurts.metallurgy_reforged.config.EffectsConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -22,6 +23,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -30,14 +33,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
+
+	private static final Set<String> blockBlacklist;
+
+	static
+	{
+		blockBlacklist = Arrays.stream(EffectsConfig.etheriumEffectArmorBlacklist).collect(Collectors.toSet());
+	}
 
 	public EtheriumArmorEffect()
 	{
 		super(ModMetals.ETHERIUM);
 	}
+
 
 	@Nonnull
 	@Override
@@ -45,6 +59,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 	{
 		return EnumEffectCategory.ARMOR;
 	}
+
 
 	@Override
 	public void onStep(World world, EntityPlayer entity, ItemStack effectStack, int maxSteps, int step)
@@ -69,7 +84,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 		{
 			EntityPlayer entity = (EntityPlayer) event.getEntityLiving();
 
-			if (!canBeApplied(entity))
+			if (!entity.isSneaking() || !canBeApplied(entity))
 				return;
 
 			if (entity.getCooldownTracker().getCooldown(getArmorRepr(entity).getItem(), 0) != 0)
@@ -77,8 +92,10 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 			ProgressiveDataBundle bundle = entity.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).etheriumArmorBundle;
 
-			final List<AxisAlignedBB> collisions = entity.world.getCollisionBoxes(entity, entity.getEntityBoundingBox().grow(0.1D, 0, 0.1D));
-			if (entity.isSneaking() && !collisions.isEmpty())
+			AxisAlignedBB box = entity.getEntityBoundingBox().grow(0.1D, 0D, 0.1D);
+
+			List<AxisAlignedBB> collisions = entity.world.getCollisionBoxes(entity, box);
+			if (!collisions.isEmpty())
 			{
 				//Resume the timer
 				if (!bundle.isEffectInProgress())
@@ -91,19 +108,36 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 				entity.noClip = true;
 				entity.motionY = 0D;
-
-				collisions.forEach(aabb -> {
-					BlockPos pos = new BlockPos(aabb.minX, aabb.minY, aabb.minZ);
-					for (int i = 0; i < 5; i++)
-						spawnParticle(entity.world, pos, 0.75F, false, 0, 0, 0, 0);
-				});
 			}
 			else
 			{
 				bundle.setPaused(true, entity);
 			}
+
+			BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+			for (int x = (int) box.minX; x <= MathHelper.ceil(box.maxX); x++)
+			{
+				for (int y = entity.getPosition().getY(); y <= MathHelper.ceil(box.maxY); y++)
+				{
+					for (int z = (int) box.minZ; z <= MathHelper.ceil(box.maxZ); z++)
+					{
+						pos.setPos(x, y, z);
+
+						if (box.intersects(x, y, z, x + 1D, y + 1D, z + 1D) && blockBlacklist.contains(entity.world.getBlockState(pos).getBlock().getRegistryName().toString()))
+						{
+							Vec3d vec = entity.getPositionVector().subtract(x + 0.5D, y + 0.5D, z + 0.5D).normalize();
+							double velocity = 0.1D;
+							entity.velocityChanged = true;
+							entity.motionX += vec.x * velocity;
+							entity.motionZ += vec.z * velocity;
+						}
+
+					}
+				}
+			}
 		}
 	}
+
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent

@@ -86,7 +86,7 @@ public abstract class BaseMetallurgyEffect {
 		{
 			try
 			{
-				return !configOption.isAccessible() || configOption.getBoolean(EffectsConfig.class);
+				return configOption.getBoolean(EffectsConfig.class);
 			}
 			catch (IllegalAccessException e)
 			{
@@ -106,7 +106,7 @@ public abstract class BaseMetallurgyEffect {
 
 	public int getLevel(EntityLivingBase entity)
 	{
-		if (entity == null)
+		if (entity == null || !isEnabled())
 			return 0;
 
 		EnumEffectCategory category = getCategory();

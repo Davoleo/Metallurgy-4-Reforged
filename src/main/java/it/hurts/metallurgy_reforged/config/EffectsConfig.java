@@ -12,7 +12,7 @@ package it.hurts.metallurgy_reforged.config;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import net.minecraftforge.common.config.Config;
 
-//Variables are accessed through reflections most of the times
+//Variables are accessed through reflections most of the time
 @SuppressWarnings("unused")
 @Config.LangKey("config.metallurgy.category.effects")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_roster")
@@ -29,7 +29,7 @@ public class EffectsConfig {
 	@Config.Name("Sky-High (Amordrine Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_armor")
 	public static boolean amordrineEffectArmor = true;
-	@Config.Name("Sky-High (Amordrine Items)")
+	@Config.Name("Soulbound (Amordrine Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.amordrine_all")
 	public static boolean amordrineEffectAll = true;
 	@Config.Name("Divine Grace (Amordrine Weapons)")
@@ -149,6 +149,9 @@ public class EffectsConfig {
 	@Config.Name("Siphon (Etherium Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.etherium_weapon")
 	public static boolean etheriumEffectWeapon = true;
+	@Config.Name("Ethereal BlackList")
+	@Config.Comment("You can blacklist blocks which players cannot clip through.")
+	public static String[] etheriumEffectArmorBlacklist = new String[]{"minecraft:bedrock"};
 
 	@Config.Name("End Domestic (Eximite Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.eximite_armor")

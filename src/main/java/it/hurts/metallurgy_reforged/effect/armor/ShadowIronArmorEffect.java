@@ -48,8 +48,9 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 		if (Math.random() < level / 10F)
 		{
 			ItemStack pieceToDamage = EventUtils.getRandomEquipmentPiece(metal, entity);
-
-			pieceToDamage.damageItem(Math.round(event.getAmount()), entity);
+			// Damage the item proportional to absorbed damage, 20 damage -> 10% of max durability, 5 damage -> 2.5%
+			int armorDamage = Math.round(event.getAmount() / 200F * pieceToDamage.getMaxDamage());
+			pieceToDamage.damageItem(armorDamage, entity);
 			event.setCanceled(true);
 
 			Vec3d halvedLookVec = entity.getLookVec().scale(0.5);

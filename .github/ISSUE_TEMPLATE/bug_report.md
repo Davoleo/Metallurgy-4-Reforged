@@ -1,6 +1,9 @@
 ---
-name: Bug report about: Create an issue to help us fix bugs in the mod title: ''
-labels: bug, needs verification assignees: ''
+name: Bug report 
+about: Create an issue to help us fix bugs in the mod
+title: ''
+labels: bug, needs verification 
+assignees: ''
 
 ---
 

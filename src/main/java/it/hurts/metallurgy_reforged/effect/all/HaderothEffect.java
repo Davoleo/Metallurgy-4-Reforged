@@ -143,8 +143,8 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	public void applyArmorMetamorphosis(LivingHurtEvent event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		//The rest is higher than 0 if any armor piece is worn (otherwise we return out)
-		if (getLevel(entity) % 10 == 0)
+
+		if (getLevel(entity) == 0)
 			return;
 
 		//The damage applied is computed by dividing the pure damage amount by 4
@@ -157,6 +157,10 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
 			{
 				ItemStack stack = entity.getItemStackFromSlot(slot);
+
+				//Make sure the item we're inspecting is either haderoth or tartarite infused with haderoth
+				if (!ItemUtils.isMadeOfMetal(metal, stack.getItem()) && !(TartariteEffect.getParagonMetal(stack) == metal))
+					continue;
 
 				//If the item was already reborn
 				if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn"))

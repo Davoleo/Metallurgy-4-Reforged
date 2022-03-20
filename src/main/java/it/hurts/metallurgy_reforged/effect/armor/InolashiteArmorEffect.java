@@ -20,7 +20,6 @@ import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.FoodStats;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -69,7 +68,7 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 		{
 			Queue<WarpData> warpQueue = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).inolashiteWarpData;
 
-			WarpData data = new WarpData(player.getPosition(), player.getHealth(), player.getFoodStats());
+			WarpData data = new WarpData(player.getPosition(), player.getHealth(), player.getFoodStats().getFoodLevel(), player.getFoodStats().getSaturationLevel());
 			addScrollQueue(data, warpQueue, backTrackExtension);
 			//Metallurgy.logger.info(warpQueue.toString());
 			//Debug Visual Effect Representation
@@ -128,9 +127,15 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 		data.deserializeNBT(((ExtraFilledDataBundle) getBundle(entity, metal, getCategory())).getExtras());
 
 		//Restore original position health and food stats
-		entity.setPosition(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
+		//It was just setPosition before as we're both on client and server here, but somehow the client acts weirdly and restores the old position
+		//So I'm forcing the position by setting it on the server and then updating the client to be synced
+		if (!world.isRemote)
+			entity.setPositionAndUpdate(data.position.getX(), data.position.getY() + 0.1, data.position.getZ());
+
 		entity.setHealth(data.health);
-		entity.getFoodStats().addStats(data.hungerStats.getFoodLevel(), data.hungerStats.getSaturationLevel());
+		int foodDelta = data.foodLevel - entity.getFoodStats().getFoodLevel();
+		float saturationDelta = data.saturation - entity.getFoodStats().getSaturationLevel();
+		entity.getFoodStats().addStats(foodDelta, saturationDelta);
 
 		for (int i = 0; i < 25; i++)
 			spawnParticle(entity, 1, true, 4);
@@ -140,17 +145,19 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 
 		private BlockPos position;
 		private float health;
-		private FoodStats hungerStats;
+		private int foodLevel;
+		private float saturation;
 
 		public WarpData()
 		{
 		}
 
-		public WarpData(BlockPos position, float health, FoodStats hungerStats)
+		public WarpData(BlockPos position, float health, int foodLevel, float saturation)
 		{
 			this.position = position;
 			this.health = health;
-			this.hungerStats = hungerStats;
+			this.foodLevel = foodLevel;
+			this.saturation = saturation;
 		}
 
 		@Override
@@ -159,8 +166,8 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 			NBTTagCompound compound = new NBTTagCompound();
 			compound.setLong("pos", position.toLong());
 			compound.setFloat("health", health);
-			compound.setInteger("food_level", hungerStats.getFoodLevel());
-			compound.setFloat("saturation", hungerStats.getSaturationLevel());
+			compound.setInteger("food_level", foodLevel);
+			compound.setFloat("saturation", saturation);
 			return compound;
 		}
 
@@ -169,9 +176,8 @@ public class InolashiteArmorEffect extends BaseMetallurgyEffect implements IProg
 		{
 			this.position = BlockPos.fromLong(nbt.getLong("pos"));
 			this.health = nbt.getFloat("health");
-			FoodStats food = new FoodStats();
-			food.addStats(nbt.getInteger("food_level"), nbt.getFloat("saturation"));
-			this.hungerStats = food;
+			this.foodLevel = nbt.getInteger("food_level");
+			this.saturation = nbt.getFloat("saturation");
 		}
 
 

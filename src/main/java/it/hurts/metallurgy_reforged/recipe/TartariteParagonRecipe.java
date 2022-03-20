@@ -53,7 +53,7 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 			return ItemStack.EMPTY;
 
 		//Check if the metal matches on top center slot
-		Metal metal = ItemUtils.getMetalFromItem(craftInv.getStackInSlot(1).getItem());
+		Metal metal = ItemUtils.getMetalFromOreDictStack(craftInv.getStackInSlot(1));
 		assert metal != null;
 
 		if (metal == ModMetals.TARTARITE)
