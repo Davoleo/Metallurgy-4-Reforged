@@ -47,9 +47,9 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 		if (!MetallurgyEffects.TARTARITE_EFFECT.isEnabled())
 			return ItemStack.EMPTY;
 
-		ItemStack tartariteItem = craftInv.getStackInSlot(4);
+		ItemStack tartariteEquip = craftInv.getStackInSlot(4);
 		//If tartarite item already has a paragon metal
-		if (tartariteItem.getTagCompound() != null && tartariteItem.getTagCompound().hasKey("paragon"))
+		if (tartariteEquip.getTagCompound() != null && tartariteEquip.getTagCompound().hasKey("paragon"))
 			return ItemStack.EMPTY;
 
 		//Check if the metal matches on top center slot
@@ -61,7 +61,10 @@ public class TartariteParagonRecipe extends ShapedOreRecipe {
 
 		ItemStack result = super.getCraftingResult(craftInv);
 
-		result.setItemDamage(tartariteItem.getItemDamage());
+		//Copy over the old durability damage
+		result.setItemDamage(tartariteEquip.getItemDamage());
+		//Copy over old attributes (like enchantments)
+		result.setTagCompound(tartariteEquip.getTagCompound());
 		//Set durability and effects
 		TartariteEffect.setParagon(result, metal);
 
