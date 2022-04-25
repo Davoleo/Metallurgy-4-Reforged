@@ -113,20 +113,20 @@ public class CrusherRecipes {
 
 	private boolean isValidInput(ItemStack input, ItemStack recipeInput)
 	{
-		if (input.isItemEqual(recipeInput) || (input.getItem() == recipeInput.getItem() && recipeInput.getItemDamage() == OreDictionary.WILDCARD_VALUE))
+		if (OreDictionary.itemMatches(input, recipeInput, false))
 			return true;
 
-		List<ItemStack> otherValidStuff = new ArrayList<>();
-
-		for (int id : OreDictionary.getOreIDs(recipeInput))
-		{
-			if (Arrays.stream(OreDictionary.getOreIDs(input)).anyMatch(inputId -> inputId == id))
-			{
-				otherValidStuff.addAll(OreDictionary.getOres(OreDictionary.getOreName(id)));
-			}
-		}
-
-		return !otherValidStuff.isEmpty();
+		return Arrays.stream(OreDictionary.getOreIDs(input))
+				.filter(oreId -> {
+					String oreKey = OreDictionary.getOreName(oreId);
+					return oreKey.startsWith("ore") || oreKey.startsWith("ingot");
+				})
+				.anyMatch(inputId -> {
+					for (int recipeId : OreDictionary.getOreIDs(recipeInput))
+						if (recipeId == inputId)
+							return true;
+					return false;
+				});
 	}
 
 	public float getCrushingExperience(ItemStack stack)
