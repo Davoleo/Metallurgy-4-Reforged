@@ -357,7 +357,8 @@ public class ItemUtils {
 			String snakeOre = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, ore);
 			String[] snakeArray = snakeOre.split("_");
 			String metalName = String.join("_", ArrayUtils.removeElement(snakeArray, snakeArray[0]));
-			return ModMetals.metalMap.get(metalName);
+			if (ModMetals.metalMap.containsKey(metalName))
+				return ModMetals.metalMap.get(metalName);
 		}
 
 		return null;
