@@ -13,7 +13,6 @@ import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
-import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.EntityLiving;
@@ -72,10 +71,10 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 	private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"),
 			"MITHRIL_Attack_Speed_Restore", -2.4000000953674316D, 0);
 
-	private void addAttributeModifier(NBTTagList modList, AttributeModifier mod, int modIndex, EntityEquipmentSlot applicationSlot)
+	private void addEditAttributeModifier(NBTTagList modList, AttributeModifier mod, int modIndex, String attributeName, EntityEquipmentSlot applicationSlot)
 	{
 		NBTTagCompound modCompound = SharedMonsterAttributes.writeAttributeModifierToNBT(mod);
-		modCompound.setString("AttributeName", SharedMonsterAttributes.ARMOR.getName());
+		modCompound.setString("AttributeName", attributeName);
 		modCompound.setString("Slot", applicationSlot.getName());
 		if (modIndex == -1)
 			modList.appendTag(modCompound);
@@ -119,27 +118,24 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 					attackSpeedIndex = i;
 			}
 
-			//Make sure TARTARITE stats are used if this equipment was made of TARTARITE and then infused with MITHRIL
-			Metal metal = TartariteEffect.getParagonMetal(stackRef) != null ? ModMetals.TARTARITE : this.metal;
 			EntityEquipmentSlot slot = EntityLiving.getSlotForItemStack(stackRef);
+			//Add back Item-level attribute modifiers (they get overwritten by the ItemStacks otherwise)
+			stackRef.getItem().getAttributeModifiers(slot, stackRef).forEach((attribute, modifier) -> addEditAttributeModifier(serializedModifiers, modifier, -1, attribute, slot));
 			if (armor)
 			{
-				final int originalProtection = metal.getStats().getArmorStats().getDamageReduction()[slot.getIndex()];
-				AttributeModifier protMod = new AttributeModifier(PROTECTION_UUID, "MITHRIL_Armor_Protection_Buff", originalProtection + (boostLevel), 0);
-				addAttributeModifier(serializedModifiers, protMod, protectionIndex, slot);
+				AttributeModifier protMod = new AttributeModifier(PROTECTION_UUID, "MITHRIL_Armor_Protection_Buff", boostLevel, 0);
+				addEditAttributeModifier(serializedModifiers, protMod, protectionIndex, SharedMonsterAttributes.ARMOR.getName(), slot);
 
-				float armorToughness = metal.getStats().getArmorStats().getToughness();
-				AttributeModifier toughMod = new AttributeModifier(TOUGHNESS_UUID, "MITHRIL_Armor_Toughness_Buff", armorToughness + (boostLevel * 0.5F), 0);
-				addAttributeModifier(serializedModifiers, toughMod, toughnessIndex, slot);
+				AttributeModifier toughMod = new AttributeModifier(TOUGHNESS_UUID, "MITHRIL_Armor_Toughness_Buff", boostLevel * 0.5F, 0);
+				addEditAttributeModifier(serializedModifiers, toughMod, toughnessIndex, SharedMonsterAttributes.ARMOR_TOUGHNESS.getName(), slot);
 			}
 			else
 			{
-				final float attack = metal.getStats().getToolStats().getDamage() + 3F + boostLevel;
-				AttributeModifier attackMod = new AttributeModifier(ATTACK_UUID, "MITHRIL_Attack_Buff", attack, 0);
-				addAttributeModifier(serializedModifiers, attackMod, attackIndex, slot);
+				AttributeModifier attackMod = new AttributeModifier(ATTACK_UUID, "MITHRIL_Attack_Buff", 3F + boostLevel, 0);
+				addEditAttributeModifier(serializedModifiers, attackMod, attackIndex, SharedMonsterAttributes.ATTACK_DAMAGE.getName(), slot);
 
 				//Attack Speed
-				addAttributeModifier(serializedModifiers, ATTACK_SPEED_MODIFIER, attackSpeedIndex, slot);
+				addEditAttributeModifier(serializedModifiers, ATTACK_SPEED_MODIFIER, attackSpeedIndex, SharedMonsterAttributes.ATTACK_SPEED.getName(), slot);
 			}
 		}
 	}
