@@ -33,13 +33,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
-import java.util.function.IntFunction;
 
 public class ShadowSteelArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
 	private static final UUID SPEED_MODIFIER_UUID = UUID.fromString("91AEAB56-376B-1298-935B-2F7F68070635");
-	private final IntFunction<AttributeModifier> generateSpeedModifier = (level) ->
-			new AttributeModifier(SPEED_MODIFIER_UUID, "SHADOW_STEEL_Armor_Movement_Buff", 0.1 * level, 2);
 
 	public ShadowSteelArmorEffect()
 	{
@@ -78,21 +75,34 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect implements IPro
 				return;
 			}
 		}
+		else
+		{
+			if (entity.isPotionActive(MobEffects.SPEED))
+			{
+				event.setCanceled(true);
+				entity.removePotionEffect(MobEffects.SPEED);
+			}
+		}
 
 		//Dark Effect
 		if (darknessLevel > 0.5F)
 		{
-			//Generate and apply speed modifier
-			AttributeModifier modifier = generateSpeedModifier.apply(level);
-			entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).applyModifier(modifier);
-
 			if (entity instanceof EntityPlayer)
 			{
+				//Generate and apply speed modifier
+				AttributeModifier modifier = new AttributeModifier(SPEED_MODIFIER_UUID, "SHADOW_STEEL_Armor_Movement_Buff", 0.20000000298023224D * level, 2);
+				entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).applyModifier(modifier);
+
 				final EntityPlayer player = (EntityPlayer) entity;
 				ExtraFilledDataBundle bundle = (ExtraFilledDataBundle) getBundle(player, metal, getCategory());
 				//Kickstart dark effect timer
 				bundle.incrementStep(player);
 				bundle.setExtra("dark", true);
+			}
+			else
+			{
+				if (entity.getRNG().nextBoolean())
+					entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20 * 3, level - 1));
 			}
 		}
 		else
@@ -116,7 +126,6 @@ public class ShadowSteelArmorEffect extends BaseMetallurgyEffect implements IPro
 	{
 		if (step == maxSteps)
 		{
-
 			if (getEffectCapability(entity).shadowSteelArmorBundle.getExtraBool("dark"))
 				entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_UUID);
 

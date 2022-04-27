@@ -101,7 +101,7 @@ public class PlayerEffectData {
 	//Quicksilver Armor
 	public int quicksilverTick = 0;
 
-	public ExtraFilledDataBundle shadowSteelArmorBundle = new ExtraFilledDataBundle("shadow_steel_armor", 4, 20, bundle -> bundle.currentStep > 0);
+	public ExtraFilledDataBundle shadowSteelArmorBundle = new ExtraFilledDataBundle("shadow_steel_armor", 5, 20, bundle -> bundle.currentStep > 0);
 
 	public ProgressiveDataBundle shadowSteelWeaponBundle = new ProgressiveDataBundle("shadow_steel_weapon", 2, 20);
 
