@@ -63,7 +63,7 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
 				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 30, 0));
 
 
-			System.out.println("unbreakable: " + brokenBlocks);
+			//System.out.println("unbreakable: " + brokenBlocks);
 			//Cancel Item Damage
 			ItemStack tool = player.getHeldItemMainhand();
 			data.setExtra("durability", tool.getItemDamage());
@@ -75,7 +75,7 @@ public class CelenegilToolEffect extends BaseMetallurgyEffect implements IProgre
 		else
 		{
 			//No effects at this stage yet
-			System.out.println("Increasing...");
+			//System.out.println("Increasing...");
 			event.getWorld().playSound(null, player.getPosition(), SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.75F, 0.75F + ((brokenBlocks + 1) / 5F));
 		}
 		//reset inactive state
