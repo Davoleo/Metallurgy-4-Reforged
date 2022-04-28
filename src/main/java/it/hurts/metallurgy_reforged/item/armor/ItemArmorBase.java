@@ -151,26 +151,29 @@ public class ItemArmorBase extends ItemArmor implements IMetalItem {
 
         if (equipmentSlot == this.armorType)
         {
-            multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(
-                    Constants.ModAttributes.ARMOR_MAX_HEALTH.get(equipmentSlot),
-                    "Metallurgy Armor Max Health",
-                    metalStats.getArmorStats().getMaxHealth() / 4D,
-                    0)
-            );
+            if (metalStats.getArmorStats().getMaxHealth() != 0)
+                multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(
+                        Constants.ModAttributes.ARMOR_MAX_HEALTH.get(equipmentSlot),
+                        "Metallurgy Armor Max Health",
+                        metalStats.getArmorStats().getMaxHealth() / 4D,
+                        0)
+                );
 
-            multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(
-                    Constants.ModAttributes.ARMOR_KNOCKBACK_RESISTANCE.get(equipmentSlot),
-                    "Metallurgy Armor Knockback Resistance",
-                    metalStats.getArmorStats().getKnockbackResistance() / 4D,
-                    0)
-            );
+            if (metalStats.getArmorStats().getKnockbackResistance() != 0)
+                multimap.put(SharedMonsterAttributes.KNOCKBACK_RESISTANCE.getName(), new AttributeModifier(
+                        Constants.ModAttributes.ARMOR_KNOCKBACK_RESISTANCE.get(equipmentSlot),
+                        "Metallurgy Armor Knockback Resistance",
+                        metalStats.getArmorStats().getKnockbackResistance() / 4D,
+                        0)
+                );
 
-            multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(
-                    Constants.ModAttributes.ARMOR_MOVEMENT_SPEED.get(equipmentSlot),
-                    "Metallurgy Armor Movement Speed",
-                    metalStats.getArmorStats().getMovementSpeed() / 4D,
-                    0)
-            );
+            if (metalStats.getArmorStats().getMovementSpeed() != 0)
+                multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(
+                        Constants.ModAttributes.ARMOR_MOVEMENT_SPEED.get(equipmentSlot),
+                        "Metallurgy Armor Movement Speed",
+                        metalStats.getArmorStats().getMovementSpeed() / 4D,
+                        0)
+                );
         }
 
         return multimap;

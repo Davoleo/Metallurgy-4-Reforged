@@ -328,11 +328,16 @@ public class ItemUtils {
 		{
 			ToolStats toolStats = metalStats.getToolStats();
 
-			multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Axe Max Health", toolStats.getMaxHealth(), 0));
-			multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Axe Movement Speed", toolStats.getMovementSpeed(), 0));
-			ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_DAMAGE, Constants.ModAttributes.ATTACK_DAMAGE, toolStats.getAttackDamageAttribute());
-			ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
-			multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
+			if (toolStats.getMaxHealth() != 0)
+				multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Axe Max Health", toolStats.getMaxHealth(), 0));
+			if (toolStats.getMovementSpeed() != 0)
+				multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Axe Movement Speed", toolStats.getMovementSpeed(), 0));
+			if (toolStats.getAttackDamageAttribute() != 0)
+				ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_DAMAGE, Constants.ModAttributes.ATTACK_DAMAGE, toolStats.getAttackDamageAttribute());
+			if (toolStats.getAttackSpeed() != 0)
+				ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
+			if (toolStats.getReachDistance() != 0)
+				multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
 		}
 	}
 
