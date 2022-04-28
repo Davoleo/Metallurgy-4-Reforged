@@ -9,11 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.all;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.item.armor.ItemArmorBase;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.render.font.FontColor;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -23,15 +25,27 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.UUID;
 
 public class MithrilEffect extends BaseMetallurgyEffect {
+
+	private static final UUID PROTECTION_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111033DB5CF");
+	private static final UUID TOUGHNESS_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111133DB5CF");
+	private static final UUID ATTACK_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111233DB5CF");
+	private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"),
+			"MITHRIL_Attack_Speed_Restore", -2.4000000953674316D, 0);
 
 	public MithrilEffect()
 	{
@@ -64,12 +78,6 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 		if (ItemUtils.isMadeOfMetal(metal, stack.getItem(), ItemArmorBase.class, IToolEffect.class) || TartariteEffect.getParagonMetal(stack) == metal)
 			applyCombatBuffs(stack, stack.getEnchantmentTagList().tagCount(), stack.getItem() instanceof ItemArmorBase);
 	}
-
-	private static final UUID PROTECTION_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111033DB5CF");
-	private static final UUID TOUGHNESS_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111133DB5CF");
-	private static final UUID ATTACK_UUID = UUID.fromString("CB3F55D3-645C-4F38-A497-1111233DB5CF");
-	private static final AttributeModifier ATTACK_SPEED_MODIFIER = new AttributeModifier(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3"),
-			"MITHRIL_Attack_Speed_Restore", -2.4000000953674316D, 0);
 
 	private void addEditAttributeModifier(NBTTagList modList, AttributeModifier mod, int modIndex, String attributeName, EntityEquipmentSlot applicationSlot)
 	{
@@ -108,6 +116,8 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 			for (int i = 0; i < serializedModifiers.tagCount(); i++)
 			{
 				AttributeModifier modifier = SharedMonsterAttributes.readAttributeModifierFromNBT(serializedModifiers.getCompoundTagAt(i));
+				assert modifier != null;
+
 				if (modifier.getID().equals(PROTECTION_UUID))
 					protectionIndex = i;
 				else if (modifier.getID().equals(TOUGHNESS_UUID))
@@ -157,7 +167,35 @@ public class MithrilEffect extends BaseMetallurgyEffect {
 			if (buffLevel > 0)
 				event.setNewSpeed(newSpeed);
 		}
+	}
 
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void colorAttributeMods(ItemTooltipEvent event)
+	{
+		ItemStack stackRef = event.getItemStack();
+		EntityEquipmentSlot modSlot = stackRef.getItem() instanceof ItemArmorBase ? EntityLiving.getSlotForItemStack(stackRef) : EntityEquipmentSlot.MAINHAND;
+
+		Multimap<String, AttributeModifier> mods = event.getItemStack().getAttributeModifiers(modSlot);
+		mods.forEach((attribute, mod) -> {
+			if (mod.getOperation() != 0)
+				return;
+			if (mod.getID().equals(PROTECTION_UUID) || mod.getID().equals(ATTACK_UUID) || mod.getID().equals(TOUGHNESS_UUID))
+			{
+
+				@SuppressWarnings("deprecation")
+				//See ItemStack#getTooltip
+				String tooltipTest = ItemStack.DECIMALFORMAT.format(mod.getAmount()) + " " + I18n.translateToLocal("attribute.name." + attribute);
+
+				List<String> tooltip = event.getToolTip();
+				for (int i = 0; i < tooltip.size(); i++)
+				{
+					String line = tooltip.get(i);
+					if (line.endsWith(tooltipTest))
+						tooltip.set(i, line.replace(TextFormatting.BLUE.toString(), FontColor.encodeColor(metal.getStats().getColorHex())));
+				}
+			}
+		});
 	}
 
 }
