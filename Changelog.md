@@ -1,3 +1,23 @@
+## 1.3.3
+
+- Paragon Absorbed (Tartarite Effect) equipment now doesn't lose previously applied enchantments
+- Fixed an OreDictionary bugs that caused several issues with Crusher and Alloeyr Recipes
+  - Fixes Crusher giving seemingly random output when certain mods are installed
+  - Fixes Alloyer infinitely generating output on certain recipes when certain mods are installed
+- Fixed Bounty (Midasium Weapons) Effect tooltip formatting
+- Arcane (Mithril Armor Effect) Fixes and Improvements
+  - Fixed Stats Boost not working correctly with Paragon Absorb (Wrong Stats) [Tartarite Armor Effect]
+  - Arcane effect doesn't override other active Item attributes (e.g. Health Boost on Tartarite, they are now correctly
+    inherited)
+  - Improved display of inherited stats and Arcane-Provided Stats formatting the latter ones with metal color
+- Fixed Crash (Exceptional Behaviour) when the player attacks a mob that wears Shadow Steel Armor (Eclipse
+  Effect) ([#357](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/357)
+  ,[#358](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/358)
+  , [#359](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/359))
+- Removed Debug logs from Celenegil Tool Effect
+- Improved Item Materials Attributes initialization, it's now only done when necessary (before they were added
+  independently whether they were set or unset in `materials.json`)
+
 ## 1.3.2
 
 - Fix broken Bounty (Midasium Weapon) effect description in
