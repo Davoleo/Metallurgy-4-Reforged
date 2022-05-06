@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
+import it.hurts.metallurgy_reforged.advancement.TriggerDispatcher;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.fluid.FluidEvents;
@@ -33,6 +34,7 @@ public class SubEvent {
 		MinecraftForge.EVENT_BUS.register(SpawnHandler.class);
 		MinecraftForge.EVENT_BUS.register(TileEntityHandler.class);
 		MinecraftForge.EVENT_BUS.register(ProgressiveEffectsHandler.class);
+		MinecraftForge.EVENT_BUS.register(TriggerDispatcher.class);
 
 		//Loads all Effect Handlers
 		MetallurgyEffects.effects.values().forEach(effect -> {

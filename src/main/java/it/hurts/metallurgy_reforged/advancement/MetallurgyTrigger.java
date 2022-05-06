@@ -14,19 +14,15 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.advancements.PlayerAdvancements;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public abstract class MetallurgyTrigger<T extends BaseCriterionInstance<T>> implements ICriterionTrigger<T> {
 
 	private final ResourceLocation resourceLocation;

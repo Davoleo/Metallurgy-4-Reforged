@@ -1,0 +1,24 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:haderoth_chestplate"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.challenges.jack_of_all_trades"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.jack_of_all_trades.desc"
+    }
+  },
+  "criteria": {
+    "jack_of_all_trades": {
+      "trigger": "metallurgy:jack_of_all_trades"
+    }
+  },
+  "requirements": [
+    [
+      "jack_of_all_trades"
+    ]
+  ]
+}

@@ -20,7 +20,10 @@ public class ModAdvancements {
 
 		static final Set<MetallurgyTrigger<?>> ALL = new HashSet<>();
 
-		public static final HarvestLevelTrigger BREAK_ORE_TIER_TRIGGER = new HarvestLevelTrigger();
+		//Tier Advancements
+		public static final HarvestLevelTrigger BREAK_ORE_TIER = new HarvestLevelTrigger();
+
+		public static final JackOfAllTradesTrigger JACK_OF_ALL_TRADES = new JackOfAllTradesTrigger();
 
 	}
 

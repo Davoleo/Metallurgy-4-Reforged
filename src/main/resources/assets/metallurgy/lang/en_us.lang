@@ -155,6 +155,10 @@ advancement.metallurgy.main.atlarus=The Wind Metal
 advancement.metallurgy.main.atlarus.desc=Obtain your first piece of Atlarus Ore, it is light as air. Legends say the strong wind currents reigned over the places where this metal first formed.
 advancement.metallurgy.main.tartarite=The Paragon of Metals
 advancement.metallurgy.main.tartarite.desc=Obtain your first batch of Tartarite by alloying Adamantine and Atlarus in a 1:1 ratio, this living metal has the power to absorb powers as soon as it enters in contact with the properties of another metal.
+# Challenges
+advancement.metallurgy.challenges.jack_of_all_trades=Jack of all Trades
+advancement.metallurgy.challenges.jack_of_all_trades.desc=Equip 4 pieces of armor from 4 different armor sets contemporarily.
+
 
 # Armors
 item.metallurgy.adamantine_helmet.name=Adamantine Helmet

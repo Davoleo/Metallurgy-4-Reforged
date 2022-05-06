@@ -76,7 +76,7 @@ public class BlockOre extends Block {
         if (player instanceof EntityPlayerMP)
         {
             HarvestLevelTrigger.Instance wrapper = new HarvestLevelTrigger.Instance(state.getBlock().getHarvestLevel(state));
-            ModAdvancements.Triggers.BREAK_ORE_TIER_TRIGGER.trigger(((EntityPlayerMP) player), wrapper);
+            ModAdvancements.Triggers.BREAK_ORE_TIER.trigger(((EntityPlayerMP) player), wrapper);
         }
         super.harvestBlock(worldIn, player, pos, state, te, stack);
     }
