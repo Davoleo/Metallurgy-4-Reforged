@@ -17,7 +17,8 @@
       "ore": "ingotSilver"
     },
     "S": {
-      "item": "minecraft:stick"
+      "type": "forge:ore_dict",
+      "item": "stickWood"
     }
   },
   "result": {

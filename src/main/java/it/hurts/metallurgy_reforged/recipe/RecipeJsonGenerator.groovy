@@ -317,7 +317,8 @@ class RecipeJsonGenerator {
                                     ore : "ingot$pascalName"
                             ],
                             "S": [
-                                    item: "minecraft:stick"
+                                    type: "forge:ore_dict",
+                                    item: "stickWood"
                             ]
                     ],
                     result    : [
@@ -340,7 +341,8 @@ class RecipeJsonGenerator {
                                     ore : "ingot$pascalName"
                             ],
                             "S": [
-                                    item: "minecraft:stick"
+                                    type: "forge:ore_dict",
+                                    item: "stickWood"
                             ]
                     ],
                     result    : [
@@ -363,7 +365,8 @@ class RecipeJsonGenerator {
                                     ore : "ingot$pascalName"
                             ],
                             "S": [
-                                    item: "minecraft:stick"
+                                    type: "forge:ore_dict",
+                                    item: "stickWood"
                             ]
                     ],
                     result    : [
@@ -386,7 +389,8 @@ class RecipeJsonGenerator {
                                     ore : "ingot$pascalName"
                             ],
                             "S": [
-                                    item: "minecraft:stick"
+                                    type: "forge:ore_dict",
+                                    item: "stickWood"
                             ]
                     ],
                     result    : [
@@ -409,7 +413,8 @@ class RecipeJsonGenerator {
                                     ore : "ingot$pascalName"
                             ],
                             "S": [
-                                    item: "minecraft:stick"
+                                    type: "forge:ore_dict",
+                                    item: "stickWood"
                             ]
                     ],
                     result    : [
