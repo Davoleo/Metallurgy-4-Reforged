@@ -17,6 +17,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumFacing;
@@ -51,8 +52,10 @@ public class ItemCeruclaseShield extends ItemShieldBase {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(@Nonnull World worldIn, EntityPlayer playerIn, @Nonnull EnumHand handIn)
 	{
+		EnumHand oppositeHand = handIn == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
+		EnumAction otherItemAction = playerIn.getHeldItem(oppositeHand).getItemUseAction();
 
-		if (!worldIn.isRemote && getIceShieldPos(playerIn, false) == null)
+		if (!worldIn.isRemote && getIceShieldPos(playerIn, false) == null && otherItemAction != EnumAction.EAT && otherItemAction != EnumAction.DRINK)
 		{
 			BlockPos playerPos = playerIn.getPosition();
 			playerIn.fallDistance /= 2F;
@@ -64,7 +67,6 @@ public class ItemCeruclaseShield extends ItemShieldBase {
 
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
-
 
 	//---------------------
 	@Override
