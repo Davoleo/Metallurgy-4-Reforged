@@ -24,11 +24,12 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
@@ -69,41 +70,47 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 	}
 
 	@SubscribeEvent
-	public void applyItemMetamorphosis(PlayerDestroyItemEvent event)
+	public void applyToolMetamorphosis(BlockEvent.BreakEvent event)
 	{
-		ItemStack stack = event.getOriginal();
+		applyItemMetamorphosis(event.getPlayer().getHeldItemMainhand(), event.getPlayer());
+	}
+
+	@SubscribeEvent
+	public void applyWeaponMetamorphosis(AttackEntityEvent event)
+	{
+		applyItemMetamorphosis(event.getEntityPlayer().getHeldItemMainhand(), event.getEntityPlayer());
+	}
+
+	@SubscribeEvent
+	public void applyHoeMetamorphosis(UseHoeEvent event)
+	{
+		applyItemMetamorphosis(event.getCurrent(), event.getEntityPlayer());
+	}
+
+	private void applyItemMetamorphosis(ItemStack stack, EntityPlayer destroyingAgent)
+	{
 		if (ItemUtils.isMadeOfMetal(metal, stack.getItem()) || TartariteEffect.getParagonMetal(stack) == metal)
 		{
+
+			int remainingUses = stack.getMaxDamage() - stack.getItemDamage();
+			//If tool isn't about to be broken return out
+			if (remainingUses > 1)
+				return;
+
+			//If tool was already reborn
 			if (stack.getTagCompound() != null && stack.getTagCompound().getBoolean("reborn"))
 				return;
 
-			//Copy the old stack
-			ItemStack newItem = stack.copy();
-
-			//Set the reborn compound (increase durability)
-			if (newItem.getTagCompound() == null)
-				newItem.setTagCompound(rebornCompound);
+			if (stack.getTagCompound() == null)
+				stack.setTagCompound(rebornCompound);
 			else
-				NBTUtils.injectCompound("", newItem.getTagCompound(), rebornCompound);
+				NBTUtils.injectCompound("", stack.getTagCompound(), rebornCompound);
 
 			//Restore full stack durability
-			newItem.setItemDamage(0);
+			stack.setItemDamage(0);
 
-			//Apply Attack damage buff if the item is part of the WEAPON category
-			//if (stack.getItem().getClass() == EnumTools.AXE.getToolClass() || stack.getItem().getClass() == EnumTools.SWORD.getToolClass()) {
-			//    newItem.addAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), ATTACK_DAMAGE_MODIFIER, EntityEquipmentSlot.MAINHAND);
-			//    //Should restore the original attack speed
-			//    newItem.addAttributeModifier(
-			//            SharedMonsterAttributes.ATTACK_SPEED.getName(),
-			//            stack.getItem() instanceof ItemAxeBase ? AXE_ATTACK_SPEED_MODIFIER : SWORD_ATTACK_SPEED_MODIFIER,
-			//            EntityEquipmentSlot.MAINHAND);
-			//    newItem.getAttributeModifiers(EntityEquipmentSlot.MAINHAND).clear();
-			//}
+			destroyingAgent.world.playSound(null, destroyingAgent.getPosition(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.75F, 1.25F);
 
-			//Set new tool to the main hand (the hand should be empty or containing the old tool in theory)
-			event.getEntityPlayer().setHeldItem(EnumHand.MAIN_HAND, newItem);
-
-			event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().getPosition(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.75F, 1.25F);
 		}
 	}
 
