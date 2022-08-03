@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.advancement;
 
+import it.hurts.metallurgy_reforged.advancement.trigger.*;
 import net.minecraft.advancements.CriteriaTriggers;
 
 import java.util.HashSet;
@@ -25,20 +26,19 @@ public class ModAdvancements {
 
 		public static final JackOfAllTradesTrigger JACK_OF_ALL_TRADES = new JackOfAllTradesTrigger();
 
+		public static final YinYangTrigger YIN_YANG = new YinYangTrigger();
+
+		public static final LowTemperaturesTrigger LOW_TEMPERATURES = new LowTemperaturesTrigger();
+
+		public static final OverclockedToolsTrigger OVERCLOCKED_TOOLS = new OverclockedToolsTrigger();
+
+		public static final LoyalFriendsTrigger LOYAL_FRIENDS = new LoyalFriendsTrigger();
+
 	}
 
 	public static void registerTriggers()
 	{
 		Triggers.ALL.forEach(CriteriaTriggers::register);
-	}
-
-	public static void setupTierAdvancementIcons()
-	{
-
-		//ItemPickaxeBase copperPick = ModMetals.COPPER.getTool(EnumTools.PICKAXE);
-		//copperPick.addPropertyOverride(new ResourceLocation("tier_showcase"), (stack, worldIn, entityIn) -> {
-		//
-		//});
 	}
 
 }

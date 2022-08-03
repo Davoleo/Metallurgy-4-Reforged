@@ -9,6 +9,8 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
@@ -97,6 +99,10 @@ public class AdamantineArmorEffect extends BaseMetallurgyEffect {
 					assert metal.getArmorSet() != null;
 					for (ItemArmorBase armorItem : metal.getArmorSet())
 						player.getCooldownTracker().setCooldown(armorItem, 100);
+
+					ModAdvancements.Triggers.LOYAL_FRIENDS.trigger(player,
+							new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.LOYAL_FRIENDS.getId()));
+
 					//Send a packet to emit particles and render the Totem item overlay
 					PacketAdamantineRenderDeathProtection packet = new PacketAdamantineRenderDeathProtection(entity.getEntityId(), armorPiece);
 					//This criteria needs to be triggered in order to the totem overlay to work

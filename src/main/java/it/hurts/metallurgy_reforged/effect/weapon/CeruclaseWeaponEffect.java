@@ -9,10 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.weapon;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -48,6 +51,10 @@ public class CeruclaseWeaponEffect extends BaseMetallurgyEffect {
 			if (attacker.getRNG().nextInt(100) < 75)
 			{
 				event.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 1000));
+
+				if (attacker instanceof EntityPlayerMP)
+					ModAdvancements.Triggers.LOW_TEMPERATURES.trigger((EntityPlayerMP) attacker,
+							new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.LOW_TEMPERATURES.getId()));
 			}
 		}
 	}

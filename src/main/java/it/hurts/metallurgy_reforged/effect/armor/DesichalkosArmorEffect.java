@@ -9,11 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -21,6 +23,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+
+import static it.hurts.metallurgy_reforged.advancement.ModAdvancements.Triggers.LOYAL_FRIENDS;
 
 public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 
@@ -81,6 +85,11 @@ public class DesichalkosArmorEffect extends BaseMetallurgyEffect {
 			effectData.desichalkosAbsorbLevel -= 1;
 
 			event.getEntityLiving().world.playSound(null, event.getEntityLiving().getPosition(), SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.AMBIENT, 1.5F, 0.3F);
+
+			if (event.getEntityLiving() instanceof EntityPlayerMP)
+			{
+				LOYAL_FRIENDS.trigger((EntityPlayerMP) event.getEntityLiving(), new CommonCriterionInstances.AlwaysTrue(LOYAL_FRIENDS.getId()));
+			}
 		}
 
 		effectData.desichalkosTimeWithoutTakingDamage = 0;

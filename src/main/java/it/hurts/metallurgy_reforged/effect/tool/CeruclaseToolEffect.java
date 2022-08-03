@@ -9,9 +9,12 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -52,6 +55,13 @@ public class CeruclaseToolEffect extends BaseMetallurgyEffect {
 					return;
 
 				event.setNewSpeed(100);
+				if (event.getEntityPlayer() instanceof EntityPlayerMP)
+				{
+					ModAdvancements.Triggers.LOW_TEMPERATURES.trigger(
+							(EntityPlayerMP) event.getEntityPlayer(),
+							new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.LOW_TEMPERATURES.getId())
+					);
+				}
 			}
 		}
 	}

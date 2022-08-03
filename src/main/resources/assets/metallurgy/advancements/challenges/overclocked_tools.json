@@ -1,0 +1,25 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:electrum_pickaxe",
+      "nbt": "{voltage_control:1b}"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.challenges.overclocked_tools"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.overclocked_tools.desc"
+    }
+  },
+  "criteria": {
+    "overclocked_tools": {
+      "trigger": "metallurgy:overclocked_tools"
+    }
+  },
+  "requirements": [
+    [
+      "overclocked_tools"
+    ]
+  ]
+}

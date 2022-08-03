@@ -1,0 +1,43 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:tartarite_chestplate"
+    },
+    "frame": "challenge",
+    "title": {
+      "translate": "advancement.metallurgy.challenges.chameleon_metal"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.chameleon_metal.desc"
+    }
+  },
+  "criteria": {
+    "chameleon_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "metallurgy:tartarite_helmet",
+              "metallurgy:tartarite_chestplate",
+              "metallurgy:tartarite_leggings",
+              "metallurgy:tartarite_boots",
+              "metallurgy:tartarite_axe",
+              "metallurgy:tartarite_hoe",
+              "metallurgy:tartarite_pickaxe",
+              "metallurgy:tartarite_shovel",
+              "metallurgy:tartarite_sword"
+            ],
+            "nbt": "{paragon_absorbed:1b}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chameleon_metal"
+    ]
+  ]
+}

@@ -9,8 +9,8 @@
 
 package it.hurts.metallurgy_reforged.block;
 
-import it.hurts.metallurgy_reforged.advancement.HarvestLevelTrigger;
 import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
+import it.hurts.metallurgy_reforged.advancement.trigger.HarvestLevelTrigger;
 import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.material.MetalStats;

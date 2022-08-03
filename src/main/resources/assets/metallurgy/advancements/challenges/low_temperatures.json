@@ -1,0 +1,24 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:ceruclase_sword"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.challenges.low_temperatures"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.low_temperatures.desc"
+    }
+  },
+  "criteria": {
+    "low_temperatures": {
+      "trigger": "metallurgy:low_temperatures"
+    }
+  },
+  "requirements": [
+    [
+      "low_temperatures"
+    ]
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:sanguinite_chestplate"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.challenges.yin_yang"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.yin_yang.desc"
+    }
+  },
+  "criteria": {
+    "yin_yang": {
+      "trigger": "metallurgy:yin_yang"
+    }
+  },
+  "requirements": [
+    [
+      "yin_yang"
+    ]
+  ]
+}

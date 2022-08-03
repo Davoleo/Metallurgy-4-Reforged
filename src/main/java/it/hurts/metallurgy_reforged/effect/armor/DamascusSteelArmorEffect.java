@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
@@ -22,6 +23,8 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+
+import static it.hurts.metallurgy_reforged.advancement.ModAdvancements.Triggers.LOYAL_FRIENDS;
 
 public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
 
@@ -56,6 +59,8 @@ public class DamascusSteelArmorEffect extends BaseMetallurgyEffect {
 			// if any of the piece is on cooldown the effect is cancelled
 			if (((EntityPlayerMP) entity).getCooldownTracker().getCooldown(armorPiece.getItem(), 0) != 0)
 				return;
+
+			LOYAL_FRIENDS.trigger((EntityPlayerMP) entity, new CommonCriterionInstances.AlwaysTrue(LOYAL_FRIENDS.getId()));
 		}
 
 		if (!entity.world.isRemote && event.getSource().getTrueSource() instanceof EntityLivingBase && !entity.getEntityData().getBoolean("has_pier"))

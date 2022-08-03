@@ -111,6 +111,7 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 			compound = new NBTTagCompound();
 
 		compound.setString("paragon", metal.toString());
+		compound.setBoolean("paragon_absorbed", true);
 
 		int infusedDurability;
 		if (metal.getStats().getToolStats() != null)

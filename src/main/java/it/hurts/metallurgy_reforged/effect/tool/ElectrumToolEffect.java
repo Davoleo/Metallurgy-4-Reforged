@@ -9,10 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
@@ -85,6 +88,13 @@ public class ElectrumToolEffect extends BaseMetallurgyEffect {
 		{
 			//Increase Item damage of 3 units (the remaining 1 durability should be removed by the game)
 			toolStack.setItemDamage(toolStack.getItemDamage() + 4);
+			if (event.getPlayer() instanceof EntityPlayerMP)
+			{
+				ModAdvancements.Triggers.OVERCLOCKED_TOOLS.trigger(
+						(EntityPlayerMP) event.getPlayer(),
+						new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.OVERCLOCKED_TOOLS.getId())
+				);
+			}
 		}
 	}
 

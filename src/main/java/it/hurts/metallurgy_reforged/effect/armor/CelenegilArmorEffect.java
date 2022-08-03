@@ -9,12 +9,14 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
 import it.hurts.metallurgy_reforged.capabilities.effect.ExtraFilledDataBundle;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -26,6 +28,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+
+import static it.hurts.metallurgy_reforged.advancement.ModAdvancements.Triggers.LOYAL_FRIENDS;
 
 public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgressiveEffect {
 
@@ -75,6 +79,11 @@ public class CelenegilArmorEffect extends BaseMetallurgyEffect implements IProgr
 			});
 
 			data.setExtra("hits", 0);
+
+			if (entity instanceof EntityPlayerMP)
+			{
+				LOYAL_FRIENDS.trigger((EntityPlayerMP) entity, new CommonCriterionInstances.AlwaysTrue(LOYAL_FRIENDS.getId()));
+			}
 
 			for (int i = 0; i < 60; i++)
 				spawnParticle(entity.world, entityPos, 4F, true, 6, 0.7D - Math.random() * 1.6D, 0.01D, 0.7D - Math.random() * 1.6D);

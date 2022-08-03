@@ -1,0 +1,24 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:adamantine_chestplate"
+    },
+    "title": {
+      "translate": "advancement.metallurgy.challenges.loyal_friends"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.loyal_friends.desc"
+    }
+  },
+  "criteria": {
+    "loyal_friends": {
+      "trigger": "metallurgy:loyal_friends"
+    }
+  },
+  "requirements": [
+    [
+      "loyal_friends"
+    ]
+  ]
+}

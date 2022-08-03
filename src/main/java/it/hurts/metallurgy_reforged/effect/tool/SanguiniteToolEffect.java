@@ -9,10 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.tool;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
+import it.hurts.metallurgy_reforged.advancement.ModAdvancements;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +24,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
@@ -64,6 +68,26 @@ public class SanguiniteToolEffect extends BaseMetallurgyEffect {
 
 		//16 seconds cooldown
 		cooldowns.setCooldown(toolStack.getItem(), 16 * 20);
+	}
+
+	@SubscribeEvent
+	public void triggerOverclockedTools(BlockEvent.HarvestDropsEvent event)
+	{
+		if (!canBeApplied(event.getHarvester()))
+			return;
+
+		if (event.getHarvester() instanceof EntityPlayerMP)
+		{
+			ItemStack toolStack = event.getHarvester().getHeldItemMainhand();
+			CooldownTracker cooldown = event.getHarvester().getCooldownTracker();
+
+			if (cooldown.getCooldown(toolStack.getItem(), 0) > 0)
+			{
+				ModAdvancements.Triggers.OVERCLOCKED_TOOLS.trigger((EntityPlayerMP) event.getHarvester(),
+						new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.OVERCLOCKED_TOOLS.getId())
+				);
+			}
+		}
 	}
 
 	@SubscribeEvent

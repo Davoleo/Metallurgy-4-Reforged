@@ -4,14 +4,16 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2021.
+ = Copyright (c) 2018-2022.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.advancement;
+package it.hurts.metallurgy_reforged.advancement.trigger;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.advancement.BaseCriterionInstance;
+import it.hurts.metallurgy_reforged.advancement.MetallurgyTrigger;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 

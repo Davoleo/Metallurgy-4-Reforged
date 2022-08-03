@@ -158,6 +158,20 @@ advancement.metallurgy.main.tartarite.desc=Obtain your first batch of Tartarite 
 # Challenges
 advancement.metallurgy.challenges.jack_of_all_trades=Jack of all Trades
 advancement.metallurgy.challenges.jack_of_all_trades.desc=Equip 4 pieces of armor from 4 different armor sets contemporarily.
+advancement.metallurgy.challenges.yin_yang=Yin & Yang
+advancement.metallurgy.challenges.yin_yang.desc=Balance the forces of dark and light by wearing exactly 2 pieces of the angelic armor set and 2 pieces of the demonic armor set
+advancement.metallurgy.challenges.low_temperatures=Low Temperatures
+advancement.metallurgy.challenges.low_temperatures.desc=Freeze an enemy or a block with the power of the cold Ceruclase
+advancement.metallurgy.challenges.overclocked_tools=Overclocked Tools
+advancement.metallurgy.challenges.overclocked_tools.desc=Mine blocks with empowered tools via Voltage Control or Blood Tap effects
+advancement.metallurgy.challenges.loyal_friends=Loyal Friends
+advancement.metallurgy.challenges.loyal_friends.desc=Trigger Damage Defense effect of any Metallurgy armor set
+advancement.metallurgy.challenges.chameleon_metal=Chameleon Metal
+advancement.metallurgy.challenges.chameleon_metal.desc=Absorb another metal into Tartarite Equipment to obtain its effects
+advancement.metallurgy.challenges.bucklers=Attack Based Shields?
+advancement.metallurgy.challenges.bucklers.name=Find out how Bucklers work by blocking an attack with them
+advancement.metallurgy.challenges.strong_opponent=A Strong Opponent
+advancement.metallurgy.challenges.strong_opponent.desc=Defeat an enemy that is wearing a Metallurgy Armor
 
 
 # Armors

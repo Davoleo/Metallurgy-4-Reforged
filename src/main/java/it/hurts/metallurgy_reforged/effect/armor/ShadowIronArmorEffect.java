@@ -9,11 +9,13 @@
 
 package it.hurts.metallurgy_reforged.effect.armor;
 
+import it.hurts.metallurgy_reforged.advancement.CommonCriterionInstances;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.EventUtils;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
@@ -22,6 +24,8 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+
+import static it.hurts.metallurgy_reforged.advancement.ModAdvancements.Triggers.LOYAL_FRIENDS;
 
 public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 
@@ -52,6 +56,11 @@ public class ShadowIronArmorEffect extends BaseMetallurgyEffect {
 			int armorDamage = Math.round(event.getAmount() / 200F * pieceToDamage.getMaxDamage());
 			pieceToDamage.damageItem(armorDamage, entity);
 			event.setCanceled(true);
+
+			if (event.getEntityLiving() instanceof EntityPlayerMP)
+			{
+				LOYAL_FRIENDS.trigger((EntityPlayerMP) event.getEntityLiving(), new CommonCriterionInstances.AlwaysTrue(LOYAL_FRIENDS.getId()));
+			}
 
 			Vec3d halvedLookVec = entity.getLookVec().scale(0.5);
 			entity.world.playSound(null, entity.getPosition(), SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.PLAYERS, 1F, 1F);
