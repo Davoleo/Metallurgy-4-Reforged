@@ -318,7 +318,7 @@ class RecipeJsonGenerator {
                             ],
                             "S": [
                                     type: "forge:ore_dict",
-                                    item: "stickWood"
+                                    ore: "stickWood"
                             ]
                     ],
                     result    : [
@@ -342,7 +342,7 @@ class RecipeJsonGenerator {
                             ],
                             "S": [
                                     type: "forge:ore_dict",
-                                    item: "stickWood"
+                                    ore: "stickWood"
                             ]
                     ],
                     result    : [
@@ -366,7 +366,7 @@ class RecipeJsonGenerator {
                             ],
                             "S": [
                                     type: "forge:ore_dict",
-                                    item: "stickWood"
+                                    ore: "stickWood"
                             ]
                     ],
                     result    : [
@@ -390,7 +390,7 @@ class RecipeJsonGenerator {
                             ],
                             "S": [
                                     type: "forge:ore_dict",
-                                    item: "stickWood"
+                                    ore: "stickWood"
                             ]
                     ],
                     result    : [
@@ -414,7 +414,7 @@ class RecipeJsonGenerator {
                             ],
                             "S": [
                                     type: "forge:ore_dict",
-                                    item: "stickWood"
+                                    ore: "stickWood"
                             ]
                     ],
                     result    : [
