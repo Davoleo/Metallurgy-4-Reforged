@@ -37,10 +37,10 @@
         "advancement": "metallurgy:main/angmallen"
       }
     },
-    "astral": {
+    "astral_silver": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/astral"
+        "advancement": "metallurgy:main/astral_silver"
       }
     },
     "atlarus": {
@@ -49,10 +49,10 @@
         "advancement": "metallurgy:main/atlarus"
       }
     },
-    "black": {
+    "black_steel": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/black"
+        "advancement": "metallurgy:main/black_steel"
       }
     },
     "brass": {
@@ -91,16 +91,16 @@
         "advancement": "metallurgy:main/copper"
       }
     },
-    "damascus": {
+    "damascus_steel": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/damascus"
+        "advancement": "metallurgy:main/damascus_steel"
       }
     },
-    "deep": {
+    "deep_iron": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/deep"
+        "advancement": "metallurgy:main/deep_iron"
       }
     },
     "desichalkos": {
@@ -187,12 +187,6 @@
         "advancement": "metallurgy:main/manganese"
       }
     },
-    "metals.txt": {
-      "trigger": "metallurgy:advancement_granted",
-      "conditions": {
-        "advancement": "metallurgy:main/metals.txt"
-      }
-    },
     "meutoite": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
@@ -259,16 +253,16 @@
         "advancement": "metallurgy:main/sanguinite"
       }
     },
-    "shadow": {
+    "shadow_iron": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/shadow"
+        "advancement": "metallurgy:main/shadow_iron"
       }
     },
-    "shadow": {
+    "shadow_steel": {
       "trigger": "metallurgy:advancement_granted",
       "conditions": {
-        "advancement": "metallurgy:main/shadow"
+        "advancement": "metallurgy:main/shadow_steel"
       }
     },
     "silver": {
