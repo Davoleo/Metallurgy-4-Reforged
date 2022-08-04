@@ -4,9 +4,10 @@
       "item": "metallurgy:wiki"
     },
     "title": "Metallurgy 4: Reforged Challenges",
-    "description": "Bringing \"Mine\", back into Minecraft!",
+    "description": "Metallurgy Challenges!",
     "background": "metallurgy:textures/blocks/prometheum_block.png",
-    "announce_to_chat": false
+    "announce_to_chat": false,
+    "show_toast": false
   },
   "criteria": {
     "has_item": {

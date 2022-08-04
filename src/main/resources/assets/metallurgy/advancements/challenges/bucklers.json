@@ -13,13 +13,27 @@
     }
   },
   "criteria": {
-    "buckler_damaged": {
+    "zinc_buckler_damaged": {
       "trigger": "minecraft:item_durability_changed",
       "conditions": {
         "item": {
-          "items": [
-            "metallurgy:zinc_buckler",
-            "metallurgy:vulcanite_buckler",
+          "item": "metallurgy:zinc_buckler"
+        }
+      }
+    },
+    "vulcanite_buckler_damaged": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "item": {
+          "item": "metallurgy:vulcanite_buckler"
+        }
+      }
+    },
+    "orichalcum_buckler_damaged": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "item": {
+          "item": [
             "metallurgy:orichalcum_buckler"
           ]
         }
@@ -28,7 +42,9 @@
   },
   "requirements": [
     [
-      "buckler_damaged"
+      "zinc_buckler_damaged",
+      "vulcanite_buckler_damaged",
+      "orichalcum_buckler_damaged"
     ]
   ]
 }

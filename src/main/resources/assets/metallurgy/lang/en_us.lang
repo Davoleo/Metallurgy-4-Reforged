@@ -169,9 +169,11 @@ advancement.metallurgy.challenges.loyal_friends.desc=Trigger Damage Defense effe
 advancement.metallurgy.challenges.chameleon_metal=Chameleon Metal
 advancement.metallurgy.challenges.chameleon_metal.desc=Absorb another metal into Tartarite Equipment to obtain its effects
 advancement.metallurgy.challenges.bucklers=Attack Based Shields?
-advancement.metallurgy.challenges.bucklers.name=Find out how Bucklers work by blocking an attack with them
+advancement.metallurgy.challenges.bucklers.desc=Find out how Bucklers work by blocking an attack with them
 advancement.metallurgy.challenges.strong_opponent=A Strong Opponent
 advancement.metallurgy.challenges.strong_opponent.desc=Defeat an enemy that is wearing a Metallurgy Armor
+advancement.metallurgy.challenges.metal_rainbow=A Rainbow of Metals
+advancement.metallurgy.challenges.metal_rainbow.desc=Manage to obtain every Metallurgy Metal
 
 
 # Armors

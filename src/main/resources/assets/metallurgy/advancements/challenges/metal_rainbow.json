@@ -1,0 +1,317 @@
+{
+  "parent": "metallurgy:challenges/root",
+  "display": {
+    "icon": {
+      "item": "metallurgy:mithril_ingot"
+    },
+    "frame": "challenge",
+    "title": {
+      "translate": "advancement.metallurgy.challenges.metal_rainbow"
+    },
+    "description": {
+      "translate": "advancement.metallurgy.challenges.metal_rainbow.desc"
+    }
+  },
+  "criteria": {
+    "adamantine": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/adamantine"
+      }
+    },
+    "alduorite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/alduorite"
+      }
+    },
+    "amordrine": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/amordrine"
+      }
+    },
+    "angmallen": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/angmallen"
+      }
+    },
+    "astral": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/astral"
+      }
+    },
+    "atlarus": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/atlarus"
+      }
+    },
+    "black": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/black"
+      }
+    },
+    "brass": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/brass"
+      }
+    },
+    "bronze": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/bronze"
+      }
+    },
+    "carmot": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/carmot"
+      }
+    },
+    "celenegil": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/celenegil"
+      }
+    },
+    "ceruclase": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/ceruclase"
+      }
+    },
+    "copper": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/copper"
+      }
+    },
+    "damascus": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/damascus"
+      }
+    },
+    "deep": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/deep"
+      }
+    },
+    "desichalkos": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/desichalkos"
+      }
+    },
+    "electrum": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/electrum"
+      }
+    },
+    "etherium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/etherium"
+      }
+    },
+    "eximite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/eximite"
+      }
+    },
+    "haderoth": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/haderoth"
+      }
+    },
+    "hepatizon": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/hepatizon"
+      }
+    },
+    "ignatius": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/ignatius"
+      }
+    },
+    "infuscolium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/infuscolium"
+      }
+    },
+    "inolashite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/inolashite"
+      }
+    },
+    "kalendrite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/kalendrite"
+      }
+    },
+    "krik": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/krik"
+      }
+    },
+    "lemurite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/lemurite"
+      }
+    },
+    "lutetium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/lutetium"
+      }
+    },
+    "manganese": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/manganese"
+      }
+    },
+    "metals.txt": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/metals.txt"
+      }
+    },
+    "meutoite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/meutoite"
+      }
+    },
+    "midasium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/midasium"
+      }
+    },
+    "mithril": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/mithril"
+      }
+    },
+    "orichalcum": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/orichalcum"
+      }
+    },
+    "osmium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/osmium"
+      }
+    },
+    "oureclase": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/oureclase"
+      }
+    },
+    "platinum": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/platinum"
+      }
+    },
+    "prometheum": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/prometheum"
+      }
+    },
+    "quicksilver": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/quicksilver"
+      }
+    },
+    "rubracium": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/rubracium"
+      }
+    },
+    "sanguinite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/sanguinite"
+      }
+    },
+    "shadow": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/shadow"
+      }
+    },
+    "shadow": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/shadow"
+      }
+    },
+    "silver": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/silver"
+      }
+    },
+    "steel": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/steel"
+      }
+    },
+    "tartarite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/tartarite"
+      }
+    },
+    "tin": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/tin"
+      }
+    },
+    "vulcanite": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/vulcanite"
+      }
+    },
+    "vyroxeres": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/vyroxeres"
+      }
+    },
+    "zinc": {
+      "trigger": "metallurgy:advancement_granted",
+      "conditions": {
+        "advancement": "metallurgy:main/zinc"
+      }
+    }
+  }
+}

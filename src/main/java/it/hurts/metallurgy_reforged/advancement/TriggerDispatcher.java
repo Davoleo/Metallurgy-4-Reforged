@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.advancement;
 
+import it.hurts.metallurgy_reforged.advancement.trigger.AdvancementGrantedTrigger;
 import it.hurts.metallurgy_reforged.advancement.trigger.JackOfAllTradesTrigger;
 import it.hurts.metallurgy_reforged.advancement.trigger.YinYangTrigger;
 import it.hurts.metallurgy_reforged.material.Metal;
@@ -17,11 +18,15 @@ import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Arrays;
 import java.util.Objects;
+
+import static it.hurts.metallurgy_reforged.advancement.ModAdvancements.Triggers.STRONG_OPPONENT;
 
 public class TriggerDispatcher {
 
@@ -73,6 +78,31 @@ public class TriggerDispatcher {
 				trigger.trigger((EntityPlayerMP) event.getEntityLiving(), new CommonCriterionInstances.AlwaysTrue(trigger.getId()));
 			}
 
+		}
+	}
+
+	@SubscribeEvent
+	public static void dispatchKillingTriggers(LivingDeathEvent event)
+	{
+		if (event.getSource().getTrueSource() instanceof EntityPlayerMP)
+		{
+			EntityPlayerMP killer = (EntityPlayerMP) event.getSource().getTrueSource();
+
+			ItemStack enemyChestplate = event.getEntityLiving().getItemStackFromSlot(EntityEquipmentSlot.CHEST);
+			if (ItemUtils.getMetalFromItem(enemyChestplate.getItem()) != null)
+				STRONG_OPPONENT.trigger(killer, new CommonCriterionInstances.AlwaysTrue(STRONG_OPPONENT.getId()));
+		}
+	}
+
+	@SubscribeEvent
+	public static void dispatchAdvancementGrantedTriggers(AdvancementEvent event)
+	{
+		if (event.getEntityPlayer() instanceof EntityPlayerMP)
+		{
+			ModAdvancements.Triggers.ADVANCEMENT_GRANTED.trigger(
+					(EntityPlayerMP) event.getEntityPlayer(),
+					new AdvancementGrantedTrigger.Instance(event.getAdvancement().getId())
+			);
 		}
 	}
 

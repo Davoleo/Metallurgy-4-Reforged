@@ -34,6 +34,10 @@ public class ModAdvancements {
 
 		public static final LoyalFriendsTrigger LOYAL_FRIENDS = new LoyalFriendsTrigger();
 
+		public static final StrongOpponentTrigger STRONG_OPPONENT = new StrongOpponentTrigger();
+
+		public static final AdvancementGrantedTrigger ADVANCEMENT_GRANTED = new AdvancementGrantedTrigger();
+
 	}
 
 	public static void registerTriggers()
