@@ -1,3 +1,18 @@
+## 1.3.4
+
+- Added Challenge Advancements
+  - Special advancement for using some features in the mod in a certain way, feel free to explore them in the new Tab in
+    the advancements menu
+- Allow to craft tools with other mods' wooden
+  sticks [via oredict] ([#360](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/360))
+- Fixed Metamorph (Haderoth) effect triggering
+  inconsistently ([#361](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/361))
+- Fixed Time Cleave (Inolashite Weapon Effect) tooltip to correctly state that the effect should trigger 100% of the
+  times ([#362](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/362))
+  - Adjusted Inolashite Weapon Base Damage to compensate for the power of the effect
+- Made it so Ceruclase shield doesn't spawn ice blocks shield when the player finishes certain actions (e.g. drinking,
+  eating) ([#363](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/363))
+
 ## 1.3.3
 
 - Paragon Absorbed (Tartarite Effect) equipment now doesn't lose previously applied enchantments
