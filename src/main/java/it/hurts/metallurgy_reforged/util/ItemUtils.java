@@ -304,9 +304,9 @@ public class ItemUtils {
 	 * @param id               The ID of the modifier
 	 * @param amount           The Amount to add
 	 *
-	 * @author Choonster
+	 * @author Choonster, Davoleo
 	 */
-	public static void editModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double amount)
+	public static void editOrAddModifier(Multimap<String, AttributeModifier> modifierMultimap, IAttribute attribute, UUID id, double amount)
 	{
 		// Get the modifiers for the specified attribute
 		final Collection<AttributeModifier> modifiers = modifierMultimap.get(attribute.getName());
@@ -315,10 +315,17 @@ public class ItemUtils {
 		final Optional<AttributeModifier> modifierOptional = modifiers.stream().filter(attributeModifier -> attributeModifier.getID().equals(id)).findFirst();
 
 		if (modifierOptional.isPresent())
-		{ // If it exists,
+		{
+			// If it exists -> Replace with a copy with the new amount (based on Mod OP 0)
 			final AttributeModifier modifier = modifierOptional.get();
 			modifiers.remove(modifier); // Remove it
-			modifiers.add(new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() + amount, modifier.getOperation())); // Add the new modifier
+			AttributeModifier newMod = new AttributeModifier(modifier.getID(), modifier.getName(), modifier.getAmount() + amount, modifier.getOperation());
+			modifiers.add(newMod); // Add the new modifier
+		}
+		else
+		{
+			// If it doesn't exist -> Add a new modifier with a generated name
+			modifiers.add(new AttributeModifier(id, "Metallurgy Modifier " + Math.ceil(Math.random() * 1000), amount, 0));
 		}
 	}
 
@@ -329,15 +336,15 @@ public class ItemUtils {
 			ToolStats toolStats = metalStats.getToolStats();
 
 			if (toolStats.getMaxHealth() != 0)
-				multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Axe Max Health", toolStats.getMaxHealth(), 0));
+				multimap.put(SharedMonsterAttributes.MAX_HEALTH.getName(), new AttributeModifier(Constants.ModAttributes.MAX_HEALTH, "Metallurgy Tool Max Health", toolStats.getMaxHealth(), 0));
 			if (toolStats.getMovementSpeed() != 0)
-				multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Axe Movement Speed", toolStats.getMovementSpeed(), 0));
+				multimap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(Constants.ModAttributes.MOVEMENT_SPEED, "Metallurgy Tool Movement Speed", toolStats.getMovementSpeed(), 0));
 			if (toolStats.getAttackDamageAttribute() != 0)
-				ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_DAMAGE, Constants.ModAttributes.ATTACK_DAMAGE, toolStats.getAttackDamageAttribute());
+				ItemUtils.editOrAddModifier(multimap, SharedMonsterAttributes.ATTACK_DAMAGE, Constants.ModAttributes.ATTACK_DAMAGE, toolStats.getAttackDamageAttribute());
 			if (toolStats.getAttackSpeed() != 0)
-				ItemUtils.editModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
+				ItemUtils.editOrAddModifier(multimap, SharedMonsterAttributes.ATTACK_SPEED, Constants.ModAttributes.ATTACK_SPEED, toolStats.getAttackSpeed());
 			if (toolStats.getReachDistance() != 0)
-				multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Axe Reach Distance", toolStats.getReachDistance(), 0));
+				multimap.put(EntityPlayer.REACH_DISTANCE.getName(), new AttributeModifier(Constants.ModAttributes.REACH_DISTANCE, "Metallurgy Tool Reach Distance", toolStats.getReachDistance(), 0));
 		}
 	}
 
