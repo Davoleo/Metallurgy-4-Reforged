@@ -9,14 +9,22 @@
 
 package it.hurts.metallurgy_reforged.effect.all;
 
+import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.Metal;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
+import it.hurts.metallurgy_reforged.util.Constants;
+import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -110,14 +118,16 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 		if (compound == null)
 			compound = new NBTTagCompound();
 
-		compound.setString("paragon", metal.toString());
+		MetalStats metalStats = metal.getStats();
+
+		compound.setString("paragon", metalStats.getName());
 		compound.setBoolean("paragon_absorbed", true);
 
 		int infusedDurability;
-		if (metal.getStats().getToolStats() != null)
-			infusedDurability = metal.getStats().getToolStats().getMaxUses();
+		if (metalStats.getToolStats() != null)
+			infusedDurability = metalStats.getToolStats().getMaxUses();
 		else
-			infusedDurability = metal.getStats().getArmorStats().getDurability() * 16; // *16 -> Chestplate value
+			infusedDurability = metalStats.getArmorStats().getDurability() * 16; // *16 -> Chestplate value
 		//(infusedDurability >= 1000 ? 3000 : 750)
 
 		float durabilityRatio = (
@@ -126,6 +136,33 @@ public class TartariteEffect extends BaseMetallurgyEffect {
 		compound.setFloat("durability_boost", durabilityRatio);
 
 		tartarStack.setTagCompound(compound);
+
+		EntityEquipmentSlot slot = EntityLiving.getSlotForItemStack(tartarStack);
+
+		Multimap<String, AttributeModifier> itemMods = tartarStack.getItem().getAttributeModifiers(slot, tartarStack);
+
+		if (slot != EntityEquipmentSlot.MAINHAND && metal.hasArmorSet())
+		{
+			if (metalStats.getArmorStats().getMaxHealth() != 0)
+				ItemUtils.editOrAddModifier(itemMods, SharedMonsterAttributes.MAX_HEALTH, Constants.ModAttributes.ARMOR_MAX_HEALTH.get(slot), metalStats.getArmorStats().getMaxHealth() / 4D);
+			if (metalStats.getArmorStats().getKnockbackResistance() != 0)
+				ItemUtils.editOrAddModifier(itemMods, SharedMonsterAttributes.KNOCKBACK_RESISTANCE, Constants.ModAttributes.ARMOR_KNOCKBACK_RESISTANCE.get(slot), metalStats.getArmorStats().getKnockbackResistance() / 4D);
+			if (metalStats.getArmorStats().getMovementSpeed() != 0)
+				ItemUtils.editOrAddModifier(itemMods, SharedMonsterAttributes.MOVEMENT_SPEED, Constants.ModAttributes.ARMOR_MOVEMENT_SPEED.get(slot), metalStats.getArmorStats().getMovementSpeed() / 4D);
+		}
+
+		if (slot == EntityEquipmentSlot.MAINHAND && metal.hasToolSet())
+		{
+
+			if (metalStats.getToolStats().getMaxHealth() != 0)
+				ItemUtils.editOrAddModifier(itemMods, SharedMonsterAttributes.MAX_HEALTH, Constants.ModAttributes.MAX_HEALTH, metalStats.getToolStats().getMaxHealth());
+			if (metalStats.getToolStats().getMovementSpeed() != 0)
+				ItemUtils.editOrAddModifier(itemMods, SharedMonsterAttributes.MOVEMENT_SPEED, Constants.ModAttributes.MOVEMENT_SPEED, metalStats.getToolStats().getMovementSpeed());
+			if (metalStats.getToolStats().getReachDistance() != 0)
+				ItemUtils.editOrAddModifier(itemMods, EntityPlayer.REACH_DISTANCE, Constants.ModAttributes.REACH_DISTANCE, metalStats.getToolStats().getReachDistance());
+		}
+
+		itemMods.forEach((attributeName, modifier) -> tartarStack.addAttributeModifier(attributeName, modifier, slot));
 	}
 
 	@Nullable
