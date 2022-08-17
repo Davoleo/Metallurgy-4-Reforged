@@ -41,27 +41,26 @@ public class CeruclaseToolEffect extends BaseMetallurgyEffect {
 		if (!canBeApplied(event.getEntityPlayer()))
 			return;
 
-		if (event.getState().getBlock().getHarvestLevel(event.getState()) == 0)
+		boolean canHarvest = event.getState().getBlock().canHarvestBlock(event.getEntityPlayer().world, event.getPos(), event.getEntityPlayer());
+		if (!canHarvest)
+			return;
+
+		Item tool = event.getEntityPlayer().getHeldItemMainhand().getItem();
+		String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
+
+		if (blockToolClass != null && tool.getRegistryName().getPath().contains(blockToolClass))
 		{
+			//check passed because axe is contained in pickaxe
+			if (blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
+				return;
 
-			Item tool = event.getEntityPlayer().getHeldItemMainhand().getItem();
-			String blockToolClass = event.getState().getBlock().getHarvestTool(event.getState());
-
-			if (blockToolClass != null && tool.getRegistryName().getPath().contains(blockToolClass))
+			event.setNewSpeed(100);
+			if (event.getEntityPlayer() instanceof EntityPlayerMP)
 			{
-
-				//check passed because axe is contained in pickaxe
-				if (blockToolClass.equals("axe") && tool.getRegistryName().getPath().contains("pickaxe"))
-					return;
-
-				event.setNewSpeed(100);
-				if (event.getEntityPlayer() instanceof EntityPlayerMP)
-				{
-					ModAdvancements.Triggers.LOW_TEMPERATURES.trigger(
-							(EntityPlayerMP) event.getEntityPlayer(),
-							new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.LOW_TEMPERATURES.getId())
-					);
-				}
+				ModAdvancements.Triggers.LOW_TEMPERATURES.trigger(
+						(EntityPlayerMP) event.getEntityPlayer(),
+						new CommonCriterionInstances.AlwaysTrue(ModAdvancements.Triggers.LOW_TEMPERATURES.getId())
+				);
 			}
 		}
 	}
