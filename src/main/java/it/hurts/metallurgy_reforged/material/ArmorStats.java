@@ -54,6 +54,9 @@ public class ArmorStats {
 		return movementSpeed;
 	}
 
+	/**
+	 * @return Array of armor protection values [reverse order: Boots -> Helmet]
+	 */
 	public int[] getDamageReduction()
 	{
 		return damageReduction;

@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.effect.all;
 
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
+import it.hurts.metallurgy_reforged.material.MetalStats;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import it.hurts.metallurgy_reforged.util.NBTUtils;
@@ -35,12 +36,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nonnull;
 
 public class HaderothEffect extends BaseMetallurgyEffect {
-
-	private final AttributeModifier PROTECTION_MODIFIER = new AttributeModifier("Haderoth Armor Protection Buff", 9F, 0);
-	private final AttributeModifier TOUGHNESS_MODIFIER = new AttributeModifier("Haderoth Armor Toughness Buff", 7F, 0);
-	private final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier("Haderoth Weapon Attack Buff", 9F, 0);
-	private final AttributeModifier AXE_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth attack speed restore", 1.1F, 0);
-	private final AttributeModifier SWORD_ATTACK_SPEED_MODIFIER = new AttributeModifier("Haderoth Attack speed Restore", 1.6F, 0);
 
 	private final NBTTagCompound rebornCompound;
 
@@ -165,8 +160,13 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 			{
 				ItemStack stack = entity.getItemStackFromSlot(slot);
 
+				MetalStats stats;
 				//Make sure the item we're inspecting is either haderoth or tartarite infused with haderoth
-				if (!ItemUtils.isMadeOfMetal(metal, stack.getItem()) && !(TartariteEffect.getParagonMetal(stack) == metal))
+				if (ItemUtils.isMadeOfMetal(metal, stack.getItem()))
+					stats = metal.getStats();
+				else if (TartariteEffect.getParagonMetal(stack) == metal)
+					stats = ModMetals.TARTARITE.getStats();
+				else
 					continue;
 
 				//If the item was already reborn
@@ -178,6 +178,11 @@ public class HaderothEffect extends BaseMetallurgyEffect {
 				{
 					//Copy the old itemstack
 					ItemStack newPiece = stack.copy();
+
+					int newProtection = stats.getArmorStats().getDamageReduction()[slot.getIndex()] + 2;
+					float newToughness = stats.getArmorStats().getToughness() + 0.5F;
+					final AttributeModifier PROTECTION_MODIFIER = new AttributeModifier("Haderoth Armor Protection Buff", newProtection, 0);
+					final AttributeModifier TOUGHNESS_MODIFIER = new AttributeModifier("Haderoth Armor Toughness Buff", newToughness, 0);
 
 					//Apply armor buff I guess
 					newPiece.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), PROTECTION_MODIFIER, slot);
