@@ -26,9 +26,9 @@ public class ContainerNull extends Container {
 
 	@Nonnull
 	@Override
-	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player)
+	public ItemStack slotClick(int slotId, int dragType, @Nonnull ClickType clickTypeIn, @Nonnull EntityPlayer player)
 	{
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 }

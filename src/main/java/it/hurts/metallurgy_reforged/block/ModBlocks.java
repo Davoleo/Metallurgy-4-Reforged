@@ -11,6 +11,9 @@ package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
+import it.hurts.metallurgy_reforged.block.machines.BlockAlloyer;
+import it.hurts.metallurgy_reforged.block.machines.BlockChamber;
+import it.hurts.metallurgy_reforged.block.machines.BlockCrusher;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.item.ItemBlockOre;
 import it.hurts.metallurgy_reforged.item.ModItems;

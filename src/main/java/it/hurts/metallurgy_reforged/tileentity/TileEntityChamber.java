@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.tileentity;
 
 import com.google.common.collect.Lists;
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.block.BlockChamber;
+import it.hurts.metallurgy_reforged.block.machines.BlockChamber;
 import it.hurts.metallurgy_reforged.container.ContainerNull;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketStartStopAmbienceSound;

@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.tileentity;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import it.hurts.metallurgy_reforged.block.BlockAlloyer;
-import it.hurts.metallurgy_reforged.block.BlockCrusher;
+import it.hurts.metallurgy_reforged.block.machines.BlockAlloyer;
+import it.hurts.metallurgy_reforged.block.machines.BlockCrusher;
 import it.hurts.metallurgy_reforged.container.ContainerCrusher;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.network.PacketManager;
