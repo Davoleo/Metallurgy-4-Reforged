@@ -36,15 +36,14 @@ public class MetallurgyTiCStats {
 		float attack = metal.getToolMaterial().getAttackDamage();
 		int harvestL = metal.getToolMaterial().getHarvestLevel();
 
-		// ? should we change the break speed
-		return new HeadMaterialStats(durability / 4, speed, attack, harvestL);
+		return new HeadMaterialStats(durability / 2, speed, attack, harvestL);
 	}
 
 	public static ExtraMaterialStats getExtraA(Metal metal)
 	{
 		int durability = metal.getToolMaterial().getMaxUses();
 
-		return new ExtraMaterialStats((int) (durability / 5.5));
+		return new ExtraMaterialStats(durability / 4);
 	}
 
 	public static HandleMaterialStats getHandleA(Metal metal)
