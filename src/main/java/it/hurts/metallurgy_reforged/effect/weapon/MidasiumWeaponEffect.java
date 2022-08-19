@@ -21,6 +21,8 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
 
@@ -47,7 +49,13 @@ public class MidasiumWeaponEffect extends BaseMetallurgyEffect {
 
 			if (Math.random() <= chance)
 			{
-				event.getDrops().forEach(drop -> applyGreedEffect(drop, event.getLootingLevel()));
+				final List<ItemStack> equipList = new ArrayList<>();
+				event.getEntityLiving().getEquipmentAndArmor().forEach(equipList::add);
+
+				event.getDrops().forEach(drop -> {
+					if (!equipList.contains(drop.getItem()))
+						applyGreedEffect(drop, event.getLootingLevel());
+				});
 
 				spawnParticle(event.getEntity().world, event.getEntity().getPosition(), 1F, true, 5,
 						Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05, Math.random() * 0.1 - 0.05);
