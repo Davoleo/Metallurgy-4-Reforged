@@ -1315,10 +1315,10 @@ tooltip.metallurgy.atlarus_hoe_effect=§eHögerklicka för att klippa bort allt 
 tooltip.metallurgy.shadow_steel_tool_effect=§8Verktygets hastighet är propotionell till mörkernivån
 
 #Utils
-util.world_join_message.1=§6§lVälkommen till Metallurgy 4: Reforged
-util.world_join_message.3=§6För mer info, bugrapporter och feedback finns Githubbet nedan:
-util.github_repo_url=https://github.com/Davoleo/Metallurgi-4-Reforged
-util.world_join_message.4=Du kan stänga av detta meddelande i konfigurationsfilen
+message.world_join_message.1=§6§lVälkommen till Metallurgy 4: Reforged
+message.world_join_message.3=§6För mer info, bugrapporter och feedback finns Githubbet nedan:
+message.github_repo_url=https://github.com/Davoleo/Metallurgi-4-Reforged
+message.world_join_message.4=Du kan stänga av detta meddelande i konfigurationsfilen
 tile.metallurgy.bimetal_structure_block.name=Bimetalliskt Strukturssblock
 tile.metallurgy.gold_engraved_block.name=Graverat Guldblock
 tile.metallurgy.gold_large_bricks.name=Gyllengrovtegel

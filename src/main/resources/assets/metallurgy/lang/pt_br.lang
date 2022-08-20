@@ -1316,9 +1316,9 @@ tooltip.metallurgy.atlarus_hoe_effect=§eBotão direito para destruir toda as gr
 tooltip.metallurgy.shadow_steel_tool_effect=§8A velocidade de mineração é diretamente proporcional à escuridão
 
 #Utils
-util.world_join_message.1=§6§lBem-vindo ao Metallurgy 4: Refeito
-util.world_join_message.3=§6Para mais informações, relatar bugs e sugestões, aqui está o link do repositório do github:
-util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.1=§6§lBem-vindo ao Metallurgy 4: Refeito
+message.world_join_message.3=§6Para mais informações, relatar bugs e sugestões, aqui está o link do repositório do github:
+message.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
 
 tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
 tile.metallurgy.gold_engraved_block.name=Gold Engraved Block

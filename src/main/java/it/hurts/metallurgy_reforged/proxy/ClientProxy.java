@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.proxy;
 
 import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
+import it.hurts.metallurgy_reforged.entity.MetallurgyPrimedTNT;
 import it.hurts.metallurgy_reforged.gui.TooltipRenderHandler;
 import it.hurts.metallurgy_reforged.gui.hud.HUDHandler;
 import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
@@ -17,6 +18,7 @@ import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.gadget.ItemOreDetector;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.particle.ParticleOre;
+import it.hurts.metallurgy_reforged.render.MetallurgyTNTRenderer;
 import it.hurts.metallurgy_reforged.render.PierKnightRenderer;
 import it.hurts.metallurgy_reforged.render.font.ModFontRenderer;
 import it.hurts.metallurgy_reforged.sound.ModSounds;
@@ -54,7 +56,9 @@ public class ClientProxy implements IProxy {
 		MinecraftForge.EVENT_BUS.register(HUDHandler.class);
 		MinecraftForge.EVENT_BUS.register(TooltipRenderHandler.class);
 		ModItems.BRASS_KNUCKLES.initTEISR();
-		RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, new PierKnightRenderer.Factory());
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityPierKnight.class, PierKnightRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(MetallurgyPrimedTNT.class, MetallurgyTNTRenderer::new);
 	}
 
 	@Override

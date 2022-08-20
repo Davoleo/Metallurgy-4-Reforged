@@ -1317,10 +1317,10 @@ tooltip.metallurgy.atlarus_hoe_effect=§e右键打碎附近的草
 tooltip.metallurgy.shadow_steel_tool_effect=§8采掘速度与黑暗程度成正比
 
 #Utils
-util.world_join_message.1=§6§l欢迎来到冶金4：重铸
-util.world_join_message.3=§6错误报告，建议或者更多信息，这是Github链接：
-util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=你可以在Mod设置中关掉此信息tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
+message.world_join_message.1=§6§l欢迎来到冶金4：重铸
+message.world_join_message.3=§6错误报告，建议或者更多信息，这是Github链接：
+message.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.4=你可以在Mod设置中关掉此信息tile.metallurgy.bimetal_structure_block.name=Bimetal Structure
 tile.metallurgy.gold_engraved_block.name=Gold Engraved Block
 tile.metallurgy.gold_large_bricks.name=Gold Large Bricks
 tile.metallurgy.gold_bricks.name=Gold Bricks

@@ -1637,7 +1637,7 @@ tooltip.metallurgy.press_shift=Press §f[SHIFT]§7 to expand
 tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
 tooltip.metallurgy.stats.durability=Durability: %s
 tooltip.metallurgy.stats.efficiency=Efficiency: %s
-message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor
+tooltip.metallurgy.vulcanite_tnt=§eSpecial TNT very effective for mining blocks and ores.<NL>§c/!\ WARNING: High Concentration of Vulcanite makes this block unstable - Manage with caution.
 
 #Shield Tooltips
 tooltip.metallurgy.ceruclase_shield=§3When activated, creates an icy sphere around the player and cushions a portion of any incoming fall damage. The ice starts to melt after withdrawing the shield.
@@ -1646,8 +1646,9 @@ tooltip.metallurgy.orichalcum_buckler=Upgraded buckler. §2When attacked by a ra
 tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a melee enemy, creates a small explosion that knocks them back.
 tooltip.metallurgy.zinc_buckler=A generic buckler, a lighter and more durable alternative to the normal shield. While active, does not hinder the players movement speed but has a cooldown after each block. 
 
-#Utils
-util.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged
-util.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
-util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=You can disable this message from the mod configuration
+# Messages
+message.world_join_message.1=§6§lWelcome to Metallurgy 4: Reforged
+message.world_join_message.3=§6For more info, bug reports and suggestions here's the github repository link:
+message.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.4=You can disable this message from the mod configuration
+message.metallurgy.water_damage_death=%s tried to swim in water while wearing Ignatius Armor

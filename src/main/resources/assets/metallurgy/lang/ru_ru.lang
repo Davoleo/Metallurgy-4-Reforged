@@ -1626,9 +1626,9 @@ tooltip.metallurgy.vulcanite_buckler=Upgraded buckler. §cWhen attacked by a mel
 tooltip.metallurgy.zinc_buckler=A generic buckler, a lighter and more durable alternative to the normal shield. While active, does not hinder the players movement speed but has a cooldown after each block. 
 
 #Utils
-util.world_join_message.1=§6§lДобро пожаловать в Металлургию 4: Перековка
-util.world_join_message.3=§6За подробной информацией, сообщению о багах или предложениях идти на github:
-util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=Вы можете отключить это сообщение в конфигураци мода
+message.world_join_message.1=§6§lДобро пожаловать в Металлургию 4: Перековка
+message.world_join_message.3=§6За подробной информацией, сообщению о багах или предложениях идти на github:
+message.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.4=Вы можете отключить это сообщение в конфигураци мода
 #ru_lang by gost#0198 and comunity
 #im gonna kill the one who wrote so many tooltips

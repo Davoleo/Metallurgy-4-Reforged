@@ -13,13 +13,11 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerArrow;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -83,16 +81,6 @@ public class PierKnightRenderer extends RenderLiving<EntityPierKnight> {
 	protected ResourceLocation getEntityTexture(@Nonnull EntityPierKnight entity)
 	{
 		return PIERKNIGHT_SKIN;
-	}
-
-	public static class Factory implements IRenderFactory<EntityPierKnight> {
-
-		@Override
-		public Render<? super EntityPierKnight> createRenderFor(RenderManager manager)
-		{
-			return new PierKnightRenderer(manager);
-		}
-
 	}
 
 }

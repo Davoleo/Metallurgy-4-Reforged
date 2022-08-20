@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "bottom": "metallurgy:blocks/vtnt_bottom",
+      "top": "metallurgy:blocks/vtnt_top",
+      "side": "metallurgy:blocks/vtnt_front"
+    }
+  },
+  "variants": {
+    "explode=false": {
+      "model": "cube_bottom_top"
+    },
+    "explode=true": {
+      "model": "cube_bottom_top"
+    },
+    "inventory": {
+      "model": "cube_bottom_top"
+    }
+  }
+}

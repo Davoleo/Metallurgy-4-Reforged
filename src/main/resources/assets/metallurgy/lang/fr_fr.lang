@@ -958,10 +958,10 @@ tooltip.metallurgy.vyroxeres_sword_effect=§aEmpoisonne votre cible
 tooltip.metallurgy.shadow_steel_tool_effect=§8La vitesse de minage est directement proportionnelle à l'obscurité
 
 # Utils
-util.world_join_message.1=§4§lMetallurgy 4: Reforged
-util.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
-util.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
+message.world_join_message.1=§4§lMetallurgy 4: Reforged
+message.world_join_message.3=§6Une intégration plus poussée avec des mods courants (comme Tinkers 'Construct) n’est pas disponible actuellement,§lmais est prévue.
+message.github_repo_url=§9https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.4=Pour plus d'informations, rapports de bug et suggestions, voici le lien github:
 # Fluidsmaterial.metallurgy.adamantine.name=Adamantine
 material.metallurgy.amordrine.name=Amordrine
 material.metallurgy.angmallen.name=Angmallen

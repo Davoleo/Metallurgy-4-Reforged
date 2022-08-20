@@ -954,10 +954,10 @@ tooltip.metallurgy.vyroxeres_sword_effect=§aAvvelena il tuo target
 tooltip.metallurgy.shadow_steel_tool_effect=§8La velocità di Scavo è direttamente proporzionale alla quantità di buio
 
 # Utils
-util.world_join_message.1=§4§lMetallurgy 4: Reforged
-util.world_join_message.3=§6Per maggiori informazioni, segnalazioni di bug e idee dai un occhiata alla nostra repository su github:
-util.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
-util.world_join_message.4=Puoi disabilitare questo messaggio dalle config della modmaterial.metallurgy.adamantine.name=Adamantine
+message.world_join_message.1=§4§lMetallurgy 4: Reforged
+message.world_join_message.3=§6Per maggiori informazioni, segnalazioni di bug e idee dai un occhiata alla nostra repository su github:
+message.github_repo_url=https://github.com/Davoleo/Metallurgy-4-Reforged
+message.world_join_message.4=Puoi disabilitare questo messaggio dalle config della modmaterial.metallurgy.adamantine.name=Adamantine
 material.metallurgy.amordrine.name=Amordrine
 material.metallurgy.angmallen.name=Angmallen
 material.metallurgy.astral_silver.name=Astral Silver
