@@ -53,10 +53,10 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
     private static final DataParameter<Optional<UUID>> OWNER_UNIQUE_ID = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.OPTIONAL_UNIQUE_ID);
     // ;)))
     private static final DataParameter<Byte> THICKNESS = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BYTE);
-    protected static final DataParameter<Boolean> IS_PUTIN = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BOOLEAN);
+    public static final DataParameter<Boolean> IS_PUTIN = EntityDataManager.createKey(EntityPierKnight.class, DataSerializers.BOOLEAN);
     private int timeUntilDeath = 20;
 
-    protected int vanishTime = 40;
+    private int vanishTime = 40;
 
     public EntityPierKnight(World worldIn)
     {
@@ -350,6 +350,11 @@ public class EntityPierKnight extends EntityCreature implements IEntityOwnable {
         {
             return null;
         }
+    }
+
+    public int getVanishTime()
+    {
+        return vanishTime;
     }
 
     @Override

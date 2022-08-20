@@ -4,12 +4,13 @@
  = Complete source code is available at https://github.com/Davoleo/Metallurgy-4-Reforged
  = This code is licensed under GNU GPLv3
  = Authors: Davoleo, ItHurtsLikeHell, PierKnight100
- = Copyright (c) 2018-2021.
+ = Copyright (c) 2018-2022.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.entity;
+package it.hurts.metallurgy_reforged.render;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -23,11 +24,11 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
+public class PierKnightRenderer extends RenderLiving<EntityPierKnight> {
 
 	private static final ResourceLocation PIERKNIGHT_SKIN = new ResourceLocation(Metallurgy.MODID, "textures/models/pierknight_skin.png");
 
-	public PierknightRenderer(RenderManager renderManager)
+	public PierKnightRenderer(RenderManager renderManager)
 	{
 		super(renderManager, new ModelPlayer(0, false), 0.5F);
 		this.addLayer(new LayerHeldItem(this));
@@ -38,7 +39,7 @@ public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
 	public void doRender(@Nonnull EntityPierKnight entity, double x, double y, double z, float entityYaw, float partialTicks)
 	{
 
-		float time = entity.deathTime > 0 ? entity.deathTime : entity.vanishTime;
+		float time = entity.deathTime > 0 ? entity.deathTime : entity.getVanishTime();
 
 		float alpha = 1F - (partialTicks + time) / 40.0F;
 		if (alpha > 1.0F)
@@ -89,7 +90,7 @@ public class PierknightRenderer extends RenderLiving<EntityPierKnight> {
 		@Override
 		public Render<? super EntityPierKnight> createRenderFor(RenderManager manager)
 		{
-			return new PierknightRenderer(manager);
+			return new PierKnightRenderer(manager);
 		}
 
 	}
