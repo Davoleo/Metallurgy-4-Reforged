@@ -18,6 +18,7 @@ import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
+import it.hurts.metallurgy_reforged.entity.MetallurgyPrimedTNT;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
@@ -208,8 +209,22 @@ public class RegistrationHandler {
 	@SubscribeEvent
 	public static void registerEntities(RegistryEvent.Register<EntityEntry> event)
 	{
-		EntityEntry pierknightEntry = EntityEntryBuilder.create().entity(EntityPierKnight.class).name("pierknight").id("pierknight", ++entityId).tracker(160, 3, true).build();
+		EntityEntry pierknightEntry = EntityEntryBuilder
+				.create().entity(EntityPierKnight.class)
+				.name("pierknight")
+				.id("pierknight", ++entityId)
+				.tracker(160, 3, true)
+				.build();
 		event.getRegistry().register(pierknightEntry);
+
+		EntityEntry primedTNTEntry = EntityEntryBuilder
+				.create()
+				.entity(MetallurgyPrimedTNT.class)
+				.name("metallurgy_primed_tnt")
+				.id("metallurgy_primed_tnt", ++entityId)
+				.tracker(64, 1, true)
+				.build();
+		event.getRegistry().register(primedTNTEntry);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -1095,6 +1095,7 @@ item.metallurgy.zinc_buckler.name=Zinc Buckler
 item.metallurgy.vulcanite_buckler.name=Vulcanite Buckler
 item.metallurgy.orichalcum_buckler.name=Orichalcum Buckler
 item.metallurgy.electrum_magnet.name=Electrum Magnet
+tile.metallurgy.vulcanite_tnt.name=V.T.N.T.
 
 #Items
 item.metallurgy.tar.name=Tar
