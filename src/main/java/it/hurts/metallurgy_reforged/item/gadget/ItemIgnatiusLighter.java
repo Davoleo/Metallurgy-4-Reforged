@@ -11,6 +11,8 @@ package it.hurts.metallurgy_reforged.item.gadget;
 
 import it.hurts.metallurgy_reforged.item.ItemExtra;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import net.minecraft.block.BlockTNT;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -24,6 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class ItemIgnatiusLighter extends ItemExtra {
 
@@ -34,15 +37,39 @@ public class ItemIgnatiusLighter extends ItemExtra {
 		setMaxDamage(150);
 	}
 
+	protected boolean testAndIgniteTNT(World worldIn, BlockPos pos, EntityPlayer igniter)
+	{
+
+		IBlockState state = worldIn.getBlockState(pos);
+
+		if (state.getBlock() instanceof BlockTNT)
+		{
+			((BlockTNT) state.getBlock()).explode(worldIn, pos, state.withProperty(BlockTNT.EXPLODE, true), igniter);
+			worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 11);
+			return true;
+		}
+
+		return false;
+	}
+
+	@ParametersAreNonnullByDefault
 	@Nonnull
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, @Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float hitX, float hitY, float hitZ)
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
+		ItemStack lighter = player.getHeldItem(hand);
+
+		//Check if TNT is present in the clicked blockPos and ignite it [in case the test passes we don't need to do anything else]
+		if (testAndIgniteTNT(worldIn, pos, player))
+		{
+			lighter.damageItem(1, player);
+			return EnumActionResult.SUCCESS;
+		}
+
 		if (!player.isSneaking())
 			return Items.FLINT_AND_STEEL.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
 
 		BlockPos blockPos = pos.offset(facing);
-		ItemStack lighter = player.getHeldItem(hand);
 
 		if (!player.canPlayerEdit(blockPos, facing, lighter))
 		{
