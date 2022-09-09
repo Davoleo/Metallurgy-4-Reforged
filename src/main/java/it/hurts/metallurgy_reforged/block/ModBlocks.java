@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.block;
 
+import com.google.common.collect.Maps;
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
 import it.hurts.metallurgy_reforged.block.gadget.BlockMetallurgyTNT;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
@@ -22,7 +23,8 @@ import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
-import it.hurts.metallurgy_reforged.world.MetallurgyExplosion;
+import it.hurts.metallurgy_reforged.util.Utils;
+import it.hurts.metallurgy_reforged.world.explosive.ExplosiveType;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -34,6 +36,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 //Class used as reference for all the manually registered blocks
 public class ModBlocks {
@@ -93,7 +96,11 @@ public class ModBlocks {
 	};
 
 	//TNT
-	public static BlockMetallurgyTNT VTNTBlock = new BlockMetallurgyTNT(MetallurgyExplosion.Type.VULCANITE);
+	public static Map<ExplosiveType, BlockMetallurgyTNT> tntBlocks =
+			Utils.makeDo(Maps.newEnumMap(ExplosiveType.class), tntMap -> {
+				for (ExplosiveType type : ExplosiveType.values())
+					tntMap.put(type, new BlockMetallurgyTNT(type));
+			});
 
 	//Vanilla Decorative Blocks Init
 	//Iron
@@ -141,7 +148,7 @@ public class ModBlocks {
 
 		miscBlocks.add(structureBlock);
 		miscBlocks.add(iceShield);
-		miscBlocks.add(VTNTBlock);
+		miscBlocks.addAll(tntBlocks.values());
 	}
 
 	public static ItemBlock createItemBlock(Block block)

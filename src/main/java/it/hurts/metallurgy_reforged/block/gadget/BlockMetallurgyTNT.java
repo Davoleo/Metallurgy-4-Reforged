@@ -13,7 +13,7 @@ import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.entity.MetallurgyPrimedTNT;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
 import it.hurts.metallurgy_reforged.util.Utils;
-import it.hurts.metallurgy_reforged.world.MetallurgyExplosion;
+import it.hurts.metallurgy_reforged.world.explosive.ExplosiveType;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -31,9 +31,9 @@ import java.util.List;
 @ParametersAreNonnullByDefault
 public class BlockMetallurgyTNT extends BlockTNT {
 
-	private final MetallurgyExplosion.Type explosiveType;
+	private final ExplosiveType explosiveType;
 
-	public BlockMetallurgyTNT(MetallurgyExplosion.Type explosiveType)
+	public BlockMetallurgyTNT(ExplosiveType explosiveType)
 	{
 		this.explosiveType = explosiveType;
 

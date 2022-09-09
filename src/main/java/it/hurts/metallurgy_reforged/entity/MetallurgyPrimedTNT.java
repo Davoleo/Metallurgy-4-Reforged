@@ -10,7 +10,8 @@
 package it.hurts.metallurgy_reforged.entity;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.world.MetallurgyExplosion;
+import it.hurts.metallurgy_reforged.world.explosive.ExplosiveType;
+import it.hurts.metallurgy_reforged.world.explosive.MetallurgyExplosion;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,14 +32,14 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 
 	private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(MetallurgyPrimedTNT.class, DataSerializers.VARINT);
 
-	private MetallurgyExplosion.Type explosionType;
+	private ExplosiveType explosionType;
 
 	public MetallurgyPrimedTNT(World worldIn)
 	{
 		super(worldIn);
 	}
 
-	public MetallurgyPrimedTNT(World worldIn, double x, double y, double z, EntityLivingBase igniter, MetallurgyExplosion.Type explosionType)
+	public MetallurgyPrimedTNT(World worldIn, double x, double y, double z, EntityLivingBase igniter, ExplosiveType explosionType)
 	{
 		super(worldIn, x, y, z, igniter);
 		this.explosionType = explosionType;
@@ -63,7 +64,7 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	protected void readEntityFromNBT(@Nonnull NBTTagCompound compound)
 	{
 		super.readEntityFromNBT(compound);
-		this.explosionType = MetallurgyExplosion.Type.byIndex(compound.getInteger("tnt_type"));
+		this.explosionType = ExplosiveType.byIndex(compound.getInteger("tnt_type"));
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 		super.notifyDataManagerChange(key);
 		if (TYPE == key)
 		{
-			this.explosionType = MetallurgyExplosion.Type.byIndex(dataManager.get(TYPE));
+			this.explosionType = ExplosiveType.byIndex(dataManager.get(TYPE));
 		}
 	}
 
@@ -90,14 +91,14 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	@Override
 	public float getExplosionResistance(Explosion explosionIn, World worldIn, BlockPos pos, IBlockState blockStateIn)
 	{
-		if (explosionType == MetallurgyExplosion.Type.VULCANITE && blockStateIn.getMaterial() == Material.ROCK)
-			return blockStateIn.getBlock().getExplosionResistance(world, pos, this, explosionIn) / 4F;
+		if (explosionType == ExplosiveType.VULCANITE && blockStateIn.getMaterial() == Material.ROCK)
+			return blockStateIn.getBlock().getExplosionResistance(world, pos, this, explosionIn) / 5F;
 
 		return super.getExplosionResistance(explosionIn, worldIn, pos, blockStateIn);
 	}
 
 	@Nullable
-	public MetallurgyExplosion.Type getType()
+	public ExplosiveType getType()
 	{
 		return explosionType;
 	}

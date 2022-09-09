@@ -7,7 +7,7 @@
  = Copyright (c) 2018-2022.
  =============================================================================*/
 
-package it.hurts.metallurgy_reforged.world;
+package it.hurts.metallurgy_reforged.world.explosive;
 
 import com.google.common.collect.Sets;
 import it.hurts.metallurgy_reforged.Metallurgy;
@@ -41,15 +41,15 @@ import java.util.Set;
 
 public class MetallurgyExplosion extends Explosion {
 
-	private final Type type;
+	private final ExplosiveType type;
 
-	public MetallurgyExplosion(World worldIn, Entity author, double x, double y, double z, Type type)
+	public MetallurgyExplosion(World worldIn, Entity author, double x, double y, double z, ExplosiveType type)
 	{
 		super(worldIn, author, x, y, z, type.strength, type.causesFire, type.damagesTerrain);
 		this.type = type;
 	}
 
-	public static MetallurgyExplosion newExplosion(World world, @Nullable Entity entityIn, double x, double y, double z, Type type)
+	public static MetallurgyExplosion newExplosion(World world, @Nullable Entity entityIn, double x, double y, double z, ExplosiveType type)
 	{
 		MetallurgyExplosion explosion = new MetallurgyExplosion(world, entityIn, x, y, z, type);
 
@@ -241,7 +241,7 @@ public class MetallurgyExplosion extends Explosion {
 					dz = dz * d7;
 
 					int color = 0x0;
-					if (type == Type.VULCANITE)
+					if (type == ExplosiveType.VULCANITE)
 						color = ModMetals.VULCANITE.getStats().getColorHex();
 
 					PacketSpawnOreParticles particles = new PacketSpawnOreParticles(randX, randY, randZ, dx, dy, dz, color, 3F, true, 8);
@@ -281,37 +281,6 @@ public class MetallurgyExplosion extends Explosion {
 			}
 		}
 
-	}
-
-	public enum Type {
-		VULCANITE(6, false, true);
-
-		private final float strength;
-		private final boolean causesFire;
-		private final boolean damagesTerrain;
-
-		Type(int strength, boolean causesFire, boolean damagesTerrain)
-		{
-			this.strength = strength;
-			this.causesFire = causesFire;
-			this.damagesTerrain = damagesTerrain;
-		}
-
-
-		@Nullable
-		public static Type byIndex(int idx)
-		{
-			if (idx < 0 || idx >= Type.values().length)
-				return null;
-
-			return Type.values()[idx];
-		}
-
-		@Override
-		public String toString()
-		{
-			return name().toLowerCase();
-		}
 	}
 
 }

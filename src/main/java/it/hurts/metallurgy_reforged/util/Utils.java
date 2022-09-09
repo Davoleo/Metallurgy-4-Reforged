@@ -44,6 +44,7 @@ import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 
 public class Utils {
 
@@ -324,6 +325,12 @@ public class Utils {
 	public static <T> boolean listContains(List<T> list, T item, BiPredicate<? super T, ? super T> comparator)
 	{
 		return list.stream().anyMatch(listItem -> comparator.test(listItem, item));
+	}
+
+	public static <T> T makeDo(T thing, Consumer<T> todo)
+	{
+		todo.accept(thing);
+		return thing;
 	}
 
 }

@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.render;
 
 import it.hurts.metallurgy_reforged.block.ModBlocks;
+import it.hurts.metallurgy_reforged.block.gadget.BlockMetallurgyTNT;
 import it.hurts.metallurgy_reforged.entity.MetallurgyPrimedTNT;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
@@ -37,6 +38,7 @@ public class MetallurgyTNTRenderer extends Render<MetallurgyPrimedTNT> {
 	@Override
 	public void doRender(@Nonnull MetallurgyPrimedTNT entity, double x, double y, double z, float entityYaw, float partialTicks)
 	{
+		BlockMetallurgyTNT tntBlock = ModBlocks.tntBlocks.get(entity.getType());
 		BlockRendererDispatcher blockRenderer = Minecraft.getMinecraft().getBlockRendererDispatcher();
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);
@@ -63,7 +65,7 @@ public class MetallurgyTNTRenderer extends Render<MetallurgyPrimedTNT> {
 		this.bindEntityTexture(entity);
 		GlStateManager.rotate(-90F, 0F, 1F, 0F);
 		GlStateManager.translate(-0.5F, -0.5F, 0.5F);
-		blockRenderer.renderBlockBrightness(ModBlocks.VTNTBlock.getDefaultState(), entity.getBrightness());
+		blockRenderer.renderBlockBrightness(tntBlock.getDefaultState(), entity.getBrightness());
 		GlStateManager.translate(0.0F, 0.0F, 1.0F);
 
 		//no idea what this renderOutlines is used for, nor where it's used, so I'll leave it there [see vanilla TNT]
@@ -71,7 +73,7 @@ public class MetallurgyTNTRenderer extends Render<MetallurgyPrimedTNT> {
 		{
 			GlStateManager.enableColorMaterial();
 			GlStateManager.enableOutlineMode(this.getTeamColor(entity));
-			blockRenderer.renderBlockBrightness(ModBlocks.VTNTBlock.getDefaultState(), 1.0F);
+			blockRenderer.renderBlockBrightness(tntBlock.getDefaultState(), 1.0F);
 			GlStateManager.disableOutlineMode();
 			GlStateManager.disableColorMaterial();
 		}
@@ -96,7 +98,7 @@ public class MetallurgyTNTRenderer extends Render<MetallurgyPrimedTNT> {
 				brightness = MathHelper.cos(fuse / 4F) * 0.5F + 0.5F;
 
 			//Renders the actual white overlay on the block [1F means completely white]
-			blockRenderer.renderBlockBrightness(ModBlocks.VTNTBlock.getDefaultState(), brightness);
+			blockRenderer.renderBlockBrightness(tntBlock.getDefaultState(), brightness);
 			GlStateManager.doPolygonOffset(0F, 0F);
 			GlStateManager.disablePolygonOffset();
 			GlStateManager.color(1F, 1F, 1F, 1F);
