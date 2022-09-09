@@ -10,8 +10,8 @@
 package it.hurts.metallurgy_reforged.block;
 
 import it.hurts.metallurgy_reforged.block.gadget.BlockIceShield;
+import it.hurts.metallurgy_reforged.block.gadget.BlockMetallurgyTNT;
 import it.hurts.metallurgy_reforged.block.gadget.BlockPhosphorusLamp;
-import it.hurts.metallurgy_reforged.block.gadget.BlockVTNT;
 import it.hurts.metallurgy_reforged.block.machines.BlockAlloyer;
 import it.hurts.metallurgy_reforged.block.machines.BlockChamber;
 import it.hurts.metallurgy_reforged.block.machines.BlockCrusher;
@@ -22,6 +22,7 @@ import it.hurts.metallurgy_reforged.model.Drop;
 import it.hurts.metallurgy_reforged.util.BlockUtils;
 import it.hurts.metallurgy_reforged.util.Constants;
 import it.hurts.metallurgy_reforged.util.MetallurgyTabs;
+import it.hurts.metallurgy_reforged.world.MetallurgyExplosion;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -92,7 +93,7 @@ public class ModBlocks {
 	};
 
 	//TNT
-	public static BlockVTNT VTNTBlock = new BlockVTNT();
+	public static BlockMetallurgyTNT VTNTBlock = new BlockMetallurgyTNT(MetallurgyExplosion.Type.VULCANITE);
 
 	//Vanilla Decorative Blocks Init
 	//Iron

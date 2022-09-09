@@ -29,30 +29,30 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @ParametersAreNonnullByDefault
-public class BlockVTNT extends BlockTNT {
+public class BlockMetallurgyTNT extends BlockTNT {
 
-	public BlockVTNT()
+	private final MetallurgyExplosion.Type explosiveType;
+
+	public BlockMetallurgyTNT(MetallurgyExplosion.Type explosiveType)
 	{
-		setRegistryName(Metallurgy.MODID, "vulcanite_tnt");
-		setTranslationKey(Metallurgy.MODID + ".vulcanite_tnt");
+		this.explosiveType = explosiveType;
+
+		setRegistryName(Metallurgy.MODID, explosiveType + "_tnt");
+		setTranslationKey(Metallurgy.MODID + '.' + explosiveType + "_tnt");
 		setCreativeTab(MetallurgyTabs.tabSpecial);
 	}
 
 	@Override
 	public void explode(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase igniter)
 	{
-		if (!worldIn.isRemote)
+		if (!worldIn.isRemote && state.getValue(EXPLODE))
 		{
-			if (state.getValue(EXPLODE))
-			{
-				Metallurgy.logger.info("Creating Metallurgy Primed TNT");
-				MetallurgyPrimedTNT primedTNT = new MetallurgyPrimedTNT(worldIn,
-						pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F,
-						igniter, MetallurgyExplosion.Type.VULCANITE
-				);
-				worldIn.spawnEntity(primedTNT);
-				worldIn.playSound(null, primedTNT.posX, primedTNT.posY, primedTNT.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
+			MetallurgyPrimedTNT primedTNT = new MetallurgyPrimedTNT(worldIn,
+					pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F,
+					igniter, explosiveType
+			);
+			worldIn.spawnEntity(primedTNT);
+			worldIn.playSound(null, primedTNT.posX, primedTNT.posY, primedTNT.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class BlockVTNT extends BlockTNT {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.vulcanite_tnt"));
+		tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy." + explosiveType + "_tnt"));
 	}
 
 }

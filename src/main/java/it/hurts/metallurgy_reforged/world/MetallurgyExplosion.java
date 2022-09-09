@@ -297,6 +297,7 @@ public class MetallurgyExplosion extends Explosion {
 			this.damagesTerrain = damagesTerrain;
 		}
 
+
 		@Nullable
 		public static Type byIndex(int idx)
 		{
@@ -304,6 +305,12 @@ public class MetallurgyExplosion extends Explosion {
 				return null;
 
 			return Type.values()[idx];
+		}
+
+		@Override
+		public String toString()
+		{
+			return name().toLowerCase();
 		}
 	}
 
