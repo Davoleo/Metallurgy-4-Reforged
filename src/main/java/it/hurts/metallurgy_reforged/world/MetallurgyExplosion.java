@@ -21,8 +21,10 @@ import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.network.play.server.SPacketExplosion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -56,6 +58,22 @@ public class MetallurgyExplosion extends Explosion {
 
 		explosion.doExplosionA();
 		explosion.doExplosionB(true);
+
+		//Only on server
+		if (!world.isRemote)
+		{
+			if (!type.damagesTerrain)
+				explosion.clearAffectedBlockPositions();
+
+			for (EntityPlayer entityplayer : world.playerEntities)
+			{
+				if (entityplayer.getDistanceSq(x, y, z) < 4096.0D)
+					((EntityPlayerMP) entityplayer).connection.sendPacket(
+							new SPacketExplosion(x, y, z, type.strength, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(entityplayer))
+					);
+			}
+		}
+
 		return explosion;
 	}
 
@@ -133,7 +151,7 @@ public class MetallurgyExplosion extends Explosion {
 					double dx = entity.posX - this.x;
 					double dyEyes = entity.posY + (double) entity.getEyeHeight() - this.y;
 					double dz = entity.posZ - this.z;
-					double distanceEyes = MathHelper.sqrt(entity.posX - this.x * entity.posX - this.x + dyEyes * dyEyes + dz * dz);
+					double distanceEyes = MathHelper.sqrt(dx * dx + dyEyes * dyEyes + dz * dz);
 
 					if (distanceEyes != 0.0D)
 					{
@@ -142,7 +160,18 @@ public class MetallurgyExplosion extends Explosion {
 						dz = dz / distanceEyes;
 						double blockDensity = this.world.getBlockDensity(getPosition(), entity.getEntityBoundingBox());
 						double d10 = (1.0D - distance) * blockDensity;
-						entity.attackEntityFrom(DamageSource.causeExplosionDamage(this), (float) ((int) ((d10 * d10 + d10) / 2.0D * 7.0D * (double) sizeX2 + 1.0D)));
+
+						float sizeBasedDamage;
+						switch (type)
+						{
+							case VULCANITE:
+								sizeBasedDamage = (float) ((int) ((d10 * d10 + d10) / 2.0D * 7.0D * (double) size + 1.0D));
+								break;
+							default:
+								sizeBasedDamage = (float) ((int) ((d10 * d10 + d10) / 2.0D * 7.0D * (double) sizeX2 + 1.0D));
+								break;
+						}
+						entity.attackEntityFrom(DamageSource.causeExplosionDamage(this), sizeBasedDamage);
 
 						double reducedExplosionDamage = d10;
 
@@ -217,10 +246,6 @@ public class MetallurgyExplosion extends Explosion {
 
 					PacketSpawnOreParticles particles = new PacketSpawnOreParticles(randX, randY, randZ, dx, dy, dz, color, 3F, true, 8);
 					PacketManager.network.sendToAllTracking(particles, exploder);
-
-					//Vanilla Particles
-					//this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, (randX + this.x) / 2.0D, (randY + this.y) / 2.0D, (randZ + this.z) / 2.0D, dx, dy, dz);
-					//this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, randX, randY, randZ, dx, dy, dz);
 				}
 
 				if (state.getMaterial() != Material.AIR)
@@ -230,7 +255,7 @@ public class MetallurgyExplosion extends Explosion {
 						case VULCANITE:
 							if (block.getHarvestLevel(state) <= ModMetals.VULCANITE.getStats().getToolStats().getHarvestLevel())
 							{
-								block.dropBlockAsItemWithChance(this.world, blockpos, this.world.getBlockState(blockpos), 1.0F / this.size, 0);
+								block.dropBlockAsItemWithChance(this.world, blockpos, this.world.getBlockState(blockpos), 1F, 0);
 								block.onBlockExploded(this.world, blockpos, this);
 							}
 							break;

@@ -11,16 +11,21 @@ package it.hurts.metallurgy_reforged.entity;
 
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.world.MetallurgyExplosion;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 
@@ -75,7 +80,20 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	protected void explode()
 	{
 		Metallurgy.logger.info("Primed TNT creates METALLURGY EXPLOSION");
-		MetallurgyExplosion.newExplosion(world, this.getTntPlacedBy(), this.posX, this.posY, this.posZ, explosionType);
+		MetallurgyExplosion.newExplosion(world, this, this.posX, this.posY, this.posZ, explosionType);
+	}
+
+	/**
+	 * Blocks that are of a rock material should have 1/4 of resistance to VTNT
+	 */
+	@ParametersAreNonnullByDefault
+	@Override
+	public float getExplosionResistance(Explosion explosionIn, World worldIn, BlockPos pos, IBlockState blockStateIn)
+	{
+		if (explosionType == MetallurgyExplosion.Type.VULCANITE && blockStateIn.getMaterial() == Material.ROCK)
+			return blockStateIn.getBlock().getExplosionResistance(world, pos, this, explosionIn) / 4F;
+
+		return super.getExplosionResistance(explosionIn, worldIn, pos, blockStateIn);
 	}
 
 	@Nullable
