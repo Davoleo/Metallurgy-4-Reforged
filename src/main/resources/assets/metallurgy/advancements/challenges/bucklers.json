@@ -33,9 +33,7 @@
       "trigger": "minecraft:item_durability_changed",
       "conditions": {
         "item": {
-          "item": [
-            "metallurgy:orichalcum_buckler"
-          ]
+          "item": "metallurgy:orichalcum_buckler"
         }
       }
     }
