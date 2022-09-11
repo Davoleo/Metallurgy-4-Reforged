@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.entity;
 
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.world.explosive.ExplosiveType;
 import it.hurts.metallurgy_reforged.world.explosive.MetallurgyExplosion;
 import net.minecraft.block.material.Material;
@@ -80,7 +79,7 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	@Override
 	protected void explode()
 	{
-		Metallurgy.logger.info("Primed TNT creates METALLURGY EXPLOSION");
+		//Metallurgy.logger.info("Primed TNT creates METALLURGY EXPLOSION");
 		MetallurgyExplosion.newExplosion(world, this, this.posX, this.posY, this.posZ, explosionType);
 	}
 

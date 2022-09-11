@@ -10,7 +10,6 @@
 package it.hurts.metallurgy_reforged.world.explosive;
 
 import com.google.common.collect.Sets;
-import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketMetallurgyExplosion;
@@ -94,7 +93,7 @@ public class MetallurgyExplosion extends Explosion {
 	@Override
 	public void doExplosionA()
 	{
-		Metallurgy.logger.info("EXPLOSION A");
+		//Metallurgy.logger.info("EXPLOSION A");
 
 		Set<BlockPos> set = Sets.newHashSet();
 
@@ -216,7 +215,7 @@ public class MetallurgyExplosion extends Explosion {
 	@Override
 	public void doExplosionB(boolean spawnParticles)
 	{
-		Metallurgy.logger.info("EXPLOSION B");
+		//Metallurgy.logger.info("EXPLOSION B");
 
 		this.world.playSound(null, this.x, this.y, this.z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F);
 
