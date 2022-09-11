@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SGS",
+    "GVG",
+    "SGS"
+  ],
+  "key": {
+    "V": {
+      "type": "forge:ore_dict",
+      "ore": "dustVulcanite"
+    },
+    "G": {
+      "type": "forge:ore_dict",
+      "ore": "gunpowder"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "sand"
+    }
+  },
+  "result": {
+    "item": "metallurgy:vulcanite_tnt"
+  }
+}
