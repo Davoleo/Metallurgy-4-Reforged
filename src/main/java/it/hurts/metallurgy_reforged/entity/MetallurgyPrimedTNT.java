@@ -92,7 +92,7 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	public float getExplosionResistance(Explosion explosionIn, World worldIn, BlockPos pos, IBlockState blockStateIn)
 	{
 		if (explosionType == ExplosiveType.VULCANITE && blockStateIn.getMaterial() == Material.ROCK)
-			return blockStateIn.getBlock().getExplosionResistance(world, pos, this, explosionIn) / 5F;
+			return blockStateIn.getBlock().getExplosionResistance(world, pos, this, explosionIn) / 7F;
 
 		return super.getExplosionResistance(explosionIn, worldIn, pos, blockStateIn);
 	}

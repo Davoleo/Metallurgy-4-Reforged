@@ -40,6 +40,7 @@ public class PacketManager {
 		network.registerMessage(PacketAttachEmitter.Handler.class, PacketAttachEmitter.class, id++, Side.CLIENT);
 		network.registerMessage(PacketSyncEffectBundle.Handler.class, PacketSyncEffectBundle.class, id++, Side.CLIENT);
 		network.registerMessage(PacketSanguiniteEntityState.Handler.class, PacketSanguiniteEntityState.class, id++, Side.CLIENT);
+		network.registerMessage(PacketMetallurgyExplosion.Handler.class, PacketMetallurgyExplosion.class, id++, Side.CLIENT);
 	}
 
 }

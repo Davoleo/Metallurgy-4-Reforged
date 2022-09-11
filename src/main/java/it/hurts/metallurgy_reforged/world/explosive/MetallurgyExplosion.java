@@ -13,10 +13,13 @@ import com.google.common.collect.Sets;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
-import it.hurts.metallurgy_reforged.network.client.PacketSpawnOreParticles;
+import it.hurts.metallurgy_reforged.network.client.PacketMetallurgyExplosion;
+import it.hurts.metallurgy_reforged.particle.ParticleOre;
+import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,7 +27,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.network.play.server.SPacketExplosion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -34,6 +36,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -42,6 +46,15 @@ import java.util.Set;
 public class MetallurgyExplosion extends Explosion {
 
 	private final ExplosiveType type;
+
+	@SuppressWarnings("ConstantConditions")
+	//<== Author should be nullable but is implicitly marked as Nonnull in the superclass
+	@SideOnly(Side.CLIENT)
+	public MetallurgyExplosion(World worldIn, @Nullable Entity author, double x, double y, double z, List<BlockPos> affectedPositions, ExplosiveType type)
+	{
+		super(worldIn, author, x, y, z, type.strength, type.causesFire, type.damagesTerrain, affectedPositions);
+		this.type = type;
+	}
 
 	public MetallurgyExplosion(World worldIn, Entity author, double x, double y, double z, ExplosiveType type)
 	{
@@ -67,10 +80,11 @@ public class MetallurgyExplosion extends Explosion {
 
 			for (EntityPlayer entityplayer : world.playerEntities)
 			{
-				if (entityplayer.getDistanceSq(x, y, z) < 4096.0D)
-					((EntityPlayerMP) entityplayer).connection.sendPacket(
-							new SPacketExplosion(x, y, z, type.strength, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(entityplayer))
-					);
+				if (entityplayer.getDistanceSq(x, y, z) < 4096.0D && entityplayer instanceof EntityPlayerMP)
+				{
+					PacketMetallurgyExplosion packet = new PacketMetallurgyExplosion(x, y, z, explosion.playerKnockbackMap.get(entityplayer), explosion.getAffectedBlockPositions(), type);
+					PacketManager.network.sendTo(packet, (EntityPlayerMP) entityplayer);
+				}
 			}
 		}
 
@@ -240,12 +254,17 @@ public class MetallurgyExplosion extends Explosion {
 					dy = dy * d7;
 					dz = dz * d7;
 
-					int color = 0x0;
+					float[] color = new float[3];
 					if (type == ExplosiveType.VULCANITE)
-						color = ModMetals.VULCANITE.getStats().getColorHex();
+					{
+						Utils.getRGBComponents(ModMetals.VULCANITE.getStats().getColorHex(), color);
 
-					PacketSpawnOreParticles particles = new PacketSpawnOreParticles(randX, randY, randZ, dx, dy, dz, color, 3F, true, 8);
-					PacketManager.network.sendToAllTracking(particles, exploder);
+						if (random.nextInt(3) == 0)
+							world.spawnParticle(EnumParticleTypes.FLAME, (randX + this.x) / 2.0D, (randY + this.y) / 2.0D, (randZ + this.z) / 2.0D, dx, dy, dz);
+						else if (world.isRemote)
+							Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(world, randX, randY, randZ, dx, dy, dz, 3F, color[0], color[1], color[2], true, random.nextInt(2) + 6));
+
+					}
 				}
 
 				if (state.getMaterial() != Material.AIR)
