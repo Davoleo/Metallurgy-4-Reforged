@@ -15,10 +15,11 @@ import it.hurts.metallurgy_reforged.world.explosive.MetallurgyExplosion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -99,12 +100,12 @@ public class PacketMetallurgyExplosion implements IMessage {
 
 	public static class Handler implements IMessageHandler<PacketMetallurgyExplosion, IMessage> {
 
+		@SideOnly(Side.CLIENT)
 		@Override
 		public IMessage onMessage(PacketMetallurgyExplosion message, MessageContext ctx)
 		{
-			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
-				Minecraft client = Minecraft.getMinecraft();
-
+			Minecraft client = Minecraft.getMinecraft();
+			client.addScheduledTask(() -> {
 				MetallurgyExplosion explosion = new MetallurgyExplosion(client.world, null, message.x, message.y, message.z, message.affectedBlockPositions, message.explosionType);
 				explosion.doExplosionB(true);
 				client.player.motionX += message.motionX;

@@ -17,14 +17,9 @@ jobs:
       - name: Change Gradlew file permissions
         run: chmod +x gradlew
       - name: Setup Workspace
-        run: ./gradlew setupDecompWorkspace
+        run: ./gradlew setupCiWorkspace
       - name: Build & Compile
         run: ./gradlew build --stacktrace
-      - name: Setup CI Environment
-        run: ./gradlew setupCiEnv
-      - name: Test Server
-        run:
-          ./gradlew runServer
 
 #      - name: Send Webhook Notification
 #        if: always()
