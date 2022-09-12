@@ -1,3 +1,22 @@
+## 1.3.5
+
+- **_New Feature:_ Infused Ignatius** - New Enhanced fuel that has 3 times the base power of coal by
+  default [can be configured], just like thermite this fuel is even more powerful when used in Metallurgy machines
+  giving them a 3x speed & efficiency boost
+- **_New Feature:_ Vulcanite TNT** - A special kind of TNT that drops all the blocks it destroys and is especially
+  powerful against rock materials and ores (ideal for mining!)
+- _Improvement/Bugfix:_ Tartarite effect [Paragon Absorb] now inherits special metal attributes from the absorbed
+  metal (Should fix effects like Aerodynamic and make everything more themed/balanced)
+- _Improvement:_ Reworked and Rephrased Cold Snap [Ceruclase Tools]
+  Effect ([#364](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/364))
+  - Now it will instant-mine all blocks regardless of its harvest level
+  - Given that the tool is the correct tool to harvest it and that it can actually harvest it
+- _Exploit Bug_: Bounty [Midasium Weapon] effect doesn't duplicate drops that mob pick-up from the ground
+  anymore. ([#368](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/368))
+- _Integration Improvement:_ Improved Tinkers' Construct Tools and Construct's Armory repair amount for metallurgy metal
+  equipment ([#367](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/367))
+- _Bugfix:_ Fixed Metallurgy Bucklers advancement being broken and not loading at all
+
 ## 1.3.4
 
 - Added Challenge Advancements

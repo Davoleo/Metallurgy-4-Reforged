@@ -300,7 +300,6 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		if (isBurning())
 		{
 			this.burnTime--;
-			System.out.println(this.burnTime);
 
 			if (canCrush())
 			{
