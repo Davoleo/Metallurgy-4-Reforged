@@ -57,6 +57,8 @@ public class Constants {
 	public static final String PHOSPHORUS_LAMP = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.phosphorus_lamp");
 	public static final String THERMITE_DUST = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.thermite");
 
+	public static final String IGNATIUS_FUEL = Utils.localizeEscapingCustomSequences("tooltip.metallurgy.ignatius_fuel");
+
 	//Enchantments
 	public static final Enchantment[] GAUNTLET_ENCHANTMENTS = {
 			Enchantments.BANE_OF_ARTHROPODS,

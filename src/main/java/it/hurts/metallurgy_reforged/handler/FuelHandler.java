@@ -22,14 +22,16 @@ public abstract class FuelHandler {
 	@SubscribeEvent
 	public static void registerFuels(FurnaceFuelBurnTimeEvent event)
 	{
-        ItemStack item = event.getItemStack();
+		ItemStack item = event.getItemStack();
 
-        if (item.getItem().equals(ModItems.TAR))
-            event.setBurnTime(800);
-        if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
-            event.setBurnTime(16000);
-        if (item.getItem().equals(ModItems.THERMITE_DUST))
-	        event.setBurnTime(GadgetsConfig.ThermiteDust.thermiteFuelValue * 200);
-    }
+		if (item.getItem().equals(ModItems.TAR))
+			event.setBurnTime(800);
+		if (item.getItem().equals(Item.getItemFromBlock(ModBlocks.blockCharcoal)))
+			event.setBurnTime(16000);
+		if (item.getItem().equals(ModItems.THERMITE_DUST))
+			event.setBurnTime(GadgetsConfig.ThermiteDust.thermiteFuelValue * 200);
+		if (item.getItem().equals(ModItems.IGNATIUS_FUEL))
+			event.setBurnTime(GadgetsConfig.IgnatiusFuel.ignatiusFuelValue * 200);
+	}
 
 }

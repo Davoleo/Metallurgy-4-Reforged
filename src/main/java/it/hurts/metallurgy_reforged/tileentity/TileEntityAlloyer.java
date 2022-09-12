@@ -71,7 +71,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 	private int totalBurnTime;
 	private int alloyingTime;
 
-	private boolean isPoweredByThermite;
+	private int fuelSpeedBoost;
 
 	private int ambienceTick;
 
@@ -208,7 +208,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		this.alloyingTime = compound.getShort("alloying_time");
 		this.totalBurnTime = compound.getShort("total_burn_time");
 
-		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
+		this.fuelSpeedBoost = compound.getInteger("fuel_boost");
 
 		this.ambienceTick = compound.getInteger("ambience_tick");
 
@@ -228,7 +228,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		compound.setShort("alloying_time", (short) this.alloyingTime);
 		compound.setShort("total_burn_time", (short) this.totalBurnTime);
 
-		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+		compound.setInteger("fuel_boost", fuelSpeedBoost);
 
 		compound.setInteger("ambience_tick", ambienceTick);
 
@@ -305,16 +305,11 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 				if (this.ambienceTick == 0)
 					world.playSound(null, pos, ModSounds.ALLOYER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
 
-				//When the alloyer is powered by thermite
-				if (isPoweredByThermite)
-				{
-					//if alloying time is higher than the total then return total alloying time otherwise increase by 2
-					this.alloyingTime = Math.min(this.alloyingTime += 2, TOTAL_ALLOYING_TIME);
-				}
+				//Make machine tick faster if fuel is one of the enhanced ones
+				if (fuelSpeedBoost > 0)
+					this.alloyingTime = Math.min(this.alloyingTime + fuelSpeedBoost, TOTAL_ALLOYING_TIME);
 				else
-				{
-					alloyingTime++;
-				}
+					this.alloyingTime++;
 
 				//Handles ambience sound loop
 				this.ambienceTick++;
@@ -355,9 +350,17 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 
 			if (!fuelStack.isEmpty() && canAlloy())
 			{
-				this.isPoweredByThermite = fuelStack.getItem() == ModItems.THERMITE_DUST;
-				this.burnTime = getItemBurnTime(fuelStack);
-				this.totalBurnTime = this.burnTime;
+				if (fuelItem == ModItems.THERMITE_DUST)
+					this.fuelSpeedBoost = 2;
+				else if (fuelItem == ModItems.IGNATIUS_FUEL)
+					this.fuelSpeedBoost = 3;
+				else
+					this.fuelSpeedBoost = 1;
+
+				//200 = total furnace cook time
+				//machineTime = furnaceTime*140/200
+				int correctFuel = getItemBurnTime(fuelStack) * TOTAL_ALLOYING_TIME / 200;
+				this.totalBurnTime = this.burnTime = correctFuel;
 				fuelStack.shrink(1);
 
 				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel (i.e. lava bucket)
@@ -394,7 +397,7 @@ public class TileEntityAlloyer extends TileEntityLockable implements ITickable, 
 		{
 			totalBurnTime = 111;
 
-			burnTime = Math.min(burnTime += 2, totalBurnTime);
+			burnTime = Math.min(burnTime + 2, totalBurnTime);
 
 			if (canAlloy() && totalBurnTime == burnTime && alloyingTime < TOTAL_ALLOYING_TIME)
 				alloyingTime++;

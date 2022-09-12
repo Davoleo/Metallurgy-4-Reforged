@@ -86,11 +86,25 @@ public class GadgetsConfig {
         public static int temperature = 400;
 
         @Config.Name("Thermite Fuel Value")
-        @Config.Comment("How many items should 1 thermite item cook in a vanilla furnace (this value is automatically doubled when thermite is used in metallurgy machiens) [default: 8]")
+        @Config.Comment("How many items should 1 thermite item cook in a vanilla furnace (this value is automatically doubled when thermite is used in metallurgy machines) [default: 8]")
         @Config.RangeInt(min = 1, max = 64)
         @Config.SlidingOption
         @Config.RequiresMcRestart
         public static int thermiteFuelValue = 8;
 
     }
+
+    @Config.LangKey("config.metallurgy.category.ignatius_fuel")
+    @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/gadgets", category = "ignatius_fuel")
+    public static class IgnatiusFuel {
+
+        @Config.Name("Infused Ignatius Fuel Value")
+        @Config.Comment("How many items should 1 infused ignatius item process in a vanilla furnace (this value is automatically tripled when the fuel is used in metallurgy machines) [default: 8]")
+        @Config.RangeInt(min = 1, max = 64)
+        @Config.SlidingOption
+        @Config.RequiresMcRestart
+        public static int ignatiusFuelValue = 24;
+
+    }
+
 }

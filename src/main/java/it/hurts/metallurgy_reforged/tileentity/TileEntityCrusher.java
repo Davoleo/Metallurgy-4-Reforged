@@ -71,7 +71,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 	private int crushTime;
 	public static final int TOTAL_CRUSHING_TIME = 140;
 
-	private boolean isPoweredByThermite;
+	private int fuelSpeedBoost;
 
 	private int ambienceTick;
 
@@ -213,7 +213,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		this.crushTime = compound.getInteger("crush_time");
 		this.totalBurnTime = compound.getInteger("total_burn_time");
 
-		this.isPoweredByThermite = compound.getBoolean("powered_by_thermite");
+		this.fuelSpeedBoost = compound.getInteger("fuel_boost");
 
 		this.ambienceTick = compound.getInteger("ambience_tick");
 
@@ -234,7 +234,7 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		compound.setInteger("total_burn_time", (short) this.totalBurnTime);
 		compound.setInteger("crush_time", (short) this.crushTime);
 
-		compound.setBoolean("powered_by_thermite", isPoweredByThermite);
+		compound.setInteger("fuel_boost", fuelSpeedBoost);
 
 		compound.setInteger("ambience_tick", ambienceTick);
 
@@ -300,21 +300,18 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 		if (isBurning())
 		{
 			this.burnTime--;
+			System.out.println(this.burnTime);
 
 			if (canCrush())
 			{
 				if (this.ambienceTick == 0)
 					world.playSound(null, pos, ModSounds.CRUSHER_WINDUP, SoundCategory.BLOCKS, 1F, 1F);
 
-				if (!isPoweredByThermite)
-				{
-					this.crushTime++;
-				}
+				//Make machine tick faster if fuel is one of the enhanced ones
+				if (fuelSpeedBoost > 0)
+					this.crushTime = Math.min(this.crushTime + fuelSpeedBoost, TOTAL_CRUSHING_TIME);
 				else
-				{
-					//if crushing time is higher than the total then return total crushing time otherwise increase by 2
-					this.crushTime = Math.min(this.crushTime += 2, TOTAL_CRUSHING_TIME);
-				}
+					this.crushTime++;
 
 				//Handles ambience sound loop
 				this.ambienceTick++;
@@ -355,9 +352,17 @@ public class TileEntityCrusher extends TileEntityLockable implements ITickable, 
 
 			if (!fuelStack.isEmpty() && canCrush())
 			{
-				this.isPoweredByThermite = fuelStack.getItem() == ModItems.THERMITE_DUST;
-				this.burnTime = getItemBurnTime(fuelStack);
-				this.totalBurnTime = this.burnTime;
+				if (fuelItem == ModItems.THERMITE_DUST)
+					this.fuelSpeedBoost = 2;
+				else if (fuelItem == ModItems.IGNATIUS_FUEL)
+					this.fuelSpeedBoost = 3;
+				else
+					this.fuelSpeedBoost = 1;
+
+				//200 = total furnace cook time
+				//machineTime = furnaceTime*140/200
+				int correctFuel = getItemBurnTime(fuelStack) * TOTAL_CRUSHING_TIME / 200;
+				this.totalBurnTime = this.burnTime = correctFuel;
 				fuelStack.shrink(1);
 
 				//In case the fuel has a container item set it in the fuel slot after shrinking the fuel (i.e. lava bucket)

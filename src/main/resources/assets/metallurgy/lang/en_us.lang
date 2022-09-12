@@ -773,6 +773,7 @@ config.metallurgy.category.brass_knuckles=Brass Knuckles
 config.metallurgy.category.tool_effects=Tool Effects
 config.metallurgy.category.worldgen=World Generation
 config.metallurgy.category.thermite_dust=Thermite
+config.metallurgy.category.ignatius_fuel=Infused Ignatius Fuel
 
 #Construct's Armory Traits
 modifier.blindness_armor.name=Clear Vision
@@ -856,7 +857,6 @@ item.metallurgy.shadow_steel_dust.name=Shadow Steel Dust
 item.metallurgy.silver_dust.name=Silver Dust
 item.metallurgy.steel_dust.name=Steel Dust
 item.metallurgy.tartarite_dust.name=Tartarite Dust
-item.metallurgy.thermite_dust.name=Thermite Dust
 item.metallurgy.tin_dust.name=Tin Dust
 item.metallurgy.vulcanite_dust.name=Vulcanite Dust
 item.metallurgy.vyroxeres_dust.name=Vyroxeres Dust
@@ -1104,6 +1104,8 @@ item.metallurgy.bitumen.name=Bitumen
 item.metallurgy.potash.name=Potash
 item.metallurgy.phosphorus.name=Phosphorus
 item.metallurgy.potash_fertilizer.name=Potash Fertilizer
+item.metallurgy.thermite_dust.name=Thermite Dust
+item.metallurgy.ignatius_fuel.name=Infused Ignatius
 
 item.metallurgy.wiki.name=Metallurgy Wiki
 
@@ -1639,6 +1641,7 @@ tooltip.metallurgy.stats.harvest_level=Harvest Level: %s
 tooltip.metallurgy.stats.durability=Durability: %s
 tooltip.metallurgy.stats.efficiency=Efficiency: %s
 tooltip.metallurgy.vulcanite_tnt=§eSpecial TNT very effective for mining blocks and ores.<NL>§c/!\ WARNING: High Concentration of Vulcanite makes this block unstable - Manage with caution.
+tooltip.metallurgy.ignatius_fuel=§cActs as an upgraded fuel with 3 times the strength of coal (works best in metallurgy machines: 3x efficiency!)
 
 #Shield Tooltips
 tooltip.metallurgy.ceruclase_shield=§3When activated, creates an icy sphere around the player and cushions a portion of any incoming fall damage. The ice starts to melt after withdrawing the shield.

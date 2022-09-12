@@ -41,6 +41,9 @@ public class ModItems {
     public static final ItemBase POTASH = new ItemExtra("potash", MetallurgyTabs.tabDust);
     public static final ItemBase SULFUR = new ItemExtra("sulfur_dust", MetallurgyTabs.tabDust);
     public static final ItemBase THERMITE_DUST = new ItemExtra("thermite_dust", MetallurgyTabs.tabDust).setTooltip(Constants.THERMITE_DUST);
+
+    public static final ItemBase IGNATIUS_FUEL = new ItemExtra("ignatius_fuel", MetallurgyTabs.tabSpecial).setTooltip(Constants.IGNATIUS_FUEL);
+
     public static final ItemBase PHOSPHORUS = new ItemExtra("phosphorus", MetallurgyTabs.tabDust);
 
     //Gadgets
