@@ -99,7 +99,7 @@ public class MetallurgyPrimedTNT extends EntityTNTPrimed {
 	@Nullable
 	public ExplosiveType getType()
 	{
-		return explosionType;
+		return ExplosiveType.byIndex(dataManager.get(TYPE));
 	}
 
 }

@@ -46,6 +46,11 @@ public class ClientProxy implements IProxy {
 		client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, scale, red, green, blue, dynamic, level));
 	}
 
+	public static void clientSpawnParticle(World world, double x, double y, double z, double speedX, double speedY, double speedZ, float scale, float red, float green, float blue, boolean dynamic, int level)
+	{
+		client.effectRenderer.addEffect(new ParticleOre(world, x, y, z, speedX, speedY, speedZ, scale, red, green, blue, dynamic, level));
+	}
+
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{

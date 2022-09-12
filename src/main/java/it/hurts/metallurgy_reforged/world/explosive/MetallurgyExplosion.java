@@ -13,12 +13,11 @@ import com.google.common.collect.Sets;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.network.PacketManager;
 import it.hurts.metallurgy_reforged.network.client.PacketMetallurgyExplosion;
-import it.hurts.metallurgy_reforged.particle.ParticleOre;
+import it.hurts.metallurgy_reforged.proxy.ClientProxy;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -235,7 +234,7 @@ public class MetallurgyExplosion extends Explosion {
 				IBlockState state = this.world.getBlockState(blockpos);
 				Block block = state.getBlock();
 
-				if (spawnParticles)
+				if (world.isRemote && spawnParticles)
 				{
 					double randX = ((float) blockpos.getX() + this.world.rand.nextFloat());
 					double randY = ((float) blockpos.getY() + this.world.rand.nextFloat());
@@ -260,8 +259,8 @@ public class MetallurgyExplosion extends Explosion {
 
 						if (random.nextInt(3) == 0)
 							world.spawnParticle(EnumParticleTypes.FLAME, (randX + this.x) / 2.0D, (randY + this.y) / 2.0D, (randZ + this.z) / 2.0D, dx, dy, dz);
-						else if (world.isRemote)
-							Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleOre(world, randX, randY, randZ, dx, dy, dz, 3F, color[0], color[1], color[2], true, random.nextInt(2) + 6));
+						else
+							ClientProxy.clientSpawnParticle(world, randX, randY, randZ, dx, dy, dz, 3F, color[0], color[1], color[2], true, random.nextInt(2) + 6);
 
 					}
 				}
