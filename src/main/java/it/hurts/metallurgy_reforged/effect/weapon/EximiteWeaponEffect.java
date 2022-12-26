@@ -14,6 +14,7 @@ import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import it.hurts.metallurgy_reforged.util.Utils;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -53,14 +54,16 @@ public class EximiteWeaponEffect extends BaseMetallurgyEffect {
 	}
 
 	@SubscribeEvent
-	public void increaseLootInTheEnd(LivingDropsEvent event)
-	{
-		if (event.getEntityLiving().dimension == 1)
-		{
-			event.getDrops().forEach(item -> {
-				//Drop count can increase of 0, 1 or 2 items
-				item.getItem().setCount(item.getItem().getCount() + Utils.random.nextInt(3));
-			});
+	public void increaseLootInTheEnd(LivingDropsEvent event) {
+		Entity attacker = event.getSource().getTrueSource();
+
+		if (attacker instanceof EntityLivingBase && canBeApplied((EntityLivingBase) attacker)) {
+			if (event.getEntityLiving() instanceof EntityLiving && event.getEntityLiving().dimension == 1) {
+				event.getDrops().forEach(item -> {
+					//Drop count can increase of 0, 1 or 2 items
+					item.getItem().setCount(item.getItem().getCount() + Utils.random.nextInt(3));
+				});
+			}
 		}
 	}
 
