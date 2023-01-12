@@ -161,9 +161,12 @@ public class QuicksilverArmorEffect extends BaseMetallurgyEffect {
         if (event.getSource() != DamageSource.IN_FIRE || level < 3)
             return;
 
-        int currentTick = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null).quicksilverTick;
+        PlayerEffectData capa = event.getEntityLiving().getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
+        if (capa == null)
+            return;
+
         int maxTicks = Math.round(Math.max(8 * (1F - (level / 4F)), 0.5F) * 20);
-        if (currentTick == maxTicks)
+        if (capa.quicksilverTick == maxTicks)
             event.setCanceled(true);
     }
 
