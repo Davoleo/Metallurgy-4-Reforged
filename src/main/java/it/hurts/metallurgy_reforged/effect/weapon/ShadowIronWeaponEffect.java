@@ -41,8 +41,7 @@ public class ShadowIronWeaponEffect extends BaseMetallurgyEffect {
 		if (event.getSource().getImmediateSource() instanceof EntityLivingBase)
 		{
 			EntityLivingBase attacker = (EntityLivingBase) event.getSource().getImmediateSource();
-			if (canBeApplied(attacker) && Utils.random.nextInt(3) == 0)
-			{
+			if (canBeApplied(attacker) && Utils.random.nextInt(6) == 0) {
 				double critMultiplier = MathHelper.clampedLerp(1.2, EffectTweaksConfig.shadowIronWeaponCritUpperBound, Math.random());
 				event.setAmount((float) (event.getAmount() * critMultiplier));
 
