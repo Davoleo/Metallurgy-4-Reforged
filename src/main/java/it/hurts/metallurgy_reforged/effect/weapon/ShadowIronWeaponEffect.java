@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.effect.weapon;
 
+import it.hurts.metallurgy_reforged.config.EffectTweaksConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -42,7 +43,7 @@ public class ShadowIronWeaponEffect extends BaseMetallurgyEffect {
 			EntityLivingBase attacker = (EntityLivingBase) event.getSource().getImmediateSource();
 			if (canBeApplied(attacker) && Utils.random.nextInt(3) == 0)
 			{
-				double critMultiplier = MathHelper.clampedLerp(1.2, 3.2, Math.random());
+				double critMultiplier = MathHelper.clampedLerp(1.2, EffectTweaksConfig.shadowIronWeaponCritUpperBound, Math.random());
 				event.setAmount((float) (event.getAmount() * critMultiplier));
 
 				for (int i = 0; i < 20; i++)

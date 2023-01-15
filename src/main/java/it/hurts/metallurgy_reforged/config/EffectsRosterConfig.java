@@ -14,10 +14,10 @@ import net.minecraftforge.common.config.Config;
 
 //Variables are accessed through reflections most of the time
 @SuppressWarnings("unused")
-@Config.LangKey("config.metallurgy.category.effects")
+@Config.LangKey("config.metallurgy.category.effects_roster")
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_roster")
 @Config.RequiresMcRestart
-public class EffectsConfig {
+public class EffectsRosterConfig {
 
 	@Config.Name("Inclusions (Adamantine Items)")
 	@Config.LangKey("tooltip.metallurgy.effect.adamantine_all")
@@ -149,9 +149,7 @@ public class EffectsConfig {
 	@Config.Name("Siphon (Etherium Weapons)")
 	@Config.LangKey("tooltip.metallurgy.effect.etherium_weapon")
 	public static boolean etheriumEffectWeapon = true;
-	@Config.Name("Ethereal BlackList")
-	@Config.Comment("You can blacklist blocks which players cannot clip through.")
-	public static String[] etheriumEffectArmorBlacklist = new String[]{"minecraft:bedrock"};
+
 
 	@Config.Name("End Domestic (Eximite Armor)")
 	@Config.LangKey("tooltip.metallurgy.effect.eximite_armor")
@@ -339,8 +337,7 @@ public class EffectsConfig {
 	@Config.LangKey("tooltip.metallurgy.effect.vyroxeres_armor")
 	public static boolean vyroxeresEffectArmor = true;
 
-	private EffectsConfig()
-	{
+	private EffectsRosterConfig() {
 	}
 
 }

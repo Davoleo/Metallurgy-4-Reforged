@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect;
 
 import com.google.common.base.CaseFormat;
 import it.hurts.metallurgy_reforged.Metallurgy;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.EffectsRosterConfig;
 import it.hurts.metallurgy_reforged.effect.all.TartariteEffect;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
@@ -65,7 +65,7 @@ public abstract class BaseMetallurgyEffect {
 		Field configOption;
 		try
 		{
-			configOption = EffectsConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
+            configOption = EffectsRosterConfig.class.getDeclaredField(camelMetal + "Effect" + Utils.capitalize(getCategory().toString()));
 		}
 		catch (NoSuchFieldException e)
 		{
@@ -86,7 +86,7 @@ public abstract class BaseMetallurgyEffect {
 		{
 			try
 			{
-				return configOption.getBoolean(EffectsConfig.class);
+                return configOption.getBoolean(EffectsRosterConfig.class);
 			}
 			catch (IllegalAccessException e)
 			{

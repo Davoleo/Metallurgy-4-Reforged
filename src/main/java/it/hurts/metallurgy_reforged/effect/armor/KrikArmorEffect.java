@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.PlayerEffectData;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.EffectsRosterConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.handler.ClientEventsHandler;
@@ -96,16 +96,13 @@ public class KrikArmorEffect extends BaseMetallurgyEffect {
 	@SideOnly(Side.CLIENT)
 	public static void changeKrikLevel(EntityPlayer player, PlayerEffectData capability)
 	{
-		if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsConfig.krikEffectArmor)
-		{
-			if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-			{
-				if (capability != null && capability.krikHeight < getKrikMaxLevel(player))
-				{
-					PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(true));
-					capability.krikHeight += 1;
-				}
-			}
+        if (EventUtils.isWearingFullArmorSet(player, ModMetals.KRIK) && EffectsRosterConfig.krikEffectArmor) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+                if (capability != null && capability.krikHeight < getKrikMaxLevel(player)) {
+                    PacketManager.network.sendToServer(new PacketKrikEditPlayerLevel(true));
+                    capability.krikHeight += 1;
+                }
+            }
 
 			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
 			{

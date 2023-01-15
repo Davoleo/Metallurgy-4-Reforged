@@ -11,7 +11,7 @@ package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.EffectTweaksConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -44,7 +44,7 @@ public class EtheriumArmorEffect extends BaseMetallurgyEffect implements IProgre
 
 	static
 	{
-		blockBlacklist = Arrays.stream(EffectsConfig.etheriumEffectArmorBlacklist).collect(Collectors.toSet());
+		blockBlacklist = Arrays.stream(EffectTweaksConfig.etheriumEffectArmorBlacklist).collect(Collectors.toSet());
 	}
 
 	public EtheriumArmorEffect()

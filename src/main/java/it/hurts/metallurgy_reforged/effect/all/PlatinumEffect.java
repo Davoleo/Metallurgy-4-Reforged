@@ -9,7 +9,7 @@
 
 package it.hurts.metallurgy_reforged.effect.all;
 
-import it.hurts.metallurgy_reforged.config.EffectsConfig;
+import it.hurts.metallurgy_reforged.config.EffectsRosterConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.item.tool.IToolEffect;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -80,7 +80,7 @@ public abstract class PlatinumEffect extends BaseMetallurgyEffect {
 	{
 		if (metal == null)
 			return false;
-		return EffectsConfig.platinumEffectAll;
+        return EffectsRosterConfig.platinumEffectAll;
 	}
 
 	/**

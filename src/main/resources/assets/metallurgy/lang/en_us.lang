@@ -764,7 +764,8 @@ tile.metallurgy.iron_hazard_block.name=Iron Hazard Block
 tile.metallurgy.iron_reinforced_glass.name=Iron Reinforced Glass
 
 #Config
-config.metallurgy.category.effects=Effects
+config.metallurgy.category.effects_roster=Effects Roster
+config.metallurgy.category.effect_tweaks=Effect Tweaks
 config.metallurgy.category.general=General
 config.metallurgy.category.registry=Registry
 config.metallurgy.category.rubracium_gauntlet=Rubracium Gauntlet
