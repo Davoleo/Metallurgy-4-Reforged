@@ -1,3 +1,19 @@
+## 1.3.6
+
+- **Important Note:** Ethereal [Etherium Armor] Effect blacklist has been moved from the effects roster config category
+  to a new category for effect tweaks,
+  this means all your old changes to that config option will probably be ineffective now, please check your files and
+  act accordingly
+- _Config:_ Chaos Crit [Shadow Iron Weapons] maximum damage is now
+  configurable ([#370](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/370))
+- _Balancement:_ Decreased Chaos Crit [Shadow Iron Weapons] Chance to proc from 1/3 to 1/6
+- _Improvement:_ Reworked Power User [Carmot Armor] Effect to work with more different items and with better consistency
+  for all items ([#370](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/370))
+- _Bugfix:_ Fixed Acceleration [Quicksilver Armor] Effect crashing the game when on Mobs that are suffering from Lava
+  Damage ([#369](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/369))
+- _Bugfix:_ Fixed Outworlder [Eximite Weapon] effect increasing drops for anything in The End
+- _Minor:_ Fixed Typo in Nuggets Creative Tab name [en_us lang]
+
 ## 1.3.5
 
 - **_New Feature:_ Infused Ignatius** - New Enhanced fuel that has 3 times the base power of coal by
