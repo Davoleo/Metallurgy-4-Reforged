@@ -35,17 +35,14 @@ public class TraitDeeply extends AbstractArmorTrait implements IConarmMetallurgy
 	public void onArmorTick(PlayerTickEvent event)
 	{
 		EntityPlayer pl = event.player;
-		if (MetallurgyConArmorStats.hasValidArmorTrait(pl, "deeply") && pl.isInWater() && !pl.isCreative())
-		{
-			for (int i = 5; i < 9; i++)
-			{
-				if (!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative())
-				{
-					//					 Inseriamo nello slot dell'inventario in posizione i un custom slot
-					pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
-				}
+		if (MetallurgyConArmorStats.getArmorTraitLevel(pl, "deeply") > 0 && pl.isInWater() && !pl.isCreative()) {
+            for (int i = 5; i < 9; i++) {
+                if (!(pl.inventoryContainer.inventorySlots.get(i) instanceof ArmorCustomSlot) && !pl.isCreative()) {
+                    //					 Inseriamo nello slot dell'inventario in posizione i un custom slot
+                    pl.inventoryContainer.inventorySlots.set(i, new ArmorCustomSlot(pl, i - 5, true));
+                }
 
-			}
+            }
 			//			Add effect to Player
 			//			pl.setAir(275);
 			pl.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 230, 3, false, false));

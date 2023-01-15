@@ -64,14 +64,12 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 		return maxDefensePoint;
 	}
 
-	public static boolean hasValidArmorTrait(EntityPlayer player, String traitToCheck)
-	{
+	public static int getArmorTraitLevel(EntityPlayer player, String traitToCheck) {
 
-		for (ItemStack stack : player.inventory.armorInventory)
-		{
+		int count = 0;
+		for (ItemStack stack : player.inventory.armorInventory) {
 			Item item = stack.getItem();
-			if (item instanceof TinkersArmor)
-			{
+			if (item instanceof TinkersArmor) {
 				if (ToolHelper.isBroken(stack))
 					continue;
 
@@ -86,13 +84,13 @@ public class MetallurgyConArmorStats extends ArmorMaterials {
 						IArmorTrait armorTrait = (IArmorTrait) trait;
 
 						if (armorTrait.getIdentifier().equals(traitToCheck + "_armor"))
-							return true;
+							count++;
 					}
 				}
 			}
 		}
 
-		return false;
+		return count;
 	}
 
 }

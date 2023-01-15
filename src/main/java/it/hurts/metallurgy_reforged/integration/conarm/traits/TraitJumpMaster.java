@@ -27,8 +27,8 @@ public class TraitJumpMaster extends AbstractArmorTrait implements IConarmMetall
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "jump_master"))
-			event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, 1, false, false));
+		if (MetallurgyConArmorStats.getArmorTraitLevel(event.player, "jump_master") > 0)
+            event.player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 40, 1, false, false));
 	}
 
 }

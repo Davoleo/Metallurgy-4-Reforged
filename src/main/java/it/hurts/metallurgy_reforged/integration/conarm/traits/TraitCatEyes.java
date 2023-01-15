@@ -27,19 +27,18 @@ public class TraitCatEyes extends AbstractArmorTrait implements IConarmMetallurg
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "cat_eyes"))
-		{
-			event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
-			event.player.addTag("cat_eyes");
-		}
+        boolean hasTrait = MetallurgyConArmorStats.getArmorTraitLevel(event.player, "cat_eyes") > 0;
 
-		if (event.player.isPotionActive(MobEffects.NIGHT_VISION) && !MetallurgyConArmorStats.hasValidArmorTrait(event.player, "cat_eyes"))
-		{
-			if (event.player.getTags().contains("cat_eyes") && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11 * 20))
-			{
-				event.player.removePotionEffect(MobEffects.NIGHT_VISION);
-			}
-		}
+        if (hasTrait) {
+            event.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 220, 0, false, false));
+            event.player.addTag("cat_eyes");
+        }
+
+        if (event.player.isPotionActive(MobEffects.NIGHT_VISION) && !hasTrait) {
+            if (event.player.getTags().contains("cat_eyes") && event.player.getActivePotionEffect(MobEffects.NIGHT_VISION).getDuration() <= (11 * 20)) {
+                event.player.removePotionEffect(MobEffects.NIGHT_VISION);
+            }
+        }
 
 	}
 

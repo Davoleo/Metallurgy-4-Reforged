@@ -31,17 +31,15 @@ public class TraitFoodly extends AbstractArmorTrait implements IConarmMetallurgy
 	@SubscribeEvent
 	public void onArmorTick(PlayerTickEvent event)
 	{
-		if (MetallurgyConArmorStats.hasValidArmorTrait(event.player, "foodly"))
-		{
-			FoodStats foodStat = event.player.getFoodStats();
-			int amount = 4;
-			//quantity experience to remove
-			float removeTot = (float) amount / (float) event.player.xpBarCap();
-			//check if the player needs food ,if he has enough experience and if the tick is a multiple of 20 (which means that the effect will be applied every second)
-			if (event.player instanceof EntityPlayerMP && event.player.canEat(false) &&
-					(event.player.experience >= removeTot || event.player.experienceLevel > 0) &&
-					event.player.ticksExisted % 20 == 0)
-			{
+		if (MetallurgyConArmorStats.getArmorTraitLevel(event.player, "foodly") > 0) {
+            FoodStats foodStat = event.player.getFoodStats();
+            int amount = 4;
+            //quantity experience to remove
+            float removeTot = (float) amount / (float) event.player.xpBarCap();
+            //check if the player needs food ,if he has enough experience and if the tick is a multiple of 20 (which means that the effect will be applied every second)
+            if (event.player instanceof EntityPlayerMP && event.player.canEat(false) &&
+                    (event.player.experience >= removeTot || event.player.experienceLevel > 0) &&
+                    event.player.ticksExisted % 20 == 0) {
 				EntityPlayerMP mp = (EntityPlayerMP) event.player;
 				mp.experience -= removeTot;
 
