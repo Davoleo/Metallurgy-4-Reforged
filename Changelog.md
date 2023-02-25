@@ -1,3 +1,9 @@
+## 1.3.7
+
+- Fixed Sanguinite Ores not respecting configured biome filters
+  in `worldgen.cfg` ([#373](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/373))
+- Improved Ore Generation performance by caching ore spawn configs
+
 ## 1.3.6
 
 - **Important Note:** Ethereal [Etherium Armor] Effect blacklist has been moved from the effects roster config category
