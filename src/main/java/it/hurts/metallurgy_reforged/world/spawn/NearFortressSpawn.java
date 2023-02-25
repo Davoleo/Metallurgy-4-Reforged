@@ -18,15 +18,14 @@ import java.util.Random;
 
 public class NearFortressSpawn extends NetherOreSpawn {
 
-	public NearFortressSpawn()
-	{
-		super(null);
+	public NearFortressSpawn(String[] biomes) {
+		super(biomes);
 	}
 
 	@Override
 	public boolean canOreSpawn(Chunk chunk, BlockPos pos, IBlockState state, Random random)
 	{
-		return true;
+		return super.canOreSpawn(chunk, pos, state, random);
 	}
 
 	@Override
