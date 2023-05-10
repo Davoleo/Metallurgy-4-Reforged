@@ -73,11 +73,10 @@ public class AmordrineArmorEffect extends BaseMetallurgyEffect {
 	@SideOnly(Side.CLIENT)
 	public static void onPlayerJump(EntityPlayer player)
 	{
-		final int jumps = MetallurgyEffects.AMORDRINE_ARMOR_EFFECT.getLevel(player);
+		final int maxJumps = MetallurgyEffects.AMORDRINE_ARMOR_EFFECT.getLevel(player);
 
-		if (net.minecraft.client.Minecraft.getMinecraft().gameSettings.keyBindJump.isPressed() && jumps > 0 && !player.onGround)
-		{
-			PacketAmordrineJump packet = new PacketAmordrineJump(jumps);
+		if (!player.onGround && maxJumps > 0) {
+			PacketAmordrineJump packet = new PacketAmordrineJump(maxJumps);
 			PacketManager.network.sendToServer(packet);
 		}
 	}

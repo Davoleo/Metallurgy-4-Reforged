@@ -15,6 +15,7 @@ import it.hurts.metallurgy_reforged.effect.armor.AmordrineArmorEffect;
 import it.hurts.metallurgy_reforged.effect.armor.KrikArmorEffect;
 import it.hurts.metallurgy_reforged.effect.armor.SanguiniteArmorEffect;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -25,14 +26,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ClientEventsHandler {
 
+	private static final KeyBinding JUMP_KEY = Minecraft.getMinecraft().gameSettings.keyBindJump;
+	private static boolean jumping;
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void onKeyInput(InputEvent.KeyInputEvent event)
-	{
+	public static void onKeyInput(InputEvent.KeyInputEvent event) {
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		PlayerEffectData capability = player.getCapability(EffectDataProvider.PLAYER_EFFECT_DATA_CAPABILITY, null);
 
-		AmordrineArmorEffect.onPlayerJump(player);
+		if (JUMP_KEY.isKeyDown()) {
+			if (!jumping) {
+				AmordrineArmorEffect.onPlayerJump(player);
+				jumping = true;
+			}
+		} else
+			jumping = false;
 
 		KrikArmorEffect.changeKrikLevel(player, capability);
 	}
