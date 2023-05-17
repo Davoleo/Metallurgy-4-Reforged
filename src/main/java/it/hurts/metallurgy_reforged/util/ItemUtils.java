@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.util;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.Multimap;
 import it.hurts.metallurgy_reforged.Metallurgy;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.MetallurgyEffects;
@@ -134,33 +135,32 @@ public class ItemUtils {
 	}
 
 	public enum ScaleFormatting {
-		_1("\u2B51", TextFormatting.DARK_RED),
-		_2("\u2B51\u2B51", TextFormatting.RED),
-		_3("\u2B51\u2B51\u2B51", TextFormatting.GOLD),
-		_4("\u2B51\u2B51\u2B51\u2B51", TextFormatting.YELLOW),
-		_5("\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.DARK_GREEN),
-		_6("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.AQUA),
-		_7("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.LIGHT_PURPLE);
+		_1("⭑", TextFormatting.DARK_RED),
+		_2("⭑⭑", TextFormatting.RED),
+		_3("⭑⭑⭑", TextFormatting.GOLD),
+		_4("⭑⭑⭑⭑", TextFormatting.YELLOW),
+		_5("⭑⭑⭑⭑⭑", TextFormatting.DARK_GREEN),
+		_6("⭑⭑⭑⭑⭑⭑", TextFormatting.AQUA),
+		_7("⭑⭑⭑⭑⭑⭑⭑", TextFormatting.LIGHT_PURPLE);
 
 		final String stars;
 		public final TextFormatting format;
 
-		ScaleFormatting(String stars, TextFormatting format)
-		{
+		ScaleFormatting(String stars, TextFormatting format) {
 			this.stars = stars;
 			this.format = format;
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static void buildStatsTooltip(List<String> tooltip, EnumTools toolType, ToolStats stats, ItemStack toolStack)
-	{
+	public static void buildStatsTooltip(List<String> tooltip, EnumTools toolType, ToolStats stats, ItemStack toolStack) {
+		if (GeneralConfig.hideStatsTooltip)
+			return;
+
 		if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
 			tooltip.add(Utils.localizeEscapingCustomSequences("tooltip.metallurgy.press_shift"));
-		else
-		{
-			if (toolType == EnumTools.PICKAXE)
-			{
+		else {
+			if (toolType == EnumTools.PICKAXE) {
 				//Make sure higher harvest levels are clamped to the possible extremes
 				int harvest = MathHelper.clamp(stats.getHarvestLevel(), 1, 7);
 				ScaleFormatting harvestFormatting = ScaleFormatting.values()[harvest - 1];

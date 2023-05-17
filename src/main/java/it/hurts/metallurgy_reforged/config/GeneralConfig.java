@@ -106,12 +106,15 @@ public class GeneralConfig {
 	@Config.Comment("A list of metals which cannot be equipped by mobs. \n Metal names must be written in snake case.")
 	public static String[] metalsThatCannotBeEquipped = {};
 
+	@Config.Name("Hide Stats Tooltip [Tools & Armor]")
+	@Config.Comment("Hides extra stats information that is usually displayed when you hold the shift key down when hovering over armor and tools")
+	public static boolean hideStatsTooltip = false;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 
 		@SubscribeEvent
-		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs)
-		{
+		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
 			if (eventArgs.getModID().equals(Metallurgy.MODID))
 				ConfigManager.sync(Metallurgy.MODID, Config.Type.INSTANCE);
 		}
