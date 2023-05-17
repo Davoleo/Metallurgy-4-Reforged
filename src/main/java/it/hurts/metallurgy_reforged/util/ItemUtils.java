@@ -134,14 +134,16 @@ public class ItemUtils {
 		}
 	}
 
+	//"Unicode escapes" are necessary because jar breaks star display otherwise
+	@SuppressWarnings("UnnecessaryUnicodeEscape")
 	public enum ScaleFormatting {
-		_1("⭑", TextFormatting.DARK_RED),
-		_2("⭑⭑", TextFormatting.RED),
-		_3("⭑⭑⭑", TextFormatting.GOLD),
-		_4("⭑⭑⭑⭑", TextFormatting.YELLOW),
-		_5("⭑⭑⭑⭑⭑", TextFormatting.DARK_GREEN),
-		_6("⭑⭑⭑⭑⭑⭑", TextFormatting.AQUA),
-		_7("⭑⭑⭑⭑⭑⭑⭑", TextFormatting.LIGHT_PURPLE);
+		_1("\u2B51", TextFormatting.DARK_RED),
+		_2("\u2B51\u2B51", TextFormatting.RED),
+		_3("\u2B51\u2B51\u2B51", TextFormatting.GOLD),
+		_4("\u2B51\u2B51\u2B51\u2B51", TextFormatting.YELLOW),
+		_5("\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.DARK_GREEN),
+		_6("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.AQUA),
+		_7("\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51\u2B51", TextFormatting.LIGHT_PURPLE);
 
 		final String stars;
 		public final TextFormatting format;

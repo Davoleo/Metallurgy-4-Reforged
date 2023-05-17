@@ -1,3 +1,11 @@
+## 1.3.8
+
+- Fixed Compatibility issue with Avatar Mod: Jump skills not working
+  [This should also make the effect more compatible with other mods in general, and less prone to overwriting their abilities] ([#374](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/374))
+- Fixed Large Iron Brick Recipe conflicting with Engraved Iron
+  Block. ([#375](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/375))
+- Added a config option to hide stats tooltips completely [disabled by default]
+
 ## 1.3.7
 
 - Fixed Sanguinite Ores not respecting configured biome filters
