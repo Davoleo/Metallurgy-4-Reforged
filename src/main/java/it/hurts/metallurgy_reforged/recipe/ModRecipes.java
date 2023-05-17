@@ -141,14 +141,13 @@ public class ModRecipes {
 		}
 	}
 
-	private static void enableDisableJsonRecipe(File recipe, boolean enabled)
-	{
+	private static void enableDisableJsonRecipe(File recipe, boolean enable) {
 		String newPath = "";
 
-		if (recipe.toString().endsWith(".json") && !enabled)
+		if (recipe.toString().endsWith(".json") && !enable)
 			newPath = recipe + ".disabled";
 
-		if (recipe.toString().endsWith(".disabled") && enabled)
+		if (recipe.toString().endsWith(".disabled") && enable)
 			newPath = recipe.toString().replace(".disabled", "");
 
 		if (newPath.equals(""))
