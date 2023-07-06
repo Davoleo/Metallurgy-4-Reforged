@@ -66,18 +66,21 @@ public class EventUtils {
 	/**
 	 * @param entity EntityLivingBase
 	 * @param metal  The metal you need to count the number of armor piece of
-	 * @return The number of pieces of armor worn by the player
+	 * @return int level used to modularize armor effects depeinding on the type and amount of armor worn
 	 */
-	public static int getArmorPiecesCount(EntityLivingBase entity, Metal metal)
-	{
+	public static int getEffectArmorLevel(EntityLivingBase entity, Metal metal) {
 		int count = 0;
 
 		for (EntityEquipmentSlot slot : EntityEquipmentSlot.values())
-			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR)
-				if (entity.getItemStackFromSlot(slot).getItem().equals(metal.getArmorPiece(slot)))
+			if (slot.getSlotType() == EntityEquipmentSlot.Type.ARMOR) {
+				ItemStack armor = entity.getItemStackFromSlot(slot);
+				if (armor.getItem().equals(metal.getArmorPiece(slot)))
 					count++;
+				else if (ItemUtils.getMetalFromItem(armor.getItem()) == ModMetals.TARTARITE && TartariteEffect.getParagonMetal(armor) == metal)
+					count += 2;
+			}
 
-		return count;
+		return Math.min(count, 4);
 	}
 
 	/**
