@@ -9,6 +9,7 @@
 
 package it.hurts.metallurgy_reforged.gui;
 
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.material.Metal;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
 import net.minecraft.item.Item;
@@ -18,17 +19,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class TooltipRenderHandler {
 
 	@SubscribeEvent
-	public static void tooltipRenderColor(RenderTooltipEvent.Color event)
-	{
-		Item item = event.getStack().getItem();
-		Metal metal = ItemUtils.getMetalFromItem(item);
-		if (metal != null)
-		{
-			int color = metal.getStats().getColorHex();
-			//Move the alpha channel 6 digits (24 / 4) to the left and add the rgb color to it
-			int argb = (0xFF << 24) + color;
-			event.setBorderStart(argb);
-			event.setBorderEnd(argb);
+	public static void tooltipRenderColor(RenderTooltipEvent.Color event) {
+		if (GeneralConfig.metalColoredTooltipBorders) {
+			Item item = event.getStack().getItem();
+			Metal metal = ItemUtils.getMetalFromItem(item);
+			if (metal != null) {
+				int color = metal.getStats().getColorHex();
+				//Move the alpha channel 6 digits (24 / 4) to the left and add the rgb color to it
+				int argb = (0xFF << 24) + color;
+				event.setBorderStart(argb);
+				event.setBorderEnd(argb);
+			}
 		}
 	}
 

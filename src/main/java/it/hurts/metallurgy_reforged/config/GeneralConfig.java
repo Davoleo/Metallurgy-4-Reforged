@@ -110,6 +110,10 @@ public class GeneralConfig {
 	@Config.Comment("Hides extra stats information that is usually displayed when you hold the shift key down when hovering over armor and tools")
 	public static boolean hideStatsTooltip = false;
 
+	@Config.Name("Metal Colored Tooltip Borders for metal items")
+	@Config.Comment("Disabling this option will prevent modification to tooltip borders for metal items (useful when the modpack has another system to modify tooltips that conflicts with Metallurgy or hinders the consistency of modpack tooltips).")
+	public static boolean metalColoredTooltipBorders = true;
+
 	//Handles Config Synchronization
 	public static class ChangeListener {
 
