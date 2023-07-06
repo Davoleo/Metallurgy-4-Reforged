@@ -1,3 +1,11 @@
+## 1.3.9
+
+- Fixed Compatibility issue with LittleMaids mod: Maids not
+  spawning ([#376](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/375))
+- Optimized armor effect checks a bit
+- Added config option to disable colored tooltip borders for metal items (use cases: modpack development & rendering
+  conflict fix)
+
 ## 1.3.8
 
 - Fixed Compatibility issue with Avatar Mod: Jump skills not working
