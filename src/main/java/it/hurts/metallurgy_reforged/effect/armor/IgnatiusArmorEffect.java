@@ -10,6 +10,7 @@
 package it.hurts.metallurgy_reforged.effect.armor;
 
 import it.hurts.metallurgy_reforged.capabilities.effect.ProgressiveDataBundle;
+import it.hurts.metallurgy_reforged.config.EffectTweaksConfig;
 import it.hurts.metallurgy_reforged.effect.BaseMetallurgyEffect;
 import it.hurts.metallurgy_reforged.effect.EnumEffectCategory;
 import it.hurts.metallurgy_reforged.effect.IProgressiveEffect;
@@ -140,7 +141,7 @@ public class IgnatiusArmorEffect extends BaseMetallurgyEffect implements IProgre
 	public void drinkDamage(LivingEntityUseItemEvent.Finish event)
 	{
 		EntityLivingBase entity = event.getEntityLiving();
-		if (!canBeApplied(entity))
+		if (!EffectTweaksConfig.enableIgnatiusDrinkDamage || !canBeApplied(entity))
 			return;
 
 		EnumAction action = event.getItem().getItem().getItemUseAction(event.getItem());
