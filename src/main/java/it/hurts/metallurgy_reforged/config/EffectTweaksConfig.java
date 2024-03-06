@@ -16,10 +16,13 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = Metallurgy.MODID, name = "metallurgy_reforged/effects", category = "effect_tweaks")
 public class EffectTweaksConfig {
 
-    @Config.Name("Ethereal BlackList")
-    @Config.Comment("You can blacklist blocks that players cannot clip through.")
-    public static String[] etheriumEffectArmorBlacklist = new String[]{"minecraft:bedrock"};
+    @Config.Name("Hot-Blooded Drinking Damage")
+    @Config.Comment("Set to false to disable damage after drinking")
+    public static boolean enableIgnatiusDrinkDamage = true;
 
+    @Config.Name("Ethereal BlackList")
+    @Config.Comment("You can blacklist blocks that players cannot clip through")
+    public static String[] etheriumEffectArmorBlacklist = new String[]{"minecraft:bedrock"};
 
     @Config.Name("Chaos Crit Damage Upper Bound")
     @Config.Comment("Chaos Crit damage multiplier is a random number between 1.2 and this value")
