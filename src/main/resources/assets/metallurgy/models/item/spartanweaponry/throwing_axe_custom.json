@@ -1,0 +1,8 @@
+{
+  "parent": "spartanweaponry:item/throwing_axe_wood",
+  "textures": {
+    "layer0": "spartanweaponry:items/custom/throwing_axe_layer_0",
+    "layer1": "spartanweaponry:items/custom/throwing_axe_layer_1",
+    "layer2": "spartanweaponry:items/custom/throwing_axe_layer_2"
+  }
+}
