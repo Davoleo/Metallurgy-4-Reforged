@@ -29,26 +29,26 @@ public class GeneralConfig {
 	@Config.RangeDouble(min = 1)
 	public static double roadSpeed = 1.50D;
 
-	@Config.Name("Disable tinker integration")
-	@Config.Comment("Set to true to disable Tinkers' Construct Integration")
-	public static boolean tinkerIntegration = false;
+	@Config.Name("Tinkers' Construct integration")
+	@Config.Comment("Set to false to disable Tinkers' Construct Integration")
+	public static boolean tiCIntegration = true;
 
-	@Config.Name("Tinker Materials Blacklist")
+	@Config.Name("Tinkers' Materials Blacklist")
 	@Config.Comment("Add a material in this array to blacklist it during game boot - material name format is \"snake_case\" (e.g. 'osmium' or 'damascus_steel')")
 	@Config.RequiresMcRestart
 	public static String[] tinkerMaterialsBlacklist = new String[]{ };
 
-	@Config.Name("Disable ConArm Integration")
-	@Config.Comment("Set to true to disable Construct's Armory Integration")
-	public static boolean armoryIntegration = false;
+	@Config.Name("Disable Construct's Armory integration")
+	@Config.Comment("Set to false to disable Construct's Armory Integration")
+	public static boolean conarmIntegration = true;
 
-	@Config.Name("Disable IF Integration")
-	@Config.Comment("Set to true to disable Industrial Foregoing Integration")
-	public static boolean inForegoingIntegration = false;
+	@Config.Name("Industrial Foregoing integration")
+	@Config.Comment("Set to false to disable Industrial Foregoing integration")
+	public static boolean inForegoingIntegration = true;
 
-	@Config.Name("Disable Automatic EMC values")
-	@Config.Comment("Set to true to disable default EMC values")
-	public static boolean projectEIntegration = false;
+	@Config.Name("ProjectE Integration")
+	@Config.Comment("Set to false to disable default EMC values (ProjectE)")
+	public static boolean projectEIntegration = true;
 
 	@Config.Name("Enable Duplication Trait")
 	@Config.Comment("When set to true the duplication trait from tinker integration is enabled")
@@ -113,6 +113,14 @@ public class GeneralConfig {
 	@Config.Name("Metal Colored Tooltip Borders for metal items")
 	@Config.Comment("Disabling this option will prevent modification to tooltip borders for metal items (useful when the modpack has another system to modify tooltips that conflicts with Metallurgy or hinders the consistency of modpack tooltips).")
 	public static boolean metalColoredTooltipBorders = true;
+
+	@Config.Name("Silent's Gems Integration")
+	@Config.Comment("Set to false to disable Silent's Gems integration")
+	public static boolean silentGemsIntegration = true;
+
+	@Config.Name("Spartan Weaponry Integration")
+	@Config.Comment("Set to false to disable Spartan Weaponry integration (WARNING: integration items use up a lot of IDs!)")
+	public static boolean spartanWeaponryIntegration = true;
 
 	//Handles Config Synchronization
 	public static class ChangeListener {

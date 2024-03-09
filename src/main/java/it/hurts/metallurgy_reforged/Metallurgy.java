@@ -61,7 +61,7 @@ public class Metallurgy {
 
 	public static final String MODID = "metallurgy";
 	public static final String NAME = "Metallurgy 4: Reforged";
-	public static final String VERSION = "1.3.9";
+	public static final String VERSION = "1.4.0";
 
 	public static Logger logger;
 
@@ -116,19 +116,19 @@ public class Metallurgy {
 		logger.info("Metallurgy Advancement Criteria Registered!");
 
 		//checks if tinker is installed
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		if (ModChecker.isTConLoaded && GeneralConfig.tiCIntegration)
 		{
 			IntegrationTIC.preInit();
 			logger.info("Tinkers' Construct Compatibility module has been pre-initialized");
 
-			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+			if (ModChecker.isConarmLoaded && GeneralConfig.conarmIntegration)
 			{
 				IntegrationCArmory.preInit();
 				logger.info("Construct's Armory Compatibility module has been pre-initialized");
 			}
 		}
 
-		if (ModChecker.isIFLoaded && !GeneralConfig.inForegoingIntegration)
+		if (ModChecker.isIFLoaded && GeneralConfig.inForegoingIntegration)
 		{
 			IntegrationIF.preInit();
 			logger.info("Industrial Foregoing Compatibility module has been pre-initialized");
@@ -140,7 +140,7 @@ public class Metallurgy {
 			logger.info("CraftTweaker Compatibility module has been pre-initialized");
 		}
 
-		if (ModChecker.isSilentGemsLoaded)
+		if (ModChecker.isSilentGemsLoaded && GeneralConfig.silentGemsIntegration)
 		{
 			IntegrationSilentGems.init();
 			logger.info("CraftTweaker Compatibility module has been initialized");
@@ -167,12 +167,12 @@ public class Metallurgy {
 		ModRecipes.initFurnaceRecipes();
 		logger.info("Furnace Recipes loaded!");
 
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		if (ModChecker.isTConLoaded && GeneralConfig.tiCIntegration)
 		{
 			IntegrationTIC.init();
 			logger.info("Tinkers' Construct Compatibility module has been initialized");
 
-			if (ModChecker.isConarmLoaded && !GeneralConfig.armoryIntegration)
+			if (ModChecker.isConarmLoaded && GeneralConfig.conarmIntegration)
 			{
 				IntegrationCArmory.init();
 				logger.info("Construct's Armory Compatibility module has been initialized");
@@ -216,7 +216,7 @@ public class Metallurgy {
 		PacketManager.init();
 		logger.info(NAME + "'s Network System Loaded");
 
-		if (ModChecker.isTConLoaded && !GeneralConfig.tinkerIntegration)
+		if (ModChecker.isTConLoaded && GeneralConfig.tiCIntegration)
 			IntegrationTIC.postInit();
 		logger.info("Tinker's alloy recipes loaded");
 

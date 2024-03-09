@@ -9,10 +9,7 @@
 
 package it.hurts.metallurgy_reforged.util;
 
-import it.hurts.metallurgy_reforged.integration.IntegrationChisel;
-import it.hurts.metallurgy_reforged.integration.IntegrationEnderIO;
-import it.hurts.metallurgy_reforged.integration.IntegrationMekanism;
-import it.hurts.metallurgy_reforged.integration.IntegrationThermal;
+import it.hurts.metallurgy_reforged.integration.*;
 import net.minecraftforge.fml.common.Loader;
 
 public class ModChecker {
@@ -29,6 +26,7 @@ public class ModChecker {
 	public static boolean isChiselLoaded;
 	public static boolean isTELoaded;
 	public static boolean isMekanismLoaded;
+	public static boolean isSpartanWeaponryLoaded;
 
 	static
 	{
@@ -44,6 +42,7 @@ public class ModChecker {
 		ModChecker.isChiselLoaded = Loader.isModLoaded(IntegrationChisel.MODID);
 		ModChecker.isTELoaded = Loader.isModLoaded(IntegrationThermal.EXPANSION_MODID);
 		ModChecker.isMekanismLoaded = Loader.isModLoaded(IntegrationMekanism.MODID);
+		ModChecker.isSpartanWeaponryLoaded = Loader.isModLoaded(IntegrationSW.MODID);
 	}
 
 }

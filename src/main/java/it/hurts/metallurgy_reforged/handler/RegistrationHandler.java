@@ -16,10 +16,12 @@ import it.hurts.metallurgy_reforged.block.ModBlocks;
 import it.hurts.metallurgy_reforged.capabilities.effect.EffectDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.entity.EntityDataProvider;
 import it.hurts.metallurgy_reforged.capabilities.punch.PunchEffectProvider;
+import it.hurts.metallurgy_reforged.config.GeneralConfig;
 import it.hurts.metallurgy_reforged.config.RegistrationConfig;
 import it.hurts.metallurgy_reforged.entity.EntityPierKnight;
 import it.hurts.metallurgy_reforged.entity.MetallurgyPrimedTNT;
 import it.hurts.metallurgy_reforged.fluid.ModFluids;
+import it.hurts.metallurgy_reforged.integration.IntegrationSW;
 import it.hurts.metallurgy_reforged.item.ModItems;
 import it.hurts.metallurgy_reforged.item.tool.EnumTools;
 import it.hurts.metallurgy_reforged.material.ModMetals;
@@ -27,6 +29,7 @@ import it.hurts.metallurgy_reforged.render.ModRenderers;
 import it.hurts.metallurgy_reforged.render.knuckles.BrassKnucklesBakedModel;
 import it.hurts.metallurgy_reforged.sound.ModSounds;
 import it.hurts.metallurgy_reforged.util.ItemUtils;
+import it.hurts.metallurgy_reforged.util.ModChecker;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -112,6 +115,11 @@ public class RegistrationHandler {
 		//Init OreDictionary (Register keys)
 		OreDictHandler.init();
 		Metallurgy.logger.info(Metallurgy.NAME + ": OreDictionary has been initialized");
+
+		if (ModChecker.isSpartanWeaponryLoaded && GeneralConfig.spartanWeaponryIntegration) {
+			IntegrationSW.registerItems(event.getRegistry());
+			Metallurgy.logger.info(Metallurgy.NAME + ": Spartan Weaponry Integration items have been registered");
+		}
 	}
 
 	@SubscribeEvent

@@ -810,6 +810,8 @@ itemGroup.metallurgy.special=Metallurgy Special
 itemGroup.metallurgy.ores=Metallurgy Ores
 itemGroup.metallurgy.tools=Metallurgy Tools
 
+itemGroup.metallurgy.spartanweaponry=Spartan Weaponry: Metallurgy Materials
+
 #Dust
 item.metallurgy.adamantine_dust.name=Adamantine Dust
 item.metallurgy.alduorite_dust.name=Alduorite Dust
