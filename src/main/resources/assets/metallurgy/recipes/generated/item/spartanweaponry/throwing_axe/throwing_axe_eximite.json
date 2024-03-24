@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "HI",
+    " I"
+  ],
+  "key": {
+    "H": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotEximite"
+    }
+  },
+  "result": {
+    "item": "metallurgy:throwing_axe_eximite"
+  }
+}

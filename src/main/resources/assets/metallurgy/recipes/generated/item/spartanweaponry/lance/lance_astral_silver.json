@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "I",
+    "P",
+    "H"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotAstralSilver"
+    },
+    "P": {
+      "item": "spartanweaponry:material",
+      "data": 1
+    },
+    "H": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "metallurgy:lance_astral_silver"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "HSI",
+    "S R",
+    "IRR"
+  ],
+  "key": {
+    "H": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotPlatinum"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    }
+  },
+  "result": {
+    "item": "metallurgy:longbow_platinum"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "PI"
+  ],
+  "key": {
+    "P": {
+      "item": "spartanweaponry:material",
+      "data": 1
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSteel"
+    }
+  },
+  "result": {
+    "item": "metallurgy:javelin_steel"
+  }
+}

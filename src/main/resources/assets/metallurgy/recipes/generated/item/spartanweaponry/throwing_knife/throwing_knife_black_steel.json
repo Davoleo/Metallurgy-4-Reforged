@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "HI"
+  ],
+  "key": {
+    "H": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBlackSteel"
+    }
+  },
+  "result": {
+    "item": "metallurgy:throwing_knife_black_steel"
+  }
+}
