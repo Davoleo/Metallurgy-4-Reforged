@@ -1,3 +1,17 @@
+## 1.4.0
+
+- **Spartan Weaponry Integration** ([#222](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/222))
+  - long awaited and finally here with the last feature update.
+  - All metals that support tools in the original mod will have spartan weapons.
+  - Textures are generated automatically based on the metal color
+  - Recipes are mirrored to the ones of the original mod, but using metallurgy metals.
+  - Spartan Weaponry supported versions are 1.3.2 and above [API Versions >= 5]
+  - Older versions are not supported and you may incur in crashes if you use them.
+  - All tool stats are deferred from original tool material stats (they are synced with original metallurgy tools
+    config).
+- Hot-blooded drinking damage can now be disabled via config (contribution by **KreloX
+  ** : [#378](https://github.com/Davoleo/Metallurgy-4-Reforged/pull/378))
+
 ## 1.3.9
 
 - Fixed Compatibility issue with LittleMaids mod: Maids not
