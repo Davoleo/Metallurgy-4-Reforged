@@ -17,6 +17,7 @@ import it.hurts.metallurgy_reforged.integration.spartanweaponry.SpartanMetallurg
 import it.hurts.metallurgy_reforged.integration.spartanweaponry.SpartanWeaponType;
 import it.hurts.metallurgy_reforged.material.ModMetals;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.API;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import java.util.List;
 public class IntegrationSW {
 
     public static final String MODID = "spartanweaponry";
+    public static final API API = Package.getPackage("com.oblivioussp.spartanweaponry.api").getAnnotation(API.class);
 
     public static final IWeaponCallback NOOP = (material, stack, world, tooltip, flag) -> {
     };
@@ -34,9 +36,11 @@ public class IntegrationSW {
     public static final List<SpartanMetal> spartanMetals = new ArrayList<>();
 
     public static void registerItems(IForgeRegistry<Item> registry) {
+
         ModMetals.metalMap.forEach((name, metal) -> {
             if (metal.hasToolSet()) {
                 spartanMetals.add(new SpartanMetal(registry, metal.getStats()));
+
             }
         });
 
@@ -47,8 +51,10 @@ public class IntegrationSW {
             );
 
             for (SpartanWeaponType weaponType : SpartanWeaponType.values()) {
-                SpartanWeaponryAPI.addItemModelToRegistry(spartanMetal.getWeapon(weaponType),
-                        Metallurgy.MODID, IntegrationSW.MODID + '/' + weaponType.name().toLowerCase());
+                if (weaponType.initializer != null) {
+                    SpartanWeaponryAPI.addItemModelToRegistry(spartanMetal.getWeapon(weaponType),
+                            Metallurgy.MODID, IntegrationSW.MODID + '/' + weaponType.name().toLowerCase());
+                }
             }
         });
     }

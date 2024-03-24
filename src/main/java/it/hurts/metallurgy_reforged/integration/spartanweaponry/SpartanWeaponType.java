@@ -34,12 +34,12 @@ public enum SpartanWeaponType {
     MACE(SpartanWeaponryAPI::createMace),
     GLAIVE(SpartanWeaponryAPI::createGlaive),
     QUARTERSTAFF(SpartanWeaponryAPI::createQuarterstaff),
-    PARRYING_DAGGER(SpartanWeaponryAPI::createParryingDagger),
+    PARRYING_DAGGER(IntegrationSW.API.apiVersion().equals("6") ? SpartanWeaponryAPI::createParryingDagger : null),
     //Ranged
     LONGBOW((toolMaterialEx, modid, creativeTab, properties) -> SpartanWeaponryAPI.createLongbow(toolMaterialEx, modid, creativeTab, IntegrationSW.NOOP)),
     CROSSBOW((toolMaterialEx, modid, creativeTab, properties) -> SpartanWeaponryAPI.createCrossbow(toolMaterialEx, modid, creativeTab, IntegrationSW.NOOP)),
     ;
-    final ISpartanWeaponInitalizer initializer;
+    public final ISpartanWeaponInitalizer initializer;
 
     SpartanWeaponType(ISpartanWeaponInitalizer initializer) {
         this.initializer = initializer;

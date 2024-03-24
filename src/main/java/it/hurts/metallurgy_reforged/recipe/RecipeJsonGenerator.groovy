@@ -11,6 +11,7 @@ package it.hurts.metallurgy_reforged.recipe
 
 import com.google.common.base.CaseFormat
 import it.hurts.metallurgy_reforged.integration.IntegrationProjectE
+import it.hurts.metallurgy_reforged.integration.spartanweaponry.SpartanRecipeGenerator
 
 class RecipeJsonGenerator {
 
@@ -193,16 +194,26 @@ class RecipeJsonGenerator {
     ]
 
     static void main(String[] args) {
-        materials.forEach({ metal ->
+        materials.each { metal ->
             generateShapedRecipes(metal)
             println("$metal Shaped Recipes generated!")
             generateShapelessRecipes(metal)
             println("$metal Shapeless Recipes generated!")
-        })
+        }
         println("------------------------------------------")
 
         alloys.each { alloy -> generateAlloyRecipes(alloy) }
         println("Alloy Recipes generated!")
+        println("------------------------------------------")
+
+        materials.each { metal ->
+            def mark = markers[metal]
+            if (mark == RecipeGenHelper.Markers.ALL || mark == RecipeGenHelper.Markers.NO_ARMOR) {
+                SpartanRecipeGenerator.generate(metal)
+                println("$metal Spartan Recipes generated!")
+            }
+        }
+
     }
 
     private static void generateShapedRecipes(String metal) {

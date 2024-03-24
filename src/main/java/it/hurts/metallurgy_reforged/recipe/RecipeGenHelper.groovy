@@ -30,6 +30,16 @@ class RecipeGenHelper {
         }
     }
 
+    /**
+     * Replace all 4 spaces indentation with 2 spaces indentation
+     */
+    static String convert2SpaceIndent(String content) {
+        def shrinkSpaces = { _, leading, __ -> "${leading.replaceAll('  ', ' ')}" }
+        def findLeading = /(?m)^((\s{4})+)/
+        def prettyObj = JsonOutput.prettyPrint(content).replaceAll(findLeading, shrinkSpaces)
+        return prettyObj
+    }
+
     static void writeJson(String type, String metal, Object obj) {
 
         String subdir
@@ -83,14 +93,12 @@ class RecipeGenHelper {
         }
 
         def jsonObj = JsonOutput.toJson(obj)
-        //Raplace all 4 spaces indentation with 2 spaces indentation
-        def shrinkSpaces = { _, leading, __ -> "${leading.replaceAll('  ', ' ')}" }
-        def findLeading = /(?m)^((\s{4})+)/
-        def prettyObj = JsonOutput.prettyPrint(jsonObj).replaceAll(findLeading, shrinkSpaces)
+        def prettyJson = convert2SpaceIndent(jsonObj)
         def file = new File(RecipeJsonGenerator.RECIPES_DIR_PATH + subdir + type + "_" + metal + ".json")
+
         file.parentFile.mkdir()
         file.createNewFile()
-        file.write(prettyObj)
+        file.write(prettyJson)
     }
 
 }

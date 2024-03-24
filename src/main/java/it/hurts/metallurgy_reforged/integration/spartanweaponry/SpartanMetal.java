@@ -40,11 +40,13 @@ public class SpartanMetal {
         );
 
         for (SpartanWeaponType type : SpartanWeaponType.values()) {
-            final Item weapon = type.initializer.create(toolMaterial, Metallurgy.MODID, IntegrationSW.CREATIVE_TAB);
-            items.put(type, weapon);
+            if (!IntegrationSW.API.apiVersion().equals("5") || type != SpartanWeaponType.PARRYING_DAGGER) {
+                final Item weapon = type.initializer.create(toolMaterial, Metallurgy.MODID, IntegrationSW.CREATIVE_TAB);
+                items.put(type, weapon);
 
-            if (weapon != null) {
-                registry.register(weapon);
+                if (weapon != null) {
+                    registry.register(weapon);
+                }
             }
         }
     }
