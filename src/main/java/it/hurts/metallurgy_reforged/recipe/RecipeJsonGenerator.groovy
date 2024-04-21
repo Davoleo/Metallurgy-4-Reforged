@@ -12,6 +12,7 @@ package it.hurts.metallurgy_reforged.recipe
 import com.google.common.base.CaseFormat
 import it.hurts.metallurgy_reforged.integration.IntegrationProjectE
 import it.hurts.metallurgy_reforged.integration.spartanweaponry.SpartanRecipeGenerator
+import it.hurts.metallurgy_reforged.util.ModChecker
 
 class RecipeJsonGenerator {
 
@@ -206,12 +207,15 @@ class RecipeJsonGenerator {
         println("Alloy Recipes generated!")
         println("------------------------------------------")
 
-        materials.each { metal ->
-            def mark = markers[metal]
-            if (mark == RecipeGenHelper.Markers.ALL || mark == RecipeGenHelper.Markers.NO_ARMOR) {
-                SpartanRecipeGenerator.generate(metal)
-                println("$metal Spartan Recipes generated!")
+        if (ModChecker.isSpartanWeaponryLoaded) {
+            materials.each { metal ->
+                def mark = markers[metal]
+                if (mark == RecipeGenHelper.Markers.ALL || mark == RecipeGenHelper.Markers.NO_ARMOR) {
+                    SpartanRecipeGenerator.generate(metal)
+                    println("$metal Spartan Recipes generated!")
+                }
             }
+            println("------------------------------------------")
         }
 
     }

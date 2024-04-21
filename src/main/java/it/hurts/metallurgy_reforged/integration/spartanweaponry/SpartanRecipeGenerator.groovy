@@ -14,6 +14,9 @@ import groovy.json.JsonOutput
 import it.hurts.metallurgy_reforged.recipe.RecipeGenHelper
 import it.hurts.metallurgy_reforged.recipe.RecipeJsonGenerator
 
+/**
+ * ! Needs spartanweaponry available at runtime for this to be executed by main datagen.
+ */
 class SpartanRecipeGenerator {
 
     static def spartanPatterns = [
@@ -39,7 +42,7 @@ class SpartanRecipeGenerator {
             battleaxe      : ['III', 'ISI', ' H '],
             mace           : [' II', ' SI', 'H  '],
             glaive         : [' I', ' I', 'IP'],
-            quarterstaff   : ['  I', ' P ', 'I  '],
+            staff: ['  I', ' P ', 'I  '],
             parrying_dagger: [' I', 'IH']
     ]
 

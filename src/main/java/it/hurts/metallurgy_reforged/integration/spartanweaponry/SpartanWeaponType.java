@@ -33,7 +33,7 @@ public enum SpartanWeaponType {
     BATTLEAXE(SpartanWeaponryAPI::createBattleaxe),
     MACE(SpartanWeaponryAPI::createMace),
     GLAIVE(SpartanWeaponryAPI::createGlaive),
-    QUARTERSTAFF(SpartanWeaponryAPI::createQuarterstaff),
+    STAFF(SpartanWeaponryAPI::createQuarterstaff),
     PARRYING_DAGGER(IntegrationSW.API.apiVersion().equals("6") ? SpartanWeaponryAPI::createParryingDagger : null),
     //Ranged
     LONGBOW((toolMaterialEx, modid, creativeTab, properties) -> SpartanWeaponryAPI.createLongbow(
