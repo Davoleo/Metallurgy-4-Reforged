@@ -1,3 +1,8 @@
+## 1.4.1
+
+- Fixed Dedicated Server crash on Spartan Weaponry Integration
+- Fixed Spartan Weaponry Quarterstaff recipes
+
 ## 1.4.0
 
 - **Spartan Weaponry Integration** ([#222](https://github.com/Davoleo/Metallurgy-4-Reforged/issues/222))
