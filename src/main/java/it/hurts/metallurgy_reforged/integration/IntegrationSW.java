@@ -9,7 +9,6 @@
 
 package it.hurts.metallurgy_reforged.integration;
 
-import com.oblivioussp.spartanweaponry.api.IWeaponCallback;
 import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import it.hurts.metallurgy_reforged.Metallurgy;
 import it.hurts.metallurgy_reforged.integration.spartanweaponry.SpartanMetal;
@@ -28,9 +27,6 @@ public class IntegrationSW {
     public static final String MODID = "spartanweaponry";
     public static final API API = Package.getPackage("com.oblivioussp.spartanweaponry.api").getAnnotation(API.class);
 
-    public static final IWeaponCallback NOOP = (material, stack, world, tooltip, flag) -> {
-    };
-
     public static final SpartanMetallurgyTab CREATIVE_TAB = new SpartanMetallurgyTab();
 
     public static final List<SpartanMetal> spartanMetals = new ArrayList<>();
@@ -40,7 +36,6 @@ public class IntegrationSW {
         ModMetals.metalMap.forEach((name, metal) -> {
             if (metal.hasToolSet()) {
                 spartanMetals.add(new SpartanMetal(registry, metal.getStats()));
-
             }
         });
 
