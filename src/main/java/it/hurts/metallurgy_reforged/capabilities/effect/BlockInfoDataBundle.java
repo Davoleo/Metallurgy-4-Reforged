@@ -9,12 +9,13 @@
 
 package it.hurts.metallurgy_reforged.capabilities.effect;
 
-import jline.internal.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+
+import javax.annotation.Nullable;
 
 public class BlockInfoDataBundle extends ExtraFilledDataBundle {
 
